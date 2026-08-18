@@ -1,0 +1,11 @@
+obligation_id;prestataire_id;traitement_ou_activite_ids;obligation;clause_ou_annexe;preuve_produit;test_ids;action_ids;responsable;qualification_revue_par;statut;date_revalidation;commentaire
+A28-PREST-001-01;PREST-001;AST-001;Objet durée nature finalités catégories de données et personnes concernées;à localiser;à fournir;TEST-001;ACTION-001;à nommer;à confirmer;à confirmer;AAAA-MM-JJ;
+A28-PREST-001-02;PREST-001;AST-001;Instructions documentées et alerte en cas d’instruction jugée illicite;à localiser;à fournir;TEST-002;ACTION-002;à nommer;à confirmer;à confirmer;AAAA-MM-JJ;
+A28-PREST-001-03;PREST-001;AST-001;Confidentialité des personnes autorisées;à localiser;à fournir;TEST-003;ACTION-003;à nommer;à confirmer;à confirmer;AAAA-MM-JJ;
+A28-PREST-001-04;PREST-001;AST-001;Mesures techniques et organisationnelles adaptées au risque;à localiser;à fournir;TEST-004;ACTION-004;à nommer;à confirmer;à confirmer;AAAA-MM-JJ;
+A28-PREST-001-05;PREST-001;AST-001;Autorisation information et objection sur les sous-traitants ultérieurs;à localiser;à fournir;TEST-005;ACTION-005;à nommer;à confirmer;à confirmer;AAAA-MM-JJ;
+A28-PREST-001-06;PREST-001;AST-001;Assistance pour l’exercice des droits;à localiser;à fournir;TEST-006;ACTION-006;à nommer;à confirmer;à confirmer;AAAA-MM-JJ;
+A28-PREST-001-07;PREST-001;AST-001;Assistance sécurité violations AIPD et consultation préalable;à localiser;à fournir;TEST-007;ACTION-007;à nommer;à confirmer;à confirmer;AAAA-MM-JJ;
+A28-PREST-001-08;PREST-001;AST-001;Restitution ou effacement en fin de service et sort des copies;à localiser;à fournir;TEST-008;ACTION-008;à nommer;à confirmer;à confirmer;AAAA-MM-JJ;
+A28-PREST-001-09;PREST-001;AST-001;Informations nécessaires pour démontrer les obligations;à localiser;à fournir;TEST-009;ACTION-009;à nommer;à confirmer;à confirmer;AAAA-MM-JJ;
+A28-PREST-001-10;PREST-001;AST-001;Audits inspections et traitement des écarts;à localiser;à fournir;TEST-010;ACTION-010;à nommer;à confirmer;à confirmer;AAAA-MM-JJ;

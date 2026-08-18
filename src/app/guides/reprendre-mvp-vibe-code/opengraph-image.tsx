@@ -2,16 +2,16 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Peut-on reprendre un MVP créé avec Lovable, Bolt ou v0 ? — Hagnéré Code";
+  "Reprendre un MVP Lovable, Bolt ou v0 sans tout refaire — Hagnéré Code";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const proofs = [
-  { label: "CODE", color: "#a78bfa" },
-  { label: "MISE EN LIGNE", color: "#60a5fa" },
+  { label: "STOP", color: "#fb7185" },
+  { label: "BUILD", color: "#a78bfa" },
   { label: "DONNÉES", color: "#34d399" },
-  { label: "ACCÈS", color: "#fbbf24" },
-  { label: "COMPTES", color: "#fb7185" },
+  { label: "DROITS", color: "#60a5fa" },
+  { label: "TCO", color: "#fbbf24" },
 ];
 
 export default function OgImage() {
@@ -91,7 +91,7 @@ export default function OgImage() {
               letterSpacing: -2,
             }}
           >
-            Peut-on reprendre un MVP créé avec Lovable, Bolt ou v0 ?
+            Reprendre un MVP Lovable, Bolt ou v0 sans tout refaire
           </div>
           <div
             style={{
@@ -101,7 +101,7 @@ export default function OgImage() {
               color: "#c4b5fd",
             }}
           >
-            Cinq vérifications avant de conserver ou réécrire
+            Preuves, sécurité, TCO et migration réversible
           </div>
         </div>
 

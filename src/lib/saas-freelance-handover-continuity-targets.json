@@ -1,0 +1,52 @@
+[
+  {
+    "journey": "Connexion",
+    "impact": "Clients incapables d’ouvrir leur espace",
+    "rtoHours": 4,
+    "rtoLabel": "4 h",
+    "rpoHours": 0.25,
+    "rpoLabel": "15 min sur les changements d’identité",
+    "evidence": "Création, connexion, récupération et révocation chronométrées",
+    "decisionOwner": "Direction + support"
+  },
+  {
+    "journey": "Paiement",
+    "impact": "Encaissement, droit et facture susceptibles de diverger",
+    "rtoHours": 1,
+    "rtoLabel": "1 h",
+    "rpoHours": 0,
+    "rpoLabel": "Aucun événement confirmé perdu",
+    "evidence": "Événements rejoués sans doublon et rapprochement contrôlé",
+    "decisionOwner": "Direction + finance"
+  },
+  {
+    "journey": "Action métier",
+    "impact": "Relance non préparée ou produite deux fois",
+    "rtoHours": 8,
+    "rtoLabel": "8 h",
+    "rpoHours": 4,
+    "rpoLabel": "4 h",
+    "evidence": "Tâche restaurée, unicité contrôlée et alerte reçue",
+    "decisionOwner": "Responsable métier"
+  },
+  {
+    "journey": "Documents",
+    "impact": "PDF clients absents malgré une base restaurée",
+    "rtoHours": 8,
+    "rtoLabel": "8 h",
+    "rpoHours": 4,
+    "rpoLabel": "4 h",
+    "evidence": "Base et stockage restaurés puis rapprochés",
+    "decisionOwner": "Métier + responsable données"
+  },
+  {
+    "journey": "Support et alertes",
+    "impact": "Incident invisible ou sans personne responsable",
+    "rtoHours": 1,
+    "rtoLabel": "1 h pour recevoir et attribuer",
+    "rpoHours": null,
+    "rpoLabel": "Sans objet : conserver la trace des alertes",
+    "evidence": "Alerte fictive reçue par deux personnes et journalisée",
+    "decisionOwner": "Direction + support"
+  }
+]

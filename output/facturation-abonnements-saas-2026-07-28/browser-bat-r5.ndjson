@@ -1,0 +1,31 @@
+{"kind":"build","command":"npx next build","status":"PASS","routes":"159/159","typescript":"PASS"}
+{"kind":"content","url":"http://127.0.0.1:3016/guides/facturation-abonnements-saas","words":6068,"characters":39779,"h1":1,"h2":13,"h3":30,"tables":8,"links":25,"articleLandmarks":1,"visibleAcceptanceTests":24,"visibleSourceLinks":15}
+{"kind":"hero-badges","values":["07 sources à réconcilier","24 mois de coût total (TCO) comparable","24 tests de recette"],"status":"PASS"}
+{"kind":"semantic-toc","target":"#reponse","heading":"La réponse courte","status":"PASS"}
+{"kind":"responsive","width":320,"articleWidth":288,"left":16,"documentWidth":320,"bodyWidth":320,"overflow":false,"align":["start","start","start"]}
+{"kind":"responsive","width":360,"articleWidth":328,"left":16,"documentWidth":360,"bodyWidth":360,"overflow":false,"align":["start","start","start"]}
+{"kind":"responsive","width":390,"articleWidth":358,"left":16,"documentWidth":390,"bodyWidth":390,"overflow":false,"align":["start","start","start"]}
+{"kind":"responsive","width":430,"articleWidth":398,"left":16,"documentWidth":430,"bodyWidth":430,"overflow":false,"align":["start","start","start"]}
+{"kind":"responsive","width":640,"articleWidth":608,"left":16,"documentWidth":640,"bodyWidth":640,"overflow":false,"align":["start","start","start"]}
+{"kind":"responsive","width":768,"articleWidth":736,"left":16,"documentWidth":768,"bodyWidth":768,"overflow":false,"align":["start","start","start"]}
+{"kind":"responsive","width":1024,"articleWidth":760,"left":16,"documentWidth":1024,"bodyWidth":1024,"overflow":false,"align":["start","start","start"]}
+{"kind":"responsive","width":1280,"articleWidth":760,"left":66,"documentWidth":1280,"bodyWidth":1280,"overflow":false,"align":["start","start","start"]}
+{"kind":"responsive","width":1440,"articleWidth":760,"left":146,"documentWidth":1440,"bodyWidth":1440,"overflow":false,"align":["start","start","start"]}
+{"kind":"responsive","width":1600,"articleWidth":760,"left":226,"documentWidth":1600,"bodyWidth":1600,"overflow":false,"align":["start","start","start"]}
+{"kind":"interaction","step":"initial","taxQualification":"unknown","status":"STOP"}
+{"kind":"interaction","step":"tax-not-required","status":"PASS","netInvoiced":"9 900,00 EUR","cashNet":"9 600,00 EUR","expectedReceivable":"300,00 EUR"}
+{"kind":"interaction","step":"credit-note-blank-keyboard","status":"REVIEW","netInvoiced":null,"cashNet":null,"expectedReceivable":null}
+{"kind":"interaction","step":"payment-9599","status":"STOP","netInvoiced":"9 900,00 EUR","cashNet":"9 599,00 EUR","expectedReceivable":"301,00 EUR","observedReceivable":"300,00 EUR"}
+{"kind":"interaction","step":"reset","status":"STOP"}
+{"kind":"keyboard","browser":"Google Chrome 150.0.7871.187","width":320,"summaryTabs":27,"focusVisible":true,"enterOpensDetails":true,"firstInput":"Mise en place EUR","shiftTabReturnsSummary":true,"taxRadioTabs":30,"arrowSelectsNotRequired":true,"spaceKeepsSelection":true,"resetTabs":4,"resetStatus":"STOP","downloadTabs":1,"downloadFilename":"kit-pilotage-facturation-saas.xlsx"}
+{"kind":"keyboard","browser":"Google Chrome 150.0.7871.187","width":1440,"summaryTabs":30,"focusVisible":true,"enterOpensDetails":true,"firstInput":"Mise en place EUR","shiftTabReturnsSummary":true,"taxRadioTabs":30,"arrowSelectsNotRequired":true,"spaceKeepsSelection":true,"resetTabs":4,"resetStatus":"STOP","downloadTabs":1,"downloadFilename":"kit-pilotage-facturation-saas.xlsx"}
+{"kind":"theme","name":"light","bodyBackground":"rgb(255, 255, 255)","bodyColor":"rgb(10, 10, 10)","screenshot":"output/facturation-abonnements-saas-2026-07-28/bat/theme-r5-light-1440.png","sha256":"42007294ad4aab42e33e000cfb868cca51b77338bdb45b9538d885070df6c741"}
+{"kind":"theme","name":"dark","bodyBackground":"rgb(11, 11, 13)","bodyColor":"rgb(250, 250, 250)","toolTitleColor":"rgb(255, 255, 255)","screenshot":"output/facturation-abonnements-saas-2026-07-28/bat/theme-r5-dark-1440.png","sha256":"d715930feba3e88d1c18789bd44cded87d31f1f3d38640666e9db4b099d82250"}
+{"kind":"screenshot","name":"keyboard-r5-320","sha256":"304d65f00c26543aa4d35ecd5ba834da9d5f99b413f2f93765bb6944515bea47"}
+{"kind":"screenshot","name":"keyboard-r5-1440","sha256":"1c0f2e802b539e9c5aa2885db83a25b548227d5a215ced73be51b4f4907fe9b4"}
+{"kind":"cta","url":"/demarrer-un-projet?service=saas&source=guide-facturation-saas","servicePreselected":"SaaS / application métier","objective":"Clarifier avant de décider","step":2,"currentSituation":"Je souhaite faire relire un cycle de facturation SaaS déjà documenté. J’ai réuni une offre, une facture, un paiement, un cas d’échec, la règle de droits d’accès, les écarts de rapprochement et les inconnues fiscales ou contractuelles.","submitted":false}
+{"kind":"download","status":200,"mime":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","bytes":38392,"sha256":"5f67ddf063dd77854f03c6436b90d46787be5fb4e2671fd61647c25563ebe649","browserDownloadEvent":true}
+{"kind":"workbook","imports":2,"sheetsPerWorkbook":10,"controls":"23/23","acceptanceTests":24,"canonicalTestParity":true,"sourceRows":15,"exactSourceParity":true,"formulaErrors":0,"mutations":"PASS","formulaSabotages":"4/4 detected","recalculationEngine":"@oai/artifact-tool","realExcelRecalculation":false}
+{"kind":"international","officialStateExamples":[{"jurisdiction":"New York","treatment":"remote access to prewritten software generally taxable","url":"https://www.tax.ny.gov/pubs_and_bulls/tg_bulletins/st/computer_software.htm"},{"jurisdiction":"Texas","treatment":"SaaS included in data processing; 20 percent of data-processing charge exempt","url":"https://comptroller.texas.gov/taxes/publications/96-259.php"},{"jurisdiction":"California","treatment":"pure remote access without copy or tangible transfer not taxable under stated conditions","url":"https://cdtfa.ca.gov/taxes-and-fees/manuals/am-04.pdf"}],"verifiedOn":"2026-07-28","nationalGeneralization":false}
+{"kind":"browser-logs","guideWarningsOrErrors":[],"funnelWarningsOrErrors":[]}
+{"kind":"boundary","commit":false,"push":false,"deployment":false,"publication":false,"indexation":false}

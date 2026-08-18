@@ -1,0 +1,131 @@
+[
+  {
+    "id": "service-scope",
+    "label": "Service et parcours métier couverts",
+    "expected": "Le service, les parcours critiques, les utilisateurs, les fonctions dégradées, les environnements et la preuve de service rendu sont décrits sans se limiter à un statut technique.",
+    "acceptedEvidence": [
+      "cartographie approuvée des parcours et dépendances",
+      "SLI calculable depuis une source de mesure nommée",
+      "recette métier datée du parcours nominal et du mode dégradé"
+    ],
+    "sourceIds": [
+      "GOOGLE-SRE-SLO",
+      "GOOGLE-MAPS-SLA",
+      "ISO-20000-1"
+    ]
+  },
+  {
+    "id": "coverage-window",
+    "label": "Plage de couverture et règles du chronomètre",
+    "expected": "Jours, heures, fuseau, jours fériés, canaux, minimum du ticket, début, fin, pauses, exclusions et astreintes client et prestataire sont écrits.",
+    "acceptedEvidence": [
+      "calendrier contractuel versionné",
+      "règles de chevauchement et de pause testées sur des cas limites",
+      "matrice d’escalade avec rôles et moyens de contact contrôlés"
+    ],
+    "sourceIds": [
+      "GOOGLE-MAPS-SLA",
+      "ISO-20000-1",
+      "LEGIFRANCE-1103"
+    ]
+  },
+  {
+    "id": "measurement",
+    "label": "Mesure de disponibilité et provenance",
+    "expected": "Période, dénominateur, événements comptés, défaillances partielles, maintenances, exclusions, source, propriétaire, rétention et méthode de contestation sont fixés avant le taux.",
+    "acceptedEvidence": [
+      "requête ou calcul reproductible sur données horodatées",
+      "échantillon réconcilié entre mesure technique et parcours utilisateur",
+      "rapport mensuel conservant numérateur, dénominateur et exclusions"
+    ],
+    "sourceIds": [
+      "GOOGLE-SRE-SLO",
+      "GOOGLE-MAPS-SLA",
+      "ISO-20000-1"
+    ]
+  },
+  {
+    "id": "incident-clock",
+    "label": "Sept horloges de l’incident",
+    "expected": "Observation, accusé, intervention qualifiée, contournement, rétablissement, vérification des données et clôture sont horodatés séparément avec un fuseau explicite.",
+    "acceptedEvidence": [
+      "journal d’incident immuable ou export horodaté",
+      "tickets, alertes et changements réconciliés",
+      "chronologie relue par métier, exploitation et prestataire"
+    ],
+    "sourceIds": [
+      "ISO-20000-1",
+      "UK-SOFTWARE-CODE-2026",
+      "NCSC-APC"
+    ]
+  },
+  {
+    "id": "restoration-test",
+    "label": "RTO, RPO et restauration réellement testés",
+    "expected": "RTO et RPO proviennent de l’impact métier ; sauvegarde, restauration isolée, cohérence, opérations à ressaisir, durée et responsables ont été éprouvés.",
+    "acceptedEvidence": [
+      "procès-verbal daté d’une restauration sur environnement isolé",
+      "RTO et RPO mesurés comparés aux objectifs par parcours",
+      "comptages, relations et échantillons métier réconciliés après reprise"
+    ],
+    "sourceIds": [
+      "NIST-RTO",
+      "NIST-RPO",
+      "ANSSI-BACKUP-2025",
+      "BSI-BACKUP",
+      "DORA-ART11-12",
+      "ISO-27031-2025",
+      "ISO-22301",
+      "ASD-ESSENTIAL-EIGHT"
+    ]
+  },
+  {
+    "id": "dependencies",
+    "label": "Dépendances et capacité de bout en bout",
+    "expected": "Chaque hébergeur, base, réseau, identité, messagerie, paiement et intervenant a un propriétaire, un contrat, une couverture, un accès d’urgence, une preuve et un contournement.",
+    "acceptedEvidence": [
+      "matrice fournisseur × service × compte × ticket × exclusion",
+      "exercice d’indisponibilité d’un tiers avec escalade observée",
+      "preuve que l’objectif bout en bout reste compatible avec les sous-objectifs"
+    ],
+    "sourceIds": [
+      "GOOGLE-MAPS-SLA",
+      "ISO-27031-2025",
+      "ISO-20000-1",
+      "UK-SOFTWARE-CODE-2026"
+    ]
+  },
+  {
+    "id": "communications",
+    "label": "Communication, gouvernance et apprentissage",
+    "expected": "Déclenchement, destinataires, cadence, canal de secours, messages attendus, décisionnaires, rapport d’incident, actions, propriétaires et échéances sont définis et exercés.",
+    "acceptedEvidence": [
+      "plan de communication et matrice RACI approuvés",
+      "notification de test reçue par les responsables attendus",
+      "post-incident daté avec actions suivies jusqu’à clôture"
+    ],
+    "sourceIds": [
+      "UK-SOFTWARE-CODE-2026",
+      "NCSC-APC",
+      "DORA-ART11-12",
+      "ISO-22301"
+    ]
+  },
+  {
+    "id": "exit-eol",
+    "label": "Correctifs, fin de support, sortie et recours",
+    "expected": "Politique de correctifs, dates de fin de support, préavis, réversibilité, données, assistance de sortie, crédits et autres recours sont séparés, datés et revus par les compétences requises.",
+    "acceptedEvidence": [
+      "politique de mise à jour et calendrier de fin de support publiés",
+      "exercice de sortie ou de réversibilité avec responsabilités",
+      "clauses et mécanismes de recours relus juridiquement dans leur contexte"
+    ],
+    "sourceIds": [
+      "LEGIFRANCE-1103",
+      "LEGIFRANCE-1217",
+      "UK-SOFTWARE-CODE-2026",
+      "NCSC-APC",
+      "ASD-ESSENTIAL-EIGHT"
+    ]
+  }
+]

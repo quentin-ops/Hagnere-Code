@@ -9,6 +9,7 @@ import {
 } from "@/components/guides/guide-content-blocks";
 import { GuideLayout } from "@/components/guides/guide-layout";
 import { GuidesShell } from "@/components/guides/GuidesShell";
+import { ContentPreparationKit } from "@/components/guides/ContentPreparationKit";
 import { formatGuideDate, getGuide, guideRobots, guideUrl } from "@/lib/guides";
 import { OG_BASE, SITE_URL } from "@/lib/seo";
 
@@ -336,6 +337,68 @@ function ResponsibilityCards() {
   );
 }
 
+function ProductionComparison() {
+  return (
+    <>
+      <GuideTable
+        caption="Même lot : huit pages, quatre offres, mêmes preuves, deux cycles de retours"
+        headers={["Mode", "Calcul du temps valorisé", "Mon avis"]}
+        rows={[
+          [
+            "Interne",
+            "Direction 20 h × 75 € + équipe 8 h × 40 € + prestataire 4 h × 90 € = 2 180 €",
+            "Pertinent si vous avez déjà un rédacteur et une disponibilité réelle.",
+          ],
+          [
+            "Hybride",
+            "Direction 8 h × 75 € + équipe 4 h × 40 € + prestataire 14 h × 90 € = 2 020 €",
+            "Mon choix par défaut pour une PME : les faits restent chez vous, la structure et la rédaction avancent.",
+          ],
+          [
+            "Délégué",
+            "Direction 5 h × 75 € + équipe 3 h × 40 € + prestataire 26 h × 90 € = 2 835 €",
+            "À retenir lorsque le calendrier coûte plus cher que la prestation, pas pour abandonner la validation.",
+          ],
+        ]}
+      />
+      <InfoBox variant="blue" title="Un prix plus bas ne suffit pas à choisir">
+        Dans cet exemple fictif, le mode hybride mobilise 12 heures internes et
+        coûte 160 € de moins que l’interne, tout en demandant 10 heures de
+        prestataire supplémentaires. Si une heure de direction vaut réellement
+        75 € de capacité indisponible, l’arbitrage est visible. Si cette valeur
+        est une estimation discutable, gardez-la comme hypothèse et ne la
+        présentez pas comme une économie comptable. Le comparateur ci-dessous
+        permet de remplacer ces nombres par les vôtres.
+      </InfoBox>
+    </>
+  );
+}
+
+function BeforeAfterExample() {
+  return (
+    <GuideTable
+      caption="Exemple fictif : transformer une note métier en page compréhensible"
+      headers={[
+        "Note envoyée",
+        "Ce que le lecteur doit savoir",
+        "Page publiable",
+      ]}
+      rows={[
+        [
+          "On vient sur place. Très réactifs. Toutes marques. Devis gratuit.",
+          "Qui appelle, dans quelle situation, ce qui se passe après le premier contact et ce qui n’est pas compris.",
+          "Vous êtes responsable de production et une panne revient ? Nous commençons par un diagnostic sur site, avec un compte rendu et des priorités d’action. Les pièces, la réparation et l’arrêt de production sont décidés et chiffrés séparément. Demandez un diagnostic.",
+        ],
+        [
+          "Nos clients sont satisfaits.",
+          "Quelle preuve, sur quelle période et pour quel périmètre ?",
+          "12 interventions documentées entre janvier et juin 2026 ; 10 comptes rendus remis sous 48 h. Échantillon interne, hors promesse de délai pour chaque panne.",
+        ],
+      ]}
+    />
+  );
+}
+
 export default function Page() {
   return (
     <GuidesShell>
@@ -358,7 +421,7 @@ export default function Page() {
           { label: "Contenus d’un site vitrine" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Textes, photos, preuves, horaires, formulaire : découvrez ce que votre entreprise doit fournir, ce que le prestataire peut produire et ce qui doit être vérifié avant publication."
+        heroDescription="Vous n’avez pas besoin d’écrire un site entier avant de demander un devis. Vous devez en revanche savoir quoi vendre, pour qui, avec quelles preuves, quelles photos et qui validera. Voici le dossier concret à préparer, les tâches à chiffrer et le test à faire avant mise en ligne."
         heroAction={{ href: "#reponse", label: "Voir ce qu’il faut préparer" }}
         author={{
           name: "Quentin Hagnéré",
@@ -459,23 +522,39 @@ export default function Page() {
             { id: "six-dossiers", label: "1. Réunir six dossiers utiles" },
             { id: "fiche-offre", label: "2. Remplir une fiche par offre" },
             {
+              id: "page-complete",
+              label: "3. Passer de la note brute à la page",
+            },
+            {
               id: "preuves",
-              label: "3. Garder uniquement les preuves publiables",
+              label: "4. Garder uniquement les preuves publiables",
             },
             {
               id: "photos",
-              label: "4. Choisir des photos utiles et autorisées",
+              label: "5. Choisir des photos utiles et autorisées",
             },
             {
               id: "informations",
-              label: "5. Préparer les informations pratiques et le formulaire",
+              label: "6. Préparer les informations pratiques et le formulaire",
             },
             {
               id: "responsabilites",
-              label: "6. Écrire qui produit et qui valide",
+              label: "7. Écrire qui produit et qui valide",
             },
-            { id: "lancement", label: "7. Décider si le dossier est prêt" },
-            { id: "transmettre", label: "8. Remettre un dossier utilisable" },
+            {
+              id: "comparer",
+              label: "8. Comparer trois modes sur le même lot",
+            },
+            {
+              id: "kit",
+              label: "9. Télécharger le dossier et le comparateur",
+            },
+            { id: "lancement", label: "10. Décider si le dossier est prêt" },
+            { id: "transmettre", label: "11. Remettre un dossier utilisable" },
+            {
+              id: "apres-publication",
+              label: "12. Tester avant et suivre à 30/90 jours",
+            },
             { id: "sources-limites", label: "Sources et limites" },
           ]}
         />
@@ -575,8 +654,58 @@ Personne qui valide cette fiche :`}</FormulaBox>
           qu’une affirmation que personne ne veut signer.
         </p>
 
+        <h2 id="page-complete">
+          3. Faites passer chaque note par le test « comprendre, croire, agir »
+        </h2>
+
+        <p>
+          Une page de site vitrine n’est pas un assemblage de slogans. Elle doit
+          répondre, dans cet ordre, à trois questions très concrètes : « est-ce
+          pour mon problème ? », « pourquoi puis-je vous croire ? » et « que
+          dois-je faire maintenant ? ». Si votre prestataire ne reçoit que des
+          adjectifs, il devra deviner les réponses — et vous risquez de valider
+          une phrase jolie mais inutilisable.
+        </p>
+
+        <BeforeAfterExample />
+
+        <p>
+          Dans le second exemple, le chiffre est volontairement limité : il
+          indique une période, un périmètre et une limite. Il ne promet pas que
+          chaque futur dossier sera traité en 48 heures. C’est cette honnêteté
+          qui rend une preuve exploitable. Pour chaque page, écrivez aussi la
+          décision attendue : appeler, demander un devis, réserver, visiter ou
+          simplement comprendre une différence.
+        </p>
+
+        <GuideTable
+          caption="Décider quelles pages créer, fusionner ou reporter"
+          headers={[
+            "Question du visiteur",
+            "Décision principale",
+            "Si ce n’est pas prêt",
+          ]}
+          rows={[
+            [
+              "Quelle offre répond à mon problème ?",
+              "Créer une page si le public, le résultat et la preuve sont distincts ; sinon fusionner dans l’accueil.",
+              "Reporter tant qu’il n’existe ni offre ni preuve propres.",
+            ],
+            [
+              "Puis-je vous faire confiance ?",
+              "Créer une page de réalisations ou intégrer la preuve à l’offre si elle explique la décision.",
+              "Reporter la page de valeurs générales sans preuve vérifiable.",
+            ],
+            [
+              "Comment vous contacter ?",
+              "Créer une page contact si la demande et le traitement sont distincts ; sinon intégrer un formulaire court.",
+              "Reporter tout formulaire dont personne ne sait traiter les réponses.",
+            ],
+          ]}
+        />
+
         <h2 id="preuves">
-          3. Gardez uniquement les preuves que vous pouvez expliquer et publier
+          4. Gardez uniquement les preuves que vous pouvez expliquer et publier
         </h2>
 
         <p>
@@ -629,7 +758,7 @@ Personne qui valide cette fiche :`}</FormulaBox>
         </InfoBox>
 
         <h2 id="photos">
-          4. Choisissez chaque photo pour ce qu’elle montre, puis vérifiez ses
+          5. Choisissez chaque photo pour ce qu’elle montre, puis vérifiez ses
           droits
         </h2>
 
@@ -703,7 +832,7 @@ Date de validation :
 Alternative si cette image ne peut pas être publiée :`}</FormulaBox>
 
         <h2 id="informations">
-          5. Préparez les informations pratiques et le parcours de la demande
+          6. Préparez les informations pratiques et le parcours de la demande
         </h2>
 
         <p>
@@ -789,7 +918,7 @@ Alternative si cette image ne peut pas être publiée :`}</FormulaBox>
         </InfoBox>
 
         <h2 id="responsabilites">
-          6. Faites écrire dans le devis qui produit, vérifie et valide
+          7. Faites écrire dans le devis qui produit, vérifie et valide
         </h2>
 
         <p>
@@ -827,6 +956,40 @@ Alternative si cette image ne peut pas être publiée :`}</FormulaBox>
           produire.
         </p>
 
+        <h2 id="comparer">
+          8. Comparez les modes de production avec le même lot
+        </h2>
+
+        <p>
+          « Le client fournit les contenus » et « le prestataire s’occupe des
+          contenus » ne sont pas deux prix comparables si l’un comprend huit
+          pages et deux retours, et l’autre quatre pages sans photo. Écrivez
+          d’abord le lot commun : ici, huit pages, quatre offres, les mêmes
+          preuves et photos, deux cycles de retours, hors intégration technique.
+          Ensuite seulement, comparez le temps interne, le temps du prestataire,
+          les droits et les inconnues.
+        </p>
+
+        <ProductionComparison />
+
+        <p>
+          Le mode hybride est mon point de départ pour une entreprise de taille
+          petite ou moyenne : le dirigeant garde la maîtrise des faits et des
+          limites, tandis qu’un professionnel transforme les entretiens en pages
+          lisibles. Je choisirais l’interne si quelqu’un peut réellement
+          réserver 20 heures et relire les textes ; je choisirais le délégué si
+          le retard d’ouverture coûte plus que les 815 € supplémentaires de cet
+          exemple. Ce sont des hypothèses de décision, pas des tarifs de marché
+          ni une promesse d’économie.
+        </p>
+
+        <FormulaBox>
+          Si 12 × valeur d’une heure de direction + 4 × valeur d’une heure
+          d’équipe &gt; 10 × prix d’une heure du prestataire, l’hybride peut
+          devenir plus rationnel que l’interne. Vérifiez avec vos propres taux,
+          votre disponibilité et le coût réel d’un lancement retardé.
+        </FormulaBox>
+
         <GuideInlineCTA
           title="Vous avez les informations, mais pas encore les pages ?"
           description="Décrivez votre activité, les contenus déjà disponibles et ce qui manque. Nous pourrons distinguer ce que vous fournissez, ce qui doit être rédigé ou produit et ce qui reste à confirmer — y compris si une préparation interne suffit avant de lancer le site."
@@ -839,8 +1002,25 @@ Alternative si cette image ne peut pas être publiée :`}</FormulaBox>
           ctaHref="/demarrer-un-projet"
         />
 
+        <h2 id="kit">
+          9. Téléchargez un dossier que vous pouvez vraiment transmettre
+        </h2>
+
+        <p>
+          Pour éviter de repartir d’un document vide, utilisez ce kit gratuit.
+          Il crée une trame éditable avec la carte des pages, les phrases de vos
+          clients, une fiche d’offre, le registre des preuves et des photos, le
+          formulaire, les responsabilités, le test auprès de prospects et le
+          suivi à 30 et 90 jours. Le comparateur reprend ensuite le même lot de
+          pages dans les trois modes de production. L’exemple de travail couvre
+          l’offre, la page, les coûts et le test ; les valeurs sont fictives et
+          restent modifiables.
+        </p>
+
+        <ContentPreparationKit />
+
         <h2 id="lancement">
-          7. Décidez si le dossier est assez prêt pour lancer le projet
+          10. Décidez si le dossier est assez prêt pour lancer le projet
         </h2>
 
         <p>
@@ -886,7 +1066,7 @@ Alternative si cette image ne peut pas être publiée :`}</FormulaBox>
         </p>
 
         <h2 id="transmettre">
-          8. Remettez un dossier qu’une autre personne peut comprendre
+          11. Remettez un dossier qu’une autre personne peut comprendre
         </h2>
 
         <p>
@@ -922,6 +1102,57 @@ Formulaire devis | Prêt | Responsable commercial | 5 informations nécessaires 
           si la rédaction, les photos et les validations sont comprises ou
           facturées séparément.
         </p>
+
+        <h2 id="apres-publication">
+          12. Faites un test humain avant la mise en ligne, puis revoyez le site
+        </h2>
+
+        <p>
+          Ne demandez pas seulement à votre équipe si elle « aime » la page.
+          Prenez trois personnes qui ressemblent à vos clients, donnez-leur
+          quatre tâches de compréhension à réaliser en sept minutes chacune,
+          puis demandez : quelle offre avez-vous comprise, pour qui est-elle,
+          quelle preuve avez-vous retenue et que feriez-vous ensuite ? Avec 3 ×
+          4 × 7 minutes, plus 45 minutes de préparation et de synthèse, le test
+          représente environ 2 h 09. À 90 € de l’heure, cela fait 193,50 € de
+          capacité renseignée — pas un taux de conversion garanti. Si deux
+          personnes sur trois ne savent
+          pas quoi faire, corrigez la page avant d’acheter davantage de trafic.
+        </p>
+
+        <GuideTable
+          caption="Décider après le test et après les premiers contacts"
+          headers={["Moment", "Mesure simple", "Décision"]}
+          rows={[
+            [
+              "Avant publication",
+              "3 personnes : offre comprise, preuve retenue, prochaine action",
+              "Réécrire la phrase ou la preuve qui reste incomprise.",
+            ],
+            [
+              "À 30 jours",
+              "Demandes reçues, source déclarée, demandes incomplètes, délai de réponse",
+              "Réparer le formulaire ou la réponse commerciale avant de conclure que le trafic est mauvais.",
+            ],
+            [
+              "À 90 jours",
+              "Contacts qualifiés, offres demandées, rendez-vous, ventes et objections récurrentes",
+              "Garder, fusionner ou réécrire une page selon les faits observés.",
+            ],
+          ]}
+        />
+
+        <InfoBox
+          variant="amber"
+          title="Ne confondez pas visite et résultat commercial"
+        >
+          Une page peut être lue sans déclencher de demande ; une demande peut
+          être perdue après le formulaire ; une vente peut venir d’un contact
+          déjà connu. Notez la source déclarée et le parcours, mais ne fabriquez
+          pas une causalité à partir de quelques visites. Ce suivi sert à
+          décider quoi améliorer, pas à promettre un classement Google ou un
+          chiffre d’affaires.
+        </InfoBox>
 
         <h2 id="sources-limites">Sources et limites de ce guide</h2>
 

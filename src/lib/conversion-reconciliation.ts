@@ -2,7 +2,7 @@ export const CONVERSION_STAGES = [
   { id: "eventsSent", label: "Événements envoyés" },
   { id: "requestsReceived", label: "Demandes reçues" },
   { id: "uniqueRequests", label: "Demandes uniques" },
-  { id: "qualifiedRequests", label: "Demandes qualifiées" },
+  { id: "qualifiedRequests", label: "Prospects qualifiés" },
   { id: "quotes", label: "Devis envoyés" },
   { id: "sales", label: "Ventes conclues" },
 ] as const;

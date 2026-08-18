@@ -1,11 +1,12 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Cahier des charges SaaS : exemple complet — Hagnéré Code";
+export const alt =
+  "Cahier des charges SaaS : modèle, exemple et comparaison — Hagnéré Code";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const stages = ["Achète", "Invite", "Réalise", "Exploite", "Récupère"];
+const stages = ["DÉCIDER", "DÉCRIRE", "TESTER", "COMPARER", "MESURER"];
 
 export default function OgImage() {
   return new ImageResponse(
@@ -61,7 +62,7 @@ export default function OgImage() {
             fontSize: 20,
           }}
         >
-          Exemple SaaS rempli
+          Modèle + comparateur local
         </div>
       </div>
 
@@ -76,7 +77,7 @@ export default function OgImage() {
             letterSpacing: -2,
           }}
         >
-          Cahier des charges SaaS : suivez un client de l’achat à la sortie
+          Cahier des charges SaaS : rendez trois devis vraiment comparables
         </div>
         <div
           style={{
@@ -86,7 +87,7 @@ export default function OgImage() {
             color: "#c4b5fd",
           }}
         >
-          Décisions · exclusions · erreurs · tests · responsables
+          Exemple rempli · coûts sur 24 mois · critères de recette
         </div>
       </div>
 

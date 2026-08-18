@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Que préparer comme contenus pour un site vitrine ? — Hagnéré Code";
+  "Préparer les contenus d’un site vitrine : méthode, budget et validation — Hagnéré Code";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -90,7 +90,7 @@ export default function OgImage() {
               letterSpacing: -2,
             }}
           >
-            Que préparer avant de faire créer votre site vitrine ?
+            Préparer les contenus de votre site vitrine
           </div>
           <div
             style={{
@@ -100,7 +100,7 @@ export default function OgImage() {
               color: "#c4b5fd",
             }}
           >
-            Les faits à fournir, les contenus à produire, les droits à vérifier
+            Méthode humaine, comparaison chiffrée et kit éditable
           </div>
         </div>
 

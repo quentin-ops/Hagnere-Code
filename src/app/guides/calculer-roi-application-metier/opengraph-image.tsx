@@ -11,19 +11,16 @@ const scenarios = [
     label: "COÛT ACTUEL",
     value: "temps et erreurs",
     color: "#fbbf24",
-    width: 45,
   },
   {
     label: "COÛT DU PROJET",
     value: "création + entretien",
     color: "#60a5fa",
-    width: 65,
   },
   {
     label: "GAIN UTILISABLE",
     value: "économie réelle",
     color: "#34d399",
-    width: 80,
   },
 ];
 
@@ -139,47 +136,51 @@ export default function OgImage() {
               letterSpacing: 1.4,
             }}
           >
-            LES TROIS NOMBRES À COMPARER
+            TROIS VALEURS À RENSEIGNER
           </div>
           {scenarios.map((scenario) => (
             <div
               key={scenario.label}
-              style={{ display: "flex", flexDirection: "column", gap: 7 }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                padding: "12px 14px",
+                borderRadius: 14,
+                border: "1px solid rgba(255,255,255,0.09)",
+                background: "rgba(255,255,255,0.035)",
+              }}
             >
+              <span
+                style={{
+                  display: "flex",
+                  width: 10,
+                  height: 10,
+                  marginRight: 11,
+                  borderRadius: 99,
+                  background: scenario.color,
+                }}
+              />
               <div
-                style={{ display: "flex", alignItems: "center", fontSize: 17 }}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: 12,
+                  width: "100%",
+                  fontSize: 17,
+                }}
               >
                 <span style={{ color: "#d4d4d8", fontWeight: 700 }}>
                   {scenario.label}
                 </span>
                 <span
                   style={{
-                    marginLeft: "auto",
                     color: scenario.color,
                     fontWeight: 750,
                   }}
                 >
                   {scenario.value}
                 </span>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  width: "100%",
-                  height: 9,
-                  borderRadius: 99,
-                  background: "rgba(255,255,255,0.08)",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    width: `${scenario.width}%`,
-                    height: 9,
-                    borderRadius: 99,
-                    background: scenario.color,
-                  }}
-                />
               </div>
             </div>
           ))}

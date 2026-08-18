@@ -1,8 +1,8 @@
 4ae222e47046f09a2f34475ed45b60763617b9f7411a710caba0247a1ca0913e  docs/research/landing-page-ou-site-vitrine.md
 7af614a8a42d8788da158b4becb6fec81602be7054004da6048a8c83707a9e69  src/app/guides/landing-page-ou-site-vitrine/page.tsx
 61015fd093da313d13ef8db56774573ceb27835c7fcbfb47a9460c094882a743  src/app/guides/landing-page-ou-site-vitrine/opengraph-image.tsx
-b2eeda0fc3d7be23834108823176da59814d312e4b93c33426ab9e475a00ee3f  src/lib/guides.ts
+8663e6e84352121ec854393e049492a1c2b72f242166141e5d31e0911b43cb09  src/lib/guides.ts
 276a6f9b64a4c1a7a9d7d620b1080625f11103fb03a2cdb04e93cec64481fe3d  src/components/guides/GuidesHubPage.tsx
-8fbf045722ebbda2bd46407564e40b92bdf5b17ce3cb087a27c776ddc4f73a7b  src/lib/guide-human-language.test.ts
+bb10c76df7a76af76628723573057e710c9290fa32548e1e7542c0182a591500  src/lib/guide-human-language.test.ts
 3d5efb06caca134fc1861d9c7237e8edea79a2ea49d3222bd31c05e3add79aa1  src/app/guides/template-ou-site-sur-mesure/page.tsx
 0d55dda9e33192fdc42172898dcbf7b084e77b6b60454c9c97423bd56e33bee5  src/lib/editorial-governance.test.ts

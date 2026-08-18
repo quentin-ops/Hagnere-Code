@@ -1,0 +1,7 @@
+34f25e110c6df4d83f86724c69f4b8bcf72b2df895aedfc22e945b9b5f120b37  src/app/guides/sla-maintenance-applicative/page.tsx
+824abc869d51434dcf36571f42a4f7645f2f7318993f28485a9d0c9f5c885f55  src/app/guides/sla-maintenance-applicative/opengraph-image.tsx
+f42b20b6ac0004183f49c56648522b6ada31ea696f662a1e4bd70b5425b5f0a0  docs/research/sla-maintenance-applicative.md
+9113356e6c423260310cc33564ab30e5c04e7a56eeedf6117639c520ac93316c  docs/audits/giga-audit-2026-07-24/guides/sla-maintenance-applicative.md
+17f5ddaa45d0e56793daf34b527ca8f817c782758183cd878e83a950091de1e4  docs/research/manifests/sla-maintenance-applicative-p4.sha256
+8062d0052185aa8bb90e7e106d419e0d3cbb73b49b21bac4f1a43072f7b0a0ee  src/lib/guides.ts
+c15e45846f08d048ef4c5d77fa3df71d6e9fdb576677b5dea9660972a0e03fe6  package.json

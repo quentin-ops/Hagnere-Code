@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Migrer un logiciel métier sans interrompre l’activité — Hagnéré Code";
+  "Changer de logiciel métier : éviter l’arrêt subi — Hagnéré Code";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -82,7 +82,7 @@ export default function OgImage() {
             letterSpacing: -2,
           }}
         >
-          Changer de logiciel sans arrêter l’activité
+          Changer de logiciel : éviter l’arrêt subi
         </div>
         <div
           style={{

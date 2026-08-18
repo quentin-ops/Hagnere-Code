@@ -7,12 +7,12 @@
 
 Propriétaire éditorial unique : Codex, agent racine du lot du 21 juillet 2026.
 
-| Passe                        | État                     | Date       | Responsable | Snapshot                            | Blocages |
-| ---------------------------- | ------------------------ | ---------- | ----------- | ----------------------------------- | -------- |
-| 1. Recherche                 | Terminée — porte validée | 2026-07-21 | Codex       | `cahier-des-charges-saas-p1.sha256` | Aucun    |
-| 2. Rédaction et intégration  | Terminée — porte validée | 2026-07-21 | Codex       | `cahier-des-charges-saas-p2.sha256` | Aucun    |
-| 3. Contre-audit indépendant  | Terminée — porte validée | 2026-07-21 | Agent P3    | `cahier-des-charges-saas-p3.sha256` | Aucun    |
-| 4. Plume humaine et contrôle | Terminée — porte validée | 2026-07-21 | Codex       | `cahier-des-charges-saas-p4.sha256` | Aucun    |
+| Passe                        | État                                        | Date       | Responsable | Snapshot                            | Blocages                         |
+| ---------------------------- | ------------------------------------------- | ---------- | ----------- | ----------------------------------- | -------------------------------- |
+| 1. Recherche                 | Terminée — porte validée                    | 2026-07-21 | Codex       | `cahier-des-charges-saas-p1.sha256` | Aucun                            |
+| 2. Rédaction et intégration  | Terminée — porte validée                    | 2026-07-21 | Codex       | `cahier-des-charges-saas-p2.sha256` | Aucun                            |
+| 3. Contre-audit indépendant  | Terminée — porte validée                    | 2026-07-24 | Agent P3    | `cahier-des-charges-saas-p3.sha256` | Aucun                            |
+| 4. Plume humaine et contrôle | Terminée localement — publication **NO-GO** | 2026-07-24 | Agent P4    | `cahier-des-charges-saas-p4.sha256` | BAT navigateur du snapshot exact |
 
 ## 1. Fiche d'identité
 
@@ -34,7 +34,10 @@ audit juridique, fiscalité de la facturation ou certification sécurité
 Date de recherche : 2026-07-21
 ```
 
-### Score de lancement
+### Score de lancement historique de P1
+
+Cette auto-évaluation de cadrage date du 21 juillet. Elle n'est ni la note P4
+du cycle premium ni un verdict de publication.
 
 | Critère            |       Note | Justification                                   |
 | ------------------ | ---------: | ----------------------------------------------- |
@@ -403,13 +406,15 @@ Route : HTTP 200, canonical exact, noindex/nofollow conforme à la porte locale,
 Article et BreadcrumbList parsables, aucun écran d'erreur détecté.
 Image sociale : HTTP 200 image/png, 1 200 × 630 ; marque, titre et parcours
 Achète → Invite → Réalise → Exploite → Récupère visibles sans coupe.
-Verdict : PASS — publiable sous délégation, publication différée au gel du lot.
+Verdict historique du 21 juillet : PASS — publiable sous délégation,
+publication différée au gel du lot. Ce verdict est remplacé par le cycle
+premium documenté en section 13.
 Snapshot : docs/research/manifests/cahier-des-charges-saas-p4.sha256
 ```
 
 ## 12. Revue finale
 
-Score final : **19/20**.
+Score historique du snapshot remplacé : **19/20**.
 
 Intention, décision, pédagogie, profondeur, preuve, comparaison, originalité,
 conversion et SEO/produit obtiennent 2/2. Le style obtient 1/2 parce que la
@@ -426,3 +431,133 @@ authentification, restauration, recette et sortie acceptables ; sources
 sensibles rouvertes ; CTA unique ; maillage, metadata, JSON-LD, ancres et temps
 de lecture cohérents ; tests, build, responsive, FAQ, route et image sociale
 validés ; publication et indexation explicitement distinguées.
+
+## 13. Cycle premium du 24 juillet 2026 — reprise après audit global
+
+Les sections 8 à 12 décrivent le premier cycle de publication. Elles restent
+conservées comme historique, mais leur verdict `19/20` ne s'applique plus au
+snapshot audité le 24 juillet 2026. La charte renforcée demande désormais une
+décision économique, un actif autonome, des comparaisons à horizon commun, une
+position professionnelle contradictoire et une boucle de mesure après
+livraison.
+
+### 13.1. Nouvelle recherche et verdict d'entrée
+
+```text
+Snapshot public relu : b577065d8226bcbcbff8e58102f999b03955029d6d94c8ff49b1593a5cc06da0
+Audit d'entrée sur l'ancien snapshot : 79/100, soit 16/20, verdict NO-GO.
+Benchmark : France, Union européenne, Royaume-Uni, États-Unis, Canada et
+Australie.
+Dossier de recherche : docs/audits/giga-audit-2026-07-24/research/
+cahier-des-charges-saas-deep-dive.md
+Volume de recherche : 13 271 mots, 53 URL, calculs refaits indépendamment.
+Manques bloquants : ressource non autonome, absence de coûts renseignés sur un
+horizon commun, aucune mesure de départ et de succès, changements non gouvernés.
+```
+
+La reprise conserve DossierClair, les tests d'isolement, de paiement, de
+restauration et de sortie. Elle change le produit final : le lecteur doit
+désormais pouvoir décider de construire ou non, réserver le temps de son
+entreprise, remplir un dossier, comparer trois réponses et organiser la décision
+à 30 et 90 jours.
+
+### 13.2. Passe P2 réécrite et intégrée
+
+```text
+Ouverture : le lecteur choisit d'abord entre outil existant, assemblage, test
+manuel, sur-mesure et attente ; le mauvais moment est dit dans les 150 premiers
+mots.
+Position : Hagnéré Code déclare son intérêt économique à vendre du développement
+et recommande l'option sans développement lorsque les faits la rendent
+préférable.
+Cas DossierClair : 24 dossiers observés fictivement sur quatre semaines,
+52 minutes actives médianes, 5 retours sur 24 et deux heures hebdomadaires de
+consolidation ; les cibles à 90 jours et les règles d'arrêt sont explicites.
+Temps interne : 21 heures et 1 250 euros de capacité, avec formule et rôles.
+Étude ciblée : 2 700 euros contre 12 100 euros de reprise tardive ; ancien seuil
+brut remplacé par 22,3 %, puis par la formule fondée sur la réduction effective
+du risque.
+Comparaison : offres A, B et C à contenu et horizon communs, respectivement
+123 200, 111 700 et 120 900 euros de coûts renseignés sur 24 mois.
+Recette : 30 tests, 8 nouveaux essais après correction, 9 h 20 et environ
+513 euros de capacité interne dans l'exemple.
+Gouvernance : version de référence, inconnues, changement, impact, décideur et
+date d'effet.
+Sortie : récupération des données par l'abonné distinguée du transfert du
+produit au fondateur.
+Conversion : un seul CTA après l'outil ; diagnostic autorisé à conclure outil
+existant, test manuel, report ou arrêt.
+```
+
+### 13.3. Actif autonome réellement fourni
+
+Le guide intègre un outil local, sans formulaire commercial et sans envoi de
+données :
+
+- six champs simples pour personnaliser la première page ;
+- une trame Markdown complète, copiable ou téléchargeable ;
+- un exemple DossierClair rempli, avec références, cibles, tests, changements,
+  coûts et double sortie ;
+- un comparateur A/B/C à 12, 24 ou 36 mois ;
+- un export Markdown du comparatif avec formule, inclusions, exclusions et
+  inconnues ;
+- aucun classement tant qu'un coût important reste inconnu ;
+- la mention « coût renseigné le plus faible », jamais « meilleure offre ».
+
+Le format Markdown a été retenu pour fournir immédiatement une ressource
+modifiable et transparente sans prétendre livrer un classeur Excel ou un PDF qui
+n'aurait pas été réellement construit et contrôlé. Les exports sont créés sur
+l'appareil du lecteur par `Blob`, sans `fetch`, compte ou captation d'adresse.
+
+### 13.4. Contrôles P2 disponibles avant contre-audit
+
+```text
+Route locale : HTTP 200.
+Contenu visible mesuré : 4 490 mots, soit 22 minutes à 200 mots/minute.
+Tests ciblés : 51/51.
+TypeScript : PASS.
+ESLint : PASS.
+Prettier : PASS.
+git diff --check : PASS.
+SEO global : 228/229 ; unique échec connu et extérieur au présent guide :
+manifeste P4 historique de prioriser-fonctionnalites-mvp-saas non encore gelé.
+Calculs indépendants : 1 250 ; 123 200 ; 111 700 ; 120 900 ; écart 11 500 ;
+seuil 22,314... % ; sensibilités -885, +930 et +3 350 ; recette 9,333... h et
+513,333... ; pilote manuel 3 240.
+Metadata : title 58 caractères, meta description 138, canonical exact, Article
+et BreadcrumbList.
+Image sociale source : promesse alignée sur modèle, exemple et comparaison.
+```
+
+La connexion au navigateur de l'application n'était plus disponible après la
+réécriture. Aucun contrôle visuel du nouveau snapshot n'est donc revendiqué à ce
+stade. Les anciens contrôles responsive de la section 11 concernent l'ancienne
+version.
+
+### 13.5. Fermeture locale après P3, P4 et QA du kit
+
+```text
+P3 factuelle : GO local sur le contenu et les calculs.
+P4 humaine : 90/100 sur le snapshot relu avant les quatre corrections P2.
+P0 : 0.
+P1 : 0.
+P2 appliqués : accord de « ce coût » ; explication du format .md ; parseur
+décimal strict avec erreurs reliées aux champs ; piste Excel marquée abandonnée.
+Actif livré : trame, exemple rempli et comparatif au format Markdown.
+Contrôles locaux : 28/28 tests dédiés ; 61/61 avec la suite de langage humain ;
+TypeScript, lint ciblé et git diff --check PASS.
+Gouvernance ciblée : PASS — P1 à P4 présents, 14/14 empreintes P4 exactes et
+slug ajouté au lot gelé.
+Gouvernance globale : encore rouge avant d'atteindre ce slug, car le manifeste
+P4 d'un autre guide conserve un ancien hash du registre partagé guides.ts ; il
+n'a volontairement pas été rafraîchi dans ce chantier.
+Manifeste : P4 exhaustif du snapshot local corrigé.
+Publication : NO-GO tant que le BAT navigateur du snapshot exact n'est pas
+réalisé.
+```
+
+Le score de **90/100** est la seule note éditoriale revendiquée pour ce cycle :
+il a été attribué avant les quatre corrections P2. Aucun score supérieur n'est
+inventé après correction. Le manifeste P4 fige l'état local pour rendre le
+futur BAT rejouable ; il ne prouve ni un rendu réel, ni un déploiement, ni une
+indexation.

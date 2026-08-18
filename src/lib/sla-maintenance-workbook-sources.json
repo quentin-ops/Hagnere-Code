@@ -1,0 +1,137 @@
+[
+  {
+    "id": "GOOGLE-SRE-SLO",
+    "title": "Site Reliability Workbook — Chapter 2: Implementing SLOs (2018)",
+    "publisher": "Google Site Reliability Engineering",
+    "url": "https://sre.google/workbook/implementing-slos/",
+    "accessedOn": "2026-07-28",
+    "scope": "Construire des SLI centrés utilisateur, faire approuver des SLO réalistes, suivre un error budget et relier la fiabilité aux décisions.",
+    "limits": "Méthode SRE internationale, pas modèle de contrat français, certification, taux universel ni délai P1 prêt à copier."
+  },
+  {
+    "id": "GOOGLE-MAPS-SLA",
+    "title": "Google Maps Platform Service Level Agreement — version modifiée le 27 janvier 2025",
+    "publisher": "Google Cloud",
+    "url": "https://cloud.google.com/maps-platform/terms/sla",
+    "accessedOn": "2026-07-28",
+    "scope": "Exemple contractuel public définissant service couvert, requête valide, échec, formule mensuelle, exclusions, demande et crédit.",
+    "limits": "SLA propre aux services Google Maps couverts et à leurs contrats ; son taux, sa mesure par requêtes et ses crédits ne se transposent pas à une TMA."
+  },
+  {
+    "id": "NIST-RTO",
+    "title": "Recovery Time Objective — définition issue de NIST SP 800-34 Rev. 1 (mai 2010)",
+    "publisher": "National Institute of Standards and Technology",
+    "url": "https://csrc.nist.gov/glossary/term/recovery_time_objective",
+    "accessedOn": "2026-07-28",
+    "scope": "Distinguer l’objectif de temps de reprise de la réponse, du contournement, du rétablissement technique et de la clôture.",
+    "limits": "Le glossaire agrège plusieurs contextes et demande de citer la publication source ; SP 800-34 Rev. 1 vise les systèmes d’information fédéraux américains et ne fixe aucun seuil universel."
+  },
+  {
+    "id": "NIST-RPO",
+    "title": "Recovery Point Objective — définition issue de NIST SP 800-34 Rev. 1 (mai 2010)",
+    "publisher": "National Institute of Standards and Technology",
+    "url": "https://csrc.nist.gov/glossary/term/recovery_point_objective",
+    "accessedOn": "2026-07-28",
+    "scope": "Définir le point dans le temps auquel les données doivent être récupérées, puis traduire l’écart en opérations à reconstituer.",
+    "limits": "La définition ne prouve ni l’existence d’une sauvegarde exploitable, ni sa cohérence, ni la capacité de ressaisie ; le contexte de la publication source reste déterminant."
+  },
+  {
+    "id": "ANSSI-BACKUP-2025",
+    "title": "Sauvegarde des systèmes d’information — version 1.1, ANSSI-BP-100, 27 novembre 2025",
+    "publisher": "Agence nationale de la sécurité des systèmes d’information",
+    "url": "https://messervices.cyber.gouv.fr/documents-guides/anssi_fondamentaux_sauvegarde_systemes_dinformation_v1.1.pdf",
+    "accessedOn": "2026-07-28",
+    "scope": "Relier besoins métier, PDMA/RPO, DMIA/RTO, stratégie de sauvegarde, isolement, restauration, contrôle et responsabilités.",
+    "limits": "Guide de sécurité et de continuité, pas clause SLA, avis juridique, obligation identique pour toute organisation ni preuve qu’une restauration donnée a réussi."
+  },
+  {
+    "id": "LEGIFRANCE-1103",
+    "title": "Code civil — article 1103, version en vigueur depuis le 1er octobre 2016",
+    "publisher": "Légifrance",
+    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032040777/",
+    "accessedOn": "2026-07-28",
+    "scope": "Rappeler la force obligatoire des contrats légalement formés et l’importance de définir précisément service, mesure, délais, exclusions et responsabilités.",
+    "limits": "Ne dit pas comment rédiger un SLA, ne valide aucune clause concrète et ne remplace pas la revue du contrat, du droit applicable et des faits par un juriste."
+  },
+  {
+    "id": "LEGIFRANCE-1217",
+    "title": "Code civil — article 1217, version en vigueur depuis le 1er octobre 2018",
+    "publisher": "Légifrance",
+    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036829854/",
+    "accessedOn": "2026-07-28",
+    "scope": "Montrer que les conséquences possibles d’une inexécution ne se résument pas conceptuellement à un crédit de service.",
+    "limits": "Les sanctions disponibles, leur compatibilité, les clauses limitatives, le préjudice, la causalité et la preuve dépendent du contrat et du cas ; aucun droit à indemnisation n’est déduit par l’outil."
+  },
+  {
+    "id": "UK-SOFTWARE-CODE-2026",
+    "title": "Software Security Code of Practice — mise à jour du 15 janvier 2026",
+    "publisher": "UK Department for Science, Innovation and Technology",
+    "url": "https://www.gov.uk/government/publications/software-security-code-of-practice/software-security-code-of-practice",
+    "accessedOn": "2026-07-28",
+    "scope": "Encadrer maintenance sécurisée, mises à jour, support, fin de support, responsabilités et communication d’incident des fournisseurs de logiciels B2B.",
+    "limits": "Code britannique volontaire centré sur la sécurité et la résilience des logiciels ; il n’est ni du droit français, ni une couverture complète de la maintenance fonctionnelle."
+  },
+  {
+    "id": "NCSC-APC",
+    "title": "Software Security Code of Practice — Assurance Principles and Claims, version 1.0 du 7 mai 2025",
+    "publisher": "UK National Cyber Security Centre",
+    "url": "https://www.ncsc.gov.uk/guidance/software-security-code-of-practice-assurance-principles-claims",
+    "accessedOn": "2026-07-28",
+    "scope": "Transformer les promesses de maintenance, correctifs, support, fin de support et communication en claims reliés à des preuves vérifiables.",
+    "limits": "Auto-évaluation flexible d’un socle cyber ; une déclaration ou un document non testé ne prouve pas à lui seul la performance opérationnelle ni la conformité contractuelle."
+  },
+  {
+    "id": "BSI-BACKUP",
+    "title": "IT-Grundschutz Compendium — édition anglaise 2022, module CON.3 Backup Concept",
+    "publisher": "Bundesamt für Sicherheit in der Informationstechnik",
+    "url": "https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Grundschutz/International/bsi_it_gs_comp_2022.pdf?__blob=publicationFile&v=2",
+    "accessedOn": "2026-07-28",
+    "scope": "Qualifier facteurs d’influence, fréquence, responsabilités, procédures, tests de restauration et alignement des sauvegardes avec les processus.",
+    "limits": "Référence à l’édition anglaise 2022, distincte des éditions allemandes ultérieures ; module de sécurité, pas SLA, certification automatique ni seuil RPO/RTO prêt à copier."
+  },
+  {
+    "id": "DORA-ART11-12",
+    "title": "Règlement (UE) 2022/2554 — DORA, articles 11 et 12, JO du 27 décembre 2022",
+    "publisher": "Union européenne — EUR-Lex",
+    "url": "https://eur-lex.europa.eu/eli/reg/2022/2554/oj?locale=fr",
+    "accessedOn": "2026-07-28",
+    "scope": "Illustrer, pour les entités financières dans le champ, les politiques de continuité TIC, tests, réponse, reprise, sauvegarde, restauration et perte limitée.",
+    "limits": "Périmètre sectoriel financier et exemptions à qualifier ; ne s’applique pas à toute PME, ne commande pas automatiquement du 24/7 et ne remplace pas une analyse juridique."
+  },
+  {
+    "id": "ISO-27031-2025",
+    "title": "ISO/IEC 27031:2025 — édition 2, mai 2025",
+    "publisher": "International Organization for Standardization",
+    "url": "https://www.iso.org/standard/27031",
+    "accessedOn": "2026-07-28",
+    "scope": "Aligner la préparation des technologies de l’information et de la communication sur les objectifs de continuité métier et les dépendances externes.",
+    "limits": "La page publique ne contient pas tout le texte normatif ; guide international volontaire, pas certification implicite, droit applicable ni niveau de service universel."
+  },
+  {
+    "id": "ISO-20000-1",
+    "title": "ISO/IEC 20000-1:2018 — édition 3, confirmée en 2023, amendement 1:2024",
+    "publisher": "International Organization for Standardization",
+    "url": "https://www.iso.org/standard/70636.html",
+    "accessedOn": "2026-07-28",
+    "scope": "Structurer un système de management des services couvrant planification, conception, transition, fourniture, mesure, revue et amélioration.",
+    "limits": "Exigences de système de management, pas catalogue de délais ou prix ; la conformité et la certification exigent un périmètre et une évaluation distincts."
+  },
+  {
+    "id": "ISO-22301",
+    "title": "ISO 22301:2019 — édition 2 avec amendement 1:2024",
+    "publisher": "International Organization for Standardization",
+    "url": "https://www.iso.org/standard/75106.html",
+    "accessedOn": "2026-07-28",
+    "scope": "Fonder l’analyse d’impact, les objectifs de continuité, les plans, exercices, revues et amélioration sur les besoins propres de l’organisation.",
+    "limits": "Édition publiée mais en révision au gel 2026 ; norme de management volontaire, pas seuil SLA automatique ni preuve qu’un dispositif concret fonctionne."
+  },
+  {
+    "id": "ASD-ESSENTIAL-EIGHT",
+    "title": "Essential Eight Maturity Model — édition de novembre 2023",
+    "publisher": "Australian Signals Directorate — Australian Cyber Security Centre",
+    "url": "https://www.cyber.gov.au/business-government/asds-cyber-security-frameworks/essential-eight/essential-eight-maturity-model",
+    "accessedOn": "2026-07-28",
+    "scope": "Benchmarker correctifs applicatifs et systèmes, sauvegardes régulières, restauration et niveaux de maturité face à des menaces croissantes.",
+    "limits": "Référentiel cyber australien pour réseaux informatiques connectés ; ne garantit pas la protection contre toute menace et n’est ni droit français ni SLA de maintenance."
+  }
+]

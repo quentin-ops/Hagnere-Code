@@ -2,7 +2,7 @@ a7648e7d6b6a9b035f705af039dc008cd3a4cd8c8ecbc29ecf595f67e8621cbc  docs/research/
 2b0e4d0e9de4dc17c4ed24aa6b232199cfe748217c98cd9f319c81b3f0f5e706  docs/research/dette-technique-cout-entreprise.md
 aa4e551a908d2d4ad329082c5cd69ba2ecf96563bf398c3b864609879872c512  docs/research/facturation-abonnements-saas.md
 903c99bebafb46ee977c30d1ea80e5d644ada67912844078dacfd0557b5ba6b7  docs/research/google-ads-ou-meta-ads.md
-469ee3b88e611c3341c13ecfc6646d154e4a4b84ee79c27f0cec6d6e9ace3463  docs/research/logiciel-gestion-stock-sur-mesure.md
+ebb0f41492d051458f55ccf4aaec609e3e29a5f35df94036d38098d97566e91e  docs/research/logiciel-gestion-stock-sur-mesure.md
 5809fffdd82cc88d6caa18b2fcda5aa71e73c1a9e15ddd2e6031079b795b6a6f  docs/research/lot-dix-guides-selection-2026-07-23-batch-3.md
 aaa051b68f69825ded24419ba16eae731855c68988ea74cb1c37bf3ec84b18a4  docs/research/manifests/agence-saas-ou-freelance-p4.sha256
 9b8d0cb181370b8e59d02e04a564ddaf84d0ea503f0edd512bf961888e3e0376  docs/research/manifests/application-gestion-interventions-terrain-p4.sha256
@@ -73,7 +73,7 @@ f42b20b6ac0004183f49c56648522b6ada31ea696f662a1e4bd70b5425b5f0a0  docs/research/
 b472449bf780d6e22da888e8a0ec2eee53e834b86ebbf97fbfb5e3bbdedba2f4  docs/roadmap-guides-seo.md
 af1378b61d23533114c44c161e60da1bbaf6723902ce705cff36de1fa9d20893  package.json
 b7a0c8250af2b511cf8dc9c8ba784663e61ba6a8eaac50bc90f26cdab9f048f6  src/app/guides/budget-google-ads-pme/page.tsx
-b577065d8226bcbcbff8e58102f999b03955029d6d94c8ff49b1593a5cc06da0  src/app/guides/cahier-des-charges-saas/page.tsx
+25c518d6ae4c4fe3638b5f751b516a30d33fb8a7cf50ad42a0204dd37b0816ed  src/app/guides/cahier-des-charges-saas/page.tsx
 38f27264e0e0ebd3e63db0a059d584965d85e9f6e0719cd4c1c2a8a85c35fb63  src/app/guides/calculer-cout-par-lead-google-ads/opengraph-image.tsx
 f00c25105491ab26fca3f7423c172d212e648415b532c2a48357dbd1a1ae3889  src/app/guides/calculer-cout-par-lead-google-ads/page.tsx
 d5b1d9495cc5d4374776167f74165984d6ccac13baee18aa3c69422e2ed47c0f  src/app/guides/contrat-tma-application/page.tsx
@@ -84,8 +84,8 @@ db29441328866e3e12b50e8ae7e3381fcb34c6d1faba9dd6b5e4e10bfe354c45  src/app/guides
 59a3466eccfc8df4b54dbf12bdc6635410ca17dfd366dcecf3e4515f75358e20  src/app/guides/facturation-abonnements-saas/page.tsx
 c64ebd3608c00cb8118233d6fab26227ba3b498823c4519501206405f56ea18b  src/app/guides/google-ads-ou-meta-ads/opengraph-image.tsx
 e83ebda853951f2a7d6c61d8cce4b203f86ddd3fb9e943f299705b27f3420e71  src/app/guides/google-ads-ou-meta-ads/page.tsx
-6283412b390d5c1fa27afcb3a9cd0305cc2a4d15ce519123c5cc3d2c7f72ad5d  src/app/guides/logiciel-gestion-stock-sur-mesure/opengraph-image.tsx
-8c216526aee28409e52f9e269c84e62bf5c6bfd75d8f8c6c134a6133772365cd  src/app/guides/logiciel-gestion-stock-sur-mesure/page.tsx
+7eb1a5861b6dc6a4fe6864210b7e6c04b2e793be87ba42f33f26fe05ba526b8c  src/app/guides/logiciel-gestion-stock-sur-mesure/opengraph-image.tsx
+6bc26f1a8451f3740ba57d967cecf2be32b568ed082553314f4da15b00e2bb9e  src/app/guides/logiciel-gestion-stock-sur-mesure/page.tsx
 d965ce6976d99a53d504fc274c5c4783fed1451491a1aa46d65aa100cd0f8c35  src/app/guides/no-code-ou-sur-mesure/page.tsx
 0e1f241c987795dc92fedc66e79382263c154a7e77a8887d3ec3599b437e69ac  src/app/guides/power-apps-ou-application-sur-mesure/opengraph-image.tsx
 30ba9c21df82d460acd950115f0236e507eab77d88d56ef18fd217fe1c8159e7  src/app/guides/power-apps-ou-application-sur-mesure/page.tsx
@@ -100,7 +100,7 @@ c45b88a72ed435b284caf0732798fbaa75a410e9441efb8e774906c1e8255433  src/app/guides
 824abc869d51434dcf36571f42a4f7645f2f7318993f28485a9d0c9f5c885f55  src/app/guides/sla-maintenance-applicative/opengraph-image.tsx
 34f25e110c6df4d83f86724c69f4b8bcf72b2df895aedfc22e945b9b5f120b37  src/app/guides/sla-maintenance-applicative/page.tsx
 283630e4ca3ab24520328832866afd1eaa316ae139fcee208821e46dd5a81444  src/app/guides/valider-idee-saas-avant-developper/page.tsx
-f41ddd547e4c4905a716c099adcc00bcfdb92b84e80b73a7a600a8ec597b708f  src/lib/batch3-guide-quality.test.ts
+00d700c84f06e2aafb6225def58f6cdc06228fe57a2610f36ec689d14e9a8331  src/lib/batch3-guide-quality.test.ts
 0d55dda9e33192fdc42172898dcbf7b084e77b6b60454c9c97423bd56e33bee5  src/lib/editorial-governance.test.ts
-8fbf045722ebbda2bd46407564e40b92bdf5b17ce3cb087a27c776ddc4f73a7b  src/lib/guide-human-language.test.ts
-b2eeda0fc3d7be23834108823176da59814d312e4b93c33426ab9e475a00ee3f  src/lib/guides.ts
+bb10c76df7a76af76628723573057e710c9290fa32548e1e7542c0182a591500  src/lib/guide-human-language.test.ts
+d56d9408d111ccb9affe17320f4b1299c5888063a063b763f34d90f957b10a69  src/lib/guides.ts

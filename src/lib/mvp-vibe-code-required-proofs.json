@@ -1,0 +1,110 @@
+[
+  {
+    "id": "inventory-ownership",
+    "label": "Inventaire et contrôle des actifs",
+    "severity": "blocking",
+    "allowsNa": false,
+    "expected": "Les huit couches — code, construction, hébergement, données, fichiers, identités, services externes et exploitation — ont un propriétaire, un compte d’entreprise, un environnement, une région, une procédure de récupération et une preuve datée.",
+    "acceptedEvidence": [
+      "registre des actifs relu par leur propriétaire",
+      "comptes et organisations administrés par l’entreprise",
+      "contrats, factures et procédures de récupération datés"
+    ]
+  },
+  {
+    "id": "source-build-artifact",
+    "label": "Source, build, artefact et déploiement",
+    "severity": "blocking",
+    "allowsNa": false,
+    "expected": "Un commit, son lockfile, le runtime, la commande de construction, les migrations, le pipeline, l’artefact produit, son empreinte et le déploiement observé sont reliés sans exposer de secret.",
+    "acceptedEvidence": [
+      "construction propre dans un environnement isolé",
+      "identifiant de build et empreinte de l’artefact",
+      "déploiement d’une copie et retour arrière exécuté"
+    ]
+  },
+  {
+    "id": "supply-chain-licenses",
+    "label": "Supply chain, SBOM, licences et fin de support",
+    "severity": "major",
+    "allowsNa": false,
+    "expected": "Les composants directs, transitifs et copiés sont inventoriés avec version, provenance, licence, mainteneur, vulnérabilités connues, fin de support et décision de mise à jour.",
+    "acceptedEvidence": [
+      "SBOM CycloneDX ou SPDX associé à l’artefact",
+      "revue des licences et composants non packagés",
+      "registre de traitement des vulnérabilités et fins de support"
+    ]
+  },
+  {
+    "id": "data-restore-continuity",
+    "label": "Données, restauration, RPO et RTO",
+    "severity": "blocking",
+    "allowsNa": false,
+    "expected": "Schéma, contraintes, migrations, fonctions, authentification, stockage, tâches, files, webhooks et données de référence ont été restaurés sur une copie puis réconciliés avec une durée et un point restaurable mesurés.",
+    "acceptedEvidence": [
+      "journal daté de restauration isolée",
+      "comptages, totaux, relations et échantillons réconciliés",
+      "RPO et RTO cibles comparés aux mesures"
+    ]
+  },
+  {
+    "id": "access-secrets",
+    "label": "Accès, tenants, identités et secrets",
+    "severity": "blocking",
+    "allowsNa": false,
+    "expected": "Une matrice rôles × ressources × actions × états × tenant vérifie les accès horizontaux, verticaux, API, fichiers, exports, administration, désactivation et sessions ; les secrets sont inventoriés par référence puis rotés sans être copiés dans le dossier.",
+    "acceptedEvidence": [
+      "tests autorisés avec plusieurs comptes et tenants",
+      "matrice attendu-observé avec référence ASVS versionnée",
+      "preuve de rotation ou révocation des clés exposées"
+    ]
+  },
+  {
+    "id": "business-journeys",
+    "label": "Parcours métier et effets différés",
+    "severity": "blocking",
+    "allowsNa": false,
+    "expected": "Les parcours qui créent une dette, un paiement, un droit ou un engagement sont rejoués avec doublon, retry, échec partiel, reprise, journal et réconciliation.",
+    "acceptedEvidence": [
+      "scénarios de recette de bout en bout",
+      "tests d’idempotence et d’échec partiel",
+      "rapprochement des effets asynchrones et tiers"
+    ]
+  },
+  {
+    "id": "production-observability",
+    "label": "Production, capacité et observabilité",
+    "severity": "major",
+    "allowsNa": true,
+    "expected": "Disponibilité, performance, quotas, capacité, journaux, métriques, traces, alertes, rétention, escalade, correctifs et exercice d’incident sont définis et testés proportionnellement à l’usage réel.",
+    "acceptedEvidence": [
+      "alerte de test reçue par un responsable identifié",
+      "mesures de charge et limites documentées",
+      "runbook utilisé lors d’un exercice daté"
+    ]
+  },
+  {
+    "id": "legal-data-contracts",
+    "label": "Contrats, licences et données personnelles",
+    "severity": "blocking",
+    "allowsNa": false,
+    "expected": "Mandat, propriété opérationnelle, droits de réutilisation, DPA, sous-traitants, transferts, finalités, conservation, suppression et procédure de violation sont qualifiés ; les incertitudes matérielles sont confiées au spécialiste compétent.",
+    "acceptedEvidence": [
+      "contrats et cessions relus dans le périmètre",
+      "registre des traitements et sous-traitants",
+      "avis DPO ou juridique lorsqu’il est requis"
+    ]
+  },
+  {
+    "id": "migration-exit",
+    "label": "Migration, rollback, sortie et arrêt",
+    "severity": "major",
+    "allowsNa": true,
+    "expected": "Autorité d’écriture, synchronisation, gel, delta, bascule, critères de retour arrière, réconciliation, communication, hypercare, export, archivage et révocation sont décrits et répétables.",
+    "acceptedEvidence": [
+      "runbook de migration et de rollback",
+      "répétition sur copie avec réconciliation",
+      "plan d’arrêt, d’archivage et de révocation"
+    ]
+  }
+]

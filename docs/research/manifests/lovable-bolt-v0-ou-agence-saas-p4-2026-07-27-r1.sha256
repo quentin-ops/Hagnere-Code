@@ -1,0 +1,13 @@
+8eabf588ed22e9dd5fffefd6744b8c9a439b765cc79290a44ec52cf006668b0e  docs/research/lovable-bolt-v0-ou-agence-saas-r1-2026-07-27.md
+9da4940a8f19fa04a217a56afa49dd6f91ba341b360b936dc7ee6e03b2ba4223  docs/audits/giga-audit-2026-07-24/reviews/lovable-bolt-v0-ou-agence-saas-p4-2026-07-27-r1.md
+6aec56efed54a2f2a19948a549de387da4d523c19a456a462e5a3cfcb8a546e0  src/app/guides/lovable-bolt-v0-ou-agence-saas/page.tsx
+fe6f55d7fa6ba20ad3f5e6211339b804ac1e84244250b2558bd2f2a1edd18d9f  src/components/guides/SaasBuildPathDecisionDossier.tsx
+2658f28ceb061855745d53ddc2935ab235957656ea4880afe3b19a087902b14a  src/components/guides/SaasBuildPathDecisionDossier.test.tsx
+18d45608ccb375e255dd6bb5afe98b1b295f413ad3228937bcd1bb6c14d6e997  src/lib/saas-build-path-decision.ts
+96805c8a479144a468860d33fbe7ca3186fcbe52044bcb422745112c52692fed  src/lib/saas-build-path-decision.test.ts
+eab8ea6e7c834e39cc75401f86cefe55a5c7e50c6561dc98aec5dc1f8550a05a  src/lib/lovable-bolt-v0-guide-quality.test.ts
+2650b165de64c935224b4c0d129d26f699ac06242c29248050e271f2eba21dc8  src/lib/batch4-guide-quality.test.ts
+43873559c248c2c4a126e5908e9437d785b40672cebd024322a593bab3704ee8  src/lib/guides.ts
+df00f00e835f64e2221e16238c81b19a1d96cdd485f82cebaf280b6ed3ad0c23  package.json
+c69f0046a32fdaf2e529f4acd6aa4aecf81a565a6b52f58172f445808d9a196c  docs/audits/giga-audit-2026-07-24/classement-qualite-101-guides.md
+4f5b662ae760a3e6cdd566919ff76f0cfa70af76ad18ec934d1072eec81bf864  docs/audits/giga-audit-2026-07-24/registre-maitre-101-guides.md

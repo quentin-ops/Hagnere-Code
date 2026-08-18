@@ -1,20 +1,40 @@
 # Dossier de recherche — Suivi des conversions Google Ads
 
-> Journal documentaire du guide **suivi-conversions-google-ads**. Les quatre
-> passes sont gelées ; les deux contre-audits indépendants et le contrôle dans
-> le navigateur réel ont validé les corrections. La route reste sous porte
-> éditoriale jusqu’au gel global du lot.
+> Journal documentaire du guide **suivi-conversions-google-ads**. Le
+> giga-audit du 24 juillet 2026 a invalidé les anciennes portes P1 à P4 du 21
+> et du 22 juillet : elles sont conservées comme historique plus bas, mais ne
+> qualifient pas la version actuelle. La recherche a été rouverte sur Data
+> Manager 2026, les appels, la déduplication navigateur/serveur, le
+> consentement, l’incrémentalité, les corrections et l’économie d’une cohorte.
 
-## Journal des quatre passes
+Statut actuel : **P1 approfondie et P2 réécrite ; P3 indépendante PASS
+factuel 98/100 et P4 indépendante GO éditorial local 95/100 sur le snapshot du
+25 juillet. Deux exports texte locaux, durables et sans envoi réseau, sont
+intégrés et testés. Le classeur XLSX/CSV reste non livré car le runtime
+`artifact-tool` imposé n’est pas exposé dans cette session. Le contrôle SEO
+global reste en NO-GO à cause des anciens reçus V1 du registre partagé. BAT
+navigateur réel, lecteur dirigeant externe, production, sitemap, indexation et
+classement non prouvés.**
+
+## Journal courant des quatre passes
+
+| Passe                        | État actuel                        | Date       | Preuve ou blocage                                                                                                                                |
+| ---------------------------- | ---------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1. Recherche                 | Rouverte et approfondie            | 2026-07-25 | Google Ads, Google Developers et CNIL revalidés ; comptage, fenêtres, déduplication et cinq mesures téléphoniques distingués.                    |
+| 2. Rédaction et intégration  | Réécrite, contrôles locaux réussis | 2026-07-25 | Chaîne canonique, page, outil, exports texte, calculs et métadonnées ; 48 tests propres + 10 du registre, TypeScript, ESLint et formatage verts. |
+| 3. Contre-audit indépendant  | PASS factuel — 98/100               | 2026-07-25 | P0/P1 = 0 sur la page `de36288f…` ; cinq appels, comptage, imports, économie et calculs revérifiés indépendamment.                               |
+| 4. Plume humaine et contrôle | GO éditorial local — 95/100         | 2026-07-25 | P0/P1/P2 éditoriaux = 0 ; lecture longue structurée. BAT navigateur réel et lecteur dirigeant externe restent absents.                          |
+
+## Journal historique du 21–22 juillet — invalidé par le giga-audit
 
 Propriétaire éditorial unique : Codex, agent racine du lot du 21 juillet 2026.
 
-| Passe                        | État                     | Date       | Responsable                            | Snapshot                                 | Blocages                          |
-| ---------------------------- | ------------------------ | ---------- | -------------------------------------- | ---------------------------------------- | --------------------------------- |
-| 1. Recherche                 | Terminée — porte validée | 2026-07-21 | Agent audit_guide3 + audit indépendant | `suivi-conversions-google-ads-p1.sha256` | Aucun                             |
-| 2. Rédaction et intégration  | Terminée — porte validée | 2026-07-21 | Codex                                  | `suivi-conversions-google-ads-p2.sha256` | Aucun                             |
-| 3. Contre-audit indépendant  | Terminée — porte validée | 2026-07-21 | Deux agents indépendants               | `suivi-conversions-google-ads-p3.sha256` | Aucun                             |
-| 4. Plume humaine et contrôle | Terminée — porte validée | 2026-07-22 | Codex                                  | `suivi-conversions-google-ads-p4.sha256` | Aucun                             |
+| Passe                        | État                     | Date       | Responsable                            | Snapshot                                 | Blocages |
+| ---------------------------- | ------------------------ | ---------- | -------------------------------------- | ---------------------------------------- | -------- |
+| 1. Recherche                 | Terminée — porte validée | 2026-07-21 | Agent audit_guide3 + audit indépendant | `suivi-conversions-google-ads-p1.sha256` | Aucun    |
+| 2. Rédaction et intégration  | Terminée — porte validée | 2026-07-21 | Codex                                  | `suivi-conversions-google-ads-p2.sha256` | Aucun    |
+| 3. Contre-audit indépendant  | Terminée — porte validée | 2026-07-21 | Deux agents indépendants               | `suivi-conversions-google-ads-p3.sha256` | Aucun    |
+| 4. Plume humaine et contrôle | Terminée — porte validée | 2026-07-22 | Codex                                  | `suivi-conversions-google-ads-p4.sha256` | Aucun    |
 
 ### Manifeste du snapshot
 
@@ -27,7 +47,7 @@ Propriétaire éditorial unique : Codex, agent racine du lot du 21 juillet 2026.
 | Champ                            | Décision documentaire                                                                                                                                                           |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Slug                             | suivi-conversions-google-ads                                                                                                                                                    |
-| Statut actuel                    | Corrections P3 après contre-audit indépendant ; route publique sous porte éditoriale                                                                                            |
+| Statut actuel                    | Réécriture du 25 juillet contre-auditée : P3 98/100 et P4 95/100 ; clôture globale, BAT réel et production encore ouverts                                                       |
 | Requête principale qualitative   | suivi conversions Google Ads                                                                                                                                                    |
 | Variantes utiles observées       | tracking conversions Google Ads ; tester conversion Google Ads ; conversion principale ou secondaire ; Google Ads et GA4 ; suivi conversions hors ligne CRM                     |
 | Moment du parcours               | Sécuriser une campagne active avant de modifier les objectifs ou les enchères                                                                                                   |
@@ -240,7 +260,7 @@ et la personnalisation complète de la SERP française n’ont pas été conserv
 | [NomadClick — Guide du suivi des conversions Google Ads, mis à jour le 23 juin 2026](https://nomadclick.com/blog/guide-suivi-conversions-google-ads/) | Création d’actions, paramètres, balise Google et GTM                | Captures et tutoriel pas à pas | Répond à la configuration technique recherchée                | Ne fait pas du rapprochement CRM → devis → vente → marge le contrat central                                                                                  | Consultant et offre d’audit          |
 | [AdsBack — Suivi avancé des conversions, 3 septembre 2025](https://www.ads-back.com/blog/suivi-avance-des-conversions-google-ads-guide-complet)       | Suivi avancé pour e-commerce, génération de prospects et hors ligne | Panorama technique             | Bonne largeur de cas d’usage                                  | La décision du dirigeant reste noyée dans les méthodes de mesure                                                                                             | Prestataire de mesure                |
 | [Stape — Guide de configuration 2026](https://stape.io/fr/blog/suivi-des-conversions-google-ads)                                                      | Suivi navigateur, serveur, dépannage et outils techniques           | Étapes GTM et serveur          | Explique plusieurs architectures                              | Ne donne pas un registre métier avec propriétaire et preuve par étape ; certaines formulations de performance doivent être revérifiées sur sources primaires | Vend une infrastructure côté serveur |
-| [Vincent Duquesne — Les quatre décisions qui comptent](https://www.vincentduquesne.net/suivi-conversions-principe.html)                               | Action principale, valeurs, consentement et vérification            | Cadre décisionnel clair        | Concurrent éditorial le plus proche et bon niveau de synthèse | Dans le contenu observé, le registre à sept étapes et sa recette d’acceptation ne sont pas l’artefact central                                                | Consultant Google Ads                |
+| [Vincent Duquesne — Les quatre décisions qui comptent](https://www.vincentduquesne.net/suivi-conversions-principe.html)                               | Action principale, valeurs, consentement et vérification            | Cadre décisionnel clair        | Concurrent éditorial le plus proche et bon niveau de synthèse | Dans le contenu observé, la chaîne à six volumes et son registre détaillé de preuves ne sont pas l’artefact central                                          | Consultant Google Ads                |
 | [Zesto — Guide complet et test GTM](https://agence-zesto.com/blog/sea/suivi-conversion-google-ads/)                                                   | Création de l’action, GTM et Tag Assistant                          | Test de déclenchement          | Procédure accessible                                          | Le déclenchement de la balise est présenté comme opérationnel alors qu’il ne prouve pas encore réception, unicité, qualification ou vente                    | Agence Google Ads                    |
 
 ### Angle mort commun observé
@@ -699,7 +719,8 @@ que le problème soit compris avant les outils.
 **Progression :** suivre ce dossier de l’envoi à la marge, interrompre le récit
 au premier passage non prouvé, puis reprendre avec le protocole de recette.
 
-**Artefact signature :** registre à sept étapes, associé à un journal de test.
+**Artefact signature :** outil de rapprochement à six volumes, registre
+détaillé de preuves et journal de test téléchargeables localement.
 
 **Rythme et voix :** phrases concrètes, un responsable et une preuve à chaque
 étape ; aucune métaphore à apprendre ; technique repoussée après la décision
@@ -918,7 +939,7 @@ Liens entrants à prévoir après publication :
 - [x] faits, hypothèses, déductions et recommandations séparés ;
 - [x] point API du 15 juin 2026 daté et marqué à revalider ;
 - [x] contradictions et formulations bannies consignées ;
-- [x] artefact à sept étapes défini ;
+- [x] chaîne courte à six volumes et registre détaillé définis ;
 - [x] test nominal, tests négatifs et critères d’acceptation définis ;
 - [x] exemple fictif, formules, contrôle inverse et arrondis consignés ;
 - [x] plan annoté distinct des guides voisins ;
@@ -965,7 +986,8 @@ réel et licite ; nommer le premier passage non prouvé.
 CTA possible : Faire tester ma chaîne de mesure vers /demarrer-un-projet, après
 la valeur autonome et sans demande d’accès ni donnée client.
 
-Plan : réponse courte, choix métier, registre à sept étapes, test bout en bout,
+Plan : réponse courte, choix métier, six volumes comparables, registre détaillé,
+test bout en bout,
 doublons et dates, principale ou secondaire, consentement et modélisation,
 exemple puis sources.
 
@@ -1132,3 +1154,171 @@ PASSE 4 TERMINÉE — PASS
   global des dix guides. Il ne sera indexé qu’après ce dernier contrôle.
 - Snapshot :
   `docs/research/manifests/suivi-conversions-google-ads-p4.sha256`.
+
+## 16. Réouverture du 24 juillet 2026 — nouvelle P1/P2
+
+Cette section prévaut pour le snapshot courant. Les rapports P3/P4 historiques
+ci-dessus restent utiles pour comprendre l’ancien outil, mais leur PASS ne vaut
+pas pour une page modifiée après leur empreinte.
+
+### Décision et contrat de langage
+
+Le dirigeant doit pouvoir répondre à trois questions sans décoder le produit
+Google :
+
+1. parmi les actions affichées, combien deviennent des demandes uniques, des
+   prospects correspondant à l’offre, des contrats, des paiements et de la
+   marge ;
+2. quel est le premier passage non prouvé entre le site, le téléphone, le CRM,
+   Google Ads et la comptabilité ;
+3. faut-il conserver le signal, corriger un maillon, tester une action plus
+   profonde ou ne pas modifier les enchères.
+
+L’ouverture et la synthèse de cinq minutes portent désormais cette décision.
+Elles ne présentent ni une conversion comme un client, ni une attribution comme
+une vente créée par la publicité.
+
+### Sources officielles revalidées
+
+Les faits produit ont été vérifiés le 24 juillet 2026 :
+
+- [FAQ Google Ads sur les imports hors ligne](https://support.google.com/google-ads/answer/10029210?hl=en) :
+  un GCLID peut être importé jusqu’à 90 jours et les données personnelles des
+  conversions avancées pour prospects jusqu’à 63 jours ; les dates ne doivent
+  pas être falsifiées pour contourner ces limites ;
+- [Google Ads API — dépréciations](https://developers.google.com/google-ads/api/docs/deprecations) :
+  depuis le 15 juin 2026, les jetons sans historique requis sont restreints sur
+  `UploadClickConversions` et Google recommande Data Manager API ; cela ne
+  prouve pas que tous les anciens flux sont déjà arrêtés ;
+- [Google Ads API — conversions hors ligne](https://developers.google.com/google-ads/api/docs/conversions/upload-offline) :
+  `order_id`, identifiants de clic, données fournies par l’utilisateur,
+  `job_id`, diagnostics et erreurs de correspondance ont des rôles distincts ;
+- [Google Analytics — vérifier le mode Consentement](https://support.google.com/analytics/answer/14218557?hl=en) :
+  `ad_storage`, `analytics_storage`, `ad_user_data` et
+  `ad_personalization` doivent être contrôlés avant et après le choix ;
+- [Google Ads — détails des appels](https://support.google.com/google-ads/answer/9099302?hl=en) :
+  heure, durée, statut et source ne remplacent pas la qualification métier ;
+- [Google Ads — options de comptage](https://support.google.com/google-ads/answer/3438531?hl=en) :
+  « Une », « Toutes », taux de répétition et identifiant de transaction
+  répondent à des problèmes distincts ;
+- [Google Ads — identifiant de transaction](https://support.google.com/google-ads/answer/6386790?hl=en) :
+  le même identifiant déduplique deux envois de la même opération pour une même
+  action de conversion ; il ne fusionne pas deux actions distinctes ;
+- [Google Ads — fenêtres de conversion](https://support.google.com/google-ads/answer/3123169?hl=en) :
+  fenêtres après clic, vue engagée et impression, limite d’import, traitement
+  et cycle commercial ne sont pas la même horloge ;
+- [Google Ads — suivi des appels](https://support.google.com/google-ads/answer/6100664?hl=en) :
+  appel mesuré depuis une annonce, appel mesuré depuis le site, clic sur numéro
+  mobile, clic estimé sans numéro de transfert et import ne prouvent pas la
+  même chose ;
+- [Google Ads — import des conversions d’appel](https://support.google.com/google-ads/answer/6275629?hl=en) :
+  inclure l’appel suivi et sa qualification importée dans la colonne
+  Conversions peut compter deux résultats pour le même appel ;
+- [Google Ads — Conversion Lift](https://support.google.com/google-ads/answer/14102450?hl=en) :
+  conversions attribuées et incrémentales sont deux mesures différentes, et
+  l’outil n’est pas disponible pour tous les comptes ;
+- [CNIL — cookies et traceurs](https://www.cnil.fr/fr/cookies-et-autres-traceurs/regles/cookies/FAQ) :
+  la poursuite de navigation ne vaut pas consentement et une donnée
+  pseudonymisée n’est pas anonyme.
+
+Ces documents soutiennent les limites du produit et de la mesure. Ils ne
+garantissent ni conformité juridique, ni rapprochement, ni rentabilité pour une
+entreprise donnée.
+
+### Couverture ajoutée dans la nouvelle P2
+
+- chaîne étendue à l’opportunité, au contrat, à la facture, au paiement, à la
+  correction et à la marge ;
+- séparation explicite du total affiché par Google Ads, des six volumes
+  comparables et du registre détaillé de preuves ;
+- réglages de comptage « Une » et « Toutes », taux de répétition et différence
+  avec la déduplication par identifiant de transaction ;
+- contrat de données : `case_id`, `event_id`, `transaction_id`, identifiants de
+  clic, UTM, action, fuseau, valeur, consentement et diagnostic du lot ;
+- séparation d’un événement métier et de ses copies navigateur, serveur et CRM ;
+- migration Data Manager 2026 avec inventaire, déduplication, rejeu et retour ;
+- recette des quatre signaux de consentement ;
+- cohorte d’appels, appels manqués, faux leads, doublons inter-canaux et
+  capacité de rappel ;
+- distinction entre les cinq mécanismes d’appel : annonce avec numéro de
+  transfert, site avec numéro de transfert, clic sur numéro mobile, estimation
+  après clic sans numéro de transfert et conversion importée ;
+- quatre horloges séparées : fenêtre d’attribution, limite d’import, délai de
+  traitement et cycle commercial ;
+- rapprochement Ads, GA4, CRM et comptabilité sur la même période ;
+- attribution distinguée de l’incrémentalité ;
+- annulations, remboursements, valeur corrigée, devise et source comptable ;
+- CPQL, CAC, marge, ROAS borné, sensibilité à ±30 % et seuil de renversement ;
+- contre-cas B2B, service local, e-commerce et SaaS ;
+- conflit d’intérêt commercial, réunion des cinq propriétaires et décision
+  réversible avant le CTA.
+- deux téléchargements texte locaux et testés : synthèse datée d’une période et
+  fiche de preuve d’un dossier, sans donnée envoyée au site.
+
+### Calculs reproductibles
+
+Cas fictif central :
+
+- média : `1 000 clics × 3 € = 3 000 €` ;
+- coûts annexes : `1 000 €` ;
+- coût complet : `4 000 €` ;
+- CPQL : `4 000 / 18 = 222,22 €` ;
+- CAC : `4 000 / 4 = 1 000 €` ;
+- marge avant acquisition : `7 200 €` ;
+- marge moyenne par vente : `7 200 / 4 = 1 800 €` ;
+- solde après acquisition : `7 200 − 4 000 = 3 200 €`.
+
+Sensibilité isolée :
+
+- CPC +30 % : média `3 900 €`, coût complet `4 900 €`, CAC `1 225 €`,
+  solde `2 300 €` ;
+- baisse isolée de 30 % du taux événements/clics, du taux de qualification ou
+  du taux de conclusion : dans chacun de ces trois scénarios distincts, `2,8`
+  ventes attendues, marge `5 040 €`, CAC `1 428,57 €`, solde `1 040 €` ;
+- conclusion +30 % : `5,2` ventes attendues, marge `9 360 €`, CAC `769,23 €`,
+  solde `5 360 €`.
+
+Les nombres décimaux sont des espérances de scénario, pas des clients observés.
+Aucun chiffre n’est un benchmark.
+
+### Snapshot et portes
+
+- page :
+  `de36288f33c8bdb50fdd94642f3ef77232fc69553eedf1de23187f717c370470` ;
+- image sociale :
+  `7c1d4925866e16c4edd2ee369d996b6b8e81cd5cf2448d749dcc90d0b14838f5` ;
+- outil local :
+  `ec3173d96a035c7a2206b567e8a1e6a56d0d665b952324e1f7a848f0fd9c2604` ;
+- test de l’outil :
+  `f20470c8a7cf37aa0f891180cf152669a1f652bed5c0e692d81bb4eec8a30ae5` ;
+- logique de rapprochement :
+  `6f770fae9ef0e4b55b4c49fcecbba8e528a049627f7125632a66184229847ade` ;
+- test de rapprochement :
+  `f4b164053ba87f4b254f924e10938809a610692aa586c69aaa4f8d5d5665af11` ;
+- test spécifique :
+  `a12d3149b32c7ccb51d6bacdde11b0711ec711164bcf5a6ea50ec37a5b63dea1` ;
+- registre partagé :
+  `a3a6ef96e5f2d79ed3a32efda48cc6e62a1cc092186df64e68b6a3c9670e377a` ;
+- 7 907 mots visibles, 40 minutes ;
+- 48/48 tests propres au guide et à l’outil, puis 10/10 tests du registre des
+  guides, TypeScript, ESLint, Prettier et `git diff --check` réussis ;
+- route locale et image sociale 1 200 × 630 en HTTP 200 ;
+- P3 indépendante : PASS factuel 98/100, P0/P1 = 0 sur le gel exact ;
+- P4 humaine simulée indépendante : GO local 95/100, P0/P1/P2 éditoriaux = 0 ;
+- BAT navigateur réel et dirigeant externe : non réalisés ;
+- exports texte locaux : livrés et testés ; aucun envoi réseau ;
+- XLSX/CSV : non livré ; runtime conforme indisponible et promesse publique
+  absente ;
+- production, sitemap, indexation et classement : non prouvés.
+
+## 17. Reçus de clôture locale du 25 juillet 2026
+
+- [contre-audit P3 factuel](../audits/giga-audit-2026-07-24/reviews/suivi-conversions-google-ads-p3-facts.md) ;
+- [relecture P4 humaine simulée](../audits/giga-audit-2026-07-24/reviews/suivi-conversions-google-ads-p4-human.md).
+
+Le guide est fermé **sur le fond éditorial local**. Cette formulation ne
+signifie ni BAT navigateur, ni publication, ni indexation. Le contrôle
+`check:seo` reste à 394/395 : les 37 reçus P4 V1 qui contiennent l'ancienne
+empreinte de `src/lib/guides.ts` demeurent historiques, et la V2 ne possède pas
+encore de `current.json`. Ils ne sont pas réécrits pour fabriquer un faux
+historique.

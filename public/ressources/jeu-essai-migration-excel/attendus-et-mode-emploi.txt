@@ -1,0 +1,31 @@
+JEU D’ESSAI — TRANSFORMER EXCEL EN APPLICATION
+Version : excel-migration-test-kit-r2-2026-07-28
+Données : entièrement fictives, sans donnée personnelle.
+
+FORMAT
+- CSV UTF-8 avec BOM, séparateur point-virgule.
+- Dates ISO AAAA-MM-JJ ; montant numérique en EUR ; identifiant unique.
+- 10 pièces sont référencées dans le jeu de départ.
+- La pièce 11 doit être jointe à X-3051 pendant l’opération 1.
+- Importer uniquement lot-import-100-lignes.csv : ses sept colonnes métier sont identiques à celles du jeu de départ.
+- Ne jamais importer oracle-import.csv : il contient les décisions et motifs attendus, référencés par numéro de ligne du lot.
+
+RÉSULTATS ATTENDUS
+0. Départ : 3 050 IDs distincts ; total = 4 652 775 EUR ; 10 pièces référencées.
+1. Créer X-3051 avec montant 3 051, date valide et pièce-factice-11.txt.
+   Attendu : 3 051 IDs ; total = 4 655 826 EUR ; 11 pièces.
+2. Tenter une date impossible et un montant texte sans écriture partielle.
+3. Retrouver X-2501 et recalculer sur toutes les lignes.
+4. Remplacer le montant de X-0042, 42 par 142.
+   Attendu : auteur/date/avant/après ; total = 4 655 926 EUR.
+5-6. Rejouer droits et concurrence selon le scénario retenu.
+7. Importer lot-import-100-lignes.csv.
+   Comparer ensuite le journal d’import à oracle-import.csv.
+   Attendu : 95 acceptées, 5 rejetées avec le motif attendu ; 3 146 IDs ; total = 4 656 021 EUR.
+8. Supprimer X-2501.
+   Attendu : 3 145 IDs ; total = 4 653 520 EUR ; restaurer ensuite 3 146 IDs et 4 656 021 EUR.
+9. Exporter puis réimporter : 3 146 IDs distincts, total exact, 11 pièces réutilisables.
+10. Faire reprendre export, restauration et exploitation par le suppléant.
+
+PORTE
+Un total faux, une ligne silencieusement perdue, un rejet inexpliqué ou une pièce non récupérable fait échouer la voie.

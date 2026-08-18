@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "React Native ou Flutter : lequel choisir pour votre application ?";
+  "React Native, Flutter ou autre : décider avec un dossier de preuves";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -51,7 +51,7 @@ export default function OgImage() {
             padding: "8px 20px",
           }}
         >
-          Comparatif 2026
+          Décision mobile 2026
         </div>
       </div>
 
@@ -66,34 +66,32 @@ export default function OgImage() {
             maxWidth: 1020,
           }}
         >
-          React Native ou Flutter ?
+          React Native, Flutter ou autre ?
         </div>
         <div style={{ display: "flex", fontSize: 30, color: "#a1a1aa" }}>
-          Choisissez selon votre équipe, vos fonctions et l’entretien futur
+          Éliminez par la preuve, puis comparez le coût complet
         </div>
       </div>
 
       <div style={{ display: "flex", gap: 14 }}>
-        {[
-          "Compétences de l’équipe",
-          "Fonctions difficiles",
-          "Maintenance et reprise",
-        ].map((t) => (
-          <div
-            key={t}
-            style={{
-              display: "flex",
-              fontSize: 24,
-              padding: "12px 24px",
-              borderRadius: 999,
-              background: "rgba(255,255,255,0.06)",
-              border: "1px solid rgba(255,255,255,0.12)",
-              color: "#e4e4e7",
-            }}
-          >
-            {t}
-          </div>
-        ))}
+        {["Fonction critique", "TCO 12 / 36 / 60", "Build et reprise"].map(
+          (t) => (
+            <div
+              key={t}
+              style={{
+                display: "flex",
+                fontSize: 24,
+                padding: "12px 24px",
+                borderRadius: 999,
+                background: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.12)",
+                color: "#e4e4e7",
+              }}
+            >
+              {t}
+            </div>
+          ),
+        )}
       </div>
     </div>,
     size,

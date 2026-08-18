@@ -438,6 +438,24 @@ Questions encore sans réponse : aucune P0/P1 après la note CNIL détaillée
 Corrections appliquées : voir rapport P3 et rapport P4
 ```
 
+### Snapshot de réécriture — 24 juillet 2026
+
+Le guide a été repris avec un fil de lecture plus humain et plus décisionnel :
+cas fictif note brute → page, comparaison à périmètre identique des modes
+interne/hybride/délégué, calculs de capacité distincts d’un prix, test de
+compréhension avant publication, suivi 30/90 jours et kit éditable local. Les
+valeurs (2 180 €, 2 020 €, 2 835 € et 193,50 € de capacité test) sont explicitement
+des hypothèses illustratives, non des tarifs de marché ni des promesses de
+conversion.
+
+Le kit a été testé avec 17 contrôles ciblés puis renforcé : précision affichée
+et calculée identique au centime, échappement des séparateurs Markdown, des
+chevrons et des retours à la ligne, export local sans compte ni appel réseau.
+Le lot guide/kit/langage totalise ensuite 75 tests verts, avec TypeScript et
+ESLint. La vérification navigateur réelle reste à refaire lorsque le runtime
+sera disponible ; aucune validation responsive multi-navigateurs, publication
+ou indexation n’est déclarée dans ce snapshot.
+
 ### Contre-audit indépendant
 
 ```text

@@ -1,0 +1,1277 @@
+{
+  "status": "PASS_LOCAL",
+  "generatedAt": "2026-07-29T08:56:12.226Z",
+  "workbook": "output/signes-besoin-logiciel-metier/workbook/kit-diagnostic-besoin-logiciel-metier.xlsx",
+  "publicWorkbook": "public/ressources/kit-diagnostic-besoin-logiciel-metier.xlsx",
+  "sha256": "5d4b2a7c1d9e5ed1f15af574d3f2824bccc8b57f3ab4285b39a9e4f0e82e37b3",
+  "bytes": 61358,
+  "sheets": [
+    {
+      "name": "00_MODE_EMPLOI",
+      "rows": 16,
+      "columns": 8,
+      "formulas": 0,
+      "tables": 1
+    },
+    {
+      "name": "01_DOSSIER",
+      "rows": 14,
+      "columns": 8,
+      "formulas": 9,
+      "tables": 1
+    },
+    {
+      "name": "02_SITUATIONS",
+      "rows": 8,
+      "columns": 20,
+      "formulas": 9,
+      "tables": 1
+    },
+    {
+      "name": "03_BASELINE",
+      "rows": 8,
+      "columns": 9,
+      "formulas": 3,
+      "tables": 1
+    },
+    {
+      "name": "04_REGLES_EXCEPTIONS",
+      "rows": 11,
+      "columns": 9,
+      "formulas": 6,
+      "tables": 1
+    },
+    {
+      "name": "05_OPTIONS_TESTS",
+      "rows": 11,
+      "columns": 14,
+      "formulas": 6,
+      "tables": 1
+    },
+    {
+      "name": "06_TCO_12_36_60",
+      "rows": 11,
+      "columns": 11,
+      "formulas": 18,
+      "tables": 1
+    },
+    {
+      "name": "07_RISQUES_STOP",
+      "rows": 11,
+      "columns": 8,
+      "formulas": 5,
+      "tables": 1
+    },
+    {
+      "name": "08_PILOTE",
+      "rows": 12,
+      "columns": 10,
+      "formulas": 7,
+      "tables": 1
+    },
+    {
+      "name": "09_DECISION",
+      "rows": 16,
+      "columns": 9,
+      "formulas": 10,
+      "tables": 1
+    },
+    {
+      "name": "10_DICTIONNAIRE",
+      "rows": 17,
+      "columns": 8,
+      "formulas": 0,
+      "tables": 1
+    },
+    {
+      "name": "11_CONTROLES",
+      "rows": 29,
+      "columns": 8,
+      "formulas": 24,
+      "tables": 1
+    },
+    {
+      "name": "12_SOURCES",
+      "rows": 31,
+      "columns": 9,
+      "formulas": 0,
+      "tables": 1
+    }
+  ],
+  "sources": 26,
+  "proofs": 8,
+  "formulas": 97,
+  "fixtures": {
+    "annualWorkHours": [
+      72,
+      91,
+      99
+    ],
+    "annualWaitHours": [
+      324,
+      195,
+      432
+    ],
+    "tco": {
+      "correction": [
+        9640,
+        17320,
+        25000
+      ],
+      "integration": [
+        27120,
+        45360,
+        63600
+      ],
+      "standard": [
+        "ND",
+        "ND",
+        "ND"
+      ],
+      "custom": [
+        115200,
+        165600,
+        216000
+      ]
+    }
+  },
+  "scenarios": {
+    "mutations": 12,
+    "adversarial": 96,
+    "sabotage": 97,
+    "total": 205,
+    "details": [
+      {
+        "id": "MUT-01",
+        "input": "02_SITUATIONS!G6=20",
+        "output": "02_SITUATIONS!R6",
+        "expected": 80
+      },
+      {
+        "id": "MUT-02",
+        "input": "02_SITUATIONS!G6=20",
+        "output": "02_SITUATIONS!S6",
+        "expected": 360
+      },
+      {
+        "id": "MUT-03",
+        "input": "02_SITUATIONS!H7=6",
+        "output": "02_SITUATIONS!R7",
+        "expected": 104
+      },
+      {
+        "id": "MUT-04",
+        "input": "02_SITUATIONS!J8=120",
+        "output": "02_SITUATIONS!S8",
+        "expected": 216
+      },
+      {
+        "id": "MUT-05",
+        "input": "02_SITUATIONS!H6=0",
+        "output": "02_SITUATIONS!R6",
+        "expected": 28.8
+      },
+      {
+        "id": "MUT-06",
+        "input": "02_SITUATIONS!I6=0",
+        "output": "02_SITUATIONS!R6",
+        "expected": 43.2
+      },
+      {
+        "id": "MUT-07",
+        "input": "02_SITUATIONS!J6=0",
+        "output": "02_SITUATIONS!S6",
+        "expected": 0
+      },
+      {
+        "id": "MUT-08",
+        "input": "02_SITUATIONS!G8=10",
+        "output": "02_SITUATIONS!R8",
+        "expected": 110
+      },
+      {
+        "id": "MUT-09",
+        "input": "06_TCO_12_36_60!D6=5000",
+        "output": "06_TCO_12_36_60!I6",
+        "expected": 9840
+      },
+      {
+        "id": "MUT-10",
+        "input": "06_TCO_12_36_60!E7=800",
+        "output": "06_TCO_12_36_60!K7",
+        "expected": 66000
+      },
+      {
+        "id": "MUT-11",
+        "input": "06_TCO_12_36_60!F9=13000",
+        "output": "06_TCO_12_36_60!I9",
+        "expected": 116200
+      },
+      {
+        "id": "MUT-12",
+        "input": "06_TCO_12_36_60!E6=0",
+        "output": "06_TCO_12_36_60!J6",
+        "expected": 5800
+      },
+      {
+        "id": "ADV-01",
+        "expected": "coût de sortie inconnu bloque le TCO",
+        "detected": true
+      },
+      {
+        "id": "ADV-02",
+        "expected": "périmètre inconnu bloque le TCO",
+        "detected": true
+      },
+      {
+        "id": "ADV-03",
+        "expected": "cas critique non rejoué bloque le TCO",
+        "detected": true
+      },
+      {
+        "id": "ADV-04",
+        "expected": "incident actif prioritaire",
+        "detected": true
+      },
+      {
+        "id": "ADV-05",
+        "expected": "inconnue jamais remplacée par zéro",
+        "detected": true
+      },
+      {
+        "id": "ADV-06",
+        "expected": "zéro observé distinct de ND",
+        "detected": true
+      },
+      {
+        "id": "ADV-07",
+        "expected": "standard non examiné reste provisoire et ne prouve pas le sur-mesure",
+        "detected": true
+      },
+      {
+        "id": "ADV-08",
+        "expected": "absence de responsable bloque la voie spécifique",
+        "detected": true
+      },
+      {
+        "id": "ADV-09",
+        "expected": "écart non différenciant ne route pas vers le spécifique",
+        "detected": true
+      },
+      {
+        "id": "ADV-10",
+        "expected": "un TCO nul ne compense jamais un STOP",
+        "detected": true
+      },
+      {
+        "id": "ADV-11",
+        "expected": "preuve échouée visible",
+        "detected": true
+      },
+      {
+        "id": "ADV-12",
+        "expected": "décision automatique interdite",
+        "detected": true
+      },
+      {
+        "id": "ADV-13",
+        "expected": "ND documenté",
+        "detected": true
+      },
+      {
+        "id": "ADV-14",
+        "expected": "pilote possède STOP et rollback",
+        "detected": true
+      },
+      {
+        "id": "ADV-15",
+        "expected": "dates de sources bornées",
+        "detected": true
+      },
+      {
+        "id": "ADV-16",
+        "expected": "portées et limites explicites",
+        "detected": true
+      },
+      {
+        "id": "ADV-17",
+        "expected": "preuves acceptables multiples",
+        "detected": true
+      },
+      {
+        "id": "ADV-18",
+        "expected": "identifiants uniques",
+        "detected": true
+      },
+      {
+        "id": "ADV-19",
+        "expected": "sortie inconnue non assimilée à zéro",
+        "detected": true
+      },
+      {
+        "id": "ADV-20",
+        "expected": "export final fictif bloqué",
+        "detected": true
+      },
+      {
+        "id": "ADV-21",
+        "expected": "le scénario réel complet ouvre seulement la décision humaine",
+        "detected": true
+      },
+      {
+        "id": "ADV-22",
+        "expected": "sponsor vide bloque la décision",
+        "detected": true
+      },
+      {
+        "id": "ADV-23",
+        "expected": "date de revue invalide bloque la décision",
+        "detected": true
+      },
+      {
+        "id": "ADV-24",
+        "expected": "sécurité incomplète ne traverse jamais le gate",
+        "detected": true
+      },
+      {
+        "id": "ADV-25",
+        "expected": "identifiant de situation dupliqué bloque la décision",
+        "detected": true
+      },
+      {
+        "id": "ADV-26",
+        "expected": "événement postérieur à l’arrêté bloque la décision",
+        "detected": true
+      },
+      {
+        "id": "ADV-27",
+        "expected": "TCO négatif reste ND et bloque la décision",
+        "detected": true
+      },
+      {
+        "id": "ADV-28",
+        "expected": "échec d’un cas d’option bloque la décision",
+        "detected": true
+      },
+      {
+        "id": "ADV-29",
+        "expected": "preuve sans référence bloque la décision",
+        "detected": true
+      },
+      {
+        "id": "ADV-30",
+        "expected": "provenance inconnue",
+        "detected": true
+      },
+      {
+        "id": "ADV-31",
+        "expected": "confirmation globale hors enum",
+        "detected": true
+      },
+      {
+        "id": "ADV-32",
+        "expected": "identifiant dossier encore fictif",
+        "detected": true
+      },
+      {
+        "id": "ADV-33",
+        "expected": "sponsor encore fictif",
+        "detected": true
+      },
+      {
+        "id": "ADV-34",
+        "expected": "responsable métier encore fictif",
+        "detected": true
+      },
+      {
+        "id": "ADV-35",
+        "expected": "réviseur encore fictif",
+        "detected": true
+      },
+      {
+        "id": "ADV-36",
+        "expected": "revue antérieure aux preuves",
+        "detected": true
+      },
+      {
+        "id": "ADV-37",
+        "expected": "expiration non future",
+        "detected": true
+      },
+      {
+        "id": "ADV-38",
+        "expected": "arrêté antérieur à la borne 2000",
+        "detected": true
+      },
+      {
+        "id": "ADV-39",
+        "expected": "confirmation des données hors enum",
+        "detected": true
+      },
+      {
+        "id": "ADV-40",
+        "expected": "décision humaine hors enum",
+        "detected": true
+      },
+      {
+        "id": "ADV-41",
+        "expected": "incident actif hors enum",
+        "detected": true
+      },
+      {
+        "id": "ADV-42",
+        "expected": "restauration hors enum",
+        "detected": true
+      },
+      {
+        "id": "ADV-43",
+        "expected": "conséquence hors enum",
+        "detected": true
+      },
+      {
+        "id": "ADV-44",
+        "expected": "stabilité hors enum",
+        "detected": true
+      },
+      {
+        "id": "ADV-45",
+        "expected": "résultat outil hors enum",
+        "detected": true
+      },
+      {
+        "id": "ADV-46",
+        "expected": "transfert manuel hors enum",
+        "detected": true
+      },
+      {
+        "id": "ADV-47",
+        "expected": "test standard hors enum",
+        "detected": true
+      },
+      {
+        "id": "ADV-48",
+        "expected": "secours métier hors enum",
+        "detected": true
+      },
+      {
+        "id": "ADV-49",
+        "expected": "différenciation hors enum",
+        "detected": true
+      },
+      {
+        "id": "ADV-50",
+        "expected": "identifiant situation encore fictif",
+        "detected": true
+      },
+      {
+        "id": "ADV-51",
+        "expected": "identifiant et titre de situation trop courts",
+        "detected": true
+      },
+      {
+        "id": "ADV-52",
+        "expected": "référence de situation trop courte",
+        "detected": true
+      },
+      {
+        "id": "ADV-53",
+        "expected": "titre de situation encore fictif",
+        "detected": true
+      },
+      {
+        "id": "ADV-54",
+        "expected": "référence de situation dupliquée",
+        "detected": true
+      },
+      {
+        "id": "ADV-55",
+        "expected": "date de situation non entière",
+        "detected": true
+      },
+      {
+        "id": "ADV-56",
+        "expected": "volume de situation hors borne",
+        "detected": true
+      },
+      {
+        "id": "ADV-57",
+        "expected": "identifiant option vide",
+        "detected": true
+      },
+      {
+        "id": "ADV-58",
+        "expected": "identifiant et libellé option trop courts",
+        "detected": true
+      },
+      {
+        "id": "ADV-59",
+        "expected": "identifiant option dupliqué",
+        "detected": true
+      },
+      {
+        "id": "ADV-60",
+        "expected": "libellé option encore fictif",
+        "detected": true
+      },
+      {
+        "id": "ADV-61",
+        "expected": "action option hors enum",
+        "detected": true
+      },
+      {
+        "id": "ADV-62",
+        "expected": "confirmation option hors enum",
+        "detected": true
+      },
+      {
+        "id": "ADV-63",
+        "expected": "périmètre option hors enum",
+        "detected": true
+      },
+      {
+        "id": "ADV-64",
+        "expected": "résultat de test option hors enum",
+        "detected": true
+      },
+      {
+        "id": "ADV-65",
+        "expected": "niveau de preuve option hors enum",
+        "detected": true
+      },
+      {
+        "id": "ADV-66",
+        "expected": "écart option encore fictif",
+        "detected": true
+      },
+      {
+        "id": "ADV-67",
+        "expected": "ligne option partiellement non utilisée",
+        "detected": true
+      },
+      {
+        "id": "ADV-68",
+        "expected": "voie requise sans option correspondante",
+        "detected": true
+      },
+      {
+        "id": "ADV-69",
+        "expected": "identifiant TCO désaligné",
+        "detected": true
+      },
+      {
+        "id": "ADV-70",
+        "expected": "libellé TCO désaligné",
+        "detected": true
+      },
+      {
+        "id": "ADV-71",
+        "expected": "montant TCO supérieur à la borne",
+        "detected": true
+      },
+      {
+        "id": "ADV-72",
+        "expected": "montant TCO à plus de quatre décimales",
+        "detected": true
+      },
+      {
+        "id": "ADV-73",
+        "expected": "périmètre TCO hors enum",
+        "detected": true
+      },
+      {
+        "id": "ADV-74",
+        "expected": "domaine de preuve supprimé",
+        "detected": true
+      },
+      {
+        "id": "ADV-75",
+        "expected": "domaine de preuve dupliqué",
+        "detected": true
+      },
+      {
+        "id": "ADV-76",
+        "expected": "référence de preuve encore fictive",
+        "detected": true
+      },
+      {
+        "id": "ADV-77",
+        "expected": "référence de preuve dupliquée",
+        "detected": true
+      },
+      {
+        "id": "ADV-78",
+        "expected": "preuve postérieure à l’arrêté",
+        "detected": true
+      },
+      {
+        "id": "ADV-79",
+        "expected": "responsable de preuve encore fictif",
+        "detected": true
+      },
+      {
+        "id": "ADV-80",
+        "expected": "statut de preuve hors enum",
+        "detected": true
+      },
+      {
+        "id": "ADV-81",
+        "expected": "ligne baseline supprimée",
+        "detected": true
+      },
+      {
+        "id": "ADV-82",
+        "expected": "période baseline dupliquée",
+        "detected": true
+      },
+      {
+        "id": "ADV-83",
+        "expected": "ligne de règle supprimée",
+        "detected": true
+      },
+      {
+        "id": "ADV-84",
+        "expected": "identifiant de règle dupliqué",
+        "detected": true
+      },
+      {
+        "id": "ADV-85",
+        "expected": "ligne pilote supprimée",
+        "detected": true
+      },
+      {
+        "id": "ADV-86",
+        "expected": "date de pilote dupliquée",
+        "detected": true
+      },
+      {
+        "id": "ADV-87",
+        "expected": "observation provisoire non testée bloque l’export final",
+        "detected": true
+      },
+      {
+        "id": "ADV-88",
+        "expected": "suivi +30 après pilote supprimé",
+        "detected": true
+      },
+      {
+        "id": "ADV-89",
+        "expected": "suivi +90 après pilote supprimé",
+        "detected": true
+      },
+      {
+        "id": "ADV-90",
+        "expected": "suivi étiqueté +30 mais daté à +1",
+        "detected": true
+      },
+      {
+        "id": "ADV-91",
+        "expected": "suivi étiqueté +90 mais daté à +2",
+        "detected": true
+      },
+      {
+        "id": "ADV-92",
+        "expected": "moins de deux options actives",
+        "detected": true
+      },
+      {
+        "id": "ADV-93",
+        "expected": "source canonique supprimée",
+        "detected": true
+      },
+      {
+        "id": "ADV-94",
+        "expected": "taxonomie globale OBSERVER alignée avec le web",
+        "detected": true
+      },
+      {
+        "id": "ADV-95",
+        "expected": "taxonomie globale CORRIGER_STANDARDISER alignée avec le web",
+        "detected": true
+      },
+      {
+        "id": "ADV-96",
+        "expected": "expiration au-delà du maximum représentable par Excel",
+        "detected": true
+      },
+      {
+        "id": "SAB-01",
+        "target": "01_DOSSIER!G6",
+        "detected": true
+      },
+      {
+        "id": "SAB-02",
+        "target": "01_DOSSIER!G7",
+        "detected": true
+      },
+      {
+        "id": "SAB-03",
+        "target": "01_DOSSIER!G8",
+        "detected": true
+      },
+      {
+        "id": "SAB-04",
+        "target": "01_DOSSIER!G9",
+        "detected": true
+      },
+      {
+        "id": "SAB-05",
+        "target": "01_DOSSIER!G10",
+        "detected": true
+      },
+      {
+        "id": "SAB-06",
+        "target": "01_DOSSIER!G11",
+        "detected": true
+      },
+      {
+        "id": "SAB-07",
+        "target": "01_DOSSIER!G12",
+        "detected": true
+      },
+      {
+        "id": "SAB-08",
+        "target": "01_DOSSIER!G13",
+        "detected": true
+      },
+      {
+        "id": "SAB-09",
+        "target": "01_DOSSIER!G14",
+        "detected": true
+      },
+      {
+        "id": "SAB-10",
+        "target": "02_SITUATIONS!R6",
+        "detected": true
+      },
+      {
+        "id": "SAB-11",
+        "target": "02_SITUATIONS!S6",
+        "detected": true
+      },
+      {
+        "id": "SAB-12",
+        "target": "02_SITUATIONS!T6",
+        "detected": true
+      },
+      {
+        "id": "SAB-13",
+        "target": "02_SITUATIONS!R7",
+        "detected": true
+      },
+      {
+        "id": "SAB-14",
+        "target": "02_SITUATIONS!S7",
+        "detected": true
+      },
+      {
+        "id": "SAB-15",
+        "target": "02_SITUATIONS!T7",
+        "detected": true
+      },
+      {
+        "id": "SAB-16",
+        "target": "02_SITUATIONS!R8",
+        "detected": true
+      },
+      {
+        "id": "SAB-17",
+        "target": "02_SITUATIONS!S8",
+        "detected": true
+      },
+      {
+        "id": "SAB-18",
+        "target": "02_SITUATIONS!T8",
+        "detected": true
+      },
+      {
+        "id": "SAB-19",
+        "target": "03_BASELINE!I6",
+        "detected": true
+      },
+      {
+        "id": "SAB-20",
+        "target": "03_BASELINE!I7",
+        "detected": true
+      },
+      {
+        "id": "SAB-21",
+        "target": "03_BASELINE!I8",
+        "detected": true
+      },
+      {
+        "id": "SAB-22",
+        "target": "04_REGLES_EXCEPTIONS!I6",
+        "detected": true
+      },
+      {
+        "id": "SAB-23",
+        "target": "04_REGLES_EXCEPTIONS!I7",
+        "detected": true
+      },
+      {
+        "id": "SAB-24",
+        "target": "04_REGLES_EXCEPTIONS!I8",
+        "detected": true
+      },
+      {
+        "id": "SAB-25",
+        "target": "04_REGLES_EXCEPTIONS!I9",
+        "detected": true
+      },
+      {
+        "id": "SAB-26",
+        "target": "04_REGLES_EXCEPTIONS!I10",
+        "detected": true
+      },
+      {
+        "id": "SAB-27",
+        "target": "04_REGLES_EXCEPTIONS!I11",
+        "detected": true
+      },
+      {
+        "id": "SAB-28",
+        "target": "05_OPTIONS_TESTS!N6",
+        "detected": true
+      },
+      {
+        "id": "SAB-29",
+        "target": "06_TCO_12_36_60!I6",
+        "detected": true
+      },
+      {
+        "id": "SAB-30",
+        "target": "06_TCO_12_36_60!J6",
+        "detected": true
+      },
+      {
+        "id": "SAB-31",
+        "target": "06_TCO_12_36_60!K6",
+        "detected": true
+      },
+      {
+        "id": "SAB-32",
+        "target": "05_OPTIONS_TESTS!N7",
+        "detected": true
+      },
+      {
+        "id": "SAB-33",
+        "target": "06_TCO_12_36_60!I7",
+        "detected": true
+      },
+      {
+        "id": "SAB-34",
+        "target": "06_TCO_12_36_60!J7",
+        "detected": true
+      },
+      {
+        "id": "SAB-35",
+        "target": "06_TCO_12_36_60!K7",
+        "detected": true
+      },
+      {
+        "id": "SAB-36",
+        "target": "05_OPTIONS_TESTS!N8",
+        "detected": true
+      },
+      {
+        "id": "SAB-37",
+        "target": "06_TCO_12_36_60!I8",
+        "detected": true
+      },
+      {
+        "id": "SAB-38",
+        "target": "06_TCO_12_36_60!J8",
+        "detected": true
+      },
+      {
+        "id": "SAB-39",
+        "target": "06_TCO_12_36_60!K8",
+        "detected": true
+      },
+      {
+        "id": "SAB-40",
+        "target": "05_OPTIONS_TESTS!N9",
+        "detected": true
+      },
+      {
+        "id": "SAB-41",
+        "target": "06_TCO_12_36_60!I9",
+        "detected": true
+      },
+      {
+        "id": "SAB-42",
+        "target": "06_TCO_12_36_60!J9",
+        "detected": true
+      },
+      {
+        "id": "SAB-43",
+        "target": "06_TCO_12_36_60!K9",
+        "detected": true
+      },
+      {
+        "id": "SAB-44",
+        "target": "05_OPTIONS_TESTS!N10",
+        "detected": true
+      },
+      {
+        "id": "SAB-45",
+        "target": "06_TCO_12_36_60!I10",
+        "detected": true
+      },
+      {
+        "id": "SAB-46",
+        "target": "06_TCO_12_36_60!J10",
+        "detected": true
+      },
+      {
+        "id": "SAB-47",
+        "target": "06_TCO_12_36_60!K10",
+        "detected": true
+      },
+      {
+        "id": "SAB-48",
+        "target": "05_OPTIONS_TESTS!N11",
+        "detected": true
+      },
+      {
+        "id": "SAB-49",
+        "target": "06_TCO_12_36_60!I11",
+        "detected": true
+      },
+      {
+        "id": "SAB-50",
+        "target": "06_TCO_12_36_60!J11",
+        "detected": true
+      },
+      {
+        "id": "SAB-51",
+        "target": "06_TCO_12_36_60!K11",
+        "detected": true
+      },
+      {
+        "id": "SAB-52",
+        "target": "07_RISQUES_STOP!G6",
+        "detected": true
+      },
+      {
+        "id": "SAB-53",
+        "target": "07_RISQUES_STOP!G7",
+        "detected": true
+      },
+      {
+        "id": "SAB-54",
+        "target": "07_RISQUES_STOP!G8",
+        "detected": true
+      },
+      {
+        "id": "SAB-55",
+        "target": "07_RISQUES_STOP!G9",
+        "detected": true
+      },
+      {
+        "id": "SAB-56",
+        "target": "07_RISQUES_STOP!G11",
+        "detected": true
+      },
+      {
+        "id": "SAB-57",
+        "target": "08_PILOTE!J6",
+        "detected": true
+      },
+      {
+        "id": "SAB-58",
+        "target": "08_PILOTE!J7",
+        "detected": true
+      },
+      {
+        "id": "SAB-59",
+        "target": "08_PILOTE!J8",
+        "detected": true
+      },
+      {
+        "id": "SAB-60",
+        "target": "08_PILOTE!J9",
+        "detected": true
+      },
+      {
+        "id": "SAB-61",
+        "target": "08_PILOTE!J10",
+        "detected": true
+      },
+      {
+        "id": "SAB-62",
+        "target": "08_PILOTE!J11",
+        "detected": true
+      },
+      {
+        "id": "SAB-63",
+        "target": "08_PILOTE!J12",
+        "detected": true
+      },
+      {
+        "id": "SAB-64",
+        "target": "09_DECISION!I6",
+        "detected": true
+      },
+      {
+        "id": "SAB-65",
+        "target": "09_DECISION!I7",
+        "detected": true
+      },
+      {
+        "id": "SAB-66",
+        "target": "09_DECISION!I8",
+        "detected": true
+      },
+      {
+        "id": "SAB-67",
+        "target": "09_DECISION!I9",
+        "detected": true
+      },
+      {
+        "id": "SAB-68",
+        "target": "09_DECISION!I10",
+        "detected": true
+      },
+      {
+        "id": "SAB-69",
+        "target": "09_DECISION!I11",
+        "detected": true
+      },
+      {
+        "id": "SAB-70",
+        "target": "09_DECISION!I12",
+        "detected": true
+      },
+      {
+        "id": "SAB-71",
+        "target": "09_DECISION!I13",
+        "detected": true
+      },
+      {
+        "id": "SAB-72",
+        "target": "09_DECISION!I15",
+        "detected": true
+      },
+      {
+        "id": "SAB-73",
+        "target": "09_DECISION!I16",
+        "detected": true
+      },
+      {
+        "id": "SAB-74",
+        "target": "11_CONTROLES!G6",
+        "detected": true
+      },
+      {
+        "id": "SAB-75",
+        "target": "11_CONTROLES!G7",
+        "detected": true
+      },
+      {
+        "id": "SAB-76",
+        "target": "11_CONTROLES!G8",
+        "detected": true
+      },
+      {
+        "id": "SAB-77",
+        "target": "11_CONTROLES!G9",
+        "detected": true
+      },
+      {
+        "id": "SAB-78",
+        "target": "11_CONTROLES!G10",
+        "detected": true
+      },
+      {
+        "id": "SAB-79",
+        "target": "11_CONTROLES!G11",
+        "detected": true
+      },
+      {
+        "id": "SAB-80",
+        "target": "11_CONTROLES!G12",
+        "detected": true
+      },
+      {
+        "id": "SAB-81",
+        "target": "11_CONTROLES!G13",
+        "detected": true
+      },
+      {
+        "id": "SAB-82",
+        "target": "11_CONTROLES!G14",
+        "detected": true
+      },
+      {
+        "id": "SAB-83",
+        "target": "11_CONTROLES!G15",
+        "detected": true
+      },
+      {
+        "id": "SAB-84",
+        "target": "11_CONTROLES!G16",
+        "detected": true
+      },
+      {
+        "id": "SAB-85",
+        "target": "11_CONTROLES!G17",
+        "detected": true
+      },
+      {
+        "id": "SAB-86",
+        "target": "11_CONTROLES!G18",
+        "detected": true
+      },
+      {
+        "id": "SAB-87",
+        "target": "11_CONTROLES!G19",
+        "detected": true
+      },
+      {
+        "id": "SAB-88",
+        "target": "11_CONTROLES!G20",
+        "detected": true
+      },
+      {
+        "id": "SAB-89",
+        "target": "11_CONTROLES!G21",
+        "detected": true
+      },
+      {
+        "id": "SAB-90",
+        "target": "11_CONTROLES!G22",
+        "detected": true
+      },
+      {
+        "id": "SAB-91",
+        "target": "11_CONTROLES!G23",
+        "detected": true
+      },
+      {
+        "id": "SAB-92",
+        "target": "11_CONTROLES!G24",
+        "detected": true
+      },
+      {
+        "id": "SAB-93",
+        "target": "11_CONTROLES!G25",
+        "detected": true
+      },
+      {
+        "id": "SAB-94",
+        "target": "11_CONTROLES!G26",
+        "detected": true
+      },
+      {
+        "id": "SAB-95",
+        "target": "11_CONTROLES!G27",
+        "detected": true
+      },
+      {
+        "id": "SAB-96",
+        "target": "11_CONTROLES!G28",
+        "detected": true
+      },
+      {
+        "id": "SAB-97",
+        "target": "11_CONTROLES!G29",
+        "detected": true
+      }
+    ]
+  },
+  "archive": {
+    "frozenSheets": 13,
+    "filteredSheets": 13,
+    "dataValidationSheets": 7,
+    "macros": 0,
+    "externalLinks": 0
+  },
+  "secretScan": {
+    "detectors": 5,
+    "candidates": 0
+  },
+  "formulaErrors": [],
+  "previews": [
+    {
+      "sheet": "00_MODE_EMPLOI",
+      "filename": "01-00_MODE_EMPLOI.png",
+      "bytes": 106603,
+      "sha256": "5c76cbdf9c22e9f76343cbb5914d9a3c9bdd6ad2f9cb3145c740464b75c17efa"
+    },
+    {
+      "sheet": "01_DOSSIER",
+      "filename": "02-01_DOSSIER.png",
+      "bytes": 104721,
+      "sha256": "90758b6bf376f22789477871f1eddd3c343473bc50525a94d42f5dfb0e0c71ac"
+    },
+    {
+      "sheet": "02_SITUATIONS",
+      "filename": "03-02_SITUATIONS.png",
+      "bytes": 92550,
+      "sha256": "519ea3335b81c8e3abc9a05bf703ee04a5e4a193f196e3f65bba26b31b454573"
+    },
+    {
+      "sheet": "03_BASELINE",
+      "filename": "04-03_BASELINE.png",
+      "bytes": 50036,
+      "sha256": "8b6290487e65253cd9a23fe289dea4f6bf757038b5a08c7427c2720f9c8028c0"
+    },
+    {
+      "sheet": "04_REGLES_EXCEPTIONS",
+      "filename": "05-04_REGLES_EXCEPTIONS.png",
+      "bytes": 92052,
+      "sha256": "d88ae35607e328a03a89c73477b01e651248e245c26cc59bc6c5cc52f275e7b2"
+    },
+    {
+      "sheet": "05_OPTIONS_TESTS",
+      "filename": "06-05_OPTIONS_TESTS.png",
+      "bytes": 94745,
+      "sha256": "48904aabdc39d10cb7199acdcb6fc01e76fc441e7acf95ae8574c137b70bb090"
+    },
+    {
+      "sheet": "06_TCO_12_36_60",
+      "filename": "07-06_TCO_12_36_60.png",
+      "bytes": 74973,
+      "sha256": "f46de4681cb92660cbc9531860560d6def89565b2547034fd5dfb7767f93984c"
+    },
+    {
+      "sheet": "07_RISQUES_STOP",
+      "filename": "08-07_RISQUES_STOP.png",
+      "bytes": 67105,
+      "sha256": "99f4b6bd0a3d81dea55bfbf7708ccb7ca56e169ab313156e8b3c76786de0e109"
+    },
+    {
+      "sheet": "08_PILOTE",
+      "filename": "09-08_PILOTE.png",
+      "bytes": 130476,
+      "sha256": "37e4e7a21fa7194b9ab1cd431963f4f62934806d875aa105b7807f74ec2b8434"
+    },
+    {
+      "sheet": "09_DECISION",
+      "filename": "10-09_DECISION.png",
+      "bytes": 256454,
+      "sha256": "628f60047fe8c696310cd5dd525df76e087042b3d1a1f5c2e854d4cfde9c5171"
+    },
+    {
+      "sheet": "10_DICTIONNAIRE",
+      "filename": "11-10_DICTIONNAIRE.png",
+      "bytes": 127300,
+      "sha256": "ba788561f398a92edbdee95496ba1f471ee0db4df5ce94fed7fbafac4285e143"
+    },
+    {
+      "sheet": "11_CONTROLES",
+      "filename": "12-11_CONTROLES.png",
+      "bytes": 256825,
+      "sha256": "dc12351abced2bf3e92234bd29e1083ed2dcb442a0101939ad3881f97dc89a3b"
+    },
+    {
+      "sheet": "12_SOURCES",
+      "filename": "13-12_SOURCES.png",
+      "bytes": 987561,
+      "sha256": "213ec3d05af3b2959910b50b2db40b0c2a06e5052863aacf332b433d9ba5cb45"
+    }
+  ],
+  "recalculation": "Aucune recalculation Microsoft Excel réelle.",
+  "finalGate": "BLOQUE_EXEMPLE_FICTIF — remplacer et vérifier données, preuves, TCO, responsables et décision humaine."
+}

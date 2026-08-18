@@ -1,0 +1,272 @@
+[
+  {
+    "id": "LOV-GIT-SYNC",
+    "plateforme": "Lovable",
+    "capacité": "Exporter le code vers un nouveau dépôt GitHub et synchroniser dans les deux sens la branche active.",
+    "ce_qui_ne_suit_pas": "Les données, objets de stockage, secrets, fournisseurs d’identité, domaines et procédures d’exploitation.",
+    "preuve_a_executer": "Cloner le dépôt dans un environnement isolé, comparer le commit Lovable/GitHub, puis pousser un changement réversible sur la branche réellement synchronisée.",
+    "frontière": "Lovable continue de stocker et gérer le code dans sa plateforme ; GitHub est une copie synchronisée, pas la preuve que toute l’application a été transférée.",
+    "source": "LOV-GIT",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "LOV-DIRECT-DOWNLOAD",
+    "plateforme": "Lovable",
+    "capacité": "Télécharger directement la codebase depuis l’éditeur de code sur une offre payante.",
+    "ce_qui_ne_suit_pas": "L’historique Git complet, les services managés, la base, les fichiers, les secrets et la configuration du domaine.",
+    "preuve_a_executer": "Télécharger l’archive depuis le compte réel, calculer son hash, l’extraire dans un dossier temporaire et vérifier qu’elle contient les manifests et le lockfile attendus.",
+    "frontière": "La disponibilité dépend du plan et un ZIP constitue une photographie de fichiers, pas une reprise opérationnelle.",
+    "source": "LOV-GIT",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "LOV-EXTERNAL-HOSTING",
+    "plateforme": "Lovable",
+    "capacité": "Déployer l’application en dehors de l’hébergement Lovable.",
+    "ce_qui_ne_suit_pas": "Le pipeline, les variables, le CDN, la disponibilité, les logs, l’historique de déploiement, les previews et le support d’exploitation.",
+    "preuve_a_executer": "Produire un déploiement indépendant depuis un clone propre, documenter chaque variable et vérifier URL, logs, rollback et domaine.",
+    "frontière": "La portabilité du code transfère à l’équipe des responsabilités d’infrastructure et d’exploitation auparavant prises en charge par Lovable.",
+    "source": "LOV-DEPLOY",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "LOV-BACKEND-MIGRATION",
+    "plateforme": "Lovable Cloud",
+    "capacité": "Rejouer par migrations SQL une partie du schéma, notamment tables, index, politiques RLS, fonctions et triggers.",
+    "ce_qui_ne_suit_pas": "La configuration des fournisseurs d’authentification, les secrets, les données, les fichiers de stockage et les mots de passe utilisateurs.",
+    "preuve_a_executer": "Restaurer dans une cible vide le schéma, les données et les objets de stockage par procédures séparées, puis exécuter une réinitialisation de mot de passe sur un compte test.",
+    "frontière": "Cette capacité concerne une sortie de Lovable Cloud documentée ; elle ne garantit pas l’équivalence d’un backend tiers ni une migration invisible des comptes.",
+    "source": "LOV-DEPLOY",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "LOV-REMIX-BOUNDARY",
+    "plateforme": "Lovable",
+    "capacité": "Créer un remix d’un projet ou revenir à une version de projet.",
+    "ce_qui_ne_suit_pas": "Les secrets, les données de base, l’intégralité de l’historique et un retour coordonné de la base au même instant.",
+    "preuve_a_executer": "Comparer code, secrets, tables, volumes, fichiers et historique entre l’original et la copie ; modifier une donnée test puis vérifier qu’un rollback de projet ne la rembobine pas.",
+    "frontière": "Remix et rollback portent d’abord sur le projet ; ils ne constituent pas une sauvegarde cohérente de tous les actifs.",
+    "source": "LOV-FAQ",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "LOV-SECURITY-SCANS",
+    "plateforme": "Lovable",
+    "capacité": "Exécuter des contrôles de sécurité intégrés et, selon l’offre ou l’action, un Deep Scan.",
+    "ce_qui_ne_suit_pas": "Une certification, une garantie d’absence de vulnérabilité, des tests d’autorisation métier complets ou le blocage certain d’une publication risquée.",
+    "preuve_a_executer": "Conserver le rapport, vérifier les constats critiques, tester les accès avec plusieurs rôles et faire relire les écarts indépendamment.",
+    "frontière": "Un scanner automatisé aide au diagnostic mais ne remplace ni une analyse de risque ni des tests adaptés au contexte.",
+    "source": "LOV-SECURITY",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "LOV-STACK-BY-DATE",
+    "plateforme": "Lovable",
+    "capacité": "Générer les nouveaux projets annoncés depuis le 13 mai 2026 avec TanStack Start SSR, sous les exceptions décrites par l’éditeur.",
+    "ce_qui_ne_suit_pas": "La conversion automatique des projets historiques React/Vite ou la garantie qu’un projet concret utilise cette stack.",
+    "preuve_a_executer": "Lire package.json, le lockfile, la configuration du framework et les commandes réelles du dépôt au lieu d’inférer la stack depuis la marque.",
+    "frontière": "La date de création, les migrations et l’état concret du dépôt déterminent la technologie à reprendre.",
+    "source": "LOV-FAQ",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "LOV-PROJECT-TRANSFER",
+    "plateforme": "Lovable",
+    "capacité": "Transférer la propriété d’un projet à un membre du workspace ou déplacer le projet vers un autre workspace selon les droits disponibles.",
+    "ce_qui_ne_suit_pas": "Les comptes et actifs détenus chez GitHub, Supabase, un registrar, un fournisseur d’identité ou tout autre service tiers.",
+    "preuve_a_executer": "Vérifier le rôle du destinataire, exécuter le transfert sur le projet réel ou un témoin, puis contrôler séparément propriété, facturation et droits dans chaque compte tiers.",
+    "frontière": "Le transfert natif change la propriété ou le workspace du projet Lovable ; il ne transfère pas automatiquement les comptes externes ni leurs contrats.",
+    "source": "LOV-PROJECT-TRANSFER",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "BOLT-ZIP-EXPORT",
+    "plateforme": "Bolt",
+    "capacité": "Exporter et télécharger un dossier ZIP des fichiers du projet.",
+    "ce_qui_ne_suit_pas": "Les données, domaines, intégrations, secrets, comptes, historique complet et preuve de reconstruction.",
+    "preuve_a_executer": "Télécharger, hasher, extraire dans un environnement isolé, installer avec les versions figées, construire et lancer les parcours critiques.",
+    "frontière": "Le ZIP est une sauvegarde de fichiers ; sa présence ne prouve pas l’autonomie du produit.",
+    "source": "BOLT-ROLLBACK",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "BOLT-PROJECT-TRANSFER",
+    "plateforme": "Bolt",
+    "capacité": "Transférer un projet soit vers un autre workspace que le propriétaire contrôle, avec les connexions Bolt Database, GitHub et Supabase conservées, soit vers un autre utilisateur avec des effets différents.",
+    "ce_qui_ne_suit_pas": "Vers un autre utilisateur, GitHub est retiré à l’acceptation, le domaine personnalisé est retiré et la propriété du compte ou projet Supabase doit être transférée séparément.",
+    "preuve_a_executer": "Choisir explicitement transfert de workspace ou transfert d’utilisateur, relever avant et après les propriétaires Bolt, GitHub, Supabase et domaine, puis tester permissions, déploiement et parcours sur le compte cible.",
+    "frontière": "Vers un autre utilisateur, les réglages Supabase peuvent suivre sans transférer la propriété externe ; un domaine acheté via Bolt peut ne pas être reconnectable avant son expiration. Le projet et les comptes tiers restent des actifs distincts.",
+    "source": "BOLT-PROJECTS",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "BOLT-PROJECT-DUPLICATE",
+    "plateforme": "Bolt",
+    "capacité": "Dupliquer le code et les réglages d’un projet, hors configurations GitHub et Netlify.",
+    "ce_qui_ne_suit_pas": "Les données d’une Bolt Database, les réglages GitHub/Netlify et l’historique de chat, qui est toujours effacé lors d’une duplication.",
+    "preuve_a_executer": "Comparer les fichiers et réglages, compter les lignes de chaque table, vérifier la base cible et rejouer les parcours après reconnexion des intégrations.",
+    "frontière": "Pour Bolt Database, la structure peut être copiée sans les données ; pour Supabase, le choix de rester sur la même base crée un risque de modifications concurrentes.",
+    "source": "BOLT-PROJECTS",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "BOLT-VERSION-ROLLBACK",
+    "plateforme": "Bolt",
+    "capacité": "Prévisualiser et restaurer une version antérieure du projet via l’historique.",
+    "ce_qui_ne_suit_pas": "L’état de la base Bolt ou Supabase au même instant.",
+    "preuve_a_executer": "Créer une donnée test après le point de restauration, restaurer la version du projet, puis vérifier et documenter l’état inchangé de la base.",
+    "frontière": "Le retour arrière du projet et celui des données sont deux opérations distinctes à orchestrer.",
+    "source": "BOLT-ROLLBACK",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "BOLT-SUPABASE-CONNECT",
+    "plateforme": "Bolt + Supabase",
+    "capacité": "Connecter un projet Supabase existant ou nouveau à un projet Bolt compatible.",
+    "ce_qui_ne_suit_pas": "Les données déjà présentes dans une Bolt Database lorsque sa connexion est remplacée.",
+    "preuve_a_executer": "Exporter et restaurer la base existante avant connexion, comparer les chaînes de connexion et vérifier les volumes et parcours après bascule.",
+    "frontière": "La documentation avertit que remplacer la connexion Bolt Database par Supabase peut entraîner une perte de données.",
+    "source": "BOLT-SUPABASE",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "BOLT-SUPABASE-CLAIM",
+    "plateforme": "Bolt + Supabase",
+    "capacité": "Revendiquer une Bolt Database dans Supabase pour accéder à des fonctions de gestion avancées.",
+    "ce_qui_ne_suit_pas": "La propriété de l’organisation Supabase ou l’autorisation nécessaire pour exécuter l’opération.",
+    "preuve_a_executer": "Vérifier dans Supabase l’organisation cible, le rôle Owner de la personne habilitée et la présence de la base après la revendication.",
+    "frontière": "Le rôle propriétaire est contrôlé par Supabase, pas par Bolt ; un accès au projet Bolt ne suffit pas.",
+    "source": "BOLT-SUPABASE",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "V0-GITHUB-SOURCE",
+    "plateforme": "v0",
+    "capacité": "Utiliser le dépôt GitHub connecté comme source de vérité, avec une branche dédiée par chat, des commits automatiques et une pull request vers main.",
+    "ce_qui_ne_suit_pas": "Une copie de secours distincte conservée par v0, les variables, domaines, données et intégrations du projet.",
+    "preuve_a_executer": "Cloner le dépôt, vérifier branche, commit, protections et sauvegarde ; tester la procédure de restauration du dépôt sans le supprimer.",
+    "frontière": "Après connexion, supprimer le dépôt GitHub peut rendre le code irrécupérable car v0 n’en conserve pas une copie séparée.",
+    "source": "V0-GITHUB",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "V0-SHARED-PROJECT",
+    "plateforme": "v0 + Vercel",
+    "capacité": "Regrouper plusieurs chats dans une même application partageant hébergement, déploiements, domaines et variables d’environnement.",
+    "ce_qui_ne_suit_pas": "Une isolation automatique de la production entre les chats ou branches.",
+    "preuve_a_executer": "Lister tous les chats reliés, les droits de publication, la cible Vercel et la politique de déploiement ; publier seulement dans un environnement témoin.",
+    "frontière": "Une publication depuis n’importe quel chat lié peut mettre à jour la même URL de production.",
+    "source": "V0-PROJECTS",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "V0-BRANCH-NEW-PROJECT",
+    "plateforme": "v0 + Vercel",
+    "capacité": "Dupliquer une branche dans le même projet ou démarrer un nouveau projet.",
+    "ce_qui_ne_suit_pas": "Dans un nouveau projet, la configuration Vercel, les intégrations, les variables et les déploiements de l’ancien projet.",
+    "preuve_a_executer": "Créer une branche témoin dans chaque mode, comparer variables, intégrations, domaines et cible de déploiement avant toute fusion.",
+    "frontière": "Continuer dans le même projet conserve le contexte partagé ; choisir un nouveau projet repart sans la configuration existante.",
+    "source": "V0-GITHUB",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "V0-SCOPE-TRANSFER",
+    "plateforme": "v0 + Vercel",
+    "capacité": "Transférer des chats v0 entre un scope personnel et un scope d’équipe, ou entre équipes, selon les rôles et droits disponibles.",
+    "ce_qui_ne_suit_pas": "Les permissions GitHub, comptes de services tiers et leurs données ; le projet Vercel associé ne suit que lorsque l’expéditeur est Owner de l’équipe actuelle.",
+    "preuve_a_executer": "Vérifier scope, rôle Owner, projet Vercel lié et permissions GitHub avant le transfert, puis contrôler dans la cible chats, déploiements, variables, domaines et intégrations.",
+    "frontière": "Le transfert des chats v0 et celui du projet Vercel sont conditionnels ; les comptes et autorisations externes doivent être transférés ou recréés séparément.",
+    "source": "V0-TRANSFER",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "SUPABASE-PROJECT-TRANSFER",
+    "plateforme": "Supabase",
+    "capacité": "Transférer un projet entre organisations Supabase lorsque les rôles et prérequis documentés sont satisfaits.",
+    "ce_qui_ne_suit_pas": "Une migration de région, les comptes tiers, une garantie d’absence d’interruption ni le maintien automatique de fonctions ou droits liés au plan source.",
+    "preuve_a_executer": "Vérifier Owner dans l’organisation source, appartenance à la cible, absence d’intégration GitHub active, rôles projet et log drains, puis tester après transfert plan, droits, fonctions et disponibilité.",
+    "frontière": "Le transfert peut connaître une courte indisponibilité et modifier les fonctions ou permissions disponibles selon l’organisation cible ; il ne remplace pas une migration de région.",
+    "source": "SUPABASE-TRANSFER",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "SUPABASE-BACKUP-STORAGE",
+    "plateforme": "Supabase",
+    "capacité": "Sauvegarder et restaurer la base PostgreSQL selon les mécanismes et l’offre disponibles.",
+    "ce_qui_ne_suit_pas": "Les objets de Storage API ; la sauvegarde de base n’en conserve que les métadonnées.",
+    "preuve_a_executer": "Exporter séparément base et objets, restaurer dans un projet isolé, puis comparer tables, comptes, buckets, nombres d’objets et hashes d’un échantillon.",
+    "frontière": "Une sauvegarde de base réussie ne constitue pas une sauvegarde complète de l’application.",
+    "source": "SUPABASE-BACKUPS",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "SUPABASE-RESTORE-DOWNTIME",
+    "plateforme": "Supabase",
+    "capacité": "Restaurer une sauvegarde de base sur un projet selon les options disponibles.",
+    "ce_qui_ne_suit_pas": "Une reprise instantanée, sans indisponibilité, ni la validation des services externes après restauration.",
+    "preuve_a_executer": "Chronométrer une restauration sur une cible isolée, mesurer perte de données, indisponibilité et remise en service de l’authentification, des fonctions et intégrations.",
+    "frontière": "La restauration peut provoquer une indisponibilité ; RPO et RTO doivent être testés et non déduits de la fréquence de sauvegarde.",
+    "source": "SUPABASE-BACKUPS",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "SUPABASE-CUSTOM-ROLE-PASSWORDS",
+    "plateforme": "Supabase",
+    "capacité": "Exporter le schéma, les rôles et les données par les outils documentés.",
+    "ce_qui_ne_suit_pas": "Les mots de passe des rôles personnalisés avec LOGIN.",
+    "preuve_a_executer": "Inventorier les rôles LOGIN, restaurer dans une cible isolée, définir de nouveaux mots de passe de manière sécurisée et tester chaque connexion nécessaire.",
+    "frontière": "Le dump et la restauration demandent des gestes manuels pour certains rôles ; leur succès SQL ne prouve pas l’accès applicatif.",
+    "source": "SUPABASE-BACKUPS",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "SUPABASE-API-KEYS",
+    "plateforme": "Supabase",
+    "capacité": "Utiliser une clé publishable dans un client public protégé par RLS et une clé secret dans un backend contrôlé.",
+    "ce_qui_ne_suit_pas": "La sécurité des politiques RLS, la rotation des appelants oubliés ou la compatibilité automatique avec les anciennes clés anon/service_role.",
+    "preuve_a_executer": "Rechercher toutes les clés et tous les appelants, tester les droits avec des comptes ordinaires, migrer progressivement, tourner les secrets et vérifier les journaux.",
+    "frontière": "Une clé secret ne doit jamais être exposée au navigateur et peut contourner RLS ; les clés legacy sont annoncées comme dépréciées fin 2026.",
+    "source": "SUPABASE-KEYS",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "NPM-CLEAN-INSTALL",
+    "plateforme": "npm 12",
+    "capacité": "Effectuer une installation propre avec un package-lock cohérent, en supprimant node_modules et sans réécrire package.json ou le lockfile.",
+    "ce_qui_ne_suit_pas": "La version de Node/npm, les options .npmrc ayant façonné le lockfile, la licence, la sûreté ou la capacité de build.",
+    "preuve_a_executer": "Consigner Node, npm, packageManager et .npmrc, exécuter npm ci dans un environnement isolé, puis lancer build et tests sans cache.",
+    "frontière": "npm ci échoue sur un écart manifest/lockfile mais sa réussite ne suffit pas à prouver une reconstruction fidèle de la production.",
+    "source": "NPM-CI",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "NPM-INSTALL-CONTROLS",
+    "plateforme": "npm 12",
+    "capacité": "Bloquer par défaut les dépendances Git et URL distante non autorisées et contrôler les scripts d’installation par politique.",
+    "ce_qui_ne_suit_pas": "La revue des dépendances déjà admises, des scripts autorisés, des tarballs du registre ou des composants hors npm.",
+    "preuve_a_executer": "Lire .npmrc et allowScripts, examiner chaque exception, exécuter l’installation sans secret ni donnée réelle et archiver les journaux.",
+    "frontière": "Les valeurs par défaut dépendent de la version npm ; elles doivent être enregistrées au lieu d’être supposées.",
+    "source": "NPM-CI",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "NPM-SBOM-EXPORT",
+    "plateforme": "npm",
+    "capacité": "Générer un SBOM au format SPDX ou CycloneDX à partir de l’arbre de dépendances.",
+    "ce_qui_ne_suit_pas": "Une décision de licence, un audit de vulnérabilité, les services externes ou la preuve que cet arbre correspond à l’artefact déployé.",
+    "preuve_a_executer": "Générer les deux formats sur le build gelé, valider le JSON, archiver le hash et relier le document au commit et à l’artefact.",
+    "frontière": "Le SBOM est un inventaire daté dont la complétude dépend du projet et de l’environnement observés.",
+    "source": "NPM-SBOM",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "GITHUB-BUILD-ATTESTATION",
+    "plateforme": "GitHub Actions",
+    "capacité": "Générer une attestation reliant un artefact à un workflow, un dépôt, un commit, un événement et un contexte de build.",
+    "ce_qui_ne_suit_pas": "La correction fonctionnelle, la sécurité du code, la fidélité des données ou l’identité de l’artefact effectivement servi si elle n’est pas comparée.",
+    "preuve_a_executer": "Générer l’attestation après le build, vérifier cryptographiquement l’artefact avec GitHub CLI et comparer son digest à celui déployé.",
+    "frontière": "La disponibilité dépend du plan et du type de dépôt ; une attestation non vérifiée ou non reliée au binaire servi ne suffit pas.",
+    "source": "GITHUB-ATTEST",
+    "checkedAt": "2026-07-28"
+  }
+]

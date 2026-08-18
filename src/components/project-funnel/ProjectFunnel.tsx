@@ -87,6 +87,18 @@ type ProjectKind = {
   text: string;
 };
 
+type GuideEntryContext = {
+  projectKind: "audit" | "ads" | "outil" | "saas";
+  label: string;
+  serviceLabel:
+    | "Audit technique"
+    | "Publicité / tracking"
+    | "Outil interne"
+    | "SaaS / application métier";
+  intentLabel?: string;
+  prefillCurrentSituation?: string;
+};
+
 type FunnelState = {
   projectKinds: ProjectKindId[];
   objectives: string[];
@@ -134,6 +146,87 @@ const INITIAL_STATE: FunnelState = {
   consent: false,
   honeypot: "",
 };
+
+export function readGuideEntryContext(search: string): GuideEntryContext | null {
+  const params = new URLSearchParams(search);
+  if (
+    params.get("service") === "audit" &&
+    params.get("source") === "guide-audit-reprise-site"
+  ) {
+    return {
+      projectKind: "audit",
+      label: "Audit technique avant reprise d’un site",
+      serviceLabel: "Audit technique",
+    };
+  }
+  if (
+    params.get("service") === "ads" &&
+    params.get("source") === "guide-prix-gestion-google-ads"
+  ) {
+    return {
+      projectKind: "ads",
+      label: "Budget et périmètre Google Ads",
+      serviceLabel: "Publicité / tracking",
+    };
+  }
+  if (
+    params.get("service") === "outils-internes" &&
+    params.get("source") === "guide-automatiser-processus"
+  ) {
+    return {
+      projectKind: "outil",
+      label: "Quel processus automatiser en premier ?",
+      serviceLabel: "Outil interne",
+      intentLabel:
+        "Votre demande reste orientée vers la relecture d’un dossier d’automatisation déjà mesuré.",
+      prefillCurrentSituation:
+        "Je souhaite faire relire un dossier d’automatisation déjà mesuré avant de choisir entre simplification, fonction existante, connecteur, assistance et développement sur mesure.",
+    };
+  }
+  if (
+    params.get("service") === "outils-internes" &&
+    params.get("source") === "guide-excel-application"
+  ) {
+    return {
+      projectKind: "outil",
+      label: "Transformer Excel en application métier",
+      serviceLabel: "Outil interne",
+      intentLabel:
+        "Votre demande reste orientée vers la relecture d’un dossier Excel déjà testé, sans présumer qu’un développement sur mesure est nécessaire.",
+      prefillCurrentSituation:
+        "Je souhaite faire relire une comparaison entre maintien ou fiabilisation d’Excel, logiciel standard, plateforme nommée et développement sur mesure. J’ai documenté les utilisateurs, les opérations bloquantes, les preuves, les coûts et les inconnues.",
+    };
+  }
+  if (
+    params.get("service") === "saas" &&
+    params.get("source") === "guide-validation-saas"
+  ) {
+    return {
+      projectKind: "saas",
+      label: "Valider une idée SaaS avant de développer",
+      serviceLabel: "SaaS / application métier",
+      intentLabel:
+        "Votre demande reste orientée vers la relecture d’un dossier de validation déjà mesuré.",
+      prefillCurrentSituation:
+        "Je souhaite faire relire un dossier de validation SaaS avant de décider entre un autre test, un outil existant, un pilote borné et un MVP limité. J’ai noté le segment, les faits, les contradictions, l’offre, le seuil, le résultat et le verrou restant.",
+    };
+  }
+  if (
+    params.get("service") === "saas" &&
+    params.get("source") === "guide-facturation-saas"
+  ) {
+    return {
+      projectKind: "saas",
+      label: "Facturation et abonnements SaaS",
+      serviceLabel: "SaaS / application métier",
+      intentLabel:
+        "Votre demande reste orientée vers la relecture d’un cycle de facturation déjà documenté.",
+      prefillCurrentSituation:
+        "Je souhaite faire relire un cycle de facturation SaaS déjà documenté. J’ai réuni une offre, une facture, un paiement, un cas d’échec, la règle de droits d’accès, les écarts de rapprochement et les inconnues fiscales ou contractuelles.",
+    };
+  }
+  return null;
+}
 
 type DraftStorageEnvelope = {
   version: typeof DRAFT_STORAGE_VERSION;
@@ -1980,6 +2073,8 @@ export function ProjectFunnel() {
   // match the client" warning on data that lives in sessionStorage.
   const [state, setState] = useState<FunnelState>(INITIAL_STATE);
   const [hydrated, setHydrated] = useState(false);
+  const [guideEntryContext, setGuideEntryContext] =
+    useState<GuideEntryContext | null>(null);
   const [draftStorageEnabled, setDraftStorageEnabled] = useState(false);
   const skipInitialPersistRef = useRef(false);
   const draftExpiryTimerRef = useRef<number | null>(null);
@@ -2034,20 +2129,36 @@ export function ProjectFunnel() {
       purgeLegacyProjectDrafts(window.localStorage);
 
       const raw = window.sessionStorage.getItem(DRAFT_STORAGE_KEY);
+      let restoredState: FunnelState | null = null;
       if (raw) {
         const draft = readStoredDraft(JSON.parse(raw), Date.now());
         if (!draft) {
           window.sessionStorage.removeItem(DRAFT_STORAGE_KEY);
         } else {
-          const restoredState = { ...draft.state, projectKinds: [] };
-          // Toujours arriver sur la page avec aucun service coché — l'utilisateur
-          // doit re-sélectionner explicitement, même s'il avait sauvegardé un brouillon.
+          restoredState = { ...draft.state, projectKinds: [] };
+          // Un brouillon seul n'impose jamais un ancien service. Un contexte
+          // explicite et reconnu dans l'URL peut ensuite présélectionner le
+          // service correspondant, que l'utilisateur reste libre de modifier.
           skipInitialPersistRef.current = true;
-          setState(restoredState);
           setDraftStorageEnabled(true);
           scheduleDraftExpiry(draft.savedAt);
         }
       }
+
+      const entryContext = readGuideEntryContext(window.location.search);
+      if (entryContext) {
+        setGuideEntryContext(entryContext);
+        const stateBeforeContext = restoredState ?? INITIAL_STATE;
+        restoredState = {
+          ...stateBeforeContext,
+          projectKinds: [entryContext.projectKind],
+          currentSituation:
+            stateBeforeContext.currentSituation.trim() ||
+            entryContext.prefillCurrentSituation ||
+            "",
+        };
+      }
+      if (restoredState) setState(restoredState);
     } catch {
       // JSON invalide : on tente de purger la valeur. En navigation privée,
       // le storage peut lui-même être indisponible, auquel cas on ignore.
@@ -2356,6 +2467,14 @@ export function ProjectFunnel() {
             Pas de devis automatique, pas de robot : chaque brief est lu par notre
             équipe. Nous visons une réponse le prochain jour ouvré, sans délai garanti.
           </p>
+          {guideEntryContext ? (
+            <p className="pf-entry-context" role="status">
+              Vous arrivez du guide « {guideEntryContext.label} » : le service
+              {" "}{guideEntryContext.serviceLabel} est présélectionné. Vous
+              pouvez modifier ce choix.{" "}
+              {guideEntryContext.intentLabel ?? ""}
+            </p>
+          ) : null}
           <a
             href="#brief"
             className="pf-primary pf-landing-cta"

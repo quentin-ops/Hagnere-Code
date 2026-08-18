@@ -1,6 +1,11 @@
-5deebc3deb551bd8eac2cd2916fcd1f51c97e1082f5e6c83618212e53770bb78  docs/research/tma-ou-regie.md
-ad92092d91797b84c085eae57838a2646f98307990afcfc30206ff97fe8a5528  src/app/guides/tma-ou-regie/page.tsx
-fa384a90a137d17f755911af2595e1fbd5cff01bf42d97a81f72a0bbe45e7ac9  src/app/guides/tma-ou-regie/opengraph-image.tsx
-f3d98f77c3af3e18fb79687c577a2707479609212a9f0c3bd4235b62087a9dbb  src/lib/guides.ts
-b1519c0f8dd4047bc45d9d224c7ee503e723ea773774a5dc8325550abedde1f9  src/app/guides/contrat-tma-application/page.tsx
-673589213ed16a1b3ec1a82e11b1958ccc93b3e471ea4f837d8be1fa1fa0c3b1  src/lib/guide-human-language.test.ts
+76ee442fc7de1492e7584bd1fe7c44f6499259c0be6613fd122f3b5ab4e71b65  docs/research/tma-ou-regie.md
+922bc807a8daf6a88094f4b91f08135eca428a94711c6ff767760c2cb0df0198  docs/audits/giga-audit-2026-07-24/research/tma-ou-regie-deep-dive.md
+93369100273dd2b1273584608149891fd21420947328576091b36750c6ddae1b  src/app/guides/tma-ou-regie/page.tsx
+97bda53208116bac3382eb5a12e1c838b5048c77912fc4ff45c9cbf8f57d9301  src/app/guides/tma-ou-regie/opengraph-image.tsx
+6eb7cc68d2babc59d319ae20ad53f170f727ca616e8463abc0d7994e61f6cc15  src/lib/guides.ts
+bb10c76df7a76af76628723573057e710c9290fa32548e1e7542c0182a591500  src/lib/guide-human-language.test.ts
+f7f7703079e038768cdebad46ecf80fe52ada1469b7d6eb80ba0e6d0ddfedb62  src/lib/tma-tco.ts
+64d554ba531532140b72e1c6951eea01cb2f1e4e44adcda6b9265efd2ccd03b4  src/lib/tma-tco.test.ts
+d8e47d95a43b124eff352ce9cffbbcd385ea10db62039894acb6e9e9eb57058b  src/components/guides/TmaTcoCalculator.tsx
+e1d9220e6a63aee73ddd736a74dd5507c0919b9f929a070ce0842403458bab57  src/components/guides/TmaTcoCalculator.test.tsx
+e1a0de775b07b8396aac2a9bb7c2f9f61b99987a682b7390f9db8887958b4f29  public/ressources/comparateur-tma-regie-tco.csv

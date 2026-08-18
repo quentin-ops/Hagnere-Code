@@ -179,7 +179,7 @@ export default function OgImage() {
 
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
         {[
-          "Observer une semaine",
+          "Observer un cycle réel",
           "Comparer les solutions",
           "Tester avant d’investir",
           "Savoir quand attendre",

@@ -1,0 +1,17 @@
+e9c649e02f6be29b549f9ef1eed5ac57acd39e90e1691cafb03961aba03833ca  docs/audits/giga-audit-2026-07-24/reviews/cout-maintenance-site-internet-p3-2026-07-25-r1.md
+6bfeb786d0d1b9d426da37d067b496c1feccc1127d4168f608119468afd04377  docs/audits/giga-audit-2026-07-24/reviews/cout-maintenance-site-internet-p3-2026-07-25-r2.md
+e4a18ed7a16b2a4c64a8ee99a4145e4f27566cf6a26ba254c6de25ac918e0228  docs/research/manifests/cout-maintenance-site-internet-p2-2026-07-25-r2.sha256
+118964b97a4945b1b82ee4711fb030357b022e7327cbf077acdbcb7405929595  docs/audits/giga-audit-2026-07-24/reviews/cout-maintenance-site-internet-p2-2026-07-25-r2.md
+a3e3271116513b473da77ae75a0f31ba4936d7cd6d17e3ed74deaf0d19d39f42  docs/research/cout-maintenance-site-internet.md
+f682ba34d5073b32436e62dfb5c75bc180c4304050356c5eda509c944f4e82a7  docs/research/cout-maintenance-site-internet-world-countercheck-2026-07-25.md
+dcc0b972cc38de60ecd119b4a8c916d3077b1413ddacf5ae1eff3ce305c41792  src/app/guides/cout-maintenance-site-internet/page.tsx
+d49534dff1837710dba26177d4f6974cd20d83228ea44f50a3bd344b809997d3  src/app/guides/cout-maintenance-site-internet/opengraph-image.tsx
+25b730992a33845cfdf38b9c5f864b8daf99511f43ea4f37b33ee27d60a2e2a2  src/components/guides/WebsiteMaintenanceDecisionDossier.tsx
+57d23491844c82aebf2a2ed6ae780783f6753209f805441f48229656a5b2be8a  src/components/guides/WebsiteMaintenanceDecisionDossier.test.tsx
+5f478dbc46bc2eeb450858ae1d18fce8923551403b9ae6f0db6a9efec8cb7b6e  src/lib/website-maintenance-decision.ts
+19bda83a6dd071690492f2a2cdf5c005baf69b8d056400ac78c992b5c91b51fa  src/lib/website-maintenance-decision.test.ts
+6fcf482a96aa3f3a037f04a2ca9f7ef75db96717fe8294bf28799d4d344900c4  src/lib/website-maintenance-guide-quality.test.ts
+3f8ac4824fdbe34c6e20cafc8cbba4c29106c1b57caa7c59c51cbd43fda053af  src/lib/guides.ts
+b5ce44c4560f708ce7dee721c07f79a03aeee37e3865f7bcb22334cb52b8a930  src/lib/guides.test.ts
+8e5b157efc141c3eb2b9a958a363bb14b5e3537b45289ede1829367a29a93576  src/lib/structured-data.test.ts
+da6f5f5ece4fd4d6ec0dd11a40eb37cb6d66e8911a1a7c907a2c7c36c03503a4  docs/audits/giga-audit-2026-07-24/reviews/cout-maintenance-site-internet-p2-2026-07-25-r3.md

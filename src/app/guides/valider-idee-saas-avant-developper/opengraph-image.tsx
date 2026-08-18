@@ -7,11 +7,11 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const gates = [
-  { label: "Problème fréquent", color: "#38bdf8" },
-  { label: "Acheteur", color: "#818cf8" },
-  { label: "Entretiens", color: "#a78bfa" },
-  { label: "Test manuel", color: "#c084fc" },
-  { label: "Prix", color: "#34d399" },
+  { label: "Problème réel", color: "#38bdf8" },
+  { label: "Acheteur engagé", color: "#818cf8" },
+  { label: "Accès au marché", color: "#a78bfa" },
+  { label: "Solution viable", color: "#c084fc" },
+  { label: "Usage répété", color: "#34d399" },
 ];
 
 export default function OgImage() {
@@ -107,7 +107,7 @@ export default function OgImage() {
               color: "#c4b5fd",
             }}
           >
-            Un plan de terrain sur 14 jours
+            Preuves · STOP · pivot · pilote
           </div>
         </div>
 
@@ -190,9 +190,9 @@ export default function OgImage() {
 
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
         {[
-          "Parler à de vrais prospects",
-          "Tester sans logiciel",
-          "Développer · modifier · arrêter",
+          "8 verrous séparés",
+          "Journal local + CSV",
+          "Développer · pivoter · arrêter",
         ].map((label) => (
           <div
             key={label}

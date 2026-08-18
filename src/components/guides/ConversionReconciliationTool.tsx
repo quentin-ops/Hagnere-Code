@@ -110,6 +110,46 @@ function displayRate(
   return `${rateFormatter.format(value)} %`;
 }
 
+function downloadLocalText(filename: string, content: string) {
+  const objectUrl = URL.createObjectURL(
+    new Blob([content], { type: "text/plain;charset=utf-8" }),
+  );
+  const link = document.createElement("a");
+  link.href = objectUrl;
+  link.download = filename;
+  link.rel = "noopener";
+  document.body.append(link);
+
+  try {
+    link.click();
+  } finally {
+    link.remove();
+    URL.revokeObjectURL(objectUrl);
+  }
+}
+
+function safeFilenameSegment(value: string, fallback: string) {
+  return (
+    value
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 48) || fallback
+  );
+}
+
+function latestCaseSheetDate(sheet: ConversionCaseSheet) {
+  const dates = [
+    ...CONVERSION_STAGES.map((stage) => sheet.stages[stage.id].date),
+    ...CASE_IMPORT_CHECKS.map((check) => sheet.importChecks[check.id].date),
+    sheet.margin.date,
+  ].filter((value) => /^\d{4}-\d{2}-\d{2}$/.test(value));
+
+  return dates.sort().at(-1) ?? "sans-date";
+}
+
 export function ConversionReconciliationTool() {
   const [context, setContext] =
     useState<ConversionReconciliationContext>(EMPTY_CONTEXT);
@@ -257,6 +297,29 @@ export function ConversionReconciliationTool() {
     }
   }
 
+  function downloadSummary() {
+    if (!summaryUsable) {
+      setSummaryFeedback(
+        "Complétez les dates et corrigez les nombres signalés avant de télécharger la synthèse.",
+      );
+      return;
+    }
+
+    try {
+      downloadLocalText(
+        `registre-conversions-${safeFilenameSegment(context.label, "sans-libelle")}-${context.startDate}-${context.endDate}-v1.txt`,
+        formatConversionReconciliationSummary(context, volumes, result),
+      );
+      setSummaryFeedback(
+        "Synthèse téléchargée en fichier texte. Elle reste sur votre appareil.",
+      );
+    } catch {
+      setSummaryFeedback(
+        "Le téléchargement local a échoué. Vous pouvez encore copier la synthèse affichée.",
+      );
+    }
+  }
+
   async function copyCaseSheet() {
     setCaseCopyAttempted(true);
     if (!caseValidation.valid) {
@@ -275,6 +338,30 @@ export function ConversionReconciliationTool() {
     } catch {
       setCaseFeedback(
         "La copie automatique de la fiche a échoué. Les informations restent affichées.",
+      );
+    }
+  }
+
+  function downloadCaseSheet() {
+    setCaseCopyAttempted(true);
+    if (!caseValidation.valid) {
+      setCaseFeedback(
+        caseValidation.issues[0]?.message ?? "Complétez la fiche.",
+      );
+      return;
+    }
+
+    try {
+      downloadLocalText(
+        `fiche-preuve-conversion-${safeFilenameSegment(caseSheet.caseId, "sans-reference")}-${latestCaseSheetDate(caseSheet)}-v1.txt`,
+        formatConversionCaseSheet(caseSheet),
+      );
+      setCaseFeedback(
+        "Fiche téléchargée en fichier texte. Elle reste sur votre appareil.",
+      );
+    } catch {
+      setCaseFeedback(
+        "Le téléchargement local a échoué. Vous pouvez encore copier la fiche affichée.",
       );
     }
   }
@@ -313,7 +400,8 @@ export function ConversionReconciliationTool() {
           Les six volumes préremplis forment un exemple fictif. Remplacez-les
           par vos nombres, sans inscrire de nom, d’e-mail ni de téléphone. Une
           case vide signifie « inconnu » ; elle ne sera jamais transformée en
-          zéro.
+          zéro. Vous pourrez copier ou télécharger un fichier texte pour
+          archiver chaque contrôle ; aucune saisie n’est envoyée au site.
         </p>
       </div>
 
@@ -567,7 +655,7 @@ export function ConversionReconciliationTool() {
           </div>
         )}
 
-        <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <button
             type="button"
             onClick={copySummary}
@@ -575,6 +663,14 @@ export function ConversionReconciliationTool() {
             className="min-h-11 rounded-lg bg-sky-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-sky-600 dark:hover:bg-sky-500"
           >
             Copier la synthèse des volumes
+          </button>
+          <button
+            type="button"
+            onClick={downloadSummary}
+            disabled={!summaryUsable}
+            className="min-h-11 rounded-lg border border-sky-300 bg-white px-4 py-2.5 text-sm font-semibold text-sky-800 transition hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-sky-800 dark:bg-zinc-950 dark:text-sky-200 dark:hover:bg-sky-950/30"
+          >
+            Télécharger la synthèse (.txt)
           </button>
           <button
             type="button"
@@ -603,7 +699,8 @@ export function ConversionReconciliationTool() {
           <p className="mb-0 mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
             Utilisez une référence interne, jamais le nom ou les coordonnées du
             prospect. La fiche copiée distingue la référence vers l’identifiant
-            publicitaire de celle créée pour l’import.
+            publicitaire de celle créée pour l’import. Le téléchargement local
+            permet d’archiver une fiche datée sans la transmettre au site.
           </p>
         </div>
 
@@ -1033,13 +1130,22 @@ export function ConversionReconciliationTool() {
             </div>
           )}
 
-          <button
-            type="button"
-            onClick={copyCaseSheet}
-            className="mt-5 min-h-11 rounded-lg bg-violet-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-violet-800 focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2 dark:bg-violet-600 dark:hover:bg-violet-500"
-          >
-            Copier la fiche de ce dossier
-          </button>
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <button
+              type="button"
+              onClick={copyCaseSheet}
+              className="min-h-11 rounded-lg bg-violet-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-violet-800 focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2 dark:bg-violet-600 dark:hover:bg-violet-500"
+            >
+              Copier la fiche de ce dossier
+            </button>
+            <button
+              type="button"
+              onClick={downloadCaseSheet}
+              className="min-h-11 rounded-lg border border-violet-300 bg-white px-4 py-2.5 text-sm font-semibold text-violet-800 transition hover:bg-violet-50 focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2 dark:border-violet-800 dark:bg-zinc-950 dark:text-violet-200 dark:hover:bg-violet-950/30"
+            >
+              Télécharger la fiche (.txt)
+            </button>
+          </div>
           <p
             aria-live="polite"
             className="mb-0 mt-3 min-h-5 text-sm text-zinc-600 dark:text-zinc-300"

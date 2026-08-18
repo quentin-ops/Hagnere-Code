@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
   GuideInlineCTA,
   GuideTable,
@@ -8,6 +7,7 @@ import {
 } from "@/components/guides/guide-content-blocks";
 import { GuideLayout } from "@/components/guides/guide-layout";
 import { GuidesShell } from "@/components/guides/GuidesShell";
+import { SaasValidationDecisionJournal } from "@/components/guides/SaasValidationDecisionJournal";
 import {
   formatGuideDate,
   getGuide,
@@ -15,9 +15,24 @@ import {
   guideRobots,
   guideUrl,
 } from "@/lib/guides";
+import {
+  SAAS_UNIT_ECONOMICS_SCENARIOS,
+  calculateSaasUnitEconomics,
+} from "@/lib/saas-validation-decision";
 import { OG_BASE, SITE_URL } from "@/lib/seo";
 
 const guide = getGuide("valider-idee-saas-avant-developper");
+const economicsScenarios = SAAS_UNIT_ECONOMICS_SCENARIOS.map(
+  calculateSaasUnitEconomics,
+);
+const euro = new Intl.NumberFormat("fr-FR", {
+  style: "currency",
+  currency: "EUR",
+  maximumFractionDigits: 0,
+});
+const decimal = new Intl.NumberFormat("fr-FR", {
+  maximumFractionDigits: 2,
+});
 
 export const metadata: Metadata = {
   title: guide.title,
@@ -38,7 +53,7 @@ export const metadata: Metadata = {
         url: `${guideUrl(guide)}/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: "Valider une idée SaaS en vérifiant cinq risques avant de développer",
+        alt: "Valider une idée SaaS avec des preuves avant de développer",
       },
     ],
     publishedTime: `${guide.datePublished}T09:00:00+02:00`,
@@ -112,34 +127,44 @@ const breadcrumbJsonLd = JSON.stringify({
 
 const faqItems = [
   {
-    question: "Combien de personnes faut-il interroger ?",
+    question: "Combien d’entretiens faut-il pour valider une idée SaaS ?",
     answer:
-      "Il n’existe pas de nombre magique. Commencez par des personnes confrontées au même problème et poursuivez jusqu’à comprendre leurs pratiques, leurs objections et la personne qui décide du budget. La qualité des échanges compte davantage qu’un grand total.",
+      "Aucun nombre ne valide une idée à lui seul. Définissez d’abord qui est éligible, recherchez des incidents récents, notez les contradictions et poursuivez tant que de nouveaux entretiens changent la décision. Huit entretiens homogènes peuvent être plus utiles que cinquante réponses de convenance.",
   },
   {
-    question: "Faut-il construire un MVP pour valider l’idée ?",
+    question: "Une landing page ou une liste d’attente suffit-elle ?",
     answer:
-      "Pas toujours. Un prototype cliquable, un service réalisé manuellement ou un pilote limité permettent souvent d’apprendre avant de financer un produit. Le MVP — la première version utilisable — devient utile lorsque vous devez observer un usage réel répété.",
+      "Non. Une page mesure une promesse, une audience et une action légère dans des conditions données. Elle ne prouve ni le paiement, ni l’usage, ni la rétention. Elle devient utile si le trafic est qualifié, le service à venir est décrit honnêtement et le seuil est écrit avant le test.",
   },
   {
-    question: "Une liste d’attente prouve-t-elle qu’il existe un marché ?",
+    question: "Faut-il faire payer le pilote ?",
     answer:
-      "Non. Elle montre seulement que des visiteurs ont laissé leurs coordonnées pour une promesse donnée. Un rendez-vous avec le décideur, des données fournies, un pilote signé ou un paiement constituent des signaux plus engageants.",
+      "Un pilote payé apporte une preuve plus engageante qu’un compliment, à condition que l’acheteur soit habilité et que l’offre précise résultat, périmètre, prix, données, calendrier et sortie. Un paiement isolé ne prouve toutefois ni un marché répétable ni le renouvellement.",
   },
   {
-    question: "Comment tester le prix sans produit terminé ?",
+    question: "Une lettre d’intention vaut-elle une vente ?",
     answer:
-      "Présentez une offre pilote précise avec un résultat, un périmètre, un calendrier et un prix. Demandez une décision réelle, même limitée, plutôt qu’une réponse à la question « paieriez-vous un jour ? ».",
+      "Non. Sa force dépend du signataire, du contenu, des conditions et de son caractère contraignant. Traitez-la comme une pièce du dossier, pas comme du chiffre d’affaires. Une décision d’achat, un pilote exécuté puis un usage répété apportent des preuves différentes.",
   },
   {
-    question: "Comment protéger l’idée pendant les entretiens ?",
+    question: "Peut-on valider une idée SaaS sans coder ?",
     answer:
-      "Parlez d’abord du problème et des pratiques actuelles. L’INPI rappelle qu’une idée seule ne se protège pas ; un accord de confidentialité peut être utile lorsqu’un véritable secret technique ou commercial doit être dévoilé.",
+      "Oui pour le problème, l’acheteur, une partie du prix et la valeur du résultat : entretien, prototype, service réalisé manuellement ou pilote limité peuvent suffire. Il faudra néanmoins du logiciel lorsque la question porte sur la fiabilité, l’intégration, la performance ou l’usage autonome répété.",
   },
   {
-    question: "Que faire si les retours sont mauvais ?",
+    question: "Quand passer du pilote au MVP ?",
     answer:
-      "Identifiez ce qui bloque : problème trop faible, mauvais interlocuteur, prix, accès au marché ou faisabilité. Vous pouvez changer de cible, modifier l’offre, mener un test supplémentaire ou arrêter avant d’avoir engagé un budget important.",
+      "Lorsque le segment, le problème, l’acheteur, l’offre, le canal et la faisabilité sont documentés, puis que le pilote montre un premier résultat utile et un retour réel à l’usage. Le MVP doit alors limiter son périmètre à ce premier usage et conserver des critères d’arrêt.",
+  },
+  {
+    question: "Comment protéger l’idée et les données pendant les tests ?",
+    answer:
+      "Parlez d’abord du problème et des pratiques actuelles, collectez le minimum nécessaire et utilisez des données fictives ou anonymisées dès que possible. Une e-Soleau peut dater une création mais ne crée pas un monopole sur une idée. Un NDA et un encadrement juridique peuvent être adaptés lorsque de vrais secrets ou des données clients sont échangés.",
+  },
+  {
+    question: "Quels signaux doivent conduire à arrêter ?",
+    answer:
+      "Arrêtez ou reformulez si le problème n’apparaît pas dans des faits récents, si une alternative simple résout déjà mieux le besoin, si aucun acheteur ne peut engager une prochaine étape, si la donnée ne peut être utilisée légitimement ou si la promesse est impossible au coût et au niveau de risque annoncés.",
   },
 ];
 
@@ -164,10 +189,10 @@ export default function Page() {
           { label: "Valider une idée SaaS avant de développer" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Avant de financer votre SaaS, vérifiez que le problème existe vraiment, qu’une personne peut décider de payer et que vous savez trouver vos premiers clients. Voici un plan de terrain à mener avant le devis complet."
+        heroDescription="Vous ne validez pas une idée avec des compliments : vérifiez séparément le problème, l’acheteur, le canal, la faisabilité, les coûts et l’usage grâce à des tests concrets et à un journal local."
         heroAction={{
-          href: "#plan-14-jours",
-          label: "Voir le plan sur 14 jours",
+          href: "#diagnostic",
+          label: "Tester mon dossier",
         }}
         author={{
           name: "Quentin Hagnéré",
@@ -178,19 +203,19 @@ export default function Page() {
         keyPoints={[
           {
             number: "01",
-            title: "Un plan terrain sur 14 jours",
+            title: "Le verrou le plus faible décide",
             description: "",
             color: "violet",
           },
           {
             number: "02",
-            title: "Des tests sans produit complet",
+            title: "8 verrous · 4 STOP",
             description: "",
             color: "blue",
           },
           {
             number: "03",
-            title: "Continuer, modifier ou arrêter",
+            title: "Journal local + CSV",
             description: "",
             color: "emerald",
           },
@@ -204,568 +229,1263 @@ export default function Page() {
         relatedLinks={[
           {
             href: "/guides/mvp-saas-quoi-inclure",
-            label: "Définir le périmètre du premier MVP",
+            label: "Limiter le premier MVP",
           },
           {
-            href: "/guides/seo-saas-b2b",
-            label: "Relier le futur contenu aux questions de vente",
+            href: "/guides/prioriser-fonctionnalites-mvp-saas",
+            label: "Prioriser les fonctionnalités",
           },
           {
             href: "/guides/combien-coute-un-saas",
-            label: "Combien coûte un SaaS ?",
+            label: "Chiffrer le SaaS complet",
           },
           {
-            href: "/guides/no-code-ou-sur-mesure",
-            label: "No-code ou développement sur mesure",
+            href: "/guides/cahier-des-charges-saas",
+            label: "Écrire le cahier des charges",
           },
           {
-            href: "/guides/cahier-des-charges-application-metier",
-            label: "Cahier des charges d'une application métier",
+            href: "/guides/securite-saas-b2b",
+            label: "Préparer la sécurité B2B",
           },
           {
-            href: "/guides/prix-logiciel-sur-mesure",
-            label: "Prix d'un logiciel sur mesure",
+            href: "/guides/rgpd-saas-b2b",
+            label: "Préparer le RGPD",
           },
-          {
-            href: "/services/saas-applications-metier",
-            label: "Développement de SaaS",
-          },
-          { href: "/methode", label: "Notre méthode de projet" },
         ]}
-        faqTitle="Valider un SaaS : les questions qui restent"
+        faqTitle="Validation SaaS : les questions décisives"
         faqItems={faqItems}
         showWhitePaperPromo={false}
+        showSidebarCta={false}
       >
         <p className="lead">
-          Vous avez une idée de logiciel en ligne — un SaaS —, quelques
-          personnes vous disent qu’elle est excellente et un devis de
-          développement commence à prendre forme.{" "}
           <strong>
-            Avant d’engager plusieurs mois et plusieurs milliers d’euros,
-            vérifiez que des entreprises rencontrent réellement le problème,
-            qu’une personne peut décider de payer et que vous savez joindre
-            d’autres clients que votre entourage.
+            Vous pouvez financer l’étape suivante seulement si chaque risque
+            critique a été vérifié par un fait adapté et qu’aucune condition
+            d’arrêt ne reste ouverte.
           </strong>{" "}
-          Vous pouvez obtenir une grande partie de ces réponses sans construire
-          le produit complet.
+          Un entretien rapporte une expérience ; une démonstration vérifie que
+          le parcours se comprend ; un pilote payé montre un engagement sur une
+          offre. Seuls l’usage répété et le renouvellement éclairent ensuite la
+          fidélité. Confondre ces signaux pousse à développer trop tôt.
         </p>
 
-        <InfoBox variant="blue" title="La réponse simple">
-          Une idée est assez solide pour avancer lorsque vous avez observé un
-          problème fréquent, parlé au décideur du budget, obtenu un engagement
-          réel et vérifié que la solution peut être livrée à un coût cohérent.
-          Aucun de ces éléments ne garantit le succès. Ils évitent surtout de
-          financer une application sur la base de compliments.
+        <InfoBox variant="blue" title="La réponse en 90 secondes">
+          Décrivez un segment étroit et son travail actuel. Documentez des
+          incidents récents et les alternatives déjà employées. Obtenez l’accès
+          au décideur, puis testez une offre précise avec un seuil écrit avant
+          le résultat. Vérifiez la donnée, la sécurité, le coût de service et le
+          canal d’acquisition. Enfin, exécutez un pilote borné qui mesure le
+          premier résultat utile et le retour à l’usage. Si un verrou reste
+          inconnu, financez le test de ce verrou — pas le produit complet.
         </InfoBox>
 
         <GuideToc
           items={[
             {
-              id: "avant-code",
-              label: "1. Ce qu’il faut savoir avant de coder",
+              id: "validation",
+              label: "1. Ce que « valider » autorise vraiment",
+            },
+            { id: "diagnostic", label: "2. Diagnostiquer les huit verrous" },
+            { id: "preuve", label: "3. Classer la solidité des faits" },
+            {
+              id: "segment",
+              label: "4. Segment, besoin et alternatives",
             },
             {
-              id: "plan-14-jours",
-              label: "2. Un plan de terrain sur 14 jours",
-            },
-            { id: "entretiens", label: "3. Mener des entretiens utiles" },
-            {
-              id: "sans-coder",
-              label: "4. Tester l’offre sans produit complet",
+              id: "entretiens",
+              label: "5. Mener des entretiens analysables",
             },
             {
-              id: "acheteur-prix",
-              label: "5. Trouver l’acheteur et tester le prix",
+              id: "tests",
+              label: "6. Tester sans construire le produit",
             },
             {
-              id: "acces-marche",
-              label: "6. Vérifier que vous pouvez trouver des clients",
+              id: "acheteur",
+              label: "7. Acheteur, prix et engagement",
+            },
+            {
+              id: "economie",
+              label: "8. Canal et économie SaaS",
             },
             {
               id: "faisabilite",
-              label: "7. Vérifier la faisabilité et l’économie",
+              label: "9. Faisabilité, données et sécurité",
             },
             {
-              id: "confidentialite",
-              label: "8. Protéger l’idée et les données",
+              id: "cas",
+              label: "10. Cas fictif complet : ConformiSuivi",
             },
-            { id: "decision", label: "9. Développer, modifier ou arrêter" },
-            { id: "sources", label: "Sources originales consultées" },
+            {
+              id: "usage",
+              label: "11. Premier usage, retours et fidélité",
+            },
+            {
+              id: "decision",
+              label: "12. STOP, pivot, pilote ou MVP",
+            },
+            {
+              id: "plan-14-jours",
+              label: "13. Plan d’enquête sur 14 jours",
+            },
+            { id: "sources", label: "Sources et limites" },
           ]}
         />
 
-        <h2 id="avant-code">
-          1. Les quatre réponses à obtenir avant de développer
+        <h2 id="validation">
+          1. Ce que « valider une idée SaaS » autorise vraiment
         </h2>
 
         <p>
-          Une phrase comme « les PME ont besoin d’automatiser leurs relances »
-          paraît convaincante, mais elle ne dit pas qui souffre du problème,
-          comment il est traité aujourd’hui ni qui possède le budget.
-          Transformez l’idée en quatre questions concrètes.
+          Une validation n’est pas un tampon définitif. C’est une décision
+          proportionnée à la preuve disponible. Elle doit répondre à une
+          question plus modeste et plus utile :{" "}
+          <strong>
+            quelle dépense ou expérience les faits autorisent-ils maintenant ?
+          </strong>
         </p>
 
         <GuideTable
           headers={[
-            "Question",
-            "Ce que vous cherchez",
-            "Exemple de résultat utile",
+            "Signal obtenu",
+            "Ce qu’il permet de dire",
+            "Ce qu’il ne permet pas de dire",
           ]}
           rows={[
             [
-              "Le problème arrive-t-il vraiment ?",
-              "Des faits récents, pas une opinion générale",
-              "Une équipe a perdu deux heures chaque semaine au cours du dernier mois",
+              "Incidents récents racontés par une cible éligible",
+              "Le problème existe dans ce segment et ce contexte",
+              "La solution imaginée sera achetée",
             ],
             [
-              "Qui peut décider d’acheter ?",
-              "L’utilisateur, le responsable et le payeur sont identifiés",
-              "Le responsable des opérations valide le besoin et la direction finance",
+              "Prototype compris et tâche réussie",
+              "Le parcours peut répondre au besoin testé",
+              "Le produit fonctionnera avec les vraies données",
             ],
             [
-              "Pouvez-vous atteindre d’autres entreprises ?",
-              "Un moyen reproductible d’obtenir des conversations",
-              "Des partenaires ou une prospection ciblée ouvrent des rendez-vous comparables",
+              "Offre pilote signée ou payée",
+              "Un acheteur engage quelque chose sur un périmètre donné",
+              "Le canal, la marge et le renouvellement sont prouvés",
             ],
             [
-              "La solution peut-elle être livrée correctement ?",
-              "Données, intégrations, sécurité et coût sont compatibles",
-              "Un test technique confirme l’accès aux informations indispensables",
+              "Premier résultat utile pendant le pilote",
+              "Une personne obtient la valeur attendue dans ce contexte",
+              "Elle reviendra à l’usage sans accompagnement",
+            ],
+            [
+              "Usage répété puis renouvellement",
+              "La valeur persiste pour une cohorte et une période définies",
+              "Le marché entier et la croissance sont acquis",
             ],
           ]}
         />
 
         <p>
-          Vous n’avez pas besoin d’une certitude parfaite. Vous devez savoir
-          quelle décision les informations autorisent : poursuivre les
-          entretiens, proposer un pilote, construire une première version
-          limitée ou arrêter.
+          Le terme « marché validé » masque souvent plusieurs questions
+          distinctes. Nous suivons donc huit verrous : problème, segment,
+          alternatives, acheteur, offre, canal, faisabilité et usage. Les cinq
+          décisions essentielles restent faciles à retenir :{" "}
+          <strong>
+            problème réel, acheteur engagé, accès au marché, solution viable,
+            usage répété
+          </strong>
+          .
         </p>
 
-        <h2 id="plan-14-jours">2. Un plan de terrain sur quatorze jours</h2>
-
-        <p>
-          Ce calendrier est une base à adapter. Il convient à une idée B2B pour
-          laquelle vous pouvez joindre des professionnels ; il ne remplace pas
-          une étude réglementaire ou technique spécialisée.
-        </p>
-
-        <ol>
-          <li>
-            <strong>Jours 1 et 2 : décrire une cible précise.</strong> Par
-            exemple : responsables administratifs de PME qui rapprochent encore
-            plusieurs fichiers chaque fin de mois. Évitez « toutes les
-            entreprises ».
-          </li>
-          <li>
-            <strong>Jours 3 à 7 : mener cinq à dix conversations.</strong>{" "}
-            Demandez de raconter la dernière fois où le problème est arrivé et
-            observez les outils utilisés.
-          </li>
-          <li>
-            <strong>Jours 8 et 9 : résumer les faits.</strong> Listez la
-            fréquence, le coût, les contournements, les personnes impliquées et
-            les contradictions.
-          </li>
-          <li>
-            <strong>Jours 10 à 12 : présenter une réponse limitée.</strong> Un
-            prototype, un exemple de rapport ou un service réalisé manuellement
-            suffit souvent.
-          </li>
-          <li>
-            <strong>Jours 13 et 14 : demander une décision réelle.</strong>{" "}
-            Rendez-vous avec le décideur, mise à disposition de données de test,
-            lettre d’intention ou pilote payé selon le contexte.
-          </li>
-        </ol>
-
-        <InfoBox variant="emerald" title="Le document utile tient sur une page">
-          Notez la cible, le problème observé, la façon dont il est traité
-          aujourd’hui, les personnes qui décident, l’offre testée, les
-          engagements obtenus et les questions encore ouvertes. Ce résumé vaut
-          davantage qu’un dossier de trente pages rempli d’estimations non
-          vérifiées.
+        <InfoBox variant="amber" title="Un nombre magique n’est pas une preuve">
+          Quatorze jours, dix entretiens, cent inscrits ou trois lettres
+          d’intention peuvent organiser un test ; ils ne constituent pas des
+          seuils universels. La population, le prix, le cycle d’achat, le canal
+          et la conséquence d’une erreur changent la force du signal.
         </InfoBox>
 
-        <h2 id="entretiens">
-          3. Comment mener des entretiens qui apprennent quelque chose ?
+        <h2 id="diagnostic">
+          2. Diagnostiquer les huit verrous avant le prochain budget
         </h2>
 
         <p>
-          Les mauvaises questions fabriquent facilement un « oui ». «
-          Trouvez-vous cette idée intéressante ? » ou « paieriez-vous pour
-          gagner du temps ? » invitent l’interlocuteur à être poli. Demandez
-          plutôt de raconter ce qui s’est réellement passé.
+          Le journal ci-dessous ne calcule pas une moyenne qui permettrait à
+          sept « bons » critères de compenser un risque critique. Il applique
+          une logique de portes : une donnée non autorisée, une promesse
+          impossible, un test trompeur ou l’absence de responsable impose un
+          STOP. Une hypothèse contredite impose de pivoter ou d’arrêter. Le
+          dossier reste local au navigateur et peut être exporté en texte ou en
+          CSV.
         </p>
 
-        <h3>Un script court, dans l’ordre du travail réel</h3>
-
-        <ol>
-          <li>
-            « La dernière fois que ce problème est arrivé, que s’est-il passé ?
-            »
-          </li>
-          <li>
-            « Qui a dû intervenir et combien de temps cela a-t-il pris ? »
-          </li>
-          <li>« Qu’utilisez-vous aujourd’hui pour vous en sortir ? »</li>
-          <li>« Qu’avez-vous déjà essayé de changer ? »</li>
-          <li>
-            « Quelle conséquence a été la plus gênante pour l’entreprise ? »
-          </li>
-          <li>
-            « Qui déciderait d’essayer ou d’acheter une autre solution ? »
-          </li>
-        </ol>
+        <SaasValidationDecisionJournal />
 
         <p>
-          Demandez à voir un exemple anonymisé lorsque c’est possible : tableur,
-          email, capture d’écran, procédure ou rapport. Ne collectez pas de
-          données personnelles ou confidentielles dont vous n’avez pas besoin.
+          Utilisez une ligne de journal par risque et par segment. Si deux
+          populations ont des pratiques, acheteurs ou prix différents, elles ne
+          doivent pas être fusionnées pour produire artificiellement un résultat
+          moyen.
         </p>
+
+        <h2 id="preuve">3. Classer la solidité des faits recueillis</h2>
 
         <p>
-          Après chaque entretien, séparez les faits des interprétations. « Trois
-          personnes recopient le même chiffre » est un fait rapporté. « Le
-          marché veut une plateforme collaborative » est déjà une conclusion,
-          peut-être trop rapide.
+          Strategyzer distingue la déclaration de l’action et de
+          l’investissement. Les guides publics britannique, australien et
+          canadien ajoutent une discipline utile : partir du travail réel,
+          choisir le prototype en fonction de la question, puis documenter ce
+          qui change. Pour un SaaS B2B, l’échelle suivante évite de faire dire à
+          une preuve plus qu’elle ne vaut.
         </p>
 
-        <h2 id="sans-coder">
-          4. Tester l’offre sans construire le produit complet
+        <GuideTable
+          headers={["Niveau", "Exemple de preuve", "Conclusion autorisée"]}
+          rows={[
+            [
+              "1 · Déclaration",
+              "« C’est intéressant », sondage d’opinion, intention future",
+              "Écrire une hypothèse ; ne pas chiffrer la demande",
+            ],
+            [
+              "2 · Action légère",
+              "Clic, formulaire, inscription à une liste",
+              "Le message déclenche une action dans ce trafic précis",
+            ],
+            [
+              "3 · Fait passé",
+              "Incident récent, fréquence, conséquence, tentative de correction",
+              "Le problème existe pour ce participant éligible",
+            ],
+            [
+              "4 · Artefact ou accès",
+              "Tableur anonymisé, données de test, introduction au décideur",
+              "Le participant investit du temps ou ouvre son processus",
+            ],
+            [
+              "5 · Engagement commercial",
+              "Pilote signé, acompte ou paiement sur une offre définie",
+              "Cet acheteur accepte ce risque, ce prix et ces conditions",
+            ],
+            [
+              "6 · Usage",
+              "Premier résultat puis retours volontaires à la tâche",
+              "La solution produit une valeur répétée dans ce contexte",
+            ],
+            [
+              "7 · Continuité",
+              "Renouvellement, expansion ou recommandation vérifiable",
+              "La valeur persiste pour cette cohorte ; mesurer encore le canal et la marge",
+            ],
+          ]}
+        />
+
+        <p>
+          Une preuve plus engageante n’est pas automatiquement plus fiable. Un
+          acompte remboursable obtenu auprès d’un ami vaut moins qu’un incident
+          documenté chez un acheteur inconnu si le recrutement, l’offre ou les
+          conditions ont biaisé le test. Notez donc toujours{" "}
+          <strong>
+            qui a agi, pourquoi cette personne est éligible, ce qu’elle risquait
+            et ce que le test ne mesure pas
+          </strong>
+          .
+        </p>
+
+        <h2 id="segment">
+          4. Définir le segment, le travail à accomplir et les alternatives
         </h2>
 
         <p>
-          Choisissez le test le plus léger qui permet de répondre à la prochaine
-          question. Le but n’est pas de simuler une entreprise plus avancée
-          qu’elle ne l’est, mais de voir si le résultat proposé aide vraiment.
+          « Les PME qui veulent gagner du temps » n’est pas un segment testable.
+          Décrivez une population dont les pratiques et le processus d’achat
+          sont comparables. L’objectif n’est pas d’écrire un persona décoratif,
+          mais de savoir qui recruter et qui exclure de l’analyse.
+        </p>
+
+        <GuideTable
+          headers={["Champ", "Question de terrain", "Exemple fictif précis"]}
+          rows={[
+            [
+              "Contexte",
+              "Dans quelle activité, taille, maturité et contrainte ?",
+              "Cabinet de conseil de 10 à 40 personnes, plusieurs dossiers mensuels",
+            ],
+            [
+              "Rôle",
+              "Qui exécute, subit, supervise et achète ?",
+              "Consultant utilisateur, responsable de mission champion, directeur payeur",
+            ],
+            [
+              "Déclencheur",
+              "Quel événement rend le problème urgent maintenant ?",
+              "Clôture mensuelle ou audit client à date fixe",
+            ],
+            [
+              "Résultat recherché",
+              "Quel travail doit être accompli, indépendamment de votre produit ?",
+              "Assembler un dossier complet, traçable et révisable avant l’échéance",
+            ],
+            [
+              "Non-cible",
+              "Qui ressemble à la cible mais ne vit pas le même problème ?",
+              "Consultant seul avec deux dossiers simples par an",
+            ],
+          ]}
+        />
+
+        <p>
+          Une formulation utile du travail attendu tient en une phrase : «
+          Lorsque [déclencheur], [rôle] doit [résultat] afin de [conséquence],
+          malgré [contrainte]. » Elle n’impose ni application, ni IA, ni tableau
+          de bord.
+        </p>
+
+        <h3>Comparer le statu quo avant de comparer les concurrents</h3>
+
+        <p>
+          Votre concurrent principal peut être un tableur, une assistante, un
+          logiciel vertical, un prestataire, un recrutement ou la décision de ne
+          rien changer. Pour chaque alternative, observez le coût visible, le
+          temps, le risque, les habitudes, les intégrations et l’effort de
+          migration.
         </p>
 
         <GuideTable
           headers={[
-            "Ce que vous voulez apprendre",
-            "Test possible",
-            "Ce que le test ne prouve pas",
+            "Alternative",
+            "Pourquoi elle reste choisie",
+            "Fait à rechercher · risque à éviter",
           ]}
           rows={[
             [
-              "Le parcours est-il compréhensible ?",
-              "Prototype cliquable montré pendant un entretien",
-              "Que l’outil fonctionne avec de vraies données",
+              "Statu quo",
+              "Coût de changement supérieur à la douleur perçue",
+              "Incident récent sans tentative de correction · risque : urgence insuffisante",
             ],
             [
-              "Le résultat apporte-t-il de la valeur ?",
-              "Service réalisé manuellement pour une entreprise",
-              "Que ce travail peut déjà être automatisé à grande échelle",
+              "Tableur / email",
+              "Flexible, connu, déjà payé",
+              "Version, erreur, ressaisie ou traçabilité réelle · risque : ajouter plus de rigidité que de valeur",
             ],
             [
-              "La promesse attire-t-elle une cible précise ?",
-              "Page claire envoyée à un trafic identifié",
-              "Que les visiteurs paieront ou resteront abonnés",
+              "Logiciel existant",
+              "Fonctions, écosystème et confiance déjà présents",
+              "Essai, devis, motifs d’abandon ou fonctions non utilisées · risque : reconstruire moins bien une solution disponible",
             ],
             [
-              "Une équipe l’utilisera-t-elle au quotidien ?",
-              "Pilote limité avec de vraies tâches",
-              "Que tous les futurs clients auront le même comportement",
+              "Prestation humaine",
+              "Responsabilité et expertise incluses",
+              "Temps, qualité, variabilité et capacité · risque : sous-estimer le service qui restera nécessaire",
+            ],
+            [
+              "Développement interne",
+              "Contrôle et connaissance métier",
+              "Liste des travaux, compétences, délai et coût d’exploitation · risque : acheter une promesse plus chère qu’un renforcement interne",
+            ],
+          ]}
+        />
+
+        <h2 id="entretiens">
+          5. Mener des entretiens éligibles et analysables
+        </h2>
+
+        <p>
+          Un bon entretien n’a pas pour but de convaincre. Il reconstitue un
+          événement. Recrutez des personnes qui ont réellement vécu le travail
+          étudié dans une période assez récente pour décrire les étapes, les
+          outils et les décisions. Documentez la source du contact et séparez
+          votre entourage du recrutement hors réseau.
+        </p>
+
+        <h3>Critères d’éligibilité avant le rendez-vous</h3>
+
+        <ul>
+          <li>
+            le participant correspond au segment écrit avant le recrutement ;
+          </li>
+          <li>il a exécuté ou décidé un cas réel dans la période retenue ;</li>
+          <li>il connaît les outils et les personnes intervenus ;</li>
+          <li>son intérêt personnel dans votre projet est déclaré ;</li>
+          <li>
+            l’entretien peut être analysé sans collecter de données inutiles.
+          </li>
+        </ul>
+
+        <p>
+          Une réponse d’un expert, d’un ami ou d’un dirigeant éloigné du travail
+          peut éclairer une hypothèse, mais ne doit pas être comptée comme
+          observation utilisateur si elle ne satisfait pas ces critères.
+        </p>
+
+        <h3>Script centré sur le dernier cas réel</h3>
+
+        <ol>
+          <li>« Quand cela s’est-il produit pour la dernière fois ? »</li>
+          <li>« Qu’est-ce qui a déclenché le travail ? »</li>
+          <li>
+            « Montrez-moi les étapes, dans l’ordre, sans données sensibles. »
+          </li>
+          <li>« Qui est intervenu, attendu ou revenu en arrière ? »</li>
+          <li>
+            « Qu’avez-vous essayé avant, et pourquoi l’avez-vous gardé ou
+            abandonné ? »
+          </li>
+          <li>« Quelle conséquence a été mesurée, facturée ou remontée ? »</li>
+          <li>
+            « Qui pourrait autoriser un essai, fournir les données et signer ? »
+          </li>
+          <li>« Qui pourrait bloquer le projet, et pour quelle raison ? »</li>
+        </ol>
+
+        <p>
+          N’annoncez la solution qu’après avoir compris le cas. À la fin,
+          demandez une action cohérente avec la question encore ouverte :
+          montrer un artefact anonymisé, introduire le payeur, tester un
+          prototype ou examiner une offre. Un « oui » poli sans prochaine action
+          reste une déclaration.
+        </p>
+
+        <h3>Coder les résultats sans voter</h3>
+
+        <GuideTable
+          headers={["Colonne", "Exemple", "Erreur évitée"]}
+          rows={[
+            [
+              "Fait",
+              "Trois personnes ont rapproché deux fichiers pendant 2 h 20",
+              "Transformer une impression en mesure",
+            ],
+            [
+              "Interprétation",
+              "Le rapprochement manuel semble être le goulot",
+              "Présenter une conclusion comme un fait",
+            ],
+            [
+              "Contradiction",
+              "Deux cabinets utilisent déjà un logiciel satisfaisant",
+              "Éliminer les signaux défavorables",
+            ],
+            [
+              "Décision autorisée",
+              "Resserrer la cible aux équipes multi-clients sans outil vertical",
+              "Déclarer tout le secteur validé",
+            ],
+          ]}
+        />
+
+        <p>
+          Continuez tant que les nouveaux entretiens changent les rôles, les
+          étapes, les alternatives ou la décision. Une « saturation » n’est
+          défendable que pour un segment et une question donnés. Si vous
+          enregistrez, demandez un accord adapté, expliquez l’usage et la durée,
+          puis prévoyez la suppression.
+        </p>
+
+        <h2 id="tests">6. Tester sans construire le produit complet</h2>
+
+        <p>
+          Le bon test n’est pas le plus impressionnant. C’est le moins coûteux
+          qui peut encore invalider l’hypothèse. Écrivez avant son lancement :
+          population, test, métrique, seuil, coût plafond, faux positifs,
+          décision en cas de réussite et décision en cas d’échec.
+        </p>
+
+        <GuideTable
+          headers={[
+            "Expérience · question testée",
+            "Mesure utile",
+            "Ce qu’elle ne prouve pas",
+          ]}
+          rows={[
+            [
+              "Recherche documentaire — le problème, les règles et les alternatives existent-ils ?",
+              "Sources primaires, offres, procédures et données de contexte",
+              "Que votre segment paiera",
+            ],
+            [
+              "Prototype cliquable — le parcours et le résultat sont-ils compréhensibles ?",
+              "Tâches réussies, erreurs, hésitations et premier résultat",
+              "La faisabilité, la fiabilité ou la rétention",
+            ],
+            [
+              "Page d’offre test — la promesse déclenche-t-elle une action chez un trafic identifié ?",
+              "Visiteurs éligibles, action et coût par conversation utile",
+              "Le paiement et l’usage",
+            ],
+            [
+              "Service réalisé manuellement — le résultat crée-t-il de la valeur avant l’automatisation ?",
+              "Temps de service, qualité, fréquence et demande suivante",
+              "Que la marge résistera au passage à l’échelle",
+            ],
+            [
+              "Lettre d’intention ou précommande — un décideur accepte-t-il des conditions précises ?",
+              "Signataire, objet, prix, calendrier, conditions et risque engagé",
+              "Une vente acquise ou du revenu récurrent",
+            ],
+            [
+              "Pilote payé — le résultat, l’intégration et le support tiennent-ils en réel ?",
+              "Premier résultat utile, usage, incidents, contribution et décision de suite",
+              "Un canal répétable ou la rétention longue",
             ],
           ]}
         />
 
         <InfoBox
           variant="amber"
-          title="Ne faites jamais croire qu’un logiciel existe déjà"
+          title="Fake door et prototype : l’honnêteté fait partie du test"
         >
-          Une page, une vidéo ou un prototype doit annoncer clairement ce qui
-          est disponible, ce qui est simulé et ce qui arriverait pendant un
-          pilote. Présenter une fausse interface comme un produit opérationnel
-          abîme la confiance et peut créer des risques juridiques.
+          Dites ce qui existe, ce qui est simulé, quand le service pourrait être
+          fourni et ce qui arrive après le clic. Protégez un prototype public
+          contre l’indexation ou la confusion avec un service en production. Un
+          faux produit peut augmenter le taux de conversion tout en détruisant
+          précisément la confiance que vous cherchez à mesurer.
         </InfoBox>
 
         <p>
-          Si un outil existant permet de rendre le service, utilisez-le pour
-          apprendre. Du no-code, un tableur ou une intervention humaine peuvent
-          suffire au test. Notre comparatif{" "}
-          <Link href="/guides/no-code-ou-sur-mesure">
-            no-code ou développement sur mesure
-          </Link>{" "}
-          aide à choisir une première réalisation sans en faire une règle
-          définitive.
+          Une précommande ou un acompte exige une offre et des conditions
+          adaptées au pays, au B2B/B2C et au mode de vente. Ne copiez pas un
+          modèle américain dans une campagne française ou internationale sans
+          qualification juridique. En France, la{" "}
+          <a
+            href="https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/les-informations-precontractuelles"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            DGCCRF détaille les informations précontractuelles dues au
+            consommateur
+          </a>
+          . Le régime B2B et celui des autres pays doivent être examinés
+          séparément. La validation commerciale ne suspend ni le droit de la
+          consommation, ni le droit des données, ni vos obligations
+          contractuelles.
         </p>
 
-        <h2 id="acheteur-prix">5. Trouver l’acheteur et tester le prix</h2>
+        <h2 id="acheteur">7. Identifier le comité d’achat et tester le prix</h2>
 
         <p>
-          Dans une entreprise, la personne qui subit le problème n’est pas
-          toujours celle qui signe. Un salarié peut utiliser l’outil, un
-          responsable porter le projet, la direction financière payer et le
-          service informatique bloquer l’intégration. Identifiez ces rôles tôt.
+          Dans un SaaS B2B, « l’utilisateur aime le produit » et « l’entreprise
+          peut acheter » sont deux hypothèses différentes. Cartographiez le
+          comité sur un achat comparable, pas sur l’organigramme théorique.
         </p>
 
+        <GuideTable
+          headers={["Rôle", "Question à vérifier", "Preuve plus forte"]}
+          rows={[
+            [
+              "Utilisateur",
+              "Qui exécute la tâche et obtient le premier résultat ?",
+              "Tâche réelle accomplie sans aide excessive",
+            ],
+            [
+              "Champion",
+              "Qui gagne assez pour porter le changement en interne ?",
+              "Introduction et préparation du dossier interne",
+            ],
+            [
+              "Sponsor / budget",
+              "Quel budget, quelle priorité et quel coût évité ?",
+              "Arbitrage avec une dépense ou un projet existant",
+            ],
+            [
+              "Finance / achats / juridique",
+              "Quelles conditions, délais et responsabilités ?",
+              "Liste réelle de documents et étapes",
+            ],
+            [
+              "IT / sécurité / DPO",
+              "Quelles données, intégrations, accès et exigences ?",
+              "Revue du périmètre et des contrôles",
+            ],
+            [
+              "Signataire",
+              "Qui peut engager l’entreprise et sous quelles limites ?",
+              "Offre ou pilote signé par la bonne personne",
+            ],
+          ]}
+        />
+
+        <h3>
+          Trois tests de prix qui ne demandent pas « combien paieriez-vous ? »
+        </h3>
+
+        <ol>
+          <li>
+            <strong>Reconstituer le budget actuel.</strong> Quels outils,
+            prestations, heures, erreurs ou risques sont déjà financés ? Ce
+            n’est pas automatiquement votre prix, mais cela révèle la source
+            budgétaire.
+          </li>
+          <li>
+            <strong>Présenter une offre bornée.</strong> Donnez résultat,
+            périmètre, calendrier, effort client, prix, responsabilités et
+            sortie ; demandez la décision ou l’étape interne réelle.
+          </li>
+          <li>
+            <strong>Comparer des périmètres honnêtes.</strong> Par exemple
+            diagnostic seul, pilote accompagné, puis abonnement après preuve. Ne
+            changez pas simultanément prix, cible et promesse : vous ne sauriez
+            pas ce qui explique la réponse.
+          </li>
+        </ol>
+
         <p>
-          Pour tester le prix, présentez une offre pilote suffisamment précise :
+          « Trop cher » peut signifier absence de douleur, mauvais payeur,
+          confiance insuffisante, cycle budgétaire fermé, risque de migration ou
+          offre mal définie. Demandez quelle condition manque, puis cherchez une
+          action. Ne baissez pas mécaniquement le prix après chaque refus.
         </p>
+
+        <h3>Ce qu’un pilote doit écrire avant de commencer</h3>
 
         <ul>
-          <li>le résultat attendu et la situation de départ ;</li>
-          <li>ce qui sera fait manuellement ou avec un prototype ;</li>
-          <li>la durée et le temps demandé au client ;</li>
-          <li>le prix, les conditions de sortie et les responsabilités ;</li>
-          <li>les informations nécessaires et la façon de les protéger.</li>
+          <li>le résultat attendu, le périmètre et les exclusions ;</li>
+          <li>les données, rôles, accès, sous-traitants et durées ;</li>
+          <li>
+            le prix, la facturation, les annulations et remboursements éventuels
+            ;
+          </li>
+          <li>la responsabilité de chaque partie et le mode de retour ;</li>
+          <li>
+            les mesures, la situation de départ, la durée et le critère de
+            sortie ;
+          </li>
+          <li>
+            la propriété des livrables, l’export et la suppression en fin de
+            test.
+          </li>
         </ul>
 
-        <p>
-          Une réponse « trop cher » peut cacher plusieurs réalités : le problème
-          est faible, le mauvais interlocuteur a été sollicité, le résultat est
-          mal expliqué ou le budget arrive à une autre période. Demandez ce qui
-          devrait être vrai pour que la discussion continue, sans transformer
-          l’entretien en négociation insistante.
-        </p>
-
-        <h2 id="acces-marche">
-          6. Vérifier que vous pouvez trouver d’autres clients
+        <h2 id="economie">
+          8. Prouver un accès au marché et une économie qui peut tenir
         </h2>
 
         <p>
-          Trois contacts enthousiastes dans votre réseau peuvent suffire pour
-          apprendre, pas pour construire une acquisition durable. Testez un
-          moyen de joindre des entreprises qui ne vous connaissent pas encore :
-          partenaires, associations professionnelles, contenu spécialisé,
-          événements ou prospection directe conforme aux règles applicables.
+          Trois clients de votre réseau peuvent prouver de la valeur sans
+          prouver un canal. Tenez un entonnoir où chaque dénominateur reste
+          visible : entreprises réellement ciblées, contacts délivrés, personnes
+          éligibles, conversations, rendez-vous acheteur, offres, pilotes,
+          comptes ayant obtenu un premier résultat et renouvellements. Une liste
+          d’emails brute ne remplace pas cette chaîne.
         </p>
 
-        <p>Suivez quelques nombres simples :</p>
+        <p>
+          Testez un canal à la fois avec une cible et un message définis :
+          partenaires, réseau professionnel, prospection ciblée, contenu
+          spécialisé, événement ou acquisition payante. Le premier objectif
+          n’est pas de calculer un coût d’acquisition client (CAC) définitif ;
+          c’est de comprendre si vous pouvez obtenir à nouveau une conversation
+          éligible hors de votre entourage, et à quel coût observé.
+        </p>
+
+        <h3>Les formules minimales avant un devis de produit</h3>
+
+        <p>Pour un compte comparable, posez au moins :</p>
 
         <ul>
-          <li>entreprises réellement ciblées ;</li>
-          <li>personnes qui acceptent une conversation ;</li>
-          <li>interlocuteurs correspondant au rôle recherché ;</li>
-          <li>rendez-vous avec la personne capable de décider ;</li>
-          <li>pilotes ou prochaines étapes concrètement acceptés.</li>
+          <li>
+            contribution mensuelle = prix encaissable − infrastructure −
+            fournisseurs − support variable − opérations variables ;
+          </li>
+          <li>
+            délai de récupération = coût d’acquisition et d’accompagnement
+            initial ÷ contribution mensuelle, uniquement si cette contribution
+            est positive ;
+          </li>
+          <li>
+            capacité de support = temps humain disponible ÷ temps mensuel par
+            compte ;
+          </li>
+          <li>
+            contribution cumulée après N mois = N × contribution mensuelle −
+            acquisition − accompagnement initial.
+          </li>
         </ul>
 
         <p>
-          Ces nombres dépendent fortement de la cible, du message et du canal.
-          Ils ne doivent pas devenir un seuil universel. Ils servent à repérer
-          où la conversation s’arrête et ce qu’il faut comprendre ensuite.
+          Les trois scénarios suivants sont des{" "}
+          <strong>hypothèses fictives de sensibilité</strong>, pas des
+          benchmarks ni des tarifs Hagnéré Code. Ils supposent un compte actif
+          pendant toute la période, sans perte de client, remise, retard de
+          paiement ou hausse de support.
+        </p>
+
+        <GuideTable
+          headers={[
+            "Scénario et hypothèses",
+            "Contribution et récupération",
+            "Contribution cumulée à 12 / 36 / 60 mois",
+          ]}
+          rows={economicsScenarios.map((scenario) => [
+            `${scenario.name} — prix ${euro.format(
+              scenario.monthlyPriceEur,
+            )}, coût variable ${euro.format(
+              scenario.monthlyVariableCostEur,
+            )}, acquisition et accompagnement ${euro.format(
+              scenario.acquisitionAndOnboardingCostEur,
+            )}`,
+            `${euro.format(
+              scenario.monthlyContributionEur,
+            )} par mois · taux de contribution ${decimal.format(
+              scenario.contributionRatePercent ?? 0,
+            )} % · récupération ${
+              scenario.paybackMonths === null
+                ? "non atteinte"
+                : `${decimal.format(scenario.paybackMonths)} mois`
+            }`,
+            `${euro.format(
+              scenario.cumulativeContribution12MonthsEur,
+            )} / ${euro.format(
+              scenario.cumulativeContribution36MonthsEur,
+            )} / ${euro.format(scenario.cumulativeContribution60MonthsEur)}`,
+          ])}
+        />
+
+        <p>
+          Le développement initial, les coûts fixes, la TVA, l’impôt, le coût du
+          capital et les pertes de clients sont exclus. Il faut ensuite
+          confronter le nombre de comptes actifs nécessaires aux capacités
+          réelles de vente, d’accompagnement initial et de support. Un scénario
+          qui ne tient qu’avec un taux de contribution parfait et aucune perte
+          de client est un signal à tester, pas un business plan.
         </p>
 
         <h2 id="faisabilite">
-          7. Vérifier la faisabilité avant d’annoncer la promesse
+          9. Fermer les risques de faisabilité, de données et de sécurité
         </h2>
 
         <p>
-          Une idée peut répondre à un vrai besoin et rester irréalisable au prix
-          prévu. Vérifiez tôt les points susceptibles de changer le projet :
-          accès aux données, limites des outils tiers, qualité des fichiers
-          reçus, sécurité, droits utilisateurs, hébergement et travail humain
-          qui restera nécessaire.
-        </p>
-
-        <p>
-          Ne construisez pas toute l’architecture pour répondre à une question
-          technique. Un essai limité peut suffire : importer un échantillon de
-          données, appeler l’interface d’un logiciel partenaire, produire le
-          rapport attendu ou mesurer le temps de traitement.
+          Une douleur forte et un acheteur motivé ne rendent pas une promesse
+          réalisable. Faites un essai technique sur la question la plus risquée,
+          pas une architecture complète. L’objectif peut être d’importer un
+          échantillon fictif, vérifier une API, éprouver une règle de droits ou
+          produire le résultat attendu.
         </p>
 
         <GuideTable
           headers={[
-            "Coût à estimer",
-            "Question à poser",
-            "Risque souvent oublié",
+            "Risque",
+            "Preuve avant pilote",
+            "Critère avant production",
           ]}
           rows={[
             [
-              "Création de la première version",
-              "Quel périmètre permet d’observer un usage réel ?",
-              "Fonctions secondaires ajoutées avant le premier client",
+              "Donnée",
+              "Source, qualité, droit d’usage et échantillon minimisé",
+              "Modèle, conservation, export, suppression et responsabilités",
             ],
             [
-              "Fonctionnement mensuel",
-              "Quels services et quelles interventions humaines seront nécessaires ?",
-              "Support, stockage, emails, paiement et surveillance",
+              "Intégration",
+              "Appel ou import sur le chemin critique",
+              "Limites, erreurs, reprise, surveillance et dépendance fournisseur",
             ],
             [
-              "Vente et accompagnement",
-              "Combien de temps faut-il pour convaincre puis démarrer un client ?",
-              "Démonstrations, paramétrage et reprise de données",
+              "Droits",
+              "Rôles et cas interdits sur un prototype",
+              "Authentification, autorisation, moindre privilège et revue",
             ],
             [
-              "Obligations et risques",
-              "Quelles données ou activités exigent une expertise spécifique ?",
-              "Sécurité, contrats et conformité traités trop tard",
+              "Fiabilité",
+              "Résultat contrôlable et mode manuel",
+              "Sauvegarde, restauration testée, journalisation et incident",
+            ],
+            [
+              "Performance",
+              "Volume et délai représentatifs du pilote",
+              "Charge, pic, coût, disponibilité et dégradation acceptable",
+            ],
+            [
+              "Réversibilité",
+              "Sortie du pilote sans perte de travail",
+              "Export exploitable, suppression et migration documentées",
             ],
           ]}
         />
 
         <p>
-          Pour établir un premier budget, consultez le guide{" "}
-          <Link href="/guides/combien-coute-un-saas">
-            combien coûte un SaaS
-          </Link>
-          . Lorsque le test justifie une première version, le guide{" "}
-          <Link href="/guides/mvp-saas-quoi-inclure">
-            que faut-il inclure dans un MVP SaaS
-          </Link>{" "}
-          aide à limiter le périmètre.
-        </p>
-
-        <h2 id="confidentialite">8. Confidentialité, données et prospection</h2>
-
-        <h3>Parlez du problème avant de révéler le secret</h3>
-
-        <p>
-          Vous pouvez apprendre beaucoup sans dévoiler la solution complète.
-          Demandez comment le travail est réalisé, quelles erreurs surviennent
-          et comment les décisions sont prises. Si un secret technique ou
-          commercial doit être partagé avec un partenaire, un accord de
-          confidentialité peut être adapté.
+          La CNIL demande de limiter les données à ce qui est adéquat, pertinent
+          et nécessaire, puis de définir leur durée. Informez les personnes
+          selon le mode de collecte et ne stockez pas de données sensibles dans
+          les notes ou journaux sans nécessité. Pour un SaaS qui traite des
+          données pour un client, les rôles et l’encadrement contractuel prévu
+          par l’
+          <a
+            href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre4"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            article 28 du RGPD
+          </a>{" "}
+          doivent être qualifiés ; une simple case « RGPD » ne suffit pas.
         </p>
 
         <p>
-          L’INPI rappelle qu’une idée ou un concept ne se protège pas en tant
-          que tel. Une e-Soleau peut dater une création ou un document ; elle ne
-          transforme pas l’idée en monopole. Pour une stratégie de propriété
-          intellectuelle, demandez un conseil adapté à la création et aux
-          territoires concernés.
+          La sécurité n’attend pas la « vraie version ». Même un pilote doit
+          préciser les accès, les secrets, les mises à jour, les sauvegardes, la
+          journalisation utile, le traitement d’un incident et le retour au mode
+          précédent. L’
+          <a
+            href="https://owasp.org/www-project-application-security-verification-standard/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            OWASP ASVS 5.0.0
+          </a>{" "}
+          fournit le référentiel stable consulté le 28 juillet 2026. Le{" "}
+          <a
+            href="https://messervices.cyber.gouv.fr/guides/guide-dhygiene-informatique"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            guide d’hygiène de l’ANSSI
+          </a>{" "}
+          rassemble 42 mesures publiées en 2017 et se déclare non exhaustif. Ces
+          deux bases doivent donc être complétées et adaptées au risque actuel
+          du pilote.
         </p>
-
-        <h3>Collectez le minimum de données nécessaire</h3>
-
-        <p>
-          Pendant les entretiens et pilotes, privilégiez les exemples anonymisés
-          ou fictifs. Expliquez l’usage des coordonnées et des informations
-          fournies, limitez les accès et fixez une durée de conservation. Les
-          règles de prospection électronique diffèrent selon la cible et le
-          contexte : les références CNIL en fin de guide doivent être appliquées
-          à votre situation réelle.
-        </p>
-
-        <h2 id="decision">9. Développer, modifier l’offre ou arrêter ?</h2>
-
-        <p>
-          À la fin des premiers tests, ne cherchez pas une note globale. Prenez
-          une décision à partir de ce que vous savez et de ce qui reste risqué.
-        </p>
-
-        <GuideTable
-          headers={[
-            "Ce que vous observez",
-            "Décision possible",
-            "Prochaine action",
-          ]}
-          rows={[
-            [
-              "Problème fréquent, décideur engagé, solution faisable",
-              "Cadrer une première version limitée",
-              "Définir le premier usage réel et son mode de mesure",
-            ],
-            [
-              "Problème réel mais mauvais interlocuteur ou budget absent",
-              "Modifier la cible ou l’offre",
-              "Reprendre les entretiens auprès du décideur concerné",
-            ],
-            [
-              "Intérêt présent mais usage encore incertain",
-              "Faire un pilote manuel ou un prototype",
-              "Observer le travail avant d’automatiser",
-            ],
-            [
-              "Donnée ou intégration indispensable encore inconnue",
-              "Mener un essai technique limité",
-              "Tester ce point avant le devis complet",
-            ],
-            [
-              "Aucun problème récent ni engagement concret",
-              "Mettre en attente ou arrêter",
-              "Conserver les apprentissages et protéger le budget",
-            ],
-          ]}
-        />
-
-        <h3>Ce que vous pouvez faire dans les prochaines 48 heures</h3>
-
-        <ol>
-          <li>Écrire une cible plus précise qu’un secteur entier.</li>
-          <li>
-            Contacter cinq personnes qui rencontrent réellement le travail
-            étudié.
-          </li>
-          <li>
-            Préparer six questions sur leur dernière expérience, sans présenter
-            votre solution.
-          </li>
-          <li>
-            Choisir une réponse simple à montrer ou réaliser manuellement.
-          </li>
-          <li>Noter la décision que vous prendrez après ce test.</li>
-        </ol>
-
-        <GuideInlineCTA
-          title="Vous voulez savoir si votre idée mérite déjà un développement ?"
-          description="Présentez-nous la cible, le problème observé et les démarches déjà menées. Nous vous aiderons à identifier le prochain test utile ou, si les éléments sont suffisants, à cadrer une première version qui puisse être utilisée par un vrai client."
-          tags={[
-            "Avis avant devis",
-            "Périmètre limité au premier usage",
-            "Possibilité de recommander d’attendre",
-          ]}
-          ctaLabel="Faire examiner mon idée"
-          ctaHref="/demarrer-un-projet"
-        />
 
         <InfoBox
-          variant="emerald"
-          title="Quand un accompagnement de développement est pertinent"
+          variant="amber"
+          title="Prospection internationale : aucune règle mondiale unique"
         >
-          Le projet devient un bon candidat lorsque le problème a été observé,
-          que vous pouvez joindre la cible et qu’une entreprise accepte une
-          prochaine étape concrète. Si le besoin est déjà bien couvert par un
-          logiciel abordable ou si les retours restent uniquement polis, acheter
-          l’outil existant ou continuer les tests peut être une meilleure
-          décision que développer.
+          <p>
+            La France, le Royaume-Uni, l’Australie, le Canada et les États-Unis
+            n’encadrent pas de façon identique l’email, le SMS, les traceurs, la
+            collecte indirecte ou le B2B. Ouvrez la règle du pays avant de
+            recruter des participants :
+          </p>
+          <ul className="mb-3 mt-2 space-y-1">
+            <li>
+              France :{" "}
+              <a
+                href="https://www.cnil.fr/fr/communication-electronique-quelles-regles"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                CNIL — communications électroniques
+              </a>
+              .
+            </li>
+            <li>
+              Royaume-Uni :{" "}
+              <a
+                href="https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/business-to-business-marketing/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ICO — marketing B2B
+              </a>
+              .
+            </li>
+            <li>
+              Australie :{" "}
+              <a
+                href="https://www.acma.gov.au/avoid-sending-spam"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ACMA — Spam Act
+              </a>
+              .
+            </li>
+            <li>
+              Canada :{" "}
+              <a
+                href="https://crtc.gc.ca/eng/com500/guide.htm"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                CRTC — loi canadienne anti-pourriel
+              </a>
+              .
+            </li>
+            <li>
+              États-Unis :{" "}
+              <a
+                href="https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                FTC — CAN-SPAM
+              </a>
+              .
+            </li>
+          </ul>
+          <p>
+            Qualifiez la cible, le canal, la source des données et les pays
+            concernés avant une campagne ; cette liste oriente la vérification,
+            elle ne remplace pas l’analyse juridique du cas réel.
+          </p>
         </InfoBox>
 
-        <h2 id="sources">Sources originales consultées</h2>
+        <h2 id="cas">10. Cas fictif complet : ConformiSuivi</h2>
 
         <p>
-          Sources consultées le 20 juillet 2026. Les méthodes d&apos;innovation
-          donnent des cadres de décision, pas des garanties de réussite ; les
-          sources CNIL et INPI portent sur la France et doivent être appliquées
-          au traitement et au contrat réels.
+          Ce cas sert à montrer la méthode et les calculs. Il est entièrement
+          fictif : aucun montant n’est une moyenne de marché, un tarif ou un
+          résultat client.
         </p>
 
+        <h3>Hypothèse de départ</h3>
+
+        <p>
+          « Les PME ont besoin d’un SaaS qui centralise leurs preuves de
+          conformité. » Cette phrase est trop large. Après recrutement, le
+          segment devient : cabinets de conseil de 10 à 40 personnes qui
+          préparent chaque mois plusieurs dossiers clients avec preuves reçues
+          par email et tableur.
+        </p>
+
+        <h3>Seuils écrits avant le test</h3>
+
         <ul>
+          <li>au moins 5 incidents récents sur 8 entretiens éligibles ;</li>
+          <li>au moins 3 introductions vers l’acheteur ;</li>
+          <li>au moins 2 pilotes manuels acceptés ;</li>
+          <li>au moins 1 engagement payé sur une offre précise ;</li>
+          <li>aucune impossibilité critique dans le périmètre proposé.</li>
+        </ul>
+
+        <p>
+          Ces nombres organisent cet exemple ; ils ne recommandent pas huit
+          entretiens ni un paiement pour tout SaaS.
+        </p>
+
+        <h3>Budget de décision reproductible</h3>
+
+        <GuideTable
+          headers={["Poste fictif", "Calcul", "Montant"]}
+          rows={[
+            ["Temps fondateur", "52 h × 60 €/h", "3 120 €"],
+            ["Indemnités d’entretien", "8 × 50 €", "400 €"],
+            ["Test d’accès à la cible", "Plafond", "300 €"],
+            ["Revue de faisabilité", "4 h × 120 €/h", "480 €"],
+            ["Total valorisé", "3 120 € + 1 180 €", "4 300 €"],
+          ]}
+        />
+
+        <p>
+          Les entretiens documentent cinq incidents et trois introductions. Une
+          contradiction apparaît : deux cabinets utilisent déjà un logiciel
+          vertical satisfaisant. La cible est donc resserrée aux équipes
+          multi-clients sans outil adapté ; la promesse ne reconstruit pas les
+          fonctions déjà disponibles.
+        </p>
+
+        <p>
+          Deux acheteurs acceptent le principe d’un pilote manuel, l’un signe un
+          engagement payé. La revue technique ne trouve pas d’impossibilité
+          critique, mais le temps de support n’est pas encore connu et aucun
+          usage répété n’a eu lieu. Le verdict est donc{" "}
+          <strong>
+            PILOTE BORNÉ de quatre semaines, pas développement du SaaS complet
+          </strong>
+          .
+        </p>
+
+        <InfoBox variant="emerald" title="La valeur du cas est sa limite">
+          Le paiement ferme une partie du risque d’offre. Il ne ferme ni le
+          risque de rétention, ni le coût de support, ni le canal répétable. Le
+          pilote doit donc mesurer ces points avant le cahier des charges du
+          MVP.
+        </InfoBox>
+
+        <h2 id="usage">
+          11. Mesurer le premier résultat, les retours et la fidélité
+        </h2>
+
+        <p>
+          Beaucoup de guides s’arrêtent à la prévente. Or un SaaS ne crée pas sa
+          valeur lorsque le contrat est signé, mais lorsque l’utilisateur
+          obtient un résultat puis revient. Définissez avant le pilote
+          l’événement qui marque ce premier résultat utile : ce doit être une
+          action qui produit de la valeur, pas « compte créé » ou « connexion
+          réussie ».
+        </p>
+
+        <GuideTable
+          headers={["Mesure", "Question", "Piège"]}
+          rows={[
+            [
+              "Situation de départ",
+              "Comment la tâche réussit-elle aujourd’hui, avec quel délai et quel effort ?",
+              "Comparer le pilote à une impression",
+            ],
+            [
+              "Premier résultat utile",
+              "Quel événement prouve que le travail attendu est accompli ?",
+              "Choisir une métrique de vanité",
+            ],
+            [
+              "Délai jusqu’au premier résultat utile",
+              "Combien de temps et d’aide entre l’entrée et ce résultat ?",
+              "Masquer l’accompagnement humain initial",
+            ],
+            [
+              "Usage répété",
+              "La personne revient-elle à la fréquence naturelle du travail ?",
+              "Imposer J7 à une tâche mensuelle",
+            ],
+            [
+              "Rétention de cohorte",
+              "Parmi les comptes activés, combien restent actifs à l’échéance pertinente ?",
+              "Diviser par les inscrits ou changer le dénominateur",
+            ],
+            [
+              "Renouvellement / expansion",
+              "Le payeur continue-t-il, augmente-t-il ou recommande-t-il avec preuve ?",
+              "Confondre intention et décision",
+            ],
+            [
+              "Clients perdus et abandons",
+              "Qui quitte, à quel moment, et pour quelle alternative ?",
+              "Ne contacter que les utilisateurs satisfaits",
+            ],
+          ]}
+        />
+
+        <p>
+          J7, J30 ou J90 sont des points d’observation possibles, pas des
+          standards. Une tâche quotidienne peut exiger des retours en quelques
+          jours ; un processus trimestriel demande un horizon plus long. Écrivez
+          la fréquence naturelle, la cohorte et le dénominateur. Un pilote payé
+          mais jamais activé est une alerte, pas une victoire commerciale.
+        </p>
+
+        <h2 id="decision">12. Décider : STOP, pivot, pilote ou MVP limité</h2>
+
+        <p>
+          Préécrivez la décision avant le résultat. Sinon, chaque signal
+          défavorable deviendra une raison de « tester encore » jusqu’à obtenir
+          la conclusion souhaitée.
+        </p>
+
+        <GuideTable
+          headers={[
+            "État du dossier",
+            "Décision",
+            "Prochaine dépense autorisée",
+          ]}
+          rows={[
+            [
+              "Test trompeur, donnée non autorisée, promesse impossible ou aucun responsable",
+              "STOP",
+              "Corriger la condition ; ne pas lancer le pilote",
+            ],
+            [
+              "Problème, segment ou alternative contredit",
+              "PIVOT ou ARRÊT",
+              "Reformuler une hypothèse ou protéger le budget",
+            ],
+            [
+              "Problème encore fondé sur des opinions",
+              "DISCOVERY",
+              "Recrutement éligible et observation du travail actuel",
+            ],
+            [
+              "Problème réel mais acheteur, prix, canal ou faisabilité inconnus",
+              "TESTER L’OFFRE",
+              "Prototype, offre ou essai technique ciblé",
+            ],
+            [
+              "Engagement obtenu, usage répété non mesuré",
+              "PILOTE BORNÉ",
+              "Service manuel ou produit limité avec sortie",
+            ],
+            [
+              "Usage, économie et risques documentés dans le premier cas",
+              "CANDIDAT MVP",
+              "Cadrer uniquement le premier usage prouvé",
+            ],
+          ]}
+        />
+
+        <h3>Quand la meilleure décision est de ne rien développer</h3>
+
+        <ul>
+          <li>
+            un outil existant couvre le besoin à un coût et un risque inférieurs
+            ;
+          </li>
+          <li>
+            le problème est rare, faible ou déjà absorbé sans conséquence ;
+          </li>
+          <li>
+            la cible n’est accessible qu’au travers de relations non répétables
+            ;
+          </li>
+          <li>
+            le payeur ne peut pas engager de budget ou de prochaine étape ;
+          </li>
+          <li>
+            le service humain nécessaire détruit la contribution au prix accepté
+            ;
+          </li>
+          <li>
+            les données, la sécurité ou l’intégration rendent la promesse
+            inacceptable.
+          </li>
+        </ul>
+
+        <p>
+          Acheter l’existant, rester en service manuel, attendre un changement
+          réglementaire, resserrer la cible ou arrêter sont des résultats de
+          validation utiles. Le budget préservé fait partie du résultat.
+        </p>
+
+        <h2 id="plan-14-jours">
+          13. Un plan d’enquête sur 14 jours — pas une validation garantie
+        </h2>
+
+        <p>
+          Deux semaines peuvent produire une première décision si la cible est
+          joignable et le risque limité. Elles ne suffisent pas à observer une
+          rétention mensuelle, un achat complexe ou une intégration réglementée.
+          Adaptez le calendrier au cycle naturel.
+        </p>
+
+        <ol>
+          <li>
+            <strong>Jours 1–2 :</strong> écrire segment, non-cible, travail,
+            alternative, hypothèse, métrique, seuil et STOP.
+          </li>
+          <li>
+            <strong>Jours 3–6 :</strong> recruter hors entourage, mener les
+            entretiens éligibles et coder faits, interprétations et
+            contradictions.
+          </li>
+          <li>
+            <strong>Jours 7–8 :</strong> cartographier alternatives, comité
+            d’achat, canal et inconnue technique la plus risquée.
+          </li>
+          <li>
+            <strong>Jours 9–11 :</strong> exécuter le test le plus léger :
+            prototype, service réalisé manuellement, page d’offre honnête ou
+            essai technique ciblé.
+          </li>
+          <li>
+            <strong>Jours 12–13 :</strong> présenter une offre bornée à la
+            personne habilitée et journaliser la décision réelle.
+          </li>
+          <li>
+            <strong>Jour 14 :</strong> appliquer le seuil préécrit : arrêter,
+            pivoter, lancer un autre test ou cadrer un pilote.
+          </li>
+        </ol>
+
+        <p>
+          Si la décision est un pilote, un second calendrier commence. Il doit
+          couvrir la fréquence naturelle de la tâche et mesurer le premier
+          résultat utile, les retours, le support, les incidents, la
+          contribution et la sortie. N’intégrez pas rétroactivement ce pilote
+          dans les « 14 jours » pour déclarer l’idée validée.
+        </p>
+
+        <GuideInlineCTA
+          title="Faites relire un dossier déjà mesuré"
+          description="Copiez le dossier produit par le journal : aucune donnée n’est transmise automatiquement. Ajoutez le segment, les faits, les contradictions, l’offre, le seuil, le résultat et le verrou restant. Nous pouvons recommander un autre test, un outil existant, un pilote limité — ou l’absence de développement."
+          tags={[
+            "Preuves relues",
+            "STOP conservés",
+            "Périmètre du premier usage",
+          ]}
+          ctaLabel="Faire relire mon dossier"
+          ctaHref="/demarrer-un-projet?service=saas&source=guide-validation-saas"
+        />
+
+        <h2 id="sources">Sources, champ couvert et limites</h2>
+
+        <p>
+          Sources rouvertes ou consultées le 28 juillet 2026. Les méthodes
+          étrangères renforcent la discipline de recherche et de test ; leurs
+          règles administratives, juridiques ou commerciales ne sont pas
+          transposées automatiquement à une entreprise française.
+        </p>
+
+        <h3>Recherche utilisateur, faits recueillis et expérimentation</h3>
+
+        <ul>
+          <li>
+            <a
+              href="https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GOV.UK — Learning about users and their needs
+            </a>{" "}
+            : pratiques actuelles, problèmes et besoins fondés sur la recherche.
+          </li>
+          <li>
+            <a
+              href="https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GOV.UK — How the discovery phase works
+            </a>{" "}
+            : comprendre le problème, les contraintes et la décision avant
+            l’engagement.
+          </li>
+          <li>
+            <a
+              href="https://www.gov.uk/service-manual/design/making-prototypes"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GOV.UK — Making prototypes
+            </a>{" "}
+            : tester avant de construire et ne pas confondre prototype et
+            production.
+          </li>
+          <li>
+            <a
+              href="https://www.digital.gov.au/policy/digital-experience/digital-service-standard/criterion-2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Australian Government — Know your user
+            </a>{" "}
+            et{" "}
+            <a
+              href="https://www.digital.gov.au/policy/digital-experience/toolkit/service-design-and-delivery-process/alpha-stage-testing-hypotheses"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              testing hypotheses
+            </a>
+            .
+          </li>
+          <li>
+            <a
+              href="https://www.canada.ca/en/government/system/digital-government/government-canada-digital-standards/iterate-improve-frequently.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Government of Canada — Iterate and improve frequently
+            </a>{" "}
+            : situation de départ mesurée, indicateurs, prototypes,
+            documentation et changement de direction.
+          </li>
+          <li>
+            <a
+              href="https://design.canada.ca/continuous-improvement/research.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Canada.ca — Research and prototyping
+            </a>{" "}
+            : prototypage comme réduction de risque et comparaison.
+          </li>
           <li>
             <a
               href="https://www.strategyzer.com/library/validate-your-ideas-with-the-test-card"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Strategyzer — Validate Your Ideas with the Test Card
+              Strategyzer — Test Card
             </a>{" "}
-            : hypothèse, test, mesure et seuil définis avant l&apos;expérience.
-          </li>
-          <li>
+            et{" "}
             <a
               href="https://www.strategyzer.com/library/business-testing-is-your-hypothesis-really-validated"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Strategyzer — Is your hypothesis really validated?
-            </a>{" "}
-            : différence entre déclarations, comportements et investissement du
-            participant.
-          </li>
-          <li>
-            <a
-              href="https://www.strategyzer.com/library/how-to-select-the-next-best-test-from-the-experiment-library"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Strategyzer — Select the next best test
-            </a>{" "}
-            : expériences légères, prototypes et service manuel avant la
-            construction finale.
+              Strength of evidence
+            </a>
+            .
           </li>
           <li>
             <a
@@ -773,20 +1493,9 @@ export default function Page() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Steve Blank — Customer Hypotheses
+              Steve Blank — Customer hypotheses
             </a>{" "}
-            : séparation des rôles B2B, tests terrain et exemple de pivot.
-          </li>
-          <li>
-            <a
-              href="https://leanstartup.co/resources/articles/what-is-an-mvp/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Eric Ries — What is an MVP?
-            </a>{" "}
-            : le MVP comme véhicule d&apos;apprentissage, et non produit minimal
-            par principe.
+            : hypothèses client et apprentissage terrain.
           </li>
           <li>
             <a
@@ -794,21 +1503,23 @@ export default function Page() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Y Combinator — Essential Startup Advice
+              Y Combinator — Essential startup advice
             </a>{" "}
-            : contact direct avec les utilisateurs et travail manuel avant la
-            mise à l&apos;échelle.
-          </li>
-          <li>
+            et{" "}
             <a
-              href="https://www.momtestbook.com/"
+              href="https://www.ycombinator.com/interviews"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Rob Fitzpatrick — The Mom Test, site officiel
+              interview guide
             </a>{" "}
-            : entretiens de découverte et réduction des réponses biaisées.
+            : utilisateurs, acquisition, usage, rétention et économie unitaire.
           </li>
+        </ul>
+
+        <h3>Données, propriété intellectuelle et sécurité</h3>
+
+        <ul>
           <li>
             <a
               href="https://www.cnil.fr/fr/minimiser-les-donnees-collectees"
@@ -823,7 +1534,7 @@ export default function Page() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              informer les personnes
+              information et transparence
             </a>
             .
           </li>
@@ -835,45 +1546,53 @@ export default function Page() {
             >
               CNIL — Communications électroniques aux prospects et clients
             </a>{" "}
-            : règles B2B/B2C publiées le 10 juin 2026.
-          </li>
-          <li>
+            et{" "}
             <a
-              href="https://www.cnil.fr/fr/cookies-et-autres-traceurs/regles/cookies/FAQ"
+              href="https://www.cnil.fr/fr/cookies-et-autres-traceurs/regles"
               target="_blank"
               rel="noopener noreferrer"
             >
-              CNIL — Questions-réponses sur les cookies et autres traceurs
+              cookies et traceurs
+            </a>
+            .
+          </li>
+          <li>
+            <a
+              href="https://www.inpi.fr/realiser-demarches/propriete-intellectuelle/se-preparer-au-depot-dune-e-soleau"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              INPI — Se préparer au dépôt d’une e-Soleau
             </a>{" "}
-            : consentement, exemptions et responsabilités à vérifier avant un
-            test instrumenté.
+            : preuve de création à une date, sans monopole sur l’idée.
           </li>
           <li>
             <a
-              href="https://www.inpi.fr/inpi-block/download-document?id=20581"
+              href="https://messervices.cyber.gouv.fr/guides/guide-dhygiene-informatique"
               target="_blank"
               rel="noopener noreferrer"
             >
-              INPI — Protéger ses créations
+              ANSSI — Guide d’hygiène informatique
             </a>{" "}
             et{" "}
             <a
-              href="https://www.inpi.fr/realiser-demarches/propriete-intellectuelle/deposer-une-e-soleau-ou-un-entiercement"
+              href="https://owasp.org/www-project-application-security-verification-standard/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              e-Soleau et entiercement
+              OWASP ASVS
             </a>
             .
           </li>
         </ul>
 
         <p className="text-sm">
-          Ce guide décrit une méthode de décision et un exemple fictif. Il ne
-          constitue ni une étude de marché, ni un conseil juridique, fiscal ou
-          financier personnalisé. Une validation réduit le risque ; elle ne
-          garantit ni les ventes, ni la rentabilité, ni le classement futur du
-          produit.
+          Ce guide organise une décision et des expériences. Il ne constitue ni
+          une étude de marché, ni une garantie de ventes, de rentabilité, de
+          classement SEO ou de conformité, ni un conseil juridique, fiscal ou
+          financier personnalisé. Les chiffres ConformiSuivi et les scénarios
+          12/36/60 mois sont fictifs et reproductibles. Ils ne décrivent aucun
+          client ni tarif réel.
         </p>
       </GuideLayout>
     </GuidesShell>

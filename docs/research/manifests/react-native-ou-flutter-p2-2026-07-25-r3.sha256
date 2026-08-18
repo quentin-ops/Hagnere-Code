@@ -1,0 +1,12 @@
+fddc8ed2669f40ce497b74651cbe48ba11624649b34609774ce3fbc3249b4668  docs/research/react-native-ou-flutter.md
+4c003ef5d1001f1729e3c517af6c7636b647d983c519108e88209cb01e31c2be  docs/audits/giga-audit-2026-07-24/reviews/react-native-ou-flutter-p3-2026-07-25-r1.md
+8138d57f983356224b1dcf95a946da3de199f2c47297b28fc92ea14fe9a7d587  docs/audits/giga-audit-2026-07-24/reviews/react-native-ou-flutter-p3-2026-07-25-r2.md
+ba25c6a4bed808a2f5574c55a700459383d1d8acb7b155daa308666248d46943  docs/audits/giga-audit-2026-07-24/reviews/react-native-ou-flutter-p4-2026-07-25-r1.md
+1981a1e710787884dd81e86699ff19474bc69596665d0afc24ad34aace308d3c  src/app/guides/react-native-ou-flutter/page.tsx
+ca977189a50ca9d9fd9b08855a89038b8f865090cb3fb2a3dbd618e32e6d3bfd  src/app/guides/react-native-ou-flutter/opengraph-image.tsx
+e519f9f5ac742f4351f95503f67015ba2a09584db9cb27f88afb851d6075343d  src/components/guides/MobileFrameworkDecisionDossier.tsx
+9ad0f10fa52d6464637821e3d452d117066a460b796e53fb9ae88c80c7f94112  src/components/guides/MobileFrameworkDecisionDossier.test.tsx
+0dd47a778dcecb699a51bb330f274a0964a6d407eacd050bd63728a9bb29f370  src/lib/mobile-framework-decision.ts
+55d3b59dd5a485cc0117bdf43dedc74d17a8084adc99d950594fbd5c96cee597  src/lib/mobile-framework-decision.test.ts
+7a83e3cd40adeafbcfc1218428ffd09a0b6f653e0c1e6c9eda61ad4a0fb8a414  src/lib/react-native-flutter-guide-quality.test.ts
+b32e92d3dc582bcc019319fd7254b07740355bda6bb618bb97cd510c94477990  src/lib/guides.ts

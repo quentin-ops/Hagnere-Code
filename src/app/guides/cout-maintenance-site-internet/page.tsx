@@ -2,19 +2,25 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { GuideLayout } from "@/components/guides/guide-layout";
 import {
+  FormulaBox,
+  GuideInlineCTA,
+  GuideTable,
   GuideToc,
   InfoBox,
-  GuideTable,
-  GuideInlineCTA,
-  FormulaBox,
 } from "@/components/guides/guide-content-blocks";
 import { GuidesShell } from "@/components/guides/GuidesShell";
+import { WebsiteMaintenanceDecisionDossier } from "@/components/guides/WebsiteMaintenanceDecisionDossier";
+import {
+  formatGuideDate,
+  getGuide,
+  guidePath,
+  guideRobots,
+  guideUrl,
+} from "@/lib/guides";
 import { OG_BASE, SITE_URL } from "@/lib/seo";
-import { getGuide, guidePath, guideUrl, formatGuideDate } from "@/lib/guides";
 
 const guide = getGuide("cout-maintenance-site-internet");
 
-// --- METADATA SEO (title/description/dates depuis src/lib/guides.ts) ---
 export const metadata: Metadata = {
   title: guide.title,
   description: guide.metaDescription,
@@ -22,6 +28,7 @@ export const metadata: Metadata = {
   creator: "Hagnéré Code",
   publisher: "Hagnéré Code",
   alternates: { canonical: guidePath(guide) },
+  robots: guideRobots(guide),
   openGraph: {
     ...OG_BASE,
     type: "article",
@@ -31,7 +38,6 @@ export const metadata: Metadata = {
     publishedTime: `${guide.datePublished}T09:00:00+02:00`,
     modifiedTime: `${guide.dateModified}T09:00:00+02:00`,
     authors: [`${SITE_URL}/equipe`],
-    // og:image générée par opengraph-image.tsx (convention Next.js).
   },
   twitter: {
     card: "summary_large_image",
@@ -41,7 +47,6 @@ export const metadata: Metadata = {
   },
 };
 
-// --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
 const articleJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Article",
@@ -67,9 +72,10 @@ const articleJsonLd = JSON.stringify({
     knowsAbout: [
       "Développement web",
       "Maintenance de sites internet",
+      "Continuité de service",
       "Sécurité web",
       "Next.js",
-      "React",
+      "WordPress",
       "Chiffrage de projets web",
     ],
     sameAs: ["https://www.linkedin.com/in/quentin-hagnere"],
@@ -101,7 +107,7 @@ const breadcrumbJsonLd = JSON.stringify({
     {
       "@type": "ListItem",
       position: 3,
-      name: "Coût de la maintenance d'un site internet",
+      name: "Coût de maintenance d’un site",
       item: guideUrl(guide),
     },
   ],
@@ -109,50 +115,105 @@ const breadcrumbJsonLd = JSON.stringify({
 
 const faqItems = [
   {
-    question: "Quel est le prix moyen d'une maintenance de site internet ?",
+    question: "Quel budget mensuel prévoir pour maintenir un site ?",
     answer:
-      "Il n’existe pas de moyenne officielle directement comparable. Dans l’échantillon de six offres publiques détaillé dans ce guide, les prix affichés vont de 29 à 499 € par mois, avec des services et des conditions très différents. Comparez les sauvegardes, le support, les corrections incluses et le délai d’intervention.",
+      "Il n’existe pas de mensualité universelle. Classez d’abord le site — vitrine, boutique ou service critique — puis comparez le même périmètre, les mêmes horaires, les mêmes preuves et le coût complet à 12 et 36 mois. Les prix publics de 29 à 499 € observés dans six offres françaises le 21 juillet 2026 restent des observations de vendeurs non représentatives du marché.",
   },
   {
-    question: "La maintenance d'un site internet inclut-elle l'hébergement ?",
+    question: "Que doit inclure un contrat de maintenance ?",
     answer:
-      "Pas toujours. Le contrat doit distinguer l’hébergement du serveur, l’entretien du site, les sauvegardes et le support. Demandez le prix et le responsable de chaque ligne.",
+      "Il doit nommer les actifs, parcours, horaires, mises à jour, capacité corrective, surveillance, sauvegardes, restauration, sécurité, licences, évolutions, rapport et sortie. Pour chaque promesse, exigez une preuve, le risque restant et la personne qui paie si la promesse manque.",
   },
   {
-    question: "La maintenance est-elle obligatoire pour un site WordPress ?",
+    question: "Une sauvegarde quotidienne suffit-elle ?",
     answer:
-      "Aucune loi générale n’impose un contrat WordPress. En revanche, quelqu’un doit prendre en charge les mises à jour, les accès, les sauvegardes et les incidents. Cela peut être votre équipe ou un prestataire.",
+      "Non. Une copie doit couvrir les bonnes données, être protégée, restaurée dans un environnement contrôlé puis testée jusqu’au parcours métier. Le contrat doit distinguer la perte maximale de données admise, le temps de reprise et la reconstruction propre après compromission.",
   },
   {
-    question: "Peut-on faire la maintenance de son site soi-même ?",
+    question: "Que veut dire un SLA de 99,9 % ?",
     answer:
-      "Oui, si une personne possède les accès, les compétences et du temps réservé. Elle doit notamment contrôler les mises à jour, vérifier les sauvegardes et savoir qui appeler en cas d’incident.",
+      "Sur une fenêtre continue de 30 jours, 99,9 % correspond arithmétiquement à 43 min 12 s d’indisponibilité ; sur 365 jours, à 8 h 45 min 36 s. Ce chiffre ne vaut rien sans période, source de mesure, parcours, horaires, exclusions, procédure de réclamation, crédit et plafond.",
   },
   {
-    question: "Quelle différence entre maintenance corrective et évolutive ?",
+    question: "WordPress coûte-t-il toujours plus cher à maintenir ?",
     answer:
-      "La maintenance corrective répare un problème ; la préventive réduit le risque de panne ; l’évolutive ajoute ou améliore une fonction. Vérifiez ce que le forfait comprend et ce qui fera l’objet d’un devis séparé.",
+      "Non. WordPress, Next.js et les plateformes gérées déplacent les responsabilités : cœur, dépendances, données, déploiement, surveillance et sortie. Comparez les mêmes résultats et les mêmes risques ; aucune technologie ne supprime l’entretien.",
   },
   {
-    question:
-      "Les sauvegardes sont-elles incluses dans un contrat de maintenance ?",
+    question: "Peut-on assurer la maintenance en interne ?",
     answer:
-      "Pas nécessairement. Vérifiez la fréquence, la durée de conservation, le lieu de stockage et surtout les tests de restauration. Une copie jamais restaurée ne suffit pas.",
+      "Oui, si le temps chargé, l’outillage, la documentation, les comptes client et un remplaçant sont réellement financés. Une personne compétente et doublée peut être meilleure qu’un prestataire ; une compétence isolée sans relève rend le coût et la continuité incomplets.",
   },
   {
-    question: "Quelle différence entre maintenance et refonte ?",
+    question: "Comment comparer une agence, un freelance et une TMA ?",
     answer:
-      "La maintenance entretient et corrige l’existant. Une refonte revoit plus largement le design, les contenus ou la base technique. Un diagnostic doit comparer le coût des corrections à celui d’une reconstruction.",
+      "Envoyez-leur une fiche identique et éliminez toute offre qui échoue sur une obligation prouvée. Une ligne obligatoire vide reste ND. Comparez ensuite seulement les TCO complets, avec transition, coûts annuels, temps interne, licences, évolutions, réserve résiduelle et sortie.",
   },
   {
-    question: "Peut-on arrêter un contrat de maintenance à tout moment ?",
+    question: "La maintenance garantit-elle le SEO ou zéro panne ?",
     answer:
-      "Cela dépend de la durée et du préavis prévus. Le contrat doit aussi organiser la remise des accès, des sauvegardes, des fichiers et des heures non consommées.",
+      "Non. Elle peut réduire et mesurer certaines régressions techniques, mais ne garantit ni disponibilité absolue, ni sécurité parfaite, ni conformité globale, ni trafic ou position Google. Les objectifs doivent être datés, mesurés et révisés.",
+  },
+];
+
+const criticalityScenarios = [
+  {
+    title: "Simple — vitrine",
+    need: "Consultation, formulaire et réception d’e-mail ; attention principalement en jours ouvrés.",
+    target:
+      "Hypothèse pédagogique : perte de données admise 24 h, reprise sous 2 jours ouvrés, restauration annuelle.",
+    annual: "4 320 €",
+    tco12: "5 620 €",
+    tco36: "14 260 €",
   },
   {
-    question: "Faut-il un contrat de maintenance pour un site Shopify ou Wix ?",
-    answer:
-      "La plateforme entretient ses serveurs et son logiciel principal. Vous restez responsable du thème, des applications ajoutées, des connexions à vos autres outils et du contenu. Une boutique complexe peut donc encore avoir besoin d’un accompagnement régulier.",
+    title: "Central — boutique",
+    need: "Catalogue, panier, paiement, commandes et e-mails ; fenêtre fictive lundi–samedi, 8 h–20 h.",
+    target:
+      "Hypothèse pédagogique : perte de données admise 4 h, reprise sous 8 h de service, restauration trimestrielle.",
+    annual: "29 270 €",
+    tco12: "33 570 €",
+    tco36: "92 110 €",
+  },
+  {
+    title: "Exigeant — service critique",
+    need: "Authentification, données et parcours opérationnels ; activité réellement bloquée en cas d’arrêt.",
+    target:
+      "Hypothèse pédagogique : perte de données admise 15 min, reprise sous 2 h, simulation de crise.",
+    annual: "128 800 €",
+    tco12: "155 800 €",
+    tco36: "413 400 €",
+  },
+];
+
+const deliveryModes = [
+  {
+    title: "Interne structuré",
+    annual: "25 500 €",
+    tco12: "30 500 €",
+    tco36: "81 500 €",
+    fit: "Connaissance métier, charge régulière, documentation et vraie suppléance.",
+  },
+  {
+    title: "Freelance + relais",
+    annual: "23 300 €",
+    tco12: "26 600 €",
+    tco36: "73 200 €",
+    fit: "Site maîtrisable, interlocuteur direct, second intervenant et escalade contractualisés.",
+  },
+  {
+    title: "Agence",
+    annual: "26 600 €",
+    tco12: "30 900 €",
+    tco36: "84 100 €",
+    fit: "Compétences multiples utiles, équipe nommée, capacité et exclusions prouvées.",
+  },
+  {
+    title: "TMA organisée",
+    annual: "38 900 €",
+    tco12: "46 400 €",
+    tco36: "124 200 €",
+    fit: "Flux soutenu, criticité et gouvernance réelles ; unités, priorités et sortie opposables.",
   },
 ];
 
@@ -174,10 +235,10 @@ export default function Page() {
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
-          { label: "Coût de la maintenance d'un site" },
+          { label: "Coût de maintenance d’un site" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Combien prévoir chaque mois pour entretenir votre site ? Voici six offres publiques datées, leurs limites de comparaison et les clauses à vérifier avant de signer."
+        heroDescription="Classez votre site selon ce qu’une panne vous ferait perdre, chiffrez un incident et comparez deux offres couvrant exactement le même besoin sur 12 et 36 mois."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -187,19 +248,19 @@ export default function Page() {
         keyPoints={[
           {
             number: "01",
-            title: "6 offres publiques datées",
+            title: "3 criticités, pas un prix magique",
             description: "",
             color: "violet",
           },
           {
             number: "02",
-            title: "29 – 499 € HT/mois relevés",
+            title: "Incident reproductible",
             description: "",
             color: "blue",
           },
           {
             number: "03",
-            title: "Contrat compris avant de signer",
+            title: "TCO 12 et 36 mois",
             description: "",
             color: "emerald",
           },
@@ -212,124 +273,915 @@ export default function Page() {
         ]}
         relatedLinks={[
           {
-            href: "/guides/combien-coute-un-site-internet",
-            label: "Combien coûte un site internet ?",
+            href: "/guides/reprendre-maintenance-site-autre-agence",
+            label: "Reprendre la maintenance d’un site",
+          },
+          {
+            href: "/guides/migrer-wordpress-vers-nextjs",
+            label: "Migrer WordPress vers Next.js ?",
           },
           {
             href: "/guides/prix-refonte-site-internet",
-            label: "Prix d'une refonte de site",
+            label: "Corriger ou refondre le site ?",
           },
           {
-            href: "/guides/nextjs-ou-wordpress",
-            label: "Next.js ou WordPress ?",
-          },
-          {
-            href: "/guides/shopify-ou-sur-mesure",
-            label: "Shopify ou sur-mesure ?",
+            href: "/guides/site-internet-en-panne-que-faire",
+            label: "Que faire quand le site tombe en panne ?",
           },
           {
             href: "/services/maintenance-evolution",
-            label: "Maintenance & évolution",
+            label: "Maintenance et évolution",
           },
-          { href: "/methode", label: "Notre méthode Sprint Fixe™" },
         ]}
-        faqTitle="Coût de la maintenance : vos questions"
+        faqTitle="Maintenance d’un site : questions fréquentes"
         faqItems={faqItems}
-        showWhitePaperPromo
+        showWhitePaperPromo={false}
+        showSidebarCta={false}
       >
         <p className="lead">
           <strong>
-            Vous voulez savoir combien coûte la maintenance de votre site et ce
-            que vous devez obtenir en échange ?
-          </strong>
+            Il n’existe pas de prix universel pour maintenir votre site.
+          </strong>{" "}
+          Commencez par le classer : une vitrine stable protège surtout son
+          formulaire et ses contenus ; une boutique protège panier, paiement,
+          commandes et e-mails ; un service critique protège l’activité et les
+          données avec une reprise beaucoup plus rapide. Comparez ensuite les
+          mêmes obligations, aux mêmes horaires, avec les mêmes résultats
+          vérifiables et le même coût complet. Une sauvegarde jamais restaurée,
+          une alerte sans humain et un ticket « répondu » sans paiement rétabli
+          ne valent pas la continuité promise.
         </p>
         <p>
-          Il n’existe pas de tarif moyen officiel directement comparable. Dans
-          un échantillon de six offres françaises publiées par leurs
-          prestataires et consultées le 21 juillet 2026, les prix affichés vont
-          de <strong>29 à 499 € HT par mois</strong>. Cet écart ne mesure pas le
-          « marché » : il mélange des périmètres, des niveaux de support et des
-          conditions différents.
+          Ce guide transforme donc le prix en décision : criticité, preuves,
+          impact d’incident, coût total à 12 et 36 mois, puis sortie possible.
         </p>
-        <p>
-          Le prix dépend surtout des corrections incluses, de la surveillance,
-          des sauvegardes réellement testées et du délai promis en cas de panne.
-          Ce guide vous aide à comparer deux devis sur les mêmes services.
-        </p>
+
+        <InfoBox
+          variant="emerald"
+          title="La réponse courte avant les acronymes"
+        >
+          <p className="m-0">
+            Ne comparez pas deux mensualités. Comparez ce qui doit fonctionner,
+            qui agit, quand, avec quelle preuve, quel risque reste à votre
+            entreprise et qui le paie.
+          </p>
+        </InfoBox>
 
         <GuideToc
           items={[
-            {
-              id: "reponse-rapide",
-              label: "1. Six offres publiques et leurs limites",
-            },
+            { id: "menace", label: "1. Classer la criticité du site" },
             {
               id: "de-quoi-parle-t-on",
-              label: "2. Ce que couvre la maintenance",
+              label: "2. Quatre familles, six lignes de budget",
             },
-            { id: "menace", label: "3. Les risques d’un site sans entretien" },
-            { id: "postes", label: "4. Ce qu’un forfait doit préciser" },
             {
-              id: "wordpress-vs-statique",
-              label: "5. WordPress ou site sur mesure : quelle différence ?",
+              id: "postes",
+              label: "3. Transformer chaque promesse en preuve",
+            },
+            {
+              id: "cout-sinistre",
+              label: "4. Restauration et coût d’un incident",
             },
             {
               id: "contrat",
-              label: "6. Les délais et clauses à écrire dans le contrat",
+              label: "5. Décoder SLA, disponibilité et astreinte",
+            },
+            {
+              id: "methode",
+              label: "6. Comparer les modes au même périmètre",
+            },
+            {
+              id: "wordpress-vs-statique",
+              label: "7. WordPress, Next.js ou plateforme gérée",
             },
             {
               id: "diy",
-              label: "7. Faire soi-même ou utiliser une plateforme",
+              label: "8. Sécurité, licences et fin de support",
             },
-            { id: "methode", label: "8. Choisir son contrat en cinq étapes" },
+            {
+              id: "saas",
+              label: "9. Sortir même si le mainteneur disparaît",
+            },
+            {
+              id: "comparateur",
+              label: "10. Comparateur local à deux offres",
+            },
+            {
+              id: "duree",
+              label: "11. Mesurer après la décision",
+            },
+            {
+              id: "reponse-rapide",
+              label: "12. Les prix publics 29–499 € : limite",
+            },
+            {
+              id: "action",
+              label: "13. Agir en 45–60 minutes",
+            },
           ]}
         />
 
-        <h2 id="reponse-rapide">1. Six offres publiques et leurs limites</h2>
+        <h2 id="menace">1. Quel dommage une panne peut-elle causer ?</h2>
         <p>
-          Le tableau ci-dessous reproduit les prix mensuels annoncés par six
-          prestataires. L’échantillon est volontairement daté, non représentatif
-          et principalement consacré à WordPress. Il ne permet ni de calculer
-          une moyenne nationale ni d’attribuer un prix à votre site sans en
-          connaître le périmètre.
+          Le bon niveau ne vient ni du CMS ni du chiffre d’affaires seul. Il
+          vient de la fonction qui cesse de rendre service, de la quantité de
+          données que l’entreprise accepte de perdre, du temps qu’elle accepte
+          d’attendre et de la capacité humaine réellement disponible. Un site
+          vitrine peut subir une panne nocturne sans dommage matériel ; un
+          paiement silencieusement cassé peut coûter plus qu’une page entière
+          indisponible mais vite détectée.
+        </p>
+        <p>
+          Les scénarios ci-dessous sont des{" "}
+          <strong>hypothèses éditoriales fictives</strong>, hors taxe sur la
+          valeur ajoutée, inflation, refonte, migration inconnue et hausse
+          d’usage. Ils montrent comment un périmètre change le budget ; ils ne
+          décrivent ni le marché ni les tarifs Hagnéré Code.
+        </p>
+
+        <div className="not-prose my-8 grid gap-4 md:grid-cols-3">
+          {criticalityScenarios.map((scenario) => (
+            <section
+              key={scenario.title}
+              className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950"
+            >
+              <h3 className="m-0 text-base font-bold text-zinc-950 dark:text-white">
+                {scenario.title}
+              </h3>
+              <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+                {scenario.need}
+              </p>
+              <p className="mb-0 mt-3 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+                {scenario.target}
+              </p>
+              <dl className="mb-0 mt-4 space-y-2 border-t border-zinc-200 pt-4 text-sm dark:border-zinc-800">
+                <div className="flex justify-between gap-3">
+                  <dt className="text-zinc-500">Récurrent annuel</dt>
+                  <dd className="m-0 font-bold text-zinc-950 dark:text-white">
+                    {scenario.annual}
+                  </dd>
+                </div>
+                <div className="flex justify-between gap-3">
+                  <dt className="text-zinc-500">TCO fictif 12 mois</dt>
+                  <dd className="m-0 font-bold text-zinc-950 dark:text-white">
+                    {scenario.tco12}
+                  </dd>
+                </div>
+                <div className="flex justify-between gap-3">
+                  <dt className="text-zinc-500">TCO fictif 36 mois</dt>
+                  <dd className="m-0 font-bold text-zinc-950 dark:text-white">
+                    {scenario.tco36}
+                  </dd>
+                </div>
+              </dl>
+            </section>
+          ))}
+        </div>
+
+        <p>
+          Les calculs sont : vitrine <code>800 + 4 320 + 500 = 5 620 €</code>{" "}
+          puis <code>800 + 3 × 4 320 + 500 = 14 260 €</code> ; boutique{" "}
+          <code>2 500 + 29 270 + 1 800 = 33 570 €</code> puis{" "}
+          <code>2 500 + 3 × 29 270 + 1 800 = 92 110 €</code> ; service critique{" "}
+          <code>12 000 + 128 800 + 15 000 = 155 800 €</code> puis{" "}
+          <code>12 000 + 3 × 128 800 + 15 000 = 413 400 €</code>.
+        </p>
+        <InfoBox variant="amber" title="Quand redescendre d’un niveau">
+          <p className="m-0">
+            Une vitrine stable peut choisir une couverture légère ; une
+            plateforme très gérée peut réduire l’exploitation ; un service
+            présenté comme critique doit redescendre si le métier accepte une
+            interruption longue. Acheter du 24/7 sans personne capable d’agir ne
+            crée que du bruit.
+          </p>
+        </InfoBox>
+
+        <h2 id="de-quoi-parle-t-on">
+          2. Quatre familles, six lignes de budget
+        </h2>
+        <p>
+          La norme{" "}
+          <a
+            href="https://www.iso.org/standard/80710.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ISO/IEC/IEEE 14764:2022
+          </a>{" "}
+          traite la maintenance logicielle et exclut de son périmètre des
+          opérations comme sauvegarde, reprise et administration. Un contrat web
+          peut tout regrouper, mais le devis doit conserver les frontières :
+          sinon deux forfaits portant le même nom restent incomparables.
+        </p>
+
+        <div className="not-prose my-8 grid gap-4 sm:grid-cols-2">
+          {[
+            {
+              title: "1. Maintenance logicielle",
+              body: "Trois lignes séparées : préventive et adaptive ; corrective ; évolutive. Chacune a une unité, une capacité, une priorité, un dépassement et une réception.",
+            },
+            {
+              title: "2. Opérations de service",
+              body: "Hébergement, journaux, alertes, sauvegarde, restauration et incident. Une réponse HTTP verte ne prouve ni paiement ni e-mail reçu.",
+            },
+            {
+              title: "3. Entretien éditorial et assurance",
+              body: "Contenus, liens, consentement, accessibilité et indexation technique, avec périmètre et fréquence. Aucune promesse de conformité globale ou de rang.",
+            },
+            {
+              title: "4. Gouvernance et sortie",
+              body: "Comptes, licences, preuves, décisions, documentation, transfert et reprise par un tiers. La sortie paisible ne suffit pas.",
+            },
+          ].map((family) => (
+            <section
+              key={family.title}
+              className="rounded-xl border border-zinc-200 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900/50"
+            >
+              <h3 className="m-0 text-sm font-bold text-zinc-950 dark:text-white">
+                {family.title}
+              </h3>
+              <p className="mb-0 mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+                {family.body}
+              </p>
+            </section>
+          ))}
+        </div>
+
+        <p>
+          Le lecteur retient quatre familles, mais le budget garde{" "}
+          <strong>six lignes</strong> : préventif/adaptatif, correctif,
+          évolutif, opérations de service, éditorial/assurance, puis
+          gouvernance/sortie. Ajoutez séparément hébergement, licences et temps
+          interne lorsque ces coûts ne sont pas déjà dans une ligne. Une
+          évolution obligatoire sans prix rend le total <code>ND</code>, jamais
+          zéro.
+        </p>
+
+        <h2 id="postes">3. Ce que chaque promesse doit montrer</h2>
+        <p>
+          « Sauvegardé », « surveillé », « sécurisé », « illimité » et « 24/7 »
+          ne sont pas des livrables. Pour chaque promesse, écrivez la preuve
+          réceptionnée, le risque qui demeure et le payeur si la preuve manque.
+          Ce registre rend le service contrôlable avant même le premier
+          incident.
+        </p>
+        <div
+          className="not-prose my-8 grid gap-4 md:grid-cols-2"
+          aria-label="Registre de maintenance prouvée : promesse, preuve, risque restant et payeur"
+        >
+          {[
+            {
+              promise: "Composants à jour",
+              proof:
+                "Inventaire avant/après, avis traité, test métier et repli daté",
+              risk: "Composant oublié, vulnérabilité nouvelle ou régression",
+              payer: "Responsabilité écrite ; sinon conflit",
+            },
+            {
+              promise: "Sauvegarde quotidienne",
+              proof:
+                "Âge du point, contenu, stockage séparé et restauration complète",
+              risk: "Copie corrompue, donnée exclue ou point trop ancien",
+              payer: "À définir avant incident",
+            },
+            {
+              promise: "Restauration en 8 h",
+              proof:
+                "Exercice horodaté jusqu’au paiement ou formulaire fonctionnel",
+              risk: "Incident différent du test ou tiers indisponible",
+              payer: "Recours, crédit et plafond écrits",
+            },
+            {
+              promise: "Disponibilité 99,9 %",
+              proof:
+                "Source, parcours, période, fenêtre, exclusions et calcul brut",
+              risk: "Fonction secondaire cassée ou perte non compensée",
+              payer: "Crédit éventuel ≠ impact métier",
+            },
+            {
+              promise: "Support 24/7",
+              proof:
+                "Planning d’astreinte, accusé humain, escalade et capacité d’action",
+              risk: "Alerte non traitée, surcharge ou tiers fermé",
+              payer: "Répartition contractuelle",
+            },
+            {
+              promise: "Petites évolutions",
+              proof:
+                "Unité, consommé, restant, report, dépassement et réception",
+              risk: "Demande requalifiée en projet ou heures expirées",
+              payer: "Client si hors champ explicite",
+            },
+            {
+              promise: "Sortie possible",
+              proof:
+                "Export, build ou restauration exécuté par un tiers autorisé",
+              risk: "Connaissance tacite, accès ou droits incomplets",
+              payer: "Coût de transfert écrit",
+            },
+          ].map((item) => (
+            <section
+              key={item.promise}
+              className="rounded-xl border border-zinc-200 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900/50"
+            >
+              <h3 className="m-0 text-sm font-bold text-zinc-950 dark:text-white">
+                {item.promise}
+              </h3>
+              <dl className="mb-0 mt-3 space-y-3 text-sm">
+                <div>
+                  <dt className="font-bold text-emerald-700 dark:text-emerald-300">
+                    Preuve
+                  </dt>
+                  <dd className="mb-0 mt-1 text-zinc-600 dark:text-zinc-300">
+                    {item.proof}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-bold text-amber-700 dark:text-amber-300">
+                    Risque restant
+                  </dt>
+                  <dd className="mb-0 mt-1 text-zinc-600 dark:text-zinc-300">
+                    {item.risk}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-bold text-violet-700 dark:text-violet-300">
+                    Payeur si la preuve manque
+                  </dt>
+                  <dd className="mb-0 mt-1 text-zinc-600 dark:text-zinc-300">
+                    {item.payer}
+                  </dd>
+                </div>
+              </dl>
+            </section>
+          ))}
+        </div>
+
+        <p>
+          Un rapport utile indique les actifs couverts et exclus, les versions,
+          changements, résultats de tests, parcours métier, échecs et replis,
+          dernier point restaurable, exercice de restauration, incidents et
+          délais, licences à renouveler, capacité évolutive consommée et actions
+          attribuées. Une page de coches vertes sans anomalie ni décision n’est
+          pas une preuve.
+        </p>
+
+        <h2 id="cout-sinistre">
+          4. Restaurer le service et chiffrer un incident
+        </h2>
+        <h3>Perte de données et temps de reprise, en langage ordinaire</h3>
+        <p>
+          Le <strong>point de reprise</strong> — souvent nommé RPO — répond à «
+          jusqu’à quelle heure les données reviennent-elles ? ». Une cible de
+          quatre heures admet potentiellement quatre heures de nouvelles données
+          perdues. Le <strong>temps de reprise</strong> — souvent nommé RTO —
+          répond à « combien de temps avant que le parcours utile fonctionne à
+          nouveau ? ». Les définitions officielles du{" "}
+          <a
+            href="https://www.nist.gov/publications/contingency-planning-guide-federal-information-systems"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            NIST SP 800-34 Rev. 1
+          </a>{" "}
+          distinguent ces deux objectifs ; leurs valeurs viennent de l’impact
+          métier, pas d’un glossaire ou d’un forfait.
+        </p>
+        <p>
+          La chaîne complète est : inventorier fichiers, données, configuration
+          et services ; produire une copie à la bonne cadence ; protéger au
+          moins une copie séparée ; surveiller son âge et son intégrité ;
+          restaurer ; tester comptes, formulaire, paiement, e-mails et tâches ;
+          chronométrer ; corriger la procédure. L’
+          <a
+            href="https://messervices.cyber.gouv.fr/documents-guides/anssi_fondamentaux_sauvegarde_systemes_dinformation_v1.1.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ANSSI, guide sauvegarde v1.1 du 27 novembre 2025
+          </a>{" "}
+          insiste sur la politique, la protection des copies et les exercices de
+          restauration.
+        </p>
+
+        <InfoBox
+          variant="amber"
+          title="Restauration courante ≠ reprise propre après compromission"
+        >
+          <p className="m-0">
+            Annuler une suppression prouve un scénario courant. Après
+            compromission, il faut isoler, choisir un point sain, reconstruire
+            dans un environnement propre, corriger la porte d’entrée, changer
+            les accès concernés, analyser comptes et tâches, valider les
+            parcours puis reconnecter progressivement. Le{" "}
+            <a
+              href="https://www.cisa.gov/stopransomware/ransomware-guide"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              guide StopRansomware de la CISA
+            </a>{" "}
+            traite notamment copies protégées, exercices et risque de
+            réinfection.
+          </p>
+        </InfoBox>
+
+        <h3>Exemple fictif reproductible : boutique centrale</h3>
+        <p>
+          Cet exemple ne décrit ni un client ni un cas réel Hagnéré Code.
+          Utilisez la marge réellement non reportable, pas le chiffre d’affaires
+          brut. Une commande seulement décalée n’est pas perdue. Le temps
+          salarié déjà payé ne devient un surcoût que s’il crée des heures ou
+          détourne réellement une capacité.
+        </p>
+        <FormulaBox>
+          {`Impact incident
+= durée indisponible × marge non reportable par heure
++ remboursements, concessions ou pénalités probables
++ reprise externe + communication
++ personnes × heures × coût chargé × part réaffectée
+- compensation applicable et raisonnablement récupérable`}
+        </FormulaBox>
+        <p>
+          Hypothèses fictives : 6 h × 180 €/h, aucune pénalité, 900 € de reprise
+          externe, 250 € de communication, 2 personnes × 4 h × 35 €/h × 50 % et
+          aucune compensation. Le calcul est{" "}
+          <code>1 080 + 900 + 250 + 140 = 2 370 €</code>. Ce n’est ni un coût
+          moyen d’incident ni un gain promis par la maintenance.
         </p>
         <GuideTable
-          headers={["Prestataire", "Forfaits affichés", "Point de comparaison"]}
+          caption="Sensibilité fictive de l’incident selon durée et marge non reportable"
+          headers={["Durée", "180 €/h", "750 €/h en pointe"]}
+          rows={[
+            ["2 h", "1 650 €", "2 790 €"],
+            ["6 h", "2 370 €", "5 790 €"],
+            ["12 h", "3 450 €", "10 290 €"],
+          ]}
+        />
+        <p>
+          Chaque coût a une seule origine. Une heure corrective incluse au
+          forfait n’est pas ajoutée en reprise externe. Une réserve annuelle
+          déjà intégrée au TCO n’est pas rajoutée après le total. Sans
+          historique défendable sur la fréquence ou la réduction de durée, le
+          retour sur investissement d’une couverture renforcée reste{" "}
+          <code>ND</code>.
+        </p>
+
+        <h2 id="contrat">
+          5. SLA : six horodatages, une période et un recours
+        </h2>
+        <p>
+          Un accord de niveau de service — SLA — ne doit pas confondre{" "}
+          <strong>détection</strong>, <strong>accusé humain</strong>,{" "}
+          <strong>début d’intervention</strong>, <strong>contournement</strong>{" "}
+          et <strong>rétablissement</strong>. La{" "}
+          <strong>correction définitive</strong> vient ensuite et doit aussi
+          avoir un propriétaire et une échéance. Pour chaque sévérité S1 à S4,
+          écrivez l’exemple métier, les horaires, le fuseau, les pauses
+          d’horloge et ce que le client doit fournir.
+        </p>
+        <p>
+          Les recommandations{" "}
+          <a
+            href="https://www.gov.uk/service-manual/technology/monitoring-the-status-of-your-service"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GOV.UK sur la surveillance
+          </a>{" "}
+          distinguent métriques utilisateur, techniques et sécurité, et
+          demandent d’attribuer les alertes. Le{" "}
+          <a
+            href="https://www.ncsc.gov.uk/guidance/choosing-a-managed-service-provider-msp"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            NCSC britannique
+          </a>{" "}
+          recommande de clarifier responsabilités, sauvegardes testées,
+          journaux, incidents, SLA et sortie. Ce sont des méthodes à
+          proportionner, pas des délais contractuels français automatiques.
+        </p>
+
+        <GuideTable
+          caption="Conversion arithmétique de deux pourcentages de disponibilité sur fenêtres continues"
+          headers={["Engagement", "30 jours continus", "365 jours continus"]}
+          rows={[
+            ["99,9 %", "43 min 12 s", "8 h 45 min 36 s"],
+            ["99,99 %", "4 min 19,2 s", "52 min 33,6 s"],
+          ]}
+        />
+        <p>
+          Ces durées ne forment pas un SLA. Le contrat doit encore préciser la
+          source, le parcours mesuré, le mois civil ou la période glissante, la
+          fenêtre et le fuseau, la maintenance planifiée, les dépendances et
+          autres exclusions, l’arrondi, les preuves conservées, le délai et la
+          procédure de réclamation, puis le crédit ou l’indemnité, son plafond
+          et son éventuel caractère exclusif. Le{" "}
+          <a
+            href="https://vercel.com/legal/sla"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SLA Enterprise de Vercel
+          </a>{" "}
+          illustre cette mécanique contractuelle ; il ne constitue pas le SLA
+          universel de votre site.
+        </p>
+        <p>
+          L’astreinte gagne lorsque l’impact hors heures dépasse le coût de la
+          couverture et qu’une personne peut réellement intervenir. Elle perd
+          pour une vitrine sans enjeu nocturne, ou si le paiement dépend d’un
+          tiers fermé : une alerte sans action n’est pas une reprise.
+        </p>
+
+        <h2 id="methode">
+          6. Comparer quatre organisations sur le même besoin
+        </h2>
+        <p>
+          Le cas central fictif ci-dessous fige une boutique avec production et
+          préproduction, quatre parcours testés toutes les cinq minutes, fenêtre
+          lundi–samedi 8 h–20 h, point cohérent au moins toutes les 4 h,
+          restauration trimestrielle, objectifs fictifs de 4 h de données et 8 h
+          de reprise, inventaire, changements testés, quatre incidents majeurs
+          ou importants et 48 h correctives par an, 10 jours d’évolution,
+          rapport mensuel et reprise par un tiers.
+        </p>
+        <p>
+          Tout supplément au-delà de ces capacités reste <code>ND</code>
+          jusqu’à chiffrage. Les montants sont des hypothèses mécaniques hors
+          incident économique, TVA, inflation et hausse d’usage. Ils ne
+          décrivent aucun tarif de marché.
+        </p>
+
+        <div className="not-prose my-8 grid gap-4 sm:grid-cols-2">
+          {deliveryModes.map((mode) => (
+            <section
+              key={mode.title}
+              className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950"
+            >
+              <h3 className="m-0 text-base font-bold text-zinc-950 dark:text-white">
+                {mode.title}
+              </h3>
+              <p className="mb-0 mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+                {mode.fit}
+              </p>
+              <dl className="mb-0 mt-4 grid grid-cols-3 gap-2 border-t border-zinc-200 pt-4 text-center dark:border-zinc-800">
+                <div>
+                  <dt className="text-[10px] font-bold uppercase tracking-wide text-zinc-500">
+                    Annuel
+                  </dt>
+                  <dd className="mb-0 mt-1 text-sm font-bold text-zinc-950 dark:text-white">
+                    {mode.annual}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-[10px] font-bold uppercase tracking-wide text-zinc-500">
+                    12 mois
+                  </dt>
+                  <dd className="mb-0 mt-1 text-sm font-bold text-zinc-950 dark:text-white">
+                    {mode.tco12}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-[10px] font-bold uppercase tracking-wide text-zinc-500">
+                    36 mois
+                  </dt>
+                  <dd className="mb-0 mt-1 text-sm font-bold text-zinc-950 dark:text-white">
+                    {mode.tco36}
+                  </dd>
+                </div>
+              </dl>
+            </section>
+          ))}
+        </div>
+
+        <p>
+          Les formules annuelles sont, respectivement,{" "}
+          <code>12 000 + 4 000 + 3 000 + 6 500 = 25 500</code>,{" "}
+          <code>10 800 + 2 400 + 600 + 3 000 + 6 500 = 23 300</code>,{" "}
+          <code>16 800 + 300 + 3 000 + 6 500 = 26 600</code> et{" "}
+          <code>28 800 + 600 + 3 000 + 6 500 = 38 900</code>. Dans ces seules
+          hypothèses, le freelance avec relais est le moins coûteux ; ce n’est
+          pas un verdict. S’il n’accepte pas les mêmes preuves, horaires et
+          capacités, il est non qualifié.
+        </p>
+        <p>
+          Un <strong>Fail prouvé</strong> sur une obligation éliminatoire écarte
+          l’offre. Un Pass ou Fail sans date, artefact ou référence, périmètre,
+          résultat et responsable redevient <code>ND</code>. Une offre sans
+          échec reste non qualifiée tant que les six champs communs, ses quatre
+          descriptifs, ses neuf preuves et ses dix postes TCO ne sont pas
+          complets. Toute somme calculée avant ce seuil est un{" "}
+          <strong>sous-total non comparable</strong>, jamais un prix permettant
+          de classer l’offre.
+        </p>
+
+        <h2 id="wordpress-vs-statique">
+          7. WordPress, Next.js et plateforme : où est le travail ?
+        </h2>
+        <p>
+          Aucune technologie n’a « zéro maintenance ». Elle déplace le travail
+          entre cœur, runtime, extensions ou paquets, données, déploiement,
+          surveillance, sécurité et sortie. La{" "}
+          <a
+            href="https://wordpress.org/documentation/article/updating-wordpress/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            documentation WordPress
+          </a>{" "}
+          recommande une sauvegarde avant mise à jour ; sa documentation des{" "}
+          <a
+            href="https://developer.wordpress.org/advanced-administration/security/backup/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            sauvegardes
+          </a>{" "}
+          rappelle qu’une reprise complète associe généralement fichiers et
+          base. Cela ne prouve pas qu’une copie précise restaure le panier.
+        </p>
+        <div
+          className="not-prose my-8 grid gap-4 md:grid-cols-3"
+          aria-label="Surfaces de responsabilité selon trois familles techniques"
+        >
+          {[
+            {
+              title: "WordPress",
+              lines: [
+                "Cœur : CMS, PHP et serveur selon l’hébergement.",
+                "Dépendances : thèmes et extensions.",
+                "Données : base, médias et configuration.",
+                "Surveillance : HTTP, PHP, base, tâches, formulaire et e-mail.",
+                "Sortie : fichiers, base, licences, domaine et procédure.",
+              ],
+            },
+            {
+              title: "Next.js / stack moderne",
+              lines: [
+                "Cœur : Next.js, Node, build, cache et services.",
+                "Dépendances : paquets et outils de livraison.",
+                "Données : bases, stockage et migrations séparés du code.",
+                "Surveillance : logs, fonctions, API, cache, tâches et parcours.",
+                "Sortie : dépôt, build, données, secrets et domaine.",
+              ],
+            },
+            {
+              title: "Plateforme gérée",
+              lines: [
+                "Cœur : runtime géré selon les règles du fournisseur.",
+                "Dépendances : thème, apps et intégrations.",
+                "Données : exports et API selon les capacités du fournisseur.",
+                "Surveillance : disponibilité du fournisseur et parcours propre.",
+                "Sortie : qualité, délai et limites de l’export.",
+              ],
+            },
+          ].map((technology) => (
+            <section
+              key={technology.title}
+              className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950"
+            >
+              <h3 className="m-0 text-sm font-bold text-zinc-950 dark:text-white">
+                {technology.title}
+              </h3>
+              <ul className="mb-0 mt-3 space-y-2 pl-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+                {technology.lines.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+        <p>
+          La{" "}
+          <a
+            href="https://nextjs.org/support-policy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            politique de support Next.js
+          </a>{" "}
+          distingue versions actives, en maintenance et non supportées. Statut
+          vérifié le 25 juillet 2026 et à rouvrir au moment du choix : Node, les
+          paquets et la plateforme ont leurs propres cycles. Le{" "}
+          <a
+            href="https://vercel.com/docs/deployments/rollback-production-deployment"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            retour à un déploiement Vercel
+          </a>{" "}
+          peut restaurer du code antérieur ; il ne restaure pas automatiquement
+          une base migrée ou des commandes perdues.
+        </p>
+
+        <h2 id="diy">
+          8. Sécurité, licences et fin de support : le coût différé
+        </h2>
+        <p>
+          Le registre minimal nomme chaque composant ou service, sa version, son
+          propriétaire, la source d’avis, l’exploitation connue, la politique de
+          support, la licence, le renouvellement, les données ou privilèges, la
+          décision, le test, le repli et la prochaine revue. Un inventaire ou
+          une nomenclature de composants est une carte, pas un certificat de
+          sécurité.
+        </p>
+        <p>
+          Le processus défendable est : identifier, qualifier l’impact,
+          prioriser, préparer, sauvegarder, tester sur un environnement
+          représentatif, approuver, déployer, vérifier technique et parcours,
+          revenir en arrière si nécessaire, puis documenter la dette. Le{" "}
+          <a
+            href="https://csrc.nist.gov/pubs/sp/800/40/r4/final"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            NIST SP 800-40 Rev. 4
+          </a>{" "}
+          structure le correctif comme identification, priorité, acquisition,
+          installation et vérification ; il ne fixe aucune cadence universelle
+          pour un site.
+        </p>
+        <p>
+          Une version en fin de support, une licence nécessaire au build, une
+          extension abandonnée ou une migration obligatoire ont un coût
+          probable. Ce coût entre dans le TCO ; s’il est inconnu, la ligne reste
+          <code> ND</code>. Le forfait doit aussi dire qui traite les comptes,
+          l’authentification forte, les secrets, certificats, domaine, DNS,
+          journaux, vulnérabilités, exceptions et incident. « Sécurisé » sans
+          actif, fréquence, preuve et exclusion doit disparaître du devis.
+        </p>
+        <p>
+          L’entretien peut inclure contenu, consentement, accessibilité et
+          indexation technique, avec un propriétaire, un échantillon, une
+          fréquence et une méthode. La{" "}
+          <a
+            href="https://www.w3.org/WAI/eval/considerations"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            W3C WAI
+          </a>{" "}
+          recommande de cadrer le suivi ; la{" "}
+          <a
+            href="https://developers.google.com/crawling/docs/troubleshooting/http-status-codes"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            documentation Google Search
+          </a>{" "}
+          explique que des erreurs serveur persistantes peuvent modifier le
+          crawl. Ni l’une ni l’autre ne justifie une garantie de conformité, de
+          trafic ou de place dans Google.
+        </p>
+
+        <h2 id="saas">
+          9. La sortie doit fonctionner si le mainteneur ne répond plus
+        </h2>
+        <p>
+          Une résiliation cordiale est le scénario facile. Le plan doit aussi
+          marcher si le prestataire perd une personne clé, subit une
+          compromission, conserve le seul compte administrateur, n’accède plus à
+          ses outils ou devient indisponible. Sinon, la réversibilité est une
+          intention.
+        </p>
+        <p>
+          Les preuves minimales sont : domaine, hébergement, dépôt, base et
+          services au nom du client lorsque possible ; second administrateur ;
+          privilèges limités ; sauvegarde indépendante du compte du mainteneur ;
+          documentation accessible hors de ses outils ; contacts d’escalade ;
+          procédure de révocation et rotation des secrets ; enfin, un build ou
+          une restauration menée par un tiers autorisé. Le coût, le délai, les
+          données, les licences et l’assistance de sortie sont inclus, chiffrés
+          séparément ou marqués <code>ND</code>.
+        </p>
+        <p>
+          Quand le prestataire traite des données personnelles, la{" "}
+          <a
+            href="https://www.cnil.fr/fr/securite-gerer-la-sous-traitance"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            CNIL sur la sous-traitance
+          </a>{" "}
+          rappelle l’importance des responsabilités, incidents, contrôles et
+          conditions de restitution ou destruction. La qualification juridique
+          dépend toutefois du cas réel.
+        </p>
+
+        <h2 id="comparateur">10. Construire deux dossiers comparables</h2>
+        <p>
+          L’outil ci-dessous fonctionne uniquement dans votre navigateur. Il ne
+          contacte aucun prestataire et n’envoie aucune donnée. Renseignez le
+          même besoin, un incident de référence, puis deux offres indépendantes.
+          Les neuf portes imposent une preuve ; les dix postes TCO refusent
+          toute inconnue ; l’impact d’incident reste séparé pour empêcher le
+          double comptage.
+        </p>
+        <WebsiteMaintenanceDecisionDossier />
+
+        <h2 id="duree">11. Mesurer après la décision et savoir réviser</h2>
+        <p>
+          Le contrat ne devient pas vrai parce qu’il est signé. Fixez un état de
+          départ, une fréquence, un propriétaire et un signal d’action pour
+          chaque mesure utile.
+        </p>
+        <GuideTable
+          caption="Mesures après décision et signaux de révision"
+          headers={["Mesure", "Point de départ", "Responsable et signal"]}
           rows={[
             [
-              "Grain de Site",
-              "29 / 39 / 49 €/mois",
-              "Trois périmètres WordPress ; licences premium fournies pendant le contrat.",
+              "Parcours métier",
+              "30 jours observés ou ND",
+              "Propriétaire de service ; échec inexpliqué ou tendance dégradée",
             ],
             [
-              "TYTAE",
-              "29 / 39 / 69 €/mois",
-              "One Page, site vitrine ou e-commerce ; intervention ponctuelle affichée à 85 €/h.",
+              "Point réellement restaurable",
+              "Date, contenu et durée du dernier exercice",
+              "Responsable reprise ; perte ou durée cible manquée",
             ],
             [
-              "Studio HTTP",
-              "À partir de 39 / 99 €/mois",
-              "Une heure mensuelle de petites modifications au palier supérieur.",
+              "Incidents et six horodatages",
+              "Journal sur 12 mois ou ND",
+              "Responsable incident ; deux S1, retard répété ou cause récurrente",
             ],
             [
-              "Harsene",
-              "49 / 69 €/mois",
-              "WordPress ou WooCommerce ; hébergement proposé séparément.",
+              "Vulnérabilités et fins de support",
+              "Inventaire initial daté",
+              "Propriétaire technique ; exploitation connue, support fini, exception échue",
             ],
             [
-              "Palmsquare",
-              "89 / 169 €/mois",
-              "Deux paliers mensuels affichés ; équivalents réduits en paiement annuel.",
+              "Capacité et dette",
+              "Stock, consommation et postes ND",
+              "Sponsor métier ; saturation, dérive du TCO ou dépendance sans propriétaire",
             ],
             [
-              "Pulsar Agency",
-              "159 / 209 / 499 €/mois",
-              "Facturation annuelle ; délais de rétablissement annoncés selon le palier.",
+              "Contenu et assurance",
+              "Échantillon initial",
+              "Propriétaire contenu ; information fausse ou régression après changement",
             ],
           ]}
         />
         <p>
-          Consultez les six pages d’origine avant toute comparaison :{" "}
+          Réexaminez le choix lors d’un nouveau paiement ou espace client, d’un
+          changement d’horaires, de deux incidents critiques en douze mois,
+          d’une restauration ratée, d’une fin de support, du départ de la seule
+          personne compétente ou d’une hausse d’usage qui change la facture.
+          Aucun fournisseur ne doit être reconduit sur la seule absence de
+          ticket : un formulaire cassé peut rester silencieux.
+        </p>
+
+        <h2 id="reponse-rapide">
+          12. Pourquoi 29–499 € ne constitue pas une fourchette de marché
+        </h2>
+        <p>
+          Six vendeurs français affichaient, lors d’un relevé du{" "}
+          <strong>21 juillet 2026</strong>, des forfaits allant de{" "}
+          <strong>29 à 499 € HT par mois</strong>. Cette observation secondaire
+          est datée, non représentative et majoritairement WordPress. Elle
+          mélange hébergement, licences, contenu, quantité de modifications,
+          horaires, sauvegardes et recours : elle ne permet ni moyenne nationale
+          ni prix de votre site.
+        </p>
+        <GuideTable
+          caption="Observations commerciales secondaires, à revérifier auprès des vendeurs"
+          headers={["Vendeur", "Prix publics observés", "Différence visible"]}
+          rows={[
+            [
+              "Grain de Site",
+              "29 / 39 / 49 € HT/mois",
+              "Trois périmètres WordPress ; licences pendant le contrat",
+            ],
+            [
+              "TYTAE",
+              "29 / 39 / 69 € HT/mois",
+              "One page, vitrine ou e-commerce ; ponctuel affiché à 85 €/h",
+            ],
+            [
+              "Studio HTTP",
+              "À partir de 39 / 99 € HT/mois",
+              "Une heure de petites modifications au palier supérieur",
+            ],
+            [
+              "Harsene",
+              "49 / 69 € HT/mois",
+              "WordPress ou WooCommerce ; hébergement proposé séparément",
+            ],
+            [
+              "Palmsquare",
+              "89 / 169 € HT/mois",
+              "Deux paliers mensuels ; paiement annuel distinct",
+            ],
+            [
+              "Pulsar Agency",
+              "159 / 209 / 499 € HT/mois",
+              "Facturation annuelle ; délais annoncés selon palier",
+            ],
+          ]}
+        />
+        <p>
+          Pages de vendeurs à rouvrir avant usage :{" "}
           <a
             href="https://graindesite.com/maintenance-wordpress/"
             target="_blank"
@@ -377,493 +1229,122 @@ export default function Page() {
           >
             Pulsar Agency
           </a>
-          . Les mentions « à partir de », la facturation annuelle et les
-          différences d’inclusion empêchent une comparaison sur le prix seul.
+          . Aux États-Unis, au Royaume-Uni, en Allemagne, au Canada et en
+          Australie, les offres observées ajoutaient notamment niveaux
+          e-commerce, préproduction, tests de paiement, fonctions silencieuses,
+          heures de contenu ou récupération. Là encore, ce sont des angles de
+          vente, pas des preuves de qualité nationale.
         </p>
 
-        <InfoBox
-          variant="blue"
-          title="Trois types de travail à ne pas confondre"
-        >
-          La maintenance <strong>préventive</strong> entretient le site pour
-          réduire le risque de panne. La maintenance <strong>corrective</strong>
-          répare un problème constaté. La maintenance <strong>évolutive</strong>
-          ajoute ou améliore une fonction. Un petit forfait couvre souvent la
-          prévention, parfois quelques corrections, mais rarement les
-          évolutions.
-        </InfoBox>
-
-        <h2 id="de-quoi-parle-t-on">
-          2. Distinguez maintenance, hébergement et gestion du serveur
-        </h2>
-        <p>
-          L’<strong>hébergement</strong> est le serveur sur lequel fonctionne le
-          site. La <strong>maintenance</strong> couvre les mises à jour, les
-          sauvegardes, la surveillance et les réparations. L’
-          <strong>infogérance</strong>
-          désigne la gestion du serveur par un prestataire. Ces services peuvent
-          être regroupés ou séparés : le devis doit indiquer le prix, le
-          fournisseur et le responsable de chaque ligne.
-        </p>
-        <p>
-          Pour rendre les calculs concrets, nous utiliserons un exemple fictif :
-          une fromagerie à Chambéry possède un site WordPress de 18 pages et un
-          module de commande qui encaisse environ 2 000 € par mois, davantage en
-          décembre. Le site n’est plus entretenu depuis sa mise en ligne en
-          2023. Ce n’est ni un client ni un témoignage réel.
-        </p>
-
-        <h2 id="menace">3. Les risques d’un site sans entretien</h2>
-        <p>
-          Le risque principal n’est pas seulement le piratage. Une mise à jour
-          peut casser un formulaire, une extension peut être abandonnée, une
-          sauvegarde peut être inutilisable et un certificat peut expirer. Le
-          niveau d’entretien doit donc dépendre du rôle du site : une brochure
-          rarement modifiée ne demande pas la même surveillance qu’une boutique
-          qui reçoit des commandes chaque jour.
-        </p>
-        <InfoBox
-          variant="amber"
-          title="Une mise à jour automatique ne suffit pas"
-        >
-          Demandez qui vérifie le site après la mise à jour, comment revenir à
-          la version précédente et quand la dernière restauration a été
-          réellement testée. Ces trois réponses sont plus utiles que le nombre
-          d’outils de sécurité cités dans le devis.
-        </InfoBox>
-
-        <h3 id="cout-sinistre">Chiffrez ce que vous voulez éviter</h3>
-        <p>
-          Une moyenne nationale ou le montant d’une amende célèbre ne vous dit
-          pas combien investir. Partez de votre propre activité : commandes ou
-          demandes perdues pendant l’arrêt, temps passé à prévenir les clients,
-          coût du diagnostic et travail nécessaire pour reconstruire des
-          contenus ou des données.
-        </p>
-        <GuideTable
-          headers={["Question", "Votre donnée", "Décision à prendre"]}
-          rows={[
-            [
-              "Que rapporte le site pendant une journée normale ?",
-              "___ € de commandes ou ___ demandes qualifiées",
-              "Fixer le délai d’intervention attendu",
-            ],
-            [
-              "Combien de temps faudrait-il pour vérifier et réparer ?",
-              "___ heures internes + ___ € de prestation",
-              "Comparer un dépannage ponctuel et un forfait",
-            ],
-            [
-              "Que serait-il difficile de reconstruire ?",
-              "Données, commandes, contenus et réglages à lister",
-              "Prioriser les sauvegardes et tester une restauration",
-            ],
-          ]}
-        />
-        <p>
-          Pour notre fromagerie fictive, une panne en décembre pèserait plus
-          lourd qu’un arrêt en période calme. Ce constat suffit pour demander un
-          délai plus court à ce moment-là ; il ne permet pas de prédire une
-          perte exacte ni de promettre qu’une maintenance empêchera tout
-          incident.
-        </p>
-        <p>
-          L&apos;accessibilité, la protection des données et les cookies peuvent
-          créer des obligations différentes selon l&apos;activité, le service,
-          la taille de l&apos;entreprise et les textes applicables. Une page de
-          guide ne suffit pas à qualifier votre situation : faites vérifier le
-          périmètre juridique, puis inscrivez les contrôles techniques et
-          éditoriaux nécessaires dans la maintenance ; voir notre offre{" "}
-          <Link href="/services/securite-rgpd">
-            sécurité et conformité RGPD
-          </Link>
-          .
-        </p>
-
-        <h2 id="postes">4. Vérifiez ce que le forfait comprend</h2>
-        <p>
-          Pour comparer deux devis, demandez la fréquence de chaque tâche, le
-          temps humain inclus et ce qui sera facturé en supplément.
-        </p>
-        <GuideTable
-          headers={["Poste", "Rythme à écrire", "Preuve attendue"]}
-          rows={[
-            [
-              "Mises à jour du logiciel de gestion du site (CMS), du thème et des extensions",
-              "Calendrier défini dans le contrat",
-              "Journal des versions et contrôle après mise à jour",
-            ],
-            [
-              "Sauvegardes externalisées + tests de restauration",
-              "Selon la fréquence de changement des données",
-              "Copie externalisée et restauration testée",
-            ],
-            [
-              "Surveillance disponibilité (uptime) + sécurité",
-              "Surveillance automatisée selon les horaires convenus",
-              "Alerte reçue, responsable nommé et action consignée",
-            ],
-            [
-              "Correctifs (bugs, formulaires, incompatibilités)",
-              "À la demande ou temps réservé",
-              "Mode de décompte, plafond et accord avant dépassement",
-            ],
-            [
-              "Licences d'extensions premium (WordPress)",
-              "À chaque renouvellement",
-              "Inventaire, titulaire, prix réel et sort des licences à la résiliation",
-            ],
-            [
-              "Petites évolutions (banque d'heures)",
-              "Banque d’heures ou devis séparé",
-              "Taux convenu, arrondi et règle de report des heures",
-            ],
-            [
-              "Compte rendu",
-              "Mensuel",
-              "La liste des contrôles, mises à jour et corrections effectués",
-            ],
-          ]}
-        />
-        <p>
-          Un compte rendu simple vous permet de savoir ce qui a été mis à jour,
-          sauvegardé, testé et corrigé. Demandez également les problèmes
-          détectés et les décisions attendues de votre part.
-        </p>
-
-        <h2 id="wordpress-vs-statique">
-          5. WordPress ou site sur mesure : quelle différence ?
-        </h2>
-        <p>
-          WordPress repose sur son logiciel principal, un thème et des
-          extensions à mettre à jour et à tester. Un site généré à l’avance avec
-          React ou Next.js peut éviter la base de données et les extensions
-          exposées au public lorsqu’il reste purement statique. Il conserve
-          toutefois des dépendances logicielles, un hébergement et un processus
-          de déploiement à surveiller. La technologie change donc la nature de
-          l’entretien ; elle ne le fait pas disparaître.
-        </p>
-        <GuideTable
-          headers={["Poste", "WordPress", "Site statique moderne (Next.js)"]}
-          rows={[
-            [
-              "Forfait de maintenance",
-              "Mises à jour du cœur, du thème et des extensions à tester.",
-              "Dépendances et déploiements à contrôler selon le projet.",
-            ],
-            [
-              "Licences et services",
-              "Extensions et thème à inventorier.",
-              "Services connectés et outils d’édition à inventorier.",
-            ],
-            [
-              "Hébergement",
-              "Compte, serveur et base de données à documenter.",
-              "Compte, plateforme et configuration à documenter.",
-            ],
-            [
-              "Risque à surveiller",
-              "Extensions, thème, comptes et serveur",
-              "Dépendances, déploiement, formulaires et services connectés",
-            ],
-          ]}
-        />
-        <p>
-          Un WordPress bien tenu peut parfaitement convenir. Il demande
-          simplement un entretien régulier différent de celui d’un site
-          statique. Le coût initial ne suffit donc pas à départager les
-          solutions. L&apos;usage d&apos;assistants IA dans le développement ne
-          prouve ni une baisse générale de prix ni un délai universel.
-        </p>
-        <p>
-          Sur cinq ans, comparez les mêmes postes : construction, hébergement,
-          licences, maintenance, évolutions, temps interne et sortie. Pour un
-          site professionnel, une base statique React/Next.js peut limiter
-          certains besoins de mise à jour applicative. Notre page{" "}
-          <Link href="/agence-next-js">agence Next.js</Link> détaille cette
-          approche, et le comparatif par profil reste dans notre{" "}
-          <Link href="/guides/nextjs-ou-wordpress">
-            comparatif Next.js ou WordPress
-          </Link>{" "}
-          — côté budget, c&apos;est un paramètre à poser dès le devis de
-          création.
-        </p>
-
-        <h2 id="contrat">
-          6. Écrivez les délais et responsabilités dans le contrat
-        </h2>
-        <p>
-          Pour une application métier ou un logiciel sur mesure, utilisez le
-          guide dédié au{" "}
-          <Link href="/guides/contrat-tma-application">
-            contrat de tierce maintenance applicative
-          </Link>
-          . Il distingue l’alerte, l’intervention, la solution temporaire, le
-          retour du service et la correction définitive. Il précise aussi qui
-          agit et comment changer de prestataire.
-        </p>
-        <p>
-          Un contrat de maintenance doit au minimum rendre lisibles le travail
-          inclus — correctif, préventif, évolutif et exploitation —, les mises à
-          jour, les sauvegardes et leurs tests, le support, les exclusions, le
-          prix et sa révision, la résiliation, la responsabilité, les données et
-          la manière de changer de prestataire.
-        </p>
-        <p>
-          Si le prestataire traite des données personnelles pour votre compte,
-          faites préciser son rôle et ses sous-traitants selon ce qu’il réalise
-          vraiment. Un simple accès technique ne dispense pas de cette analyse.
-        </p>
-        <p>
-          Certains devis parlent de SLA, de GTI ou de GTR pour les engagements
-          et les délais. Ne comparez pas les sigles : faites écrire les étapes
-          attendues, de la réception de l’alerte à la correction définitive.
-          Pour chacune, précisez les horaires couverts, le point de départ, les
-          exclusions et ce qui se passe si le délai est dépassé. Il n’existe pas
-          de délai type adapté à toutes les entreprises.
-        </p>
-        <p>
-          Même vigilance sur la disponibilité promise par l&apos;hébergement :
-          le pourcentage ne se lit qu&apos;avec sa période, sa méthode de
-          mesure, ses exclusions et ses conséquences. À titre de conversion
-          arithmétique, 99,9 % sur une année complète représente environ{" "}
-          <strong>8 h 46</strong> de temps hors disponibilité, contre environ{" "}
-          <strong>53 minutes</strong>
-          pour 99,99 %. Ce calcul ne dit pas que ces niveaux sont des standards,
-          ni que chaque interruption sera indemnisée. Pour un site critique,
-          confrontez l&apos;engagement de l&apos;hébergeur à celui du mainteneur
-          et aux besoins réels de l&apos;entreprise.
-        </p>
-        <InfoBox
-          variant="amber"
-          title="Quatre points à rendre concrets dans le contrat"
-        >
-          <ul className="list-disc pl-4 space-y-1.5">
-            <li>
-              <strong>Les heures non utilisées.</strong> Écrivez si elles sont
-              perdues ou reportées, comment elles sont arrondies et ce qui se
-              passe en cas d’urgence ou de dépassement.
-            </li>
-            <li>
-              <strong>La sortie imprécise.</strong> Durée, renouvellement,
-              préavis, assistance et coûts doivent pouvoir être relus avant la
-              signature.
-            </li>
-            <li>
-              <strong>Le travail inclus.</strong> Distinguez correctif,
-              préventif, évolutif, support et exploitation, avec un exemple et
-              une exclusion pour chaque famille.
-            </li>
-            <li>
-              <strong>Le changement de prestataire.</strong> Listez accès,
-              fichiers, sauvegardes, licences, données, documentation, formats
-              et contrôle de la remise.
-            </li>
-          </ul>
-        </InfoBox>
-        <p>
-          Si vous préparez déjà la sortie, ne retirez pas l’ancien prestataire
-          dès la fin du préavis. Suivez l’ordre proposé dans le guide pour{" "}
-          <Link href="/guides/reprendre-maintenance-site-autre-agence">
-            changer d’agence de maintenance en gardant le site, les e-mails et
-            les demandes clients sous contrôle
-          </Link>
-          .
-        </p>
-
-        <h2 id="diy">
-          7. Calculez le coût seul ou avec une plateforme hébergée
-        </h2>
-        <p>
-          Oui, un dirigeant peut entretenir lui-même un site vitrine simple s’il
-          possède les compétences et réserve réellement du temps. Une estimation
-          éditoriale Hagnéré de <strong>2 à 4 heures par mois</strong> peut
-          servir au premier calcul, mais mesurez ensuite votre charge réelle :
-          elle varie avec la technologie, les tests et les incidents. Des outils
-          comme ManageWP et MainWP publient leurs propres tarifs, à vérifier au
-          moment du calcul. Ajoutez-les au coût d&apos;opportunité :
-        </p>
-        <FormulaBox>
-          <strong>
-            Coût réel du « je m&apos;en occupe » = heures passées × valeur de
-            votre heure
-          </strong>
-          <br />
-          Hypothèse purement illustrative : temps réellement mesuré × valeur
-          interne choisie = coût d&apos;opportunité. Remplacez ces deux
-          variables par les vôtres et ajoutez le coût des outils et de
-          l&apos;escalade.
-          <br />
-          <br />
-          Et le vrai risque n&apos;est pas là : il est dans la régularité. Une
-          tâche sans responsable, calendrier ni résultat noté risque d&apos;être
-          oubliée ; définissez ces éléments explicitement.
-        </FormulaBox>
-        <p>
-          Faire soi-même peut convenir à un site simple. Dès que le site génère
-          des contacts ou des ventes — comme dans l’exemple fictif présenté plus
-          haut —, la question n&apos;est plus « puis-je le faire ? » mais «
-          est-ce le meilleur usage de mes heures, avec ce niveau de risque ? ».
-          La réponse dépend des compétences, de l&apos;enjeu du site et
-          d&apos;une solution d&apos;escalade disponible.
-        </p>
-
-        <h3 id="duree">Combien de temps dure la maintenance ?</h3>
-        <p>
-          Il faut distinguer la durée d’une intervention, le temps consacré
-          chaque mois et la durée du contrat.
-        </p>
-        <ul>
-          <li>
-            <strong>La durée d&apos;une opération.</strong> Les ordres de
-            grandeur cités dans les offres vont de quelques dizaines de minutes
-            pour une petite correction à plusieurs heures pour un lot de mises à
-            jour. Une restauration ou une nouvelle fonction doit être chiffrée
-            après diagnostic.
-          </li>
-          <li>
-            <strong>Le temps récurrent.</strong> Mesurez la charge réelle sur
-            plusieurs cycles. Une boutique peut demander davantage de tests et
-            de surveillance avant les périodes importantes.
-          </li>
-          <li>
-            <strong>La durée du contrat.</strong> Les offres peuvent être avec
-            ou sans engagement. Lisez le renouvellement et le préavis. Le besoin
-            d’entretien, lui, existe tant que le site reste en service ; une
-            refonte ne fait que repartir avec une nouvelle base. Notre{" "}
-            <Link href="/guides/prix-refonte-site-internet">
-              guide du prix d&apos;une refonte
-            </Link>{" "}
-            aide à comparer les deux décisions, et notre{" "}
-            <Link href="/guides/refonte-sans-perdre-son-seo">
-              guide « refondre sans perdre son SEO »
-            </Link>{" "}
-            sécurise le moment venu.
-          </li>
-        </ul>
-
-        <h3 id="saas">Ce qui reste à entretenir sur Shopify ou Wix</h3>
-        <p>
-          Shopify, Wix ou Squarespace entretiennent leurs serveurs et leur
-          logiciel principal. Cet avantage est compris dans l’abonnement. Votre
-          entreprise reste toutefois responsable du thème, des applications
-          ajoutées, des connexions à l’emailing, à la comptabilité ou à la
-          logistique, ainsi que du contenu et des réglages de conformité. Une
-          boutique active peut donc nécessiter du temps interne ou un
-          prestataire, même si la plateforme elle-même est maintenue. Notre{" "}
-          <Link href="/guides/shopify-ou-sur-mesure">
-            comparatif Shopify ou sur-mesure
-          </Link>{" "}
-          intègre ce poste dans le coût total, et notre{" "}
-          <Link href="/guides/woocommerce-ou-shopify">
-            comparatif WooCommerce ou Shopify
-          </Link>{" "}
-          met face à face les deux modèles d&apos;entretien.
-        </p>
-        <p>
-          Le bon calcul additionne l’abonnement, les applications et le temps
-          consacré à votre boutique.
-        </p>
-
-        <h2 id="methode">8. Choisissez votre contrat en cinq étapes</h2>
+        <h2 id="action">13. Votre audit autonome en 45–60 minutes</h2>
         <ol>
           <li>
-            <strong>Évaluez l&apos;enjeu, pas seulement le site.</strong>{" "}
-            Mesurez les commandes, contacts et opérations dépendant du site. Ces
-            données aident à définir les délais attendus, contrairement au seul
-            nombre de pages.
+            Écrivez les trois fonctions dont la panne produit un dommage réel.
           </li>
           <li>
-            <strong>Choisissez le niveau d’accompagnement.</strong>{" "}
-            Automatisation seule pour un site peu critique, contrôle humain
-            lorsqu’il génère des demandes, et délais contractuels lorsque chaque
-            panne a un coût élevé.
+            Trouvez les propriétaires du domaine, de l’hébergement, du dépôt, de
+            la base et des sauvegardes.
           </li>
           <li>
-            <strong>Comparez les devis poste par poste</strong> avec le tableau
-            de la section 5 — mises à jour testées, sauvegardes externalisées
-            avec tests, licences incluses ou non, heures de correctifs et leur
-            report.
+            Envoyez le formulaire, testez le paiement si pertinent et vérifiez
+            l’e-mail reçu.
           </li>
           <li>
-            <strong>Exigez quatre réponses écrites</strong> : travail inclus,
-            délais d’intervention et de rétablissement, remise des fichiers et
-            des accès, puis compte rendu mensuel.
+            Demandez la date et la durée du dernier point restauré, pas
+            seulement sauvegardé.
           </li>
           <li>
-            <strong>Traitez la cause, pas seulement le symptôme.</strong> Si
-            votre facture de maintenance explose ou si les incidents se
-            répètent, le problème est peut-être la base technique — auquel cas
-            le budget peut être mieux investi dans une refonte que dans des
-            réparations répétées sur une base devenue trop coûteuse.
+            Reconstituez le dernier incident : détection, accusé, intervention,
+            contournement, rétablissement et correction.
+          </li>
+          <li>
+            Calculez l’impact avec marge non reportable et capacité interne
+            réellement détournée.
+          </li>
+          <li>
+            Marquez <code>ND</code> chaque licence, fin de support, heure,
+            risque, exclusion ou sortie inconnue.
+          </li>
+          <li>
+            Envoyez exactement la même fiche aux deux candidats et conservez
+            leurs preuves séparées.
           </li>
         </ol>
-        <p>
-          Si votre site est déjà indisponible, commencez par notre fiche réflexe
-          «{" "}
-          <Link href="/guides/site-internet-en-panne-que-faire">
-            site internet en panne : que faire maintenant ?
-          </Link>{" "}
-          » : elle vous aide à noter les faits, choisir le bon interlocuteur et
-          vérifier le retour avant de discuter d’un contrat futur.
-        </p>
-        <p>
-          C&apos;est la logique de notre offre de{" "}
-          <Link href="/services/maintenance-evolution">
-            maintenance et évolution
-          </Link>{" "}
-          : un forfait mensuel au contenu écrit, des délais contractuels et une
-          remise organisée des accès et des fichiers. Pour situer ce budget dans
-          le coût complet d&apos;un site, notre{" "}
-          <Link href="/guides/combien-coute-un-site-internet">
-            panorama des prix d&apos;un site internet
-          </Link>{" "}
-          complète ce guide.
-        </p>
+
+        <div className="not-prose my-8 grid gap-4 sm:grid-cols-2">
+          <section className="rounded-xl border border-emerald-200 bg-emerald-50 p-5 text-emerald-950 dark:border-emerald-800 dark:bg-emerald-950/30 dark:text-emerald-100">
+            <h3 className="m-0 text-sm font-bold">Bon fit pour une revue</h3>
+            <p className="mb-0 mt-2 text-sm leading-relaxed">
+              Plusieurs offres incomparables, aucune restauration récente,
+              boutique ou service à parcours critiques, changement de
+              prestataire, comptes et responsabilités dispersés.
+            </p>
+          </section>
+          <section className="rounded-xl border border-amber-200 bg-amber-50 p-5 text-amber-950 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-100">
+            <h3 className="m-0 text-sm font-bold">Mauvais fit</h3>
+            <p className="mb-0 mt-2 text-sm leading-relaxed">
+              Recherche d’un prix magique sans périmètre, garantie zéro panne,
+              avis juridique personnalisé, site personnel sans enjeu ou promesse
+              de première place dans Google.
+            </p>
+          </section>
+        </div>
+
+        <InfoBox variant="blue" title="Notre conflit d’intérêts, rendu visible">
+          <p className="m-0">
+            Hagnéré Code vend du développement et peut bénéficier d’un
+            diagnostic, d’une reprise ou d’une maintenance. Ce guide montre donc
+            aussi quand rester ponctuel, s’organiser en interne ou ne pas
+            souscrire. Les hypothèses sont modifiables et aucune offre Hagnéré
+            Code n’est déclarée supérieure sans vos preuves.
+          </p>
+        </InfoBox>
 
         <GuideInlineCTA
-          title="Savoir quel niveau de maintenance votre site nécessite"
-          description="Indiquez la technologie du site, son rôle dans vos ventes et le contrat actuel. Nous vous aidons à identifier les mises à jour, sauvegardes, contrôles et délais réellement nécessaires, puis à chiffrer un forfait adapté."
+          title="Faire relire votre périmètre avant de demander un devis"
+          description="Le formulaire prend environ 3 minutes. Le pré-cadrage et la réponse sont gratuits. Nous visons un premier retour lors du jour ouvré suivant, sans engagement de délai ; un devis ferme n’est proposé qu’après échange. Nous pouvons aussi recommander une couverture légère, une organisation interne ou le report du projet."
           tags={[
-            "Tâches clairement incluses",
-            "Délai d’intervention écrit",
-            "Accès et sauvegardes récupérables",
+            "Périmètre commun",
+            "Inconnues conservées",
+            "Option de ne pas souscrire",
           ]}
+          ctaLabel="Transmettre mon périmètre"
+          ctaHref="/demarrer-un-projet"
+          showPhone={false}
         />
 
-        <hr />
-        <p className="text-sm">
-          <strong>Sources et méthode.</strong> Les six pages tarifaires liées
-          dans la section 1 ont été consultées le 21 juillet 2026. Les montants
-          sont ceux publiés par les prestataires eux-mêmes ; nous n’avons ni
-          testé ni classé leurs services. L’échantillon n’est pas représentatif,
-          les périmètres ne sont pas homogènes et les prix peuvent évoluer. Les
-          outils cités pour l’option interne ont aussi des pages tarifaires
-          publiques :{" "}
-          <a
-            href="https://managewp.com/pricing"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            ManageWP
-          </a>{" "}
-          /{" "}
-          <a
-            href="https://mainwp.com/pricing/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            MainWP
-          </a>{" "}
-          . Vérifiez toujours la page et le devis daté avant de signer.
+        <h2>Sources, portée et limites</h2>
+        <p>
+          Sources primaires et institutionnelles consultées ou revérifiées le 25
+          juillet 2026 : ISO 14764:2022, ANSSI MonServiceSécurisé et guide
+          sauvegarde v1.1, CNIL, NIST SP 800-34 Rev. 1, SP 800-40 Rev. 4 et SP
+          800-61 Rev. 3, CISA, GOV.UK, NCSC, BSI, WordPress, Next.js, Vercel,
+          Google SRE, Google Search et W3C WAI. Les sources produit sont
+          volatiles et doivent être rouvertes au jour du choix.
         </p>
-        <p className="text-sm">
-          <em>
-            L’exemple de la fromagerie est fictif et sert uniquement à poser les
-            questions de coût et de délai. Les prestataires nommés le sont au
-            titre de leurs tarifs publics, sans recommandation ni partenariat.
-            Ce guide ne constitue pas un conseil juridique personnalisé.
-          </em>
+        <p>
+          Les montants pédagogiques ne sont ni des devis ni des statistiques.
+          Les pages commerciales sont des observations de vendeurs. Les
+          objectifs de sauvegarde, disponibilité, sécurité et conformité doivent
+          être adaptés aux données, contrats et risques réels. Ce guide n’est
+          pas un avis juridique, ne garantit aucune panne évitée et ne promet ni
+          indexation ni classement Google.
+        </p>
+
+        <p>
+          Pour exécuter une reprise, consultez{" "}
+          <Link href="/guides/reprendre-maintenance-site-autre-agence">
+            le guide de changement de mainteneur
+          </Link>
+          . Pour arbitrer correction et reconstruction, utilisez{" "}
+          <Link href="/guides/prix-refonte-site-internet">
+            le guide de refonte
+          </Link>
+          . Pour un incident en cours, suivez d’abord{" "}
+          <Link href="/guides/site-internet-en-panne-que-faire">
+            la procédure de panne
+          </Link>
+          .
         </p>
       </GuideLayout>
     </GuidesShell>

@@ -1,12 +1,26 @@
 # Dossier de recherche — Migrer un logiciel métier sans interrompre l’activité
 
-> Ce dossier prépare le premier guide du lot de dix lancé le 22 juillet 2026.
-> Il distingue la continuité réellement organisée d’une promesse invérifiable
-> de « zéro coupure ».
+> Ce dossier a préparé une première version du guide le 22 juillet 2026. Le
+> giga-audit du 24 juillet a invalidé ses anciennes portes P1 à P4 : elles sont
+> conservées plus bas comme historique, mais ne qualifient pas la nouvelle
+> version. La recherche a été rouverte sur les écritures concurrentes, le
+> rapprochement, la réversibilité, les objectifs de continuité et le TCO.
 
-Statut actuel : **P4 validée localement — publication retenue jusqu’au gel du lot**.
+Statut actuel : **P3 indépendante PASS à 99/100 et contre-lecture P4 simulée
+GO éditorial local à 97/100, avec P0 = 0, P1 = 0 et P2 = 0 sur le contenu
+courant. Le BAT navigateur réel, le test par un dirigeant externe, le manifeste
+final, la production et l’indexation restent non prouvés**.
 
-## Journal des quatre passes
+## Journal courant des quatre passes
+
+| Passe                        | État actuel                               | Date       | Preuve ou blocage                                                                                                                                                                            |
+| ---------------------------- | ----------------------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1. Recherche                 | Rouverte et approfondie                   | 2026-07-24 | Corpus international, matrice des 12 P1 et hypothèses Nova documentés dans l’[audit approfondi](../audits/giga-audit-2026-07-24/guides/migrer-logiciel-metier-sans-interruption.md).         |
+| 2. Rédaction et intégration  | Stabilisée, contrôles locaux réussis      | 2026-07-24 | Page, kit vierge + exemple, ZIP exact, métadonnées prudentes et tests spécifiques ; aucun verdict auto-attribué.                                                                             |
+| 3. Contre-audit indépendant  | PASS — 99/100, P0/P1/P2 = 0               | 2026-07-24 | Premier NO-GO à 82/100, corrections, PASS à 98/100, réouverture P4 puis revalidation complète et delta final sur le snapshot `53828440…`.                                                    |
+| 4. Plume humaine et contrôle | GO éditorial local — 97/100, P0/P1/P2 = 0 | 2026-07-24 | Première P4 simulée NO-GO à 87/100, corrections, contre-lecture à 96/100 puis fermeture des deux P2. BAT navigateur, dirigeant externe, manifeste, production et indexation restent séparés. |
+
+## Journal historique du 22 juillet — invalidé par le giga-audit
 
 Propriétaire éditorial unique : **agent racine Codex**.
 
@@ -251,7 +265,28 @@ une preuve attendue et une décision pour chaque étape.
 | Fermer, archiver ou garder en lecture seule        | Quand l’ancien logiciel cesse-t-il d’être nécessaire ?                    | besoins métier, obligations adaptées, accès et export                | Éviter suppression précoce et double système permanent  | Comparaison courte             |
 | Sources et limites                                 | Que prouvent réellement les sources ?                                     | CNIL et ANSSI                                                        | Revalidation future                                     | Notes proches des affirmations |
 
-## 8. Ressource, conversion et maillage
+## 8. Ressource, conversion et maillage — décision révisée
+
+La conclusion historique selon laquelle une ressource séparée n’était pas
+nécessaire est annulée. La P2 du 24 juillet fournit un kit public sans formulaire
+commercial :
+
+- inventaire des dépendances, vierge et exemple ;
+- mapping des données, vierge et exemple ;
+- contrat de source d’écriture par domaine, population et période ;
+- journal des lots, rejets, correction et rejeu ;
+- rapprochement des volumes, sommes, relations, droits et écritures récentes ;
+- RPO, RTO et MTD testables par opération ;
+- matrice de tests ;
+- runbook avec rollback, roll-forward et point irréversible ;
+- critères stop/go ;
+- registre des copies, accès, prestataires, comptes et purge ;
+- journal d’hypercare avec staffing et critère de sortie ;
+- TCO à 12, 36 et 60 mois avec unités et formules ;
+- relevé de décision vierge et exemple Nova rempli.
+
+Les paragraphes historiques suivants décrivent la décision du 22 juillet et ne
+doivent plus être utilisés pour qualifier la version courante.
 
 Une ressource téléchargeable séparée n’est pas nécessaire. La feuille de
 bascule sera entièrement visible et copiable dans l’article. Elle contient :
@@ -302,7 +337,13 @@ plan de sortie de `remplacer-microsoft-access-application-web`.
 
 ## 10. Rapports de sortie
 
-### Rapport P1 — Recherche
+> **Historique invalidé.** Les rapports P1 à P4 et la scorecard qui suivent
+> décrivent uniquement la version du 22 juillet 2026. Ils ne qualifient ni la
+> page ni le kit réécrits le 24 juillet. Le journal courant et la réouverture
+> située après la décision de gel sont les seules références applicables au
+> snapshot actuel.
+
+### Rapport P1 — Recherche historique du 22 juillet
 
 ```text
 PASSE 1 TERMINÉE
@@ -327,7 +368,7 @@ J+1/J+7, fermeture et sources.
 Snapshot : manifests/migrer-logiciel-metier-sans-interruption-p1.sha256
 ```
 
-### Rapport P2 — Rédaction et intégration
+### Rapport P2 — Rédaction historique du 22 juillet
 
 ```text
 PASSE 2 TERMINÉE
@@ -358,7 +399,7 @@ du hub, du sitemap et de llms.txt.
 Snapshot : manifests/migrer-logiciel-metier-sans-interruption-p2.sha256
 ```
 
-### Rapport P3 — Contre-audit indépendant
+### Rapport P3 — Contre-audit historique du 22 juillet
 
 ```text
 PASSE 3 — PREMIER VERDICT : FAIL, 18/20
@@ -381,7 +422,7 @@ repéré deux reliquats dans le scénario fictif (« première condition » et
 « stock »), tous deux corrigés. L’ultime contre-audit a rendu PASS sans réserve.
 ```
 
-### Rapport P4 — Plume humaine et contrôle final
+### Rapport P4 — Contrôle historique du 22 juillet
 
 ```text
 PASSE 4 TERMINÉE LOCALEMENT
@@ -402,7 +443,7 @@ retenue jusqu'au gel commun des dix guides pour un déploiement atomique.
 Snapshot : manifests/migrer-logiciel-metier-sans-interruption-p4.sha256
 ```
 
-## 11. Scorecard validée en P3
+## 11. Scorecard historique du 22 juillet — invalidée
 
 | Axe          |      Note | Motif à prouver dans la page                                              |
 | ------------ | --------: | ------------------------------------------------------------------------- |
@@ -432,3 +473,156 @@ Test réalisé par une personne réelle : non.
 Le retrait du statut d’attente ouvre la route à `index, follow` dans un build de
 production. Il ne prouve ni le déploiement final ni l’indexation effective par
 Google, qui doivent être vérifiés séparément.
+
+---
+
+## Réouverture du 24 juillet 2026 — spécification de la nouvelle P2
+
+Cette section remplace les verdicts éditoriaux historiques pour la version
+courante. Elle ne constitue pas un contre-audit P3.
+
+### Cas commun canonique
+
+Nova Maintenance est une entreprise entièrement fictive :
+
+- 40 utilisateurs ;
+- 2 400 clients uniques dans la cible ; l’exemple de lot lit 2 420 lignes
+  source, dont 20 doublons approuvés ;
+- 8 000 dossiers historiques ;
+- 300 dossiers ouverts ;
+- 220 factures mensuelles ;
+- 5 intégrations ;
+- 10 rôles ;
+- 50 écritures pendant la dernière heure ;
+- une fenêtre de 6 heures ;
+- un coût interne chargé fictif de 55 €/h.
+
+La porte A dure `3 h 20 + 1 h 10 + 1 h 45 = 6 h 15` et donne quatre motifs
+indépendants de STOP : retour hors fenêtre, relation dossier-client à 299/300,
+un rejet sans responsable et TST-002 en échec. Entre A et B, l’équipe attribue
+le rejet, corrige la relation, exécute LOT-002-R1 puis LOT-002-R2 et précharge
+les données. La porte B dure `20 min + 1 h 10 + 15 min + 45 min = 2 h 30`,
+obtient 300/300 relations et zéro rejet non attribué. Elle reste STOP parce que
+TST-002 échoue encore. Cette chronologie montre qu’un meilleur temps ne
+compense pas une règle métier manquante.
+
+### Traitement des douze P1
+
+| P1 du giga-audit                          | Réponse intégrée en P2                                                                                                                                   | Preuve attendue du contre-audit                                           |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Inventaire des dépendances incomplet      | Matrice application, donnée, interface, automatisme, accès, équipement, contrat et sortie.                                                               | Chaque dépendance possède propriétaire, mode temporaire et preuve.        |
+| Mapping et nettoyage trop légers          | Mapping champ source/cible, transformation, absence, doublon, rejet, approbation métier.                                                                 | Les 20 doublons, 10 rejets initiaux et statuts inconnus restent visibles. |
+| Coexistence et double écriture ambiguës   | Par défaut, une source d’écriture par domaine, population et période ; une exception multi-écriture exige conflit, idempotence et rapprochement prouvés. | Les populations pilote et hors pilote sont séparées.                      |
+| Synchronisation et rejeu absents          | Lot avec watermark composé, clé stable, accusés et test idempotent.                                                                                      | LOT-002, LOT-002-R1 et LOT-002-R2 expliquent correction puis rejeu.       |
+| Rapprochement insuffisant                 | Volumes, sommes, répartitions, relations, pièces, droits et écritures récentes.                                                                          | Les 300 dossiers ne sont conformes qu’après le lot de correction.         |
+| Stratégies non comparées à périmètre égal | Une décision temporaire de report, puis trois trajectoires exécutables au même résultat ; parallèle séparé comme mécanisme.                              | Même résultat métier et mêmes coûts cachés pour les trois trajectoires.   |
+| RPO/RTO/MTD/SLA non expliqués             | Le RPO est un point ou une fenêtre temporelle de reprise, traduisible ensuite en écritures ; RTO, MTD et SLA restent distincts.                          | Le CSV distingue cible, test, mesure observée et décision.                |
+| Tests trop généraux                       | Matrice métier, mapping, intégration, performance, droits, restauration, rejeu, retour et suppression.                                                   | TST-002 reste en échec dans l’exemple STOP.                               |
+| Bascule non opérationnelle                | Runbook heure, durée, responsable, preuve, arrêt et action en cas d’échec.                                                                               | Une écriture post-bascule est conservée exactement une fois.              |
+| Rollback incomplet                        | Retour séparé du roll-forward, journal des écritures post-bascule et point irréversible.                                                                 | La sauvegarde seule n’est jamais présentée comme un retour complet.       |
+| Hypercare sans staffing ni sortie         | Couverture horaire, responsable, priorité, délai, contournement, preuve et critère de sortie.                                                            | Les modes temporaires et incidents critiques doivent être fermés.         |
+| TCO absent                                | Trois trajectoires exécutables à 12/36/60 mois, unités, jours, cible, ancien contrat, archive et exercice de sortie.                                     | Totaux recalculés et sensibilités +6 000 € / +13 000 € exactes.           |
+
+### TCO canonique
+
+Hypothèses fictives communes : 650 €/jour projet ; 8 800 € de temps
+utilisateurs (`40 × 4 h × 55 €`) ; 4 400 € d’hypercare
+(`2 personnes × 40 h × 55 €`), soit 13 200 € au total ; cible à
+3 000 €/mois ; ancien outil à 2 000 €/mois pendant la coexistence ; archive à
+200 €/mois après fermeture et exercice de sortie à 12 000 € à 60 mois. Ces
+13 200 € ne sont pas les six heures d’indisponibilité valorisées ailleurs.
+
+Les jours projet se décomposent ainsi :
+
+| Trajectoire           | Cadrage | Nettoyage/mapping | Intégrations | Tests/répétitions | Changement | Pilotage/sortie | Total |
+| --------------------- | ------: | ----------------: | -----------: | ----------------: | ---------: | --------------: | ----: |
+| Bascule en une fois   |      15 |                22 |           30 |                25 |         15 |              10 |   117 |
+| Migration progressive |      18 |                28 |           38 |                30 |         20 |              12 |   146 |
+| Remplacement ciblé    |      22 |                34 |           50 |                36 |         24 |              15 |   181 |
+
+Cette ventilation reste une hypothèse éditoriale, jamais une durée de marché.
+
+| Trajectoire                    | Jours | Coexistence ancien outil |   12 mois |   36 mois |   60 mois |
+| ------------------------------ | ----: | -----------------------: | --------: | --------: | --------: |
+| Bascule en une fois            |   117 |                   4 mois | 134 850 € | 211 650 € | 300 450 € |
+| Migration progressive          |   146 |                   8 mois | 160 900 € | 237 700 € | 326 500 € |
+| Remplacement ciblé / strangler |   181 |                  11 mois | 189 050 € | 265 850 € | 354 650 € |
+
+La bascule complète possède ici un avantage construit de 26 050 € sur la
+migration progressive et de 54 200 € sur le remplacement ciblé. L’exemple
+calcule donc aussi les vrais seuils de renversement :
+
+- 41 jours imprévus sur la bascule complète ajoutent
+  `41 × 650 = 26 650 €` ; son TCO 12 mois atteint 161 500 € et dépasse la
+  progressive de 600 € ;
+- 11 h 51 d’indisponibilité supplémentaire pour 40 personnes à 55 €/h
+  ajoutent 26 070 € de capacité interne et effacent l’écart de 26 050 € ;
+- le remplacement ciblé doit créer ou préserver plus de 54 200 € de valeur
+  face à la bascule complète pour gagner selon ces seules hypothèses.
+
+Ces seuils n’estiment aucune probabilité d’incident. « Stabiliser et reporter »
+reste une décision temporaire à chiffrer séparément, car elle n’atteint pas à
+elle seule le même résultat à 60 mois.
+
+### Frontières factuelles
+
+- Les sources ANSSI et CNIL soutiennent l’inventaire, les objectifs métier,
+  la restauration, la continuité, les accès et la fin de vie. Elles ne prouvent
+  aucun chiffre Nova.
+- Les documentations AWS, GOV.UK et UK Home Office décrivent des patterns
+  techniques. Elles ne garantissent pas qu’un strangler, un blue-green ou un
+  canary est adapté à une base ou à des écritures partagées.
+- Le [NIST SP 800-34 Rev.1](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final)
+  soutient l’usage de RPO/RTO dans un cadre de continuité ; il ne fixe aucune
+  valeur Nova.
+- [Microsoft Learn — duplicate detection](https://learn.microsoft.com/en-us/azure/service-bus-messaging/duplicate-detection)
+  illustre l’identifiant stable et la détection de doublons. Le
+  [NCSC — decommissioning assets](https://www.ncsc.gov.uk/guidance/decommissioning-assets)
+  rappelle que les données de retour dépassent la seule base. Le rejeu exact
+  des écritures post-bascule reste à prouver sur le système concerné.
+- Le TCO et les durées sont des hypothèses pédagogiques recalculables, ni un
+  devis ni un benchmark.
+- Une attaque active, une intégrité contestée, un conflit d’accès ou une règle
+  sectorielle sortent du conseil générique.
+
+### Rapport P3 final du snapshot corrigé
+
+```text
+PASSE 3 INDÉPENDANTE — PASS, 99/100, P0/P1/P2 = 0
+Lecteur : dirigeant de PME dont les opérations quotidiennes dépendent du
+logiciel à remplacer.
+Réponse immédiate : protéger les opérations, désigner par défaut une source
+d’écriture, rapprocher les données et garder le temps de revenir.
+Comparaison : le report temporaire est chiffré séparément ; migration
+progressive, bascule complète et remplacement ciblé sont comparés au même
+résultat.
+Parallèle, blue-green et canary ne sont pas présentés comme solutions
+automatiques aux conflits de données.
+Cas : Nova Maintenance, chiffres canoniques ci-dessus, verdict STOP.
+Décision chiffrée : répétitions A/B, RPO/RTO/MTD, seuils de rapprochement,
+TCO 12/36/60 et sensibilités.
+Ressource : kit public sans formulaire, fichiers vierges et exemples, relevé
+Nova rempli.
+Contrôles finaux : 6 199 mots / 31 min, 27 fichiers identiques dans le ZIP,
+watermarks CEST/UTC, deux portes Nova et neuf totaux TCO recalculés.
+Empreinte page : 53828440d73cfe6bd480f427325c86d896978cdca02e00dfeb821803c398ef56.
+Empreinte test : 89a6c007ca46e668e58c34ba756f2310bd6c31efdfa0820e2b8a3e308714a1c9.
+P4 simulée finale : GO éditorial local, 97/100, P0/P1/P2 = 0.
+Réserves hors contenu : BAT navigateur réel, test dirigeant externe, manifeste
+final, production et indexation.
+```
+
+### Vérification ciblée des téléchargements — 25 juillet 2026
+
+Trois chemins CSV non déclarés ont été demandés au serveur local et ont répondu 404. La lecture indépendante a confirmé qu'ils n'existent ni dans la page, ni
+dans son HTML, ni dans les tests, ni dans le kit : ce sont des URL de sonde,
+pas des liens présentés au lecteur.
+
+Les cinq ressources réellement proposées par la page ont toutes répondu 200
+localement : ZIP, mode d'emploi, inventaire des dépendances, objectifs
+RPO/RTO/MTD et décision stop/go. Le test spécialisé conserve la liste exacte
+des 27 fichiers et leur égalité octet par octet avec l'archive.
+
+Reçu :
+[`migrer-logiciel-metier-sans-interruption-resource-links.md`](../audits/giga-audit-2026-07-24/reviews/migrer-logiciel-metier-sans-interruption-resource-links.md).
+Ce contrôle ne vaut pas preuve de disponibilité en production.

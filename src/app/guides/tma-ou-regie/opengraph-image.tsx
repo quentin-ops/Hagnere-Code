@@ -2,29 +2,29 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Choisir la maintenance d’une application entre continuité récurrente, diagnostic borné, lot défini et formule hybride";
+  "TMA ou régie : sept coûts renseignés, trois règles de report et trois impacts de panne";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const modes = [
   {
-    title: "RÉCURRENT",
-    detail: "capacité réservée",
+    title: "7 OPTIONS",
+    detail: "coûts renseignés",
     color: "#34d399",
   },
   {
-    title: "DIAGNOSTIC",
-    detail: "conclusion bornée",
+    title: "REPORT",
+    detail: "81 360 ou 89 010 €",
     color: "#60a5fa",
   },
   {
-    title: "BORNÉ",
-    detail: "lot accepté",
+    title: "TEMPS INTERNE",
+    detail: "seuil 2,67 h/sem.",
     color: "#a78bfa",
   },
   {
-    title: "MIXTE",
-    detail: "formule hybride",
+    title: "PANNE",
+    detail: "175 à 35 400 €",
     color: "#fbbf24",
   },
 ];
@@ -119,7 +119,7 @@ export default function OgImage() {
               letterSpacing: -2.2,
             }}
           >
-            TMA ou régie : que choisir ?
+            TMA ou régie : quel coût comparer ?
           </div>
           <div
             style={{
@@ -131,7 +131,7 @@ export default function OgImage() {
               color: "#c4b5fd",
             }}
           >
-            Classez vos demandes avant de choisir le contrat
+            Coûts connus + temps interne + postes à confirmer
           </div>
         </div>
 
@@ -207,7 +207,7 @@ export default function OgImage() {
         }}
       >
         <span style={{ display: "flex", color: "#d4d4d8" }}>
-          Historique · Priorités · Résultat · Responsabilités
+          12 mois · mêmes hypothèses · décisions réversibles
         </span>
         <span
           style={{
@@ -216,7 +216,7 @@ export default function OgImage() {
             fontWeight: 650,
           }}
         >
-          Le contrat réel prime sur l’étiquette
+          Calcul fictif, méthode reproductible
         </span>
       </div>
     </div>,

@@ -12,6 +12,7 @@ import {
   type GuideSidebarLink,
 } from "@/components/guides/guide-layout";
 import { GuidesShell } from "@/components/guides/GuidesShell";
+import { WebsiteTakeoverAuditDossier } from "@/components/guides/WebsiteTakeoverAuditDossier";
 import { formatGuideDate, getGuide } from "@/lib/guides";
 import {
   buildGuideMetadata,
@@ -22,7 +23,7 @@ const guide = getGuide("audit-technique-avant-reprendre-site");
 
 export const metadata = buildGuideMetadata(
   guide,
-  "Audit technique avant la reprise d’un site : accès, restauration et décision",
+  "Audit technique avant reprise : méthode, preuves, TCO et dossier",
 );
 
 const [articleJsonLd, breadcrumbJsonLd] = buildGuideStructuredData(
@@ -32,59 +33,79 @@ const [articleJsonLd, breadcrumbJsonLd] = buildGuideStructuredData(
 
 const faqItems: GuideFAQItem[] = [
   {
-    question: "Un audit est-il obligatoire avant chaque reprise de site ?",
+    question: "Un audit technique est-il obligatoire avant chaque reprise ?",
     answer:
-      "Non. Un site simple, bien documenté, restauré récemment et transmis avec des accès maîtrisés peut parfois être repris après quelques vérifications ciblées. La profondeur de l’audit doit dépendre de l’importance du site, des données traitées et des inconnues qui empêchent de décider.",
+      "Non. Une vérification légère peut suffire pour un site peu critique, sans paiement, authentification, données métier mutables, migration ni intégration importante, si l’entreprise contrôle déjà les comptes et si une restauration récente est prouvée. Dès qu’un de ces critères change ou reste inconnu, l’audit doit être élargi. Une absence d’autorisation, un incident actif ou un test dangereux impose d’abord un STOP.",
   },
   {
-    question: "Une agence peut-elle auditer le site sans aucun accès ?",
+    question: "Combien coûte et combien de temps dure un audit de reprise ?",
     answer:
-      "Elle peut examiner la partie publique, mais pas prouver une reprise complète. Sans accès autorisé à l’hébergement, aux sauvegardes ou au code concerné, elle ne peut pas démontrer qu’une copie se restaure, qu’une mise en ligne fonctionne ou qu’un retour en arrière reste possible.",
+      "Il n’existe pas de prix ni de durée universels : une vitrine documentée, une boutique et une application métier n’exigent ni les mêmes accès ni les mêmes essais. Demandez un devis qui nomme les actifs, environnements, parcours, preuves, exclusions, livrables et critères d’arrêt. Comparez ensuite le coût complet des trajectoires sur 12, 36 et 60 mois, sans transformer les montants inconnus en zéro.",
   },
   {
-    question: "Dois-je envoyer mes mots de passe pour obtenir un devis ?",
+    question: "Peut-on auditer un site sans code source ni accès interne ?",
     answer:
-      "Non. Un premier échange peut se faire avec la situation, les fonctions importantes et la liste des preuves disponibles. Les accès réellement nécessaires viennent ensuite, par un canal adapté, avec une autorisation, des droits limités et une date de retrait. Ne placez aucun mot de passe dans un formulaire public.",
+      "Une pré-vérification publique peut observer le rendu, le comportement HTTP, certains signaux SEO, la performance ou l’accessibilité. Elle ne peut pas prouver la restauration, le build, le déploiement, les secrets, les dépendances, les données ni le retour arrière. Le rapport doit donc conclure « périmètre public uniquement », jamais « site reprenable ».",
   },
   {
-    question: "Un code ancien impose-t-il de refaire le site ?",
+    question: "Une sauvegarde présente suffit-elle pour accepter la reprise ?",
     answer:
-      "Non. L’âge du code ne décide pas à votre place. Une maintenance peut rester raisonnable si le site se restaure, se publie et remplit ses fonctions importantes. Une stabilisation ou une refonte ne se justifie qu’après avoir relié des défauts constatés à des risques ou à des besoins métier précis.",
+      "Non. Il faut au minimum identifier ce qu’elle contient, sa date, son intégrité, sa rétention, les clés nécessaires et la perte de données acceptable, puis restaurer une copie isolée et réconcilier les éléments attendus. Une archive visible dans un tableau de bord est une déclaration de sauvegarde, pas une preuve de restauration.",
   },
   {
-    question: "L’audit garantit-il que le site ne sera jamais piraté ?",
+    question: "Un build réussi ou un scan automatique suffisent-ils ?",
     answer:
-      "Non. Un audit produit des constats sur une partie définie du site et à une date donnée ; il ne prouve pas l’absence de toute vulnérabilité et n’empêche pas un incident futur. Si une attaque active est suspectée, suspendez la reprise ordinaire et faites traiter l’incident par les personnes compétentes.",
+      "Non. Un build ne prouve ni l’artefact réellement publié, ni les migrations de données, ni les effets différés, ni le rollback. De même, un SBOM sans analyse, un scan d’accessibilité automatisé, une mesure Lighthouse isolée ou une propriété Search Console ne valident qu’une partie du domaine concerné. La preuve doit être reliée à un périmètre, une date, un environnement et un résultat observé.",
   },
   {
-    question: "Un GO signifie-t-il qu’il faut déplacer l’hébergement ?",
+    question: "Faut-il utiliser des données réelles dans la copie de test ?",
     answer:
-      "Non. Une nouvelle équipe peut parfois reprendre la maintenance sans déplacer le domaine, l’hébergement ni les adresses des pages. Si une migration devient utile, préparez-la comme une opération distincte avec sa copie de test, son retour en arrière et, si les adresses des pages changent, son plan de redirections.",
+      "Utilisez des données fictives ou anonymisées par défaut. Si une exception est réellement nécessaire, elle doit être justifiée, minimisée, autorisée, protégée comme la production, tracée puis purgée. Une simple réduction du volume ne rend pas des données personnelles anonymes.",
+  },
+  {
+    question: "Un code ancien signifie-t-il qu’il faut refaire le site ?",
+    answer:
+      "Non. L’âge ne décide pas. Comparez la capacité de restauration, le support des dépendances, les vulnérabilités exploitables, le coût des mises à niveau, la qualité de l’exploitation et le besoin métier. Stabiliser l’existant peut être préférable ; reconstruire devient rationnel seulement si les preuves et le TCO montrent un blocage structurel.",
+  },
+  {
+    question: "Quelle différence entre audit, maintenance et pentest ?",
+    answer:
+      "L’audit de reprise décrit un état de départ et les preuves nécessaires pour confier l’exploitation. La maintenance organise les interventions futures. Un test d’intrusion cherche des vulnérabilités dans un périmètre autorisé et ne remplace ni l’inventaire des comptes, ni la restauration, ni la décision économique. Ces prestations peuvent se compléter sans être confondues.",
+  },
+  {
+    question: "Que doit contenir le livrable final ?",
+    answer:
+      "Une synthèse dirigeant d’une page, le périmètre, les actifs et intervenants, la méthode, le registre de preuves, les résultats, les limites, les P0/P1/P2, les actions interdites, les responsables et échéances, les quatre trajectoires comparées, le TCO documenté et les références d’artefacts. Les captures et journaux détaillés restent en annexe selon leur sensibilité.",
+  },
+  {
+    question: "Quand faut-il arrêter l’audit ordinaire ?",
+    answer:
+      "Arrêtez les changements ordinaires si l’autorité d’agir n’est pas établie, si une compromission est possible, si une opération destructive précéderait une restauration prouvée, si le test ne peut pas être isolé ou si un litige bloque l’action. Préservez les faits et faites intervenir les compétences cyber, juridiques, DPO, assureur ou fournisseur adaptées au cas.",
   },
 ];
 
 const keyPoints: GuideSidebarKeyPoint[] = [
   {
-    number: "01",
-    title: "Preuves avant promesse",
+    number: "60 s",
+    title: "STOP ou continuer",
     description: "",
     color: "blue",
   },
   {
-    number: "02",
-    title: "Tests sur une copie",
+    number: "03",
+    title: "Niveaux d’audit",
     description: "",
     color: "violet",
   },
   {
-    number: "03",
-    title: "Verdict sans score",
+    number: "18",
+    title: "Domaines de preuves",
     description: "",
     color: "emerald",
   },
   {
-    number: "04",
-    title: `Lecture : ${guide.readTimeMin} min`,
+    number: String(guide.readTimeMin),
+    title: `${guide.readTimeMin} minutes de lecture`,
     description: "",
     color: "amber",
   },
@@ -93,98 +114,293 @@ const keyPoints: GuideSidebarKeyPoint[] = [
 const relatedLinks: GuideSidebarLink[] = [
   {
     href: "/guides/reprendre-maintenance-site-autre-agence",
-    label: "Organiser ensuite la passation du site",
+    label: "Organiser la passation du site",
   },
   {
     href: "/guides/proprietaire-site-internet-code-source",
-    label: "Vérifier les droits, le code et les comptes",
-  },
-  {
-    href: "/guides/cout-maintenance-site-internet",
-    label: "Comparer les contrats de maintenance",
+    label: "Prouver les droits, comptes et livrables",
   },
   {
     href: "/guides/site-internet-en-panne-que-faire",
-    label: "Traiter une panne déjà en cours",
+    label: "Traiter une panne ou un incident actif",
+  },
+  {
+    href: "/guides/cout-maintenance-site-internet",
+    label: "Comparer le coût de maintenance",
+  },
+  {
+    href: "/guides/refonte-sans-perdre-son-seo",
+    label: "Préparer une migration avec changement d’URL",
   },
 ];
 
 const tocItems = [
-  { id: "preuve", label: "Ne pas se contenter d’une promesse" },
-  { id: "controle", label: "Prouver qui contrôle le site" },
-  { id: "restauration", label: "Restaurer une copie à l’écart du public" },
-  { id: "fonctions", label: "Rejouer les fonctions importantes" },
-  { id: "acces", label: "Donner des accès sans perdre le contrôle" },
-  { id: "verdict", label: "Décider : GO, réserves ou STOP" },
-  { id: "contrat", label: "Écrire les réserves dans le contrat" },
-  { id: "migration", label: "Séparer reprise et migration" },
-  { id: "reporter", label: "Savoir quand ne pas investir" },
-  { id: "memo", label: "Conserver une décision d’une page" },
-  { id: "sources", label: "Sources et limites" },
+  { id: "glossaire", label: "Comprendre les termes essentiels" },
+  { id: "stop-60-secondes", label: "STOP ou continuer en 60 secondes" },
+  { id: "niveau", label: "Choisir le bon niveau d’audit" },
+  { id: "livrable", label: "Définir le résultat attendu" },
+  { id: "preuves", label: "Distinguer affirmation et preuve" },
+  { id: "domaines", label: "Couvrir les 18 domaines" },
+  { id: "restauration", label: "Restaurer et réconcilier les données" },
+  { id: "livraison", label: "Prouver build, release et rollback" },
+  { id: "qualite", label: "Sécurité, exploitation et qualité web" },
+  { id: "dossier", label: "Créer le dossier local de décision" },
+  { id: "trajectoires", label: "Comparer quatre trajectoires et le TCO" },
+  { id: "cas", label: "Lire quatre cas fictifs" },
+  { id: "contrat", label: "Écrire réserves et responsabilités" },
+  { id: "sources", label: "Sources mondiales et limites" },
 ];
 
-const evidenceCards = [
+const auditFamilies = [
   {
     number: "01",
-    title: "Autorisation et contrôle",
-    question: "Qui peut autoriser une intervention et récupérer les comptes ?",
-    evidence:
-      "Le titulaire ou le compte du domaine, le compte d’hébergement, les administrateurs, les contacts de récupération et les contrats disponibles.",
-    test: "Se connecter avec un compte contrôlé par l’entreprise ou vérifier la procédure officielle de récupération, sans modifier le site public.",
-    consequence:
-      "Si personne ne peut autoriser l’action nécessaire, la reprise s’arrête sur cette action. Une facture ou un ancien e-mail ne remplace pas automatiquement un droit d’accès.",
+    title: "Autorité, comptes et façade internet",
+    summary:
+      "Savoir qui peut agir, payer, récupérer et renouveler avant de toucher à la production.",
+    domains: [
+      {
+        title: "Autorisation, propriété et contrôle",
+        proof:
+          "Mandat d’intervention, titulaire ou contractant, administrateur opérationnel, facturation, récupération, second administrateur et date de retrait des anciens accès.",
+        risk: "Une connexion réussie ne prouve ni le droit d’agir ni la pérennité du contrôle.",
+      },
+      {
+        title: "Domaine, DNS, TLS, CDN et WAF",
+        proof:
+          "Registrar, titulaire, échéance, NS autoritatifs, délégation et glue éventuelle, zone DNS exportée, TTL, état DNSSEC, DS publié au parent, DNSKEY et algorithmes, propriétaire des clés, procédure de rollover ou de désactivation, CAA, MX, SPF, DKIM, DMARC, certificats, origine, règles CDN/WAF, compte de secours, propriétaire du rollback, confiance des observations publiques, alertes et procédure de retour arrière.",
+        risk: "Une modification de domaine ou de DNS peut rendre tout le site, la messagerie ou les sous-domaines indisponibles. Une délégation ou un état DNSSEC inconnu bloque toute bascule DNS jusqu’à validation avant et après changement.",
+      },
+      {
+        title: "Infrastructure, IaC et environnements",
+        proof:
+          "Topologie, fournisseurs, régions, comptes de facturation, quotas, production/préproduction, infrastructure as code, images, stockage et responsabilités partagées.",
+        risk: "Selon le service, le contrat et le modèle de responsabilité partagée, « le cloud s’en occupe » peut laisser sauvegardes, secrets, réglages et journaux à la charge du client.",
+      },
+    ],
   },
   {
     number: "02",
-    title: "Copie récupérable",
-    question: "Que contient réellement la sauvegarde la plus récente ?",
-    evidence:
-      "Une copie datée, son contenu, l’endroit où elle est conservée et la personne qui sait la restaurer.",
-    test: "Remettre la copie en service dans un espace isolé et noter chaque élément ajouté manuellement.",
-    consequence:
-      "Une archive présente mais jamais restaurée reste une sauvegarde déclarée. Avant une action destructive, l’absence de copie récupérable peut justifier un STOP.",
+    title: "Code, fabrication et chaîne logicielle",
+    summary:
+      "Reproduire ce qui est déployé et comprendre les briques que la nouvelle équipe hérite.",
+    domains: [
+      {
+        title: "Code, historique et build",
+        proof:
+          "Dépôt complet, branche réellement en production, tags, historique, instructions, versions de runtime, build depuis un environnement propre, artefact identifiable et contrat, licence ou cession précisant les droits utiles pour utiliser, reproduire, modifier, maintenir et, si prévu, remettre le code à un tiers.",
+        risk: "Un ZIP ou un build vert peut différer du code réellement servi. La possession des fichiers ne prouve ni la titularité ni l’étendue des droits transmis.",
+      },
+      {
+        title: "CI/CD, artefact, migrations et rollback",
+        proof:
+          "Pipeline, runners, registres, promotions d’environnement, migrations de schéma, health checks, cache, rollback ou fix-forward et réconciliation des effets différés.",
+        risk: "« Publier puis annuler » ne retire pas forcément une migration, un e-mail, un paiement, un webhook ou un job déjà exécuté.",
+      },
+      {
+        title: "Dépendances, SBOM, licences et fin de support",
+        proof:
+          "Packages directs, transitifs et runtime, plugins, thèmes, images, lockfiles, provenance, licences, titulaire, transférabilité, vulnérabilités et EOL/EOS.",
+        risk: "Un SBOM aide à inventorier ; il ne conclut seul ni sur l’exploitabilité d’une vulnérabilité ni sur les droits de licence.",
+      },
+    ],
   },
   {
     number: "03",
-    title: "Mise en ligne maîtrisée",
-    question: "La nouvelle équipe sait-elle modifier puis publier le site ?",
-    evidence:
-      "Le code ou les fichiers utiles, les dépendances, les instructions disponibles et un compte technique qui n’appartient pas à une personne partie.",
-    test: "Publier une modification sans conséquence sur la copie, contrôler le résultat puis revenir à l’état précédent.",
-    consequence:
-      "Un site visible n’est pas encore un site que la nouvelle équipe sait faire évoluer. La maintenance peut être limitée tant que cette preuve manque.",
+    title: "Identités, données et continuité",
+    summary:
+      "Éviter qu’un transfert de comptes ou une restauration crée une perte, une fuite ou une dépendance cachée.",
+    domains: [
+      {
+        title: "Identités, secrets et comptes de service",
+        proof:
+          "Coffre contrôlé par l’entreprise, MFA, récupération, rôles nominatifs, OIDC, clés de signature, SMTP, paiement, certificats, rotation et révocation.",
+        risk: "Après un transfert, des collaborateurs, webhooks, deploy keys ou secrets peuvent rester actifs.",
+      },
+      {
+        title: "Données, flux et migrations",
+        proof:
+          "Cartographie des bases, fichiers, stockages objets, files d’attente, caches et index, puis schémas, volumes, destinations, imports/exports, migrations, cohérence et réconciliation.",
+        risk: "Une page qui s’affiche ne prouve pas que commandes, pièces jointes, consentements ou traitements différés ont suivi.",
+      },
+      {
+        title: "Sauvegardes, restauration, RPO et RTO",
+        proof:
+          "Périmètre, fréquence, rétention, copie séparée, intégrité, chiffrement et clés, source saine, restauration isolée chronométrée, perte acceptable et recette.",
+        risk: "Une sauvegarde présente mais jamais restaurée reste une promesse ; une copie compromise peut réintroduire l’incident.",
+      },
+    ],
   },
   {
     number: "04",
-    title: "Résultat métier",
-    question:
-      "Quelles actions du site apportent une demande ou rendent un service ?",
-    evidence:
-      "La liste donnée par le dirigeant : formulaire, réservation, paiement, téléchargement, espace client ou autre fonction réellement utilisée.",
-    test: "Rejouer chaque action avec des données fictives et vérifier le résultat final, pas seulement le message affiché à l’écran.",
-    consequence:
-      "Une page peut sembler correcte alors qu’un e-mail part vers une ancienne adresse. Le verdict doit donc être limité aux fonctions effectivement testées.",
+    title: "Fonctions, exploitation et sécurité",
+    summary:
+      "Prouver que le service utile fonctionne et que la nouvelle équipe saura voir puis traiter les écarts.",
+    domains: [
+      {
+        title: "Intégrations et parcours critiques",
+        proof:
+          "Formulaire, paiement, rendez-vous, espace client, e-mail, CRM, webhooks et jobs testés de bout en bout avec données fictives et résultat final observable.",
+        risk: "Le message vert du navigateur ou l’acceptation d’une API ne prouve pas la réception ni la réconciliation.",
+      },
+      {
+        title: "Journaux, métriques et alertes",
+        proof:
+          "Sources de logs, error tracking, métriques, rétention, accès, destinataires, seuils, tableau de bord, test d’alerte et main courante.",
+        risk: "Sans observation, une équipe peut reprendre le site sans savoir qu’un parcours échoue silencieusement.",
+      },
+      {
+        title: "Sécurité, authentification et incident",
+        proof:
+          "Périmètre de test autorisé, MFA, moindre privilège, sessions, correctifs, exposition, vulnérabilités prioritaires, procédure d’incident et limites explicites.",
+        risk: "Un audit de reprise n’est ni un pentest exhaustif ni une garantie d’absence de compromission.",
+      },
+    ],
   },
   {
     number: "05",
-    title: "Données et accès",
-    question: "À quelles données la nouvelle équipe pourra-t-elle accéder ?",
-    evidence:
-      "Les comptes nécessaires, leurs droits, leur durée, la personne qui les autorise et, lorsque c’est applicable, le contrat de sous-traitance.",
-    test: "Créer un accès nominatif limité, vérifier qu’il suffit à l’intervention puis confirmer qu’il peut être refermé.",
-    consequence:
-      "Un accès permanent ou personnel partagé par défaut n’est pas une preuve de simplicité. Il crée une réserve à corriger avant l’intervention concernée.",
+    title: "Performance, visibilité et accessibilité",
+    summary:
+      "Conserver une référence avant de changer ce que voient les utilisateurs et les moteurs.",
+    domains: [
+      {
+        title: "Performance et capacité",
+        proof:
+          "Mesures terrain lorsque disponibles, LCP/INP/CLS, tests de laboratoire contextualisés, volumes, pics, quotas, cache, temps de réponse et seuils acceptés.",
+        risk: "Un score Lighthouse isolé n’est ni une mesure terrain ni une preuve de capacité sous charge.",
+      },
+      {
+        title: "SEO et analytics",
+        proof:
+          "Inventaire des URL, statuts, canonicals, robots, sitemaps, données structurées, rendu, maillage, Search Console, analytics, conversions et référence avant migration.",
+        risk: "Posséder Search Console ne prouve pas que les pages utiles sont indexables ni que le suivi de conversion est juste.",
+      },
+      {
+        title: "Accessibilité",
+        proof:
+          "Périmètre, critères visés, contrôles automatiques et manuels, clavier, focus, zoom, formulaires, contrastes, technologies d’assistance et limites.",
+        risk: "Un scan automatisé seul ne permet pas de revendiquer une conformité WCAG.",
+      },
+    ],
   },
   {
     number: "06",
-    title: "Inconnues restantes",
-    question: "Que ne sait-on pas encore, et qu’est-ce que cela empêche ?",
-    evidence:
-      "Une liste courte : information manquante, conséquence possible, personne qui peut répondre et date de revue.",
-    test: "Tenter de lever l’inconnue par un document ou un essai autorisé, sans déduire un défaut de la seule absence d’information.",
-    consequence:
-      "Une inconnue n’est pas une panne. Elle interdit seulement de présenter comme prouvé ce qui ne l’est pas encore.",
+    title: "Données personnelles, exploitation et sortie",
+    summary:
+      "Encadrer le prestataire aujourd’hui et rendre une nouvelle passation possible demain.",
+    domains: [
+      {
+        title: "RGPD, sous-traitants, transferts et rétention",
+        proof:
+          "Rôles, article 28 lorsque applicable, finalités, catégories de données/personnes, instructions, sécurité, sous-traitants ultérieurs, transferts, incidents, restitution, suppression et audit.",
+        risk: "Le mot « maintenance » ne qualifie pas seul le rôle ; les traitements et accès réels doivent être examinés.",
+      },
+      {
+        title: "Documentation, support et responsabilité",
+        proof:
+          "Runbook, contacts, horaires, escalade, SLA, RACI, changements, incidents connus, dette acceptée, maintenance et éléments hors périmètre.",
+        risk: "Une documentation volumineuse mais non rejouée peut masquer l’absence de procédure exploitable.",
+      },
+      {
+        title: "Réversibilité et paquet de sortie",
+        proof:
+          "Comptes, code, données, médias, configurations, journaux utiles, contrats, licences, formats, délais, assistance, suppression et répétition de passation.",
+        risk: "La reprise n’est durable que si l’entreprise peut encore changer d’équipe sans dépendre d’une personne ou d’un format fermé.",
+      },
+    ],
   },
+];
+
+const proofLevels = [
+  [
+    "Affirmation",
+    "« Nous avons des sauvegardes » ou « le site est sécurisé ».",
+    "Oriente la question, mais ne ferme aucune porte.",
+  ],
+  [
+    "Document",
+    "Contrat, facture, capture, runbook, export ou rapport daté.",
+    "Utile si son auteur, son périmètre, sa fraîcheur et sa correspondance avec l’environnement sont vérifiables.",
+  ],
+  [
+    "Observation",
+    "Connexion propre, inventaire vu dans le compte, journal ou résultat contrôlé.",
+    "Prouve un état à une date ; ne démontre pas automatiquement la reprise complète.",
+  ],
+  [
+    "Essai reproductible",
+    "Restauration, build, déploiement isolé, parcours de bout en bout, rollback ou réconciliation.",
+    "Preuve la plus forte pour la capacité testée, avec limites et artefacts conservés.",
+  ],
+];
+
+const trajectoryRows = [
+  [
+    "Mise sous contrôle",
+    "Le site fonctionne et la priorité est de récupérer comptes, preuves, sauvegardes et exploitation sans transformation majeure.",
+    "Dépendance cachée non levée ou dette reportée.",
+    "Contrôle client, restauration, accès nominatifs, runbook et périmètre de maintenance.",
+  ],
+  [
+    "Stabilisation ciblée",
+    "Le produit est récupérable ; quelques défauts mesurés bloquent la maintenance ou la fiabilité.",
+    "Accumuler des rustines si la cause est structurelle.",
+    "P0/P1 corrigés, tests, observabilité, mises à niveau et dette résiduelle acceptée.",
+  ],
+  [
+    "Migration progressive",
+    "L’hébergement, la plateforme, la maîtrise opérationnelle ou une brique crée le risque dominant, tandis que les fonctions restent maîtrisées.",
+    "Double exploitation, parité incomplète, données ou SEO dégradés.",
+    "Lots réversibles, parité prouvée, réconciliation, bascule et rollback.",
+  ],
+  [
+    "Reconstruction ou remplacement",
+    "Le code ou la plateforme est irrécupérable, non supporté ou durablement plus coûteux à remettre sous contrôle.",
+    "Dérive de périmètre, délai, nouveaux bugs et perte de données/SEO.",
+    "Périmètre commun, reprise des données, critères d’acceptation, sortie et bénéfice mesuré.",
+  ],
+];
+
+const fictitiousControlTcoRows = [
+  [
+    "Transition et mise sous contrôle",
+    "7 500 €",
+    "36 mois : 7 500 € · 60 mois : 7 500 €",
+  ],
+  [
+    "Temps interne",
+    "2 000 €",
+    "36 mois : 2 000 € · 60 mois : 2 000 €",
+  ],
+  [
+    "Exploitation et support",
+    "14 400 €",
+    "36 mois : 43 200 € · 60 mois : 72 000 €",
+  ],
+  [
+    "Licences et services",
+    "1 800 €",
+    "36 mois : 5 400 € · 60 mois : 9 000 €",
+  ],
+  [
+    "Continuité et coexistence",
+    "1 000 €",
+    "36 mois : 1 000 € · 60 mois : 1 000 €",
+  ],
+  [
+    "Réserve de risque",
+    "800 €",
+    "36 mois : 800 € · 60 mois : 800 €",
+  ],
+  [
+    "Sortie et réversibilité",
+    "3 000 €",
+    "36 mois : 3 000 € · 60 mois : 3 000 €",
+  ],
+  [
+    "Total fictif",
+    "30 500 €",
+    "36 mois : 62 900 € · 60 mois : 95 300 €",
+  ],
 ];
 
 export default function Page() {
@@ -209,7 +425,11 @@ export default function Page() {
           { label: "Audit avant reprise d’un site" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Une nouvelle agence vous dit qu’elle peut reprendre votre site. Avant de signer, demandez trois vérifications concrètes : contrôle des comptes, restauration d’une copie et test des fonctions qui apportent des clients."
+        heroDescription="Avant de confier un site à une nouvelle équipe, choisissez entre audit léger, audit complet ou STOP, vérifiez 18 domaines, puis comparez mise sous contrôle, stabilisation, migration et reconstruction pour le même résultat attendu."
+        heroAction={{
+          href: "#stop-60-secondes",
+          label: "Vérifier les STOP · 60 s",
+        }}
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -220,766 +440,1012 @@ export default function Page() {
         relatedLinks={relatedLinks}
         faqTitle="Questions fréquentes avant la reprise technique d’un site"
         faqItems={faqItems}
+        showWhitePaperPromo={false}
         showSidebarCta={false}
       >
         <p className="lead">
-          Vous êtes sur le point de confier votre site à une nouvelle agence ou
-          à un nouveau développeur. Le site est en ligne, mais personne ne vous
-          a encore montré qu’il pouvait être sauvegardé, restauré et modifié
-          sans mettre vos demandes de contact en danger. Faut-il signer la
-          maintenance quand même ? Pas sans trois confirmations : votre
-          entreprise doit contrôler les comptes indispensables, une copie du
-          site doit pouvoir être restaurée à l’écart du public et ses fonctions
-          importantes doivent être testées sur cette copie. L’audit technique de
-          reprise sert à obtenir ces confirmations. Il ne garantit pas l’absence
-          de bug ni celle d’un incident futur. Il vous permet de décider : GO,
-          GO sous réserves précises, ou STOP temporaire tant qu’un blocage n’est
-          pas levé.
+          Une nouvelle agence vous promet de reprendre votre site. Avant de lui
+          donner un accès de production, la bonne question n’est pas « le site
+          a-t-il l’air de fonctionner ? », mais{" "}
+          <strong>« qu’est-ce qui a réellement été vérifié ? »</strong>. Un site
+          visible ne démontre ni que votre entreprise contrôle le domaine, ni
+          qu’une sauvegarde se restaure, ni que le code publié peut être
+          reconstruit, ni que les formulaires, paiements et données arrivent au
+          bon endroit. Commencez par éliminer cinq situations de STOP,
+          choisissez un audit proportionné, documentez les résultats et les
+          inconnues, puis décidez entre mise sous contrôle, stabilisation,
+          migration progressive ou reconstruction. Le verdict reste toujours
+          limité aux éléments vérifiés et à la date des essais.
         </p>
 
+        <nav
+          aria-label="Deux accès rapides dans le guide"
+          className="not-prose grid gap-3 sm:grid-cols-2"
+        >
+          <a
+            href="#stop-60-secondes"
+            className="flex min-h-11 items-center justify-center rounded-xl bg-zinc-950 px-4 py-3 text-center text-sm font-bold text-white no-underline hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 dark:bg-white dark:text-zinc-950"
+          >
+            Vérifier un STOP en 60 secondes
+          </a>
+          <a
+            href="#dossier"
+            className="flex min-h-11 items-center justify-center rounded-xl border border-violet-300 bg-violet-50 px-4 py-3 text-center text-sm font-bold text-violet-950 no-underline hover:bg-violet-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 dark:border-violet-800 dark:bg-violet-950/30 dark:text-violet-100"
+          >
+            Ouvrir la grille et le dossier local
+          </a>
+        </nav>
+
         <InfoBox variant="emerald" title="La réponse en une phrase">
-          Ne signez une reprise sans réserve que si la nouvelle équipe a prouvé
-          qu’elle peut accéder légitimement au site, le remettre en service sur
-          une copie et rejouer ce qui compte pour votre activité.
+          Autorisez la reprise seulement lorsque les portes applicables à votre
+          site sont prouvées ; une déclaration, un build réussi, une sauvegarde
+          présente ou une page d’accueil verte ne suffisent jamais seuls.
         </InfoBox>
 
         <p>
-          Le but n’est pas de vous transformer en technicien. Vous devez pouvoir
-          lire une conclusion, voir sur quoi elle repose et comprendre ce qui
-          manque encore. Un audit technique de reprise est donc un examen
-          <strong> limité et documenté</strong> de l’état du site avant qu’une
-          nouvelle équipe accepte de le maintenir.
+          Ce guide ne cherche pas des défauts pour vendre une refonte. Il vous
+          aide à acheter le bon niveau de vérification, à distinguer un blocage
+          d’une amélioration, à conserver les preuves utiles et à comparer des
+          options au même résultat métier. Vous pouvez aussi télécharger le{" "}
+          <a href="/ressources/dossier-audit-reprise-site.txt" download>
+            dossier autonome d’audit et de reprise
+          </a>{" "}
+          pour travailler hors ligne, sans transmettre de secret à ce site.
         </p>
 
         <GuideToc items={tocItems} />
 
-        <h2 id="preuve">Ne vous contentez pas d’une promesse</h2>
+        <h2 id="glossaire">Le glossaire minimum pour décider sans jargon</h2>
         <p>
-          « Le site fonctionne » décrit ce que voit un visiteur aujourd’hui.
-          Cette phrase ne dit pas qui peut renouveler le domaine, où se trouve
-          la dernière copie, comment une modification est publiée ni où arrivent
-          les formulaires. À l’inverse, un document manquant ne prouve pas que
-          le site est mauvais. Il signale seulement une question encore ouverte.
+          Ces termes reviennent dans le dossier. Les comprendre évite de valider
+          une promesse qui ne porte pas sur le même objet.
+        </p>
+        <dl className="not-prose grid gap-3 sm:grid-cols-2">
+          {[
+            [
+              "RPO",
+              "Point de reprise visé : ancienneté maximale acceptable des données restaurées, donc intervalle temporel de perte possible défini par le métier.",
+            ],
+            [
+              "RTO",
+              "Délai visé pour remettre le service utile en état, avec ses dépendances et ses contrôles.",
+            ],
+            [
+              "SBOM",
+              "Inventaire des composants logiciels ; il aide l’analyse mais ne prouve seul ni sécurité, ni licence, ni maintenabilité.",
+            ],
+            [
+              "IaC",
+              "Infrastructure as Code : description versionnée de ressources techniques, à rapprocher de ce qui existe réellement.",
+            ],
+            [
+              "Sous-traitant RGPD",
+              "Acteur qui traite des données personnelles pour le compte du responsable, selon ses instructions documentées.",
+            ],
+            [
+              "Rollback / fix-forward",
+              "Retour vers un état antérieur ou correction vers une nouvelle version ; aucun des deux n’annule automatiquement les écritures déjà produites.",
+            ],
+            [
+              "DNSSEC / DS parent",
+              "Chaîne de signatures DNS dont le DS publié par la zone parente doit rester cohérent avec les clés de la zone enfant.",
+            ],
+            [
+              "TCO",
+              "Coût total de possession sur un horizon donné : transition, temps interne, exploitation, services, continuité, risque et sortie.",
+            ],
+          ].map(([term, definition]) => (
+            <div
+              key={term}
+              className="min-w-0 rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950"
+            >
+              <dt className="font-black text-zinc-950 dark:text-white">
+                {term}
+              </dt>
+              <dd className="mb-0 mt-1 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                {definition}
+              </dd>
+            </div>
+          ))}
+        </dl>
+
+        <h2 id="stop-60-secondes">
+          STOP ou continuer : le contrôle qui prend 60 secondes
+        </h2>
+        <p>
+          Avant toute exploration, vérifiez si l’audit ordinaire est encore le
+          bon parcours. Un STOP ne signifie ni « site perdu » ni « il faut
+          refaire ». Il signifie :{" "}
+          <strong>ne pas exécuter le changement prévu maintenant</strong>,
+          préserver les faits et faire lever le blocage par la bonne personne.
         </p>
 
-        <div className="not-prose my-8 grid gap-4 md:grid-cols-3">
-          <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950">
-            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-blue-700 dark:text-blue-300">
-              Affirmation
+        <div className="not-prose my-8 rounded-2xl border border-rose-300 bg-rose-50/70 p-5 sm:p-6 dark:border-rose-900 dark:bg-rose-950/20">
+          <p className="m-0 text-xs font-bold uppercase tracking-[0.16em] text-rose-800 dark:text-rose-300">
+            STOP prioritaire si une seule réponse est oui
+          </p>
+          <ul className="mb-0 mt-4 space-y-3 pl-5 text-sm leading-relaxed text-zinc-800 dark:text-zinc-200">
+            <li>
+              personne ne peut établir l’autorisation d’accéder, tester, copier,
+              modifier ou transférer le site ;
+            </li>
+            <li>
+              une compromission, une défiguration, une fuite ou un accès
+              illégitime est possible ;
+            </li>
+            <li>
+              l’opération destructive envisagée peut écraser des données ou
+              couper le site alors qu’aucune copie récupérable n’a fait l’objet
+              d’une restauration prouvée ;
+            </li>
+            <li>
+              le seul moyen de tester toucherait la production, de vrais
+              paiements, de vrais messages ou des données personnelles sans
+              protection adaptée ;
+            </li>
+            <li>
+              un litige bloquant d’autorité, de mandat ou de droits sur le code,
+              les contenus, le domaine, une licence ou un compte interdit
+              l’action envisagée.
+            </li>
+          </ul>
+        </div>
+
+        <p>
+          En cas de suspicion d’incident, gelez les changements ordinaires,
+          consignez l’heure et le symptôme, préservez les journaux et preuves,
+          utilisez un canal sûr et désignez un responsable. L’isolation d’un
+          système compromis est une décision pilotée : couper au hasard peut
+          détruire des indices ou aggraver l’indisponibilité. Le parcours
+          détaillé figure dans le guide{" "}
+          <Link href="/guides/site-internet-en-panne-que-faire">
+            site en panne : diagnostiquer et reprendre sans faux vert
+          </Link>
+          .
+        </p>
+
+        <InfoBox
+          variant="amber"
+          title="Refus de passation ou autorité contestée"
+        >
+          Ne contournez pas un compte, ne vous faites pas passer pour son
+          titulaire et ne demandez pas à une équipe technique de trancher un
+          litige. Nommez les actifs bloqués, les pièces manquantes, les actions
+          interdites et l’autorité qui décidera. L’audit peut décrire ce qui est
+          accessible ; il ne transforme pas une possession technique en droit
+          juridique.
+        </InfoBox>
+
+        <h2 id="niveau">Choisissez le niveau d’audit avant de l’acheter</h2>
+        <p>
+          La profondeur dépend de la décision, de l’impact, des données, de la
+          complexité et des inconnues — pas seulement du mot « vitrine », «
+          boutique » ou « application ». Le niveau doit être écrit dans le devis
+          avec ses accès, ses preuves, ses livrables et ses limites.
+        </p>
+
+        <div className="not-prose my-8 grid gap-4 lg:grid-cols-3">
+          <section className="rounded-2xl border border-blue-200 bg-blue-50/50 p-5 dark:border-blue-900 dark:bg-blue-950/20">
+            <p className="m-0 text-xs font-bold uppercase tracking-widest text-blue-800 dark:text-blue-300">
+              Niveau 1 · Pré-vérification publique
             </p>
-            <h3 className="m-0 text-base font-semibold text-zinc-950 dark:text-white">
-              « Nous avons des sauvegardes »
+            <h3 className="mb-0 mt-2 text-lg font-bold text-zinc-950 dark:text-white">
+              Observer sans conclure à la reprise
             </h3>
-            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-              C’est utile, mais cela ne dit ni ce qu’elles contiennent ni si
-              quelqu’un sait les restaurer.
+            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              Pages, réponses HTTP, TLS visible, indexabilité, parcours sans
+              donnée sensible, performance de laboratoire et premiers contrôles
+              d’accessibilité.
+            </p>
+            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              <strong>Livrable :</strong> hypothèses et accès à demander. Ce
+              niveau ne prouve ni restauration, ni code, ni données, ni
+              déploiement.
             </p>
           </section>
-          <section className="rounded-2xl border border-violet-200 bg-violet-50/50 p-5 dark:border-violet-900 dark:bg-violet-950/20">
-            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
-              Preuve
-            </p>
-            <h3 className="m-0 text-base font-semibold text-zinc-950 dark:text-white">
-              Une copie remise en service
-            </h3>
-            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-              Le compte rendu indique la copie choisie, le lieu du test, son
-              résultat et ce qui a dû être ajouté.
-            </p>
-          </section>
+
           <section className="rounded-2xl border border-emerald-200 bg-emerald-50/50 p-5 dark:border-emerald-900 dark:bg-emerald-950/20">
-            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-emerald-700 dark:text-emerald-300">
-              Décision
+            <p className="m-0 text-xs font-bold uppercase tracking-widest text-emerald-800 dark:text-emerald-300">
+              Niveau 2 · Audit léger de reprise
             </p>
-            <h3 className="m-0 text-base font-semibold text-zinc-950 dark:text-white">
-              Continuer après le test
+            <h3 className="mb-0 mt-2 text-lg font-bold text-zinc-950 dark:text-white">
+              Autoriser une intervention limitée
             </h3>
-            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-              La preuve autorise une décision précise. Elle ne certifie pas tout
-              le site pour toujours.
+            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              Réservé à un site peu critique, sans paiement, authentification,
+              données métier mutables, migration, code spécifique, multi-
+              environnement, intégration critique, fort enjeu SEO ni objectif
+              RPO/RTO, et sans inconnue structurante.
+            </p>
+            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              Un formulaire de contact ne force pas, à lui seul, l’audit
+              complet. Il rend toutefois la zone RGPD applicable : le niveau
+              léger reste possible seulement si ce traitement limité est
+              qualifié et si la reprise n’exige ni accès à des données réelles,
+              ni traitement sensible, substantiel ou à risque.
+            </p>
+            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              <strong>Prérequis :</strong> comptes contrôlés, copie restaurée
+              récemment et parcours essentiel prouvé.
+            </p>
+          </section>
+
+          <section className="rounded-2xl border border-violet-200 bg-violet-50/50 p-5 dark:border-violet-900 dark:bg-violet-950/20">
+            <p className="m-0 text-xs font-bold uppercase tracking-widest text-violet-800 dark:text-violet-300">
+              Niveau 3 · Audit complet de reprise
+            </p>
+            <h3 className="mb-0 mt-2 text-lg font-bold text-zinc-950 dark:text-white">
+              Décider sur le produit et son exploitation
+            </h3>
+            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              Requis dès qu’existent paiement, compte utilisateur, données
+              personnelles significatives, code sur mesure, intégrations,
+              plusieurs environnements, migration, disponibilité contractuelle,
+              enjeu SEO ou architecture inconnue.
+            </p>
+            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              <strong>Livrable :</strong> registre de preuves, P0/P1/P2,
+              synthèse dirigeant, trajectoires, TCO et paquet de sortie.
             </p>
           </section>
         </div>
 
         <p>
-          Cette distinction protège dans les deux sens. Elle évite de signer sur
-          une impression rassurante, mais aussi de transformer chaque inconnue
-          en catastrophe ou en prétexte à une refonte. Le{" "}
+          Un audit léger devient complet dès qu’une hypothèse structurante reste
+          inconnue. Ce n’est pas une sanction : l’inconnu augmente simplement le
+          périmètre nécessaire pour décider. À l’inverse, un audit complet ne
+          doit pas imposer automatiquement un pentest, un test de charge ou une
+          évaluation de conformité intégrale. Ces modules sont ajoutés lorsqu’un
+          risque, une obligation ou une décision les justifie.
+        </p>
+
+        <InfoBox variant="blue" title="Checklist de remise ≠ audit de reprise">
+          Dans le corpus international de douze contenus comparé pour ce guide,
+          les approches se répartissent entre inventaires d’accès, dossiers de
+          passation et revues d’aptitude à exploiter. Une checklist vérifie que
+          des éléments ont été remis ; l’audit vérifie qu’une autre équipe peut
+          réellement les utiliser, restaurer, construire, déployer, observer et
+          transmettre. Les approches{" "}
           <a
-            href="https://owasp.org/www-project-web-security-testing-guide/stable/"
+            href="https://docs.aws.amazon.com/wellarchitected/latest/operational-readiness-reviews/wa-operational-readiness-reviews.html"
             target="_blank"
             rel="noopener noreferrer"
           >
-            guide de tests d’applications web de l’OWASP
+            Operational Readiness Review d’AWS
           </a>{" "}
-          montre la variété des vérifications possibles : configuration,
-          authentification, autorisations, sessions, entrées ou logique métier,
-          entre autres. Un audit de reprise choisit les tests utiles à la
-          décision ; il n’est ni une certification de sécurité ni une promesse
-          d’exhaustivité.
-        </p>
-
-        <h2 id="controle">Commencez par prouver qui contrôle le site</h2>
-        <p>
-          Avant de parler de vitesse, de design ou de mises à jour, posez une
-          question simple :{" "}
-          <strong>qui peut autoriser la prochaine action&nbsp;?</strong> Le
-          dirigeant n’a pas besoin de conserver tous les mots de passe dans un
-          document. Il doit savoir quels comptes appartiennent à l’entreprise,
-          qui peut les récupérer et quelles personnes disposent encore de
-          droits.
-        </p>
-
-        <p>Rassemblez au minimum :</p>
-        <ul>
-          <li>
-            le compte qui gère le nom de domaine et la personne qui reçoit ses
-            alertes de renouvellement ;
-          </li>
-          <li>
-            le compte d’hébergement, son échéance et le moyen d’en extraire une
-            copie ;
-          </li>
-          <li>
-            le code, les fichiers ou l’outil qui permet de modifier le site ;
-          </li>
-          <li>
-            les comptes qui publient, envoient des e-mails, encaissent ou
-            prennent des rendez-vous ;
-          </li>
-          <li>
-            les contrats et factures utiles pour comprendre les rôles, sans leur
-            faire dire plus qu’ils ne prouvent.
-          </li>
-        </ul>
-
-        <p>
-          Pour les extensions qu’elle gère, l’
+          et{" "}
           <a
-            href="https://www.afnic.fr/noms-de-domaine/tout-savoir/gerer-son-nom-de-domaine/"
+            href="https://sre.google/sre-book/evolving-sre-engagement-model/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Afnic rappelle que les coordonnées du titulaire doivent rester à
-            jour
+            Production Readiness Review de Google SRE
           </a>{" "}
-          et décrit le rôle du bureau d’enregistrement. Cette source concerne
-          notamment le `.fr` et les autres extensions du ressort de l’Afnic ; la
-          procédure d’un `.com` ou d’un autre fournisseur doit être vérifiée
-          auprès de son registre et de son prestataire.
-        </p>
-
-        <InfoBox variant="amber" title="Accès technique et droit d’utiliser">
-          Pouvoir télécharger un fichier ne prouve pas à lui seul que
-          l’entreprise dispose de tous les droits pour l’exploiter. Si le code,
-          le design, une licence ou un compte sont contestés, l’audit technique
-          décrit ce qui est accessible mais ne tranche pas le litige. Relisez
-          les contrats, consultez le guide sur{" "}
-          <Link href="/guides/proprietaire-site-internet-code-source">
-            la propriété du site et du code source
-          </Link>
-          , puis demandez un avis juridique lorsque l’enjeu le nécessite.
+          ajoutent une idée essentielle : incidents, presque-incidents,
+          postmortems et répétitions de passation doivent faire évoluer la
+          grille, avec une période de soutien transitoire lorsque nécessaire.
         </InfoBox>
 
-        <h2 id="restauration">
-          Faites restaurer une copie sans toucher au site public
+        <h2 id="livrable">
+          Définissez le résultat attendu, pas un nombre de pages
         </h2>
         <p>
-          Une sauvegarde devient une preuve de reprise lorsqu’une personne la
-          remet en service sur un espace séparé du site public. Le test doit
-          répondre à quatre questions : quelle copie a été choisie, où a-t-elle
-          été restaurée, qu’a-t-il fallu ajouter et quelles fonctions répondent
-          après l’opération ?
+          Un rapport de 80 pages peut être inutilisable ; une page trop courte
+          peut cacher les inconnues. Demandez deux niveaux de lecture reliés par
+          des références d’artefacts :
         </p>
-
-        <p>
-          Pour un site WordPress typique, la{" "}
-          <a
-            href="https://developer.wordpress.org/advanced-administration/security/backup/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            documentation officielle WordPress distingue les fichiers et la base
-            de données
-          </a>
-          . Copier seulement l’un des deux peut laisser de côté une partie
-          indispensable. Un site conçu autrement aura sa propre liste :
-          configuration, dépendances, contenus, base, médias ou services
-          externes selon son architecture.
-        </p>
-
         <ol>
           <li>
-            choisissez une copie identifiable et conservez le site public tel
-            quel ;
+            <strong>une synthèse dirigeant d’une page</strong> : site, date,
+            périmètre, fonctions importantes, niveau d’audit, verdict, P0/P1/P2,
+            décisions autorisées, actions interdites, responsables et échéances
+            ;
           </li>
           <li>
-            placez le test sur un espace non public et protégez-en l’accès ;
-          </li>
-          <li>
-            utilisez des données fictives ou réduites dès que cela suffit ;
-          </li>
-          <li>neutralisez les vrais paiements, messages et automatismes ;</li>
-          <li>
-            notez les étapes réussies, les échecs et les informations encore
-            absentes ;
-          </li>
-          <li>
-            vérifiez enfin que la copie peut être supprimée ou protégée selon
-            les règles décidées.
+            <strong>une annexe de preuves</strong> : actifs, environnements,
+            méthode, résultats, captures ou journaux nécessaires, limites,
+            références, hash ou emplacement protégé, et historique des levées de
+            réserves.
           </li>
         </ol>
 
         <p>
-          La fréquence « idéale » d’une sauvegarde n’est pas un nombre
-          universel. Elle dépend de ce que le site change et de ce que
-          l’entreprise accepte de perdre. Un catalogue rarement modifié, une
-          boutique active et un espace client ne portent pas le même risque. Le
-          dossier doit donc écrire la date de la copie et la perte possible, pas
-          seulement « sauvegarde quotidienne ».
+          Cette séparation rejoint la logique du modèle de rapport du W3C pour
+          l’accessibilité : résumé, contexte, périmètre, intervenants, méthode,
+          résultats, actions et références. Elle reste ici adaptée à une reprise
+          technique générale ; elle ne transforme pas le dossier en rapport de
+          conformité WCAG.
         </p>
 
-        <h2 id="fonctions">
-          Rejouez ce qui apporte des clients ou rend le service
+        <InfoBox variant="blue" title="Ce que le devis doit nommer">
+          Les URL et environnements inclus, les actifs et parcours, les accès
+          nécessaires, les opérations autorisées, les exclusions, les personnes
+          interrogées, les formats de preuve, les critères de STOP, les
+          livrables, la convention de coût et la durée de validité des constats.
+          Aucun mot de passe ne doit figurer dans le devis, le formulaire de
+          contact ou le rapport partagé.
+        </InfoBox>
+
+        <h2 id="preuves">
+          Une affirmation ouvre une question ; un essai observé la borne
         </h2>
         <p>
-          La nouvelle équipe peut afficher la page d’accueil sans savoir si les
-          demandes arrivent au bon endroit. Demandez au dirigeant de nommer les
-          cinq actions dont l’échec serait réellement gênant. La technique
-          s’adapte ensuite à cette liste.
+          Le mot « preuve » ne signifie pas qu’un document garantit tout. Il
+          signifie qu’un lecteur peut relier une conclusion à un objet, un
+          environnement, une date, une personne et un résultat. La force
+          nécessaire dépend du risque de l’action.
         </p>
 
         <GuideTable
-          caption="Exemples de fonctions à tester jusqu’au résultat final"
-          headers={["Fonction", "Essai sur la copie", "Résultat à confirmer"]}
-          rows={[
-            [
-              "Formulaire de contact",
-              "Envoyer une demande avec une identité fictive.",
-              "Le message atteint la bonne boîte et la réponse automatique part seulement vers l’adresse de test.",
-            ],
-            [
-              "Prise de rendez-vous",
-              "Créer, déplacer puis annuler un créneau de test.",
-              "L’agenda attendu change et les notifications vont aux personnes prévues.",
-            ],
-            [
-              "Paiement",
-              "Utiliser le mode de test officiel du fournisseur lorsqu’il existe.",
-              "La commande fictive suit le bon statut sans débit réel ni action sur le vrai site.",
-            ],
-            [
-              "Espace client",
-              "Se connecter avec un compte de test aux droits représentatifs.",
-              "Le compte voit seulement les informations autorisées et les actions importantes répondent.",
-            ],
-            [
-              "Publication",
-              "Modifier un texte sans conséquence, publier puis annuler.",
-              "La nouvelle équipe sait mettre en ligne et revenir à l’état précédent.",
-            ],
-          ]}
+          caption="Quatre niveaux de preuve à ne pas confondre"
+          headers={["Niveau", "Exemple", "Ce qu’il permet de conclure"]}
+          rows={proofLevels}
         />
 
         <p>
-          Ne cochez pas « formulaire validé » parce qu’un message vert s’affiche
-          dans le navigateur. La preuve est la réception au bon endroit. Ne
-          cochez pas « paiement validé » parce qu’un bouton s’ouvre. La preuve
-          dépend du mode de test et du statut obtenu. Chaque fonction doit
-          relier une action visible à son résultat réel.
+          Pour chaque domaine applicable, consignez : statut{" "}
+          <em>inconnu, déclaré, vérifié, en échec ou non applicable</em>, type
+          de preuve, environnement, date, propriétaire, référence d’artefact,
+          résultat, limite, action interdite, date de validité, événement de
+          réouverture, prochaine action et échéance. Une mention « non
+          applicable » exige les mêmes éléments de traçabilité et un fait
+          vérifiable. Une porte applicable inconnue empêche le GO sur l’action
+          qu’elle conditionne.
         </p>
 
-        <h2 id="acces">Donnez des accès sans abandonner le contrôle</h2>
-        <p>
-          Un audit n’a pas besoin de commencer par l’envoi de tous les mots de
-          passe du site public. Commencez en lecture seule lorsque cela suffit.
-          Créez ensuite un compte nominatif avec les droits nécessaires au test,
-          définissez sa durée et prévoyez son retrait. Gardez les secrets dans
-          un outil adapté, jamais dans le formulaire de prise de contact.
-        </p>
-
-        <p>
-          La{" "}
-          <a
-            href="https://www.cnil.fr/fr/securite-encadrer-la-maintenance-et-la-fin-de-vie-des-materiels-et-logiciels"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            CNIL recommande d’encadrer les opérations de support
-          </a>
-          , d’ouvrir les accès de télémaintenance pour une durée adaptée puis de
-          les refermer. Cette recommandation doit être adaptée aux données et au
-          système réellement concernés ; elle ne transforme pas toute petite
-          intervention en projet de sécurité complexe.
-        </p>
-
-        <p>
-          Lorsque la nouvelle équipe traite des données personnelles pour le
-          compte de l’entreprise, la{" "}
-          <a
-            href="https://www.cnil.fr/fr/securite-gerer-la-sous-traitance"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            CNIL demande que la relation avec le sous-traitant soit encadrée
-          </a>{" "}
-          et que des garanties suffisantes soient vérifiées. Le contrat peut
-          notamment préciser responsabilités, confidentialité, authentification,
-          incidents, assistance et fin de prestation. Le mot « maintenance » ne
-          suffit toutefois pas à qualifier automatiquement le rôle au sens du
-          règlement : examinez les traitements et les accès réels, avec un
-          conseil compétent si le cas reste ambigu.
-        </p>
-
-        <p>
-          Le transfert de l’espace qui conserve le code — souvent appelé dépôt —
-          mérite le même soin. Sur GitHub, la{" "}
-          <a
-            href="https://docs.github.com/en/enterprise-cloud@latest/repositories/creating-and-managing-repositories/transferring-a-repository"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            documentation indique que des connexions automatiques, des codes
-            secrets enregistrés et des clés utilisées pour publier restent
-            associés à l’espace transféré
-          </a>
-          . C’est un exemple propre à GitHub, pas une règle pour tous les
-          fournisseurs. La conséquence pratique est simple : examinez les
-          intégrations et les comptes après un transfert, au lieu de supposer
-          qu’ils ont disparu.
-        </p>
-
-        <h2 id="verdict">Classez le résultat : GO, GO sous réserves ou STOP</h2>
-        <p>
-          Évitez un score sur 100. Une seule absence d’autorisation peut bloquer
-          une action, alors que plusieurs documents manquants peuvent seulement
-          demander un travail de clarification. Le verdict doit nommer le
-          contenu observé, les preuves obtenues et la prochaine action.
-        </p>
-
-        <div className="not-prose my-8 grid gap-4">
-          <section className="rounded-2xl border border-emerald-300 bg-emerald-50/60 p-5 sm:p-6 dark:border-emerald-800 dark:bg-emerald-950/20">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-              <div>
-                <p className="mb-2 text-xs font-bold uppercase tracking-widest text-emerald-800 dark:text-emerald-300">
-                  GO
-                </p>
-                <h3 className="m-0 text-lg font-semibold text-zinc-950 dark:text-white">
-                  La reprise peut commencer sur ce qui a été vérifié
-                </h3>
-              </div>
-              <span className="w-fit rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-200">
-                Preuves suffisantes
-              </span>
-            </div>
-            <p className="mb-0 mt-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-              Les comptes nécessaires sont contrôlés, la copie a été remise en
-              service, les fonctions importantes ont été rejouées et aucun
-              blocage connu n’empêche une intervention réversible. Écrivez bien
-              « sur les éléments testés », jamais « le site est sûr ».
+        <div className="not-prose my-8 grid gap-4 sm:grid-cols-3">
+          <section className="rounded-2xl border border-rose-200 bg-rose-50/60 p-5 dark:border-rose-900 dark:bg-rose-950/20">
+            <p className="m-0 text-xs font-bold uppercase tracking-widest text-rose-800 dark:text-rose-300">
+              P0 · bloquant immédiat
+            </p>
+            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              Autorité absente, incident actif, perte de données possible,
+              action destructive sans restauration ou test non isolable. STOP
+              avant l’action concernée.
             </p>
           </section>
-
-          <section className="rounded-2xl border border-amber-300 bg-amber-50/60 p-5 sm:p-6 dark:border-amber-800 dark:bg-amber-950/20">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-              <div>
-                <p className="mb-2 text-xs font-bold uppercase tracking-widest text-amber-800 dark:text-amber-300">
-                  GO sous réserves
-                </p>
-                <h3 className="m-0 text-lg font-semibold text-zinc-950 dark:text-white">
-                  La reprise commence seulement sous des conditions écrites
-                </h3>
-              </div>
-              <span className="w-fit rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800 dark:bg-amber-900/60 dark:text-amber-200">
-                Inconnues maîtrisables
-              </span>
-            </div>
-            <p className="mb-0 mt-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-              Le site reste stable, mais une preuve ou un test non critique
-              manque. Chaque réserve indique le responsable, la date, le
-              résultat attendu et les actions interdites jusque-là. Une réserve
-              vague comme « sécuriser le site » n’est pas exploitable.
+          <section className="rounded-2xl border border-amber-200 bg-amber-50/60 p-5 dark:border-amber-900 dark:bg-amber-950/20">
+            <p className="m-0 text-xs font-bold uppercase tracking-widest text-amber-800 dark:text-amber-300">
+              P1 · condition de reprise
+            </p>
+            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              Preuve ou capacité nécessaire à l’exploitation : build,
+              restauration, parcours critique, secret, dépendance, journal ou
+              réversibilité. Aucun GO de reprise avant levée ; seules des
+              actions préparatoires explicitement extérieures au périmètre
+              bloqué peuvent continuer.
             </p>
           </section>
-
-          <section className="rounded-2xl border border-rose-300 bg-rose-50/60 p-5 sm:p-6 dark:border-rose-900 dark:bg-rose-950/20">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-              <div>
-                <p className="mb-2 text-xs font-bold uppercase tracking-widest text-rose-800 dark:text-rose-300">
-                  STOP temporaire
-                </p>
-                <h3 className="m-0 text-lg font-semibold text-zinc-950 dark:text-white">
-                  L’engagement ou le changement risqué est suspendu
-                </h3>
-              </div>
-              <span className="w-fit rounded-full bg-rose-100 px-3 py-1 text-xs font-semibold text-rose-800 dark:bg-rose-900/60 dark:text-rose-200">
-                Blocage à lever
-              </span>
-            </div>
-            <p className="mb-0 mt-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-              Personne ne peut autoriser l’action, aucune copie récupérable
-              n’existe avant une opération destructive, le seul test mettrait le
-              site public en danger, une fonction critique ne peut être vérifiée
-              ou une attaque active est suspectée. STOP signifie « ne pas
-              modifier maintenant », pas « abandonner ou refaire ».
+          <section className="rounded-2xl border border-blue-200 bg-blue-50/60 p-5 dark:border-blue-900 dark:bg-blue-950/20">
+            <p className="m-0 text-xs font-bold uppercase tracking-widest text-blue-800 dark:text-blue-300">
+              P2 · amélioration planifiée
+            </p>
+            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              Dette ou amélioration non bloquante à la date du rapport, avec
+              impact, propriétaire et échéance. Elle ne doit pas masquer un P0
+              ou un P1.
             </p>
           </section>
         </div>
 
-        <h3>Six fiches suffisent pour motiver le verdict</h3>
-        <div className="not-prose my-8 grid gap-4">
-          {evidenceCards.map((item) => (
-            <section
-              key={item.number}
-              className="rounded-2xl border border-zinc-200 bg-white p-5 sm:p-6 dark:border-zinc-800 dark:bg-zinc-950"
+        <h2 id="domaines">Le registre complet couvre 18 domaines</h2>
+        <p>
+          Les trois preuves historiques — contrôle des comptes, restauration et
+          parcours métier — restent le cœur de la reprise. Elles ne suffisent
+          toutefois pas à représenter un produit web moderne. Les 18 domaines
+          suivants évitent le faux GO tout en restant modulables : l’auditeur
+          approfondit ce qui est applicable et justifie le reste.
+        </p>
+
+        <div className="not-prose my-8 space-y-4">
+          {auditFamilies.map((family) => (
+            <details
+              key={family.number}
+              className="group rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950"
             >
-              <div className="flex gap-4">
-                <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-sm font-bold text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">
-                  {item.number}
-                </span>
-                <div className="min-w-0">
-                  <h4 className="m-0 text-base font-semibold text-zinc-950 dark:text-white">
-                    {item.title}
-                  </h4>
-                  <p className="mb-0 mt-1 text-sm font-medium text-zinc-700 dark:text-zinc-300">
-                    {item.question}
-                  </p>
+              <summary className="cursor-pointer list-none p-5 sm:p-6">
+                <div className="flex items-start gap-4">
+                  <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-sm font-bold text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">
+                    {family.number}
+                  </span>
+                  <div className="min-w-0">
+                    <h3 className="m-0 text-base font-bold text-zinc-950 dark:text-white sm:text-lg">
+                      {family.title}
+                    </h3>
+                    <p className="mb-0 mt-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                      {family.summary}
+                    </p>
+                  </div>
                 </div>
+              </summary>
+              <div className="grid min-w-0 gap-4 border-t border-zinc-200 p-5 dark:border-zinc-800 sm:p-6 lg:grid-cols-3">
+                {family.domains.map((domain) => (
+                  <section
+                    key={domain.title}
+                    className="min-w-0 break-words rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900/60"
+                  >
+                    <h4 className="m-0 text-sm font-bold text-zinc-950 dark:text-white">
+                      {domain.title}
+                    </h4>
+                    <p className="mb-0 mt-3 text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
+                      Preuve attendue
+                    </p>
+                    <p className="mb-0 mt-1 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                      {domain.proof}
+                    </p>
+                    <p className="mb-0 mt-3 text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">
+                      Faux vert à éviter
+                    </p>
+                    <p className="mb-0 mt-1 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                      {domain.risk}
+                    </p>
+                  </section>
+                ))}
               </div>
-              <dl className="mt-5 grid gap-4 sm:grid-cols-3">
-                <div>
-                  <dt className="text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
-                    Preuve
-                  </dt>
-                  <dd className="mb-0 mt-1.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                    {item.evidence}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-xs font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300">
-                    Test
-                  </dt>
-                  <dd className="mb-0 mt-1.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                    {item.test}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">
-                    Si elle manque
-                  </dt>
-                  <dd className="mb-0 mt-1.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                    {item.consequence}
-                  </dd>
-                </div>
-              </dl>
-            </section>
+            </details>
           ))}
         </div>
 
-        <InfoBox variant="blue" title="Exemple entièrement fictif">
-          Ce cas sert uniquement à expliquer la méthode. Il ne décrit ni un
-          client, ni une mission, ni un résultat obtenu par Hagnéré Code.
-        </InfoBox>
-
-        <p>
-          Une PME de services change d’agence. Son dirigeant contrôle le domaine
-          et l’hébergement. Une archive récente existe, mais personne ne l’a
-          restaurée. L’espace qui conserve le code n’est pas encore transmis et
-          le formulaire utilise un compte d’envoi géré par l’ancien prestataire.
-        </p>
-        <p>
-          Sur un espace isolé, la copie est restaurée. Les pages s’affichent,
-          mais la demande de test n’arrive pas : l’ancien identifiant d’envoi
-          manque. Le verdict n’est ni « tout va bien » ni « il faut refaire le
-          site ». C’est un <strong>GO sous réserves</strong>. La nouvelle équipe
-          peut documenter la copie et préparer son intervention, mais aucune
-          bascule n’a lieu avant la création d’un compte d’envoi contrôlé par
-          l’entreprise, la réception d’un formulaire fictif et la clarification
-          de la source nécessaire aux futures modifications.
-        </p>
-
-        <h2 id="contrat">Transformez chaque réserve en condition du contrat</h2>
-        <p>
-          Un audit utile ne se termine pas par « des améliorations sont
-          recommandées ». Il donne au dirigeant une phrase qu’il peut relire
-          avant de signer. Pour chaque réserve, complétez ces six lignes :
-        </p>
-
-        <div className="not-prose my-8 rounded-2xl border border-zinc-200 bg-zinc-50 p-5 sm:p-6 dark:border-zinc-800 dark:bg-zinc-900/60">
-          <p className="mb-4 text-sm font-semibold text-zinc-950 dark:text-white">
-            Modèle de réserve
-          </p>
-          <dl className="grid gap-4 sm:grid-cols-2">
-            <div>
-              <dt className="text-xs font-bold uppercase tracking-wider text-zinc-500">
-                Élément manquant
-              </dt>
-              <dd className="mb-0 mt-1 text-sm text-zinc-700 dark:text-zinc-300">
-                Le test ou le document précisément nommé.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs font-bold uppercase tracking-wider text-zinc-500">
-                Conséquence
-              </dt>
-              <dd className="mb-0 mt-1 text-sm text-zinc-700 dark:text-zinc-300">
-                Ce qui reste incertain ou impossible.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs font-bold uppercase tracking-wider text-zinc-500">
-                Responsable
-              </dt>
-              <dd className="mb-0 mt-1 text-sm text-zinc-700 dark:text-zinc-300">
-                La personne qui doit agir ou répondre.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs font-bold uppercase tracking-wider text-zinc-500">
-                Preuve de levée
-              </dt>
-              <dd className="mb-0 mt-1 text-sm text-zinc-700 dark:text-zinc-300">
-                Le résultat observable qui ferme la réserve.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs font-bold uppercase tracking-wider text-zinc-500">
-                Échéance
-              </dt>
-              <dd className="mb-0 mt-1 text-sm text-zinc-700 dark:text-zinc-300">
-                La date ou l’étape avant laquelle agir.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs font-bold uppercase tracking-wider text-zinc-500">
-                Action interdite
-              </dt>
-              <dd className="mb-0 mt-1 text-sm text-zinc-700 dark:text-zinc-300">
-                L’intervention à reporter tant que la réserve subsiste.
-              </dd>
-            </div>
-          </dl>
-        </div>
-
-        <p>
-          Le contrat de maintenance décrit ensuite les interventions futures,
-          les responsabilités et les niveaux de service. L’audit décrit l’état
-          de départ. Ne cachez pas le coût de la reprise dans une promesse de
-          maintenance courante et ne mélangez pas une réserve bloquante avec une
-          amélioration souhaitable.
-        </p>
-
-        <h2 id="migration">
-          Une reprise ne vous oblige pas à déplacer le site
+        <h2 id="restauration">
+          Restaurez une copie, puis réconciliez ce qui compte
         </h2>
         <p>
-          Changer de mainteneur, changer d’hébergement et changer les adresses
-          des pages — souvent appelées URL — sont trois décisions distinctes.
-          Les réunir augmente le nombre de causes possibles si quelque chose ne
-          répond plus. Si le domaine et l’hébergement fonctionnent et restent
-          sous le contrôle de l’entreprise, une nouvelle équipe peut parfois
-          reprendre la maintenance sur place.
+          Une sauvegarde devient une preuve lorsqu’elle remet le service attendu
+          en état dans un environnement isolé. Le test doit identifier la
+          source, le contenu, la date, l’intégrité, les clés, le temps
+          nécessaire et la perte de données possible. Il faut aussi savoir ce
+          qui n’est pas dans la copie : configuration, secrets, médias, stockage
+          objet, index, files d’attente, messages ou services externes.
         </p>
 
-        <GuideTable
-          caption="Séparer la reprise des migrations qui ne sont pas toujours nécessaires"
-          headers={["Situation", "Travail utile", "À ne pas supposer"]}
-          rows={[
-            [
-              "Nouvelle équipe, infrastructure conservée",
-              "Créer ses accès, restaurer une copie, tester puis retirer les anciens comptes inutiles.",
-              "Qu’il faut déplacer le domaine ou changer les URL.",
-            ],
-            [
-              "Nouvel hébergement, mêmes URL",
-              "Copier et tester le nouvel hébergement, préparer les réglages du domaine, surveiller les deux côtés et garder un retour en arrière.",
-              "Que la reprise de maintenance suffit à valider la migration.",
-            ],
-            [
-              "Nouvelles URL",
-              "Établir le mappage, préparer les redirections, tester les liens, les règles d’indexation et le suivi.",
-              "Que Google conservera automatiquement toute la visibilité.",
-            ],
-          ]}
-        />
-
-        <p>
-          Pour un changement d’hébergement sans changement d’URL,{" "}
-          <a
-            href="https://developers.google.com/search/docs/crawling-indexing/site-move-no-url-changes?hl=fr"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Google recommande de copier et tester la nouvelle infrastructure
-          </a>
-          , puis de surveiller l’ancien et le nouvel hébergement avant de
-          désactiver l’ancien. Si les URL changent, sa{" "}
-          <a
-            href="https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes?hl=fr"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            documentation sur les migrations avec changement d’URL
-          </a>{" "}
-          ajoute notamment le mappage et les redirections. Ces procédures ne
-          sont nécessaires que si vous réalisez la migration concernée ; elles
-          ne sont pas une conséquence automatique d’un changement d’agence.
-        </p>
-
-        <h2 id="reporter">
-          Parfois, la bonne décision est de reporter ou de ne pas investir
-        </h2>
-        <p>
-          Un audit complet n’est pas un passage obligé. Si l’entreprise contrôle
-          déjà ses comptes, qu’une restauration récente est documentée, que la
-          nouvelle équipe sait publier sur une copie et que les fonctions
-          importantes sont testées, quelques vérifications ciblées peuvent
-          suffire. Demander un rapport plus long ne crée pas mécaniquement plus
-          de sécurité.
-        </p>
-
-        <p>Reportez ou changez de parcours lorsque :</p>
-        <ul>
-          <li>
-            le site n’a presque aucun enjeu métier et les preuves disponibles
-            suffisent pour l’intervention prévue ;
-          </li>
-          <li>
-            une attaque active est suspectée : la priorité devient la réponse à
-            incident, pas la signature commerciale ;
-          </li>
-          <li>
-            un droit ou un contrat est contesté : la question est d’abord
-            juridique ;
-          </li>
-          <li>
-            l’ancien prestataire peut encore réaliser une passation simple et
-            démontrée, moins coûteuse qu’une exploration complète ;
-          </li>
-          <li>
-            aucune action technique ne doit être engagée avant une décision
-            stratégique de conserver ou d’arrêter le site.
-          </li>
-        </ul>
-
-        <p>
-          À l’inverse, un audit ciblé devient utile lorsque le site apporte des
-          demandes ou des ventes, que son état est inconnu et que la nouvelle
-          équipe devrait s’engager sans pouvoir vérifier sa capacité à restaurer
-          ou publier. La question n’est pas « combien de défauts allons-nous
-          trouver ? », mais « quelles preuves manquent pour prendre la prochaine
-          décision ? ».
-        </p>
-
-        <h2 id="memo">Conservez une décision qui tient sur une page</h2>
-        <p>
-          Le dirigeant n’a pas besoin d’une centaine de captures d’écran. Il a
-          besoin d’un document court, relié aux preuves détaillées lorsqu’elles
-          existent. Sa première page peut contenir :
-        </p>
         <ol>
-          <li>le site, la date et les parties réellement observées ;</li>
           <li>
-            les fonctions métier que le dirigeant a déclarées importantes ;
-          </li>
-          <li>les tests réussis et les résultats finaux confirmés ;</li>
-          <li>les inconnues, sans les présenter comme des défauts prouvés ;</li>
-          <li>le verdict GO, GO sous réserves ou STOP temporaire ;</li>
-          <li>
-            pour chaque réserve, un responsable, une preuve attendue et une
-            échéance ;
+            définir le <strong>RPO</strong>, c’est-à-dire le point de reprise
+            visé ou l’ancienneté maximale acceptable des données restaurées,
+            comme une décision métier et non une propriété magique de la
+            sauvegarde ;
           </li>
           <li>
-            la prochaine décision autorisée et les actions encore interdites.
+            définir le <strong>RTO</strong>, le délai visé pour remettre le
+            service utile à disposition, avec ses dépendances ;
+          </li>
+          <li>
+            choisir une source datée et, en cas d’incident, vérifier qu’elle est
+            suffisamment saine avant de restaurer ;
+          </li>
+          <li>
+            créer un espace séparé, protéger son accès, neutraliser paiements,
+            e-mails, webhooks et automatismes réels ;
+          </li>
+          <li>
+            utiliser des données fictives ou anonymisées par défaut, puis
+            justifier, limiter, tracer et purger toute exception ;
+          </li>
+          <li>
+            restaurer code, base, fichiers, médias, configuration et dépendances
+            nécessaires ;
+          </li>
+          <li>
+            rejouer les parcours de bout en bout et réconcilier commande,
+            paiement, stock, e-mail, CRM, webhook, fichiers et écritures
+            différées ;
+          </li>
+          <li>
+            chronométrer, noter les ajouts manuels, préserver les preuves et
+            protéger ou supprimer la copie selon la règle décidée.
           </li>
         </ol>
 
-        <InfoBox variant="emerald" title="Après un GO">
-          Le verdict ne réalise pas la passation. Utilisez ensuite le guide pour{" "}
-          <Link href="/guides/reprendre-maintenance-site-autre-agence">
-            reprendre la maintenance d’un site auprès d’une autre agence
-          </Link>{" "}
-          : il sépare domaine, hébergement, messagerie et accès, puis organise
-          leur transfert sans les couper tous en même temps.
+        <p>
+          Les recommandations françaises, australiennes et allemandes convergent
+          sur le même principe : identifier les données critiques, protéger les
+          sauvegardes, prévoir la restauration et la tester. Leur niveau de
+          détail vise parfois des systèmes plus larges qu’un site de PME ;
+          l’effort doit rester proportionné, sans réduire « test » à la présence
+          d’un fichier d’archive.
+        </p>
+
+        <InfoBox
+          variant="amber"
+          title="Une copie réduite n’est pas forcément anonyme"
+        >
+          Supprimer quelques lignes ou remplacer le nom visible ne suffit pas
+          toujours. Les données fictives ou réellement anonymisées sont le choix
+          par défaut. Si des données personnelles restent nécessaires,
+          documentez la finalité, la base légale du traitement, l’autorisation
+          et les instructions documentées du responsable, le périmètre, les
+          accès, la sécurité, la durée et la purge, avec le DPO ou le conseil
+          compétent selon l’enjeu.
         </InfoBox>
 
-        <GuideInlineCTA
-          title="Savoir si votre site peut être repris simplement, sous conditions, ou pas encore"
-          description="Décrivez le site, les fonctions importantes, les comptes que votre entreprise contrôle et les éléments qui manquent. Le premier échange sert à distinguer une passation simple d’un audit ciblé. Si les éléments suffisent déjà, la conclusion peut être de ne pas commander d’audit approfondi. N’envoyez aucun mot de passe dans le formulaire."
-          tags={[
-            "Verdict compréhensible",
-            "Audit ciblé si nécessaire",
-            "Report possible",
+        <h2 id="livraison">
+          Prouvez la chaîne source → artefact → environnement → résultat
+        </h2>
+        <p>
+          « Nous avons le code » et « le build passe » sont deux bonnes
+          nouvelles, pas encore une preuve de reprise. La nouvelle équipe doit
+          retrouver la version réellement publiée, fabriquer un artefact
+          identifiable, comprendre comment il est promu et savoir traiter les
+          effets qui ne se renversent pas automatiquement.
+        </p>
+
+        <GuideTable
+          caption="Ce qu’un test de livraison doit relier"
+          headers={["Étape", "Questions observables", "Preuve de sortie"]}
+          rows={[
+            [
+              "Source",
+              "Quel dépôt, quelle branche, quel tag et quel historique ? Quels droits d’utilisation, reproduction, modification, maintenance et remise à un tiers sont documentés ?",
+              "Clone depuis un compte contrôlé et correspondance avec la version exploitée.",
+            ],
+            [
+              "Build",
+              "Quels runtimes, lockfiles, variables, images et commandes depuis un environnement propre ?",
+              "Build reproductible, dépendances identifiées et journal conservé.",
+            ],
+            [
+              "Artefact",
+              "Quel binaire, conteneur ou bundle est signé, stocké et promu ?",
+              "Identifiant ou digest relié au source et au déploiement.",
+            ],
+            [
+              "Déploiement",
+              "Quel pipeline, runner, registre, IaC, secret et health check ?",
+              "Publication isolée réussie, accès nominatifs et événements observés.",
+            ],
+            [
+              "Retour",
+              "Rollback possible ou fix-forward ? Quelles migrations et écritures persistent ?",
+              "Procédure répétée, limites, sauvegarde et réconciliation des effets différés.",
+            ],
           ]}
-          ctaLabel="Décrire ma situation"
+        />
+
+        <p>
+          Le transfert d’un dépôt exige une revue après l’opération. GitHub
+          précise par exemple que des collaborateurs, webhooks, secrets et clés
+          de déploiement peuvent rester associés selon le cas. C’est une
+          propriété de cette plateforme, pas une règle universelle ; la règle
+          générale est de réinventorier les identités, intégrations et secrets,
+          puis de révoquer ou faire tourner ce qui ne doit plus servir.
+        </p>
+
+        <InfoBox variant="amber" title="Droit sur le code : ne pas surinterpréter un accès">
+          Le contrat, la licence ou l’acte de cession doit être lu pour le
+          périmètre réellement repris. En droit français, une cession de droits
+          d’auteur ne se déduit pas du seul paiement, de la remise d’un ZIP ou
+          de l’accès au dépôt : les droits transmis et leur domaine
+          d’exploitation doivent être délimités. Cela n’implique pas qu’une
+          cession intégrale soit toujours nécessaire ; il faut prouver les
+          droits effectivement requis pour exploiter, corriger et faire
+          maintenir le site, puis obtenir un avis juridique si le contrat est
+          ambigu ou contesté.
+        </InfoBox>
+
+        <h3>Un SBOM est un inventaire, pas un feu vert</h3>
+        <p>
+          Un Software Bill of Materials, ou SBOM, rend les composants plus
+          visibles. Il doit couvrir autant que possible les dépendances
+          directes, transitives et runtime, puis être relié aux versions
+          réellement livrées, aux vulnérabilités, aux licences, au support et à
+          la provenance. Il n’existe pas d’obligation générale d’exiger le même
+          SBOM pour toute petite reprise de site. En revanche, ignorer plugins,
+          thèmes, packages, images ou services en fin de support crée une
+          inconnue industrielle.
+        </p>
+
+        <h2 id="qualite">
+          Sécurité, exploitation, performance, SEO et accessibilité : cinq
+          lectures différentes
+        </h2>
+        <p>
+          Ces axes se complètent mais ne se remplacent pas. Un scan de
+          vulnérabilité ne prouve pas que les alertes arrivent. Un test de
+          charge ne mesure pas l’expérience terrain. Un crawl SEO ne valide pas
+          le clavier. Une propriété analytics ne garantit pas la qualité des
+          conversions. Le rapport doit dire ce qui a été contrôlé et ce qui
+          nécessite un module spécialisé.
+        </p>
+
+        <div className="not-prose my-8 grid gap-4 md:grid-cols-2">
+          <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950">
+            <h3 className="m-0 text-base font-bold text-zinc-950 dark:text-white">
+              Exploitation et observabilité
+            </h3>
+            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              Listez logs, métriques, erreurs, traces, alertes, rétention,
+              destinataires, astreinte et escalade. Déclenchez une alerte sûre
+              et vérifiez sa réception. Une page fournisseur verte ne remplace
+              pas l’observation du parcours métier.
+            </p>
+          </section>
+          <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950">
+            <h3 className="m-0 text-base font-bold text-zinc-950 dark:text-white">
+              Sécurité
+            </h3>
+            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              Vérifiez identités, privilèges, MFA, sessions, correctifs,
+              exposition, secrets, journalisation et réponse à incident. Un
+              audit de reprise peut orienter un pentest sans prétendre le
+              remplacer.
+            </p>
+          </section>
+          <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950">
+            <h3 className="m-0 text-base font-bold text-zinc-950 dark:text-white">
+              Performance et capacité
+            </h3>
+            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              Conservez les données terrain disponibles, LCP, INP et CLS, puis
+              contextualisez les tests de laboratoire. Ajoutez volumes, pics,
+              quotas, cache et temps de réponse. Un score unique ne devient pas
+              un SLA.
+            </p>
+          </section>
+          <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950">
+            <h3 className="m-0 text-base font-bold text-zinc-950 dark:text-white">
+              SEO et mesure
+            </h3>
+            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              Gelez URL, statuts, canonicals, robots, sitemaps, rendu, données
+              structurées, liens internes, visibilité et conversions avant une
+              migration. Search Console et analytics sont des sources, pas une
+              preuve suffisante seuls.
+            </p>
+          </section>
+          <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950 md:col-span-2">
+            <h3 className="m-0 text-base font-bold text-zinc-950 dark:text-white">
+              Accessibilité
+            </h3>
+            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              Définissez les pages et états, le niveau visé et la méthode.
+              Combinez automatisation et revue humaine : structure, clavier,
+              focus, zoom, formulaires, messages d’erreur, contraste, contenu et
+              technologies d’assistance. WCAG 2.2 formule des critères
+              testables, mais une conclusion de conformité porte sur des pages
+              complètes et, lorsqu’une page appartient à un parcours, sur les
+              processus complets ; elle ne se déduit pas d’un outil automatique.
+            </p>
+          </section>
+        </div>
+
+        <h3>Le RGPD ne se résume pas à une clause de confidentialité</h3>
+        <p>
+          Lorsque la nouvelle équipe traite des données personnelles pour le
+          compte de l’entreprise en qualité de sous-traitant, la relation doit
+          être encadrée par un contrat ou un autre acte juridique conforme à
+          l’article 28 du RGPD : objet, durée, nature, finalité, catégories de
+          données et de personnes, instructions documentées, confidentialité,
+          sécurité, sous-traitants ultérieurs, transferts, incidents,
+          assistance, restitution ou suppression et possibilité d’audit. Le rôle
+          dépend des traitements et des accès réels. L’audit technique prépare
+          les faits ; le DPO ou le conseil compétent qualifie les cas ambigus ou
+          sensibles.
+        </p>
+
+        <h2 id="dossier">
+          Remplissez le dossier local : aucune donnée n’est envoyée
+        </h2>
+        <p>
+          L’outil ci-dessous transforme la méthode en dossier reproductible. Il
+          ne teste pas votre site, ne contacte aucun fournisseur et ne
+          sauvegarde pas automatiquement les champs. Il calcule une route
+          prudente, refuse les preuves insuffisantes, conserve les montants
+          inconnus en ND et prépare un rapport texte, JSON ou CSV à relire avant
+          partage.
+        </p>
+
+        <InfoBox variant="amber" title="Avant toute saisie ou export">
+          Utilisez des références internes, pas des mots de passe, clés, jetons,
+          cookies, données client ni journaux bruts. Le masquage automatique ne
+          peut être qu’un filet de sécurité imparfait. Relisez manuellement le
+          rapport et stockez les preuves sensibles dans un espace autorisé.
+        </InfoBox>
+
+        <WebsiteTakeoverAuditDossier />
+
+        <p>
+          Si vous préférez un support sans JavaScript, téléchargez le{" "}
+          <a href="/ressources/dossier-audit-reprise-site.txt" download>
+            dossier texte autonome
+          </a>
+          . Il contient le contrôle STOP, les 18 domaines, la matrice de rôles,
+          la feuille TCO, le modèle de réserve et le paquet de sortie. Le
+          fichier est un canevas : il ne certifie aucun site et ne remplace pas
+          la compétence nécessaire aux tests.
+        </p>
+
+        <h2 id="trajectoires">
+          Comparez quatre chemins pour le même résultat, sur trois horizons
+        </h2>
+        <p>
+          Une comparaison honnête conserve les mêmes fonctions, volumes,
+          environnements, intégrations, disponibilité, sécurité, données,
+          accessibilité, SEO, support et conditions de sortie. Sinon, la
+          solution la moins chère peut simplement promettre moins.
+        </p>
+
+        <GuideTable
+          caption="Quatre trajectoires possibles après l’audit"
+          headers={[
+            "Trajectoire",
+            "Quand elle devient cohérente",
+            "Risque principal et sortie attendue",
+          ]}
+          rows={trajectoryRows.map(([name, when, risk, output]) => [
+            name,
+            when,
+            `${risk} Sortie attendue : ${output}`,
+          ])}
+        />
+
+        <h3>Formule de TCO 12, 36 et 60 mois</h3>
+        <p>
+          Séparez les coûts uniques des coûts récurrents et documentez devise,
+          HT/TTC, date, fréquence, quantité, mois de début, mois de fin et
+          source datée. Chaque trajectoire traite explicitement sept catégories
+          : transition, temps interne, exploitation, licences/services,
+          continuité/migration, réserve de risque et sortie/réversibilité. Une
+          catégorie réellement nulle reste une ligne à zéro justifiée ; une
+          inconnue reste <strong>ND</strong> et n’est jamais ramenée à zéro pour
+          faire gagner une option.
+        </p>
+
+        <pre>
+          <code>{`TCO(h) =
+  audit et mise sous contrôle
++ corrections initiales
++ migration ou reconstruction
++ temps interne
++ h × (hébergement + CDN + maintenance + support
+       + observabilité + sécurité)
++ coûts annuels proratisés (licences, conformité, formation, documentation)
++ coût de sortie
++ réserve de risque explicitement sourcée
+
+h = 12, 36 ou 60 mois`}</code>
+        </pre>
+
+        <p>
+          Évitez les doubles comptes : un jour interne ne doit pas réapparaître
+          dans un forfait qui l’inclut ; une réserve d’incident ne doit pas
+          recopier un coût déjà compté. Les scénarios sont comparés en centimes
+          ou avec une règle d’arrondi explicite. Un TCO ne prédit pas l’avenir :
+          il rend visibles les hypothèses et les sensibilités.
+        </p>
+
+        <h3>Exemple chiffré : lire le total sans le confondre avec un prix</h3>
+        <p>
+          Voici la trajectoire « mise sous contrôle » chargée dans le dossier
+          de démonstration. Tous les montants sont entièrement fictifs : ils
+          servent uniquement à montrer comment sept catégories produisent des
+          totaux reproductibles à 12, 36 et 60 mois. Ce ne sont ni des tarifs,
+          ni des moyennes de marché, ni une recommandation budgétaire.
+        </p>
+        <GuideTable
+          caption="Exemple TCO entièrement fictif — mise sous contrôle de l’existant"
+          headers={["Catégorie", "12 mois", "Horizons longs"]}
+          rows={fictitiousControlTcoRows}
+        />
+
+        <h2 id="cas">Quatre cas fictifs pour calibrer le verdict</h2>
+        <InfoBox variant="blue" title="Comparaison fictive de quatre verdicts">
+          Les organisations, chiffres et résultats ci-dessous sont fictifs. Ils
+          illustrent la méthode et ne constituent ni des tarifs, ni des moyennes
+          de marché, ni des missions réalisées par Hagnéré Code. Cette
+          comparaison ne décrit ni un client ni une mission réelle.
+        </InfoBox>
+
+        <div className="not-prose my-8 space-y-4">
+          <section className="rounded-2xl border border-emerald-300 bg-emerald-50/50 p-5 sm:p-6 dark:border-emerald-900 dark:bg-emerald-950/20">
+            <p className="m-0 text-xs font-bold uppercase tracking-widest text-emerald-800 dark:text-emerald-300">
+              Cas A · GO borné
+            </p>
+            <h3 className="mb-0 mt-2 text-lg font-bold text-zinc-950 dark:text-white">
+              Vitrine de 15 pages, sans compte ni paiement
+            </h3>
+            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              L’entreprise contrôle domaine, DNS, hébergement, dépôt et
+              messagerie. Une copie récente est restaurée hors public ; le
+              formulaire fictif arrive dans la bonne boîte ; le build et le
+              rollback sont rejoués ; aucune inconnue applicable ne bloque
+              l’intervention. Le GO autorise une maintenance limitée au
+              périmètre testé. Il ne certifie ni la sécurité absolue ni la
+              conformité générale.
+            </p>
+          </section>
+
+          <section className="rounded-2xl border border-amber-300 bg-amber-50/50 p-5 sm:p-6 dark:border-amber-900 dark:bg-amber-950/20">
+            <p className="m-0 text-xs font-bold uppercase tracking-widest text-amber-800 dark:text-amber-300">
+              Cas B · GO sous réserves P2
+            </p>
+            <h3 className="mb-0 mt-2 text-lg font-bold text-zinc-950 dark:text-white">
+              Commerce B2B stable avant une future campagne
+            </h3>
+            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              L’autorité, les accès, la restauration, le build, les parcours et
+              le rollback sont vérifiés ; aucun P0 ni P1 ne subsiste. Deux
+              réserves non bloquantes restent ouvertes : reprendre l’historique
+              de mesure et réaliser un test de charge avant une campagne
+              ultérieure. Chacune possède un responsable, une preuve attendue,
+              une échéance, une limite et une action interdite. Le décideur
+              accepte explicitement le risque résiduel : le GO couvre la charge
+              et la mesure actuelles, mais interdit de supprimer l’ancien
+              historique ou d’augmenter fortement le trafic avant la levée des
+              P2.
+            </p>
+          </section>
+
+          <section className="rounded-2xl border border-sky-300 bg-sky-50/50 p-5 sm:p-6 dark:border-sky-900 dark:bg-sky-950/20">
+            <p className="m-0 text-xs font-bold uppercase tracking-widest text-sky-800 dark:text-sky-300">
+              Cas C · reprise bloquée, préparation autorisée
+            </p>
+            <h3 className="mb-0 mt-2 text-lg font-bold text-zinc-950 dark:text-white">
+              PME de services avec CRM et compte d’envoi externe
+            </h3>
+            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              La copie se restaure et les pages répondent, mais le formulaire
+              dépend d’un compte SMTP détenu par l’ancien prestataire et les
+              alertes ne sont pas testées. La nouvelle équipe peut préparer le
+              runbook et les correctifs sur copie. Aucune bascule n’est permise
+              avant création d’un compte contrôlé par l’entreprise, rotation du
+              secret, réception d’un message fictif et test d’alerte. Chaque P1
+              a un responsable, une date de validité, un déclencheur de
+              réouverture et une échéance ; le GO n’arrive qu’après leur levée.
+            </p>
+          </section>
+
+          <section className="rounded-2xl border border-rose-300 bg-rose-50/50 p-5 sm:p-6 dark:border-rose-900 dark:bg-rose-950/20">
+            <p className="m-0 text-xs font-bold uppercase tracking-widest text-rose-800 dark:text-rose-300">
+              Cas D · STOP
+            </p>
+            <h3 className="mb-0 mt-2 text-lg font-bold text-zinc-950 dark:text-white">
+              Boutique avec redirections inconnues et compte administrateur
+              contesté
+            </h3>
+            <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              Des visiteurs voient une page inhabituelle, l’ancien prestataire
+              conteste l’autorité de la nouvelle équipe, la seule sauvegarde est
+              dans le même compte et personne ne sait si elle est saine. STOP :
+              aucune restauration ni rotation improvisée. Les faits et journaux
+              sont préservés, l’autorité est clarifiée et la réponse à incident
+              est pilotée. La trajectoire technique sera comparée après ce
+              traitement.
+            </p>
+          </section>
+        </div>
+
+        <h2 id="contrat">
+          Transformez chaque réserve en responsabilité testable
+        </h2>
+        <p>
+          L’audit décrit l’état de départ ; le contrat organise la suite. Pour
+          chaque P0, P1 ou P2, écrivez l’élément, sa conséquence, le
+          propriétaire de l’action, la preuve de levée, l’échéance et l’action
+          interdite. Une phrase comme « sécuriser le site » ne permet ni
+          d’accepter ni de contrôler le travail.
+        </p>
+
+        <GuideTable
+          caption="Répartir les rôles sans diluer la décision"
+          headers={[
+            "Rôle",
+            "Responsabilité minimale",
+            "Preuve attendue avant clôture",
+          ]}
+          rows={[
+            [
+              "Dirigeant ou sponsor",
+              "Nommer les fonctions, l’impact, les données, les seuils RPO/RTO, le budget et l’autorité de décision.",
+              "Périmètre commun et verdict accepté avec réserves visibles.",
+            ],
+            [
+              "Ancien prestataire",
+              "Remettre les actifs prévus, expliquer les dépendances, signaler les limites et exécuter la passation autorisée.",
+              "Paquet de sortie, comptes, exports et réponses référencés, sans secret dans le rapport.",
+            ],
+            [
+              "Nouvelle équipe",
+              "Tester dans le périmètre autorisé, conserver les preuves, déclarer les inconnues et ne pas élargir le GO.",
+              "Registre daté, essais reproductibles, limites, actions interdites et plan de levée.",
+            ],
+            [
+              "DPO, juridique, cyber ou métier",
+              "Intervenir sur les questions qui dépassent la seule technique.",
+              "Décision ou avis borné au sujet escaladé, sans transfert implicite de responsabilité.",
+            ],
+          ]}
+        />
+
+        <h3>
+          Reprise, changement d’hébergement et changement d’URL sont distincts
+        </h3>
+        <p>
+          Une nouvelle équipe peut parfois maintenir le site là où il se trouve.
+          Si l’hébergement change sans modification d’URL, préparez la nouvelle
+          infrastructure, testez-la, organisez le DNS, surveillez les deux côtés
+          et gardez un retour en arrière. Si les URL changent, ajoutez un
+          mappage, les redirections, les canonicals, les liens, les sitemaps et
+          le suivi. Google documente ces deux parcours séparément et prévient
+          qu’une migration peut entraîner des fluctuations temporaires de
+          classement.
+        </p>
+
+        <GuideInlineCTA
+          title="Qualifier une reprise sans transmettre de secret"
+          description="Indiquez le type de site, les fonctions importantes, les données traitées, les comptes contrôlés, les environnements, la dernière restauration prouvée et la décision envisagée. Le premier échange doit distinguer pré-vérification, audit léger, audit complet ou STOP. N’envoyez aucun mot de passe, clé, jeton, cookie, donnée client ni journal brut."
+          tags={[
+            "Niveau d’audit explicite",
+            "Livrables et limites",
+            "Trajectoires à périmètre égal",
+          ]}
+          ctaLabel="Demander un cadrage de reprise"
           ctaHref="/demarrer-un-projet"
+          ctaService="audit"
+          ctaSource="guide-audit-reprise-site"
           showPhone={false}
         />
 
-        <h2 id="sources">Sources officielles et limites</h2>
+        <h2 id="sources">Sources mondiales et limites de ce guide</h2>
         <p>
-          Sources consultées le 23 juillet 2026. Les interfaces, procédures et
-          versions peuvent évoluer ; elles doivent être revérifiées au moment de
-          l’audit. Ce guide donne un cadre général de décision. Il ne remplace
-          ni un conseil juridique adapté à vos contrats et données, ni une
-          réponse à incident, ni un test de sécurité exhaustif.
+          Sources primaires rouvertes ou vérifiées le 27 juillet 2026. Les
+          référentiels internationaux structurent des dimensions différentes :
+          continuité, chaîne logicielle, sécurité, accessibilité, performance ou
+          migration. Aucun n’est transposé comme obligation universelle pour
+          toutes les PME. Les procédures, versions, interfaces et textes doivent
+          être revérifiés au moment de l’audit.
         </p>
+
+        <h3>France et Union européenne</h3>
         <ul>
           <li>
-            CNIL —{" "}
+            ANSSI —{" "}
             <a
-              href="https://www.cnil.fr/fr/securite-gerer-la-sous-traitance"
+              href="https://messervices.cyber.gouv.fr/documents-guides/anssi_fondamentaux_sauvegarde_systemes_dinformation_v1.1.pdf"
               target="_blank"
               rel="noopener noreferrer"
             >
-              gérer la sous-traitance et vérifier les garanties
-            </a>
-            .
+              fondamentaux de la sauvegarde des systèmes d’information
+            </a>{" "}
+            : stratégie, protection, restauration et tests.
+          </li>
+          <li>
+            CERT-FR —{" "}
+            <a
+              href="https://cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              bons réflexes en cas d’intrusion
+            </a>{" "}
+            : préserver les éléments utiles et traiter l’incident avant la
+            reprise ordinaire.
           </li>
           <li>
             CNIL —{" "}
+            <a
+              href="https://www.cnil.fr/fr/tester-vos-applications"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              tester les applications
+            </a>
+            ,{" "}
             <a
               href="https://www.cnil.fr/fr/securite-encadrer-la-maintenance-et-la-fin-de-vie-des-materiels-et-logiciels"
               target="_blank"
               rel="noopener noreferrer"
             >
-              encadrer les accès pendant la maintenance
+              encadrer la maintenance
+            </a>{" "}
+            et{" "}
+            <a
+              href="https://www.cnil.fr/fr/securite-gerer-la-sous-traitance"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              gérer la sous-traitance
             </a>
             .
-          </li>
-          <li>
-            ANSSI —{" "}
-            <a
-              href="https://messervices.cyber.gouv.fr/guides/externalisation-et-securite-des-systemes-dinformation-un-guide-pour-maitriser-les"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              analyser les risques d’une externalisation informatique
-            </a>
-            . Le guide est général et ne crée pas une obligation identique pour
-            tous les sites.
-          </li>
-          <li>
-            OWASP —{" "}
-            <a
-              href="https://owasp.org/www-project-web-security-testing-guide/stable/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Web Security Testing Guide, version stable
-            </a>
-            .
-          </li>
-          <li>
-            WordPress —{" "}
-            <a
-              href="https://developer.wordpress.org/advanced-administration/security/backup/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              sauvegarder et restaurer les fichiers et la base
-            </a>
-            , pour une installation WordPress typique.
           </li>
           <li>
             Afnic —{" "}
@@ -988,23 +1454,230 @@ export default function Page() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              gérer un nom de domaine relevant de son registre
+              titulaire, contacts et gestion d’un domaine relevant de son
+              registre
+            </a>
+            ; les autres extensions suivent leur registre et leur prestataire.
+          </li>
+          <li>
+            Code de la propriété intellectuelle, article L131-3 —{" "}
+            <a
+              href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278958"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              délimitation des droits transmis par une cession
+            </a>
+            . Le texte ne signifie pas que toute maintenance exige une cession
+            intégrale : le contrat doit couvrir les droits réellement
+            nécessaires au périmètre repris.
+          </li>
+          <li>
+            ENISA —{" "}
+            <a
+              href="https://www.enisa.europa.eu/publications/enisa-technical-advisory-for-secure-use-of-package-managers"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              usage sûr des gestionnaires de packages
+            </a>{" "}
+            : source européenne pour la chaîne logicielle, à adapter au produit.
+          </li>
+          <li>
+            BSI —{" "}
+            <a
+              href="https://www.bsi.bund.de/dok/10990836"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              préparation et conduite d’un IT-Grundschutz-Check
+            </a>{" "}
+            et{" "}
+            <a
+              href="https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Grundschutz/BSI_Standards/standard_200_4.pdf?__blob=publicationFile&v=8"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              page officielle du Standard 200-4 BCM
+            </a>{" "}
+            : vérifier sur pièce, documenter l’état observé et réexaminer
+            régulièrement ; ces référentiels allemands restent à proportionner
+            au site repris.
+          </li>
+          <li>
+            INCIBE (Espagne) —{" "}
+            <a
+              href="https://www.incibe.es/sites/default/files/contenidos/dosieres/metad_contratacion_de_servicios.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              méthode de contractualisation de services de sécurité
+            </a>
+            , mobilisée ici pour la répartition des responsabilités, les
+            sauvegardes, l’interruption, l’escalade et la revue des niveaux de
+            service ; ce document espagnol doit être adapté au contrat et au
+            droit applicables.
+          </li>
+        </ul>
+
+        <h3>Royaume-Uni, États-Unis et Australie</h3>
+        <ul>
+          <li>
+            NCSC britannique —{" "}
+            <a
+              href="https://www.ncsc.gov.uk/collection/developers-collection/principles/secure-the-build-and-deployment-pipeline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              sécuriser le pipeline de build et de déploiement
+            </a>{" "}
+            et{" "}
+            <a
+              href="https://www.ncsc.gov.uk/blogs/software-supply-chain-attacks-check-your-dependencies"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              contrôler les dépendances de la chaîne logicielle
             </a>
             .
           </li>
           <li>
-            GitHub —{" "}
+            CISA —{" "}
             <a
-              href="https://docs.github.com/en/enterprise-cloud@latest/repositories/creating-and-managing-repositories/transferring-a-repository"
+              href="https://www.cisa.gov/sites/default/files/2025-08/2025_CISA_SBOM_Minimum_Elements.pdf"
               target="_blank"
               rel="noopener noreferrer"
             >
-              éléments conservés lors du transfert d’un espace de code
+              projet public 2025 des Minimum Elements for a Software Bill of
+              Materials
             </a>
-            , exemple propre à cette plateforme.
+            , Public Comment Draft d’août 2025 : ce document pré-décisionnel ne
+            représente pas la position finale du gouvernement américain. Pour
+            une base définitive, consultez aussi les{" "}
+            <a
+              href="https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              éléments minimaux publiés par la NTIA en 2021
+            </a>
+            . Aucun des deux ne crée ici une obligation générale.
           </li>
           <li>
-            Google Search Central —{" "}
+            NIST —{" "}
+            <a
+              href="https://csrc.nist.gov/pubs/sp/800/218/final"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Secure Software Development Framework
+            </a>{" "}
+            : pratiques de développement sécurisé à proportionner au contexte.
+          </li>
+          <li>
+            Cyber.gov.au —{" "}
+            <a
+              href="https://www.cyber.gov.au/business-government/protecting-devices-systems/cloud-computing/cloud-shared-responsibility-model-guidance-for-individuals-and-small-and-medium-businesses"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              responsabilité partagée du cloud pour petites entreprises
+            </a>
+            : les sauvegardes, secrets, configurations et journaux ne sont pas
+            automatiquement délégués.
+          </li>
+        </ul>
+
+        <h3>Standards et plateformes web internationales</h3>
+        <ul>
+          <li>
+            RFC Editor —{" "}
+            <a
+              href="https://www.rfc-editor.org/rfc/rfc4035"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              RFC 4035
+            </a>
+            ,{" "}
+            <a
+              href="https://www.rfc-editor.org/rfc/rfc7344"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              RFC 7344
+            </a>{" "}
+            et{" "}
+            <a
+              href="https://www.rfc-editor.org/rfc/rfc9364"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              RFC 9364
+            </a>
+            ,{" "}
+            <a
+              href="https://www.rfc-editor.org/rfc/rfc9615"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              RFC 9615
+            </a>{" "}
+            : validation DNSSEC, automatisation de maintenance du DS et
+            amorçage automatique à partir de signaux authentifiés. La RFC 9364
+            fournit la synthèse DNSSEC de référence ; la RFC 9615 traite
+            spécifiquement du bootstrapping. Elles justifient de vérifier la
+            cohérence parent/enfant et la procédure de rollover, sans imposer
+            une architecture unique.
+          </li>
+          <li>
+            OWASP —{" "}
+            <a
+              href="https://owasp.org/www-project-web-security-testing-guide/stable/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Web Security Testing Guide
+            </a>{" "}
+            et{" "}
+            <a
+              href="https://owasp.org/www-community/Component_Analysis"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Component Analysis
+            </a>
+            .
+          </li>
+          <li>
+            W3C —{" "}
+            <a
+              href="https://www.w3.org/TR/WCAG22/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WCAG 2.2
+            </a>{" "}
+            et{" "}
+            <a
+              href="https://www.w3.org/WAI/test-evaluate/report-template/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              modèle de rapport d’évaluation
+            </a>
+            .
+          </li>
+          <li>
+            Google —{" "}
+            <a
+              href="https://web.dev/articles/vitals?hl=fr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Web Vitals
+            </a>
+            ,{" "}
             <a
               href="https://developers.google.com/search/docs/crawling-indexing/site-move-no-url-changes?hl=fr"
               target="_blank"
@@ -1022,7 +1695,28 @@ export default function Page() {
             </a>
             .
           </li>
+          <li>
+            GitHub —{" "}
+            <a
+              href="https://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              effets d’un transfert de dépôt
+            </a>
+            , exemple propre à cette plateforme qui impose une revue des accès,
+            intégrations et secrets après transfert.
+          </li>
         </ul>
+
+        <p>
+          Ce guide fournit une méthode générale de décision. Il ne remplace ni
+          un avis juridique adapté aux contrats, licences ou données, ni un DPO,
+          ni une réponse à incident, ni un pentest, ni un audit de conformité
+          WCAG, ni un test de charge. Sa qualité se mesure à la traçabilité des
+          conclusions et à l’absence de faux GO, pas à une promesse de risque
+          zéro.
+        </p>
       </GuideLayout>
     </GuidesShell>
   );

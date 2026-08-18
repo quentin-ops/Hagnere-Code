@@ -41,18 +41,18 @@ export interface GuideEntry {
 export const GUIDES: GuideEntry[] = [
   {
     slug: "audit-technique-avant-reprendre-site",
-    title: "Audit technique avant reprise d’un site : que vérifier ?",
-    cardTitle: "Que vérifier avant de reprendre un site ?",
+    title: "Audit technique avant reprise d’un site : méthode complète",
+    cardTitle: "Quel audit avant de reprendre un site ?",
     metaDescription:
-      "Site mal documenté ? Vérifiez les accès, restaurez une copie et testez les fonctions importantes avant de signer, négocier ou reporter.",
+      "Choisissez audit léger, complet ou STOP, vérifiez 18 domaines, restaurez une copie et comparez quatre trajectoires avec un TCO 12/36/60 mois.",
     cardDescription:
-      "Transformez les inconnues techniques en une décision claire : reprise possible, reprise sous conditions ou attente.",
+      "Un dossier de preuves local pour décider entre mise sous contrôle, stabilisation, migration, reconstruction ou STOP.",
     heroTitle:
       "Quel audit technique réaliser avant de reprendre un site internet ?",
     section: "Maintenance & reprise",
     datePublished: "2026-07-24",
-    dateModified: "2026-07-24",
-    readTimeMin: 16,
+    dateModified: "2026-07-27",
+    readTimeMin: 29,
   },
   {
     slug: "site-indexe-sans-trafic",
@@ -101,18 +101,18 @@ export const GUIDES: GuideEntry[] = [
   },
   {
     slug: "google-ads-saas-b2b",
-    title: "Google Ads pour SaaS B2B : comment décider ?",
-    cardTitle: "Google Ads est-il rentable pour votre SaaS B2B ?",
+    title: "Google Ads SaaS B2B : CAC, payback et rentabilité",
+    cardTitle: "Google Ads est-il vraiment rentable pour votre SaaS B2B ?",
     metaDescription:
-      "Vos campagnes génèrent des démonstrations mais peu de contrats ? Remontez du client signé au clic avant d’augmenter, corriger ou arrêter le budget.",
+      "Suivez du clic au client activé, puis calculez CAC, payback et coût total pour savoir si Google Ads peut être rentable pour votre SaaS B2B.",
     cardDescription:
-      "Suivez le même groupe de contacts du clic au contrat et comparez les segments sur des ventes réelles plutôt que sur un formulaire rempli.",
+      "Reliez annonces, CRM, contrats, activation et marge avec un cas chiffré complet avant d’augmenter ou d’arrêter le budget.",
     heroTitle:
-      "Comment savoir si Google Ads peut être rentable pour votre SaaS B2B ?",
+      "Google Ads peut-il réellement être rentable pour votre SaaS B2B ?",
     section: "Google Ads & acquisition",
     datePublished: "2026-07-24",
     dateModified: "2026-07-24",
-    readTimeMin: 9,
+    readTimeMin: 43,
   },
   {
     slug: "logiciel-planning-sur-mesure",
@@ -146,48 +146,48 @@ export const GUIDES: GuideEntry[] = [
   },
   {
     slug: "rgpd-saas-b2b",
-    title: "RGPD d’un SaaS B2B : que faut-il prévoir ?",
-    cardTitle: "Que prévoir pour le RGPD de votre SaaS B2B ?",
+    title: "RGPD SaaS B2B : rôles, DPA et transferts",
+    cardTitle: "RGPD SaaS B2B : préparez le dossier avant de signer",
     metaDescription:
-      "Votre SaaS traite les données confiées par des entreprises ? Clarifiez rôles, contrat, fonctions et sous-traitants avant de signer.",
+      "Clarifiez rôles, article 28, transferts, droits, cookies, IA, incident et sortie. Téléchargez un kit de préparation sans donner votre e-mail.",
     cardDescription:
-      "Suivez une donnée de sa collecte à son effacement, répartissez les responsabilités et repérez les décisions à faire valider.",
+      "Reliez chaque donnée au rôle, au contrat et aux preuves du produit, puis préparez les questions à faire valider par votre DPO ou juriste.",
     heroTitle:
-      "RGPD d’un SaaS B2B : que faut-il prévoir avant de signer avec des clients ?",
+      "RGPD SaaS B2B : quel dossier préparer avant de signer avec un client ?",
     section: "Préparer son projet",
     datePublished: "2026-07-24",
     dateModified: "2026-07-24",
-    readTimeMin: 12,
+    readTimeMin: 35,
   },
   {
     slug: "lovable-bolt-v0-ou-agence-saas",
-    title: "Lovable, Bolt ou v0 : faut-il une agence pour son SaaS ?",
-    cardTitle: "Créer son SaaS avec l’IA ou avec une agence ?",
+    title: "Lovable, Bolt, v0 ou agence pour un SaaS · Guide 2026",
+    cardTitle: "Lovable, Bolt, v0 ou agence : comment choisir ?",
     metaDescription:
-      "Vous avez une idée de SaaS : faut-il tester seul avec Lovable, Bolt ou v0, se faire accompagner ou confier le produit à une agence ?",
+      "Comparez Lovable, Bolt, v0 et une agence : profils, droits, preuves de production et TCO 12/36/60 mois avec un dossier local.",
     cardDescription:
-      "Choisissez entre démonstration autonome, prototype accompagné et développement encadré selon ce que votre première version doit démontrer.",
+      "Choisissez une voie selon le risque, vérifiez 14 livrables et 12 preuves, puis comparez le coût complet sans transformer une inconnue en zéro.",
     heroTitle:
-      "Lovable, Bolt ou v0 : faut-il une agence pour créer votre SaaS ?",
+      "Lovable, Bolt, v0 ou agence : quelle voie choisir pour créer votre SaaS ?",
     section: "Comparatifs & choix",
     datePublished: "2026-07-24",
-    dateModified: "2026-07-24",
-    readTimeMin: 13,
+    dateModified: "2026-07-27",
+    readTimeMin: 28,
   },
   {
     slug: "crm-sur-mesure-ou-hubspot",
     title: "HubSpot ou CRM sur mesure : que choisir ?",
-    cardTitle: "Faut-il garder HubSpot ou créer son CRM ?",
+    cardTitle: "Garder HubSpot, changer de CRM ou développer ?",
     metaDescription:
-      "HubSpot ne suit plus votre façon de vendre ? Rejouez vos actions commerciales avant de le configurer, l’intégrer ou le remplacer.",
+      "HubSpot, autre CRM ou sur-mesure ? Comparez six options, les coûts sur 36 mois, les contournements et la migration avant de choisir.",
     cardDescription:
-      "Testez le processus réel, les droits, les connexions et la sortie avant de conclure qu’un CRM sur mesure devient nécessaire.",
+      "Offres HubSpot 2026, cas métier, coûts chiffrés et test en douze actions pour choisir une solution standard, hybride ou spécifique.",
     heroTitle:
       "HubSpot ou CRM sur mesure : comment choisir pour votre entreprise ?",
     section: "Comparatifs & choix",
     datePublished: "2026-07-24",
     dateModified: "2026-07-24",
-    readTimeMin: 14,
+    readTimeMin: 32,
   },
   {
     slug: "prise-rendez-vous-en-ligne-site-vitrine",
@@ -216,23 +216,23 @@ export const GUIDES: GuideEntry[] = [
       "Comment mesurer le coût de la dette technique pour votre entreprise ?",
     section: "Maintenance et évolution",
     datePublished: "2026-07-23",
-    dateModified: "2026-07-23",
-    readTimeMin: 8,
+    dateModified: "2026-07-24",
+    readTimeMin: 23,
   },
   {
     slug: "sla-maintenance-applicative",
-    title: "SLA de maintenance applicative : que faut-il prévoir ?",
-    cardTitle: "Que doit vraiment promettre un SLA applicatif ?",
+    title: "SLA de maintenance applicative : guide complet et preuves",
+    cardTitle: "Écrire un SLA applicatif réellement mesurable",
     metaDescription:
-      "Une réponse sous quatre heures ne rétablit pas votre activité. Distinguez prise en charge, restauration, horaires et données avant de signer un SLA.",
+      "Écrivez un SLA applicatif mesurable : 7 horloges, disponibilité, RTO, RPO, coûts, dépendances, preuves, atelier et classeur XLSX.",
     cardDescription:
-      "Partez d’une journée de panne pour écrire des niveaux de service compris par la direction, les utilisateurs et le mainteneur.",
+      "Transformez parcours, panne, restauration et couvertures en minutes, opérations, coûts et preuves avant de signer.",
     heroTitle:
       "SLA de maintenance applicative : quels engagements faut-il réellement écrire ?",
     section: "Maintenance et évolution",
     datePublished: "2026-07-23",
-    dateModified: "2026-07-23",
-    readTimeMin: 10,
+    dateModified: "2026-07-28",
+    readTimeMin: 31,
   },
   {
     slug: "google-ads-ou-meta-ads",
@@ -282,17 +282,18 @@ export const GUIDES: GuideEntry[] = [
   {
     slug: "securite-saas-b2b",
     title: "Sécurité SaaS B2B : que prouver avant de signer ?",
-    cardTitle: "Que prouver sur la sécurité de votre SaaS ?",
+    cardTitle: "Peut-on signer ce contrat SaaS en sécurité ?",
     metaDescription:
-      "Un grand compte envoie son questionnaire sécurité ? Classez les preuves, les écarts planifiables et les vrais blocages avant de répondre ou signer.",
+      "Un grand compte exige des preuves de sécurité ? Évaluez accès, isolement, restauration, incidents et capacité avant de signer, corriger ou reporter.",
     cardDescription:
-      "Huit fiches pour répondre avec des faits sur les accès, sauvegardes, journaux, incidents, sous-traitants et continuité sans prétendre être certifié.",
+      "Reliez chaque exigence au risque, à une preuve actuelle et à la capacité de correction pour savoir quoi affirmer, corriger, conditionner ou refuser.",
     heroTitle:
-      "Sécurité d’un SaaS B2B : quelles preuves fournir avant de signer ?",
+      "Sécurité SaaS B2B : que faut-il prouver, corriger ou refuser avant de signer ?",
     section: "SaaS et applications métier",
     datePublished: "2026-07-23",
-    dateModified: "2026-07-23",
-    readTimeMin: 10,
+    dateModified: "2026-07-25",
+    readTimeMin: 31,
+    editorialStatus: "ready-for-human-review",
   },
   {
     slug: "facturation-abonnements-saas",
@@ -306,22 +307,22 @@ export const GUIDES: GuideEntry[] = [
       "Comment organiser la facturation des abonnements de votre SaaS ?",
     section: "SaaS et applications métier",
     datePublished: "2026-07-23",
-    dateModified: "2026-07-23",
-    readTimeMin: 10,
+    dateModified: "2026-07-28",
+    readTimeMin: 25,
   },
   {
     slug: "logiciel-gestion-stock-sur-mesure",
-    title: "Logiciel de gestion de stock sur mesure : faut-il le créer ?",
-    cardTitle: "Votre stock a-t-il besoin d’un logiciel sur mesure ?",
+    title: "Logiciel de gestion de stock : standard ou sur mesure ?",
+    cardTitle: "ERP, WMS ou logiciel de stock sur mesure ?",
     metaDescription:
-      "ERP, entrepôt et site affichent trois stocks différents ? Retrouvez le mouvement fautif avant de configurer, intégrer, acheter ou développer.",
+      "ERP, WMS ou sur-mesure ? Diagnostiquez vos écarts, testez 15 mouvements et comparez coûts, migration et maintenance sur 36 mois.",
     cardDescription:
-      "Suivez une référence de la réception au retour, testez les scénarios difficiles et choisissez une réponse proportionnée aux écarts observés.",
+      "Chiffrez les erreurs, rejouez 15 événements et comparez standard, hybride et spécifique sur le même horizon.",
     heroTitle: "Faut-il créer un logiciel de gestion de stock sur mesure ?",
     section: "Applications métier",
     datePublished: "2026-07-23",
-    dateModified: "2026-07-23",
-    readTimeMin: 8,
+    dateModified: "2026-07-24",
+    readTimeMin: 20,
   },
   {
     slug: "power-apps-ou-application-sur-mesure",
@@ -356,17 +357,17 @@ export const GUIDES: GuideEntry[] = [
   {
     slug: "tma-ou-regie",
     title: "TMA ou régie : comment choisir pour votre application ?",
-    cardTitle: "TMA ou régie : quel modèle choisir ?",
+    cardTitle: "TMA ou régie : quel coût réel ?",
     metaDescription:
-      "Bugs et évolutions reviennent chaque mois ? Distinguez continuité, diagnostic et livraison, puis comparez capacité, temps, lot et formule hybride.",
+      "Forfait, régie, hybride ou interne ? Comparez 7 options sur 12 mois, le report des jours, 2 seuils et le coût d’une panne.",
     cardDescription:
-      "Classez vos demandes réelles, séparez le service de sa facturation, puis comparez capacité récurrente, temps piloté, lot borné et formule hybride.",
+      "Un même flux fictif, sept comparatifs de coûts renseignés, trois règles de report et trois pannes pour choisir sans oublier votre temps interne.",
     heroTitle:
       "TMA ou régie : comment choisir pour maintenir votre application ?",
     section: "Maintenance et évolution",
     datePublished: "2026-07-23",
-    dateModified: "2026-07-23",
-    readTimeMin: 20,
+    dateModified: "2026-07-24",
+    readTimeMin: 38,
   },
   {
     slug: "seo-local-pme",
@@ -381,7 +382,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Référencement naturel",
     datePublished: "2026-07-23",
     dateModified: "2026-07-23",
-    readTimeMin: 21,
+    readTimeMin: 23,
   },
   {
     slug: "google-search-ads-ou-performance-max",
@@ -473,18 +474,18 @@ export const GUIDES: GuideEntry[] = [
   },
   {
     slug: "prioriser-fonctionnalites-mvp-saas",
-    title: "SaaS : prioriser les fonctionnalités après le MVP",
+    title: "Prioriser les fonctionnalités d’un SaaS après le MVP",
     cardTitle: "Que développer après votre MVP ?",
     metaDescription:
-      "Dix demandes et une seule prochaine version ? Reliez chaque idée à un problème et à des faits, puis choisissez quoi construire, tester ou reporter.",
+      "RICE, MoSCoW ou WSJF ? Recalculez 4 demandes, chiffrez le gain, testez l’achat et fermez un lot SaaS de 30 jours-personnes.",
     cardDescription:
-      "Une fiche concrète pour comparer les demandes clients, isoler les urgences réelles et décider du prochain lot sans score magique.",
+      "Un cas chiffré pour corriger, réutiliser, tester, construire ou reporter sans laisser un score décider seul.",
     heroTitle:
       "Comment prioriser les fonctionnalités de la prochaine version de votre SaaS ?",
     section: "Préparer son projet",
     datePublished: "2026-07-23",
-    dateModified: "2026-07-23",
-    readTimeMin: 14,
+    dateModified: "2026-07-24",
+    readTimeMin: 25,
   },
   {
     slug: "landing-page-ou-site-vitrine",
@@ -591,17 +592,17 @@ export const GUIDES: GuideEntry[] = [
   },
   {
     slug: "site-internet-en-panne-que-faire",
-    title: "Site internet en panne : que faire dans l’ordre ?",
+    title: "Site internet en panne : plan d’urgence et reprise 2026",
     cardTitle: "Votre site est en panne : que faire tout de suite ?",
     metaDescription:
-      "Site inaccessible, formulaire ou paiement bloqué ? Voici quoi vérifier sans aggraver, qui appeler et quels tests exiger avant d’annoncer le retour.",
+      "Site, formulaire ou paiement en panne ? Suivez le plan 0–5–15–60 min, préservez les preuves et validez données, clients et SEO avant le retour.",
     cardDescription:
-      "Une fiche réflexe pour les quinze premières minutes, la première heure et la reprise : faits à noter, clients à informer et tests à exiger.",
+      "Une fiche réflexe, un routeur local et dix portes de reprise pour orienter DNS, hébergement, application, données, tiers ou cyber sans faux diagnostic.",
     heroTitle: "Votre site internet est en panne : quoi faire maintenant ?",
     section: "Maintenance & reprise",
     datePublished: "2026-07-22",
-    dateModified: "2026-07-22",
-    readTimeMin: 15,
+    dateModified: "2026-07-27",
+    readTimeMin: 31,
   },
   {
     slug: "leads-google-ads-non-qualifies",
@@ -623,15 +624,15 @@ export const GUIDES: GuideEntry[] = [
     title: "Migrer un logiciel métier sans interrompre l’activité",
     cardTitle: "Comment changer de logiciel sans arrêter l’activité ?",
     metaDescription:
-      "Changez de logiciel sans arrêter commandes, interventions ou factures : préparez les données, répétez la bascule et sachez quand revenir en arrière.",
+      "Préparez le remplacement d’un logiciel métier sans arrêt subi : opérations à protéger, données, répétition, seuils de report et plan de retour.",
     cardDescription:
       "Une chronologie concrète pour préparer les données, répéter tout le changement et décider quand continuer, reporter ou revenir à l’ancien outil.",
     heroTitle:
       "Comment migrer votre logiciel métier sans interrompre l’activité ?",
     section: "Préparer son projet",
     datePublished: "2026-07-22",
-    dateModified: "2026-07-22",
-    readTimeMin: 16,
+    dateModified: "2026-07-24",
+    readTimeMin: 31,
   },
   {
     slug: "choisir-agence-seo",
@@ -724,17 +725,17 @@ export const GUIDES: GuideEntry[] = [
   },
   {
     slug: "suivi-conversions-google-ads",
-    title: "Conversions Google Ads : demandes et ventes · Hagnéré Code",
+    title: "Conversions Google Ads : demandes, ventes et marge",
     cardTitle: "Vos conversions Google Ads sont-elles de vraies demandes ?",
     metaDescription:
-      "Reliez conversions Google Ads, demandes, devis et ventes. Testez la chaîne, évitez les doublons et choisissez l’action qui doit guider les enchères.",
+      "Google Ads affiche des conversions : combien deviennent des ventes ? Reliez appels, CRM et marge, vérifiez Data Manager et évitez les doublons.",
     cardDescription:
-      "Un registre simple pour suivre les mêmes dossiers de l’événement envoyé jusqu’à la vente, sans confondre conversion publicitaire et client réel.",
+      "Comparez six volumes de l’événement à la vente, puis contrôlez paiement, coût par prospect, CAC et marge avant de modifier les enchères.",
     heroTitle: "Comment relier vos conversions Google Ads aux vraies ventes ?",
     section: "Google Ads & acquisition",
     datePublished: "2026-07-22",
-    dateModified: "2026-07-22",
-    readTimeMin: 19,
+    dateModified: "2026-07-25",
+    readTimeMin: 40,
   },
   {
     slug: "pourquoi-site-pas-visible-google",
@@ -767,17 +768,17 @@ export const GUIDES: GuideEntry[] = [
   },
   {
     slug: "reprendre-saas-developpe-par-freelance",
-    title: "Départ du développeur SaaS : que reprendre ? · Hagnéré Code",
-    cardTitle: "Votre développeur SaaS part : quels accès reprendre ?",
+    title: "Reprendre un SaaS après un freelance : plan complet",
+    cardTitle: "Votre freelance SaaS part : comment reprendre ?",
     metaDescription:
-      "Votre développeur part ? Vérifiez code, comptes, paiements, données, domaine et support avant de retirer ses accès ou de décider une refonte.",
+      "Reprenez 10 fonctions, fixez RTO/RPO et comparez stabilisation, migration ou réécriture sur 36 mois avec un dossier local et un kit XLSX.",
     cardDescription:
-      "Dix fiches pour reprendre les comptes qui font réellement fonctionner un SaaS et retirer chaque ancien accès après un contrôle observable.",
+      "Un plan de passation, 18 tests et un TCO sur 36 mois pour reprendre les comptes, les données et les preuves sans stocker de secret.",
     heroTitle: "Comment reprendre un SaaS développé par un freelance ?",
     section: "Préparer son projet",
     datePublished: "2026-07-22",
-    dateModified: "2026-07-22",
-    readTimeMin: 17,
+    dateModified: "2026-07-28",
+    readTimeMin: 33,
   },
   {
     slug: "choisir-prestataire-application-metier",
@@ -795,18 +796,18 @@ export const GUIDES: GuideEntry[] = [
   },
   {
     slug: "cahier-des-charges-saas",
-    title: "Cahier des charges SaaS : exemple complet · Hagnéré Code",
-    cardTitle: "Rédiger un cahier des charges SaaS sans jargon",
+    title: "Cahier des charges SaaS : modèle et exemple · Hagnéré Code",
+    cardTitle: "Cahier des charges SaaS : modèle, exemple et comparatif",
     metaDescription:
-      "Suivez un exemple rempli de cahier des charges SaaS : comptes clients, abonnement, droits, support, données, tests et sortie du service.",
+      "Créez un cahier des charges SaaS avec un exemple rempli, comparez trois offres sur 24 mois et exportez un modèle sans donner votre e-mail.",
     cardDescription:
-      "Un SaaS fictif suivi de l’achat au départ du client pour rendre visibles les décisions, exclusions, tests et responsabilités oubliés.",
+      "Un cas SaaS rempli, le temps à réserver, des coûts recalculables et un modèle local pour obtenir des devis réellement comparables.",
     heroTitle:
-      "Cahier des charges SaaS : comment cadrer le produit de l’abonnement à la sortie du client ?",
+      "Cahier des charges SaaS : que faut-il écrire avant de demander un devis ?",
     section: "Préparer son projet",
     datePublished: "2026-07-22",
-    dateModified: "2026-07-22",
-    readTimeMin: 16,
+    dateModified: "2026-07-24",
+    readTimeMin: 25,
   },
   {
     slug: "budget-google-ads-pme",
@@ -839,16 +840,17 @@ export const GUIDES: GuideEntry[] = [
   {
     slug: "preparer-contenus-site-vitrine",
     title: "Préparer les contenus d’un site vitrine · Hagnéré Code",
-    cardTitle: "Que préparer avant de faire créer votre site vitrine ?",
+    cardTitle:
+      "Que préparer avant de faire créer votre site vitrine ? (méthode complète)",
     metaDescription:
-      "Textes, photos, preuves, formulaire : découvrez ce que vous devez fournir, ce que le prestataire peut produire et ce qu’il faut vérifier.",
+      "Dirigeant : préparez offres, preuves, photos et formulaire avant un site vitrine. Méthode, exemple avant/après, comparaison et kit éditable.",
     cardDescription:
       "Une méthode simple pour rassembler les faits, les preuves et les visuels, répartir la rédaction et savoir si votre dossier est prêt.",
     heroTitle: "Que préparer avant de faire créer votre site vitrine ?",
     section: "Préparer son projet",
     datePublished: "2026-07-22",
-    dateModified: "2026-07-22",
-    readTimeMin: 14,
+    dateModified: "2026-07-24",
+    readTimeMin: 22,
   },
   {
     slug: "pourquoi-google-ads-ne-convertit-pas",
@@ -866,31 +868,32 @@ export const GUIDES: GuideEntry[] = [
   },
   {
     slug: "reprendre-mvp-vibe-code",
-    title: "Reprendre un MVP Lovable, Bolt ou v0 · Hagnéré Code",
-    cardTitle: "Peut-on reprendre un MVP créé avec Lovable, Bolt ou v0 ?",
+    title: "Reprendre un MVP Lovable, Bolt ou v0 : guide complet",
+    cardTitle: "Reprendre un MVP Lovable, Bolt ou v0 sans tout refaire",
     metaDescription:
-      "Votre MVP Lovable, Bolt ou v0 peut-il être repris ? Vérifiez code, mise en ligne, données, accès et comptes avant de conserver ou réécrire.",
+      "Auditez un MVP Lovable, Bolt ou v0 : STOP, code, données, sécurité, TCO, RGPD, migration et dossier de reprise téléchargeable.",
     cardDescription:
-      "Cinq vérifications concrètes pour savoir ce qui peut être conservé, stabilisé, migré ou réécrit sans jeter votre premier produit par principe.",
-    heroTitle: "Peut-on reprendre un MVP créé avec Lovable, Bolt ou v0 ?",
+      "Prouvez build, restauration, accès, exploitation et sortie avant de conserver, stabiliser, migrer, réécrire ou arrêter.",
+    heroTitle:
+      "Comment reprendre un MVP créé avec Lovable, Bolt ou v0 sans tout refaire ?",
     section: "Préparer son projet",
     datePublished: "2026-07-21",
-    dateModified: "2026-07-21",
-    readTimeMin: 16,
+    dateModified: "2026-07-28",
+    readTimeMin: 42,
   },
   {
     slug: "signes-besoin-logiciel-metier",
-    title: "Besoin d’un logiciel métier : les signes · Hagnéré Code",
+    title: "Logiciel métier : signes et diagnostic · Hagnéré Code",
     cardTitle: "Votre entreprise a-t-elle besoin d’un logiciel métier ?",
     metaDescription:
-      "Fichiers, ressaisies, erreurs : découvrez quand sécuriser, corriger, automatiser, acheter un outil ou étudier un logiciel métier sur mesure.",
+      "Diagnostiquez trois situations, STOP, standard, ERP, low-code, sur-mesure et TCO 12/36/60 avec outil et classeur de décision.",
     cardDescription:
-      "Partez de trois problèmes réels, écartez les faux signaux et choisissez entre corriger, automatiser, acheter, étudier du sur-mesure ou attendre.",
+      "Partez de trois événements prouvés, comparez huit réponses et verrouillez toute conclusion tant que sécurité, données, TCO ou sortie restent inconnus.",
     heroTitle: "Votre entreprise a-t-elle besoin d’un logiciel métier ?",
     section: "Préparer son projet",
     datePublished: "2026-07-21",
-    dateModified: "2026-07-21",
-    readTimeMin: 13,
+    dateModified: "2026-07-28",
+    readTimeMin: 45,
   },
   {
     slug: "template-ou-site-sur-mesure",
@@ -1004,8 +1007,9 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Comment calculer le ROI d’une application métier ?",
     section: "Budget & prix",
     datePublished: "2026-07-20",
-    dateModified: "2026-07-21",
-    readTimeMin: 23,
+    dateModified: "2026-07-25",
+    readTimeMin: 32,
+    editorialStatus: "ready-for-human-review",
   },
   {
     slug: "automatiser-processus-metier",
@@ -1014,55 +1018,58 @@ export const GUIDES: GuideEntry[] = [
     metaDescription:
       "Vous perdez du temps en ressaisies ou relances ? Identifiez la première tâche à automatiser, comparez les solutions et vérifiez si elle sera rentable.",
     cardDescription:
-      "Observez une semaine de travail, comparez six réponses possibles et testez la solution la plus simple avant d’investir davantage.",
+      "Observez un cycle représentatif, comparez six réponses possibles et testez la solution la plus simple avant d’investir davantage.",
     heroTitle: "Automatiser un processus métier : lequel choisir en premier ?",
     section: "Préparer son projet",
     datePublished: "2026-07-20",
-    dateModified: "2026-07-21",
-    readTimeMin: 13,
+    dateModified: "2026-07-28",
+    readTimeMin: 24,
+    editorialStatus: "ready-for-human-review",
   },
   {
     slug: "valider-idee-saas-avant-developper",
     title: "Valider une idée SaaS avant de développer · Hagnéré Code",
     cardTitle: "Valider une idée SaaS avant de développer",
     metaDescription:
-      "Avant de financer votre SaaS, vérifiez le problème, l’acheteur et le prix avec des entretiens, un test manuel et un plan de terrain sur 14 jours.",
+      "Testez huit verrous avant de financer votre SaaS : problème, acheteur, canal, faisabilité, coûts, usage, seuils d’arrêt et journal local.",
     cardDescription:
-      "Un plan concret pour parler aux bons prospects, tester le service sans logiciel et décider de développer, modifier l’offre ou arrêter.",
+      "Un guide de décision complet : entretiens, alternatives, acheteur, prix, canal, économie, sécurité, usage répété et journal autonome.",
     heroTitle: "Comment valider une idée SaaS avant de développer ?",
     section: "Préparer son projet",
     datePublished: "2026-07-20",
-    dateModified: "2026-07-21",
-    readTimeMin: 11,
+    dateModified: "2026-07-28",
+    readTimeMin: 23,
+    editorialStatus: "ready-for-human-review",
   },
   {
     slug: "prix-gestion-google-ads",
     title: "Prix de gestion Google Ads en 2026 · Hagnéré Code",
     cardTitle: "Combien coûte la gestion de Google Ads ?",
     metaDescription:
-      "Budget payé à Google, honoraires et frais de lancement : comparez les prix de gestion Google Ads et trois exemples complets sur 3, 6 et 12 mois.",
+      "Média, surcharge, honoraires et lancement : comparez le prix de gestion Google Ads, trois modèles de frais et votre CPL maximal.",
     cardDescription:
-      "Des repères publics et trois budgets d’entreprise pour comprendre la facture complète, le coût par prospect et les lignes à exiger dans un devis.",
+      "Tarifs publics datés, benchmark international, comparateur local et trois scénarios du même cas pour contrôler chaque ligne d’un devis.",
     heroTitle: "Prix de gestion Google Ads : quel budget prévoir ?",
     section: "Budget & prix",
     datePublished: "2026-07-20",
-    dateModified: "2026-07-21",
-    readTimeMin: 17,
+    dateModified: "2026-07-27",
+    readTimeMin: 27,
   },
   {
     slug: "transformer-excel-en-application",
     title: "Transformer Excel en application métier · Hagnéré Code",
     cardTitle: "Votre fichier Excel doit-il devenir une application ?",
     metaDescription:
-      "Votre entreprise dépend d’un fichier Excel fragile ? Comparez quatre solutions, leurs coûts, la migration des données et les clauses à prévoir.",
+      "Excel doit-il devenir une application ? Comparez 5 voies avec 10 tests et 15 estimations explicites sur 48 mois, preuves, sortie et inconnues X/I.",
     cardDescription:
-      "Un diagnostic pour choisir entre Excel fiabilisé, logiciel existant, plateforme no-code et application sur mesure, sans perdre l’historique.",
+      "Comparez cinq dossiers séparés, leurs preuves datées et leurs coûts visibles sans inventer un gagnant.",
     heroTitle:
       "Faut-il transformer votre fichier Excel en application métier ?",
     section: "Préparer son projet",
     datePublished: "2026-07-19",
-    dateModified: "2026-07-21",
-    readTimeMin: 12,
+    dateModified: "2026-07-28",
+    readTimeMin: 53,
+    editorialStatus: "ready-for-human-review",
   },
   {
     slug: "cahier-des-charges-application-metier",
@@ -1123,17 +1130,17 @@ export const GUIDES: GuideEntry[] = [
   },
   {
     slug: "proprietaire-site-internet-code-source",
-    title: "Qui est propriétaire de votre site internet ? · Hagnéré Code",
+    title: "Propriétaire de son site et du code source · Guide 2026",
     metaDescription:
-      "Vous avez payé votre site : découvrez ce qui vous appartient, ce qui dépend du contrat et les 14 accès à récupérer avant de changer de prestataire.",
-    cardTitle: "Votre site vous appartient-il vraiment ?",
+      "Qui contrôle votre site ? Vérifiez droits, domaine, code, exports et 14 accès, puis comparez le coût de sortie à 12, 36 et 60 mois.",
+    cardTitle: "Êtes-vous vraiment propriétaire de votre site ?",
     cardDescription:
-      "Textes, données, code, licences et comptes ne suivent pas les mêmes règles. Voici quoi vérifier avant de signer ou si votre site est déjà bloqué.",
+      "Droits, comptes, code, licences et restauration : auditez 14 accès, 8 preuves et trois scénarios avant de changer de prestataire.",
     heroTitle: "Qui est propriétaire de votre site et de son code source ?",
     section: "Préparer son projet",
     datePublished: "2026-07-19",
-    dateModified: "2026-07-21",
-    readTimeMin: 11,
+    dateModified: "2026-07-27",
+    readTimeMin: 30,
   },
   {
     slug: "prix-referencement-naturel",
@@ -1321,16 +1328,18 @@ export const GUIDES: GuideEntry[] = [
   {
     slug: "aides-creation-site-internet",
     title: "Aides pour créer un site internet en 2026 · Hagnéré Code",
-    cardTitle: "Quelles aides pour créer un site internet en 2026 ?",
+    cardTitle: "Aides pour un site : que pouvez-vous vraiment compter ?",
     metaDescription:
-      "Vous cherchez une aide pour financer votre site ? Découvrez les dispositifs nationaux et régionaux, les conditions et l’ordre à respecter avant de signer.",
+      "Vérifiez votre profil, chaque ligne du devis, la TVA, la trésorerie à avancer et le coût d’attente. Sans notification écrite, l’aide budgétée reste à 0 €.",
     cardDescription:
-      "Les aides nationales et régionales à vérifier, les anciens dispositifs à écarter et les démarches à accomplir avant de signer un devis.",
-    heroTitle: "Quelles aides peuvent financer votre site internet en 2026 ?",
+      "Un tri local en trois étapes pour vérifier la source, chiffrer l’aide réellement budgétable et savoir quand demander une confirmation écrite.",
+    heroTitle:
+      "Aides pour créer un site internet : que pouvez-vous réellement compter ?",
     section: "Financer son projet",
     datePublished: "2026-07-16",
-    dateModified: "2026-07-21",
-    readTimeMin: 13,
+    dateModified: "2026-07-27",
+    readTimeMin: 34,
+    editorialStatus: "ready-for-human-review",
   },
   {
     slug: "combien-coute-un-saas",
@@ -1390,17 +1399,18 @@ export const GUIDES: GuideEntry[] = [
   },
   {
     slug: "cout-maintenance-site-internet",
-    title: "Coût de maintenance d’un site en 2026 · Hagnéré Code",
-    cardTitle: "Maintenance d’un site : combien prévoir chaque mois ?",
+    title: "Maintenance d’un site : TCO et preuves · Hagnéré Code",
+    cardTitle: "Maintenance d’un site : comparer le coût réel",
     metaDescription:
-      "Découvrez le coût mensuel de la maintenance d’un site vitrine, d’une boutique ou d’une application, les services inclus et les clauses à vérifier.",
+      "Quel budget pour maintenir un site ? Comparez périmètre, preuves, incident et TCO 12/36 mois pour une vitrine, une boutique ou un service critique.",
     cardDescription:
-      "Des repères indicatifs, trois niveaux d’entretien et une lecture simple du contrat pour savoir ce qui se passe en cas de panne ou de mise à jour.",
-    heroTitle: "Combien coûte la maintenance d’un site internet en 2026 ?",
+      "Classez la criticité, exigez des preuves, chiffrez un incident et comparez deux offres au même périmètre sans transformer une inconnue en zéro.",
+    heroTitle: "Combien coûte la maintenance d’un site à périmètre égal ?",
     section: "Budget & prix",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-21",
-    readTimeMin: 14,
+    dateModified: "2026-07-25",
+    readTimeMin: 19,
+    editorialStatus: "ready-for-human-review",
   },
   {
     slug: "woocommerce-ou-shopify",
@@ -1447,18 +1457,19 @@ export const GUIDES: GuideEntry[] = [
   },
   {
     slug: "react-native-ou-flutter",
-    title: "React Native ou Flutter : lequel choisir ? · Hagnéré Code",
-    cardTitle: "React Native ou Flutter : lequel choisir ?",
+    title: "React Native ou Flutter : choisir par la preuve",
+    cardTitle: "React Native, Flutter ou autre : comment décider ?",
     metaDescription:
-      "Comparez React Native et Flutter selon votre équipe, les fonctions de l’application, le coût d’entretien et la facilité à changer de prestataire.",
+      "Éliminez les options incapables de passer vos fonctions critiques, puis comparez équipe, appareils, TCO à 12/36/60 mois, maintenance et reprise.",
     cardDescription:
-      "Deux solutions professionnelles pour iPhone et Android, expliquées sans jargon à partir des usages, du budget et de l’équipe qui entretiendra le projet.",
+      "Un protocole et un dossier remplissable pour comparer React Native, Flutter, natif, KMP, PWA ou aucune app sans cacher les inconnues.",
     heroTitle:
-      "React Native ou Flutter : comment choisir pour votre application ?",
+      "React Native ou Flutter : comment prouver le bon choix pour votre application ?",
     section: "Comparatifs & choix",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-21",
-    readTimeMin: 11,
+    dateModified: "2026-07-25",
+    readTimeMin: 21,
+    editorialStatus: "ready-for-human-review",
   },
   {
     slug: "cahier-des-charges-application-mobile",

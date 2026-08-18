@@ -2,18 +2,23 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { GuideLayout } from "@/components/guides/guide-layout";
 import {
+  GuideInlineCTA,
   GuideToc,
   InfoBox,
-  GuideTable,
-  GuideInlineCTA,
 } from "@/components/guides/guide-content-blocks";
 import { GuidesShell } from "@/components/guides/GuidesShell";
+import { MobileFrameworkDecisionDossier } from "@/components/guides/MobileFrameworkDecisionDossier";
+import {
+  formatGuideDate,
+  getGuide,
+  guidePath,
+  guideRobots,
+  guideUrl,
+} from "@/lib/guides";
 import { OG_BASE, SITE_URL } from "@/lib/seo";
-import { getGuide, guidePath, guideUrl, formatGuideDate } from "@/lib/guides";
 
 const guide = getGuide("react-native-ou-flutter");
 
-// --- METADATA SEO (title/description/dates depuis src/lib/guides.ts) ---
 export const metadata: Metadata = {
   title: guide.title,
   description: guide.metaDescription,
@@ -21,6 +26,7 @@ export const metadata: Metadata = {
   creator: "Hagnéré Code",
   publisher: "Hagnéré Code",
   alternates: { canonical: guidePath(guide) },
+  robots: guideRobots(guide),
   openGraph: {
     ...OG_BASE,
     type: "article",
@@ -30,7 +36,6 @@ export const metadata: Metadata = {
     publishedTime: `${guide.datePublished}T09:00:00+02:00`,
     modifiedTime: `${guide.dateModified}T09:00:00+02:00`,
     authors: [`${SITE_URL}/equipe`],
-    // og:image générée par opengraph-image.tsx (convention Next.js).
   },
   twitter: {
     card: "summary_large_image",
@@ -40,7 +45,6 @@ export const metadata: Metadata = {
   },
 };
 
-// --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
 const articleJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Article",
@@ -108,54 +112,78 @@ const breadcrumbJsonLd = JSON.stringify({
 
 const faqItems = [
   {
-    question: "Quelle est la différence entre React Native et Flutter ?",
+    question:
+      "Quelle différence entre React Native avec Expo et React Native sans framework ?",
     answer:
-      "Les deux permettent de créer une application iPhone et Android en partageant une grande partie du travail. React Native utilise JavaScript et React ; Flutter utilise Dart et son propre moteur d'affichage. Pour l'entreprise, la différence la plus concrète concerne les compétences disponibles, la reprise du projet et les besoins visuels.",
+      "Expo fournit un cadre recommandé pour démarrer une application React Native et peut ajouter des services de build ou de mise à jour. Le chemin sans framework donne davantage de contrôle direct sur les projets iOS et Android. Dans les deux cas, le devis doit nommer les services, les projets natifs, le coût, les accès et la manière de reconstruire sans le prestataire.",
   },
   {
-    question: "React Native est-il meilleur que Flutter ?",
+    question: "Une équipe React web suffit-elle pour React Native ?",
     answer:
-      "Non, pas dans tous les cas. React Native est souvent naturel pour une équipe déjà compétente en React. Flutter peut être pertinent pour une interface très personnalisée et une équipe qui le maîtrise. La qualité de la préparation, des tests et de la maintenance compte davantage qu'un classement général.",
+      "Non. React et TypeScript sont utiles, mais l’équipe doit aussi savoir traiter les permissions, les modules natifs, Xcode, Android, les signatures, les stores et les incidents sur appareils. Demandez un responsable et un remplaçant pour ces compétences.",
   },
   {
-    question: "Quel framework coûte le moins cher ?",
+    question: "React Native ou Flutter : lequel coûte le moins cher ?",
     answer:
-      "Le cadre technique, parfois appelé framework, ne donne pas le prix à lui seul. Les grilles SILKHOM citées publient les mêmes repères de tarif journalier pour React Native et Flutter. Le budget dépend surtout des écrans, des fonctions, du serveur, du hors-ligne, des tests et de l'expérience de l'équipe.",
+      "Aucun n’est systématiquement moins cher. Comparez le même produit et additionnez construction, modules, tests, accessibilité, services, maintenance technique, évolutions, temps interne et sortie à 12, 36 et 60 mois. Un poste inconnu reste ND et bloque le total.",
   },
   {
-    question: "Peut-on partager tout le code entre iPhone et Android ?",
+    question: "Faut-il choisir le natif pour avoir de bonnes performances ?",
     answer:
-      "Une grande partie peut être commune, mais rarement 100 %. Les notifications, permissions, achats, fonctions du téléphone et détails d'interface demandent parfois un travail propre à chaque plateforme. Shopify a publié 86 % de code commun sur son projet React Native ; ce cas ne garantit pas le même taux ailleurs.",
+      "Pas par principe. Mesurez le même parcours dans une build de production, sur les appareils planchers, avec plusieurs répétitions et des résultats p50/p95. Le natif devient rationnel si une fonction de plateforme ou un seuil important échoue durablement dans les autres options.",
   },
   {
-    question: "Quel choix pour une entreprise qui utilise déjà React ?",
+    question: "Comment vérifier le fonctionnement hors ligne ?",
     answer:
-      "React Native mérite d'être étudié en premier, car l'équipe peut réutiliser une partie de ses connaissances et parfois de sa logique métier. Il faut néanmoins vérifier les fonctions mobiles, les modules disponibles et l'expérience réelle de l'équipe avant de conclure.",
+      "Testez le mode avion, le démarrage sans réseau, l’arrêt forcé, les écritures répétées, deux modifications concurrentes et la reconnexion. Le résultat attendu est une règle de conflit explicite, aucune perte silencieuse et aucun doublon non résolu.",
   },
   {
-    question: "Flutter convient-il aux applications métier ?",
+    question: "Une PWA peut-elle remplacer une application mobile ?",
     answer:
-      "Oui. Formulaires, listes, tableaux de bord, photos, notifications et fonctionnement hors ligne peuvent être réalisés avec Flutter comme avec React Native. Le choix doit venir des compétences, des modules nécessaires et d'un test des scénarios les plus risqués.",
+      "Oui si les fonctions indispensables sont disponibles sur les navigateurs et appareils ciblés, et si la distribution par les stores n’apporte pas de valeur décisive. Testez cependant installation, hors-ligne, notifications, stockage et permissions sur le parc réel : l’étiquette PWA ne garantit pas ces capacités.",
   },
   {
-    question: "Faut-il choisir le natif plutôt que le multiplateforme ?",
+    question: "Peut-on migrer sans tout réécrire ?",
     answer:
-      "Le développement natif, séparé pour iPhone et Android, se justifie lorsque l'application dépend fortement des dernières fonctions de chaque appareil ou impose une exigence très particulière. Pour une application métier classique, le multiplateforme peut réduire le travail en double.",
+      "Souvent oui. Commencez par isoler les contrats d’API, les données, les règles métier, les exports et les tests d’acceptation. Migrez ensuite une fonction ou un parcours, avec double exploitation et retour à l’état sain, avant de décider une réécriture complète.",
   },
   {
-    question: "Combien prévoir pour la maintenance d'une application ?",
+    question: "Qui doit posséder le code, les comptes et les certificats ?",
     answer:
-      "Le prix initial ne permet pas de déduire un budget annuel fiable. Partez des factures de services, de la couverture du contrat, des incidents observés, des versions d'iPhone et d'Android à tester et des publications prévues. Un besoin encore non chiffré doit rester visible comme montant inconnu.",
+      "L’entreprise doit contrôler le dépôt, les comptes Apple et Google, les certificats, les clés et les services, avec au moins un second administrateur. Une équipe tierce doit pouvoir reconstruire et diffuser une bêta sans l’ordinateur ni le compte personnel du prestataire initial.",
+  },
+];
+
+const optionCards = [
+  {
+    title: "React Native",
+    good: "À garder si une équipe React réellement mobile existe, si les modules passent la New Architecture et si Expo ou le chemin sans framework est nommé.",
+    stop: "À écarter provisoirement si la compétence se limite au web, si le module critique reste incompatible ou si la build dépend d’un compte prestataire.",
   },
   {
-    question: "Comment éviter de dépendre de son prestataire mobile ?",
-    answer:
-      "Ouvrez les comptes Apple, Google et le dépôt de code au nom de l'entreprise. Faites écrire la cession des droits, la documentation, la procédure de publication, les accès et les conditions de maintenance. Ces garanties protègent davantage que le choix de la technologie à lui seul.",
+    title: "Flutter",
+    good: "À garder si l’équipe maîtrise Dart, les intégrations iOS/Android, les plugins et la reprise, avec un besoin réel de système visuel commun.",
+    stop: "À écarter provisoirement si le choix repose seulement sur le rendu ou le rechargement rapide, sans responsable natif ni budget de migration.",
   },
   {
-    question: "Peut-on migrer de React Native vers Flutter, ou l'inverse ?",
-    answer:
-      "Oui, mais la partie mobile doit en grande partie être reconstruite. Le serveur, les données, les règles métier, les maquettes et les tests restent réutilisables s'ils sont bien séparés et documentés. Une migration doit résoudre un problème mesuré, pas suivre une mode technique.",
+    title: "Natif iOS + Android",
+    good: "À garder quand une fonction dépend fortement de chaque système, que les deux compétences sont disponibles et que le risque de plateforme domine.",
+    stop: "À écarter provisoirement si deux surfaces de code et deux chaînes de livraison ne sont ni financées ni organisées.",
+  },
+  {
+    title: "Kotlin Multiplatform",
+    good: "À garder si une logique partagée importante existe et si la frontière entre code commun, UI Compose ou interfaces natives est écrite et testée.",
+    stop: "À écarter provisoirement si le pourcentage de partage est supposé ou si personne ne maîtrise la chaîne Kotlin, Gradle, Xcode et iOS.",
+  },
+  {
+    title: "Web mobile ou PWA",
+    good: "À garder si l’accès par URL prime et si chaque capacité indispensable passe sur les navigateurs, appareils, réseaux et modes d’installation ciblés.",
+    stop: "À écarter si une fonction obligatoire manque ou reste instable sur un appareil du parc ; pas parce qu’un ancien comparatif dit que le web est limité.",
+  },
+  {
+    title: "Aucune nouvelle application",
+    good: "À garder si un site mobile, un outil existant ou une amélioration de processus accomplit déjà les tâches sans coût mobile supplémentaire.",
+    stop: "À écarter si une fonction appareil, un usage hors ligne ou une présence persistante apporte un bénéfice observé que le canal actuel ne fournit pas.",
   },
 ];
 
@@ -180,7 +208,7 @@ export default function Page() {
           { label: "React Native ou Flutter" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="React Native et Flutter permettent tous deux de créer une application iPhone et Android. Ce guide vous aide à choisir selon votre équipe, vos fonctions, votre budget de maintenance et la possibilité de faire reprendre le projet."
+        heroDescription="Ne choisissez pas un logo : éliminez d’abord les options qui échouent sur votre fonction critique, vos appareils, l’accessibilité, la publication ou la reprise, puis comparez leur coût complet."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -190,531 +218,877 @@ export default function Page() {
         keyPoints={[
           {
             number: "01",
-            title: "Deux solutions professionnelles",
-            description: "",
+            title: "Six voies réellement ouvertes",
+            description: "RN, Flutter, natif, KMP, web/PWA ou aucune app.",
             color: "violet",
           },
           {
             number: "02",
-            title: "L’équipe et les usages doivent décider",
-            description: "",
+            title: "Les échecs passent avant le prix",
+            description: "Une donnée perdue ou une build impossible élimine.",
             color: "blue",
           },
           {
             number: "03",
-            title: "Maintenance et reprise à prévoir",
-            description: "",
+            title: "TCO à 12, 36 et 60 mois",
+            description:
+              "Maintenance, évolutions, temps interne et sortie séparés.",
             color: "emerald",
           },
           {
             number: "04",
             title: `Lecture : ${guide.readTimeMin} min`,
-            description: "",
+            description: "Avec un dossier copiable et imprimable.",
             color: "amber",
           },
         ]}
         relatedLinks={[
           {
             href: "/guides/combien-coute-une-application-mobile",
-            label: "Combien coûte une application mobile ?",
-          },
-          {
-            href: "/guides/combien-coute-un-saas",
-            label: "Combien coûte un SaaS ?",
-          },
-          {
-            href: "/guides/nextjs-ou-wordpress",
-            label: "Next.js ou WordPress ?",
+            label: "Chiffrer une application mobile",
           },
           {
             href: "/guides/cahier-des-charges-application-mobile",
-            label: "Cahier des charges d'app mobile",
+            label: "Préparer le cahier des charges mobile",
+          },
+          {
+            href: "/guides/application-gestion-interventions-terrain",
+            label: "Cadrer une application terrain hors ligne",
+          },
+          {
+            href: "/guides/no-code-ou-sur-mesure",
+            label: "Choisir entre no-code et sur-mesure",
           },
           { href: "/services/application-mobile", label: "Application mobile" },
-          { href: "/methode", label: "Notre méthode Sprint Fixe™" },
         ]}
-        faqTitle="React Native ou Flutter : vos questions"
+        faqTitle="Questions restantes avant de choisir"
         faqItems={faqItems}
       >
         <p className="lead">
-          Vous devez créer une application pour iPhone et Android et deux
-          prestataires vous recommandent des technologies différentes :{" "}
-          <strong>React Native</strong> pour l&apos;un, <strong>Flutter</strong>{" "}
-          pour l&apos;autre. Les deux solutions sont capables de produire une
-          application professionnelle. Votre décision doit surtout répondre à
-          quatre questions : qui pourra la développer, quelles fonctions sont
-          réellement difficiles, combien coûtera son entretien et comment une
-          autre équipe pourra la reprendre.
+          Vous hésitez entre <strong>React Native</strong> et{" "}
+          <strong>Flutter</strong> pour une application iPhone et Android ?{" "}
+          <strong>Aucun des deux ne gagne pour tous les projets.</strong>{" "}
+          Commencez par vérifier qu&apos;une application installée apporte
+          vraiment quelque chose qu&apos;un site mobile, une PWA ou votre outil
+          actuel ne fournit pas. Si l&apos;app est utile, éliminez toute option
+          qui échoue sur la fonction critique, le hors-ligne, les appareils,{" "}
+          <strong>VoiceOver et TalkBack</strong>, la publication ou la reprise
+          par une autre équipe. Comparez seulement ensuite le coût complet à 12,
+          36 et 60 mois.
         </p>
         <p>
-          Ce guide ne cherche pas à désigner un gagnant universel. Il vous aide
-          à choisir la solution la plus raisonnable pour votre entreprise, même
-          si vous n&apos;êtes pas technicien. Notre activité utilise
-          majoritairement React ; ce biais est déclaré, et les cas où Flutter,
-          le développement natif ou une application web conviennent mieux sont
-          explicitement présentés.
+          Hagnéré Code travaille principalement avec React et peut donc être
+          naturellement attiré par React Native. Ce biais est déclaré : le
+          protocole ci-dessous peut conclure Flutter, développement natif,
+          Kotlin Multiplatform, web/PWA ou aucune nouvelle application. Vous
+          repartirez avec un dossier de preuves partageable, pas avec un score
+          opaque qui choisit à votre place.
         </p>
 
         <GuideToc
           items={[
+            { id: "besoin-app", label: "1. Vérifier le besoin d’une app" },
+            { id: "six-voies", label: "2. Comparer les six voies" },
+            { id: "snapshot-2026", label: "3. Dater les technologies" },
             {
-              id: "reponse-rapide",
-              label: "1. Le choix selon votre situation",
+              id: "fonction-eliminatoire",
+              label: "4. Prototyper la fonction qui peut échouer",
             },
             {
-              id: "comprendre",
-              label: "2. Ce que React Native et Flutter ont en commun",
+              id: "appareils",
+              label: "5. Mesurer sur appareils réels",
             },
             {
-              id: "equipe",
-              label: "3. Commencer par l'équipe qui entretiendra l'application",
+              id: "accessibilite",
+              label: "6. Tester VoiceOver et TalkBack",
             },
             {
-              id: "budget",
-              label: "4. Ce qui fait réellement varier le budget",
+              id: "equipe-publication",
+              label: "7. Prouver équipe, CI et stores",
+            },
+            { id: "tco", label: "8. Calculer le TCO 12/36/60" },
+            {
+              id: "maintenance-sortie",
+              label: "9. Organiser maintenance et sortie",
+            },
+            { id: "scenarios", label: "10. Appliquer quatre scénarios" },
+            {
+              id: "dossier-decision",
+              label: "11. Remplir le dossier de décision",
             },
             {
-              id: "usage",
-              label: "5. Tester les fonctions difficiles avant de choisir",
-            },
-            { id: "performance", label: "6. Performance et qualité perçue" },
-            {
-              id: "perennite",
-              label: "7. Pérennité, écosystème et dépendance",
-            },
-            {
-              id: "maintenance",
-              label: "8. Prévoir l'entretien après la mise en ligne",
-            },
-            {
-              id: "alternatives",
-              label: "9. Quand choisir une autre approche",
-            },
-            {
-              id: "decider",
-              label: "10. Les questions à poser aux prestataires",
+              id: "position",
+              label: "12. Décider, reporter ou renoncer",
             },
           ]}
         />
 
-        <h2 id="reponse-rapide">1. Le choix selon votre situation</h2>
-        <p>
-          Si votre entreprise dispose déjà d&apos;une équipe React, React Native
-          constitue un point de départ logique. Si l&apos;équipe qui réalisera
-          et maintiendra le produit maîtrise Flutter, ou si l&apos;interface
-          demande un travail visuel très spécifique, Flutter mérite la même
-          attention. Sans équipe existante, comparez d&apos;abord les
-          prestataires et leur capacité de reprise plutôt que les logos des
-          technologies.
-        </p>
-        <GuideTable
-          headers={[
-            "Votre situation",
-            "Option à étudier d'abord",
-            "Ce qu'il faut vérifier",
-          ]}
-          rows={[
-            [
-              "Votre site ou votre logiciel utilise déjà React",
-              "React Native",
-              "Expérience mobile réelle, modules et capacité de publication",
-            ],
-            [
-              "Votre équipe maîtrise Flutter et le produit mise sur une interface très dessinée",
-              "Flutter",
-              "Maintenabilité, recrutement et comportement sur les appareils ciblés",
-            ],
-            [
-              "Vous partez sans équipe technique",
-              "Les deux, sur le même cahier des charges",
-              "Références, méthode, coût complet et solution de reprise",
-            ],
-            [
-              "L'application pilote du matériel ou dépend fortement du téléphone",
-              "Prototype comparatif, puis éventuellement natif",
-              "Scénario critique testé sur de vrais appareils",
-            ],
-            [
-              "L'usage est interne et peut fonctionner dans un navigateur",
-              "Application web installable à évaluer",
-              "Notifications, hors-ligne et fonctions du téléphone réellement nécessaires",
-            ],
-          ]}
-        />
-
-        <InfoBox
-          variant="amber"
-          title="Ne choisissez pas à partir d'une démonstration fluide"
-        >
-          Une liste qui défile parfaitement ne dit rien sur votre
-          synchronisation hors ligne, votre lecteur de code-barres, vos
-          notifications ou votre connexion au logiciel de gestion. Demandez que
-          le prestataire teste d&apos;abord la fonction qui peut faire échouer
-          votre projet.
-        </InfoBox>
-
-        <h2 id="comprendre">2. Ce que React Native et Flutter ont en commun</h2>
-        <p>
-          Une application mobile développée séparément pour Apple et Android
-          demande deux codes et souvent deux équipes. React Native et Flutter
-          proposent une autre approche : une grande partie du travail est
-          partagée, puis adaptée lorsque les deux systèmes se comportent
-          différemment. On parle de développement{" "}
-          <strong>multiplateforme</strong>.
-        </p>
-        <p>
-          Ces cadres de développement, aussi appelés frameworks, fonctionnent
-          différemment. React Native, créé par Meta, s&apos;appuie sur
-          JavaScript et React. Flutter, créé par Google, utilise le langage Dart
-          et dessine l&apos;interface avec son propre moteur. Pour le dirigeant,
-          ces détails techniques deviennent utiles seulement lorsqu&apos;ils
-          influencent le recrutement, les modules disponibles, la qualité
-          visuelle ou le coût de reprise.
-        </p>
-        <p>
-          Le code partagé n&apos;est jamais une promesse de 100 %. Shopify a
-          publié 86 % de code commun entre iPhone et Android après sa migration
-          vers React Native. C&apos;est une référence solide pour ce projet
-          précis, pas un taux garanti. Les permissions, les achats, les
-          notifications, certaines fonctions du téléphone et les finitions
-          propres à chaque système peuvent demander du travail séparé.
-        </p>
-
-        <h2 id="equipe">
-          3. Commencer par l&apos;équipe qui entretiendra l&apos;application
+        <h2 id="besoin-app">
+          1. Vérifiez d&apos;abord si vous avez besoin d&apos;une application
         </h2>
         <p>
-          La meilleure technologie est d&apos;abord celle qu&apos;une équipe
-          compétente peut maintenir pendant plusieurs années. Une entreprise qui
-          utilise déjà React peut mutualiser des connaissances et parfois une
-          partie de sa logique métier avec React Native. Une équipe Flutter
-          expérimentée peut, à l&apos;inverse, livrer plus sûrement qu&apos;une
-          équipe React qui découvre le mobile.
+          Une application n&apos;est pas une version plus prestigieuse d&apos;un
+          site. Elle ajoute des comptes de distribution, des certificats, des
+          versions iOS et Android, des mises à jour et un produit à maintenir.
+          Elle devient raisonnable lorsqu&apos;elle améliore une tâche précise
+          grâce au téléphone, au fonctionnement hors ligne, à une diffusion
+          contrôlée ou à une présence persistante.
         </p>
+        <div className="not-prose my-6 grid gap-3 md:grid-cols-3">
+          {[
+            {
+              title: "La tâche actuelle",
+              text: "Observez qui fait quoi, combien de fois, avec quelles erreurs, attentes et coupures réseau.",
+            },
+            {
+              title: "La valeur propre au mobile",
+              text: "Nommez la fonction qu’un simple site ou outil existant ne rend pas assez fiable.",
+            },
+            {
+              title: "La solution la plus petite",
+              text: "Testez d’abord processus, site responsive ou PWA avant de financer deux distributions mobiles.",
+            },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900"
+            >
+              <h3 className="m-0 text-sm font-bold text-zinc-950 dark:text-white">
+                {item.title}
+              </h3>
+              <p className="mb-0 mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                {item.text}
+              </p>
+            </div>
+          ))}
+        </div>
         <p>
-          Ne déduisez pas la disponibilité d’une équipe d’un comptage global de
-          profils. Demandez qui travaillera réellement sur votre projet, son
-          expérience de publication et la possibilité pour un second prestataire
-          de reprendre le code.
-        </p>
-        <GuideTable
-          headers={["À vérifier", "Question simple", "Preuve attendue"]}
-          rows={[
-            [
-              "Compétence",
-              "Avez-vous déjà publié une application comparable ?",
-              "Une référence vérifiable et le rôle exact de l'équipe",
-            ],
-            [
-              "Continuité",
-              "Qui maintient l'application après le lancement ?",
-              "Des noms, un budget et des délais d'intervention",
-            ],
-            [
-              "Reprise",
-              "Que se passe-t-il si nous changeons de prestataire ?",
-              "Code, comptes, documentation et procédure de publication à votre nom",
-            ],
-          ]}
-        />
-
-        <h2 id="budget">4. Ce qui fait réellement varier le budget</h2>
-        <p>
-          Le baromètre SILKHOM 2025 cité en sources publie la même grille pour
-          React Native, Flutter et le développement mobile natif. Le repère va
-          d&apos;environ 330 à 720 € par jour à Paris selon le niveau
-          d&apos;expérience, avec des écarts selon la région et le profil. Cela
-          ne signifie pas que tous les projets coûtent pareil. Le nombre de
-          jours reste la variable principale.
-        </p>
-        <GuideTable
-          headers={["Poste", "Ce qui ajoute du travail", "Comment le préparer"]}
-          rows={[
-            [
-              "Écrans et parcours",
-              "Rôles, validations, cas d'erreur et accessibilité",
-              "Maquettes et règles d'acceptation",
-            ],
-            [
-              "Données et serveur",
-              "Comptes, droits, synchronisation et connexions métier",
-              "Liste des systèmes et données échangées",
-            ],
-            [
-              "Fonctions mobiles",
-              "Photo, GPS, paiement, notifications, hors-ligne ou matériel",
-              "Prototype du scénario le plus risqué",
-            ],
-            [
-              "Qualité et publication",
-              "Appareils, versions, tests et règles des stores",
-              "Matrice de tests et responsabilités écrites",
-            ],
-          ]}
-        />
-        <p>
-          Pour mesurer l’économie éventuelle, comparez des devis couvrant
-          exactement les mêmes écrans, fonctions, services côté serveur, tests
-          et maintenance. Le partage d’une partie du code ne se transforme pas
-          automatiquement en pourcentage de réduction du budget.
+          Une <strong>PWA</strong> est un service web qui peut être installé et
+          utiliser certaines fonctions du navigateur. Elle peut mettre des
+          ressources en cache et fonctionner partiellement hors ligne, mais les
+          capacités diffèrent selon les navigateurs et systèmes. Les{" "}
+          <a
+            href="https://web.dev/learn/pwa/capabilities"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            capacités PWA documentées par web.dev
+          </a>{" "}
+          doivent donc être testées sur votre parc, fonction par fonction. Si
+          aucune valeur mesurée n&apos;exige l&apos;installation ou les stores,
+          « ne pas créer d&apos;app » est une décision complète, pas un échec de
+          projet.
         </p>
 
-        <h2 id="usage">5. Tester les fonctions difficiles avant de choisir</h2>
+        <h2 id="six-voies">
+          2. Comparez six voies sur le même produit, pas deux logos
+        </h2>
         <p>
-          Pour une application composée de formulaires, de listes, de photos et
-          de tableaux de bord, les deux technologies peuvent convenir. Le risque
-          se situe davantage dans les conditions réelles : réseau instable,
-          données volumineuses, caméra, Bluetooth, géolocalisation, paiement ou
-          synchronisation avec un outil interne.
+          Le périmètre commun doit fixer les mêmes utilisateurs, parcours,
+          appareils, données, serveur, règles hors ligne, accessibilité, tests,
+          diffusion, documentation, maintenance et sortie. Une proposition qui
+          retire les tests ou suppose une API déjà construite ne peut pas être
+          comparée à une autre qui les inclut.
+        </p>
+        <div className="not-prose my-6 grid gap-4 md:grid-cols-2">
+          {optionCards.map((option) => (
+            <article
+              key={option.title}
+              className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950"
+            >
+              <h3 className="m-0 text-base font-bold text-zinc-950 dark:text-white">
+                {option.title}
+              </h3>
+              <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                <strong>Bon signal :</strong> {option.good}
+              </p>
+              <p className="mb-0 mt-2 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+                <strong>Arrêt ou preuve manquante :</strong> {option.stop}
+              </p>
+            </article>
+          ))}
+        </div>
+        <p>
+          Kotlin Multiplatform n&apos;impose pas une seule frontière. Sa{" "}
+          <a
+            href="https://kotlinlang.org/docs/multiplatform.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            documentation officielle
+          </a>{" "}
+          permet de partager la logique et de conserver des interfaces propres à
+          iOS et Android ;{" "}
+          <a
+            href="https://www.jetbrains.com/compose-multiplatform/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Compose Multiplatform
+          </a>{" "}
+          permet aussi de partager tout ou partie de l&apos;interface. Un devis
+          KMP doit donc écrire les couches communes, celles qui restent natives,
+          les deux chaînes de build et leur responsable. Le taux de partage
+          n&apos;est pas une hypothèse à remplir avant cet inventaire.
+        </p>
+        <InfoBox
+          variant="amber"
+          title="Un critère éliminatoire passe avant toute note"
+        >
+          Une option qui perd des données, bloque un parcours accessible, échoue
+          sur la fonction métier ou ne peut pas produire une build signée ne
+          récupère pas ces défauts grâce à un prix plus bas. Si la preuve
+          manque, marquez <strong>ND — non déterminé</strong>, jamais zéro.
+        </InfoBox>
+
+        <h2 id="snapshot-2026">
+          3. Écrivez les versions et services réellement comparés
+        </h2>
+        <p>
+          Au <strong>25 juillet 2026</strong>, la page officielle{" "}
+          <a
+            href="https://reactnative.dev/versions"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            React Native Versions
+          </a>{" "}
+          présente React Native <strong>0.86</strong> comme branche stable
+          récente. Depuis la version 0.82, la{" "}
+          <a
+            href="https://reactnative.dev/blog/2025/10/08/react-native-0.82"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            New Architecture est la seule architecture
+          </a>
+          . Son moteur d&apos;interface Fabric, ses TurboModules pour les
+          fonctions natives et Codegen, qui génère les contrats entre JavaScript
+          et le code natif, déplacent les points de compatibilité sans les faire
+          disparaître. En pratique, tout module critique doit passer avec cette
+          architecture : un ancien exemple qui compile ne suffit pas.
         </p>
         <p>
-          Transformez le cas le plus risqué en un petit prototype. Par exemple :
-          « un technicien saisit dix interventions sans réseau, prend vingt
-          photos, puis récupère la connexion sans perdre ni doubler une donnée
-          ». Ce test vaut davantage qu&apos;un comparatif général, car il
-          reproduit ce que votre équipe vivra.
+          La documentation React Native{" "}
+          <a
+            href="https://reactnative.dev/blog/2024/06/25/use-a-framework-to-build-react-native-apps"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            recommande un framework tel qu&apos;Expo pour une nouvelle app
+          </a>
+          , tout en documentant un{" "}
+          <a
+            href="https://reactnative.dev/docs/getting-started-without-a-framework"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            démarrage sans framework
+          </a>
+          . L&apos;Expo SDK 57 courant est associé à React Native 0.86 dans la{" "}
+          <a
+            href="https://docs.expo.dev/versions/latest/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            référence Expo
+          </a>
+          . Un devis « React Native » doit donc préciser Expo, Continuous Native
+          Generation, éventuels services EAS, projets natifs, coûts et sortie,
+          ou expliquer pourquoi le chemin sans framework est retenu. Consignez
+          aussi la version de l&apos;outil en ligne de commande, le canal de
+          mise à jour, la <code>runtimeVersion</code> lorsqu&apos;elle est
+          utilisée, le profil de build et la politique de montée de version. Le
+          chemin sans framework doit nommer son modèle de projet et les versions
+          iOS/Android avec la même précision.
+        </p>
+        <p>
+          Côté Flutter, les{" "}
+          <a
+            href="https://docs.flutter.dev/release/release-notes"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            notes de version officielles
+          </a>{" "}
+          listent la branche stable <strong>3.44.x</strong> et la documentation
+          consultée reflète le patch 3.44.7. Flutter peut appeler du code propre
+          à iOS et Android par des{" "}
+          <a
+            href="https://docs.flutter.dev/platform-integration/platform-channels"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            platform channels
+          </a>
+          . React Native utilise de son côté des modules qui peuvent nécessiter
+          spécification, Codegen, Kotlin/Java et Swift/Objective-C, comme
+          l&apos;explique la documentation des{" "}
+          <a
+            href="https://reactnative.dev/docs/turbo-native-modules-introduction"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Turbo Native Modules
+          </a>
+          . « Une base de code » ne signifie donc jamais « aucun code natif ».
+        </p>
+        <div className="not-prose my-6 rounded-xl border border-violet-200 bg-violet-50 p-4 text-sm leading-relaxed text-violet-950 dark:border-violet-900 dark:bg-violet-950/30 dark:text-violet-100">
+          <strong>Bornes de publication au 25 juillet 2026 :</strong> Apple
+          exige depuis le 28 avril 2026 des soumissions construites avec Xcode
+          26 et un SDK 26 ou ultérieur, selon sa page{" "}
+          <a
+            className="underline"
+            href="https://developer.apple.com/app-store/submitting/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Submitting to the App Store
+          </a>
+          . Google Play annonce qu&apos;à compter du 31 août 2026, les nouvelles
+          apps et mises à jour ordinaires doivent cibler Android 16/API 36, avec
+          les{" "}
+          <a
+            className="underline"
+            href="https://developer.android.com/google/play/requirements/target-sdk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            exceptions publiées par Google
+          </a>
+          . Ces dates doivent être revérifiées avant chaque soumission.
+        </div>
+
+        <h2 id="fonction-eliminatoire">
+          4. Prototypez la fonction qui peut faire échouer le projet
+        </h2>
+        <p>
+          Ne commencez pas par le tableau de bord le plus séduisant. Construisez
+          d&apos;abord, de bout en bout, le parcours le plus risqué : par
+          exemple, un technicien ouvre sa tournée, réalise dix interventions
+          sans réseau, prend vingt photos, fait signer, ferme brutalement
+          l&apos;app, puis se reconnecte sans perdre ni doubler une donnée.
+          C&apos;est un{" "}
+          <strong>exemple illustratif fictif</strong> à remplacer par votre
+          tâche réelle.
+        </p>
+        <p>
+          Le hors-ligne est d&apos;abord un problème de données. Il faut décider
+          quelle source fait foi, comment chaque opération est identifiée, quand
+          une écriture attend, comment la file survit à un arrêt et qui arbitre
+          deux modifications concurrentes. Les guides{" "}
+          <a
+            href="https://developer.android.com/topic/architecture/data-layer/offline-first"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            offline-first d&apos;Android
+          </a>{" "}
+          et{" "}
+          <a
+            href="https://docs.flutter.dev/app-architecture/design-patterns/offline-first"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            de Flutter
+          </a>{" "}
+          décrivent cette architecture ; aucun framework ne remplit à votre
+          place les règles métier de conflit.
+        </p>
+        <div className="not-prose my-6 grid gap-3 md:grid-cols-2">
+          {[
+            [
+              "Caméra, fichiers et vingt photos",
+              "Version du module, stockage temporaire, reprise d’upload, licence, données, mémoire et plan B natif.",
+            ],
+            [
+              "BLE, scanner, MDM et tâche de fond",
+              "Appareils exacts, permissions, politique d’OS, énergie, mainteneur et test après verrouillage.",
+            ],
+            [
+              "Notifications, paiement et identité",
+              "APNs/FCM ou SDK, ouverture du bon dossier, refus de permission, secrets et révocation.",
+            ],
+            [
+              "Mesure et incidents",
+              "SDK analytics/crash, données collectées, destinataires, rétention, retrait et solution de remplacement.",
+            ],
+          ].map(([title, text]) => (
+            <div
+              key={title}
+              className="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900"
+            >
+              <h3 className="m-0 text-sm font-bold text-zinc-950 dark:text-white">
+                {title}
+              </h3>
+              <p className="mb-0 mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                {text}
+              </p>
+            </div>
+          ))}
+        </div>
+        <p>
+          Pour chaque module ou SDK, inscrivez nom, version, licence,
+          plateformes compatibles, données et permissions, responsable, signal
+          de maintenance, code natif restant et nombre de jours pour le
+          remplacer. Les{" "}
+          <a
+            href="https://www.cnil.fr/fr/applications-mobiles-comment-integrer-des-sdk-et-respecter-la-vie-privee-des-utilisateurs"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            recommandations de la CNIL sur les SDK mobiles
+          </a>{" "}
+          aident à poser les questions de vie privée ; elles ne remplacent pas
+          l&apos;analyse applicable à votre service. La vérification doit
+          confronter cet inventaire aux dépendances verrouillées, à
+          <code>Info.plist</code>, au manifeste Android et aux réglages de build
+          : une permission ou un destinataire absent du tableau reste un écart à
+          instruire.
+        </p>
+
+        <h2 id="appareils">
+          5. Mesurez une build de production sur les appareils planchers
+        </h2>
+        <p>
+          Un écran fluide en développement ne prouve rien pour
+          l&apos;utilisateur. React Native demande de contrôler la performance
+          en{" "}
+          <a
+            href="https://reactnative.dev/docs/performance"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            build release
+          </a>
+          . Flutter recommande un appareil physique en mode{" "}
+          <a
+            href="https://docs.flutter.dev/perf/ui-performance"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            profile proche de la release
+          </a>{" "}
+          pour diagnostiquer, puis une build release pour accepter.
+        </p>
+        <ol>
+          <li>
+            Figez le même parcours, les mêmes données, le même commit et les
+            versions de chaque dépendance.
+          </li>
+          <li>
+            Prenez un appareil physique plancher et un appareil récent pour iOS
+            et Android ; le parc réel doit remplacer les hypothèses.
+          </li>
+          <li>
+            Testez Wi-Fi, réseau dégradé, perte intermittente, mode avion,
+            démarrage hors ligne, arrière-plan et arrêt forcé.
+          </li>
+          <li>
+            Écrivez avant le test les seuils métier : temps pour agir, taux de
+            réussite, mémoire, énergie, perte et doublon acceptables.
+          </li>
+          <li>
+            Conservez plusieurs répétitions. Pour un prototype, 30 lancements ou
+            parcours par condition donnent des distributions p50 et p95 plus
+            utiles qu&apos;une mesure isolée ; augmentez si la variance reste
+            forte.
+          </li>
+        </ol>
+        <p>
+          <strong>p50</strong> signifie que la moitié des mesures est plus
+          rapide et l&apos;autre moitié plus lente. <strong>p95</strong> montre
+          une expérience lente mais fréquente : 95 % des mesures sont
+          meilleures. Pour la synchronisation du prototype, cinquante cas
+          scriptés de conflit, redémarrage et reconnexion constituent un minimum
+          interne proposé, pas une garantie statistique. Le résultat
+          éliminatoire reste l&apos;absence de perte silencieuse et de doublon
+          non résolu observés dans le jeu de tests défini.
+        </p>
+
+        <h2 id="accessibilite">
+          6. Faites terminer la tâche avec VoiceOver et TalkBack
+        </h2>
+        <p>
+          React Native et Flutter exposent des fonctions d&apos;accessibilité,
+          mais aucune API ne rend une application accessible par défaut. Les
+          documentations{" "}
+          <a
+            href="https://reactnative.dev/docs/accessibility"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            React Native Accessibility
+          </a>{" "}
+          et{" "}
+          <a
+            href="https://docs.flutter.dev/ui/accessibility"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Flutter Accessibility
+          </a>{" "}
+          demandent des contrôles propres aux plateformes.
+        </p>
+        <p>
+          Sur un iPhone physique avec VoiceOver puis un Android physique avec
+          TalkBack, rejouez le parcours complet : ordre de focus, nom, rôle,
+          état, valeur, erreur reliée au champ, chargement annoncé,
+          synchronisation, succès, affichage agrandi, contraste, cibles tactiles
+          et réduction des animations. Ajoutez clavier matériel, commande
+          externe, scanner ou signature lorsque les utilisateurs en ont besoin.
         </p>
         <InfoBox
           variant="blue"
-          title="Un prototype n'est pas une première version cachée"
+          title="Acceptez une tâche accomplie, pas un attribut dans le code"
         >
-          Il doit répondre à une question précise, sur un nombre limité
-          d&apos;écrans, avec un résultat observable. S&apos;il devient un
-          projet complet sans limite claire ni critère de réussite, vous perdez
-          justement l&apos;avantage de cette étape.
+          « Le bouton possède un libellé » n&apos;est pas une recette. La preuve
+          doit dire si une personne peut ouvrir la tournée, saisir, corriger une
+          erreur, joindre une photo et envoyer sans assistance visuelle. Un
+          blocage sur une tâche obligatoire reste éliminatoire tant
+          qu&apos;aucune correction raisonnable n&apos;est démontrée.
         </InfoBox>
 
-        <h2 id="performance">6. Performance et qualité perçue</h2>
-        <p>
-          Sur une application métier classique, un utilisateur ne devrait pas
-          deviner si l&apos;équipe a choisi React Native ou Flutter. Il perçoit
-          un démarrage rapide, des écrans compréhensibles, des messages
-          d&apos;erreur utiles et l&apos;absence de perte de données. La qualité
-          de conception et de test pèse donc davantage que quelques mesures
-          obtenues dans un laboratoire.
-        </p>
-        <p>
-          Flutter offre un contrôle très poussé sur le rendu visuel, ce qui peut
-          aider pour des interfaces et animations spécifiques. React Native
-          s&apos;intègre naturellement à l&apos;écosystème React et aux
-          composants propres aux plateformes. Dans les deux cas, une liste mal
-          construite, des images trop lourdes ou un serveur lent produiront une
-          mauvaise expérience.
-        </p>
-        <p>
-          Si une exigence de performance est réellement décisive, écrivez-la :
-          temps maximal pour afficher un dossier, nombre d&apos;éléments à faire
-          défiler, volume de données hors ligne ou modèle d&apos;appareil le
-          plus ancien à supporter. Le prestataire peut alors la tester et
-          l&apos;intégrer au contrat.
-        </p>
-
-        <h2 id="perennite">7. Pérennité, écosystème et dépendance</h2>
-        <p>
-          React Native est porté par Meta et reçoit aussi des contributions
-          d&apos;entreprises comme Microsoft, Shopify ou Amazon. Flutter est
-          porté principalement par Google. Les deux sont utilisés en production
-          et disposent d&apos;outils, de bibliothèques et de communautés
-          actives. Aucune source ne permet de garantir leur situation dans dix
-          ans.
-        </p>
-        <p>
-          Les réductions d&apos;effectifs signalées en 2024 dans les équipes
-          Flutter et Dart ont alimenté des interrogations, tandis que Google a
-          réaffirmé son investissement et communiqué sur une large adoption. Ce
-          contexte mérite d&apos;être suivi, sans transformer une actualité
-          d&apos;entreprise en annonce d&apos;abandon.
-        </p>
-        <p>
-          Votre meilleure protection reste concrète : un code standard, peu de
-          dépendances obscures, des versions entretenues, des tests, une
-          documentation à jour et plusieurs équipes capables de reprendre le
-          projet. Exigez aussi que les comptes Apple et Google ainsi que le
-          dépôt de code soient ouverts au nom de votre entreprise.
-        </p>
-
-        <h2 id="maintenance">
-          8. Prévoir l&apos;entretien après la mise en ligne
+        <h2 id="equipe-publication">
+          7. Prouvez que l&apos;équipe peut construire, signer et transmettre
         </h2>
         <p>
-          Une application publiée n&apos;est pas terminée pour toujours. Apple
-          et Google font évoluer les versions de leurs systèmes, les outils de
-          compilation et les exigences des magasins. Au 28 avril 2026, Apple
-          demande Xcode 26 et les outils prévus pour iOS 26 lors des nouvelles
-          soumissions. Google Play annonce Android 16, niveau technique 36, pour
-          la plupart des nouvelles applications et mises à jour à compter du 31
-          août 2026, avec les exceptions publiées par l&apos;éditeur.
+          Une équipe React web n&apos;est pas automatiquement une équipe React
+          Native. Une équipe Flutter n&apos;est pas automatiquement capable de
+          corriger un plugin Swift ou Kotlin. Pour chaque capacité, nommez une
+          personne principale, un remplaçant, une preuve sur la version actuelle
+          et son délai de mobilisation : produit et données, React/TypeScript ou
+          Dart, iOS/Swift, Android/Kotlin, hors-ligne, accessibilité, sécurité,
+          CI, signature et stores.
         </p>
         <p>
-          Ces règles rendent la maintenance nécessaire, mais n&apos;imposent pas
-          un taux financier universel. Pour planifier, réunissez les factures
-          des services utilisés, le contrat actuel, les incidents observés et
-          les changements déjà décidés. Faites ensuite préciser :
+          Depuis un clone propre, une personne qui n&apos;a pas écrit le code
+          doit pouvoir :
         </p>
-        <ul>
-          <li>les versions d&apos;iPhone et d&apos;Android testées ;</li>
-          <li>les mises à jour de la technologie et des modules externes ;</li>
-          <li>la surveillance des plantages et des failles ;</li>
-          <li>les délais de correction et les nouvelles publications ;</li>
-          <li>
-            ce qui relève de la maintenance ou d&apos;une évolution payante.
-          </li>
-        </ul>
-        <p>
-          Une application laissée sans mise à jour pendant plusieurs années peut
-          demander plusieurs étapes de remise à niveau avant toute nouvelle
-          fonction : outils de compilation, bibliothèques, règles des magasins
-          et tests sur les appareils actuels. Demandez donc un budget annuel et
-          une liste de tâches, plutôt qu’un pourcentage présenté comme garanti.
-        </p>
-
-        <h2 id="alternatives">9. Quand choisir une autre approche</h2>
-        <GuideTable
-          headers={["Approche", "Quand l'étudier", "Contrepartie principale"]}
-          rows={[
-            [
-              "Développement natif séparé",
-              "Fonctions très proches du matériel ou exigence propre à chaque plateforme",
-              "Deux codes et davantage de travail à coordonner",
-            ],
-            [
-              "Kotlin Multiplatform",
-              "Équipe Kotlin existante et volonté de partager surtout la logique métier",
-              "Interfaces parfois maintenues séparément",
-            ],
-            [
-              "Application web installable",
-              "Usage interne simple pouvant fonctionner dans le navigateur",
-              "Accès plus limité à certaines fonctions du téléphone",
-            ],
-            [
-              "Aucune application",
-              "Un site mobile ou un outil existant répond déjà au besoin",
-              "Moins de présence dans les stores, mais aucun produit inutile à maintenir",
-            ],
-          ]}
-        />
-        <p>
-          Le développement mobile natif utilise Swift pour iPhone et Kotlin pour
-          Android. Kotlin Multiplatform partage surtout la logique métier tout
-          en conservant davantage de code propre à chaque plateforme. Une
-          application web installable, parfois appelée PWA, reste un site qui
-          peut être ajouté à l&apos;écran d&apos;accueil. Ces solutions ne sont
-          pas des versions inférieures : elles répondent à d&apos;autres
-          contraintes.
-        </p>
-
-        <h2 id="decider">10. Les questions à poser aux prestataires</h2>
         <ol>
+          <li>installer les versions exactes de l&apos;outillage ;</li>
+          <li>reconstruire iOS et Android sans secret stocké sur un poste ;</li>
           <li>
-            <strong>Pourquoi cette technologie pour notre usage ?</strong>{" "}
-            Demandez un raisonnement lié à vos équipes et à vos fonctions.
+            exécuter les tests unitaires, d&apos;intégration, de parcours et les
+            contrôles natifs liés au risque ;
+          </li>
+          <li>produire des artefacts signés liés à un commit ;</li>
+          <li>
+            diffuser sur TestFlight et une piste Google Play interne, ou sur le
+            MDM prévu ;
           </li>
           <li>
-            <strong>
-              Dans quel cas conseilleriez-vous l&apos;autre option ?
-            </strong>{" "}
-            La réponse révèle si la comparaison est réelle.
-          </li>
-          <li>
-            <strong>Quelle fonction testerez-vous d&apos;abord ?</strong> Le
-            prestataire doit identifier le risque principal avant de tout
-            construire.
-          </li>
-          <li>
-            <strong>Que comprend le prix ?</strong> Séparez application,
-            serveur, design, publication, tests et maintenance.
-          </li>
-          <li>
-            <strong>Qui possède les comptes, le code et les données ?</strong>{" "}
-            La réponse doit être écrite au contrat.
-          </li>
-          <li>
-            <strong>
-              Comment une autre équipe reprendrait-elle le projet ?
-            </strong>{" "}
-            Demandez la documentation et la procédure de livraison.
+            retrouver journaux, plantages et versions, puis produire un
+            correctif.
           </li>
         </ol>
+        <p>
+          Le dépôt, les comptes Apple et Google, les certificats, clés, secrets
+          et services doivent être détenus par l&apos;entreprise, avec au moins
+          un second administrateur. Une diffusion progressive limite
+          l&apos;exposition, mais arrêter une publication ne retire pas
+          instantanément la version déjà installée. Prévoyez donc API
+          rétrocompatibles, migrations locales sûres, fonctions désactivables et
+          procédure de correctif.
+        </p>
+
+        <h2 id="tco">8. Comparez le coût complet à 12, 36 et 60 mois</h2>
+        <p>
+          Le <strong>TCO</strong>, ou coût complet, additionne une seule fois le
+          cadrage, la construction, le code natif, les données/API, les tests,
+          l&apos;accessibilité, la CI et les stores. Il ajoute ensuite, pour
+          chaque année, la maintenance technique, les évolutions métier, les
+          incidents, les services et le temps interne, puis le coût de sortie.
+          Les deux options doivent conserver les mêmes fonctions et le même
+          horizon.
+        </p>
+        <div className="not-prose my-6 rounded-xl border border-zinc-200 bg-zinc-950 p-4 font-mono text-xs leading-relaxed text-zinc-100 sm:p-5 sm:text-sm">
+          TCO(H) = construction initiale + coûts fixes
+          <br />+ années × (maintenance technique + évolutions métier +
+          incidents/sécurité + temps interne + services)
+          <br />+ sortie et reprise à l&apos;horizon H
+        </div>
+        <p>
+          Voici un <strong>exemple illustratif fictif</strong>. Il ne représente
+          ni React Native, ni Flutter, ni un prix de marché. Les deux offres
+          utilisent 650 € HT par journée technique, 500 € par journée interne,
+          110 jours communs, 3 000 € de mise en place, 12 jours
+          d&apos;évolutions, 6 jours d&apos;incidents, 8 jours internes et 4 800
+          € de services par an, puis 12 jours de sortie. A ajoute 6 jours au
+          départ et 20 jours de maintenance technique par an ; B ajoute 16 jours
+          au départ et 18 jours par an.
+        </p>
+        <div className="not-prose my-6 grid gap-3 sm:grid-cols-3">
+          {[
+            {
+              horizon: "12 mois",
+              a: "A : 119 700 € HT",
+              b: "B : 124 900 € HT",
+              conclusion: "A coûte 5 200 € de moins.",
+            },
+            {
+              horizon: "36 mois",
+              a: "A : 186 700 € HT",
+              b: "B : 189 300 € HT",
+              conclusion: "L’écart tombe à 2 600 €.",
+            },
+            {
+              horizon: "60 mois",
+              a: "A : 253 700 € HT",
+              b: "B : 253 700 € HT",
+              conclusion: "Égalité dans ce scénario.",
+            },
+          ].map((item) => (
+            <div
+              key={item.horizon}
+              className="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900"
+            >
+              <h3 className="m-0 text-sm font-bold text-zinc-950 dark:text-white">
+                {item.horizon}
+              </h3>
+              <p className="mb-0 mt-2 text-sm text-zinc-700 dark:text-zinc-300">
+                {item.a}
+                <br />
+                {item.b}
+              </p>
+              <p className="mb-0 mt-2 text-xs font-semibold text-violet-700 dark:text-violet-300">
+                {item.conclusion}
+              </p>
+            </div>
+          ))}
+        </div>
+        <p>
+          A économise dix jours au départ, soit 6 500 € HT. B économise deux
+          jours de maintenance par an, soit 1 300 € HT : il absorbe l&apos;écart
+          initial en cinq ans. Si un module critique ajoute vingt jours de code
+          natif, tests et stabilisation à une option, la sensibilité vaut 20 ×
+          650 = <strong>13 000 € HT</strong> et peut renverser le choix dès la
+          première année. C&apos;est pourquoi le prototype du risque apporte
+          plus qu&apos;un classement mondial.
+        </p>
+
+        <h2 id="maintenance-sortie">
+          9. Séparez l&apos;entretien, les nouvelles fonctions et la sortie
+        </h2>
+        <div className="not-prose my-6 grid gap-3 md:grid-cols-2">
+          {[
+            [
+              "Correctifs",
+              "Plantage, perte, faille ou échec de build ; ce n’est pas une nouvelle fonction.",
+            ],
+            [
+              "Prévention et adaptation",
+              "Versions RN/Expo ou Flutter/Dart, SDK OS, plugins, target API, Xcode et politiques de store.",
+            ],
+            [
+              "Évolutions métier",
+              "Nouvel écran, nouvelle règle ou nouveau périphérique ; à budgéter séparément.",
+            ],
+            [
+              "Exploitation",
+              "Monitoring, certificats, secrets, services, support et traitement des incidents.",
+            ],
+            [
+              "Reprise",
+              "Documentation, checkout propre, build tierce, export des données et transfert des comptes.",
+            ],
+            [
+              "Migration ou arrêt",
+              "Maintien, migration progressive avec double exploitation, réécriture ou retour au web.",
+            ],
+          ].map(([title, text]) => (
+            <div
+              key={title}
+              className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950"
+            >
+              <h3 className="m-0 text-sm font-bold text-zinc-950 dark:text-white">
+                {title}
+              </h3>
+              <p className="mb-0 mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                {text}
+              </p>
+            </div>
+          ))}
+        </div>
+        <p>
+          La possibilité de changer ne se prouve pas par « technologies
+          standards ». Une autre équipe doit reconstruire et publier une bêta,
+          importer un export de données, retrouver les contrats d&apos;API et
+          remplacer au moins sur le papier le module critique. Si cet exercice
+          échoue, le coût de sortie reste ND ou l&apos;option échoue à la porte
+          de reprise.
+        </p>
+        <p>
+          Une migration devient rationnelle lorsqu&apos;une fonction stratégique
+          ne peut plus évoluer, que les mises à niveau consomment une capacité
+          devenue insoutenable, qu&apos;un module est abandonné, que les seuils
+          mesurés restent hors d&apos;atteinte ou qu&apos;aucune équipe ne sait
+          reprendre. Comparez alors maintien, migration par tranche avec double
+          exploitation, réécriture complète et arrêt/retour au web. Un
+          pourcentage de code « réutilisable » sans inventaire par couche ne
+          permet pas de choisir.
+        </p>
+        <p>
+          Le contrat de support doit transformer le budget annuel en capacité
+          vérifiable : versions de RN/Expo ou Flutter/Dart et versions d&apos;OS
+          prises en charge, journées réservées par catégorie, délai de prise en
+          charge, responsable, remplaçant, plafond et règle au-delà du plafond.
+          Les incidents, correctifs de sécurité et adaptations aux stores ne
+          doivent pas consommer silencieusement l&apos;enveloppe des évolutions
+          métier. Programmez enfin un exercice de mise à niveau depuis la
+          version précédente, sur un clone propre, avant de promettre
+          qu&apos;une upgrade annuelle est « comprise ».
+        </p>
+
+        <h2 id="scenarios">
+          10. Voyez comment la décision change dans quatre situations
+        </h2>
+        <div className="not-prose my-6 space-y-4">
+          {[
+            {
+              title: "Service consultatif, réseau normalement disponible",
+              text: "Dossiers, formulaire court et photo occasionnelle, sans tâche de fond ni store obligatoire. Commencez par un web mobile ou une PWA ; aucune app gagne si l’installation ne change aucune tâche mesurée.",
+            },
+            {
+              title: "Interventions pendant 24 heures sans réseau",
+              text: "Dix interventions, vingt photos, signature et conflits possibles. RN, Flutter, KMP et natif restent candidats seulement après le test de stockage, file, arrêt forcé, reconnexion et absence de perte silencieuse observée ; une PWA reste candidate si elle passe sur le parc.",
+            },
+            {
+              title: "Bluetooth, MDM ou tâche de fond critique",
+              text: "Prototypez d’abord la fonction sur le matériel réel. Le natif sert de contrôle ; RN ou Flutter restent en lice si un module maintenu ou du code natif interne passe. Sur un parc mono-OS, comparez aussi une app native unique.",
+            },
+            {
+              title: "Produit et équipe déjà en place",
+              text: "Une équipe React mobile, Flutter, Android/Kotlin ou deux apps natives constitue un patrimoine seulement si elle réduit des jours prouvés et possède un relais. Partager une couche ou moderniser peut coûter moins qu’une réécriture.",
+            },
+          ].map((scenario, index) => (
+            <article
+              key={scenario.title}
+              className="grid gap-3 rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900 sm:grid-cols-[auto_1fr]"
+            >
+              <span className="flex size-9 items-center justify-center rounded-full bg-violet-700 text-sm font-bold text-white">
+                {index + 1}
+              </span>
+              <div>
+                <h3 className="m-0 text-sm font-bold text-zinc-950 dark:text-white">
+                  {scenario.title}
+                </h3>
+                <p className="mb-0 mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                  {scenario.text}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <h2 id="dossier-decision">
+          11. Remplissez deux dossiers avant de demander un devis final
+        </h2>
+        <p>
+          L&apos;outil ci-dessous ne donne aucun conseil automatique et
+          n&apos;envoie aucune donnée. Il oblige A et B à passer les mêmes
+          portes, conserve chaque inconnue en ND et calcule le même TCO. Vous
+          pouvez comparer React Native et Flutter, mais aussi Flutter et natif,
+          RN et PWA, ou une app et le statu quo.
+        </p>
+        <MobileFrameworkDecisionDossier />
+
+        <h2 id="position">
+          12. Choisissez la plus petite option qualifiée — ou reportez
+        </h2>
+        <p>
+          <strong>Position Hagnéré Code au 25 juillet 2026 :</strong> ne
+          choisissez ni React Native ni Flutter avant d&apos;avoir vérifié le
+          besoin d&apos;app, puis la fonction qui peut faire échouer le produit.
+          Parmi les options qui passent, retenez la plus petite architecture que
+          l&apos;équipe et son remplaçant peuvent publier, maintenir et
+          reprendre dans un TCO acceptable. Notre maîtrise de React rend React
+          Native efficace dans certains projets ; elle ne transforme pas cette
+          familiarité en preuve de supériorité.
+        </p>
+        <div className="not-prose my-6 grid gap-4 md:grid-cols-2">
+          <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-emerald-950 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-100">
+            <h3 className="m-0 text-sm font-bold">
+              Un accompagnement peut être utile
+            </h3>
+            <ul className="mb-0 mt-3 space-y-2 pl-5 text-sm leading-relaxed">
+              <li>plusieurs options passent encore les premières portes ;</li>
+              <li>
+                une fonction native, le hors-ligne ou les données concentrent le
+                risque ;
+              </li>
+              <li>deux offres ne couvrent pas les mêmes responsabilités ;</li>
+              <li>
+                comptes, modules, publication ou reprise restent difficiles à
+                prouver ;
+              </li>
+              <li>une hypothèse fait fortement varier le TCO.</li>
+            </ul>
+          </div>
+          <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100">
+            <h3 className="m-0 text-sm font-bold">
+              Il vaut mieux attendre ou ne pas nous solliciter
+            </h3>
+            <ul className="mb-0 mt-3 space-y-2 pl-5 text-sm leading-relaxed">
+              <li>
+                la technologie est imposée et aucune preuve ne peut changer la
+                décision ;
+              </li>
+              <li>
+                utilisateurs, tâche, données ou personne responsable ne sont pas
+                disponibles ;
+              </li>
+              <li>
+                la demande consiste seulement à valider un logo déjà préféré ;
+              </li>
+              <li>un site mobile ou un outil existant satisfait le besoin ;</li>
+              <li>aucune personne ne peut accepter les risques résiduels.</li>
+            </ul>
+          </div>
+        </div>
 
         <GuideInlineCTA
-          title="Vous préparez une application mobile ?"
-          description="Décrivez les utilisateurs, les trois fonctions indispensables, les outils à connecter et le scénario qui vous paraît le plus risqué. Nous pourrons vous répondre sur l'approche à tester avant de chiffrer toute l'application."
+          title="Faire challenger votre dossier avant le devis final"
+          description="Transmettez le besoin, les deux options, la fonction éliminatoire, les portes encore ND et les hypothèses TCO. La relecture vise une liste concrète de preuves à obtenir avant de choisir, y compris si une PWA, un outil existant ou un report est préférable."
+          tags={[
+            "Six voies considérées",
+            "Inconnues conservées",
+            "Aucun framework imposé",
+          ]}
+          ctaLabel="Demander la relecture du dossier"
+          ctaHref="/demarrer-un-projet"
         />
+
         <p>
-          Pour obtenir des propositions comparables, préparez notre{" "}
+          Si vous devez maintenant formaliser les fonctions, les responsabilités
+          et les critères de réception, poursuivez avec le{" "}
           <Link href="/guides/cahier-des-charges-application-mobile">
             cahier des charges d&apos;application mobile
-          </Link>{" "}
-          puis rapprochez les postes du{" "}
-          <Link href="/guides/combien-coute-une-application-mobile">
-            guide de prix d&apos;une application
           </Link>
-          . Le meilleur devis n&apos;est pas celui qui promet une technologie
-          supérieure : c&apos;est celui qui relie chaque décision à un usage, un
-          test, un coût et une responsabilité.
+          . Pour construire une enveloppe sans mélanger architecture et portée
+          du produit, utilisez ensuite le{" "}
+          <Link href="/guides/combien-coute-une-application-mobile">
+            guide de coût d&apos;une application mobile
+          </Link>
+          .
         </p>
 
         <hr />
         <p className="text-sm">
-          <strong>Sources</strong> — références citées dans ce guide (consultées
-          en juillet 2026) :{" "}
-          <a
-            href="https://www.silkhom.com/barometre-des-tjm-informatique-electronique-digital/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            baromètre TJM SILKHOM 2025
-          </a>{" "}
-          (grilles identiques cross-platform/natif) ;{" "}
-          <a
-            href="https://shopify.engineering/five-years-of-react-native-at-shopify"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Shopify Engineering, « Five years of React Native » (janv. 2025)
-          </a>{" "}
-          ;{" "}
-          <a
-            href="https://techcrunch.com/2024/05/01/google-lays-off-staff-from-flutter-dart-python-weeks-before-its-developer-conference/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            TechCrunch, licenciements équipes Flutter/Dart (mai 2024)
-          </a>{" "}
-          ;{" "}
-          <a
-            href="https://developers.googleblog.com/en/celebrating-flutters-production-era/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Google Developers Blog, réponse officielle (déc. 2024)
-          </a>{" "}
-          ;{" "}
-          <a
-            href="https://developer.apple.com/news/upcoming-requirements/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Apple Developer, exigences SDK/Xcode
-          </a>{" "}
-          ;{" "}
-          <a
-            href="https://support.google.com/googleplay/android-developer/answer/11926878"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Google Play, exigences de niveau d&apos;API
-          </a>
-          .
+          <strong>Sources et limites.</strong> Les fonctions et versions
+          actuelles sont reliées dans chaque section à leurs documentations
+          officielles. Les retours publics d&apos;entreprises peuvent montrer
+          une méthode, jamais promettre leur coût, leur partage de code ou leur
+          performance à votre projet. Les chiffres A/B sont fictifs et servent
+          uniquement à rejouer le calcul. Les versions, exigences de store,
+          plugins, licences et tarifs de services doivent être revérifiés au
+          jour du devis et avant chaque publication.
         </p>
         <p className="text-sm">
           <em>
-            React Native est une marque de Meta ; Flutter et Dart sont des
-            marques de Google ; Kotlin est une marque de JetBrains. Ce guide est
-            indépendant et son biais éditorial (agence React) est déclaré dans
-            le corps de l&apos;article. Les repères de tarif proviennent du
-            baromètre cité ; seul un devis établi sur votre besoin vous engage.
+            Ce guide n&apos;est ni un audit de votre application, ni un conseil
+            juridique individualisé, ni une garantie de performance, de
+            publication sur les stores, d&apos;indexation ou de classement.
           </em>
         </p>
       </GuideLayout>

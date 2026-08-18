@@ -1,0 +1,11 @@
+05ea7d319af282215e319c8c0293c63e92b2d512069cbdedb448f3c0e30583d1  docs/research/aides-creation-site-internet.md
+8506adcd358a43960a4708933f4eb32ba2938aa88d51fa68dc15279014ef3ffb  docs/research/aides-creation-site-internet-world-benchmark-2026-07-26-r1.md
+a34dc96b382b6e7fd95e02fe03f999c926ef030d1334730675031b8f9608d4d3  docs/audits/giga-audit-2026-07-24/reviews/aides-creation-site-internet-p1-2026-07-26-r1.md
+9a0ccaae9cd6110d9dc33c488933d2859fb361c4dd4c08e11920177720532c2b  docs/audits/giga-audit-2026-07-24/guides/aides-creation-site-internet.md
+add6eecfc835adafa75485ee7d4bcb2019316758b9d83f6361b593879649b108  src/app/guides/aides-creation-site-internet/page.tsx
+dc17223db6cc3d89ec76b39f63c2df4d126917447e3cf441e55a1dcb089e319a  src/app/guides/aides-creation-site-internet/opengraph-image.tsx
+4d206e36554527b3cfb2a8a256986084f2dc86d7e58b6992a60f88f5271761ef  src/lib/guides.ts
+5ee616faa4959dc8ad2b0eb19a5b19ffbf53299b62665700093c5c176b0b8491  docs/charte-qualite-guides.md
+a3a8c8f1be5d5d60b096f251f22b27ae5526adb708c334c4d6f0b7b4270c60c4  docs/workflow-maitre-guides-4-passes.md
+6109eec7f4b0cfedeffe8bd92efe0d5db31d4360d51dd8b7ebbd2b9bdc43a7f6  docs/regle-or-vigilance-seo-publication.md
+730a3e70c7f04e305b3e406ec69ea9909c542c2c1ddaee8d5b7a37a9a24347bc  package.json

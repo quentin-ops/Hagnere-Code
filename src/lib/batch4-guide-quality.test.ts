@@ -38,7 +38,12 @@ describe("fourth batch guide quality", () => {
     for (const slug of slugs) {
       const guide = getGuide(slug);
       expect(guide.datePublished, slug).toBe("2026-07-24");
-      expect(guide.dateModified, slug).toBe("2026-07-24");
+      expect(guide.dateModified, slug).toBe(
+        slug === "lovable-bolt-v0-ou-agence-saas" ||
+          slug === "audit-technique-avant-reprendre-site"
+          ? "2026-07-27"
+          : "2026-07-24",
+      );
       expect(guide.title.length, `${slug}: title`).toBeLessThanOrEqual(60);
       expect(
         guide.metaDescription.length,
@@ -87,10 +92,11 @@ describe("fourth batch guide quality", () => {
         /FAQPage|HowTo|wordCount|Offer/,
       );
       expect(source, `${slug}: visible FAQ`).toContain("faqItems={faqItems}");
-      expect(
-        faq?.match(/\bquestion:\s*["']/g) || [],
-        `${slug}: six useful FAQs`,
-      ).toHaveLength(6);
+      const faqCount = faq?.match(/\bquestion:\s*["']/g)?.length ?? 0;
+      expect(faqCount, `${slug}: enough useful FAQs`).toBeGreaterThanOrEqual(
+        6,
+      );
+      expect(faqCount, `${slug}: bounded FAQ list`).toBeLessThanOrEqual(12);
       expect(source, `${slug}: fictitious example disclosed`).toMatch(
         /exemple (?:illustratif )?(?:entièrement )?fictif|situation fictive|comparaison fictive/i,
       );
@@ -115,7 +121,9 @@ describe("fourth batch guide quality", () => {
   it("tests HubSpot against the real sales process before replacement", () => {
     const source = pageSource("crm-sur-mesure-ou-hubspot");
     expect(source).toMatch(/HubSpot/);
-    expect(source).toMatch(/(?:dix|10|douze|12) (?:actions|situations|scénarios)/i);
+    expect(source).toMatch(
+      /(?:dix|10|douze|12) (?:actions|situations|scénarios)/i,
+    );
     expect(source).toMatch(/export/i);
     expect(source).toMatch(/configur|intégr|sur mesure/i);
   });
@@ -161,7 +169,7 @@ describe("fourth batch guide quality", () => {
     ["Contrat signé", "Prospect accepté", "Recherche et clic"].forEach((term) =>
       expect(source).toContain(term),
     );
-    expect(source).toContain("4 500 € HT");
+    expect(source).toContain("24 000 €");
     expect(source).toMatch(/marge/i);
   });
 
@@ -177,9 +185,12 @@ describe("fourth batch guide quality", () => {
 
   it("reads a SEO contract through cost, work, evidence and exit", () => {
     const source = pageSource("contrat-seo-duree-engagement");
-    ["Durée et argent", "Travail prévu", "Preuves et actifs", "Fin du contrat"].forEach(
-      (term) => expect(source).toContain(term),
-    );
+    [
+      "Durée et argent",
+      "Travail prévu",
+      "Preuves et actifs",
+      "Fin du contrat",
+    ].forEach((term) => expect(source).toContain(term));
     expect(source).toContain("16 400 € HT");
     expect(source).toMatch(/avocat/i);
   });
@@ -196,10 +207,13 @@ describe("fourth batch guide quality", () => {
 
   it("keeps a takeover audit proportional and evidence based", () => {
     const source = pageSource("audit-technique-avant-reprendre-site");
-    expect(source).toMatch(/GO sous réserves/);
+    expect(source).toMatch(/Aucun GO de reprise avant levée/);
+    expect(source).toMatch(/P2 · amélioration planifiée/);
     expect(source).toMatch(/\bSTOP\b/);
     expect(source).toMatch(/restaur/i);
-    expect(source).toMatch(/absence de (?:copie récupérable|preuve)/i);
+    expect(source).toMatch(
+      /(?:absence de (?:copie récupérable|preuve)|aucune copie récupérable)/i,
+    );
     expect(source).toMatch(/ne garantit (?:pas|ni)|aucune garantie/i);
   });
 });

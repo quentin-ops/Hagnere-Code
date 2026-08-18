@@ -256,3 +256,86 @@ Snapshot final : docs/research/manifests/dette-technique-cout-entreprise-p4.sha2
 Statut maximal : Publiable
 Verdict : publiable en index/follow ; aucune réécriture, économie ou productivité ne sont promises
 ```
+
+## 15. Vague corrective du giga-audit — état qui remplace les rapports 13 et 14
+
+Date : 24 juillet 2026
+
+Les anciens rapports P3/P4 ci-dessus restent conservés comme historique. Ils
+ne valident plus le contenu courant : le giga-audit a retrouvé deux P0 et sept
+P1 que ces rapports n’avaient pas détectés. La présente vague corrective
+annule donc leur verdict pour toute décision de publication du nouveau
+snapshot.
+
+### P1 — recherche et décision reprises
+
+- benchmark et sources primaires étendus à la France, aux États-Unis, au
+  Royaume-Uni et à l’Australie ;
+- cinq options remises sur le même périmètre : attendre, stabiliser, rénover,
+  acheter un standard ou réécrire ;
+- séparation de la trésorerie, de la capacité interne, du risque et de
+  l’opportunité ;
+- exemple entièrement fictif Atelier Nova, hypothèses visibles et calculs à
+  12, 36 et 60 mois ;
+- valeurs de bascule et sensibilité à 12 000, 34 048, 80 000 et 300 000 €/an ;
+- position Hagnéré Code explicitement bornée par son conflit d’intérêt et son
+  contre-cas ;
+- registre, comparatif et relevé de décision conçus comme actifs autonomes.
+
+Le deep-dive de référence est
+`docs/audits/giga-audit-2026-07-24/research/dette-technique-cout-entreprise-deep-dive.md`.
+
+### P2 — correction publiée localement
+
+La page livre désormais :
+
+- une ouverture adressée au dirigeant ;
+- un registre des cinq à dix événements sans double comptage ;
+- un cas chiffré complet et reproductible ;
+- cinq options au même périmètre et trois horizons ;
+- un test rapide, puis 37 hypothèses avancées repliées ;
+- un calculateur local avec deux taux de réduction distincts ;
+- cinq ressources libres sans collecte d’adresse ;
+- les cas où attendre gagne et ceux où une action plus profonde devient
+  rationnelle ;
+- un CTA de relecture sans devis ni économie automatique.
+
+Temps mesuré sur le rendu local : **4 646 mots, 23 minutes**.
+
+### P3 — faits, calculs et kit
+
+Le contre-audit indépendant a recalculé tous les sous-totaux, les quinze
+totaux d’horizon, les trois lectures, les seuils et la sensibilité. Il conclut
+à **zéro P0 et zéro P1 local**, avec 46/46 tests ciblés réussis.
+
+Le contrôle indépendant du kit a d’abord trouvé deux P1 de structure CSV. Ils
+ont été corrigés puis revalidés : les cinq ressources sont rectangulaires,
+versionnées, importables et alignées avec le moteur.
+
+Rapports conservés :
+
+- `docs/audits/giga-audit-2026-07-24/reviews/dette-technique-cout-entreprise-p3-facts.md` ;
+- `docs/audits/giga-audit-2026-07-24/reviews/dette-technique-cout-entreprise-kit-qa.md`.
+
+### P4 — plume et rendu réel
+
+La relecture distincte attribue **91/100**, sans axe sous 8/10. Le navigateur
+réel a contrôlé 320, 390, 768 et 1 440 px, les thèmes clair et sombre, le
+clavier, les erreurs, les lectures, le téléchargement et la console. Un
+rognage interne des cinq résultats sur grand écran a été trouvé, corrigé puis
+retesté.
+
+Rapports conservés :
+
+- `docs/audits/giga-audit-2026-07-24/reviews/dette-technique-cout-entreprise-p4-human.md` ;
+- `docs/audits/giga-audit-2026-07-24/reviews/dette-technique-cout-entreprise-browser-qa.md`.
+
+Snapshot final de la page :
+`4ce4b2ba11b6837ef91aa47c4564f94e48e43879a7abefdad786ef16179e478c`.
+
+### Statut exact
+
+**GO local éditorial et technique. NO GO production tant que le nouveau
+snapshot et les cinq ressources n’ont pas été déployés puis vérifiés sur leurs
+URLs publiques.** Un rendu local, un test vert ou un hash ne prouve ni le
+déploiement, ni le sitemap traité, ni l’indexation Google.

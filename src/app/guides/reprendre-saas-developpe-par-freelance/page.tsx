@@ -7,7 +7,11 @@ import {
 } from "@/components/guides/guide-content-blocks";
 import { GuideLayout } from "@/components/guides/guide-layout";
 import { GuidesShell } from "@/components/guides/GuidesShell";
+import { SaasFreelanceHandoverDecisionDossier } from "@/components/guides/SaasFreelanceHandoverDecisionDossier";
 import { formatGuideDate, getGuide, guideRobots, guideUrl } from "@/lib/guides";
+import acceptanceTests from "@/lib/saas-freelance-handover-acceptance-tests.json";
+import continuityTargets from "@/lib/saas-freelance-handover-continuity-targets.json";
+import handoverFunctions from "@/lib/saas-freelance-handover-functions.json";
 import { OG_BASE, SITE_URL } from "@/lib/seo";
 
 const guide = getGuide("reprendre-saas-developpe-par-freelance");
@@ -109,7 +113,7 @@ const faqItems = [
   {
     question: "Faut-il couper immédiatement tous les accès du freelance ?",
     answer:
-      "Pas dans une passation normale. Identifiez ce que commande chaque accès, ajoutez un accès nominatif appartenant à l’entreprise, testez-le, puis retirez l’ancien lorsque la condition écrite est remplie. En cas d’intrusion, de détournement de compte ou de menace crédible, la priorité change : traitez l’incident avec une personne compétente au lieu d’appliquer mécaniquement ce guide.",
+      "Préparez et testez la passation avant l’échéance. À la fin du contrat, désactivez les accès du freelance, sauf prolongation écrite précisant durée, périmètre, responsable et journaux de contrôle. Tout accès maintenu doit rester nominatif, temporaire et limité au strict nécessaire. En cas d’intrusion, de détournement de compte ou de menace crédible, traitez l’incident avec une personne compétente au lieu d’appliquer mécaniquement ce guide.",
   },
   {
     question: "Quels comptes doivent appartenir à l’entreprise ?",
@@ -148,6 +152,11 @@ const faqItems = [
     answer:
       "Il n’existe pas de durée universelle. Le récit de RelanceSimple s’étale sur plusieurs semaines, mais chaque étape dépend d’un résultat observable : accès récupéré, restauration réussie, service actif contrôlé ou retour arrière prouvé. Un SaaS simple peut avancer plus vite ; un produit ancien, réglementé ou mal documenté demandera davantage de travail.",
   },
+  {
+    question: "Qui doit choisir le RTO et le RPO du SaaS ?",
+    answer:
+      "Le métier et la direction doivent accepter l’impact, la perte de données possible et le coût de la cible, avec l’aide des personnes techniques qui démontrent ce que l’architecture peut réellement tenir. Ne demandez pas un seul couple universel : connexion, paiement, action métier, documents et support peuvent avoir des objectifs distincts.",
+  },
 ];
 
 type HandoffCardProps = {
@@ -161,6 +170,7 @@ type HandoffCardProps = {
   action: string;
   removal: string;
   fallback: string;
+  defaultOpen?: boolean;
 };
 
 function HandoffCard({
@@ -174,17 +184,31 @@ function HandoffCard({
   action,
   removal,
   fallback,
+  defaultOpen = false,
 }: HandoffCardProps) {
   return (
-    <div className="not-prose my-5 overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
-      <div className="border-b border-zinc-200 bg-zinc-50 px-5 py-4 dark:border-zinc-800 dark:bg-zinc-900 sm:px-6">
-        <p className="mb-1 text-lg font-bold text-zinc-950 dark:text-white">
-          {service}
-        </p>
-        <p className="mb-0 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
-          {purpose}
-        </p>
-      </div>
+    <details
+      open={defaultOpen || undefined}
+      className="not-prose group my-4 overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950"
+    >
+      <summary className="cursor-pointer list-none border-b border-transparent bg-zinc-50 px-5 py-4 marker:content-none group-open:border-zinc-200 dark:bg-zinc-900 group-open:dark:border-zinc-800 sm:px-6">
+        <span className="flex items-start justify-between gap-4">
+          <span>
+            <span className="block text-lg font-bold text-zinc-950 dark:text-white">
+              {service}
+            </span>
+            <span className="mt-1 block text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+              {purpose}
+            </span>
+          </span>
+          <span
+            aria-hidden="true"
+            className="mt-1 text-lg font-bold text-zinc-500 transition group-open:rotate-45"
+          >
+            +
+          </span>
+        </span>
+      </summary>
       <dl className="grid sm:grid-cols-2">
         {[
           ["Titulaire actuel", owner],
@@ -214,7 +238,7 @@ function HandoffCard({
           </div>
         ))}
       </dl>
-    </div>
+    </details>
   );
 }
 
@@ -239,8 +263,11 @@ export default function Page() {
           { label: "Reprendre un SaaS après le départ du développeur" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Reprenez les comptes qui font réellement fonctionner le produit, vérifiez le service actif et ne retirez chaque ancien accès qu’après un résultat observable."
-        heroAction={{ href: "#registre", label: "Voir le registre rempli" }}
+        heroDescription="Séparez passation et incident, reprenez dix fonctions vitales, fixez RTO/RPO et comparez stabilisation, migration et réécriture sur 36 mois."
+        heroAction={{
+          href: "#outil-decision",
+          label: "Tester le dossier local",
+        }}
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -249,26 +276,26 @@ export default function Page() {
         updatedLabel={"Mis à jour le " + formatGuideDate(guide.dateModified)}
         keyPoints={[
           {
-            number: "01",
-            title: "10 fonctions à reprendre",
+            number: "10",
+            title: "fonctions à reprendre",
             description: "",
             color: "violet",
           },
           {
-            number: "02",
-            title: "1 condition par accès",
+            number: "36",
+            title: "mois de TCO comparable",
             description: "",
             color: "blue",
           },
           {
-            number: "03",
-            title: "Aucun secret dans la fiche",
+            number: "RTO",
+            title: "et RPO décidés par le métier",
             description: "",
             color: "emerald",
           },
           {
-            number: "04",
-            title: "Lecture : " + guide.readTimeMin + " min",
+            number: "0",
+            title: "secret dans le dossier",
             description: "",
             color: "amber",
           },
@@ -294,38 +321,52 @@ export default function Page() {
         faqTitle="Reprendre un SaaS : les questions qui restent"
         faqItems={faqItems}
         showWhitePaperPromo={false}
+        showSidebarCta={false}
       >
         <p className="lead">
           Votre développeur freelance vous annonce son départ alors que des
           clients se connectent encore à votre SaaS et paient chaque mois. Votre
-          priorité n’est pas de juger son code ni de tout refaire. Elle est de
-          vérifier que votre entreprise peut encaisser, envoyer les courriels,
-          retrouver les données et remettre le service en ligne sans dépendre
-          d’une seule personne.
+          priorité n’est ni de couper ses accès à l’aveugle, ni de commander une
+          réécriture. Protégez d’abord paiement, données, domaine et alertes ;
+          exigez un résultat vérifiable et une condition de retrait pour chaque
+          compte ; puis comparez stabilisation, migration ciblée et réécriture
+          sur le même horizon.
         </p>
         <p>
           Ce guide vous aide à reprendre chaque compte dans le bon ordre, à
-          tester ce qui compte sans toucher aux vrais clients, puis à décider
-          quand l’ancien accès peut être retiré. Si vous faites face à un
-          conflit, une intrusion ou un compte détourné, cette passation normale
-          ne suffit pas : il faut traiter l’incident séparément.
+          tester ce qui compte sans toucher aux vrais clients, à faire accepter
+          une durée maximale d’arrêt (RTO) et une perte maximale de données
+          (RPO), puis à chiffrer la suite sur trente-six mois. Si vous faites
+          face à un conflit, une intrusion, une violation de données ou un
+          compte détourné, cette passation normale ne suffit pas : conservez les
+          preuves et déclenchez la réponse spécialisée adaptée.
         </p>
 
         <GuideToc
           items={[
-            { id: "stabiliser", label: "1. Protéger le service en cours" },
+            { id: "stabiliser", label: "1. Passation normale ou incident" },
             { id: "plus-que-code", label: "2. Voir ce qui manque au code" },
-            { id: "registre", label: "3. Lire les dix fiches remplies" },
+            { id: "registre", label: "3. Résumer puis ouvrir les dix fiches" },
             { id: "votre-fiche", label: "4. Remplir votre propre fiche" },
-            { id: "trois-preuves", label: "5. Réaliser trois contrôles" },
-            { id: "paiements", label: "6. Reprendre les paiements" },
-            { id: "transferts", label: "7. Vérifier chaque transfert" },
-            { id: "ordre", label: "8. Avancer selon les résultats" },
-            { id: "suite", label: "9. Décider de la suite" },
+            {
+              id: "droits-donnees",
+              label: "5. Séparer comptes, droits et données",
+            },
+            { id: "trois-preuves", label: "6. Réaliser trois contrôles" },
+            { id: "rto-rpo", label: "7. Fixer RTO et RPO" },
+            { id: "paiements", label: "8. Reprendre les paiements" },
+            { id: "transferts", label: "9. Vérifier chaque transfert" },
+            { id: "outil-decision", label: "10. Chiffrer les options" },
+            { id: "ordre", label: "11. Avancer selon les résultats" },
+            { id: "suite", label: "12. Décider de la suite" },
+            { id: "plan-sortie", label: "13. Préparer la prochaine sortie" },
+            { id: "sources", label: "14. Sources et limites" },
           ]}
         />
 
-        <h2 id="stabiliser">1. Commencez par protéger le service en cours</h2>
+        <h2 id="stabiliser">
+          1. Qualifiez d’abord : passation normale, litige ou incident
+        </h2>
         <p>
           Tant que les clients utilisent le produit, la première réussite est
           simple à formuler : ils doivent continuer à se connecter, à payer et à
@@ -342,14 +383,55 @@ export default function Page() {
           doit comprendre la décision et contrôler les comptes ; il ne doit pas
           improviser seul une modification de base, de domaine ou de paiement.
         </p>
+        <div className="not-prose my-6 grid gap-4 md:grid-cols-2">
+          <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5 text-emerald-950 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-100">
+            <p className="mb-2 text-lg font-bold">Passation normale</p>
+            <p className="mb-3 text-sm leading-relaxed">
+              Le prestataire coopère, les comptes restent accessibles, aucune
+              compromission n’est soupçonnée et l’entreprise peut planifier des
+              contrôles réversibles.
+            </p>
+            <p className="mb-0 text-sm font-semibold">
+              Action : nommer les responsables, limiter les changements, créer
+              les accès entreprise et prouver chaque remplacement avant
+              l’échéance.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-rose-200 bg-rose-50 p-5 text-rose-950 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-100">
+            <p className="mb-2 text-lg font-bold">
+              Incident, détournement ou litige aigu
+            </p>
+            <p className="mb-3 text-sm leading-relaxed">
+              Accès inconnu, compte détourné, exfiltration possible, action
+              hostile, violation de données ou blocage juridique : le risque
+              n’est plus une simple passation.
+            </p>
+            <p className="mb-0 text-sm font-semibold">
+              Action : préserver les preuves, limiter l’exposition avec une
+              personne compétente et déclencher les voies cyber, juridique,
+              fournisseur et RGPD adaptées. Ne suivez pas mécaniquement le
+              calendrier ci-dessous.
+            </p>
+          </div>
+        </div>
         <InfoBox
           variant="amber"
-          title="Ne retirez jamais un accès sur la seule base d’une date"
+          title="L’échéance contractuelle reste une vraie limite d’habilitation"
         >
-          « Le contrat se termine vendredi » n’est pas un contrôle. Écrivez ce
-          que l’entreprise doit réussir avant vendredi et ce qui se passe si ce
-          résultat manque. Un accès devient retirable lorsque son remplaçant a
-          été créé, récupéré, testé et relié au service réellement utilisé.
+          Organisez et testez la passation avant l’échéance. À la fin du
+          contrat, désactivez les accès du prestataire, sauf prolongation écrite
+          précisant durée, périmètre, responsable et journaux de contrôle. Un
+          accès maintenu reste nominatif, temporaire, surveillé et limité au
+          strict nécessaire. La{" "}
+          <a
+            href="https://www.cnil.fr/fr/securite-gerer-les-habilitations"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            CNIL demande de supprimer les habilitations lorsque la personne
+            n’est plus autorisée
+          </a>
+          , notamment à la fin du contrat.
         </InfoBox>
 
         <h2 id="plus-que-code">
@@ -430,127 +512,68 @@ export default function Page() {
           une.
         </p>
 
-        <HandoffCard
-          service="1. Dépôt GitHub"
-          purpose="Conserver le code et son historique."
-          owner="Le dépôt appartient encore au compte personnel de Sam."
-          freelanceAccess="Sam en est propriétaire et plusieurs identifiants personnels peuvent y être liés."
-          companyControl="Nina possède l’organisation de l’entreprise et a testé la récupération de son compte."
-          check="Le 22 juillet, Malik récupère le code, construit le produit et le publie sur une adresse de test qui ne sert aucun client."
-          blocker="Applications, adresses recevant les événements, secrets et identifiants de mise en ligne ne sont pas encore tous recensés. Oui, cela bloque le retrait."
-          action="Malik recense chaque autorisation, la replace sous un compte entreprise et teste son remplaçant."
-          removal="Le dépôt est dans l’organisation de l’entreprise et chaque dépendance personnelle a un remplaçant contrôlé et testé."
-          fallback="Conserver une archive vérifiée et la version de production actuellement saine."
-        />
-        <HandoffCard
-          service="2. Hébergement"
-          purpose="Servir la version réellement utilisée par les clients."
-          owner="Le projet actif se trouve dans l’espace personnel de Sam."
-          freelanceAccess="Sam est propriétaire du projet et peut publier une version."
-          companyControl="Nina possède un nouveau projet et sa récupération a été testée."
-          check="Le 23 juillet, Malik publie une page témoin sur une adresse isolée, puis revient à la version précédente."
-          blocker="Facturation, stockage, journaux et connexions à d’autres services ne suivent pas forcément le projet. Oui, le projet actif reste bloquant."
-          action="Malik rapproche chaque dépendance de sa propre fiche avant de préparer la bascule."
-          removal="Le projet qui sert les clients appartient à l’entreprise ; une mise en ligne planifiée a validé les fonctions critiques et le retour immédiat à la version précédente."
-          fallback="Garder l’ancien projet inchangé et le dernier déploiement sain jusqu’à la validation."
-        />
-        <HandoffCard
-          service="3. Base et sauvegardes"
-          purpose="Retrouver les données structurées et prouver qu’une sauvegarde peut être restaurée."
-          owner="La base et les sauvegardes sont administrées depuis le compte de Sam."
-          freelanceAccess="Sam peut administrer la base et lancer les restaurations."
-          companyControl="Nina possède un accès administrateur dont la récupération a été testée."
-          check="Le 24 juillet, Malik restaure une sauvegarde autorisée dans un espace isolé et protégé, puis contrôle sa structure et les éléments attendus."
-          blocker="Les fichiers PDF sont stockés dans un autre service. Oui, une base sans ses fichiers ne suffit pas."
-          action="Malik contrôle séparément le stockage et documente le traitement de la copie restaurée."
-          removal="L’entreprise contrôle la base et les fichiers actifs ; la nouvelle équipe sait les restaurer selon la procédure autorisée."
-          fallback="Ne pas toucher à la production et supprimer la copie isolée selon la procédure prévue."
-        />
-        <HandoffCard
-          service="4. Paiement et abonnements"
-          purpose="Continuer à encaisser et à signaler au SaaS le bon état de chaque abonnement."
-          owner="RelanceSimple est titulaire du compte Stripe."
-          freelanceAccess="Sam a un rôle de développeur qui lui permet de consulter les identifiants techniques."
-          companyControl="Nina est propriétaire du compte — rôle nommé Account Owner dans Stripe — avec une adresse de récupération de l’entreprise testée."
-          check="Le 25 juillet, Malik reproduit l’intégration dans l’espace de test Stripe, sans créer de facturation réelle."
-          blocker="Les identifiants et l’adresse qui reçoit les événements de production restent à inventorier. Oui, un paiement peut être encaissé sans être signalé au produit."
-          action="Nina vérifie banque, facturation, récupération, utilisateurs, alertes et configuration active."
-          removal="Après tout changement préparé, un événement attendu est observé avec la configuration active, sans abonnement ou facture improvisés."
-          fallback="Ne rien modifier sur le compte actif avant validation et rétablir la configuration précédente si le contrôle échoue."
-        />
-        <HandoffCard
-          service="5. Domaine et réglages DNS"
-          purpose="Conserver l’adresse du SaaS et les réglages qui l’orientent vers les bons services."
-          owner="Nina est titulaire du domaine."
-          freelanceAccess="Sam est encore contact technique et administrateur."
-          companyControl="Nina et Malik disposent de deux accès nominatifs ; la récupération a été testée."
-          check="Le 25 juillet, Nina vérifie le renouvellement et exporte une copie datée des réglages du domaine, souvent appelés zone DNS."
-          blocker="La carte de renouvellement doit encore être confirmée. Oui, un échec pourrait couper l’adresse ou verrouiller l’entreprise dehors."
-          action="Nina vérifie carte, coordonnées et alertes de renouvellement."
-          removal="Deux accès entreprise fonctionnent, récupération et paiement sont vérifiés et la copie datée des réglages est disponible."
-          fallback="Réimporter les réglages précédents si une modification préparée du domaine échoue."
-        />
+        <div className="not-prose my-6 overflow-x-auto rounded-2xl border border-zinc-200 dark:border-zinc-800">
+          <table className="w-full min-w-[820px] border-collapse text-left text-sm">
+            <caption className="bg-zinc-950 px-5 py-4 text-left font-bold text-white">
+              Vue dirigeant — impact, décision et prochain contrôle
+            </caption>
+            <thead className="bg-zinc-100 text-zinc-700 dark:bg-zinc-900 dark:text-zinc-200">
+              <tr>
+                <th className="px-4 py-3">Fonction</th>
+                <th className="px-4 py-3">Criticité</th>
+                <th className="px-4 py-3">Impact métier</th>
+                <th className="px-4 py-3">Responsable de décision</th>
+                <th className="px-4 py-3">Prochaine action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {handoverFunctions.map((item) => (
+                <tr
+                  key={item.id}
+                  className="border-t border-zinc-200 align-top dark:border-zinc-800"
+                >
+                  <th className="px-4 py-3 font-bold text-zinc-950 dark:text-white">
+                    {item.id}. {item.service}
+                  </th>
+                  <td className="px-4 py-3 text-zinc-700 dark:text-zinc-300">
+                    {item.criticality}
+                  </td>
+                  <td className="px-4 py-3 text-zinc-700 dark:text-zinc-300">
+                    {item.businessImpact}
+                  </td>
+                  <td className="px-4 py-3 text-zinc-700 dark:text-zinc-300">
+                    {item.decisionOwner}
+                  </td>
+                  <td className="px-4 py-3 text-zinc-700 dark:text-zinc-300">
+                    {item.action}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-        <HandoffCard
-          service="6. Tâche matinale"
-          purpose="Préparer chaque matin les relances sans les envoyer deux fois."
-          owner="La planification est encore attachée au projet d’hébergement de Sam."
-          freelanceAccess="Sam peut arrêter, modifier ou déclencher la tâche."
-          companyControl="Malik administre le projet entreprise et a testé la récupération de son accès."
-          check="Le 26 juillet, une exécution utilise 18 dossiers synthétiques et uniquement des destinataires contrôlés ; une seule relance est produite."
-          blocker="Une seconde exécution peut encore attendre. Oui, deux planifications pourraient créer deux relances."
-          action="Malik vérifie l’arrêt et la liste des tâches encore en attente avant la bascule."
-          removal="La planification active appartient à l’entreprise ; la prochaine exécution attendue est observée une seule fois et son alerte est reçue."
-          fallback="Arrêter la nouvelle planification, confirmer qu’aucune exécution ne reste en attente, puis seulement réactiver l’ancienne et contrôler l’unicité."
-        />
-        <HandoffCard
-          service="7. Connexion des utilisateurs"
-          purpose="Permettre aux clients d’ouvrir leur compte et à l’entreprise de récupérer l’administration."
-          owner="Le service de connexion appartient au compte personnel de Sam."
-          freelanceAccess="Sam est propriétaire et administrateur du service."
-          companyControl="Nina est administratrice avec une adresse entreprise et une récupération testée."
-          check="Le 26 juillet, Nina crée, connecte puis retire un utilisateur fictif sur l’adresse de test."
-          blocker="Le service qui connecte les vrais clients n’a pas encore été transféré. Oui, le test isolé ne suffit pas."
-          action="Malik prépare le transfert du service actif et contrôle ses alertes et réglages."
-          removal="Le service actif est détenu et facturé par l’entreprise ; connexion fictive, récupération et alertes fonctionnent sans Sam."
-          fallback="Conserver le réglage actif précédent jusqu’à la bascule planifiée et réversible."
-        />
-        <HandoffCard
-          service="8. Courriels"
-          purpose="Envoyer confirmations, réinitialisations et messages utiles depuis le bon domaine."
-          owner="Le compte d’envoi appartient encore à Sam."
-          freelanceAccess="Sam est propriétaire et gère le domaine d’envoi."
-          companyControl="Nina dispose d’un accès administrateur et d’une récupération testée."
-          check="Le 27 juillet, un courriel transactionnel arrive uniquement sur deux adresses de test contrôlées."
-          blocker="Domaine, facturation et limites du compte actif restent à contrôler. Oui, le test isolé ne prouve pas que le service actif continuera."
-          action="Malik vérifie le domaine d’envoi et le compte réellement utilisé par le SaaS."
-          removal="Le compte actif appartient à l’entreprise ; le domaine est validé et un message contrôlé part de la configuration active sans liste client."
-          fallback="Rétablir l’ancien réglage d’envoi et garder toute liste réelle bloquée pendant le contrôle."
-        />
-        <HandoffCard
-          service="9. Fichiers clients"
-          purpose="Retrouver les PDF et autres documents qui ne vivent pas dans la base."
-          owner="Le stockage est lié au compte de Sam."
-          freelanceAccess="Sam en est propriétaire et administrateur."
-          companyControl="Nina est administratrice et a testé la récupération."
-          check="Le 27 juillet, Malik ajoute, lit puis supprime un faux PDF dans l’espace de test."
-          blocker="Propriété, facturation, conservation et sauvegarde du stockage actif restent à confirmer. Oui, les vrais fichiers peuvent rester hors du contrôle de l’entreprise."
-          action="Malik vérifie un fichier autorisé selon la procédure protégée et rapproche le stockage de la sauvegarde."
-          removal="Le stockage actif est détenu et facturé par l’entreprise ; la nouvelle équipe retrouve un fichier autorisé et supprime le faux fichier."
-          fallback="Garder le stockage de production inchangé jusqu’à la bascule et supprimer les fichiers de test."
-        />
-        <HandoffCard
-          service="10. Surveillance et support"
-          purpose="Recevoir une panne ou une demande client même après le départ de Sam."
-          owner="La boîte et l’outil d’alerte appartiennent à Sam."
-          freelanceAccess="Sam est administrateur et destinataire principal."
-          companyControl="Nina contrôle la boîte support ; Malik administre les alertes ; leurs récupérations sont testées."
-          check="Le 28 juillet, un ticket fictif est attribué et une alerte de test arrive chez deux personnes."
-          blocker="La personne qui répond et le délai visé restent à décider. Oui, une panne pourrait sinon rester invisible."
-          action="Nina nomme un responsable pour chaque type d’alerte."
-          removal="Les alertes actives arrivent chez deux personnes de l’entreprise et un incident fictif est reçu, attribué, traité puis clos sans Sam."
-          fallback="Réacheminer temporairement les alertes vers la boîte d’entreprise documentée."
-        />
+        <p>
+          Les dix fiches détaillées restent disponibles ci-dessous. Les deux
+          premières sont ouvertes ; les autres se déplient à la demande pour
+          conserver une lecture mobile soutenable.
+        </p>
+        {handoverFunctions.map((item) => (
+          <HandoffCard
+            key={item.id}
+            service={`${item.id}. ${item.service}`}
+            purpose={item.purpose}
+            owner={item.owner}
+            freelanceAccess={item.freelanceAccess}
+            companyControl={item.companyControl}
+            check={item.check}
+            blocker={item.blocker}
+            action={item.action}
+            removal={item.removal}
+            fallback={item.fallback}
+            defaultOpen={item.id <= 2}
+          />
+        ))}
 
         <h2 id="votre-fiche">4. Reprenez la fiche avec vos propres services</h2>
         <p>
@@ -585,8 +608,133 @@ export default function Page() {
           contrôle réalisé — jamais la valeur elle-même.
         </InfoBox>
 
+        <h2 id="droits-donnees">
+          5. Séparez contrôle matériel, droits d’exploitation et sort des
+          données
+        </h2>
+        <p>
+          Trois questions se ressemblent mais n’ont pas la même réponse.
+          Premièrement, qui peut ouvrir le compte, récupérer l’accès, payer le
+          fournisseur et exporter l’actif ? Deuxièmement, quels droits
+          l’entreprise peut-elle exercer sur le code, les écrans, les textes,
+          les polices, les images et les composants antérieurs ? Troisièmement,
+          que devient chaque copie de données personnelles conservée par le
+          prestataire ? Un dépôt transféré ne répond qu’à une partie de la
+          première question.
+        </p>
+        <div className="not-prose my-6 overflow-x-auto rounded-2xl border border-zinc-200 dark:border-zinc-800">
+          <table className="w-full min-w-[760px] border-collapse text-left text-sm">
+            <caption className="bg-zinc-950 px-5 py-4 text-left font-bold text-white">
+              Trois preuves différentes à ne pas fusionner
+            </caption>
+            <thead className="bg-zinc-100 text-zinc-700 dark:bg-zinc-900 dark:text-zinc-200">
+              <tr>
+                <th className="px-4 py-3">Question</th>
+                <th className="px-4 py-3">Preuve utile</th>
+                <th className="px-4 py-3">Ce qu’elle ne prouve pas</th>
+                <th className="px-4 py-3">Escalade</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                [
+                  "Contrôle du compte",
+                  "Titulaire, deux accès nominatifs, récupération, facture et export testés",
+                  "La cession de tous les droits d’auteur",
+                  "Support fournisseur si le titulaire est contesté",
+                ],
+                [
+                  "Droits d’exploitation",
+                  "Contrat, droits nommés, territoire, durée, destination, créations antérieures et licences",
+                  "La capacité à remettre le service en ligne",
+                  "Avocat ou conseil en propriété intellectuelle si l’enjeu est important",
+                ],
+                [
+                  "Sort des données",
+                  "Restitution vérifiée, calendrier de suppression, copies et sauvegardes traitées, attestation écrite",
+                  "Que l’export seul soit complet ou restaurable",
+                  "DPO, juriste ou conseil RGPD selon les rôles et le risque",
+                ],
+              ].map((row) => (
+                <tr
+                  key={row[0]}
+                  className="border-t border-zinc-200 align-top dark:border-zinc-800"
+                >
+                  {row.map((cell, index) =>
+                    index === 0 ? (
+                      <th
+                        key={`${row[0]}-${index}`}
+                        className="px-4 py-3 font-bold text-zinc-950 dark:text-white"
+                      >
+                        {cell}
+                      </th>
+                    ) : (
+                      <td
+                        key={`${row[0]}-${index}`}
+                        className="px-4 py-3 text-zinc-700 dark:text-zinc-300"
+                      >
+                        {cell}
+                      </td>
+                    ),
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          En droit français, l’auteur dispose de droits du seul fait de la
+          création. La cession doit identifier les droits cédés et délimiter
+          leur exploitation. Le logiciel créé par un salarié dans l’exercice de
+          ses fonctions relève par ailleurs d’un régime spécifique : ne
+          transposez pas automatiquement cette exception à un freelance.
+          Consultez les articles{" "}
+          <a
+            href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278868"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            L111-1
+          </a>
+          ,{" "}
+          <a
+            href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039279818"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            L113-9
+          </a>{" "}
+          et{" "}
+          <a
+            href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278958"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            L131-3
+          </a>{" "}
+          du Code de la propriété intellectuelle, puis faites qualifier le
+          contrat important par un professionnel du droit.
+        </p>
+        <InfoBox
+          variant="blue"
+          title="Restitution ou destruction : choisissez et prouvez"
+        >
+          Lorsque le RGPD et une sous-traitance s’appliquent, écrivez le choix
+          entre restitution et destruction, le format, les délais, le sort des
+          copies et des sauvegardes, puis demandez une justification écrite de
+          la destruction. L’{" "}
+          <a
+            href="https://www.cnil.fr/fr/sous-traitance-exemple-de-clauses"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            exemple de clauses de sous-traitance de la CNIL
+          </a>{" "}
+          est un point de départ à adapter, pas un contrat universel.
+        </InfoBox>
+
         <h2 id="trois-preuves">
-          5. Séparez trois contrôles qui ne répondent pas à la même question
+          6. Séparez trois contrôles qui ne répondent pas à la même question
         </h2>
         <h3>Le parcours avec des données fictives</h3>
         <p>
@@ -631,8 +779,179 @@ export default function Page() {
           retour immédiat possible.
         </p>
 
+        <details
+          id="tests-reprise"
+          className="not-prose my-8 overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950"
+        >
+          <summary className="cursor-pointer list-none bg-zinc-50 px-5 py-4 text-left font-bold text-zinc-950 marker:content-none dark:bg-zinc-900 dark:text-white sm:px-6">
+            Afficher la matrice complète des 18 tests de reprise
+          </summary>
+          <div className="border-t border-zinc-200 p-4 dark:border-zinc-800 sm:p-6">
+            <p className="mb-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+              Exécutez uniquement des tests autorisés, isolés et réversibles.
+              Pour chaque ligne, conservez la date, le résultat, la personne qui
+              accepte l’écart et une référence de preuve — jamais un secret.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="min-w-[820px] w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr className="bg-zinc-950 text-white dark:bg-white dark:text-zinc-950">
+                    <th className="px-4 py-3">ID</th>
+                    <th className="px-4 py-3">Famille</th>
+                    <th className="px-4 py-3">Scénario</th>
+                    <th className="px-4 py-3">Résultat attendu</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {acceptanceTests.map((test) => (
+                    <tr
+                      key={test.id}
+                      className="border-t border-zinc-200 align-top dark:border-zinc-800"
+                    >
+                      <th className="px-4 py-3 font-bold text-zinc-950 dark:text-white">
+                        {test.id}
+                      </th>
+                      <td className="px-4 py-3 text-zinc-700 dark:text-zinc-300">
+                        {test.family}
+                      </td>
+                      <td className="px-4 py-3 font-medium text-zinc-900 dark:text-zinc-100">
+                        {test.case}
+                      </td>
+                      <td className="px-4 py-3 text-zinc-700 dark:text-zinc-300">
+                        {test.expected}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <h2 id="rto-rpo">
+          7. Faites accepter RTO et RPO par le métier, parcours par parcours
+        </h2>
+        <p>
+          Le <strong>RTO</strong> est la durée maximale visée pour remettre un
+          parcours en service après une interruption. Le <strong>RPO</strong>
+          exprime le point de reprise et donc la quantité de données que
+          l’entreprise accepte potentiellement de perdre. Les définitions du{" "}
+          <a
+            href="https://csrc.nist.gov/glossary/term/recovery_time_objective"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            RTO
+          </a>{" "}
+          et du{" "}
+          <a
+            href="https://csrc.nist.gov/glossary/term/recovery_point_objective"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            RPO
+          </a>{" "}
+          sont documentées par le NIST. Elles ne choisissent pas vos valeurs :
+          le métier doit relier chaque cible aux clients, contrats, opérations,
+          données et coûts.
+        </p>
+        <p>
+          Un seul couple « RTO/RPO du SaaS » masque souvent les vrais écarts.
+          Une page marketing, une connexion, un paiement, une action métier et
+          un document client n’ont pas nécessairement la même criticité.
+          L’architecture doit ensuite démontrer qu’elle peut tenir la cible, y
+          compris lorsque le prestataire sortant n’est plus disponible.
+        </p>
+        <div className="not-prose my-6 overflow-x-auto rounded-2xl border border-zinc-200 dark:border-zinc-800">
+          <table className="w-full min-w-[900px] border-collapse text-left text-sm">
+            <caption className="bg-zinc-950 px-5 py-4 text-left font-bold text-white">
+              RelanceSimple — objectifs fictifs à faire arbitrer, pas valeurs
+              recommandées
+            </caption>
+            <thead className="bg-zinc-100 text-zinc-700 dark:bg-zinc-900 dark:text-zinc-200">
+              <tr>
+                <th className="px-4 py-3">Parcours</th>
+                <th className="px-4 py-3">Impact à décrire</th>
+                <th className="px-4 py-3">RTO fictif</th>
+                <th className="px-4 py-3">RPO fictif</th>
+                <th className="px-4 py-3">Preuve attendue</th>
+                <th className="px-4 py-3">Acceptation</th>
+              </tr>
+            </thead>
+            <tbody>
+              {continuityTargets.map((target) => (
+                <tr
+                  key={target.journey}
+                  className="border-t border-zinc-200 align-top dark:border-zinc-800"
+                >
+                  {[
+                    target.journey,
+                    target.impact,
+                    target.rtoLabel,
+                    target.rpoLabel,
+                    target.evidence,
+                    target.decisionOwner,
+                  ].map((cell, index) =>
+                    index === 0 ? (
+                      <th
+                        key={`${target.journey}-${index}`}
+                        className="px-4 py-3 font-bold text-zinc-950 dark:text-white"
+                      >
+                        {cell}
+                      </th>
+                    ) : (
+                      <td
+                        key={`${target.journey}-${index}`}
+                        className="px-4 py-3 text-zinc-700 dark:text-zinc-300"
+                      >
+                        {cell}
+                      </td>
+                    ),
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Dans le scénario fictif, 900 modifications métier par jour et un point
+          restaurable toutes les 24 heures exposent en moyenne 450 événements et
+          au maximum 900. Avec un point toutes les 4 heures, ces valeurs
+          deviennent 75 et 150. À six minutes de reconstitution par événement et
+          45 € de capacité horaire, le maximum illustratif passe de 4 050 € à
+          675 €. La moyenne suppose un instant d’incident uniformément réparti
+          dans l’intervalle et un flux d’événements suffisamment régulier. Le
+          calcul suppose aussi des points valides et n’intègre ni journal
+          transactionnel, ni réplication, ni corruption silencieuse.
+        </p>
+        <InfoBox
+          variant="amber"
+          title="Des objectifs plus courts coûtent généralement plus cher"
+        >
+          Les guides d’architecture de reprise d’{" "}
+          <a
+            href="https://docs.aws.amazon.com/prescriptive-guidance/latest/startup-resiliency-baseline/stage-1.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            AWS
+          </a>{" "}
+          et de{" "}
+          <a
+            href="https://docs.cloud.google.com/architecture/dr-scenarios-planning-guide"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google Cloud
+          </a>{" "}
+          relient les objectifs de reprise aux besoins métier et aux compromis
+          de coût. Exiger qu’aucune donnée ne soit perdue et qu’aucune
+          interruption ne survienne ne doit pas rester une préférence technique
+          gratuite : documentez qui l’exige, pourquoi, et qui accepte son coût.
+        </InfoBox>
+
         <h2 id="paiements">
-          6. Pour les paiements, choisissez d’abord la bonne branche
+          8. Pour les paiements, choisissez d’abord la bonne branche
         </h2>
         <p>
           Si RelanceSimple garde le même compte Stripe, Nina peut recevoir le
@@ -675,14 +994,15 @@ export default function Page() {
         </p>
 
         <h2 id="transferts">
-          7. Un bouton « transférer » ne déplace pas forcément le service entier
+          9. Un bouton « transférer » ne déplace pas forcément le service entier
         </h2>
         <p>
-          Prenons Vercel comme exemple d’hébergeur. Sa documentation actuelle
-          indique que certaines intégrations, données de suivi, journaux envoyés
-          à d’autres outils, fichiers placés dans son stockage Blob ou réglages
-          conservés dans Edge Config ne suivent pas automatiquement un
-          transfert. La liste peut évoluer : relisez la{" "}
+          Prenons Vercel comme exemple d’hébergeur. Sa documentation, mise à
+          jour le 25 novembre 2025 et consultée le 28 juillet 2026, indique que
+          certaines intégrations, données de suivi, journaux envoyés à d’autres
+          outils, fichiers placés dans son stockage Blob ou réglages conservés
+          dans Edge Config ne suivent pas automatiquement un transfert. La liste
+          peut évoluer : relisez la{" "}
           <a
             href="https://vercel.com/docs/projects/transferring-projects"
             target="_blank"
@@ -702,8 +1022,114 @@ export default function Page() {
           actions nommées au lieu de les découvrir le jour de la coupure.
         </p>
 
+        <p>
+          Une fois comptes et preuves qualifiés, comparez les suites sur le même
+          périmètre. L’exemple ci-dessous est entièrement fictif, hors taxes et
+          ne décrit aucun client ni prix moyen. Il inclut fonctions actuelles,
+          continuité, maintenance, infrastructure, temps interne et sortie sur
+          trente-six mois.
+        </p>
+        <div className="not-prose my-6 overflow-x-auto rounded-2xl border border-zinc-200 dark:border-zinc-800">
+          <table className="w-full min-w-[820px] border-collapse text-left text-sm">
+            <caption className="bg-zinc-950 px-5 py-4 text-left font-bold text-white">
+              TCO fictif sur 36 mois — hypothèses toutes remplaçables dans
+              l’outil et le classeur
+            </caption>
+            <thead className="bg-zinc-100 text-zinc-700 dark:bg-zinc-900 dark:text-zinc-200">
+              <tr>
+                <th className="px-4 py-3">Poste</th>
+                <th className="px-4 py-3">Stabiliser</th>
+                <th className="px-4 py-3">Migration ciblée</th>
+                <th className="px-4 py-3">Réécriture</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["Audit / prise en main", "9 000 €", "9 000 €", "14 000 €"],
+                [
+                  "Stabilisation, migration ou construction",
+                  "18 000 €",
+                  "67 000 €",
+                  "140 000 €",
+                ],
+                [
+                  "Maintenance",
+                  "2 200 € × 36 = 79 200 €",
+                  "1 800 € × 36 = 64 800 €",
+                  "2 200 € × 9 + 1 500 € × 27 = 60 300 €",
+                ],
+                [
+                  "Infrastructure et surveillance",
+                  "650 € × 36 = 23 400 €",
+                  "750 € × 36 = 27 000 €",
+                  "900 € × 36 = 32 400 €",
+                ],
+                [
+                  "Temps interne valorisé",
+                  "5 h × 55 € × 36 = 9 900 €",
+                  "8 h × 55 € × 36 = 15 840 €",
+                  "220 h × 55 € = 12 100 €",
+                ],
+                ["Double exploitation", "0 €", "0 €", "12 000 €"],
+                ["Sortie documentée", "2 000 €", "3 000 €", "4 000 €"],
+                ["TCO 36 mois", "141 500 €", "186 640 €", "274 800 €"],
+              ].map((row, rowIndex) => (
+                <tr
+                  key={row[0]}
+                  className={[
+                    "border-t border-zinc-200 dark:border-zinc-800",
+                    rowIndex === 7
+                      ? "bg-violet-50 font-bold dark:bg-violet-950/30"
+                      : "",
+                  ].join(" ")}
+                >
+                  {row.map((cell, index) =>
+                    index === 0 ? (
+                      <th
+                        key={`${row[0]}-${index}`}
+                        className="px-4 py-3 text-zinc-950 dark:text-white"
+                      >
+                        {cell}
+                      </th>
+                    ) : (
+                      <td
+                        key={`${row[0]}-${index}`}
+                        className="px-4 py-3 text-zinc-700 dark:text-zinc-300"
+                      >
+                        {cell}
+                      </td>
+                    ),
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Dans ce seul scénario, réécrire coûte 133 300 € de plus que
+          stabiliser. À 800 € de contribution mensuelle par client et 27 mois
+          utiles après la mise en service, le surcoût représente 166,625
+          clients-mois, soit l’équivalent de 6,17 clients contribuant chaque
+          mois pendant toute cette période : il faut donc atteindre l’équivalent
+          de <strong>sept clients conservés ou gagnés sur les 27 mois</strong>.
+          Une acquisition progressive, l’attrition, la valeur terminale et les
+          risques non chiffrés doivent être modélisés séparément.
+        </p>
+        <p>
+          L’exercice de restauration demande la même discipline. Six heures
+          externes à 95 € et deux heures internes à 55 € coûtent 680 €. Avec 22
+          500 € de contribution mensuelle et deux personnes mobilisées à 55 €/h,
+          l’exposition de capacité et de contribution vaut 141,25 €/h. Le seuil
+          de 4,81 h n’est valable qu’avec une probabilité annuelle d’incident de
+          100 %. À 25 %, il devient 19,26 h ; à 10 %, 48,14 h. Même là,
+          l’exercice n’est rentable que s’il réduit effectivement la durée de
+          l’incident concerné.
+        </p>
+
+        <SaasFreelanceHandoverDecisionDossier />
+
         <h2 id="ordre">
-          8. L’ordre suivi par RelanceSimple dépend des résultats, pas du
+          11. L’ordre suivi par RelanceSimple dépend des résultats, pas du
           calendrier
         </h2>
         <p>
@@ -735,6 +1161,14 @@ export default function Page() {
           </li>
         </ol>
         <p>
+          À l’échéance du contrat, tout accès restant exige une prolongation
+          écrite et bornée ; l’absence de preuve ne transforme pas une
+          habilitation expirée en accès permanent. Si la continuité ne peut pas
+          être assurée à temps, la direction doit choisir explicitement entre
+          prolongation contrôlée, bascule différée, procédure fournisseur ou
+          traitement d’incident.
+        </p>
+        <p>
           Le plan s’arrête si un compte n’est pas récupérable, si une sauvegarde
           échoue, si un droit est contesté ou si des données semblent
           compromises. Ce n’est pas un retard honteux : c’est une information
@@ -742,7 +1176,7 @@ export default function Page() {
         </p>
 
         <h2 id="suite">
-          9. Une fois les accès repris, décidez sans réécriture réflexe
+          12. Une fois les accès repris, décidez sans réécriture réflexe
         </h2>
         <p>
           La passation ne répond pas à toutes les questions techniques. Elle
@@ -792,30 +1226,11 @@ export default function Page() {
           ))}
         </div>
         <p>
-          Les droits sur le code restent un sujet distinct. En droit français,
-          le{" "}
-          <a
-            href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278868"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Code de la propriété intellectuelle reconnaît les droits de l’auteur
-            du seul fait de la création
-          </a>{" "}
-          . Par ailleurs,{" "}
-          <a
-            href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278958"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            l’article L131-3 demande notamment que les droits cédés soient
-            identifiés et leur exploitation délimitée
-          </a>
-          . Salarié, freelance, créations antérieures, bibliothèques et médias
-          peuvent suivre des règles différentes. Ne concluez ni à partir d’une
-          facture payée, ni à partir du titulaire du compte GitHub ; faites
-          examiner un contrat ou un litige important par un professionnel du
-          droit.
+          Les comptes, droits, licences tierces et copies de données restent
+          soumis aux contrôles de la section 5. Un TCO favorable ne corrige ni
+          une absence de droit d’exploitation, ni une obligation de restitution,
+          ni un composant hors support. À l’inverse, une inquiétude juridique
+          non qualifiée ne suffit pas à commander la réécriture la plus chère.
         </p>
         <p>
           Une fois l’outil repris, le guide sur le{" "}
@@ -826,12 +1241,227 @@ export default function Page() {
           et sortie. La passation protège le présent ; la maintenance organise
           ce qui se passe ensuite.
         </p>
+
+        <h2 id="plan-sortie">13. Écrivez dès maintenant la prochaine sortie</h2>
+        <p>
+          Une reprise premium ne se termine pas lorsque Sam est retiré. Elle
+          doit rendre la prochaine transition moins dépendante de Nina, Malik ou
+          d’un nouveau prestataire. Le plan de sortie devient un actif vivant :
+          propriétaires, coûts, documentation, assistance, jalons, risques,
+          données et preuves sont revus pendant la relation, pas la veille de sa
+          fin.
+        </p>
+        <div className="not-prose my-6 overflow-x-auto rounded-2xl border border-zinc-200 dark:border-zinc-800">
+          <table className="w-full min-w-[820px] border-collapse text-left text-sm">
+            <caption className="bg-zinc-950 px-5 py-4 text-left font-bold text-white">
+              Contrat léger de sortie à maintenir pendant la relation
+            </caption>
+            <thead className="bg-zinc-100 text-zinc-700 dark:bg-zinc-900 dark:text-zinc-200">
+              <tr>
+                <th className="px-4 py-3">Livrable vivant</th>
+                <th className="px-4 py-3">Contenu minimal</th>
+                <th className="px-4 py-3">Preuve</th>
+                <th className="px-4 py-3">Révision</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                [
+                  "Propriété et accès",
+                  "Titulaire entreprise, deux administrateurs, MFA, récupération et moindre privilège",
+                  "Connexion nominative et récupération testées",
+                  "À chaque arrivée, départ ou changement de rôle",
+                ],
+                [
+                  "Actifs techniques",
+                  "Code, tests, configuration, infrastructure déclarative, données, fichiers, identités et tâches",
+                  "Inventaire rapproché du service actif",
+                  "À chaque dépendance critique",
+                ],
+                [
+                  "Droits et licences",
+                  "Origine, licence, droits cédés, restrictions et créations antérieures",
+                  "Registre et contrats reliés aux composants",
+                  "À chaque ajout ou changement de licence",
+                ],
+                [
+                  "Exploitation",
+                  "Build propre, publication, retour arrière, alertes, incident, sauvegarde et restauration",
+                  "Exercice daté par une autre personne",
+                  "Selon criticité et après changement majeur",
+                ],
+                [
+                  "Données à la sortie",
+                  "Format, restitution ou destruction, copies, sauvegardes, calendrier et attestation",
+                  "Export réimporté et preuve écrite",
+                  "À chaque évolution de traitement ou contrat",
+                ],
+                [
+                  "Coûts et assistance",
+                  "Temps, tarifs, frais fournisseur, disponibilité du sortant et responsabilité de transfert",
+                  "Budget de sortie révisé dans le TCO",
+                  "Au moins à chaque renouvellement",
+                ],
+              ].map((row) => (
+                <tr
+                  key={row[0]}
+                  className="border-t border-zinc-200 align-top dark:border-zinc-800"
+                >
+                  {row.map((cell, index) =>
+                    index === 0 ? (
+                      <th
+                        key={`${row[0]}-${index}`}
+                        className="px-4 py-3 font-bold text-zinc-950 dark:text-white"
+                      >
+                        {cell}
+                      </th>
+                    ) : (
+                      <td
+                        key={`${row[0]}-${index}`}
+                        className="px-4 py-3 text-zinc-700 dark:text-zinc-300"
+                      >
+                        {cell}
+                      </td>
+                    ),
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Le{" "}
+          <a
+            href="https://www.gov.uk/government/publications/the-digital-data-and-technology-playbook/the-digital-data-and-technology-playbook"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Digital, Data and Technology Playbook britannique
+          </a>{" "}
+          traite la sortie et le transfert de connaissances comme des éléments à
+          préparer pendant la relation. C’est ici un benchmark de commande
+          publique, pas une règle applicable telle quelle à une PME française.
+          L’{" "}
+          <a
+            href="https://www.cyber.gov.au/about-us/advisories/protecting-against-cyber-threats-managed-service-providers-and-their-customers"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            avis conjoint publié par l’Australian Signals Directorate
+          </a>{" "}
+          insiste, dans son périmètre de services managés, sur MFA, moindre
+          privilège et suppression des comptes devenus inutiles. Adaptez ces
+          principes à la taille et au risque de votre SaaS.
+        </p>
+
+        <h2 id="sources">
+          14. Sources contrôlées, limites et position du cabinet
+        </h2>
+        <p>
+          Les sources officielles ci-dessous ont été revérifiées le 28 juillet
+          2026. Les pages fournisseurs décrivent leur produit à cette date ;
+          elles ne créent pas une règle universelle de transfert. Les textes
+          juridiques ne remplacent pas l’analyse de votre contrat, de vos rôles
+          RGPD et de chaque composant.
+        </p>
+        <ul>
+          <li>
+            <a
+              href="https://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub — transfert d’un dépôt
+            </a>{" "}
+            : collaborateurs, webhooks, services, secrets et clés de déploiement
+            restent à revoir.
+          </li>
+          <li>
+            <a
+              href="https://vercel.com/docs/projects/transferring-projects"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Vercel — transfert d’un projet
+            </a>{" "}
+            : page mise à jour le 25 novembre 2025 et consultée le 28 juillet
+            2026 ; intégrations, journaux, données de surveillance, Blob et Edge
+            Config suivent des règles distinctes.
+          </li>
+          <li>
+            <a
+              href="https://docs.stripe.com/billing/subscriptions/import-subscriptions-toolkit"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Stripe — migration des abonnements
+            </a>{" "}
+            : préparation, bac à sable, calendrier et prévention de la double
+            facturation.
+          </li>
+          <li>
+            <a
+              href="https://www.cnil.fr/fr/securite-gerer-les-habilitations"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              CNIL — gérer les habilitations
+            </a>
+            ,{" "}
+            <a
+              href="https://www.cnil.fr/fr/sous-traitance-exemple-de-clauses"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              sous-traitance
+            </a>{" "}
+            et{" "}
+            <a
+              href="https://www.cnil.fr/sites/default/files/2026-05/cnil_guide_securite_personnelle.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              guide de sécurité 2026
+            </a>
+            .
+          </li>
+          <li>
+            <a
+              href="https://csrc.nist.gov/glossary/term/recovery_time_objective"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              NIST — RTO
+            </a>{" "}
+            et{" "}
+            <a
+              href="https://csrc.nist.gov/glossary/term/recovery_point_objective"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              RPO
+            </a>
+            .
+          </li>
+        </ul>
+        <InfoBox variant="blue" title="Notre conflit d’intérêt est explicite">
+          Hagnéré Code peut vendre audit, maintenance, migration et réécriture.
+          Notre avis par défaut est pourtant de reprendre et stabiliser avant de
+          réécrire. Dans le scénario publié, la stabilisation coûte 133 300 € de
+          moins que la réécriture. Nous ne changeons d’avis que lorsqu’une
+          contrainte prouvée — sécurité, dépendance hors support, coût
+          récurrent, architecture incompatible ou valeur commerciale — justifie
+          le surcoût sur l’horizon retenu.
+        </InfoBox>
         <GuideInlineCTA
           title="Faire vérifier le registre de passation de votre SaaS"
           description="Envoyez la situation, les comptes déjà identifiés et les blocages connus. Quentin Hagnéré relit votre demande et vous indique le prochain contrôle utile, y compris si une action plus simple suffit ou si la reprise doit être reportée. Cette première orientation ne vous oblige à commander aucune prestation."
           tags={["Lecture directe", "Priorités concrètes", "Sans engagement"]}
           ctaLabel="Décrire la reprise du SaaS"
           ctaHref="/demarrer-un-projet"
+          ctaService="saas"
+          ctaSource="guide-reprise-saas-freelance"
+          showPhone={false}
         />
       </GuideLayout>
     </GuidesShell>

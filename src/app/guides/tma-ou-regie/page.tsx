@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import {
+  FormulaBox,
   GuideInlineCTA,
   GuideTable,
   GuideToc,
@@ -8,104 +8,30 @@ import {
 } from "@/components/guides/guide-content-blocks";
 import { GuideLayout } from "@/components/guides/guide-layout";
 import { GuidesShell } from "@/components/guides/GuidesShell";
-import { formatGuideDate, getGuide, guideRobots, guideUrl } from "@/lib/guides";
-import { OG_BASE, SITE_URL } from "@/lib/seo";
+import { TmaTcoCalculator } from "@/components/guides/TmaTcoCalculator";
+import { formatGuideDate, getGuide } from "@/lib/guides";
+import {
+  buildGuideMetadata,
+  buildGuideStructuredData,
+} from "@/lib/guide-page-seo";
 
 const guide = getGuide("tma-ou-regie");
 
-export const metadata: Metadata = {
-  title: guide.title,
-  description: guide.metaDescription,
-  authors: [{ name: "Quentin Hagnéré" }],
-  creator: "Hagnéré Code",
-  publisher: "Hagnéré Code",
-  robots: guideRobots(guide),
-  alternates: { canonical: guideUrl(guide) },
-  openGraph: {
-    ...OG_BASE,
-    type: "article",
-    title: guide.cardTitle,
-    description: guide.metaDescription,
-    url: guideUrl(guide),
-    images: [
-      {
-        url: guideUrl(guide) + "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Choisir comment acheter la maintenance d’une application entre capacité, temps, lot et formule hybride",
-      },
-    ],
-    publishedTime: guide.datePublished + "T09:00:00+02:00",
-    modifiedTime: guide.dateModified + "T09:00:00+02:00",
-    authors: [SITE_URL + "/equipe"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: guide.cardTitle,
-    description: guide.metaDescription,
-    images: [guideUrl(guide) + "/opengraph-image"],
-  },
-};
+export const metadata = buildGuideMetadata(
+  guide,
+  "TMA ou régie : coûts renseignés, seuils et couverture sur douze mois",
+);
 
-const articleJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: guide.heroTitle,
-  description: guide.metaDescription,
-  url: guideUrl(guide),
-  mainEntityOfPage: { "@type": "WebPage", "@id": guideUrl(guide) },
-  image: [guideUrl(guide) + "/opengraph-image"],
-  datePublished: guide.datePublished,
-  dateModified: guide.dateModified,
-  inLanguage: "fr-FR",
-  articleSection: guide.section,
-  isPartOf: {
-    "@type": "WebPage",
-    "@id": SITE_URL + "/guides",
-    name: "Guides web Hagnéré Code",
-  },
-  author: {
-    "@type": "Person",
-    name: "Quentin Hagnéré",
-    jobTitle: "Fondateur de Hagnéré Code",
-    url: SITE_URL + "/equipe",
-    sameAs: ["https://www.linkedin.com/in/quentin-hagnere"],
-    worksFor: { "@id": SITE_URL + "/#organization" },
-  },
-  publisher: {
-    "@type": "Organization",
-    "@id": SITE_URL + "/#organization",
-    name: "Hagnéré Code",
-    url: SITE_URL,
-    logo: { "@type": "ImageObject", url: SITE_URL + "/logos/logo-dark.png" },
-  },
-});
-
-const breadcrumbJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: SITE_URL + "/" },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Guides",
-      item: SITE_URL + "/guides",
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      name: "TMA ou régie",
-      item: guideUrl(guide),
-    },
-  ],
-});
+const [articleJsonLd, breadcrumbJsonLd] = buildGuideStructuredData(
+  guide,
+  "TMA ou régie",
+);
 
 const faqItems = [
   {
     question: "Une TMA est-elle forcément facturée au forfait ?",
     answer:
-      "Non. La TMA décrit la maintenance confiée à un tiers ; elle n’impose pas à elle seule un prix fixe. Le contrat peut prévoir une capacité récurrente, du temps consommé, des lots bornés ou une combinaison. Il faut lire les règles de priorité, de consommation et d’acceptation, pas seulement le titre de l’offre.",
+      "Non. La TMA décrit la maintenance confiée à un tiers ; elle n’impose pas à elle seule un prix fixe. Le contrat peut prévoir une capacité récurrente, du temps consommé, des lots clairement définis ou une combinaison. Il faut lire les règles de priorité, de consommation et d’acceptation, pas seulement le titre de l’offre.",
   },
   {
     question: "La régie signifie-t-elle qu’il n’y a aucun engagement ?",
@@ -136,58 +62,7 @@ const faqItems = [
     question:
       "Faut-il signer si personne dans l’entreprise ne peut prioriser les demandes ?",
     answer:
-      "Mieux vaut d’abord nommer une personne responsable ou limiter la mission à un diagnostic borné. Sans interlocuteur capable d’expliquer le besoin, de choisir l’ordre et d’accepter le résultat, une prestation au temps comme un forfait risque de produire des attentes contradictoires.",
-  },
-];
-
-const modes = [
-  {
-    title: "Capacité récurrente",
-    summary:
-      "Vous réservez régulièrement une disponibilité ou un volume pour les demandes qui reviennent.",
-    good: "Les corrections, l’entretien et les petites évolutions arrivent tous les mois et l’application doit rester suivie.",
-    watch:
-      "Précisez les priorités, ce qui consomme la capacité, le sort du temps non utilisé et le traitement des dépassements. La capacité de travail ne fixe pas à elle seule les plages ni le délai de prise en charge d’un incident.",
-    decision:
-      "Choisissez-la pour un flux régulier ; écrivez séparément la couverture de support nécessaire lorsque l’interruption métier est critique.",
-    border:
-      "border-emerald-200 bg-emerald-50/70 dark:border-emerald-900 dark:bg-emerald-950/20",
-  },
-  {
-    title: "Temps réellement mobilisé",
-    summary:
-      "Vous payez le temps consacré aux demandes que votre entreprise autorise et réordonne.",
-    good: "Les priorités changent souvent, la cause d’un problème doit être explorée ou le résultat ne peut pas encore être décrit précisément.",
-    watch:
-      "Nommez la personne qui décide, exigez des points d’arrêt et reliez chaque temps passé à une demande et à un résultat observable.",
-    decision:
-      "Choisissez-le pour apprendre et décider progressivement, pas pour ouvrir un compteur sans fin.",
-    border:
-      "border-blue-200 bg-blue-50/70 dark:border-blue-900 dark:bg-blue-950/20",
-  },
-  {
-    title: "Lot borné",
-    summary:
-      "Vous convenez d’un résultat délimité, de conditions d’acceptation et d’un prix pour ce travail.",
-    good: "La fonction attendue, les cas à tester et les dépendances importantes sont suffisamment connus.",
-    watch:
-      "Écrivez les hypothèses, les exclusions et la manière de traiter une demande qui change pendant le travail.",
-    decision:
-      "Choisissez-le quand votre entreprise sait décrire ce qu’elle acceptera comme terminé.",
-    border:
-      "border-violet-200 bg-violet-50/70 dark:border-violet-900 dark:bg-violet-950/20",
-  },
-  {
-    title: "Formule hybride",
-    summary:
-      "Vous séparez la continuité de l’application, les explorations et les évolutions bien définies.",
-    good: "Le même logiciel reçoit à la fois des incidents récurrents, des questions incertaines et de vrais mini-projets.",
-    watch:
-      "Les factures et les demandes doivent montrer clairement quelle règle s’applique à chaque famille.",
-    decision:
-      "Choisissez-la lorsque forcer toutes les demandes dans un seul mode rendrait le service illisible.",
-    border:
-      "border-amber-200 bg-amber-50/70 dark:border-amber-900 dark:bg-amber-950/20",
+      "Mieux vaut d’abord nommer une personne responsable ou limiter la mission à un diagnostic court, avec un point d’arrêt. Sans interlocuteur capable d’expliquer le besoin, de choisir l’ordre et d’accepter le résultat, une prestation au temps comme un forfait risque de produire des attentes contradictoires.",
   },
 ];
 
@@ -220,7 +95,7 @@ const requestFields = [
   {
     field: "Taille connue",
     question:
-      "Le travail est-il borné, encore à explorer ou dépendant d’un tiers ?",
+      "Le travail est-il suffisamment défini, encore à explorer ou dépendant d’un tiers ?",
     entry: "Écrivez « à explorer » lorsque vous ne savez pas encore.",
   },
   {
@@ -235,8 +110,9 @@ const requestFields = [
     entry: "Une personne nommée par rôle, disponible aux moments nécessaires.",
   },
   {
-    field: "Mode candidat",
-    question: "Capacité récurrente, temps piloté, lot borné ou report ?",
+    field: "Première façon de payer à vérifier",
+    question:
+      "Jours réservés, temps réellement utilisé, prix pour un résultat défini ou report ?",
     entry:
       "Une première hypothèse à discuter, jamais une étiquette automatique.",
   },
@@ -250,12 +126,12 @@ const sampleRequests = [
   ],
   [
     "Recherche parfois lente, cause inconnue",
-    "Diagnostic borné — prix fixe ou temps plafonné selon l’offre",
+    "Diagnostic limité — prix fixe ou temps utilisé jusqu’à un plafond convenu",
     "Il faut acheter une conclusion limitée avant de promettre une correction. Une note remet les mesures, les faits confirmés, les causes écartées, les inconnues restantes et la décision d’arrêter ou de préparer la suite.",
   ],
   [
     "Validation d’un responsable avant l’envoi",
-    "Lot borné",
+    "Lot clairement défini",
     "Le parcours, les rôles et les cas d’acceptation sont descriptibles : les profils autorisés valident ou refusent, et l’envoi reste bloqué tant que la décision manque.",
   ],
   [
@@ -292,19 +168,138 @@ const sharedControls = [
   },
 ];
 
+const alternatives = [
+  {
+    title: "Intervenir seulement au besoin",
+    fit: "Quelques demandes rares, contournables et sans besoin de réponse immédiate.",
+    warning:
+      "Vous acceptez le délai pour retrouver une personne disponible, lui redonner le contexte et rouvrir les accès.",
+  },
+  {
+    title: "Garder ou recruter la compétence en interne",
+    fit: "Le travail revient assez souvent pour occuper une compétence et l’entreprise sait l’encadrer.",
+    warning:
+      "Comparez le coût chargé, les congés, les spécialités manquantes, la documentation et le risque de dépendre d’une seule personne.",
+  },
+  {
+    title: "Remplacer ou retirer l’application",
+    fit: "La fin de support, l’obsolescence, le coût cumulé ou l’absence d’usage rendent la maintenance peu défendable.",
+    warning:
+      "Comparez la migration, la continuité, l’archivage, les données, les obligations et le coût de sortie avant d’arrêter.",
+  },
+];
+
+const downtimeScenarios = [
+  [
+    "Simple",
+    "5 personnes × 35 €/h × 2 h × 50 % ; aucune contribution perdue.",
+    "175 €",
+  ],
+  [
+    "Central",
+    "15 personnes × 45 €/h × 4 h × 60 % + 2 000 € de contribution non récupérée.",
+    "3 620 €",
+  ],
+  [
+    "Exigeant",
+    "50 personnes × 55 €/h × 8 h × 70 % + 20 000 € de contribution non récupérée.",
+    "35 400 €",
+  ],
+];
+
+const monthlyCapacityRows = [
+  ["Janvier", "5 j", "5 utilisés · 3 perdus · 0 en dépassement"],
+  ["Février", "7 j", "7 utilisés · 1 perdu · 0 en dépassement"],
+  ["Mars", "6 j", "6 utilisés · 2 perdus · 0 en dépassement"],
+  ["Avril", "9 j", "8 utilisés · 0 perdu · 1 en dépassement"],
+  ["Mai", "6 j", "6 utilisés · 2 perdus · 0 en dépassement"],
+  ["Juin", "7 j", "7 utilisés · 1 perdu · 0 en dépassement"],
+  ["Juillet", "5 j", "5 utilisés · 3 perdus · 0 en dépassement"],
+  ["Août", "7 j", "7 utilisés · 1 perdu · 0 en dépassement"],
+  ["Septembre", "10 j", "8 utilisés · 0 perdu · 2 en dépassement"],
+  ["Octobre", "6 j", "6 utilisés · 2 perdus · 0 en dépassement"],
+  ["Novembre", "10 j", "8 utilisés · 0 perdu · 2 en dépassement"],
+  ["Décembre", "12 j", "8 utilisés · 0 perdu · 4 en dépassement"],
+  ["Total", "90 j", "81 utilisés · 15 perdus · 9 en dépassement"],
+];
+
+const quarterlyCapacityRows = [
+  ["Janvier à mars", "18 j", "18 utilisés · 6 perdus · 0 en dépassement"],
+  ["Avril à juin", "22 j", "21 utilisés · 3 perdus · 1 en dépassement"],
+  ["Juillet à septembre", "22 j", "20 utilisés · 4 perdus · 2 en dépassement"],
+  ["Octobre à décembre", "28 j", "22 utilisés · 2 perdus · 6 en dépassement"],
+  ["Total", "90 j", "81 utilisés · 15 perdus · 9 en dépassement"],
+];
+
+const tcoComparisonRows = [
+  [
+    "Formule hybride",
+    "74 100 € de prestataire + 6 240 € de temps consacré par votre équipe.",
+    "80 340 €",
+  ],
+  [
+    "Capacité de 8 j/mois avec report annuel",
+    "72 000 € de jours réservés + 9 360 € de temps interne. Les 90 jours utiles peuvent être répartis sur l’année.",
+    "81 360 €",
+  ],
+  [
+    "Temps réellement mobilisé",
+    "90 j × 800 € = 72 000 € ; 5 h internes/semaine × 52 × 60 € = 15 600 €.",
+    "87 600 €",
+  ],
+  [
+    "Capacité de 8 j/mois sans report",
+    "72 000 € de jours réservés + 9 j de dépassement × 850 € + 9 360 € de temps interne.",
+    "89 010 €",
+  ],
+  [
+    "Lots clairement définis",
+    "79 800 € pour les trois familles de travaux + 12 480 € de temps interne.",
+    "92 280 €",
+  ],
+  [
+    "Interventions ponctuelles",
+    "90 j utiles + 6 j de remise en contexte à 850 € + 21 840 € de temps consacré par votre équipe.",
+    "103 440 €",
+  ],
+  [
+    "Compétence internalisée",
+    "102 000 € de coût chargé, outils et relais + 6 240 € de temps d’encadrement.",
+    "108 240 € de trésorerie",
+  ],
+];
+
+const capacityCarryRows = [
+  [
+    "Aucun report entre les mois",
+    "81 jours utilisés · 15 perdus · 9 jours de dépassement à 850 €",
+    "89 010 €",
+  ],
+  [
+    "Report à l’intérieur de chaque trimestre",
+    "86 jours utilisés · 10 perdus · 4 jours de dépassement à 850 €",
+    "84 760 €",
+  ],
+  [
+    "Mutualisation sur toute l’année",
+    "90 jours utilisés · 6 inutilisés · aucun dépassement",
+    "81 360 €",
+  ],
+];
+
 export default function Page() {
   return (
     <GuidesShell>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: articleJsonLd.replace(/</g, "\\u003c"),
+          __html: JSON.stringify(articleJsonLd).replace(/</g, "\\u003c"),
         }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: breadcrumbJsonLd.replace(/</g, "\\u003c"),
+          __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c"),
         }}
       />
 
@@ -314,10 +309,10 @@ export default function Page() {
           { label: "TMA ou régie" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Votre application accumule des bugs et de petites évolutions. Faut-il réserver un forfait de maintenance ou payer les jours réellement passés ? La réponse dépend du travail acheté, de son impact, de sa fréquence et de la personne qui peut décider."
+        heroDescription="Forfait mensuel, jours consommés ou formule mixte ? Comparez le même flux sur douze mois, le temps de votre équipe et le prix d’une panne."
         heroAction={{
-          href: "#reclassement",
-          label: "Classer mes demandes",
+          href: "#comparatif-couts",
+          label: "Comparer les coûts",
         }}
         author={{
           name: "Quentin Hagnéré",
@@ -327,20 +322,20 @@ export default function Page() {
         updatedLabel={"Mis à jour le " + formatGuideDate(guide.dateModified)}
         keyPoints={[
           {
-            number: "01",
-            title: "TMA expliquée sans jargon",
+            number: "7",
+            title: "options chiffrées",
             description: "",
             color: "blue",
           },
           {
-            number: "02",
-            title: "Quatre modes comparés",
+            number: "2",
+            title: "seuils de bascule",
             description: "",
             color: "violet",
           },
           {
-            number: "03",
-            title: "Vos demandes classées",
+            number: "3",
+            title: "coûts de panne",
             description: "",
             color: "emerald",
           },
@@ -364,30 +359,34 @@ export default function Page() {
         showSidebarCta={false}
       >
         <p className="lead">
-          Votre application accumule bugs, urgences et petites évolutions. Un
-          prestataire vous propose une TMA, un forfait ou des jours en régie,
-          mais ces mots ne disent pas encore ce que vous achetez. La tierce
-          maintenance applicative, ou <strong>TMA</strong>, consiste à confier à
-          un tiers la correction, l’entretien et parfois l’évolution de
-          l’application. La <strong>régie</strong> désigne souvent une façon de
-          payer le temps réellement mobilisé. Vous ne comparez donc pas deux
-          solutions exactement équivalentes. Nommez d’abord ce que vous achetez
-          : une continuité, un diagnostic ou une livraison. Choisissez ensuite
-          sa facturation : prix fixe, capacité réservée ou temps mobilisé. La
-          fréquence ne suffit pas ; l’impact d’une interruption, les inconnues
-          et la façon d’accepter le résultat comptent aussi. Ce guide vous aide
-          à décider à partir des trois derniers mois, puis à comparer des
-          propositions sur une base commune.
+          <strong>
+            Vous comparez un forfait mensuel avec une offre facturée au jour.
+            Laquelle coûtera le moins cher sans laisser votre application sans
+            suivi ?
+          </strong>{" "}
+          La <strong>TMA</strong> — la maintenance confiée à un prestataire —
+          peut être facturée au forfait, au temps, par lot ou avec plusieurs
+          règles. La « régie » désigne généralement du temps réellement utilisé
+          : ce n’est donc pas l’opposé d’une TMA. Pour choisir, partez de vos
+          demandes réelles : bugs récurrents, évolutions, temps de votre équipe
+          et coût d’une panne. Notre avis : réservez quelques jours chaque mois
+          pour les corrections qui reviennent ; faites chiffrer séparément les
+          évolutions bien définies ; payez seulement le temps utilisé, jusqu’au
+          plafond convenu, quand la demande est rare ou encore incertaine. Le
+          guide compare sept options sur le même exemple fictif de 90 jours et
+          vous montre quand le verdict change.
         </p>
 
         <InfoBox variant="emerald" title="La réponse courte">
           <p className="m-0">
-            Une TMA peut être payée au forfait, au temps, par lot ou avec un
-            mélange de ces règles. Commencez par classer vos demandes réelles
-            selon leur impact, leur répétition, leurs inconnues et leur résultat
-            attendu. Séparez ensuite le service acheté de la facturation. Si
-            personne ne peut prioriser ni accepter le travail, réglez d’abord ce
-            problème d’organisation.
+            Une TMA peut être payée au forfait, au temps, par lot ou avec
+            plusieurs règles. Comparez sur le même historique le prestataire, le
+            temps passé par votre équipe à trier, décider et vérifier, la mise
+            en route, la sortie et ce qui reste à votre risque. Ne réservez pas
+            des jours chaque mois uniquement parce que le mot « maintenance »
+            figure sur le devis. Et gardez ouvertes les options moins
+            commerciales : intervention au besoin, compétence interne,
+            remplacement ou retrait de l’application.
           </p>
         </InfoBox>
 
@@ -398,42 +397,54 @@ export default function Page() {
               label: "1. TMA et régie ne désignent pas la même chose",
             },
             {
-              id: "historique",
-              label: "2. Commencez par trois mois de demandes réelles",
+              id: "options",
+              label:
+                "2. Vérifiez d’abord si un contrat récurrent est nécessaire",
             },
             {
-              id: "modes",
-              label: "3. Quatre façons d’acheter le travail de maintenance",
+              id: "historique",
+              label: "3. Commencez par trois mois de demandes réelles",
             },
             {
               id: "choisir",
-              label:
-                "4. Choisissez selon ce qui revient, change ou peut être borné",
+              label: "4. Choisissez comment payer chaque demande",
             },
             {
               id: "hybride",
-              label: "5. Une formule hybride sépare continuité et évolutions",
+              label: "5. Combinez les règles lorsque les demandes diffèrent",
+            },
+            {
+              id: "tco",
+              label: "6. Comparez sept options sur douze mois",
+            },
+            {
+              id: "seuils",
+              label: "7. Testez les seuils qui renversent le verdict",
+            },
+            {
+              id: "panne",
+              label: "8. Chiffrez ce que vaut réellement une couverture",
             },
             {
               id: "controles",
               label:
-                "6. Gardez les mêmes règles de contrôle dans chaque modèle",
+                "9. Gardez les mêmes règles de contrôle dans chaque modèle",
             },
             {
               id: "reclassement",
-              label: "7. Reclassez maintenant vos demandes de maintenance",
+              label: "10. Reclassez maintenant vos demandes de maintenance",
             },
             {
               id: "comparer",
-              label: "8. Comparez les propositions sur le même historique",
+              label: "11. Comparez les propositions sur le même historique",
             },
             {
               id: "signer",
-              label: "9. Décidez s’il faut signer maintenant ou attendre",
+              label: "12. Décidez s’il faut signer, remplacer ou attendre",
             },
             {
               id: "accompagnement",
-              label: "10. Quand Hagnéré Code peut réellement vous aider",
+              label: "13. Quand Hagnéré Code peut réellement vous aider",
             },
             {
               id: "sources",
@@ -465,21 +476,6 @@ export default function Page() {
         </p>
 
         <p>
-          Une{" "}
-          <a
-            href="https://www.cigref.fr/cigref_publications/RapportsContainer/Parus2004/2004_-_Charte_CIGREF_Syntec_informatique_-_infogerance_et_TMA_web.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            charte professionnelle Cigref–Syntec publiée en 2004
-          </a>{" "}
-          emploie également TMA pour la prise en charge par un prestataire de
-          tout ou partie de la maintenance et de l’évolution d’un système
-          applicatif. Cette source historique confirme le sens général du terme
-          ; elle ne prouve ni les prix ni les pratiques commerciales actuelles.
-        </p>
-
-        <p>
           La régie répond à une autre question :{" "}
           <strong>
             « comment le travail sera-t-il commandé et facturé ? »
@@ -505,8 +501,8 @@ export default function Page() {
             ],
             [
               "Comment le travail est-il acheté ?",
-              "Capacité récurrente, temps consommé, lot borné ou combinaison, avec les règles de consommation.",
-              "Les demandes courantes utilisent la capacité ; une évolution importante reçoit un devis séparé.",
+              "Jours réservés, temps réellement utilisé, prix pour un résultat défini ou combinaison, avec les règles de consommation.",
+              "Les demandes courantes utilisent les jours réservés ; une évolution importante reçoit un devis séparé.",
             ],
             [
               "Qui décide que le travail commence et se termine ?",
@@ -518,13 +514,16 @@ export default function Page() {
 
         <p>
           Séparez surtout <strong>ce que vous achetez</strong> de{" "}
-          <strong>la manière dont vous le payez</strong>. La continuité peut
-          être facturée par une somme récurrente, une capacité réservée ou du
-          temps consommé. Un diagnostic borné peut recevoir un prix fixe ou un
-          temps plafonné. Une livraison définie peut être payée comme un lot ou
-          selon le temps mobilisé. Le prix ne transforme donc pas, à lui seul,
-          un diagnostic en livraison ni une capacité de développement en
-          engagement de support.
+          <strong>la manière dont vous le payez</strong>. Par « continuité »,
+          nous entendons ici un suivi régulier qui évite de rechercher un
+          prestataire à chaque correction ; cela ne garantit ni une astreinte ni
+          un délai de remise en service. Ce suivi peut être facturé par une
+          somme récurrente, des jours réservés ou du temps réellement utilisé.
+          Un diagnostic court peut recevoir un prix fixe ou un plafond de temps.
+          Une livraison définie peut être payée comme un ensemble de travaux à
+          prix convenu ou selon le temps mobilisé. Le prix ne transforme donc
+          pas, à lui seul, un diagnostic en livraison ni des jours de
+          développement en engagement de support.
         </p>
 
         <InfoBox variant="amber" title="Le titre commercial ne suffit pas">
@@ -537,7 +536,60 @@ export default function Page() {
           </p>
         </InfoBox>
 
-        <h2 id="historique">2. Commencez par trois mois de demandes réelles</h2>
+        <h2 id="options">
+          2. Vérifiez d’abord si un contrat récurrent est nécessaire
+        </h2>
+
+        <p>
+          Le choix ne se limite pas à un forfait ou à des jours facturés. Avec
+          quelques demandes rares, vous pouvez intervenir seulement au besoin.
+          Si le travail occupe durablement une personne et que vous savez
+          l’encadrer, une compétence interne peut devenir plus rationnelle. Si
+          le logiciel n’est plus supporté, peu utilisé ou trop coûteux à
+          maintenir, comparez son remplacement ou son retrait avant d’ajouter un
+          abonnement.
+        </p>
+
+        <div className="not-prose my-7 grid gap-3 md:grid-cols-2">
+          {alternatives.map((option, index) => (
+            <article
+              key={option.title}
+              className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950"
+            >
+              <div className="flex items-start gap-3">
+                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-xs font-bold text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300">
+                  {index + 1}
+                </span>
+                <div>
+                  <h3 className="m-0 text-base font-semibold text-zinc-950 dark:text-white">
+                    {option.title}
+                  </h3>
+                  <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                    <strong>Bon contexte :</strong> {option.fit}
+                  </p>
+                  <p className="mb-0 mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                    <strong>À vérifier :</strong> {option.warning}
+                  </p>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <InfoBox
+          variant="blue"
+          title="Notre avis : ne contractualisez pas un abonnement pour compenser une application sans avenir"
+        >
+          <p className="m-0">
+            Si le produit n’est plus supporté, ne peut pas être sécurisé, ne
+            possède plus d’utilisateur responsable ou coûte chaque année presque
+            autant qu’une solution de remplacement crédible, comparez la
+            migration et le retrait. Une maintenance bien vendue ne transforme
+            pas une impasse technique ou métier en actif durable.
+          </p>
+        </InfoBox>
+
+        <h2 id="historique">3. Commencez par trois mois de demandes réelles</h2>
 
         <p>
           Un prestataire peut présenter son modèle préféré, mais votre
@@ -611,66 +663,11 @@ export default function Page() {
           lisible.
         </p>
 
-        <h2 id="modes">3. Quatre façons d’acheter le travail de maintenance</h2>
-
-        <p>
-          Les quatre catégories ci-dessous sont une grille pratique Hagnéré
-          Code, pas des définitions juridiques universelles. Une proposition
-          peut employer d’autres mots. Recherchez le fonctionnement concret qui
-          se cache derrière eux.
-        </p>
-
-        <div className="not-prose my-7 grid gap-4 lg:grid-cols-2">
-          {modes.map((mode) => (
-            <article
-              key={mode.title}
-              className={`rounded-2xl border p-5 sm:p-6 ${mode.border}`}
-            >
-              <h3 className="m-0 text-lg font-semibold text-zinc-950 dark:text-white">
-                {mode.title}
-              </h3>
-              <p className="mb-0 mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-                {mode.summary}
-              </p>
-              <dl className="mb-0 mt-5 space-y-4">
-                <div>
-                  <dt className="text-xs font-bold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
-                    Quand cela convient
-                  </dt>
-                  <dd className="mb-0 mt-1 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-                    {mode.good}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-xs font-bold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
-                    Ce qu’il faut surveiller
-                  </dt>
-                  <dd className="mb-0 mt-1 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-                    {mode.watch}
-                  </dd>
-                </div>
-              </dl>
-              <p className="mb-0 mt-5 border-t border-zinc-900/10 pt-4 text-sm font-semibold leading-relaxed text-zinc-950 dark:border-white/10 dark:text-white">
-                {mode.decision}
-              </p>
-            </article>
-          ))}
-        </div>
-
-        <p>
-          Aucun mode ne garantit seul le prix final, le délai ou le résultat.
-          Une capacité récurrente peut être mal dimensionnée. Une prestation au
-          temps peut manquer de décisions. Un lot peut reposer sur des
-          hypothèses fragiles. Une formule hybride peut devenir illisible si
-          personne ne sait quelle règle s’applique. La bonne proposition montre
-          donc aussi qui décide et comment le travail est vérifié.
-        </p>
-
         <h2 id="choisir">
-          4. Choisissez selon ce qui revient, change ou peut être borné
+          4. Pour chaque demande, choisissez comment payer le travail
         </h2>
 
-        <h3>Réservez une capacité pour le travail qui revient réellement</h3>
+        <h3>Réservez des jours pour le travail qui revient réellement</h3>
 
         <p>
           Une capacité récurrente devient pertinente lorsque l’application
@@ -701,7 +698,9 @@ export default function Page() {
           incident. L’un n’implique pas automatiquement l’autre.
         </p>
 
-        <h3>Payez du temps piloté lorsque vous devez encore comprendre</h3>
+        <h3>
+          Payez le temps réellement utilisé lorsque la cause reste inconnue
+        </h3>
 
         <p>
           Le temps réellement mobilisé convient à une recherche de cause, à une
@@ -712,22 +711,23 @@ export default function Page() {
         </p>
 
         <p>
-          Un temps piloté possède des limites. Avant de commencer, écrivez le
-          problème, la personne autorisée à engager du travail et le premier
-          point d’arrêt. À ce point, le prestataire remet ce qu’il a confirmé,
-          écarté ou appris, le temps mobilisé et les options suivantes. Vous
-          décidez alors de continuer, de transformer la suite en lot ou de
-          reporter.
+          Ce fonctionnement possède des limites. Avant de commencer, écrivez le
+          problème, la personne autorisée à engager du travail, le plafond et le
+          premier point d’arrêt. À ce point, le prestataire remet ce qu’il a
+          confirmé, écarté ou appris, le temps mobilisé et les options
+          suivantes. Vous décidez alors de continuer, de demander un prix pour
+          une suite bien définie ou de reporter.
         </p>
 
         <h3>Demandez un lot lorsque la fin peut être vérifiée</h3>
 
         <p>
-          Un lot borné convient à une évolution dont l’entreprise connaît les
-          utilisateurs, les règles essentielles et les scénarios d’acceptation.
-          Le sujet n’a pas besoin d’être décrit par cent pages : il doit être
-          assez clair pour que les deux parties reconnaissent ce qui est inclus,
-          ce qui ne l’est pas et ce qui montrera que la fonction marche.
+          Un lot clairement défini convient à une évolution dont l’entreprise
+          connaît les utilisateurs, les règles essentielles et les scénarios
+          d’acceptation. Le sujet n’a pas besoin d’être décrit par cent pages :
+          il doit être assez clair pour que les deux parties reconnaissent ce
+          qui est inclus, ce qui ne l’est pas et ce qui montrera que la fonction
+          marche.
         </p>
 
         <p>
@@ -744,14 +744,14 @@ export default function Page() {
         >
           <p className="m-0">
             Une même application peut recevoir un suivi récurrent, une
-            exploration ponctuelle et une évolution bornée. Exiger un modèle
-            unique pour tout simplifie parfois la facture, mais peut rendre les
-            responsabilités et les résultats beaucoup moins clairs.
+            exploration ponctuelle et une évolution clairement définie. Exiger
+            un modèle unique pour tout simplifie parfois la facture, mais peut
+            rendre les responsabilités et les résultats beaucoup moins clairs.
           </p>
         </InfoBox>
 
         <h2 id="hybride">
-          5. Une formule hybride sépare la continuité des évolutions
+          5. Combinez les règles lorsque les demandes sont différentes
         </h2>
 
         <p>
@@ -773,13 +773,13 @@ export default function Page() {
         <p>
           Dans cet exemple fictif, la solution n’est ni « tout au forfait » ni «
           tout en régie ». Une capacité récurrente suit les anomalies d’export.
-          La lenteur reçoit d’abord un diagnostic borné : il se termine par les
+          La lenteur reçoit d’abord un diagnostic limité : il se termine par les
           mesures, les faits établis, les causes écartées, les inconnues et une
-          décision d’arrêt ou de suite. Ce diagnostic pourrait être facturé à un
-          prix fixe ou au temps plafonné sans changer ce résultat attendu. La
-          validation avant envoi devient une livraison séparée. Le tableau de
-          bord reste en attente tant que personne ne sait quelle décision il
-          doit faciliter.
+          décision d’arrêt ou de suite. Ce diagnostic pourrait être facturé à
+          prix fixe ou selon le temps utilisé, jusqu’à un plafond convenu, sans
+          changer ce résultat attendu. La validation avant envoi devient une
+          livraison séparée. Le tableau de bord reste en attente tant que
+          personne ne sait quelle décision il doit faciliter.
         </p>
 
         <p>
@@ -790,8 +790,233 @@ export default function Page() {
           promesse de livraison avant que sa cause soit comprise.
         </p>
 
+        <h2 id="tco">
+          6. Comparez le même flux sur douze mois, temps de votre équipe compris
+        </h2>
+
+        <p>
+          Comparons maintenant les sept options avec le même besoin et le même
+          coût horaire interne. Le cas est entièrement fictif : 48 jours de
+          travaux récurrents, 18 jours de diagnostic et 24 jours d’évolutions
+          définies, soit 90 jours sur un an. Une heure de votre équipe est
+          valorisée à 60 €. Les montants ne sont ni des tarifs Hagnéré Code ni
+          une moyenne de marché. Ils servent uniquement à rendre la méthode
+          vérifiable.
+        </p>
+
+        <p>
+          <strong>
+            Les montants ci-dessous ne sont pas encore des coûts complets.
+          </strong>{" "}
+          Ils additionnent uniquement le prestataire — ou le coût annuel de la
+          personne recrutée — et le temps de votre équipe pour décider et
+          vérifier. La reprise initiale, les outils, la sortie et le dommage
+          éventuel d’une panne restent inconnus dans l’exemple. Ils ne valent
+          pas zéro : ajoutez-les ou marquez-les « à confirmer » avant d’utiliser
+          le classement pour signer.
+        </p>
+
+        <div id="comparatif-couts" className="scroll-mt-24">
+          <GuideTable
+            caption="Coûts renseignés dans l’exemple fictif — sept options sur douze mois"
+            headers={["Option", "Calcul annoncé", "Coût renseigné"]}
+            rows={tcoComparisonRows}
+          />
+        </div>
+
+        <FormulaBox>
+          {
+            "Coût complet sur la période\n= prestataire ou équipe interne\n+ temps de votre équipe pour décider et vérifier\n+ reprise initiale et outils\n+ coût de changement ou de sortie\n+ pertes restant à votre charge\n\nTant qu’un poste est inconnu, le résultat reste un coût partiel à compléter."
+          }
+        </FormulaBox>
+
+        <p>
+          Sur les seuls coûts renseignés, l’hybride est le plus bas. Son avance
+          sur les jours réservés avec report annuel n’est toutefois que de 1 020
+          €, soit 1,3 %. Ce n’est pas un verdict robuste : deux jours variables
+          supplémentaires suffisent à changer l’ordre. Les postes inconnus
+          peuvent aussi dépasser cet écart. En revanche, les mêmes jours
+          réservés sans report coûtent déjà 8 670 € de plus parce que quinze
+          jours expirent alors que neuf autres doivent être rachetés. Oublier
+          cinq heures de travail interne par semaine donnerait enfin au temps
+          passé une économie artificielle de 15 600 €.
+        </p>
+
+        <p>
+          Le classement est la réponse rapide ; la répartition du travail
+          explique maintenant pourquoi il change. Avec huit jours non
+          reportables par mois, les périodes calmes laissent expirer quinze
+          jours tandis que les pointes obligent à en racheter neuf.
+        </p>
+
+        <div className="hidden md:block">
+          <GuideTable
+            caption="Le besoin réel mois par mois face à huit jours réservés sans report"
+            headers={[
+              "Mois",
+              "Besoin de maintenance",
+              "Ce que deviennent les huit jours réservés",
+            ]}
+            rows={monthlyCapacityRows}
+          />
+        </div>
+
+        <div className="md:hidden">
+          <GuideTable
+            caption="Le même besoin regroupé par trimestre pour la lecture mobile"
+            headers={[
+              "Trimestre",
+              "Besoin de maintenance",
+              "Effet des jours non reportables",
+            ]}
+            rows={quarterlyCapacityRows}
+          />
+        </div>
+
+        <p>
+          Le total annuel masque ici le problème. L’entreprise achète 96 jours
+          mais n’en utilise que 81 dans le mois où ils sont disponibles. Quinze
+          jours expirent et les pointes d’avril, septembre, novembre et décembre
+          créent neuf jours de dépassement. Dire simplement « 90 jours
+          nécessaires face à 96 jours achetés » sous-estimerait donc la facture
+          si le contrat interdit tout report.
+        </p>
+
+        <InfoBox variant="emerald" title="Notre position professionnelle">
+          <p className="m-0">
+            Pour un flux mixte comme celui-ci, nous commencerions souvent par
+            quelques jours réservés aux corrections qui reviennent, un plafond
+            pour rechercher une cause encore inconnue et un prix séparé pour
+            chaque évolution bien définie. Mais nous déconseillons ce montage si
+            l’historique montre peu de demandes ou si le temps réellement
+            utilisé, correctement contrôlé, reste moins cher. La bonne
+            recommandation doit pouvoir conclure à moins de récurrence, pas
+            seulement à un abonnement.
+          </p>
+        </InfoBox>
+
+        <TmaTcoCalculator />
+
+        <p>
+          Vous pouvez aussi{" "}
+          <a
+            href="/ressources/comparateur-tma-regie-tco.csv"
+            download
+            className="font-semibold"
+          >
+            télécharger le comparateur TMA/régie au format CSV
+          </a>
+          . Il contient les sept options fictives, les formules, un statut pour
+          les postes à confirmer et quatre lignes vierges. Le calcul s’effectue
+          dans votre tableur ; aucune donnée n’est transmise à Hagnéré Code.
+        </p>
+
+        <h2 id="seuils">7. Testez les seuils qui renversent le verdict</h2>
+
+        <p>
+          Un total isolé donne une fausse certitude. Faites varier les trois
+          éléments que votre entreprise connaît le moins : le volume de travail,
+          la règle de report et le temps nécessaire pour trier, répondre,
+          décider et vérifier. Dans l’exemple, la partie fixe de l’hybride vaut
+          38 400 € par an, les 42 jours variables coûtent 850 € chacun et ce
+          temps interne vaut 6 240 €.
+        </p>
+
+        <h3>Le report des jours change la facture sans changer le besoin</h3>
+
+        <GuideTable
+          caption="Même flux de 90 jours, trois règles fictives de report"
+          headers={[
+            "Règle du contrat",
+            "Effet sur les jours",
+            "Coût renseigné",
+          ]}
+          rows={capacityCarryRows}
+        />
+
+        <p>
+          Un report trimestriel réduit le dépassement à quatre jours et le coût
+          renseigné à 84 760 €. Une mutualisation annuelle permet d’absorber les
+          90 jours utiles dans les 96 jours achetés et ramène les coûts
+          renseignés à 81 360 €. Cela ne vaut que si les jours reportés restent
+          réellement disponibles au moment des pointes : un droit de report
+          inutilisable dans le planning du prestataire ne vaut pas un report
+          effectif.
+        </p>
+
+        <h3>Deux seuils montrent quand le classement peut s’inverser</h3>
+
+        <FormulaBox>
+          {`Seuil hybride contre capacité
+= (81 360 € - 38 400 € - 6 240 €) ÷ 850 €
+= 43,2 jours variables
+
+Seuil du temps de votre équipe pour le temps passé contre l’hybride
+= (80 340 € - 72 000 €) ÷ (52 semaines × 60 €/h)
+= 2,67 heures internes par semaine`}
+        </FormulaBox>
+
+        <p>
+          Le cas central contient 42 jours variables. Avec un report annuel
+          réellement utilisable, deux jours supplémentaires rendent donc la
+          capacité moins chère que l’hybride dans ces hypothèses. De l’autre
+          côté, si votre responsable pilote le temps passé en moins de 2 h 40
+          par semaine, cette option devient moins chère que l’hybride. Ces
+          frontières comptent davantage que l’écart initial de 1 020 €.
+        </p>
+
+        <p>
+          Testez aussi ce que le prix ne dit pas. Les compétences sont-elles
+          réellement les mêmes ? La mise en route, l’outillage et la sortie
+          sont-ils inclus ? Le plafond autorise-t-il tout le flux ou arrête-t-il
+          simplement les dépenses avant la fin du travail ? Une comparaison
+          reste fausse si le montant change mais que le service ou la charge
+          restant à votre entreprise change avec lui.
+        </p>
+
+        <h2 id="panne">
+          8. Chiffrez ce que vaut réellement une couverture renforcée
+        </h2>
+
+        <p>
+          Une capacité de développement ne garantit ni une réponse immédiate, ni
+          une astreinte, ni un rétablissement. Pour décider si une couverture
+          plus chère est rationnelle, partez de l’impact d’une interruption :
+          personnes bloquées, coût horaire, durée, part du temps réellement
+          perdue et contribution commerciale qui ne sera pas récupérée. Ne
+          comptez pas le chiffre d’affaires brut si la vente est seulement
+          décalée.
+        </p>
+
+        <GuideTable
+          caption="Trois impacts de panne entièrement fictifs"
+          headers={["Scénario", "Hypothèses", "Impact"]}
+          rows={downtimeScenarios}
+        />
+
+        <FormulaBox>
+          {`Impact central
+= 15 personnes × 45 €/h × 4 h × 60 %
++ 2 000 € de contribution non récupérée
+= 3 620 €
+
+Surcoût annuel fictif de couverture : 12 000 €
+Seuil maximal si chaque panne était entièrement évitée
+= 12 000 € ÷ 3 620 € = 3,31 pannes centrales par an`}
+        </FormulaBox>
+
+        <p>
+          Ce dernier seuil est volontairement exigeant : aucun contrat ne prouve
+          qu’il supprimera totalement chaque incident. Si la couverture réduit
+          seulement de moitié la perte moyenne, il faudrait environ 6,63 pannes
+          centrales par an pour compenser 12 000 €. Mesurez donc la fréquence,
+          la durée et l’effet réellement évité. Une promesse de « priorité »
+          sans plage couverte, moyen d’alerte et mesure de rétablissement n’a
+          pas de valeur économique calculable.
+        </p>
+
         <h2 id="controles">
-          6. Gardez les mêmes règles de contrôle dans chaque modèle
+          9. Gardez les mêmes règles de contrôle dans chaque modèle
         </h2>
 
         <p>
@@ -860,7 +1085,7 @@ export default function Page() {
         </p>
 
         <h2 id="reclassement">
-          7. Reclassez maintenant vos demandes de maintenance
+          10. Reclassez maintenant vos demandes de maintenance
         </h2>
 
         <p>
@@ -901,8 +1126,9 @@ export default function Page() {
             être la même.
           </li>
           <li>
-            <strong>Attribuez un mode candidat.</strong> Récurrent, temps
-            piloté, lot ou report. Vous pourrez le corriger après discussion.
+            <strong>Notez une première façon de payer à vérifier.</strong> Jours
+            réservés, temps réellement utilisé, prix pour un résultat défini ou
+            report. Vous pourrez la corriger après discussion.
           </li>
           <li>
             <strong>Regroupez les lignes semblables.</strong> Le volume et la
@@ -921,7 +1147,8 @@ export default function Page() {
             </li>
             <li>
               Si le résultat et ses dépendances ne peuvent pas encore être
-              bornés, un prix fermé reposera sur des hypothèses fragiles.
+              suffisamment définis, un prix fermé reposera sur des hypothèses
+              fragiles.
             </li>
           </ul>
         </InfoBox>
@@ -934,7 +1161,7 @@ export default function Page() {
         </p>
 
         <h2 id="comparer">
-          8. Comparez les propositions sur le même historique
+          11. Comparez les propositions sur le même historique
         </h2>
 
         <p>
@@ -967,9 +1194,9 @@ export default function Page() {
               "Une liste reliée à votre historique, avec exclusions et demandes à préciser.",
             ],
             [
-              "Mode d’achat",
+              "Façon de payer",
               "Quelle règle s’applique à chaque famille ?",
-              "Capacité, temps, lot ou report clairement associés aux demandes.",
+              "Jours réservés, temps utilisé, prix défini ou report clairement associés aux demandes.",
             ],
             [
               "Continuité de service",
@@ -1002,15 +1229,17 @@ export default function Page() {
         <p>
           Ajoutez ensuite le prix selon la règle réellement proposée : somme
           récurrente, temps consommé, prix du lot, mise en route et dépenses
-          séparées. Ne calculez pas ici un faux budget annuel en transformant
-          les inconnues en zéro. Le guide{" "}
+          séparées. Utilisez le comparateur de cette page sans transformer les
+          inconnues en zéro ; cochez « à confirmer » ou testez plusieurs
+          scénarios. Le guide{" "}
           <Link href="/guides/cout-maintenance-application-metier">
             consacré au coût de maintenance d’une application métier
           </Link>{" "}
-          permet de construire ce budget après avoir choisi le fonctionnement.
+          élargit ensuite le budget à l’infrastructure, aux mises à jour, à la
+          sécurité et aux autres postes techniques.
         </p>
 
-        <h2 id="signer">9. Décidez s’il faut signer maintenant ou attendre</h2>
+        <h2 id="signer">12. Décidez s’il faut signer, remplacer ou attendre</h2>
 
         <p>
           Vous pouvez signer un dispositif de maintenance lorsque les demandes
@@ -1020,7 +1249,7 @@ export default function Page() {
           manière de les explorer ou de les arrêter.
         </p>
 
-        <div className="not-prose my-7 grid gap-4 md:grid-cols-3">
+        <div className="not-prose my-7 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           <article className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5 dark:border-emerald-900 dark:bg-emerald-950/20">
             <h3 className="m-0 text-base font-semibold text-emerald-950 dark:text-emerald-200">
               Signez un fonctionnement récurrent
@@ -1038,9 +1267,9 @@ export default function Page() {
             </h3>
             <p className="mb-0 mt-3 text-sm leading-relaxed text-blue-900/80 dark:text-blue-300">
               Les accès existent, mais la cause, la taille ou les dépendances
-              restent inconnues. Achetez un diagnostic borné qui remet les faits
-              établis, les inconnues et une décision d’arrêt avant de choisir la
-              suite.
+              restent inconnues. Achetez un diagnostic limité qui remet les
+              faits établis, les inconnues et une décision d’arrêt avant de
+              choisir la suite.
             </p>
           </article>
           <article className="rounded-2xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-900 dark:bg-amber-950/20">
@@ -1050,6 +1279,17 @@ export default function Page() {
             <p className="mb-0 mt-3 text-sm leading-relaxed text-amber-900/80 dark:text-amber-300">
               Personne ne peut décider, les accès sont absents ou le résultat
               n’a aucun utilisateur identifié. Corrigez d’abord ce manque.
+            </p>
+          </article>
+          <article className="rounded-2xl border border-violet-200 bg-violet-50 p-5 dark:border-violet-900 dark:bg-violet-950/20">
+            <h3 className="m-0 text-base font-semibold text-violet-950 dark:text-violet-200">
+              Comparez un remplacement ou un retrait
+            </h3>
+            <p className="mb-0 mt-3 text-sm leading-relaxed text-violet-900/80 dark:text-violet-300">
+              Le support s’arrête, les incidents reviennent, l’usage baisse ou
+              le coût annuel approche une alternative crédible. Chiffrez
+              migration, continuité, archivage et sortie avant d’ajouter un
+              abonnement de maintenance.
             </p>
           </article>
         </div>
@@ -1067,7 +1307,7 @@ export default function Page() {
         </p>
 
         <h2 id="accompagnement">
-          10. Quand Hagnéré Code peut réellement vous aider
+          13. Quand Hagnéré Code peut réellement vous aider
         </h2>
 
         <p>
@@ -1075,7 +1315,8 @@ export default function Page() {
           demandes peuvent être retrouvées et que votre entreprise accepte de
           nommer une personne pour les expliquer, les prioriser et vérifier le
           résultat. Le premier travail consiste alors à séparer le récurrent,
-          l’incertain et le borné avant de parler de jours ou de forfait.
+          l’incertain et ce qui peut être clairement défini avant de parler de
+          jours ou de forfait.
         </p>
 
         <div className="not-prose my-7 grid gap-4 sm:grid-cols-2">
@@ -1091,7 +1332,7 @@ export default function Page() {
               <li>un interlocuteur métier peut choisir les priorités ;</li>
               <li>
                 vous voulez distinguer continuité, exploration et évolutions
-                bornées ;
+                clairement définies ;
               </li>
               <li>vous acceptez de vérifier les résultats avant de fermer.</li>
             </ul>
@@ -1117,33 +1358,34 @@ export default function Page() {
           </article>
         </div>
 
+        <p>
+          Le bon choix ne porte donc pas sur un mot. Il porte sur la manière
+          dont votre entreprise transforme une demande en décision, en travail
+          puis en résultat vérifié. Réservez quelques jours pour ce qui revient,
+          achetez un diagnostic limité lorsque la cause reste inconnue, convenez
+          d’un prix lorsque la fin est claire et reportez ce que personne n’est
+          prêt à décider. Le diagnostic peut être facturé à prix fixe ou selon
+          le temps utilisé, jusqu’à un plafond convenu : son résultat attendu
+          reste le même.
+        </p>
+
         <GuideInlineCTA
-          title="Transformez vos demandes en une maintenance claire et contrôlable"
-          description="Préparez l’historique des trois derniers mois, les accès disponibles et la personne qui décidera. L’échange sert d’abord à séparer ce que vous achetez — continuité, diagnostic ou livraison — puis sa facturation — prix fixe, capacité ou temps — avec les responsabilités, la couverture et les résultats à vérifier."
+          title="Faites comparer vos offres de maintenance avant de signer"
+          description="Apportez vos offres et trois à douze mois de demandes. Nous relevons ce que chacune couvre, les jours qui peuvent être perdus, les dépassements, le temps demandé à votre équipe et les coûts qui restent à confirmer. Vous obtenez une liste de questions à renvoyer aux prestataires et une recommandation conditionnelle : signer, plafonner, négocier, attendre ou remplacer l’application."
           tags={[
-            "Vos demandes servent de départ",
-            "Les inconnues restent visibles",
-            "Vous pouvez aussi reporter",
+            "Deux offres comparées sur les mêmes demandes",
+            "Les coûts inconnus restent visibles",
+            "Signer n’est pas obligatoire",
           ]}
-          ctaLabel="Préparer ma maintenance"
+          ctaLabel="Faire comparer mes offres"
           ctaHref="/demarrer-un-projet"
           showPhone={false}
         />
 
-        <p>
-          Le bon choix ne porte donc pas sur un mot. Il porte sur la manière
-          dont votre entreprise transforme une demande en décision, en travail
-          puis en résultat vérifié. Réservez une continuité pour ce qui revient,
-          achetez un diagnostic borné lorsque la cause reste inconnue, convenez
-          d’un lot lorsque sa fin est claire et reportez ce que personne n’est
-          prêt à décider. Le diagnostic peut être facturé à prix fixe ou au
-          temps plafonné : son résultat attendu reste le même.
-        </p>
-
         <h2 id="sources">Sources et limites</h2>
 
         <p>
-          Sources consultées le 23 juillet 2026. Les définitions et
+          Sources consultées ou rouvertes le 24 juillet 2026. Les définitions et
           recommandations officielles peuvent évoluer ; le contrat réel, les
           données traitées et l’organisation de votre entreprise restent
           déterminants.
@@ -1195,17 +1437,75 @@ export default function Page() {
             </a>
             .
           </li>
+          <li>
+            Gouvernement britannique —{" "}
+            <a
+              href="https://assets.publishing.service.gov.uk/media/67b485cbb56d8b0856c2fe08/Buyer_Guidance_-_MSC_v2.2_2025.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Model Services Contract Guidance, version 2.2(A)
+            </a>
+            . Ce guide mis à jour en 2025 distingue notamment temps et moyens,
+            prix ferme, volume, coût cible et prix maximal. Il concerne de
+            grands contrats publics britanniques : il inspire ici les questions
+            de plafond et de contrôle, mais serait disproportionné à recopier
+            pour une PME française.
+          </li>
+          <li>
+            Gouvernement du Canada —{" "}
+            <a
+              href="https://canadabuys.canada.ca/en/buyer-s-portal/buyer-s-guide/plan/basis-payment/types-basis-payment"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Types of basis of payment
+            </a>
+            . Ce guide fédéral actuel présente plusieurs mécanismes de prix et
+            l’intérêt d’une limite de dépenses pour le temps ou les unités. Il
+            n’impose aucune règle à un contrat privé français et ne fournit
+            aucun tarif de marché.
+          </li>
+          <li>
+            Acquisition.gov —{" "}
+            <a
+              href="https://www.acquisition.gov/far/16.601"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              FAR 16.601 sur les contrats en temps et moyens
+            </a>
+            . Le cadre fédéral américain réserve ce mécanisme aux situations où
+            l’étendue ou la durée ne peut pas être estimée avec confiance et
+            exige surveillance et plafond. Il étaye ici des garde-fous de suivi,
+            pas une obligation applicable en France.
+          </li>
+          <li>
+            NIST —{" "}
+            <a
+              href="https://csrc.nist.gov/pubs/ir/8286/d/upd1/final"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              IR 8286D sur l’analyse d’impact métier
+            </a>
+            . Cette publication américaine invite à partir des fonctions
+            essentielles, des scénarios de perte et de la tolérance au risque.
+            Elle ne donne ni coût universel d’une panne ni prix de maintenance.
+          </li>
         </ul>
 
         <p>
-          Les catégories « capacité récurrente », « temps piloté », « lot borné
-          » et « hybride » sont une grille opérationnelle Hagnéré Code. Elles ne
-          constituent ni des qualifications juridiques universelles ni une
-          recommandation automatique. Ce guide ne fournit aucun tarif, minimum
-          mensuel, délai d’intervention, engagement de disponibilité ou avis
-          juridique personnalisé. Faites adapter les responsabilités, la
-          sécurité, les données, les pénalités et la sortie à votre contrat
-          réel.
+          Les catégories « capacité récurrente », « temps piloté », « lot
+          clairement défini » et « hybride » sont une grille opérationnelle
+          Hagnéré Code. Elles ne constituent ni des qualifications juridiques
+          universelles ni une recommandation automatique. Tous les montants,
+          volumes, taux, pannes et seuils chiffrés de cette page sont fictifs :
+          ils ne sont ni des prix de marché, ni un devis Hagnéré Code, ni un
+          résultat client. Le guide ne promet aucun minimum mensuel, délai
+          d’intervention, engagement de disponibilité ou avis juridique
+          personnalisé. Faites adapter les responsabilités, la sécurité, les
+          données, les pénalités et la sortie à votre contrat réel.
         </p>
       </GuideLayout>
     </GuidesShell>

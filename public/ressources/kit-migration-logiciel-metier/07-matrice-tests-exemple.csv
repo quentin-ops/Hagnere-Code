@@ -1,0 +1,11 @@
+ID;Famille;Scenario;Donnees;Resultat_attendu;Responsable;Preuve;Bloquant;Statut;Decision
+TST-001;Metier;Creer et cloturer une intervention;Dossier fictif;Dossier facture et historique lisible;Utilisateur exploitation;Capture et identifiant;Oui;Reussi;Continuer
+TST-002;Mapping;Traduire tous les statuts;Jeu de statuts fictifs;Aucun statut inconnu;Responsable donnees;Rapport de transformation;Oui;Echec;Corriger
+TST-003;Integration;Exporter vers comptabilite;Lot fictif;Totaux acceptes une fois;Comptabilite;Accuse de reception;Oui;Reussi;Continuer
+TST-004;Performance;Ouvrir planning du jour;Copie representative et 30 ouvertures;Au moins 29 ouvertures sur 30 en 2 s ou moins;Responsable planning;29 sur 30 en 2 s ou moins plus lente a 2,1 s;Oui;Reussi;Continuer
+TST-005;Droits;Verifier les 10 roles;Comptes de test;Action autorisee et action interdite prouvees;Responsable securite;Proces verbal;Oui;Reussi;Continuer
+TST-006;Sauvegarde;Restaurer ancien systeme;Copie separee;Dossiers et integrations redemarrent;Responsable exploitation;Journal de restauration;Oui;Reussi;Continuer
+TST-007;Rejeu;Executer deux fois le meme lot;50 evenements fictifs;Aucun doublon et meme etat final;Responsable technique;Journal LOT-004;Oui;Reussi;Continuer
+TST-008;Retour;Reprendre trois saisies temporaires;Registre fictif;Chaque saisie apparait une seule fois;Responsable metier;Rapport de rapprochement;Oui;Reussi;Continuer
+TST-009;Suppression;Rejouer une suppression fictive;Client fictif;Suppression ou blocage selon regle;Responsable donnees;Journal evenement;Oui;Reussi;Continuer
+TST-010;Securite;Expirer compte de migration;Compte temporaire;Connexion refusee apres echeance;Responsable securite;Journal acces;Oui;Reussi;Continuer

@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Transformer un fichier Excel en application métier — Hagnéré Code";
+  "Excel vers application : cinq dossiers, dix opérations et coûts sur 48 mois — Hagnéré Code";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -70,17 +70,17 @@ export default function OgImage() {
               letterSpacing: -2,
             }}
           >
-            Transformer Excel en application métier
+            Excel doit-il devenir une application ?
           </div>
           <div style={{ display: "flex", fontSize: 27, color: "#a1a1aa" }}>
-            Garder Excel, acheter un logiciel ou créer une application
+            5 voies · 10 opérations · TCO48 + X/I
           </div>
         </div>
 
         <div
           style={{
             width: 280,
-            height: 220,
+            height: 238,
             display: "flex",
             flexDirection: "column",
             overflow: "hidden",
@@ -101,9 +101,9 @@ export default function OgImage() {
               fontWeight: 700,
             }}
           >
-            EXCEL → APP
+            MÊMES TESTS
           </div>
-          {["Données", "Règles métier", "Droits", "Historique"].map(
+          {["Excel", "Excel +", "Standard", "Plateforme", "Sur mesure"].map(
             (label, index) => (
               <div
                 key={label}
@@ -112,8 +112,8 @@ export default function OgImage() {
                   alignItems: "center",
                   padding: "10px 16px",
                   borderTop: "1px solid rgba(255,255,255,0.08)",
-                  color: index === 3 ? "#c4b5fd" : "#e4e4e7",
-                  fontSize: 18,
+                  color: index === 4 ? "#c4b5fd" : "#e4e4e7",
+                  fontSize: 16,
                 }}
               >
                 <div style={{ display: "flex", width: 24 }}>
@@ -135,10 +135,10 @@ export default function OgImage() {
 
       <div style={{ display: "flex", gap: 12 }}>
         {[
-          "Diagnostic",
-          "Coûts sur 4 ans",
-          "Migration des données",
-          "Contrat",
+          "5 voies",
+          "10 opérations",
+          "TCO 48 mois",
+          "Investir · garder · reporter",
         ].map((label) => (
           <div
             key={label}

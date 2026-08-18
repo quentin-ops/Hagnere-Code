@@ -1,0 +1,12 @@
+ID;Porte;Critere;Seuil_ou_preuve;Bloquant;Proprietaire;Resultat;Decision;Commentaire
+GO-A-001;A;Dossiers ouverts presents;300 sur 300;Oui;Exploitation;300;Continuer ce controle;Le volume seul ne valide pas les relations
+GO-A-002;A;Dossiers relies au bon client;300 sur 300;Oui;Exploitation;299;STOP;Corriger puis executer R1 et R2
+GO-A-003;A;Temps de retour restant;Copie controles decision et retour dans 6 h;Oui;Direction;6 h 15;STOP;Ne pas consommer la fenetre de retour
+GO-A-004;A;Traduction de tous les statuts TST-002;Aucun statut source sans regle cible approuvee;Oui;Responsable donnees;Echec;STOP;Corriger le mapping de statuts
+GO-A-005;A;Rejets avec proprietaire;Chaque rejet explique corrige ou accepte par une personne nommee;Oui;Exploitation;Un rejet sans proprietaire;STOP;Aucun rejet orphelin ne passe la porte
+GO-B-001;B;Dossiers relies au bon client apres R1 R2;300 sur 300;Oui;Exploitation;300;Continuer ce controle;Correction et rejeu conformes
+GO-B-002;B;Temps de retour restant;Copie controles decision et retour dans 6 h;Oui;Direction;2 h 30;Continuer ce controle;Marge mesuree 3 h 30
+GO-B-003;B;Rejets avec proprietaire;Zero rejet non attribue;Oui;Exploitation;Zero;Continuer ce controle;LOT-003 traite avant LOT-004
+GO-B-004;B;Traduction de tous les statuts TST-002;Aucun statut source sans regle cible approuvee;Oui;Responsable donnees;Echec;STOP;Seul blocage restant a cette porte
+GO-B-005;B;Cinquieme integration ou mode degrade;5 integrations conformes ou mode degrade date approuve et test de rattrapage;Oui;Responsable technique;4 integrations et mode degrade approuve 2 h;Continuer sous condition;Fermer le mode degrade et rapprocher le rattrapage avant 2 h
+GO-B-006;B;Equipe de soutien presente;Responsables canal staffing et sortie disponibles;Oui;Support;Conforme;Continuer ce controle;La porte globale reste STOP a cause de TST-002

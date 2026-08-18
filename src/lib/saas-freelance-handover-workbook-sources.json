@@ -1,0 +1,164 @@
+[
+  [
+    "Transfert de dépôt",
+    "GitHub Docs",
+    "https://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository",
+    "Contrôler collaborateur restant, webhooks, services, secrets et clés après transfert",
+    "La documentation décrit GitHub, pas les autres forges",
+    "Rejouer R-01 et R-04",
+    "2026-07-28"
+  ],
+  [
+    "Transfert de projet",
+    "Vercel Docs",
+    "https://vercel.com/docs/projects/transferring-projects",
+    "Identifier les intégrations, logs, drains et stockages non transférés automatiquement",
+    "La liste dépend des produits effectivement utilisés",
+    "Inventorier puis rejouer R-05",
+    "2026-07-28"
+  ],
+  [
+    "Migration d’abonnements",
+    "Stripe Docs",
+    "https://docs.stripe.com/billing/subscriptions/import-subscriptions-toolkit",
+    "Tester le séquencement ancien/nouveau et empêcher le double débit",
+    "Outil et éligibilité peuvent évoluer",
+    "Tester R-09 et R-10 en environnement de test",
+    "2026-07-28"
+  ],
+  [
+    "Habilitations",
+    "CNIL",
+    "https://www.cnil.fr/fr/securite-gerer-les-habilitations",
+    "Retirer les droits quand une personne n’est plus autorisée, notamment à la fin du contrat",
+    "Une prolongation exceptionnelle doit rester justifiée et bornée",
+    "Tracer R-02",
+    "2026-07-28"
+  ],
+  [
+    "Sous-traitance et sortie",
+    "CNIL",
+    "https://www.cnil.fr/fr/sous-traitance-exemple-de-clauses",
+    "Écrire restitution ou destruction, sort des copies et assistance",
+    "Le contrat concret doit être revu par le conseil compétent",
+    "Tracer R-11 et R-12",
+    "2026-07-28"
+  ],
+  [
+    "Sécurité 2026",
+    "CNIL",
+    "https://www.cnil.fr/sites/default/files/2026-05/cnil_guide_securite_personnelle.pdf",
+    "Sauvegardes, habilitations, traçabilité et sécurité des opérations",
+    "Mesures à adapter au risque et aux données",
+    "Faire accepter les écarts",
+    "2026-07-28"
+  ],
+  [
+    "RTO",
+    "NIST CSRC",
+    "https://csrc.nist.gov/glossary/term/recovery_time_objective",
+    "Définir la durée maximale visée avant reprise d’un parcours",
+    "Un objectif n’est pas une preuve de capacité",
+    "Tester et dater R-07",
+    "2026-07-28"
+  ],
+  [
+    "RPO",
+    "NIST CSRC",
+    "https://csrc.nist.gov/glossary/term/recovery_point_objective",
+    "Définir la perte maximale de données acceptable",
+    "Une fréquence de sauvegarde ne prouve pas le point restaurable",
+    "Tester et dater R-08",
+    "2026-07-28"
+  ],
+  [
+    "Plan de continuité",
+    "NIST SP 800-34 Rev. 1",
+    "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-34r1.pdf",
+    "Relier analyse d’impact, stratégie, plan, test et maintenance",
+    "Cadre américain à adapter au contexte contractuel",
+    "Conserver preuve et résultats",
+    "2026-07-28"
+  ],
+  [
+    "Résilience par parcours",
+    "AWS Prescriptive Guidance",
+    "https://docs.aws.amazon.com/prescriptive-guidance/latest/startup-resiliency-baseline/stage-1.html",
+    "Choisir RTO et RPO selon l’impact métier du parcours",
+    "Conseil fournisseur, pas une obligation juridique",
+    "Faire décider le métier",
+    "2026-07-28"
+  ],
+  [
+    "Coût des objectifs",
+    "Google Cloud Architecture Center",
+    "https://cloud.google.com/architecture/dr-scenarios-planning-guide",
+    "Des objectifs plus courts demandent généralement davantage de moyens",
+    "Comparer architecture et coût réel du service",
+    "Documenter l’arbitrage",
+    "2026-07-28"
+  ],
+  [
+    "Plan de sortie",
+    "UK Government Digital, Data and Technology Playbook",
+    "https://www.gov.uk/government/publications/the-digital-data-and-technology-playbook/the-digital-data-and-technology-playbook",
+    "Maintenir rôles, jalons, actifs, données, risques et transfert de connaissances",
+    "Guide d’achat public britannique à adapter",
+    "Rejouer R-18",
+    "2026-07-28"
+  ],
+  [
+    "Contrat et sortie",
+    "UK Government Model Services Contract",
+    "https://www.gov.uk/government/collections/model-services-contract",
+    "Prévoir assistance, responsabilités et scénario de rupture",
+    "Ne remplace pas un contrat français sur mesure",
+    "Faire relire le plan",
+    "2026-07-28"
+  ],
+  [
+    "Accès prestataires",
+    "Australian Signals Directorate",
+    "https://www.cyber.gov.au/about-us/advisories/protecting-against-cyber-threats-managed-service-providers-and-their-customers",
+    "MFA, moindre privilège et suppression des comptes obsolètes",
+    "Conseil de cybersécurité australien à contextualiser",
+    "Contrôler R-02 et R-16",
+    "2026-07-28"
+  ],
+  [
+    "Inventaire de transfert",
+    "Digital Agency Japan",
+    "https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/4abc3a06-5590-4ff1-a542-7f29198b2a81/8f314c0a/20260106_procurement_system_agreement_03.pdf",
+    "Inclure code, configuration, outils, comptes, incidents et rapport de passation",
+    "Exigence japonaise utilisée comme benchmark documentaire",
+    "Adapter le registre aux services réels",
+    "2026-07-28"
+  ],
+  [
+    "Droits initiaux",
+    "Légifrance — Code de la propriété intellectuelle L111-1",
+    "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278868",
+    "Ne pas déduire une cession de droits de la seule commande ou du seul paiement",
+    "Qualification et contrat concrets à faire relire",
+    "Contrôler R-13",
+    "2026-07-28"
+  ],
+  [
+    "Logiciel salarié",
+    "Légifrance — Code de la propriété intellectuelle L113-9",
+    "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039279818",
+    "Distinguer l’exception du logiciel créé par un salarié du cas freelance",
+    "Le statut et les missions réelles doivent être qualifiés",
+    "Faire relire la qualification",
+    "2026-07-28"
+  ],
+  [
+    "Étendue de la cession",
+    "Légifrance — Code de la propriété intellectuelle L131-3",
+    "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278958",
+    "Vérifier droits, étendue, destination, territoire et durée",
+    "Le texte du contrat reste déterminant",
+    "Contrôler R-13 et R-14",
+    "2026-07-28"
+  ]
+]

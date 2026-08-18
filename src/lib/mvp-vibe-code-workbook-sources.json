@@ -1,0 +1,372 @@
+[
+  {
+    "id": "LOV-GIT",
+    "zone": "plateforme-lovable",
+    "organisme": "Lovable",
+    "titre": "Sync your Lovable project with GitHub",
+    "url": "https://docs.lovable.dev/integrations/github",
+    "usage": "Distinguer code géré dans Lovable, copie GitHub, synchronisation bidirectionnelle, branche active et téléchargement direct selon le plan.",
+    "limite": "Ne documente pas à elle seule la migration des données, fichiers, secrets, domaines ou services externes d’un projet concret.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "LOV-DEPLOY",
+    "zone": "plateforme-lovable",
+    "organisme": "Lovable",
+    "titre": "Deploying and hosting outside Lovable",
+    "url": "https://docs.lovable.dev/tips-tricks/external-deployment-hosting",
+    "usage": "Qualifier les responsabilités transférées lors d’un hébergement externe et les étapes séparées de migration du backend, des comptes et du stockage.",
+    "limite": "Les procédures et services varient selon le backend, le plan et l’architecture réelle ; il faut exécuter la migration sur une cible isolée.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "LOV-SECURITY",
+    "zone": "plateforme-lovable",
+    "organisme": "Lovable",
+    "titre": "Security overview",
+    "url": "https://docs.lovable.dev/features/security",
+    "usage": "Décrire le rôle et les limites des contrôles de sécurité intégrés, dont Deep Scan.",
+    "limite": "Une documentation éditeur et un scan automatisé ne certifient pas la sécurité du MVP ni ses autorisations métier.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "LOV-FAQ",
+    "zone": "plateforme-lovable",
+    "organisme": "Lovable",
+    "titre": "FAQ",
+    "url": "https://docs.lovable.dev/introduction/faq",
+    "usage": "Vérifier la stack selon la date du projet et les frontières de remix, historique, secrets et base.",
+    "limite": "La FAQ décrit des comportements généraux ; package.json, lockfile et état du compte réel restent la preuve décisive.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "LOV-PROJECT-TRANSFER",
+    "zone": "plateforme-lovable",
+    "organisme": "Lovable",
+    "titre": "Workspace basics",
+    "url": "https://docs.lovable.dev/features/workspace",
+    "usage": "Distinguer transfert de propriété à un membre, déplacement entre workspaces et propriété séparée des comptes externes.",
+    "limite": "Les droits disponibles dépendent du rôle et du workspace ; GitHub, Supabase, domaine et autres comptes tiers doivent être contrôlés séparément.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "LOV-TERMS",
+    "zone": "contrat-lovable",
+    "organisme": "Lovable",
+    "titre": "Lovable Terms & Conditions",
+    "url": "https://lovable.dev/terms",
+    "usage": "Identifier les règles contractuelles annoncées sur Customer Data, Output, droits entre les parties et éléments tiers.",
+    "limite": "La version publiée le 16 juin 2026 est annoncée effective au 15 août 2026 sauf acceptation antérieure ; seul le contrat effectivement accepté s’applique au cas réel.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "BOLT-PROJECTS",
+    "zone": "plateforme-bolt",
+    "organisme": "Bolt / StackBlitz",
+    "titre": "Manage your projects",
+    "url": "https://support.bolt.new/building/using-bolt/projects-files",
+    "usage": "Documenter téléchargement, transfert, duplication, intégrations, domaine, structure de base et historique de chat.",
+    "limite": "Les effets dépendent du type de base et des intégrations actives ; le transfert doit être testé dans le compte cible.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "BOLT-ROLLBACK",
+    "zone": "plateforme-bolt",
+    "organisme": "Bolt / StackBlitz",
+    "titre": "Backups, restore, and version history",
+    "url": "https://support.bolt.new/building/using-bolt/rollback-backup",
+    "usage": "Séparer rollback du projet, export ZIP et état des bases Bolt ou Supabase.",
+    "limite": "L’historique de projet n’est pas une sauvegarde cohérente des données et services externes.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "BOLT-SUPABASE",
+    "zone": "plateforme-bolt",
+    "organisme": "Bolt / StackBlitz",
+    "titre": "Supabase for databases",
+    "url": "https://support.bolt.new/integrations/supabase",
+    "usage": "Vérifier rollback de base, remplacement de connexion, risque de perte de données et rôle requis pour revendiquer une Bolt Database.",
+    "limite": "La page décrit les flux supportés au jour du gel ; versions legacy et types de projet peuvent avoir des contraintes distinctes.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "STACKBLITZ-TERMS",
+    "zone": "contrat-bolt",
+    "organisme": "StackBlitz",
+    "titre": "Terms of Service",
+    "url": "https://stackblitz.com/terms-of-service",
+    "usage": "Identifier le cadre contractuel public général de StackBlitz/Bolt et les notions de contenu utilisateur et contenu de la plateforme.",
+    "limite": "La page publique, datée du 10 janvier 2024, ne suffit pas à conclure seule sur tous les droits d’un Output Bolt en juillet 2026 ; conserver le contrat accepté et faire relire les clauses matérielles.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "V0-GITHUB",
+    "zone": "plateforme-v0",
+    "organisme": "Vercel v0",
+    "titre": "GitHub",
+    "url": "https://v0.app/docs/github",
+    "usage": "Établir le dépôt comme source de vérité, les branches par chat, les commits automatiques et le risque de suppression du dépôt.",
+    "limite": "Le dépôt ne contient pas nécessairement variables, domaines, données et intégrations du projet Vercel.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "V0-PROJECTS",
+    "zone": "plateforme-v0",
+    "organisme": "Vercel v0",
+    "titre": "Projects",
+    "url": "https://v0.app/docs/projects",
+    "usage": "Décrire l’application partagée entre chats, la portée projet des variables, domaines, intégrations et déploiements, et l’URL de production commune.",
+    "limite": "La documentation produit n’inventorie pas les services tiers ni les permissions propres au compte du lecteur.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "V0-TRANSFER",
+    "zone": "plateforme-v0",
+    "organisme": "Vercel v0",
+    "titre": "Teams",
+    "url": "https://v0.app/docs/teams",
+    "usage": "Documenter le transfert de chats entre scopes personnels et équipes ainsi que le transfert conditionnel du projet Vercel lié.",
+    "limite": "Le projet Vercel ne suit que sous les conditions de rôle documentées ; permissions GitHub, services tiers, données et contrats restent séparés.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "VERCEL-AI-TERMS",
+    "zone": "contrat-v0",
+    "organisme": "Vercel",
+    "titre": "AI Product Terms",
+    "url": "https://vercel.com/legal/ai-product-terms",
+    "usage": "Encadrer les affirmations sur Output, code généré, revue utilisateur, unicité, droits entre les parties et droits de tiers.",
+    "limite": "Conditions générales, pas avis juridique ; la version et les autres contrats effectivement acceptés ainsi que les licences tierces restent déterminants.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "VERCEL-TERMS",
+    "zone": "contrat-v0",
+    "organisme": "Vercel",
+    "titre": "General Terms",
+    "url": "https://vercel.com/legal/terms",
+    "usage": "Compléter les conditions propres aux produits IA par le cadre contractuel général applicable au compte, aux services et au contenu.",
+    "limite": "La version et le contrat effectivement acceptés, les annexes et les services tiers doivent être conservés et relus pour le cas concret.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "SUPABASE-BACKUPS",
+    "zone": "donnees-supabase",
+    "organisme": "Supabase",
+    "titre": "Database Backups",
+    "url": "https://supabase.com/docs/guides/platform/backups",
+    "usage": "Distinguer sauvegarde PostgreSQL, objets Storage, disponibilité par plan, restauration et limites des rôles personnalisés.",
+    "limite": "Une sauvegarde disponible ne prouve pas une restauration complète ; objets, auth, fonctions, secrets et intégrations doivent être testés séparément.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "SUPABASE-KEYS",
+    "zone": "securite-supabase",
+    "organisme": "Supabase",
+    "titre": "Understanding API keys",
+    "url": "https://supabase.com/docs/guides/getting-started/api-keys",
+    "usage": "Distinguer clés publishable et secret, rôle de RLS, exposition côté client et migration des clés legacy.",
+    "limite": "La sécurité dépend des politiques, des appelants et de la rotation réellement exécutée ; une clé publishable n’est pas un contrôle d’autorisation.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "SUPABASE-TRANSFER",
+    "zone": "plateforme-supabase",
+    "organisme": "Supabase",
+    "titre": "Transferring projects",
+    "url": "https://supabase.com/docs/guides/platform/project-transfer",
+    "usage": "Vérifier rôles, organisations, intégration GitHub, rôles projet, log drains, disponibilité et effets du plan lors d’un transfert.",
+    "limite": "Le transfert d’organisation n’est pas une migration de région et peut entraîner une courte indisponibilité ou des changements de fonctions et de droits.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "NPM-CI",
+    "zone": "supply-chain-node",
+    "organisme": "npm",
+    "titre": "npm-ci — npm CLI 12",
+    "url": "https://docs.npmjs.com/cli/v12/commands/npm-ci/",
+    "usage": "Prouver les conditions d’une installation propre, les manifests gelés, les options de lockfile et les contrôles npm 12 sur sources et scripts.",
+    "limite": "La version courante et la configuration de projet doivent être enregistrées ; une installation réussie ne garantit ni sécurité ni reproductibilité du build.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "NPM-SBOM",
+    "zone": "supply-chain-node",
+    "organisme": "npm",
+    "titre": "npm-sbom — npm CLI 12",
+    "url": "https://docs.npmjs.com/cli/v12/commands/npm-sbom/",
+    "usage": "Générer un inventaire SPDX ou CycloneDX des dépendances observées.",
+    "limite": "Un SBOM ne remplace ni revue de licences, ni audit de vulnérabilités, ni preuve de correspondance avec l’artefact déployé.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "GITHUB-ATTEST",
+    "zone": "provenance-build",
+    "organisme": "GitHub",
+    "titre": "Using artifact attestations to establish provenance for builds",
+    "url": "https://docs.github.com/en/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations",
+    "usage": "Relier artefact, workflow, dépôt, commit et contexte de build, puis vérifier l’attestation avec GitHub CLI.",
+    "limite": "Fonctionnalité dépendante du plan et du type de dépôt ; l’attestation ne prouve ni qualité fonctionnelle ni identité de l’artefact servi sans comparaison de digest.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "GITHUB-SECRET-SCANNING",
+    "zone": "securite-supply-chain",
+    "organisme": "GitHub",
+    "titre": "Secret scanning",
+    "url": "https://docs.github.com/en/code-security/concepts/secret-security/secret-scanning",
+    "usage": "Rechercher les secrets exposés dans l’historique, les issues, les pull requests et les autres emplacements couverts, puis organiser révocation et rotation.",
+    "limite": "La couverture dépend du dépôt, du plan, des motifs reconnus et de la configuration ; l’absence d’alerte ne prouve pas l’absence de secret.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "SLSA-1-2",
+    "zone": "benchmark-mondial",
+    "organisme": "SLSA / OpenSSF",
+    "titre": "SLSA specification version 1.2",
+    "url": "https://slsa.dev/spec/v1.2/",
+    "usage": "Structurer les garanties progressives, les pistes Source et Build et les attestations de provenance.",
+    "limite": "Le guide ne peut revendiquer un niveau SLSA sans satisfaire et vérifier toutes les exigences applicables ; un hash seul n’est pas une provenance.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "NIST-SSDF-1-1",
+    "zone": "benchmark-etats-unis",
+    "organisme": "NIST",
+    "titre": "SP 800-218 — Secure Software Development Framework version 1.1",
+    "url": "https://csrc.nist.gov/pubs/sp/800/218/final",
+    "usage": "Relier préparation, protection du logiciel, production sûre et réponse aux vulnérabilités dans une approche fondée sur le risque.",
+    "limite": "La version 1.1 reste la dernière finale au gel tandis que 1.2 est draft ; le SSDF n’est ni une checklist universelle ni une certification.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "OWASP-ASVS-5",
+    "zone": "benchmark-application",
+    "organisme": "OWASP Foundation",
+    "titre": "Application Security Verification Standard 5.0.0",
+    "url": "https://owasp.org/www-project-application-security-verification-standard/",
+    "usage": "Sélectionner des exigences de vérification applicative versionnées et les référencer sous la forme v5.0.0-chapitre.section.exigence.",
+    "limite": "Les exigences et le niveau doivent être adaptés au risque ; un scanner automatique ne démontre pas la conformité à ASVS.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "NCSC-PIPELINE",
+    "zone": "benchmark-royaume-uni",
+    "organisme": "UK National Cyber Security Centre",
+    "titre": "Secure the build and deployment pipeline",
+    "url": "https://www.ncsc.gov.uk/collection/developers-collection/principles/secure-the-build-and-deployment-pipeline",
+    "usage": "Exiger un pipeline digne de confiance, une chaîne de contrôle source-build-déploiement, des revues et une traçabilité.",
+    "limite": "Conseil britannique à contextualiser ; la confiance dans le pipeline ne prouve pas la correction du produit ni sa conformité française.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "NCSC-SUPPLY-CHAIN",
+    "zone": "benchmark-royaume-uni",
+    "organisme": "UK National Cyber Security Centre",
+    "titre": "Software Security Code of Practice — Theme 1: Secure design and development",
+    "url": "https://www.ncsc.gov.uk/collection/software-security-code-of-practice-implementation-guidance/theme-1-secure-design-development",
+    "usage": "Inventorier dépendances internes, directes, tierces et transitives, compilateurs, systèmes de build et SBOM partageable.",
+    "limite": "Code of Practice britannique, pas obligation juridique française automatique ; le format d’inventaire doit rester adapté au produit.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "UK-DDAT-PLAYBOOK",
+    "zone": "benchmark-royaume-uni",
+    "organisme": "UK Government",
+    "titre": "The Digital, Data and Technology Playbook",
+    "url": "https://www.gov.uk/government/publications/the-digital-data-and-technology-playbook/the-digital-data-and-technology-playbook",
+    "usage": "Relier stratégie de sortie, interopérabilité, standards ouverts, propriété des données et réduction de la dépendance fournisseur à des livrables contrôlables.",
+    "limite": "Référentiel d’achat public britannique, non obligation juridique française ni recette universelle pour un MVP privé.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "ASD-SOFTWARE-2026",
+    "zone": "benchmark-australie",
+    "organisme": "Australian Signals Directorate / Australian Cyber Security Centre",
+    "titre": "Guidelines for software development — June 2026",
+    "url": "https://www.cyber.gov.au/business-government/asds-cyber-security-frameworks/ism/cyber-security-guidelines/guidelines-for-software-development",
+    "usage": "Couvrir développement humain et assisté par IA, source autoritative, environnements séparés, Secure by Design/Default, threat modelling, signatures, SAST, DAST et SCA.",
+    "limite": "Référentiel gouvernemental australien à sélectionner selon contexte, sensibilité et juridiction ; aucune certification n’en découle.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "JAPAN-DIGITAL-GUIDELINES",
+    "zone": "benchmark-japon",
+    "organisme": "Digital Agency Japan",
+    "titre": "Digital Society Promotion Standard Guidelines — DS-200, DS-202 and DS-203",
+    "url": "https://www.digital.go.jp/en/resources/standard_guidelines",
+    "usage": "Comparer sécurité sur tout le cycle, protection du pipeline CI/CD et gestion du risque sur l’ensemble de la supply chain.",
+    "limite": "Les documents sont des références gouvernementales japonaises, parfois en traduction automatique ; ils ne valent ni droit français ni certification privée.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "CNIL-SOUS-TRAITANCE",
+    "zone": "rgpd-france",
+    "organisme": "CNIL",
+    "titre": "Travailler avec un sous-traitant",
+    "url": "https://www.cnil.fr/fr/sous-traitant",
+    "usage": "Qualifier les rôles et encadrer contrat, sécurité, confidentialité, sous-traitants ultérieurs, aide aux droits, violations, restitution, destruction et audits.",
+    "limite": "Le rôle et les clauses dépendent du traitement réel ; la page ne remplace pas la revue du DPA, des transferts et du contrat par les personnes compétentes.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "CNIL-PORTABILITE",
+    "zone": "rgpd-france",
+    "organisme": "CNIL",
+    "titre": "Professionnels : comment répondre à une demande de droit à la portabilité ?",
+    "url": "https://www.cnil.fr/fr/respecter-les-droits-des-personnes/professionnels-comment-repondre-une-demande-de-droit-la-portabilite",
+    "usage": "Délimiter consentement ou contrat, traitement automatisé, données fournies ou issues de l’activité, données dérivées et droits des tiers.",
+    "limite": "Le droit RGPD porte sur certaines données personnelles ; il n’est ni une portabilité générale de l’application ni une procédure de suppression automatique.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "CNIL-VIOLATIONS",
+    "zone": "rgpd-france",
+    "organisme": "CNIL",
+    "titre": "Violations de données personnelles : les règles à suivre",
+    "url": "https://www.cnil.fr/fr/violations-de-donnees-personnelles-les-regles-suivre",
+    "usage": "Encadrer documentation, qualification, notification à la CNIL sous 72 heures lorsque requise et information éventuelle des personnes.",
+    "limite": "L’obligation dépend de la violation et du risque ; le guide ne remplace pas l’analyse du DPO, du conseil ou de l’autorité compétente.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "EU-DATA-ACT",
+    "zone": "droit-union-europeenne",
+    "organisme": "Union européenne / EUR-Lex",
+    "titre": "Règlement (UE) 2023/2854 — Data Act",
+    "url": "https://eur-lex.europa.eu/eli/reg/2023/2854/oj",
+    "usage": "Qualifier l’application depuis le 12 septembre 2025, le changement de services de traitement de données, les actifs exportables et la suppression progressive des frais jusqu’au 12 janvier 2027.",
+    "limite": "L’applicabilité, les exclusions, secrets d’affaires, propriété intellectuelle, services tiers et actifs exportables doivent être qualifiés ; ne pas promettre une sortie intégrale et gratuite par défaut.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "FR-CPI-L111-1",
+    "zone": "droit-france",
+    "organisme": "Légifrance",
+    "titre": "Code de la propriété intellectuelle — article L111-1",
+    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278868",
+    "usage": "Rappeler que le droit naît avec la création et qu’un contrat de service ne transfère pas automatiquement les droits de l’auteur.",
+    "limite": "Les exceptions et la qualification du cas concret doivent être examinées ; le guide ne rend pas d’avis juridique.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "FR-CPI-L113-9",
+    "zone": "droit-france",
+    "organisme": "Légifrance",
+    "titre": "Code de la propriété intellectuelle — article L113-9",
+    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039279818",
+    "usage": "Distinguer la dévolution des droits patrimoniaux sur le logiciel créé par un employé dans ses fonctions du cas d’un prestataire externe.",
+    "limite": "Statut, fonctions, instructions et stipulations contraires doivent être qualifiés ; la règle ne s’étend pas automatiquement au freelance ou à l’agence.",
+    "checkedAt": "2026-07-28"
+  },
+  {
+    "id": "FR-CPI-L131-3",
+    "zone": "droit-france",
+    "organisme": "Légifrance",
+    "titre": "Code de la propriété intellectuelle — article L131-3",
+    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278958",
+    "usage": "Vérifier la mention distincte de chaque droit cédé et la délimitation de l’étendue, destination, lieu et durée.",
+    "limite": "Le texte du contrat, ses avenants et la chaîne de sous-traitance restent déterminants ; faire relire les incertitudes matérielles.",
+    "checkedAt": "2026-07-28"
+  }
+]

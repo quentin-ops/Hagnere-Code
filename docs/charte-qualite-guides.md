@@ -21,7 +21,7 @@ composants `src/components/guides/`.
 
 ---
 
-## Lecture rapide — les 15 règles non négociables
+## Lecture rapide — les 18 règles non négociables
 
 Un agent peut utiliser cette liste pour se repérer, mais doit lire les
 sections détaillées avant de livrer :
@@ -57,9 +57,20 @@ sections détaillées avant de livrer :
     listes ;
 14. une ressource promise produit un résultat autonome et testé ; elle ne
     résume pas simplement l'article dans un PDF ;
-15. aucun quota de mots, titres, FAQ ou liens ne remplace la pertinence, et
-    la page ne sort qu'après revue anti-erreurs, contre-audit, tests et
-    contrôle dans un vrai navigateur.
+15. avant d'arrêter le plan, la recherche compare la SERP française aux
+    meilleures ressources internationales réellement utiles, dont des
+    références anglophones ; une idée étrangère n'est reprise qu'après
+    vérification et adaptation au contexte français ;
+16. le dossier de recherche contient une **matrice de gain d'information** :
+    ce que les meilleures pages expliquent déjà, ce qu'elles laissent sans
+    réponse et l'élément précis que notre guide ajoutera pour aider à décider ;
+17. dès que le sujet touche un budget, un délai, un gain, une charge ou un
+    risque, le guide montre des scénarios chiffrés reproductibles et une
+    analyse de sensibilité ; il ne se contente pas d'adjectifs comme « cher »,
+    « rapide » ou « rentable » ;
+18. aucun quota de mots, titres, FAQ ou liens ne remplace la pertinence, et
+    la page ne sort qu'après verdict professionnel explicite, revue
+    anti-erreurs, contre-audit, tests et contrôle dans un vrai navigateur.
 
 ---
 
@@ -322,6 +333,141 @@ apporter au moins un élément difficile à remplacer : calcul
 reproductible, grille de décision, exemple vérifiable, modèle réutilisable,
 comparaison à coût total, protocole de contrôle ou retour d'expérience
 documenté.
+
+### 4.4 Benchmark international et gain d'information
+
+Une page ne peut pas être déclarée « la plus utile » en ayant seulement
+observé ses concurrents français. Avant le plan, la recherche couvre :
+
+1. les résultats français qui dominent réellement l'intention ;
+2. des ressources anglophones de référence, avec au minimum les marchés
+   américain et britannique lorsqu'ils produisent des réponses distinctes ;
+3. au moins un autre marché pertinent pour le sujet — par exemple Canada,
+   Allemagne, Australie ou Union européenne ;
+4. les documentations officielles, études primaires et outils cités par ces
+   contenus lorsqu'ils portent une affirmation décisive.
+
+Il ne s'agit pas de collectionner des URL ni de traduire un plan étranger.
+L'échantillon est suffisant lorsque les principaux **types de réponse**,
+méthodes, objections, comparaisons et outils cessent d'apporter un angle
+nouveau. Le dossier de recherche explique ce point de saturation.
+
+Pour chaque ressource utile, relever la question résolue, la preuve, l'exemple
+ou l'outil proposé, la limite reconnue et ce qui reste nécessaire pour décider.
+Puis remplir une matrice :
+
+| Question décisive du lecteur | Meilleure réponse française | Apport international | Réponse actuelle du guide | Manque réel | Amélioration vérifiable prévue |
+| ---------------------------- | --------------------------- | -------------------- | ------------------------- | ----------- | ------------------------------ |
+|                              |                             |                      |                           |             |                                |
+
+Le plan n'est validé que si cette matrice fait apparaître un **gain
+d'information concret**. « Plus long », « plus complet », « plus clair » ou
+« davantage de mots-clés » ne sont pas des gains démontrables. Sont recevables,
+par exemple :
+
+- un calcul que le lecteur peut refaire avec ses propres données ;
+- trois profils comparés avec le même périmètre et le même horizon ;
+- un seuil de décision accompagné de ses hypothèses et de ses contre-cas ;
+- une grille de devis ou de risques réellement utilisable ;
+- une comparaison des coûts de création, d'exploitation et de sortie ;
+- une objection importante traitée avec des preuves que les autres pages
+  ignorent ;
+- un verdict plus précis : pour qui, à quelles conditions, pendant combien de
+  temps et avec quel signal de révision.
+
+Une donnée étrangère n'est jamais transposée silencieusement à la France.
+Devise, fiscalité, droit, niveau de salaire, marché, disponibilité d'un produit
+et habitudes d'achat sont requalifiés. Si l'information n'est pas
+transposable, elle sert à découvrir une question, pas à établir un chiffre
+français.
+
+### 4.5 Profondeur utile, scénarios et opinion professionnelle
+
+La profondeur n'est ni la longueur ni le nombre de sous-titres. Une section est
+profonde lorsqu'elle relie une situation concrète à des hypothèses, des faits,
+un raisonnement, une conséquence et une décision.
+
+Selon le sujet, les exigences minimales sont :
+
+| Famille de guide           | Démonstration attendue                                                                                                                     |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Prix, ROI, budget ou délai | trois scénarios cohérents — simple, central et exigeant — avec formule, inclus, exclus, horizon et variable qui change le verdict          |
+| Comparatif de solutions    | critères pondérés par situation, coût total sur un même horizon, cas où chaque option gagne et cas où il vaut mieux attendre               |
+| Outil ou produit nommé     | fonctions et tarifs officiels datés, limites opérationnelles, coût de changement et scénario métier complet                                |
+| Processus ou organisation  | situation avant/après, temps et personnes mobilisés, erreur coûteuse évitée ou non, critère d'arrêt                                        |
+| Risque, sécurité ou droit  | au moins deux situations concrètes, niveau d'urgence, responsable, coût ou effort plausible et moment où un spécialiste devient nécessaire |
+| Sujet surtout conceptuel   | exemples contrastés et test de compréhension ; si un chiffre serait artificiel, le dossier justifie son absence                            |
+
+Ces minima ne sont pas une invitation à inventer. Un chiffre non observable est
+une **estimation éditoriale Hagnéré Code** : hypothèses visibles, calcul
+reproductible, arrondi raisonnable et résultat présenté comme ordre de
+grandeur. Chaque scénario montre ce qui ferait varier la conclusion. Une
+simulation qui confirme toujours l'offre vendue est considérée comme biaisée.
+
+Le guide contient aussi une **position professionnelle Hagnéré Code** lorsque
+le sujet appelle un choix. Elle répond sans détour :
+
+1. ce que nous recommandons dans le cas le plus fréquent ;
+2. les faits et le raisonnement qui fondent cette recommandation ;
+3. les conditions qui feraient choisir l'option opposée ;
+4. le signal concret qui impose de réexaminer la décision ;
+5. ce que nous déconseillons, même si Hagnéré Code pourrait le vendre.
+
+Une opinion professionnelle n'est ni un fait déguisé ni une posture
+provocatrice. Elle est attribuée comme recommandation, datée lorsque le marché
+évolue, contradictoire avec nos intérêts quand les faits l'exigent et
+attaquable par le contre-auditeur.
+
+### 4.6 Contrat de référence issu du benchmark international
+
+Les meilleures ressources étudiées en France, aux États-Unis, au Royaume-Uni,
+en Allemagne, au Canada et en Australie ne gagnent pas par une structure
+unique. Elles rendent visibles la méthode, l'économie de la décision, les
+limites, l'outil pratique et ce qui sera mesuré après l'action.
+
+Chaque guide stratégique couvre, lorsque le sujet le permet :
+
+1. une recommandation par défaut, ses conditions et au moins deux situations où
+   elle s'inverse ;
+2. l'option de ne rien acheter, de simplifier ou de reporter ;
+3. le coût du statu quo et la charge côté client ;
+4. le coût total sur un horizon commun, pas seulement le prix d'entrée ;
+5. un scénario prudent, un scénario central et un scénario exigeant ;
+6. un échec, une limite ou un cas où l'amélioration attendue ne se produit pas ;
+7. les données, intégrations, personnes et responsabilités nécessaires ;
+8. la maintenance, la sortie et le coût de changement ;
+9. une mesure de départ, un indicateur métier, une fréquence de revue et un
+   responsable après la décision ;
+10. un actif signature autonome pour les requêtes à forte intention :
+    calculateur, modèle, matrice, protocole, exemple annoté ou checklist testée.
+
+Un actif signature n'est pas obligatoire lorsqu'il serait artificiel. Le
+dossier explique alors quelle démonstration rend la page difficile à remplacer.
+Un PDF qui répète l'article ne remplit jamais cette fonction.
+
+Le guide déclare aussi le conflit d'intérêts utile à la lecture : agence qui
+vend du sur-mesure, éditeur qui compare son produit, étude commandée ou cas
+client sélectionné. La transparence n'annule pas la preuve ; elle permet de lui
+donner le bon poids.
+
+#### Planchers de recherche
+
+Ces planchers concernent le corpus étudié, pas le nombre de liens à afficher.
+Une même source répétée n'en devient pas plusieurs, et une source faible n'est
+jamais ajoutée pour atteindre un total.
+
+| Famille                     | Corpus minimal à examiner | Répartition attendue                                                                        |
+| --------------------------- | ------------------------: | ------------------------------------------------------------------------------------------- |
+| Droit, RGPD ou sécurité     |         10 sources utiles | au moins 6 officielles ou primaires, plus les documentations des produits concernés         |
+| Prix, budget ou ROI         |          8 sources utiles | au moins 2 sources de marché distinctes, 2 primaires et 1 contradiction ou limite sérieuse  |
+| Comparatif de produits      |          8 sources utiles | documentation officielle de chaque produit, tarifs datés et au moins 2 regards indépendants |
+| SEO ou Google Ads           |          8 sources utiles | documentation Google, donnée avec méthodologie et source critique indépendante              |
+| Maintenance ou architecture |          8 sources utiles | standard ou référence opérationnelle, documentation de la stack et cas documenté            |
+| Guide opérationnel étroit   |          6 sources utiles | au moins 3 officielles ou primaires                                                         |
+
+Le dossier peut justifier un corpus plus petit si le sujet possède moins de
+sources pertinentes. Il ne peut pas remplacer ce manque par des articles
+secondaires qui se citent entre eux.
 
 ---
 
@@ -938,7 +1084,7 @@ Chaque point est bloquant :
 
 ---
 
-## 13. Scorecard de publication
+## 13. Scorecard d'excellence et de publication
 
 Avant de compter les points, cinq conditions sont bloquantes :
 
@@ -950,13 +1096,16 @@ Avant de compter les points, cinq conditions sont bloquantes :
 
 Si une seule de ces conditions échoue, le guide n'est pas publiable, même si
 les faits, les sources et le SEO technique sont corrects. Les notes Intention,
-Pédagogie, Style et SEO/produit ne peuvent alors pas dépasser 1.
+Pédagogie, Style et SEO/produit ne peuvent alors pas dépasser 6.
 
-Noter chaque axe de 0 à 2 :
+Noter chaque axe de 0 à 10 :
 
-- `0` : absent, trompeur ou inutilisable ;
-- `1` : présent mais incomplet, générique ou difficile à appliquer ;
-- `2` : précis, prouvé et directement utilisable.
+- `0 à 3` : absent, trompeur ou inutilisable ;
+- `4 à 6` : présent mais générique, incomplet ou difficile à appliquer ;
+- `7 à 8` : solide et utile, avec encore un manque identifiable ;
+- `9` : excellent, précis, prouvé et directement utilisable ;
+- `10` : difficile à améliorer sans nouvelle donnée primaire, nouvel outil ou
+  véritable retour terrain.
 
 | Axe         | Question de contrôle                                                   |
 | ----------- | ---------------------------------------------------------------------- |
@@ -971,13 +1120,18 @@ Noter chaque axe de 0 à 2 :
 | Conversion  | Le bon lecteur comprend-il le prochain pas et le mauvais fit ?         |
 | SEO/produit | Structure, liens, metadata, accessibilité et rendu sont-ils propres ?  |
 
-**Seuil de publication : 17/20**, aucune note à 0, et `Intention`,
-`Pédagogie`, `Preuve` et `Décision` obligatoirement à 2.
+**Seuil de publication : 90/100**, aucun axe sous 8, et `Intention`,
+`Décision`, `Pédagogie`, `Profondeur`, `Preuve` et `Comparaison`
+obligatoirement à 9 ou 10. Une note de 10 doit nommer ce qui a été cherché pour
+mettre la page en défaut ; elle ne récompense jamais la longueur.
 
-La note doit être accompagnée d'une phrase de preuve par axe. Une note
-sans justification n'est pas un audit. Une contre-relecture par un agent
-indépendant peut vérifier logique, sources, calculs et clarté ; elle ne doit
-jamais être présentée comme l'avis d'une personne réelle.
+La note doit être accompagnée d'une preuve localisable et d'un manque résiduel
+par axe. Une note sans justification n'est pas un audit. Avant de noter
+`Profondeur`, `Comparaison` ou `Originalité`, le relecteur rouvre la matrice de
+gain d'information et au moins trois des meilleures ressources concurrentes,
+dont une internationale. Une contre-relecture par un agent indépendant peut
+vérifier logique, sources, calculs et clarté ; elle ne doit jamais être
+présentée comme l'avis d'une personne réelle.
 
 Faire ensuite relire le guide final par au moins un lecteur humain non
 technique qui n'a pas participé à la rédaction. Lui demander ce qu'il a
@@ -1004,8 +1158,9 @@ validation.
 La validation éditoriale est acquise soit par un test lecteur humain suivi des
 corrections, soit par une instruction explicite du commanditaire qui délègue la
 décision de publication à un contre-audit indépendant. Cette délégation ne
-réduit aucun seuil : le score doit passer, les axes obligatoires restent à 2 et
-aucun blocage factuel, éditorial, commercial ou technique ne peut subsister.
+réduit aucun seuil : le score doit passer, les axes obligatoires restent à 9 ou
+10 et aucun blocage factuel, éditorial, commercial ou technique ne peut
+subsister.
 
 ---
 

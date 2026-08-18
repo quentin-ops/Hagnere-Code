@@ -1,0 +1,28 @@
+Catégorie;Question à verrouiller;Offre A;Offre B;Offre C;Preuve ou livrable attendu;Responsable;Statut
+Cadre;Date et durée de validité du devis;;;;Devis daté avec durée de validité;;À renseigner
+Cadre;Devise HT ou TTC et traitement de la TVA;;;;Mention fiscale explicite;;À renseigner
+Média;Budget ou plafond configuré, dépense prévue et dépense réellement facturée;;;;Paramétrage du compte et facture Google au nom du client;;À renseigner
+Média;Pays de diffusion, part de dépense par juridiction et surcharge applicable;;;;Ligne de facturation Google ventilée par juridiction;;À renseigner
+Périmètre;Nombre et type de campagnes;;;;Liste Search Shopping Performance Max Display YouTube;;À renseigner
+Périmètre;Pays langues zones produits et marques;;;;Inventaire borné dans le devis;;À renseigner
+Périmètre;Assiette des honoraires proportionnels;;;;Budget brut net crédits exclus et paliers définis;;À renseigner
+Lancement;Audit recherche structure annonces et mise en ligne;;;;Plan de compte et critères de recette;;À renseigner
+Mesure;Conversions principales et secondaires;;;;Plan de marquage et tests de déclenchement;;À renseigner
+Mesure;Prospects qualifiés ventes et retours CRM;;;;Dictionnaire des étapes et fréquence d’import;;À renseigner
+Mesure;Consentement déduplication et durée de conservation;;;;Responsabilités et preuve de recette;;À renseigner
+Pages;Audit rédaction design développement hébergement;;;;Nombre de pages variantes et maintenance;;À renseigner
+Créations;Textes images vidéos et renouvellement;;;;Formats volume droits et validation;;À renseigner
+Outils;Suivi d’appels connecteurs serveur de balises tableau de bord;;;;Licences titulaires coûts et conditions de sortie;;À renseigner
+Pilotage;Cadence de contrôle et d’optimisation;;;;Fréquence minimale et journal des actions;;À renseigner
+Pilotage;Reporting réunions alertes et support;;;;Exemple de rapport calendrier et délai cible;;À renseigner
+Équipe;Intervenants nommés séniorité et sous-traitants;;;;Rôles disponibilité et continuité;;À renseigner
+Temps interne;Heures de brief validation contenus et qualification;;;;Charge initiale et mensuelle par responsable;;À renseigner
+Indicateurs;CPL média CPL facturé CPL renseigné CPA CAC ROAS et marge;;;;Définitions formules source et cohorte identiques;;À renseigner
+Contrat;Engagement préavis révision du prix et avenants;;;;Clause contractuelle datée;;À renseigner
+Propriété;Administrateurs facturation historique et compte administrateur;;;;Deux administrateurs client et association révocable;;À renseigner
+Droits;Textes images vidéos pages scripts tableaux et connecteurs;;;;Cession licence ou exclusion écrite;;À renseigner
+Sortie;Passation exports documentation suppression et coûts;;;;Liste de remise délai et montant;;À renseigner
+Total;Coût renseigné sur 3 mois;;;;Calcul avec inconnues conservées comme inconnues;;À calculer
+Total;Coût renseigné sur 6 mois;;;;Calcul avec engagement et préavis;;À calculer
+Total;Coût renseigné sur 12 mois;;;;Calcul avec révision tarifaire éventuelle;;À calculer
+Décision;Cas où il vaut mieux auditer tester en interne ou attendre;;;;Critère d’arrêt et prochaine date de revue;;À décider

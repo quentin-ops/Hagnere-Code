@@ -1,0 +1,1338 @@
+{
+  "status": "PASS_LOCAL",
+  "generatedAt": "2026-07-29T04:14:38.622Z",
+  "workbook": "output/sla-maintenance-applicative/workbook/kit-sla-maintenance-applicative.xlsx",
+  "publicWorkbook": "public/ressources/kit-sla-maintenance-applicative.xlsx",
+  "sha256": "9e502e0992667c98718767feb309dc230238e4ded16ea117e16cf34d9c0787de",
+  "bytes": 63918,
+  "sheets": [
+    {
+      "name": "LIRE_D_ABORD",
+      "rows": 16,
+      "columns": 8,
+      "formulas": 0,
+      "tables": 1
+    },
+    {
+      "name": "HYPOTHESES",
+      "rows": 14,
+      "columns": 9,
+      "formulas": 0,
+      "tables": 1
+    },
+    {
+      "name": "SERVICES_PARCOURS",
+      "rows": 9,
+      "columns": 8,
+      "formulas": 0,
+      "tables": 1
+    },
+    {
+      "name": "PLAGES_CALENDRIER",
+      "rows": 9,
+      "columns": 9,
+      "formulas": 0,
+      "tables": 1
+    },
+    {
+      "name": "DISPONIBILITE",
+      "rows": 10,
+      "columns": 8,
+      "formulas": 20,
+      "tables": 1
+    },
+    {
+      "name": "INCIDENTS",
+      "rows": 8,
+      "columns": 9,
+      "formulas": 0,
+      "tables": 1
+    },
+    {
+      "name": "CHRONOLOGIE",
+      "rows": 12,
+      "columns": 8,
+      "formulas": 14,
+      "tables": 1
+    },
+    {
+      "name": "COUT_INCIDENT",
+      "rows": 15,
+      "columns": 8,
+      "formulas": 20,
+      "tables": 1
+    },
+    {
+      "name": "RPO_OPERATIONS",
+      "rows": 8,
+      "columns": 8,
+      "formulas": 6,
+      "tables": 1
+    },
+    {
+      "name": "DEPENDANCES",
+      "rows": 10,
+      "columns": 9,
+      "formulas": 0,
+      "tables": 1
+    },
+    {
+      "name": "COUVERTURES",
+      "rows": 8,
+      "columns": 12,
+      "formulas": 0,
+      "tables": 1
+    },
+    {
+      "name": "COMPARAISON_12_MOIS",
+      "rows": 8,
+      "columns": 8,
+      "formulas": 18,
+      "tables": 1
+    },
+    {
+      "name": "EXERCICES_PREUVES",
+      "rows": 13,
+      "columns": 10,
+      "formulas": 0,
+      "tables": 1
+    },
+    {
+      "name": "COMMUNICATION",
+      "rows": 9,
+      "columns": 8,
+      "formulas": 0,
+      "tables": 1
+    },
+    {
+      "name": "DECISION",
+      "rows": 17,
+      "columns": 8,
+      "formulas": 12,
+      "tables": 1
+    },
+    {
+      "name": "CONTROLES",
+      "rows": 146,
+      "columns": 8,
+      "formulas": 0,
+      "tables": 1
+    },
+    {
+      "name": "SOURCES",
+      "rows": 20,
+      "columns": 9,
+      "formulas": 0,
+      "tables": 1
+    }
+  ],
+  "sources": 15,
+  "proofs": 8,
+  "formulas": 90,
+  "fixtures": {
+    "availabilityMinutes": [
+      432,
+      216,
+      43.2,
+      21.6,
+      4.32
+    ],
+    "chronologyMinutes": [
+      0,
+      8,
+      55,
+      150,
+      310,
+      410,
+      530
+    ],
+    "incident": {
+      "internal": 1764,
+      "gross": 3564,
+      "credit": 200,
+      "net": 3364
+    },
+    "rpo": {
+      "operations": 60,
+      "reentryHours": 4,
+      "cost": 140
+    },
+    "annualCoverage": [
+      31656,
+      33828,
+      53364
+    ]
+  },
+  "scenarios": {
+    "mutations": 8,
+    "adversarial": 43,
+    "sabotage": 90,
+    "total": 141,
+    "details": [
+      {
+        "id": "MUT-01",
+        "input": "DISPONIBILITE!B8",
+        "output": "DISPONIBILITE!F8",
+        "injected": 99.5,
+        "expected": 216,
+        "actual": 216.0000000000002,
+        "detected": true
+      },
+      {
+        "id": "MUT-02",
+        "input": "COUT_INCIDENT!C6",
+        "output": "COUT_INCIDENT!C15",
+        "injected": 5.2,
+        "expected": 2184,
+        "actual": 2184,
+        "detected": true
+      },
+      {
+        "id": "MUT-03",
+        "input": "RPO_OPERATIONS!D6",
+        "output": "RPO_OPERATIONS!G6",
+        "injected": 2,
+        "expected": 80,
+        "actual": 80,
+        "detected": true
+      },
+      {
+        "id": "MUT-04",
+        "input": "COUVERTURES!E6",
+        "output": "COMPARAISON_12_MOIS!F6",
+        "injected": 1300,
+        "expected": 32856,
+        "actual": 32856,
+        "detected": true
+      },
+      {
+        "id": "MUT-05",
+        "input": "COUVERTURES!F7",
+        "output": "COMPARAISON_12_MOIS!F7",
+        "injected": 4,
+        "expected": 34392,
+        "actual": 34392,
+        "detected": true
+      },
+      {
+        "id": "MUT-06",
+        "input": "COUVERTURES!J8",
+        "output": "COMPARAISON_12_MOIS!F8",
+        "injected": 3772,
+        "expected": 53414,
+        "actual": 53414,
+        "detected": true
+      },
+      {
+        "id": "MUT-07",
+        "input": "COUT_INCIDENT!C6",
+        "output": "COUT_INCIDENT!D15",
+        "injected": 5.2,
+        "expected": 4098.29,
+        "actual": 4098.29,
+        "detected": true
+      },
+      {
+        "id": "MUT-08",
+        "input": "COUT_INCIDENT!C9",
+        "output": "COUT_INCIDENT!C15",
+        "injected": 12.3456,
+        "expected": 217.78,
+        "actual": 217.78,
+        "detected": true
+      },
+      {
+        "id": "ADV-01",
+        "input": "DISPONIBILITE!B6",
+        "output": "DISPONIBILITE!H6",
+        "expected": "STOP",
+        "actual": "STOP",
+        "detected": true
+      },
+      {
+        "id": "ADV-02",
+        "input": "COUT_INCIDENT!C6",
+        "output": "COUT_INCIDENT!H6",
+        "expected": "STOP",
+        "actual": "STOP",
+        "detected": true
+      },
+      {
+        "id": "ADV-03",
+        "input": "COUT_INCIDENT!C7",
+        "output": "COUT_INCIDENT!H7",
+        "expected": "STOP",
+        "actual": "STOP",
+        "detected": true
+      },
+      {
+        "id": "ADV-04",
+        "input": "CHRONOLOGIE!D8",
+        "output": "CHRONOLOGIE!H8",
+        "expected": "STOP",
+        "actual": "STOP",
+        "detected": true
+      },
+      {
+        "id": "ADV-05",
+        "input": "COUVERTURES!K6",
+        "output": "COMPARAISON_12_MOIS!H6",
+        "expected": "INCOMPLET",
+        "actual": "INCOMPLET",
+        "detected": true
+      },
+      {
+        "id": "ADV-06",
+        "input": "EXERCICES_PREUVES!G6",
+        "output": "DECISION!C16",
+        "expected": "STOP",
+        "actual": "STOP",
+        "detected": true
+      },
+      {
+        "id": "ADV-07",
+        "input": "LIRE_D_ABORD!C9",
+        "output": "DECISION!C16",
+        "expected": "STOP",
+        "actual": "STOP",
+        "detected": true
+      },
+      {
+        "id": "ADV-08",
+        "input": "LIRE_D_ABORD!C10",
+        "output": "DECISION!C16",
+        "expected": "STOP",
+        "actual": "STOP",
+        "detected": true
+      },
+      {
+        "id": "ADV-09",
+        "input": "LIRE_D_ABORD!C8",
+        "output": "DECISION!C16",
+        "expected": "INCOMPLET",
+        "actual": "INCOMPLET",
+        "detected": true
+      },
+      {
+        "id": "ADV-10",
+        "input": "EXERCICES_PREUVES!G6:G13",
+        "output": "DECISION!C16",
+        "expected": "COMPARABLE",
+        "actual": "COMPARABLE",
+        "detected": true
+      },
+      {
+        "id": "ADV-11",
+        "input": "EXERCICES_PREUVES!I6:I13",
+        "output": "DECISION!C16",
+        "expected": "COMPARABLE",
+        "actual": "COMPARABLE",
+        "detected": true
+      },
+      {
+        "id": "ADV-12",
+        "input": "EXERCICES_PREUVES!H6:H13",
+        "output": "DECISION!C16",
+        "expected": "COMPARABLE",
+        "actual": "COMPARABLE",
+        "detected": true
+      },
+      {
+        "id": "ADV-13",
+        "input": "EXERCICES_PREUVES!J6:J13",
+        "output": "DECISION!C16",
+        "expected": "COMPARABLE",
+        "actual": "COMPARABLE",
+        "detected": true
+      },
+      {
+        "id": "ADV-14",
+        "input": "RPO_OPERATIONS!C6",
+        "output": "DECISION!C16",
+        "expected": "STOP",
+        "actual": "STOP",
+        "detected": true
+      },
+      {
+        "id": "ADV-15",
+        "input": "LIRE_D_ABORD!C11",
+        "output": "DECISION!C16",
+        "expected": "INCOMPLET",
+        "actual": "INCOMPLET",
+        "detected": true
+      },
+      {
+        "id": "ADV-16",
+        "input": "COUVERTURES!K6",
+        "output": "COMPARAISON_12_MOIS!H6",
+        "expected": "INCOMPLET",
+        "actual": "INCOMPLET",
+        "detected": true
+      },
+      {
+        "id": "ADV-17",
+        "input": "EXERCICES_PREUVES!H6:H13",
+        "output": "DECISION!C16",
+        "expected": "COMPARABLE",
+        "actual": "COMPARABLE",
+        "detected": true
+      },
+      {
+        "id": "ADV-18",
+        "input": "EXERCICES_PREUVES!J6:J13",
+        "output": "DECISION!C16",
+        "expected": "COMPARABLE",
+        "actual": "COMPARABLE",
+        "detected": true
+      },
+      {
+        "id": "ADV-19",
+        "input": "COUT_INCIDENT!C6:C13",
+        "output": "DECISION!C16",
+        "expected": "STOP",
+        "actual": "STOP",
+        "detected": true
+      },
+      {
+        "id": "ADV-20",
+        "input": "COUVERTURES!B6:B8",
+        "output": "COMPARAISON_12_MOIS!H6",
+        "expected": "INCOMPLET",
+        "actual": "INCOMPLET",
+        "detected": true
+      },
+      {
+        "id": "ADV-21",
+        "input": "COUVERTURES!C6",
+        "output": "COMPARAISON_12_MOIS!H6",
+        "expected": "INCOMPLET",
+        "actual": "INCOMPLET",
+        "detected": true
+      },
+      {
+        "id": "ADV-22",
+        "input": "LIRE_D_ABORD!C10",
+        "output": "DECISION!C16",
+        "expected": "STOP",
+        "actual": "STOP",
+        "detected": true
+      },
+      {
+        "id": "ADV-23",
+        "input": "COUT_INCIDENT!C13",
+        "output": "DECISION!C16",
+        "expected": "STOP",
+        "actual": "STOP",
+        "detected": true
+      },
+      {
+        "id": "ADV-24",
+        "input": "LIRE_D_ABORD!C11",
+        "output": "DECISION!C16",
+        "expected": "INCOMPLET",
+        "actual": "INCOMPLET",
+        "detected": true
+      },
+      {
+        "id": "ADV-25",
+        "input": "LIRE_D_ABORD!C11",
+        "output": "DECISION!C16",
+        "expected": "INCOMPLET",
+        "actual": "INCOMPLET",
+        "detected": true
+      },
+      {
+        "id": "ADV-26",
+        "input": "EXERCICES_PREUVES!I6:I13",
+        "output": "DECISION!C16",
+        "expected": "COMPARABLE",
+        "actual": "COMPARABLE",
+        "detected": true
+      },
+      {
+        "id": "ADV-27",
+        "input": "COUVERTURES!L6",
+        "output": "COMPARAISON_12_MOIS!H6",
+        "expected": "INCOMPLET",
+        "actual": "INCOMPLET",
+        "detected": true
+      },
+      {
+        "id": "ADV-28",
+        "input": "DISPONIBILITE!C6",
+        "output": "DISPONIBILITE!H6",
+        "expected": "STOP",
+        "actual": "STOP",
+        "detected": true
+      },
+      {
+        "id": "ADV-29",
+        "input": "DISPONIBILITE!C6",
+        "output": "DISPONIBILITE!H6",
+        "expected": "STOP",
+        "actual": "STOP",
+        "detected": true
+      },
+      {
+        "id": "ADV-30",
+        "input": "COUT_INCIDENT!C6",
+        "output": "COUT_INCIDENT!H6",
+        "expected": "STOP",
+        "actual": "STOP",
+        "detected": true
+      },
+      {
+        "id": "ADV-31",
+        "input": "COUT_INCIDENT!C6",
+        "output": "COUT_INCIDENT!H6",
+        "expected": "STOP",
+        "actual": "STOP",
+        "detected": true
+      },
+      {
+        "id": "ADV-32",
+        "input": "COUT_INCIDENT!C7",
+        "output": "COUT_INCIDENT!H7",
+        "expected": "STOP",
+        "actual": "STOP",
+        "detected": true
+      },
+      {
+        "id": "ADV-33",
+        "input": "RPO_OPERATIONS!C6",
+        "output": "DECISION!C16",
+        "expected": "STOP",
+        "actual": "STOP",
+        "detected": true
+      },
+      {
+        "id": "ADV-34",
+        "input": "COUVERTURES!D6",
+        "output": "COMPARAISON_12_MOIS!H6",
+        "expected": "INCOMPLET",
+        "actual": "INCOMPLET",
+        "detected": true
+      },
+      {
+        "id": "ADV-35",
+        "input": "COUVERTURES!D6",
+        "output": "COMPARAISON_12_MOIS!H6",
+        "expected": "INCOMPLET",
+        "actual": "INCOMPLET",
+        "detected": true
+      },
+      {
+        "id": "ADV-36",
+        "input": "COUT_INCIDENT!C6:C13",
+        "output": "COUT_INCIDENT!F15",
+        "expected": "STOP",
+        "actual": "STOP",
+        "detected": true
+      },
+      {
+        "id": "ADV-37",
+        "input": "RPO_OPERATIONS!C6:F6",
+        "output": "RPO_OPERATIONS!H6",
+        "expected": 700.67,
+        "actual": 700.67,
+        "detected": true
+      },
+      {
+        "id": "ADV-38",
+        "input": "COUVERTURES!D6:J6",
+        "output": "COMPARAISON_12_MOIS!F6",
+        "expected": 0.07,
+        "actual": 0.07,
+        "detected": true
+      },
+      {
+        "id": "ADV-39",
+        "input": "COUVERTURES!B6:B8",
+        "output": "COMPARAISON_12_MOIS!H6",
+        "expected": "INCOMPLET",
+        "actual": "INCOMPLET",
+        "detected": true
+      },
+      {
+        "id": "ADV-40",
+        "input": "COUVERTURES!B6",
+        "output": "COMPARAISON_12_MOIS!H6",
+        "expected": "INCOMPLET",
+        "actual": "INCOMPLET",
+        "detected": true
+      },
+      {
+        "id": "ADV-41",
+        "input": "COUVERTURES!D6:J6",
+        "output": "COMPARAISON_12_MOIS!H6",
+        "expected": "PASS",
+        "actual": "PASS",
+        "detected": true
+      },
+      {
+        "id": "ADV-42",
+        "input": "COUT_INCIDENT!C6:C13",
+        "output": "COUT_INCIDENT!D15",
+        "expected": 1.4164453378181823e+23,
+        "actual": 1.4164453378181823e+23,
+        "detected": true
+      },
+      {
+        "id": "ADV-43",
+        "input": "RPO_OPERATIONS!C6:F6",
+        "output": "RPO_OPERATIONS!H6",
+        "expected": 4.611693218303003e+24,
+        "actual": 4.611693218303003e+24,
+        "detected": true
+      },
+      {
+        "id": "SAB-01",
+        "target": "DISPONIBILITE!E6",
+        "injected": "=1",
+        "expected": "=C6*D6*60",
+        "detected": true
+      },
+      {
+        "id": "SAB-02",
+        "target": "DISPONIBILITE!F6",
+        "injected": "=1",
+        "expected": "=E6*(1-B6/100)",
+        "detected": true
+      },
+      {
+        "id": "SAB-03",
+        "target": "DISPONIBILITE!G6",
+        "injected": "=1",
+        "expected": "=ROUND(F6*60,0)",
+        "detected": true
+      },
+      {
+        "id": "SAB-04",
+        "target": "DISPONIBILITE!H6",
+        "injected": "=1",
+        "expected": "=IF(AND(ISNUMBER(B6),ISNUMBER(C6),ISNUMBER(D6)),IF(AND(B6>0,B6<100,ROUND(B6,4)=B6,C6>0,C6<=366,INT(C6)=C6,D6>0,D6<=24,ROUND(D6,4)=D6),\"PASS\",\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-05",
+        "target": "DISPONIBILITE!E7",
+        "injected": "=1",
+        "expected": "=C7*D7*60",
+        "detected": true
+      },
+      {
+        "id": "SAB-06",
+        "target": "DISPONIBILITE!F7",
+        "injected": "=1",
+        "expected": "=E7*(1-B7/100)",
+        "detected": true
+      },
+      {
+        "id": "SAB-07",
+        "target": "DISPONIBILITE!G7",
+        "injected": "=1",
+        "expected": "=ROUND(F7*60,0)",
+        "detected": true
+      },
+      {
+        "id": "SAB-08",
+        "target": "DISPONIBILITE!H7",
+        "injected": "=1",
+        "expected": "=IF(AND(ISNUMBER(B7),ISNUMBER(C7),ISNUMBER(D7)),IF(AND(B7>0,B7<100,ROUND(B7,4)=B7,C7>0,C7<=366,INT(C7)=C7,D7>0,D7<=24,ROUND(D7,4)=D7),\"PASS\",\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-09",
+        "target": "DISPONIBILITE!E8",
+        "injected": "=1",
+        "expected": "=C8*D8*60",
+        "detected": true
+      },
+      {
+        "id": "SAB-10",
+        "target": "DISPONIBILITE!F8",
+        "injected": "=1",
+        "expected": "=E8*(1-B8/100)",
+        "detected": true
+      },
+      {
+        "id": "SAB-11",
+        "target": "DISPONIBILITE!G8",
+        "injected": "=1",
+        "expected": "=ROUND(F8*60,0)",
+        "detected": true
+      },
+      {
+        "id": "SAB-12",
+        "target": "DISPONIBILITE!H8",
+        "injected": "=1",
+        "expected": "=IF(AND(ISNUMBER(B8),ISNUMBER(C8),ISNUMBER(D8)),IF(AND(B8>0,B8<100,ROUND(B8,4)=B8,C8>0,C8<=366,INT(C8)=C8,D8>0,D8<=24,ROUND(D8,4)=D8),\"PASS\",\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-13",
+        "target": "DISPONIBILITE!E9",
+        "injected": "=1",
+        "expected": "=C9*D9*60",
+        "detected": true
+      },
+      {
+        "id": "SAB-14",
+        "target": "DISPONIBILITE!F9",
+        "injected": "=1",
+        "expected": "=E9*(1-B9/100)",
+        "detected": true
+      },
+      {
+        "id": "SAB-15",
+        "target": "DISPONIBILITE!G9",
+        "injected": "=1",
+        "expected": "=ROUND(F9*60,0)",
+        "detected": true
+      },
+      {
+        "id": "SAB-16",
+        "target": "DISPONIBILITE!H9",
+        "injected": "=1",
+        "expected": "=IF(AND(ISNUMBER(B9),ISNUMBER(C9),ISNUMBER(D9)),IF(AND(B9>0,B9<100,ROUND(B9,4)=B9,C9>0,C9<=366,INT(C9)=C9,D9>0,D9<=24,ROUND(D9,4)=D9),\"PASS\",\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-17",
+        "target": "DISPONIBILITE!E10",
+        "injected": "=1",
+        "expected": "=C10*D10*60",
+        "detected": true
+      },
+      {
+        "id": "SAB-18",
+        "target": "DISPONIBILITE!F10",
+        "injected": "=1",
+        "expected": "=E10*(1-B10/100)",
+        "detected": true
+      },
+      {
+        "id": "SAB-19",
+        "target": "DISPONIBILITE!G10",
+        "injected": "=1",
+        "expected": "=ROUND(F10*60,0)",
+        "detected": true
+      },
+      {
+        "id": "SAB-20",
+        "target": "DISPONIBILITE!H10",
+        "injected": "=1",
+        "expected": "=IF(AND(ISNUMBER(B10),ISNUMBER(C10),ISNUMBER(D10)),IF(AND(B10>0,B10<100,ROUND(B10,4)=B10,C10>0,C10<=366,INT(C10)=C10,D10>0,D10<=24,ROUND(D10,4)=D10),\"PASS\",\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-21",
+        "target": "CHRONOLOGIE!E6",
+        "injected": "=1",
+        "expected": "=ROUND((D6-$D$6)*1440,0)",
+        "detected": true
+      },
+      {
+        "id": "SAB-22",
+        "target": "CHRONOLOGIE!H6",
+        "injected": "=1",
+        "expected": "=IF(ISNUMBER(D6),\"PASS\",\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-23",
+        "target": "CHRONOLOGIE!E7",
+        "injected": "=1",
+        "expected": "=ROUND((D7-$D$6)*1440,0)",
+        "detected": true
+      },
+      {
+        "id": "SAB-24",
+        "target": "CHRONOLOGIE!H7",
+        "injected": "=1",
+        "expected": "=IF(AND(ISNUMBER(D7),D7>=D6),\"PASS\",\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-25",
+        "target": "CHRONOLOGIE!E8",
+        "injected": "=1",
+        "expected": "=ROUND((D8-$D$6)*1440,0)",
+        "detected": true
+      },
+      {
+        "id": "SAB-26",
+        "target": "CHRONOLOGIE!H8",
+        "injected": "=1",
+        "expected": "=IF(AND(ISNUMBER(D8),D8>=D7),\"PASS\",\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-27",
+        "target": "CHRONOLOGIE!E9",
+        "injected": "=1",
+        "expected": "=ROUND((D9-$D$6)*1440,0)",
+        "detected": true
+      },
+      {
+        "id": "SAB-28",
+        "target": "CHRONOLOGIE!H9",
+        "injected": "=1",
+        "expected": "=IF(AND(ISNUMBER(D9),D9>=D8),\"PASS\",\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-29",
+        "target": "CHRONOLOGIE!E10",
+        "injected": "=1",
+        "expected": "=ROUND((D10-$D$6)*1440,0)",
+        "detected": true
+      },
+      {
+        "id": "SAB-30",
+        "target": "CHRONOLOGIE!H10",
+        "injected": "=1",
+        "expected": "=IF(AND(ISNUMBER(D10),D10>=D9),\"PASS\",\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-31",
+        "target": "CHRONOLOGIE!E11",
+        "injected": "=1",
+        "expected": "=ROUND((D11-$D$6)*1440,0)",
+        "detected": true
+      },
+      {
+        "id": "SAB-32",
+        "target": "CHRONOLOGIE!H11",
+        "injected": "=1",
+        "expected": "=IF(AND(ISNUMBER(D11),D11>=D10),\"PASS\",\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-33",
+        "target": "CHRONOLOGIE!E12",
+        "injected": "=1",
+        "expected": "=ROUND((D12-$D$6)*1440,0)",
+        "detected": true
+      },
+      {
+        "id": "SAB-34",
+        "target": "CHRONOLOGIE!H12",
+        "injected": "=1",
+        "expected": "=IF(AND(ISNUMBER(D12),D12>=D11),\"PASS\",\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-35",
+        "target": "COUT_INCIDENT!G6",
+        "injected": "=1",
+        "expected": "=0",
+        "detected": true
+      },
+      {
+        "id": "SAB-36",
+        "target": "COUT_INCIDENT!H6",
+        "injected": "=1",
+        "expected": "=IF(ISNUMBER(C6),IF(AND(C6>=0,C6<=1000000,ROUND(C6,4)=C6),\"PASS\",\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-37",
+        "target": "COUT_INCIDENT!G7",
+        "injected": "=1",
+        "expected": "=0",
+        "detected": true
+      },
+      {
+        "id": "SAB-38",
+        "target": "COUT_INCIDENT!H7",
+        "injected": "=1",
+        "expected": "=IF(ISNUMBER(C7),IF(AND(C7>=0,C7<=100000000,INT(C7)=C7),\"PASS\",\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-39",
+        "target": "COUT_INCIDENT!G8",
+        "injected": "=1",
+        "expected": "=0",
+        "detected": true
+      },
+      {
+        "id": "SAB-40",
+        "target": "COUT_INCIDENT!H8",
+        "injected": "=1",
+        "expected": "=IF(ISNUMBER(C8),IF(AND(C8>=0,C8<=10000000000,ROUND(C8,4)=C8),\"PASS\",\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-41",
+        "target": "COUT_INCIDENT!G9",
+        "injected": "=1",
+        "expected": "=0",
+        "detected": true
+      },
+      {
+        "id": "SAB-42",
+        "target": "COUT_INCIDENT!H9",
+        "injected": "=1",
+        "expected": "=IF(ISNUMBER(C9),IF(AND(C9>=0,C9<=100,ROUND(C9,4)=C9),\"PASS\",\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-43",
+        "target": "COUT_INCIDENT!G10",
+        "injected": "=1",
+        "expected": "=ROUND(C10,2)",
+        "detected": true
+      },
+      {
+        "id": "SAB-44",
+        "target": "COUT_INCIDENT!H10",
+        "injected": "=1",
+        "expected": "=IF(ISNUMBER(C10),IF(AND(C10>=0,C10<=10000000000,ROUND(C10,4)=C10),\"PASS\",\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-45",
+        "target": "COUT_INCIDENT!G11",
+        "injected": "=1",
+        "expected": "=ROUND(C6*C11,2)",
+        "detected": true
+      },
+      {
+        "id": "SAB-46",
+        "target": "COUT_INCIDENT!H11",
+        "injected": "=1",
+        "expected": "=IF(ISNUMBER(C11),IF(AND(C11>=0,C11<=10000000000,ROUND(C11,4)=C11),\"PASS\",\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-47",
+        "target": "COUT_INCIDENT!G12",
+        "injected": "=1",
+        "expected": "=ROUND(C12,2)",
+        "detected": true
+      },
+      {
+        "id": "SAB-48",
+        "target": "COUT_INCIDENT!H12",
+        "injected": "=1",
+        "expected": "=IF(ISNUMBER(C12),IF(AND(C12>=0,C12<=10000000000,ROUND(C12,4)=C12),\"PASS\",\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-49",
+        "target": "COUT_INCIDENT!G13",
+        "injected": "=1",
+        "expected": "=ROUND(C13,2)",
+        "detected": true
+      },
+      {
+        "id": "SAB-50",
+        "target": "COUT_INCIDENT!H13",
+        "injected": "=1",
+        "expected": "=IF(ISNUMBER(C13),IF(AND(C13>=0,C13<=10000000000,ROUND(C13,4)=C13),\"PASS\",\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-51",
+        "target": "COUT_INCIDENT!C15",
+        "injected": "=1",
+        "expected": "=ROUND(C6*C7*C8*C9/100,2)",
+        "detected": true
+      },
+      {
+        "id": "SAB-52",
+        "target": "COUT_INCIDENT!D15",
+        "injected": "=1",
+        "expected": "=IF(AND(ISNUMBER(C15),ISNUMBER(G10),ISNUMBER(G11),ISNUMBER(G12)),ROUND(C15+(G10+G11+G12),2),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-53",
+        "target": "COUT_INCIDENT!E15",
+        "injected": "=1",
+        "expected": "=G13",
+        "detected": true
+      },
+      {
+        "id": "SAB-54",
+        "target": "COUT_INCIDENT!F15",
+        "injected": "=1",
+        "expected": "=IF(AND(ISNUMBER(D15),ISNUMBER(E15)),IF(D15>=E15,ROUND(D15-E15,2),\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-55",
+        "target": "RPO_OPERATIONS!G6",
+        "injected": "=1",
+        "expected": "=IF(AND(ISNUMBER(C6),ISNUMBER(D6)),IF(AND(C6>=0,D6>=0,C6<=100000000,D6<=1000000,ROUND(C6,4)=C6,ROUND(D6,4)=D6),C6*D6,\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-56",
+        "target": "RPO_OPERATIONS!H6",
+        "injected": "=1",
+        "expected": "=IF(AND(ISNUMBER(G6),ISNUMBER(E6),ISNUMBER(F6)),IF(AND(E6>=0,F6>=0,E6<=1440,F6<=10000000000,ROUND(E6,4)=E6,ROUND(F6,4)=F6),ROUND(G6*E6/60*F6,2),\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-57",
+        "target": "RPO_OPERATIONS!G7",
+        "injected": "=1",
+        "expected": "=IF(AND(ISNUMBER(C7),ISNUMBER(D7)),IF(AND(C7>=0,D7>=0,C7<=100000000,D7<=1000000,ROUND(C7,4)=C7,ROUND(D7,4)=D7),C7*D7,\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-58",
+        "target": "RPO_OPERATIONS!H7",
+        "injected": "=1",
+        "expected": "=IF(AND(ISNUMBER(G7),ISNUMBER(E7),ISNUMBER(F7)),IF(AND(E7>=0,F7>=0,E7<=1440,F7<=10000000000,ROUND(E7,4)=E7,ROUND(F7,4)=F7),ROUND(G7*E7/60*F7,2),\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-59",
+        "target": "RPO_OPERATIONS!G8",
+        "injected": "=1",
+        "expected": "=IF(AND(ISNUMBER(C8),ISNUMBER(D8)),IF(AND(C8>=0,D8>=0,C8<=100000000,D8<=1000000,ROUND(C8,4)=C8,ROUND(D8,4)=D8),C8*D8,\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-60",
+        "target": "RPO_OPERATIONS!H8",
+        "injected": "=1",
+        "expected": "=IF(AND(ISNUMBER(G8),ISNUMBER(E8),ISNUMBER(F8)),IF(AND(E8>=0,F8>=0,E8<=1440,F8<=10000000000,ROUND(E8,4)=E8,ROUND(F8,4)=F8),ROUND(G8*E8/60*F8,2),\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-61",
+        "target": "COMPARAISON_12_MOIS!C6",
+        "injected": "=1",
+        "expected": "=ROUND('COUVERTURES'!D6+'COUVERTURES'!E6*12+'COUVERTURES'!H6,2)",
+        "detected": true
+      },
+      {
+        "id": "SAB-62",
+        "target": "COMPARAISON_12_MOIS!D6",
+        "injected": "=1",
+        "expected": "=ROUND('COUVERTURES'!F6*'COUVERTURES'!G6*12,2)",
+        "detected": true
+      },
+      {
+        "id": "SAB-63",
+        "target": "COMPARAISON_12_MOIS!E6",
+        "injected": "=1",
+        "expected": "=ROUND('COUVERTURES'!I6*'COUVERTURES'!J6,2)",
+        "detected": true
+      },
+      {
+        "id": "SAB-64",
+        "target": "COMPARAISON_12_MOIS!F6",
+        "injected": "=1",
+        "expected": "=ROUND(SUM(C6:E6),2)",
+        "detected": true
+      },
+      {
+        "id": "SAB-65",
+        "target": "COMPARAISON_12_MOIS!G6",
+        "injected": "=1",
+        "expected": "=RANK(F6,$F$6:$F$8,1)",
+        "detected": true
+      },
+      {
+        "id": "SAB-66",
+        "target": "COMPARAISON_12_MOIS!H6",
+        "injected": "=1",
+        "expected": "=IF(COUNT('COUVERTURES'!D6:J6)=7,IF(AND(MIN('COUVERTURES'!D6:J6)>=0,MAX('COUVERTURES'!D6:J6)<=10000000000,ROUND('COUVERTURES'!D6,4)='COUVERTURES'!D6,ROUND('COUVERTURES'!E6,4)='COUVERTURES'!E6,ROUND('COUVERTURES'!F6,4)='COUVERTURES'!F6,ROUND('COUVERTURES'!G6,4)='COUVERTURES'!G6,ROUND('COUVERTURES'!H6,4)='COUVERTURES'!H6,ROUND('COUVERTURES'!I6,4)='COUVERTURES'!I6,ROUND('COUVERTURES'!J6,4)='COUVERTURES'!J6,IF(ISTEXT('COUVERTURES'!B6),AND(LEN('COUVERTURES'!B6)>=1,LEN('COUVERTURES'!B6)<=64,TRIM(CLEAN('COUVERTURES'!B6))='COUVERTURES'!B6,LEN('COUVERTURES'!B6)=LEN(SUBSTITUTE('COUVERTURES'!B6,\" \",\"\")),COUNTIF('COUVERTURES'!$B$6:$B$8,'COUVERTURES'!B6)=1),FALSE),LEN(TRIM('COUVERTURES'!C6))>=2,LEN(TRIM('COUVERTURES'!K6))>=5,ISNUMBER('COUVERTURES'!L6)),IF(AND(INT('COUVERTURES'!L6)='COUVERTURES'!L6,'COUVERTURES'!L6>0,'COUVERTURES'!L6<='LIRE_D_ABORD'!$C$11),\"PASS\",\"INCOMPLET\"),\"INCOMPLET\"),\"INCOMPLET\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-67",
+        "target": "COMPARAISON_12_MOIS!C7",
+        "injected": "=1",
+        "expected": "=ROUND('COUVERTURES'!D7+'COUVERTURES'!E7*12+'COUVERTURES'!H7,2)",
+        "detected": true
+      },
+      {
+        "id": "SAB-68",
+        "target": "COMPARAISON_12_MOIS!D7",
+        "injected": "=1",
+        "expected": "=ROUND('COUVERTURES'!F7*'COUVERTURES'!G7*12,2)",
+        "detected": true
+      },
+      {
+        "id": "SAB-69",
+        "target": "COMPARAISON_12_MOIS!E7",
+        "injected": "=1",
+        "expected": "=ROUND('COUVERTURES'!I7*'COUVERTURES'!J7,2)",
+        "detected": true
+      },
+      {
+        "id": "SAB-70",
+        "target": "COMPARAISON_12_MOIS!F7",
+        "injected": "=1",
+        "expected": "=ROUND(SUM(C7:E7),2)",
+        "detected": true
+      },
+      {
+        "id": "SAB-71",
+        "target": "COMPARAISON_12_MOIS!G7",
+        "injected": "=1",
+        "expected": "=RANK(F7,$F$6:$F$8,1)",
+        "detected": true
+      },
+      {
+        "id": "SAB-72",
+        "target": "COMPARAISON_12_MOIS!H7",
+        "injected": "=1",
+        "expected": "=IF(COUNT('COUVERTURES'!D7:J7)=7,IF(AND(MIN('COUVERTURES'!D7:J7)>=0,MAX('COUVERTURES'!D7:J7)<=10000000000,ROUND('COUVERTURES'!D7,4)='COUVERTURES'!D7,ROUND('COUVERTURES'!E7,4)='COUVERTURES'!E7,ROUND('COUVERTURES'!F7,4)='COUVERTURES'!F7,ROUND('COUVERTURES'!G7,4)='COUVERTURES'!G7,ROUND('COUVERTURES'!H7,4)='COUVERTURES'!H7,ROUND('COUVERTURES'!I7,4)='COUVERTURES'!I7,ROUND('COUVERTURES'!J7,4)='COUVERTURES'!J7,IF(ISTEXT('COUVERTURES'!B7),AND(LEN('COUVERTURES'!B7)>=1,LEN('COUVERTURES'!B7)<=64,TRIM(CLEAN('COUVERTURES'!B7))='COUVERTURES'!B7,LEN('COUVERTURES'!B7)=LEN(SUBSTITUTE('COUVERTURES'!B7,\" \",\"\")),COUNTIF('COUVERTURES'!$B$6:$B$8,'COUVERTURES'!B7)=1),FALSE),LEN(TRIM('COUVERTURES'!C7))>=2,LEN(TRIM('COUVERTURES'!K7))>=5,ISNUMBER('COUVERTURES'!L7)),IF(AND(INT('COUVERTURES'!L7)='COUVERTURES'!L7,'COUVERTURES'!L7>0,'COUVERTURES'!L7<='LIRE_D_ABORD'!$C$11),\"PASS\",\"INCOMPLET\"),\"INCOMPLET\"),\"INCOMPLET\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-73",
+        "target": "COMPARAISON_12_MOIS!C8",
+        "injected": "=1",
+        "expected": "=ROUND('COUVERTURES'!D8+'COUVERTURES'!E8*12+'COUVERTURES'!H8,2)",
+        "detected": true
+      },
+      {
+        "id": "SAB-74",
+        "target": "COMPARAISON_12_MOIS!D8",
+        "injected": "=1",
+        "expected": "=ROUND('COUVERTURES'!F8*'COUVERTURES'!G8*12,2)",
+        "detected": true
+      },
+      {
+        "id": "SAB-75",
+        "target": "COMPARAISON_12_MOIS!E8",
+        "injected": "=1",
+        "expected": "=ROUND('COUVERTURES'!I8*'COUVERTURES'!J8,2)",
+        "detected": true
+      },
+      {
+        "id": "SAB-76",
+        "target": "COMPARAISON_12_MOIS!F8",
+        "injected": "=1",
+        "expected": "=ROUND(SUM(C8:E8),2)",
+        "detected": true
+      },
+      {
+        "id": "SAB-77",
+        "target": "COMPARAISON_12_MOIS!G8",
+        "injected": "=1",
+        "expected": "=RANK(F8,$F$6:$F$8,1)",
+        "detected": true
+      },
+      {
+        "id": "SAB-78",
+        "target": "COMPARAISON_12_MOIS!H8",
+        "injected": "=1",
+        "expected": "=IF(COUNT('COUVERTURES'!D8:J8)=7,IF(AND(MIN('COUVERTURES'!D8:J8)>=0,MAX('COUVERTURES'!D8:J8)<=10000000000,ROUND('COUVERTURES'!D8,4)='COUVERTURES'!D8,ROUND('COUVERTURES'!E8,4)='COUVERTURES'!E8,ROUND('COUVERTURES'!F8,4)='COUVERTURES'!F8,ROUND('COUVERTURES'!G8,4)='COUVERTURES'!G8,ROUND('COUVERTURES'!H8,4)='COUVERTURES'!H8,ROUND('COUVERTURES'!I8,4)='COUVERTURES'!I8,ROUND('COUVERTURES'!J8,4)='COUVERTURES'!J8,IF(ISTEXT('COUVERTURES'!B8),AND(LEN('COUVERTURES'!B8)>=1,LEN('COUVERTURES'!B8)<=64,TRIM(CLEAN('COUVERTURES'!B8))='COUVERTURES'!B8,LEN('COUVERTURES'!B8)=LEN(SUBSTITUTE('COUVERTURES'!B8,\" \",\"\")),COUNTIF('COUVERTURES'!$B$6:$B$8,'COUVERTURES'!B8)=1),FALSE),LEN(TRIM('COUVERTURES'!C8))>=2,LEN(TRIM('COUVERTURES'!K8))>=5,ISNUMBER('COUVERTURES'!L8)),IF(AND(INT('COUVERTURES'!L8)='COUVERTURES'!L8,'COUVERTURES'!L8>0,'COUVERTURES'!L8<='LIRE_D_ABORD'!$C$11),\"PASS\",\"INCOMPLET\"),\"INCOMPLET\"),\"INCOMPLET\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-79",
+        "target": "DECISION!C6",
+        "injected": "=1",
+        "expected": "='LIRE_D_ABORD'!$C$10",
+        "detected": true
+      },
+      {
+        "id": "SAB-80",
+        "target": "DECISION!C7",
+        "injected": "=1",
+        "expected": "='LIRE_D_ABORD'!$C$9",
+        "detected": true
+      },
+      {
+        "id": "SAB-81",
+        "target": "DECISION!C8",
+        "injected": "=1",
+        "expected": "='LIRE_D_ABORD'!$C$8",
+        "detected": true
+      },
+      {
+        "id": "SAB-82",
+        "target": "DECISION!C9",
+        "injected": "=1",
+        "expected": "=IF(COUNTIF('DISPONIBILITE'!$H$6:$H$10,\"PASS\")=5,\"PASS\",\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-83",
+        "target": "DECISION!C10",
+        "injected": "=1",
+        "expected": "=IF(COUNTIF('CHRONOLOGIE'!$H$6:$H$12,\"PASS\")=7,\"PASS\",\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-84",
+        "target": "DECISION!C11",
+        "injected": "=1",
+        "expected": "=IF(AND(COUNTIF('COUT_INCIDENT'!$H$6:$H$13,\"PASS\")=8,ISNUMBER('COUT_INCIDENT'!$F$15)),IF('COUT_INCIDENT'!$F$15>=0,\"PASS\",\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-85",
+        "target": "DECISION!C12",
+        "injected": "=1",
+        "expected": "=IF(COUNT('RPO_OPERATIONS'!$G$6:$H$8)=6,IF(MIN('RPO_OPERATIONS'!$G$6:$H$8)>=0,\"PASS\",\"STOP\"),\"STOP\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-86",
+        "target": "DECISION!C13",
+        "injected": "=1",
+        "expected": "=COUNTIF('EXERCICES_PREUVES'!$G$6:$G$13,\"ECHEC\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-87",
+        "target": "DECISION!C14",
+        "injected": "=1",
+        "expected": "=IF(AND('EXERCICES_PREUVES'!$G$6=\"VERIFIE\",LEN(TRIM('EXERCICES_PREUVES'!$H$6))>=6,LEN(TRIM('EXERCICES_PREUVES'!$J$6))>=3,ISNUMBER('EXERCICES_PREUVES'!$I$6)),IF(AND(INT('EXERCICES_PREUVES'!$I$6)='EXERCICES_PREUVES'!$I$6,'EXERCICES_PREUVES'!$I$6>0,'EXERCICES_PREUVES'!$I$6<='LIRE_D_ABORD'!$C$11),1,0),0)+IF(AND('EXERCICES_PREUVES'!$G$7=\"VERIFIE\",LEN(TRIM('EXERCICES_PREUVES'!$H$7))>=6,LEN(TRIM('EXERCICES_PREUVES'!$J$7))>=3,ISNUMBER('EXERCICES_PREUVES'!$I$7)),IF(AND(INT('EXERCICES_PREUVES'!$I$7)='EXERCICES_PREUVES'!$I$7,'EXERCICES_PREUVES'!$I$7>0,'EXERCICES_PREUVES'!$I$7<='LIRE_D_ABORD'!$C$11),1,0),0)+IF(AND('EXERCICES_PREUVES'!$G$8=\"VERIFIE\",LEN(TRIM('EXERCICES_PREUVES'!$H$8))>=6,LEN(TRIM('EXERCICES_PREUVES'!$J$8))>=3,ISNUMBER('EXERCICES_PREUVES'!$I$8)),IF(AND(INT('EXERCICES_PREUVES'!$I$8)='EXERCICES_PREUVES'!$I$8,'EXERCICES_PREUVES'!$I$8>0,'EXERCICES_PREUVES'!$I$8<='LIRE_D_ABORD'!$C$11),1,0),0)+IF(AND('EXERCICES_PREUVES'!$G$9=\"VERIFIE\",LEN(TRIM('EXERCICES_PREUVES'!$H$9))>=6,LEN(TRIM('EXERCICES_PREUVES'!$J$9))>=3,ISNUMBER('EXERCICES_PREUVES'!$I$9)),IF(AND(INT('EXERCICES_PREUVES'!$I$9)='EXERCICES_PREUVES'!$I$9,'EXERCICES_PREUVES'!$I$9>0,'EXERCICES_PREUVES'!$I$9<='LIRE_D_ABORD'!$C$11),1,0),0)+IF(AND('EXERCICES_PREUVES'!$G$10=\"VERIFIE\",LEN(TRIM('EXERCICES_PREUVES'!$H$10))>=6,LEN(TRIM('EXERCICES_PREUVES'!$J$10))>=3,ISNUMBER('EXERCICES_PREUVES'!$I$10)),IF(AND(INT('EXERCICES_PREUVES'!$I$10)='EXERCICES_PREUVES'!$I$10,'EXERCICES_PREUVES'!$I$10>0,'EXERCICES_PREUVES'!$I$10<='LIRE_D_ABORD'!$C$11),1,0),0)+IF(AND('EXERCICES_PREUVES'!$G$11=\"VERIFIE\",LEN(TRIM('EXERCICES_PREUVES'!$H$11))>=6,LEN(TRIM('EXERCICES_PREUVES'!$J$11))>=3,ISNUMBER('EXERCICES_PREUVES'!$I$11)),IF(AND(INT('EXERCICES_PREUVES'!$I$11)='EXERCICES_PREUVES'!$I$11,'EXERCICES_PREUVES'!$I$11>0,'EXERCICES_PREUVES'!$I$11<='LIRE_D_ABORD'!$C$11),1,0),0)+IF(AND('EXERCICES_PREUVES'!$G$12=\"VERIFIE\",LEN(TRIM('EXERCICES_PREUVES'!$H$12))>=6,LEN(TRIM('EXERCICES_PREUVES'!$J$12))>=3,ISNUMBER('EXERCICES_PREUVES'!$I$12)),IF(AND(INT('EXERCICES_PREUVES'!$I$12)='EXERCICES_PREUVES'!$I$12,'EXERCICES_PREUVES'!$I$12>0,'EXERCICES_PREUVES'!$I$12<='LIRE_D_ABORD'!$C$11),1,0),0)+IF(AND('EXERCICES_PREUVES'!$G$13=\"VERIFIE\",LEN(TRIM('EXERCICES_PREUVES'!$H$13))>=6,LEN(TRIM('EXERCICES_PREUVES'!$J$13))>=3,ISNUMBER('EXERCICES_PREUVES'!$I$13)),IF(AND(INT('EXERCICES_PREUVES'!$I$13)='EXERCICES_PREUVES'!$I$13,'EXERCICES_PREUVES'!$I$13>0,'EXERCICES_PREUVES'!$I$13<='LIRE_D_ABORD'!$C$11),1,0),0)",
+        "detected": true
+      },
+      {
+        "id": "SAB-88",
+        "target": "DECISION!C15",
+        "injected": "=1",
+        "expected": "=COUNTIF('COMPARAISON_12_MOIS'!$H$6:$H$8,\"PASS\")",
+        "detected": true
+      },
+      {
+        "id": "SAB-89",
+        "target": "DECISION!C16",
+        "injected": "=1",
+        "expected": "=IF(OR(C6<>\"NON\",C7<>\"OUI\",C13>0,C9=\"STOP\",C10=\"STOP\",C11=\"STOP\",C12=\"STOP\"),\"STOP\",IF(OR(C8<>\"OUI\",C9<>\"PASS\",C10<>\"PASS\",C11<>\"PASS\",C12<>\"PASS\",C15<3,COUNT('LIRE_D_ABORD'!$C$11)<>1),\"INCOMPLET\",IF(OR(INT('LIRE_D_ABORD'!$C$11)<>'LIRE_D_ABORD'!$C$11,'LIRE_D_ABORD'!$C$11<=0,'LIRE_D_ABORD'!$C$11>46231),\"INCOMPLET\",IF(C14<8,\"COMPARABLE\",\"DECISION_HUMAINE\"))))",
+        "detected": true
+      },
+      {
+        "id": "SAB-90",
+        "target": "DECISION!C17",
+        "injected": "=1",
+        "expected": "=IF(C16=\"DECISION_HUMAINE\",\"AUTORISE\",\"BLOQUE\")",
+        "detected": true
+      }
+    ]
+  },
+  "archive": {
+    "frozenSheets": 17,
+    "filteredSheets": 17,
+    "dataValidationSheets": 15,
+    "macros": 0,
+    "externalLinks": 0
+  },
+  "secretScan": {
+    "detectors": 5,
+    "candidates": 0
+  },
+  "formulaErrors": [],
+  "previews": [
+    {
+      "sheet": "LIRE_D_ABORD",
+      "filename": "01-LIRE_D_ABORD.png",
+      "bytes": 120323,
+      "sha256": "1c1876375d231c3447be1c9964b33a4004a42aba7540e473322a57dfd3f8f83a"
+    },
+    {
+      "sheet": "HYPOTHESES",
+      "filename": "02-HYPOTHESES.png",
+      "bytes": 96275,
+      "sha256": "4171f46ab4d1d523caa85e076e20a011805bd6f9b2a17a8a0d563833a87171f2"
+    },
+    {
+      "sheet": "SERVICES_PARCOURS",
+      "filename": "03-SERVICES_PARCOURS.png",
+      "bytes": 66185,
+      "sha256": "dc829d1603d192fb1dc13b60490a97855454b32a7840fca30b3da92e6d9172b1"
+    },
+    {
+      "sheet": "PLAGES_CALENDRIER",
+      "filename": "04-PLAGES_CALENDRIER.png",
+      "bytes": 57928,
+      "sha256": "55dcdee270aa8d2d9a99f155df1f8a7ec29320c1ca369b2c14fed82f829f47ad"
+    },
+    {
+      "sheet": "DISPONIBILITE",
+      "filename": "05-DISPONIBILITE.png",
+      "bytes": 52163,
+      "sha256": "caa71dff6f98bc446a7929bb1071f3d1d7107db4540f28424921f0cb8f13c68b"
+    },
+    {
+      "sheet": "INCIDENTS",
+      "filename": "06-INCIDENTS.png",
+      "bytes": 42864,
+      "sha256": "5add6a27bfcff39ce5f3a58b240296437ac355364f0977657694837edb0ff0df"
+    },
+    {
+      "sheet": "CHRONOLOGIE",
+      "filename": "07-CHRONOLOGIE.png",
+      "bytes": 86326,
+      "sha256": "6026468fb3d0190d3bb48c0ecf99bf8767565af18299fa6e1562fe25f318075e"
+    },
+    {
+      "sheet": "COUT_INCIDENT",
+      "filename": "08-COUT_INCIDENT.png",
+      "bytes": 82527,
+      "sha256": "43e698af0b660b0537cc96932b80a6eb7915412de55c6c5c8a679b7a4b03f65b"
+    },
+    {
+      "sheet": "RPO_OPERATIONS",
+      "filename": "09-RPO_OPERATIONS.png",
+      "bytes": 41153,
+      "sha256": "67627b7aab903e36aabb859d13d49ef961b2ba5fc3b9375ac36704536b360131"
+    },
+    {
+      "sheet": "DEPENDANCES",
+      "filename": "10-DEPENDANCES.png",
+      "bytes": 69480,
+      "sha256": "2ef8ef1aebf788b69588f00c70cfb7fce615fd127ee12e28a88a5c254a08e13d"
+    },
+    {
+      "sheet": "COUVERTURES",
+      "filename": "11-COUVERTURES.png",
+      "bytes": 59667,
+      "sha256": "859ca6d5e7d8b17d05bf95c90ff87ad889abca705c75f95d42fd1e5cce4ea445"
+    },
+    {
+      "sheet": "COMPARAISON_12_MOIS",
+      "filename": "12-COMPARAISON_12_MOIS.png",
+      "bytes": 48740,
+      "sha256": "e304c373a5e94e45b58e1c737e4e8984f0c53c06bfe5291e131d18186cb3765e"
+    },
+    {
+      "sheet": "EXERCICES_PREUVES",
+      "filename": "13-EXERCICES_PREUVES.png",
+      "bytes": 369465,
+      "sha256": "8fcb2e355af23afb4a9edcbf5e3ca21075eb8d27406a21b70d448fa13981622f"
+    },
+    {
+      "sheet": "COMMUNICATION",
+      "filename": "14-COMMUNICATION.png",
+      "bytes": 63397,
+      "sha256": "97a901d0da92449fb25b1a8cdc000a3361b0f364b2f3078feeca5ab942348ca4"
+    },
+    {
+      "sheet": "DECISION",
+      "filename": "15-DECISION.png",
+      "bytes": 135703,
+      "sha256": "710a87e5cdb7f8fe26fa736005d213c4122687470bbe20de2774c85070c5fe22"
+    },
+    {
+      "sheet": "CONTROLES",
+      "filename": "16-CONTROLES.png",
+      "bytes": 1470832,
+      "sha256": "f07fe4899bf1b7210c672c6507e85aae29db8ae36d818c0f63cfda8ae5a988f0"
+    },
+    {
+      "sheet": "SOURCES",
+      "filename": "17-SOURCES.png",
+      "bytes": 629151,
+      "sha256": "483713f4dcc1bbdd55d7279bba715c84b5b67dddfe4f508c536b2bd4f97b6a49"
+    }
+  ],
+  "recalculation": "Aucune recalculation Microsoft Excel réelle.",
+  "finalGate": "BLOQUE_EXEMPLE_FICTIF — les données et preuves doivent être remplacées et validées humainement."
+}

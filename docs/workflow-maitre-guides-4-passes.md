@@ -4,7 +4,7 @@
 > indique dans quel ordre travailler, qui peut valider quoi, quelles traces
 > conserver et quelle porte franchir avant de continuer.
 
-- Version : **21 juillet 2026**
+- Version : **24 juillet 2026**
 - Projet : **Hagnéré Code**
 - Domaine canonique : **https://hagnere-code.ai**
 - Périmètre : `src/app/guides/<slug>/`, `src/lib/guides.ts`,
@@ -45,7 +45,12 @@ Règles absolues :
 6. aucun nombre de mots, de titres, de tableaux ou de FAQ ne constitue une
    porte de sortie ;
 7. publier est une action distincte, soumise à autorisation et à une
-   vérification de production.
+   vérification de production ;
+8. `P1` à `P4` désignent ici des passes ; `P0`, `P1`, `P2` et `REJETÉ`
+   désignent la gravité dans un rapport contradictoire : les deux vocabulaires
+   ne sont jamais interchangeables ;
+9. un rapport n'est intégré au registre qu'après un contrôle de son snapshot,
+   de ses liens, de ses calculs, de sa scorecard et du nombre réel de défauts.
 
 ---
 
@@ -205,6 +210,31 @@ est lue et expliquée. Une modification matérielle remet les portes concernées
 - un seul orchestrateur consolide et résout les contradictions ;
 - un rapport d’agent n’est jamais une source et une simulation n’est jamais un
   test réalisé par un dirigeant réel.
+
+### 2.5 Contrôle du rapport avant consolidation
+
+Le responsable de consolidation ne copie jamais le verdict d'un agent dans le
+registre sans ouvrir son livrable. Il vérifie au minimum :
+
+1. que le rapport porte sur le bon slug et que les SHA-256 correspondent encore
+   aux fichiers audités ;
+2. que chaque URL décisive est directe, accessible ou explicitement signalée
+   comme non revalidée, et que la source prouve réellement la phrase ;
+3. que chaque formule, total, pourcentage, unité et arrondi est refait
+   indépendamment ;
+4. que la somme des dix axes correspond au score annoncé ;
+5. que les nombres de P0, P1 et P2 correspondent aux lignes réellement
+   documentées, sans regrouper artificiellement des problèmes ni compter deux
+   fois la même cause ;
+6. que les commandes et contrôles visuels annoncés ont une sortie, un
+   environnement et un snapshot identifiables ;
+7. que les limites `local`, `preview`, `production`, `publié` et `indexé`
+   restent distinctes ;
+8. que le rapport n'a modifié aucun fichier hors de son périmètre autorisé.
+
+Une incohérence du rapport est corrigée et tracée avant consolidation. La
+présence du fichier peut alors être notée `rapport présent`, mais la passe ne
+devient `Terminée — porte validée` que si toutes ses conditions sont franchies.
 
 ---
 
@@ -380,6 +410,29 @@ formulations réellement rencontrées. Relever :
 Ne pas copier un plan. Un outil SEO fournit une estimation, pas une vérité sur
 le volume ou la difficulté.
 
+La recherche concurrentielle couvre trois niveaux :
+
+1. les résultats français représentatifs de l'intention ;
+2. les meilleures ressources anglophones, avec les marchés américain et
+   britannique lorsqu'ils apportent des réponses différentes ;
+3. au moins un autre marché pertinent pour le sujet.
+
+L'objectif n'est pas un nombre arbitraire d'URL. La collecte s'arrête lorsque
+les nouveaux résultats n'ajoutent plus de type de réponse, de méthode,
+d'objection, de preuve ou d'outil. Le dossier consigne les requêtes, pays,
+langues, date et raison de cette saturation. Une donnée étrangère n'est jamais
+convertie ou appliquée à la France sans requalification de sa devise, de son
+cadre juridique, de son marché et de sa date.
+
+Remplir ensuite la matrice de gain d'information :
+
+| Question décisive | Réponse française la plus utile | Apport international | Réponse actuelle du guide | Manque | Amélioration prévue et testable |
+| ----------------- | ------------------------------- | -------------------- | ------------------------- | ------ | ------------------------------- |
+|                   |                                 |                      |                           |        |                                 |
+
+La porte reste fermée si la différence annoncée est seulement « plus long »,
+« plus complet », « plus humain » ou « mieux optimisé ».
+
 ### P1.4 — Fiche de preuves
 
 | Affirmation | Catégorie | Source et passage | Périmètre | Consultation | Limite | Conséquence lecteur | Fraîcheur |
@@ -400,6 +453,38 @@ Choisir l’architecture selon la décision, pas selon un gabarit :
 
 Comparer trois à cinq guides voisins et nommer au moins trois différences de
 progression, d’ouverture, d’exemple, de format ou de conclusion.
+
+Préparer aussi les démonstrations qui feront réellement gagner du temps au
+lecteur :
+
+- prix, ROI, budget ou délai : trois scénarios — simple, central et exigeant —
+  avec formules, inclus, exclus, horizon et variable de bascule ;
+- comparaison : coût total sur un même horizon, critères qui changent selon le
+  profil, cas où chaque option gagne et option de report ;
+- outil nommé : fonctions et tarifs officiels datés, coût de changement et
+  scénario métier complet ;
+- processus : avant/après, personnes, temps, point de rupture et critère
+  d'arrêt ;
+- risque, droit ou sécurité : situations concrètes, urgence, responsable,
+  effort et recours éventuel à un spécialiste.
+
+Si un chiffre serait artificiel, le dossier l'explique. Cette justification
+est préférable à une précision inventée.
+
+Enfin, rédiger le brouillon de la **position Hagnéré Code** : recommandation
+pour le cas fréquent, faits qui la fondent, contre-cas où l'option opposée
+gagne, signal de révision et solution que nous déconseillons même si nous
+pourrions la vendre.
+
+Pour une requête à forte intention, définir l'actif signature : calculateur,
+modèle, matrice, protocole, checklist ou cas annoté. Il doit produire un
+résultat autonome, être réellement créé et être testé comme le reste du
+produit. Si aucun actif n'est pertinent, documenter la démonstration qui rendra
+la page difficile à remplacer.
+
+Prévoir enfin l'après-décision : mesure de départ, indicateur métier, fréquence
+de revue, responsable, situation d'échec et critère d'arrêt ou de retour
+arrière.
 
 ### P1.6 — Plan annoté
 
@@ -422,9 +507,16 @@ Règles :
 - [ ] brief complet et décision unique ;
 - [ ] URL distincte justifiée ;
 - [ ] recherche actuelle et datée ;
+- [ ] benchmark français et international arrivé à saturation expliquée ;
+- [ ] matrice de gain d'information remplie avec un apport vérifiable ;
 - [ ] fiche de preuves exploitable ;
 - [ ] faits, déductions et recommandations séparés ;
 - [ ] aucune contradiction décisive masquée ;
+- [ ] scénarios, calculs ou justification de leur absence préparés ;
+- [ ] position Hagnéré Code et contre-cas fondés ;
+- [ ] conflit d'intérêts éditorial identifié ;
+- [ ] actif signature défini ou absence justifiée ;
+- [ ] échec, mesure après décision et critère d'arrêt préparés ;
 - [ ] plan annoté et distinct des voisins ;
 - [ ] action autonome, bon fit et mauvais fit définis ;
 - [ ] dossier de recherche suffisant pour un autre rédacteur ;
@@ -482,8 +574,26 @@ Ordre naturel recommandé, sans gabarit obligatoire :
 Chaque affirmation décisive reçoit sa source au moment où elle apparaît. Les
 exemples fictifs sont étiquetés avant leurs chiffres.
 
-Ne pas imposer : réponse rapide, sommaire, tableau, scénarios, FAQ, ressource ou
-CTA. Chaque forme doit résoudre un besoin réel du sujet.
+Le brouillon implémente le gain d'information annoncé en P1. Pour un guide de
+prix, de ROI, de délai ou de comparaison, les trois scénarios préparés sont
+visibles, comparables et reproductibles. Pour les autres familles, les
+démonstrations prévues en P1.5 sont intégrées ou leur retrait est motivé dans
+le dossier. Chaque grande recommandation est suivie d'une conséquence concrète
+pour le dirigeant.
+
+Lorsque le sujet appelle un choix, une section ou un passage clairement
+attribué donne la position Hagnéré Code, ses preuves, ses conditions et son
+contre-cas. Le verdict ne se cache ni dans la conclusion ni dans le CTA.
+
+Le conflit d'intérêts de l'auteur ou des sources commerciales est déclaré à
+l'endroit où il aide à interpréter la comparaison. L'actif signature prévu est
+disponible et testable ; sinon, la page n'en fait aucune promesse. La dernière
+partie explique ce qui doit être mesuré après la décision et dans quel cas il
+faut corriger, arrêter ou revenir en arrière.
+
+En dehors des familles pour lesquelles P1.5 exige des scénarios, ne pas imposer
+par réflexe : réponse rapide, sommaire, tableau, FAQ, ressource ou CTA. Chaque
+forme doit résoudre un besoin réel du sujet.
 
 ### P2.2 — Contrat de langage humain
 
@@ -532,7 +642,11 @@ npx tsc --noEmit
 - [ ] décision et réponse présentes dès l’ouverture ;
 - [ ] toutes les affirmations décisives reliées au dossier et aux sources ;
 - [ ] coûts, délais, personnes, risques et alternatives couverts si pertinents ;
-- [ ] exemples et calculs cohérents ;
+- [ ] gain d'information promis réellement visible ;
+- [ ] scénarios et calculs reproductibles, ou absence explicitement justifiée ;
+- [ ] position professionnelle, contre-cas et signal de révision visibles ;
+- [ ] conflit d'intérêts, échec et mesure après décision visibles ;
+- [ ] actif signature prévu disponible et testé, ou absence justifiée ;
 - [ ] si un CTA ou une ressource est prévu, il existe et a été testé ; sinon,
       la décision « non pertinent » est justifiée ;
 - [ ] page, OG, registre, données structurées et maillage intégrés ;
@@ -589,6 +703,17 @@ Refaire, sans reprendre les conclusions de P1 :
 Pour tout sujet volatil, rouvrir les sources actuelles. Une source ancienne
 encore accessible n’est pas automatiquement la meilleure preuve disponible.
 
+Rouvrir également au moins trois ressources importantes de la matrice
+concurrentielle, dont une internationale. Le relecteur cherche une réponse,
+preuve, objection, comparaison ou méthode meilleure que celle du brouillon.
+S'il en trouve une qui change la décision et que la page ne la traite pas, le
+point est au minimum `P1`.
+
+Refaire tous les scénarios à partir des hypothèses publiées. Modifier à tour de
+rôle le volume, le coût du temps, l'horizon et l'hypothèse la plus incertaine.
+Une conclusion qui ne change jamais malgré des hypothèses raisonnables est
+suspecte de biais ou d'une analyse de sensibilité insuffisante.
+
 ### P3.2 — Audit pédagogique
 
 - la réponse est comprise dans les 150 premiers mots ;
@@ -604,6 +729,11 @@ encore accessible n’est pas automatiquement la meilleure preuve disponible.
 - options jugées à conditions égales ;
 - aucune option artificiellement affaiblie ;
 - coûts cachés et temps interne ;
+- apport mesurable par rapport aux meilleures réponses françaises et
+  internationales ;
+- recommandation professionnelle attribuée, prouvée et contredite par un
+  contre-cas réel ou plausible ;
+- scénarios qui ne conduisent pas tous mécaniquement à l'offre Hagnéré Code ;
 - bon fit, mauvais fit et option moins chère ;
 - aucune promesse Hagnéré Code non prouvée ;
 - un CTA maximum, destination et résultat exacts ;
@@ -626,11 +756,23 @@ encore accessible n’est pas automatiquement la meilleure preuve disponible.
 Classer chaque problème :
 
 - `P0` : faux, trompeur, juridiquement risqué ou décision majeure impossible ;
-- `P1` : manque important de preuve, pédagogie, comparaison ou conversion ;
+- `P1` : manque important de preuve, pédagogie, comparaison, profondeur,
+  gain d'information ou conversion ;
 - `P2` : amélioration réelle mais non bloquante ;
 - `REJETÉ` : suggestion qui réduirait la précision ou sortirait du périmètre.
 
-Le rapport contient fichier, ligne, preuve, correction proposée et conséquence.
+Le rapport contient un bloc canonique `score actuel`, `P0 ouverts`, `P1
+ouverts`, `P2 ouverts` et un identifiant unique par incident. Le tableau
+obligatoire est :
+
+| ID | Gravité | Fichier et preuve | Conséquence lecteur | Correction | Revalidation |
+| -- | ------- | ----------------- | ------------------- | ---------- | ------------ |
+| P0-01 | P0 | | | | |
+
+Le compteur est égal au nombre d'identifiants ouverts. Une même cause n'est pas
+recomptée à chaque occurrence. Les mots `P1`, `P2`, `P3` et `P4` qui désignent
+des passes ne sont jamais comptés comme des incidents. Une suggestion rejetée
+reçoit un ID `R-01` et un motif conservé.
 
 ### P3.6 — Correction et revalidation
 
@@ -671,6 +813,8 @@ Affirmations et sources revérifiées :
 Calculs refaits :
 P0 trouvés / corrigés :
 P1 trouvés / corrigés :
+P2 ouverts ou traités :
+Identifiants et compteurs réconciliés :
 Suggestions rejetées et pourquoi :
 Corrections pédagogiques et commerciales :
 Revalidation du relecteur :
@@ -800,11 +944,16 @@ correcte et aucune promesse absente de la page.
 
 ### P4.7 — Scorecard et constat du statut
 
-Noter de 0 à 2 avec une preuve : intention, décision, pédagogie, profondeur,
-preuve, comparaison, originalité, style, conversion et SEO/produit.
+Noter de 0 à 10 avec une preuve localisable et un manque résiduel : intention,
+décision, pédagogie, profondeur, preuve, comparaison, originalité, style,
+conversion et SEO/produit. Une note de 10 exige d'avoir cherché activement ce
+qui pourrait mettre la page en défaut ; elle n'est jamais attribuée parce que
+le texte est long. Refaire l'addition des dix axes avec un second calcul avant
+de publier le total ; un score annoncé qui ne correspond pas à sa grille
+invalide le rapport jusqu'à rectification.
 
-Seuil : **17/20**, aucune note à 0, et `Intention`, `Décision`, `Pédagogie` et
-`Preuve` à 2.
+Seuil : **90/100**, aucun axe sous 8, et `Intention`, `Décision`, `Pédagogie`,
+`Profondeur`, `Preuve` et `Comparaison` à 9 ou 10.
 
 Bloquants indépendamment du score : ouverture ratée, jargon propriétaire,
 comparaison cachée sur mobile, fait décisif douteux, source seulement en
@@ -847,7 +996,7 @@ retester l’artefact.
 - [ ] batterie complète verte ;
 - [ ] route, HTML et OG contrôlés ;
 - [ ] rendu visible contrôlé aux largeurs requises ;
-- [ ] score ≥ 17/20 et axes obligatoires à 2 ;
+- [ ] score ≥ 90/100, aucun axe sous 8 et axes obligatoires à 9 ou 10 ;
 - [ ] validation humaine ou délégation décrite honnêtement ;
 - [ ] statut du registre cohérent ;
 - [ ] `Passe 4 = Terminée — porte validée`.

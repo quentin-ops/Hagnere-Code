@@ -2,19 +2,17 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Huit fiches de preuve pour répondre à un questionnaire de sécurité SaaS B2B";
+  "Cinq contrôles essentiels et une famille d’autres exigences pour décider avant une vente SaaS B2B";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const proofs = [
+const checks = [
   "Accès",
-  "Données",
+  "Isolement",
   "Restauration",
-  "Journaux",
-  "Code",
+  "Logiciel",
   "Incident",
-  "Tiers",
-  "Continuité",
+  "Autres exigences",
 ];
 
 export default function OgImage() {
@@ -104,7 +102,7 @@ export default function OgImage() {
               color: "#bfdbfe",
             }}
           >
-            Le questionnaire devient un dossier de faits vérifiables
+            5 contrôles essentiels + 1 famille d’autres exigences
           </div>
         </div>
 
@@ -120,9 +118,9 @@ export default function OgImage() {
             background: "rgba(2,6,23,0.58)",
           }}
         >
-          {proofs.map((proof, index) => (
+          {checks.map((check, index) => (
             <div
-              key={proof}
+              key={check}
               style={{
                 width: 178,
                 display: "flex",
@@ -152,7 +150,7 @@ export default function OgImage() {
               >
                 {index + 1}
               </span>
-              {proof}
+              {check}
             </div>
           ))}
         </div>

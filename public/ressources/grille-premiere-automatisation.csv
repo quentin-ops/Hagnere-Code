@@ -1,0 +1,4 @@
+Type de ligne;Processus candidat;Période observée;Déclencheur;Résultat attendu;Cas par mois;Minutes actives par cas;Heures de correction par mois;Source des données;Règles stables;Exceptions orientées;Impact d’une erreur;Réversible;Propriétaire métier;Mode manuel;Mesure de départ;Cible;Tolérance
+EXEMPLE FICTIF;Orienter les demandes complètes;4 semaines avec un incident;Formulaire complet reçu;Dossier créé une seule fois et équipe notifiée;120;4;3;Formulaire CRM;Oui;Partiellement;Faible;Oui;Responsable commercial;File manuelle;132 h observées par an;100 % des erreurs visibles;Aucune action irréversible non validée
+CANDIDAT À RENSEIGNER;;;;;;;;;;;;;;;;;
+CANDIDAT À RENSEIGNER;;;;;;;;;;;;;;;;;

@@ -1,0 +1,13 @@
+541931d4d4b6fcba7ce870c1564486aa50c104e792fbcb989994dc49ae9547fa  docs/audits/giga-audit-2026-07-24/reviews/cout-maintenance-site-internet-p0-2026-07-25-r1.md
+a3e3271116513b473da77ae75a0f31ba4936d7cd6d17e3ed74deaf0d19d39f42  docs/research/cout-maintenance-site-internet.md
+f682ba34d5073b32436e62dfb5c75bc180c4304050356c5eda509c944f4e82a7  docs/research/cout-maintenance-site-internet-world-countercheck-2026-07-25.md
+14522f990abbf7dbfdef0cad796e6511ac3be82a9a66f8f8bea3e68f53a82805  docs/research/manifests/cout-maintenance-site-internet-p1-2026-07-25-r2.sha256
+e3b3b32c3c31fad439c810ed6f70347d8205418cc0baf411b4807ae8affdcd83  src/app/guides/cout-maintenance-site-internet/page.tsx
+d49534dff1837710dba26177d4f6974cd20d83228ea44f50a3bd344b809997d3  src/app/guides/cout-maintenance-site-internet/opengraph-image.tsx
+4ae56bd40537e4b48f3d31b9ab7eb5a1faa7495d7af8740b370dee7729a715c3  src/components/guides/WebsiteMaintenanceDecisionDossier.tsx
+b7dd1404637a3df84989e1dbf698f4bedc15b53846c36bdc4ac8997ab38b4c6e  src/components/guides/WebsiteMaintenanceDecisionDossier.test.tsx
+0b3b99024674448a28b2cd2a2a80f4a2ea42417f7a653d9642c51886390b7026  src/lib/website-maintenance-decision.ts
+8ba132eb8319ade8b7c2e22419a912ec12a26aefdc93b936e2914bf3013a6744  src/lib/website-maintenance-decision.test.ts
+b92339fabb04bf682b630092637f04c3eb358ac572c66ee3677725f9454ef1c2  src/lib/website-maintenance-guide-quality.test.ts
+3f8ac4824fdbe34c6e20cafc8cbba4c29106c1b57caa7c59c51cbd43fda053af  src/lib/guides.ts
+9144aa35e94017cdba1ff3740e3725f73e8289e681dfa1891be7492f4f601727  docs/audits/giga-audit-2026-07-24/reviews/cout-maintenance-site-internet-p2-2026-07-25-r1.md

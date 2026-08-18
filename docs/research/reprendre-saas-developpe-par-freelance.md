@@ -1,9 +1,119 @@
 # Dossier de recherche — Reprendre un SaaS développé par un freelance
 
-Journal du guide `reprendre-saas-developpe-par-freelance`. La page publique ne
-peut être rédigée qu'après validation de cette P1 et clôture du guide précédent.
+Journal du guide `reprendre-saas-developpe-par-freelance`. La page reste un
+candidat local tant que le contre-audit du snapshot courant n’est pas clos.
 
-## Journal des quatre passes
+## Refonte premium R3 — 28 juillet 2026
+
+Statut courant : **GO_LOCAL_DRAFT R3 — 96/96/98, P0 = 0, P1 = 0**.
+
+### Contre-audits indépendants du candidat gelé
+
+Snapshot audité :
+`reprendre-saas-developpe-par-freelance-r3-candidate-2026-07-28.sha256`,
+**46/46 empreintes conformes** ; empreinte du manifeste :
+`fac225003ccd08630e6b6130d4e77969ef1843f50bcf34ae4f8dc425ccb71ae0`.
+
+| Lecture indépendante | Note | P0 | P1 | Verdict |
+| -------------------- | ---: | -: | -: | ------- |
+| Technique et modèle  | 96/100 | 0 | 0 | GO_LOCAL_DRAFT |
+| Faits et doctrine    | 96/100 | 0 | 0 | GO |
+| UX et valeur lecteur | 98/100 | 0 | 0 | GO_LOCAL_DRAFT |
+
+Les limites non bloquantes conservées sont explicites : le cycle global reste
+rouge sur deux dettes de gouvernance hors de ce guide, et le classeur n'a pas
+été recalculé dans Microsoft Excel. Les dates du dossier, du modèle, du
+catalogue et des preuves R3 sont alignées au 28 juillet 2026.
+
+Les quatre passes du 21 juillet conservées plus bas sont un historique obsolète,
+pas une preuve actuelle. Le giga-audit du 24 juillet a ramené le guide à 86/100,
+et la reprise du 28 juillet a constaté que les anciens manifestes ne validaient
+plus le candidat complet. La nouvelle passe repart donc des sources, des calculs,
+du HTML servi, du classeur réimporté et de tests dédiés.
+
+### Corpus mondial réellement utilisé
+
+- France : CNIL pour habilitations, sous-traitance, restitution/destruction,
+  sauvegardes et guide de sécurité 2026 ; Légifrance pour les articles L111-1,
+  L113-9 et L131-3.
+- États-Unis : GitHub, Stripe et Vercel pour les limites de leurs transferts ;
+  NIST pour RTO, RPO et plan de continuité ; AWS et Google Cloud pour l’arbitrage
+  par parcours et le coût d’objectifs plus courts.
+- Royaume-Uni : Digital, Data and Technology Playbook et Model Services Contract
+  comme benchmarks de commande publique pour le plan de sortie, les
+  responsabilités, les jalons et l’assistance. Ils ne constituent pas une règle
+  applicable telle quelle à une PME française.
+- Australie : Australian Signals Directorate pour MFA, moindre privilège et
+  retrait des comptes prestataires devenus inutiles.
+- Japon : Digital Agency pour l’inventaire de transfert — code, configuration,
+  outils, comptes, incidents et rapport de passation.
+
+### Corrections substantielles R1 à R3
+
+- Doctrine d’accès corrigée : préparer avant l’échéance ; à la fin du contrat,
+  désactiver sauf prolongation écrite, bornée, nominative, minimale et
+  journalisée. Un incident ou un litige sort de la passation normale.
+- Comptes techniques, droits d’exploitation et sort des données sont désormais
+  trois contrôles distincts. Restitution, copies, sauvegardes, destruction et
+  attestation écrite sont explicitement traitées.
+- Les dix fonctions reposent sur
+  `src/lib/saas-freelance-handover-functions.json` et s’affichent d’abord dans
+  une synthèse exécutive, puis dans des détails progressifs.
+- Une matrice canonique de 18 scénarios couvre gouvernance, code, infrastructure,
+  continuité, paiements, données, droits, support, décision et sortie.
+- Le guide distingue RTO et RPO par parcours et ne transforme jamais une
+  fréquence de sauvegarde en preuve de restauration.
+- Le conflit d’intérêt commercial de Hagnéré Code est déclaré avant le CTA
+  contextualisé ; le CTA sticky du guide est désactivé.
+- Le premier contre-audit R1 a refusé le candidat : valeurs impossibles encore
+  acceptées par le XLSX, cibles RTO/RPO divergentes entre page et classeur,
+  exports incomplets, trois gardes SEO propres au guide et absence de BAT gelé.
+- R2 partage désormais un seul dataset de criticité entre page et XLSX,
+  distingue RPO nul et RPO sans objet, exporte toutes les saisies courantes,
+  conserve les virgules intermédiaires et replie les trois groupes de champs
+  avancés.
+- Le sommaire est continu de 1 à 14 ; la section de tests reste dans le corps
+  sans créer une seconde section 7.
+
+### Calculs vérifiés
+
+- TCO fictifs sur 36 mois : **141 500 €** pour stabiliser, **186 640 €** pour
+  migrer et **274 800 €** pour réécrire.
+- Surcoût réécriture/stabilisation : **133 300 €** ; à 800 € de contribution
+  mensuelle et 27 mois productifs, **166,625 clients-mois**, soit **6,1713**
+  clients équivalents présents pendant chacun des 27 mois et **7** après
+  arrondi supérieur. Ce n’est pas un calendrier de cohortes.
+- RPO illustratif : 900/450 événements maximum/moyens à 24 h, puis 150/75 à
+  4 h ; reconstruction maximale 4 050 € puis 675 € dans les hypothèses. Les
+  moyennes supposent à la fois un instant d’incident uniformément réparti dans
+  l’intervalle et un flux d’événements suffisamment régulier.
+- Exercice : 680 € ; exposition horaire 141,25 €. Le seuil de 4,81 h n’est
+  valable qu’à 100 % de probabilité annuelle ; il devient **19,26 h à 25 %** et
+  **48,14 h à 10 %**.
+- Arrêts illustratifs : 1 130 € à 8 h et 5 085 € à 36 h. Comptes personnels :
+  1 280 € en passation préparée, 2 720 € en crise, soit 1 440 € d’écart direct.
+
+### Artefacts et contrat de preuve
+
+- Outil local : TCO, seuil de réécriture, RPO, exercice, arrêts et comptes, avec
+  branches `unknown` et `incident` obligatoirement routées vers `STOP`.
+- Classeur : `kit-reprise-saas-freelance.xlsx`, dix feuilles, dix fonctions,
+  dix-huit tests, dix-huit sources et vingt-quatre contrôles indépendants.
+- Validation classeur R3 : deux réimports et cinq mutations légitimes.
+  Onze entrées adversariales sont refusées. Huit sabotages de formules sont
+  détectés ; la copie publique reste identique et aucune erreur de formule n’est
+  relevée. Le classeur n’a pas été recalculé par Microsoft Excel : la validation
+  porte sur le moteur local et les formules exportées.
+- BAT local R3 :
+  `docs/research/evidence/reprendre-saas-developpe-par-freelance-r3-bat-2026-07-28.md`.
+  Les 33 tests propres au guide passent. Le build normal atteint ce précontrôle,
+  puis reste bloqué par deux échecs de gouvernance historiques hors du lot ; le
+  build de la charge utile, rejoué sans scripts de cycle de vie, compile et
+  produit 159/159 pages. Dix largeurs et les deux thèmes sont contrôlés.
+- Précontrôle ciblé R3 du 28 juillet : **33/33 tests passent** après les
+  corrections factuelles, techniques et UX.
+
+## Journal historique des quatre passes du 21 juillet 2026
 
 Propriétaire éditorial unique : Codex, agent racine du lot du 21 juillet 2026.
 
@@ -27,8 +137,9 @@ Propriétaire éditorial unique : Codex, agent racine du lot du 21 juillet 2026.
 - **Phrase téléphone :** « Le freelance qui a construit notre SaaS part. Les
   clients continuent à se connecter et à payer : dans quel ordre reprendre les
   comptes sans tout couper ? »
-- **Décision :** organiser une passation contrôlée, nommer ce qui manque et ne
-  retirer l'ancien accès qu'après les contrôles prévus.
+- **Décision :** organiser une passation contrôlée et achever les contrôles avant
+  l’échéance ; à la fin du contrat, désactiver l’ancien accès sauf prolongation
+  écrite, bornée, nominative, minimale et journalisée.
 - **Action autonome :** passer en revue les dix fonctions du registre, retirer
   celles qui n'existent pas dans le SaaS et ajouter les services propres au
   produit avant d'écrire la condition de retrait de chaque accès.
@@ -139,22 +250,23 @@ et quelle condition autorise le retrait de l'ancien accès.
 
 ## 5. Fiche de faits vérifiés
 
-Sources officielles consultées le 21 juillet 2026.
+Sources officielles consultées le 21 juillet 2026 ; la page Vercel a été
+revérifiée le 28 juillet 2026.
 
-| Catégorie                 | Affirmation utilisable                                                                                                                | Source                                                                                                                               | Limite et emploi dans le guide                                                          |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
-| Fait officiel             | En droit français, l'auteur dispose de droits du seul fait de la création                                                             | [CPI, art. L111-1](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278868)                                             | Ne conclut pas à lui seul qui possède chaque élément du projet                          |
-| Fait officiel             | Le logiciel créé par un salarié suit un régime particulier                                                                            | [CPI, art. L113-9](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039279818)                                             | Ne pas appliquer automatiquement ce régime à un freelance                               |
-| Fait officiel             | Les droits cédés doivent être nommés et leur exploitation délimitée                                                                   | [CPI, art. L131-3](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278958)                                             | Contrat, contributions antérieures et composants tiers à examiner au cas par cas        |
-| Fait officiel             | Lorsque le RGPD s'applique, la sous-traitance doit encadrer restitution ou destruction des données, authentification et habilitations | [CNIL — gérer la sous-traitance](https://www.cnil.fr/fr/securite-gerer-la-sous-traitance)                                            | Rôles réels à qualifier ; l'ordre de retrait des accès reste notre recommandation       |
-| Fait officiel             | Les données réelles de production ne doivent pas servir aux tests de développement ; créer des données fictives                       | [CNIL — tester vos applications](https://www.cnil.fr/fr/tester-vos-applications)                                                     | Séparer ces tests du contrôle isolé d'une restauration                                  |
-| Fait officiel             | Une sauvegarde doit être protégée, testée et réellement restaurable                                                                   | [CNIL — sauvegarder](https://www.cnil.fr/fr/securite-sauvegarder)                                                                    | Une restauration de données personnelles garde le niveau de protection de la production |
-| Fait officiel             | Après transfert GitHub, l'ancien propriétaire peut rester collaborateur et webhooks, secrets ou clés de déploiement restent associés  | [GitHub — transférer un dépôt](https://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository) | Réviser membres, applications, jetons et clés avant retrait                             |
-| Fait officiel             | Un transfert Vercel ne déplace pas automatiquement toutes les intégrations, données de suivi, journaux, drains, Blob ou Edge Config   | [Vercel — transférer un projet](https://vercel.com/docs/projects/transferring-projects)                                              | Documentation datée du 1er juillet 2026 ; vérifier la version au moment d'agir          |
-| Fait officiel             | Le propriétaire d'un compte Stripe peut être changé dans le même compte                                                               | [Stripe — changer le propriétaire du compte](https://support.stripe.com/questions/change-the-owner-of-a-stripe-account?locale=en-GB) | Le rôle est confié à une personne désignée qui agit pour l'entreprise                   |
-| Fait officiel             | Une migration Stripe vers un autre compte n'est pas une simple copie de tout l'historique                                             | [Stripe — copier des données entre comptes](https://support.stripe.com/questions/copy-existing-account-data-to-a-new-stripe-account) | Examiner clients, moyens de paiement et objets réellement transférables                 |
-| Fait officiel             | Stripe documente une migration d'abonnements avec validation, environnement isolé et surveillance après activation                    | [Stripe Billing migration toolkit](https://docs.stripe.com/billing/subscriptions/import-subscriptions-toolkit?locale=en-GB)          | Ne jamais improviser facture, annulation ou remboursement sur les vrais clients         |
-| Bonne pratique documentée | OWASP décrit l'inventaire, le stockage centralisé et des stratégies de rotation des secrets                                           | [OWASP — Secrets Management](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html)                     | Bonne pratique, pas certification de sécurité                                           |
+| Catégorie                 | Affirmation utilisable                                                                                                                | Source                                                                                                                               | Limite et emploi dans le guide                                                                     |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| Fait officiel             | En droit français, l'auteur dispose de droits du seul fait de la création                                                             | [CPI, art. L111-1](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278868)                                             | Ne conclut pas à lui seul qui possède chaque élément du projet                                     |
+| Fait officiel             | Le logiciel créé par un salarié suit un régime particulier                                                                            | [CPI, art. L113-9](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039279818)                                             | Ne pas appliquer automatiquement ce régime à un freelance                                          |
+| Fait officiel             | Les droits cédés doivent être nommés et leur exploitation délimitée                                                                   | [CPI, art. L131-3](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278958)                                             | Contrat, contributions antérieures et composants tiers à examiner au cas par cas                   |
+| Fait officiel             | Lorsque le RGPD s'applique, la sous-traitance doit encadrer restitution ou destruction des données, authentification et habilitations | [CNIL — gérer la sous-traitance](https://www.cnil.fr/fr/securite-gerer-la-sous-traitance)                                            | Rôles réels à qualifier ; l'ordre de retrait des accès reste notre recommandation                  |
+| Fait officiel             | Les données réelles de production ne doivent pas servir aux tests de développement ; créer des données fictives                       | [CNIL — tester vos applications](https://www.cnil.fr/fr/tester-vos-applications)                                                     | Séparer ces tests du contrôle isolé d'une restauration                                             |
+| Fait officiel             | Une sauvegarde doit être protégée, testée et réellement restaurable                                                                   | [CNIL — sauvegarder](https://www.cnil.fr/fr/securite-sauvegarder)                                                                    | Une restauration de données personnelles garde le niveau de protection de la production            |
+| Fait officiel             | Après transfert GitHub, l'ancien propriétaire peut rester collaborateur et webhooks, secrets ou clés de déploiement restent associés  | [GitHub — transférer un dépôt](https://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository) | Réviser membres, applications, jetons et clés avant retrait                                        |
+| Fait officiel             | Un transfert Vercel ne déplace pas automatiquement toutes les intégrations, données de suivi, journaux, drains, Blob ou Edge Config   | [Vercel — transférer un projet](https://vercel.com/docs/projects/transferring-projects)                                              | Page mise à jour le 25 novembre 2025 et consultée le 28 juillet 2026 ; revérifier au moment d'agir |
+| Fait officiel             | Le propriétaire d'un compte Stripe peut être changé dans le même compte                                                               | [Stripe — changer le propriétaire du compte](https://support.stripe.com/questions/change-the-owner-of-a-stripe-account?locale=en-GB) | Le rôle est confié à une personne désignée qui agit pour l'entreprise                              |
+| Fait officiel             | Une migration Stripe vers un autre compte n'est pas une simple copie de tout l'historique                                             | [Stripe — copier des données entre comptes](https://support.stripe.com/questions/copy-existing-account-data-to-a-new-stripe-account) | Examiner clients, moyens de paiement et objets réellement transférables                            |
+| Fait officiel             | Stripe documente une migration d'abonnements avec validation, environnement isolé et surveillance après activation                    | [Stripe Billing migration toolkit](https://docs.stripe.com/billing/subscriptions/import-subscriptions-toolkit?locale=en-GB)          | Ne jamais improviser facture, annulation ou remboursement sur les vrais clients                    |
+| Bonne pratique documentée | OWASP décrit l'inventaire, le stockage centralisé et des stratégies de rotation des secrets                                           | [OWASP — Secrets Management](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html)                     | Bonne pratique, pas certification de sécurité                                                      |
 
 **Recommandation Hagnéré Code :** une fois les dépendances déplacées et le
 nouvel identifiant testé, renouveler les secrets connus du prestataire sortant,
@@ -236,7 +348,7 @@ bloquant n'est pas résolu. Inventorier une clé, une intégration ou un compte
 personnel ne suffit pas : son remplacement ou son contrôle par l'entreprise doit
 avoir été testé.
 
-Un test isolé ne suffit pas non plus à retirer l'ancien accès. Le service réellement
+Un test isolé ne suffit pas à déclarer la bascule prête. Le service réellement
 utilisé par les clients doit appartenir à l'entreprise, être facturé à l'entreprise
 et être relié aux bons réglages de production. Après le transfert, la nouvelle
 équipe contrôle les connexions, paiements, courriels, fichiers, tâches et alertes
@@ -244,9 +356,13 @@ prévus. Toute intervention sur le service actif est préparée et exécutée pa
 personne compétente, avec une solution de retour disponible ; le dirigeant ne doit
 pas improviser cette opération seul.
 
-Une date seule n'autorise jamais le retrait. La condition doit être observable :
-« Nina et Malik ont réussi à publier sur l'adresse de test et à revenir à la
-version précédente », pas « retirer Sam vendredi ».
+La date d’échéance ne remplace pas ces contrôles : ils doivent être préparés et
+achevés avant. Elle borne cependant l’autorisation. À la fin du contrat, l’accès
+est désactivé, sauf prolongation écrite précisant sa durée, son périmètre, son
+responsable et les journaux de contrôle. Une condition observable — par exemple
+« Nina et Malik ont réussi à publier sur l’adresse de test et à revenir à la
+version précédente » — décrit la préparation de la bascule, pas un droit implicite
+à maintenir un accès arrivé à échéance.
 
 ### RelanceSimple — dix lignes remplies
 
@@ -311,8 +427,9 @@ incident. « Le 30e jour est arrivé » n'est jamais une condition suffisante.
    branche même compte/nouveau compte de paiement ; `webhook` devient « adresse
    qui reçoit les événements », `zone DNS` « réglages du domaine » et `clé de
 déploiement` « identifiant permettant la mise en ligne » au premier emploi.
-7. **Retirez l'accès selon un résultat, jamais selon une date** — condition et
-   retour arrière de chaque ligne.
+7. **Préparez les preuves avant l’échéance, puis désactivez l’accès** — chaque
+   ligne porte une condition observable et un retour arrière ; tout maintien
+   après la fin du contrat exige une prolongation écrite et bornée.
 8. **Décidez de la suite sans réécriture réflexe** — maintenir, préparer un audit
    ciblé, migrer un service, arrêter proprement ou traiter un litige ailleurs.
 
@@ -377,7 +494,8 @@ Section : Préparer son projet
 - [x] mots de passe, clés, codes de récupération et données bancaires exclus du registre ;
 - [x] accès précis du freelance, récupération entreprise et manque bloquant consignés ;
 - [x] test isolé séparé du contrôle du service réellement utilisé par les clients ;
-- [x] condition de retrait distincte d'une date ;
+- [x] contrôles de bascule achevés avant l’échéance et désactivation à la fin du
+      contrat, sauf prolongation écrite et bornée ;
 - [x] plan public annoté et architecture non calquée sur les guides précédents ;
 - [x] CTA, bon/mauvais cas d'usage et liens entrants prévus.
 
@@ -397,7 +515,8 @@ Artefact : registre de dix fonctions. Chaque fiche nomme titulaire, accès préc
 du freelance, récupération entreprise, contrôle daté, manque, caractère bloquant,
 action, condition de retrait et solution de secours. Aucun secret n'y est stocké.
 Sécurité d'usage : les tests synthétiques sont séparés de la restauration protégée
-et du contrôle du service actif ; aucun retrait n'est autorisé par une date seule.
+et du contrôle du service actif ; ils sont préparés avant l’échéance, puis les
+accès expirés sont désactivés sauf prolongation écrite et bornée.
 Contre-audits : deux lecteurs indépendants ; 0 P0, 0 P1 après corrections. Les
 cartes verticales et les mots techniques traduits sont imposés à P2/P4.
 Verdict : la rédaction publique P2 peut commencer sur ce gel.

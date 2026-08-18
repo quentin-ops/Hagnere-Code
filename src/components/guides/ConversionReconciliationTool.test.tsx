@@ -447,7 +447,7 @@ describe("ConversionReconciliationTool", () => {
     ).toBe(true);
   });
 
-  it("never transmits or downloads entered values", async () => {
+  it("never transmits values and creates local files only after explicit clicks", async () => {
     const fetchSpy = vi
       .spyOn(globalThis, "fetch")
       .mockResolvedValue(new Response(null, { status: 204 }));
@@ -456,25 +456,77 @@ describe("ConversionReconciliationTool", () => {
       configurable: true,
       value: { writeText },
     });
+    const createObjectURL = vi
+      .fn()
+      .mockReturnValueOnce("blob:summary")
+      .mockReturnValueOnce("blob:case");
+    const revokeObjectURL = vi.fn();
+    Object.defineProperty(URL, "createObjectURL", {
+      configurable: true,
+      value: createObjectURL,
+    });
+    Object.defineProperty(URL, "revokeObjectURL", {
+      configurable: true,
+      value: revokeObjectURL,
+    });
+    const clickSpy = vi
+      .spyOn(HTMLAnchorElement.prototype, "click")
+      .mockImplementation(() => undefined);
+    const downloadedFilenames: string[] = [];
+    clickSpy.mockImplementation(function (this: HTMLAnchorElement) {
+      downloadedFilenames.push(this.download);
+    });
     completeContext(container);
+    change(controlAfterText(container, "Libellé interne"), "Campagnes France");
     completeCaseSheet(container);
 
+    expect(createObjectURL).not.toHaveBeenCalled();
     await act(async () =>
       buttonAfterText(container, "Copier la synthèse").click(),
     );
     await act(async () =>
       buttonAfterText(container, "Copier la fiche de ce dossier").click(),
     );
+    expect(createObjectURL).not.toHaveBeenCalled();
+    act(() =>
+      buttonAfterText(container, "Télécharger la synthèse (.txt)").click(),
+    );
+    act(() =>
+      buttonAfterText(container, "Télécharger la fiche (.txt)").click(),
+    );
 
     expect(fetchSpy).not.toHaveBeenCalled();
+    expect(createObjectURL).toHaveBeenCalledTimes(2);
+    expect(revokeObjectURL.mock.calls).toEqual([
+      ["blob:summary"],
+      ["blob:case"],
+    ]);
+    expect(clickSpy).toHaveBeenCalledTimes(2);
+    expect(downloadedFilenames).toEqual([
+      "registre-conversions-campagnes-france-2026-06-01-2026-06-30-v1.txt",
+      "fiche-preuve-conversion-dossier-2026-001-2026-07-10-v1.txt",
+    ]);
+    const downloadedTexts = await Promise.all(
+      createObjectURL.mock.calls.map(([blob]) => (blob as Blob).text()),
+    );
+    expect(downloadedTexts[0]).toContain("Début de la période : 2026-06-01");
+    expect(downloadedTexts[1]).toContain(
+      "Référence interne (case_id) : DOSSIER-2026-001",
+    );
     expect(container.querySelector("form")).toBeNull();
     expect(container.querySelector("a[download]")).toBeNull();
     expect(container.textContent).toContain("aucune donnée envoyée");
+    expect(container.textContent).toContain(
+      "Synthèse téléchargée en fichier texte",
+    );
+    expect(container.textContent).toContain(
+      "Fiche téléchargée en fichier texte",
+    );
   });
 
   it("keeps every button at least 44 pixels high", () => {
     const buttons = [...container.querySelectorAll("button")];
-    expect(buttons).toHaveLength(3);
+    expect(buttons).toHaveLength(5);
     expect(
       buttons.every((button) => button.className.includes("min-h-11")),
     ).toBe(true);

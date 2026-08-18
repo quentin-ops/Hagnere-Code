@@ -1,5 +1,13 @@
 # Dossier de travail — Automatiser un processus métier
 
+> **Archive supersédée.** Ce dossier décrit le snapshot du 20 juillet 2026.
+> Son statut « publiable » et son auto-score 20/20 ne constituent plus une
+> validation actuelle. Le gel, les audits froids, la recherche internationale,
+> la refonte R1 et ses contrôles sont consignés dans
+> `automatiser-processus-metier-r1-2026-07-28.md`. Tant que cette nouvelle passe
+> n’est pas fermée, le registre maintient le guide en revue humaine et hors
+> indexation.
+
 > Recherche et synthèse du 20 juillet 2026. Ce dossier distingue les sources
 > publiables des contenus commerciaux simplement observés dans la SERP.
 

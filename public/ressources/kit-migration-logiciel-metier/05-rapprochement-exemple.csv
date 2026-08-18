@@ -1,0 +1,11 @@
+ID;Porte;Domaine;Controle;Source;Cible;Tolerance;Ecart;Preuve;Responsable;Decision
+REC-001;A;Clients;2420 lignes source dont 20 doublons expliques vers clients uniques;2420;2400;20 doublons approuves;20;Journal LOT-001 et liste des doublons;Responsable donnees;Conforme uniquement si les 20 doublons sont expliques
+REC-002;A;Dossiers ouverts;Nombre total avant correction;300;300;0;0;Liste des identifiants;Exploitation;Volume conforme mais relation a controler
+REC-003-A;A;Dossiers ouverts;Lien client correct;300;299;0;1;Rapport des relations;Exploitation;STOP et correction
+REC-003-B;B;Dossiers ouverts;Lien client correct apres LOT-002-R1 et LOT-002-R2;300;300;0;0;Rapport des relations et journaux R1 R2;Exploitation;Conforme
+REC-004;B;Factures;Nombre du mois;220;220;0;0;Export comptable;Comptabilite;Conforme
+REC-005;B;Factures;Somme TTC en centimes;18425000;18425000;0;0;Somme de controle;Comptabilite;Conforme
+REC-006;B;Pieces;Empreintes identiques sur echantillon;50;50;0;0;Journal des empreintes;Responsable donnees;Conforme
+REC-007;B;Roles;Scenarios positifs reussis;10;10;0;0;Proces verbal utilisateur;Responsable securite;Conforme
+REC-008;B;Roles;Acces interdits bloques;10;10;0;0;Proces verbal utilisateur;Responsable securite;Conforme
+REC-009;B;Derniere heure;Ecritures acceptees une seule fois suppressions incluses;50;50;0;0;Journal LOT-003 puis LOT-004 et controle de doublons;Responsable technique;Conforme

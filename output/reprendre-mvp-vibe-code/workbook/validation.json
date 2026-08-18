@@ -1,0 +1,376 @@
+{
+  "status": "GO_LOCAL_DRAFT",
+  "generatedAt": "2026-07-29T01:28:30.387Z",
+  "workbook": {
+    "output": "output/reprendre-mvp-vibe-code/workbook/kit-reprise-mvp-vibe-code.xlsx",
+    "public": "public/ressources/kit-reprise-mvp-vibe-code.xlsx",
+    "sha256": "b71bd29d9ff4b00e9ceb5169a09190872023710fc677b39bb7ef98db1ff382d9",
+    "bytes": 88661,
+    "exactPublicHashMatch": true
+  },
+  "corpus": {
+    "sheets": 17,
+    "tablesWithFilters": 17,
+    "frozenSheets": 17,
+    "sheetsWithDataValidation": 9,
+    "proofDomains": 9,
+    "platformFacts": 27,
+    "officialSources": 37,
+    "formulaCells": 243
+  },
+  "oracle": {
+    "tco12_36_60": {
+      "conserve": [
+        50000,
+        110000,
+        170000
+      ],
+      "stabilise": [
+        78000,
+        150000,
+        222000
+      ],
+      "migrate": [
+        131600,
+        216800,
+        302000
+      ],
+      "rewrite": [
+        224000,
+        332000,
+        440000
+      ],
+      "stop": [
+        41000,
+        53000,
+        65000
+      ]
+    },
+    "outage": {
+      "capacityCost": 8400,
+      "observableCost": 16000,
+      "expectedAnnualCost": 4000
+    }
+  },
+  "tests": {
+    "legitimateMutations": [
+      {
+        "id": "MUT-01",
+        "status": "PASS"
+      },
+      {
+        "id": "MUT-02",
+        "status": "PASS"
+      },
+      {
+        "id": "MUT-03",
+        "status": "PASS"
+      },
+      {
+        "id": "MUT-04",
+        "status": "PASS"
+      },
+      {
+        "id": "MUT-05",
+        "status": "PASS"
+      },
+      {
+        "id": "MUT-06",
+        "status": "PASS",
+        "cellsChecked": 15
+      }
+    ],
+    "adversarial": [
+      {
+        "id": "ADV-01",
+        "status": "PASS"
+      },
+      {
+        "id": "ADV-02",
+        "status": "PASS"
+      },
+      {
+        "id": "ADV-03",
+        "status": "PASS"
+      },
+      {
+        "id": "ADV-04",
+        "status": "PASS"
+      },
+      {
+        "id": "ADV-05",
+        "status": "PASS"
+      },
+      {
+        "id": "ADV-06",
+        "status": "PASS"
+      },
+      {
+        "id": "ADV-07",
+        "status": "PASS"
+      },
+      {
+        "id": "ADV-08",
+        "status": "PASS"
+      },
+      {
+        "id": "ADV-09",
+        "status": "PASS"
+      },
+      {
+        "id": "ADV-10",
+        "status": "PASS"
+      }
+    ],
+    "sabotages": [
+      {
+        "id": "SAB-01",
+        "status": "PASS",
+        "detectedBy": "CONTROLES!F10"
+      },
+      {
+        "id": "SAB-02",
+        "status": "PASS",
+        "detectedBy": "CONTROLES!F11"
+      },
+      {
+        "id": "SAB-03",
+        "status": "PASS",
+        "detectedBy": "CONTROLES!F12"
+      },
+      {
+        "id": "SAB-04",
+        "status": "PASS",
+        "detectedBy": "CONTROLES!F13"
+      },
+      {
+        "id": "SAB-05",
+        "status": "PASS",
+        "detectedBy": "CONTROLES!F14"
+      },
+      {
+        "id": "SAB-06",
+        "status": "PASS",
+        "detectedBy": "CONTROLES!F15"
+      },
+      {
+        "id": "SAB-07",
+        "status": "PASS",
+        "detectedBy": "CONTROLES!F16"
+      },
+      {
+        "id": "SAB-08",
+        "status": "PASS",
+        "detectedBy": "CONTROLES!F17"
+      },
+      {
+        "id": "SAB-09",
+        "status": "PASS",
+        "detectedBy": "CONTROLES!F18"
+      },
+      {
+        "id": "SAB-10",
+        "status": "PASS",
+        "detectedBy": "CONTROLES!F19"
+      },
+      {
+        "id": "SAB-11",
+        "status": "PASS",
+        "detectedBy": "CONTROLES!F20"
+      },
+      {
+        "id": "SAB-12",
+        "status": "PASS",
+        "detectedBy": "CONTROLES!F21"
+      },
+      {
+        "id": "SAB-13",
+        "status": "PASS",
+        "detectedBy": "CONTROLES!F22"
+      },
+      {
+        "id": "SAB-14",
+        "status": "PASS",
+        "detectedBy": "CONTROLES!F23"
+      },
+      {
+        "id": "SAB-15",
+        "status": "PASS",
+        "detectedBy": "CONTROLES!F24"
+      },
+      {
+        "id": "SAB-16",
+        "status": "PASS",
+        "detectedBy": "CONTROLES!F25"
+      },
+      {
+        "id": "SAB-17",
+        "status": "PASS",
+        "detectedBy": "CONTROLES!F26"
+      },
+      {
+        "id": "SAB-18",
+        "status": "PASS",
+        "detectedBy": "CONTROLES!F27"
+      },
+      {
+        "id": "SAB-19",
+        "status": "PASS",
+        "detectedBy": "CONTROLES!F28"
+      },
+      {
+        "id": "SAB-20",
+        "status": "PASS",
+        "detectedBy": "CONTROLES!F29"
+      }
+    ],
+    "totals": {
+      "specified": 36,
+      "legitimateMutations": 6,
+      "adversarial": 10,
+      "sabotages": 20,
+      "passed": 36,
+      "failed": 0
+    }
+  },
+  "safety": {
+    "formulaErrors": 0,
+    "macros": false,
+    "externalWorkbookLinks": false,
+    "secretCandidates": 0,
+    "secretDetectors": [
+      "aws-access-key",
+      "github-token",
+      "stripe-live-key",
+      "openai-project-key",
+      "slack-token",
+      "bearer-token",
+      "credential-url",
+      "password-assignment",
+      "token-assignment",
+      "supabase-secret-key",
+      "supabase-service-role-assignment",
+      "private-key",
+      "jwt"
+    ],
+    "secretDetectorFixtures": {
+      "positive": 8,
+      "helpTextNegative": 7
+    },
+    "secretScan": "Best effort uniquement : aucun scanner ne garantit l’absence de secret.",
+    "fictitiousValuesConfirmedReplaced": false,
+    "finalDecisionBlocked": true
+  },
+  "rendering": {
+    "count": 17,
+    "previews": [
+      {
+        "sheet": "LIRE_D_ABORD",
+        "file": "output/reprendre-mvp-vibe-code/workbook/previews/01-LIRE_D_ABORD.png",
+        "bytes": 182358,
+        "sha256": "d24600c70f28e7ffb920d33ce05d50e06e9d54e4cb21dc45f77a0cd1fd34dabc"
+      },
+      {
+        "sheet": "INVENTAIRE",
+        "file": "output/reprendre-mvp-vibe-code/workbook/previews/02-INVENTAIRE.png",
+        "bytes": 419767,
+        "sha256": "9dfc44ebe292969dca576de5927bdc40c5a9a9c37359d3da932b70e8cadcaf0b"
+      },
+      {
+        "sheet": "SOURCE_BUILD",
+        "file": "output/reprendre-mvp-vibe-code/workbook/previews/03-SOURCE_BUILD.png",
+        "bytes": 1153142,
+        "sha256": "432a6fb6b7fc395b4ffe437a8c87f9ab15ec9437ec21f3a86aaf956b6035b18c"
+      },
+      {
+        "sheet": "SBOM_LICENCES",
+        "file": "output/reprendre-mvp-vibe-code/workbook/previews/04-SBOM_LICENCES.png",
+        "bytes": 103357,
+        "sha256": "2bdaa76fbe4bb86ddc8496606c3e84edeacbb9416160668d48a948f03eb17346"
+      },
+      {
+        "sheet": "DONNEES_RESTORE",
+        "file": "output/reprendre-mvp-vibe-code/workbook/previews/05-DONNEES_RESTORE.png",
+        "bytes": 96997,
+        "sha256": "bcaafb4f0aff07ca707ffb2e2417c5733d4597c73628695d3dda4619c134072d"
+      },
+      {
+        "sheet": "RTO_RPO",
+        "file": "output/reprendre-mvp-vibe-code/workbook/previews/06-RTO_RPO.png",
+        "bytes": 67315,
+        "sha256": "a0ee86ea01caee205a5b07342e30ba109c14889bc012cad2cd77964f7dc4fd5e"
+      },
+      {
+        "sheet": "ACCES",
+        "file": "output/reprendre-mvp-vibe-code/workbook/previews/07-ACCES.png",
+        "bytes": 101768,
+        "sha256": "eb4c57e3c0cabf3fa27d07f5b6ac5246374c6f24866a17e4e390f4622daafda2"
+      },
+      {
+        "sheet": "PARCOURS_METIER",
+        "file": "output/reprendre-mvp-vibe-code/workbook/previews/08-PARCOURS_METIER.png",
+        "bytes": 115313,
+        "sha256": "4bd60a8f2ea61694daa404563deeb940609d385e58bc58e5bae834d46584a3a8"
+      },
+      {
+        "sheet": "PRODUCTION",
+        "file": "output/reprendre-mvp-vibe-code/workbook/previews/09-PRODUCTION.png",
+        "bytes": 97450,
+        "sha256": "e08ec4b1745430e1212d7e153dac81a9210831ab4a20eca9b1055356a45d45cd"
+      },
+      {
+        "sheet": "MIGRATION",
+        "file": "output/reprendre-mvp-vibe-code/workbook/previews/10-MIGRATION.png",
+        "bytes": 104429,
+        "sha256": "207e5eb35a8779ee5bca5fb303c5d45431e9d7ac44191aa4d00caee54303739e"
+      },
+      {
+        "sheet": "HYPOTHESES_TCO",
+        "file": "output/reprendre-mvp-vibe-code/workbook/previews/11-HYPOTHESES_TCO.png",
+        "bytes": 96777,
+        "sha256": "87f56ef93188f60e5ed962d517b3412949e1209f012fac3cf13ab3ae4a8f0207"
+      },
+      {
+        "sheet": "TCO_12_36_60",
+        "file": "output/reprendre-mvp-vibe-code/workbook/previews/12-TCO_12_36_60.png",
+        "bytes": 109163,
+        "sha256": "33266b8f4bcecf97f6a373460edee3923258859eca720ce76953d3a96d7f3a6d"
+      },
+      {
+        "sheet": "RISQUE_PANNE",
+        "file": "output/reprendre-mvp-vibe-code/workbook/previews/13-RISQUE_PANNE.png",
+        "bytes": 157514,
+        "sha256": "3f7dea3ae28d171ceebfba8bde2bf9d83d13234ff3c9d1bd816d275b57e0946f"
+      },
+      {
+        "sheet": "DECISION",
+        "file": "output/reprendre-mvp-vibe-code/workbook/previews/14-DECISION.png",
+        "bytes": 175359,
+        "sha256": "a9764478e3c29d7ab97d937fe2fc3caaca35a6ac5280de8e63345726705518b5"
+      },
+      {
+        "sheet": "TESTS",
+        "file": "output/reprendre-mvp-vibe-code/workbook/previews/15-TESTS.png",
+        "bytes": 451166,
+        "sha256": "636b60008c578a360563d85e1ab54d08ed319447a16bb0641e0c71059a40d131"
+      },
+      {
+        "sheet": "CONTROLES",
+        "file": "output/reprendre-mvp-vibe-code/workbook/previews/16-CONTROLES.png",
+        "bytes": 363829,
+        "sha256": "ca06c315ed4ea9447c8052b551458a664ff1c05ef98e22ad807f51279abe2567"
+      },
+      {
+        "sheet": "SOURCES",
+        "file": "output/reprendre-mvp-vibe-code/workbook/previews/17-SOURCES.png",
+        "bytes": 1255593,
+        "sha256": "36e1c9d6887bb26386b7ead1c93357c045e7f2f0612f4cce548ea3d0c381d183"
+      }
+    ]
+  },
+  "recalculation": {
+    "artifactTool": true,
+    "realMicrosoftExcel": false,
+    "limitation": "Le classeur n’a pas été ouvert ni recalculé par Microsoft Excel réel."
+  }
+}

@@ -1,19 +1,21 @@
 # Dossier de recherche — logiciel de gestion de stock sur mesure
 
-> Les quatre passes sont terminées. Le trajet de stock, les limites et les
-> choix possibles ont été contre-audités puis contrôlés dans le rendu de
-> production. La publication est déléguée, sans test par un lecteur humain réel.
+> Le cycle du 23 juillet reste conservé comme historique. Il a été rouvert le
+> 24 juillet après le giga-audit du corpus : la page publique a changé en
+> profondeur et ses anciens snapshots P2, P3 et P4 ne prouvent donc plus l’état
+> courant. Le nouveau contenu a franchi la recherche et la réécriture ; son
+> contre-audit indépendant et son nouveau gel P4 restent à fermer.
 
 ## Journal des quatre passes
 
 Propriétaire éditorial unique : `/root`
 
-| Passe                        | État                               | Date            | Responsable                 | Snapshot                                                              | Blocages |
-| ---------------------------- | ---------------------------------- | --------------- | --------------------------- | --------------------------------------------------------------------- | -------- |
-| 1. Recherche                 | Terminée — porte validée           | 23 juillet 2026 | `/root`                     | `docs/research/manifests/logiciel-gestion-stock-sur-mesure-p1.sha256` | Aucun    |
-| 2. Rédaction et intégration  | Terminée — prête pour contre-audit | 23 juillet 2026 | `/root/p2_batch3_apps`      | `docs/research/manifests/logiciel-gestion-stock-sur-mesure-p2.sha256` | Aucun    |
-| 3. Contre-audit indépendant  | Terminée — porte validée           | 23 juillet 2026 | `/root/p2_batch3_marketing` | `docs/research/manifests/logiciel-gestion-stock-sur-mesure-p3.sha256` | Aucun    |
-| 4. Plume humaine et contrôle | Terminée — porte validée           | 23 juillet 2026 | `/root`                     | `docs/research/manifests/logiciel-gestion-stock-sur-mesure-p4.sha256` | Aucun    |
+| Passe                        | État                           | Date            | Responsable                 | Snapshot                                                              | Blocages                               |
+| ---------------------------- | ------------------------------ | --------------- | --------------------------- | --------------------------------------------------------------------- | -------------------------------------- |
+| 1. Recherche                 | Terminée — porte validée       | 23 juillet 2026 | `/root`                     | `docs/research/manifests/logiciel-gestion-stock-sur-mesure-p1.sha256` | Aucun                                  |
+| 2. Rédaction et intégration  | Historique — snapshot remplacé | 23 juillet 2026 | `/root/p2_batch3_apps`      | `docs/research/manifests/logiciel-gestion-stock-sur-mesure-p2.sha256` | Réécriture du 24 juillet hors snapshot |
+| 3. Contre-audit indépendant  | Historique — snapshot remplacé | 23 juillet 2026 | `/root/p2_batch3_marketing` | `docs/research/manifests/logiciel-gestion-stock-sur-mesure-p3.sha256` | Nouveau P3 en cours                    |
+| 4. Plume humaine et contrôle | Historique — gel invalidé      | 23 juillet 2026 | `/root`                     | `docs/research/manifests/logiciel-gestion-stock-sur-mesure-p4.sha256` | Nouveau P4 à produire                  |
 
 ## 1. Fiche d'identité
 
@@ -248,3 +250,147 @@ Snapshot final : docs/research/manifests/logiciel-gestion-stock-sur-mesure-p4.sh
 Statut maximal : Publiable
 Verdict : publiable en index/follow ; cela ne prouve ni crawl, ni indexation Google, ni position
 ```
+
+## 15. Nouveau cycle — giga-audit du 24 juillet 2026
+
+### 15.1 Pourquoi l’ancien P4 a été rouvert
+
+L’audit individuel
+`docs/audits/giga-audit-2026-07-24/guides/logiciel-gestion-stock-sur-mesure.md`
+a noté la version précédente **65/100**. Son diagnostic des mouvements était
+juste, mais il manquait la moitié décisionnelle promise par le titre :
+comparaison ERP/WMS/sur-mesure sur un même périmètre, coût des anomalies, coût
+total sur plusieurs années, sensibilité, protocole de test produit,
+réapprovisionnement et coût réel d’une migration.
+
+Le benchmark a confronté le guide à des ressources françaises, américaines,
+britanniques, australiennes et internationales. Les pages concurrentes les
+plus utiles ont apporté trois idées à conserver :
+
+- donner un choix par profil plutôt qu’une liste de fonctions ;
+- raisonner en coût total, et non en seul prix de licence ;
+- acheter le fonctionnement générique et ne construire que l’écart métier
+  démontré.
+
+Leurs limites ont aussi été consignées : chiffres commerciaux sans protocole,
+comparaisons intéressées, prix secondaires non datés et seuils présentés comme
+universels. Aucun de ces chiffres n’a été repris.
+
+### 15.2 Recherches primaires et limites
+
+| Point vérifié            | Source utilisée                                                          | Ce que la page peut affirmer                                                                                     | Ce qu’elle ne doit pas en déduire                                                 |
+| ------------------------ | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| Prix de licence          | Microsoft, page française Business Central, consultée le 24 juillet 2026 | Essentials : 69,30 € HT/utilisateur/mois ; Premium : 95,30 € ; Team Members : 6,90 €, sur abonnement annuel      | Le coût de mise en œuvre, de migration, de matériel, de support ou de sortie      |
+| Ajustements d’inventaire | Documentation Odoo 19                                                    | Odoo distingue quantité enregistrée, quantité comptée et différence, avec utilisateur, date, motif et historique | Qu’Odoo conviendra au processus du lecteur                                        |
+| Lots et séries           | Documentation Odoo 19                                                    | Une reprise mal préparée peut créer des incohérences dans ce produit et demande des ajustements                  | Une règle universelle de migration pour tous les logiciels                        |
+| Inventaire               | Article R123-177 du Code de commerce                                     | L’entreprise contrôle au moins tous les douze mois l’existence et la valeur de ses actifs et passifs             | Qu’un WMS, des codes-barres ou un inventaire tournant seraient légalement imposés |
+| Traçabilité              | Standard courant GS1                                                     | Une chaîne de traçabilité doit identifier, capturer puis partager les événements et données utiles               | Que lot, série ou unité logistique serait nécessaire dans toute PME               |
+| Réapprovisionnement      | Guide officiel Australian Government                                     | Le point de commande combine consommation pendant le délai et stock de sécurité                                  | Que la demande future serait connue avec certitude                                |
+
+Les tarifs sont un **instantané daté**, pas une promesse commerciale. Les
+pages Microsoft et Odoo ont été utilisées comme documentations publiques ;
+aucun compte éditeur n’a été ouvert et aucun résultat de démonstration n’a été
+inventé.
+
+### 15.3 Réécriture réellement intégrée
+
+La version courante de
+`src/app/guides/logiciel-gestion-stock-sur-mesure/page.tsx` ajoute :
+
+- une réponse standard-first dès le début et une option explicite « ne rien
+  développer maintenant » ;
+- la fermeture de l’égalité de l’exemple Atelier Orbe :
+  `50 reçues + 1 retour = 30 disponibles + 8 réservées + 10 en transit +
+2 cassées + 1 retour en contrôle = 51` ;
+- trois scénarios du coût des anomalies, avec formule, hypothèses et coûts
+  annuels de 763,20 €, 4 154,40 € et 19 320 € ;
+- un cas central dont seulement 60 % du coût serait évitable, soit
+  2 492,64 € par an, pour éviter de confondre coût observé et gain promis ;
+- une comparaison nommée entre ERP, logiciel de stock, WMS, couche hybride et
+  développement ciblé ;
+- un protocole commun de quinze événements, fourni dans
+  `public/ressources/grille-test-logiciel-stock-15-evenements.csv` ;
+- un exemple fictif de coût total sur 36 mois, même périmètre et dix
+  utilisateurs : 38 500 € pour un standard, 63 600 € pour un hybride et
+  101 880 € pour un sur-mesure ;
+- le différentiel sur-mesure/standard, 63 380 € sur trois ans, donc
+  21 126,67 € de valeur annuelle supplémentaire à démontrer ;
+- trois sensibilités séparées : licence du standard, support de l’hybride et
+  maintenance du sur-mesure ;
+- un point de commande reproductible :
+  `10 unités/semaine × 2 semaines + 8 de sécurité = 28 unités` ;
+- un exemple de reprise de données à 8 050 €, séparant nettoyage des lignes,
+  validation métier et assistance externe ;
+- un pilote avec critères GO, GO sous conditions et STOP, double contrôle et
+  retour arrière ;
+- la séparation entre logiciel opérationnel, inventaire comptable et
+  traçabilité sectorielle ;
+- un CTA qui autorise explicitement Hagnéré Code à recommander de conserver
+  l’outil actuel.
+
+Tous les montants autres que les prix catalogue Microsoft sont annoncés comme
+**hypothèses pédagogiques fictives**, ni devis, ni moyenne de marché, ni
+résultat client.
+
+### 15.4 Calculs refaits
+
+```text
+Coût central mensuel
+= 18 anomalies × 22 min / 60 × 32 €/h + 3 réexpéditions × 45 €
+= 211,20 € + 135 €
+= 346,20 €
+
+Coût central annuel
+= 346,20 € × 12
+= 4 154,40 €
+
+Part évitable illustrée
+= 4 154,40 € × 60 %
+= 2 492,64 €
+
+Surcoût du sur-mesure contre le standard
+= 101 880 € - 38 500 €
+= 63 380 € sur 36 mois
+= 21 126,67 € par an
+
+Migration fictive
+= 12 000 lignes × 7 % à corriger × 5 min / 60 × 35 €/h
+  + 5 jours × 700 €
+  + 60 heures internes × 35 €
+= 2 450 € + 3 500 € + 2 100 €
+= 8 050 €
+```
+
+Le contrôle inverse de l’exemple central retrouve 6,6 heures de traitement :
+`(346,20 € - 135 €) / 32 € = 6,6 h`. Les sensibilités ne multiplient pas
+uniformément toutes les options : chacune change une hypothèse propre à la
+solution testée.
+
+### 15.5 Contrôles déjà passés et portes encore ouvertes
+
+État au 24 juillet 2026 :
+
+- tests ciblés du lot, langage humain, registre et calculs : conformes ;
+- TypeScript, ESLint ciblé et `git diff --check` : conformes ;
+- fichier CSV : 15 événements, 12 colonnes constantes, téléchargement local
+  HTTP 200 et contenu servi identique au fichier source ;
+- rendu navigateur : contrôlé à 320, 390, 767, 1 024 et 1 440 px, sans
+  débordement horizontal détecté ;
+- longueur visible mesurée après les corrections P3 : 3 955 mots, soit 20
+  minutes de lecture arrondies dans le registre ;
+- nouvelle image sociale : titre conservé, promesse alignée sur les quinze
+  événements et le coût total à 36 mois.
+
+Portes encore ouvertes :
+
+- intégrer et fermer le rapport du nouveau relecteur P3 ;
+- contrôler à nouveau les thèmes clair et sombre, la route, l’image sociale et
+  la console après les dernières corrections ;
+- recalculer les snapshots P1 à P4 seulement lorsque le lot sera gelé ;
+- relancer la suite globale, `check:seo`, le build de production et le contrôle
+  des artefacts.
+
+La suite globale ne peut pas être déclarée verte tant que les anciens
+manifests P4 comparent encore le hash historique de `src/lib/guides.ts` au
+registre en cours de révision. Ce défaut de gel est connu et sera traité en fin
+de lot, pas masqué par une mise à jour prématurée des snapshots.

@@ -1,0 +1,104 @@
+[
+  {
+    "id": "three-events",
+    "label": "Trois situations datées",
+    "expected": "Un cas courant, un cas difficile et un cas à conséquence sont décrits par un événement daté, un résultat attendu, une preuve consultable et des mesures séparant travail actif, correction et attente.",
+    "acceptedEvidence": [
+      "ticket ou dossier expurgé",
+      "journal d'observation daté",
+      "rejeu commenté avec un utilisateur"
+    ],
+    "sourceIds": ["GOVUK-USER-NEEDS", "DESIGNGOUV-BESOINS"]
+  },
+  {
+    "id": "users-rules",
+    "label": "Utilisateurs, règles et exceptions",
+    "expected": "Les personnes qui réalisent le travail ont expliqué la règle principale, montré au moins une exception et distingué ce qui est stable de ce qui change encore, sans partir du nom d'une solution.",
+    "acceptedEvidence": [
+      "entretien et observation",
+      "carte du flux avec exceptions",
+      "rejeu d'un cas ordinaire et d'un cas limite"
+    ],
+    "sourceIds": ["GOVUK-USER-NEEDS", "CANADA-DIGITAL-STANDARDS"]
+  },
+  {
+    "id": "current-tool-test",
+    "label": "Correction de l’existant testée",
+    "expected": "La configuration, les droits, la formation et la procédure de l'outil actuel ont été examinés sur les trois situations ; les résultats, limites et responsables sont écrits.",
+    "acceptedEvidence": [
+      "compte rendu de configuration",
+      "capture ou export de test",
+      "journal avant-après"
+    ],
+    "sourceIds": ["RGESN-2024", "EC-SME-MATURITY"]
+  },
+  {
+    "id": "standard-options",
+    "label": "Solutions standards comparées",
+    "expected": "Au moins une option standard plausible est essayée ou démontrée sur les mêmes situations, y compris une exception, une exportation et une condition de sortie ; une impossibilité d'essai est justifiée.",
+    "acceptedEvidence": [
+      "script de démonstration rempli",
+      "résultat d'essai borné",
+      "réponses écrites du fournisseur"
+    ],
+    "sourceIds": ["GOVUK-COTS", "GOVUK-RIGHT-TOOLS"]
+  },
+  {
+    "id": "data-integrations",
+    "label": "Données et intégrations cartographiées",
+    "expected": "Les données maîtresses, leur propriétaire, les identifiants de rapprochement, les imports, exports, volumes, erreurs et connexions sont cartographiés sans secret dans le dossier.",
+    "acceptedEvidence": [
+      "dictionnaire de données",
+      "fichier d'export expurgé",
+      "contrat d'interface et journal d'erreurs"
+    ],
+    "sourceIds": [
+      "GOVUK-OPEN-STANDARDS",
+      "CANADA-SERVICE-DIGITAL",
+      "CANADA-DIGITAL-STANDARDS"
+    ]
+  },
+  {
+    "id": "security-continuity",
+    "label": "Sécurité et continuité vérifiées",
+    "expected": "Les accès privilégiés, départs, sauvegardes restaurables, mode manuel, données personnelles et suspicion d'incident sont contrôlés avant toute comparaison fonctionnelle.",
+    "acceptedEvidence": [
+      "revue des habilitations",
+      "procès-verbal de restauration",
+      "exercice de mode dégradé"
+    ],
+    "sourceIds": [
+      "CNIL-HABILITATIONS",
+      "CNIL-SAUVEGARDES",
+      "CNIL-CONTINUITE",
+      "NIST-CSF-2",
+      "NIST-SP800-34"
+    ]
+  },
+  {
+    "id": "tco-adoption",
+    "label": "TCO et adoption documentés",
+    "expected": "Les options sont comparées sur un même horizon avec abonnement ou construction, configuration, données, connexions, formation, double fonctionnement, support, maintenance et temps interne, en conservant les inconnues.",
+    "acceptedEvidence": [
+      "tableau TCO sourcé",
+      "plan de conduite du changement",
+      "hypothèses avec propriétaire et date"
+    ],
+    "sourceIds": ["GOVUK-CHOOSE-TECH", "OECD-SME-DIGITAL"]
+  },
+  {
+    "id": "exit-accessibility",
+    "label": "Sortie, accessibilité et bout en bout testés",
+    "expected": "Une exportation exploitable, la réversibilité, l'accessibilité des parcours utiles et le test de bout en bout sont prévus avant décision, avec une personne responsable et une date.",
+    "acceptedEvidence": [
+      "export réimporté",
+      "test de parcours avec utilisateurs",
+      "plan de sortie et responsabilités"
+    ],
+    "sourceIds": [
+      "GOVUK-COTS",
+      "DTA-DIGITAL-STANDARD",
+      "CANADA-SERVICE-DIGITAL"
+    ]
+  }
+]

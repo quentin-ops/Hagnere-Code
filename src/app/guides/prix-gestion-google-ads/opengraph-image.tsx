@@ -125,8 +125,8 @@ export default function OgImage() {
               marginBottom: 17,
             }}
           >
-            <span style={{ display: "flex" }}>COÛT COMPLET</span>
-            <span style={{ display: "flex", color: "#93c5fd" }}>7 LIGNES</span>
+            <span style={{ display: "flex" }}>COÛT RENSEIGNÉ</span>
+            <span style={{ display: "flex", color: "#93c5fd" }}>9 LIGNES</span>
           </div>
 
           {[

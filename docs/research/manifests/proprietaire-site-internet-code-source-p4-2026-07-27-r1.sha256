@@ -1,0 +1,9 @@
+422b75eeae8c904b4067e289fdc58896f9c953928c67f0fa28f70c31be566174  docs/research/proprietaire-site-internet-code-source-r1-2026-07-27.md
+35fa96b35f735f356a93eaa84fc9c607b0653a590fabdcd34b419cfcada9459b  docs/audits/giga-audit-2026-07-24/reviews/proprietaire-site-internet-code-source-p4-2026-07-27-r1.md
+2d4f18c5dce2cb79cd4956cdfa44a934118c81b5e519350a87fa5db063430d00  src/app/guides/proprietaire-site-internet-code-source/page.tsx
+1df4862ac266e8726445a2d9d2797f1863422ec471c449914838d425d263c4d1  src/lib/site-ownership-exit.ts
+8a8b2624add5cf6cc0e74d8a6dc3ab617300a9b08f12c3c966a2d6210ea9780f  src/components/guides/SiteOwnershipExitDossier.tsx
+b014ea99b39990cfc28844adc71afb35743bdecbe89c73932812301be643111b  src/lib/site-ownership-exit.test.ts
+a53e2d9f45183b99b3f3a5df0134173b57254d71be66b8c6376a33e55305d5d8  src/components/guides/SiteOwnershipExitDossier.test.tsx
+b82e6b8cb35ed05bbd3ec653c574844c7d6fdd66b2ed4962f6580dddf0ec30bd  src/lib/site-ownership-guide-quality.test.ts
+927ea048ab1b446a0fd8ffa931849aed310c33d1def6dc30050df356c077c048  src/lib/guides.ts

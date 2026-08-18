@@ -1,0 +1,14 @@
+ID;Domaine;Element;Type;Proprietaire;Criticite;Source_actuelle;Cible;Mode_degrade;Preuve_attendue;Decision
+INV-001;Clients;Fiches clients;Donnees;Responsable service client;Haute;Ancien logiciel;Nouveau logiciel;Fiche temporaire datee;2400 clients rapproches et 20 doublons traites;Migrer
+INV-002;Interventions;Dossiers ouverts;Donnees;Responsable exploitation;Critique;Ancien logiciel;Nouveau logiciel;Registre papier numerote;300 dossiers ouverts relies au bon client;Migrer
+INV-003;Facturation;Factures;Donnees;Responsable comptable;Critique;Ancien logiciel;Nouveau logiciel;Emission suspendue et liste d attente;220 factures mensuelles et totaux rapproches;Migrer
+INV-004;Planning;Agenda techniciens;Integration;Responsable planning;Critique;Ancien logiciel;Nouveau logiciel;Planning exporte en lecture seule;Creation et modification testees;Migrer
+INV-005;Comptabilite;Export comptable;Integration;Responsable comptable;Haute;Ancien logiciel;Nouveau logiciel;Export manuel controle;Fichier accepte et totaux identiques;Migrer
+INV-006;Banque;Rapprochement bancaire;Integration;Responsable finance;Haute;Ancien logiciel;Nouveau logiciel;Import differe;Un lot test sans doublon;Migrer apres validation
+INV-007;Messagerie;Notifications clients;Integration;Responsable service client;Moyenne;Ancien logiciel;Nouveau logiciel;Appel manuel prioritaire;Destinataire et contenu controles;Migrer
+INV-008;Portail;Demandes clients;Integration;Responsable digital;Haute;Portail client;Nouveau logiciel;Formulaire de secours;Une demande cree un seul dossier;Migrer
+INV-009;Identites;Comptes et roles;Acces;Responsable securite;Critique;Annuaire entreprise;Nouveau logiciel;Compte de secours nominatif;10 roles testes et comptes temporaires expires;Migrer
+INV-010;Historique;Pieces jointes;Archive;Responsable donnees;Moyenne;Ancien logiciel;Archive consultable;Recherche assistee;Echantillon de pieces lisible avec droits corrects;Archiver
+INV-011;Facturation;Traitement de facturation nocturne;Automatisme;Responsable comptable;Critique;Tache planifiee ancien logiciel;Tache planifiee cible;Emission manuelle suspendue et controlee;Horaire compte de service alerte et lot de sortie testes;Migrer apres test
+INV-012;Terrain;Imprimantes mobiles et scanners;Equipement;Responsable exploitation;Haute;Terminaux techniciens;Application cible;Bon papier numerote;Un technicien scanne puis imprime sur equipement reel;Migrer apres recette terrain
+INV-013;Sortie editeur;Export archive licences et destruction;Contrat_sortie;Direction;Haute;Contrat ancien editeur;Archive et cible;Maintien lecture seule date;Format cout delai responsable export test de lecture et preuve de destruction;Fermer apres decision

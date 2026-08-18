@@ -1,0 +1,12 @@
+Option;Horizon mois;Coût externe ou coût de la fonction annuel;Temps de votre équipe h/semaine;Coût interne €/h;Reprise initiale outils et sortie;Pertes et risques restant à votre charge annuels;Postes importants à confirmer;Coût externe ou fonction sur horizon;Temps de votre équipe sur horizon;Pertes et risques sur horizon;Coût renseigné;Notes
+Formule hybride;12;74100;2;60;0;0;oui;=C2*(B2/12);=D2*52*E2*(B2/12);=G2*(B2/12);=I2+J2+F2+K2;Exemple fictif partiel : reprise outils sortie et pertes éventuelles restent à confirmer
+Capacité avec report annuel;12;72000;3;60;0;0;oui;=C3*(B3/12);=D3*52*E3*(B3/12);=G3*(B3/12);=I3+J3+F3+K3;Exemple fictif partiel : le report doit être réel et les postes inconnus confirmés
+Temps réellement mobilisé;12;72000;5;60;0;0;oui;=C4*(B4/12);=D4*52*E4*(B4/12);=G4*(B4/12);=I4+J4+F4+K4;Exemple fictif partiel : plafond externe 75 000 € et nouvelle autorisation au-delà
+Capacité sans report;12;79650;3;60;0;0;oui;=C5*(B5/12);=D5*52*E5*(B5/12);=G5*(B5/12);=I5+J5+F5+K5;Exemple fictif partiel : 15 jours perdus et 9 jours de dépassement à 850 €
+Lots clairement définis;12;79800;4;60;0;0;oui;=C6*(B6/12);=D6*52*E6*(B6/12);=G6*(B6/12);=I6+J6+F6+K6;Exemple fictif partiel : toute modification du périmètre exige une nouvelle décision
+Interventions ponctuelles;12;81600;7;60;0;0;oui;=C7*(B7/12);=D7*52*E7*(B7/12);=G7*(B7/12);=I7+J7+F7+K7;Exemple fictif partiel : 6 jours de remise en contexte inclus
+Compétence internalisée;12;102000;2;60;0;0;oui;=C8*(B8/12);=D8*52*E8*(B8/12);=G8*(B8/12);=I8+J8+F8+K8;Besoin de trésorerie fictif partiel : documenter la valeur des 110 jours restants et les postes inconnus
+Votre option 1;;;;;;;oui;=C9*(B9/12);=D9*52*E9*(B9/12);=G9*(B9/12);=I9+J9+F9+K9;
+Votre option 2;;;;;;;oui;=C10*(B10/12);=D10*52*E10*(B10/12);=G10*(B10/12);=I10+J10+F10+K10;
+Votre option 3;;;;;;;oui;=C11*(B11/12);=D11*52*E11*(B11/12);=G11*(B11/12);=I11+J11+F11+K11;
+Votre option 4;;;;;;;oui;=C12*(B12/12);=D12*52*E12*(B12/12);=G12*(B12/12);=I12+J12+F12+K12;

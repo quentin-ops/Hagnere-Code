@@ -1,0 +1,110 @@
+[
+  {
+    "id": "R-01",
+    "family": "Gouvernance",
+    "case": "Propriétaire du dépôt principal",
+    "expected": "L’entreprise contrôle l’organisation, deux administrateurs nominatifs sont testés et l’ancien propriétaire n’a plus de droit implicite."
+  },
+  {
+    "id": "R-02",
+    "family": "Gouvernance",
+    "case": "Fin de contrat du freelance",
+    "expected": "Les accès sont désactivés à l’échéance, sauf prolongation écrite, bornée, nominative, minimale et journalisée."
+  },
+  {
+    "id": "R-03",
+    "family": "Code et livraison",
+    "case": "Reconstruction depuis une machine neuve",
+    "expected": "Une personne autorisée reconstruit et déploie une version avec les seules procédures et dépendances documentées."
+  },
+  {
+    "id": "R-04",
+    "family": "Code et livraison",
+    "case": "Transfert du dépôt GitHub",
+    "expected": "Les collaborateurs, webhooks, secrets et clés de déploiement sont contrôlés séparément après le transfert."
+  },
+  {
+    "id": "R-05",
+    "family": "Infrastructure",
+    "case": "Transfert du projet d’hébergement",
+    "expected": "Intégrations, drains de logs, stockage et variables externes sont inventoriés car le transfert du projet ne les emporte pas tous."
+  },
+  {
+    "id": "R-06",
+    "family": "Infrastructure",
+    "case": "Restauration protégée",
+    "expected": "Une copie restaurée hors production permet de rejouer un parcours critique sans modifier le service actif."
+  },
+  {
+    "id": "R-07",
+    "family": "Continuité",
+    "case": "RTO du parcours de paiement",
+    "expected": "Le métier accepte une durée maximale d’arrêt, un responsable, une date de test et les conséquences si la cible n’est pas tenue."
+  },
+  {
+    "id": "R-08",
+    "family": "Continuité",
+    "case": "RPO d’une action métier",
+    "expected": "La perte maximale de données est reliée au volume d’événements, au coût de reconstruction et à un point restauré effectivement validé."
+  },
+  {
+    "id": "R-09",
+    "family": "Paiements",
+    "case": "Conservation du même compte Stripe",
+    "expected": "Le propriétaire du compte est modifié sans recréer les abonnements et les clés sont renouvelées après contrôle."
+  },
+  {
+    "id": "R-10",
+    "family": "Paiements",
+    "case": "Migration vers un nouveau compte Stripe",
+    "expected": "La migration est testée en environnement de test, les anciens et nouveaux prélèvements sont séquencés et le double débit est empêché."
+  },
+  {
+    "id": "R-11",
+    "family": "Données",
+    "case": "Restitution des données personnelles",
+    "expected": "Le format, le périmètre, le délai, le responsable et la vérification de l’export sont écrits avant suppression."
+  },
+  {
+    "id": "R-12",
+    "family": "Données",
+    "case": "Destruction après passation",
+    "expected": "Les copies et sauvegardes suivent un calendrier documenté et une attestation écrite de destruction est obtenue."
+  },
+  {
+    "id": "R-13",
+    "family": "Droits",
+    "case": "Droits d’exploitation du code",
+    "expected": "Les droits cédés, leur étendue, leur destination, leur durée et leur territoire sont vérifiés par écrit sans déduire la propriété d’un paiement."
+  },
+  {
+    "id": "R-14",
+    "family": "Droits",
+    "case": "Composants tiers et licences",
+    "expected": "Les licences, comptes, restrictions et obligations de redistribution sont inventoriés et rattachés à un responsable."
+  },
+  {
+    "id": "R-15",
+    "family": "Support",
+    "case": "Incident pendant la passation",
+    "expected": "La passation normale s’arrête ; les preuves sont préservées et le dossier bascule vers la procédure incident ou litige."
+  },
+  {
+    "id": "R-16",
+    "family": "Support",
+    "case": "Contact fournisseur indisponible",
+    "expected": "Un second administrateur, les justificatifs d’entreprise, les canaux de récupération et l’escalade fournisseur ont été testés."
+  },
+  {
+    "id": "R-17",
+    "family": "Décision",
+    "case": "Comparaison TCO sur trente-six mois",
+    "expected": "Stabilisation, migration et réécriture utilisent le même périmètre, le même horizon et des inconnues visibles, jamais transformées en zéro."
+  },
+  {
+    "id": "R-18",
+    "family": "Sortie",
+    "case": "Exercice de sortie annuel",
+    "expected": "Le registre, les administrateurs, les contacts, les preuves, les coûts et le plan de reprise sont revus et datés sans stocker de secret."
+  }
+]

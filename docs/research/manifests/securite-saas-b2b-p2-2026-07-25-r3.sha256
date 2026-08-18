@@ -1,0 +1,16 @@
+a66872fa4178c7aa1a1e25d11c4b6508c65b9722e6fcb486f54c72bc3b386d9b  docs/audits/giga-audit-2026-07-24/reviews/securite-saas-b2b-p2-2026-07-25-r3.md
+1fabc4d0f5992d0ace9f37a4fd071a04b083f5d1b4073f03cbb95e716ed82469  docs/research/securite-saas-b2b-world-benchmark-2026-07-25-r1.md
+a9534d845b7e00abf2f6154e470c2ccd0d9a1eb2919ca4840575630108198b70  docs/research/securite-saas-b2b.md
+730a3e70c7f04e305b3e406ec69ea9909c542c2c1ddaee8d5b7a37a9a24347bc  package.json
+d5353d2b6bb792f7ac876201a8f64d909728057f0932df9a229ca44bd6f2b80d  src/app/guides/securite-saas-b2b/opengraph-image.tsx
+e8774238f796e3f9537c49833d8610e4a87c4b8ab4da407df66eaf9c0e3dde12  src/app/guides/securite-saas-b2b/page.tsx
+79c4935dfed5bdc8c6b6127ad5a41a69024e7023810065cfd14a52fcadcfadc8  src/components/guides/SaasSecurityDecisionTool.test.tsx
+4893d238beb778b9c18eb63c3d4b6fc9afafaadc4eccfeb145bb0f9d8bcb5f0b  src/components/guides/SaasSecurityDecisionTool.tsx
+469048e727b72059cd72a7341abebd972fe6073399d5ac1d61b2d78999105f2d  src/lib/batch3-guide-quality.test.ts
+e46269836c7f455985d67610b46304efc0b99829365883788eb8a7dedf7cadf4  src/lib/editorial-governance.test.ts
+4d206e36554527b3cfb2a8a256986084f2dc86d7e58b6992a60f88f5271761ef  src/lib/guides.ts
+e0c587bd292d211993e8e1fc0fa4791720678dad39d810189bd2531fa5369904  src/lib/saas-security-decision.test.ts
+ab5e4afecf5f5d5d1d682d07e13140100fadbf337823cdf555aa4f66d1a6b07a  src/lib/saas-security-decision.ts
+ac066901aece0a2b70a02d8b1280cd8b41b0534b4191c56abe0ec02b4fae5e4d  src/lib/saas-security-guide-quality.test.ts
+fbb4736194fa5313d5467d9f5a18a2f260e3336604c7474086b123af569e8f61  src/lib/saas-security-local-date.test.ts
+6d9d4e79161ebf5f44e54b0a8c1dd4ba667a33f9703843bdeb174b7d2d24d961  src/lib/saas-security-local-date.ts

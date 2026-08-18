@@ -394,6 +394,11 @@ html.dark {
   line-height: 1.35;
 }
 
+html.dark .pf-side-note {
+  color: #a7f3d0;
+  border-color: rgba(52, 211, 153, 0.35);
+}
+
 .pf-main-card {
   align-self: start;
   min-width: 0;
@@ -866,6 +871,13 @@ html.dark {
   background: var(--pf-accent);
   border: 1px solid var(--pf-accent);
   box-shadow: 0 18px 34px -24px rgba(109, 40, 217, 0.8);
+}
+
+html.dark .pf-submit,
+html.dark .pf-primary,
+html.dark .pf-root a.pf-primary {
+  background: #7c3aed;
+  border-color: #7c3aed;
 }
 
 .pf-root a.pf-secondary {
@@ -2024,6 +2036,18 @@ html.dark .pf-captcha > em {
   color: var(--pf-soft);
   font-size: clamp(14px, 1.6vw, 16.5px);
   line-height: 1.55;
+}
+
+.pf-entry-context {
+  max-width: 62ch;
+  margin: 0;
+  padding: 10px 14px;
+  color: var(--pf-ink);
+  background: var(--pf-accent-soft);
+  border: 1px solid color-mix(in srgb, var(--pf-accent) 28%, transparent);
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .pf-landing-cta {

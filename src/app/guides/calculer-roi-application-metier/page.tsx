@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ApplicationRoiCalculator } from "@/components/guides/ApplicationRoiCalculator";
 import {
   FormulaBox,
   GuideInlineCTA,
@@ -269,8 +270,12 @@ export default function Page() {
               label: "6. Comparer le sur-mesure aux solutions simples",
             },
             {
+              id: "calculateur",
+              label: "7. Calculer, tester les seuils et exporter",
+            },
+            {
               id: "decision",
-              label: "7. Tester, faire valider et décider",
+              label: "8. Faire valider et décider",
             },
             { id: "sources", label: "Sources et limites" },
           ]}
@@ -433,17 +438,9 @@ export default function Page() {
           voit souvent les exceptions invisibles dans le tableau de bord : le
           client rappelé, la donnée copiée dans un deuxième fichier, la pièce
           ressaisie après une panne ou la correction qui n’est jamais classée
-          comme incident. L’
-          <a
-            href="https://www.anact.fr/table-de-simulation-numerique"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Anact propose une table de simulation numérique
-          </a>{" "}
-          pour discuter avec les salariés des futurs flux et de l’organisation.
-          Ici, cette discussion sert aussi à éviter un gain théorique qui
-          déplace simplement la charge vers une autre personne.
+          comme incident. Rejouez ensuite le futur flux avec les utilisateurs :
+          cette discussion évite de présenter comme un gain une tâche simplement
+          déplacée vers une autre personne.
         </p>
 
         <h2 id="benefices">
@@ -614,7 +611,7 @@ export default function Page() {
           , puis calculez leur coût complet sur la même durée.
         </p>
 
-        <h2 id="exemple">5. Exemple fictif : d’environ 108 % à environ 16 %</h2>
+        <h2 id="exemple">5. Exemple fictif : d’environ 108 % à environ 9 %</h2>
 
         <p>
           <strong>Exemple illustratif fictif.</strong> Il ne décrit ni un client
@@ -662,8 +659,9 @@ export default function Page() {
           soit environ 108 %. Ce résultat est trompeur : il suppose que toute la
           charge disparaît, que tout le temps est réutilisé et que les bénéfices
           commencent avant même la mise en service. Le scénario central corrigé
-          applique donc une part réaliste de réutilisation et seulement 44 mois
-          de fonctionnement.
+          applique donc une part de réutilisation, 44 mois de fonctionnement et
+          une adoption qui monte progressivement pendant les six premiers mois
+          en service.
         </p>
 
         <h3>Le coût fictif de l’option sur mesure, du mois 0 au mois 48</h3>
@@ -720,8 +718,11 @@ export default function Page() {
             "Bénéfice annuel fictif = 26 035,20 € × part des heures réellement réutilisées",
             "                          + 2 400 € × part des décaissements évités",
             "",
-            "Bénéfices des mois 5 à 48 = bénéfice annuel / 12 × 44 mois",
-            "Gain net cumulé = bénéfices des mois 5 à 48 - 54 800 €",
+            "Adoption sur 6 mois = 1/6 + 2/6 + 3/6 + 4/6 + 5/6 + 6/6",
+            "Mois équivalents à plein bénéfice = 3,5 + 38 = 41,5 mois",
+            "",
+            "Bénéfices cumulés = bénéfice annuel / 12 × 41,5 mois",
+            "Gain net cumulé = bénéfices cumulés - 54 800 €",
             "ROI simple cumulé = gain net / 54 800 € × 100",
           ].join("\n")}
         </FormulaBox>
@@ -731,18 +732,18 @@ export default function Page() {
           rows={[
             [
               "Prudent",
-              "35 % du temps réaffecté et 40 % des décaissements évités",
-              "environ 10 100 € par an ; 36 900 € de bénéfices cumulés ; perte nette 17 900 € ; ROI −33 %",
+              "35 % du temps réaffecté ; 40 % des décaissements évités ; adoption sur 6 mois",
+              "34 833 € de bénéfices cumulés ; perte nette 19 967 € ; ROI −36,44 % — ne passe pas",
             ],
             [
               "Scénario central",
-              "60 % du temps réaffecté et 70 % des décaissements évités",
-              "environ 17 300 € par an ; 63 400 € de bénéfices cumulés ; gain net 8 600 € ; ROI 16 %",
+              "60 % du temps réaffecté ; 70 % des décaissements évités ; adoption sur 6 mois",
+              "59 833,04 € de bénéfices cumulés ; gain net 5 033,04 € ; ROI 9,18 % — marge fragile",
             ],
             [
               "Haut",
-              "80 % du temps réaffecté et 90 % des décaissements évités",
-              "environ 23 000 € par an ; 84 300 € de bénéfices cumulés ; gain net 29 500 € ; ROI 54 %",
+              "80 % du temps réaffecté ; 90 % des décaissements évités ; adoption sur 6 mois",
+              "79 500,72 € de bénéfices cumulés ; gain net 24 700,72 € ; ROI 45,07 % — réserve plus solide",
             ],
           ]}
         />
@@ -750,30 +751,30 @@ export default function Page() {
         <p>
           Le scénario prudent détruit de la valeur sur l’horizon. Ce résultat
           n’est pas une anomalie à gommer : il informe la décision. Le scénario
-          central crée environ 63 400 € de bénéfices cumulés entre les mois 5 et
-          48, puis environ 8 600 € de gain net après le coût complet. Le calcul
-          non arrondi reste :{" "}
-          <code>(63 437,44 − 54 800) / 54 800 × 100 = 15,76 %</code>. Le
-          résultat utile à la décision est donc un ROI d’environ 16 %.
+          central crée 59 833,04 € de bénéfices cumulés, puis 5 033,04 € de
+          valeur nette après le coût complet. Le calcul reste :{" "}
+          <code>(59 833,04 − 54 800) / 54 800 × 100 = 9,18 %</code>.
         </p>
         <p>
-          Ce pourcentage résume les 48 mois : il ne représente pas un rendement
-          annuel et ne tient pas compte de la date exacte de chaque paiement.
-          Pour un investissement important ou très long, votre expert-comptable
-          peut compléter ce premier tri avec un calcul financier plus précis.
+          Si l’on supposait 100 % du bénéfice dès le premier mois en service, le
+          même cas donnerait 15,76 %. Les additions seraient exactes, mais cette
+          convention ignorerait l’adoption progressive. La convention à six mois
+          ramène le résultat à 9,18 % et rend visible une marge beaucoup plus
+          faible. Ce pourcentage cumule 48 mois ; ce n’est ni un rendement
+          annuel, ni un calendrier de trésorerie.
         </p>
 
         <h3>Le délai de retour économique n’est pas un délai de trésorerie</h3>
 
         <p>
           L’investissement économique avant mise en service vaut 36 000 € dans
-          cet exemple fictif, temps interne compris. Le bénéfice central mensuel
-          vaut environ 1 442 €. Après 400 € d’hébergement et maintenance et 27 €
-          de provision mensuelle pour la sortie, le gain économique stable vaut
-          environ 1 014 € par mois. Le raccourci donne environ{" "}
-          <strong>36 mois après la mise en service</strong> :{" "}
-          <code>36 000 / 1 014 ≈ 35,5</code>, soit environ 40 mois depuis la
-          décision.
+          cet exemple fictif, temps interne compris. Le bénéfice central stable
+          vaut 1 441,76 € par mois, dont il faut retrancher 400 € de coût
+          d’exploitation. Mais ce régime n’est atteint qu’après six mois
+          d’adoption. En cumulant chaque mois, le projet franchit zéro au{" "}
+          <strong>mois 43 depuis la décision</strong>. Le coût de sortie de 1
+          200 € est imputé au mois 48 ; après cette sortie, la valeur nette
+          finale reste 5 033,04 €.
         </p>
 
         <p>
@@ -784,8 +785,9 @@ export default function Page() {
           Un délai de retour de trésorerie exigerait un calendrier séparé ne
           conservant que les encaissements et décaissements réels. Dans tous les
           cas, le mois de retour exact est celui où les flux nets cumulés
-          franchissent zéro ; la division précédente n’est qu’un raccourci
-          valable ici parce que les flux mensuels fictifs sont stables.
+          franchissent zéro. Une convention qui provisionne la sortie chaque
+          mois donnerait une autre date : notez toujours la convention retenue
+          au lieu d’afficher un délai faussement universel.
         </p>
 
         <h2 id="options">
@@ -825,31 +827,32 @@ export default function Page() {
             ],
             [
               "Simplifier l’existant",
-              "mise en service au mois 2 ; 25 % du temps réaffecté ; 40 % des décaissements évités ; coût total 8 000 € (4 000 € initiaux et internes + 75 € × 47 mois + 475 € de sortie)",
-              "environ 29 300 € de bénéfices sur 47 mois ; gain net 21 300 € ; ROI 266 %",
+              "mois 2 ; adoption sur 2 mois ; 25 % du temps réaffecté ; 40 % des décaissements évités ; 2 560 € externes + 40 h internes à 36 € + 75 € × 47 mois + 475 € de sortie = 8 000 €",
+              "28 941,60 € de bénéfices ; gain net 20 941,60 € ; ROI 261,77 %",
             ],
             [
               "Logiciel standard configuré",
-              "mise en service au mois 3 ; 50 % du temps réaffecté ; 60 % des décaissements évités ; coût total 32 000 € (16 000 € initiaux et internes + 325 € × 46 mois + 1 050 € de sortie)",
-              "environ 55 400 € de bénéfices sur 46 mois ; gain net 23 400 € ; ROI 73 %",
+              "mois 3 ; adoption sur 3 mois ; 50 % du temps réaffecté ; 60 % des décaissements évités ; 13 840 € externes + 60 h internes à 36 € + 325 € × 46 mois + 1 050 € de sortie = 32 000 €",
+              "54 216 € de bénéfices ; gain net 22 216 € ; ROI 69,43 %",
             ],
             [
               "Sur mesure, scénario central",
-              "mise en service au mois 5 ; 60 % du temps réaffecté ; 70 % des décaissements évités ; coût total 54 800 € (36 000 € initiaux et internes + 400 € × 44 mois + 1 200 € de sortie)",
-              "environ 63 400 € de bénéfices sur 44 mois ; gain net 8 600 € ; ROI 16 %",
+              "mois 5 ; adoption sur 6 mois ; 60 % du temps réaffecté ; 70 % des décaissements évités ; 32 400 € externes + 100 h internes à 36 € + 400 € × 44 mois + 1 200 € de sortie = 54 800 €",
+              "59 833,04 € de bénéfices ; gain net 5 033,04 € ; ROI 9,18 %",
             ],
           ]}
         />
 
         <p>
           La simplification produit le ROI le plus fort parce que son coût est
-          faible, tandis que le logiciel standard crée ici le gain net le plus
-          élevé. Le sur-mesure libère davantage de capacité, mais pas assez pour
-          compenser son coût et ses quatre mois de préparation dans ce cas. Le
-          choix rationnel est donc le logiciel standard si ses fonctions, son
-          adoption, ses intégrations et sa réversibilité sont réellement
-          acceptables ; sinon, simplifier et mesurer avant de réexaminer le
-          besoin.
+          faible. Le logiciel standard crée nominalement le gain net le plus
+          élevé : 22 216 €, soit seulement 1 274,40 € de plus que la
+          simplification. Cet écart équivaut à 35,4 heures au coût fictif de 36
+          €/h : une migration, une formation ou une reprise de données un peu
+          plus longue suffit donc à inverser le classement. Il n’y a pas ici de
+          gagnant robuste entre ces deux options. Testez d’abord la réponse la
+          plus simple ; ne retenez le standard que si ses fonctions, ses
+          intégrations et sa réversibilité justifient cet écart fragile.
         </p>
 
         <p>
@@ -873,9 +876,90 @@ export default function Page() {
           autre crée plus de valeur à long terme.
         </InfoBox>
 
-        <h2 id="decision">
-          7. Testez les hypothèses, faites valider les chiffres, puis décidez
+        <h2 id="calculateur">
+          7. Calculez, cherchez le point de bascule et exportez le dossier
         </h2>
+
+        <p>
+          Le calculateur reprend le cas fictif, mais chaque champ est
+          modifiable. Il sépare la capacité réutilisée des décaissements évités,
+          applique une montée d’adoption, compare les options sur leur{" "}
+          <strong>valeur nette</strong> et exporte les hypothèses avec leurs
+          limites. Le calcul reste dans votre navigateur : aucune donnée n’est
+          envoyée à Hagnéré Code.
+        </p>
+
+        <p>
+          Cochez « coûts à confirmer » dès qu’une migration, une intégration, un
+          abonnement, une charge interne ou la sortie n’est pas chiffrée.
+          L’outil montre alors le total partiel, mais refuse de désigner un
+          gagnant. Un zéro signifie que le poste est réellement nul ou déjà
+          inclus ailleurs, pas « nous ne savons pas encore ».
+        </p>
+
+        <p>
+          Le CSV ajoute la version du modèle, la date d’export et des champs à
+          compléter pour la source et le niveau de confiance des hypothèses.
+          Conservez-le avec le devis ou la décision : un résultat séparé de ses
+          hypothèses ne constitue pas une preuve.
+        </p>
+
+        <ApplicationRoiCalculator />
+
+        <h3>Le cas fictif passe à peine : ce n’est pas encore un feu vert</h3>
+
+        <GuideTable
+          headers={["Test isolé sur le sur-mesure", "Valeur nette", "Lecture"]}
+          rows={[
+            [
+              "Scénario central : mois 5, adoption sur 6 mois",
+              "5 033,04 € ; ROI 9,18 %",
+              "marge positive mais fragile",
+            ],
+            [
+              "Mise en service retardée de 3 mois",
+              "1 907,76 € ; ROI 3,56 %",
+              "la réserve devient très faible",
+            ],
+            [
+              "Mise en service retardée de 6 mois",
+              "−1 217,52 € ; ROI −2,32 %",
+              "le projet détruit de la valeur",
+            ],
+            [
+              "Horizon réduit à 24 mois",
+              "−19 969,20 € ; ROI −44,18 %",
+              "l’investissement ne se rembourse pas assez vite",
+            ],
+            [
+              "Coûts initiaux économiques +20 %",
+              "−2 166,96 € ; ROI −3,50 %",
+              "illustration à remplacer par votre écart historique",
+            ],
+          ]}
+        />
+
+        <InfoBox variant="amber" title="Trois seuils changent la décision">
+          Avec les autres hypothèses inchangées, le projet atteint zéro autour
+          de 54,41 % d’heures réellement réutilisées. Son coût initial
+          économique maximal est d’environ 41 033 €, contre 36 000 € dans le cas
+          central. Pour égaler les 22 216 € de valeur nette du logiciel
+          standard, il devrait réutiliser environ 79,08 % des heures supprimées.
+          Ce seuil est nominal : les 60 heures internes du standard sont
+          fictives et tout coût encore inconnu rend la comparaison non
+          classable.
+        </InfoBox>
+
+        <p>
+          Notre opinion est donc tranchée : ce sur-mesure ne devrait pas être
+          signé sur le seul résultat central. Il faut d’abord prouver l’adoption
+          et l’écart fonctionnel avec le logiciel standard, réduire le périmètre
+          ou réaliser un pilote. Si le standard couvre le besoin sans
+          contournement critique, ne pas développer est ici la meilleure
+          décision — même si Hagnéré Code pourrait vendre ce développement.
+        </p>
+
+        <h2 id="decision">8. Faites valider les chiffres, puis décidez</h2>
 
         <p>
           Avant de signer, refaites le calcul avec un retard, moins
@@ -892,13 +976,16 @@ export default function Page() {
             produire, vendre ou éviter une dépense ?
           </li>
           <li>
-            <strong>Retardez les bénéfices.</strong> Ajoutez trois ou six mois
-            de montée en charge au lieu de compter le régime stable dès J1.
+            <strong>Retardez la mise en service.</strong> Décalez-la de trois,
+            puis de six mois en conservant les autres hypothèses, notamment la
+            même montée d’adoption. Testez séparément une adoption plus lente :
+            ce n’est pas le même scénario.
           </li>
           <li>
-            <strong>Augmentez le coût complet.</strong> Testez la reprise des
-            données, les connexions ou la maintenance à +20 %, sans réduire les
-            autres postes.
+            <strong>Augmentez le coût complet.</strong> Utilisez l’écart entre
+            budget et réalisé de projets comparables, ou comparez plusieurs
+            devis. Le +20 % du calculateur est une illustration modifiable, pas
+            un taux de risque universel.
           </li>
           <li>
             <strong>Retirez le bénéfice le plus fragile.</strong> Si la vente
@@ -1094,12 +1181,13 @@ export default function Page() {
         <h2 id="sources">Sources et limites</h2>
 
         <p>
-          Recherche effectuée le 20 juillet 2026. Les formules économiques sont
-          explicitées dans la page ; l’atelier, les coûts, les réductions et les
-          scénarios sont entièrement fictifs. Ils ne constituent ni un devis, ni
-          une promesse de délai, ni une prévision applicable à une autre
-          entreprise. Ce guide n’est pas un conseil comptable ou financier
-          personnalisé.
+          Recherche française complétée par un benchmark Royaume-Uni,
+          États-Unis, Australie, Allemagne et Canada le 25 juillet 2026. Les
+          formules économiques sont explicitées dans la page ; l’atelier, les
+          coûts, les réductions et les scénarios sont entièrement fictifs. Ils
+          ne constituent ni un devis, ni une promesse de délai, ni une prévision
+          applicable à une autre entreprise. Ce guide n’est pas un conseil
+          comptable ou financier personnalisé.
         </p>
 
         <ul>
@@ -1158,14 +1246,74 @@ export default function Page() {
           </li>
           <li>
             <a
-              href="https://www.anact.fr/table-de-simulation-numerique"
+              href="https://www.gov.uk/government/publications/digital-and-data-benefits-framework/digital-and-data-benefits-framework"
               target="_blank"
               rel="noreferrer"
             >
-              Anact — Table de simulation numérique
+              Royaume-Uni — Digital and Data Benefits Framework
             </a>
-            , pour la participation des salariés à l’examen des futurs flux de
-            travail et de leurs effets organisationnels.
+            , publié le 7 avril 2026, pour la base de référence, la séparation
+            des bénéfices, la non-double-comptabilisation, l’adoption, les
+            scénarios et le responsable de chaque bénéfice.
+          </li>
+          <li>
+            <a
+              href="https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government/the-green-book-2026"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Royaume-Uni — Green Book 2026
+            </a>
+            , pour l’examen d’options comparables, la sensibilité et les valeurs
+            de bascule. Ce cadre public n’est pas appliqué ici comme une
+            procédure obligatoire pour une PME.
+          </li>
+          <li>
+            <a
+              href="https://www.gao.gov/assets/gao-20-195g.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              États-Unis — GAO Cost Estimating and Assessment Guide
+            </a>
+            , pour les hypothèses traçables, le contrôle par une autre méthode,
+            la sensibilité et la mise à jour avec les coûts réels. Il justifie
+            aussi de remplacer un +20 % arbitraire par une variation documentée.
+          </li>
+          <li>
+            <a
+              href="https://www.digital.gov.au/policy/benefits-management-policy/guidance"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Australie — Digital Transformation Agency, benefits guidance
+            </a>
+            , pour relier chaque bénéfice observable à une base, une cible, un
+            responsable, des dépendances et d’éventuels effets négatifs.
+          </li>
+          <li>
+            <a
+              href="https://www.verwaltungsvorschriften-im-internet.de/bsvwvbund_13012026_IIA3H100500150006005DOKCOO7005100213785493.htm"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Allemagne — BMF, Arbeitsanleitung
+              Wirtschaftlichkeitsuntersuchungen
+            </a>
+            , version 2026, pour la comparaison structurée des variantes et
+            l’explicitation des hypothèses d’une analyse économique.
+          </li>
+          <li>
+            <a
+              href="https://www.canada.ca/en/government/system/laws/developing-improving-federal-regulations/requirements-developing-managing-reviewing-regulations/policy-cost-benefit-analysis.html"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Canada — Policy on Cost-Benefit Analysis
+            </a>
+            , pour le scénario de référence, la transparence des limites et
+            l’analyse de sensibilité. Le guide reste un premier tri économique,
+            sans prétendre reproduire une analyse réglementaire.
           </li>
         </ul>
       </GuideLayout>

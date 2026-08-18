@@ -1,0 +1,137 @@
+[
+  [
+    "Réforme française",
+    "DGFiP / impots.gouv.fr",
+    "https://www.impots.gouv.fr/professionnel/questions/partir-de-quand-suis-je-concerne-par-la-reforme-de-la-facturation",
+    "Calendrier réception, émission et e-reporting",
+    "Le cas dépend de la taille, de l’opération et du statut",
+    "Rouvrir avant publication et intégration",
+    "2026-07-28"
+  ],
+  [
+    "Plateformes agréées",
+    "DGFiP",
+    "https://www.impots.gouv.fr/facturation-electronique-et-plateformes-agreees",
+    "Rôle et liste dynamique des plateformes",
+    "Ne pas figer une liste dans le guide",
+    "Vérifier terminologie et liste",
+    "2026-07-28"
+  ],
+  [
+    "Synthèse dirigeant",
+    "Ministère de l’Économie",
+    "https://www.economie.gouv.fr/tout-savoir-sur-la-facturation-electronique-pour-les-entreprises",
+    "Calendrier, mentions et préparation",
+    "Page évolutive",
+    "Rouvrir à chaque mise à jour",
+    "2026-07-28"
+  ],
+  [
+    "Événements d’abonnement",
+    "Stripe Docs",
+    "https://docs.stripe.com/billing/subscriptions/webhooks",
+    "Exemple concret d’événements asynchrones",
+    "Modèle fournisseur, pas vérité universelle",
+    "Tester la version intégrée",
+    "2026-07-28"
+  ],
+  [
+    "Prorata",
+    "Stripe Docs",
+    "https://docs.stripe.com/billing/subscriptions/prorations",
+    "Paramètres et cas de prorata",
+    "Politique commerciale et taxe restent à décider",
+    "Tester une facture réelle",
+    "2026-07-28"
+  ],
+  [
+    "Lieu de taxation",
+    "Commission européenne",
+    "https://taxation-customs.ec.europa.eu/taxation/vat/vat-directive/place-taxation_en",
+    "Montrer que service et statut client doivent être qualifiés",
+    "Ne fournit pas une recette universelle SaaS",
+    "Escalader vers fiscaliste",
+    "2026-07-28"
+  ],
+  [
+    "Mentions facture",
+    "Service Public Entreprendre",
+    "https://entreprendre.service-public.fr/vosdroits/F31808",
+    "Cadre général des mentions et conservation",
+    "Cas concret à valider",
+    "Rouvrir avant configuration",
+    "2026-07-28"
+  ],
+  [
+    "Protection des données",
+    "CNIL",
+    "https://www.cnil.fr/fr/securite-securiser-les-echanges-avec-lexterieur",
+    "Sécuriser les échanges et accès",
+    "Mesures à adapter au risque",
+    "Revue sécurité avant mise en service",
+    "2026-07-28"
+  ],
+  [
+    "Royaume-Uni — VAT numérique",
+    "HMRC",
+    "https://www.gov.uk/guidance/the-vat-rules-if-you-supply-digital-services-to-private-consumers",
+    "Qualifier lieu, statut client, preuves et plateforme",
+    "Ne vaut pas règle universelle pour toute offre SaaS",
+    "Rouvrir et escalader les contradictions",
+    "2026-07-28"
+  ],
+  [
+    "Canada — GST/HST numérique",
+    "Canada Revenue Agency",
+    "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/digital-economy-gsthst/charge-collect/cross-border.html",
+    "Qualifier régime, canal, résidence, province et inscription client",
+    "Aucun taux unique sans province et qualification",
+    "Rouvrir avant toute règle de collecte",
+    "2026-07-28"
+  ],
+  [
+    "Australie — fournitures importées",
+    "Australian Taxation Office",
+    "https://www.ato.gov.au/law/view/document?DocID=GST%2FGSTR20171%2FNAT%2FATO%2F00001",
+    "Qualifier résidence, ABN, inscription GST, usage et EDP",
+    "ABN seul insuffisant ; autres conditions à vérifier",
+    "Rouvrir et faire arbitrer le cas",
+    "2026-07-28"
+  ],
+  [
+    "États-Unis — produits numériques",
+    "Multistate Tax Commission",
+    "https://www.mtc.gov/uniformity/sales-tax-on-digital-products/",
+    "Documenter les divergences et renvoyer aux règles de chaque État",
+    "La MTC ne donne pas un booléen national SaaS",
+    "Vérifier nexus, sourcing et qualification État par État",
+    "2026-07-28"
+  ],
+  [
+    "États-Unis — New York",
+    "Department of Taxation and Finance",
+    "https://www.tax.ny.gov/pubs_and_bulls/tg_bulletins/st/computer_software.htm",
+    "Illustrer la taxation générale de l’accès distant au logiciel préécrit",
+    "Logiciel sur mesure, services séparés et changements de droit à qualifier",
+    "Vérifier produit, utilisateurs, sourcing et version du bulletin",
+    "2026-07-28"
+  ],
+  [
+    "États-Unis — Texas",
+    "Comptroller of Public Accounts",
+    "https://comptroller.texas.gov/taxes/publications/96-259.php",
+    "Illustrer le rattachement du SaaS au data processing et l’exonération de 20 %",
+    "La fonction réellement vendue peut conduire à une autre qualification",
+    "Vérifier offre, exemptions et usage multijuridictionnel",
+    "2026-07-28"
+  ],
+  [
+    "États-Unis — Californie",
+    "California Department of Tax and Fee Administration",
+    "https://cdtfa.ca.gov/taxes-and-fees/manuals/am-04.pdf",
+    "Illustrer le pur accès distant sans copie ni transfert corporel",
+    "Copie, support physique, équipement ou offre composite peuvent changer le traitement",
+    "Rouvrir la section 0421.03 et qualifier tous les composants",
+    "2026-07-28"
+  ]
+]

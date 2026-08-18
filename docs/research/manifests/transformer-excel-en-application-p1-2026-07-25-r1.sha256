@@ -1,0 +1,5 @@
+ed4de068cb48b74ff718418a7bd2ae3c87256af5cf736fd519cdefa5ccc462f5  docs/audits/giga-audit-2026-07-24/guides/transformer-excel-en-application.md
+678e609c7f871f31a66e2036d461642675e745c169fd9809b07f7028efa20093  docs/research/transformer-excel-en-application.md
+e80281de919fde1378afc38734b0acab9d251b1623634c1ebfdbf077e444fe72  src/app/guides/transformer-excel-en-application/page.tsx
+3c58f511f7109253c7979963061e5f90786ff11048e352ec9cd3b93632ebf233  src/components/guides/ExcelDecisionDiagnostic.tsx
+e7fc50f37260866bcd66649d2f30b3078e8d6c4c86773743ecd63918f3f7a8d1  src/lib/excel-decision-diagnostic.ts

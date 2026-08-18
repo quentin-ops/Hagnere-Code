@@ -1,0 +1,14 @@
+092b44788c75478a49b8967f2cdbbae32a5a1990dd49097b5c244d17ce360614  src/app/guides/site-internet-en-panne-que-faire/page.tsx
+1e47f739ba84ac9e1dfc0a795328c14e7dccd5d8b58319b56f33cf6e2ab28438  src/app/guides/site-internet-en-panne-que-faire/opengraph-image.tsx
+df2be344e4546e1a6ed8e6aa97aa257fb8df721bb2dc1599e18b7839a0117158  src/lib/guides.ts
+47c2ce68133ce49075cebf91b21a3f04dea3cf04b139f951fc66722fe357c715  docs/research/site-internet-en-panne-que-faire-r1-2026-07-27.md
+6ade646939bf15855e6c34becece2feb0cf172be0544b9cfae11c23ce7976a7d  public/ressources/fiche-reflexe-site-en-panne.txt
+efadd1dbf0c2b8dac20f9aa714a03eb3a700a4dbadd0c98244fb8d8d8e365803  src/lib/website-incident-dossier.ts
+6feb92dcf226b6d33f40d6edb8b726ed7ab2531e9269c3cb20a458d6a628b384  src/lib/website-incident-dossier.test.ts
+90a571fd58d2706064247e48a9bb111761dca249331be25340c2550cb9b43c31  src/components/guides/WebsiteIncidentDossier.tsx
+6feb27ca4a9e7ec5092254b433954484b2626c0f2bfb40707b4b31d1efc5158e  src/components/guides/WebsiteIncidentDossier.test.tsx
+f1828bd241222d1031e2afde84d0b5d586e5fcdcf7372a3fb1e63d67a88f071e  src/lib/website-incident-guide-quality.test.ts
+f16d5ef1dcb57319bf88b895a2bc16357afa6948705291060e649678ac4fd44b  docs/audits/giga-audit-2026-07-24/reviews/site-internet-en-panne-que-faire-p4-2026-07-27-r1.md
+49c374f04771b9fc9a1093512ccfe1d6e2d8bad2f596f8622265aadb9c6238ab  docs/audits/giga-audit-2026-07-24/classement-qualite-101-guides.md
+eefb761836cf2a86a4fd106592a66b80bc4dd45a11db0c9a2aa9106351a8ddd9  docs/audits/giga-audit-2026-07-24/registre-maitre-101-guides.md
+e3cfe41104401361970c35c0f27da9c601f0ad7594239e6bffc984111f4dc763  package.json

@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Coût de la maintenance d’un site internet en 2026";
+export const alt =
+  "Maintenance d’un site : périmètre, preuves, incident et TCO à 12 et 36 mois";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -14,8 +15,9 @@ export default function OgImage() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        padding: 72,
-        background: "linear-gradient(135deg, #0A0A0A 0%, #1c1030 100%)",
+        padding: 68,
+        background:
+          "radial-gradient(circle at 82% 18%, rgba(109,40,217,.28), transparent 38%), linear-gradient(135deg, #09090b 0%, #18112b 100%)",
         color: "#fff",
         fontFamily: "sans-serif",
       }}
@@ -43,14 +45,14 @@ export default function OgImage() {
           style={{
             display: "flex",
             marginLeft: "auto",
-            fontSize: 22,
-            color: "#A78BFA",
-            border: "1px solid rgba(167,139,250,0.4)",
+            fontSize: 20,
+            color: "#C4B5FD",
+            border: "1px solid rgba(196,181,253,.42)",
             borderRadius: 999,
             padding: "8px 20px",
           }}
         >
-          Prix 2026
+          Guide décisionnel 2026
         </div>
       </div>
 
@@ -58,39 +60,48 @@ export default function OgImage() {
         <div
           style={{
             display: "flex",
-            fontSize: 58,
-            fontWeight: 700,
-            lineHeight: 1.1,
-            letterSpacing: -2,
             maxWidth: 1020,
+            fontSize: 57,
+            fontWeight: 750,
+            lineHeight: 1.08,
+            letterSpacing: -2,
           }}
         >
-          Combien coûte la maintenance d&apos;un site ?
+          Maintenance d’un site : comparer par la preuve
         </div>
-        <div style={{ display: "flex", fontSize: 30, color: "#a1a1aa" }}>
-          Prix mensuels, services inclus et délai en cas de panne
+        <div style={{ display: "flex", fontSize: 29, color: "#A1A1AA" }}>
+          Périmètre · incident · TCO 12/36 · reprise
         </div>
       </div>
 
       <div style={{ display: "flex", gap: 14 }}>
-        {["Site vitrine", "Boutique en ligne", "Application métier"].map(
-          (t) => (
-            <div
-              key={t}
-              style={{
-                display: "flex",
-                fontSize: 24,
-                padding: "12px 24px",
-                borderRadius: 999,
-                background: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.12)",
-                color: "#e4e4e7",
-              }}
-            >
-              {t}
-            </div>
-          ),
-        )}
+        {["Vitrine", "Boutique", "Service critique"].map((label) => (
+          <div
+            key={label}
+            style={{
+              display: "flex",
+              fontSize: 23,
+              padding: "11px 23px",
+              borderRadius: 999,
+              background: "rgba(255,255,255,.06)",
+              border: "1px solid rgba(255,255,255,.12)",
+              color: "#E4E4E7",
+            }}
+          >
+            {label}
+          </div>
+        ))}
+        <div
+          style={{
+            display: "flex",
+            marginLeft: "auto",
+            alignItems: "center",
+            fontSize: 18,
+            color: "#D8B4FE",
+          }}
+        >
+          Deux offres · même périmètre
+        </div>
       </div>
     </div>,
     size,

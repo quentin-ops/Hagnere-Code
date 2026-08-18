@@ -9,10 +9,56 @@ interface TocItem {
   label: string;
 }
 
-export function GuideToc({ items }: { items: TocItem[] }) {
+interface GuideTocProps {
+  items: TocItem[];
+  variant?: "stacked" | "pills";
+}
+
+export function GuideToc({
+  items,
+  variant = "stacked",
+}: GuideTocProps) {
+  if (variant === "pills") {
+    return (
+      <nav
+        aria-label="Sommaire du guide"
+        data-guide-toc-style="pills"
+        className="not-prose bg-[#fbfaf7] py-3 dark:bg-zinc-950 sm:py-4"
+      >
+        <div className="container mx-auto max-w-[1180px] px-4">
+          <div className="overflow-hidden rounded-2xl border border-zinc-200/80 bg-white shadow-[0_1px_2px_rgba(0,0,0,0.03),0_4px_14px_rgba(0,0,0,0.04)] dark:border-zinc-800 dark:bg-zinc-950">
+            <div className="flex snap-x items-center gap-3 overflow-x-auto px-4 py-3 [scrollbar-width:thin] sm:gap-5 sm:px-5">
+              <span className="shrink-0 text-[10px] font-bold uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
+                Sommaire
+              </span>
+              <div className="flex flex-1 items-center gap-2">
+                {items.map((item, index) => (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    className={`inline-flex min-h-11 shrink-0 snap-start items-center whitespace-nowrap rounded-full border px-3.5 text-xs font-medium transition-colors sm:min-h-9 ${
+                      index === 0
+                        ? "border-zinc-950 bg-zinc-950 text-white dark:border-white dark:bg-white dark:text-zinc-950"
+                        : "border-zinc-200 bg-white text-zinc-700 hover:border-violet-300 hover:text-violet-700 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-200 dark:hover:border-violet-700 dark:hover:text-violet-300"
+                    }`}
+                  >
+                    {/^\s*\d+[.)]\s/.test(item.label)
+                      ? item.label
+                      : `${index + 1}. ${item.label}`}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    );
+  }
+
   return (
     <nav
       aria-label="Sommaire du guide"
+      data-guide-toc-style="stacked"
       className="not-prose rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-4 sm:p-5 my-6 sm:my-8"
     >
       <p className="text-xs font-bold uppercase tracking-widest text-zinc-600 dark:text-zinc-300 mb-3">
@@ -252,6 +298,8 @@ interface GuideInlineCTAProps {
   tags?: string[];
   ctaLabel?: string;
   ctaHref?: string;
+  ctaService?: string;
+  ctaSource?: string;
   showPhone?: boolean;
 }
 
@@ -261,8 +309,18 @@ export function GuideInlineCTA({
   tags = ["Sans engagement", "Réponse argumentée", "Solution simple possible"],
   ctaLabel = "Décrire mon projet",
   ctaHref = "/demarrer-un-projet",
+  ctaService,
+  ctaSource,
   showPhone = true,
 }: GuideInlineCTAProps) {
+  const contextualHref =
+    ctaService && ctaSource
+      ? {
+          pathname: ctaHref,
+          query: { service: ctaService, source: ctaSource },
+        }
+      : ctaHref;
+
   return (
     <div className="not-prose relative my-10 rounded-2xl overflow-hidden bg-zinc-950 border border-zinc-800/60">
       {/* Blobs */}
@@ -298,7 +356,7 @@ export function GuideInlineCTA({
         {/* Right: CTAs */}
         <div className="shrink-0 flex flex-col gap-2.5 w-full sm:w-auto sm:min-w-44">
           <Link
-            href={ctaHref}
+            href={contextualHref}
             className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white text-zinc-900 text-sm font-semibold hover:bg-zinc-100 transition-colors"
           >
             <Send className="size-4 shrink-0" />

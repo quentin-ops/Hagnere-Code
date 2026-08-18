@@ -2,14 +2,15 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Choisir les fonctionnalités de la prochaine version d’un SaaS : construire, tester, corriger ou reporter";
+  "Prioriser les fonctionnalités d’un SaaS : RICE recalculé et lot de 30 jours";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const decisions = [
-  { label: "CONSTRUIRE", detail: "problème observé", color: "#34d399" },
-  { label: "TESTER", detail: "faits insuffisants", color: "#60a5fa" },
   { label: "CORRIGER", detail: "service fragilisé", color: "#fb7185" },
+  { label: "RÉUTILISER", detail: "capacité existante", color: "#a78bfa" },
+  { label: "TESTER", detail: "faits insuffisants", color: "#60a5fa" },
+  { label: "CONSTRUIRE", detail: "problème prouvé", color: "#34d399" },
   { label: "REPORTER", detail: "raison écrite", color: "#a1a1aa" },
 ];
 
@@ -108,7 +109,7 @@ export default function OgImage() {
               color: "#c4b5fd",
             }}
           >
-            Une décision explicable, sans score magique
+            RICE recalculé · lot fermé à 30 jours
           </div>
         </div>
 
@@ -118,7 +119,7 @@ export default function OgImage() {
             flexDirection: "column",
             width: 390,
             padding: 22,
-            gap: 11,
+            gap: 7,
             borderRadius: 25,
             border: "1px solid rgba(255,255,255,0.14)",
             background: "rgba(9,9,11,0.54)",
@@ -131,8 +132,8 @@ export default function OgImage() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                minHeight: 63,
-                padding: "10px 13px",
+                minHeight: 49,
+                padding: "7px 13px",
                 borderRadius: 13,
                 border: "1px solid rgba(255,255,255,0.09)",
                 background: "rgba(255,255,255,0.05)",
@@ -182,7 +183,7 @@ export default function OgImage() {
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-        {["5 demandes", "8 lignes", "1 prochain lot"].map((label) => (
+        {["4 scores refaits", "5 issues", "30 jours"].map((label) => (
           <div
             key={label}
             style={{

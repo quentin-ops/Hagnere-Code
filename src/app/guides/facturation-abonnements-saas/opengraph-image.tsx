@@ -93,7 +93,7 @@ export default function OgImage() {
             color: "#c4b5fd",
           }}
         >
-          Quatre informations à relier, six événements à décider
+          Sept sources à relier, huit événements à décider
         </div>
       </div>
 

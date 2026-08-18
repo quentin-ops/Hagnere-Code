@@ -73,6 +73,8 @@ const securityHeaders = [
 const noIndexDownloadPaths = [
   ...resourceDownloadPaths,
   ...WHITE_PAPERS.map((entry) => entry.pdf.href),
+  "/ressources/jeu-essai-migration-excel.zip",
+  "/ressources/jeu-essai-migration-excel/:path*",
 ];
 
 const nextConfig: NextConfig = {
@@ -94,6 +96,12 @@ const nextConfig: NextConfig = {
         source,
         headers: [{ key: "X-Robots-Tag", value: "noindex" }],
       })),
+      {
+        source: "/ressources/dossier-audit-reprise-site.txt",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+        ],
+      },
     ];
   },
   async redirects() {

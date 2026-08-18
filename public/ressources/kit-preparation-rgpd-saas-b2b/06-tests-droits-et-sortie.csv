@@ -1,0 +1,11 @@
+test_id;traitement_ou_activite_ids;prestataire_ids;besoin;tenant_fictif;utilisateur_fictif;sources_testees;action;format_ou_delai_attendu;sauvegardes_incluses;resultat;preuves;anomalie;action_ids;responsable;date_test;decision
+TEST-001;TRT-001;PREST-001;Accès;Tenant fictif A;Utilisateur fictif 001;à définir;à exécuter;à définir;à confirmer;non exécuté;à fournir;à confirmer;ACTION-001;à nommer;AAAA-MM-JJ;à exécuter
+TEST-002;TRT-002;PREST-002;Rectification;Tenant fictif B;Utilisateur fictif 002;à définir;à exécuter;à définir;à confirmer;non exécuté;à fournir;à confirmer;ACTION-002;à nommer;AAAA-MM-JJ;à exécuter
+TEST-003;TRT-003;PREST-003;Effacement;Tenant fictif C;Utilisateur fictif 003;à définir;à exécuter;à définir;à confirmer;non exécuté;à fournir;à confirmer;ACTION-003;à nommer;AAAA-MM-JJ;à exécuter
+TEST-004;TRT-004;PREST-004;Limitation;Tenant fictif D;Utilisateur fictif 004;à définir;à exécuter;à définir;à confirmer;non exécuté;à fournir;à confirmer;ACTION-004;à nommer;AAAA-MM-JJ;à exécuter
+TEST-005;TRT-005;PREST-005;Opposition;Tenant fictif E;Utilisateur fictif 005;à définir;à exécuter;à définir;à confirmer;non exécuté;à fournir;à confirmer;ACTION-005;à nommer;AAAA-MM-JJ;à exécuter
+TEST-006;AST-001;PREST-001;Portabilité si applicable;Tenant fictif A;Utilisateur fictif 006;à définir;à exécuter;à définir;à confirmer;non exécuté;à fournir;à confirmer;ACTION-006;à nommer;AAAA-MM-JJ;à exécuter
+TEST-007;AST-002;PREST-002;Export contractuel complet;Tenant fictif B;Utilisateur fictif 007;à définir;à exécuter;à définir;à confirmer;non exécuté;à fournir;à confirmer;ACTION-007;à nommer;AAAA-MM-JJ;à exécuter
+TEST-008;AST-003;PREST-003;Restitution de fin de contrat;Tenant fictif C;Utilisateur fictif 008;à définir;à exécuter;à définir;à confirmer;non exécuté;à fournir;à confirmer;ACTION-008;à nommer;AAAA-MM-JJ;à exécuter
+TEST-009;AST-004;PREST-004;Fermeture de tous les accès;Tenant fictif D;Utilisateur fictif 009;à définir;à exécuter;à définir;à confirmer;non exécuté;à fournir;à confirmer;ACTION-009;à nommer;AAAA-MM-JJ;à exécuter
+TEST-010;AST-005;PREST-005;Restauration sans réintroduire silencieusement une donnée supprimée;Tenant fictif E;Utilisateur fictif 010;à définir;à exécuter;à définir;à confirmer;non exécuté;à fournir;à confirmer;ACTION-010;à nommer;AAAA-MM-JJ;à exécuter

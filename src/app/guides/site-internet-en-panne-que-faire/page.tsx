@@ -8,6 +8,7 @@ import {
 } from "@/components/guides/guide-content-blocks";
 import { GuideLayout } from "@/components/guides/guide-layout";
 import { GuidesShell } from "@/components/guides/GuidesShell";
+import { WebsiteIncidentDossier } from "@/components/guides/WebsiteIncidentDossier";
 import { formatGuideDate, getGuide, guideRobots, guideUrl } from "@/lib/guides";
 import { OG_BASE, SITE_URL } from "@/lib/seo";
 
@@ -175,10 +176,10 @@ export default function Page() {
           { label: "Site internet en panne" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Votre site ne répond plus, le formulaire affiche une erreur ou les clients ne peuvent plus commander ? Voici quoi noter sans aggraver la situation, qui appeler et quels tests demander avant d’annoncer le retour."
+        heroDescription="Votre site, votre formulaire ou le paiement ne répond plus ? Suivez une chronologie 0–5–15–60 minutes, orientez le ticket sans diagnostiquer au hasard et n’annoncez le retour qu’après une reprise prouvée."
         heroAction={{
-          href: "#quinze-minutes",
-          label: "Faire le ticket express",
+          href: "#urgence-30-secondes",
+          label: "Carte d’urgence · 30 s",
         }}
         author={{
           name: "Quentin Hagnéré",
@@ -188,8 +189,8 @@ export default function Page() {
         updatedLabel={"Mis à jour le " + formatGuideDate(guide.dateModified)}
         keyPoints={[
           {
-            number: "15",
-            title: "15 minutes pour noter",
+            number: "05",
+            title: "5 minutes pour protéger",
             description: "",
             color: "violet",
           },
@@ -200,14 +201,14 @@ export default function Page() {
             color: "blue",
           },
           {
-            number: "06",
-            title: "6 faits dans le ticket",
+            number: "10",
+            title: "10 portes de reprise",
             description: "",
             color: "emerald",
           },
           {
-            number: "04",
-            title: "Lecture : " + guide.readTimeMin + " min",
+            number: String(guide.readTimeMin),
+            title: `${guide.readTimeMin} minutes de lecture`,
             description: "",
             color: "amber",
           },
@@ -222,8 +223,8 @@ export default function Page() {
             label: "Diagnostiquer un site qui charge lentement",
           },
           {
-            href: "/guides/site-wordpress-pirate-que-faire",
-            label: "Réagir à un site WordPress piraté",
+            href: "/services/securite-rgpd",
+            label: "Sécurité et protection des données",
           },
           {
             href: "/guides/reprendre-maintenance-site-autre-agence",
@@ -243,68 +244,141 @@ export default function Page() {
         showWhitePaperPromo={false}
         showSidebarCta={false}
       >
+        <section
+          id="urgence-30-secondes"
+          aria-labelledby="urgence-30-secondes-titre"
+          className="not-prose scroll-mt-24 rounded-2xl border border-rose-300 bg-rose-50 p-4 text-rose-950 shadow-sm dark:border-rose-800 dark:bg-rose-950/30 dark:text-rose-50 sm:p-5"
+        >
+          <p className="m-0 text-[11px] font-bold uppercase tracking-[0.16em] text-rose-700 dark:text-rose-300">
+            Carte d’urgence · lisible en 30 secondes
+          </p>
+          <h2
+            id="urgence-30-secondes-titre"
+            className="mb-0 mt-1 text-lg font-bold sm:text-xl"
+          >
+            Site en panne : cinq décisions avant tout diagnostic
+          </h2>
+          <ol className="mb-0 mt-3 grid gap-2 pl-5 text-sm leading-relaxed sm:grid-cols-2">
+            <li>
+              <strong>Interdits :</strong> ne redémarrez, ne restaurez et ne
+              changez ni DNS ni extension au hasard.
+            </li>
+            <li>
+              <strong>Signaux cyber :</strong> contenu, redirection, compte,
+              DNS, certificat, paiement ou données modifiés sans autorisation ?
+              Arrêtez les essais actifs.
+            </li>
+            <li>
+              <strong>Cinq faits :</strong> heure et fuseau, URL, message exact,
+              dernière réussite connue, fonction métier touchée.
+            </li>
+            <li>
+              <strong>Coordinateur :</strong> une personne tient le journal et
+              autorise les changements avec l’intervenant.
+            </li>
+            <li className="sm:col-span-2">
+              <strong>Escalade :</strong> utilisez l’astreinte et le fournisseur
+              responsable ; si un signal cyber existe, passez par un canal sûr
+              et{" "}
+              <a
+                href="https://www.cybermalveillance.gouv.fr/17cyber"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold underline underline-offset-2"
+              >
+                17Cyber
+              </a>
+              . Ne transmettez ni secret, ni log brut, ni donnée client.
+            </li>
+          </ol>
+        </section>
+
         <p className="lead">
           Votre site ne répond plus, votre formulaire affiche une erreur ou vos
-          clients vous disent qu’ils ne peuvent plus commander. La première
-          erreur serait de modifier au hasard les extensions ou le nom de
-          domaine, ou de lancer immédiatement une restauration. Vous pourriez
-          effacer un indice utile ou des données encore récupérables.{" "}
+          clients ne peuvent plus commander. Dans les cinq premières minutes, ne
+          redémarrez pas, ne changez pas le DNS et ne restaurez rien au hasard :
+          vous pourriez effacer une trace, réintroduire une compromission ou
+          remplacer des commandes récupérables.{" "}
           <strong>
-            Commencez par noter l’heure, l’adresse exacte et le message affiché.
-            Si vous ne voyez ni contenu inhabituel, ni redirection inconnue, ni
-            alerte de sécurité, ouvrez la même adresse depuis une autre
-            connexion et contentez-vous d’observer : ne saisissez aucun
-            identifiant, moyen de paiement ou donnée client.
+            Notez l’heure, l’adresse exacte, le message et la dernière réussite
+            connue. Si le contenu, le domaine, le certificat, une redirection,
+            un compte ou un paiement a changé sans explication, arrêtez les
+            essais actifs et passez à la branche cyber.
           </strong>{" "}
-          Votre objectif n’est pas de trouver seul la cause : c’est de produire
-          une description fiable. Dans l’heure, elle aidera l’hébergeur, le
-          mainteneur ou le spécialiste adapté à intervenir. Ce guide vous montre
-          aussi quoi dire à vos clients et quels tests exiger avant de
-          considérer le site comme revenu.
+          Sinon, observez passivement la même adresse depuis une autre
+          connexion, sans identifiant, carte ni donnée client. Remettez ensuite
+          au bon intervenant un dossier fiable, ouvrez un canal de secours et
+          gardez le service « partiel » tant que les parcours métier, les
+          données et les services tiers ne sont pas vérifiés.
         </p>
 
         <InfoBox variant="blue" title="La réponse simple">
-          Si un contenu, une redirection ou un accès a changé sans autorisation,
-          arrêtez les essais et faites intervenir une compétence cyber. Sinon,
-          ne changez rien au hasard : faites un ticket de six lignes, nommez une
-          personne qui coordonne et donnez aux clients un moyen de contact qui
-          fonctionne encore. N’annoncez le retour qu’après un vrai test de
-          formulaire, de commande, de rendez-vous ou de connexion.
+          Protégez d’abord les preuves et nommez une personne qui coordonne.
+          Orientez ensuite le ticket vers le réseau local, le domaine/DNS, le
+          certificat, le CDN/hébergeur, l’application, les données ou le
+          prestataire tiers — sans confondre un symptôme avec sa cause. Si une
+          compromission est plausible, utilisez un canal de communication
+          indépendant et une compétence de réponse à incident. N’annoncez le
+          retour qu’après validation technique, métier et, lorsqu’ils comptent,
+          paiement, e-mail, données et surveillance.
+        </InfoBox>
+
+        <InfoBox variant="amber" title="Urgence ou suspicion cyber">
+          Ce formulaire éditorial n’est ni une astreinte ni un service de
+          réponse à incident. Si l’activité est critique, si un compte, le DNS,
+          un certificat, un paiement ou des données semblent compromis,
+          contactez immédiatement votre astreinte, le fournisseur concerné ou un
+          intervenant spécialisé. En France, le service public{" "}
+          <a
+            href="https://www.cybermalveillance.gouv.fr/17cyber"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            17Cyber
+          </a>{" "}
+          propose un diagnostic et une assistance en ligne. Ne transmettez ici
+          ni secret, ni log brut, ni donnée client.
         </InfoBox>
 
         <GuideToc
           items={[
             {
               id: "distinguer",
-              label: "1. Panne, lenteur ou attaque possible",
+              label: "1. Porte d’urgence : panne ou cyber",
+            },
+            {
+              id: "couches",
+              label: "2. Orienter par symptôme et par couche",
             },
             {
               id: "quinze-minutes",
-              label: "2. Les quinze premières minutes",
+              label: "3. Les quinze premières minutes",
             },
-            { id: "journal", label: "3. Le journal à transmettre" },
+            { id: "dossier", label: "4. Produire le dossier local" },
+            { id: "chronologie", label: "5. De 15 minutes à 24 heures" },
+            { id: "journal", label: "6. Le journal à transmettre" },
             {
               id: "premiere-heure",
-              label: "4. Appeler la bonne personne",
+              label: "7. Appeler la bonne personne",
             },
-            { id: "informer", label: "5. Informer les clients" },
+            { id: "informer", label: "8. Informer sans spéculer" },
             {
               id: "cyber-donnees",
-              label: "6. Sécurité et données personnelles",
+              label: "9. Preuves cyber et données personnelles",
             },
-            { id: "restaurer", label: "7. Restaurer sans écraser" },
-            { id: "tester", label: "8. Tester le travail réel" },
-            {
-              id: "exemple",
-              label: "9. Exemple fictif : 08:42 à 10:32",
-            },
-            { id: "lendemain", label: "10. Le lendemain de la panne" },
+            { id: "objectifs", label: "10. RTO, RPO et SLA" },
+            { id: "restaurer", label: "11. Restaurer sans écraser" },
+            { id: "tester", label: "12. Prouver le retour métier" },
+            { id: "seo", label: "13. Protéger le référencement" },
+            { id: "cout", label: "14. Estimer le coût sans l’exagérer" },
+            { id: "exemple", label: "15. Exemple fictif contrôlé" },
+            { id: "lendemain", label: "16. RETEX J+1, J+7 et J+30" },
             { id: "sources", label: "Sources et limites" },
           ]}
         />
 
         <h2 id="distinguer">
-          1. Distinguez une panne, une lenteur et une attaque possible
+          1. Passez d’abord la porte d’urgence : panne ordinaire ou cyber
         </h2>
 
         <p>
@@ -347,56 +421,152 @@ export default function Page() {
           demande ou la vente.
         </p>
 
+        <InfoBox
+          variant="amber"
+          title="Ces signaux changent immédiatement de procédure"
+        >
+          Traitez comme une compromission possible tout contenu ou redirection
+          inexpliqué, toute modification du registrar, des serveurs DNS, du
+          DNSSEC ou du certificat, tout compte, clé ou jeton inconnu, toute
+          alerte d’exfiltration ou d’extorsion, toute modification inhabituelle
+          de paiement ou de coordonnées, ou des anomalies simultanées sur
+          plusieurs systèmes. Arrêtez les tests actifs et l’administration
+          ordinaire. Utilisez un téléphone ou un autre canal qui ne dépend pas
+          du système suspect ; le spécialiste décidera d’un endiguement
+          coordonné. Éteindre, isoler ou « nettoyer » sans cette décision peut
+          supprimer des traces volatiles ou aggraver l’incident.
+        </InfoBox>
+
         <p>
           Si tout finit par charger, commencez plutôt par le guide consacré à{" "}
           <Link href="/guides/pourquoi-mon-site-est-lent">
             un site internet trop lent
           </Link>
-          . Si le contenu ou les accès ont changé sans autorisation, utilisez la
-          branche cyber décrite plus bas et, pour WordPress, la fiche dédiée au{" "}
-          <Link href="/guides/site-wordpress-pirate-que-faire">
-            site WordPress piraté
-          </Link>
+          . Si le contenu, les accès ou le domaine ont changé sans autorisation,
+          utilisez la branche cyber décrite plus bas et le diagnostic officiel{" "}
+          <a
+            href="https://www.cybermalveillance.gouv.fr/17cyber"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            17Cyber
+          </a>
           .
         </p>
 
-        <h2 id="quinze-minutes">
-          2. Dans les quinze premières minutes, faites un ticket de six lignes
+        <h2 id="couches">
+          2. Orientez le ticket par symptôme et par couche, sans diagnostiquer
+          au hasard
         </h2>
 
         <p>
-          En situation d’urgence, dix-huit questions découragent. Commencez par
-          six faits que vous pouvez obtenir sans ouvrir l’administration du site
-          ni modifier sa configuration :
+          Un message visible n’est qu’un indice. « 502 » ne veut pas dire
+          automatiquement « bug du développeur », et une page d’état verte ne
+          prouve pas que votre instance fonctionne. Le tableau suivant sert à
+          choisir la personne et les preuves à demander ; il ne désigne jamais
+          la cause à lui seul.
         </p>
 
-        <InfoBox variant="emerald" title="Le ticket express à copier">
-          <strong>1. Heure :</strong> quand le problème a-t-il été découvert ?
+        <GuideTable
+          caption="Du symptôme observable au bon interlocuteur"
+          headers={[
+            "Ce que vous observez",
+            "Couche à faire vérifier",
+            "Preuves à demander",
+          ]}
+          rows={[
+            [
+              "Le problème n’existe que sur un appareil ou un réseau",
+              "Connexion locale, cache ou poste de travail",
+              "Même URL depuis un autre réseau réellement indépendant ; aucun réglage du site",
+            ],
+            [
+              "Domaine introuvable, SERVFAIL, expiration ou alerte certificat",
+              "Registrar, DNS/DNSSEC, certificat TLS et éventuellement CDN",
+              "Statut du domaine, serveurs de noms, enregistrements, certificat, heure et fuseau",
+            ],
+            [
+              "502, 503, 504, délai dépassé ou résultat différent selon la région",
+              "CDN/WAF, répartiteur, origine, hébergement ou runtime",
+              "Code exact, URL, identifiant de requête et journaux côté edge et origine",
+            ],
+            [
+              "Accueil visible mais formulaire, connexion ou API en erreur",
+              "Application, identité, runtime ou service tiers",
+              "Parcours précis, dernier déploiement, erreurs applicatives et d’authentification",
+            ],
+            [
+              "Données absentes, incohérentes ou bloquées",
+              "Base, cache, file de messages, réplication ou stockage",
+              "Dernière transaction saine, erreurs, réplication, point restaurable et rapprochement",
+            ],
+            [
+              "Panier correct mais paiement, stock, CRM ou confirmation absent",
+              "Prestataire de paiement, webhook, stock, CRM ou e-mail",
+              "Identifiant de test, statut fournisseur, déduplication, ordre et réception finale",
+            ],
+            [
+              "Contenu, DNS, certificat, compte, clé ou coordonnées modifiés",
+              "Compromission possible",
+              "Arrêt des essais actifs, chronologie et traces transmises au répondant cyber",
+            ],
+          ]}
+        />
+
+        <p>
+          Le domaine, le DNS, le certificat, le CDN, l’hébergement, le code, la
+          base et le paiement peuvent appartenir à des fournisseurs différents.
+          Une seule personne côté entreprise garde la chronologie et évite que
+          chacun modifie sa couche en parallèle. Le prestataire technique peut
+          ensuite confirmer ou écarter l’hypothèse à partir des journaux et de
+          l’architecture réelle.
+        </p>
+
+        <h2 id="quinze-minutes">
+          3. Dans les quinze premières minutes, faites un ticket exploitable
+        </h2>
+
+        <p>
+          En situation d’urgence, un formulaire interminable décourage.
+          Commencez par huit faits que vous pouvez obtenir sans ouvrir
+          l’administration du site ni modifier sa configuration :
+        </p>
+
+        <InfoBox variant="emerald" title="Le ticket express en huit faits">
+          <strong>1. Découverte :</strong> date, heure et fuseau du premier
+          constat ?
           <br />
-          <strong>2. Adresse :</strong> quelle URL exacte ne répond plus ?
+          <strong>2. Dernière réussite :</strong> quand le parcours a-t-il
+          fonctionné pour la dernière fois ?
           <br />
-          <strong>3. Message :</strong> que voyez-vous, mot pour mot ?
+          <strong>3. Adresse :</strong> quelle URL exacte ne répond plus ?
           <br />
-          <strong>4. Fonctions touchées :</strong> accueil, contact, paiement,
+          <strong>4. Message :</strong> code, texte visible et éventuel
+          identifiant de requête, mot pour mot ?
+          <br />
+          <strong>5. Fonctions touchées :</strong> accueil, contact, paiement,
           rendez-vous ou connexion ?
           <br />
-          <strong>5. Second essai passif :</strong> seulement en l’absence de
+          <strong>6. Étendue :</strong> un appareil, un réseau, plusieurs
+          connexions ou plusieurs régions ?
+          <br />
+          <strong>7. Second essai passif :</strong> seulement en l’absence de
           contenu inhabituel, de redirection inconnue ou d’alerte, la même page
           affiche-t-elle le même résultat depuis une autre connexion, sans
           saisir aucune donnée ?
           <br />
-          <strong>6. Dernier changement connu :</strong> mise à jour, mise en
-          ligne, domaine ou intervention d’un fournisseur ?
+          <strong>8. Dernier changement connu :</strong> mise en ligne,
+          extension, domaine, DNS, certificat ou intervention d’un fournisseur ?
         </InfoBox>
 
         <p>
-          Prenez une capture du message en masquant toute donnée personnelle
-          inutile. Notez la dernière heure à laquelle quelqu’un a utilisé le
-          parcours avec succès. Ne testez pas cinquante pages : observez si
-          l’accueil et la page de la fonction indispensable s’affichent, sans
-          envoyer de formulaire, saisir d’identifiant, créer de rendez-vous,
-          passer de commande ni tenter de paiement. Les tests complets
-          attendront une version contrôlée après l’intervention.
+          Conservez la capture originale dans un espace restreint, puis créez
+          une copie expurgée pour le ticket ; ne modifiez jamais l’unique
+          original. Ne testez pas cinquante pages : observez l’accueil et la
+          fonction indispensable, sans envoyer de formulaire, saisir
+          d’identifiant, créer de rendez-vous, passer de commande ni tenter de
+          paiement. Les tests complets attendront une version contrôlée après
+          l’intervention.
         </p>
 
         <p>
@@ -407,8 +577,100 @@ export default function Page() {
           parcours après le retour du fournisseur.
         </p>
 
+        <h2 id="dossier">
+          4. Produisez un dossier local avant de multiplier les appels
+        </h2>
+
+        <p>
+          Le dossier ci-dessous fonctionne dans votre navigateur. Il ne teste
+          pas le site, n’envoie aucune donnée et ne sauvegarde rien
+          automatiquement. Il transforme vos observations en une route prudente,
+          conserve les inconnues en « ND », compare les objectifs de reprise
+          seulement s’ils ont été définis et interdit une clôture fondée sur la
+          seule page d’accueil. N’y collez ni secret, ni donnée client, ni log
+          brut.
+        </p>
+
+        <WebsiteIncidentDossier />
+
+        <InfoBox
+          variant="blue"
+          title="Le verdict dépend de vos choix structurés"
+        >
+          Le routeur ne lit pas le sens des champs libres et ne diagnostique
+          jamais leur contenu. Écrire « DNS détourné » ou « page défigurée »
+          dans le symptôme ne suffit pas : sélectionnez aussi « Compromission
+          possible » et consignez le signal factuel dans la porte cyber. Une
+          qualification oubliée peut orienter le dossier vers une mauvaise
+          branche ; la personne compétente reste responsable du triage et de la
+          clôture.
+        </InfoBox>
+
+        <p>
+          Préparez également une version hors ligne avant l’incident :{" "}
+          <a href="/ressources/fiche-reflexe-site-en-panne.txt" download>
+            télécharger la fiche réflexe en texte brut
+          </a>
+          . Elle contient les contacts à préremplir, la chronologie, les cinq
+          messages et la recette de retour. Stockez-la dans un emplacement
+          accessible même si votre site, votre messagerie habituelle ou votre
+          gestionnaire de mots de passe n’est plus disponible — sans y écrire
+          les secrets eux-mêmes.
+        </p>
+
+        <h2 id="chronologie">
+          5. Suivez une chronologie 0–5–15–60 minutes, puis 4 et 24 heures
+        </h2>
+
+        <GuideTable
+          caption="Une horloge de décision, pas une promesse de réparation"
+          headers={["Fenêtre", "Actions sûres", "Sortie attendue et escalade"]}
+          rows={[
+            [
+              "0–5 minutes",
+              "Geler les changements improvisés, noter découverte et dernière réussite, chercher les signaux cyber, nommer le coordinateur",
+              "Branche cyber immédiate ou constat passif autorisé ; aucun diagnostic inventé",
+            ],
+            [
+              "5–15 minutes",
+              "Compléter le ticket, vérifier l’étendue sur un réseau indépendant si c’est sûr, consulter les pages d’état, ouvrir le journal",
+              "Couche et fournisseur à interroger ; référence de ticket ; impact métier initial",
+            ],
+            [
+              "15–60 minutes",
+              "Activer le canal de secours, publier le premier message, préserver les traces, fixer le prochain point et l’objectif métier",
+              "Personne responsable, mode dégradé, hypothèse bornée et seuil d’escalade",
+            ],
+            [
+              "1–4 heures",
+              "Comparer correction, rollback, bascule ou restauration ; suivre les données et services tiers ; informer à heure fixe",
+              "Plan autorisé avec preuve, RTO/RPO explicites ou ND ; direction alertée si impact critique",
+            ],
+            [
+              "4–24 heures",
+              "Rétablir dans un environnement contrôlé, rapprocher les opérations, exécuter la recette, qualifier les données personnelles",
+              "Service partiel, surveillé ou accepté ; notification seulement selon qualification compétente",
+            ],
+            [
+              "J+1 à J+30",
+              "Finaliser le journal, mesurer l’impact, fermer les actions, tester la restauration et exercer le plan corrigé",
+              "RETEX avec responsables, dates et preuves ; aucune clôture sur une simple impression",
+            ],
+          ]}
+        />
+
+        <p>
+          L’heure réelle de début n’est souvent pas celle de la détection.
+          Conservez deux points : la dernière réussite connue et le premier
+          échec observé. La panne a commencé quelque part dans cet intervalle.
+          Distinguez ensuite l’accusé de prise en charge, le contournement, le
+          retour technique, la validation métier, la fin de surveillance et la
+          clôture. Ces horodatages rendent le SLA et le retour d’expérience
+          vérifiables.
+        </p>
+
         <h2 id="journal">
-          3. Complétez le journal pendant que l’incident avance
+          6. Complétez le journal pendant que l’incident avance
         </h2>
 
         <p>
@@ -424,7 +686,7 @@ export default function Page() {
           rows={[
             [
               "Constat",
-              "Heure, URL, message, capture, réseau et dernière réussite connue",
+              "Découverte, dernière réussite, premier échec, fuseau, URL, message, capture et réseau",
               "Distinguer un fait d’une hypothèse",
             ],
             [
@@ -439,8 +701,13 @@ export default function Page() {
             ],
             [
               "Intervenants",
-              "Personne contactée, heure, référence du ticket et réponse reçue",
+              "Personne contactée, accusé de prise en charge, référence du ticket et réponse reçue",
               "Éviter les actions contradictoires",
+            ],
+            [
+              "Preuves techniques",
+              "Source, période, fuseau, lieu de copie, personne et heure de collecte",
+              "Référencer les traces sans coller les journaux bruts dans le ticket métier",
             ],
             [
               "Décisions",
@@ -466,8 +733,24 @@ export default function Page() {
           sont pas nécessaires au diagnostic.
         </InfoBox>
 
+        <InfoBox
+          variant="blue"
+          title="En suspicion cyber, demandez la préservation avant la rotation"
+        >
+          Le prestataire ou le répondant identifie les traces pertinentes du
+          registrar et du DNS, du CDN/WAF ou reverse proxy, de l’hébergeur, du
+          système, de l’application et de l’authentification, de la base et,
+          selon le site, des files, webhooks, paiements et e-mails. Les
+          originaux sont copiés vers un emplacement isolé et protégé contre
+          l’écrasement ; le journal métier ne contient qu’une référence, la
+          source, la période, le fuseau et la personne ayant collecté. Demandez
+          aussi de prolonger la rotation lorsque c’est nécessaire. Ne lancez
+          vous-même ni collecte intrusive, ni extinction, ni installation
+          d’outil sur un système suspect.
+        </InfoBox>
+
         <h2 id="premiere-heure">
-          4. Dans la première heure, appelez la personne qui peut réellement
+          7. Dans la première heure, appelez la personne qui peut réellement
           agir
         </h2>
 
@@ -493,9 +776,14 @@ export default function Page() {
             expiré ou que sa gestion pose problème.
           </li>
           <li>
+            <strong>Le fournisseur tiers</strong> lorsque le site répond mais
+            que le paiement, l’e-mail, la réservation, l’identité ou une API
+            indispensable échoue ; gardez un seul coordinateur.
+          </li>
+          <li>
             <strong>Un spécialiste de réponse à incident</strong> si une
-            intrusion, une redirection inconnue ou un changement non autorisé
-            est possible.
+            intrusion, une redirection, un changement DNS, un compte ou une clé
+            inconnue, une extorsion ou une exfiltration est possible.
           </li>
         </ul>
 
@@ -531,8 +819,32 @@ export default function Page() {
           sécurité des données.
         </p>
 
+        <p>
+          Si la branche cyber est ouverte, une TPE ou PME française peut
+          demander un premier niveau d’aide à{" "}
+          <a
+            href="https://www.cybermalveillance.gouv.fr/17cyber"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            17Cyber
+          </a>{" "}
+          ou à son{" "}
+          <a
+            href="https://cyber.gouv.fr/nous-connaitre/ecosysteme/csirt/csirt-territoriaux/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            CSIRT territorial
+          </a>
+          . Le CERT-FR intervient selon son périmètre, notamment pour des
+          systèmes d’importance particulière. Vérifiez tôt la police d’assurance
+          cyber : certains contrats imposent un canal ou un prestataire, mais
+          l’assureur ne remplace ni l’endiguement ni la qualification juridique.
+        </p>
+
         <h2 id="informer">
-          5. Informez les clients sans inventer la cause ni l’heure de retour
+          8. Informez les clients sans inventer la cause ni l’heure de retour
         </h2>
 
         <p>
@@ -540,6 +852,51 @@ export default function Page() {
           pire. Une promesse trop précise crée un second problème si elle n’est
           pas tenue. Dites ce qui est visible, ce qui reste possible et quand
           vous donnerez la prochaine information.
+        </p>
+
+        <GuideTable
+          caption="Cinq états de communication à ne pas confondre"
+          headers={[
+            "État",
+            "Ce que vous pouvez dire",
+            "Ce que vous devez ajouter",
+          ]}
+          rows={[
+            [
+              "Investigation",
+              "Nous examinons une indisponibilité qui touche [périmètre observé].",
+              "Canal alternatif et heure du prochain point",
+            ],
+            [
+              "Problème identifié",
+              "La couche [confirmée par l’intervenant] est affectée ; la correction est en cours.",
+              "Impact encore présent, inconnues et prochain point",
+            ],
+            [
+              "Contournement",
+              "Le service principal reste perturbé ; [moyen surveillé] permet de continuer [fonction].",
+              "Limites du mode dégradé et sécurité des données",
+            ],
+            [
+              "Surveillance",
+              "Le service répond de nouveau ; nous vérifions encore les parcours et les opérations.",
+              "Ne pas employer « résolu » avant acceptation",
+            ],
+            [
+              "Résolu",
+              "Les parcours [liste exacte] sont acceptés depuis [heure].",
+              "Période concernée, action à faire en cas de demande manquante",
+            ],
+          ]}
+        />
+
+        <p>
+          Le canal doit rester accessible lorsque le site tombe. Une page de
+          statut séparée, un téléphone, une messagerie externe ou un réseau
+          social réellement surveillé peuvent convenir selon l’activité. Si le
+          domaine ou la messagerie professionnelle est suspect, passez sur un
+          moyen hors bande prévu à l’avance. Faites-en une source de vérité hors
+          du site : un seul message daté évite les versions contradictoires.
         </p>
 
         <InfoBox variant="blue" title="Message pendant la panne">
@@ -580,7 +937,7 @@ export default function Page() {
         </p>
 
         <h2 id="cyber-donnees">
-          6. Si une attaque ou des données touchées sont possibles, changez de
+          9. Si une attaque ou des données touchées sont possibles, changez de
           procédure
         </h2>
 
@@ -637,13 +994,126 @@ export default function Page() {
             CNIL distingue l’incident de la violation et demande d’analyser les
             faits disponibles
           </a>
-          . Le délai de 72 heures concerne la notification d’une violation
-          présentant un risque, pas toutes les pannes. Ce guide ne remplace pas
-          l’évaluation juridique et de sécurité propre à votre situation.
+          . Dès qu’une violation est plausible, documentez en interne les faits,
+          leurs effets et les mesures prises, même si aucune notification
+          externe n’est finalement requise. Un sous-traitant transmet les faits
+          au responsable du traitement dans les meilleurs délais. Si la
+          violation présente un risque pour les personnes, le responsable la
+          notifie à la CNIL dans les meilleurs délais et, si possible, au plus
+          tard 72 heures après en avoir pris connaissance. Il ne faut pas
+          attendre tous les détails : une notification initiale peut être
+          complétée. En cas de risque élevé, les personnes concernées doivent
+          aussi être informées dans les meilleurs délais, sauf exception
+          applicable. Ce guide ne remplace pas la qualification juridique et de
+          sécurité propre à votre situation.
+        </p>
+
+        <p>
+          La durée de conservation des journaux dépend de leur finalité, du
+          risque, des obligations particulières et de la minimisation. La CNIL
+          donne comme ordre de grandeur général une conservation glissante de
+          six mois à un an pour les traces pertinentes, sans en faire une règle
+          universelle. Ne gardez jamais les logs sans limite et veillez à ce
+          qu’ils ne contiennent ni mot de passe, ni secret, ni donnée inutile.
+        </p>
+
+        <InfoBox
+          variant="amber"
+          title="Après compromission, un rollback ne prouve pas que le site est sain"
+        >
+          Avant le retour, l’intervenant recherche les mécanismes de
+          persistance, corrige le vecteur d’entrée, révoque ou renouvelle les
+          identifiants, clés, jetons ou certificats exposés, puis confirme que
+          les systèmes et les données restaurées sont propres. Il rapproche
+          ensuite base, commandes, paiements, stock, webhooks et e-mails et
+          maintient une surveillance renforcée. Un dépôt revenu à l’ancienne
+          version ne ferme aucune de ces questions. Le{" "}
+          <a
+            href="https://www.ncsc.gov.uk/collection/incident-management/technical-response-capabilities"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            NCSC britannique formule précisément le principe « données propres
+            sur systèmes et réseaux propres »
+          </a>
+          . Sa page, version 1.0, indique une dernière revue le 19 septembre
+          2019 : elle sert ici de repère technique international, pas de règle
+          juridique actuelle ni de preuve propre à votre incident.
+        </InfoBox>
+
+        <h2 id="objectifs">
+          10. Définissez RTO, RPO et SLA sans les transformer en promesses
+        </h2>
+
+        <p>
+          Trois notions souvent confondues répondent à trois questions
+          différentes. Elles doivent être décidées avant l’incident ou rester «
+          ND ». Une cible reconstruite après coup ne prouve pas qu’elle a été
+          respectée. Les définitions du{" "}
+          <a
+            href="https://csrc.nist.gov/glossary/term/recovery_point_objective"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            RPO dans le glossaire NIST
+          </a>{" "}
+          et de la planification de continuité servent ici de contrôle
+          international ; votre contrat et vos exigences métier restent la
+          source applicable.
+        </p>
+
+        <GuideTable
+          caption="Temps d’arrêt, perte de données et engagement contractuel"
+          headers={["Repère", "Question en français courant", "Piège à éviter"]}
+          rows={[
+            [
+              "RTO — objectif de reprise",
+              "Sous combien de temps le service ou un mode dégradé doit-il revenir ?",
+              "Ce n’est ni le temps réellement obtenu ni une garantie sans contrat et exercice",
+            ],
+            [
+              "RPO — objectif de point de reprise",
+              "Quelle ancienneté maximale des données peut-on accepter après restauration ?",
+              "Une sauvegarde quotidienne ne prouve ni restauration en 24 h ni perte nulle",
+            ],
+            [
+              "GTI — prise en compte",
+              "Sous combien de temps le support accuse-t-il et commence-t-il à qualifier ?",
+              "Une réponse automatique ne prouve pas qu’une personne travaille sur l’incident",
+            ],
+            [
+              "GTR — rétablissement",
+              "Quel objectif contractuel vise le contournement ou le retour ?",
+              "Vérifier point de départ, heures couvertes, périmètre, exclusions et conséquence",
+            ],
+            [
+              "SLA — niveau de service",
+              "Qui surveille, répond, escalade et prouve le niveau convenu ?",
+              "Un pourcentage annuel ne décrit pas la réponse à votre incident précis",
+            ],
+          ]}
+        />
+
+        <p>
+          Aucun de ces sigles n’est une valeur universelle. Un RTO, un RPO, une
+          GTI, une GTR ou un SLA n’a de sens qu’avec un service, une horloge,
+          une fenêtre de couverture, une source et une personne responsable
+          clairement identifiés.
+        </p>
+
+        <p>
+          Pour une boutique, le RPO ne se résume pas à l’âge du backup : les
+          commandes et paiements reçus pendant l’incident doivent être
+          rapprochés. Pour un formulaire, une demande qui n’est jamais arrivée
+          ne réapparaîtra pas grâce à une restauration. Pour une application
+          métier, le mode dégradé et les dépendances doivent être inclus dans le
+          plan. Écrivez donc le service critique, la perte acceptable, le point
+          restaurable, le temps estimé et la décision métier au lieu de déclarer
+          simplement « sauvegarde disponible ».
         </p>
 
         <h2 id="restaurer">
-          7. Ne restaurez une sauvegarde qu’après avoir compris ce qu’elle
+          11. Ne restaurez une sauvegarde qu’après avoir compris ce qu’elle
           remplacera
         </h2>
 
@@ -687,8 +1157,46 @@ export default function Page() {
           remplacées ou ressaisies.
         </p>
 
+        <GuideTable
+          caption="Quatre voies de reprise et leurs preuves minimales"
+          headers={["Voie", "Quand l’envisager", "Ce qui bloque le go"]}
+          rows={[
+            [
+              "Correction en avant",
+              "La cause est comprise et un correctif limité peut être testé hors production",
+              "Pas de build, de test, de plan de repli ou d’explication sur les données",
+            ],
+            [
+              "Rollback du code",
+              "Une version précédente compatible est connue et les migrations sont maîtrisées",
+              "Schéma de base incompatible, secrets modifiés, vecteur cyber non corrigé",
+            ],
+            [
+              "Bascule ou mode dégradé",
+              "Un autre service propre couvre temporairement la fonction critique",
+              "Canal non surveillé, données moins protégées ou synchronisation future inconnue",
+            ],
+            [
+              "Restauration de données",
+              "Le point restaurable est sain, testé séparément et compatible avec le RPO",
+              "Commandes récentes écrasées, intégrité inconnue, source compromise ou retour arrière absent",
+            ],
+          ]}
+        />
+
+        <p>
+          Avant l’autorisation, demandez un instantané de l’état actuel lorsque
+          cela est sûr, la provenance et l’intégrité de la version candidate, un
+          test dans un environnement séparé, la compatibilité du schéma et un
+          plan de retour arrière de la reprise elle-même. Après restauration,
+          rapprochez base, fichiers, caches, index, files de messages,
+          commandes, paiements, stock, webhooks et e-mails. Une opération
+          retardée ou récupérée n’est pas une opération perdue ; une opération
+          doublée n’est pas une réussite.
+        </p>
+
         <h2 id="tester">
-          8. Avant d’annoncer le retour, testez le travail que font vos clients
+          12. Avant d’annoncer le retour, prouvez le travail réel de vos clients
         </h2>
 
         <p>
@@ -704,7 +1212,7 @@ export default function Page() {
             [
               "Site vitrine",
               "Envoyer un formulaire avec une adresse de test",
-              "Le message arrive au bon destinataire et une confirmation cohérente s’affiche",
+              "Le message arrive réellement au bon destinataire ; l’écran seul ne suffit pas",
             ],
             [
               "Prise de rendez-vous",
@@ -713,13 +1221,18 @@ export default function Page() {
             ],
             [
               "Boutique en ligne",
-              "Parcourir panier, paiement autorisé et confirmation",
-              "La commande n’est créée qu’une fois et les messages nécessaires arrivent",
+              "Utiliser le bac à sable ou la procédure de test du PSP, jamais une carte client",
+              "Un seul effet métier après déduplication et rapprochement des livraisons webhook manquantes, dupliquées ou désordonnées : commande, débit, stock et confirmation cohérents",
             ],
             [
               "Espace client",
               "Se connecter avec un compte de test et ouvrir les informations prévues",
-              "Le compte voit ce qu’il doit voir, sans accès supplémentaire",
+              "Le compte voit ce qu’il doit voir, sans accès supplémentaire, sur les rôles essentiels",
+            ],
+            [
+              "Tous les sites",
+              "Contrôler domaine, certificat, cache/CDN, mobile, navigateur et supervision",
+              "Résultat stable sur le périmètre prévu et alerte réellement reçue lors d’un test convenu",
             ],
           ]}
         />
@@ -731,7 +1244,101 @@ export default function Page() {
           partiellement revenu : dites-le et gardez l’autre moyen de contact.
         </p>
 
-        <h2 id="exemple">9. Exemple illustratif fictif : de 08:42 à 10:32</h2>
+        <InfoBox variant="emerald" title="Les dix portes avant « résolu »">
+          1. La cause est confirmée ou l’hypothèse reste explicitement bornée.
+          <br />
+          2. Les traces et l’état antérieur sont préservés.
+          <br />
+          3. La version candidate est construite et testée hors production.
+          <br />
+          4. Le rollback ou la restauration a un plan de repli.
+          <br />
+          5. Les données et opérations récentes sont rapprochées.
+          <br />
+          6. La branche cyber est levée par la personne compétente si elle a été
+          ouverte.
+          <br />
+          7. Les parcours critiques, rôles et services tiers réussissent.
+          <br />
+          8. Les régions, caches et canaux utiles sont cohérents.
+          <br />
+          9. La supervision reste stable pendant la période décidée.
+          <br />
+          10. Une personne métier accepte la reprise et la communication est
+          mise à jour.
+        </InfoBox>
+
+        <p>
+          Un contrôle inconnu reste inconnu. Un échec critique ne peut pas être
+          compensé par neuf cases vertes. Si l’accueil répond mais que le
+          formulaire, le paiement, l’e-mail ou l’isolement des comptes échoue,
+          le service est partiel. La période de surveillance n’a pas de durée
+          universelle : elle dépend du trafic, des tâches asynchrones et du
+          risque, puis doit être écrite dans le dossier.
+        </p>
+
+        <h2 id="seo">
+          13. Protégez le référencement sans cacher l’incident à Google
+        </h2>
+
+        <p>
+          La sécurité et les données restent prioritaires. Lorsque la fermeture
+          est purement temporaire et techniquement maîtrisée, Google recommande
+          de limiter les fonctions plutôt que de supprimer le site. Pour une
+          coupure urgente d’un à deux jours, une page statique légère peut
+          répondre en <code>503 Service Unavailable</code> avec un{" "}
+          <code>Retry-After</code> raisonnable. Cette opération appartient au
+          prestataire : une page de maintenance servie en 200 peut être indexée
+          comme contenu normal, et un 503 prolongé a aussi des effets.
+        </p>
+
+        <p>
+          Ne renvoyez pas par réflexe 403, 404 ou 410, n’ajoutez pas{" "}
+          <code>noindex</code>, ne bloquez pas tout dans <code>robots.txt</code>{" "}
+          et ne demandez pas une suppression Search Console. Le fichier robots
+          doit rester accessible sans 503. Après le retour, vérifiez sur un
+          échantillon les codes HTTP, canonical, robots, sitemap et données
+          structurées qui auraient pu être modifiés, puis laissez les signaux se
+          rafraîchir. Le maintien d’une position et son délai de récupération ne
+          peuvent pas être garantis.
+        </p>
+
+        <h2 id="cout">
+          14. Estimez le coût direct après la crise, sans transformer toute
+          demande retardée en vente perdue
+        </h2>
+
+        <p>
+          Le coût aide à décider d’un canal de secours, d’une alerte, d’une
+          sauvegarde testée ou d’une astreinte. Il ne doit pas servir à inventer
+          un manque à gagner spectaculaire. Séparez le minimum observé, le
+          scénario modélisé, les surcoûts confirmés et les inconnues.
+        </p>
+
+        <pre>
+          <code>{`Impact direct estimé =
+  opérations définitivement perdues × marge unitaire
++ heures réellement improductives × personnes × coût horaire
++ heures de coordination × coût horaire
++ intervention, communication et rapprochement confirmés
+
+À part : demandes retardées ou récupérables, réputation, risque juridique,
+SEO et effets futurs restent inconnus tant qu'ils ne sont pas mesurés.`}</code>
+        </pre>
+
+        <p>
+          Exemple entièrement fictif : une boutique reste perturbée quatre
+          heures. Elle observe vingt commandes potentielles, dont 40 % seront
+          probablement récupérées, avec 55 € de marge moyenne. La marge exposée
+          modélisée est donc 20 × 55 € × 60 %, soit 660 €. Deux personnes ont
+          perdu 50 % de quatre heures à 45 €/h, soit 180 €. Trois heures de
+          coordination au même coût ajoutent 135 €, et l’intervention confirmée
+          coûte 600 €. Le total direct illustratif est 1 575 €, pas « le coût
+          complet de la panne ». Une fois les commandes rapprochées, remplacez
+          le scénario par les pertes réellement irrécupérables.
+        </p>
+
+        <h2 id="exemple">15. Exemple illustratif fictif : de 08:42 à 10:32</h2>
 
         <InfoBox
           variant="blue"
@@ -754,18 +1361,21 @@ export default function Page() {
         <p>
           À 08:55, le cabinet confirme que le téléphone et l’e-mail fonctionnent
           encore. À 09:03, le mainteneur reçoit le ticket, la dernière réussite
-          connue à 18:10 la veille et une mise en ligne signalée à 08:34.
-          Personne ne modifie les extensions, le domaine ou les données en
-          parallèle. À 09:15, les clients reçoivent un message avec le téléphone
-          et un nouveau point prévu à 10:00.
+          connue à 18:10 la veille, le premier échec observé à 08:42, le fuseau
+          Europe/Paris et une mise en ligne signalée à 08:34. La panne a donc
+          commencé dans un intervalle inconnu entre 18:10 et 08:42. Personne ne
+          modifie les extensions, le domaine ou les données en parallèle. À
+          09:15, les clients reçoivent un message avec le téléphone et un
+          nouveau point prévu à 10:00.
         </p>
 
         <p>
           Dans cet exemple fictif, le mainteneur relie la panne à une version de
           l’application qui ne démarre plus. Il contrôle l’ancienne version dans
-          un espace séparé ; aucune donnée n’est restaurée puisque rien ne le
-          justifie. À 10:20, le site répond en production, mais le cabinet
-          attend. À 10:32, l’accueil, une page de service et la réception d’un
+          un espace séparé et vérifie la compatibilité du schéma ; aucune donnée
+          n’est restaurée puisque rien ne le justifie. À 10:20, le site répond
+          en production, mais le cabinet passe au statut « surveillance ». À
+          10:32, l’accueil, une page de service et la réception réelle d’un
           formulaire de test sont validés par la responsable métier. Le message
           client est alors mis à jour.
         </p>
@@ -777,11 +1387,29 @@ export default function Page() {
           plus longtemps.
         </p>
 
+        <p>
+          Dans ce cas fictif, le téléphone comme mode dégradé devait être publié
+          en trente minutes et le parcours web visait quatre heures : ces deux
+          objectifs préparés à l’avance sont tenus dans le scénario. Aucun RPO
+          n’est déclaré « respecté », puisqu’aucune restauration de données n’a
+          eu lieu. Le nombre de formulaires tentés pendant l’intervalle reste
+          inconnu ; le cabinet demande donc aux clients concernés de reprendre
+          contact au lieu de conclure que rien n’a été perdu.
+        </p>
+
+        <InfoBox variant="amber" title="Ne comptez pas sur le CTA en urgence">
+          Si l’incident est critique ou cyber, utilisez immédiatement votre
+          astreinte, vos fournisseurs et les relais spécialisés. Le formulaire
+          Hagnéré Code ci-dessous sert à une orientation commerciale en heures
+          ouvrées ; il ne garantit ni prise en charge immédiate, ni réparation,
+          ni intégrité des données.
+        </InfoBox>
+
         <GuideInlineCTA
           title="Faire diagnostiquer la panne sans multiplier les changements"
-          description="Indiquez l’adresse du site, l’heure de découverte, le message exact, les fonctions touchées, le second essai passif s’il a pu être réalisé, le dernier changement connu et les prestataires déjà contactés. Ce formulaire n’est pas une astreinte ni un service de réponse à incident. Quentin Hagnéré examine directement la demande et cherche à répondre le jour ouvré qui suit, sans garantir ce délai ni celui de la réparation. Cette première orientation est gratuite et sans engagement ; elle peut vous renvoyer vers l’hébergeur, le registrar ou un spécialiste cyber. Ne transmettez aucun mot de passe, secret ni fichier contenant des données personnelles inutiles."
+          description="Indiquez l’adresse, la découverte, la dernière réussite connue, le message exact, les fonctions et réseaux touchés, le second constat passif s’il a été sûr, le dernier changement et les tickets déjà ouverts. Ce formulaire n’est pas une astreinte ni un service de réponse à incident. Quentin Hagnéré examine directement la demande et cherche à répondre le jour ouvré qui suit, sans garantir ce délai ni celui de la réparation. Cette première orientation est gratuite et sans engagement ; elle peut vous renvoyer vers l’hébergeur, le registrar ou un spécialiste cyber. Ne transmettez aucun mot de passe, secret, log brut ni fichier contenant des données personnelles inutiles."
           tags={[
-            "Ticket de six lignes",
+            "Ticket en huit faits",
             "Aucune cause inventée",
             "Orientation cyber si nécessaire",
           ]}
@@ -790,8 +1418,7 @@ export default function Page() {
         />
 
         <h2 id="lendemain">
-          10. Le lendemain, évitez que le prochain signal vienne encore d’un
-          client
+          16. À J+1, J+7 et J+30, fermez les actions plutôt que le seul ticket
         </h2>
 
         <p>
@@ -800,31 +1427,48 @@ export default function Page() {
           rendre la prochaine réponse plus courte et plus sûre.
         </p>
 
-        <ol>
-          <li>
-            <strong>Écrivez la cause retenue et ce qui reste incertain.</strong>
-          </li>
-          <li>
-            <strong>Conservez les heures et décisions importantes.</strong>
-          </li>
-          <li>
-            <strong>Vérifiez qui reçoit une alerte et qui coordonne.</strong>
-          </li>
-          <li>
-            <strong>Planifiez un vrai test de restauration</strong> si cette
-            preuve manquait.
-          </li>
-          <li>
-            <strong>
-              Listez les accès, l’hébergeur, le registrar et les contacts
-            </strong>{" "}
-            dans un endroit disponible même si le site tombe.
-          </li>
-          <li>
-            <strong>Décidez si une maintenance récurrente est utile</strong>,
-            sans transformer automatiquement chaque panne en abonnement.
-          </li>
-        </ol>
+        <GuideTable
+          caption="Le retour d’expérience devient un plan daté"
+          headers={["Échéance", "Questions à fermer", "Preuve attendue"]}
+          rows={[
+            [
+              "J+1",
+              "Chronologie, impact observé, cause retenue et inconnues, clients à rappeler, données ou déclarations à qualifier",
+              "Journal gelé, responsables nommés et actions urgentes datées",
+            ],
+            [
+              "J+7",
+              "Pourquoi les défenses n’ont pas empêché ou détecté, pourquoi la réponse a ralenti, quelles commandes/demandes ont été rapprochées",
+              "Actions correctives avec propriétaire, échéance et critère de réussite",
+            ],
+            [
+              "J+30",
+              "Alertes, accès, contacts hors ligne, RTO/RPO/SLA, sauvegarde restaurée, communication et mode dégradé",
+              "Exercice ou test exécuté ; action non faite conservée ouverte",
+            ],
+          ]}
+        />
+
+        <p>
+          Le rapport final distingue la cause technique, le déclencheur, les
+          facteurs qui ont étendu l’impact et les défaillances de détection ou
+          d’organisation. Il conserve la chronologie, les systèmes et parcours
+          touchés, la durée métier, les décisions, les coûts confirmés et les
+          hypothèses. Chaque action comporte un responsable, une date et une
+          preuve. « Installer un monitoring » n’est pas fermé tant qu’une alerte
+          test n’a pas atteint la personne prévue.
+        </p>
+
+        <p>
+          Planifiez un vrai test de restauration si cette preuve manquait.
+          Listez le registrar, les fournisseurs, l’astreinte, l’assureur, les
+          relais cyber et les contacts hors bande dans un endroit disponible
+          même si le site tombe. Décidez ensuite si une maintenance récurrente
+          est utile, sans transformer automatiquement chaque panne en
+          abonnement. Un exercice de table avec un scénario fictif révèle
+          souvent les accès ou responsabilités manquants sans interrompre la
+          production.
+        </p>
 
         <p>
           Si personne ne sait qui possède les accès ou si le prestataire ne
@@ -931,24 +1575,120 @@ export default function Page() {
           </li>
           <li>
             <a
+              href="https://www.cnil.fr/fr/securite-tracer-les-operations"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              CNIL — Tracer les opérations
+            </a>
+            , publiée le 14 mars 2024, pour les sources de journaux, leur
+            protection, leur durée glissante et la minimisation.
+          </li>
+          <li>
+            <a
+              href="https://www.cybermalveillance.gouv.fr/17cyber"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              17Cyber — Assistance publique aux victimes
+            </a>
+            , pour l’orientation française des particuliers, entreprises,
+            associations et collectivités confrontés à une cybermalveillance.
+          </li>
+          <li>
+            <a
+              href="https://www.ncsc.gov.uk/collection/small-business-guidance--response-and-recovery"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              NCSC britannique — Response &amp; Recovery for Small Business
+            </a>
+            , pour le cycle préparer, identifier, résoudre, informer et
+            apprendre ; ses règles juridiques ne sont pas transposées en France.
+          </li>
+          <li>
+            <a
+              href="https://www.ncsc.gov.uk/collection/incident-management/technical-response-capabilities"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              NCSC britannique — Technical response capabilities
+            </a>
+            , version 1.0 indiquée comme relue le 19 septembre 2019, pour la
+            séparation entre remédiation et reprise et le principe « données
+            propres sur systèmes propres ». Cette source ancienne reste un
+            repère technique, corroboré par les recommandations ANSSI et CISA,
+            pas une norme juridique française.
+          </li>
+          <li>
+            <a
+              href="https://csrc.nist.gov/pubs/sp/800/61/r3/final"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              NIST SP 800-61 révision 3
+            </a>
+            , pour relier préparation, détection, réponse, reprise et
+            amélioration continue, sans en faire une certification.
+          </li>
+          <li>
+            <a
+              href="https://www.cisa.gov/stopransomware/ransomware-guide"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              CISA — StopRansomware Guide
+            </a>
+            , pour les sauvegardes testées, les communications hors bande, les
+            traces volatiles et l’isolation coordonnée ; le périmètre est cyber,
+            pas toute panne web.
+          </li>
+          <li>
+            <a
+              href="https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-502-504/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Cloudflare — erreurs 502 et 504
+            </a>
+            , comme documentation d’opérateur montrant qu’un même symptôme peut
+            venir de l’edge ou de l’origine, pas comme diagnostic universel.
+          </li>
+          <li>
+            <a
+              href="https://docs.stripe.com/webhooks"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Stripe — Webhooks
+            </a>
+            , pour l’ordre non garanti, la déduplication et les tests propres au
+            prestataire ; les mêmes principes doivent être confirmés dans votre
+            intégration réelle.
+          </li>
+          <li>
+            <a
               href="https://developers.google.com/search/docs/crawling-indexing/pause-online-business?hl=fr"
               target="_blank"
               rel="noopener noreferrer"
             >
               Google Search Central — Suspendre temporairement une activité
             </a>
-            , mise à jour indiquée le 31 décembre 2025, sans garantie de
-            positions.
+            , consultée le 27 juillet 2026, pour le service limité, le 503 très
+            court, <code>Retry-After</code> et les erreurs à éviter, sans
+            garantie de positions.
           </li>
         </ul>
 
         <p>
-          Sources consultées le 22 juillet 2026. Ce guide n’identifie pas la
+          Sources revérifiées le 27 juillet 2026. Ce guide n’identifie pas la
           cause de votre panne, ne garantit aucun délai, ne remplace ni une
           réponse à incident cyber ni une analyse juridique, et ne permet pas
-          d’affirmer que les données sont intactes. Les repères quinze minutes,
-          une heure et une journée organisent les décisions ; ils ne décrivent
-          pas le temps nécessaire à une réparation.
+          d’affirmer que les données sont intactes. Les repères 0–5–15–60
+          minutes, 4 et 24 heures organisent les décisions ; ils ne décrivent
+          pas le temps nécessaire à une réparation. Le calculateur et le dossier
+          local ne testent aucun système et ne certifient ni reprise, ni
+          conformité, ni sécurité.
         </p>
       </GuideLayout>
     </GuidesShell>

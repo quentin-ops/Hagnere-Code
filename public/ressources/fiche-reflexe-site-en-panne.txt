@@ -1,0 +1,912 @@
+PAGE 1 — CARTE RÉFLEXE AUTONOME À IMPRIMER SEULE
+=================================================
+
+SITE INTERNET EN PANNE — VERSION 1.1 DU 27 JUILLET 2026
+Public : dirigeant, indépendant, responsable métier ou coordinateur d’incident
+
+Cette page organise les toutes premières décisions. Elle ne diagnostique pas la
+cause, ne garantit aucun délai et ne remplace ni une astreinte, ni une réponse à
+incident cyber, ni une analyse juridique. N’y écrivez aucun secret ou donnée
+client. Conservez-la hors ligne avec les contacts préremplis.
+
+1. INTERDITS IMMÉDIATS
+
+[ ] Ne pas redémarrer, restaurer, désactiver une extension ou modifier le DNS,
+    le certificat, le domaine ou l’e-mail « pour voir ».
+[ ] Ne pas saisir d’identifiant, envoyer de formulaire, répéter une commande ou
+    tenter un paiement pendant le premier constat.
+
+2. PORTE CYBER AVANT TOUT TEST
+
+Un seul signal suffit : contenu ou redirection inconnus ; compte, clé, DNS,
+certificat, paiement ou coordonnées modifiés sans autorisation ; extorsion ;
+donnée possiblement divulguée, altérée, supprimée ou indisponible ; plusieurs
+systèmes touchés sans explication.
+
+SI OUI OU SI LE DOUTE EST SÉRIEUX :
+[ ] arrêter les essais actifs et les changements ;
+[ ] conserver heures, captures et références sans manipuler le système ;
+[ ] utiliser un canal sûr, l’intervenant cyber prévu et la direction ;
+[ ] utiliser 17Cyber : https://17cyber.gouv.fr/
+
+SI NON : un seul second constat passif peut être fait depuis une connexion
+indépendante, sans compte, formulaire, commande, paiement ou donnée client.
+
+3. CINQ FAITS À NOTER
+
+Heure et fuseau : __________________  URL exacte : ____________________________
+Message exact : ______________________________________________________________
+Dernière réussite connue : ___________________________________________________
+Fonction touchée : accueil / contact / RDV / commande / paiement / connexion
+
+4. UNE PERSONNE COORDONNE
+
+Coordinateur : _____________________  Canal sûr : _____________________________
+Ticket/astreinte : __________________  Fournisseur : __________________________
+Cette personne tient le journal et autorise chaque changement avec
+l’intervenant compétent. Personne d’autre ne modifie une couche en parallèle.
+
+5. DONNÉES PERSONNELLES — CHAÎNE CNIL MINIMALE
+
+Une panne n’est pas automatiquement une violation. Si une perte de
+disponibilité, d’intégrité ou de confidentialité de données personnelles est
+plausible, transmettre immédiatement les faits à la personne compétente.
+Le sous-traitant alerte le responsable du traitement dans les meilleurs délais.
+Toute violation est documentée en interne. Si elle présente un risque pour les
+personnes, le responsable la notifie à la CNIL dans les meilleurs délais et, si
+possible, sous 72 heures après en avoir pris connaissance. En cas de risque
+élevé, les personnes sont aussi informées dans les meilleurs délais, sauf
+exception applicable. Une notification initiale peut être complétée. La
+qualification reste juridique et factuelle, au cas par cas.
+
+6. AVANT DE DIRE « RÉSOLU »
+
+[ ] parcours métier reçu de bout en bout ; [ ] données et opérations rapprochées
+[ ] paiement/e-mail/webhook vérifiés si applicables ; [ ] validation métier
+[ ] branche cyber levée si ouverte ; [ ] surveillance et message final datés
+
+Une page d’accueil visible ne suffit jamais. Si une case critique reste inconnue
+ou en échec, annoncer « partiel » ou « surveillance », conserver le canal de
+secours et fixer l’heure du prochain point.
+
+====================== FIN DE LA PAGE RÉFLEXE ======================
+
+
+SOMMAIRE DES ANNEXES OPÉRATIONNELLES
+====================================
+
+1. Les 30 premières secondes — version détaillée
+2. Porte cyber et relais spécialisés
+3. Chronologie 0–5–15–60 minutes
+4. Routeur par symptôme et par couche
+5. Ticket express à copier
+6. Journal et références de preuves
+7. Contacts hors bande
+8. Cinq messages clients
+9. RTO, RPO et priorité métier
+10. Interdits pendant l’incident
+11. Rollback ou restauration
+12. Recette métier
+13. Porte de clôture
+14. Retour d’expérience J+1, J+7 et J+30
+15. Sources officielles et limites
+
+Les annexes détaillent la page réflexe. Enregistrez ce fichier sur un support
+accessible si le site, l’e-mail, l’intranet ou le gestionnaire habituel est
+indisponible. Imprimez la page 1 et préremplissez les contacts de l’annexe 7.
+
+
+======================================================================
+ANNEXES OPÉRATIONNELLES
+======================================================================
+
+
+======================================================================
+1. LES 30 PREMIÈRES SECONDES
+======================================================================
+
+1. NE CHANGEZ RIEN AU HASARD.
+   Ne redémarrez pas, ne désactivez pas une extension, ne changez pas le DNS
+   et ne restaurez pas une sauvegarde par réflexe.
+
+2. PASSEZ IMMÉDIATEMENT PAR LA PORTE CYBER CI-DESSOUS.
+
+3. NOTEZ QUATRE FAITS :
+   - heure de découverte ;
+   - adresse exacte de la page ;
+   - message affiché mot pour mot ;
+   - fonction métier touchée : contact, rendez-vous, commande, paiement,
+     connexion, espace client ou autre.
+
+4. NOMMEZ UNE PERSONNE QUI COORDONNE.
+   Une seule personne tient le journal, centralise les informations et autorise
+   les changements avec l’intervenant compétent.
+
+5. N’ANNONCEZ PAS QUE LE SITE EST RÉTABLI.
+   Une page d’accueil visible ne prouve pas qu’un formulaire, un paiement ou
+   une connexion fonctionne.
+
+
+======================================================================
+2. PORTE CYBER — À LIRE AVANT TOUT AUTRE TEST
+======================================================================
+
+Une suspicion suffit pour changer de procédure ; il n’est pas nécessaire
+d’avoir déjà prouvé une attaque.
+
+Y a-t-il au moins un de ces signaux ?
+
+[ ] contenu remplacé, message de rançon ou demande d’extorsion ;
+[ ] redirection vers un domaine inconnu ;
+[ ] compte administrateur, mot de passe ou accès modifié sans autorisation ;
+[ ] alerte de sécurité cohérente ou activité inhabituelle sur un compte ;
+[ ] courriels étranges envoyés depuis le domaine ;
+[ ] donnée possiblement divulguée, altérée, supprimée ou rendue indisponible ;
+[ ] changement DNS, certificat ou fournisseur que personne n’a autorisé ;
+[ ] plusieurs systèmes touchés en même temps sans explication établie.
+
+SI OUI OU SI LE DOUTE EST SÉRIEUX :
+
+[ ] Arrêter les essais ordinaires et les changements.
+[ ] Conserver les observations, heures, captures et références de tickets.
+[ ] Ne pas nettoyer, réinstaller, redémarrer ou restaurer pour « voir ».
+[ ] Prévenir le responsable sécurité, la direction et la personne chargée des
+    données personnelles selon le plan interne.
+[ ] Contacter l’intervenant de réponse à incident prévu par l’organisation.
+[ ] Utiliser 17Cyber, service public d’assistance en ligne accessible
+    24 h/24 et 7 j/7 :
+    https://17cyber.gouv.fr/
+[ ] Vérifier le contrat d’assurance et les obligations de signalement avec les
+    personnes compétentes, sans retarder la réponse technique.
+
+17Cyber aide à qualifier et orienter une situation de cybermalveillance. Il ne
+remplace pas l’astreinte ou le prestataire technique de l’entreprise.
+
+SI NON :
+
+Continuer uniquement avec des observations passives. Ne saisir aucun
+identifiant, moyen de paiement, formulaire, commande ou donnée client pendant
+le triage initial.
+
+
+======================================================================
+3. CHRONOLOGIE DE L’INCIDENT
+======================================================================
+
+Les repères 0–5, 5–15, 15–60 et après 60 minutes organisent les actions.
+Ils ne constituent ni une moyenne, ni un engagement contractuel (SLA), ni une
+promesse de réparation.
+
+
+0 À 5 MINUTES — CONFIRMER SANS AGGRAVER
+---------------------------------------
+
+[ ] Déclencher la porte cyber.
+[ ] Nommer le coordinateur et un remplaçant.
+[ ] Noter l’heure, l’URL, le message exact et la dernière réussite connue.
+[ ] Identifier les fonctions visibles comme touchées et celles qui fonctionnent.
+[ ] En l’absence de signal cyber, faire au maximum un second constat passif :
+    autre connexion, par exemple données mobiles, sans connexion à un compte et
+    sans envoyer de formulaire, commande ou paiement.
+[ ] Noter le dernier changement connu : mise en ligne, mise à jour, domaine,
+    certificat, configuration ou intervention d’un fournisseur.
+[ ] Interdire les actions parallèles non coordonnées.
+
+Sortie attendue : un incident confirmé ou limité à un appareil/réseau, un
+coordinateur identifié et le début du ticket express.
+
+
+5 À 15 MINUTES — ROUTER ET OUVRIR LE TICKET
+-------------------------------------------
+
+[ ] Utiliser le routeur de symptômes de la section 4.
+[ ] Consulter les pages publiques d’état des fournisseurs connus.
+[ ] Ouvrir un ticket auprès du premier interlocuteur pertinent.
+[ ] Noter la référence du ticket et l’heure de prise en compte.
+[ ] Qualifier l’impact métier sans inventer de chiffre :
+    - CRITIQUE : activité essentielle, paiement, données ou nombreux clients
+      touchés, ou suspicion cyber ;
+    - MAJEUR : parcours principal indisponible, mais canal sûr de secours ;
+    - LIMITÉ : fonction secondaire ou périmètre restreint confirmé.
+[ ] Activer un moyen de contact ou un mode de service temporaire réellement
+    surveillé et adapté aux données traitées.
+[ ] Publier le message « Investigation » si des clients sont affectés.
+[ ] Fixer l’heure du prochain point d’information, pas l’heure du retour.
+
+Sortie attendue : un propriétaire sollicité, un ticket exploitable, un impact
+qualifié et un prochain point annoncé.
+
+
+15 À 60 MINUTES — COORDONNER, INFORMER, PRÉSERVER
+-------------------------------------------------
+
+[ ] Centraliser les faits dans un seul journal.
+[ ] Faire confirmer par l’intervenant ce qu’il prend en charge et ce qui reste
+    hors de son périmètre.
+[ ] Séparer explicitement faits, hypothèses et inconnues.
+[ ] Décider du mode dégradé : téléphone, adresse alternative, prise manuelle ou
+    autre procédure validée, sans réduire la sécurité des données.
+[ ] Mettre à jour le message client même si la cause reste inconnue.
+[ ] Escalader à la direction lorsque l’impact dépasse le seuil prévu, lorsque
+    personne ne répond ou lorsque le RTO risque de ne pas être respecté.
+[ ] Si un signal cyber apparaît, revenir immédiatement à la porte cyber.
+[ ] Préparer les critères de reprise avant toute restauration ou remise en
+    service.
+
+Sortie attendue : une source de vérité, un mode dégradé, une cadence
+d’information et un responsable pour chaque décision.
+
+
+APRÈS 60 MINUTES — TENIR LA DISCIPLINE JUSQU’AU RETOUR
+------------------------------------------------------
+
+[ ] Maintenir une cadence d’information proportionnée à l’impact.
+    Ne pas imposer une fréquence universelle ; annoncer chaque fois l’heure du
+    prochain point.
+[ ] N’annoncer une cause ou une estimation de retour que si le responsable de
+    la couche concernée peut l’étayer.
+[ ] Comparer l’impact au RTO et au RPO définis dans la section 9.
+[ ] Choisir entre attente fournisseur, contournement, retour à la version
+    précédente (rollback) ou restauration avec la grille de la section 11.
+[ ] Pour les commandes, paiements et rendez-vous, prévoir le rapprochement des
+    opérations manquantes, en attente ou potentiellement doublées.
+[ ] Tester le parcours métier complet avant d’utiliser le mot « résolu ».
+[ ] Conserver le canal de secours tant que le service est seulement partiel ou
+    en surveillance.
+[ ] Si une fermeture technique complète est nécessaire, confier au prestataire
+    les mesures SEO temporaires. Ne pas ajouter « noindex » ou supprimer les
+    pages par réflexe.
+
+Sortie attendue : service restauré et accepté, ou incident toujours ouvert avec
+prochain point, responsables et décisions documentés.
+
+
+======================================================================
+4. ROUTEUR DE SYMPTÔMES — ORIENTER SANS DIAGNOSTIQUER
+======================================================================
+
+Ce tableau désigne un premier interlocuteur et une preuve à demander. Il
+n’établit jamais la cause.
+
+A. LE SITE FONCTIONNE SUR UN AUTRE APPAREIL OU UN AUTRE RÉSEAU
+   Premier interlocuteur : support informatique interne ou fournisseur d’accès.
+   À transmettre : appareil, réseau, heure et message exact.
+   Ne pas conclure : que le site ou le serveur est en panne pour tous.
+
+B. « DOMAINE INTROUVABLE », NXDOMAIN OU PAGE D’EXPIRATION
+   « NXDOMAIN » est un message indiquant que le nom demandé n’a pas été trouvé.
+   Premier interlocuteur : bureau d’enregistrement du domaine (registrar) ou
+   gestionnaire DNS, le service qui relie le nom du site à son adresse.
+   À demander : validité du domaine, serveurs de noms, état DNS/DNSSEC et
+   éventuel incident fournisseur.
+   Ne pas faire : modifier ou réinitialiser la zone DNS au hasard.
+
+C. ALERTE DE CERTIFICAT OU « CONNEXION NON PRIVÉE »
+   Premier interlocuteur : mainteneur, hébergeur ou fournisseur chargé du
+   certificat et de la diffusion/sécurité du site (CDN).
+   À demander : état, domaine couvert, date et chaîne du certificat.
+   Ne pas faire : contourner l’alerte ou demander aux clients de l’ignorer.
+
+D. TOUTES LES PAGES EXPIRENT, REFUSENT LA CONNEXION OU NE RÉPONDENT PLUS
+   Premier interlocuteur : hébergeur, fournisseur de diffusion du site (CDN)
+   ou mainteneur.
+   À demander : page d’état, périmètre touché, disponibilité de l’origine et
+   référence d’incident.
+   Ne pas conclure : que le code applicatif est nécessairement responsable.
+
+E. ERREUR 500, 502, 503 OU AUTRE ERREUR SERVEUR
+   Premier interlocuteur : mainteneur et, selon le contrat, hébergeur/CDN.
+   À transmettre : code exact, URL, heure, fréquence et dernier changement.
+   À demander : corrélation avec les journaux et l’état des dépendances.
+   Ne pas conclure : qu’un code d’erreur désigne à lui seul la cause.
+
+F. L’ACCUEIL FONCTIONNE, MAIS FORMULAIRE, CONNEXION OU ESPACE CLIENT ÉCHOUE
+   Premier interlocuteur : mainteneur de l’application et fournisseur de la
+   fonction concernée.
+   À transmettre : étape exacte qui échoue et dernière réussite connue.
+   Ne pas faire : multiplier les soumissions ou utiliser un vrai compte client.
+
+G. PANIER, PAIEMENT, CONFIRMATION OU RENDEZ-VOUS INCOHÉRENT
+   Premier interlocuteur : mainteneur, prestataire de paiement/réservation et
+   responsable métier.
+   À demander : état du fournisseur, événements reçus, opérations en attente et
+   méthode de rapprochement.
+   Ne pas faire : relancer plusieurs fois une opération réelle.
+
+H. LE SITE ET LES E-MAILS DU DOMAINE TOMBENT EN MÊME TEMPS
+   Premier interlocuteur : gestionnaire DNS, registrar et fournisseur e-mail.
+   À demander : état des enregistrements web et e-mail et changements récents.
+   Ne pas faire : changer les enregistrements MX ou DNS sans coordination.
+
+I. UNE SEULE RÉGION OU CERTAINS RÉSEAUX SONT TOUCHÉS
+   Premier interlocuteur : CDN, DNS, hébergeur ou fournisseur réseau.
+   À transmettre : régions/réseaux observés et heures.
+   Ne pas conclure : que la page d’état « verte » couvre le parcours réel.
+
+J. CONTENU, REDIRECTION, COMPTE OU ACCÈS MODIFIÉ SANS AUTORISATION
+   Premier interlocuteur : intervenant de réponse à incident cyber et 17Cyber.
+   Action : arrêter les essais ordinaires et préserver les observations.
+   Ne pas faire : nettoyer, restaurer ou réinstaller soi-même.
+
+
+======================================================================
+5. TICKET EXPRESS À COPIER
+======================================================================
+
+RÈGLE : aucun mot de passe, clé, jeton, fichier complet, donnée client,
+identifiant réel, moyen de paiement ou information personnelle inutile.
+
+Identifiant interne de l’incident : __________________________________________
+Coordinateur : __________________________  Remplaçant : ______________________
+Moyen sûr pour joindre le coordinateur : ____________________________________
+
+Heure de découverte : ___________________  Fuseau : __________________________
+Dernière réussite connue : __________________________________________________
+Adresse exacte touchée : ____________________________________________________
+Message exact ou code observé : _____________________________________________
+______________________________________________________________________________
+
+Fonctions touchées :
+[ ] accueil  [ ] contact  [ ] rendez-vous  [ ] panier  [ ] paiement
+[ ] connexion  [ ] espace client  [ ] e-mail  [ ] autre : _________________
+
+Ce qui fonctionne encore : __________________________________________________
+Impact métier observé, sans estimation inventée : ____________________________
+______________________________________________________________________________
+
+Second constat passif autorisé et réalisé ?
+[ ] non  [ ] oui, depuis : __________________________________________________
+Résultat : __________________________________________________________________
+
+Dernier changement connu : __________________________________________________
+______________________________________________________________________________
+
+Signal cyber observé ?
+[ ] non  [ ] oui  [ ] doute sérieux
+Si oui ou doute : retour à la section 2 et arrêt des essais ordinaires.
+
+Fournisseur ou page d’état consulté : _______________________________________
+Résultat factuel : ___________________________________________________________
+
+Premier interlocuteur contacté : ____________________________________________
+Heure : ______________________________  Référence ticket : ___________________
+Périmètre qu’il prend en charge : ___________________________________________
+
+Mode dégradé disponible : ___________________________________________________
+Prochain point d’information prévu à : ______________________________________
+
+
+======================================================================
+6. JOURNAL — UNE SEULE SOURCE DE VÉRITÉ
+======================================================================
+
+Pour chaque entrée, distinguer :
+
+- FAIT : directement observé ou confirmé par une source nommée ;
+- HYPOTHÈSE : explication à vérifier ;
+- DÉCISION : choix autorisé, personne qui l’autorise et raison ;
+- RÉSULTAT : effet observé après l’action.
+
+Ne coller ni secrets, ni journaux complets contenant des données personnelles.
+Une pièce sensible reste dans l’espace sécurisé prévu ; le journal ne contient
+que sa référence interne.
+
+Entrée 1
+Heure : ______  Auteur : ______________  Type : FAIT / HYPOTHÈSE / DÉCISION
+Contenu : ___________________________________________________________________
+Action autorisée et par qui : ________________________________________________
+Résultat : ______________________________  Prochaine décision : ______________
+
+Entrée 2
+Heure : ______  Auteur : ______________  Type : FAIT / HYPOTHÈSE / DÉCISION
+Contenu : ___________________________________________________________________
+Action autorisée et par qui : ________________________________________________
+Résultat : ______________________________  Prochaine décision : ______________
+
+Entrée 3
+Heure : ______  Auteur : ______________  Type : FAIT / HYPOTHÈSE / DÉCISION
+Contenu : ___________________________________________________________________
+Action autorisée et par qui : ________________________________________________
+Résultat : ______________________________  Prochaine décision : ______________
+
+Entrée 4
+Heure : ______  Auteur : ______________  Type : FAIT / HYPOTHÈSE / DÉCISION
+Contenu : ___________________________________________________________________
+Action autorisée et par qui : ________________________________________________
+Résultat : ______________________________  Prochaine décision : ______________
+
+Entrée 5
+Heure : ______  Auteur : ______________  Type : FAIT / HYPOTHÈSE / DÉCISION
+Contenu : ___________________________________________________________________
+Action autorisée et par qui : ________________________________________________
+Résultat : ______________________________  Prochaine décision : ______________
+
+
+======================================================================
+7. CONTACTS HORS BANDE À PRÉREMPLIR
+======================================================================
+
+« Hors bande » signifie : accessible même si le site, son domaine, l’e-mail
+professionnel ou l’intranet habituel est indisponible.
+
+Ne pas inscrire de secret. Indiquer seulement le service, le contact et
+l’emplacement du coffre ou du document sécurisé contenant les accès.
+
+Coordinateur principal : ____________________________________________________
+Téléphone ou canal hors bande : _____________________________________________
+Coordinateur remplaçant : ___________________________________________________
+Téléphone ou canal hors bande : _____________________________________________
+
+Responsable direction : _____________________________________________________
+Responsable communication : __________________________________________________
+Responsable métier qui acceptera le retour : _________________________________
+Responsable données personnelles / juridique : ______________________________
+
+Mainteneur / développeur : ___________________________________________________
+Canal d’urgence et heures couvertes : ________________________________________
+Référence du contrat et de ses engagements (SLA) dans le coffre documentaire :
+______________________________________________________________________________
+
+Hébergeur : __________________________________________________________________
+Support : ____________________________  Page d’état : _________________________
+
+Registrar : __________________________________________________________________
+Support : ____________________________  Page d’état : _________________________
+
+Gestionnaire DNS, certificat ou diffusion du site (CDN) : ____________________
+Support : ____________________________  Page d’état : _________________________
+
+Paiement ou réservation : ____________________________________________________
+Support : ____________________________  Page d’état : _________________________
+
+Fournisseur e-mail : _________________________________________________________
+Support : ____________________________  Page d’état : _________________________
+
+Intervenant de réponse à incident cyber : ____________________________________
+Canal d’urgence : ____________________________________________________________
+17Cyber : https://17cyber.gouv.fr/
+
+Assureur/courtier — emplacement du contrat, sans recopier de donnée sensible :
+______________________________________________________________________________
+
+Coffre d’accès utilisé par l’organisation, sans inscrire son contenu :
+______________________________________________________________________________
+
+Canal public de secours indépendant du site : ________________________________
+Téléphone ou adresse alternative réellement surveillé : _____________________
+Emplacement de la présente fiche hors ligne : ________________________________
+
+
+======================================================================
+8. MESSAGES CLIENTS À ADAPTER AUX FAITS
+======================================================================
+
+Règles communes
+---------------
+
+- Dire ce qui est touché et ce qui fonctionne encore.
+- Donner un canal alternatif réellement surveillé.
+- Annoncer l’heure du prochain point, pas une heure de retour inventée.
+- Ne pas affirmer « attaque », « aucune donnée touchée » ou « aucun client
+  affecté » sans qualification compétente.
+- Ne pas exposer de détail technique exploitable.
+- Garder un message cohérent sur tous les canaux.
+
+
+ÉTAT 1 — INVESTIGATION
+----------------------
+
+« Nous constatons depuis [heure observée] une indisponibilité de [fonction ou
+périmètre]. Nous vérifions actuellement la situation avec [équipe ou
+fournisseur]. Vous pouvez encore [service disponible] ou nous joindre par
+[canal surveillé]. Prochaine information à [heure]. »
+
+
+ÉTAT 2 — PROBLÈME IDENTIFIÉ
+---------------------------
+
+À utiliser seulement après confirmation par l’intervenant responsable.
+
+« Le problème affectant [fonction ou périmètre] a été identifié par
+[intervenant]. Les équipes responsables travaillent au rétablissement.
+[Service disponible ou limite connue]. Prochaine information à [heure].
+Nous ne communiquons pas encore d’heure de retour tant qu’elle n’est pas
+confirmée. »
+
+
+ÉTAT 3 — CONTOURNEMENT DISPONIBLE
+---------------------------------
+
+« [Fonction] reste indisponible. Un mode temporaire est disponible :
+[instruction simple]. N’utilisez pas ce canal pour transmettre [catégorie de
+donnée sensible]. Si vous avez effectué [action concernée] depuis [période
+connue], ne la répétez pas avant d’avoir vérifié [confirmation attendue].
+Prochaine information à [heure]. »
+
+
+ÉTAT 4 — SURVEILLANCE
+---------------------
+
+« [Fonction] est de nouveau accessible depuis [heure], mais l’incident reste
+en surveillance pendant les contrôles. Nous avons validé [tests réellement
+effectués]. Conservez le canal alternatif [canal] jusqu’à notre confirmation
+finale. Prochaine information à [heure]. »
+
+
+ÉTAT 5 — RÉSOLU
+----------------
+
+« L’incident affectant [fonction ou périmètre] est clôturé à [heure]. Nous
+avons vérifié [parcours métier réellement testés]. Si une demande, commande ou
+réservation effectuée entre [début connu] et [fin connue] n’a pas reçu la
+confirmation attendue, contactez-nous par [canal surveillé] avant de la
+renouveler. [Un retour d’expérience sera communiqué si cette annonce est
+réellement prévue.] »
+
+
+======================================================================
+9. RTO, RPO ET PRIORITÉ MÉTIER
+======================================================================
+
+RTO — objectif de temps de reprise
+----------------------------------
+
+Durée cible décidée par l’entreprise pour remettre une fonction en service ou
+activer un mode dégradé acceptable. Un RTO n’est pas une promesse de réparation
+s’il n’est pas défini et couvert par un contrat précis.
+
+RPO — objectif de point de reprise
+----------------------------------
+
+Quantité maximale de données que l’entreprise accepte de devoir rapprocher,
+ressaisir ou perdre lors d’une restauration. Une sauvegarde quotidienne ne
+prouve ni qu’elle est saine, ni qu’elle peut être restaurée, ni que perdre
+jusqu’à une journée de données est acceptable.
+
+SLA — engagements écrits dans le contrat
+----------------------------------------
+
+Le SLA précise notamment les heures couvertes, la prise en compte, les
+objectifs de rétablissement, les exclusions et l’escalade. Il faut distinguer
+une réponse automatique, une prise en charge humaine, un contournement et un
+retour complet du service.
+
+À préremplir pour chaque fonction critique
+------------------------------------------
+
+Fonction 1 : _________________________________________________________________
+Mode dégradé minimum acceptable : ____________________________________________
+RTO décidé : __________________________  Autorité de décision : ______________
+RPO décidé : __________________________  Données à rapprocher : ______________
+Test permettant d’accepter le retour : _______________________________________
+
+Fonction 2 : _________________________________________________________________
+Mode dégradé minimum acceptable : ____________________________________________
+RTO décidé : __________________________  Autorité de décision : ______________
+RPO décidé : __________________________  Données à rapprocher : ______________
+Test permettant d’accepter le retour : _______________________________________
+
+Fonction 3 : _________________________________________________________________
+Mode dégradé minimum acceptable : ____________________________________________
+RTO décidé : __________________________  Autorité de décision : ______________
+RPO décidé : __________________________  Données à rapprocher : ______________
+Test permettant d’accepter le retour : _______________________________________
+
+Questions à poser au prestataire
+--------------------------------
+
+[ ] Quand le délai contractuel commence-t-il réellement ?
+[ ] Couvre-t-il la prise en compte, le contournement ou le rétablissement ?
+[ ] Quelles heures, exclusions, dépendances et escalades sont prévues ?
+[ ] Quelle preuve de restauration et quel test métier sont compris ?
+
+
+======================================================================
+10. INTERDITS PENDANT L’INCIDENT
+======================================================================
+
+[ ] Ne pas changer plusieurs réglages à la fois.
+[ ] Ne pas modifier DNS, certificat, domaine ou e-mail pour « essayer ».
+[ ] Ne pas redémarrer un système sans décision de l’intervenant responsable.
+[ ] Ne pas désactiver une sécurité ou une extension au hasard.
+[ ] Ne pas nettoyer, supprimer ou réinstaller en présence d’un signal cyber.
+[ ] Ne pas restaurer la dernière sauvegarde sans connaître son contenu, sa
+    fiabilité et les données qu’elle écraserait.
+[ ] Ne pas multiplier les commandes, paiements, rendez-vous ou formulaires.
+[ ] Ne transmettre aucun secret, mot de passe, jeton ou donnée client dans un
+    ticket, un message public ou cette fiche.
+[ ] Ne pas publier une cause, une absence de fuite ou une heure de retour non
+    démontrée.
+[ ] Ne pas ajouter « noindex », supprimer les pages ou changer le fichier
+    robots.txt par réflexe.
+[ ] Ne pas fermer l’incident parce que la seule page d’accueil s’affiche.
+[ ] Ne pas laisser deux équipes effectuer des changements non coordonnés.
+
+
+======================================================================
+11. RETOUR À LA VERSION PRÉCÉDENTE OU RESTAURATION — PORTE DE DÉCISION
+======================================================================
+
+Cette section prépare la décision du prestataire. Elle ne demande pas au
+dirigeant d’effectuer lui-même une manipulation technique.
+
+Conditions communes avant tout changement
+------------------------------------------
+
+[ ] La porte cyber a été vérifiée ; toute suspicion est prise en charge.
+[ ] Une personne nommée autorise la décision.
+[ ] L’état actuel et les preuves utiles ont été conservés.
+[ ] La source visée est identifiée et digne de confiance.
+[ ] La copie ou version a été testée dans un environnement séparé.
+[ ] La date et le contenu de la copie sont connus.
+[ ] Les commandes, rendez-vous, messages et données créés depuis cette date
+    sont inventoriés sans recopier de données personnelles dans ce document.
+[ ] Un plan de rapprochement ou de ressaisie est prêt.
+[ ] Les tests de reprise et le responsable métier sont nommés.
+[ ] Un retour arrière est prévu si l’action échoue.
+
+
+RETOUR DU CODE OU DE LA CONFIGURATION À LA VERSION PRÉCÉDENTE (ROLLBACK)
+------------------------------------------------------------------------
+
+À envisager par le prestataire si un changement récent est relié à l’incident
+et si le retour à la version précédente peut éviter de toucher aux données.
+
+À demander :
+
+- quelle version revient ;
+- quelles données restent inchangées ;
+- comment la version a été testée ;
+- comment revenir en arrière si elle échoue ;
+- quelle preuve confirmera la reprise.
+
+
+RESTAURATION DE DONNÉES
+-----------------------
+
+À envisager seulement si le diagnostic la justifie.
+
+À demander :
+
+- date du point restauré et perte maximale possible ;
+- intégrité et origine de la sauvegarde ;
+- preuve d’un test de restauration séparé ;
+- opérations à rapprocher, ressaisir ou annuler ;
+- traitement des doublons et confirmations déjà envoyées.
+
+
+RESTAURATION COMPLÈTE DU SITE
+-----------------------------
+
+Elle peut réintroduire le défaut, écraser des données récentes ou remettre en
+service une copie compromise. Elle n’est pas automatiquement plus sûre qu’un
+rollback ciblé. Exiger la justification, les contrôles et le plan de
+rapprochement.
+
+
+======================================================================
+12. RECETTE MÉTIER AVANT LE RETOUR
+======================================================================
+
+Utiliser uniquement des données et comptes de test prévus à cet effet. Ne pas
+copier ici les valeurs testées. Noter seulement PASS, ÉCHEC ou NON APPLICABLE,
+l’heure et le responsable.
+
+Contrôles communs
+-----------------
+
+[ ] page d’accueil et pages essentielles ;
+[ ] téléphone et ordinateur lorsque ces usages sont pertinents ;
+[ ] absence d’alerte de certificat ou de redirection inconnue ;
+[ ] contenu, prix, horaires et coordonnées cohérents ;
+[ ] e-mails ou notifications attendus réellement reçus ;
+[ ] suivi technique stable pendant la durée décidée par l’intervenant ;
+[ ] canal de secours maintenu si une fonction reste dégradée.
+
+
+SITE VITRINE
+------------
+
+[ ] Affichage des pages critiques.
+[ ] Envoi d’un formulaire avec une identité de test.
+[ ] Réception par le bon destinataire.
+[ ] Confirmation cohérente pour l’utilisateur.
+[ ] Une seule demande créée.
+
+Résultat : __________________  Heure : __________  Responsable : _____________
+
+
+PRISE DE RENDEZ-VOUS
+--------------------
+
+[ ] Affichage des disponibilités prévues.
+[ ] Création d’un rendez-vous de test.
+[ ] Notification et agenda cohérents.
+[ ] Annulation propre du rendez-vous de test.
+[ ] Créneau libéré une seule fois.
+
+Résultat : __________________  Heure : __________  Responsable : _____________
+
+
+BOUTIQUE EN LIGNE
+-----------------
+
+[ ] Produit, prix, taxe, livraison et stock cohérents.
+[ ] Panier créé une seule fois.
+[ ] Paiement testé selon la méthode contrôlée convenue avec le prestataire.
+[ ] Un seul effet métier attendu : une commande et un débit, sans doublon.
+[ ] Confirmation, facture et mise à jour du stock cohérentes.
+[ ] Livraisons webhook manquantes, dupliquées ou désordonnées rapprochées ;
+    la déduplication garantit un seul effet métier, pas une seule livraison.
+[ ] Opérations en attente pendant l’incident rapprochées avant toute relance.
+
+Résultat : __________________  Heure : __________  Responsable : _____________
+
+
+ESPACE CLIENT OU APPLICATION MÉTIER
+-----------------------------------
+
+[ ] Connexion avec un compte de test.
+[ ] Bon rôle et bonnes autorisations.
+[ ] Données prévues visibles, aucune donnée supplémentaire.
+[ ] Action métier critique réalisée une seule fois.
+[ ] Enregistrement et notification cohérents.
+[ ] Déconnexion et fin de session conformes au fonctionnement prévu.
+
+Résultat : __________________  Heure : __________  Responsable : _____________
+
+
+======================================================================
+13. PORTE DE CLÔTURE
+======================================================================
+
+L’état « résolu » est interdit tant qu’une case critique reste sans réponse.
+
+[ ] Les parcours critiques prévus ont réussi.
+[ ] Le responsable métier accepte la reprise.
+[ ] Les opérations en attente, manquantes ou doublées ont un traitement nommé.
+[ ] Les données restaurées ont été rapprochées selon le RPO décidé.
+[ ] Le prestataire confirme l’état technique et les limites restantes.
+[ ] La période de surveillance décidée est terminée ou explicitement maintenue.
+[ ] Le message final décrit uniquement les faits vérifiés.
+[ ] Les clients savent quoi faire si une confirmation manque.
+[ ] Le journal, les preuves et les références de tickets sont conservés.
+[ ] Toute qualification cyber, données personnelles, assurance ou autorité est
+    confiée à la personne compétente.
+[ ] Les travaux non terminés ont un responsable et une date.
+
+Décision :
+[ ] RÉSOLU
+[ ] SERVICE PARTIEL — canal de secours maintenu
+[ ] SURVEILLANCE — incident encore ouvert
+
+Décidé par : _____________________________  Date/heure : ______________________
+Limites ou actions restantes : _______________________________________________
+______________________________________________________________________________
+
+
+======================================================================
+14. RETOUR D’EXPÉRIENCE
+======================================================================
+
+J+1 — ÉTABLIR LES FAITS
+-----------------------
+
+[ ] Geler la chronologie : début observé, détection, prise en compte, retour,
+    surveillance et clôture.
+[ ] Distinguer cause confirmée, facteurs contributifs et inconnues.
+[ ] Décrire l’impact réel sans transformer une estimation en perte certaine.
+[ ] Recenser décisions, changements, messages et résultats.
+[ ] Vérifier les opérations clients à rapprocher.
+[ ] Noter ce qui a ralenti ou sécurisé la réponse.
+[ ] Affecter les corrections immédiates avec responsable et date.
+
+
+J+7 — CORRIGER LE SYSTÈME DE RÉPONSE
+------------------------------------
+
+[ ] Valider ou compléter l’analyse de cause.
+[ ] Tester réellement une restauration si cette preuve manquait.
+[ ] Mettre à jour contacts hors bande, accès et remplaçants.
+[ ] Vérifier le monitoring du site et des parcours critiques.
+[ ] Revoir RTO, RPO, heures d’astreinte, escalades et dépendances du contrat.
+[ ] Mettre à jour les modèles de communication et la présente fiche.
+[ ] Évaluer les coûts directs avec des bornes et hypothèses explicites.
+[ ] Affecter chaque action à une personne et une échéance.
+
+
+J+30 — PROUVER QUE LA CORRECTION TIENT
+-------------------------------------
+
+[ ] Rejouer un exercice de panne sans toucher à la production.
+[ ] Vérifier que l’alerte atteint le titulaire et son remplaçant.
+[ ] Tester le canal public de secours indépendant du site.
+[ ] Rejouer la restauration et la recette métier prévues.
+[ ] Contrôler domaine, certificat, DNS et renouvellements avec leurs
+    propriétaires.
+[ ] Vérifier les dépendances : hébergeur, CDN, paiement, réservation, e-mail.
+[ ] Confirmer ou modifier RTO et RPO selon les résultats.
+[ ] Clôturer uniquement les actions dont la preuve est conservée.
+
+
+Registre des actions
+--------------------
+
+Action : ____________________________________________________________________
+Responsable : __________________  Échéance : __________  Preuve : _____________
+Statut : [ ] à faire  [ ] en cours  [ ] vérifié  [ ] reporté avec justification
+
+Action : ____________________________________________________________________
+Responsable : __________________  Échéance : __________  Preuve : _____________
+Statut : [ ] à faire  [ ] en cours  [ ] vérifié  [ ] reporté avec justification
+
+Action : ____________________________________________________________________
+Responsable : __________________  Échéance : __________  Preuve : _____________
+Statut : [ ] à faire  [ ] en cours  [ ] vérifié  [ ] reporté avec justification
+
+
+======================================================================
+15. SOURCES OFFICIELLES ET LIMITES
+======================================================================
+
+Sources consultées le 27 juillet 2026
+--------------------------------------
+
+France
+
+- CNIL — Prévoir la continuité et la reprise d’activité
+  https://www.cnil.fr/fr/securite-prevoir-la-continuite-et-la-reprise-dactivite
+
+- CNIL — Sauvegarder
+  https://www.cnil.fr/fr/securite-sauvegarder
+
+- CNIL — Gérer les incidents et les violations
+  https://www.cnil.fr/fr/securite-gerer-les-incidents-et-les-violations
+
+- CNIL — Notifier une violation de données personnelles
+  https://www.cnil.fr/fr/services-en-ligne/notifier-une-violation-de-donnees-personnelles
+
+- ANSSI — Crise d’origine cyber
+  https://messervices.cyber.gouv.fr/documents-guides/anssi-guide-gestion_crise_cyber.pdf
+
+- CERT-FR — Les bons réflexes en cas d’intrusion
+  https://cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/
+
+- 17Cyber — Assistance publique en ligne
+  https://17cyber.gouv.fr/
+
+- Afnic — Whois et informations sur les noms de domaine
+  https://www.afnic.fr/noms-de-domaine/tout-savoir/whois-trouver-un-nom-de-domaine/
+
+International
+
+- Google Search Central — Désactiver ou suspendre temporairement un site
+  https://developers.google.com/search/docs/crawling-indexing/pause-online-business?hl=fr
+
+- NCSC (Royaume-Uni) — Small Business Guide: Response & Recovery
+  https://www.ncsc.gov.uk/collection/small-business-guidance--response-and-recovery
+
+- NIST (États-Unis) — SP 800-61 Rev. 3, Incident Response
+  https://csrc.nist.gov/pubs/sp/800/61/r3/final
+
+
+Limites
+-------
+
+- Une erreur 500, 502, 503, DNS ou certificat ne prouve pas sa cause.
+- Une panne n’est pas automatiquement une cyberattaque ou une violation de
+  données personnelles.
+- Le délai réglementaire éventuellement applicable dépend de faits qualifiés ;
+  cette fiche ne fournit pas d’avis juridique.
+- Une sauvegarde existante ne garantit ni son intégrité, ni sa restauration,
+  ni la conservation des données récentes.
+- Un RTO ou un délai de support n’est pas une promesse universelle.
+- Un retour visuel ne prouve pas la reprise du parcours métier.
+- 17Cyber est un service d’assistance et d’orientation en ligne ; il ne
+  remplace pas les contrats, intervenants et procédures de l’organisation.
+- Les sources et services externes peuvent évoluer. Revoir cette fiche, ses
+  liens et ses contacts au minimum lors de chaque exercice ou changement de
+  fournisseur.
+
+
+FIN DE LA FICHE

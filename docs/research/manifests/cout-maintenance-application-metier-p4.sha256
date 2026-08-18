@@ -1,7 +1,7 @@
 84844cea676d9f5083b352e99b1d57dab7321603c08f2832ae7f863915ae9f9b  docs/research/cout-maintenance-application-metier.md
 e2c0fab0dc0787d4f9a2a32cfb44d33d76ff29d233f3d7d295a2c57d02bf67b4  src/app/guides/cout-maintenance-application-metier/page.tsx
 8a191ff4136490f014cce5a95070ff517cd22840fb0192efaa9405a077b18b54  src/app/guides/cout-maintenance-application-metier/opengraph-image.tsx
-b2eeda0fc3d7be23834108823176da59814d312e4b93c33426ab9e475a00ee3f  src/lib/guides.ts
+8663e6e84352121ec854393e049492a1c2b72f242166141e5d31e0911b43cb09  src/lib/guides.ts
 d5b1d9495cc5d4374776167f74165984d6ccac13baee18aa3c69422e2ed47c0f  src/app/guides/contrat-tma-application/page.tsx
 57455e1436ca8967a7f524c19f1df47759367c7a5fbaae4d58d58b45cd26db8a  src/app/guides/calculer-roi-application-metier/page.tsx
 700327f375b94ee22b6116cc876f3e749de6ae565fd31a4b0e4fd3f837d949ea  src/app/guides/prix-logiciel-sur-mesure/page.tsx

@@ -1,0 +1,8 @@
+b9b5709f864f1f24ba7d001e7daf8e3862c4781cf7af00eaae968a6eceafe8ac  docs/audits/giga-audit-2026-07-24/guides/reprendre-mvp-vibe-code.md
+56b9d4b87bc70834b389e5a267540481be9121f8893d474d00e690453ebe6ad8  docs/research/reprendre-mvp-vibe-code.md
+92711d6f5020bd5a210c36e17f1adbcb284d15412fd2241a3779c59799e68925  src/app/guides/reprendre-mvp-vibe-code/page.tsx
+a6379051f1108d40d8e93995b17b01ddc247c9b0fba0039deb3c642170d8a01d  src/app/guides/reprendre-mvp-vibe-code/opengraph-image.tsx
+d6c091d4a6fe70365a14e00fad86e099b20c6e44fa94c8ccf8a07e9d1526445d  src/lib/guides.ts
+6b350817b507fd53b0c987374322fc3ea724457c18ac79ec32ca9ac00f339c53  src/components/guides/guide-content-blocks.tsx
+2dd91a0ac4f08887f1866dff5f87a024fe65c3778c17e45d6ddda32b6a2de6ef  src/components/guides/guide-layout.tsx
+31a72d5615f8570fa839e835e3ee53c152f7be124d7eac0fde6e40c446608b57  src/components/guides/GuidesShell.tsx

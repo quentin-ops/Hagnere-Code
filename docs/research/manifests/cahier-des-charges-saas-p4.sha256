@@ -1,1 +1,14 @@
-35488cc07f4a83f5518dc63be3c6fb268a4831f1d3f318fbccdcb2d1a3e5f071  docs/research/cahier-des-charges-saas.md
+8d9f32eb296ca8fae88c7c3eb75dc42be00b5a91bc20db012534035cf180d3e1  docs/research/cahier-des-charges-saas.md
+43b88cff546ccd7953cded24de0eb083cd11249b729336a179fa231a91b2a5f5  docs/audits/giga-audit-2026-07-24/research/cahier-des-charges-saas-deep-dive.md
+5e14bf45eae5918b43c876c8de1c621fe944bb2e605742423040848dd42a9522  docs/audits/giga-audit-2026-07-24/guides/cahier-des-charges-saas.md
+43651f5d559f1a061983b2c203f787e2f2477176730d7af01daeecf701ba8f1a  docs/audits/giga-audit-2026-07-24/reviews/cahier-des-charges-saas-p3-facts.md
+cfc2086e8e49dbbd20f71a2bfcd40a58fde583fe8409140da88dd51f735362aa  docs/audits/giga-audit-2026-07-24/reviews/cahier-des-charges-saas-p4-human.md
+7f08d2071bc361b844d8c0f6660143f6ed2577962934cdc19e200bdacc53cd9a  docs/audits/giga-audit-2026-07-24/reviews/cahier-des-charges-saas-kit-qa.md
+f405559b92b9e24f648fa4d4a60c3114969ca0218526313b13bd836dcd11c902  src/app/guides/cahier-des-charges-saas/page.tsx
+2685d5601220734d3b379a7725e965311d477b703de5e9106397f9363734aad4  src/app/guides/cahier-des-charges-saas/opengraph-image.tsx
+6c3f11fa699c961e337bf25de89fdc8ff0242af3e8a90710a80e339729db4282  src/lib/guides.ts
+733476828f7ee7437a8a2a3749aaa325082920f975fa206cb91217113c3a8bd1  src/components/guides/SaasSpecificationKit.tsx
+9e9fa3cdb335d01fa4ed87bfc22a27ef4fb4cdbaf0f4dc5a8d51d070a067b903  src/components/guides/SaasSpecificationKit.test.tsx
+131210621f42a1560d1fb0c1735e2d42e2d3c83209bceddbe18e5048b5d1b17c  src/lib/saas-specification-kit.ts
+0f6656a223ebe380e66771d6ab78c1fe78c07c71e8051ec2c05b61ebb475f4cd  src/lib/saas-specification-kit.test.ts
+adcacbbbcd853765ce3325d372bf4faa180dcbb151bcf28313aceae96cc93154  src/lib/guide-human-language.test.ts

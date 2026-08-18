@@ -145,7 +145,7 @@ export default function OgImage() {
       </div>
 
       <div style={{ display: "flex", color: "#a1a1aa", fontSize: 18 }}>
-        Tolérer · contenir · stabiliser · moderniser · reconstruire
+        Attendre · stabiliser · rénover · standard · réécrire
       </div>
     </div>,
     size,

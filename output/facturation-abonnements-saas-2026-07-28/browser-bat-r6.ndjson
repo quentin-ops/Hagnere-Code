@@ -1,0 +1,9 @@
+{"kind":"delta","from":"R5","runtimePageChanged":false,"workbookPipelineChanged":true,"status":"GO_LOCAL_DRAFT"}
+{"kind":"sources","visibleArticleSourceLinks":16,"canonicalWorkbookSourceRows":15,"scopesDistinct":true,"generatorValidatorSharedDataset":"src/lib/subscription-billing-workbook-sources.json"}
+{"kind":"download","url":"http://127.0.0.1:3016/ressources/kit-pilotage-facturation-saas.xlsx","status":200,"mime":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","bytes":40127,"sha256":"66dffc0ca6766d9362ffdccd2d79c61fa6238eee239c43ed98087c39d3436474"}
+{"kind":"workbook","imports":2,"sheetsPerWorkbook":10,"controls":"23/23","acceptanceTests":24,"sourceRows":15,"exactSourceParity":true,"formulaErrors":0,"mutations":"PASS","formulaSabotages":"4/4 detected","recalculationEngine":"@oai/artifact-tool","realExcelRecalculation":false}
+{"kind":"openxml-freeze-pane","copiesChecked":2,"worksheet":"TESTS","rows":"1:5","columns":"A:C","topLeftCell":"D6","state":"frozen","selections":["topRight:D1","bottomLeft:A6","bottomRight:D6"],"status":"PASS"}
+{"kind":"targeted-tests","files":4,"tests":"55/55","status":"PASS"}
+{"kind":"targeted-eslint","errors":0,"warnings":0,"status":"PASS"}
+{"kind":"counter-audits","technical":{"score":98,"p0":0,"p1":0,"verdict":"GO_LOCAL_DRAFT"},"factual":{"score":99,"p0":0,"p1":0,"verdict":"GO_LOCAL_DRAFT"},"ux":{"score":100,"p0":0,"p1":0,"verdict":"GO_LOCAL_DRAFT"}}
+{"kind":"boundary","commit":false,"push":false,"deployment":false,"publication":false,"indexation":false}

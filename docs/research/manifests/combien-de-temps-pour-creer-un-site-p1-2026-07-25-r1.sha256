@@ -1,0 +1,5 @@
+b258f9aa8f163882965fdd12d5a5e7986123b01e9e53b4a5778b135ec58f40fd  docs/audits/giga-audit-2026-07-24/guides/combien-de-temps-pour-creer-un-site.md
+7e3ac8e2187e631ef558262661e1e7ec86e9733ddef784465601e8b922c731af  docs/research/combien-de-temps-pour-creer-un-site.md
+7f0390185f8a9af9c8f98f935091d44a992a68b02de78d6d9fac2e2dd4fc5308  src/app/guides/combien-de-temps-pour-creer-un-site/page.tsx
+8746ced6bc884262c85dc255f23354b9643ad58309f7286b04bc6076d3be4cd1  src/app/guides/combien-de-temps-pour-creer-un-site/opengraph-image.tsx
+8bbc597f2221e73d9cc28310fd74b65c29f0da5815523e6a2f399dfeaaa8f287  src/lib/guides.ts

@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Suivi des conversions Google Ads jusqu’aux ventes — Hagnéré Code";
+  "Relier les conversions Google Ads aux ventes et à la marge — Hagnéré Code";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -84,7 +84,7 @@ export default function OgImage() {
             letterSpacing: -2,
           }}
         >
-          Vos conversions Google Ads sont-elles de vraies ventes ?
+          Que deviennent vos conversions Google Ads ?
         </div>
         <div
           style={{
@@ -94,7 +94,7 @@ export default function OgImage() {
             color: "#c4b5fd",
           }}
         >
-          Des actions mesurées aux ventes réellement retrouvées
+          Appels · CRM · ventes · marge · décision
         </div>
       </div>
 

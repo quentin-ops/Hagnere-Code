@@ -1,0 +1,146 @@
+[
+  {
+    "id": "T-01",
+    "family": "Souscription initiale",
+    "case": "Nouvel abonnement mensuel par carte",
+    "article": "facture, paiement et droits sont rattachés à la même organisation, avec une seule ouverture d’accès."
+  },
+  {
+    "id": "T-02",
+    "family": "Souscription initiale",
+    "case": "Authentification requise",
+    "article": "aucun accès définitif n’est accordé avant l’issue attendue et la reprise ne crée aucun doublon."
+  },
+  {
+    "id": "T-03",
+    "family": "Souscription initiale",
+    "case": "Paiement initial en traitement",
+    "article": "le retour du navigateur ne vaut pas succès ; l’accès suit une règle écrite jusqu’à l’événement final."
+  },
+  {
+    "id": "T-04",
+    "family": "Échecs et virements",
+    "case": "Échec asynchrone après succès apparent",
+    "article": "le retour tardif corrige paiement et droits sans effacer l’historique ni doubler les effets."
+  },
+  {
+    "id": "T-05",
+    "family": "Échecs et virements",
+    "case": "Vente B2B par virement",
+    "article": "le contrat dit si l’accès précède l’encaissement et le rapprochement conserve l’échéance attendue."
+  },
+  {
+    "id": "T-06",
+    "family": "Échecs et virements",
+    "case": "Virement sans référence",
+    "article": "le cash reste non affecté jusqu’à preuve, sans inventer une facture ni un droit d’accès."
+  },
+  {
+    "id": "T-07",
+    "family": "Événements et idempotence",
+    "case": "Webhook reçu deux fois",
+    "article": "le second traitement est un no-op visible et ne recrée ni facture, ni cash, ni droit."
+  },
+  {
+    "id": "T-08",
+    "family": "Événements et idempotence",
+    "case": "Événements hors ordre",
+    "article": "le système recharge l’état courant, conserve l’ordre observé et n’effectue aucun retour arrière implicite."
+  },
+  {
+    "id": "T-09",
+    "family": "Changements de formule",
+    "case": "Upgrade période payée",
+    "article": "débit, crédit, date d’effet et nouveaux droits restent explicables et réversibles."
+  },
+  {
+    "id": "T-10",
+    "family": "Changements de formule",
+    "case": "Upgrade facture impayée",
+    "article": "la créance reste visible et le changement n’accorde pas silencieusement un avantage incohérent."
+  },
+  {
+    "id": "T-11",
+    "family": "Changements de formule",
+    "case": "Downgrade au renouvellement",
+    "article": "prix et droits ne diminuent qu’à la date décidée, sans remboursement implicite."
+  },
+  {
+    "id": "T-12",
+    "family": "Sortie et usage",
+    "case": "Résiliation fin de période",
+    "article": "dernière facture, export, solde et date de fermeture concordent."
+  },
+  {
+    "id": "T-13",
+    "family": "Sortie et usage",
+    "case": "Résiliation immédiate + remboursement",
+    "article": "avoir, remboursement et fermeture restent reliés à une autorisation et à une preuve."
+  },
+  {
+    "id": "T-14",
+    "family": "Sortie et usage",
+    "case": "Mesure d’usage dupliquée",
+    "article": "l’unité n’est comptée et facturée qu’une fois, tandis que le doublon reste observable."
+  },
+  {
+    "id": "T-15",
+    "family": "Sortie et usage",
+    "case": "Mesure d’usage tardive",
+    "article": "elle rejoint une correction ou la période suivante et ne réécrit jamais silencieusement le mois clos."
+  },
+  {
+    "id": "T-16",
+    "family": "Relance, conformité et migration",
+    "case": "Relance réussie nouveau moyen",
+    "article": "le paiement récupéré se rapproche sans double encaissement et les droits suivent la politique publiée."
+  },
+  {
+    "id": "T-17",
+    "family": "Relance, conformité et migration",
+    "case": "Rejet facture électronique / identifiant",
+    "article": "le motif et l’horodatage restent visibles ; la correction réémet le document sans déduire un droit du seul rejet."
+  },
+  {
+    "id": "T-18",
+    "family": "Relance, conformité et migration",
+    "case": "Migration contrat annuel avec avoir",
+    "article": "solde, cash historique, continuité des droits et retour arrière sont contrôlés entre source et cible."
+  },
+  {
+    "id": "T-19",
+    "family": "Cas avancés",
+    "case": "Paiement partiel",
+    "article": "la créance résiduelle reste visible et les droits suivent la règle contractuelle, pas un statut binaire."
+  },
+  {
+    "id": "T-20",
+    "family": "Cas avancés",
+    "case": "Chargeback après encaissement",
+    "article": "cash, litige, preuve, créance éventuelle et droits sont corrigés sans effacer l’historique."
+  },
+  {
+    "id": "T-21",
+    "family": "Cas avancés",
+    "case": "Conversion d’essai",
+    "article": "date d’effet, moyen de paiement, facture et ouverture des droits concordent sans double période."
+  },
+  {
+    "id": "T-22",
+    "family": "Cas avancés",
+    "case": "Pause puis reprise",
+    "article": "facturation, consommation, droits et date de renouvellement suivent une règle écrite dans les deux sens."
+  },
+  {
+    "id": "T-23",
+    "family": "Cas avancés",
+    "case": "Modification rétroactive",
+    "article": "elle produit une correction datée ou une file d’ajustement, jamais une réécriture silencieuse du mois clos."
+  },
+  {
+    "id": "T-24",
+    "family": "Cas avancés",
+    "case": "Changement fiscal en période",
+    "article": "date d’effet, preuves client et documents sont qualifiés avant tout calcul de taxe."
+  }
+]

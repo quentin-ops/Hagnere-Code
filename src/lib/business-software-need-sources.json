@@ -1,0 +1,236 @@
+[
+  {
+    "id": "GOVUK-CHOOSE-TECH",
+    "publisher": "Government Digital Service",
+    "title": "Choosing technology: an introduction",
+    "url": "https://www.gov.uk/service-manual/technology/choosing-technology-an-introduction",
+    "accessedOn": "2026-07-28",
+    "scope": "Cadre de choix technologique qui demande de cartographier ce qui doit être construit, acheté ou réutilisé, de prototyper les intégrations et de préserver la possibilité de changer.",
+    "limits": "Référentiel destiné aux services publics britanniques : il inspire la méthode de décision mais ne crée aucune obligation pour une entreprise française et ne choisit aucun produit."
+  },
+  {
+    "id": "GOVUK-RIGHT-TOOLS",
+    "publisher": "Government Digital Service",
+    "title": "11. Choose the right tools and technology",
+    "url": "https://www.gov.uk/service-manual/service-standard/point-11-choose-the-right-tools-and-technology",
+    "accessedOn": "2026-07-28",
+    "scope": "Demande d'expliquer les arbitrages construire ou acheter, les coûts de vie, la soutenabilité, les contraintes et la capacité à faire évoluer le service.",
+    "limits": "Standard public britannique, non cahier des charges privé et non barème de rentabilité ; les critères doivent être adaptés au contexte, aux risques et aux responsabilités de l'entreprise."
+  },
+  {
+    "id": "GOVUK-USER-NEEDS",
+    "publisher": "Government Digital Service",
+    "title": "Learning about users and their needs",
+    "url": "https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs",
+    "accessedOn": "2026-07-28",
+    "scope": "Distingue le besoin d'un utilisateur de la solution envisagée et recommande d'observer les personnes, leurs tâches actuelles et les problèmes réellement rencontrés.",
+    "limits": "Guide de recherche utilisateur, pas méthode comptable ni preuve qu'un logiciel est nécessaire ; trois situations restent un point de départ et non un échantillon statistique."
+  },
+  {
+    "id": "GOVUK-COTS",
+    "publisher": "Government Digital Service",
+    "title": "Using commercial-off-the-shelf (COTS) products and services",
+    "url": "https://www.gov.uk/service-manual/technology/commercial-off-the-shelf-products-and-services",
+    "accessedOn": "2026-07-28",
+    "scope": "Demande de comprendre le problème en discovery, d'essayer plusieurs options en alpha et d'intégrer accessibilité, besoins utilisateurs, soutenabilité et cycle de projet dans l'évaluation d'un produit standard.",
+    "limits": "La page ne documente pas à elle seule intégrations, sécurité, coût complet ou sortie ; ces contrôles exigent d'autres sources et des essais sur les cas, données et contraintes propres à l'entreprise."
+  },
+  {
+    "id": "GOVUK-OPEN-STANDARDS",
+    "publisher": "Government Digital Service",
+    "title": "Working with open standards",
+    "url": "https://www.gov.uk/service-manual/technology/working-with-open-standards",
+    "accessedOn": "2026-07-28",
+    "scope": "Explique comment des standards ouverts peuvent faciliter l'échange de données, la réutilisation, le changement de fournisseur et la réduction de certaines dépendances.",
+    "limits": "L'emploi d'un standard ouvert ne garantit ni l'interopérabilité réelle ni une migration sans coût ; les exports, identifiants, volumes et scénarios de reprise doivent être testés."
+  },
+  {
+    "id": "OECD-SME-DIGITAL",
+    "publisher": "Organisation for Economic Co-operation and Development",
+    "title": "The Digital Transformation of SMEs",
+    "url": "https://www.oecd.org/en/publications/the-digital-transformation-of-smes_bdb9256a-en.html",
+    "accessedOn": "2026-07-28",
+    "scope": "Analyse internationale des écarts d'adoption numérique des PME, des obstacles de compétences et de financement, et de la diversité des trajectoires de transformation.",
+    "limits": "Analyse agrégée qui ne fournit aucun seuil de temps perdu, aucun ROI individuel et aucune preuve qu'une PME donnée doit acheter ou développer un logiciel métier."
+  },
+  {
+    "id": "DTA-DIGITAL-STANDARD",
+    "publisher": "Australian Digital Transformation Agency",
+    "title": "Digital Service Standard",
+    "url": "https://www.digital.gov.au/policy/digital-experience/digital-service-standard",
+    "accessedOn": "2026-07-28",
+    "scope": "Le standard australien actuel relie intention claire, connaissance des utilisateurs, inclusion, connexion des services, confiance, réutilisation, mesure et amélioration continue.",
+    "limits": "Standard destiné aux services numériques du gouvernement australien ; il sert de contrepoint méthodologique international, sans créer d'obligation française ni décider entre achat et développement."
+  },
+  {
+    "id": "CANADA-DIGITAL-STANDARDS",
+    "publisher": "Government of Canada",
+    "title": "Digital Standards",
+    "url": "https://www.canada.ca/en/government/system/digital-government/government-canada-digital-standards.html",
+    "accessedOn": "2026-07-28",
+    "scope": "Met l'accent sur la conception avec les utilisateurs, l'itération, la collecte unique et la réutilisation des données, l'ouverture et l'autonomisation des équipes.",
+    "limits": "Normes du gouvernement canadien, non obligations françaises et non recette d'achat ; elles ne quantifient ni bénéfice financier, ni délai, ni budget de transformation."
+  },
+  {
+    "id": "CANADA-SERVICE-DIGITAL",
+    "publisher": "Government of Canada",
+    "title": "Guideline on Service and Digital",
+    "url": "https://www.canada.ca/en/government/system/digital-government/guideline-service-digital.html",
+    "accessedOn": "2026-07-28",
+    "scope": "Demande d'impliquer les utilisateurs avant de choisir le système, de prévoir import, export et interopérabilité, puis de tester le service de bout en bout avec sécurité et vie privée.",
+    "limits": "Directive administrative canadienne très large, actuellement en cours de révision : sa Note to Reader avertit que certaines références peuvent ne plus correspondre aux instruments, lois ou règlements les plus récents. Son usage reste pédagogique et ne vaut ni conformité française ni validation technique."
+  },
+  {
+    "id": "EC-SME-MATURITY",
+    "publisher": "European Commission",
+    "title": "Commission unveils new tool to help SMEs self-assess their digital maturity",
+    "url": "https://digital-strategy.ec.europa.eu/en/news/commission-unveils-new-tool-help-smes-self-assess-their-digital-maturity",
+    "accessedOn": "2026-07-28",
+    "scope": "Structure l'auto-évaluation d'une PME autour de la stratégie, la préparation numérique, les compétences, les données, l'automatisation et la transformation durable.",
+    "limits": "Outil de maturité général et non diagnostic d'un besoin logiciel précis ; un niveau faible ou élevé n'emporte aucune décision automatique de construire, acheter ou automatiser."
+  },
+  {
+    "id": "CNIL-HABILITATIONS",
+    "publisher": "Commission nationale de l'informatique et des libertés",
+    "title": "Sécurité : gérer les habilitations",
+    "url": "https://www.cnil.fr/fr/securite-gerer-les-habilitations",
+    "accessedOn": "2026-07-28",
+    "scope": "Recommande des habilitations justifiées par les missions, leur revue, leur retrait et une gestion adaptée des comptes à privilèges pour les données personnelles.",
+    "limits": "Fiche de sécurité relative aux données personnelles, non audit exhaustif et non preuve qu'un logiciel neuf est requis ; la correction des droits peut être la première réponse suffisante."
+  },
+  {
+    "id": "CNIL-SAUVEGARDES",
+    "publisher": "Commission nationale de l'informatique et des libertés",
+    "title": "Sécurité : sauvegarder",
+    "url": "https://www.cnil.fr/fr/securite-sauvegarder",
+    "accessedOn": "2026-07-28",
+    "scope": "Recommande des sauvegardes régulières, protégées, au moins une copie hors ligne et géographiquement distincte, ainsi que des tests de restauration.",
+    "limits": "Recommandations de sécurité, pas garantie de continuité ni définition universelle d'un RPO ; la restauration utile doit être exercée avec les données, configurations et responsables réels."
+  },
+  {
+    "id": "CNIL-CONTINUITE",
+    "publisher": "Commission nationale de l'informatique et des libertés",
+    "title": "Sécurité : prévoir la continuité et la reprise d'activité",
+    "url": "https://www.cnil.fr/fr/securite-prevoir-la-continuite-et-la-reprise-dactivite",
+    "accessedOn": "2026-07-28",
+    "scope": "Demande d'identifier les activités essentielles, les dépendances, les responsabilités, les moyens de continuité et la vérification régulière des dispositifs de reprise.",
+    "limits": "Ne remplace pas un plan de continuité complet, un exercice ni un accompagnement cyber ; une suspicion d'intrusion ou de fuite active relève d'une réponse spécialisée immédiate."
+  },
+  {
+    "id": "FRANCENUM-AUTOMATISATION",
+    "publisher": "France Num",
+    "title": "L'automatisation : une solution indispensable pour gagner du temps et mieux gérer sa TPE PME",
+    "url": "https://www.francenum.gouv.fr/guides-et-conseils/pilotage-de-lentreprise/numerisation-des-processus/lautomatisation-une-solution",
+    "accessedOn": "2026-07-28",
+    "scope": "Propose d'observer fréquence, durée, personnes, erreurs, étapes, données et exceptions avant de choisir un processus et une solution d'automatisation.",
+    "limits": "Guide de sensibilisation pour TPE-PME : les exemples et gains éventuels ne sont pas des promesses et le temps observé ne devient pas automatiquement une économie de trésorerie."
+  },
+  {
+    "id": "RGESN-2024",
+    "publisher": "Mission interministérielle Numérique écoresponsable",
+    "title": "Référentiel général d'écoconception de services numériques (RGESN) - 2024",
+    "url": "https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/",
+    "accessedOn": "2026-07-28",
+    "scope": "Invite à questionner le besoin, les solutions non numériques ou existantes, la durée de vie, les ressources, l'hébergement et l'entretien d'un nouveau service.",
+    "limits": "Référentiel d'écoconception et non modèle de rentabilité ; il n'interdit pas un logiciel neuf et ne prouve ni la couverture fonctionnelle ni le coût d'une alternative existante."
+  },
+  {
+    "id": "DESIGNGOUV-BESOINS",
+    "publisher": "Direction interministérielle du numérique",
+    "title": "Concevoir un service public numérique de qualité",
+    "url": "https://design.numerique.gouv.fr/bien-concevoir/",
+    "accessedOn": "2026-07-28",
+    "scope": "Présente une démarche partant des besoins, de l'observation des usages, de prototypes et de tests réguliers avec les personnes concernées.",
+    "limits": "Ressource destinée aux services publics numériques ; elle inspire la pédagogie et les tests utilisateur sans devenir une obligation privée ni un certificat de qualité."
+  },
+  {
+    "id": "NIST-CSF-2",
+    "publisher": "National Institute of Standards and Technology",
+    "title": "Cybersecurity Framework 2.0",
+    "url": "https://www.nist.gov/cyberframework",
+    "accessedOn": "2026-07-28",
+    "scope": "Cadre volontaire fondé sur gouverner, identifier, protéger, détecter, répondre et rétablir, utile pour séparer un risque cyber actif d'un projet d'amélioration fonctionnelle.",
+    "limits": "Cadre volontaire américain centré sur le risque cyber ; il n'est ni une obligation française, ni un audit, ni une justification automatique d'achat ou de développement logiciel."
+  },
+  {
+    "id": "NIST-SP800-34",
+    "publisher": "National Institute of Standards and Technology",
+    "title": "SP 800-34 Rev. 1 — Contingency Planning Guide for Federal Information Systems",
+    "url": "https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final",
+    "accessedOn": "2026-07-28",
+    "scope": "Relie analyse d'impact, priorités de reprise, stratégies de continuité et exigences de récupération ; il fournit un appui public pour définir RTO et RPO à partir des activités et systèmes réels.",
+    "limits": "Publication fédérale américaine de 2010, non obligation française ni valeur contractuelle ; ses objectifs de reprise doivent être adaptés, testés et tenus à jour dans le contexte de l'entreprise."
+  },
+  {
+    "id": "CNIL-SOUS-TRAITANCE",
+    "publisher": "Commission nationale de l'informatique et des libertés",
+    "title": "Sécurité : gérer la sous-traitance",
+    "url": "https://www.cnil.fr/fr/securite-gerer-la-sous-traitance",
+    "accessedOn": "2026-07-28",
+    "scope": "Rappelle la définition des responsabilités, garanties, mesures de sécurité, chaîne de sous-traitance, localisation et contrôles lorsqu'un prestataire traite des données personnelles.",
+    "limits": "Fiche de sécurité et de conformité relative aux données personnelles ; elle ne remplace ni l'analyse contractuelle complète ni la vérification technique et juridique du prestataire retenu."
+  },
+  {
+    "id": "FRANCENUM-NOCODE",
+    "publisher": "France Num",
+    "title": "Pourquoi utiliser des outils no-code pour gérer sa TPE PME, et lesquels ?",
+    "url": "https://www.francenum.gouv.fr/guides-et-conseils/pilotage-de-lentreprise/numerisation-des-processus/pourquoi-utiliser-des-outils",
+    "accessedOn": "2026-07-28",
+    "scope": "Présente les usages possibles du no-code, ses principes de construction visuelle et des exemples de processus ou d'applications internes accessibles aux petites entreprises.",
+    "limits": "Contenu de sensibilisation qui ne prouve ni un coût inférieur, ni une sécurité suffisante, ni une maintenance automatique ; plateformes, licences et gouvernance doivent être vérifiées séparément."
+  },
+  {
+    "id": "FRANCENUM-ERP",
+    "publisher": "France Num",
+    "title": "Pourquoi et comment mettre en place un ERP pour les TPE",
+    "url": "https://www.francenum.gouv.fr/guides-et-conseils/pilotage-de-lentreprise/logiciels-de-gestion-de-lentreprise/pourquoi-et-comment",
+    "accessedOn": "2026-07-28",
+    "scope": "Décrit la préparation d'un projet ERP autour des objectifs, processus, données, équipes, couverture, interfaces, ergonomie, accompagnement et dépendance à l'éditeur.",
+    "limits": "Guide de sensibilisation et non étude de marché exhaustive ; les chiffres généraux, produits et modèles de déploiement ne doivent pas être transposés sans vérification locale."
+  },
+  {
+    "id": "DIGITALGOV-ACQUISITIONS",
+    "publisher": "United States General Services Administration",
+    "title": "Navigating digital acquisitions",
+    "url": "https://digital.gov/2024/11/26/navigating-digital-acquisitions/",
+    "accessedOn": "2026-07-28",
+    "scope": "Relie recherche utilisateur, décision construire ou acheter, distinction entre configuration et modification, essais en environnement contrôlé et implication de vrais utilisateurs.",
+    "limits": "Ressource de l'administration fédérale américaine ; les principes de preuve sont utiles, mais ses processus d'achat et règles contractuelles ne sont pas transposables tels quels en France."
+  },
+  {
+    "id": "GOVUK-BENEFITS",
+    "publisher": "Government Digital Service",
+    "title": "Measuring the benefits of your service",
+    "url": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits",
+    "accessedOn": "2026-07-28",
+    "scope": "Propose une baseline, des coûts et bénéfices observables, une analyse de sensibilité et des décisions explicites de poursuivre, modifier ou arrêter un service.",
+    "limits": "Méthode publique britannique ancienne qui ne fournit aucun seuil PME, aucun taux de conversion financière du temps et aucune promesse de retour sur investissement."
+  },
+  {
+    "id": "GOVUK-DDAT-PLAYBOOK",
+    "publisher": "UK Cabinet Office",
+    "title": "The Digital, Data and Technology Playbook",
+    "url": "https://www.gov.uk/government/publications/the-digital-data-and-technology-playbook/the-digital-data-and-technology-playbook",
+    "accessedOn": "2026-07-28",
+    "scope": "Cadre d'achat qui couvre résultats, coûts de cycle de vie, interopérabilité, dépendance fournisseur, exploitation, maintenance et planification de sortie des services numériques.",
+    "limits": "Playbook de commande publique britannique et non barème pour entreprise privée ; sa structure TCO et sortie doit être adaptée au périmètre, au contrat et aux risques locaux."
+  },
+  {
+    "id": "EU-REUSE-BUY-BUILD",
+    "publisher": "European Commission — Interoperable Europe",
+    "title": "Reuse, before buy, before build",
+    "url": "https://interoperable-europe.ec.europa.eu/collection/common-assessment-method-standards-and-specifications-camss/solution/elap/reuse-buy-build",
+    "accessedOn": "2026-07-28",
+    "scope": "Présente le principe de réutiliser avant d'acheter puis d'acheter avant de construire, et de questionner les exigences qui ne sont pas couvertes par des solutions existantes.",
+    "limits": "Principe destiné à l'interopérabilité des administrations publiques ; il ne constitue pas un ordre obligatoire pour une PME et ne remplace pas une analyse des écarts et du coût complet."
+  },
+  {
+    "id": "MICROSOFT-POWER-COE",
+    "publisher": "Microsoft Learn",
+    "title": "Establish a Microsoft Power Platform Center of Excellence",
+    "url": "https://learn.microsoft.com/en-us/power-platform/guidance/adoption/coe",
+    "accessedOn": "2026-07-28",
+    "scope": "Décrit pour Power Platform les rôles, la gouvernance, les standards, la sécurité des données, les accès, environnements, tests, supervision, formation, support et mesure nécessaires à une adoption durable.",
+    "limits": "Documentation d'un éditeur pour son propre écosystème ; elle n'est pas la page du Starter Kit, ne garantit aucun inventaire automatique et ne prouve ni l'adéquation de Power Platform ni une règle universelle."
+  }
+]

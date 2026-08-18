@@ -106,15 +106,34 @@ guide répond à une décision que les pages existantes ne traitent pas déjà.
 
 ## 4. Carte concurrentielle
 
-| Page | Réponse et angle | Preuves/artefacts | Bon point | Manque décisionnel | Conflit d'intérêt éventuel |
-| ---- | ---------------- | ----------------- | --------- | ------------------ | -------------------------- |
-|      |                  |                   |           |                    |                            |
+Requêtes, pays, langues et date :
+
+Critère de saturation : expliquer pourquoi les nouvelles pages n'apportent
+plus de type de réponse, de méthode, d'objection, de preuve ou d'outil.
+
+Plancher de recherche applicable selon la charte :
+
+Corpus réellement examiné et justification :
+
+| Page et pays | Réponse et angle | Preuves/artefacts | Bon point | Manque décisionnel | Conflit d'intérêt éventuel |
+| ------------ | ---------------- | ----------------- | --------- | ------------------ | -------------------------- |
+|              |                  |                   |           |                    |                            |
 
 **Angle mort commun :**
 
 **Valeur originale que le guide apportera :**
 
-## 5. Fiche de preuves
+### Matrice de gain d'information
+
+| Question décisive du lecteur | Meilleure réponse française | Apport international | Réponse actuelle du guide | Manque réel | Amélioration vérifiable prévue |
+| ---------------------------- | --------------------------- | -------------------- | ------------------------- | ----------- | ------------------------------ |
+|                              |                             |                      |                           |             |                                |
+
+Un plan ne passe pas P1 si son seul apport est « plus long », « plus complet »,
+« plus clair » ou « mieux optimisé ». Une donnée étrangère doit être
+requalifiée pour la France avant de soutenir une affirmation.
+
+## 5. Fiche de preuves, scénarios et position
 
 | Affirmation utilisable | Source primaire, URL et passage utile | Nature | Périmètre | Date/consultation | Confiance | Emplacement du lien visible | Conséquence lecteur | Fraîcheur |
 | ---------------------- | ------------------------------------- | ------ | --------- | ----------------- | --------- | --------------------------- | ------------------- | --------- |
@@ -142,6 +161,52 @@ arrondis.
 - Postes exclus ou inconnus, explicitement « à confirmer » :
 - Si ROI : `(bénéfices cumulés attribuables - TCO) / TCO × 100`
 - Si temps valorisé : hypothèse de réaffectation ou coût réellement évité :
+
+### Scénarios décisionnels
+
+Pour un guide de prix, ROI, budget, délai ou comparaison, préparer trois
+scénarios cohérents. Pour un autre sujet, adapter les colonnes à des situations
+contrastées ou justifier pourquoi un chiffre serait artificiel.
+
+| Variable | Cas simple | Cas central | Cas exigeant | Source ou nature de l'hypothèse |
+| -------- | ---------: | ----------: | -----------: | ------------------------------- |
+|          |            |             |              |                                 |
+
+```text
+Formule :
+Coûts inclus :
+Coûts exclus :
+Horizon :
+Résultats :
+Variable qui change le verdict :
+Analyse de sensibilité :
+Contrôle inverse :
+```
+
+### Position professionnelle Hagnéré Code
+
+```text
+Recommandation pour le cas le plus fréquent :
+Faits vérifiés qui la fondent :
+Raisonnement ou déduction :
+Cas où l'option opposée est meilleure :
+Signal qui impose de réexaminer la décision :
+Ce que nous déconseillons même si nous pourrions le vendre :
+Date ou événement de prochaine vérification :
+```
+
+### Échec, après-décision et conflit d'intérêts
+
+```text
+Situation où la recommandation échoue :
+Signal précoce qui devait alerter :
+Mesure de départ :
+Indicateur métier après décision :
+Fréquence et responsable de la revue :
+Critère d'arrêt, de correction ou de retour arrière :
+Intérêt commercial de Hagnéré Code dans le sujet :
+Conflits d'intérêts des études ou concurrents utilisés :
+```
 
 ## 6. Empreinte éditoriale à ne pas reproduire
 
@@ -189,6 +254,7 @@ Journal de QA (formats, pages, visuel, accessibilité, liens, compatibilité) :
 Limites connues et niveau de revue humaine :
 Mode de maintenance :
 Test du fichier ou outil :
+Actif signature difficile à remplacer :
 Bon fit Hagnéré Code :
 Mauvais fit :
 Action non commerciale :
@@ -267,18 +333,18 @@ Verdict :
 
 ### Scorecard justifiée
 
-| Axe         | Note 0-2 | Preuve dans la page | Correction éventuelle |
-| ----------- | -------: | ------------------- | --------------------- |
-| Intention   |          |                     |                       |
-| Décision    |          |                     |                       |
-| Pédagogie   |          |                     |                       |
-| Profondeur  |          |                     |                       |
-| Preuve      |          |                     |                       |
-| Comparaison |          |                     |                       |
-| Originalité |          |                     |                       |
-| Style       |          |                     |                       |
-| Conversion  |          |                     |                       |
-| SEO/produit |          |                     |                       |
+| Axe         | Note 0-10 | Preuve localisable dans la page | Manque résiduel | Correction éventuelle |
+| ----------- | --------: | ------------------------------- | --------------- | --------------------- |
+| Intention   |           |                                 |                 |                       |
+| Décision    |           |                                 |                 |                       |
+| Pédagogie   |           |                                 |                 |                       |
+| Profondeur  |           |                                 |                 |                       |
+| Preuve      |           |                                 |                 |                       |
+| Comparaison |           |                                 |                 |                       |
+| Originalité |           |                                 |                 |                       |
+| Style       |           |                                 |                 |                       |
+| Conversion  |           |                                 |                 |                       |
+| SEO/produit |           |                                 |                 |                       |
 
 ### Test lecteur non technique
 
@@ -315,7 +381,11 @@ Statut maximal réellement atteint :
 - [ ] tableaux ou cartes testés à 390 px sans réponse masquée ;
 - [ ] FAQ courtes et CTA formulé comme bénéfice concret ;
 - [ ] faits, citations et fraîcheur revérifiés ;
+- [ ] benchmark français et international daté, avec saturation expliquée ;
+- [ ] matrice de gain d'information remplie et apport effectivement visible ;
 - [ ] calculs refaits indépendamment ;
+- [ ] scénarios soumis à une analyse de sensibilité ;
+- [ ] position Hagnéré Code, contre-cas et signal de révision explicites ;
 - [ ] cas réels autorisés et cas fictifs étiquetés ;
 - [ ] chaque prix, taux ou obligation décisive est relié à sa source près de
       l'affirmation, ou nommé estimation avec hypothèses ;

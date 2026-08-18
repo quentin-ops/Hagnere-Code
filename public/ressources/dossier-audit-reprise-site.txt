@@ -1,0 +1,2163 @@
+DOSSIER HORS LIGNE D'AUDIT AVANT REPRISE D'UN SITE
+Version 1.0 - 27 juillet 2026
+
+Document autonome à copier, compléter, relire et imprimer.
+Il peut être utilisé sans connexion au site Hagnéré Code.
+
+===============================================================================
+AVERTISSEMENT DE SÉCURITÉ ET DE PORTÉE
+===============================================================================
+
+Ce dossier sert à préparer et documenter une décision de reprise technique.
+Il ne constitue ni :
+
+- une certification de sécurité, de conformité, de qualité ou d'accessibilité ;
+- une garantie d'absence de vulnérabilité, de bug, de panne ou de perte SEO ;
+- un avis juridique, fiscal, assurantiel ou réglementaire ;
+- une autorisation d'accéder à un système ;
+- une réponse à incident ou un test d'intrusion exhaustif ;
+- une preuve qu'une refonte, une migration ou un changement d'hébergeur est
+  nécessaire.
+
+RÈGLE ABSOLUE : ne recopiez dans ce fichier aucun mot de passe, secret, jeton,
+cookie, clé privée, code de récupération, donnée personnelle réelle, donnée
+client, moyen de paiement, journal brut ni contenu confidentiel.
+
+Utilisez seulement :
+
+- des références expurgées vers des preuves conservées dans un espace autorisé ;
+- des données fictives, synthétiques ou réellement anonymisées ;
+- des identifiants de test sans privilège sur la production ;
+- des constats datés, limités au périmètre et à l'environnement observés.
+
+Une chaîne masquée automatiquement peut rester sensible. Une revue humaine est
+obligatoire avant toute copie, impression, transmission ou archivage.
+
+Si une information n'est pas démontrée, écrivez ND. Ne remplacez jamais une
+inconnue par zéro, « conforme », « sécurisé », « sans risque » ou une estimation
+inventée.
+
+===============================================================================
+0. MODE D'EMPLOI
+===============================================================================
+
+1. Dupliquez ce fichier pour un seul site et une seule décision de reprise.
+2. Exécutez d'abord le STOP 60 secondes. Aucun autre test ne l'annule.
+3. Choisissez AUDIT LÉGER ou AUDIT COMPLET selon les critères ci-dessous.
+4. Figez le contexte, les environnements et les fonctions métier concernées.
+5. Attribuez les rôles dans la matrice RACI.
+6. Examinez les 18 zones. Une zone non applicable exige une justification.
+7. Pour chaque constat, distinguez déclaration, document, observation et test.
+8. Comparez les quatre trajectoires sur un périmètre strictement identique.
+9. Laissez le TCO à ND tant que ses entrées ne sont pas sourcées.
+10. Classez les réserves P0, P1 ou P2 sans les diluer dans une moyenne.
+11. Rédigez la synthèse dirigeant d'une page.
+12. Constituez le paquet de sortie et vérifiez sa réversibilité.
+13. Faites relire la décision par les personnes responsables avant toute action.
+
+CONVENTIONS À UTILISER PARTOUT
+
+Applicabilité :
+
+- APPLICABLE : la zone ou le contrôle concerne le périmètre.
+- N/A : non applicable, avec justification factuelle obligatoire.
+- ND : l'applicabilité elle-même n'est pas encore établie.
+
+Statut :
+
+- PROUVÉ : une preuve recevable et datée soutient le résultat dans le périmètre.
+- À TESTER : le test est défini, autorisé et pas encore exécuté.
+- ÉCHEC : un résultat observable ne satisfait pas le critère attendu.
+- INCONNU : aucune preuve suffisante ne permet de conclure.
+- NON TESTÉ : volontairement exclu du périmètre, avec conséquence écrite.
+
+Types de preuve :
+
+- DOCUMENT : contrat, procédure, inventaire ou décision approuvée.
+- CONSOLE AUTORISÉE : observation d'un compte appartenant à l'organisation.
+- EXPORT : inventaire ou export daté, expurgé et conservé séparément.
+- TEST CONTRÔLÉ : essai réversible sur environnement désigné.
+- JOURNAL EXPURGÉ : extrait minimal, horodaté et sans secret ni donnée réelle.
+- ATTESTATION : déclaration nominative dont la limite reste visible.
+- PREUVE TECHNIQUE : rapport, commande ou mesure reproductible et expurgée.
+- CONTRÔLE DE NON-APPLICABILITÉ : fait daté démontrant pourquoi la zone ne
+  concerne pas le périmètre, avec auteur, artefact, limite et réouverture.
+- AUTRE : à décrire, avec ses limites.
+
+Règle de verdict :
+
+- un P0 ouvert interdit le GO pour l'action concernée ;
+- un P1 ouvert interdit le GO de reprise ; seules des actions préparatoires
+  explicitement hors du périmètre bloqué peuvent continuer ;
+- un P2 doit être explicitement non bloquant et conserver résultat, limite,
+  action interdite, propriétaire, déclencheur, prochaine action et échéance ;
+- un P2 incomplet ou réellement bloquant redevient P1 ;
+- un P2 n'autorise jamais à ignorer un P0 ou un P1 ;
+- une moyenne ou un nombre élevé de contrôles réussis ne compense pas un
+  blocage critique ;
+- un GO porte seulement sur le périmètre, la date et l'environnement écrits.
+
+IDENTIFICATION DU DOSSIER
+
+Référence interne expurgée :
+Organisation :
+Site ou service :
+URL publique sans paramètre sensible :
+Date et heure d'évaluation avec fuseau :
+Version du dossier :
+Rédacteur :
+Relecteur dirigeant :
+Relecteur technique :
+Décision préparée :
+Date limite de décision :
+
+===============================================================================
+1. STOP 60 SECONDES
+===============================================================================
+
+Répondez avant tout accès, test, transfert, déploiement ou changement.
+
+[ ] FAMILLE 1 — L'autorisation d'accéder, tester, copier, modifier ou transférer
+    le site est-elle absente ou impossible à démontrer ?
+
+[ ] FAMILLE 2 — Une compromission active est-elle suspectée ?
+    Exemples : contenu ou redirection non autorisé, compte détourné, domaine ou
+    certificat modifié, paiement anormal, données exposées, chiffrement
+    inattendu, activité administrative inconnue.
+
+[ ] FAMILLE 3 — Une action destructive ou irréversible est-elle envisagée sans
+    copie dont la restauration a été raisonnablement prouvée ?
+
+[ ] FAMILLE 4 — Le test est-il impossible à isoler sans exposer directement la
+    production, de vraies données personnelles, de vrais paiements, de vrais
+    destinataires ou un service critique ?
+
+[ ] FAMILLE 5 — Un litige bloquant d'autorité, de mandat ou de droits sur le
+    code, les contenus, le domaine, une licence ou un compte interdit-il
+    l'action envisagée ?
+
+L'outil interactif scinde certaines familles en questions factuelles : il
+demande séparément si une opération est destructive et si la restauration est
+prouvée. Ces six entrées brutes produisent toujours les cinq familles de STOP
+ci-dessus ; elles ne créent pas une sixième catégorie de décision.
+
+Si OUI à au moins une question :
+
+VERDICT IMMÉDIAT : STOP TEMPORAIRE pour l'action concernée.
+
+Ne contournez aucun accès. Ne redémarrez, ne restaurez, ne migrez, ne révoquez
+et ne modifiez rien au hasard. Préservez les éléments utiles, consignez les
+faits, nommez une personne qui coordonne et orientez vers l'autorité compétente :
+
+- responsable autorisé de l'organisation ;
+- prestataire sortant ou fournisseur du compte ;
+- personne chargée de la réponse à incident ;
+- délégué à la protection des données ou conseil juridique selon la cause ;
+- assureur ou autorité compétente lorsque le contexte l'exige.
+
+Le STOP signifie « ne pas réaliser cette action maintenant ». Il ne signifie ni
+« abandonner le site » ni « refaire le site ».
+
+FICHE STOP
+
+Question ayant déclenché le STOP :
+Fait observé, sans attribution de cause :
+Date et heure avec fuseau :
+Environnement concerné :
+Autorité informée :
+Prochaine personne responsable :
+Prochaine preuve attendue :
+Action expressément interdite :
+Date de réexamen :
+Référence expurgée de l'incident ou de la décision :
+
+Si toutes les réponses sont NON ou ND :
+
+- NON permet de poursuivre dans un périmètre autorisé ;
+- ND ne vaut pas autorisation : le point reste à clarifier avant l'action qu'il
+  pourrait bloquer.
+
+===============================================================================
+2. CHOISIR LE NIVEAU : AUDIT LÉGER OU AUDIT COMPLET
+===============================================================================
+
+Le niveau décrit la profondeur du travail. Il ne mesure ni la valeur du site ni
+la compétence d'une équipe.
+
+AUDIT LÉGER - PRÉ-REPRISE CIBLÉE
+
+À retenir seulement si tous les points suivants sont raisonnablement établis :
+
+[ ] site simple ou périmètre initial très limité ;
+[ ] fonctions critiques nommées et peu nombreuses ;
+[ ] organisation autorisée à contrôler les comptes indispensables ;
+[ ] copie récente déjà restaurée ou restauration contrôlée simple à organiser ;
+[ ] chaîne de publication connue ;
+[ ] peu de données sensibles et peu d'intégrations ;
+[ ] aucun signal d'incident actif ;
+[ ] première intervention réversible et étroitement bornée.
+
+Travail minimal :
+
+- zones 01 à 05, 07 à 11, 14 et 18 obligatoires ;
+- autres zones qualifiées APPLICABLE, N/A ou ND ;
+- un test de restauration ;
+- un test de chaque parcours métier critique ;
+- un test de publication et de retour ;
+- une synthèse, les réserves et les actions interdites.
+
+Ce niveau ne prouve pas une sécurité, une accessibilité, une performance ou une
+conformité exhaustive.
+
+DONNÉES PERSONNELLES : DEUX QUESTIONS À NE PAS CONFONDRE
+
+[ ] Le site traite-t-il une donnée permettant d'identifier une personne, même
+    par un simple formulaire de contact ? Si OUI, la zone 16 RGPD est
+    applicable, quel que soit le niveau d'audit.
+[ ] La reprise exige-t-elle l'accès à de vraies données personnelles, ou le
+    traitement est-il sensible, substantiel ou à risque ? Si OUI, l'audit
+    complet est requis.
+
+Un OUI à la première question n'impose donc pas seul l'audit complet ; il
+interdit en revanche de classer la zone RGPD N/A.
+
+AUDIT COMPLET - REPRISE ÉLARGIE
+
+À choisir dès qu'au moins un facteur suivant existe :
+
+[ ] vente, paiement, réservation, espace client ou processus métier important ;
+[ ] données personnelles ou confidentielles significatives ;
+[ ] plusieurs environnements, applications, domaines ou équipes ;
+[ ] code, dépendances, licences ou déploiement mal connus ;
+[ ] restauration jamais démontrée ;
+[ ] intégrations tierces, e-mails transactionnels, webhooks ou files de tâches ;
+[ ] historique d'incident, alertes ou changements difficiles à expliquer ;
+[ ] migration, changement d'URL, d'hébergeur ou de chaîne de publication ;
+[ ] fortes exigences de disponibilité, de reprise ou de traçabilité ;
+[ ] engagement contractuel impossible à borner sans investigation.
+
+Travail minimal :
+
+- les 18 zones ;
+- preuve d'applicabilité de chaque N/A ;
+- restauration, publication, rollback ou fix-forward et réconciliation ;
+- scénarios métier de bout en bout ;
+- risques résiduels, responsables, échéances et critères de revalidation ;
+- comparaison des quatre trajectoires à périmètre égal ;
+- TCO à 12, 36 et 60 mois, avec ND visible ;
+- synthèse dirigeant et paquet de sortie.
+
+HORS PARCOURS ORDINAIRE
+
+Un incident actif, un litige sérieux, un test d'intrusion exhaustif, une analyse
+forensique ou une qualification juridique ne devient pas un « audit complet ».
+Il exige un mandat, des compétences et une procédure adaptés.
+
+DÉCISION DE NIVEAU
+
+Niveau retenu : AUDIT LÉGER / AUDIT COMPLET / HORS PARCOURS / ND
+Facteurs déclencheurs :
+Zones incluses :
+Zones exclues et conséquences :
+Environnements inclus :
+Date de requalification du niveau :
+Personne qui approuve :
+
+===============================================================================
+3. CONTEXTE, PÉRIMÈTRE ET CRITÈRES DE SORTIE
+===============================================================================
+
+CONTEXTE MÉTIER
+
+Activité rendue par le site :
+Utilisateurs concernés :
+Fonctions qui apportent une demande, une vente ou un service :
+Fonction la plus critique :
+Périodes de forte activité :
+Tolérance métier à l'indisponibilité : ND
+Tolérance métier à la perte de données : ND
+Obligations contractuelles connues :
+Contraintes réglementaires à confirmer :
+Décision que l'audit doit permettre :
+
+PÉRIMÈTRE TECHNIQUE
+
+Domaines et sous-domaines inclus :
+Applications ou CMS inclus :
+API et services tiers inclus :
+Environnements inclus :
+Environnements exclus :
+Pays ou régions concernés :
+Données incluses par catégorie, jamais par enregistrement réel :
+Parcours métier inclus :
+Parcours métier exclus :
+Changements autorisés pendant l'audit :
+Changements interdits :
+Fenêtre de test :
+Canal d'escalade :
+
+CRITÈRES DE SORTIE
+
+Un dossier n'est prêt à décider que si :
+
+[ ] le périmètre et les exclusions sont explicites ;
+[ ] l'autorité est démontrée pour les actions réalisées ;
+[ ] les fonctions critiques ont un résultat observable ;
+[ ] une restauration appropriée a été testée ou son absence bloque clairement ;
+[ ] les inconnues ont une conséquence et un responsable ;
+[ ] les P0 et P1 sont visibles sans moyenne ;
+[ ] les coûts inconnus restent ND ;
+[ ] le verdict nomme la prochaine action autorisée et les actions interdites ;
+[ ] les preuves restent accessibles sans inclure de secret dans ce fichier ;
+[ ] la réversibilité de la nouvelle équipe est préparée.
+
+===============================================================================
+4. MATRICE RACI - DIRIGEANT, ANCIEN PRESTATAIRE, NOUVELLE ÉQUIPE
+===============================================================================
+
+Codes :
+
+- R = réalise le travail ;
+- A = approuve et répond du résultat ;
+- C = consulté avant la décision ;
+- I = informé ;
+- - = aucun rôle.
+
+Une ligne opérationnelle doit avoir un seul A. Plusieurs R sont possibles. Une
+case vide ou deux A rendent la responsabilité ND.
+
+Ligne                                      Dirigeant   Ancien prest.   Nouvelle équipe
+Définir les fonctions métier critiques     [   ]       [   ]          [   ]
+Autoriser les accès                        [   ]       [   ]          [   ]
+Prouver le contrôle du domaine             [   ]       [   ]          [   ]
+Inventorier hébergement et tiers           [   ]       [   ]          [   ]
+Remettre code et historique utiles         [   ]       [   ]          [   ]
+Produire l'inventaire des dépendances       [   ]       [   ]          [   ]
+Identifier les licences et échéances       [   ]       [   ]          [   ]
+Fournir la copie sélectionnée              [   ]       [   ]          [   ]
+Autoriser l'environnement isolé            [   ]       [   ]          [   ]
+Exécuter la restauration                    [   ]       [   ]          [   ]
+Définir RTO et RPO métier                   [   ]       [   ]          [   ]
+Exécuter les parcours de test               [   ]       [   ]          [   ]
+Valider les résultats métier                [   ]       [   ]          [   ]
+Préparer publication et retour              [   ]       [   ]          [   ]
+Décider rollback ou fix-forward             [   ]       [   ]          [   ]
+Réconcilier données et événements           [   ]       [   ]          [   ]
+Qualifier les données personnelles          [   ]       [   ]          [   ]
+Traiter une alerte de sécurité              [   ]       [   ]          [   ]
+Valider SEO, performance et accessibilité   [   ]       [   ]          [   ]
+Accepter les réserves contractuelles        [   ]       [   ]          [   ]
+Prononcer GO / GO réserves / STOP           [   ]       [   ]          [   ]
+Retirer les anciens accès inutiles          [   ]       [   ]          [   ]
+Accepter le paquet de sortie                [   ]       [   ]          [   ]
+
+Commentaires sur les rôles :
+Remplaçant désigné en cas d'absence :
+Conflits de responsabilité à résoudre :
+
+===============================================================================
+5. TAXONOMIE CANONIQUE ET FICHES HORS LIGNE
+===============================================================================
+
+Les identifiants ZONE 01 à ZONE 18 ci-dessous sont canoniques : ils désignent
+toujours le même domaine dans la page, l'outil, le TXT, le JSON, le CSV et le
+rapport imprimé. Les fiches hors ligne A à R qui suivent sont plus détaillées
+et peuvent contribuer à plusieurs zones. Une référence « zone 08 » signifie
+donc toujours « données, schémas et migrations », jamais « sauvegardes ».
+
+ZONE 01 - Propriété opérationnelle et autorisation ................. fiche A
+ZONE 02 - Domaine, DNS, TLS, CDN et protection du trafic ............ fiche B
+ZONE 03 - Infrastructure, IaC et environnements ..................... fiche C
+ZONE 04 - Code, historique et construction ...................... fiches D/E
+ZONE 05 - CI/CD, artefact, déploiement et retour arrière ......... fiches E/K
+ZONE 06 - Identités, habilitations et secrets ....................... fiche G
+ZONE 07 - Dépendances, SBOM, licences et fin de support .......... fiches E/F
+ZONE 08 - Données, schémas et migrations ............................ fiche I
+ZONE 09 - Sauvegardes, restauration, RPO et RTO ..................... fiche H
+ZONE 10 - Intégrations et parcours critiques ......................... fiche J
+ZONE 11 - Journaux, métriques et alertes ............................. fiche N
+ZONE 12 - Sécurité, authentification et incidents .................... fiche L
+ZONE 13 - Performance et capacité .................................... fiche O
+ZONE 14 - SEO, exploration, indexation et mesure ..................... fiche Q
+ZONE 15 - Accessibilité .............................................. fiche P
+ZONE 16 - RGPD, sous-traitants, transferts et rétention .............. fiche M
+ZONE 17 - Documentation, exploitation et support .................... fiche R
+ZONE 18 - Réversibilité et sortie .................................... fiche R
+
+Chaque fiche exige au minimum : périmètre, statut, impact bloquant ou non
+bloquant, type de preuve, environnement, date d'observation, date de validité,
+propriétaire, référence expurgée d'artefact, résultat, limite, action interdite,
+événement de réouverture, prochaine action et échéance. Un NON APPLICABLE exige
+ces mêmes éléments, un contrôle de non-applicabilité et un motif spécifique ;
+« sans objet » ne suffit pas.
+
+Chaque zone comporte les mêmes champs obligatoires. Complétez-les même si la
+zone est N/A ou inconnue. Une capture d'écran seule peut devenir obsolète ; une
+preuve doit rester datée, contextualisée et reliée au test.
+
+-------------------------------------------------------------------------------
+FICHE HORS LIGNE A - AUTORITÉ, CONTRATS ET CONTRÔLE DES ACTIFS
+-------------------------------------------------------------------------------
+
+Objectif :
+Prouver qui peut autoriser l'accès, l'utilisation, la copie, la modification,
+le transfert et la fermeture des éléments inclus.
+
+Questions minimales :
+
+- Qui représente l'organisation pour cette décision ?
+- Quels contrats, mandats ou procédures encadrent les interventions ?
+- Qui est titulaire ou administrateur des actifs essentiels ?
+- Quels droits sur code, design, contenus, licences et données sont établis ?
+- Une contestation limite-t-elle une action précise ?
+
+Preuves possibles :
+contrat ou mandat expurgé, console appartenant à l'organisation, registre de
+décision, liste de titulaires et procédure officielle de récupération.
+
+Test sûr :
+vérification en lecture seule ou exercice documenté de récupération sans
+modifier l'actif public.
+
+Critère STOP :
+aucune personne ne peut autoriser une action nécessaire, ou un droit sérieux
+est contesté.
+
+Applicabilité : APPLICABLE / N/A / ND
+Statut : PROUVÉ / À TESTER / ÉCHEC / INCONNU / NON TESTÉ
+Impact sur la reprise : BLOQUANT / NON BLOQUANT PLANIFIÉ / ND
+Type de preuve :
+Environnement :
+Date et heure avec fuseau :
+Propriétaire de la preuve :
+Référence expurgée :
+Résultat observable :
+Limite de la preuve :
+Action interdite tant que non levé :
+Justification N/A :
+Événement précis de réouverture :
+Prochaine action :
+Responsable :
+Échéance :
+
+-------------------------------------------------------------------------------
+FICHE HORS LIGNE B - DOMAINE, DNS, TLS ET CERTIFICATS
+-------------------------------------------------------------------------------
+
+Objectif :
+Prouver le contrôle du domaine et la capacité à maintenir sa résolution et ses
+certificats sans bascule improvisée.
+
+Questions minimales :
+
+- Qui est titulaire et qui contrôle le compte du bureau d'enregistrement ?
+- Quels contacts reçoivent les alertes et renouvellements ?
+- Quels NS sont autoritatifs, quelle délégation et quelle glue éventuelle sont
+  publiées au parent ?
+- DNSSEC est-il actif ? Quel DS est publié dans la zone parente, avec quelles
+  DNSKEY et quels algorithmes ?
+- Qui possède les clés et pilote leur rollover ou la désactivation de DNSSEC ?
+- Où sont gérés DNS, sous-domaines, certificats et routage de messagerie ?
+- Quelles dépendances utilisent des enregistrements DNS ou des certificats ?
+- Le renouvellement et la récupération sont-ils documentés ?
+
+Preuves possibles :
+console autorisée, échéance, liste expurgée de zones, NS et délégation,
+état DNSSEC, DS observé au parent, DNSKEY et algorithmes, propriétaire des
+clés, procédure de rollover ou de désactivation, chaîne TLS observée,
+procédure de récupération et registre des changements.
+
+Test sûr :
+observer les délégations, le DS parent, les DNSKEY, les résolutions et les
+certificats sans changement ; préparer un changement, sa validation avant et
+après et son retour sans l'exécuter si ce n'est pas nécessaire.
+
+Critère STOP :
+une bascule exige un changement DNS ou certificat sans autorité ni retour
+préparé, ou l'état de la délégation/DNSSEC reste inconnu.
+
+Applicabilité : APPLICABLE / N/A / ND
+Statut : PROUVÉ / À TESTER / ÉCHEC / INCONNU / NON TESTÉ
+Impact sur la reprise : BLOQUANT / NON BLOQUANT PLANIFIÉ / ND
+Type de preuve :
+Environnement :
+Date et heure avec fuseau :
+Propriétaire de la preuve :
+Référence expurgée :
+Résultat observable :
+Limite de la preuve :
+Action interdite tant que non levé :
+Justification N/A :
+Événement précis de réouverture :
+Prochaine action :
+Responsable :
+Échéance :
+
+-------------------------------------------------------------------------------
+FICHE HORS LIGNE C - HÉBERGEMENT, PLATEFORMES ET ENVIRONNEMENTS
+-------------------------------------------------------------------------------
+
+Objectif :
+Identifier où le service fonctionne, qui contrôle chaque environnement et
+comment l'isoler, l'exporter ou le fermer.
+
+Questions minimales :
+
+- Quels comptes, offres, régions et échéances sont concernés ?
+- Production, préproduction, test et développement sont-ils distingués ?
+- Quels composants sont partagés avec d'autres services ?
+- Comment extraire configuration, fichiers et données autorisés ?
+- Qui peut augmenter, réduire, suspendre ou fermer la plateforme ?
+
+Preuves possibles :
+inventaire de ressources expurgé, console autorisée, contrat, schéma
+d'environnement, procédure d'export et de fermeture.
+
+Test sûr :
+identifier un environnement isolé et vérifier ses frontières sans recopier de
+donnée réelle ni déclencher de dépense non autorisée.
+
+Critère STOP :
+le seul environnement de test est la production ou sa manipulation menace un
+autre service non inclus.
+
+Applicabilité : APPLICABLE / N/A / ND
+Statut : PROUVÉ / À TESTER / ÉCHEC / INCONNU / NON TESTÉ
+Impact sur la reprise : BLOQUANT / NON BLOQUANT PLANIFIÉ / ND
+Type de preuve :
+Environnement :
+Date et heure avec fuseau :
+Propriétaire de la preuve :
+Référence expurgée :
+Résultat observable :
+Limite de la preuve :
+Action interdite tant que non levé :
+Justification N/A :
+Événement précis de réouverture :
+Prochaine action :
+Responsable :
+Échéance :
+
+-------------------------------------------------------------------------------
+FICHE HORS LIGNE D - CODE, DÉPÔT, HISTORIQUE ET PROPRIÉTÉ TECHNIQUE
+-------------------------------------------------------------------------------
+
+Objectif :
+Prouver que la source nécessaire aux futures interventions est identifiable,
+accessible avec autorisation et reliée à la version exploitée.
+
+Questions minimales :
+
+- Où se trouvent code, thèmes, extensions, scripts et fichiers générateurs ?
+- Quelle révision correspond raisonnablement à la production ?
+- L'historique et les branches utiles sont-ils disponibles ?
+- Quels fichiers sont générés, propriétaires ou fournis par un tiers ?
+- Qui contrôle le dépôt, les équipes, les règles et la procédure de transfert ?
+- Quel contrat, licence ou acte de cession autorise l'utilisation, la
+  reproduction, la modification et la maintenance du code ?
+- La remise à une future équipe est-elle autorisée lorsqu'elle est nécessaire
+  au périmètre prévu, et avec quelles limites ?
+
+Preuves possibles :
+identifiant de révision, inventaire expurgé, dépôt autorisé, documentation de
+construction, rapprochement avec un artefact déployé et extrait contractuel
+expurgé délimitant les droits utiles.
+
+Limite juridique :
+la possession d'un ZIP, l'accès au dépôt ou le paiement d'une facture ne
+prouvent pas à eux seuls la titularité ni l'étendue des droits transmis. Une
+cession intégrale n'est pas présumée nécessaire dans tous les cas : il faut
+prouver les droits réellement requis pour exploiter, corriger, maintenir et,
+si le contrat le prévoit, faire reprendre le site par un tiers. Escalader toute
+ambiguïté ou contestation à un conseil compétent.
+
+Test sûr :
+extraire une copie autorisée, construire ou installer sur l'environnement
+isolé, sans transférer ni révoquer prématurément.
+
+Critère STOP :
+contournement d'accès, droit contesté ou suppression envisagée avant une copie
+autorisée et vérifiée.
+
+Applicabilité : APPLICABLE / N/A / ND
+Statut : PROUVÉ / À TESTER / ÉCHEC / INCONNU / NON TESTÉ
+Impact sur la reprise : BLOQUANT / NON BLOQUANT PLANIFIÉ / ND
+Type de preuve :
+Environnement :
+Date et heure avec fuseau :
+Propriétaire de la preuve :
+Référence expurgée :
+Résultat observable :
+Limite de la preuve :
+Action interdite tant que non levé :
+Justification N/A :
+Événement précis de réouverture :
+Prochaine action :
+Responsable :
+Échéance :
+
+-------------------------------------------------------------------------------
+FICHE HORS LIGNE E - CONSTRUCTION, RUNTIME, CONFIGURATION ET DÉPENDANCES
+-------------------------------------------------------------------------------
+
+Objectif :
+Reproduire la construction ou l'installation nécessaire sans supposer qu'un
+site visible est maintenable.
+
+Questions minimales :
+
+- Quelles versions de runtime, CMS, outils et gestionnaires sont requises ?
+- La construction est-elle reproductible depuis une source identifiée ?
+- Quelles configurations diffèrent selon l'environnement ?
+- Quelles dépendances sont abandonnées, non supportées ou difficiles à obtenir ?
+- Les erreurs et avertissements sont-ils consignés sans secret ?
+
+Preuves possibles :
+fichiers de verrouillage, manifeste, instructions, version d'outil, résultat de
+construction daté et inventaire des configurations attendues sans leurs valeurs
+secrètes.
+
+Test sûr :
+construction propre ou installation sur copie, puis comparaison de l'artefact
+et test de démarrage.
+
+Critère STOP :
+la production devrait être modifiée directement pour découvrir comment
+construire ou démarrer le service.
+
+Applicabilité : APPLICABLE / N/A / ND
+Statut : PROUVÉ / À TESTER / ÉCHEC / INCONNU / NON TESTÉ
+Impact sur la reprise : BLOQUANT / NON BLOQUANT PLANIFIÉ / ND
+Type de preuve :
+Environnement :
+Date et heure avec fuseau :
+Propriétaire de la preuve :
+Référence expurgée :
+Résultat observable :
+Limite de la preuve :
+Action interdite tant que non levé :
+Justification N/A :
+Événement précis de réouverture :
+Prochaine action :
+Responsable :
+Échéance :
+
+-------------------------------------------------------------------------------
+FICHE HORS LIGNE F - CHAÎNE LOGICIELLE, SBOM, PROVENANCE ET LICENCES
+-------------------------------------------------------------------------------
+
+Objectif :
+Identifier les composants et droits nécessaires sans prétendre qu'un inventaire
+prouve l'absence de vulnérabilité.
+
+Questions minimales :
+
+- Existe-t-il un inventaire des composants directs et importants ?
+- Une SBOM est-elle disponible, dans quel format et pour quelle version ?
+- Quelles sources, registres, signatures ou attestations de provenance existent ?
+- Quelles licences, abonnements, thèmes, polices ou composants expirent ?
+- Qui suit les avis de sécurité et décide les mises à jour ?
+
+Preuves possibles :
+SBOM SPDX ou CycloneDX, fichier de verrouillage, inventaire de licences,
+attestation de provenance, registre fournisseur et échéances.
+
+Test sûr :
+générer ou comparer un inventaire sur la source autorisée ; vérifier manuellement
+les composants critiques et les droits de redistribution.
+
+Critère STOP :
+composant vital inaccessible ou juridiquement inutilisable pour l'intervention
+prévue, sans solution autorisée.
+
+Applicabilité : APPLICABLE / N/A / ND
+Statut : PROUVÉ / À TESTER / ÉCHEC / INCONNU / NON TESTÉ
+Impact sur la reprise : BLOQUANT / NON BLOQUANT PLANIFIÉ / ND
+Type de preuve :
+Environnement :
+Date et heure avec fuseau :
+Propriétaire de la preuve :
+Référence expurgée :
+Résultat observable :
+Limite de la preuve :
+Action interdite tant que non levé :
+Justification N/A :
+Événement précis de réouverture :
+Prochaine action :
+Responsable :
+Échéance :
+
+-------------------------------------------------------------------------------
+FICHE HORS LIGNE G - IDENTITÉS, COMPTES, DROITS ET SECRETS
+-------------------------------------------------------------------------------
+
+Objectif :
+Créer des accès nominatifs et limités, connaître les comptes techniques et
+préparer leur retrait sans recopier les secrets.
+
+Questions minimales :
+
+- Quels comptes humains, techniques et de récupération existent ?
+- À quelle organisation appartiennent-ils ?
+- Quels droits sont nécessaires à chaque action ?
+- Une authentification renforcée et une procédure de récupération existent-elles ?
+- Quels accès devront être retirés ou faire l'objet d'une rotation contrôlée ?
+
+Preuves possibles :
+inventaire sans identifiant sensible, matrice de droits, console autorisée,
+procédure d'ouverture/retrait et journal d'approbation.
+
+Test sûr :
+créer un compte nominatif de test au moindre privilège, vérifier qu'il suffit,
+puis démontrer qu'il peut être désactivé.
+
+Critère STOP :
+partage imposé d'un compte personnel ou permanent non maîtrisé, ou demande de
+secret dans un canal inadapté.
+
+Applicabilité : APPLICABLE / N/A / ND
+Statut : PROUVÉ / À TESTER / ÉCHEC / INCONNU / NON TESTÉ
+Impact sur la reprise : BLOQUANT / NON BLOQUANT PLANIFIÉ / ND
+Type de preuve :
+Environnement :
+Date et heure avec fuseau :
+Propriétaire de la preuve :
+Référence expurgée :
+Résultat observable :
+Limite de la preuve :
+Action interdite tant que non levé :
+Justification N/A :
+Événement précis de réouverture :
+Prochaine action :
+Responsable :
+Échéance :
+
+-------------------------------------------------------------------------------
+FICHE HORS LIGNE H - SAUVEGARDES, RESTAURATION, RTO ET RPO
+-------------------------------------------------------------------------------
+
+Objectif :
+Transformer « une sauvegarde existe » en récupération testée, mesurée et bornée.
+
+Questions minimales :
+
+- Que contient la copie et que ne contient-elle pas ?
+- De quand date le point de données récupérable ?
+- Où la copie est-elle conservée et qui peut la restaurer ?
+- Les objectifs RTO et RPO ont-ils été décidés avant l'incident ou le test ?
+- Quel temps et quelles étapes manuelles ont été réellement observés ?
+
+Preuves possibles :
+inventaire de sauvegarde, empreinte, politique de rétention, compte rendu de
+restauration, heures de début/fin et validation métier.
+
+Test sûr :
+restaurer une copie identifiée dans un environnement isolé, neutraliser les
+effets externes puis rejouer les contrôles prévus.
+
+Critère STOP :
+action destructive ou migration sans récupération raisonnablement prouvée.
+
+Applicabilité : APPLICABLE / N/A / ND
+Statut : PROUVÉ / À TESTER / ÉCHEC / INCONNU / NON TESTÉ
+Impact sur la reprise : BLOQUANT / NON BLOQUANT PLANIFIÉ / ND
+Type de preuve :
+Environnement :
+Date et heure avec fuseau :
+Propriétaire de la preuve :
+Référence expurgée :
+Résultat observable :
+Limite de la preuve :
+Action interdite tant que non levé :
+Justification N/A :
+Événement précis de réouverture :
+Prochaine action :
+Responsable :
+Échéance :
+
+-------------------------------------------------------------------------------
+FICHE HORS LIGNE I - DONNÉES, BASES, FICHIERS, CACHES, FILES ET INDEX
+-------------------------------------------------------------------------------
+
+Objectif :
+Identifier les états persistants et différés qui doivent être copiés, protégés
+ou réconciliés.
+
+Questions minimales :
+
+- Quelles bases, fichiers, objets, caches, index et files existent ?
+- Quelle est la source de vérité pour chaque catégorie ?
+- Quels traitements peuvent rester en attente, être rejoués ou se dupliquer ?
+- Comment vérifier intégrité, complétude et cohérence sans données réelles ?
+- Quelles rétentions, suppressions ou localisations s'appliquent ?
+
+Preuves possibles :
+schéma expurgé, inventaire de volumes, compteurs agrégés, documentation des
+files, procédure de réindexation et rapport de réconciliation.
+
+Test sûr :
+restaurer un jeu fictif ou anonymisé, provoquer des événements de test et
+rapprocher entrées, sorties et effets différés.
+
+Critère STOP :
+copie ou transformation de données réelles sans autorisation ni protection
+appropriée, ou perte irréversible possible non acceptée.
+
+Applicabilité : APPLICABLE / N/A / ND
+Statut : PROUVÉ / À TESTER / ÉCHEC / INCONNU / NON TESTÉ
+Impact sur la reprise : BLOQUANT / NON BLOQUANT PLANIFIÉ / ND
+Type de preuve :
+Environnement :
+Date et heure avec fuseau :
+Propriétaire de la preuve :
+Référence expurgée :
+Résultat observable :
+Limite de la preuve :
+Action interdite tant que non levé :
+Justification N/A :
+Événement précis de réouverture :
+Prochaine action :
+Responsable :
+Échéance :
+
+-------------------------------------------------------------------------------
+FICHE HORS LIGNE J - PARCOURS MÉTIER ET INTÉGRATIONS DE BOUT EN BOUT
+-------------------------------------------------------------------------------
+
+Objectif :
+Prouver le résultat final de chaque fonction critique, pas seulement l'affichage
+d'une page ou l'acceptation d'une requête.
+
+Questions minimales :
+
+- Quels parcours créent demande, vente, réservation, compte ou obligation ?
+- Quels e-mails, paiements, webhooks, agendas, CRM ou API sont impliqués ?
+- Quel résultat final doit être observé par le métier ?
+- Quels modes de test officiels ou doubles sont disponibles ?
+- Quels effets réels doivent être neutralisés ?
+
+Preuves possibles :
+scénario approuvé, compte de test, réception contrôlée, statut de paiement de
+test, résultat de webhook, rapprochement dans le système destinataire.
+
+Test sûr :
+exécuter le parcours avec une identité fictive et des fournisseurs en mode test,
+puis vérifier le résultat terminal et le nettoyage.
+
+Critère STOP :
+le seul test déclenche un vrai paiement, contacte une vraie personne, modifie
+une vraie donnée ou met en danger la production.
+
+Applicabilité : APPLICABLE / N/A / ND
+Statut : PROUVÉ / À TESTER / ÉCHEC / INCONNU / NON TESTÉ
+Impact sur la reprise : BLOQUANT / NON BLOQUANT PLANIFIÉ / ND
+Type de preuve :
+Environnement :
+Date et heure avec fuseau :
+Propriétaire de la preuve :
+Référence expurgée :
+Résultat observable :
+Limite de la preuve :
+Action interdite tant que non levé :
+Justification N/A :
+Événement précis de réouverture :
+Prochaine action :
+Responsable :
+Échéance :
+
+-------------------------------------------------------------------------------
+FICHE HORS LIGNE K - RELEASE, DÉPLOIEMENT, ROLLBACK, FIX-FORWARD ET RÉCONCILIATION
+-------------------------------------------------------------------------------
+
+Objectif :
+Prouver qu'un changement peut être préparé, observé et corrigé sans confondre
+retour de code et retour de données.
+
+Questions minimales :
+
+- Quel artefact est déployé, par qui et avec quelle approbation ?
+- Quelles vérifications précèdent et suivent la publication ?
+- Dans quels cas utilise-t-on rollback ou fix-forward ?
+- Le retour de code est-il compatible avec le schéma et les données déjà écrites ?
+- Comment réconcilier événements, commandes, messages ou tâches pendant le retour ?
+
+Preuves possibles :
+pipeline autorisé, journal de release, artefact identifié, procédure de retour,
+script réversible, décision de changement et rapport de réconciliation.
+
+Test sûr :
+publier une modification inoffensive sur copie, l'observer, choisir le mécanisme
+de retour adapté puis vérifier l'état technique et métier.
+
+Critère STOP :
+publication directe sans artefact identifié, sans autorité, sans observation ou
+sans stratégie pour les données irréversibles.
+
+Applicabilité : APPLICABLE / N/A / ND
+Statut : PROUVÉ / À TESTER / ÉCHEC / INCONNU / NON TESTÉ
+Impact sur la reprise : BLOQUANT / NON BLOQUANT PLANIFIÉ / ND
+Type de preuve :
+Environnement :
+Date et heure avec fuseau :
+Propriétaire de la preuve :
+Référence expurgée :
+Résultat observable :
+Limite de la preuve :
+Action interdite tant que non levé :
+Justification N/A :
+Événement précis de réouverture :
+Prochaine action :
+Responsable :
+Échéance :
+
+-------------------------------------------------------------------------------
+FICHE HORS LIGNE L - SÉCURITÉ, EXPOSITION ET ORIENTATION INCIDENT
+-------------------------------------------------------------------------------
+
+Objectif :
+Repérer les conditions qui modifient la décision sans transformer l'audit de
+reprise en fausse certification de sécurité.
+
+Questions minimales :
+
+- Quels composants et interfaces sont exposés ?
+- Quels mécanismes d'authentification, d'autorisation et de journalisation
+  protègent les fonctions sensibles ?
+- Quelles vulnérabilités connues ont été vérifiées dans le périmètre ?
+- Quels signaux imposent une réponse à incident distincte ?
+- Qui peut autoriser reprise, isolement ou conservation de preuves ?
+
+Preuves possibles :
+périmètre de test, inventaire d'exposition, résultats outillés confirmés
+manuellement, revue de configuration, ticket de correction et autorisation.
+
+Test sûr :
+revue passive et contrôles expressément autorisés ; aucun test offensif hors
+mandat, aucune charge risquant la disponibilité.
+
+Critère STOP :
+compromission active suspectée, accès non autorisé ou test intrusif sans mandat.
+
+Applicabilité : APPLICABLE / N/A / ND
+Statut : PROUVÉ / À TESTER / ÉCHEC / INCONNU / NON TESTÉ
+Impact sur la reprise : BLOQUANT / NON BLOQUANT PLANIFIÉ / ND
+Type de preuve :
+Environnement :
+Date et heure avec fuseau :
+Propriétaire de la preuve :
+Référence expurgée :
+Résultat observable :
+Limite de la preuve :
+Action interdite tant que non levé :
+Justification N/A :
+Événement précis de réouverture :
+Prochaine action :
+Responsable :
+Échéance :
+
+-------------------------------------------------------------------------------
+FICHE HORS LIGNE M - RGPD, DONNÉES PERSONNELLES ET DONNÉES DE TEST
+-------------------------------------------------------------------------------
+
+Objectif :
+Qualifier les traitements et limiter les données utilisées pendant la reprise.
+
+Questions minimales :
+
+- Quelles catégories de personnes et de données sont concernées ?
+- Qui détermine les finalités et qui traite pour le compte de qui ?
+- Quels prestataires ultérieurs et transferts doivent être examinés ?
+- Comment sont ouverts, tracés et retirés les accès de maintenance ?
+- Comment les copies de test sont-elles minimisées, anonymisées ou supprimées ?
+
+Preuves possibles :
+registre ou cartographie, contrat pertinent, liste de sous-traitants, décision
+de minimisation, procédure d'accès, de suppression et de notification.
+
+Test sûr :
+utiliser d'abord des données synthétiques ; si une autre base est nécessaire,
+faire approuver la méthode et vérifier que l'anonymisation est réelle.
+
+Attention :
+pseudonymiser ne signifie pas anonymiser. Une donnée réidentifiable reste une
+donnée personnelle.
+
+Critère STOP :
+copie non autorisée de données réelles, environnement non protégé ou rôle
+juridique essentiel impossible à qualifier avant l'action.
+
+Applicabilité : APPLICABLE / N/A / ND
+Statut : PROUVÉ / À TESTER / ÉCHEC / INCONNU / NON TESTÉ
+Impact sur la reprise : BLOQUANT / NON BLOQUANT PLANIFIÉ / ND
+Type de preuve :
+Environnement :
+Date et heure avec fuseau :
+Propriétaire de la preuve :
+Référence expurgée :
+Résultat observable :
+Limite de la preuve :
+Action interdite tant que non levé :
+Justification N/A :
+Événement précis de réouverture :
+Prochaine action :
+Responsable :
+Échéance :
+
+-------------------------------------------------------------------------------
+FICHE HORS LIGNE N - OBSERVABILITÉ, JOURNAUX, MÉTRIQUES, ALERTES ET RUNBOOKS
+-------------------------------------------------------------------------------
+
+Objectif :
+Prouver que la nouvelle équipe peut détecter, comprendre et orienter une
+dégradation sans exposer les journaux dans ce dossier.
+
+Questions minimales :
+
+- Quelles erreurs, métriques, traces et journaux existent ?
+- Où sont-ils conservés, combien de temps et avec quels accès ?
+- Qui reçoit les alertes et qui intervient hors heures ouvrées si nécessaire ?
+- Les parcours critiques et dépendances sont-ils observables ?
+- Quels runbooks et chemins d'escalade existent ?
+
+Preuves possibles :
+inventaire de télémétrie, capture expurgée, règle d'alerte, test d'alerte,
+runbook, calendrier de responsabilité et ticket d'exercice.
+
+Test sûr :
+provoquer un événement bénin sur copie, confirmer sa visibilité et sa
+notification, puis fermer l'alerte selon la procédure.
+
+Critère STOP :
+absence totale de détection pour une bascule critique lorsque cette absence
+empêche de surveiller ou de revenir raisonnablement.
+
+Applicabilité : APPLICABLE / N/A / ND
+Statut : PROUVÉ / À TESTER / ÉCHEC / INCONNU / NON TESTÉ
+Impact sur la reprise : BLOQUANT / NON BLOQUANT PLANIFIÉ / ND
+Type de preuve :
+Environnement :
+Date et heure avec fuseau :
+Propriétaire de la preuve :
+Référence expurgée :
+Résultat observable :
+Limite de la preuve :
+Action interdite tant que non levé :
+Justification N/A :
+Événement précis de réouverture :
+Prochaine action :
+Responsable :
+Échéance :
+
+-------------------------------------------------------------------------------
+FICHE HORS LIGNE O - PERFORMANCE, CAPACITÉ, DISPONIBILITÉ ET RÉSILIENCE
+-------------------------------------------------------------------------------
+
+Objectif :
+Relier les mesures aux besoins réels sans promettre un score universel.
+
+Questions minimales :
+
+- Quelles pages, API et opérations représentent l'usage réel ?
+- Quelles mesures terrain et laboratoire sont disponibles et datées ?
+- Quelles limites de capacité, quotas ou dépendances sont connues ?
+- Quels modes dégradés, délais et erreurs sont acceptables ?
+- Quelle surveillance est nécessaire pendant un changement ?
+
+Preuves possibles :
+mesures de terrain agrégées, test contrôlé, rapport de charge autorisé,
+inventaire de quotas, historique de saturation et plan de surveillance.
+
+Test sûr :
+mesurer la copie ou une fenêtre autorisée avec une charge proportionnée ; ne pas
+lancer de charge sur la production sans mandat et protection.
+
+Critère STOP :
+test de charge non autorisé ou bascule sans capacité minimale prouvée pour la
+période concernée.
+
+Applicabilité : APPLICABLE / N/A / ND
+Statut : PROUVÉ / À TESTER / ÉCHEC / INCONNU / NON TESTÉ
+Impact sur la reprise : BLOQUANT / NON BLOQUANT PLANIFIÉ / ND
+Type de preuve :
+Environnement :
+Date et heure avec fuseau :
+Propriétaire de la preuve :
+Référence expurgée :
+Résultat observable :
+Limite de la preuve :
+Action interdite tant que non levé :
+Justification N/A :
+Événement précis de réouverture :
+Prochaine action :
+Responsable :
+Échéance :
+
+-------------------------------------------------------------------------------
+FICHE HORS LIGNE P - ACCESSIBILITÉ ET USAGES ASSISTÉS
+-------------------------------------------------------------------------------
+
+Objectif :
+Identifier les obstacles majeurs et la méthode de vérification sans revendiquer
+une conformité globale à partir d'un outil automatique.
+
+Questions minimales :
+
+- Quel référentiel et quel niveau sont réellement visés ?
+- Le périmètre de pages et parcours est-il représentatif ?
+- Navigation clavier, focus, titres, formulaires, erreurs, contrastes,
+  alternatives et zoom ont-ils été contrôlés ?
+- Des tests manuels et, si approprié, utilisateurs complètent-ils les outils ?
+- Qui décide et vérifie les corrections ?
+
+Preuves possibles :
+périmètre, date, méthode, rapport automatique, contrôle manuel, reproductions,
+priorités, corrections et contre-test.
+
+Test sûr :
+revue automatisée puis manuelle des parcours critiques, au clavier et avec les
+réglages utiles ; ne pas conclure « accessible » sur un score d'outil.
+
+Critère STOP :
+obstacle empêchant une fonction critique pour des utilisateurs concernés,
+lorsqu'aucune mesure acceptable n'est prévue.
+
+Applicabilité : APPLICABLE / N/A / ND
+Statut : PROUVÉ / À TESTER / ÉCHEC / INCONNU / NON TESTÉ
+Impact sur la reprise : BLOQUANT / NON BLOQUANT PLANIFIÉ / ND
+Type de preuve :
+Environnement :
+Date et heure avec fuseau :
+Propriétaire de la preuve :
+Référence expurgée :
+Résultat observable :
+Limite de la preuve :
+Action interdite tant que non levé :
+Justification N/A :
+Événement précis de réouverture :
+Prochaine action :
+Responsable :
+Échéance :
+
+-------------------------------------------------------------------------------
+FICHE HORS LIGNE Q - SEO, ANALYTICS, BALISES ET CONTINUITÉ D'ACQUISITION
+-------------------------------------------------------------------------------
+
+Objectif :
+Préserver les actifs mesurables et distinguer simple reprise, migration
+d'hébergement et changement d'URL.
+
+Questions minimales :
+
+- Qui contrôle Search Console, analytics, balises et comptes publicitaires ?
+- Quelles URL, règles d'indexation, canonicals et redirections sont importantes ?
+- Une migration change-t-elle l'hébergement, les URL ou les deux ?
+- Les conversions et consentements sont-ils mesurés sans donnée réelle ici ?
+- Quels indicateurs seront surveillés avant, pendant et après le changement ?
+
+Preuves possibles :
+inventaire d'URL, propriété de console, export agrégé, plan de redirections,
+balises identifiées, test de conversion fictif et plan de surveillance.
+
+Test sûr :
+si les URL ne changent pas, tester l'infrastructure séparément ; si elles
+changent, préparer mappage, redirections, exploration et surveillance.
+
+Critère STOP :
+changement massif d'URL ou de balises sans inventaire, plan de retour et
+personne responsable, quand l'acquisition dépend du site.
+
+Applicabilité : APPLICABLE / N/A / ND
+Statut : PROUVÉ / À TESTER / ÉCHEC / INCONNU / NON TESTÉ
+Impact sur la reprise : BLOQUANT / NON BLOQUANT PLANIFIÉ / ND
+Type de preuve :
+Environnement :
+Date et heure avec fuseau :
+Propriétaire de la preuve :
+Référence expurgée :
+Résultat observable :
+Limite de la preuve :
+Action interdite tant que non levé :
+Justification N/A :
+Événement précis de réouverture :
+Prochaine action :
+Responsable :
+Échéance :
+
+-------------------------------------------------------------------------------
+FICHE HORS LIGNE R - DOCUMENTATION, SUPPORT, TRANSFERT ET RÉVERSIBILITÉ
+-------------------------------------------------------------------------------
+
+Objectif :
+Permettre à la nouvelle équipe d'opérer, apprendre et repartir sans recréer une
+dépendance personnelle.
+
+Questions minimales :
+
+- Architecture, contacts, procédures et décisions sont-ils documentés ?
+- Quels horaires, niveaux de service, escalades et responsabilités existent ?
+- Quels exercices ou formations sont nécessaires ?
+- Quel soutien transitoire fournit l'ancien prestataire ?
+- Le paquet de sortie peut-il être remis à une future équipe ?
+
+Preuves possibles :
+schéma, runbooks, catalogue de services, journal de décisions, calendrier de
+formation, contacts de support, inventaire de sortie et procès-verbal de remise.
+
+Test sûr :
+faire exécuter une procédure documentée par une personne qui ne l'a pas écrite,
+puis corriger les ambiguïtés.
+
+Critère STOP :
+la nouvelle équipe devrait assumer une responsabilité critique sans accès,
+procédure, contact ni période de soutien raisonnable.
+
+Applicabilité : APPLICABLE / N/A / ND
+Statut : PROUVÉ / À TESTER / ÉCHEC / INCONNU / NON TESTÉ
+Impact sur la reprise : BLOQUANT / NON BLOQUANT PLANIFIÉ / ND
+Type de preuve :
+Environnement :
+Date et heure avec fuseau :
+Propriétaire de la preuve :
+Référence expurgée :
+Résultat observable :
+Limite de la preuve :
+Action interdite tant que non levé :
+Justification N/A :
+Événement précis de réouverture :
+Prochaine action :
+Responsable :
+Échéance :
+
+===============================================================================
+6. FICHE RESTAURATION, RPO ET RTO
+===============================================================================
+
+Définitions simples :
+
+- RTO : durée cible décidée pour rétablir le service utile.
+- RPO : perte de données maximale cible, exprimée comme écart temporel entre le
+  point de référence et le point de données réellement récupéré.
+
+Un RTO ou RPO ne doit pas être inventé après le test pour faire paraître le
+résultat conforme. S'il n'existe pas de cible approuvée, écrivez ND et faites
+valider la cible métier séparément.
+
+IDENTIFICATION
+
+Copie sélectionnée :
+Date de création de la copie :
+Empreinte ou référence expurgée :
+Contenu déclaré :
+Éléments explicitement absents :
+Lieu de restauration isolé :
+Personne autorisant le test :
+Personne exécutant :
+Personne validant le métier :
+
+CHRONOLOGIE OBSERVÉE
+
+Début de préparation :
+Début de restauration :
+Fin technique de restauration :
+Début des tests métier :
+Fin des tests métier :
+Service déclaré utilisable à :
+Durée technique observée : ND
+Durée jusqu'à validation métier : ND
+
+RTO
+
+Cible RTO approuvée avant test : ND
+Source de la cible :
+Point de départ contractuel ou métier : ND
+Durée observée selon cette règle : ND
+Résultat : RESPECTÉ / NON RESPECTÉ / ND
+Limites :
+
+RPO
+
+Point de référence : ND
+Point de données récupéré : ND
+Écart observé : ND
+Cible RPO approuvée avant test : ND
+Source de la cible :
+Résultat : RESPECTÉ / NON RESPECTÉ / ND
+Limites :
+
+CONTRÔLES APRÈS RESTAURATION
+
+[ ] démarrage technique ;
+[ ] domaine ou adresse de test isolé ;
+[ ] aucune indexation publique involontaire ;
+[ ] vrais paiements neutralisés ;
+[ ] vrais e-mails et messages neutralisés ;
+[ ] tâches, webhooks et automatisations neutralisés ou redirigés ;
+[ ] données fictives ou anonymisées seulement ;
+[ ] parcours métier exécutés ;
+[ ] intégrité et réconciliation contrôlées ;
+[ ] journaux et alertes observés ;
+[ ] copie de test protégée puis supprimée ou conservée selon décision.
+
+Écarts :
+Actions interdites :
+Preuve de fermeture du test :
+
+===============================================================================
+7. FICHE RELEASE, RETOUR ET RÉCONCILIATION
+===============================================================================
+
+CHANGESET
+
+Objectif du changement :
+Périmètre :
+Artefact ou révision :
+Environnements :
+Autorité :
+Fenêtre :
+Critères de réussite :
+Critères d'arrêt :
+
+CHOIX DE STRATÉGIE
+
+ROLLBACK :
+Retour à un artefact, une configuration ou une version antérieure compatible.
+Ne supposez pas qu'il annule les données déjà écrites.
+
+Applicable : OUI / NON / ND
+Procédure testée :
+Durée observée : ND
+Risque de données :
+Réconciliation nécessaire :
+
+FIX-FORWARD :
+Correction supplémentaire vers un état acceptable lorsque le retour est plus
+risqué, impossible ou incompatible avec les données.
+
+Applicable : OUI / NON / ND
+Correction minimale préparée :
+Durée estimée et source : ND
+Observation nécessaire :
+Réconciliation nécessaire :
+
+RESTAURATION :
+Retour depuis une copie de données ou de système. Ce n'est pas un synonyme de
+rollback applicatif.
+
+Applicable : OUI / NON / ND
+Copie sélectionnée :
+Perte potentielle :
+Validation métier :
+
+RÉCONCILIATION :
+
+Transactions pendant la fenêtre :
+Messages et e-mails :
+Paiements et remboursements :
+Webhooks et files :
+Écritures dupliquées ou manquantes :
+Caches et index :
+Responsable :
+Preuve de fermeture :
+
+DÉCISION
+
+Stratégie retenue :
+Pourquoi :
+Autorité de déclenchement :
+Action interdite :
+Test préalable :
+Critère de fin :
+
+===============================================================================
+8. DONNÉES DE TEST ET NETTOYAGE
+===============================================================================
+
+Priorité :
+
+1. données synthétiques créées pour le test ;
+2. données fictives représentant les cas utiles ;
+3. données réellement anonymisées après validation de la méthode ;
+4. données pseudonymisées seulement si le besoin, l'autorité et les protections
+   sont établis ;
+5. données réelles identifiantes : hors de ce dossier et à éviter par défaut.
+
+PLAN DE DONNÉES DE TEST
+
+Parcours :
+Catégories nécessaires :
+Pourquoi des données synthétiques suffisent ou non :
+Méthode de génération :
+Méthode d'anonymisation, si applicable :
+Risque de réidentification :
+Personne qui approuve :
+Environnement :
+Durée de conservation :
+Méthode de suppression :
+Preuve de suppression :
+
+INTERDICTIONS
+
+[ ] aucune identité réelle dans ce fichier ;
+[ ] aucun secret ou identifiant de production ;
+[ ] aucun moyen de paiement réel ;
+[ ] aucun message envoyé à un destinataire réel sans consentement et procédure ;
+[ ] aucune copie de production improvisée ;
+[ ] aucune affirmation « anonymisé » sans méthode et contrôle.
+
+===============================================================================
+9. INCIDENT, AUTORITÉ ET CHAÎNE D'ESCALADE
+===============================================================================
+
+Un audit de reprise s'arrête lorsqu'un incident actif exige une autre procédure.
+
+Faits observés :
+Date et heure avec fuseau :
+Périmètre touché :
+Signal cyber possible :
+Cause : NON ÉTABLIE sauf preuve distincte
+Coordinateur :
+Autorité de décision :
+Contact sécurité :
+Contact données personnelles :
+Contact juridique :
+Contact hébergeur ou fournisseur :
+Référence expurgée :
+Preuves conservées où :
+Actions déjà réalisées :
+Actions interdites :
+Décision de reprise autorisée par :
+Date de prochaine revue :
+
+Ne collectez pas davantage de données « pour être sûr » sans besoin, mandat et
+protection. Ne transformez pas un symptôme, une alerte ou une absence de journal
+en attribution de cause.
+
+===============================================================================
+10. QUATRE TRAJECTOIRES À PÉRIMÈTRE ÉGAL
+===============================================================================
+
+Comparez exactement les mêmes fonctions, données, qualité attendue, sécurité,
+accessibilité, SEO, disponibilité et période. Une option moins chère ne peut pas
+silencieusement retirer une fonction ou transférer un risque au client.
+
+TRAJECTOIRE A - MISE SOUS CONTRÔLE DE L'EXISTANT
+
+Description :
+Fonctions incluses :
+Pré-requis :
+Corrections initiales :
+Risques résiduels :
+Capacité de publication :
+Retour et réversibilité :
+Horizon raisonnable : ND
+TCO 12 / 36 / 60 mois : ND / ND / ND
+Preuves :
+
+TRAJECTOIRE B - STABILISATION CIBLÉE
+
+Description :
+Fonctions incluses :
+Pré-requis :
+Corrections initiales :
+Risques résiduels :
+Capacité de publication :
+Retour et réversibilité :
+Horizon raisonnable : ND
+TCO 12 / 36 / 60 mois : ND / ND / ND
+Preuves :
+
+TRAJECTOIRE C - MODERNISATION OU MIGRATION PROGRESSIVE
+
+Description :
+Fonctions incluses :
+Pré-requis :
+Étapes indépendantes :
+Risques résiduels :
+Compatibilité temporaire :
+Retour et réversibilité :
+Horizon raisonnable : ND
+TCO 12 / 36 / 60 mois : ND / ND / ND
+Preuves :
+
+TRAJECTOIRE D - RECONSTRUCTION OU REMPLACEMENT
+
+Description :
+Fonctions incluses :
+Pré-requis :
+Migration des données et URL :
+Risques résiduels :
+Coexistence et bascule :
+Retour et réversibilité :
+Horizon raisonnable : ND
+TCO 12 / 36 / 60 mois : ND / ND / ND
+Preuves :
+
+GRILLE COMMUNE
+
+Critère                                  A         B         C         D
+Périmètre métier identique              [ ]       [ ]       [ ]       [ ]
+Autorité et actifs contrôlés            [ ]       [ ]       [ ]       [ ]
+Restauration prouvée                    [ ]       [ ]       [ ]       [ ]
+Parcours critiques prouvés              [ ]       [ ]       [ ]       [ ]
+Disponibilité cible                     ND        ND        ND        ND
+Perte de données cible                  ND        ND        ND        ND
+Sécurité résiduelle                     ND        ND        ND        ND
+Accessibilité                           ND        ND        ND        ND
+Performance/capacité                    ND        ND        ND        ND
+Continuité SEO/analytics                ND        ND        ND        ND
+Dépendance fournisseur                  ND        ND        ND        ND
+Compétences internes requises           ND        ND        ND        ND
+Délai prouvé                            ND        ND        ND        ND
+TCO 12 mois                             ND        ND        ND        ND
+TCO 36 mois                             ND        ND        ND        ND
+TCO 60 mois                             ND        ND        ND        ND
+Action réversible                       ND        ND        ND        ND
+
+TRAJECTOIRE RECOMMANDÉE : ND
+Pourquoi :
+Preuves déterminantes :
+Inconnues qui pourraient changer la décision :
+Date de revalidation :
+
+===============================================================================
+11. FEUILLE TCO À 12, 36 ET 60 MOIS
+===============================================================================
+
+Cette feuille ne fournit aucun tarif de marché. Utilisez uniquement des devis,
+contrats, coûts internes décidés et hypothèses identifiées. Une cellule inconnue
+reste ND.
+
+Devise :
+Date de valeur :
+Périmètre commun :
+Source de chaque montant :
+Traitement des taxes :
+Sept catégories canoniques relues sans omission connue : OUI / NON / ND
+Méthode de réserve de risque :
+Hypothèse d'inflation : ND
+Coût interne par jour, si approuvé : ND
+
+CATÉGORIES - NE COMPTEZ CHAQUE COÛT QU'UNE FOIS
+
+1. Transition : audit, transfert, correction ou construction initiale
+2. Temps interne : gouvernance, recette et formation
+3. Exploitation : maintenance, surveillance, support et astreinte
+4. Licences et services : hébergement, stockage, outils et composants
+5. Continuité et migration : coexistence, sauvegarde, reprise, bascule et perte
+6. Réserve de risque : règle, risques couverts et source de décision
+7. Sortie et réversibilité : restitution, assistance, fermeture et suppression
+
+Chaque trajectoire contient les sept catégories. Un coût réellement nul est
+écrit 0 avec une quantité de 1 et une source datée ; une catégorie inconnue
+reste ND et interdit le calcul global.
+
+ENTRÉES PAR TRAJECTOIRE
+
+Trajectoire :
+
+Pour chaque ligne :
+
+Catégorie canonique :
+Libellé :
+Quantité :
+Montant unitaire :
+Fréquence : unique / mensuelle / annuelle / sortie
+Mois de début :
+Mois de fin :
+Date de la source :
+Source :
+Élément exclu ou ND :
+
+Répéter jusqu'à couvrir les sept catégories sans double compte.
+
+FORMULES
+
+Si toutes les entrées requises sont connues :
+
+Temps interne initial =
+  jours internes initiaux x coût interne par jour
+
+Temps interne récurrent sur H mois =
+  jours internes mensuels x H x coût interne par jour
+
+TCO(H) =
+  coûts initiaux
+  + récurrent mensuel x H
+  + coût annuel x mois réellement actifs dans l'horizon / 12
+  + coûts périodiques dus avant H
+  + temps interne initial
+  + temps interne récurrent sur H
+  + coûts de sortie inclus dans l'horizon
+
+Les coûts annuels sont proratisés au mois entre leur mois de début et leur mois
+de fin. Le dossier interactif arrondit chaque total de ligne au centième le plus
+proche, moitié vers le haut. Une autre convention n'est comparable que si elle
+est écrite et appliquée de façon identique aux quatre trajectoires.
+
+Si une entrée pouvant changer la décision est ND, le TCO correspondant reste ND.
+Ne monétisez pas une panne, une sanction, une perte SEO ou une « économie
+attendue » sans modèle défendable, source et scénario explicites.
+
+TABLEAU DE SYNTHÈSE TCO
+
+Trajectoire                   12 mois       36 mois       60 mois
+A - Mise sous contrôle       ND            ND            ND
+B - Stabilisation ciblée     ND            ND            ND
+C - Migration progressive   ND            ND            ND
+D - Reconstruction          ND            ND            ND
+
+Entrées qui restent ND :
+Conséquence sur la comparaison :
+Prochaine preuve de coût :
+Responsable :
+Échéance :
+
+EXEMPLE DE DÉMONSTRATION — MISE SOUS CONTRÔLE
+
+Montants entièrement fictifs, sans valeur de tarif ni de moyenne de marché.
+
+Catégorie                         12 mois       36 mois       60 mois
+Transition                       7 500 EUR     7 500 EUR     7 500 EUR
+Temps interne                    2 000 EUR     2 000 EUR     2 000 EUR
+Exploitation et support         14 400 EUR    43 200 EUR    72 000 EUR
+Licences et services             1 800 EUR     5 400 EUR     9 000 EUR
+Continuité et coexistence        1 000 EUR     1 000 EUR     1 000 EUR
+Réserve de risque                  800 EUR       800 EUR       800 EUR
+Sortie et réversibilité          3 000 EUR     3 000 EUR     3 000 EUR
+TOTAL FICTIF                    30 500 EUR    62 900 EUR    95 300 EUR
+
+===============================================================================
+12. MODÈLE DE RÉSERVE P0 / P1 / P2
+===============================================================================
+
+P0 - BLOCAGE CRITIQUE
+
+Empêche l'action ou le GO concernés. Exemples : autorité absente, incident actif,
+action destructive sans restauration prouvée, données exposées, test mettant la
+production en danger.
+
+P1 - CONDITION MAJEURE
+
+Interdit le GO de reprise tant que la preuve de levée n'existe pas. Des travaux
+préparatoires sur copie isolée peuvent continuer seulement s'ils sont
+explicitement hors du périmètre bloqué.
+
+P2 - AMÉLIORATION PLANIFIÉE
+
+N'interdit pas l'action actuelle dans le périmètre et possède obligatoirement un
+résultat, une limite, une action interdite, un responsable, un déclencheur de
+réouverture, une prochaine action et une échéance. Si un de ces éléments manque,
+ou si l'impact bloque réellement la reprise, la réserve est P1.
+
+FICHE DE RÉSERVE
+
+Identifiant :
+Priorité : P0 / P1 / P2
+Impact sur la reprise : BLOQUANT / NON BLOQUANT PLANIFIÉ / ND
+Zone :
+Environnement :
+Périmètre affecté :
+Fait observé :
+Preuve et référence expurgée :
+Ce que la preuve ne démontre pas :
+Conséquence métier ou technique :
+Action interdite :
+Mesure provisoire :
+Responsable de la levée :
+Preuve attendue pour fermer :
+Échéance :
+Statut : OUVERTE / EN COURS / LEVÉE / ACCEPTÉE / ND
+Date de contre-test :
+Résultat du contre-test :
+Autorité acceptant le risque résiduel :
+Justification si P2 non traité :
+
+RÈGLE DE FERMETURE
+
+Une réserve n'est pas levée parce qu'une tâche est déclarée terminée. Elle est
+levée lorsque la preuve attendue et le résultat observable sont vérifiés dans
+le bon environnement.
+
+===============================================================================
+13. SYNTHÈSE DIRIGEANT - UNE PAGE
+===============================================================================
+
+Conservez cette section concise. Les détails restent dans les 18 zones.
+
+SITE ET DÉCISION
+
+Organisation :
+Site :
+Date et fuseau :
+Niveau : LÉGER / COMPLET / HORS PARCOURS
+Périmètre en une phrase :
+Fonctions métier testées :
+
+VERDICT
+
+[ ] GO dans le périmètre testé
+[ ] GO SOUS RÉSERVES
+[ ] STOP TEMPORAIRE
+[ ] DÉCISION IMPOSSIBLE - informations critiques ND
+
+Phrase de décision :
+
+TROIS PREUVES DÉTERMINANTES
+
+1.
+2.
+3.
+
+BLOCAGES ET INCONNUES
+
+P0 ouverts :
+P1 ouverts :
+P2 ouverts :
+Inconnue pouvant changer le verdict :
+
+RÉCUPÉRATION ET CHANGEMENT
+
+Restauration : PROUVÉE / ÉCHEC / À TESTER / ND
+RTO cible / observé : ND / ND
+RPO cible / observé : ND / ND
+Publication : PROUVÉE / ÉCHEC / À TESTER / ND
+Retour ou fix-forward : PROUVÉ / ÉCHEC / À TESTER / ND
+Réconciliation : PROUVÉE / ÉCHEC / À TESTER / ND
+
+TRAJECTOIRE ET COÛT
+
+Trajectoire recommandée : A / B / C / D / ND
+TCO 12 mois : ND
+TCO 36 mois : ND
+TCO 60 mois : ND
+Pourquoi :
+
+PROCHAINE DÉCISION
+
+Action autorisée :
+Actions interdites :
+Responsable :
+Preuve attendue :
+Échéance :
+Date de revalidation :
+
+VALIDATION
+
+Dirigeant :
+Responsable technique :
+Autre autorité nécessaire :
+Limites comprises : OUI / NON / ND
+
+===============================================================================
+14. PAQUET DE SORTIE ET RÉVERSIBILITÉ
+===============================================================================
+
+Le paquet doit permettre à l'organisation de changer à nouveau d'équipe sans
+recevoir des secrets dans ce dossier.
+
+INVENTAIRE DU PAQUET
+
+[ ] synthèse dirigeant et registre des réserves ;
+[ ] périmètre, exclusions, dates, responsables et méthode ;
+[ ] inventaire domaines, plateformes et environnements ;
+[ ] copie autorisée du code et identifiant de révision ;
+[ ] instructions de construction et de publication ;
+[ ] inventaire de configuration sans valeurs secrètes ;
+[ ] SBOM et inventaire de licences, si applicables ;
+[ ] sauvegardes identifiées et compte rendu de restauration ;
+[ ] schéma de données et procédures de réconciliation ;
+[ ] scénarios et résultats des parcours métier ;
+[ ] stratégie release, rollback, fix-forward et réconciliation ;
+[ ] inventaire des comptes et droits sans secret ;
+[ ] procédure séparée de transfert ou rotation des secrets ;
+[ ] éléments RGPD et contrats pertinents ;
+[ ] contrôles sécurité, accessibilité, performance et SEO dans leur périmètre ;
+[ ] tableaux de bord, alertes, runbooks et contacts ;
+[ ] historique des décisions et réserves ;
+[ ] TCO, hypothèses et sources ;
+[ ] procédure de suppression des données et environnements de test ;
+[ ] procédure de retrait des anciens accès ;
+[ ] preuve d'acceptation du paquet.
+
+CONTRÔLE DE RÉVERSIBILITÉ
+
+Une personne distincte peut-elle :
+
+[ ] retrouver la source et la version exploitée ?
+[ ] construire ou installer une copie ?
+[ ] restaurer les données autorisées ?
+[ ] publier une modification bénigne ?
+[ ] revenir ou corriger en avant ?
+[ ] observer le résultat métier ?
+[ ] ouvrir puis retirer un accès ?
+[ ] joindre le bon fournisseur ?
+[ ] comprendre les réserves et limites ?
+[ ] remettre le paquet à une autre équipe ?
+
+Lieu autorisé du paquet :
+Responsable :
+Empreinte ou version :
+Date :
+Éléments manquants :
+Action interdite :
+Date de prochaine vérification :
+
+===============================================================================
+15. QUESTIONNAIRE À ENVOYER AU PRESTATAIRE
+===============================================================================
+
+Ne joignez aucun secret. Demandez une réponse, une preuve référencée, sa limite
+et la personne responsable.
+
+1. Quel périmètre exact acceptez-vous de reprendre ?
+2. Quelles fonctions métier considérez-vous comme critiques ?
+3. Quelles zones restent exclues ou inconnues ?
+4. Quels accès demandez-vous avant devis, et pourquoi ?
+5. Quels accès peuvent rester en lecture seule ?
+6. Comment seront-ils ouverts, tracés et retirés ?
+7. Comment prouvez-vous que la copie se restaure ?
+8. Quel environnement isolé utilisez-vous ?
+9. Comment neutralisez-vous paiements, e-mails, webhooks et automatismes ?
+10. Quelles données de test utilisez-vous et comment les supprimez-vous ?
+11. Comment reliez-vous la source à la version en production ?
+12. Comment reproduisez-vous construction et installation ?
+13. Comment inventorie-t-on dépendances, SBOM et licences ?
+14. Comment préparez-vous publication, rollback et fix-forward ?
+15. Comment réconciliez-vous données et événements pendant un retour ?
+16. Quels RTO et RPO sont prouvés, décidés ou encore ND ?
+17. Quels parcours de bout en bout seront testés ?
+18. Comment vérifiez-vous la réception finale des formulaires et e-mails ?
+19. Comment testez-vous paiements, commandes et remboursements sans débit réel ?
+20. Quels journaux, métriques, traces et alertes sont disponibles ?
+21. Qui reçoit les alertes et qui escalade un incident ?
+22. Quels contrôles sécurité sont inclus et explicitement exclus ?
+23. Comment distinguez-vous audit de reprise et test d'intrusion ?
+24. Comment traitez-vous les données personnelles et les sous-traitants ?
+25. Comment vérifiez-vous accessibilité, performance et capacité ?
+26. Que changez-vous pour le SEO, les analytics et les URL ?
+27. Quels livrables, références de preuves et contre-tests fournissez-vous ?
+28. Comment classez-vous P0, P1 et P2 sans moyenne masquant un blocage ?
+29. Quels rôles restent à l'ancien prestataire et jusqu'à quand ?
+30. Quelle assistance transitoire et quelle formation sont prévues ?
+31. Quel paquet de sortie appartient à l'organisation ?
+32. Comment une future équipe pourra-t-elle reprendre ce paquet ?
+33. Quelles hypothèses rendent vos délais ou coûts encore ND ?
+34. Quels coûts sont exclus du TCO ?
+35. Dans quel cas recommandez-vous de ne pas commander un audit approfondi ?
+36. Quelles actions restent interdites avant la levée des réserves ?
+
+RÉPONSE DU PRESTATAIRE
+
+Date :
+Auteur :
+Périmètre :
+Références de preuve :
+Inconnues :
+Réserves :
+Actions interdites :
+Prochaine étape :
+
+===============================================================================
+16. QUATRE MINI-CAS ENTIÈREMENT FICTIFS
+===============================================================================
+
+Ces cas expliquent la méthode. Ils ne décrivent aucun client, aucun résultat
+commercial et aucune mission réelle.
+
+CAS A - GO LIMITÉ
+
+La société fictive Atelier Horizon exploite un site vitrine sans espace client.
+Elle contrôle domaine, hébergement et dépôt. Une copie datée est restaurée dans
+un environnement isolé avec des données synthétiques. Une modification bénigne
+est publiée puis annulée. Le formulaire de test atteint une boîte de test
+contrôlée. Les anciens accès peuvent être retirés.
+
+Verdict :
+GO uniquement pour la maintenance du site vitrine et du formulaire testés.
+
+Limites :
+aucun test de sécurité exhaustif, aucune garantie de disponibilité, aucune
+fonction de paiement incluse.
+
+Prochaine action :
+ouvrir un accès nominatif limité et surveiller la première publication.
+
+CAS B - GO SOUS RÉSERVES P2
+
+La société fictive Signal B2B exploite un commerce sans paiement en ligne. Les
+comptes, la restauration, le build, les parcours, les alertes et le rollback
+sont vérifiés. Aucun P0 ni P1 ne reste ouvert. Deux travaux non bloquants
+subsistent : reprendre l'historique de mesure et exécuter un test de charge
+avant une future campagne.
+
+Verdict :
+GO SOUS RÉSERVES P2, limité à la charge et à la mesure actuelles.
+
+Réserve P2-01 :
+responsable désigné, export historique attendu, échéance datée, limite
+d'attribution visible ; interdiction de supprimer l'ancien historique avant
+contre-test.
+
+Réserve P2-02 :
+responsable technique désigné, rapport de charge attendu avant campagne,
+échéance datée et seuil actuel conservé ; interdiction d'augmenter fortement le
+trafic avant le test.
+
+Acceptation :
+le décideur accepte explicitement le risque résiduel et les actions interdites.
+
+CAS C - REPRISE BLOQUÉE, PRÉPARATION AUTORISÉE
+
+La boutique fictive Boréale Marché contrôle son domaine et son hébergement. La
+copie se restaure et le catalogue s'affiche. Le mode de test du paiement aboutit,
+mais un webhook d'état n'est pas reçu et la procédure de rollback ne traite pas
+les commandes écrites pendant la fenêtre. Le correctif peut être préparé sur
+copie, mais aucune bascule n'est autorisée.
+
+Verdict :
+REPRISE BLOQUÉE ; analyse et correction seulement sur environnement isolé et
+hors du périmètre bloqué.
+
+P1 :
+réconcilier le webhook, prouver le traitement idempotent et tester la stratégie
+rollback ou fix-forward avec commandes fictives.
+
+Action interdite :
+aucune bascule de production avant le contre-test et la validation métier.
+
+CAS D - STOP TEMPORAIRE
+
+L'association fictive Rivage Solidaire reçoit une alerte de redirection
+inconnue. Personne ne peut démontrer le contrôle du compte du domaine. La seule
+archive disponible n'a jamais été restaurée et contient potentiellement des
+données personnelles. Un intervenant propose de modifier directement le DNS et
+de copier la production sur son propre espace.
+
+Verdict :
+STOP temporaire.
+
+Motifs :
+signal d'incident, autorité non établie, récupération non prouvée et copie de
+données non autorisée.
+
+Orientation :
+nommer un coordinateur, utiliser les procédures officielles de récupération,
+préserver les références utiles, qualifier les données et traiter l'incident
+avant de reprendre le parcours commercial.
+
+===============================================================================
+17. SOURCES PRIMAIRES MONDIALES ET PÉRIMÈTRE DE LEUR USAGE
+===============================================================================
+
+Sources consultées ou revérifiées le 27 juillet 2026. Les versions, interfaces
+et procédures peuvent changer. Vérifiez la source applicable au moment de
+l'audit. Une source générale ne crée pas automatiquement une obligation pour
+chaque TPE, chaque site ou chaque pays.
+
+1. AWS Well-Architected Framework - Operational Readiness Reviews
+   https://docs.aws.amazon.com/wellarchitected/latest/operational-readiness-reviews/wa-operational-readiness-reviews.html
+   Usage : checklist de préparation opérationnelle, risque résiduel, actions et
+   amélioration continue. À adapter ; ce document n'impose pas AWS.
+
+2. Google Site Reliability Engineering - Production Readiness Reviews
+   https://sre.google/sre-book/evolving-sre-engagement-model/
+   Usage : dépendances, observabilité, urgence, capacité, changement,
+   performance, formation et transfert de responsabilité.
+
+3. OWASP Web Security Testing Guide - version Latest
+   https://owasp.org/www-project-web-security-testing-guide/latest/
+   Usage : définir objectifs, périmètre et méthodes de tests web. Ce guide ne
+   transforme pas l'audit de reprise en certification ou test exhaustif.
+
+4. NIST SP 800-34 Rev. 1, Update 1 - Contingency Planning Guide
+   https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final
+   Usage : continuité, récupération, tests et plans. Adapter au risque et au
+   contexte ; ne pas prétendre à une conformité NIST sans évaluation dédiée.
+
+5. CISA - Software Bill of Materials
+   https://www.cisa.gov/sbom
+   Usage : rôle d'une SBOM dans la transparence des composants.
+
+6. SPDX
+   https://spdx.dev/
+   Usage : format ouvert d'information sur composants, licences et provenance.
+
+7. CycloneDX
+   https://cyclonedx.org/
+   Usage : standard de nomenclature logicielle et de composants.
+
+8. SLSA 1.2 - Supply-chain Levels for Software Artifacts
+   https://slsa.dev/spec/v1.2/
+   Usage : concepts de provenance et d'intégrité de chaîne logicielle. Ne pas
+   revendiquer un niveau SLSA sans preuves conformes au référentiel.
+
+9. W3C - Web Content Accessibility Guidelines 2.2
+   https://www.w3.org/TR/WCAG22/
+   Usage : critères d'accessibilité. Les outils automatiques seuls ne suffisent
+   pas à démontrer une conformité complète.
+
+10. W3C WAI - Easy Checks
+    https://www.w3.org/WAI/test-evaluate/easy-checks/
+    Usage : première revue accessible aux non-techniciens, distincte d'une
+    évaluation complète.
+
+11. W3C WAI - Template for Accessibility Evaluation Reports
+    https://www.w3.org/WAI/test-evaluate/report-template/
+    Usage : structure de rapport, périmètre, méthode, résultats et actions.
+
+12. Google Search Central - changement d'hébergement sans changement d'URL
+    https://developers.google.com/search/docs/crawling-indexing/site-move-no-url-changes
+    Usage : copier, tester, basculer et surveiller une infrastructure lorsque les
+    URL restent identiques.
+
+13. Google Search Central - migration avec changement d'URL
+    https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes
+    Usage : mappage, redirections, tests et surveillance lorsque les URL changent.
+
+14. web.dev - Web Vitals
+    https://web.dev/articles/vitals
+    Usage : indicateurs d'expérience et mesures terrain/laboratoire. Aucun seuil
+    isolé ne décide à lui seul de la reprise.
+
+15. OpenTelemetry - Observability Primer
+    https://opentelemetry.io/docs/concepts/observability-primer/
+    Usage : concepts de traces, métriques et journaux ; aucune obligation
+    d'adopter un outil particulier.
+
+16. Règlement général sur la protection des données - texte officiel
+    https://eur-lex.europa.eu/eli/reg/2016/679/oj
+    Usage : cadre européen. La qualification et les obligations dépendent des
+    traitements et rôles réels.
+
+17. CNIL - Gérer la sous-traitance
+    https://www.cnil.fr/fr/securite-gerer-la-sous-traitance
+    Usage : garanties et encadrement lorsqu'un prestataire traite des données
+    personnelles pour le compte de l'organisation.
+
+18. CNIL - Encadrer la maintenance et la fin de vie
+    https://www.cnil.fr/fr/securite-encadrer-la-maintenance-et-la-fin-de-vie-des-materiels-et-logiciels
+    Usage : accès de support autorisés, adaptés puis refermés.
+
+19. ANSSI - Externalisation et sécurité des systèmes d'information
+    https://messervices.cyber.gouv.fr/guides/externalisation-et-securite-des-systemes-dinformation-un-guide-pour-maitriser-les
+    Usage : guide historique publié en 2010 sur l'analyse de risque et les
+    exigences d'externalisation. À compléter par les exigences juridiques,
+    contractuelles et cloud actuelles.
+
+20. Afnic - Gérer son nom de domaine
+    https://www.afnic.fr/noms-de-domaine/tout-savoir/gerer-son-nom-de-domaine/
+    Usage : domaines relevant de son registre. Pour une autre extension,
+    vérifier le registre et le bureau concernés.
+
+21. WordPress Developer Resources - Backups
+    https://developer.wordpress.org/advanced-administration/security/backup/
+    Usage : exemple WordPress distinguant fichiers et base. D'autres
+    architectures exigent d'autres éléments.
+
+22. GitHub Docs - Transferring a repository
+    https://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository
+    Usage : éléments conservés lors d'un transfert GitHub. Ne pas généraliser à
+    une autre forge ou à un simple export.
+
+23. FIRST - Common Vulnerability Scoring System
+    https://www.first.org/cvss/
+    Usage : contexte de cotation de vulnérabilités. Un score CVSS n'est pas le
+    verdict global de reprise et ne remplace pas le contexte métier.
+
+24. 17Cyber - assistance française
+    https://17cyber.gouv.fr/
+    Usage : orientation en France lorsqu'une situation cyber l'exige. Vérifier
+    les services compétents dans le pays et le contexte concernés.
+
+25. Code de la propriété intellectuelle - article L131-3
+    https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278958
+    Usage : délimitation des droits transmis par une cession en droit français.
+    Ne pas en déduire qu'une cession intégrale est requise dans chaque reprise ;
+    lire le contrat et les droits réellement nécessaires.
+
+26. RFC 4035 - Protocol Modifications for DNS Security Extensions
+    https://www.rfc-editor.org/rfc/rfc4035
+    Usage : validation DNSSEC et cohérence de la chaîne de confiance.
+
+27. RFC 7344 - Automating DNSSEC Delegation Trust Maintenance
+    https://www.rfc-editor.org/rfc/rfc7344
+    Usage : maintenance du DS et responsabilités parent/enfant.
+
+28. RFC 9364 - DNS Security Extensions (DNSSEC)
+    https://www.rfc-editor.org/rfc/rfc9364
+    Usage : synthèse actuelle des RFC DNSSEC et bonne pratique
+    d'authentification d'origine des données DNS.
+
+29. RFC 9615 - Automatic DNSSEC Bootstrapping
+    https://www.rfc-editor.org/rfc/rfc9615
+    Usage : amorçage automatique à partir de signaux authentifiés de l'opérateur
+    de zone ; vérifier la prise en charge réelle du parent et du registrar.
+
+30. BSI Standard 200-4 - Business Continuity Management
+    https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Grundschutz/BSI_Standards/standard_200_4.pdf?__blob=publicationFile&v=8
+    Usage : continuité et reprise, à proportionner au site et au contexte.
+
+31. BSI - préparation et conduite d'un IT-Grundschutz-Check
+    https://www.bsi.bund.de/dok/10990836
+    Usage : vérifier sur pièce, documenter l'état observé et réexaminer.
+
+32. INCIBE - Metodología de contratación de servicios de seguridad
+    https://www.incibe.es/sites/default/files/contenidos/dosieres/metad_contratacion_de_servicios.pdf
+    Usage : responsabilités, sauvegardes, interruption, escalade et revue des
+    niveaux de service. Adapter ce document espagnol au contrat et au droit
+    applicables.
+
+===============================================================================
+18. LIMITES, REVUE FINALE ET SIGNATURE DE DÉCISION
+===============================================================================
+
+LIMITES À CONSERVER VISIBLES
+
+- Les preuves décrivent une situation et une date ; elles peuvent devenir
+  obsolètes.
+- Un test réussi sur une copie ne prouve pas tous les comportements en
+  production.
+- Un outil automatique produit des signaux, pas une conclusion universelle.
+- Une sauvegarde présente n'est pas une restauration prouvée.
+- Un retour applicatif ne restaure pas nécessairement les données.
+- Une absence de journal ne prouve pas une attaque.
+- Une SBOM ne prouve ni l'absence de vulnérabilité ni tous les droits d'usage.
+- Un GO n'est valable que dans le périmètre testé.
+- Un N/A sans justification redevient ND.
+- Un coût, délai, RTO, RPO ou bénéfice sans source reste ND.
+- Changer de mainteneur n'impose pas de changer domaine, hébergeur ou URL.
+- Un code ancien n'impose pas à lui seul une refonte.
+- Une reprise réussie ne garantit pas un classement dans les moteurs.
+
+REVUE AVANT TRANSMISSION
+
+[ ] aucun secret ni donnée personnelle réelle ;
+[ ] aucune cause attribuée sans preuve ;
+[ ] aucune fausse certification ou qualification ;
+[ ] aucun tarif de marché inventé ;
+[ ] chaque N/A est justifié ;
+[ ] chaque ND critique a une conséquence ;
+[ ] chaque P0 et P1 a un responsable et une action interdite ;
+[ ] les quatre trajectoires ont le même périmètre ;
+[ ] le TCO ne double-compte aucun poste ;
+[ ] le verdict nomme environnement, date et limite ;
+[ ] le paquet de sortie est inventorié ;
+[ ] une revue humaine a été réalisée.
+
+DÉCISION FINALE
+
+Verdict :
+Périmètre :
+Date et heure avec fuseau :
+Prochaine action autorisée :
+Actions interdites :
+P0 ouverts :
+P1 ouverts :
+P2 ouverts :
+Date de revalidation :
+
+Approbation dirigeant :
+Approbation technique :
+Autre autorité :
+
+FIN DU DOSSIER

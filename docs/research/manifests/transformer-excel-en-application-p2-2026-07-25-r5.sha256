@@ -1,0 +1,12 @@
+64c441efd56c58073fd2201006df0fffd837bfb51f2758ea1faf6827a5b9858c  docs/audits/giga-audit-2026-07-24/reviews/transformer-excel-en-application-p3-2026-07-25-r4.md
+2e8acb2ac7f778c2a455da1ccf9d35adb647c92c3f7b9628ea7bcaf2153cfbfe  docs/research/transformer-excel-en-application.md
+00ace546e648d3ee34eeb7086df7145a1ab7620ef220257df79e1472f931ad45  src/app/guides/transformer-excel-en-application/page.tsx
+613d396aec5cf70de8b4f1020ddc668c6e23a4856aa14a6d1bccc32c45f207b7  src/app/guides/transformer-excel-en-application/opengraph-image.tsx
+b9d580451feb161326aef581591bc65575cf3f02b9127993eea8187fbcfd497c  src/components/guides/ExcelDecisionDiagnostic.tsx
+499ff263e08cfb72b3d81767ffd0e2727b7f3407c6a4a521b8ab869e6a439ff2  src/components/guides/ExcelDecisionDiagnostic.test.tsx
+021b3b8e53a39671b5993d5415622afe97fb073b5e22f1aa21df39d058361de1  src/lib/excel-decision-diagnostic.ts
+f2db05992283cf2c5f57a01ff3dbd9d78e603f69d70179b659fead147a6b692b  src/lib/excel-decision-diagnostic.test.ts
+568515c389e6635b748d7dd7727cfbfca514b5c3bf061f5bf5cfd4f5b7361fec  src/lib/excel-application-guide-quality.test.ts
+342cda4701e08dabda0eb3088021546e75bafe20f664349c62522caa0eac3267  src/lib/excel-local-date.ts
+6635c45e8d569ea5c9418e815c006ac2be700fcbb6b4085c6aaeb481e5e54108  src/lib/excel-local-date.test.ts
+74542cf4bfc1d00fb21587bc87bcb00ba991da4f249701a8ec2f5d26fe827659  src/lib/guides.ts

@@ -1,18 +1,22 @@
 # Dossier de recherche — SaaS : prioriser les fonctionnalités après le MVP
 
-> Dossier des quatre passes. Recherche, rédaction, contre-audit, validation
-> éditoriale déléguée et contrôle technique P4 sont terminés.
+> Le cycle du 23 juillet est conservé comme historique. Il a été rouvert le 24
+> juillet après un audit individuel à 66/100 et une nouvelle recherche
+> internationale. La page publique, l’image sociale, le registre et la
+> ressource téléchargeable ont changé ; les anciens snapshots P2, P3 et P4 ne
+> prouvent donc plus l’état courant. La nouvelle contre-relecture indépendante
+> et le gel P4 restent à fermer.
 
 ## Journal des quatre passes
 
 Propriétaire éditorial unique : **/root**.
 
-| Passe                        | État                     | Date       | Responsable                    | Snapshot                                                 | Blocages |
-| ---------------------------- | ------------------------ | ---------- | ------------------------------ | -------------------------------------------------------- | -------- |
-| 1. Recherche                 | Terminée — porte validée | 2026-07-23 | `/root/research_saas_batch2`   | `manifests/prioriser-fonctionnalites-mvp-saas-p1.sha256` | Aucun    |
-| 2. Rédaction et intégration  | Terminée — porte validée | 2026-07-23 | Propriétaire éditorial `/root` | `manifests/prioriser-fonctionnalites-mvp-saas-p2.sha256` | Aucun    |
-| 3. Contre-audit indépendant  | Terminée — porte validée | 2026-07-23 | Deux relecteurs indépendants   | `manifests/prioriser-fonctionnalites-mvp-saas-p3.sha256` | Aucun    |
-| 4. Plume humaine et contrôle | Terminée — porte validée | 2026-07-23 | Propriétaire éditorial `/root` | `manifests/prioriser-fonctionnalites-mvp-saas-p4.sha256` | Aucun    |
+| Passe                        | État                           | Date       | Responsable                    | Snapshot                                                 | Blocages                               |
+| ---------------------------- | ------------------------------ | ---------- | ------------------------------ | -------------------------------------------------------- | -------------------------------------- |
+| 1. Recherche                 | Terminée — porte validée       | 2026-07-23 | `/root/research_saas_batch2`   | `manifests/prioriser-fonctionnalites-mvp-saas-p1.sha256` | Aucun                                  |
+| 2. Rédaction et intégration  | Historique — snapshot remplacé | 2026-07-23 | Propriétaire éditorial `/root` | `manifests/prioriser-fonctionnalites-mvp-saas-p2.sha256` | Réécriture du 24 juillet hors snapshot |
+| 3. Contre-audit indépendant  | Historique — snapshot remplacé | 2026-07-23 | Deux relecteurs indépendants   | `manifests/prioriser-fonctionnalites-mvp-saas-p3.sha256` | Nouveau P3 à réaliser                  |
+| 4. Plume humaine et contrôle | Historique — gel invalidé      | 2026-07-23 | Propriétaire éditorial `/root` | `manifests/prioriser-fonctionnalites-mvp-saas-p4.sha256` | Nouveau P4 à produire                  |
 
 ### Manifeste du snapshot
 
@@ -241,16 +245,16 @@ Un **tri du prochain lot** sans score opaque :
 
 ## 5. Fiche de preuves
 
-| Affirmation utilisable                                                                                                                                                                                 | Source primaire, URL et passage utile                                                                                                                                                                                                                                                                         | Nature                                                                                  | Périmètre                                                                               | Date/consultation                                               | Confiance                                                      | Emplacement du lien visible                                                         | Conséquence lecteur                                                                                                                              | Fraîcheur                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------- |
-| Une demande doit rester reliée au besoin réel et être fondée sur des observations plutôt que sur une opinion interne                                                                                   | [GOV.UK, « Learning about users and their needs »](https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs), sections « How to research » et « Validating user needs » : retours non issus des utilisateurs traités comme hypothèses ; besoin formulé comme problème plutôt que solution | Guide officiel de conception de services publics britanniques                           | Méthode de recherche utilisateur ; transposition à un SaaS privé, non norme française   | page publiée en 2016, mise à jour 2017, consultée le 23/07/2026 | Élevée dans son contexte                                       | Près de la fiche qui transforme une fonction demandée en problème observé           | Ne pas classer « ajouter un export Excel » avant de savoir quel travail échoue sans cet export                                                   | Revalider si le manuel change             |
-| Les besoins doivent continuer d’être étudiés dans les phases alpha, bêta et en service ; les idées et nouvelles fonctions se testent avec des utilisateurs probables                                   | [GOV.UK, même page](https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs), lignes consacrées aux phases alpha, beta et live                                                                                                                                                           | Guide officiel                                                                          | Services publics ; principe méthodologique, pas obligation SaaS                         | consultée le 23/07/2026                                         | Élevée comme pratique                                          | Près de la sortie « tester avant de construire »                                    | Une demande peu prouvée peut devenir un essai ciblé au lieu d’un lot complet                                                                     | Revalider si le manuel change             |
-| RICE compare portée, effet attendu, confiance et effort ; l’article demande d’utiliser des mesures réelles lorsque possible et d’inclure le temps de toute l’équipe                                    | [Intercom, Sean McBride, « RICE: Simple prioritization for product managers »](https://www.intercom.com/blog/rice-simple-prioritization-for-product-managers/), sections Reach, Confidence et Effort                                                                                                          | Présentation de la méthode développée chez Intercom, dans un article signé Sean McBride | Méthode interne devenue largement reprise ; échelles et unités ne sont pas universelles | publiée le 05/01/2018, consultée le 23/07/2026                  | Élevée pour définir RICE, moyenne pour l’appliquer à tout SaaS | Dans une section courte « quand un score aide et quand il invente de la précision » | Un score n’est calculé que si la période, la portée, l’effet et l’effort reposent sur des données comparables                                    | Revalider si la page ou la méthode change |
-| L’article Intercom précise que le score n’est pas une règle absolue et que dépendances ou fonctions indispensables à certains clients peuvent justifier un ordre différent                             | [Intercom, même article](https://www.intercom.com/blog/rice-simple-prioritization-for-product-managers/), section « How to use RICE scores effectively »                                                                                                                                                      | Source primaire méthodologique                                                          | Conseils Intercom ; non norme                                                           | consultée le 23/07/2026                                         | Élevée                                                         | Immédiatement après toute présentation du score                                     | La décision finale doit afficher les exceptions au lieu de maquiller les valeurs pour obtenir le classement désiré                               | Revalider si la page change               |
-| Un test utile écrit ce qui doit être vrai, comment le vérifier, ce qui sera mesuré et le seuil de succès                                                                                               | [Strategyzer, Alex Osterwalder, « Validate your ideas with The Test Card »](https://www.strategyzer.com/library/validate-your-ideas-with-the-test-card), liste des quatre éléments du Test Card                                                                                                               | Source primaire de l’outil par son auteur                                               | Test d’hypothèses commerciales ; pas une garantie de marché                             | publiée le 05/03/2015, consultée le 23/07/2026                  | Élevée pour la structure du test                               | Près de la sortie « preuve insuffisante : écrire le test »                          | Une fonction incertaine doit produire une mesure et un seuil avant d’absorber tout un lot                                                        | Revalider si l’outil change               |
-| Les décisions de conception doivent conserver une preuve à jour et transparente ; les besoins fonctionnels et non fonctionnels peuvent venir de l’usage, du droit, de la sécurité ou de la performance | [Home Office Engineering, « Design from evidence »](https://engineering.homeoffice.gov.uk/principles/design-from-evidence/), rationale et applications                                                                                                                                                        | Principe officiel d’ingénierie publique britannique                                     | Ingénierie de services publics ; non obligation pour un SaaS français                   | mis à jour le 09/08/2023, consulté le 23/07/2026                | Élevée dans son contexte                                       | Dans la section qui sépare fonctions, exigences et incidents                        | Les exigences de sécurité ou de conformité documentées ne doivent pas perdre contre une idée visible seulement parce qu’elles plaisent moins     | Revalider si le standard change           |
-| Le NIST SSDF propose d’aligner et de prioriser les pratiques de développement sécurisé avec besoins métier, tolérance au risque et ressources ; il signale aussi des dépendances entre pratiques       | [NIST CSRC, « Secure Software Development Framework »](https://csrc.nist.gov/projects/ssdf), sections SSDF Use et New in Version 1.1                                                                                                                                                                          | Référentiel officiel américain                                                          | Développement logiciel sécurisé ; recommandations, non obligation française générale    | version 1.1 référencée, page consultée le 23/07/2026            | Élevée pour le référentiel                                     | Dans l’encadré « ce qui ne passe pas dans le même score »                           | Une correction de vulnérabilité est décidée selon le risque et les obligations du produit, pas comparée mécaniquement à une fonction commerciale | Revalider à chaque version SSDF           |
-| Les demandes bien décrites commencent par le problème, le contexte et le cas d’usage ; l’outil ne décide pas à la place de l’équipe                                                                    | [Atlassian, « Demande de fonctionnalité »](https://www.atlassian.com/fr/agile/product-management/feature-request), sections « Identifiez le problème » et « Fournir un contexte et des cas d’utilisation »                                                                                                    | Documentation éditoriale officielle d’un éditeur                                        | Conseil de gestion produit lié à une offre commerciale                                  | consultée le 23/07/2026                                         | Moyenne : source intéressée mais directement vérifiable        | Dans le modèle de fiche de demande, comme appui secondaire                          | Le lecteur conserve la phrase du client mais reformule le problème avant toute solution                                                          | Revalider si la page change               |
+| Affirmation utilisable                                                                                                                                                                                 | Source primaire, URL et passage utile                                                                                                                                                                                                                                                                         | Nature                                                                                  | Périmètre                                                                               | Date/consultation                                                 | Confiance                                                      | Emplacement du lien visible                                                         | Conséquence lecteur                                                                                                                              | Fraîcheur                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------- |
+| Une demande doit rester reliée au besoin réel et être fondée sur des observations plutôt que sur une opinion interne                                                                                   | [GOV.UK, « Learning about users and their needs »](https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs), sections « How to research » et « Validating user needs » : retours non issus des utilisateurs traités comme hypothèses ; besoin formulé comme problème plutôt que solution | Guide officiel de conception de services publics britanniques                           | Méthode de recherche utilisateur ; transposition à un SaaS privé, non norme française   | page publiée en 2016, mise à jour 2017, consultée le 23/07/2026   | Élevée dans son contexte                                       | Près de la fiche qui transforme une fonction demandée en problème observé           | Ne pas classer « ajouter un export Excel » avant de savoir quel travail échoue sans cet export                                                   | Revalider si le manuel change             |
+| Les besoins doivent continuer d’être étudiés dans les phases alpha, bêta et en service ; les idées et nouvelles fonctions se testent avec des utilisateurs probables                                   | [GOV.UK, même page](https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs), lignes consacrées aux phases alpha, beta et live                                                                                                                                                           | Guide officiel                                                                          | Services publics ; principe méthodologique, pas obligation SaaS                         | consultée le 23/07/2026                                           | Élevée comme pratique                                          | Près de la sortie « tester avant de construire »                                    | Une demande peu prouvée peut devenir un essai ciblé au lieu d’un lot complet                                                                     | Revalider si le manuel change             |
+| RICE compare portée, effet attendu, confiance et effort ; l’article demande d’utiliser des mesures réelles lorsque possible et d’inclure le temps de toute l’équipe                                    | [Intercom, Sean McBride, « RICE: Simple prioritization for product managers »](https://www.intercom.com/blog/rice-simple-prioritization-for-product-managers/), sections Reach, Confidence et Effort                                                                                                          | Présentation de la méthode développée chez Intercom, dans un article signé Sean McBride | Méthode interne devenue largement reprise ; échelles et unités ne sont pas universelles | publiée le 05/01/2018, consultée le 23/07/2026                    | Élevée pour définir RICE, moyenne pour l’appliquer à tout SaaS | Dans une section courte « quand un score aide et quand il invente de la précision » | Un score n’est calculé que si la période, la portée, l’effet et l’effort reposent sur des données comparables                                    | Revalider si la page ou la méthode change |
+| L’article Intercom précise que le score n’est pas une règle absolue et que dépendances ou fonctions indispensables à certains clients peuvent justifier un ordre différent                             | [Intercom, même article](https://www.intercom.com/blog/rice-simple-prioritization-for-product-managers/), section « How to use RICE scores effectively »                                                                                                                                                      | Source primaire méthodologique                                                          | Conseils Intercom ; non norme                                                           | consultée le 23/07/2026                                           | Élevée                                                         | Immédiatement après toute présentation du score                                     | La décision finale doit afficher les exceptions au lieu de maquiller les valeurs pour obtenir le classement désiré                               | Revalider si la page change               |
+| Un test utile écrit ce qui doit être vrai, comment le vérifier, ce qui sera mesuré et le seuil de succès                                                                                               | [Strategyzer, Alex Osterwalder, « Validate your ideas with The Test Card »](https://www.strategyzer.com/library/validate-your-ideas-with-the-test-card), liste des quatre éléments du Test Card                                                                                                               | Source primaire de l’outil par son auteur                                               | Test d’hypothèses commerciales ; pas une garantie de marché                             | publiée le 05/03/2015, consultée le 23/07/2026                    | Élevée pour la structure du test                               | Près de la sortie « preuve insuffisante : écrire le test »                          | Une fonction incertaine doit produire une mesure et un seuil avant d’absorber tout un lot                                                        | Revalider si l’outil change               |
+| Les décisions de conception doivent conserver une preuve à jour et transparente ; les besoins fonctionnels et non fonctionnels peuvent venir de l’usage, du droit, de la sécurité ou de la performance | [Home Office Engineering, « Design from evidence »](https://engineering.homeoffice.gov.uk/principles/design-from-evidence/), rationale et applications                                                                                                                                                        | Principe officiel d’ingénierie publique britannique                                     | Ingénierie de services publics ; non obligation pour un SaaS français                   | mis à jour le 09/08/2023, consulté le 23/07/2026                  | Élevée dans son contexte                                       | Dans la section qui sépare fonctions, exigences et incidents                        | Les exigences de sécurité ou de conformité documentées ne doivent pas perdre contre une idée visible seulement parce qu’elles plaisent moins     | Revalider si le standard change           |
+| Le NIST SSDF propose d’aligner et de prioriser les pratiques de développement sécurisé avec besoins métier, tolérance au risque et ressources ; il signale aussi des dépendances entre pratiques       | [NIST CSRC, SP 800-218 final](https://csrc.nist.gov/pubs/sp/800/218/final), version 1.1 ; [liste officielle des publications SSDF](https://csrc.nist.gov/Projects/ssdf/publications) pour le statut des versions                                                                                              | Référentiel officiel américain                                                          | Développement logiciel sécurisé ; recommandations, non obligation française générale    | version 1.1 finale et version 1.2 projet revalidées le 24/07/2026 | Élevée pour le référentiel                                     | Dans l’encadré « ce qui ne passe pas dans le même score »                           | Une correction de vulnérabilité est décidée selon le risque et les obligations du produit, pas comparée mécaniquement à une fonction commerciale | Revalider à chaque version SSDF           |
+| Les demandes bien décrites commencent par le problème, le contexte et le cas d’usage ; l’outil ne décide pas à la place de l’équipe                                                                    | [Atlassian, « Demande de fonctionnalité »](https://www.atlassian.com/fr/agile/product-management/feature-request), sections « Identifiez le problème » et « Fournir un contexte et des cas d’utilisation »                                                                                                    | Documentation éditoriale officielle d’un éditeur                                        | Conseil de gestion produit lié à une offre commerciale                                  | consultée le 23/07/2026                                           | Moyenne : source intéressée mais directement vérifiable        | Dans le modèle de fiche de demande, comme appui secondaire                          | Le lecteur conserve la phrase du client mais reformule le problème avant toute solution                                                          | Revalider si la page change               |
 
 ### Contradictions et données à ne pas publier
 
@@ -557,3 +561,173 @@ Statut maximal réellement atteint : Contre-audité — P3 validée
 - https://www.strategyzer.com/library/validate-your-ideas-with-the-test-card
 - https://engineering.homeoffice.gov.uk/principles/design-from-evidence/
 - https://csrc.nist.gov/projects/ssdf
+
+## 11. Nouveau cycle — giga-audit du 24 juillet 2026
+
+### 11.1 Diagnostic qui a rouvert la page
+
+L’audit
+`docs/audits/giga-audit-2026-07-24/guides/prioriser-fonctionnalites-mvp-saas.md`
+a noté la version précédente **66/100**. La doctrine était saine — une demande
+n’est pas un problème prouvé et les non-négociables ne doivent pas perdre un
+score — mais le guide ne faisait aucun classement complet, aucune sensibilité
+et aucune allocation de capacité. Il décrivait RICE sans le calculer.
+
+Le benchmark a couvert la France, les États-Unis, le Royaume-Uni, l’Australie
+et l’Espagne. Les sources primaires ou maintenues rouvertes pour la version
+courante sont :
+
+- Intercom pour la définition originale de RICE, ses unités et sa limite
+  explicite : le score n’est pas une règle absolue ;
+- Agile Business Consortium pour MoSCoW dans un horizon de livraison défini ;
+- Scaled Agile Framework pour la définition de WSJF comme coût relatif du
+  retard divisé par la taille relative du travail ;
+- GOV.UK et Home Office pour le problème utilisateur, la preuve et la
+  traçabilité des exigences ;
+- Australian Digital Service Standard pour la réutilisation avant
+  reconstruction ;
+- Australian Digital Health Agency pour le MVP testable, l’accord des parties
+  et le devenir des éléments moins prioritaires ;
+- NIST : SSDF 1.1 finale et SSDF 1.2 encore au statut de projet au 24 juillet 2026.
+
+Les méthodes sont présentées comme des cadres de décision, jamais comme une
+preuve scientifique d’efficacité ni comme une norme générale applicable à tout
+SaaS français.
+
+### 11.2 Réécriture intégrée
+
+La version courante ajoute :
+
+- cinq issues de premier rang : corriger, réutiliser ou acheter, tester,
+  construire, reporter ;
+- un sas séparé pour panne, obligation applicable, engagement signé,
+  dépendance, sécurité, confidentialité et accès critique ;
+- un filtre objectif + segment + résultat + horizon avant toute note ;
+- quatre scores RICE sur un même trimestre, avec portée en comptes, échelle
+  d’impact explicitée et effort total en jours-personnes de huit heures ;
+- la correction d’une portée de 60 visites à 6 comptes réellement concernés,
+  faisant tomber un score de 4,80 à 0,48 ;
+- une sensibilité de confiance : la validation groupée passe de 5,69 à 2,84
+  lorsque la confiance passe de 0,8 à 0,4, sous le tableau de bord à 2,93 ;
+- la même liste de demandes examinée avec RICE, MoSCoW, WSJF, Kano et une carte
+  du parcours, en expliquant la question propre à chaque méthode ;
+- une application WSJF reproductible : la validation groupée obtient 2,63 et
+  l’intégration liée à une date de bascule 3,63, avec points et hypothèses
+  explicitement fictifs ;
+- la qualification Kano présentée comme une hypothèse à vérifier auprès
+  d’utilisateurs, et non comme un résultat déjà mesuré ;
+- trois scénarios de temps récupéré : 1 610 €, 3 220 € et 6 440 € bruts par an,
+  puis 410 €, 2 020 € et 5 240 € nets d’une maintenance fictive de 1 200 € par
+  an, contre un investissement initial fictif de 7 350 € ;
+- un test manuel de rapport à 720 €, soit 5,4 % d’un tableau de bord fictif à
+  13 300 € ;
+- un lot fermé à 30 jours-personnes : 8 jours de correction, 12 de validation
+  groupée — arrondi prudent des 11,25 jours estimés —, 3 de tests de rapport et
+  7 d’incertitude/mise en production ;
+- une analyse du plus gros client séparant chiffre d’affaires, coûts directs,
+  contribution et part de renouvellement réellement attribuable à la demande ;
+- une grille CSV de 18 colonnes, cinq exemples et cinq lignes vierges, sans
+  collecte d’adresse :
+  `public/ressources/kit-priorisation-fonctionnalites-saas.csv`.
+
+Tous les nombres sont signalés comme **fictifs et pédagogiques**. Ils ne sont ni
+un tarif Hagnéré Code, ni une moyenne de marché, ni un résultat client.
+
+### 11.3 Calculs refaits
+
+```text
+Échelle d’impact illustrative Intercom :
+3 massif ; 2 élevé ; 1 moyen ; 0,5 faible ; 0,25 minimal
+
+Effort validation groupée
+= 10 jours externes + (10 h internes ÷ 8 h)
+= 11,25 jours-personnes
+
+Effort tableau de bord
+= 18 jours externes + (20 h internes ÷ 8 h)
+= 20,5 jours-personnes
+
+RICE validation groupée = 40 × 2 × 0,8 ÷ 11,25 = 5,69
+RICE tableau de bord = 120 × 1 × 0,5 ÷ 20,5 = 2,93
+RICE intégration = 8 × 3 × 0,5 ÷ 12 = 1
+RICE couleurs initial = 60 × 0,5 × 0,8 ÷ 5 = 4,8
+RICE couleurs corrigé = 6 × 0,5 × 0,8 ÷ 5 = 0,48
+RICE validation avec confiance 0,4 = 40 × 2 × 0,4 ÷ 11,25 = 2,84
+
+WSJF validation groupée = (13 + 5 + 3) ÷ 8 = 2,63
+WSJF intégration avant date de bascule = (8 + 13 + 8) ÷ 8 = 3,63
+
+Valeur centrale du temps
+= 30 validations × 4 min ÷ 60 × 46 semaines × 35 €/h
+= 3 220 €/an
+
+Investissement initial
+= 10 jours × 700 € + 10 h × 35 €
+= 7 350 €
+
+Maintenance récurrente fictive = 12 × 100 € = 1 200 €/an
+Coût année 1 = 7 350 € + 1 200 € = 8 550 €
+
+Gain net central = 3 220 € - 1 200 € = 2 020 €/an
+Point mort simple central = 7 350 € ÷ 2 020 € = 3,64 ans
+
+Gain net prudent = 1 610 € - 1 200 € = 410 €/an
+Point mort simple prudent = 7 350 € ÷ 410 € = 17,93 ans
+
+Gain net exigeant = 6 440 € - 1 200 € = 5 240 €/an
+Point mort simple exigeant = 7 350 € ÷ 5 240 € = 1,40 an
+
+Test rapport = 3 × 6 h × 40 € = 720 €
+Tableau de bord = 18 jours × 700 € + 20 h × 35 € = 13 300 €
+Part du test = 720 ÷ 13 300 = 5,4 %
+
+Capacité = 8 + 12 + 3 + 7 = 30 jours ; reste = 0
+
+Contribution fictive = 36 000 € - 10 000 € = 26 000 €
+Part à risque à 20 % / 50 % / 70 % = 5 200 € / 13 000 € / 18 200 €
+```
+
+Trente-six contrôles arithmétiques automatisés ont été exécutés sans écart.
+Le contrôle inverse du scénario central retrouve quatre minutes par validation.
+
+### 11.4 Contrôles passés et validation P4
+
+État après le nouveau contre-audit indépendant P3 :
+
+- 4 970 mots visibles, soit 25 minutes à 200 mots/minute ;
+- CSV : 11 lignes, 18 colonnes constantes, HTTP 200, type `text/csv;
+charset=UTF-8`, hash local identique au contenu servi
+  (`645ea43efd317e1322383ecc329d126b19b8b0b4dfd8aea7ab3e448cca5aeed3`) ;
+- 55/55 tests éditoriaux ciblés ;
+- TypeScript, ESLint ciblé, Prettier et `git diff --check` conformes ;
+- métadonnées et JSON-LD migrés vers les constructeurs partagés ;
+- image sociale alignée sur cinq issues, quatre scores et 30 jours ;
+- P3 indépendant : 98/100, aucun P0, P1 ou P2 restant, verdict GO ;
+- rendu réel clair/sombre contrôlé à 320, 390, 768, 1 024 et 1 440 px ;
+- route, téléchargement, image sociale 1 200 × 630 et console contrôlés ;
+- rapport :
+  `docs/audits/giga-audit-2026-07-24/reviews/prioriser-fonctionnalites-mvp-saas-p3.md`.
+
+État après la revalidation indépendante P4 :
+
+- page publique réauditée sur l’empreinte
+  `75480cee0a08737de28b3b7096cb2e3c2df8a7f63af49fc4f71dc9c084f430ff` ;
+- score de plume : 18/20 ;
+- P0 restant : 0 ; P1 restant : 0 ;
+- ouverture sans jargon préalable, titres 6 et 7 orientés décision et passage
+  commercial réécrit en langue de dirigeant ;
+- mobile réel revérifié à 320 et 390 px : document sans débordement, tableaux
+  transformés en cartes et CTA lisible ;
+- deux P2 facultatifs demeurent : quelques réserves de sources au rythme
+  académique et une section 7 très dense, conservée car elle porte le comparatif
+  complet demandé ;
+- rapport :
+  `docs/audits/giga-audit-2026-07-24/reviews/prioriser-fonctionnalites-mvp-saas-p4.md`.
+
+La page obtient donc le **GO P4 éditorial et mobile**. Ce verdict ne vaut ni
+gel du lot global, ni build de production, ni publication, ni indexation.
+
+L’ancien manifeste P4 échoue volontairement parce que la page et le registre
+partagé ont changé. Il ne doit être régénéré qu’au gel global, après les
+réécritures successives, pas utilisé pour donner une apparence prématurée de
+validation.

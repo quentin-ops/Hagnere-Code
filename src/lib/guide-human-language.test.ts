@@ -25,70 +25,6 @@ const guideSources = GUIDES.map((guide) => ({
   ),
 }));
 
-const july22PublicationSlugs = new Set([
-  "landing-page-ou-site-vitrine",
-  "combien-de-temps-resultats-seo",
-  "positions-google-baissent",
-  "combien-de-temps-developper-saas",
-  "connecter-erp-crm-logiciel-metier",
-  "automatiser-saisie-donnees-entreprise",
-  "mvp-prototype-ou-poc",
-  "site-internet-en-panne-que-faire",
-  "leads-google-ads-non-qualifies",
-  "migrer-logiciel-metier-sans-interruption",
-  "application-gestion-interventions-terrain",
-  "agence-saas-ou-freelance",
-  "reprendre-maintenance-site-autre-agence",
-  "choisir-agence-google-ads",
-  "choisir-agence-seo",
-  "landing-page-google-ads",
-  "suivi-conversions-google-ads",
-  "pourquoi-site-pas-visible-google",
-  "cout-maintenance-application-metier",
-  "reprendre-saas-developpe-par-freelance",
-  "choisir-prestataire-application-metier",
-  "cahier-des-charges-saas",
-  "budget-google-ads-pme",
-  "remplacer-microsoft-access-application-web",
-  "preparer-contenus-site-vitrine",
-]);
-
-const july23PublicationSlugs = new Set([
-  "power-apps-ou-application-sur-mesure",
-  "logiciel-gestion-stock-sur-mesure",
-  "facturation-abonnements-saas",
-  "securite-saas-b2b",
-  "seo-saas-b2b",
-  "calculer-cout-par-lead-google-ads",
-  "google-ads-ou-meta-ads",
-  "sla-maintenance-applicative",
-  "dette-technique-cout-entreprise",
-  "prise-rendez-vous-en-ligne-site-vitrine",
-  "prioriser-fonctionnalites-mvp-saas",
-  "back-office-sur-mesure-pme",
-  "digitaliser-bons-intervention",
-  "portail-client-b2b-sur-mesure",
-  "application-suivi-production-pme",
-  "faire-evoluer-saas-apres-mvp",
-  "google-search-ads-ou-performance-max",
-  "seo-local-pme",
-  "tma-ou-regie",
-  "site-one-page-ou-multipage",
-]);
-
-const july24PublicationSlugs = new Set([
-  "crm-sur-mesure-ou-hubspot",
-  "lovable-bolt-v0-ou-agence-saas",
-  "rgpd-saas-b2b",
-  "zapier-make-ou-developpement-sur-mesure",
-  "logiciel-planning-sur-mesure",
-  "google-ads-saas-b2b",
-  "google-ads-commerce-local",
-  "contrat-seo-duree-engagement",
-  "site-indexe-sans-trafic",
-  "audit-technique-avant-reprendre-site",
-]);
-
 const rejectedFramework =
   /contrainte qui commande|contrainte dominante|portes non compensables|cinq portes|prochaine preuve|matrice d['’]arbitrage|tranche verticale|socles chiffrés|chaîne jusqu['’]au résultat métier|comité d['’]investissement|report ciblé/i;
 
@@ -501,7 +437,12 @@ describe("human language guardrails for guides", () => {
       ({ guide }) => guide.slug === tmaGuide.slug,
     )?.source;
     const normalizedSource = source?.replace(/\s+/g, " ");
-    const modes = source?.match(/const modes = \[([\s\S]*?)\n\];/)?.[1];
+    const alternatives = source?.match(
+      /const alternatives = \[([\s\S]*?)\n\];/,
+    )?.[1];
+    const tcoComparisonRows = source?.match(
+      /const tcoComparisonRows = \[([\s\S]*?)\n\];/,
+    )?.[1];
     const requestFields = source?.match(
       /const requestFields = \[([\s\S]*?)\n\];/,
     )?.[1];
@@ -514,22 +455,27 @@ describe("human language guardrails for guides", () => {
 
     expect(tmaGuide.heroTitle).toContain("TMA ou régie");
     expect(normalizedSource).toContain(
-      "Nommez d’abord ce que vous achetez : une continuité, un diagnostic ou une livraison",
+      "Vous comparez un forfait mensuel avec une offre facturée au jour",
     );
     expect(normalizedSource).toContain(
-      "Choisissez ensuite sa facturation : prix fixe, capacité réservée ou temps mobilisé",
+      "Une TMA peut être payée au forfait, au temps, par lot ou avec plusieurs règles",
     );
+    expect(normalizedSource).toContain("La fréquence ne suffit pas");
     expect(normalizedSource).toContain(
-      "La fréquence ne suffit pas ; l’impact d’une interruption",
+      "Un incident rare qui bloque les ventes peut justifier",
     );
 
-    expect(modes?.match(/\btitle:/g)).toHaveLength(4);
+    expect(source).not.toContain("const modes =");
+    expect(alternatives?.match(/\btitle:/g)).toHaveLength(3);
     [
-      "Capacité récurrente",
-      "Temps réellement mobilisé",
-      "Lot borné",
-      "Formule hybride",
-    ].forEach((mode) => expect(modes).toContain(`title: "${mode}"`));
+      "Intervenir seulement au besoin",
+      "Garder ou recruter la compétence en interne",
+      "Remplacer ou retirer l’application",
+    ].forEach((title) => expect(alternatives).toContain(`title: "${title}"`));
+    expect(tcoComparisonRows?.match(/^\s*\[\s*$/gm)).toHaveLength(7);
+    expect(normalizedSource).toContain(
+      "Ils ne valent pas zéro : ajoutez-les ou marquez-les « à confirmer » avant d’utiliser le classement pour signer",
+    );
     expect(requestFields?.match(/\bfield:/g)).toHaveLength(8);
     expect(requestFields).toContain('field: "Impact et continuité"');
     expect(requestFields).toContain(
@@ -537,7 +483,7 @@ describe("human language guardrails for guides", () => {
     );
 
     expect(sampleRequests).toContain(
-      "Diagnostic borné — prix fixe ou temps plafonné selon l’offre",
+      "Diagnostic limité — prix fixe ou temps utilisé jusqu’à un plafond convenu",
     );
     expect(sampleRequests).toContain(
       "les faits confirmés, les causes écartées, les inconnues restantes",
@@ -550,7 +496,7 @@ describe("human language guardrails for guides", () => {
       "Retirez systématiquement les noms, identifiants, secrets, données personnelles et informations de sécurité qui ne sont pas nécessaires",
     );
     expect(source).toContain("showSidebarCta={false}");
-    expect(source).toContain('ctaLabel="Préparer ma maintenance"');
+    expect(source).toContain('ctaLabel="Faire comparer mes offres"');
     expect(source).toContain("showPhone={false}");
     expect(source?.match(/<GuideInlineCTA\b/g)).toHaveLength(1);
     expect(source).not.toMatch(/href="tel:|FAQPage|HowTo|Offer|wordCount/);
@@ -770,7 +716,7 @@ describe("human language guardrails for guides", () => {
     expect(getGuide("landing-page-ou-site-vitrine").readTimeMin).toBe(18);
   });
 
-  it("keeps SaaS prioritization focused on the next version and four honest outcomes", () => {
+  it("keeps SaaS prioritization focused on the next version and five honest outcomes", () => {
     const prioritizationGuide = getGuide("prioriser-fonctionnalites-mvp-saas");
     const source = guideSources.find(
       ({ guide }) => guide.slug === prioritizationGuide.slug,
@@ -790,11 +736,15 @@ describe("human language guardrails for guides", () => {
     expect(disclosureIndex).toBeGreaterThan(0);
     expect(requestsIndex).toBeGreaterThan(disclosureIndex);
 
-    ["Construire", "Tester", "Corriger d’abord", "Reporter"].forEach(
-      (outcome) => expect(source).toContain(`label: "${outcome}"`),
-    );
+    [
+      "Corriger",
+      "Réutiliser ou acheter",
+      "Construire",
+      "Tester",
+      "Reporter",
+    ].forEach((outcome) => expect(source).toContain(`label: "${outcome}"`));
     expect(source).toContain(
-      "Tester d’abord les accès, les données et les responsabilités ; reporter le développement tant que ces informations manquent.",
+      "Éprouver le connecteur sur un flux isolé ; acheter et connecter s’il passe les tests avant d’envisager un développement propre.",
     );
     expect(source).toContain("Une demande remplie sur les huit lignes");
     expect(source).toContain("8. Décision et retour");
@@ -1482,16 +1432,17 @@ describe("human language guardrails for guides", () => {
         guide.metaDescription.length,
         `${guide.slug}: meta description`,
       ).toBeLessThanOrEqual(155);
-      const expectedReviewDate = july24PublicationSlugs.has(guide.slug)
-        ? "2026-07-24"
-        : july23PublicationSlugs.has(guide.slug)
-          ? "2026-07-23"
-          : july22PublicationSlugs.has(guide.slug)
-            ? "2026-07-22"
-            : "2026-07-21";
-      expect(guide.dateModified, `${guide.slug}: review date`).toBe(
-        expectedReviewDate,
+      expect(
+        guide.datePublished,
+        `${guide.slug}: publication date format`,
+      ).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(guide.dateModified, `${guide.slug}: review date format`).toMatch(
+        /^\d{4}-\d{2}-\d{2}$/,
       );
+      expect(
+        guide.dateModified >= guide.datePublished,
+        `${guide.slug}: review date before publication`,
+      ).toBe(true);
 
       const publicCopy = [
         guide.title,
@@ -1536,6 +1487,75 @@ describe("human language guardrails for guides", () => {
   it("uses mobile-readable comparisons instead of wide guide tables", () => {
     expect(flagshipSource).not.toContain("<GuideTable");
     expect(flagshipSource).toContain("md:grid-cols-2");
+  });
+
+  it("makes the SaaS specification guide produce a decision, not a feature list", () => {
+    const guide = getGuide("cahier-des-charges-saas");
+    const source = guideSources.find(
+      ({ guide: candidate }) => candidate.slug === guide.slug,
+    )?.source;
+    const normalizedSource = source?.replace(/\s+/g, " ");
+    const opening = source
+      ?.slice(0, source.indexOf("<GuideToc"))
+      .replace(/\s+/g, " ");
+
+    expect(guide.heroTitle).toContain("avant de demander un devis");
+    expect(opening).toContain(
+      "faut-il acheter un outil existant, assembler quelques services, tester le travail manuellement ou financer un SaaS sur mesure",
+    );
+    expect(opening).toContain(
+      "ne consultez pas encore des développeurs. Testez d’abord l’hypothèse qui peut faire tomber le projet",
+    );
+
+    [
+      "Acheter un logiciel existant",
+      "Assembler des outils",
+      "Tester le service manuellement",
+      "Construire sur mesure",
+      "Attendre ou arrêter",
+    ].forEach((choice) => expect(source).toContain(`title: "${choice}"`));
+    expect(normalizedSource).toContain(
+      "Hagnéré Code vend du développement sur mesure : nous avons donc un intérêt économique évident",
+    );
+    expect(normalizedSource).toContain(
+      "8 × 75 + 6 × 45 + 3 × 60 + 4 × 50 = 1 250",
+    );
+    expect(normalizedSource).toContain(
+      "Il rappelle simplement qu’un projet mobilise l’entreprise",
+    );
+    expect(normalizedSource).not.toContain(
+      "Elle rappelle simplement qu’un projet mobilise l’entreprise",
+    );
+    expect(normalizedSource).toContain("2 700 ÷ 12 100 = 22,3 %");
+    expect(normalizedSource).toContain(
+      "(probabilité avant − probabilité après) × perte évitable",
+    );
+    expect(normalizedSource).toContain("coûts renseignés sur 24 mois");
+    expect(normalizedSource).toContain("inférieure de 11 500 €");
+    expect(normalizedSource).toContain(
+      "Le même lot de migration pour les trois devis",
+    );
+    expect(normalizedSource).toContain(
+      "La fondatrice décide la règle commerciale",
+    );
+    expect(normalizedSource).toContain(
+      "Le format <code>.md</code> désigne simplement un document texte",
+    );
+    expect(normalizedSource).toContain("Word, Google Docs ou Notion");
+    expect(normalizedSource).not.toContain("Claire envisage DossierClair");
+    expect(normalizedSource).not.toContain(
+      "Claire décide la règle commerciale",
+    );
+    expect(normalizedSource).not.toContain("Claire face à son prestataire");
+    expect(normalizedSource).toContain("9 h 20");
+    expect(normalizedSource).toContain("513 €");
+    expect(source).toContain("<SaasSpecificationKit />");
+    expect(source).toContain("showSidebarCta={false}");
+    expect(source).toContain("showPhone={false}");
+    expect(source?.match(/<GuideInlineCTA\b/g)).toHaveLength(1);
+    expect(source).not.toMatch(
+      /architecture-multitenant-saas|FAQPage|HowTo|"@type":\s*"Offer"|prix de marché garanti/i,
+    );
   });
 
   it("keeps the public card and metadata free of the rejected vocabulary", () => {

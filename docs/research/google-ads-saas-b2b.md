@@ -1,39 +1,52 @@
 # Dossier de travail — Google Ads pour un SaaS B2B
 
-> Dossier ouvert en passe 1 puis complété jusqu'à la validation P4. Il conserve
-> la recherche historique et documente la rédaction, les contre-audits et les
-> contrôles terminés le 24 juillet 2026. Il ne constitue pas une promesse de
-> performance publicitaire.
+> **Audit renforcé clos localement le 24 juillet 2026.** Les anciennes sections
+> P2 à P4, dont le score `19/20`, sont conservées comme historique du premier
+> article : elles ne valident pas la version actuelle. Le giga-audit indépendant
+> avait trouvé quinze lacunes P1 et une affirmation trop large sur l’API Data
+> Manager. Elles sont corrigées et revalidées sur le nouveau snapshot. Le BAT
+> dans un navigateur réel et le test par un dirigeant externe restent cependant
+> à réaliser ; ce dossier ne constitue aucune promesse de performance
+> publicitaire, de publication ou de classement dans Google.
 
 Le déroulement et les portes de sortie sont définis dans
 [`docs/workflow-maitre-guides-4-passes.md`](../workflow-maitre-guides-4-passes.md).
 
-## Journal des quatre passes
+## Journal courant des quatre passes — audit renforcé
+
+| Passe                        | État courant                           | Date            | Contrôle attendu                                                             | Blocage                               |
+| ---------------------------- | -------------------------------------- | --------------- | ---------------------------------------------------------------------------- | ------------------------------------- |
+| 1. Recherche et benchmark    | Terminée                               | 24 juillet 2026 | Sources Google actuelles, benchmark France/international, registre des 15 P1 | Aucun pour rédiger                    |
+| 2. Rédaction et intégration  | Terminée — snapshot P2 historique gelé | 24 juillet 2026 | Page, cas AtelierFlow, calculateur, kit, metadata et tests alignés           | Aucun                                 |
+| 3. Contre-audit indépendant  | Terminée — P0 = 0, P1 = 0              | 24 juillet 2026 | Exactitude, calculs, sources, décisions du calculateur et kit                | Aucun défaut éditorial bloquant       |
+| 4. Plume humaine et contrôle | Terminée localement — 96/100           | 24 juillet 2026 | Lecture dirigeant, répétitions, CTA, rendu serveur et contrôles techniques   | BAT réel et lecteur externe non faits |
+
+## Journal historique du premier article
 
 Propriétaire éditorial unique : équipe éditoriale Hagnéré Code, orchestration
 du lot du 23 juillet 2026.
 
-| Passe                        | État                     | Date             | Responsable                                   | Snapshot | Blocages |
-| ---------------------------- | ------------------------ | ---------------- | --------------------------------------------- | -------- | -------- |
-| 1. Recherche                 | Terminée — porte validée | 23 juillet 2026  | Agent recherche                               | Manifeste P1 | Aucun |
-| 2. Rédaction et intégration  | Terminée — porte validée | 24 juillet 2026  | équipe éditoriale Hagnéré Code                | Manifeste P2 | Aucun |
-| 3. Contre-audit indépendant  | Terminée — porte validée | 24 juillet 2026  | final_audit_marketing, anti_ia_final, seo_tech_final | Manifeste P3 | Aucun P0/P1 restant |
-| 4. Plume humaine et contrôle | Terminée — porte validée | 24 juillet 2026  | orchestration éditoriale                      | Manifeste P4 | Aucun blocage éditorial |
+| Passe                        | État                     | Date            | Responsable                                          | Snapshot     | Blocages                |
+| ---------------------------- | ------------------------ | --------------- | ---------------------------------------------------- | ------------ | ----------------------- |
+| 1. Recherche                 | Terminée — porte validée | 23 juillet 2026 | Agent recherche                                      | Manifeste P1 | Aucun                   |
+| 2. Rédaction et intégration  | Terminée — porte validée | 24 juillet 2026 | équipe éditoriale Hagnéré Code                       | Manifeste P2 | Aucun                   |
+| 3. Contre-audit indépendant  | Terminée — porte validée | 24 juillet 2026 | final_audit_marketing, anti_ia_final, seo_tech_final | Manifeste P3 | Aucun P0/P1 restant     |
+| 4. Plume humaine et contrôle | Terminée — porte validée | 24 juillet 2026 | orchestration éditoriale                             | Manifeste P4 | Aucun blocage éditorial |
 
 ### Manifeste du snapshot
 
-| Fichier contrôlé | Passe | Remarque |
-| ---------------- | ----- | -------- |
-| `docs/research/manifests/google-ads-saas-b2b-p1.sha256` | P1 | Manifeste existant ; historique de recherche conservé. |
-| `docs/research/manifests/google-ads-saas-b2b-p2.sha256` | P2 | Manifeste existant de rédaction et d'intégration. |
-| `docs/research/manifests/google-ads-saas-b2b-p3.sha256` | P3 | Manifeste existant après contre-audit et corrections. |
-| `docs/research/manifests/google-ads-saas-b2b-p4.sha256` | P4 | Manifeste final créé après les contrôles P4 ; son empreinte est intégrée au snapshot commun du lot. |
+| Fichier contrôlé                                        | Passe | Remarque                                                                                 |
+| ------------------------------------------------------- | ----- | ---------------------------------------------------------------------------------------- |
+| `docs/research/manifests/google-ads-saas-b2b-p1.sha256` | P1    | Manifeste existant ; historique de recherche conservé.                                   |
+| `docs/research/manifests/google-ads-saas-b2b-p2.sha256` | P2    | Manifeste existant de rédaction et d'intégration.                                        |
+| `docs/research/manifests/google-ads-saas-b2b-p3.sha256` | P3    | Nouveau manifeste exhaustif du contre-audit renforcé et de ses corrections.              |
+| `docs/research/manifests/google-ads-saas-b2b-p4.sha256` | P4    | Nouveau manifeste final local ; il n’atteste ni BAT réel, ni publication, ni indexation. |
 
 ## 1. Fiche d'identité
 
 ```text
 Slug : google-ads-saas-b2b
-Statut actuel : publiable — validation éditoriale déléguée
+Statut de cette fiche historique : premier article alors considéré publiable ; état désormais remplacé par l’audit renforcé de la section 13
 Requête principale, encore hypothétique avant recherche : google ads saas b2b
 Moment du parcours : décider puis sécuriser un premier test
 Lecteur précis : dirigeant ou fondateur d'un SaaS B2B français, sans équipe acquisition senior, qui envisage Google Ads ou qui reçoit des demandes de démonstration sans savoir lesquelles deviennent clientes
@@ -88,13 +101,13 @@ Responsable de la synthèse : agent recherche du lot batch 4
 À effectuer sur le brouillon P2. Les formulations abstraites prévisibles sont
 déjà remplacées dans le plan par des actions observables.
 
-| Phrase initiale à surveiller | Qui agit ? | Action concrète | Résultat pour le lecteur | Formulation attendue |
-| ---------------------------- | ---------- | --------------- | ------------------------ | -------------------- |
-| « Aligner le marketing et les ventes » | Le dirigeant et le commercial | Ils nomment les mêmes étapes et mettent à jour chaque contact | Une campagne peut être reliée à un contrat | « Le commercial marque chaque contact comme refusé, accepté, proposé ou signé. » |
-| « Optimiser la qualité des leads » | L'équipe | Elle renvoie à Google les étapes commerciales fiables | Le budget vise des contacts plus proches du besoin | « Importez le statut “prospect accepté” seulement quand la même règle est appliquée à tous les contacts. » |
-| « Piloter par la valeur » | Le dirigeant | Il attribue une valeur justifiée aux résultats commerciaux | Les résultats ne sont plus comptés comme équivalents | « Ne donnez pas la même valeur à un formulaire et à un contrat signé. » |
-| « Valider l'économie unitaire » | Le dirigeant | Il compare le coût complet à la marge attribuable | Il sait si le test mérite d'être prolongé | « Comparez les 4 500 € dépensés à la marge attendue du client, pas seulement à son chiffre d'affaires. » |
-| « Structurer le funnel » | L'équipe commerciale | Elle suit cinq étapes communes | Les pertes deviennent visibles | « Suivez demande, prospect accepté, proposition, contrat et première marge dans une seule ligne. » |
+| Phrase initiale à surveiller           | Qui agit ?                    | Action concrète                                               | Résultat pour le lecteur                             | Formulation attendue                                                                                       |
+| -------------------------------------- | ----------------------------- | ------------------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| « Aligner le marketing et les ventes » | Le dirigeant et le commercial | Ils nomment les mêmes étapes et mettent à jour chaque contact | Une campagne peut être reliée à un contrat           | « Le commercial marque chaque contact comme refusé, accepté, proposé ou signé. »                           |
+| « Optimiser la qualité des leads »     | L'équipe                      | Elle renvoie à Google les étapes commerciales fiables         | Le budget vise des contacts plus proches du besoin   | « Importez le statut “prospect accepté” seulement quand la même règle est appliquée à tous les contacts. » |
+| « Piloter par la valeur »              | Le dirigeant                  | Il attribue une valeur justifiée aux résultats commerciaux    | Les résultats ne sont plus comptés comme équivalents | « Ne donnez pas la même valeur à un formulaire et à un contrat signé. »                                    |
+| « Valider l'économie unitaire »        | Le dirigeant                  | Il compare le coût complet à la marge attribuable             | Il sait si le test mérite d'être prolongé            | « Comparez les 4 500 € dépensés à la marge attendue du client, pas seulement à son chiffre d'affaires. »   |
+| « Structurer le funnel »               | L'équipe commerciale          | Elle suit cinq étapes communes                                | Les pertes deviennent visibles                       | « Suivez demande, prospect accepté, proposition, contrat et première marge dans une seule ligne. »         |
 
 ### Test de l'ouverture
 
@@ -106,14 +119,14 @@ déjà remplacées dans le plan par des actions observables.
 
 ## 2. Cannibalisation
 
-| Page existante | Intention de cette page | Différence du nouveau guide | Lien ou arbitrage nécessaire |
-| -------------- | ----------------------- | --------------------------- | ---------------------------- |
-| `/guides/seo-saas-b2b` | Construire une acquisition organique et des contenus utiles au cycle commercial d'un SaaS | Le nouveau guide décide si et comment acheter une demande existante, puis la suivre jusqu'au contrat | Lier la comparaison des temporalités sans refaire le guide SEO |
-| `/guides/google-search-ads-ou-performance-max` | Choisir un type de campagne Google selon contrôle et données | Le nouveau guide part de l'économie et du cycle d'un SaaS, non de l'interface | Renvoyer vers ce guide seulement après le choix de lancer |
-| `/guides/suivi-conversions-google-ads` | Réconcilier conversions publicitaires et résultats métier, tous secteurs | Le nouveau guide applique cette discipline au cas long et sélectif du SaaS B2B | Résumer le minimum puis lier pour la mise en œuvre détaillée |
-| `/guides/calculer-cout-par-lead-google-ads` | Calculer CPL, coût par prospect qualifié et cohorte | Le nouveau guide tranche l'adéquation de Google Ads à un SaaS et remonte jusqu'au contrat | Réutiliser l'idée de cohorte sans recopier les explications de calcul |
-| `/guides/pourquoi-google-ads-ne-convertit-pas` | Diagnostiquer une campagne active qui ne produit pas de conversions utiles | Le nouveau guide couvre aussi la décision avant lancement et la longueur du cycle de vente | Lien en sortie pour une campagne déjà en difficulté |
-| `/guides/landing-page-google-ads` | Concevoir la page après le clic | Le nouveau guide traite la demande, le suivi commercial et la rentabilité | Lien contextuel si la requête est bonne mais la démonstration mal présentée |
+| Page existante                                 | Intention de cette page                                                                   | Différence du nouveau guide                                                                          | Lien ou arbitrage nécessaire                                                |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `/guides/seo-saas-b2b`                         | Construire une acquisition organique et des contenus utiles au cycle commercial d'un SaaS | Le nouveau guide décide si et comment acheter une demande existante, puis la suivre jusqu'au contrat | Lier la comparaison des temporalités sans refaire le guide SEO              |
+| `/guides/google-search-ads-ou-performance-max` | Choisir un type de campagne Google selon contrôle et données                              | Le nouveau guide part de l'économie et du cycle d'un SaaS, non de l'interface                        | Renvoyer vers ce guide seulement après le choix de lancer                   |
+| `/guides/suivi-conversions-google-ads`         | Réconcilier conversions publicitaires et résultats métier, tous secteurs                  | Le nouveau guide applique cette discipline au cas long et sélectif du SaaS B2B                       | Résumer le minimum puis lier pour la mise en œuvre détaillée                |
+| `/guides/calculer-cout-par-lead-google-ads`    | Calculer CPL, coût par prospect qualifié et cohorte                                       | Le nouveau guide tranche l'adéquation de Google Ads à un SaaS et remonte jusqu'au contrat            | Réutiliser l'idée de cohorte sans recopier les explications de calcul       |
+| `/guides/pourquoi-google-ads-ne-convertit-pas` | Diagnostiquer une campagne active qui ne produit pas de conversions utiles                | Le nouveau guide couvre aussi la décision avant lancement et la longueur du cycle de vente           | Lien en sortie pour une campagne déjà en difficulté                         |
+| `/guides/landing-page-google-ads`              | Concevoir la page après le clic                                                           | Le nouveau guide traite la demande, le suivi commercial et la rentabilité                            | Lien contextuel si la requête est bonne mais la démonstration mal présentée |
 
 **Justification d'une URL distincte :** aucun guide existant ne répond à la
 décision complète « Google Ads convient-il à mon SaaS B2B et comment le juger
@@ -152,12 +165,12 @@ volume. Aucun chiffre de demande ne doit être inventé.
 
 ## 4. Carte concurrentielle
 
-| Page | Réponse et angle | Preuves/artefacts | Bon point | Manque décisionnel | Conflit d'intérêt éventuel |
-| ---- | ---------------- | ----------------- | --------- | ------------------ | -------------------------- |
-| [Adwords Consultant — Google Ads SaaS B2B](https://adwords-consultant.com/blog/google-ads-saas-b2b) | Conseils de campagne et de ciblage | Captures et expertise déclarée | Sujet précisément nommé en français | Peu de parcours vérifiable jusqu'au contrat et de limites aux benchmarks | Prestataire Google Ads |
-| [Berso Marketing — Google Ads pour SaaS](https://bersomarketing.com/fr/blog/google-ads-pour-saas/) | Guide de configuration et d'optimisation | Recommandations d'agence | Couvre les préoccupations pratiques | L'économie du client signé reste secondaire | Agence commercialisant la prestation |
-| [Leadanic — Google Ads B2B SaaS](https://leadanic.com/blog/google-ads-b2b-saas-guide/) | Acquisition et choix de campagne | Conseils méthodologiques | Relie la publicité au B2B | Jargon et chiffres difficiles à transposer sans corpus français explicite | Prestataire de génération de leads |
-| [Pivotal — Google Ads for SaaS](https://www.pivotal-consulting-group.com/insights/google-ads-for-saas) | Guide anglophone orienté performance | Conseils et exemples | Bonne couverture du sujet | Pas écrit pour le dirigeant français ; droit, interface et marché peuvent différer | Cabinet de conseil |
+| Page                                                                                                   | Réponse et angle                         | Preuves/artefacts              | Bon point                           | Manque décisionnel                                                                 | Conflit d'intérêt éventuel           |
+| ------------------------------------------------------------------------------------------------------ | ---------------------------------------- | ------------------------------ | ----------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------ |
+| [Adwords Consultant — Google Ads SaaS B2B](https://adwords-consultant.com/blog/google-ads-saas-b2b)    | Conseils de campagne et de ciblage       | Captures et expertise déclarée | Sujet précisément nommé en français | Peu de parcours vérifiable jusqu'au contrat et de limites aux benchmarks           | Prestataire Google Ads               |
+| [Berso Marketing — Google Ads pour SaaS](https://bersomarketing.com/fr/blog/google-ads-pour-saas/)     | Guide de configuration et d'optimisation | Recommandations d'agence       | Couvre les préoccupations pratiques | L'économie du client signé reste secondaire                                        | Agence commercialisant la prestation |
+| [Leadanic — Google Ads B2B SaaS](https://leadanic.com/blog/google-ads-b2b-saas-guide/)                 | Acquisition et choix de campagne         | Conseils méthodologiques       | Relie la publicité au B2B           | Jargon et chiffres difficiles à transposer sans corpus français explicite          | Prestataire de génération de leads   |
+| [Pivotal — Google Ads for SaaS](https://www.pivotal-consulting-group.com/insights/google-ads-for-saas) | Guide anglophone orienté performance     | Conseils et exemples           | Bonne couverture du sujet           | Pas écrit pour le dirigeant français ; droit, interface et marché peuvent différer | Cabinet de conseil                   |
 
 **Angle mort commun :** les pages parlent volontiers de mots-clés, de coût par
 clic et de demandes de démonstration, mais rarement d'une règle simple pour
@@ -170,18 +183,18 @@ quatre verdicts possibles : financer, réparer la mesure, différer ou arrêter.
 
 ## 5. Fiche de preuves
 
-| Affirmation utilisable | Source primaire, URL et passage utile | Nature | Périmètre | Date/consultation | Confiance | Emplacement du lien visible | Conséquence lecteur | Fraîcheur |
-| ---------------------- | ------------------------------------- | ------ | --------- | ----------------- | --------- | --------------------------- | ------------------- | --------- |
-| Google Ads permet de relier un clic ou un appel publicitaire à une conversion réalisée plus tard hors ligne, par exemple un contrat | [Google Ads, À propos des importations de conversions hors connexion](https://support.google.com/google-ads/answer/2998031?hl=fr), description du parcours clic/appel vers vente hors ligne | Fait produit officiel | Comptes et sources de conversion compatibles | 2026-07-23 | Élevée | Section sur le suivi jusqu'au contrat | Le dirigeant n'est pas obligé de s'arrêter au formulaire | Volatile : relire avant publication |
-| Google recommande les conversions améliorées pour prospects et la migration des anciens flux d'import a évolué en juin 2026 | Même source officielle, note sur la migration à compter du 15 juin 2026 | Fait produit daté | Paramétrage Google Ads actuel | 2026-07-23 | Élevée | Encadré « ce qui a changé en 2026 » seulement si utile | Évite un tutoriel obsolète ; ne pas détailler une interface appelée à changer | Très volatile |
-| Un système de gestion de prospects peut être un CRM ou un tableur ; le CRM n'est pas une condition absolue | [Google Ads, Questions fréquentes sur les conversions hors connexion](https://support.google.com/google-ads/answer/10029210?hl=fr), prérequis et systèmes de prospects | Fait produit officiel | Mise en œuvre compatible et données correctement tenues | 2026-07-23 | Élevée | Réponse à « faut-il un CRM ? » | Une petite équipe peut commencer avec un registre discipliné | Volatile |
-| Google cite le prospect qualifié ou le prospect converti parmi les objectifs à configurer pour les conversions améliorées pour prospects | Même FAQ officielle | Fait produit officiel | Catégories/paramétrage actuels | 2026-07-23 | Élevée | Section « ne comptez pas tous les formulaires pareil » | Encourage un signal plus proche du résultat commercial | Volatile |
-| Pour les stratégies automatiques, Google recommande d'importer régulièrement les conversions hors ligne | Même FAQ officielle, recommandations d'import | Fait produit officiel | Lorsque ces conversions servent au pilotage automatique | 2026-07-23 | Élevée | Checklist d'exploitation | Un import ponctuel et tardif limite la qualité du pilotage | Volatile |
-| Les fenêtres de conversion sont configurables et peuvent aller de 1 à 90 jours selon la source ; la valeur par défaut de Search/Display est indiquée à 30 jours lorsque non personnalisée | [Google Ads, À propos des fenêtres de conversion](https://support.google.com/google-ads/answer/3123169?hl=fr) | Fait produit officiel | Sources et types de conversion compatibles | 2026-07-23 | Élevée | Section cycle de vente long | Vérifier que la fenêtre couvre le délai réel au lieu de supposer que tout contrat sera attribué | Très volatile |
-| Le choix de stratégie d'enchères doit partir de l'objectif commercial, par exemple conversions, valeur ou clics | [Google Ads, Déterminer une stratégie d'enchères en fonction de vos objectifs](https://support.google.com/google-ads/answer/6167148?hl=fr) | Principe produit officiel | Choix initial et ajustements de campagne | 2026-07-23 | Élevée | Après le choix du résultat à mesurer | Ne pas choisir une automatisation avant de savoir quel résultat est fiable | Volatile |
-| Les noms de certaines stratégies d'enchères ont évolué en 2026 sans nécessairement changer le comportement sous-jacent | [Google Ads, À propos des stratégies d'enchères intelligentes](https://support.google.com/google-ads/answer/7065882?hl=fr), notes de mise à jour | Fait produit daté | Interface 2026 | 2026-07-23 | Élevée | Note de fraîcheur, pas dans la réponse centrale | Préférer les objectifs aux noms d'interface dans le guide | Très volatile |
-| Une conversion est une action jugée utile après interaction avec une annonce | [Google Ads, Définition d'une conversion](https://support.google.com/google-ads/answer/6308?hl=fr) | Définition officielle | Mesure Google Ads | 2026-07-23 | Élevée | Première occurrence du mot conversion | Permet de distinguer conversion technique et vente | Stable à surveiller |
-| Les conversions améliorées pour prospects utilisent des données first-party hachées et imposent une mise en œuvre conforme aux règles applicables | [Google Ads, À propos des conversions améliorées](https://support.google.com/google-ads/answer/9888656?hl=fr) | Fait produit et limite de conformité | Comptes et mises en œuvre éligibles | 2026-07-23 | Élevée | Limites de mise en œuvre | Ne jamais recommander d'envoyer des données sans vérifier consentement, règles et configuration | Volatile/réglementaire |
+| Affirmation utilisable                                                                                                                                                                    | Source primaire, URL et passage utile                                                                                                                                                       | Nature                               | Périmètre                                               | Date/consultation | Confiance | Emplacement du lien visible                            | Conséquence lecteur                                                                             | Fraîcheur                           |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | ------------------------------------------------------- | ----------------- | --------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------- | ----------------------------------- |
+| Google Ads permet de relier un clic ou un appel publicitaire à une conversion réalisée plus tard hors ligne, par exemple un contrat                                                       | [Google Ads, À propos des importations de conversions hors connexion](https://support.google.com/google-ads/answer/2998031?hl=fr), description du parcours clic/appel vers vente hors ligne | Fait produit officiel                | Comptes et sources de conversion compatibles            | 2026-07-23        | Élevée    | Section sur le suivi jusqu'au contrat                  | Le dirigeant n'est pas obligé de s'arrêter au formulaire                                        | Volatile : relire avant publication |
+| Google recommande les conversions améliorées pour prospects et la migration des anciens flux d'import a évolué en juin 2026                                                               | Même source officielle, note sur la migration à compter du 15 juin 2026                                                                                                                     | Fait produit daté                    | Paramétrage Google Ads actuel                           | 2026-07-23        | Élevée    | Encadré « ce qui a changé en 2026 » seulement si utile | Évite un tutoriel obsolète ; ne pas détailler une interface appelée à changer                   | Très volatile                       |
+| Un système de gestion de prospects peut être un CRM ou un tableur ; le CRM n'est pas une condition absolue                                                                                | [Google Ads, Questions fréquentes sur les conversions hors connexion](https://support.google.com/google-ads/answer/10029210?hl=fr), prérequis et systèmes de prospects                      | Fait produit officiel                | Mise en œuvre compatible et données correctement tenues | 2026-07-23        | Élevée    | Réponse à « faut-il un CRM ? »                         | Une petite équipe peut commencer avec un registre discipliné                                    | Volatile                            |
+| Google cite le prospect qualifié ou le prospect converti parmi les objectifs à configurer pour les conversions améliorées pour prospects                                                  | Même FAQ officielle                                                                                                                                                                         | Fait produit officiel                | Catégories/paramétrage actuels                          | 2026-07-23        | Élevée    | Section « ne comptez pas tous les formulaires pareil » | Encourage un signal plus proche du résultat commercial                                          | Volatile                            |
+| Pour les stratégies automatiques, Google recommande d'importer régulièrement les conversions hors ligne                                                                                   | Même FAQ officielle, recommandations d'import                                                                                                                                               | Fait produit officiel                | Lorsque ces conversions servent au pilotage automatique | 2026-07-23        | Élevée    | Checklist d'exploitation                               | Un import ponctuel et tardif limite la qualité du pilotage                                      | Volatile                            |
+| Les fenêtres de conversion sont configurables et peuvent aller de 1 à 90 jours selon la source ; la valeur par défaut de Search/Display est indiquée à 30 jours lorsque non personnalisée | [Google Ads, À propos des fenêtres de conversion](https://support.google.com/google-ads/answer/3123169?hl=fr)                                                                               | Fait produit officiel                | Sources et types de conversion compatibles              | 2026-07-23        | Élevée    | Section cycle de vente long                            | Vérifier que la fenêtre couvre le délai réel au lieu de supposer que tout contrat sera attribué | Très volatile                       |
+| Le choix de stratégie d'enchères doit partir de l'objectif commercial, par exemple conversions, valeur ou clics                                                                           | [Google Ads, Déterminer une stratégie d'enchères en fonction de vos objectifs](https://support.google.com/google-ads/answer/6167148?hl=fr)                                                  | Principe produit officiel            | Choix initial et ajustements de campagne                | 2026-07-23        | Élevée    | Après le choix du résultat à mesurer                   | Ne pas choisir une automatisation avant de savoir quel résultat est fiable                      | Volatile                            |
+| Les noms de certaines stratégies d'enchères ont évolué en 2026 sans nécessairement changer le comportement sous-jacent                                                                    | [Google Ads, À propos des stratégies d'enchères intelligentes](https://support.google.com/google-ads/answer/7065882?hl=fr), notes de mise à jour                                            | Fait produit daté                    | Interface 2026                                          | 2026-07-23        | Élevée    | Note de fraîcheur, pas dans la réponse centrale        | Préférer les objectifs aux noms d'interface dans le guide                                       | Très volatile                       |
+| Une conversion est une action jugée utile après interaction avec une annonce                                                                                                              | [Google Ads, Définition d'une conversion](https://support.google.com/google-ads/answer/6308?hl=fr)                                                                                          | Définition officielle                | Mesure Google Ads                                       | 2026-07-23        | Élevée    | Première occurrence du mot conversion                  | Permet de distinguer conversion technique et vente                                              | Stable à surveiller                 |
+| Les conversions améliorées pour prospects utilisent des données first-party hachées et imposent une mise en œuvre conforme aux règles applicables                                         | [Google Ads, À propos des conversions améliorées](https://support.google.com/google-ads/answer/9888656?hl=fr)                                                                               | Fait produit et limite de conformité | Comptes et mises en œuvre éligibles                     | 2026-07-23        | Élevée    | Limites de mise en œuvre                               | Ne jamais recommander d'envoyer des données sans vérifier consentement, règles et configuration | Volatile/réglementaire              |
 
 ### Contradictions et données à ne pas publier
 
@@ -247,13 +260,13 @@ Contrôle inverse :
 
 ## 6. Empreinte éditoriale à ne pas reproduire
 
-| Guide | Type d'ouverture | Progression | Dispositif récurrent | Type d'exemple | Place du CTA | Type de conclusion |
-| ----- | ---------------- | ----------- | -------------------- | -------------- | ------------ | ------------------ |
-| `seo-saas-b2b` | Problème de croissance organique | De la demande aux contenus | Matrice sujet/parcours | Cas SaaS | Fin de guide | Plan de couverture |
-| `google-search-ads-ou-performance-max` | Comparaison de deux choix | Critères puis scénarios | Tableau comparatif | Arbitrage de campagne | Après décision | Choix conditionnel |
-| `suivi-conversions-google-ads` | Décalage tableau de bord/réalité | Chaîne de mesure | Registre de conversions | Réconciliation | Tardif | Réparer avant d'automatiser |
-| `calculer-cout-par-lead-google-ads` | Coût apparent trompeur | Formules et cohortes | Calculs successifs | Chiffrage publicitaire | Tardif | Piloter au bon dénominateur |
-| `pourquoi-google-ads-ne-convertit-pas` | Campagne en panne | Diagnostic par causes | Arbre de vérification | Symptôme/correction | Fin | Corriger ou couper |
+| Guide                                  | Type d'ouverture                 | Progression                | Dispositif récurrent    | Type d'exemple         | Place du CTA   | Type de conclusion          |
+| -------------------------------------- | -------------------------------- | -------------------------- | ----------------------- | ---------------------- | -------------- | --------------------------- |
+| `seo-saas-b2b`                         | Problème de croissance organique | De la demande aux contenus | Matrice sujet/parcours  | Cas SaaS               | Fin de guide   | Plan de couverture          |
+| `google-search-ads-ou-performance-max` | Comparaison de deux choix        | Critères puis scénarios    | Tableau comparatif      | Arbitrage de campagne  | Après décision | Choix conditionnel          |
+| `suivi-conversions-google-ads`         | Décalage tableau de bord/réalité | Chaîne de mesure           | Registre de conversions | Réconciliation         | Tardif         | Réparer avant d'automatiser |
+| `calculer-cout-par-lead-google-ads`    | Coût apparent trompeur           | Formules et cohortes       | Calculs successifs      | Chiffrage publicitaire | Tardif         | Piloter au bon dénominateur |
+| `pourquoi-google-ads-ne-convertit-pas` | Campagne en panne                | Diagnostic par causes      | Arbre de vérification   | Symptôme/correction    | Fin            | Corriger ou couper          |
 
 Choix du nouveau guide :
 
@@ -270,18 +283,18 @@ Au moins trois différences avec les guides voisins : chronologie inversée depu
 
 ## 7. Plan annoté
 
-| Section provisoire | Question résolue | Preuve ou exemple | Conséquence/décision | Format choisi |
-| ------------------ | ---------------- | ----------------- | -------------------- | ------------- |
-| Trente demandes de démo ne disent pas combien de clients Google a trouvés | Quelle est la vraie question ? | Scène des deux tableaux de bord ; définition simple de Google Ads et de conversion | Le lecteur choisit entre tester la demande et réparer le suivi | Ouverture narrative + réponse en gras |
-| Commencez par le contrat que vous voulez signer | Quel résultat faut-il remonter dans le système ? | Source Google sur conversions hors ligne | Nommer contrat, proposition et prospect accepté avant le formulaire | Frise inversée, mobile |
-| Vérifiez que vos clients cherchent réellement le problème | Google peut-il capter cette demande ? | Trois familles à distinguer : problème, solution, marque ; aucune donnée de volume inventée | Lancer un test limité ou privilégier un autre canal | Trois cartes de décision |
-| Une demande de démonstration n'est pas encore un bon prospect | Comment appliquer une règle commerciale identique ? | Critères propres au SaaS : entreprise cible, problème, autorité, échéance, contexte ; pas de score universel | Créer une étape « accepté/refusé avec motif » | Exemple commenté |
-| Suivez une cohorte jusqu'au contrat, même avec un tableur | Faut-il un CRM complexe ? | FAQ officielle Google ; registre copiable | Installer une discipline minimale avant d'augmenter le budget | Artefact inline |
-| Comparez le coût complet à la marge, pas au chiffre d'affaires affiché | Quand continuer devient-il rationnel ? | Exemple fictif 4 500 €, formules et inconnues | Continuer, corriger ou arrêter sans faux benchmark | Bloc calcul vertical |
-| Votre cycle est long : adaptez la mesure, pas la vérité | Comment gérer le délai ? | Fenêtres de conversion 1–90 jours selon la source ; import régulier | Vérifier fenêtre et cadence, conserver une lecture CRM indépendante | Checklist datée |
-| Trois situations où Google Ads est un mauvais premier choix | Quand ne pas investir ? | Demande inexistante, offre encore indécidable, suivi commercial non tenu | Différer et corriger la cause | Encadré « ne lancez pas encore » |
-| Votre verdict en vingt minutes | Quelle décision prend le dirigeant ? | Registre et cinq questions oui/non | Financer, réparer, différer ou arrêter | Séquence d'action |
-| Questions restantes | Réponses résiduelles | Sources officielles et renvois ciblés | Évite de diluer le corps | FAQ courte |
+| Section provisoire                                                        | Question résolue                                    | Preuve ou exemple                                                                                            | Conséquence/décision                                                | Format choisi                         |
+| ------------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- | ------------------------------------- |
+| Trente demandes de démo ne disent pas combien de clients Google a trouvés | Quelle est la vraie question ?                      | Scène des deux tableaux de bord ; définition simple de Google Ads et de conversion                           | Le lecteur choisit entre tester la demande et réparer le suivi      | Ouverture narrative + réponse en gras |
+| Commencez par le contrat que vous voulez signer                           | Quel résultat faut-il remonter dans le système ?    | Source Google sur conversions hors ligne                                                                     | Nommer contrat, proposition et prospect accepté avant le formulaire | Frise inversée, mobile                |
+| Vérifiez que vos clients cherchent réellement le problème                 | Google peut-il capter cette demande ?               | Trois familles à distinguer : problème, solution, marque ; aucune donnée de volume inventée                  | Lancer un test limité ou privilégier un autre canal                 | Trois cartes de décision              |
+| Une demande de démonstration n'est pas encore un bon prospect             | Comment appliquer une règle commerciale identique ? | Critères propres au SaaS : entreprise cible, problème, autorité, échéance, contexte ; pas de score universel | Créer une étape « accepté/refusé avec motif »                       | Exemple commenté                      |
+| Suivez une cohorte jusqu'au contrat, même avec un tableur                 | Faut-il un CRM complexe ?                           | FAQ officielle Google ; registre copiable                                                                    | Installer une discipline minimale avant d'augmenter le budget       | Artefact inline                       |
+| Comparez le coût complet à la marge, pas au chiffre d'affaires affiché    | Quand continuer devient-il rationnel ?              | Exemple fictif 4 500 €, formules et inconnues                                                                | Continuer, corriger ou arrêter sans faux benchmark                  | Bloc calcul vertical                  |
+| Votre cycle est long : adaptez la mesure, pas la vérité                   | Comment gérer le délai ?                            | Fenêtres de conversion 1–90 jours selon la source ; import régulier                                          | Vérifier fenêtre et cadence, conserver une lecture CRM indépendante | Checklist datée                       |
+| Trois situations où Google Ads est un mauvais premier choix               | Quand ne pas investir ?                             | Demande inexistante, offre encore indécidable, suivi commercial non tenu                                     | Différer et corriger la cause                                       | Encadré « ne lancez pas encore »      |
+| Votre verdict en vingt minutes                                            | Quelle décision prend le dirigeant ?                | Registre et cinq questions oui/non                                                                           | Financer, réparer, différer ou arrêter                              | Séquence d'action                     |
+| Questions restantes                                                       | Réponses résiduelles                                | Sources officielles et renvois ciblés                                                                        | Évite de diluer le corps                                            | FAQ courte                            |
 
 FAQ prévue, avec première phrase directe :
 
@@ -379,18 +392,18 @@ Contrôles de rendu, tests, build et validation éditoriale consignés en sectio
 À la clôture de P1, l’article n’existait pas encore et la grille recensait les
 preuves à obtenir. La page intégrée a depuis reçu sa scorecard finale.
 
-| Axe         | Note 0-2 | Preuve dans la page | Correction éventuelle |
-| ----------- | -------: | ------------------- | --------------------- |
-| Intention   | — | État P1 : texte à rédiger | Vérifier l'unicité « SaaS + contrat signé » |
-| Décision    | — | État P1 : texte à rédiger | Les quatre verdicts doivent rester explicites |
-| Pédagogie   | — | État P1 : texte à rédiger | Tester les termes avec un dirigeant non spécialiste |
-| Profondeur  | — | État P1 : texte à rédiger | Couvrir demande, mesure, économie et limites sans tutoriel d'interface |
-| Preuve      | — | État P1 : texte à rédiger | Revérifier toutes les pages Google à P3/P4 |
-| Comparaison | — | État P1 : texte à rédiger | Comparer les situations, non fabriquer un duel artificiel |
-| Originalité | — | État P1 : texte à rédiger | Conserver la chronologie inversée et le registre |
-| Style       | — | État P1 : texte à rédiger | Faire la passe anti-abstraction |
-| Conversion  | — | État P1 : texte à rédiger | Un seul CTA tardif, résultat et destination explicites |
-| SEO/produit | — | État P1 : texte à rédiger | Metadata, maillage, canonique, image et rendu à vérifier |
+| Axe         | Note 0-2 | Preuve dans la page       | Correction éventuelle                                                  |
+| ----------- | -------: | ------------------------- | ---------------------------------------------------------------------- |
+| Intention   |        — | État P1 : texte à rédiger | Vérifier l'unicité « SaaS + contrat signé »                            |
+| Décision    |        — | État P1 : texte à rédiger | Les quatre verdicts doivent rester explicites                          |
+| Pédagogie   |        — | État P1 : texte à rédiger | Tester les termes avec un dirigeant non spécialiste                    |
+| Profondeur  |        — | État P1 : texte à rédiger | Couvrir demande, mesure, économie et limites sans tutoriel d'interface |
+| Preuve      |        — | État P1 : texte à rédiger | Revérifier toutes les pages Google à P3/P4                             |
+| Comparaison |        — | État P1 : texte à rédiger | Comparer les situations, non fabriquer un duel artificiel              |
+| Originalité |        — | État P1 : texte à rédiger | Conserver la chronologie inversée et le registre                       |
+| Style       |        — | État P1 : texte à rédiger | Faire la passe anti-abstraction                                        |
+| Conversion  |        — | État P1 : texte à rédiger | Un seul CTA tardif, résultat et destination explicites                 |
+| SEO/produit |        — | État P1 : texte à rédiger | Metadata, maillage, canonique, image et rendu à vérifier               |
 
 ### Test lecteur non technique
 
@@ -441,7 +454,11 @@ Corrections ou justification : à renseigner
 - [ ] rendu observé aux largeurs prescrites par le workflow ;
 - [x] aucune publication ou indexation n'est déclarée dans cette P1.
 
-## 12. Validation finale P2, P3 et P4 — 24 juillet 2026
+## 12. Archive de la première validation P2, P3 et P4 — état dépassé
+
+> Cette section conserve le reçu du premier article pour la traçabilité. Les
+> nombres, contrôles et conclusions ci-dessous ne valident pas le snapshot
+> corrigé par l’audit renforcé.
 
 ### Rapport P2 — Rédaction et intégration
 
@@ -476,13 +493,14 @@ Corrections ou justification : à renseigner
 - Snapshot P4 :
   `docs/research/manifests/google-ads-saas-b2b-p4.sha256`.
 
-### Verdict
+### Verdict historique — remplacé par l’audit renforcé
 
 **Score final : 19/20.** Le fond, la pédagogie, les sources, les calculs, la
 conversion et l'intégration sont validés. Un point reste volontairement retiré
 car aucun lecteur humain réel indépendant n'a participé au test final.
 
-Statut actuel : publiable — validation éditoriale déléguée
+Statut historique du premier article : publiable — validation éditoriale
+déléguée. Ce statut n’est plus le statut courant.
 
 Décision de publication : autorisée explicitement par le commanditaire
 
@@ -490,3 +508,174 @@ Test réalisé par une personne réelle : non
 
 Réserve SEO : la page est techniquement indexable ; indexable ne signifie pas
 indexée par Google, et aucune indexation effective ni position n'est promise.
+
+## 13. Audit renforcé — version de référence en construction
+
+### 13.1 Pourquoi le premier gel a été rouvert
+
+Le giga-audit du corpus a relu la page comme un dirigeant de SaaS qui doit
+engager de la trésorerie. Il a attribué **78/100** à l’ancien article et ouvert
+quinze P1 :
+
+1. ICP et comité d’achat incomplets ;
+2. funnel arrêté avant MQL, SQL, opportunité, activation et renouvellement ;
+3. absence de parcours essai libre ;
+4. comparaison trop courte de Search, Performance Max, vidéo et remarketing ;
+5. marque, concurrents, pays, langues et exclusions incomplets ;
+6. page de destination insuffisamment testable ;
+7. chaîne Ads–site–CRM–produit incomplète ;
+8. consentement et conversions avancées insuffisamment encadrés ;
+9. attribution non séparée de l’incrémentalité ;
+10. CPC, CVR, CAC, marge, payback et LTV insuffisamment reliés ;
+11. coût total à 12, 36 et 60 mois absent ;
+12. cycle, maturité et sensibilités insuffisants ;
+13. spam, doublons, no-show et capacité commerciale incomplets ;
+14. comparaison des canaux sur des résultats différents ;
+15. portes d’arrêt et sortie du prestataire trop courtes.
+
+Le même audit a trouvé une erreur de portée : la phrase « depuis le 15 juin
+2026, les importations passent par l’API Data Manager » généralisait une
+restriction qui vise, dans la documentation Google, certains jetons
+développeur sans import pendant une période donnée. La nouvelle version expose
+la restriction, la recommandation de migration et la nécessité de vérifier la
+méthode du compte.
+
+### 13.2 Sources primaires revalidées le 24 juillet 2026
+
+| Sujet                           | Source officielle                                                                                                                                                                                                                                                           | Point retenu                                                                                                                              |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Imports hors ligne              | [Google Ads — bonnes pratiques](https://support.google.com/google-ads/answer/15081888?hl=fr)                                                                                                                                                                                | certaines importations après 90 jours ne sont plus acceptées ; 63 jours sont indiqués pour les conversions avancées pour prospects        |
+| Évolution API                   | [Google Ads API — dépréciations](https://developers.google.com/google-ads/api/docs/deprecations)                                                                                                                                                                            | au 15 juin 2026, restriction de certains jetons inactifs et recommandation Data Manager ; pas une bascule universelle de tous les comptes |
+| Données clients                 | [Google Ads — règles relatives aux données clients](https://support.google.com/google-ads/answer/7475709?hl=fr)                                                                                                                                                             | première partie, information, consentement lorsque requis, conformité et encadrement du chargeur tiers                                    |
+| Search                          | [Google Ads — Réseau de Recherche](https://support.google.com/google-ads/answer/9510373?hl=fr)                                                                                                                                                                              | capter une intention exprimée ne prouve ni la qualité ni la vente                                                                         |
+| Performance Max                 | [Google Ads — présentation](https://support.google.com/google-ads/answer/10724817?hl=fr), [exclusions de marque](https://support.google.com/google-ads/answer/16669487?hl=fr), [mots-clés négatifs](https://support.google.com/google-ads/answer/15726455?hl=fr)            | diffusion multi-inventaires et contrôles à comprendre selon l’inventaire ; aucun contrôle ne répare une mauvaise conversion               |
+| AI Max pour Search              | [Google Ads — fonctionnement d’AI Max](https://support.google.com/google-ads/answer/15910187?hl=fr)                                                                                                                                                                         | couche d’optimisation au sein de Search ; requêtes, textes, URL et rapports doivent rester contrôlables                                   |
+| Demand Gen                      | [Google Ads — Demand Gen](https://support.google.com/google-ads/answer/13695777?hl=fr), [évolution Display](https://support.google.com/google-ads/answer/17051545?hl=fr)                                                                                                    | nomenclature et disponibilité évolutives en 2026 ; raisonner d’abord par mission du canal                                                 |
+| Catégories sensibles et mineurs | [Google Ads — règles données clients](https://support.google.com/google-ads/answer/7475709?hl=fr), [protections enfants](https://support.google.com/adspolicy/answer/14170968?hl=fr), [protections adolescents](https://support.google.com/adspolicy/answer/12205906?hl=fr) | le hachage ne permet pas un import interdit ; examiner aussi les restrictions liées à l’âge                                               |
+| Consent Mode                    | [Google Tag Platform — vue d’ensemble](https://developers.google.com/tag-platform/security/concepts/consent-mode?hl=fr)                                                                                                                                                     | ajuste le comportement des balises à partir du choix transmis ; ne recueille pas le choix et ne remplace ni CMP ni preuve                 |
+| Incrémentalité                  | [Google Ads — Conversion Lift](https://support.google.com/google-ads/answer/12003020?hl=fr)                                                                                                                                                                                 | comparaison exposé/témoin ; fonctionnalité non accessible à tous les comptes                                                              |
+| Traceurs                        | [CNIL — cookies et autres traceurs](https://www.cnil.fr/fr/cookies-et-autres-traceurs/que-dit-la-loi)                                                                                                                                                                       | consentement préalable sauf exemption et retrait aussi simple lorsque le consentement s’applique                                          |
+
+Les pages d’agences françaises, américaines, britanniques, australiennes et
+germanophones recensées dans le rapport de giga-audit servent à comparer la
+couverture, pas à établir des taux de marché. Aucun CPC, taux de conversion,
+budget ou CAC externe n’est repris comme norme.
+
+### 13.3 Cas canonique AtelierFlow
+
+AtelierFlow est entièrement fictif et ne décrit ni un client, ni un tarif, ni
+un résultat Hagnéré Code.
+
+| Élément                        | Valeur pédagogique |
+| ------------------------------ | -----------------: |
+| Média                          |           12 000 € |
+| Pilotage                       |            4 500 € |
+| Page et configuration          |            2 000 € |
+| Créations                      |            1 500 € |
+| Données et diagnostics         |            1 000 € |
+| Temps commercial               |            3 000 € |
+| **Coût d’acquisition complet** |       **24 000 €** |
+
+Funnel unique :
+`2 000 clics → 80 leads → 32 ICP → 16 SQL → 8 opportunités → 4 signés → 3 activés → 2 présents à M12`.
+
+Calculs de contrôle :
+
+- CPL média : `12 000 / 80 = 150 €` ;
+- CPL complet : `24 000 / 80 = 300 €` ;
+- coût par SQL : `24 000 / 16 = 1 500 €` ;
+- coût par opportunité : `24 000 / 8 = 3 000 €` ;
+- CAC signé : `24 000 / 4 = 6 000 €` ;
+- CAC activé : `24 000 / 3 = 8 000 €` ;
+- coût par client présent à M12 : `24 000 / 2 = 12 000 €` ;
+- marge contributive mensuelle : `1 500 - 600 = 900 €` ;
+- payback après activation : `8 000 / 900 = 8,89 mois` ;
+- délai approximatif depuis le clic : `3 + 1 + 8,89 = 12,89 mois`.
+
+Sensibilités isolées :
+
+- page à 3 % : 2,25 activations attendues, CAC 10 666,67 €, payback 11,85 mois ;
+- SQL vers opportunité à 25 % : 1,5 activation attendue, CAC 16 000 €,
+  payback 17,78 mois ;
+- CPC à 7,50 € avec le même budget média : 1 600 clics, 2,4 activations
+  attendues, CAC 10 000 €, payback 11,11 mois.
+
+Les activations fractionnaires sont des espérances mathématiques utilisées
+pour comparer les hypothèses ; elles ne décrivent pas des fractions de personne.
+
+Le scénario annuel distinct retient 8 000 € de mise en place et 88 000 € de
+fonctionnement par an :
+
+- 12 mois : 96 000 € ;
+- 36 mois : 272 000 € ;
+- 60 mois : 448 000 €.
+
+Ces horizons sont cumulatifs et ne s’additionnent pas.
+
+### 13.4 Livrables du snapshot P2 historique
+
+- page réécrite pour le dirigeant, mesurée à 8 063 mots, soit environ 40
+  minutes de lecture à 200 mots par minute ;
+- funnel du clic au renouvellement et comité d’achat ;
+- Search, marque, Performance Max, Demand Gen, remarketing et autres canaux ;
+- chaîne Ads–site–CRM–produit, délais d’import et gouvernance des données ;
+- cas AtelierFlow, marge, payback, sensibilités et coût total ;
+- calculateur local, sans envoi ni stockage, avec inconnues bloquantes ;
+- kit de onze fichiers CSV/Markdown et archive ZIP ;
+- métadonnées, image sociale, maillage, FAQ et CTA adaptés.
+
+La P2 est gelée dans
+`docs/research/manifests/google-ads-saas-b2b-p2.sha256`. Le manifeste couvre
+page, image sociale, registre, dossier, calculateur, tests, onze sources du kit,
+ZIP et intégration de la commande de contrôle. Les corrections demandées par le
+contre-audit P3 créeront un nouvel état ; elles ne réécriront pas
+rétroactivement ce snapshot.
+
+### 13.5 Corrections issues du nouveau contre-audit
+
+- le calculateur distingue maintenant prévision, cohorte en cours, cohorte
+  mature réussie et cohorte mature sans vente ; il n’affiche plus de feu vert
+  initial sur l’exemple fictif ;
+- M12 signifie partout douze mois après l’activation de chaque compte ; la
+  cohorte est mûre après la dernière activation plus douze mois ;
+- l’activation et M12 ne sont plus présentés comme des signaux importables dans
+  le scénario AtelierFlow ; SQL ou opportunité restent les signaux précoces à
+  examiner, sous réserve de la méthode, du clic admissible et des diagnostics ;
+- le guide couvre AI Max dans Search, les restrictions liées aux catégories
+  sensibles, les protections des mineurs et la limite de Consent Mode, qui
+  n’est ni une CMP ni une preuve juridique ;
+- le kit documente ses identifiants, les revenus et coûts variables, ainsi que
+  le contrôle des délais, de l’éligibilité et des erreurs d’import ;
+- l’export Markdown attache temporairement son lien de téléchargement au
+  document et diffère la révocation de l’URL locale.
+
+Mesure du snapshot corrigé avant gel final : 8 508 mots visibles, soit
+43 minutes à 200 mots par minute. Cette mesure doit être refaite si le texte
+change encore.
+
+### 13.6 Verdict renforcé du snapshot courant
+
+- contre-audit factuel indépendant : **P0 = 0, P1 = 0** ;
+- score de lecture humaine simulée : **96/100** ;
+- tests ciblés du guide, du calculateur et du composant : **83/83 réussis** ;
+- page locale, image sociale et onze ressources du kit : réponses HTTP
+  contrôlées ;
+- archive ZIP : onze entrées exactes, dont neuf CSV rectangulaires, UTF-8 et
+  sans cellule d’exemple déclenchant une formule ;
+- temps de lecture affiché et mesure du rendu : **43 minutes** ;
+- réserves P2 : BAT dans un navigateur réel et test par un dirigeant externe.
+
+Les preuves détaillées sont consignées dans
+[`google-ads-saas-b2b-p3-facts.md`](../audits/giga-audit-2026-07-24/reviews/google-ads-saas-b2b-p3-facts.md)
+et
+[`google-ads-saas-b2b-p4-human.md`](../audits/giga-audit-2026-07-24/reviews/google-ads-saas-b2b-p4-human.md).
+
+### 13.7 Limites de validation
+
+- Aucun classement Google n’est promis.
+- Aucun test par lecteur humain externe n’a encore été réalisé.
+- Le contrôle réel à 390 px, en thème clair et sombre, reste à exécuter.
+- Un rendu serveur local, un build ou un sitemap ne prouvent ni déploiement ni
+  indexation.
+- Aucun commit, push, déploiement ou état d’indexation n’est déduit de ce
+  dossier.

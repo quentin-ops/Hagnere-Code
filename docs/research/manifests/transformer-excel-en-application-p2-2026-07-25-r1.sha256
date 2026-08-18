@@ -1,0 +1,7 @@
+f7696bca0d85c8121f21cdeaf3e62af31f1e67646948a9dafdc2d7b708d8c2ef  docs/research/transformer-excel-en-application.md
+04487b17b53e9772d40ac0b54cda7c565db14d36e1de8704c3ab748fe514e983  src/app/guides/transformer-excel-en-application/page.tsx
+9d73a7f6bf4a3f40629346e9c8d20b31bf0ee0e189e952d0220a4d16f2c5d4ad  src/app/guides/transformer-excel-en-application/opengraph-image.tsx
+631cea31f4dfa34d27b935ff4d2b781ec47686f4367a3a91eadb0e7a2c552ece  src/components/guides/ExcelDecisionDiagnostic.tsx
+8a74e0024fdc2aff7ecc48a379eb7d07103f8a825a395f0ce6c84fece4d375ad  src/lib/excel-decision-diagnostic.ts
+ed6a15dbfa9ac103deb659f97da024559a7faad3c15123dec7c1995f6af246d4  src/lib/excel-decision-diagnostic.test.ts
+7c412f4d86ed7d6a1d277337d6ce7787bac4e4b671499385bd4a372adfedb52e  src/lib/guides.ts

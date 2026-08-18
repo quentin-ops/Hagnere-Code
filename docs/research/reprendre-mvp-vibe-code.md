@@ -1,4 +1,341 @@
-# Dossier de travail — reprendre un MVP créé avec Lovable, Bolt ou v0
+# Refonte premium R1 — reprendre un MVP créé avec Lovable, Bolt ou v0
+
+| Champ                    | Valeur                                                                                                                  |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| Date de gel factuel      | 28 juillet 2026                                                                                                         |
+| Statut                   | **CANDIDAT**                                                                                                            |
+| Verdict de publication   | **NO_GO premium**                                                                                                       |
+| Constat de suivi         | **NO_GO 82/86**                                                                                                         |
+| Lecture du constat       | 82/100 sur la grille mondiale R1 ; 86/100 était le repère du giga-audit antérieur, pas une preuve de qualité suffisante |
+| P0 ouverts               | 0                                                                                                                       |
+| P1 ouverts               | 14                                                                                                                      |
+| Périmètre de cette passe | dossier factuel et données structurées ; aucune modification de page, composant, modèle ou XLSX                         |
+| Prochaine porte          | recherche appliquée, réécriture, outils, BAT réel, contre-audit indépendant et correction des écarts                    |
+
+> **Règle de primauté.** Cette tête R1 remplace le verdict historique
+> « publiable » pour toute décision prise après le 28 juillet 2026. Les rapports
+> P1 à P4 de 2026-07-21 sont conservés plus bas comme journal d'un ancien
+> snapshot. Ils ne valent ni validation de la page actuelle, ni publication, ni
+> déploiement, ni indexation.
+
+## R1.1 — Pourquoi le guide reste NO_GO
+
+Le guide répond correctement à la première question — un MVP généré peut
+souvent être repris sans réécriture totale — mais il s'arrête trop tôt. Il
+explique cinq vérifications sans couvrir avec une profondeur égale la
+provenance du build, la chaîne de dépendances, la restauration complète, la
+continuité, les parcours métier, l'exploitation, le droit français, la
+portabilité réglementaire et le coût total des cinq décisions. Un lecteur peut
+donc comprendre le problème sans encore disposer de toutes les preuves
+nécessaires pour engager, reporter ou arrêter un investissement.
+
+Le raccourci `NO_GO 82/86` signifie :
+
+- **82/100** : note R1 sur une grille plus exigeante, orientée décision,
+  vérifiabilité et comparaison mondiale ;
+- **86/100** : note du contrôle antérieur, utile uniquement comme repère
+  historique ;
+- **NO_GO** : les deux notes restent sous la porte premium tant que les quatorze
+  P1 ci-dessous ne sont pas fermés sur un nouveau snapshot gelé.
+
+## R1.2 — Les quatorze P1 à fermer successivement
+
+| ID    | P1 ouvert                                                               | Valeur attendue dans le guide                                                                                                                                              | Preuve de fermeture                                                                                   |
+| ----- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| P1-01 | Inventaire et portabilité par plateforme incomplets                     | Inventorier code, historique, build, hébergement, données, fichiers, identités, secrets, domaines, observabilité, facturation et contrats ; distinguer Lovable, Bolt et v0 | Matrice plateforme par plateforme, avec « ce qui suit », « ce qui ne suit pas » et test daté          |
+| P1-02 | Chaîne source → build → artefact absente                                | Relier commit, environnement, commande, journaux et artefact réellement déployé                                                                                            | Build propre, digest de l'artefact et provenance vérifiée ; aucun raccourci « dépôt = production »    |
+| P1-03 | Dépendances, licences et supply chain sous-traitées à un simple install | Figer Node/npm/configuration, produire l'arbre direct et transitif, les licences, un SBOM et les exceptions                                                                | `npm ci` reproductible, SBOM archivé, licences et scripts d'installation examinés                     |
+| P1-04 | Sauvegarde des données confondue avec export ou rollback                | Sauvegarder puis restaurer schéma, données, fichiers, identités, fonctions et rôles                                                                                        | Restauration exécutée dans une cible isolée, contrôles de volumes et tests fonctionnels               |
+| P1-05 | RPO, RTO et continuité non décidés                                      | Traduire la perte de données et l'interruption acceptables par parcours critique                                                                                           | RPO/RTO acceptés par le métier, exercice chronométré et écarts consignés                              |
+| P1-06 | Habilitations et sécurité applicative trop générales                    | Établir une matrice des rôles, tester les comptes ordinaires et utiliser OWASP ASVS 5.0.0 comme catalogue versionné                                                        | Tests positifs/négatifs datés, références `v5.0.0-*`, secrets tournés et écarts acceptés              |
+| P1-07 | Logique métier et intégrité transactionnelle trop peu testées           | Couvrir permissions, idempotence, doublons, concurrence, webhooks, paiements et rapprochement                                                                              | Parcours critiques rejoués avec échecs, retries, doublons et réconciliation                           |
+| P1-08 | Production, observabilité et support sous-documentés                    | Nommer logs, métriques, alertes, rétention, performance, astreinte, incident et escalade                                                                                   | Incident simulé, alerte reçue, journal exploitable et propriétaire nommé                              |
+| P1-09 | Droits, RGPD, contrats et portabilité juridique incomplets              | Séparer droits d'auteur, cession, licences tierces, DPA, sous-traitants, transferts, RGPD et Data Act                                                                      | Registre contractuel, qualification des traitements et avis spécialisé pour les inconnues matérielles |
+| P1-10 | Cinq options comparées sur des périmètres inégaux                       | Comparer conserver, stabiliser, migrer progressivement, réécrire et arrêter sur les mêmes actifs et exigences                                                              | Hypothèses, exclusions, risques et livrables identiques par ligne                                     |
+| P1-11 | Aucun TCO décisionnel à 12/36/60 mois                                   | Montrer un modèle paramétrable, le coût d'interruption et les sensibilités                                                                                                 | Formules visibles, cas fictif recalculé et avertissement explicite « pas un devis »                   |
+| P1-12 | Migration progressive sans rollback ni hypercare probants               | Définir double écriture éventuelle, bascule, seuil d'arrêt, retour arrière, rapprochement et surveillance renforcée                                                        | Répétition de bascule, rollback chronométré et critères GO/STOP signés                                |
+| P1-13 | Benchmark international trop étroit                                     | Exploiter SLSA, NIST, OWASP, NCSC, ASD/ACSC et Digital Agency Japan sans les transformer en certification                                                                  | Correspondance exigence → preuve locale → limite d'applicabilité                                      |
+| P1-14 | Anciennes auto-validations non indépendantes du nouveau contenu         | Contre-auditer le nouveau snapshot factuel, éditorial, UX, export et calculs                                                                                               | Deux lectures distinctes P3/P4 sur hash gelé ; tout NO_GO déclenche correction puis nouvel audit      |
+
+## R1.3 — Contrat des deux jeux de données
+
+Deux fichiers structurés accompagnent ce dossier :
+
+- `src/lib/mvp-vibe-code-platform-facts.json` contient des faits plats,
+  exploitables en cartes ou en lignes de classeur. Chaque ligne possède
+  exactement une capacité, une limite, une preuve à exécuter, une frontière et
+  une source officielle ;
+- `src/lib/mvp-vibe-code-workbook-sources.json` contient le registre de 37
+  sources officielles. Les identifiants `source` du premier fichier doivent
+  tous exister dans ce registre ;
+- `checkedAt` signifie « relu le 28 juillet 2026 ». Il ne signifie pas que la
+  capacité a été exécutée sur le MVP du lecteur ;
+- une documentation éditeur établit ce que le produit annonce. Elle ne prouve
+  ni l'état d'un projet concret, ni le plan souscrit, ni le contrat accepté, ni
+  la réussite d'une restauration.
+
+## R1.4 — Faits actuels par plateforme et frontières exactes
+
+### Lovable
+
+1. Le code du projet est géré dans Lovable. La connexion GitHub permet un
+   export et une synchronisation dans les deux sens sur une branche active ;
+   une copie directe est aussi téléchargeable depuis l'éditeur de code sur les
+   offres payantes. **Frontière :** ni GitHub ni le ZIP n'emportent à eux seuls
+   données, fichiers, secrets, fournisseurs d'identité, domaines et exploitation
+   (`LOV-GIT`).
+2. Héberger ailleurs est possible, mais l'équipe reprend le pipeline, les
+   variables, le CDN, la disponibilité, les logs, l'historique de déploiement
+   et les previews. **Frontière :** « déployable ailleurs » ne veut pas dire
+   « opéré ailleurs avec le même service » (`LOV-DEPLOY`).
+3. Une sortie du backend peut reprendre le schéma par migrations SQL, mais la
+   configuration d'authentification, les secrets, les données et les objets de
+   stockage demandent des opérations distinctes. Les mots de passe utilisateurs
+   ne sont pas exportables : un parcours de réinitialisation est nécessaire
+   (`LOV-DEPLOY`).
+4. Remix ne copie ni secrets ni données de base et ne conserve pas tout
+   l'historique ; un rollback de projet ne rembobine pas automatiquement la base.
+   **Frontière :** une copie visuelle ou un retour de code n'est pas une
+   restauration transactionnelle (`LOV-FAQ`).
+5. Les nouveaux projets annoncés depuis le 13 mai 2026 utilisent TanStack Start
+   SSR, avec les exceptions documentées ; les anciens peuvent rester en
+   React/Vite. **Frontière :** le nom Lovable ne suffit pas à déduire la stack,
+   les commandes ou la compatibilité (`LOV-FAQ`).
+6. Les scanners Lovable aident à détecter des problèmes, mais ne garantissent
+   pas la sécurité ; Deep Scan n'est pas une preuve automatique et la
+   publication peut rester possible malgré des constats critiques.
+   **Frontière :** aucun badge ni écran vert ne remplace des tests d'accès et
+   une revue indépendante (`LOV-SECURITY`).
+7. Les conditions Lovable publiées le 16 juin 2026 sont annoncées effectives le
+   15 août 2026, sauf acceptation expresse antérieure, et organisent les droits
+   sur Customer Data et Output « entre les parties », sous réserve notamment
+   des éléments tiers. **Frontière :** conserver la version effectivement
+   acceptée ; la page publique future ne réécrit pas rétroactivement le contrat
+   d'un projet (`LOV-TERMS`).
+
+### Bolt
+
+1. Bolt permet de télécharger un ZIP des fichiers du projet. **Frontière :**
+   cette archive ne démontre ni la reconstruction propre, ni la présence des
+   données, domaines, intégrations, secrets ou comptes (`BOLT-PROJECTS`).
+2. Un transfert vers un autre workspace conserve les connexions Bolt Database,
+   GitHub et Supabase. Vers un autre utilisateur, GitHub est retiré à
+   l'acceptation, le domaine personnalisé est retiré et la propriété Supabase
+   doit être transférée séparément. Les propriétaires, contrats et droits des
+   comptes externes restent à vérifier dans chaque console
+   (`BOLT-PROJECT-TRANSFER`).
+3. Une duplication conserve code et réglages, sauf GitHub et Netlify. Pour Bolt
+   Database, elle copie la structure sans les données ; pour Supabase, elle
+   demande de choisir entre une nouvelle structure et la base existante. Une
+   copie inter-comptes repart avec un historique de chat vide
+   (`BOLT-PROJECTS`).
+4. L'historique Bolt restaure une version du projet, pas l'état courant d'une
+   base Bolt ou Supabase. **Frontière :** rollback de fichiers et rollback de
+   données sont deux procédures (`BOLT-ROLLBACK`).
+5. Connecter Supabase à un projet déjà relié à Bolt Database remplace la
+   connexion et peut faire perdre des données. Revendiquer la base Bolt dans
+   Supabase exige le rôle propriétaire de l'organisation (`BOLT-SUPABASE`).
+6. Les procédures et formats Bolt évoluent ; depuis le changement de stockage
+   annoncé en 2026, l'absence d'une ancienne passerelle StackBlitz n'empêche pas
+   nécessairement l'accès au code dans Bolt. **Frontière :** exécuter le chemin
+   disponible dans le compte réel au lieu de recopier un tutoriel ancien
+   (`BOLT-ROLLBACK`).
+7. Les conditions publiques StackBlitz, datées du 10 janvier 2024, définissent
+   un cadre général de contenu utilisateur et de contenu de la plateforme.
+   **Frontière :** cette page ne permet pas, seule, de conclure définitivement
+   sur tous les droits d'un Output Bolt en juillet 2026 ; le contrat accepté,
+   les contributions humaines et les licences tierces doivent être inventoriés
+   (`STACKBLITZ-TERMS`).
+
+### v0 et Vercel
+
+1. Une fois GitHub connecté, le dépôt devient la source de vérité et v0 ne
+   conserve pas une copie distincte ; supprimer ce dépôt peut rendre le code
+   irrécupérable (`V0-GITHUB`).
+2. Un projet v0 est l'application partagée entre plusieurs chats. Il regroupe
+   aussi déploiement, hébergement, domaines et variables d'environnement ; une
+   publication depuis n'importe lequel de ces chats met à jour la même URL de
+   production (`V0-PROJECTS`).
+3. **Frontière :** le dépôt prouve l'état du code, pas la configuration complète
+   du projet Vercel, les données externes, les secrets ni le contrôle des
+   intégrations. Il faut exporter l'inventaire et produire un déploiement
+   indépendant.
+4. Les conditions AI Product de Vercel indiquent que l'Output comprend le code,
+   imposent une revue utilisateur, n'assurent ni unicité ni absence de droits
+   de tiers et organisent les droits « entre les parties ». **Frontière :** la
+   version contractuelle réellement acceptée et chaque composant tiers restent
+   déterminants (`VERCEL-AI-TERMS`).
+
+### Supabase
+
+1. Les sauvegardes de base n'incluent pas les objets Storage, seulement leurs
+   métadonnées. Sur l'offre gratuite, une sauvegarde hors site régulière reste
+   à organiser ; une restauration planifiée peut rendre le projet indisponible
+   (`SUPABASE-BACKUPS`).
+2. Les mots de passe des rôles PostgreSQL personnalisés ne suivent pas
+   automatiquement un dump/restauration. **Frontière :** un `pg_dump` réussi ne
+   prouve pas que l'authentification, les fichiers et les rôles applicatifs sont
+   restaurés (`SUPABASE-BACKUPS`).
+3. Une clé publishable est conçue pour le client seulement avec des politiques
+   RLS correctes. Une clé secret est réservée au backend et peut contourner RLS.
+   Les anciennes clés `anon`/`service_role` sont annoncées comme dépréciées fin
+   2026 ; la migration doit être vérifiée appelant par appelant
+   (`SUPABASE-KEYS`).
+
+### npm, SBOM et provenance
+
+1. Avec npm 12, `npm ci` exige un `package-lock.json` cohérent, supprime
+   `node_modules`, échoue en cas d'écart et ne réécrit pas les manifests. Il
+   faut toutefois conserver la version Node, npm, le champ `packageManager` et
+   `.npmrc`, car les options ayant façonné le lockfile doivent être reproduites
+   (`NPM-CI`).
+2. npm 12 refuse par défaut les dépendances Git et URL distante non autorisées
+   et fournit des contrôles pour les scripts d'installation. **Frontière :**
+   une installation propre ne prouve ni la licence, ni la sûreté, ni la
+   reproductibilité sur une autre plateforme (`NPM-CI`).
+3. `npm sbom` peut produire SPDX ou CycloneDX. **Frontière :** un SBOM est un
+   inventaire daté, pas un audit de vulnérabilité, une preuve de licence ni la
+   garantie que l'artefact déployé correspond au graphe (`NPM-SBOM`).
+4. Une attestation GitHub peut relier un artefact à son workflow, son dépôt, son
+   commit et son contexte de build. Elle doit être vérifiée et ne prouve pas la
+   qualité fonctionnelle du code (`GITHUB-ATTEST`).
+
+## R1.5 — Benchmark mondial transformé en preuves locales
+
+| Référence                                                                          | Apport au guide                                                                                                                                                         | Traduction en preuve                                                                       | Limite à écrire                                                                     |
+| ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- |
+| SLSA 1.2, version courante approuvée (`SLSA-1-2`)                                  | Sépare provenance de la source et provenance du build ; décrit des niveaux de garanties progressifs                                                                     | Produire et vérifier une attestation reliant l'artefact au commit et au builder            | Ne jamais déclarer « conforme SLSA » à partir d'un simple hash ou d'un workflow     |
+| NIST SSDF 1.1, dernière version finale ; 1.2 encore draft au gel (`NIST-SSDF-1-1`) | Organise préparation, protection, production sûre et réponse aux vulnérabilités                                                                                         | Relier risques, exigences, décisions d'architecture, environnements et contrôles           | Cadre de pratiques fondé sur le risque, pas checklist universelle ni certification  |
+| OWASP ASVS 5.0.0 (`OWASP-ASVS-5`)                                                  | Fournit un catalogue versionné de vérifications applicatives et contractuelles                                                                                          | Sélectionner les exigences adaptées puis citer les IDs `v5.0.0-*`                          | Le niveau et les exigences dépendent du risque ; un scan seul ne couvre pas ASVS    |
+| Royaume-Uni, NCSC (`NCSC-PIPELINE`, `NCSC-SUPPLY-CHAIN`)                           | Pipeline automatisé et traçable, production séparée, secrets hors dépôt, dépendances directes/transitives et outils de build inventoriés                                | Conserver logs de build, revue, SBOM, responsables et trace source → production            | Guide britannique à contextualiser ; ce n'est pas une loi française                 |
+| Australie, ASD/ACSC ISM, juin 2026 (`ASD-SOFTWARE-2026`)                           | Couvre aussi le développement assisté ou piloté par IA ; Secure by Design/Default, source autoritative, signatures/hashes, SAST/DAST/SCA, rôles et décisions documentés | Tester l'intégrité des artefacts, séparer les environnements et documenter le threat model | Référentiel gouvernemental australien ; sélectionner selon contexte et sensibilité  |
+| Japon, Digital Agency, DS-200/202/203 (`JAPAN-DIGITAL-GUIDELINES`)                 | Sécurité sur tout le cycle, protection de CI/CD et gestion du risque sur toute la supply chain                                                                          | Inventaire des acteurs, actifs, contrôles du pipeline, dépendances et plan de sortie       | Benchmark public japonais ; ne vaut ni conformité française ni certification privée |
+
+## R1.6 — Droit français, RGPD et Data Act : ce que le guide peut dire
+
+### Propriété intellectuelle française
+
+- L'article **L111-1** du Code de la propriété intellectuelle attribue le droit
+  à l'auteur du seul fait de la création et précise qu'un contrat de service ne
+  transfère pas, à lui seul, ce droit. Une commande payée n'est donc pas une
+  preuve suffisante de cession (`FR-CPI-L111-1`).
+- L'article **L113-9** organise, sauf dispositions ou stipulations contraires,
+  la dévolution à l'employeur des droits patrimoniaux sur le logiciel et sa
+  documentation créés par un employé dans ses fonctions ou selon ses
+  instructions. Cette exception ne doit pas être étendue automatiquement à un
+  freelance, une agence ou un associé (`FR-CPI-L113-9`).
+- L'article **L131-3** exige que chaque droit cédé soit mentionné distinctement
+  et que son exploitation soit délimitée quant à l'étendue, la destination, le
+  lieu et la durée. **Conséquence :** vérifier le contrat, les avenants, la chaîne
+  de sous-traitance et les licences, puis faire arbitrer tout doute matériel ;
+  le guide ne rend pas d'avis juridique (`FR-CPI-L131-3`).
+
+### RGPD et CNIL
+
+- Lorsque l'équipe de reprise traite des données pour le compte du client, le
+  rôle de responsable/sous-traitant et l'encadrement de l'article 28 doivent
+  être qualifiés : instructions, confidentialité, sous-traitants ultérieurs,
+  sécurité, aide aux droits, violations, restitution ou destruction, sort des
+  copies et audit (`CNIL-SOUS-TRAITANCE`).
+- Le droit RGPD à la portabilité vise certains traitements automatisés fondés
+  sur le consentement ou le contrat et certaines données fournies par la
+  personne ou issues de son activité. Il exclut notamment les données déduites
+  ou dérivées, ne supprime pas automatiquement les données chez l'ancien
+  responsable et ne constitue pas un droit général à emporter l'application,
+  son code ou ses mots de passe (`CNIL-PORTABILITE`).
+- L'inventaire doit aussi qualifier finalités, bases légales, durées,
+  destinataires, hébergement, transferts hors EEE, DPA, sous-traitants,
+  sauvegardes et journalisation. Les conditions et emplacements réels doivent
+  être relus, pas déduits de la marque du générateur.
+
+### Data Act — prudence obligatoire
+
+Le règlement (UE) 2023/2854 s'applique depuis le **12 septembre 2025**. Son
+chapitre VI prévoit des obligations de changement entre services de traitement
+de données, dont des contrats de sortie, des interfaces ou formats adaptés et,
+dans le champ du texte, la remise de données exportables et d'actifs numériques.
+Les frais de changement sont progressivement retirés et ne pourront plus être
+imposés à partir du **12 janvier 2027** (`EU-DATA-ACT`).
+
+Ces éléments ne permettent pas d'écrire que « tout projet Lovable, Bolt ou v0
+est juridiquement exportable sans friction ». Il faut d'abord qualifier le
+service, le client, le contrat, les données et actifs exportables, les éléments
+tiers, les secrets d'affaires, la propriété intellectuelle et les limites
+techniques. Le Data Act et le droit RGPD à la portabilité ont des objets et des
+bénéficiaires différents. Cette section informe ; l'applicabilité à un contrat
+réel relève d'une analyse juridique spécialisée.
+
+## R1.7 — Modèle TCO fictif à cinq options
+
+### Formule commune
+
+```text
+TCO(horizon) =
+  coût initial de décision
+  + horizon en années × coût annuel d'exploitation
+  + coût des interruptions anticipées
+  + coût d'opportunité interne
+  + risques résiduels valorisés lorsque leur probabilité est défendable
+```
+
+### Cas pédagogique fictif, hors taxes
+
+Ces nombres ne sont ni des prix Hagnéré Code, ni des médianes de marché, ni un
+devis. Ils servent uniquement à vérifier les formules du futur outil.
+
+| Option                         | Coût initial fictif | Exploitation annuelle fictive | TCO 12 mois | TCO 36 mois | TCO 60 mois | Ce que le chiffre ne prouve pas                                                       |
+| ------------------------------ | ------------------: | ----------------------------: | ----------: | ----------: | ----------: | ------------------------------------------------------------------------------------- |
+| Conserver avec garde-fous      |            12 000 € |                      22 000 € |    34 000 € |    78 000 € |   122 000 € | Que la dépendance plateforme ou les risques inconnus sont acceptables                 |
+| Stabiliser avant d'étendre     |            28 000 € |                      24 000 € |    52 000 € |   100 000 € |   148 000 € | Que toutes les fonctions seront conservées ou que l'audit ne découvrira aucun STOP    |
+| Migrer progressivement         |            75 000 € |                      30 000 € |   105 000 € |   165 000 € |   225 000 € | Que la coexistence, la double écriture et le rollback seront simples                  |
+| Réécrire à périmètre égal      |           145 000 € |                      34 000 € |   179 000 € |   247 000 € |   315 000 € | Qu'une réécriture est plus sûre, plus rapide ou mieux adoptée                         |
+| Arrêter ou reporter proprement |            22 000 € |                       4 000 € |    26 000 € |    34 000 € |    42 000 € | Que le besoin disparaît ; ce coût inclut archivage et obligations résiduelles fictifs |
+
+Contrôle arithmétique : `coût initial + nombre d'années × coût annuel`. Le coût
+d'interruption reste séparé pour rendre la sensibilité visible.
+
+### Exemple fictif de coût d'interruption
+
+```text
+8 h × 25 personnes × 42 €/h = 8 400 €
+20 h de reprise × 180 €/h       = 3 600 €
+prestations et gestes de reprise = 4 000 €
+total direct illustratif          = 16 000 €
+```
+
+Le modèle ne valorise pas automatiquement perte de clients, réputation,
+pénalités, contentieux, perte de données, opportunité commerciale ni surcharge
+de direction. Chaque hypothèse doit porter une source interne, une fourchette et
+un propriétaire. Une variation de volume, de complexité, de disponibilité ou
+de périmètre impose un nouveau calcul. Les cinq options doivent utiliser le
+même périmètre fonctionnel, les mêmes exigences de sécurité, la même durée et
+les mêmes exclusions ; sinon le classement est trompeur.
+
+## R1.8 — Architecture premium attendue avant la prochaine porte
+
+1. réponse courte et routeur STOP ;
+2. gel du projet et conservation des preuves ;
+3. inventaire des actifs sur au moins huit couches ;
+4. matrice de portabilité Lovable/Bolt/v0 ;
+5. preuve source → build → artefact → déploiement ;
+6. dépendances, licences, SBOM et provenance SLSA ;
+7. sauvegarde/restauration complète, RPO et RTO ;
+8. accès, secrets, RLS et sélection ASVS 5.0.0 ;
+9. parcours métier, paiements, webhooks, idempotence et rapprochement ;
+10. performance, observabilité, incidents et support ;
+11. droits, contrats, RGPD, CNIL et Data Act ;
+12. cinq options à périmètre égal et TCO 12/36/60 mois ;
+13. migration progressive, seuils STOP, rollback et hypercare ;
+14. kit téléchargeable, sources, limites et date de validité.
+
+**Porte suivante :** aucun statut GO ne doit être posé avant que les quatorze
+P1 aient une preuve dans la page et les outils, que les calculs aient été
+mutés, qu'un lecteur non technique ait compris sa décision et que deux
+contre-audits distincts aient convergé sur un snapshot gelé.
+
+---
+
+# Historique R0 — dossier de travail du 21 juillet 2026
 
 ## Journal des quatre passes
 
@@ -371,3 +708,72 @@ indexation effective, ni son classement.
 Le manifeste externe `manifests/lot-trois-guides-final.sha256` gèle également
 les trois dossiers de recherche sans tenter de faire hacher le manifeste par
 lui-même.
+
+## Rectificatif R1 — 28 juillet 2026 — CANDIDAT / NO_GO jusqu’au contre-audit
+
+Ce rectificatif remplace, pour l’état courant du guide, les verdicts P3/P4 et
+les snapshots historiques ci-dessus. Ils décrivent d’anciens états et ne
+constituent plus une preuve de publication. La refonte R1 reste
+**CANDIDAT — NO_GO** tant qu’un contre-audit indépendant n’a pas vérifié les
+corrections, le rendu réel et l’absence de régression.
+
+### Corrections factuelles et pédagogiques intégrées dans le candidat
+
+- Registre porté à 27 faits de plateforme et 37 sources officielles, tous gelés
+  au `checkedAt: 2026-07-28`, avec contrôle des identifiants, des références et
+  de l’absence de source orpheline.
+- Ajout du groupe « Build et provenance » afin que les quatre faits npm/GitHub
+  ne disparaissent plus de la page ; le compteur public dépend désormais de la
+  longueur réelle du registre et chaque fait doit appartenir à un seul groupe.
+- Bolt séparé en quatre opérations : transfert vers un workspace, transfert
+  vers un autre utilisateur, duplication et ZIP. Entre workspaces, les
+  connexions Bolt Database, GitHub et Supabase restent associées. Vers un autre
+  utilisateur, GitHub est retiré à l’acceptation, le domaine personnalisé est
+  retiré et la propriété Supabase reste une opération distincte. Toute
+  duplication efface l’historique de chat.
+- Ajout des transferts natifs Lovable (propriété/workspace), v0
+  (chats/scopes et projet Vercel sous condition de rôle Owner) et Supabase
+  (organisation, rôles et prérequis), sans prétendre transférer les comptes
+  tiers, garantir une absence d’interruption ou promettre un tarif.
+- Ordre de décision explicite : transfert natif, puis export/copie et preuve de
+  reconstruction, puis migration externe couche par couche.
+- Le premier build réussi est désormais qualifié de « reconstructible ». La
+  reproductibilité exige plusieurs builds indépendants dans des environnements
+  figés, la comparaison des artefacts et de leurs empreintes, puis
+  l’explication de chaque écart.
+- Carte de lecture clarifiant les 5 vérifications rapides, les 9 domaines de
+  preuve du dossier et les 15 chapitres pédagogiques.
+- Les neuf hypothèses de chaque trajectoire TCO sont affichées avant les totaux
+  dans une table défilable ; hypothèses, libellés, horizons et totaux proviennent
+  du moteur canonique. Le cas reste explicitement fictif, sans prix moyen ni
+  devis implicite.
+- Ajout de l’article L111-1 du CPI et d’une checklist Data Act prudente :
+  données et actifs, formats et interfaces, limites, délais, période de
+  récupération, frais et absence d’équivalence fonctionnelle garantie.
+- NIST, ASVS, NCSC, ASD/ACSC, SLSA et Digital Agency Japan sont désormais reliés
+  à un contrôle concret et à une preuve conservée, sans revendication de
+  certification.
+- La FAQ coût expose les facteurs, les trois phases minimales et les
+  déclencheurs d’élargissement, sans publier de moyenne artificielle.
+
+### Sources ajoutées ou explicitées
+
+Les nouvelles références directes couvrent le transfert Lovable, les équipes
+v0, le transfert de projet Supabase, GitHub Secret Scanning, les conditions
+générales Vercel en complément des AI Product Terms, la procédure CNIL sur les
+violations de données et le UK Digital, Data and Technology Playbook.
+
+| ID                     | Titre                                                       | URL                                                                                                                                                                          | Usage et limite                                                                                                                                                                                               |
+| ---------------------- | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `LOV-PROJECT-TRANSFER` | Lovable — Workspace basics                                  | [https://docs.lovable.dev/features/workspace](https://docs.lovable.dev/features/workspace)                                                                                    | Distinguer transfert de propriété et déplacement entre workspaces. Les rôles disponibles varient ; GitHub, Supabase, domaine et autres comptes tiers doivent être contrôlés séparément.                         |
+| `V0-TRANSFER`          | Vercel v0 — Teams                                           | [https://v0.app/docs/teams](https://v0.app/docs/teams)                                                                                                                        | Documenter le transfert de chats entre scopes et le transfert conditionnel du projet Vercel lié. Le rôle Owner est déterminant ; GitHub, données, services tiers et contrats restent séparés.                    |
+| `SUPABASE-TRANSFER`    | Supabase — Transferring projects                            | [https://supabase.com/docs/guides/platform/project-transfer](https://supabase.com/docs/guides/platform/project-transfer)                                                      | Vérifier organisations, rôles, intégration GitHub, rôles projet, log drains, plan et disponibilité. Un transfert d’organisation n’est pas une migration de région et peut entraîner des changements de droits. |
+| `UK-DDAT-PLAYBOOK`     | UK Government — The Digital, Data and Technology Playbook  | [https://www.gov.uk/government/publications/the-digital-data-and-technology-playbook/the-digital-data-and-technology-playbook](https://www.gov.uk/government/publications/the-digital-data-and-technology-playbook/the-digital-data-and-technology-playbook) | Relier plan de sortie, interopérabilité et propriété des données à des livrables. Référentiel d’achat public britannique, sans portée juridique française automatique.                                          |
+| `CNIL-VIOLATIONS`      | CNIL — Violations de données personnelles : règles à suivre | [https://www.cnil.fr/fr/violations-de-donnees-personnelles-les-regles-suivre](https://www.cnil.fr/fr/violations-de-donnees-personnelles-les-regles-suivre)                    | Encadrer documentation, qualification et notification éventuelle sous 72 heures. Les obligations dépendent de la violation et du risque ; une analyse compétente reste nécessaire.                            |
+
+### Porte R1
+
+Le présent état ne vaut ni commit, ni push, ni déploiement, ni publication, ni
+indexation. Le passage à GO exige au minimum : tests ciblés verts, contrôle
+JSON/crossrefs, ESLint, `git diff --check`, inspection du rendu aux largeurs
+requises et contre-audit factuel/éditorial indépendant sur ce snapshot exact.

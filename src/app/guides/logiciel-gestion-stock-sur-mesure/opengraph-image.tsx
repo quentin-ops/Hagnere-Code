@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Gestion de stock : retrouver le mouvement qui crée l’écart";
+export const alt =
+  "Logiciel de gestion de stock : tester les écarts et comparer les solutions";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -68,7 +69,7 @@ export default function OgImage() {
             fontWeight: 650,
           }}
         >
-          EXEMPLE FICTIF
+          GUIDE DE DÉCISION
         </div>
       </div>
 
@@ -101,7 +102,7 @@ export default function OgImage() {
               color: "#bae6fd",
             }}
           >
-            Rejouez dix mouvements avant de changer de logiciel
+            Testez 15 événements et comparez les coûts sur 36 mois
           </div>
         </div>
 

@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "hash": "0d7843ee8f5af2d00518248cd174dd4def8a075309f29d07452efd62c7ee448e",
+  "bytes": 31264,
+  "imports": 2,
+  "sheets": 10,
+  "functions": 10,
+  "acceptanceTests": 18,
+  "sources": 18,
+  "controls": 24,
+  "mutations": {
+    "tcoTakeover10000": {
+      "stabilize": 142500,
+      "surcharge": 132300,
+      "roundedClients": 7
+    },
+    "events1200": {
+      "dailyMax": 1200,
+      "fourHourMax": 200
+    },
+    "probability100": 4.814159292035399,
+    "probability10": 48.14159292035398,
+    "sixAccounts": {
+      "prepared": 1770,
+      "crisis": 4080,
+      "difference": 2310
+    }
+  },
+  "adversarialInputs": [
+    "C6=-1 → STOP",
+    "C6=1000000000001 → STOP",
+    "C7=-4 → STOP",
+    "C17=101 → STOP",
+    "C12=1.5 → STOP",
+    "C39=-1 → STOP",
+    "C39=1.5 → STOP",
+    "E7=Non → STOP",
+    "E7=Inconnu → STOP",
+    "E8=Non → STOP",
+    "E8=Inconnu → STOP"
+  ],
+  "sabotages": [
+    "TCO total détecté",
+    "Arrondi des clients détecté",
+    "RPO détecté",
+    "Coût de reconstruction actuel détecté",
+    "Coût de reconstruction amélioré détecté",
+    "Coût de passation détecté",
+    "Écart des comptes détecté",
+    "Statut central figé détecté"
+  ],
+  "formulaErrors": 0,
+  "excelRecalculation": false
+}

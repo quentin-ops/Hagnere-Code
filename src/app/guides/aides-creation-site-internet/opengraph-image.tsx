@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Quelles aides peuvent financer votre site internet en 2026 ? — Hagnéré Code";
+  "Aide pour un site : 0 euro sans notification, TVA et trésorerie — Hagnéré Code";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -51,7 +51,7 @@ export default function OgImage() {
             padding: "8px 20px",
           }}
         >
-          Vérifié juillet 2026
+          Vérifié le 26 juillet 2026
         </div>
       </div>
 
@@ -66,19 +66,15 @@ export default function OgImage() {
             maxWidth: 1020,
           }}
         >
-          Quelles aides pour créer votre site internet ?
+          Aide = 0 € sans notification
         </div>
         <div style={{ display: "flex", fontSize: 30, color: "#a1a1aa" }}>
-          Les dispositifs et démarches à vérifier en 2026
+          Vérifier le devis, la TVA, la trésorerie et le coût d’attente
         </div>
       </div>
 
       <div style={{ display: "flex", gap: 14 }}>
-        {[
-          "Dispositifs nationaux",
-          "Aides régionales",
-          "Démarches avant signature",
-        ].map((t) => (
+        {["Preuve écrite", "Trésorerie TTC", "Dossier local"].map((t) => (
           <div
             key={t}
             style={{

@@ -1,0 +1,18 @@
+{"kind":"meta","date":"2026-07-28","route":"/guides/facturation-abonnements-saas","build":"next production","generatedRoutes":"159/159","servedWords":5746,"servedCharacters":37687,"h1":1,"h2":12,"h3":29,"tables":7,"links":22}
+{"kind":"responsive","width":320,"articleWidth":288,"articleLeft":16,"overflow":false,"articleAlign":"start","h1Align":"start","paragraphAlign":"start"}
+{"kind":"responsive","width":360,"articleWidth":328,"articleLeft":16,"overflow":false,"articleAlign":"start","h1Align":"start","paragraphAlign":"start"}
+{"kind":"responsive","width":390,"articleWidth":358,"articleLeft":16,"overflow":false,"articleAlign":"start","h1Align":"start","paragraphAlign":"start"}
+{"kind":"responsive","width":430,"articleWidth":398,"articleLeft":16,"overflow":false,"articleAlign":"start","h1Align":"start","paragraphAlign":"start"}
+{"kind":"responsive","width":640,"articleWidth":608,"articleLeft":16,"overflow":false,"articleAlign":"start","h1Align":"start","paragraphAlign":"start"}
+{"kind":"responsive","width":768,"articleWidth":736,"articleLeft":16,"overflow":false,"articleAlign":"start","h1Align":"start","paragraphAlign":"start"}
+{"kind":"responsive","width":1024,"articleWidth":760,"articleLeft":16,"overflow":false,"articleAlign":"start","h1Align":"start","paragraphAlign":"start"}
+{"kind":"responsive","width":1280,"articleWidth":760,"articleLeft":66,"overflow":false,"articleAlign":"start","h1Align":"start","paragraphAlign":"start"}
+{"kind":"responsive","width":1440,"articleWidth":760,"articleLeft":146,"overflow":false,"articleAlign":"start","h1Align":"start","paragraphAlign":"start"}
+{"kind":"responsive","width":1600,"articleWidth":760,"articleLeft":226,"overflow":false,"articleAlign":"start","h1Align":"start","paragraphAlign":"start"}
+{"kind":"keyboard","width":320,"summaryTabSteps":27,"summaryFocusVisible":true,"enterOpensDetails":true,"tabTarget":"Mise en place €","shiftTabReturnsSummary":true,"radioTabSteps":30,"arrowSelectsNotRequired":true,"spaceKeepsSelection":true,"verdictAfterSelection":"PASS","enterReset":"STOP","enterDownload":"kit-pilotage-facturation-saas.xlsx","screenshot":"bat/keyboard-320.png"}
+{"kind":"keyboard","width":1440,"summaryTabSteps":30,"summaryFocusVisible":true,"enterOpensDetails":true,"tabTarget":"Mise en place €","shiftTabReturnsSummary":true,"radioTabSteps":30,"arrowSelectsNotRequired":true,"spaceKeepsSelection":true,"verdictAfterSelection":"PASS","enterReset":"STOP","enterDownload":"kit-pilotage-facturation-saas.xlsx","screenshot":"bat/keyboard-1440.png"}
+{"kind":"tool","initial":"STOP","explicitTaxChoice":"PASS","clients500":[56160,33880,48740,102480],"blankCreditNotes":"REVIEW","blankOutputs":"unknown","payment9599":"STOP","payment9599Delta":"-1.00 EUR","reset":"STOP"}
+{"kind":"theme","width":1440,"lightScreenshot":"bat/theme-light-1440.png","darkScreenshot":"bat/theme-dark-1440.png","darkBodyBackground":"rgb(11, 11, 13)","darkBodyText":"rgb(250, 250, 250)"}
+{"kind":"funnel","url":"/demarrer-un-projet?service=saas&source=guide-facturation-saas","service":"saas","preselected":true,"source":"guide-facturation-saas","step":2,"prefill":"Je souhaite faire relire un cycle de facturation SaaS déjà documenté. J’ai réuni une offre, une facture, un paiement, un cas d’échec, la règle de droits d’accès, les écarts de rapprochement et les inconnues fiscales ou contractuelles.","submitted":false}
+{"kind":"logs","guideWarningsAndErrors":0,"funnelWarningsAndErrors":0}
+{"kind":"download","status":200,"mime":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","bytes":36174,"sha256":"c3e11b2f8b94dd1294d176e93dab8dec12a3a02345e28bbf2fc744eb5e8b0b6e"}

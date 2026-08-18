@@ -390,3 +390,199 @@ Corrections appliquées : contre-audit indépendant, contrôles visuels réels e
 - [x] action autonome, bon fit et mauvais fit définis ;
 - [x] aucune ressource téléchargeable inexistante annoncée ;
 - [x] au gel P1, P2, P3 et P4 restaient bloquées avant publication.
+
+## 11. Réouverture du 24 juillet 2026 — giga-audit
+
+Les rapports P1 à P4 ci-dessus décrivent un ancien gel éditorial. Ils ne
+valident pas la version réouverte : la page, le registre, l’image sociale, les
+tests et la ressource ont changé après ces empreintes. Les anciens manifests
+doivent donc être lus comme des archives et non comme une autorisation de
+publication de l’état actuel.
+
+La recherche approfondie qui gouverne cette nouvelle passe se trouve dans
+`docs/audits/giga-audit-2026-07-24/research/tma-ou-regie-deep-dive.md`.
+
+Corrections de fond intégrées :
+
+- comparaison du même flux fictif de 90 jours selon sa distribution mensuelle,
+  et non selon son seul total annuel ;
+- correction de l’hypothèse de capacité : huit jours par mois sans report
+  produisent 81 jours utilisés, 15 jours perdus et 9 jours de dépassement ;
+- comparaison de sept options, du montage hybride à l’internalisation, avec le
+  temps de pilotage de l’entreprise ;
+- sensibilité séparée pour l’absence de report, le report trimestriel et la
+  mutualisation annuelle ;
+- calculateur local et fichier CSV modifiable, tous deux qualifiés comme outils
+  illustratifs et non comme devis ou prix de marché ;
+- remplacement des anciennes références britannique et canadienne par leurs
+  versions actuelles, avec ajout des limites d’usage des sources américaine FAR
+  et NIST.
+
+Valeurs centrales à préserver et à retester :
+
+```text
+Hybride : 80 340 €
+Capacité avec report annuel : 81 360 €
+Temps réellement mobilisé : 87 600 €
+Capacité sans report : 89 010 €
+Lots clairement définis : 92 280 €
+Interventions ponctuelles : 103 440 €
+Compétence internalisée : 108 240 € de trésorerie
+
+Capacité avec report trimestriel : 84 760 €
+Seuil hybride / capacité annualisée : 43,2 jours variables
+Seuil de pilotage temps passé / hybride : 2,67 h par semaine
+```
+
+État de la nouvelle séquence :
+
+```text
+P1 recherche approfondie : terminée
+P2 rédaction et intégration : terminée — porte validée
+P3 contre-audit indépendant : non encore validé
+P4 plume humaine : non encore validée
+Publication de ce nouvel état : non décidée dans cette séquence
+```
+
+### Rapport P2 du cycle rouvert
+
+```text
+PASSE 2 TERMINÉE
+Fichiers créés ou modifiés : page, image sociale, registre, calculateur local, bibliothèque de calcul, tests, CSV et présent dossier
+Ouverture et réponse : faux duel TMA/régie corrigé dès l’ouverture ; avis conditionnel et alternatives moins commerciales visibles
+Forme propre au sujet : même flux mensuel appliqué à sept options, puis règles de report et seuils de bascule
+Exemples ou calculs : 90 jours distribués sur douze mois ; sept comparatifs de coûts renseignés ; trois règles de report ; deux seuils ; trois coûts de panne
+Sources visibles : Légifrance, CNIL, GOV.UK 2.2(A), CanadaBuys actuel, FAR 16.601 et NIST IR 8286D, avec périmètres et limites
+Action autonome : calculateur local, CSV de douze lignes et grille de reclassement ; signer, plafonner, internaliser, remplacer ou attendre restent possibles
+CTA et destination : un CTA tardif vers /demarrer-un-projet, avec bon fit et mauvais fit explicites
+Contrôles rapides : 7 081 mots visibles, 35 minutes ; 67 tests ciblés, TypeScript, ESLint, Prettier et diff-check conformes
+Rendu réel : largeur de document égale au viewport mobile contrôlé ; grand écran sans débordement ; thèmes clair et sombre ; calculateur 12/24 mois et valeurs invalides ; Article et BreadcrumbList ; OG 1 200 × 630 ; CSV 12 × 12
+Snapshot : docs/research/manifests/tma-ou-regie-p2.sha256
+```
+
+### Retour P3/P4 et reprise avant nouveau gel
+
+Les deux premières relectures indépendantes du cycle rouvert ont refusé le
+snapshot P2. Elles restent conservées comme traces de contrôle dans :
+
+- `docs/audits/giga-audit-2026-07-24/reviews/tma-ou-regie-p3.md` ;
+- `docs/audits/giga-audit-2026-07-24/reviews/tma-ou-regie-p4.md`.
+
+Le contre-audit P3 a noté la version **93/100**, avec un P1 : l’option
+internalisée était appelée « prestataire » dans le formulaire, les résultats,
+le résumé et le CSV dynamique. La contre-lecture P4 a donné **13/20** et six
+P1 : jargon trop précoce, métaphore des « portes », répétitions entre trois
+sections, comparatif enfoui sur mobile, coûts inconnus transformés en zéros et
+CTA trop vague.
+
+La reprise éditoriale et produit a donc :
+
+- réécrit l’ouverture en moins de 150 mots, à partir du dilemme réel du
+  dirigeant, avec une opinion immédiatement compréhensible ;
+- limité la section des alternatives à l’intervention ponctuelle, la compétence
+  interne et le remplacement ou retrait de l’application ;
+- supprimé une grille répétitive et conservé une seule explication des façons
+  de payer le travail ;
+- fait pointer l’action du haut de page directement vers les sept coûts
+  renseignés, avant le détail mensuel ;
+- regroupé les douze mois en quatre trimestres sur mobile, sans modifier le
+  calcul mensuel sans report ;
+- remplacé partout le faux libellé « prestataire » de l’internalisation par
+  « coût externe ou coût de la fonction » ;
+- ajouté un état « coûts importants à confirmer » pour chaque option du
+  calculateur : un coût inconnu reste visible comme inconnu, l’option est exclue
+  du classement et aucun gagnant n’est annoncé si toutes les options sont
+  incomplètes ;
+- explicité les hypothèses constantes des horizons 24 et 36 mois et réduit
+  l’annonce du lecteur d’écran à une phrase ;
+- remplacé le CTA par un résultat précis : comparer deux offres sur le même
+  historique, produire les questions à renvoyer et formuler une recommandation
+  conditionnelle pouvant être de ne pas signer.
+
+Contrôles locaux après correction :
+
+```text
+Tests ciblés : 44/44
+TypeScript : conforme
+Rendu réel : 400 px, 487 px et 1 800 px effectifs sans débordement
+Navigation : le bouton « Comparer les coûts » place le comparatif à 176 px du haut
+Calculateur : aucun classement par défaut ; hybride à 80 340 € après confirmation des sept options
+Horizon : 160 680 € pour l’hybride sur 24 mois avec les hypothèses répétées
+Erreur : valeur négative refusée, export désactivé et message explicite
+SEO local : un H1, canonical exacte, Article et BreadcrumbList
+Environnement local : noindex/nofollow attendu, sans preuve sur la production
+Image sociale : HTTP 200, PNG 1 200 × 630
+CSV statique : 12 lignes et 13 colonnes, formules et état « à confirmer »
+```
+
+État après cette reprise :
+
+```text
+P2 corrigée : prête pour un nouveau gel
+P3 : doit être rejouée sur le nouveau snapshot
+P4 : doit être rejouée sur le nouveau snapshot
+Publication : non décidée dans cette séquence
+```
+
+### Finition de langue après les premiers GO P3/P4
+
+Le premier GO P4 conservait un résidu P2 dans quatre formulations trop
+contractuelles. La passe de finition les a traduites sans changer le calcul ni
+la décision :
+
+```text
+petite capacité → quelques jours réservés chaque mois
+temps plafonné → temps utilisé jusqu’à un plafond convenu
+temps de décision interne → temps passé par l’équipe à trier, décider et vérifier
+acheter une capacité → réserver des jours chaque mois
+```
+
+Cette finition impose une confirmation rapide des deux portes sur le nouveau
+hash avant tout nouveau gel P3/P4.
+
+### Fermeture du cycle rouvert
+
+La confirmation finale a été réalisée sur le snapshot corrigé :
+
+```text
+P3 indépendant : GO — 98/100 — P0 0, P1 0, P2 de langue levé
+P4 indépendant : GO — 19/20 — ouverture 141 mots, P0 0, P1 0
+Tests ciblés : 44/44
+Empreintes contrôlées par chaque relecteur : 11/11
+Calculs et exports : inchangés après la finition de langue
+```
+
+Les preuves détaillées se trouvent dans :
+
+- `docs/audits/giga-audit-2026-07-24/reviews/tma-ou-regie-p3.md` ;
+- `docs/audits/giga-audit-2026-07-24/reviews/tma-ou-regie-p4.md`.
+
+La seule réserve P2 restante est une mesure future de la fatigue de lecture
+auprès de dirigeants réels. Elle n’est ni inventée ni assimilée à un test
+lecteur déjà réalisé. Ce GO éditorial local ne prouve ni déploiement en
+production ni indexation par Google.
+
+### Rectification de la promesse de coût — 24 juillet 2026
+
+Un contrôle ultérieur a trouvé une contradiction hors du corps de l’article :
+la carte du registre promettait « sept coûts complets » alors que la page, le
+calculateur et le CSV qualifiaient correctement les montants de coûts
+renseignés et partiels. Le texte alternatif de l’image sociale parlait aussi
+de « coût total ».
+
+La carte annonce désormais **sept comparatifs de coûts renseignés** et le
+texte alternatif **des coûts renseignés**. Aucun chiffre ni verdict n’a été
+modifié. La revalidation indépendante a confirmé :
+
+```text
+Page : 93369100273dd2b1273584608149891fd21420947328576091b36750c6ddae1b
+P0 : 0
+P1 : 0
+Tests ciblés élargis : 58/58
+Verdict contenu : GO local
+Verdict publication : non prouvé par cette correction locale
+```
+
+Cette rectification ferme le dernier P1 de promesse. Elle ne transforme pas
+les postes encore inconnus en zéro et n’autorise toujours pas à appeler le
+comparatif un TCO complet.

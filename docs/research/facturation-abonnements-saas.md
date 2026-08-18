@@ -1,8 +1,10 @@
 # Dossier de recherche — facturation des abonnements d'un SaaS
 
-> Les quatre passes sont terminées. Le cycle d'abonnement, le périmètre
-> français et les cas d'échec ont été contre-audités puis contrôlés dans le
-> rendu de production. La publication est déléguée, sans test humain réel.
+> **SUPERSEDED — dossier historique du 23 juillet 2026.** Son score, ses
+> validations et son autorisation de publication ne décrivent plus l’état
+> courant. Voir
+> `docs/research/facturation-abonnements-saas-r1-2026-07-28.md` et son
+> manifeste final pour la décision actuelle.
 
 ## Journal des quatre passes
 
@@ -19,7 +21,7 @@ Propriétaire éditorial unique : `/root`
 
 ```text
 Slug : facturation-abonnements-saas
-Statut actuel : publiable — validation éditoriale déléguée
+Statut historique : superseded — ne pas utiliser comme autorisation actuelle
 Requête principale : facturation abonnement SaaS
 Moment du parcours : cadrer le cycle de vente avant ou après les premiers clients
 Lecteur précis : dirigeant ou porteur d'un SaaS B2B qui doit proposer plusieurs rythmes de paiement, gérer les changements de formule et savoir qui conserve l'accès
@@ -240,7 +242,7 @@ Contrôles intermédiaires : Prettier, ESLint, TypeScript, tests métier, garde-
 Snapshot : docs/research/manifests/facturation-abonnements-saas-p3.sha256
 ```
 
-## 14. Rapport P4 — plume, rendu et gel
+## 14. Rapport P4 historique — plume, rendu et gel superseded
 
 ```text
 PASSE 4 TERMINÉE

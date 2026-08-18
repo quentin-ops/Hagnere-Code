@@ -1,0 +1,5 @@
+a630491071d3824139c1b50f24de907dc23baddc508d361fa35bb6a64183a2be  docs/audits/giga-audit-2026-07-24/guides/calculer-roi-application-metier.md
+f580dc204e088c1ebc0defc2e341e934ccba90ca812945bbee562ecd06388640  docs/research/calculer-roi-application-metier.md
+9fae1638d5f49be317354339e20511b90deac1c782db957350629969753024df  src/app/guides/calculer-roi-application-metier/opengraph-image.tsx
+57455e1436ca8967a7f524c19f1df47759367c7a5fbaae4d58d58b45cd26db8a  src/app/guides/calculer-roi-application-metier/page.tsx
+942ab226bc7d6bdf5a9fbabd5d54ce392d6688414f51df5d488a9509990ab837  src/lib/guides.ts

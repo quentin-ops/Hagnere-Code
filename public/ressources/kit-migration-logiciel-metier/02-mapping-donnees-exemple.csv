@@ -1,0 +1,10 @@
+ID;Domaine;Champ_source;Champ_cible;Regle_transformation;Valeur_absente;Controle;Responsable;Rejet;Decision
+MAP-001;Clients;client_id;external_id;Conserver identifiant stable;Bloquer la ligne;Unicite sur 2400 clients;Responsable donnees;Liste des doublons;Valide apres nettoyage
+MAP-002;Clients;raison_sociale;display_name;Retirer espaces de fin uniquement;Envoyer en revue;Comparer 30 fiches connues;Service client;File de revue;Valide
+MAP-003;Interventions;statut;status;EN_COURS devient OPEN et TERMINE devient CLOSED;Bloquer statut inconnu;Compter par statut avant et apres;Exploitation;Liste des 10 erreurs de mapping;A corriger
+MAP-004;Interventions;updated_at;source_updated_at;Conserver heure UTC et identifiant de departage;Bloquer date invalide;Comparer les 50 dernieres ecritures;Responsable technique;Lot de rejet;Valide apres test
+MAP-005;Factures;montant_ttc_cents;total_gross_cents;Conserver entier en centimes;Bloquer valeur absente;Somme des 220 factures du mois;Comptabilite;Lot de rejet;Valide
+MAP-006;Factures;etat;payment_status;Traduire selon table approuvee;Envoyer en revue;Compter par etat;Comptabilite;File de revue;Valide apres rapprochement
+MAP-007;Pieces;chemin_fichier;document_reference;Copier puis calculer empreinte;Signaler piece absente;Ouvrir echantillon et comparer empreinte;Responsable donnees;Liste des pieces manquantes;A controler
+MAP-008;Utilisateurs;role_code;role_id;Associer a la matrice des 10 roles;Bloquer role inconnu;Test positif et negatif par role;Responsable securite;Compte suspendu;Valide
+MAP-009;Clients;deleted_at;deletion_event;Transformer suppression en evenement trace;Ne rien inventer;Rejouer une suppression fictive;Responsable donnees;Evenement en anomalie;Valide

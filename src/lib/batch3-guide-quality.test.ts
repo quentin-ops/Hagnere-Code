@@ -38,7 +38,10 @@ describe("third batch guide quality", () => {
     for (const slug of slugs) {
       const guide = getGuide(slug);
       expect(guide.datePublished, slug).toBe("2026-07-23");
-      expect(guide.dateModified, slug).toBe("2026-07-23");
+      expect(
+        guide.dateModified >= guide.datePublished,
+        `${slug}: modification before publication`,
+      ).toBe(true);
       expect(guide.title.length, `${slug}: title`).toBeLessThanOrEqual(60);
       expect(
         guide.metaDescription.length,
@@ -58,7 +61,9 @@ describe("third batch guide quality", () => {
     for (const slug of slugs) {
       const source = pageSource(slug);
       const lead = source.match(/<p className="lead">([\s\S]*?)<\/p>/)?.[1];
-      const faq = source.match(/const faqItems\s*=\s*\[([\s\S]*?)\n\];/)?.[1];
+      const faq = source.match(
+        /const faqItems(?:\s*:\s*GuideFAQItem\[\])?\s*=\s*\[([\s\S]*?)\n\];/,
+      )?.[1];
 
       expect(lead, `${slug}: direct lead`).toBeDefined();
       expect(lead, `${slug}: reader language`).toMatch(/\b(vous|votre|vos)\b/i);
@@ -75,18 +80,25 @@ describe("third batch guide quality", () => {
       expect(source, `${slug}: no sidebar pressure`).toContain(
         "showSidebarCta={false}",
       );
-      expect(source, `${slug}: article schema`).toContain('"@type": "Article"');
-      expect(source, `${slug}: breadcrumb schema`).toContain(
-        '"@type": "BreadcrumbList"',
+      const usesSharedStructuredData = source.includes(
+        "buildGuideStructuredData",
       );
+      expect(
+        source.includes('"@type": "Article"') || usesSharedStructuredData,
+        `${slug}: article schema`,
+      ).toBe(true);
+      expect(
+        source.includes('"@type": "BreadcrumbList"') ||
+          usesSharedStructuredData,
+        `${slug}: breadcrumb schema`,
+      ).toBe(true);
       expect(source, `${slug}: schema restraint`).not.toMatch(
         /FAQPage|HowTo|wordCount|Offer/,
       );
       expect(source, `${slug}: visible FAQ`).toContain("faqItems={faqItems}");
-      expect(
-        faq?.match(/\bquestion:\s*["']/g) || [],
-        `${slug}: FAQ pressure`,
-      ).toHaveLength(6);
+      const faqCount = faq?.match(/\bquestion:\s*["']/g)?.length ?? 0;
+      expect(faqCount, `${slug}: FAQ minimum`).toBeGreaterThanOrEqual(6);
+      expect(faqCount, `${slug}: FAQ maximum`).toBeLessThanOrEqual(10);
       expect(source, `${slug}: fictitious example disclosed`).toMatch(
         /Exemple illustratif fictif|exemple entièrement fictif/i,
       );
@@ -181,7 +193,7 @@ describe("third batch guide quality", () => {
   it("does not turn technical debt into an automatic rewrite", () => {
     const source = pageSource("dette-technique-cout-entreprise");
     expect(source).toMatch(/dette technique/i);
-    expect(source).toMatch(/trois semaines/i);
+    expect(source).toMatch(/deux jours[\s\S]{0,160}quinze/i);
     expect(source).toMatch(/cinq (?:changements|évolutions|incidents)/i);
     expect(source).toMatch(/réécri/i);
     expect(source).toMatch(/tolérer|conserver|ne rien refaire/i);

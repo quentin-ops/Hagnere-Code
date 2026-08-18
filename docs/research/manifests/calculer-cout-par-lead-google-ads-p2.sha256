@@ -3,4 +3,4 @@ d76bb3ab74413a3c5ea30ef8493daef08d7322a476162b617022b1152e4d7f9e  docs/research/
 38f27264e0e0ebd3e63db0a059d584965d85e9f6e0719cd4c1c2a8a85c35fb63  src/app/guides/calculer-cout-par-lead-google-ads/opengraph-image.tsx
 51d17a5149d2f5ee4977b70d6a0c42e74318575a650aa8a319ba9a145d806706  src/lib/guides.ts
 b7a0c8250af2b511cf8dc9c8ba784663e61ba6a8eaac50bc90f26cdab9f048f6  src/app/guides/budget-google-ads-pme/page.tsx
-8fbf045722ebbda2bd46407564e40b92bdf5b17ce3cb087a27c776ddc4f73a7b  src/lib/guide-human-language.test.ts
+bb10c76df7a76af76628723573057e710c9290fa32548e1e7542c0182a591500  src/lib/guide-human-language.test.ts
