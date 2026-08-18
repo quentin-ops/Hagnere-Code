@@ -67,62 +67,45 @@ describe("SearchVisibilityDiagnostic", () => {
     vi.restoreAllMocks();
   });
 
-  it("renders one identity sheet and six accessible evidence steps", () => {
-    expect(container.querySelectorAll("fieldset")).toHaveLength(6);
-    expect(container.querySelectorAll("select")).toHaveLength(6);
-    expect(container.querySelectorAll("textarea")).toHaveLength(6);
-    expect(container.textContent).toContain("1. Découverte de l’adresse");
+  it("renders one identity sheet and four accessible controls", () => {
+    expect(container.querySelectorAll("fieldset")).toHaveLength(4);
+    expect(container.querySelectorAll("select")).toHaveLength(4);
+    expect(container.querySelectorAll("textarea")).toHaveLength(4);
+    expect(container.textContent).toContain("1. Exploration de la page");
+    expect(container.textContent).toContain("Le constat manque encore");
+    expect(container.textContent).not.toContain("demandes attribuables");
+    expect(container.textContent).toContain("vue Index Google");
     expect(container.textContent).toContain(
-      "La preuve n’est pas encore recopiée",
+      "filtrez l’adresse canonique choisie par Google",
     );
-  });
-
-  it("keeps unattributed requests as the first unresolved commercial step", () => {
-    const positiveStatuses = [
-      "proved",
-      "success",
-      "indexed",
-      "visible-value",
-      "visible-value",
-      "observed-unattributed",
-    ];
-    const selects = [...container.querySelectorAll("select")];
-    const notes = [...container.querySelectorAll("textarea")];
-    positiveStatuses.forEach((status, index) => {
-      change(selects[index], status);
-      change(notes[index], `Preuve ${index + 1}`);
-    });
-
-    expect(
-      container.querySelector('[aria-live="polite"]')?.textContent,
-    ).toContain("6. Demandes attribuables à ce parcours");
     expect(container.textContent).toContain(
-      "Vérifiez d’abord le comptage et l’attribution",
+      "Ajoutez la recherche exacte en dernier",
     );
   });
 
   it("stops at clicks when the report shows exactly zero clicks", () => {
     const statuses = [
-      "proved",
-      "success",
+      "crawl-success",
       "indexed",
-      "visible-value",
+      "visible-impressions",
       "zero-visible-clicks",
-      "attributed-value",
     ];
     const selects = [...container.querySelectorAll("select")];
     const notes = [...container.querySelectorAll("textarea")];
     statuses.forEach((status, index) => {
       change(selects[index], status);
-      change(notes[index], index === 4 ? "0 clic visible" : "Preuve positive");
+      change(notes[index], index === 3 ? "0 clic visible" : "Constat positif");
     });
 
     expect(
       container.querySelector('[aria-live="polite"]')?.textContent,
-    ).toContain("5. Clics visibles pour cette recherche");
+    ).toContain("4. Clics pour cette recherche");
+    expect(container.textContent).toContain(
+      "Des impressions sans clic classent le problème",
+    );
   });
 
-  it("copies a dated diagnostic without sending data", async () => {
+  it("copies a dated sheet without exposing internal status codes", async () => {
     const writeText = vi.fn().mockResolvedValue(undefined);
     Object.defineProperty(navigator, "clipboard", {
       configurable: true,
@@ -136,30 +119,30 @@ describe("SearchVisibilityDiagnostic", () => {
     change(url, "https://example.com/page");
 
     const button = [...container.querySelectorAll("button")].find((candidate) =>
-      candidate.textContent?.includes("Copier mon diagnostic"),
+      candidate.textContent?.includes("Copier la fiche"),
     );
     await act(async () => button?.click());
 
     expect(writeText).toHaveBeenCalledOnce();
     expect(writeText.mock.calls[0][0]).toContain("https://example.com/page");
-    expect(writeText.mock.calls[0][0]).not.toContain("visible-value");
-    expect(container.textContent).toContain("Diagnostic copié");
+    expect(writeText.mock.calls[0][0]).not.toContain("crawl-success");
+    expect(container.textContent).toContain("Fiche copiée");
   });
 
-  it("explains a clipboard failure without losing the form", async () => {
+  it("explains a clipboard failure without clearing the sheet", async () => {
     Object.defineProperty(navigator, "clipboard", {
       configurable: true,
       value: { writeText: vi.fn().mockRejectedValue(new Error("refusé")) },
     });
     const button = [...container.querySelectorAll("button")].find((candidate) =>
-      candidate.textContent?.includes("Copier mon diagnostic"),
+      candidate.textContent?.includes("Copier la fiche"),
     );
     await act(async () => button?.click());
     expect(container.textContent).toContain("La copie automatique a échoué");
-    expect(container.querySelectorAll("fieldset")).toHaveLength(6);
+    expect(container.querySelectorAll("fieldset")).toHaveLength(4);
   });
 
-  it("calls the browser print dialog and ships an isolated print rule", () => {
+  it("calls print and removes the surrounding document from print layout", () => {
     const print = vi.fn();
     Object.defineProperty(window, "print", {
       configurable: true,
@@ -170,15 +153,14 @@ describe("SearchVisibilityDiagnostic", () => {
     );
     act(() => button?.click());
     expect(print).toHaveBeenCalledOnce();
-    expect(container.querySelector("style")?.textContent).toContain(
-      "body * { visibility: hidden",
-    );
-    expect(
-      container.querySelector("#search-visibility-diagnostic"),
-    ).not.toBeNull();
+    const printCss = container.querySelector("style")?.textContent ?? "";
+    expect(printCss).toContain(":has(#search-visibility-diagnostic)");
+    expect(printCss).toContain("display: none !important");
+    expect(printCss).toContain("break-inside: avoid");
+    expect(printCss).not.toContain("visibility: hidden");
   });
 
-  it("resets all entered evidence", () => {
+  it("resets identity and the four observations", () => {
     const query = controlAfterText<HTMLInputElement>(
       container,
       "Recherche exacte",
@@ -186,10 +168,10 @@ describe("SearchVisibilityDiagnostic", () => {
     );
     change(query, "requête de test");
     const firstSelect = container.querySelector("select");
-    const firstEvidence = container.querySelector("textarea");
-    if (!firstSelect || !firstEvidence) throw new Error("Étape introuvable");
-    change(firstSelect, "proved");
-    change(firstEvidence, "URL reconnue");
+    const firstObservation = container.querySelector("textarea");
+    if (!firstSelect || !firstObservation) throw new Error("Étape introuvable");
+    change(firstSelect, "crawl-success");
+    change(firstObservation, "Ouverture réussie");
 
     const reset = [...container.querySelectorAll("button")].find((candidate) =>
       candidate.textContent?.includes("Réinitialiser"),
@@ -198,7 +180,7 @@ describe("SearchVisibilityDiagnostic", () => {
 
     expect(query.value).toBe("");
     expect(firstSelect.value).toBe("unknown");
-    expect(firstEvidence.value).toBe("");
-    expect(container.textContent).toContain("Le diagnostic a été réinitialisé");
+    expect(firstObservation.value).toBe("");
+    expect(container.textContent).toContain("La fiche a été réinitialisée");
   });
 });

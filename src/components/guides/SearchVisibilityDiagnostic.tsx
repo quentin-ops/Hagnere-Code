@@ -24,12 +24,10 @@ const INITIAL_IDENTITY: SearchVisibilityIdentity = {
 };
 
 const INITIAL_STEPS: SearchVisibilitySteps = {
-  discovery: { status: "unknown", evidence: "" },
   crawl: { status: "unknown", evidence: "" },
   index: { status: "unknown", evidence: "" },
   impressions: { status: "unknown", evidence: "" },
   clicks: { status: "unknown", evidence: "" },
-  leads: { status: "unknown", evidence: "" },
 };
 
 const stepCopy: Record<
@@ -41,54 +39,37 @@ const stepCopy: Record<
     options: SearchVisibilityStatus[];
   }
 > = {
-  discovery: {
-    question: "Google connaît-il cette adresse ?",
-    help: "Recopiez le verdict de l’inspection d’URL et la rubrique Découverte lorsqu’elle est disponible. Un lien ou un sitemap est une piste de correction, pas une preuve suffisante.",
-    placeholder:
-      "Ex. : URL inconnue de Google ; aucune information de découverte affichée",
-    options: ["unknown", "proved", "not-proved"],
-  },
   crawl: {
-    question: "Google a-t-il pu ouvrir la page ?",
-    help: "Notez la dernière exploration, le résultat de récupération, la réponse du serveur et le blocage éventuellement affiché.",
+    question: "Google connaît-il l’adresse et a-t-il pu ouvrir la page ?",
+    help: "L’inspection d’URL affiche la date de la dernière exploration, le résultat de récupération et un éventuel blocage. Relevez ces éléments ou indiquez que l’adresse est inconnue.",
     placeholder:
-      "Ex. : dernière exploration le 18 juillet ; récupération réussie ; réponse normale du serveur (code HTTP 200)",
-    options: ["unknown", "success", "failed"],
+      "Exemple de saisie : date affichée ; récupération réussie ; réponse normale du serveur (HTTP 200)",
+    options: ["unknown", "url-unknown", "crawl-success", "crawl-failed"],
   },
   index: {
     question: "Google a-t-il retenu cette version ?",
-    help: "Recopiez l’état d’indexation, l’instruction noindex éventuelle qui demande de ne pas indexer la page, puis l’adresse que le site désigne comme principale (canonique) et celle choisie par Google.",
+    help: "Dans la vue Index Google, relevez l’état d’indexation, l’instruction noindex éventuelle, puis l’adresse principale déclarée par le site et celle choisie par Google. Le test en direct ne prouve pas l’indexation.",
     placeholder:
-      "Ex. : URL non indexée ; Google a choisi la page d’accueil comme adresse principale",
+      "Exemple de saisie : URL non indexée ; autre adresse principale choisie par Google",
     options: ["unknown", "indexed", "not-indexed"],
   },
   impressions: {
     question: "La page est-elle proposée pour cette recherche ?",
-    help: "Dans Performances, filtrez la même page, la même requête et la même période. Écrivez « aucune donnée visible » plutôt que zéro si aucune ligne n’apparaît.",
-    placeholder: "Ex. : 54 impressions visibles sur 28 jours · France · mobile",
-    options: ["unknown", "visible-value", "no-visible-data"],
+    help: "Dans Performances, fixez le contexte, filtrez l’adresse canonique choisie par Google et relevez le total de la page. Ajoutez la recherche exacte en dernier. Si aucune ligne n’apparaît, choisissez « aucune donnée visible » plutôt que zéro.",
+    placeholder:
+      "Exemple de saisie : total de la page relevé ; ligne présente après le filtre · France · mobile",
+    options: ["unknown", "visible-impressions", "no-visible-data"],
   },
   clicks: {
     question: "Les internautes choisissent-ils ce résultat ?",
-    help: "Conservez le nombre de clics et, si vous le calculez, utilisez exactement les mêmes filtres que pour les impressions.",
-    placeholder: "Ex. : 1 clic visible sur les mêmes 28 jours",
+    help: "Relevez le nombre de clics avec exactement les mêmes filtres que pour les impressions.",
+    placeholder:
+      "Exemple de saisie : clics relevés avec les mêmes filtres et la même période",
     options: [
       "unknown",
-      "visible-value",
+      "visible-clicks",
       "zero-visible-clicks",
       "no-visible-data",
-    ],
-  },
-  leads: {
-    question: "Ces clics peuvent-ils être reliés à des demandes ?",
-    help: "Distinguez une demande réellement attribuée à ce parcours d’une demande simplement observée dans un autre registre.",
-    placeholder:
-      "Ex. : 2 demandes observées dans le CRM, mais aucune attribution commune avec les clics",
-    options: [
-      "unknown",
-      "attributed-value",
-      "observed-unattributed",
-      "not-tracked",
     ],
   },
 };
@@ -160,9 +141,7 @@ export function SearchVisibilityDiagnostic() {
     const output = formatSearchVisibilityDiagnostic(identity, steps, finding);
     try {
       await navigator.clipboard.writeText(output);
-      setFeedback(
-        "Diagnostic copié. Vous pouvez l’envoyer à votre prestataire.",
-      );
+      setFeedback("Fiche copiée. Vous pouvez l’envoyer à votre prestataire.");
     } catch {
       setFeedback(
         "La copie automatique a échoué. Utilisez l’impression ou copiez les champs visibles.",
@@ -173,14 +152,14 @@ export function SearchVisibilityDiagnostic() {
   function resetDiagnostic() {
     setIdentity(INITIAL_IDENTITY);
     setSteps(INITIAL_STEPS);
-    setFeedback("Le diagnostic a été réinitialisé.");
+    setFeedback("La fiche a été réinitialisée.");
   }
 
   return (
     <>
       <style>
         {
-          "@media print { body * { visibility: hidden !important; } #search-visibility-diagnostic, #search-visibility-diagnostic * { visibility: visible !important; } #search-visibility-diagnostic { position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; margin: 0 !important; border: 0 !important; box-shadow: none !important; background: white !important; color: #18181b !important; } #search-visibility-diagnostic * { background-color: white !important; color: #18181b !important; } #search-visibility-diagnostic input, #search-visibility-diagnostic select, #search-visibility-diagnostic textarea { border: 1px solid #a1a1aa !important; } #search-visibility-diagnostic button { display: none !important; } }"
+          "@media print { @page { margin: 10mm; } body { margin: 0 !important; } body:has(#search-visibility-diagnostic) > *:not(:has(#search-visibility-diagnostic)):not(#search-visibility-diagnostic), body *:has(#search-visibility-diagnostic) > *:not(:has(#search-visibility-diagnostic)):not(#search-visibility-diagnostic) { display: none !important; } #search-visibility-diagnostic { width: 100% !important; margin: 0 !important; overflow: visible !important; border: 0 !important; box-shadow: none !important; background: white !important; color: #18181b !important; } #search-visibility-diagnostic * { background-color: white !important; color: #18181b !important; } #search-visibility-diagnostic fieldset, #search-visibility-diagnostic label, #search-visibility-diagnostic [role='status'] { break-inside: avoid; page-break-inside: avoid; } #search-visibility-diagnostic input, #search-visibility-diagnostic select, #search-visibility-diagnostic textarea { border: 1px solid #a1a1aa !important; } #search-visibility-diagnostic button { display: none !important; } }"
         }
       </style>
       <section
@@ -196,11 +175,11 @@ export function SearchVisibilityDiagnostic() {
             id="search-visibility-diagnostic-title"
             className="m-0 text-xl font-bold sm:text-2xl"
           >
-            Trouvez la première preuve qui manque
+            Préparez votre fiche URL-recherche
           </h3>
           <p className="mb-0 mt-2 max-w-3xl text-sm leading-relaxed text-zinc-400">
-            Remplissez une fiche par page et par recherche. Cet outil organise
-            les informations que vous recopiez ; il ne se connecte pas à Search
+            Remplissez une fiche par page et par recherche. L’outil vous arrête
+            au premier contrôle à reprendre. Il ne se connecte pas à Search
             Console et ne rend pas un verdict au nom de Google.
           </p>
         </div>
@@ -231,7 +210,7 @@ export function SearchVisibilityDiagnostic() {
 
         <div className="p-4 sm:p-6">
           <p className="mb-4 text-xs font-bold uppercase tracking-widest text-zinc-500">
-            2 · Les six preuves, dans l’ordre
+            2 · Les quatre contrôles, dans l’ordre
           </p>
           <div className="space-y-4">
             {SEARCH_VISIBILITY_RULES.map((rule) => {
@@ -275,7 +254,7 @@ export function SearchVisibilityDiagnostic() {
                     </label>
                     <label>
                       <span className="mb-1.5 block text-xs font-semibold text-zinc-700 dark:text-zinc-300">
-                        Preuve recopiée
+                        Constat relevé
                       </span>
                       <textarea
                         value={steps[rule.id].evidence}
@@ -296,7 +275,7 @@ export function SearchVisibilityDiagnostic() {
 
         <div className="border-t border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900/60 sm:p-6">
           <p className="mb-2 text-xs font-bold uppercase tracking-widest text-zinc-500">
-            3 · Votre premier point à vérifier
+            3 · Votre premier contrôle à reprendre
           </p>
           <div
             className="rounded-xl border border-emerald-200 bg-white p-4 dark:border-emerald-900 dark:bg-zinc-950 sm:p-5"
@@ -313,8 +292,7 @@ export function SearchVisibilityDiagnostic() {
               <strong>Action :</strong> {finding.action}
             </p>
             <p className="mb-0 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
-              <strong>Ce que cette preuve ne permet pas de conclure :</strong>{" "}
-              {finding.limit}
+              <strong>Limite du constat :</strong> {finding.limit}
             </p>
           </div>
 
@@ -324,7 +302,7 @@ export function SearchVisibilityDiagnostic() {
               onClick={copyDiagnostic}
               className="min-h-11 rounded-lg bg-zinc-950 px-4 py-2.5 text-sm font-semibold text-white outline-none hover:bg-zinc-800 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
             >
-              Copier mon diagnostic
+              Copier la fiche
             </button>
             <button
               type="button"
@@ -341,7 +319,10 @@ export function SearchVisibilityDiagnostic() {
               Réinitialiser
             </button>
           </div>
-          <p className="mb-0 mt-3 min-h-5 text-xs text-zinc-500" role="status">
+          <p
+            className="mb-0 mt-3 min-h-5 text-xs text-zinc-500 print:hidden"
+            role="status"
+          >
             {feedback}
           </p>
         </div>

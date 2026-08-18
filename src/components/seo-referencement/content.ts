@@ -170,9 +170,9 @@ export const SEO_REFUSALS: SeoItem[] = [
 
 export const SEO_RELATED_RESOURCES = [
   {
-    href: "/methode",
-    label: "Diagnostic",
-    title: "Notre méthode pour transformer un diagnostic en décisions",
+    href: "/guides/pourquoi-site-pas-visible-google",
+    label: "Visibilité Google",
+    title: "Trouver où une URL disparaît entre exploration et clics",
   },
   {
     href: "/services/audit-technique",

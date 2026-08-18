@@ -18,6 +18,7 @@ import {
   Megaphone,
   Route,
   Scale,
+  SearchCheck,
   ShieldCheck,
   Timer,
   Wrench,
@@ -179,6 +180,7 @@ const GUIDE_ICONS: Record<string, LucideIcon> = {
   "cahier-des-charges-saas": ClipboardList,
   "combien-de-temps-developper-saas": Timer,
   "mvp-saas-quoi-inclure": FileText,
+  "pourquoi-site-pas-visible-google": SearchCheck,
 };
 
 /** Étapes du visuel du premier guide, sans chiffre de marché ni promesse. */

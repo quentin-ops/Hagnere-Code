@@ -89,6 +89,20 @@ const outilsScenariosSource = fs.readFileSync(
   ),
   "utf8",
 );
+const seoServiceContentSource = fs.readFileSync(
+  path.join(
+    process.cwd(),
+    "src/components/seo-referencement/content.ts",
+  ),
+  "utf8",
+);
+const auditTechniqueDimensionsSource = fs.readFileSync(
+  path.join(
+    process.cwd(),
+    "src/components/audit-technique/sections/what-we-do.ts",
+  ),
+  "utf8",
+);
 
 afterEach(() => {
   vi.unstubAllEnvs();
@@ -114,6 +128,7 @@ describe("guide registry after the editorial reset", () => {
       "cahier-des-charges-saas",
       "combien-de-temps-developper-saas",
       "mvp-saas-quoi-inclure",
+      "pourquoi-site-pas-visible-google",
     ]);
     // Revue humaine du 7 août 2026 : les neuf guides restés en revue ont été
     // relus, leurs quatre passes vérifiées
@@ -124,8 +139,9 @@ describe("guide registry after the editorial reset", () => {
     );
     expect(
       GUIDES.every((guide) => guide.editorialStatus === "published"),
-      "chaque guide actuel doit porter sa décision de publication explicite",
+      "chaque guide approuvé doit être publié",
     ).toBe(true);
+    expect(GUIDES.at(-1)?.editorialStatus).toBe("published");
   });
 
   it("links the Airtable and Notion decision guide from the Power Apps comparison", () => {
@@ -184,6 +200,14 @@ describe("guide registry after the editorial reset", () => {
     expect(saasSpecificationGuideSource).toContain(saasSchedulePath);
   });
 
+  it("links the first SEO guide from two relevant service contexts", () => {
+    const searchVisibilityPath =
+      "/guides/pourquoi-site-pas-visible-google";
+
+    expect(seoServiceContentSource).toContain(searchVisibilityPath);
+    expect(auditTechniqueDimensionsSource).toContain(searchVisibilityPath);
+  });
+
   it("links the MVP contract guide from validation and specification", () => {
     const mvpContractPath = "/guides/mvp-saas-quoi-inclure";
 
@@ -215,7 +239,11 @@ describe("guide registry after the editorial reset", () => {
         Date.parse(guide.datePublished),
       );
       expect(guide.readTimeMin).toBeGreaterThan(0);
-      expect(guide.articleImagePaths).toHaveLength(3);
+      if (guide.editorialStatus === "published") {
+        expect(guide.articleImagePaths).toHaveLength(3);
+      } else if (guide.articleImagePaths !== undefined) {
+        expect(guide.articleImagePaths).toHaveLength(3);
+      }
     }
     expect(guidesHubSource).toContain("latestGuide.dateModified");
   });
@@ -327,7 +355,9 @@ describe("guide registry after the editorial reset", () => {
         `${SITE_URL}/guides/${guide.slug}#article`,
       );
       expect(article.image, guide.slug).toEqual(
-        guide.articleImagePaths?.map((imagePath) => `${SITE_URL}${imagePath}`),
+        guide.articleImagePaths?.map(
+          (imagePath) => `${SITE_URL}${imagePath}`,
+        ) ?? [`${SITE_URL}/guides/${guide.slug}/opengraph-image`],
       );
       expect(breadcrumb["@type"], guide.slug).toBe("BreadcrumbList");
 

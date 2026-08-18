@@ -1,20 +1,17 @@
 export type SearchVisibilityStepId =
-  "discovery" | "crawl" | "index" | "impressions" | "clicks" | "leads";
+  "crawl" | "index" | "impressions" | "clicks";
 
 export type SearchVisibilityStatus =
   | "unknown"
-  | "proved"
-  | "not-proved"
-  | "success"
-  | "failed"
+  | "url-unknown"
+  | "crawl-success"
+  | "crawl-failed"
   | "indexed"
   | "not-indexed"
-  | "visible-value"
+  | "visible-impressions"
+  | "visible-clicks"
   | "zero-visible-clicks"
-  | "no-visible-data"
-  | "attributed-value"
-  | "observed-unattributed"
-  | "not-tracked";
+  | "no-visible-data";
 
 export interface SearchVisibilityStepValue {
   status: SearchVisibilityStatus;
@@ -30,19 +27,16 @@ export const SEARCH_VISIBILITY_STATUS_LABELS: Record<
   SearchVisibilityStatus,
   string
 > = {
-  unknown: "Je ne sais pas encore",
-  proved: "Adresse reconnue par Google",
-  "not-proved": "Adresse non reconnue",
-  success: "Exploration réussie",
-  failed: "Exploration échouée ou bloquée",
-  indexed: "Cette version est indexée",
-  "not-indexed": "Cette version n’est pas indexée",
-  "visible-value": "Au moins une valeur positive est visible",
+  unknown: "Je n’ai pas encore vérifié",
+  "url-unknown": "L’adresse n’est pas connue dans l’inspection",
+  "crawl-success": "Google a pu ouvrir la page",
+  "crawl-failed": "L’ouverture a échoué ou a été bloquée",
+  indexed: "Vue Index Google : cette version est indexée",
+  "not-indexed": "Vue Index Google : cette version n’est pas indexée",
+  "visible-impressions": "Des impressions sont visibles",
+  "visible-clicks": "Au moins un clic est visible",
   "zero-visible-clicks": "Zéro clic est visible avec ces filtres",
   "no-visible-data": "Aucune donnée n’est visible dans le rapport",
-  "attributed-value": "Une valeur attribuée à ce parcours est disponible",
-  "observed-unattributed": "Des demandes existent, attribution non prouvée",
-  "not-tracked": "Les demandes ne sont pas suivies",
 };
 
 export interface SearchVisibilityIdentity {
@@ -57,7 +51,7 @@ export interface SearchVisibilityIdentity {
 }
 
 export interface SearchVisibilityFinding {
-  stepId: SearchVisibilityStepId | "complete";
+  stepId: SearchVisibilityStepId | "classified";
   title: string;
   conclusion: string;
   limit: string;
@@ -74,58 +68,40 @@ type StepRule = {
 
 export const SEARCH_VISIBILITY_RULES: StepRule[] = [
   {
-    id: "discovery",
-    title: "1. Découverte de l’adresse",
-    completeStatus: "proved",
-    action:
-      "Inspectez l’URL dans Search Console. Si Google ne la connaît pas, vérifiez ensuite ses liens internes et sa présence dans le sitemap.",
-    limit:
-      "La présence dans un sitemap ou dans un lien ne prouve pas, à elle seule, que Google a déjà découvert l’adresse.",
-  },
-  {
     id: "crawl",
-    title: "2. Ouverture de la page par Google",
-    completeStatus: "success",
+    title: "1. Exploration de la page",
+    completeStatus: "crawl-success",
     action:
-      "Traitez uniquement l’erreur observée : réponse serveur, redirection, accès bloqué ou ressource indispensable non récupérée.",
+      "Inspectez l’URL. Une adresse inconnue conduit aux liens internes et au sitemap ; une ouverture en échec conduit au motif affiché.",
     limit:
-      "Une page accessible dans votre navigateur n’est pas forcément la version que Google a pu ouvrir lors de sa dernière exploration.",
+      "Une page qui s’ouvre dans votre navigateur n’est pas forcément celle que Google a pu récupérer lors de sa dernière exploration.",
   },
   {
     id: "index",
-    title: "3. Version retenue dans l’index",
+    title: "2. Version retenue dans l’index",
     completeStatus: "indexed",
     action:
-      "Lisez la raison affichée, le noindex éventuel et les adresses canoniques déclarée et choisie avant de demander une nouvelle exploration.",
+      "Dans la vue Index Google, relevez le motif de non-indexation, l’instruction noindex éventuelle et l’adresse canonique choisie par Google. Une nouvelle exploration n’a de sens qu’après la correction observée.",
     limit:
-      "Une demande d’indexation ne corrige ni un blocage, ni un doublon, ni une autre adresse choisie comme version principale.",
+      "Une demande d’indexation ne corrige ni un blocage, ni un doublon, ni le choix d’une autre adresse principale.",
   },
   {
     id: "impressions",
-    title: "4. Affichages visibles pour cette recherche",
-    completeStatus: "visible-value",
+    title: "3. Impressions pour cette recherche",
+    completeStatus: "visible-impressions",
     action:
-      "Vérifiez la période et les filtres page, requête, pays et appareil. Conservez la mention « aucune donnée visible » si aucune ligne n’apparaît.",
+      "Dans Performances, fixez le contexte, filtrez l’adresse canonique Google et relevez le total de la page. Ajoutez la recherche exacte en dernier. Si aucune ligne n’apparaît, indiquez « aucune donnée visible ».",
     limit:
-      "L’absence d’une ligne de requête dans Search Console ne prouve pas qu’aucune impression n’a jamais eu lieu.",
+      "Une requête absente du tableau ne prouve pas zéro impression : certaines lignes sont anonymisées, omises ou tronquées, et le filtre de requête retire les requêtes anonymisées du total.",
   },
   {
     id: "clicks",
-    title: "5. Clics visibles pour cette recherche",
-    completeStatus: "visible-value",
+    title: "4. Clics pour cette recherche",
+    completeStatus: "visible-clicks",
     action:
-      "Comparez le titre et l’extrait affichés à la recherche visée, puis examinez le contexte et la position sans en déduire une causalité automatique.",
+      "Relevez le nombre de clics avec les mêmes filtres. Si des impressions existent sans clic, gardez aussi le titre et l’extrait affichés avant d’approfondir le diagnostic de visibilité.",
     limit:
-      "Des impressions sans clic ne prouvent pas qu’une refonte complète est nécessaire.",
-  },
-  {
-    id: "leads",
-    title: "6. Demandes attribuables à ce parcours",
-    completeStatus: "attributed-value",
-    action:
-      "Vérifiez d’abord le comptage et l’attribution des formulaires, appels ou rendez-vous au même parcours avant de conclure sur la conversion.",
-    limit:
-      "Des demandes observées ailleurs ne peuvent pas être divisées par les clics Search Console sans une attribution commune prouvée.",
+      "Des impressions sans clic classent le problème ; elles ne prouvent pas à elles seules qu’il faut refaire la page ou le site.",
   },
 ];
 
@@ -135,13 +111,14 @@ export function findFirstUnprovedStep(
   for (const rule of SEARCH_VISIBILITY_RULES) {
     const value = steps[rule.id];
     const evidenceMissing = value.evidence.trim().length === 0;
+
     if (value.status !== rule.completeStatus || evidenceMissing) {
       return {
         stepId: rule.id,
         title: rule.title,
         conclusion: evidenceMissing
-          ? "La preuve n’est pas encore recopiée : le diagnostic s’arrête ici."
-          : "L’état choisi ne permet pas encore de fermer cette étape.",
+          ? "Le constat manque encore : reprenez le diagnostic ici."
+          : "L’état choisi ne permet pas encore de passer au contrôle suivant.",
         limit: rule.limit,
         action: rule.action,
       };
@@ -149,14 +126,14 @@ export function findFirstUnprovedStep(
   }
 
   return {
-    stepId: "complete",
-    title: "Les six étapes sont renseignées",
+    stepId: "classified",
+    title: "L’indexation n’est plus le premier problème à examiner",
     conclusion:
-      "La chaîne est documentée pour cette URL, cette recherche et cette période. Cela ne prouve ni une performance suffisante ni une causalité commerciale.",
+      "Pour cette URL, cette recherche et cette période, vous avez relevé un état indexé, des impressions et au moins un clic avec les mêmes filtres.",
     limit:
-      "Ce diagnostic décrit les preuves recopiées ; il ne remplace pas les rapports d’origine ni un contrôle de leur configuration.",
+      "Cette fiche ne juge ni la quantité de trafic, ni la qualité de la page, ni les demandes commerciales. Elle s’arrête volontairement ici.",
     action:
-      "Conservez la fiche datée, vérifiez la qualité des demandes et décidez du prochain test avec un responsable et une date.",
+      "Gardez la fiche datée. Si la visibilité reste insuffisante, ouvrez un diagnostic séparé sur la recherche visée, le résultat affiché et les pages concurrentes.",
   };
 }
 
@@ -167,7 +144,7 @@ export function formatSearchVisibilityDiagnostic(
 ) {
   const valueOr = (value: string, fallback: string) => value.trim() || fallback;
   const lines = [
-    "DIAGNOSTIC URL–RECHERCHE",
+    "FICHE URL–RECHERCHE",
     `Date du contrôle : ${valueOr(identity.checkedAt, "non renseignée")}`,
     `Période observée : ${valueOr(identity.period, "non renseignée")}`,
     `URL : ${valueOr(identity.url, "non renseignée")}`,
@@ -181,17 +158,17 @@ export function formatSearchVisibilityDiagnostic(
       return [
         rule.title,
         `État : ${SEARCH_VISIBILITY_STATUS_LABELS[value.status]}`,
-        `Preuve : ${value.evidence.trim() || "non renseignée"}`,
+        `Constat relevé : ${value.evidence.trim() || "non renseigné"}`,
       ];
     }),
     "",
-    `Premier point à vérifier : ${finding.title}`,
-    `Conclusion autorisée : ${finding.conclusion}`,
+    `Premier contrôle à reprendre : ${finding.title}`,
+    `Ce que vous pouvez conclure : ${finding.conclusion}`,
     `Limite : ${finding.limit}`,
     `Action suivante : ${finding.action}`,
     `Date de recontrôle : ${valueOr(identity.recheckAt, "non renseignée")}`,
     "",
-    "Cette fiche est un outil Hagnéré Code. Elle ne constitue pas un verdict de Google.",
+    "Cette fiche organise vos relevés. Elle ne constitue pas un verdict de Google.",
   ];
 
   return lines.join("\n");

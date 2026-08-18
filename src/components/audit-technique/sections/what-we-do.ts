@@ -62,7 +62,7 @@ export const whatWeDoHtml = `
           <span class="at-wwd-badge at-wwd-badge-observability">Perf</span>
         </div>
         <h3>Performance</h3>
-        <p>Latence p95/p99 API, requêtes DB (N+1, index manquants, full scans), Core Web Vitals front, bundle size, stratégie de cache, Redis eviction. <b>Comparaison aux seuils publics de référence</b>, pas à une moyenne maison invérifiable.</p>
+        <p>Latence p95/p99 API, requêtes DB (N+1, index manquants, full scans), Core Web Vitals front, bundle size, stratégie de cache, Redis eviction. <b>Comparaison aux seuils publics de référence</b>, pas à une moyenne maison invérifiable. Si le problème concerne une page absente de Google, commencez par le <a href="/guides/pourquoi-site-pas-visible-google">diagnostic de visibilité d'une URL</a> avant d'élargir l'audit.</p>
         <div class="at-wwd-tags">
           <span class="at-wwd-tag">p95 / p99</span>
           <span class="at-wwd-tag">N+1 &amp; index</span>
