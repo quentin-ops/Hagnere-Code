@@ -1,0 +1,7 @@
+4a7052adf896fccbc7dfb5a58c79dbca1dd40be6a5d7da64cbca12beece07344  docs/research/architecture-multitenant-saas-pour-dirigeant.md
+6c2fdee2b6ef1d087902de972de4731b44f931cb62e6ac82302cd58766290e13  public/guides/architecture-multitenant-saas-pour-dirigeant/cinq-familles-isolation.svg
+7bf53a5288b9bcb4f5b244d2312c67bc169b65b3d0b59d2d5555c78fc7161166  public/guides/architecture-multitenant-saas-pour-dirigeant/couches-isolation-saas.svg
+c6f69e92bca893537d5780aea652a94390f67a5e463db466310241855a169be1  public/guides/architecture-multitenant-saas-pour-dirigeant/protocole-tenants-a-b.svg
+6a8c361004847ddb8440a380cf43bfb7b06bce14f9fb7f1b72597152734a57ca  src/app/guides/architecture-multitenant-saas-pour-dirigeant/content-quality.test.ts
+07784e0bf5264283ed1aec6cc2b48e9d0c143c216fbe76be475a13547d4e3125  src/app/guides/architecture-multitenant-saas-pour-dirigeant/opengraph-image.tsx
+251e1722200da97cae68d4201df9bfe895e1bbb9d55e5c8a490062f28f93690d  src/app/guides/architecture-multitenant-saas-pour-dirigeant/page.tsx
