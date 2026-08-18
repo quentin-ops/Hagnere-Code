@@ -98,6 +98,14 @@ balisée en `FAQPage`.
 
 Une exécution traite un seul slug.
 
+Avant toute recherche, l’orchestrateur suit
+`docs/registre-coordination-guides.md` : il vérifie que le slug est `LIBRE`,
+acquiert atomiquement `.guide-locks/SLUG.lock`, puis renseigne propriétaire,
+statut et horodatage sous le mutex `.guide-locks/registry.lock`. Lire
+`LIBRE` ne constitue pas à lui seul une réservation. Les fichiers partagés et
+les opérations Git restent sérialisés par `.guide-locks/integration.lock` et
+par l’orchestrateur principal.
+
 Pour le guide `SLUG`, les artefacts canoniques sont :
 
 - `src/app/guides/SLUG/page.tsx` ;
@@ -180,8 +188,8 @@ Pour chaque question du lecteur :
 
 Une ligne par affirmation contrôlable :
 
-| ID | Affirmation | Type | Source primaire | Périmètre/date | Statut |
-|---|---|---|---|---|---|
+| ID  | Affirmation | Type | Source primaire | Périmètre/date | Statut |
+| --- | ----------- | ---- | --------------- | -------------- | ------ |
 
 Types autorisés :
 

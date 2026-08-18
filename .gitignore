@@ -49,6 +49,9 @@ yarn-error.log*
 # local QA renders and previews
 /tmp/
 
+# coordination locks for concurrent guide agents
+/.guide-locks/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

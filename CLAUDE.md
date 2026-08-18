@@ -84,6 +84,14 @@ valide jamais automatiquement la suivante.
 La liste des sujets est dans
 [docs/roadmap-guides-seo.md](docs/roadmap-guides-seo.md).
 
+**Avant de choisir ou réserver un sujet, lire et mettre à jour
+[docs/registre-coordination-guides.md](docs/registre-coordination-guides.md).**
+Ce registre et les verrous locaux `.guide-locks/` empêchent deux
+orchestrateurs de produire le même slug dans le worktree partagé. Un statut
+différent de `LIBRE` ou un verrou existant signifie « ne pas toucher ». Les
+fichiers partagés, Git et la publication restent sérialisés par
+l’orchestrateur principal.
+
 ## Repères techniques
 
 - Registre central des guides : `src/lib/guides.ts` (source de vérité des

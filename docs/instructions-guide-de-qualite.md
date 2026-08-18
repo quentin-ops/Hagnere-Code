@@ -93,27 +93,27 @@ Le guide apporte :
 
 ### 2.4 Durcissements ajoutés après l’analyse finale
 
-| Modification | Pourquoi | Mise en œuvre | Preuve attendue |
-|---|---|---|---|
-| H1 équilibré et espace insécable avant `?` | Éviter une ponctuation seule sur une ligne à 390 px | `text-balance` dans le gabarit et `\u00a0` dans le suffixe | Capture et mesure à 320, 360, 390 et 430 px |
-| Statistique « Calculateur · envoi : Aucun » | Ne pas laisser croire que toute la page ne traite aucune donnée | Libellé limité au calculateur | Texte visible identique au comportement réseau |
-| Parcours express à cinq étapes | Donner une orientation avant la lecture longue | Liens vers carte, portes, options, calcul et décision | Chaque ancre mène à la bonne section |
-| Quatre sorties explicites | Ne pas présenter le développement comme issue automatique | Fonction existante, pilote, simplification ou maintien humain | Les quatre issues restent visibles sur mobile |
-| Scénario opérationnel concret | Rendre les calculs compréhensibles sans fabriquer un client | Demandes d’intervention, file manuelle et hypothèses visibles | Mention « entièrement fictif » à proximité des chiffres |
-| CTA mobile déclenché après le héros | Ne pas recouvrir la promesse avant que le lecteur ait commencé | Géométrie du héros rendu, seuil de pixels seulement en repli | CTA absent dans le héros et visible pendant la lecture |
-| CTA masqué devant FAQ et contact | Éviter les doublons et les contenus masqués | Détection de l’intersection visible de `#faq` et `#contact` | Aucun recouvrement aux largeurs mobiles |
-| CTA et icônes cohérents | Décrire la vraie destination au lieu de simuler une réservation | Liens vers `/demarrer-un-projet`, libellé mobile « Décrire mon besoin · 3 min » et icône de message dans le gabarit | Libellé, icône et destination cohérents |
-| FAQ accessible | Relier catégories, panneaux, questions et réponses | `tablist`, `tab`, `tabpanel`, identifiants uniques, ARIA, flèches, Home et End | Test automatisé, clavier et lecteur d’écran |
-| Auteur canonique | Éviter trois intitulés différents pour la même personne | Nom, initiales, rôle et profil issus de `src/lib/team.ts` | Carte, metadata, équipe et JSON-LD réconciliés |
-| Métadonnées centralisées | Empêcher le titre, la canonical et l’image sociale de diverger | `buildGuideMetadata` | Test du registre et HTML servi |
-| JSON-LD centralisé | Empêcher chaque page de recréer auteur et éditeur | `buildGuideStructuredData` | Tests unitaires et JSON parsable |
-| Collection de guides identifiée | Relier le guide à son hub sans inventer une seconde page | `https://hagnere-code.ai/guides#collection` | Même `@id` sur le hub et dans l’Article |
-| Directives robots centralisées | Ne pas perdre `max-image-preview:large` lorsqu’une page remplace les metadata globales | Constantes publiques et privées dans `search-indexing.ts` | HTML public et tests robots |
-| Dates sans heure inventée | Éviter trois instants artificiels pour une seule date éditoriale | Instants ISO réels, avec fuseau, identiques dans registre, Open Graph, Article et sitemap | Comparaison des sorties servies |
-| Trois images Article | Fournir une illustration utile et adaptée aux ratios recommandés sans surcharger l’OG de texte | Illustration visible en 16:9 et déclinaisons 4:3 et 1:1 | Fichiers, dimensions, HTML et tableau `Article.image` |
-| Vocabulaire du hub corrigé | Ne pas confondre capacité réaffectée et gain financier | « capacité réaffectée » dans le parcours du hub | Hub et guide réconciliés |
-| Dépendances de test déclarées | Empêcher un cache local de masquer un paquet absent en CI | Toute dépendance appelée par Vitest figure dans `devDependencies` et dans le lockfile | Installation propre puis build identique à la plateforme |
-| Dépendances de production auditées | Ne pas publier silencieusement une version dans une plage vulnérable connue | `npm audit --omit=dev`, lecture de l’avis officiel et montée de patch ciblée | Version installée, build et tests consignés ; aucune correction `--force` aveugle |
+| Modification                                | Pourquoi                                                                                       | Mise en œuvre                                                                                                       | Preuve attendue                                                                   |
+| ------------------------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| H1 équilibré et espace insécable avant `?`  | Éviter une ponctuation seule sur une ligne à 390 px                                            | `text-balance` dans le gabarit et `\u00a0` dans le suffixe                                                          | Capture et mesure à 320, 360, 390 et 430 px                                       |
+| Statistique « Calculateur · envoi : Aucun » | Ne pas laisser croire que toute la page ne traite aucune donnée                                | Libellé limité au calculateur                                                                                       | Texte visible identique au comportement réseau                                    |
+| Parcours express à cinq étapes              | Donner une orientation avant la lecture longue                                                 | Liens vers carte, portes, options, calcul et décision                                                               | Chaque ancre mène à la bonne section                                              |
+| Quatre sorties explicites                   | Ne pas présenter le développement comme issue automatique                                      | Fonction existante, pilote, simplification ou maintien humain                                                       | Les quatre issues restent visibles sur mobile                                     |
+| Scénario opérationnel concret               | Rendre les calculs compréhensibles sans fabriquer un client                                    | Demandes d’intervention, file manuelle et hypothèses visibles                                                       | Mention « entièrement fictif » à proximité des chiffres                           |
+| CTA mobile déclenché après le héros         | Ne pas recouvrir la promesse avant que le lecteur ait commencé                                 | Géométrie du héros rendu, seuil de pixels seulement en repli                                                        | CTA absent dans le héros et visible pendant la lecture                            |
+| CTA masqué devant FAQ et contact            | Éviter les doublons et les contenus masqués                                                    | Détection de l’intersection visible de `#faq` et `#contact`                                                         | Aucun recouvrement aux largeurs mobiles                                           |
+| CTA et icônes cohérents                     | Décrire la vraie destination au lieu de simuler une réservation                                | Liens vers `/demarrer-un-projet`, libellé mobile « Décrire mon besoin · 3 min » et icône de message dans le gabarit | Libellé, icône et destination cohérents                                           |
+| FAQ accessible                              | Relier catégories, panneaux, questions et réponses                                             | `tablist`, `tab`, `tabpanel`, identifiants uniques, ARIA, flèches, Home et End                                      | Test automatisé, clavier et lecteur d’écran                                       |
+| Auteur canonique                            | Éviter trois intitulés différents pour la même personne                                        | Nom, initiales, rôle et profil issus de `src/lib/team.ts`                                                           | Carte, metadata, équipe et JSON-LD réconciliés                                    |
+| Métadonnées centralisées                    | Empêcher le titre, la canonical et l’image sociale de diverger                                 | `buildGuideMetadata`                                                                                                | Test du registre et HTML servi                                                    |
+| JSON-LD centralisé                          | Empêcher chaque page de recréer auteur et éditeur                                              | `buildGuideStructuredData`                                                                                          | Tests unitaires et JSON parsable                                                  |
+| Collection de guides identifiée             | Relier le guide à son hub sans inventer une seconde page                                       | `https://hagnere-code.ai/guides#collection`                                                                         | Même `@id` sur le hub et dans l’Article                                           |
+| Directives robots centralisées              | Ne pas perdre `max-image-preview:large` lorsqu’une page remplace les metadata globales         | Constantes publiques et privées dans `search-indexing.ts`                                                           | HTML public et tests robots                                                       |
+| Dates sans heure inventée                   | Éviter trois instants artificiels pour une seule date éditoriale                               | Instants ISO réels, avec fuseau, identiques dans registre, Open Graph, Article et sitemap                           | Comparaison des sorties servies                                                   |
+| Trois images Article                        | Fournir une illustration utile et adaptée aux ratios recommandés sans surcharger l’OG de texte | Illustration visible en 16:9 et déclinaisons 4:3 et 1:1                                                             | Fichiers, dimensions, HTML et tableau `Article.image`                             |
+| Vocabulaire du hub corrigé                  | Ne pas confondre capacité réaffectée et gain financier                                         | « capacité réaffectée » dans le parcours du hub                                                                     | Hub et guide réconciliés                                                          |
+| Dépendances de test déclarées               | Empêcher un cache local de masquer un paquet absent en CI                                      | Toute dépendance appelée par Vitest figure dans `devDependencies` et dans le lockfile                               | Installation propre puis build identique à la plateforme                          |
+| Dépendances de production auditées          | Ne pas publier silencieusement une version dans une plage vulnérable connue                    | `npm audit --omit=dev`, lecture de l’avis officiel et montée de patch ciblée                                        | Version installée, build et tests consignés ; aucune correction `--force` aveugle |
 
 ---
 
@@ -124,13 +124,21 @@ Le guide apporte :
 Avant la passe 1, l’orchestrateur :
 
 1. choisit un seul slug de la roadmap ;
-2. vérifie qu’aucun autre agent ne travaille sur ce slug ;
-3. gèle le corpus et les fichiers autorisés ;
-4. crée ou complète `docs/research/[slug].md` ;
-5. relève l’état Git et sépare tout changement utilisateur sans rapport ;
-6. confirme la route de service et le CTA ;
-7. vérifie les anciennes URL et la stratégie de redirection ;
-8. note les inconnues qui doivent rester des `STOP`, jamais des inventions.
+2. lit `docs/registre-coordination-guides.md` ;
+3. vérifie que le slug est `LIBRE` et sans propriétaire ;
+4. acquiert atomiquement `.guide-locks/[slug].lock` ;
+5. renseigne propriétaire, statut et horodatage sous le mutex
+   `.guide-locks/registry.lock` ;
+6. gèle le corpus et les fichiers autorisés ;
+7. crée ou complète `docs/research/[slug].md` ;
+8. relève l’état Git et sépare tout changement utilisateur sans rapport ;
+9. confirme la route de service et le CTA ;
+10. vérifie les anciennes URL et la stratégie de redirection ;
+11. note les inconnues qui doivent rester des `STOP`, jamais des inventions.
+
+Les fichiers partagés, Git et la publication sont sérialisés par
+`.guide-locks/integration.lock`. Dans le worktree partagé, seul
+l’orchestrateur principal committe, pousse et publie.
 
 ### 3.2 Passe 1 — création
 
@@ -378,14 +386,14 @@ enrichi, ni indexation, ni classement.
 
 ### 5.2 Graphe canonique du site
 
-| Entité | `@id` canonique | Source |
-|---|---|---|
-| Organisation | `https://hagnere-code.ai/#organization` | `organization-structured-data.ts` |
-| Site | `https://hagnere-code.ai/#website` | `organization-structured-data.ts` |
-| Quentin Hagnéré | `https://hagnere-code.ai/equipe#fondateur` | `team.ts` + page équipe |
-| Collection de guides | `https://hagnere-code.ai/guides#collection` | `guide-page-seo.ts` + hub |
-| Article | URL canonique exacte du guide + `#article` | `guide-page-seo.ts` |
-| Page principale | URL canonique exacte du guide | `mainEntityOfPage` |
+| Entité               | `@id` canonique                             | Source                            |
+| -------------------- | ------------------------------------------- | --------------------------------- |
+| Organisation         | `https://hagnere-code.ai/#organization`     | `organization-structured-data.ts` |
+| Site                 | `https://hagnere-code.ai/#website`          | `organization-structured-data.ts` |
+| Quentin Hagnéré      | `https://hagnere-code.ai/equipe#fondateur`  | `team.ts` + page équipe           |
+| Collection de guides | `https://hagnere-code.ai/guides#collection` | `guide-page-seo.ts` + hub         |
+| Article              | URL canonique exacte du guide + `#article`  | `guide-page-seo.ts`               |
+| Page principale      | URL canonique exacte du guide               | `mainEntityOfPage`                |
 
 Règles :
 
@@ -581,18 +589,18 @@ Un `GO_QUALITE_GUIDE` exige :
 
 ## 8. Statuts autorisés
 
-| Statut | Ce qu’il prouve |
-|---|---|
-| Brouillon | Travail incomplet |
+| Statut                  | Ce qu’il prouve                                   |
+| ----------------------- | ------------------------------------------------- |
+| Brouillon               | Travail incomplet                                 |
 | Quatre passes terminées | P1 à P4 exécutées, pas encore de gate transversal |
-| GO qualité local | Fond, code, build et BAT local validés |
-| Poussé | Commit présent sur le dépôt distant |
-| Déployé | Une plateforme a construit le commit |
-| Publié | URL publique et HTML servi vérifiés |
-| Découvert | Google connaît l’URL ou le sitemap |
-| Indexé | Search Console confirme l’indexation |
-| Classé | Impressions observées sur des requêtes |
-| Convertissant | Demandes attribuables mesurées |
+| GO qualité local        | Fond, code, build et BAT local validés            |
+| Poussé                  | Commit présent sur le dépôt distant               |
+| Déployé                 | Une plateforme a construit le commit              |
+| Publié                  | URL publique et HTML servi vérifiés               |
+| Découvert               | Google connaît l’URL ou le sitemap                |
+| Indexé                  | Search Console confirme l’indexation              |
+| Classé                  | Impressions observées sur des requêtes            |
+| Convertissant           | Demandes attribuables mesurées                    |
 
 Ne jamais écrire « publié » après un simple build, « indexé » après une
 demande d’inspection, ni « performant » à partir d’un cache ou d’un score

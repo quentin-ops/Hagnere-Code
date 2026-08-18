@@ -142,6 +142,8 @@ const COLLECTIONS: Collection[] = [
 const GUIDE_ICONS: Record<string, LucideIcon> = {
   "automatiser-processus-metier": Cable,
   "valider-idee-saas-avant-developper": FlaskConical,
+  "prix-gestion-google-ads": HandCoins,
+  "reprendre-logiciel-metier-existant": Wrench,
 };
 
 /** Étapes du visuel du premier guide, sans chiffre de marché ni promesse. */

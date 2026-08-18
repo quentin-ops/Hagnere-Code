@@ -1,13 +1,14 @@
 # Roadmap de 100 nouveaux guides orientés conversion
 
-> Dernière révision : 29 juillet 2026. Cette roadmap est la file canonique des
+> Dernière révision : 30 juillet 2026. Cette roadmap est la file canonique des
 > **100 sujets à reconstruire** après la remise à zéro du corpus public. Un
 > sujet n’est compté comme publié qu’après ses quatre passes, les quatre gates
-> de l’orchestrateur et la vérification de sa page en production. Le premier
-> sujet reconstruit et autorisé à publication est
-> `automatiser-processus-metier` ; les 99 autres restent dans l’ordre
-> ci-dessous. Ce portefeuille éditorial n'est pas une promesse que le volume
-> constitue en lui-même un facteur de classement.
+> de l’orchestrateur et la vérification de sa page en production. La roadmap
+> fixe le catalogue et l’ordre ; l’état vivant, le propriétaire et la
+> réservation atomique de chaque slug sont dans
+> [`docs/registre-coordination-guides.md`](registre-coordination-guides.md).
+> Ce portefeuille éditorial n'est pas une promesse que le volume constitue en
+> lui-même un facteur de classement.
 
 Avant toute rédaction, suivre l’
 [ordre de lecture unique du workflow maître](workflow-maitre-guides-4-passes.md).
@@ -54,7 +55,7 @@ Références de cadrage :
 | Référencement naturel                   |              17 | Construire un vrai silo de décision autour de l'offre SEO, aujourd'hui peu couverte                                 |
 | Google Ads                              |              15 | Combler le plus gros trou du corpus : aucun guide dédié pour une offre déjà commercialisée                          |
 | Maintenance, TMA et reprise             |              13 | Besoins urgents, récurrents et directement reliés aux projets web, SaaS et métiers                                  |
-| Sites vitrines pour professionnels      |              13 | Construire un silo de décisions et de situations propres aux professionnels                                          |
+| Sites vitrines pour professionnels      |              13 | Construire un silo de décisions et de situations propres aux professionnels                                         |
 | **Total**                               |         **100** | **100 intentions dans la nouvelle file canonique**                                                                  |
 
 Les anciens guides sur les prix des sites, le prix d'un SaaS, le prix d'un
@@ -333,9 +334,11 @@ héritées à rediriger ; elles ne comptent plus dans la file éditoriale.
 
 `automatiser-processus-metier` est le premier guide reconstruit. Il a suivi les
 quatre passes successives et les quatre gates documentées dans son dossier de
-recherche. Il est autorisé à rejoindre le hub, le sitemap et `llms.txt` dans un
-artefact de production indexable. Cette autorisation ne prouve ni déploiement,
-ni exploration, ni indexation effective, ni classement.
+recherche. Aucun ancien contenu, ancien score ou ancien contrôle n’est
+transféré aux sujets suivants.
 
-Les 99 sujets suivants conservent le statut `NON_LANCE`. Aucun ancien contenu,
-ancien score ou ancien contrôle ne leur est transféré.
+L’état de production n’est plus recopié ici : consulter le
+[registre de coordination](registre-coordination-guides.md). Il distingue les
+sujets libres, réservés, en passe, prêts à intégrer et publiés. Une
+autorisation éditoriale, un push, un déploiement, une URL servie et une
+indexation restent des états séparés.
