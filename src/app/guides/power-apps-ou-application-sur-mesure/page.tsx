@@ -802,7 +802,9 @@ Filter(DemandesAchat; Statut = "En attente")`}
             nombre de jours réellement travaillés. Le second&nbsp;:{" "}
             <strong>six semaines de double exploitation</strong> après une
             bascule, à raison de vingt minutes de ressaisie par jour ouvré,
-            soit dix heures. Aucun des deux ne sort d’une source&nbsp;: ce sont
+            soit dix heures — 1,25&nbsp;jour de huit heures, donc 437,50&nbsp;€,
+            arrondis à 440&nbsp;€ dans le décompte. Aucun des deux ne sort d’une
+            source&nbsp;: ce sont
             des hypothèses, elles sont écrites ici pour que vous puissiez les
             contester.
           </p>
