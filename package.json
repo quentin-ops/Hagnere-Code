@@ -20,6 +20,7 @@
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "measure:guide-readtime": "node scripts/measure-guide-readtime.mjs",
+    "check:guide-readtime": "tsx scripts/measure-guide-readtime.mjs --check",
     "manifest:guides:check": "node scripts/published-guides-manifest.mjs --check",
     "manifest:guides:write": "node scripts/published-guides-manifest.mjs --write",
     "scaffold:guide": "node scripts/scaffold-guide.mjs",

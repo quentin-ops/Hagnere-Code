@@ -54,10 +54,10 @@ export const GUIDES: GuideEntry[] = [
     title: "Quel processus métier automatiser en premier ?",
     cardTitle: "Quel processus automatiser en premier ?",
     metaDescription:
-      "Choisissez le premier processus à automatiser : cinq portes bloquantes, sept réponses possibles et un calcul transparent avec vos propres données.",
+      "Mesurez quatre processus en une semaine, écartez ceux qui échouent aux cinq questions, puis lisez un décompte à douze mois qui sort négatif.",
     cardDescription:
-      "Cinq portes bloquantes, sept réponses possibles et un calcul transparent pour choisir, reporter ou refuser une automatisation.",
-    heroTitle: "Quel processus métier automatiser en premier ?",
+      "Comment mesurer un processus, ce que les plateformes facturent vraiment, et un décompte à douze mois qui sort négatif de 546 €.",
+    heroTitle: "Quel processus métier automatiser en premier\u00a0?",
     section: "Outils internes et automatisation",
     editorialStatus: "published",
     // Guide mis en avant dans l'encart « Essentiel » du hub. Le drapeau doit
@@ -67,8 +67,8 @@ export const GUIDES: GuideEntry[] = [
     // le porter (invariant verrouillé par src/lib/guides.test.ts).
     featured: true,
     datePublished: "2026-07-29T17:01:33+02:00",
-    dateModified: "2026-07-29T19:07:13Z",
-    readTimeMin: 20,
+    dateModified: "2026-08-28T18:00:00+02:00",
+    readTimeMin: 21,
     articleImagePaths: [
       "/guides/automatiser-processus-metier/article-processus-16x9.webp",
       "/guides/automatiser-processus-metier/article-processus-4x3.webp",
@@ -88,7 +88,7 @@ export const GUIDES: GuideEntry[] = [
     editorialStatus: "published",
     datePublished: "2026-08-01T11:59:46+02:00",
     dateModified: "2026-08-01T11:59:46+02:00",
-    readTimeMin: 21,
+    readTimeMin: 34,
     articleImagePaths: [
       "/guides/signes-besoin-logiciel-metier/article-diagnostic-16x9.svg",
       "/guides/signes-besoin-logiciel-metier/article-diagnostic-4x3.svg",
@@ -100,15 +100,15 @@ export const GUIDES: GuideEntry[] = [
     title: "Prix de la gestion Google Ads en 2026 : 4 modèles comparés",
     cardTitle: "Prix d’une gestion Google Ads",
     metaDescription:
-      "Comparez quatre modèles de rémunération Google Ads et calculez le coût complet à 3, 6 et 12 mois : média, honoraires, TVA, frais annexes et temps interne.",
+      "Gestion Google Ads : forfait, pourcentage, hybride ou temps passé, le coût complet à 3, 6 et 12 mois et le budget média où l’ordre s’inverse.",
     cardDescription:
-      "Un guide et un calculateur local pour remettre quatre modes de rémunération sur la même base, sans confondre média, honoraires et acquisition.",
+      "Le décompte ligne à ligne d’un cas construit à 5 000 € HT de média par mois, les trois seuils où le classement des modèles s’inverse, et le prix d’une sortie.",
     heroTitle: "Combien coûte vraiment la gestion de Google Ads ?",
     section: "Google Ads & acquisition",
     editorialStatus: "published",
     datePublished: "2026-07-31T00:24:23+02:00",
-    dateModified: "2026-07-31T00:24:23+02:00",
-    readTimeMin: 32,
+    dateModified: "2026-08-28T18:00:00+02:00",
+    readTimeMin: 15,
     articleImagePaths: [
       "/guides/prix-gestion-google-ads/article-prix-ads-16x9.webp",
       "/guides/prix-gestion-google-ads/article-prix-ads-4x3.webp",
@@ -128,7 +128,7 @@ export const GUIDES: GuideEntry[] = [
     editorialStatus: "published",
     datePublished: "2026-07-23T21:31:02+02:00",
     dateModified: "2026-08-03T07:58:56+02:00",
-    readTimeMin: 27,
+    readTimeMin: 19,
     articleImagePaths: [
       "/guides/power-apps-ou-application-sur-mesure/article-power-apps-16x9.svg",
       "/guides/power-apps-ou-application-sur-mesure/article-power-apps-4x3.svg",
@@ -140,16 +140,16 @@ export const GUIDES: GuideEntry[] = [
     title: "Plan de recette d’une application métier",
     cardTitle: "Préparer la recette d’une application métier",
     metaDescription:
-      "Transformez vos besoins métier en cas de recette rejouables, preuves et décision, sans masquer tests critiques, anomalies ni réserves.",
+      "Compter les cas, chiffrer les jours, écrire des seuils mesurables : la recette d’une application métier, calculée sur un cas construit.",
     cardDescription:
-      "Une chaîne besoin, cas, preuve et huit points non compensables pour préparer une décision sans cacher les échecs ni les réserves.",
+      "Le décompte des cas, le budget en jours de votre équipe et la réécriture des critères d’acceptation avec seuil, assiette et fenêtre de mesure.",
     heroTitle:
       "Plan de recette d’une application métier : prouver avant d’accepter",
     section: "Préparer son projet",
     editorialStatus: "published",
     datePublished: "2026-07-30T16:30:59+02:00",
     dateModified: "2026-07-30T16:30:59+02:00",
-    readTimeMin: 16,
+    readTimeMin: 20,
     articleImagePaths: [
       "/guides/plan-recette-application-metier/recette-preuve-16x9.webp",
       "/guides/plan-recette-application-metier/recette-preuve-4x3.webp",
@@ -158,13 +158,14 @@ export const GUIDES: GuideEntry[] = [
   },
   {
     slug: "securite-application-metier",
-    title: "Sécurité d’une application métier avant sa mise en service",
+    title: "Sécurité d’une application métier : les 4 mesures à faire",
     cardTitle: "Sécurité d’une application métier",
     metaDescription:
-      "Menaces, sauvegardes testées, journaux, alertes et responsables : fixez des exigences proportionnées avant la mise en service.",
+      "Restauration chronométrée, alerte suivie, compte témoin rejoué, dépendances triées : quatre mesures et le coût de chaque échec.",
     cardDescription:
-      "Une méthode sans score pour obtenir des preuves, tester la restauration, attribuer les alertes et décider de la mise en service.",
-    heroTitle: "Quel socle de sécurité exiger pour une application métier ?",
+      "Quatre mesures reproductibles avant d’ouvrir les vraies données : ce qu’on lance, le nombre qu’on lit, le seuil qui tranche et ce que coûte un échec.",
+    heroTitle:
+      "Sécurité d’une application métier : que mesurer avant les vraies données ?",
     section: "Préparer son projet",
     editorialStatus: "published",
     datePublished: "2026-07-30T22:03:29+02:00",
@@ -178,18 +179,19 @@ export const GUIDES: GuideEntry[] = [
   },
   {
     slug: "cahier-des-charges-saas",
-    title: "Comment rédiger un cahier des charges SaaS ?",
+    title: "Comment rédiger un cahier des charges SaaS\u00a0?",
     cardTitle: "Rédiger un cahier des charges SaaS",
     metaDescription:
-      "Rédigez un cahier des charges SaaS comparable : périmètre, droits, abonnement, données, support, sortie, preuves et inconnues bloquantes.",
+      "Trois devis pour le même SaaS, de 34\u00a0000 à 129\u00a0000\u00a0€ HT\u00a0: le décompte poste par poste, les exigences testables, la grille de dépouillement.",
     cardDescription:
-      "Neuf blocs et cinq champs par bloc pour décrire le même produit, révéler les inconnues bloquantes et comparer des offres sur des preuves.",
-    heroTitle: "Cahier des charges SaaS : faire chiffrer le même produit",
+      "Le décompte qui ramène trois devis au même produit, les exigences dont on sait écrire l’échec, et la grille à joindre aux candidats.",
+    heroTitle:
+      "Cahier des charges SaaS\u00a0: trois devis pour le même produit et un écart de 3,8 à 1",
     section: "Préparer son projet",
     editorialStatus: "published",
     datePublished: "2026-07-22T07:29:32+02:00",
-    dateModified: "2026-08-01T13:03:24+02:00",
-    readTimeMin: 42,
+    dateModified: "2026-08-28T16:05:00+02:00",
+    readTimeMin: 20,
     articleImagePaths: [
       "/guides/cahier-des-charges-saas/cahier-saas-16x9.webp",
       "/guides/cahier-des-charges-saas/cahier-saas-4x3.webp",
@@ -201,15 +203,15 @@ export const GUIDES: GuideEntry[] = [
     title: "MVP SaaS : quoi inclure avant un premier client\u00a0?",
     cardTitle: "MVP SaaS : quoi inclure\u00a0?",
     metaDescription:
-      "Définissez le MVP SaaS d’un premier client : quoi construire, gérer manuellement, intégrer ou reporter, avec charge calculée et STOP explicites.",
+      "Quoi mettre dans le premier lot d’un SaaS, ce qui peut rester manuel, et pourquoi passer de 5 à 10 écrans coûte 15\u00a0000\u00a0€ HT de plus sur notre grille.",
     cardDescription:
-      "Sept familles, cinq choix et une charge manuelle calculée pour délimiter un premier test exploitable.",
+      "Sept responsabilités à attribuer, six ajouts inutiles à retirer et une charge humaine calculée avant la première ligne de code.",
     heroTitle: "MVP SaaS : quoi inclure avant le premier test\u00a0?",
     section: "SaaS et MVP",
     editorialStatus: "published",
     datePublished: "2026-07-20T15:19:41+02:00",
-    dateModified: "2026-08-03T04:14:58+02:00",
-    readTimeMin: 23,
+    dateModified: "2026-08-28T17:05:00+02:00",
+    readTimeMin: 19,
     articleImagePaths: [
       "/guides/mvp-saas-quoi-inclure/contrat-test-mvp-16x9.webp",
       "/guides/mvp-saas-quoi-inclure/charge-manuelle-mvp-4x3.webp",
@@ -221,15 +223,15 @@ export const GUIDES: GuideEntry[] = [
     title: "Pourquoi mon site n’est-il pas visible sur Google ?",
     cardTitle: "Pourquoi mon site n’est-il pas visible sur Google ?",
     metaDescription:
-      "Suivez une URL de l’exploration aux clics dans Search Console, puis remplissez une fiche pour choisir entre corriger, recontrôler ou faire auditer.",
+      "Cinq pannes se cachent derrière un site invisible sur Google : la commande à taper, le champ à lire dans Search Console, ce que le constat ne prouve pas.",
     cardDescription:
-      "Une URL, une recherche et quatre contrôles dans Search Console pour trouver où la visibilité s’arrête avant de corriger.",
+      "Cinq pannes derrière un site invisible sur Google, et le protocole de mesure qui dit laquelle est la vôtre avant de corriger quoi que ce soit.",
     heroTitle: "Pourquoi mon site n’est-il pas visible sur Google ?",
     section: "Référencement naturel",
     editorialStatus: "published",
     datePublished: "2026-08-18T12:42:00Z",
-    dateModified: "2026-08-18T12:42:00Z",
-    readTimeMin: 13,
+    dateModified: "2026-08-28T09:00:00Z",
+    readTimeMin: 20,
     articleImagePaths: [
       "/guides/pourquoi-site-pas-visible-google/diagnostic-google-16x9.svg",
       "/guides/pourquoi-site-pas-visible-google/diagnostic-google-4x3.svg",
