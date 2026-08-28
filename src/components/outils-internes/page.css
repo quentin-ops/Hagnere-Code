@@ -117,6 +117,9 @@
   .ba-after .win-dots{display:flex;gap:6px}
   .ba-after .win-dots span{width:10px;height:10px;border-radius:50%;background:#e5e5e5}
   .ba-after .win-url{flex:1;text-align:center;font-family:var(--font-geist-mono);font-size:11px;color:var(--mute)}
+  /* Cette barre de titre reste claire dans les deux thèmes : le --mute du
+     thème sombre (#8B8B94) n'y tenait que 3,24:1. */
+  html.dark .ba-after .win-url{color:#6B6B6B}
 
   .ba-arrow{position:absolute;left:305px;top:120px;z-index:5;background:var(--accent-btn);color:#fff;padding:8px 16px;border-radius:999px;font-family:var(--font-geist-mono);font-size:11px;font-weight:600;letter-spacing:0.04em;box-shadow:0 10px 22px -8px rgba(109,40,217,0.5);transform:rotate(4deg);display:flex;align-items:center;gap:6px}
 

@@ -10,6 +10,25 @@
   --seo-accent-soft: #f0eafd;
   --seo-dark: #0b0b0f;
   --seo-dark-soft: #15151b;
+
+  /* Cette page porte son propre système de tokens, mais elle rend le pied de
+     page et le formulaire partagés, qui consomment les tokens du design commun.
+     Sans ces alias, `var(--paper)` et `var(--mute)` n'étaient pas définis : la
+     carte du formulaire héritait du fond sombre de la section et son texte
+     secondaire d'une couleur imprévisible (mesuré à 3,50:1 en production). */
+  --paper: var(--seo-paper);
+  --paper-2: var(--seo-paper-soft);
+  --ink: var(--seo-ink);
+  --ink-2: var(--seo-ink-soft);
+  --ink-3: var(--seo-muted);
+  --mute: var(--seo-muted);
+  --line: var(--seo-line);
+  --line-2: var(--seo-line);
+  --accent: var(--seo-accent);
+  --accent-btn: #6d28d9;
+  --accent-ink: var(--seo-accent-bright);
+  --accent-soft: var(--seo-accent-soft);
+
   background: var(--seo-paper);
   color: var(--seo-ink);
 }
@@ -26,6 +45,9 @@ html.dark .seo-public-page {
   --seo-accent-soft: #261b42;
   --seo-dark: #070709;
   --seo-dark-soft: #111116;
+  /* Le token dédié au texte blanc posé sur l'accent : en sombre, --seo-accent
+     s'éclaircit et ne conviendrait pas comme fond de bouton. */
+  --accent-btn: #7c3aed;
 }
 
 .seo-public-page *,
