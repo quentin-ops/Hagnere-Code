@@ -105,11 +105,11 @@ const contextUnknownLabels = {
   projectKind:
     "Précisez s’il s’agit d’un nouveau projet ou d’une Power App existante.",
   audience:
-    "Précisez qui utilisera l’application : salariés, invités ou public.",
+    "Précisez qui utilisera l’application\u00a0: salariés, invités ou public.",
   surface:
-    "Précisez la surface envisagée : canevas, application pilotée par modèle, Power Pages ou combinaison.",
+    "Précisez la surface envisagée\u00a0: canevas, application pilotée par modèle, Power Pages ou combinaison.",
   dataSource:
-    "Précisez où vivent les données principales : SharePoint, Dataverse, SQL ou autre source.",
+    "Précisez où vivent les données principales\u00a0: SharePoint, Dataverse, SQL ou autre source.",
   criticality:
     "Précisez ce qui arrive à l’activité si l’application devient indisponible.",
   offlineRequired:
@@ -182,11 +182,11 @@ function collectCriticalUnknowns(inputs: DecisionInputs): string[] {
     unknowns.push(contextUnknownLabels.externalBrandingRequired);
   if (context.currentUsers === null)
     unknowns.push(
-      "Renseignez le nombre d’utilisateurs actuels ; zéro explicite est valide.",
+      "Renseignez le nombre d’utilisateurs actuels\u00a0; zéro explicite est valide.",
     );
   if (context.projectedUsers === null)
     unknowns.push(
-      "Renseignez le nombre d’utilisateurs projetés ; zéro explicite est valide.",
+      "Renseignez le nombre d’utilisateurs projetés\u00a0; zéro explicite est valide.",
     );
 
   const alwaysCritical: EvidenceKey[] = [
@@ -260,12 +260,12 @@ function collectBlockingFailures(inputs: DecisionInputs): string[] {
   }
   if (evidence.scopeObserved === "no") {
     failures.push(
-      "Le contrôle a conclu que le périmètre, les tâches et les résultats attendus ne sont pas suffisamment observés : aucun arbitrage d’architecture n’est encore défendable.",
+      "Le contrôle a conclu que le périmètre, les tâches et les résultats attendus ne sont pas suffisamment observés\u00a0: aucun arbitrage d’architecture n’est encore défendable.",
     );
   }
   if (evidence.licensesFlowsInventoried === "no") {
     failures.push(
-      "Le contrôle a conclu que l’inventaire des licences, flux, connecteurs, passerelles, API et comptes d’exécution n’est pas défendable : aucune option ne peut encore être comparée honnêtement.",
+      "Le contrôle a conclu que l’inventaire des licences, flux, connecteurs, passerelles, API et comptes d’exécution n’est pas défendable\u00a0: aucune option ne peut encore être comparée honnêtement.",
     );
   }
 
@@ -280,7 +280,7 @@ function collectContradictions(inputs: DecisionInputs) {
     contradictions.push({
       options: [...optionOrder],
       message:
-        "Le contrôle du périmètre est insatisfaisant : sans tâches ni résultats observés, aucune architecture ne peut être défendue.",
+        "Le contrôle du périmètre est insatisfaisant\u00a0: sans tâches ni résultats observés, aucune architecture ne peut être défendue.",
     });
   }
   if (evidence.dataQueriesTested === "no") {
@@ -294,7 +294,7 @@ function collectContradictions(inputs: DecisionInputs) {
     contradictions.push({
       options: [...optionOrder],
       message:
-        "Le contrôle des licences et flux est insatisfaisant : maintien, renforcement, hybride et reconstruction restent incomparables tant que l’inventaire n’est pas défendable.",
+        "Le contrôle des licences et flux est insatisfaisant\u00a0: maintien, renforcement, hybride et reconstruction restent incomparables tant que l’inventaire n’est pas défendable.",
     });
   }
   if (
@@ -304,7 +304,7 @@ function collectContradictions(inputs: DecisionInputs) {
     contradictions.push({
       options: ["current-power-apps"],
       message:
-        "Une application canevas ou pilotée par modèle ne doit pas être présentée comme la surface publique retenue : évaluez Power Pages, une frontière hybride ou une application dédiée.",
+        "Une application canevas ou pilotée par modèle ne doit pas être présentée comme la surface publique retenue\u00a0: évaluez Power Pages, une frontière hybride ou une application dédiée.",
     });
   }
   if (
@@ -315,7 +315,7 @@ function collectContradictions(inputs: DecisionInputs) {
     contradictions.push({
       options: ["current-power-apps", "strengthened-power-apps"],
       message:
-        "L’audience externe ne peut pas être traitée comme un simple partage interne : identité, droits et licence ne sont pas validés.",
+        "L’audience externe ne peut pas être traitée comme un simple partage interne\u00a0: identité, droits et licence ne sont pas validés.",
     });
   }
   if (
@@ -325,7 +325,7 @@ function collectContradictions(inputs: DecisionInputs) {
     contradictions.push({
       options: ["current-power-apps", "strengthened-power-apps"],
       message:
-        "Le besoin hors-ligne testé n’est pas couvert par l’architecture Power Apps actuelle ; l’offline-first mobile repose notamment sur Dataverse et comporte des limites.",
+        "Le besoin hors-ligne testé n’est pas couvert par l’architecture Power Apps actuelle\u00a0; l’offline-first mobile repose notamment sur Dataverse et comporte des limites.",
     });
   }
   if (evidence.uxAccessibilityValidated === "no") {
@@ -339,7 +339,7 @@ function collectContradictions(inputs: DecisionInputs) {
     contradictions.push({
       options: ["current-power-apps"],
       message:
-        "Conserver la configuration actuelle n’est pas défendable : le contrôle a montré qu’une politique de données ou un rôle peut bloquer un connecteur, suspendre une application ou exposer trop de données.",
+        "Conserver la configuration actuelle n’est pas défendable\u00a0: le contrôle a montré qu’une politique de données ou un rôle peut bloquer un connecteur, suspendre une application ou exposer trop de données.",
     });
   }
   if (evidence.almValidated === "no") {
@@ -360,7 +360,7 @@ function collectContradictions(inputs: DecisionInputs) {
     contradictions.push({
       options: ["current-power-apps"],
       message:
-        "Conserver l’exploitation actuelle n’est pas défendable : le contrôle de restauration a échoué sur les données, connexions, identités, secrets ou automatisations.",
+        "Conserver l’exploitation actuelle n’est pas défendable\u00a0: le contrôle de restauration a échoué sur les données, connexions, identités, secrets ou automatisations.",
     });
   }
   if (evidence.platformFitValidated === "no") {
@@ -374,7 +374,7 @@ function collectContradictions(inputs: DecisionInputs) {
     contradictions.push({
       options: ["hybrid"],
       message:
-        "La frontière hybride dupliquerait des règles ou des données ; elle n’est pas défendable sans nouveau découpage.",
+        "La frontière hybride dupliquerait des règles ou des données\u00a0; elle n’est pas défendable sans nouveau découpage.",
     });
   }
 
@@ -452,7 +452,7 @@ export function evaluateDecision(inputs: DecisionInputs): DecisionResult {
           ? "STOP — un contrôle fondateur est insatisfaisant"
           : "STOP — il manque une information qui peut changer le choix",
       rationale: [
-        "À vérifier signifie qu’aucune preuve fiable n’est encore disponible ; non signifie que le contrôle a été réalisé mais que son résultat est insatisfaisant.",
+        "À vérifier signifie qu’aucune preuve fiable n’est encore disponible\u00a0; non signifie que le contrôle a été réalisé mais que son résultat est insatisfaisant.",
         "Le diagnostic ne remplace ni une inconnue ni un contrôle fondateur en échec par une hypothèse favorable.",
       ],
       verifiedEvidence,
@@ -505,7 +505,7 @@ export function evaluateDecision(inputs: DecisionInputs): DecisionResult {
         ? "Retenir Power Platform est défendable pour ce nouveau projet"
         : "Conserver Power Apps est défendable",
     STRENGTHEN: publicSurfaceMismatch
-      ? "Changez de surface : évaluez Power Pages avant de retenir Power Platform"
+      ? "Changez de surface\u00a0: évaluez Power Pages avant de retenir Power Platform"
       : context.projectKind === "new"
         ? "Cadrez Power Platform avant de lancer ce nouveau projet"
         : "Renforcez Power Apps avant d’envisager une reconstruction",
@@ -561,7 +561,7 @@ export function evaluateDecision(inputs: DecisionInputs): DecisionResult {
       verifiedEvidence,
       criticalUnknowns: [],
       blockingFailures: [
-        "L’invariant recommandation-option a échoué ; aucun verdict n’est affiché.",
+        "L’invariant recommandation-option a échoué\u00a0; aucun verdict n’est affiché.",
       ],
       contradictions,
       defensibleOptions: [],
@@ -802,7 +802,7 @@ function calculateMonthlyLicense(
 ): number {
   if (license.publicPaygUsdPerActiveUserAppMonth !== 10) {
     notes.push(
-      "Le tarif PAYG public en USD a été modifié dans le dossier ; il reste informatif et n’est jamais converti en euros.",
+      "Le tarif PAYG public en USD a été modifié dans le dossier\u00a0; il reste informatif et n’est jamais converti en euros.",
     );
   }
 
@@ -826,7 +826,7 @@ function calculateMonthlyLicense(
         errors,
       );
       notes.push(
-        "Le repère public de 17,30 € HT/utilisateur/mois au 3 août 2026 reste éditable et doit être confirmé dans le contrat.",
+        "Le repère public de 17,30\u00a0€ HT/utilisateur/mois au 3 août 2026 reste éditable et doit être confirmé dans le contrat.",
       );
       return validateCalculatedAmount(
         users * price,
@@ -942,6 +942,152 @@ export function calculateTcoComparison(options: OptionTcoInputs[]) {
   return options.map(calculateOptionTco);
 }
 
+/* ──────────────────────────────────────────────
+   Pré-remplissage : le cas construit du guide
+   ────────────────────────────────────────────── */
+
+/**
+ * Le cas construit qui traverse le guide, prêt à être modifié.
+ *
+ * L'atelier s'ouvrait sur huit postes « à confirmer » et un verdict suspendu :
+ * un lecteur y arrivait devant une cinquantaine de champs et aucun euro. Il
+ * s'ouvre désormais sur le décompte résolu de la section 05 — neuf
+ * utilisateurs, une liste SharePoint, un connecteur SQL Server qui fait
+ * basculer la licence — que le lecteur remplace par ses propres nombres. Le
+ * bouton « repartir d'une feuille vierge » restitue l'état vide.
+ *
+ * Les montants ne sont pas des constantes de calcul : ce sont des repères
+ * datés, publiés sur /tarifs pour la colonne dédiée et sur la page Microsoft
+ * française pour la licence, tous relevés le 28 août 2026.
+ */
+export function createIncarnatedCaseDecisionInputs(): DecisionInputs {
+  const inputs = createEmptyDecisionInputs();
+  inputs.context = {
+    projectKind: "existing",
+    audience: "internal",
+    surface: "canvas",
+    dataSource: "sharepoint",
+    criticality: "important",
+    offlineRequired: "no",
+    externalBrandingRequired: "no",
+    currentUsers: 9,
+    projectedUsers: 9,
+  };
+  // Les neuf contrôles critiques ont été menés dans le cas construit : c'est
+  // ce qui permet à l'atelier d'afficher une conclusion au lieu d'un verdict
+  // d'impuissance. La frontière hybride reste sans objet tant qu'aucune limite
+  // de plateforme n'a été reproduite.
+  inputs.evidence = {
+    ...inputs.evidence,
+    scopeObserved: "yes",
+    dataQueriesTested: "yes",
+    licensesFlowsInventoried: "yes",
+    identityAudienceValidated: "yes",
+    offlineFitValidated: "yes",
+    uxAccessibilityValidated: "yes",
+    securityDlpValidated: "yes",
+    almValidated: "yes",
+    ownershipSupportValidated: "yes",
+    exitRestoreValidated: "yes",
+    platformFitValidated: "yes",
+  };
+  return inputs;
+}
+
+/** Coût journalier chargé retenu dans le cas construit du guide, en euros. */
+export const CASE_INTERNAL_DAY_RATE_EUR = 350;
+
+/** Repère public du forfait de maintenance le plus bas, en euros par mois. */
+export const CASE_CARE_MONTHLY_EUR = 2500;
+
+/** Repère public de construction d'un outil interne Starter, en euros. */
+export const CASE_STARTER_BUILD_EUR = 8000;
+
+function knownValue(amount: number): NumericKnowledgeValue {
+  return { knowledge: "known", amount };
+}
+
+function notApplicable(): NumericKnowledgeValue {
+  return { knowledge: "not-applicable", amount: null };
+}
+
+function caseCostLines<Id extends string>(
+  definitions: Array<[Id, string]>,
+  amounts: Partial<Record<Id, NumericKnowledgeValue>>,
+): CostLine<Id>[] {
+  return definitions.map(([id, label]) => ({
+    id,
+    label,
+    ...(amounts[id] ?? unknownValue()),
+  }));
+}
+
+export function createIncarnatedCaseTcoOptions(): OptionTcoInputs[] {
+  const dayRate = CASE_INTERNAL_DAY_RATE_EUR;
+
+  return createEmptyTcoOptions().map((option) => {
+    if (option.key === "current-power-apps") {
+      return {
+        ...option,
+        license: {
+          ...option.license,
+          mode: "premium-eur",
+          users: { knowledge: "known", amount: 9 },
+          pricePerUserMonthEur: knownValue(17.3),
+          contractualMonthlyEur: notApplicable(),
+        },
+        oneTime: caseCostLines(oneTimeDefinitions, {
+          // Quatre jours pour brancher le connecteur SQL Server, poser la
+          // passerelle et reprendre les formules devenues non délégables.
+          "initial-build-setup": knownValue(4 * dayRate),
+          "migration-coexistence": notApplicable(),
+          "training-change": notApplicable(),
+          // Sortir de Power Apps revient à payer la colonne dédiée :
+          // construction 8 000 € plus reprise des données 1 490 €.
+          "exit-reversibility": knownValue(
+            CASE_STARTER_BUILD_EUR + 3 * dayRate + 440,
+          ),
+        }),
+        monthly: caseCostLines(monthlyDefinitions, {
+          "hosting-platform": notApplicable(),
+          "admin-maintenance": knownValue(0.5 * dayRate),
+          "business-support": notApplicable(),
+          "capacity-connectors-other": notApplicable(),
+        }),
+      };
+    }
+
+    if (option.key === "dedicated") {
+      return {
+        ...option,
+        license: {
+          ...option.license,
+          mode: "not-applicable",
+          users: notApplicable(),
+          pricePerUserMonthEur: notApplicable(),
+          contractualMonthlyEur: notApplicable(),
+        },
+        oneTime: caseCostLines(oneTimeDefinitions, {
+          "initial-build-setup": knownValue(CASE_STARTER_BUILD_EUR),
+          "migration-coexistence": knownValue(3 * dayRate + 440),
+          "training-change": notApplicable(),
+          // Six jours pour transmettre le code, les accès et l'exploitation à
+          // une autre équipe de développement.
+          "exit-reversibility": knownValue(6 * dayRate),
+        }),
+        monthly: caseCostLines(monthlyDefinitions, {
+          "hosting-platform": knownValue(CASE_CARE_MONTHLY_EUR),
+          "admin-maintenance": knownValue(0.25 * dayRate),
+          "business-support": notApplicable(),
+          "capacity-connectors-other": notApplicable(),
+        }),
+      };
+    }
+
+    return option;
+  });
+}
+
 function formatNumber(value: number | null, unit: string): string {
   if (value === null) return "à confirmer";
   return `${new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(value)} ${unit}`;
@@ -994,16 +1140,16 @@ export function buildDecisionDossier(
     `  TCO 3 ans : ${formatNumber(result.totalsEur[3], "€ HT")}`,
     `  TCO 5 ans : ${formatNumber(result.totalsEur[5], "€ HT")}`,
     ...(result.unknownLabels.length
-      ? [`  Inconnues : ${result.unknownLabels.join(" ; ")}`]
+      ? [`  Inconnues : ${result.unknownLabels.join("\u00a0; ")}`]
       : []),
     ...(result.errors.length
-      ? [`  Erreurs : ${result.errors.join(" ; ")}`]
+      ? [`  Erreurs : ${result.errors.join("\u00a0; ")}`]
       : []),
   ]);
 
   return [
     "DOSSIER DE DÉCISION — POWER APPS OU APPLICATION SUR MESURE",
-    "Généré localement dans le navigateur ; aucune donnée envoyée.",
+    "Généré localement dans le navigateur\u00a0; aucune donnée envoyée.",
     "",
     "CONTEXTE",
     ...contextLines,
@@ -1015,24 +1161,24 @@ export function buildDecisionDossier(
     `Statut : ${decision.status}`,
     `Conclusion : ${decision.headline}`,
     `Option recommandée : ${recommendationOption ? decisionOptionLabels[recommendationOption] : "aucune"}`,
-    `Options défendables : ${decision.defensibleOptions.length ? decision.defensibleOptions.map((key) => decisionOptionLabels[key]).join(" ; ") : "aucune"}`,
+    `Options défendables : ${decision.defensibleOptions.length ? decision.defensibleOptions.map((key) => decisionOptionLabels[key]).join("\u00a0; ") : "aucune"}`,
     ...decision.rationale.map((line) => `- ${line}`),
     `Prochaine vérification : ${decision.nextEvidence}`,
     ...(decision.criticalUnknowns.length
       ? [
-          "Inconnues critiques :",
+          "Inconnues critiques\u00a0:",
           ...decision.criticalUnknowns.map((line) => `- ${line}`),
         ]
       : []),
     ...(decision.blockingFailures.length
       ? [
-          "Contrôles critiques insatisfaisants :",
+          "Contrôles critiques insatisfaisants\u00a0:",
           ...decision.blockingFailures.map((line) => `- ${line}`),
         ]
       : []),
     ...(decision.contradictions.length
       ? [
-          "Contradictions :",
+          "Contradictions\u00a0:",
           ...decision.contradictions.map(
             (item) =>
               `- ${item.message} [${item.options.map((key) => decisionOptionLabels[key]).join(", ")}]`,
@@ -1041,7 +1187,7 @@ export function buildDecisionDossier(
       : []),
     "",
     "TCO COMPARABLES",
-    "Formule : coûts ponctuels + coûts mensuels × 12 × années. Chaque poste est compté une fois.",
+    "Formule\u00a0: coûts ponctuels + coûts mensuels × 12 × années. Chaque poste est compté une fois.",
     ...tcoLines,
     "",
     "LIMITES",

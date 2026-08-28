@@ -235,7 +235,7 @@ describe("PowerAppsDecisionWorkbench", () => {
     const html = renderToStaticMarkup(<PowerAppsDecisionWorkbench />);
 
     expect(html).toContain(
-      "À vérifier — aucune preuve fiable ; décision suspendue",
+      "À vérifier — aucune preuve fiable\u00a0; décision suspendue",
     );
     expect(html).toContain("Oui — contrôle daté satisfaisant");
     expect(html).toContain("Non — contrôle réalisé, résultat insatisfaisant");

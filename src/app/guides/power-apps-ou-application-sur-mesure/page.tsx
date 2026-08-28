@@ -1,13 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
-import {
-  CheckCircle2,
-  Database,
-  GitBranch,
-  ShieldCheck,
-  Users,
-  Wrench,
-} from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import {
   FormulaBox,
   GuideTable,
@@ -28,6 +20,10 @@ import {
 } from "@/lib/guide-page-seo";
 import { formatGuideDate, getGuide } from "@/lib/guides";
 import { TEAM } from "@/lib/team";
+import {
+  createIncarnatedCaseDecisionInputs,
+  createIncarnatedCaseTcoOptions,
+} from "./power-apps-decision-model";
 import { PowerAppsDecisionWorkbench } from "./power-apps-decision-workbench";
 
 const powerAppsGuide = getGuide("power-apps-ou-application-sur-mesure");
@@ -36,7 +32,7 @@ const breadcrumbName = "Power Apps ou sur mesure";
 
 export const metadata = buildGuideMetadata(
   powerAppsGuide,
-  "Matrice de décision Power Apps, architecture hybride et application sur mesure",
+  "Règle du connecteur premium, seuils de délégation et décompte à cinq ans entre Power Apps et une application dédiée",
 );
 
 const structuredData = buildGuideStructuredData(powerAppsGuide, breadcrumbName);
@@ -49,42 +45,46 @@ const toc = [
     shortLabel: "Réponse",
   },
   {
-    id: "chemins",
+    id: "power-apps",
     number: "02",
-    label: "Deux chemins de décision",
-    shortLabel: "Chemins",
+    label: "Ce qu’on peut en faire",
+    shortLabel: "Le produit",
   },
   {
-    id: "cinq-tests",
+    id: "connecteur",
     number: "03",
-    label: "Cinq tests de preuve",
-    shortLabel: "Tests",
+    label: "La règle du connecteur",
+    shortLabel: "Licence",
   },
-  { id: "cout", number: "04", label: "Comparer les TCO", shortLabel: "TCO" },
   {
-    id: "scenarios",
+    id: "limites",
+    number: "04",
+    label: "Les seuils réels",
+    shortLabel: "Seuils",
+  },
+  {
+    id: "cout",
     number: "05",
-    label: "Raisonner sur cinq scénarios",
-    shortLabel: "Scénarios",
+    label: "Le point de bascule",
+    shortLabel: "Bascule",
+  },
+  {
+    id: "incidents",
+    number: "06",
+    label: "Ce qui rate",
+    shortLabel: "Incidents",
   },
   {
     id: "remediation",
-    number: "06",
+    number: "07",
     label: "Réparer avant de reconstruire",
     shortLabel: "Réparer",
   },
   {
     id: "audit",
-    number: "07",
-    label: "Migrer avec retour arrière",
-    shortLabel: "Migration",
-  },
-  { id: "lundi", number: "08", label: "Commencer lundi", shortLabel: "Action" },
-  {
-    id: "sources",
-    number: "09",
-    label: "Sources et limites",
-    shortLabel: "Sources",
+    number: "08",
+    label: "Garder la porte ouverte",
+    shortLabel: "Sortie",
   },
 ];
 
@@ -93,7 +93,7 @@ const outcomes = [
     status: "DÉCISION EN ATTENTE",
     title: "Réunir la preuve manquante",
     trigger:
-      "Une donnée capable de changer l’architecture manque : audience, requête réelle, licence, politique de données, hors-ligne, restauration ou exploitation.",
+      "Une donnée capable de changer l’architecture manque\u00a0: audience, requête réelle, licence, politique de données, hors-ligne, restauration ou exploitation.",
     next: "Obtenir la première preuve manquante. Ne pas remplacer l’inconnu par zéro, par un avis ou par une démonstration commerciale.",
   },
   {
@@ -101,14 +101,14 @@ const outcomes = [
     title: "Garder Power Apps",
     trigger:
       "Les cas difficiles passent, le coût contractuel est compris, les droits sont maîtrisés et l’équipe sait déployer, restaurer et soutenir l’application.",
-    next: "Archiver les preuves et définir les événements qui déclencheront une nouvelle revue : volume, audience, licence, politique du tenant ou criticité.",
+    next: "Archiver les preuves et définir les événements qui déclencheront une nouvelle revue\u00a0: volume, audience, licence, politique du tenant ou criticité.",
   },
   {
     status: "RENFORCER",
     title: "Corriger l’architecture Power Platform",
     trigger:
       "Le besoin convient à la plateforme, mais données, formules, environnements, rôles, propriétaires ou supervision sont insuffisants.",
-    next: "Traiter le défaut mesuré, rejouer le test et recalculer le TCO avant de financer une reconstruction.",
+    next: "Traiter le défaut mesuré, rejouer le test et recalculer le coût total avant de financer une reconstruction.",
   },
   {
     status: "HYBRIDE",
@@ -128,88 +128,75 @@ const outcomes = [
 
 const faqCategories: GuidePremiumFaqCategory[] = [
   {
-    key: "plateforme",
+    key: "demarrer",
     num: "01",
-    label: "Comprendre la plateforme",
+    label: "Démarrer avec Power Apps",
     items: [
       {
-        question: "Power Apps est-il gratuit avec Microsoft 365 ?",
+        question:
+          "Peut-on faire une application Power Apps sans licence supplémentaire\u00a0?",
         answer:
-          "Non, pas pour tous les projets. Certains scénarios Microsoft 365 donnent des droits limités, mais ils ne couvrent pas automatiquement votre application. Vérifiez le plan exact, les connecteurs, Dataverse, les flux, l’audience et les droits sur les données. Le plan Developer sert au développement et au test, pas à la production.",
-      },
-      {
-        question: "Power Apps est-il limité à 2 000 lignes ?",
-        answer:
-          "Non. Dans une application canevas, 500 est la limite locale par défaut appliquée à certaines opérations non délégables, configurable jusqu’à 2 000. Une formule délégable peut interroger la source sans ramener toutes les lignes localement. Le danger d’une formule non délégable est un résultat partiel ou faux, pas une limite universelle de stockage.",
-      },
-      {
-        question: "SharePoint ou Dataverse : lequel choisir ?",
-        answer:
-          "SharePoint peut convenir à des listes et usages documentaires maîtrisés. Dataverse apporte un modèle relationnel, des métadonnées, une sécurité plus fine et des interfaces de programmation (API), avec gouvernance et licences à vérifier. Ne choisissez pas sur le seul volume : testez relations, requêtes, concurrence, droits, audit et cycle de vie.",
+          "Oui, tant que l’application ne touche que des connecteurs standard\u00a0: SharePoint, Outlook, Excel, Teams, Planner. Le tableau «\u00a0Power Apps pour Microsoft 365\u00a0» de Microsoft Learn coche «\u00a0se connecter aux services Cloud avec les connecteurs standard\u00a0» et laisse vide «\u00a0accéder aux données locales ou utiliser les connecteurs Premium ou personnalisés\u00a0». Un formulaire de congés adossé à une liste SharePoint coûte donc 0\u00a0€ de licence en plus. Ouvrez la fiche de chaque connecteur envisagé et lisez sa classe avant de promettre la gratuité.",
       },
       {
         question:
-          "Une application pilotée par modèle remplace-t-elle une application canevas ?",
+          "Combien de temps faut-il pour construire une Power App\u00a0?",
         answer:
-          "Pas automatiquement. Une application pilotée par modèle est centrée sur le modèle Dataverse et ses processus. Une application canevas donne davantage de contrôle sur l’interface. Le choix dépend des tâches, de l’expérience, des données et de l’exploitation ; une combinaison peut aussi être rationnelle.",
+          "Aucune durée honnête ne se donne sans compter. La méthode\u00a0: listez les écrans, les règles de gestion, les cas d’exception et les rôles, puis chiffrez chaque écran séparément. Chez nous, deux repères publics encadrent l’amont plutôt que la construction — l’audit des processus internes tient en 1 jour pour 990\u00a0€ HT, le Discovery Sprint en 2 jours pour 1\u00a0500\u00a0€ HT et ressort avec un prototype, un plan écrit et un devis ferme. La durée de construction, elle, se lit sur ce devis.",
+      },
+      {
+        question:
+          "Power Apps peut-il remplacer un fichier Excel partagé\u00a0?",
+        answer:
+          "Pour un tableau que six personnes s’envoient par courriel, oui, et c’est un des meilleurs usages de la plateforme\u00a0: saisie contrôlée, un seul enregistrement à la fois, historique. La bascule se paie ailleurs. Un classeur Excel accepte n’importe quelle formule sur n’importe quel volume\u00a0; une application canevas ne ramène que 500 lignes — réglables de 1 à 2\u00a0000 — quand la formule n’est pas déléguée. Vérifiez d’abord vos calculs les plus longs.",
       },
     ],
   },
   {
-    key: "audience",
+    key: "plateforme",
     num: "02",
-    label: "Audience, usage et contrôle",
+    label: "Données, audience et limites",
     items: [
       {
-        question: "Peut-on partager une application canevas avec des clients ?",
+        question: "SharePoint ou Dataverse\u00a0: lequel choisir\u00a0?",
         answer:
-          "Oui, dans certains scénarios, avec des invités Microsoft Entra B2B (collaboration inter-entreprises). Chaque invité doit disposer des droits Power Apps nécessaires et des autorisations sur les sources sous-jacentes. Ce n’est pas la même chose qu’un portail public Power Pages ni qu’une application dédiée. Testez l’identité, la licence, les données et le parcours dans l’environnement Microsoft réel de votre organisation.",
-      },
-      {
-        question: "Power Apps fonctionne-t-il hors ligne ?",
-        answer:
-          "Oui, mais dans un cadre précis. Le mode hors ligne intégré documenté repose sur Dataverse et Power Apps Mobile. Pour une application canevas autonome activée hors ligne, les connecteurs non-Dataverse comme SharePoint et les flux Power Automate ne sont pas pris en charge hors ligne. Ce n’est pas un mode général du navigateur. Reproduisez coupures, conflits, reprises, synchronisation et volumes sur les appareils visés.",
+          "SharePoint tient les listes simples et les usages documentaires, et il reste dans les connecteurs standard, donc sans licence Power Apps en plus. Dataverse apporte un modèle relationnel, des rôles fins et le mode hors-ligne documenté, mais il compte parmi les accès premium\u00a0: 17,30\u00a0€ HT par utilisateur et par mois, plus 34,70\u00a0€ HT par Go et par mois au-delà de la capacité incluse. Le volume ne tranche pas\u00a0: ce sont les relations entre tables et les droits par ligne qui tranchent.",
       },
       {
         question:
-          "Le vérificateur d’accessibilité suffit-il pour être conforme ?",
+          "Peut-on ouvrir une Power App à des clients ou à des fournisseurs\u00a0?",
         answer:
-          "Non. Le vérificateur signale certains problèmes, mais ne certifie ni les Web Content Accessibility Guidelines (WCAG) ni le Référentiel général d’amélioration de l’accessibilité (RGAA). Testez aussi le clavier, l’ordre de focus, le zoom, le contraste, le lecteur d’écran et les messages d’erreur sur les parcours réels.",
+          "Trois chemins existent, et ils ne se valent pas. Un partage à des invités Microsoft Entra B2B suppose que chacun ait la licence Power Apps requise et les droits sur les sources sous-jacentes — une licence dans un tenant n’en donne aucune dans un autre. Power Pages porte un vrai site externe, avec sa propre tarification par utilisateur authentifié ou anonyme. Une application dédiée gère l’identité elle-même. Comparez inscription, récupération de compte et révocation, pas seulement l’écran d’accueil.",
       },
       {
-        question:
-          "Une politique de données peut-elle casser une application existante ?",
+        question: "Power Apps fonctionne-t-il hors ligne\u00a0?",
         answer:
-          "Oui. Une politique de prévention de la perte de données (DLP, Data Loss Prevention) peut bloquer des combinaisons, suspendre ou mettre en quarantaine des ressources. Les politiques avancées de connecteurs (ACP, Advanced Connector Policies) ajoutent en 2026 une liste d’autorisation stricte pour les connecteurs certifiés. En mode mixte, la règle la plus restrictive s’applique ; les connecteurs personnalisés et HTTP restent à gouverner avec les politiques classiques. Inventoriez et testez les règles effectives avant un déploiement à grande échelle.",
+          "Le mode hors-ligne intégré et documenté repose sur Dataverse et l’application mobile Power Apps. Pour une application canevas autonome activée hors ligne, la documentation exclut les connecteurs autres que Dataverse — SharePoint compris — et les flux Power Automate. Un technicien de maintenance qui saisit ses interventions dans un sous-sol sans réseau relève donc de Dataverse, donc du plan premium à 17,30\u00a0€ HT par personne et par mois. Reproduisez coupure, reprise et conflit sur les appareils réels avant de vous engager.",
       },
     ],
   },
   {
-    key: "sortie",
+    key: "duree",
     num: "03",
-    label: "Coût, support et sortie",
+    label: "Reprise, coût et sortie",
     items: [
       {
-        question: "Combien coûte Power Apps en 2026 ?",
+        question:
+          "Que devient l’application si le salarié qui l’a créée quitte l’entreprise\u00a0?",
         answer:
-          "Au 3 août 2026, la page française affichait Premium à 17,30 € hors taxes (HT) par utilisateur et par mois avec paiement annuel, et 10,40 € HT avec un minimum de 2 000 postes/licences et contact commercial. Le paiement à l’usage (PAYG, pay-as-you-go) était documenté à 10 USD par utilisateur actif unique, par application et par mois. Confirmez contrat, devise, région, connecteurs, Dataverse, flux, capacité et support avant de calculer.",
+          "Elle continue de tourner, et c’est le piège. Les connexions restent attachées à un compte qui va être désactivé, et personne ne peut plus publier une correction. Le coût réel se mesure en jours\u00a0: retrouver le propriétaire de chaque connexion, recréer les références, exporter la solution et la redéployer dans un environnement dédié demande plusieurs jours d’un administrateur Microsoft 365. Nommez un suppléant et sortez l’application de l’environnement par défaut avant le départ, pas après.",
       },
       {
         question:
-          "L’export d’une solution donne-t-il une application React ou Next.js ?",
+          "Combien coûte une application métier construite sur mesure\u00a0?",
         answer:
-          "Non. Les solutions et fichiers extraits facilitent transport, audit et contrôle de version dans l’écosystème Power Platform ; ils ne constituent pas un code web portable. Ces limites permettent d’en déduire que quitter l’environnement d’exécution (runtime) peut demander de reconstruire l’interface et la logique, de refaire les intégrations et de migrer les données.",
+          "Notre grille publique, relevée sur /tarifs le 28 août 2026, situe un outil interne à 8\u00a0000\u00a0€ HT pour un processus ciblé sur une équipe, 25\u00a0000\u00a0€ HT pour un CRM ou ERP léger avec intégrations, 80\u00a0000\u00a0€ HT pour un outil multi-services avec authentification unique. Au-delà de 8\u00a0000\u00a0€ HT de projet, un cadrage payé précède systématiquement le devis. La maintenance se contracte à part, avec un repère indicatif de 2\u00a0500\u00a0€ HT par mois sur le scénario le plus léger.",
       },
       {
         question:
-          "Le support Microsoft remplace-t-il la maintenance de l’application ?",
+          "Quand une application sur mesure devient-elle vraiment défendable\u00a0?",
         answer:
-          "Non. Le support de la plateforme ne nomme pas votre propriétaire métier, ne corrige pas vos règles, ne répond pas aux utilisateurs et ne garantit pas votre continuité. Séparez incident plateforme, maintenance applicative, support métier, administration du tenant — l’instance organisationnelle Microsoft qui regroupe notamment identités, licences, politiques et environnements Power Platform — et fonctionnement dégradé.",
-      },
-      {
-        question: "Quand une application sur mesure devient-elle défendable ?",
-        answer:
-          "Lorsqu’une limite importante est reproduite sur un cas réel, qu’une remédiation raisonnable a été testée et qu’un hybride propre ne suffit pas. Le coût total de possession (TCO) doit aussi inclure construction, migration, exploitation, sécurité, support et réversibilité. Une préférence esthétique ou le départ du créateur de l’application ne suffit pas à lui seul.",
+          "Quand un usage précis ne passe pas et qu’une correction bornée a échoué — pas quand la facture de licence irrite. Sur le décompte de ce guide, il faudrait 141 utilisateurs en plan premium pour que Power Apps rattrape le coût d’une application dédiée maintenue au forfait publié. Les vraies raisons de partir sont ailleurs\u00a0: un parcours externe que Power Pages ne couvre pas, un travail hors ligne incompatible, une règle métier que Power Fx n’exprime pas, une contrainte d’hébergement.",
       },
     ],
   },
@@ -244,13 +231,13 @@ export default function Page() {
         ]}
         heroTitle={"Power Apps ou application sur mesure\u00a0:"}
         heroTitleEm={"comment\u00a0choisir\u00a0?"}
-        heroDescription="Ne reconstruisez pas parce que Power Apps vous agace, et ne restez pas uniquement parce que l’application existe déjà. Vérifiez d’abord les cas difficiles, l’audience, les données, les licences, la gouvernance et la sortie. Comparez ensuite le coût total de possession (TCO). Si une preuve critique manque, laissez la décision en attente."
+        heroDescription={"Tout se joue le jour où votre application branche autre chose que SharePoint. Tant qu’elle reste sur les connecteurs standard, elle ne coûte aucune licence en plus. Dès qu’elle interroge SQL Server, Dataverse ou une passerelle locale, chaque utilisateur passe à 17,30\u00a0€ HT par mois. Ce guide résout le décompte à cinq ans sur un cas chiffré et dit à partir de combien d’utilisateurs l’écart s’inverse."}
         stats={[
-          { label: "Sorties possibles", value: "5" },
-          { label: "Options chiffrées", value: "4" },
-          { label: "Horizons TCO", value: "1 · 3 · 5 ans" },
+          { label: "Point de bascule", value: "141 utilisateurs" },
+          { label: "Licence premium", value: "17,30\u00a0€ HT/mois" },
+          { label: "Horizons résolus", value: "1 · 3 · 5 ans" },
           { label: "Score opaque", value: "Aucun" },
-          { label: "Lecture", value: `${powerAppsGuide.readTimeMin} min` },
+          { label: "Prix maison publiés", value: "Oui" },
         ]}
         author={{
           initials: TEAM.quentin.initials,
@@ -301,8 +288,8 @@ export default function Page() {
           titleEm: "Power Apps",
           titleEnd: "et le sur-mesure.",
           subtitle:
-            "Prix, délégation, SharePoint, Dataverse, invités, hors-ligne, accessibilité, politiques de données, export, support et conditions d’une reconstruction.",
-          ctaTitle: "Un point encore ouvert sur votre outil interne ?",
+            "Licence incluse ou premium, durée de construction, SharePoint contre Dataverse, ouverture à des externes, hors-ligne, départ du créateur, prix d’un outil interne et conditions d’une reconstruction.",
+          ctaTitle: "Un point encore ouvert sur votre outil interne\u00a0?",
           ctaDescription:
             "Décrivez les licences envisagées, les connecteurs nécessaires et la sortie attendue, sans transmettre de donnée sensible.",
           ctaLabel: "Décrire mon outil interne",
@@ -313,163 +300,96 @@ export default function Page() {
             source: "Microsoft · tarifs Power Apps",
             href: "https://www.microsoft.com/fr-fr/power-platform/products/power-apps/pricing",
             description:
-              "Page française vérifiée le 3 août 2026 : Premium à 17,30 € HT/utilisateur/mois, paiement annuel ; 10,40 € avec un minimum de 2 000 postes/licences et contact commercial ; Developer réservé au développement/test ; capacité Dataverse supplémentaire à 34,70 € HT/Go/mois.",
+              "Page française consultée le 28 août 2026\u00a0: Premium à 17,30\u00a0€ HT/utilisateur/mois, paiement annuel\u00a0; 10,40\u00a0€ HT à partir de 2\u00a0000 licences\u00a0; capacité Dataverse supplémentaire à 34,70\u00a0€ HT/Go/mois\u00a0; plan Developer gratuit, réservé au développement et au test.",
+          },
+          {
+            source:
+              "Microsoft Learn · vue d’ensemble des licences Power Platform",
+            href: "https://learn.microsoft.com/fr-fr/power-platform/admin/pricing-billing-skus",
+            description:
+              "Consultée le 28 août 2026. Le tableau «\u00a0Power Apps pour Microsoft 365\u00a0» coche «\u00a0se connecter aux services Cloud avec les connecteurs standard\u00a0» et laisse vide «\u00a0accéder aux données locales ou utiliser les connecteurs Premium ou personnalisés\u00a0». C’est la source de la règle du connecteur.",
+          },
+          {
+            source: "Microsoft Learn · compteurs de paiement à l’utilisation",
+            href: "https://learn.microsoft.com/fr-fr/power-platform/admin/pay-as-you-go-meters",
+            description:
+              "Consultée le 28 août 2026. Compteur Power Apps à 10 USD par utilisateur actif unique, par application et par mois\u00a0; les ouvertures répétées ne recomptent pas l’utilisateur. Le tableau des types de licence confirme qu’un utilisateur Microsoft 365 n’est pas compté sur connecteurs standard, et l’est sur connecteurs premium.",
+          },
+          {
+            source: "Microsoft Learn · connecteur SQL Server",
+            href: "https://learn.microsoft.com/fr-fr/connectors/sql/",
+            description:
+              "Consultée le 28 août 2026. Le tableau de disponibilité classe le connecteur SQL Server en «\u00a0Premium\u00a0» pour Power Apps, Power Automate et Copilot Studio. C’est cette ligne qui fait basculer la facture du cas construit de ce guide.",
           },
           {
             source:
               "Microsoft · guide de licences Power Platform, juillet 2026",
             href: "https://go.microsoft.com/fwlink/?LinkId=2085130",
             description:
-              "Guide officiel rouvert dans sa version de juillet 2026. La page 25 décrit le multiplexing et les accès directs ou indirects ; le guide précise qu’il ne remplace pas les documents contractuels ni la validation du scénario exact.",
-          },
-          {
-            source: "Microsoft Learn · compteurs PAYG",
-            href: "https://learn.microsoft.com/fr-fr/power-platform/admin/pay-as-you-go-meters",
-            description:
-              "Compteur Power Apps à 10 USD/utilisateur actif unique/application/mois ; les ouvertures répétées dans le mois ne recomptent pas l’utilisateur. Ne pas convertir en euros sans facture ou contrat Azure.",
-          },
-          {
-            source:
-              "Microsoft Learn · partager une application canevas avec des invités",
-            href: "https://learn.microsoft.com/fr-fr/power-apps/maker/canvas-apps/share-app-guests",
-            description:
-              "Distingue collaboration Entra B2B, licence Power Apps et autorisations sur les sources sous-jacentes. Un invité dans un tenant n’obtient pas automatiquement les droits requis dans un autre.",
-          },
-          {
-            source: "Microsoft · tarifs Power Pages",
-            href: "https://www.microsoft.com/fr-fr/power-platform/products/power-pages/pricing",
-            description:
-              "Page tarifaire distincte pour les utilisateurs externes authentifiés et anonymes. Les tarifs sont volatils ; vérifier le modèle, la capacité et le contrat au moment du projet.",
-          },
-          {
-            source: "Microsoft Learn · présentation de Dataverse",
-            href: "https://learn.microsoft.com/fr-fr/power-apps/maker/data-platform/data-platform-intro",
-            description:
-              "Tables, relations, métadonnées, logique, sécurité et intégration Power Platform. La présence de ces capacités ne remplace pas une conception des données ni une revue de licences.",
-          },
-          {
-            source: "Microsoft Support · grandes listes SharePoint",
-            href: "https://support.microsoft.com/fr-fr/office/seuil-d-affichage-de-liste-pour-les-biblioth%C3%A8ques-et-les-grandes-listes-e2ea4d5d-ec23-4171-95c4-c7f5b5dbfd8a",
-            description:
-              "Une liste ou bibliothèque peut stocker jusqu’à 30 millions d’éléments, tandis que le seuil de vue/requête documenté est de 5 000. Ce seuil n’est pas une limite de stockage à 5 000 lignes.",
+              "La page 25 décrit le multiplexing et les accès directs ou indirects\u00a0: une personne ou un appareil qui saisit, interroge ou consulte doit être correctement licencié. Le guide précise qu’il ne remplace ni les documents contractuels ni la validation du scénario exact.",
           },
           {
             source:
               "Microsoft Learn · délégation dans les applications canevas",
             href: "https://learn.microsoft.com/fr-fr/power-apps/maker/canvas-apps/delegation-overview",
             description:
-              "La limite locale pour une requête non délégable est de 500 par défaut et peut être portée à 2 000. Une formule non délégable peut produire un résultat partiel ou faux.",
+              "Consultée le 28 août 2026. Liste les fonctions déléguables (=, <>, >, >=, <, <=, StartsWith, EndsWith, TrimEnds, IsBlank, And, Or, Not) et celles qui ne le sont jamais (Lower, Upper, Left, Mid, Len, Concatenate, If, Text, Value). Limite locale de 500 enregistrements, réglable de 1 à 2\u00a0000.",
           },
           {
-            source: "Microsoft Learn · connecteurs Power Platform",
-            href: "https://learn.microsoft.com/fr-fr/connectors/",
+            source: "Microsoft Support · grandes listes SharePoint",
+            href: "https://support.microsoft.com/fr-fr/office/seuil-d-affichage-de-liste-pour-les-biblioth%C3%A8ques-et-les-grandes-listes-e2ea4d5d-ec23-4171-95c4-c7f5b5dbfd8a",
             description:
-              "Catalogue et documentation des connecteurs. Chaque connecteur peut avoir ses propres opérations, authentifications, limites et statut standard ou Premium à confirmer.",
-          },
-          {
-            source: "Microsoft Learn · limites de requêtes et allocations",
-            href: "https://learn.microsoft.com/fr-fr/power-platform/admin/api-request-limits-allocations",
-            description:
-              "Droits de requêtes liés aux licences et mécanismes associés. Les nombres changent ; ils ne doivent pas être transformés en promesse de capacité applicative.",
-          },
-          {
-            source: "Microsoft Learn · protection de service Dataverse",
-            href: "https://learn.microsoft.com/fr-fr/power-apps/developer/data-platform/api-limits",
-            description:
-              "Limites de protection de service Dataverse, distinctes des droits liés aux licences et des limites propres aux connecteurs.",
-          },
-          {
-            source: "Microsoft Learn · environnements Power Platform",
-            href: "https://learn.microsoft.com/fr-fr/power-platform/admin/environments-overview",
-            description:
-              "Rôle des environnements dans la séparation des applications, flux, connexions et données. Une application critique ne devrait pas dépendre tacitement de l’environnement par défaut.",
-          },
-          {
-            source: "Microsoft Learn · principes ALM Power Platform",
-            href: "https://learn.microsoft.com/en-us/power-platform/alm/basics-alm",
-            description:
-              "Cycle de vie, solutions et disciplines de développement, test et production. À compléter par variables, références de connexion, tests et responsabilités.",
-          },
-          {
-            source: "Microsoft Learn · pipelines Power Platform",
-            href: "https://learn.microsoft.com/fr-fr/power-platform/alm/pipelines",
-            description:
-              "Déploiement des solutions entre environnements. Les pipelines ne transportent pas les données métier ; connexions, identités, secrets et données ont leur propre plan.",
-          },
-          {
-            source:
-              "Microsoft Learn · fichiers de solution et contrôle de version",
-            href: "https://learn.microsoft.com/fr-fr/power-platform/alm/use-source-control-solution-files",
-            description:
-              "Extraction des fichiers de solution pour audit et contrôle de version dans Power Platform. Cela ne constitue pas un export en code React ou Next.js portable.",
-          },
-          {
-            source: "Microsoft Learn · sécurité Dataverse",
-            href: "https://learn.microsoft.com/fr-fr/power-platform/admin/security-roles-privileges",
-            description:
-              "Les rôles et privilèges Dataverse sont cumulatifs. Le moindre privilège doit être testé avec des comptes représentatifs et les équipes réellement attribuées.",
-          },
-          {
-            source: "Microsoft Learn · politiques de données DLP",
-            href: "https://learn.microsoft.com/en-us/power-platform/admin/wp-data-loss-prevention",
-            description:
-              "Les politiques classent et combinent les connecteurs ; selon les règles effectives, applications et flux peuvent être bloqués, suspendus ou mis en quarantaine.",
-          },
-          {
-            source: "Microsoft Learn · politiques avancées des connecteurs",
-            href: "https://learn.microsoft.com/en-us/power-platform/admin/advanced-connector-policies",
-            description:
-              "Liste d’autorisation stricte pour les connecteurs certifiés. En mode mixte, la règle la plus restrictive avec les politiques classiques s’applique ; les connecteurs personnalisés et HTTP ne sont pas encore couverts par ACP.",
+              "Une liste ou bibliothèque peut contenir jusqu’à 30 millions d’éléments\u00a0; le seuil d’affichage de liste est de 5\u00a0000 éléments par opération de base de données. La page décrit le rôle des colonnes indexées dans les vues filtrées\u00a0; elle ne promet pas qu’elles lèvent le seuil.",
           },
           {
             source: "Microsoft Learn · offline-first Power Apps Mobile",
             href: "https://learn.microsoft.com/fr-fr/power-apps/mobile/mobile-offline-works-overview",
             description:
-              "Architecture offline-first intégrée avec Dataverse et Power Apps Mobile. Les profils, filtres, synchronisations, conflits et limites doivent être testés sur les appareils réels.",
+              "Architecture hors-ligne intégrée, adossée à Dataverse et à l’application mobile Power Apps. Profils, filtres, synchronisations et conflits restent à tester sur les appareils réellement utilisés.",
           },
           {
             source:
               "Microsoft Learn · limites hors ligne des applications canevas",
             href: "https://learn.microsoft.com/en-us/power-apps/mobile/limitations-canvas-apps",
             description:
-              "L’offline-first concerne les applications canevas autonomes et Dataverse. Les connecteurs non-Dataverse, dont SharePoint, et les flux Power Automate ne sont pas pris en charge hors ligne ; d’autres limites de données et de synchronisation s’appliquent.",
+              "Pour une application canevas autonome activée hors ligne, les connecteurs autres que Dataverse — dont SharePoint — et les flux Power Automate ne sont pas pris en charge.",
           },
           {
-            source: "Microsoft Learn · accessibilité des applications canevas",
-            href: "https://learn.microsoft.com/fr-fr/power-apps/maker/canvas-apps/accessible-apps",
+            source: "Microsoft Learn · politiques de données DLP",
+            href: "https://learn.microsoft.com/en-us/power-platform/admin/wp-data-loss-prevention",
             description:
-              "Recommandations pour ordre de navigation, libellés, contraste, clavier et lecteur d’écran. Elles doivent être appliquées puis testées sur les parcours réels.",
+              "Les politiques classent et combinent les connecteurs\u00a0; selon les règles effectives, applications et flux peuvent être bloqués, suspendus ou mis en quarantaine. C’est le mécanisme du deuxième incident raconté en section 06.",
+          },
+          {
+            source: "Microsoft Learn · environnements Power Platform",
+            href: "https://learn.microsoft.com/fr-fr/power-platform/admin/environments-overview",
+            description:
+              "Rôle des environnements dans la séparation des applications, flux, connexions et données. Une application importante ne devrait pas dépendre tacitement de l’environnement par défaut.",
+          },
+          {
+            source:
+              "Microsoft Learn · fichiers de solution et contrôle de version",
+            href: "https://learn.microsoft.com/fr-fr/power-platform/alm/use-source-control-solution-files",
+            description:
+              "Extraction des fichiers de solution pour audit et contrôle de version dans Power Platform. Ces fichiers ne constituent pas un export en code web portable\u00a0: quitter la plateforme suppose de reconstruire l’interface et la logique.",
           },
           {
             source: "Microsoft Learn · vérificateur d’accessibilité",
             href: "https://learn.microsoft.com/fr-fr/power-apps/maker/canvas-apps/accessibility-checker",
             description:
-              "Outil d’aide qui repère certains problèmes ; il ne constitue pas une preuve de conformité WCAG ou RGAA.",
+              "Outil d’aide qui repère certains problèmes. Il ne constitue une preuve de conformité ni aux Web Content Accessibility Guidelines (WCAG) ni au Référentiel général d’amélioration de l’accessibilité (RGAA).",
           },
           {
-            source: "Microsoft Learn · limites d’accessibilité connues",
-            href: "https://learn.microsoft.com/fr-fr/power-apps/maker/canvas-apps/accessible-apps-limitations",
+            source: "Hagnéré Code · tarifs publics",
+            href: "/tarifs",
             description:
-              "Limites connues à confronter aux technologies d’assistance et aux exigences réelles du projet.",
-          },
-          {
-            source:
-              "Microsoft Learn · exporter et importer une application canevas",
-            href: "https://learn.microsoft.com/fr-fr/power-apps/maker/canvas-apps/export-import-app",
-            description:
-              "Procédure de transport d’application avec dépendances à gérer. Une exportation seule ne prouve pas la restauration complète des données, connexions, identités, secrets et flux.",
-          },
-          {
-            source: "Microsoft Learn · support Power Platform",
-            href: "https://learn.microsoft.com/en-us/power-platform/admin/support-overview",
-            description:
-              "Cadre du support de plateforme. Il ne remplace pas la maintenance applicative, l’assistance métier, la gouvernance et la continuité d’activité propres à l’organisation.",
+              "Grille relevée le 28 août 2026\u00a0: audit des processus internes 990\u00a0€ HT (1 jour), Discovery Sprint 1\u00a0500\u00a0€ HT (2 jours, déduit si la phase 2 est lancée), outils internes 8\u00a0000 / 25\u00a0000 / 80\u00a0000\u00a0€ HT, forfaits de maintenance avec un repère indicatif à partir de 2\u00a0500\u00a0€ HT par mois. Repères publics et indicatifs\u00a0: le devis signé fixe le prix ferme.",
           },
           {
             source: "CNIL · encadrer les développements informatiques",
             href: "https://www.cnil.fr/fr/securite-encadrer-les-developpements-informatiques",
             description:
-              "Protection des données et sécurité dès la conception, minimisation et exigences intégrées au cycle de développement. Le choix de Power Apps ou du sur-mesure ne certifie pas à lui seul la conformité du traitement.",
+              "Protection des données dès la conception, minimisation et exigences intégrées au cycle de développement. Choisir Power Apps ou le sur-mesure ne certifie à soi seul la conformité d’aucun traitement.",
           },
         ]}
         disclaimer={{
@@ -480,15 +400,15 @@ export default function Page() {
         }}
         relatedGuides={[
           {
-            label: "Besoin d’un logiciel métier : le diagnostic en 6 réponses",
+            label: "Besoin d’un logiciel métier\u00a0: le diagnostic en 6 réponses",
             href: "/guides/signes-besoin-logiciel-metier",
           },
           {
-            label: "Quel processus métier automatiser en premier ?",
+            label: "Quel processus métier automatiser en premier\u00a0?",
             href: "/guides/automatiser-processus-metier",
           },
           {
-            label: "Comment rédiger un cahier des charges SaaS ?",
+            label: "Comment rédiger un cahier des charges SaaS\u00a0?",
             href: "/guides/cahier-des-charges-saas",
           },
         ]}
@@ -498,1201 +418,752 @@ export default function Page() {
           id="reponse"
           number="01"
           label="Réponse directe"
-          readingTime="4 min"
-          title="Power Apps ou sur mesure : la bonne réponse dépend de preuves, pas d’une préférence"
+          readingTime="2 min"
+          title="Le jour où l’application branche autre chose que SharePoint"
         >
           <p>
+            Une responsable administrative saisit ses demandes d’achat dans un
+            formulaire SharePoint depuis dix-huit mois. Tout tient, jusqu’au
+            matin où le service achats veut voir le stock disponible, qui vit
+            dans l’ERP. Ce matin-là, la facture change de nature.
+          </p>
+          <p>
             <strong>
-              Power Apps reste défendable si les tests des cas difficiles sont
-              concluants, si vous maîtrisez le coût prévu au contrat et si votre
-              équipe sait déployer, sécuriser, prendre en charge et restaurer
-              l’application.
+              Tant que votre application ne touche que SharePoint, Outlook,
+              Excel ou Teams, elle tourne sur les droits Power Apps déjà inclus
+              dans Microsoft&nbsp;365&nbsp;: 0&nbsp;€ de licence en plus.
             </strong>{" "}
-            Envisagez une application dédiée seulement après avoir reproduit une
-            limite importante qu’une correction raisonnable n’a pas levée. Avant
-            de migrer, vérifiez que les bénéfices attendus et documentés
-            justifient son coût et son risque.
+            Dès qu’elle interroge SQL Server, Dataverse, un connecteur
+            personnalisé, une passerelle vers un serveur local ou une adresse
+            HTTP, chaque utilisateur passe au plan Premium, affiché
+            17,30&nbsp;€ hors taxes (HT) par utilisateur et par mois avec
+            paiement annuel sur la page française de Microsoft, consultée le
+            28&nbsp;août 2026.
           </p>
           <p>
-            Avant de tout réécrire, vous pouvez renforcer Power Platform ou
-            conserver ce qui fonctionne et confier la contrainte bloquante à un
-            module dédié. Si l’audience, les licences, l’exécution des requêtes
-            dans la source — la délégation —, le hors-ligne, les politiques de
-            données ou la reprise restent inconnus, suspendez la décision et
-            notez : <strong>preuve manquante</strong>. Dans ce guide, le tenant
-            désigne l’instance organisationnelle Microsoft qui regroupe
-            notamment les identités, les licences, les politiques et les
-            environnements Power Platform. Un tenant n’est donc pas un
-            environnement.
-          </p>
-          <p>
-            Isolez d’abord la cause. Une application lente peut venir d’une
-            formule non délégable, d’un modèle SharePoint mal interrogé ou d’un
-            flux mal conçu : ces défauts peuvent parfois être corrigés. À
-            l’inverse, une démonstration fluide sur cinquante lignes ne prouve
-            ni le comportement au volume, ni l’accès d’invités, ni la continuité
-            dans une zone sans réseau, ni la capacité de l’équipe à reprendre
-            l’outil.
+            En face, notre grille publique situe un outil interne sur mesure à
+            partir de 8&nbsp;000&nbsp;€ HT. Neuf utilisateurs en Premium
+            coûtent 1&nbsp;868&nbsp;€ HT par an. La section&nbsp;05 résout le
+            décompte complet aux trois horizons&nbsp;: sur le seul terrain du
+            prix, il faudrait 141&nbsp;utilisateurs pour que l’écart s’inverse.
           </p>
 
-          <GuideTable
-            caption="Les cinq conclusions possibles après vérification"
-            headers={["Statut", "Quand il est défendable", "Action suivante"]}
-            rows={outcomes.map((outcome) => [
-              `${outcome.status} — ${outcome.title}`,
-              outcome.trigger,
-              outcome.next,
-            ])}
-          />
-
-          <p>
-            Chacune de ces cinq décisions doit reposer sur une preuve et
-            déboucher sur une action précise. Si votre équipe ne peut pas nommer
-            la première preuve à réunir, la décision reste en attente.
-          </p>
-
-          <GuidePremiumMemo
-            eyebrow="Règle de décision"
-            title="Une preuve doit pouvoir invalider votre option préférée"
+          <GuidePremiumCase
+            initial="9"
+            eyebrow="Fil rouge du guide · exemple construit"
+            title={"Neuf personnes, 3\u00a0200 demandes d’achat, un connecteur qui change tout"}
           >
-            <ul>
-              <li>
-                Testez les requêtes : le résultat peut écarter le maintien en
-                l’état.
-              </li>
-              <li>
-                Effectuez une restauration complète. Elle peut montrer que la
-                sortie n’est pas aussi simple que prévu.
-              </li>
-              <li>
-                Comparez le gain d’usage et le TCO du prototype dédié ; si le
-                gain ne justifie pas le coût, écartez la reconstruction.
-              </li>
-              <li>
-                Si la correction réussit, Power Apps peut redevenir préférable.
-              </li>
-            </ul>
-          </GuidePremiumMemo>
+            <p>
+              <em>
+                Exemple construit à partir des fourchettes citées dans ce
+                guide&nbsp;— ce n’est pas un dossier client.
+              </em>{" "}
+              Une entreprise de menuiserie industrielle de 34&nbsp;salariés à
+              Besançon. Sabine, responsable administrative, a monté elle-même
+              une application canevas de demandes d’achat sur une liste
+              SharePoint. Neuf personnes s’en servent&nbsp;: elle, six chefs
+              d’atelier, le contrôleur de gestion et le DSI. La liste porte
+              3&nbsp;200&nbsp;lignes après dix-huit mois.
+            </p>
+            <p>
+              Le service achats demande maintenant d’afficher le stock
+              disponible, qui vit dans l’ERP sur SQL Server. L’administrateur
+              Microsoft&nbsp;365 ouvre la fiche du connecteur et lit&nbsp;:
+              <em> Premium</em>. Nous suivrons ce dossier jusqu’au décompte à
+              cinq ans.
+            </p>
+          </GuidePremiumCase>
 
-          <InfoBox variant="amber" title="Incident actif : arrêtez l’arbitrage">
+          <InfoBox variant="amber" title={"Incident actif\u00a0: arrêtez l’arbitrage"}>
             <p>
               Si l’application est indisponible, si des données semblent
               perdues, si un compte est compromis ou si une politique vient de
               suspendre un flux, traitez d’abord l’incident et organisez le
-              fonctionnement en mode dégradé. La refonte viendra ensuite : elle
-              ne remplace ni une restauration ni une procédure de réponse à
-              incident.
+              fonctionnement en mode dégradé. La refonte viendra ensuite&nbsp;:
+              elle ne remplace ni une restauration ni une procédure de réponse
+              à incident.
             </p>
           </InfoBox>
+        </GuidePremiumSection>
 
+        <GuidePremiumSection
+          id="power-apps"
+          number="02"
+          label="Le produit"
+          readingTime="2 min"
+          title={"Power Apps, qu’est-ce qu’on peut vraiment en faire\u00a0?"}
+        >
           <p>
-            Avant de comparer les outils ou les tarifs, identifiez votre
-            situation de départ : partez-vous de zéro ou d’une Power App déjà
-            utilisée ? L’ordre des vérifications n’est pas le même.
+            Le nom recouvre trois produits qui ne se ressemblent pas, et la
+            confusion entre eux coûte plus cher que n’importe quelle limite
+            technique.
+          </p>
+          <p>
+            <strong>L’application canevas</strong> est celle que tout le monde
+            appelle «&nbsp;une Power App&nbsp;». Vous dessinez l’écran comme
+            une diapositive, puis vous écrivez la logique en{" "}
+            <strong>Power&nbsp;Fx</strong>, le langage de formules de la
+            plateforme, très proche de celui d’Excel&nbsp;:{" "}
+            <code>Filter</code>, <code>LookUp</code>, <code>If</code>. C’est
+            l’outil du formulaire de demande d’achat de Sabine, du relevé de
+            présence, du constat de chantier photographié sur téléphone.
+          </p>
+          <p>
+            <strong>L’application pilotée par modèle</strong> part de l’autre
+            bout. Vous décrivez d’abord les tables dans{" "}
+            <strong>Dataverse</strong>, la base relationnelle de Power
+            Platform, avec leurs relations et leurs droits par ligne&nbsp;; les
+            écrans se génèrent ensuite. C’est ce qu’il faut pour un suivi
+            d’interventions où un technicien de maintenance relie un client, un
+            contrat, un équipement et un bon de travail.
+          </p>
+          <p>
+            <strong>Power Pages</strong>, enfin, produit un site web adossé à
+            Dataverse pour des gens absents de votre annuaire interne&nbsp;: un
+            portail où un fournisseur dépose ses factures.
+          </p>
+          <p>
+            Ces trois familles n’ont pas le même régime de licence, et c’est là
+            que se joue la facture. Une application canevas sur connecteurs
+            standard passe avec les droits déjà inclus dans
+            Microsoft&nbsp;365. Une application pilotée par modèle suppose
+            Dataverse, donc un accès premium. Power Pages a sa propre
+            tarification, comptée par utilisateur et par site.
           </p>
         </GuidePremiumSection>
 
         <GuidePremiumSection
-          id="chemins"
-          number="02"
-          label="Deux chemins"
-          readingTime="5 min"
-          title="Vous ne choisissez pas de la même manière pour un nouveau projet et une Power App déjà utilisée"
+          id="connecteur"
+          number="03"
+          label="Licence"
+          readingTime="3 min"
+          title={"Ce que Power Apps coûte vraiment\u00a0: la règle du connecteur"}
         >
           <p>
-            Pour un nouveau projet, vérifiez d’abord qu’un type d’application
-            Power Platform couvre réellement la tâche. Pour une application déjà
-            utilisée, identifiez la cause du problème avant d’abandonner un
-            outil adopté. Les preuves à réunir sont les mêmes, mais leur ordre
-            change.
-          </p>
-
-          <div className="not-prose my-7 grid gap-5 lg:grid-cols-2">
-            <div className="rounded-2xl border border-indigo-200 bg-indigo-50/60 p-5 dark:border-indigo-900 dark:bg-indigo-950/25">
-              <div className="flex items-center gap-3">
-                <Users
-                  className="size-6 text-indigo-700 dark:text-indigo-300"
-                  aria-hidden="true"
-                />
-                <h3 className="text-lg font-bold text-zinc-950 dark:text-white">
-                  Chemin A · nouveau projet
-                </h3>
-              </div>
-              <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-zinc-700 dark:text-zinc-200">
-                <li>
-                  Observer trois tâches représentatives et leurs exceptions.
-                </li>
-                <li>
-                  Choisir le type d’application envisagé d’après son audience et
-                  ses données.
-                </li>
-                <li>
-                  Prototyper la requête, l’identité, le hors-ligne et le
-                  parcours les plus risqués.
-                </li>
-                <li>
-                  Faire valider licences, politiques de données, rôles,
-                  environnements et exploitation.
-                </li>
-                <li>
-                  Comparer le coût total de possession des quatre options, coûts
-                  de sortie compris.
-                </li>
-              </ol>
-            </div>
-            <div className="rounded-2xl border border-emerald-200 bg-emerald-50/60 p-5 dark:border-emerald-900 dark:bg-emerald-950/25">
-              <div className="flex items-center gap-3">
-                <Wrench
-                  className="size-6 text-emerald-700 dark:text-emerald-300"
-                  aria-hidden="true"
-                />
-                <h3 className="text-lg font-bold text-zinc-950 dark:text-white">
-                  Chemin B · application existante
-                </h3>
-              </div>
-              <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-zinc-700 dark:text-zinc-200">
-                <li>
-                  Geler une version connue et documenter l’incident ou la gêne
-                  précise.
-                </li>
-                <li>
-                  Inventorier application, données, flux, connecteurs, identités
-                  et propriétaires, sans dépendre du seul créateur de
-                  l’application — le « maker ».
-                </li>
-                <li>
-                  Reproduire le problème sur une copie, mesurer les conditions
-                  dans lesquelles il survient et en identifier la cause.
-                </li>
-                <li>Tester une correction limitée avant toute réécriture.</li>
-                <li>
-                  Comparer maintien corrigé, hybride et dédié sur les mêmes
-                  scénarios.
-                </li>
-              </ol>
-            </div>
-          </div>
-
-          <h3>Ce que vous comparez réellement</h3>
-          <p>
-            Power Apps recouvre plusieurs familles. Dans une application
-            canevas, l’équipe compose librement l’interface. Une application
-            pilotée par modèle s’organise autour du modèle de données Dataverse,
-            tandis que Power Pages sert à créer des sites externes adossés à
-            Dataverse. Avec une application dédiée, l’équipe choisit pour le
-            projet l’interface, l’environnement d’exécution — le runtime —,
-            l’identité, les données et le mode d’exploitation. Les traiter comme
-            quatre produits interchangeables produirait de faux écarts.
+            Microsoft publie la règle dans un tableau que presque personne ne
+            lit. Sur la page de vue d’ensemble des licences Power Platform,
+            consultée le 28&nbsp;août 2026, la colonne «&nbsp;Power Apps pour
+            Microsoft&nbsp;365&nbsp;» coche «&nbsp;se connecter aux services
+            Cloud avec les connecteurs standard&nbsp;» et laisse vide
+            «&nbsp;accéder aux données locales ou utiliser les connecteurs
+            Premium ou personnalisés&nbsp;». La page des compteurs de paiement
+            à l’usage confirme la même frontière côté facturation&nbsp;: un
+            utilisateur sous plan Microsoft&nbsp;365 n’est pas compté sur une
+            application à connecteurs standard, et l’est sur une application à
+            connecteurs premium.
           </p>
 
           <GuideTable
-            caption="Quatre familles à confronter au même besoin"
+            caption="Ce qui fait basculer la facture d’une Power App"
             headers={[
-              "Option",
-              "Point fort à vérifier",
-              "Contre-preuve à chercher",
-              "Dépendance structurante",
+              "Ce que l’application touche",
+              "Classe du connecteur",
+              "Ce que ça change sur la facture",
             ]}
             rows={[
               [
-                "Application canevas",
-                "Parcours interne très spécifique et intégration Microsoft 365",
-                "Requêtes non délégables, usage externe, accessibilité ou hors-ligne non couvert",
-                "Connecteurs, sources et runtime Power Apps",
+                "SharePoint, Outlook, Excel, Teams, Planner, OneDrive",
+                "Standard",
+                "0\u00a0€ de licence en plus\u00a0: les droits inclus dans Microsoft 365 suffisent",
               ],
               [
-                "Pilotée par modèle",
-                "Données relationnelles Dataverse, vues, formulaires et processus structurés",
-                "Expérience très sur mesure ou besoin sortant du modèle",
-                "Dataverse, rôles et cycle de vie Power Platform",
+                "SQL Server, Dataverse, connecteur personnalisé, passerelle vers un serveur local, HTTP",
+                "Premium",
+                "17,30\u00a0€ HT par utilisateur et par mois, soit 207,60\u00a0€ HT par personne et par an",
               ],
               [
-                "Power Pages",
-                "Portail web externe lié à Dataverse",
-                "Identité, marque, volumétrie ou tarification externe incompatible",
-                "Capacité Power Pages, Dataverse et gouvernance du tenant",
+                "Application pilotée par modèle, quelle que soit la source",
+                "Dataverse obligatoire",
+                "Même bascule, plus 34,70\u00a0€ HT par Go et par mois au-delà de la capacité incluse",
               ],
               [
-                "Application dédiée",
-                "Expérience, intégrations et architecture conçues au besoin",
-                "TCO, délai, exploitation ou dépendance à une équipe sous-estimés",
-                "Code, hébergement, sécurité, support et compétences choisies",
+                "Compte de service qui relaie les accès de plusieurs personnes",
+                "Multiplexing",
+                "Aucune économie\u00a0: la personne qui consulte doit être licenciée, accès direct ou indirect",
               ],
             ]}
           />
 
           <p>
-            Commencez donc par aligner la surface, l’audience et les données.
-            Comparer une application canevas interne à un portail client dédié
-            sans garder le même public fausse le verdict.
+            Appliquons la ligne 2 au dossier de Sabine. Le connecteur SQL
+            Server est classé <em>Premium</em> sur sa fiche Microsoft
+            Learn&nbsp;: les neuf utilisateurs basculent ensemble. Le calcul
+            tient sur une ligne&nbsp;: 9&nbsp;×&nbsp;17,30&nbsp;€&nbsp;×&nbsp;12
+            = <strong>1&nbsp;868,40&nbsp;€ HT par an</strong>, soit
+            9&nbsp;342&nbsp;€ sur cinq ans. Refaites-le avec votre nombre de
+            personnes&nbsp;: chaque utilisateur supplémentaire pèse
+            1&nbsp;038&nbsp;€ HT sur cinq ans.
           </p>
 
-          <div className="not-prose my-8 overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
-            <Image
-              src="/guides/power-apps-ou-application-sur-mesure/article-power-apps-16x9.svg"
-              alt="Matrice en cinq sorties : arrêter, conserver, renforcer, hybrider ou reconstruire"
-              width={1600}
-              height={900}
-              sizes="(max-width: 1024px) 100vw, 760px"
-              className="h-auto w-full"
-            />
-            <p className="px-4 py-3 text-xs leading-relaxed text-zinc-500 dark:text-zinc-300">
-              Une préférence ne devient une décision qu’après avoir recherché
-              des faits capables de la contredire.
-            </p>
-          </div>
-
+          <h3>Les autres repères publics, et leurs pièges</h3>
           <p>
-            Le type d’application ne suffit pas pour trancher. Appliquez
-            maintenant les mêmes cinq tests à chaque option.
+            À partir de 2&nbsp;000&nbsp;licences, la même page affiche
+            10,40&nbsp;€ HT par utilisateur et par mois, avec paiement annuel
+            et passage par un commercial. Le plan Developer reste gratuit, mais
+            il est réservé au développement et au test&nbsp;— jamais à la
+            production. L’ancien abonnement «&nbsp;par application&nbsp;» n’est
+            plus commercialisé depuis janvier 2026&nbsp;: un budget bâti sur le
+            repère à 5&nbsp;USD qui circule encore est faux. Le paiement à
+            l’usage se compte, lui, à 10&nbsp;USD par utilisateur actif unique,
+            par application et par mois&nbsp;— les ouvertures répétées dans le
+            mois ne recomptent pas la personne. Ce montant reste en dollars, et
+            aucune conversion automatique ne remplace votre facture Azure.
           </p>
+
+          <h3>Une connexion mutualisée réduit-elle le nombre de licences&nbsp;?</h3>
+          <p>
+            Non, pas automatiquement. Microsoft appelle{" "}
+            <em>multiplexing</em> le fait de mutualiser ou de réacheminer des
+            connexions, d’interposer une couche technique ou d’automatiser un
+            processus pour réduire le nombre d’utilisateurs qui accèdent
+            directement au service. La page 25 de son guide de licences précise
+            qu’une personne ou un appareil qui saisit, interroge, consulte ou
+            accède autrement à Power Apps doit être correctement licencié, que
+            l’accès soit direct ou indirect. Ajouter des couches
+            intermédiaires ne change pas ce principe.
+          </p>
+          <p>
+            Sur le dossier de Sabine, la tentation existe&nbsp;: faire lire
+            l’ERP par un compte de service unique et rediffuser le stock dans
+            la liste SharePoint. Un budget limité au compte de service ou à la
+            connexion partagée serait donc incomplet. La page 25 ne choisit
+            pourtant pas la référence commerciale applicable&nbsp;: identifiez
+            qui accède réellement, puis faites confirmer le scénario exact par
+            votre équipe Microsoft ou un partenaire certifié Microsoft. Le guide
+            de licences ne remplace pas votre contrat.
+          </p>
+
+          <InfoBox variant="blue" title="Prix public ≠ prix contractuel ≠ coût total">
+            <p>
+              Confirmez pays, devise, taxes, engagement, remise, seuil, droit
+              Microsoft&nbsp;365, connecteurs, Dataverse, flux, capacité,
+              utilisateurs externes et canal d’achat. Un droit inclus dans un
+              scénario ne signifie pas «&nbsp;Power Apps gratuit pour
+              tout&nbsp;».
+            </p>
+          </InfoBox>
         </GuidePremiumSection>
 
         <GuidePremiumSection
-          id="cinq-tests"
-          number="03"
-          label="Preuves"
-          readingTime="9 min"
-          title="Cinq tests pour séparer une limite de plateforme d’un défaut corrigeable"
+          id="limites"
+          number="04"
+          label="Seuils réels"
+          readingTime="3 min"
+          title="Où Power Apps s’arrête, et où la rumeur se trompe"
         >
           <p>
-            Chaque test doit produire une trace : capture d’un avertissement,
-            requête rejouable, compte de test, facture, export restauré, journal
-            de déploiement ou procès-verbal de recette. « Cela devrait marcher »
-            et « le commercial nous l’a dit » ne sont pas des preuves
-            d’architecture.
+            «&nbsp;Power Apps est limité à 2&nbsp;000&nbsp;lignes&nbsp;»&nbsp;:
+            la phrase circule dans toutes les réunions de décision, et elle
+            mélange trois nombres qui ne mesurent pas la même chose.
           </p>
 
-          <h3>Test 1 — la tâche et les données les plus difficiles</h3>
+          <GuideTable
+            caption="Trois nombres qu’on confond tout le temps"
+            headers={[
+              "Le nombre",
+              "Ce qu’il limite réellement",
+              "Ce qu’il ne limite pas",
+              "Comment on vit avec",
+            ]}
+            rows={[
+              [
+                "30 millions",
+                "Le nombre d’éléments qu’une liste ou bibliothèque SharePoint peut contenir",
+                "Rien d’autre\u00a0: ce n’est pas un plafond d’application",
+                "Aucune action\u00a0; c’est le toit, pas la porte",
+              ],
+              [
+                "5\u00a0000",
+                "Le nombre d’éléments qu’une seule opération de base de données traite d’un coup — le seuil d’affichage de liste",
+                "Le nombre de lignes stockées dans la liste",
+                "Vues filtrées sur colonne indexée, découpage par dossier ou par année",
+              ],
+              [
+                "500, réglable de 1 à 2\u00a0000",
+                "Le nombre d’enregistrements ramenés sur l’appareil quand une formule n’est pas déléguée",
+                "Ce qu’une formule déléguée peut interroger, qui n’a pas cette limite",
+                "Réécrire la formule avec des fonctions déléguables",
+              ],
+            ]}
+          />
+
           <p>
-            Prenez trois cas normaux, une exception et un échec. Notez les
-            entrées, la règle, le résultat attendu, la personne qui décide et le
-            temps d’attente acceptable. Rejouez ensuite les requêtes sur un jeu
-            représentatif : volume, relations, filtres, tri, recherche, pièces
-            jointes, simultanéité et historique.
+            La ligne du milieu mérite une nuance que la plupart des articles
+            escamotent&nbsp;: la page de support Microsoft décrit le rôle des
+            colonnes indexées dans les vues filtrées, sans promettre qu’elles
+            lèvent le seuil de 5&nbsp;000.
           </p>
+
+          <h3>Reconnaître une formule non délégable sur votre propre écran</h3>
           <p>
-            Ne confondez pas stockage et interrogation. Microsoft documente
-            jusqu’à 30 millions d’éléments dans une liste ou bibliothèque
-            SharePoint. Il publie aussi un seuil de vue ou requête de 5 000.
-            Dans une application canevas, 500 — configurable jusqu’à 2 000 —
-            concerne le traitement local de certaines opérations non délégables.
-            Ce n’est pas une « limite Power Apps à 2 000 lignes ». Une formule
-            non délégable peut surtout retourner un sous-ensemble incomplet et
-            conduire à une décision fausse.
+            La ligne du bas est la seule vraiment dangereuse, parce qu’elle ne
+            plante pas&nbsp;: elle répond faux. Sur les 3&nbsp;200&nbsp;lignes
+            de Sabine, cette formule ne regarde que les 500&nbsp;premières.
+          </p>
+
+          <FormulaBox>
+            {`// Non délégable : Lower() n’est déléguée à aucune source de données
+Filter(DemandesAchat; Lower(Statut) = "en attente")
+
+// Délégable sur SharePoint : comparaison directe sur la colonne
+Filter(DemandesAchat; Statut = "En attente")`}
+          </FormulaBox>
+
+          <p>
+            Power Fx ne vous laisse pas sans signal. La partie non déléguée est
+            soulignée d’une ligne bleue ondulée, et un triangle jaune apparaît
+            à côté de la galerie concernée. La documentation Microsoft nomme
+            les fonctions qui passent&nbsp;— <code>=</code>, <code>&lt;&gt;</code>,{" "}
+            <code>&gt;</code>, <code>&lt;</code>, <code>StartsWith</code>,{" "}
+            <code>EndsWith</code>, <code>TrimEnds</code>, <code>IsBlank</code>,{" "}
+            <code>And</code>, <code>Or</code>, <code>Not</code>&nbsp;— et
+            celles qui ne passent jamais&nbsp;: <code>Lower</code>,{" "}
+            <code>Upper</code>, <code>Left</code>, <code>Mid</code>,{" "}
+            <code>Len</code>, <code>If</code>, <code>Text</code>,{" "}
+            <code>Value</code>, la concaténation.
           </p>
 
           <GuidePremiumMemo
-            eyebrow="Preuve attendue"
-            title="Un test de délégation doit vérifier le résultat, pas seulement la vitesse"
+            eyebrow="Le test qui prend dix minutes"
+            title="Passez la limite de lignes à 1, et regardez ce qui casse"
           >
             <ul>
               <li>
-                Identifier la source, la colonne, l’opérateur et la formule.
+                Dans le studio, ouvrez <strong>Paramètres</strong>, puis{" "}
+                <strong>Général</strong>, et réglez la{" "}
+                <strong>limite de lignes de données</strong> sur 1.
               </li>
-              <li>Lire les avertissements de délégation dans l’éditeur.</li>
               <li>
-                Comparer le nombre et l’identité des résultats à une requête de
-                référence.
+                Rejouez vos trois écrans les plus utilisés&nbsp;: toute liste
+                qui n’affiche plus qu’un enregistrement repose sur une formule
+                non déléguée.
               </li>
-              <li>Tester le cas au-delà des 500 et 2 000 premières lignes.</li>
-              <li>Conserver une preuve après chaque correction.</li>
+              <li>
+                Corrigez, remettez la valeur d’origine, et conservez la capture
+                avant et après.
+              </li>
+              <li>
+                Ce test coûte une demi-journée à un développeur et se refait à
+                chaque évolution.
+              </li>
             </ul>
           </GuidePremiumMemo>
 
-          <h3>Test 2 — l’audience, l’identité et les droits réels</h3>
           <p>
-            Un salarié du tenant, un invité Microsoft Entra B2B provenant d’une
-            autre organisation et un utilisateur public n’accèdent pas à l’outil
-            dans les mêmes conditions. Pour chacun, vérifiez séparément
-            l’identité, la licence et les droits. Pour un invité d’application
-            canevas, contrôlez aussi l’invitation et chaque autorisation sur les
-            sources sous-jacentes. Une licence dans un tenant ne confère pas
-            automatiquement les mêmes droits dans un autre. Pour un portail,
-            comparez Power Pages et une identité dédiée sur les volumes et
-            parcours réels. Un simple partage n’est pas un portail client.
-          </p>
-          <p>
-            Testez au minimum un compte sans privilège administratif, un compte
-            invité, un compte désactivé et la révocation d’un accès. Vérifiez ce
-            que l’utilisateur voit dans l’interface, mais aussi ce qu’il peut
-            lire directement dans SharePoint, Dataverse ou l’API. Dans
-            Dataverse, les rôles sont cumulatifs : un rôle bien configuré peut
-            être contredit par un autre rôle ou une équipe.
-          </p>
-          <p>
-            Le choix d’une architecture ne suffit pas à démontrer la conformité
-            au Règlement général sur la protection des données (RGPD).
-            Documentez la finalité, les catégories de données, leur
-            minimisation, les durées de conservation, les destinataires, les
-            sous-traitants et les transferts, puis faites examiner les mesures
-            par les personnes chargées de la protection des données. Si le
-            traitement est susceptible d’engendrer un risque élevé pour les
-            droits et libertés, demandez au délégué à la protection des données
-            (DPO) ou au conseil compétent de déterminer si une analyse d’impact
-            relative à la protection des données (AIPD) est requise.
-          </p>
-
-          <h3>
-            Test 3 — le contexte d’usage, le hors-ligne et l’accessibilité
-          </h3>
-          <p>
-            Pour un usage terrain, reproduisez perte de réseau, reprise,
-            synchronisation, conflit, batterie faible, appareil ancien et volume
-            réaliste. Le mode dit offline-first, pensé pour continuer sans
-            réseau, s’appuie ici sur Dataverse et Power Apps Mobile. Il ne
-            transforme pas le navigateur ou une liste SharePoint en application
-            hors-ligne générale. Si le travail doit continuer plusieurs heures
-            sans réseau, le résultat de ce test peut suffire à départager le
-            renforcement, l’architecture hybride et l’application dédiée.
-          </p>
-          <p>
-            Pour une application canevas autonome configurée offline-first, la
-            documentation actuelle exclut du mode hors ligne les connecteurs
-            non-Dataverse comme SharePoint et les flux Power Automate. Vérifiez
-            aussi relations, volumes synchronisés, pièces jointes, ordre des
-            données, premier téléchargement et comportement en arrière-plan : le
-            mot « hors-ligne » ne suffit pas à couvrir le parcours terrain.
-            Ajoutez la perte ou le remplacement d’un appareil au protocole :
-            données locales, effacement, reprise et accès résiduel doivent avoir
-            un responsable et une preuve.
-          </p>
-          <p>
-            Pour l’accessibilité, utilisez le vérificateur pour repérer des
-            alertes, sans le considérer comme une preuve de conformité. À lui
-            seul, il ne démontre le respect ni des Web Content Accessibility
-            Guidelines (WCAG) ni du Référentiel général d’amélioration de
-            l’accessibilité (RGAA). Parcourez chaque tâche au clavier, à 200 %
-            de zoom, avec une police agrandie, un lecteur d’écran et les erreurs
-            de validation. Contrôlez ordre de focus, nom accessible, contraste,
-            messages, réactivité et orientation. Une interface « jolie dans le
-            studio » n’est pas encore une interface utilisable.
-          </p>
-
-          <h3>Test 4 — le tenant : licences, connecteurs et cycle de vie</h3>
-          <p>
-            Dans le tenant, examinez ensemble les politiques de prévention de la
-            perte de données (DLP, Data Loss Prevention), les interfaces de
-            programmation (API) et la gestion du cycle de vie applicatif (ALM,
-            Application Lifecycle Management).
-          </p>
-          <p>
-            Inventoriez l’application, ses composants, ses flux Power Automate,
-            connecteurs directs et indirects, passerelles, API personnalisées,
-            connexions, comptes d’exécution et environnements. Pour chaque
-            élément, notez propriétaire, licence, authentification, politique de
-            données, fréquence, limite, alerte et procédure d’échec. Relevez
-            aussi la région de chaque environnement et celle des systèmes
-            connectés : la localisation d’un environnement ne prouve pas celle
-            de toute la chaîne de données.
-          </p>
-          <p>
-            Les droits de requêtes liés à la licence, la protection de service
-            Dataverse et les limites propres aux connecteurs obéissent à des
-            règles différentes. Les nombres publiés évoluent et ne constituent
-            pas une promesse de débit métier. Les politiques DLP peuvent
-            interdire une combinaison, suspendre ou mettre en quarantaine une
-            application ou un flux : vérifiez les politiques effectives du
-            tenant.
-          </p>
-          <p>
-            Les politiques avancées de connecteurs (ACP, Advanced Connector
-            Policies) publiées en 2026 reposent sur une liste d’autorisation
-            stricte pour les connecteurs certifiés. En mode mixte, elles se
-            combinent aux politiques classiques ; c’est alors la règle la plus
-            restrictive qui s’applique. Les connecteurs personnalisés et HTTP ne
-            sont pas encore couverts par ACP : continuez à les gouverner avec
-            les politiques classiques. Inventoriez, simulez et déployez
-            progressivement. Une règle sauvegardée trop tôt peut bloquer tout
-            connecteur qui n’a pas été explicitement autorisé.
-          </p>
-          <p>
-            Pour une application importante, exigez au minimum développement,
-            test et production séparés, solutions, variables d’environnement,
-            références de connexion, contrôle de version et déploiement
-            reproductible. Un pipeline transporte une solution, pas vos données
-            métier. Données, secrets, connexions et identités nécessitent leur
-            propre plan et leur propre test.
-          </p>
-
-          <h3>Test 5 — propriété, support, restauration et sortie</h3>
-          <p>
-            Nommez le propriétaire métier, le propriétaire technique, un
-            suppléant et le responsable du support. Définissez qui répond à une
-            question utilisateur, qui corrige une règle, qui administre le
-            tenant et qui contacte Microsoft lors d’un incident plateforme. Le
-            support éditeur ne remplace ni la maintenance de votre application
-            ni la continuité de votre activité.
-          </p>
-          <p>
-            Exportez, puis restaurez sur un environnement séparé. Vérifiez
-            application, flux, données, connexions, identités, secrets,
-            variables, rôles et automatisations. Les solutions et fichiers
-            extraits améliorent l’auditabilité et le contrôle de version dans
-            Power Platform ; ils ne deviennent pas une application React ou
-            Next.js. Le runtime désigne ici l’environnement technique qui
-            exécute l’application. Les limites documentées de l’export
-            permettent d’en déduire que quitter ce runtime peut exiger de
-            reconstruire l’interface et la logique, de refaire les intégrations
-            et de migrer les données ; ce n’est pas une règle Microsoft qui
-            garantirait le même effort pour chaque projet.
-          </p>
-
-          <GuideTable
-            caption="La preuve minimale attendue pour chaque axe"
-            headers={[
-              "Axe",
-              "Question qui tranche",
-              "Preuve acceptable",
-              "Ce qui empêche de conclure",
-            ]}
-            rows={[
-              [
-                "Besoin",
-                "Les cas difficiles sont-ils couverts ?",
-                "Scénarios rejoués et résultats comparés",
-                "Tâche ou exception inconnue",
-              ],
-              [
-                "Données",
-                "Les requêtes sont-elles exactes au volume ?",
-                "Jeu représentatif et référence indépendante",
-                "Avertissement non expliqué",
-              ],
-              [
-                "Audience",
-                "Chaque identité a-t-elle licence et droits ?",
-                "Comptes réels de test et révocation",
-                "Invité/public non testé",
-              ],
-              [
-                "Usage",
-                "Le parcours fonctionne-t-il dans son contexte ?",
-                "Appareils, réseau, clavier, zoom, lecteur d’écran",
-                "Usage hors ligne ou accessibilité seulement supposés",
-              ],
-              [
-                "Tenant",
-                "La solution reste-t-elle déployable et autorisée ?",
-                "Politiques, environnements, solutions et journaux",
-                "DLP, connexion ou propriétaire inconnu",
-              ],
-              [
-                "Sortie",
-                "Peut-on reprendre l’application sans son créateur initial ni son environnement d’origine ?",
-                "Restauration complète sur environnement séparé",
-                "Simple fichier exporté",
-              ],
-            ]}
-          />
-
-          <p>
-            Pour chaque ligne encore sans preuve, définissez le prochain test à
-            réaliser au lieu de retenir une hypothèse favorable. Une fois ces
-            éléments réunis, comparez les coûts sans avantager l’option la moins
-            documentée.
+            Deux autres limites tranchent réellement des dossiers. Le mode
+            hors-ligne intégré repose sur Dataverse et l’application mobile
+            Power Apps&nbsp;: pour une application canevas autonome activée
+            hors ligne, la documentation exclut les connecteurs autres que
+            Dataverse&nbsp;— SharePoint compris&nbsp;— et les flux Power
+            Automate. Et le vérificateur d’accessibilité repère des alertes
+            utiles, sans démontrer le respect des WCAG ni du RGAA&nbsp;:
+            parcourez chaque tâche au clavier, à 200&nbsp;% de zoom et au
+            lecteur d’écran avant de promettre quoi que ce soit à un service
+            public.
           </p>
         </GuidePremiumSection>
 
         <GuidePremiumSection
           id="cout"
-          number="04"
-          label="Coût complet"
-          readingTime="10 à 30 min"
-          title="Comparez quatre coûts totaux de possession (TCO) à 1, 3 et 5 ans"
-        >
-          <p>
-            Le prix d’une licence n’est pas le coût d’une application. Comparez
-            Power Apps actuel, Power Apps renforcé, une architecture hybride et
-            une application dédiée avec les mêmes familles de coûts. Comptez
-            conception, migration, coexistence, formation, licences,
-            hébergement, administration, maintenance, support métier, capacité,
-            connecteurs, supervision, sécurité et réversibilité.
-          </p>
-
-          <FormulaBox>
-            {`TCO sur N années = coûts ponctuels + coûts mensuels × 12 × N
-
-N = 1, 3 ou 5
-coût inconnu : le total ne peut pas être calculé
-coût confirmé à 0 € : le total peut être calculé`}
-          </FormulaBox>
-
-          <p>
-            Si vous valorisez du temps interne, écrivez la méthode : heures,
-            rôle, coût retenu et période. Ne comptez pas la même heure dans la
-            construction, la maintenance et le support. Sans méthode défendable,
-            gardez ce poste inconnu ; un faux zéro favorise artificiellement
-            l’option qui mobilise le plus l’équipe.
-          </p>
-
-          <h3>Les repères publics au 3 août 2026</h3>
-          <p>
-            La page française Microsoft affichait Power Apps Premium à
-            <strong> 17,30 € HT par utilisateur et par mois</strong>, avec
-            paiement annuel ; HT signifie « hors taxes ». Elle affichait aussi
-            10,40 € HT avec un minimum de 2 000 postes/licences, avec paiement
-            annuel et contact commercial. Le plan Developer gratuit était
-            réservé au développement et au test, pas à la production.
-            L’extension de capacité de base de données Dataverse était affichée
-            à 34,70 € HT par Go et par mois, avec paiement annuel ; Go signifie
-            « gigaoctet ».
-          </p>
-          <p>
-            Le guide de licences de juillet 2026 indique la fin de
-            commercialisation de l’ancien abonnement Power Apps « per app » en
-            janvier 2026 : ne bâtissez pas un budget actuel sur l’ancien repère
-            à 5 USD. Le paiement à l’usage (PAYG, pay-as-you-go) est documenté à
-            10 dollars américains (USD) par utilisateur actif unique, par
-            application et par mois. Plusieurs ouvertures de la même application
-            dans le mois ne recomptent pas cet utilisateur. Le montant reste en
-            USD : utilisez votre facture ou contrat Azure, jamais une conversion
-            automatique cachée.
-          </p>
-
-          <h3>Une connexion mutualisée réduit-elle le nombre de licences ?</h3>
-          <p>
-            Non, pas automatiquement. Dans son guide de licences de juillet
-            2026, Microsoft parle de <em>multiplexing</em> lorsqu’une
-            organisation mutualise ou réachemine des connexions, interpose une
-            couche technique ou automatise un processus pour réduire le nombre
-            d’utilisateurs ou d’appareils qui accèdent directement au service.
-            La page 25 précise qu’une personne ou un appareil qui saisit,
-            interroge, consulte ou accède autrement à Power Apps, Power Automate
-            ou Power Pages doit être correctement licencié, que l’accès soit
-            direct ou indirect. Ajouter des couches intermédiaires ne change pas
-            ce principe.
-          </p>
-          <p>
-            Un budget limité au compte de service ou à la connexion partagée
-            serait donc incomplet. La page 25 ne choisit cependant pas la
-            référence commerciale applicable et ne dit pas que toute
-            automatisation impose la même licence par utilisateur. Identifiez
-            les personnes et appareils qui accèdent réellement au service, puis
-            le modèle de licence applicable. Le guide ne remplace pas votre
-            contrat : faites confirmer le scénario exact par votre équipe
-            Microsoft ou un partenaire certifié Microsoft avant de chiffrer.
-          </p>
-
-          <InfoBox variant="blue" title="Prix public ≠ prix contractuel ≠ TCO">
-            <p>
-              Confirmez pays, devise, taxes, engagement, remise, seuil, droit
-              Microsoft 365, connecteurs, Dataverse, flux, capacité,
-              utilisateurs externes et canal d’achat. Un droit inclus dans un
-              scénario ne signifie pas « Power Apps gratuit pour tout ».
-            </p>
-          </InfoBox>
-
-          <PowerAppsDecisionWorkbench />
-
-          <h3>
-            Interpréter le résultat sans retenir trop vite l’option la moins
-            chère
-          </h3>
-          <p>
-            Un TCO incomplet n’est pas un TCO nul. Si les coûts de sortie ou de
-            support de Power Apps restent inconnus, tout comme le coût de
-            migration vers l’application dédiée, aucun des deux totaux ne doit
-            être affiché. Une fois les données complètes, comparez aussi
-            l’incertitude : montant contractuel, dépendance à une personne,
-            fréquence d’évolution, capacité de restauration et coût d’une
-            interruption.
-          </p>
-          <p>
-            Ne monétisez pas automatiquement chaque heure « gagnée ». Une heure
-            libérée ne devient une économie de trésorerie que si une dépense est
-            réellement évitée. Pour une analyse financière plus large, utilisez
-            ensuite le guide dédié au{` `}
-            <Link href="/services/outils-internes-sur-mesure">
-              retour sur investissement (ROI) d’une application métier
-            </Link>
-            , en gardant séparées trésorerie, capacité réaffectée et bénéfices
-            qualitatifs.
-          </p>
-          <p>
-            Le coût ne suffit pas pour trancher. Les cinq scénarios suivants
-            montrent pourquoi une même option peut être adaptée ou non selon
-            l’audience, le contexte d’usage et les preuves encore manquantes.
-          </p>
-        </GuidePremiumSection>
-
-        <GuidePremiumSection
-          id="scenarios"
           number="05"
-          label="Exemples fictifs"
-          readingTime="7 min"
-          title="Cinq scénarios fictifs pour voir comment la conclusion peut changer"
+          label="Point de bascule"
+          readingTime="4 min"
+          title={"À partir de combien d’utilisateurs le sur-mesure devient-il moins cher\u00a0?"}
         >
           <p>
-            Les exemples ci-dessous sont des compositions pédagogiques. Ils ne
-            sont ni des cas clients, ni des budgets ou délais de marché. Leur
-            rôle est de montrer quelles preuves orientent le choix — et quelles
-            informations empêchent encore de conclure.
+            «&nbsp;Power Apps ou application sur mesure&nbsp;»&nbsp;: la moitié
+            Microsoft de cette comparaison se chiffre en trois minutes, l’autre
+            reste presque toujours vide, et c’est ce trou qui fait prendre de
+            mauvaises décisions. Voici donc nos propres montants, relevés sur
+            notre page{" "}
+            <Link href="/tarifs">tarifs</Link> le 28&nbsp;août 2026&nbsp;: un
+            outil interne sur mesure à <strong>8&nbsp;000&nbsp;€ HT</strong>{" "}
+            pour un processus ciblé sur une équipe,{" "}
+            <strong>25&nbsp;000&nbsp;€ HT</strong> pour un CRM ou ERP léger
+            avec intégrations, <strong>80&nbsp;000&nbsp;€ HT</strong> pour un
+            outil multi-services avec authentification unique. Au-delà de
+            8&nbsp;000&nbsp;€ HT de projet, un cadrage payé précède
+            systématiquement le devis&nbsp;: le Discovery Sprint,
+            1&nbsp;500&nbsp;€ HT et 2&nbsp;jours, déduit si la phase suivante
+            est lancée. La maintenance se contracte à part, avec un repère
+            indicatif de 2&nbsp;500&nbsp;€ HT par mois sur le scénario le plus
+            léger. Ce sont des repères publics et indicatifs&nbsp;; le devis
+            signé fixe le prix ferme.
           </p>
 
-          <GuidePremiumCase
-            initial="20"
-            eyebrow="Scénario fictif composite 1 · formulaire interne"
-            title="Vingt salariés saisissent des demandes simples"
-          >
-            <p>
-              Les salariés sont déjà dans le tenant. Les données sont peu
-              relationnelles, les requêtes délégables passent sur le volume
-              projeté et aucun hors-ligne n’est requis. Les licences,
-              environnements, rôles et propriétaires sont confirmés. Dans ce
-              contexte, Power Apps peut être le choix le plus défendable ; une
-              reconstruction devrait prouver un bénéfice absent du scénario.
-            </p>
-            <p>
-              Si la solution vit dans l’environnement par défaut avec un seul
-              maker, la réponse devient « renforcer », pas forcément «
-              reconstruire ».
-            </p>
-          </GuidePremiumCase>
-
-          <GuidePremiumCase
-            initial="HF"
-            eyebrow="Scénario fictif composite 2 · terrain"
-            title="Des techniciens travaillent avec un réseau intermittent"
-          >
-            <p>
-              La question décisive n’est pas « Power Apps a-t-il un mode offline
-              ? », mais « ce profil Dataverse, sur ces appareils, avec ces
-              pièces jointes et conflits, reproduit-il le travail attendu ? ».
-              La réussite d’un pilote Power Apps Mobile peut suffire à justifier
-              un renforcement. En cas d’échec, une fonction de collecte isolable
-              ouvre la voie à un hybride. L’application dédiée devient
-              défendable seulement si tout le travail exige un offline-first
-              incompatible et inséparable.
-            </p>
-          </GuidePremiumCase>
-
-          <GuidePremiumCase
-            initial="250"
-            eyebrow="Scénario fictif composite 3 · outil critique"
-            title="Deux cent cinquante utilisateurs dépendent de l’outil"
-          >
-            <p>
-              Deux cent cinquante utilisateurs ne rendent pas Power Apps
-              inadapté par principe. À cette échelle, il faut toutefois
-              connaître le coût contractuel, vérifier les droits de requêtes et
-              les limites des connecteurs, puis tester la charge utile. Il faut
-              aussi savoir qui intervient en l’absence du propriétaire et avoir
-              exécuté une restauration. Tant que ces éléments manquent, il est
-              trop tôt pour trancher. Power Apps reste envisageable, à condition
-              qu’un responsable d’exploitation soit nommé.
-            </p>
-          </GuidePremiumCase>
-
-          <GuidePremiumCase
-            initial="PC"
-            eyebrow="Scénario fictif composite 4 · portail client"
-            title="Identité externe et expérience de marque exigeante"
-          >
-            <p>
-              Un partage canevas à des invités B2B, Power Pages et une
-              application dédiée n’offrent ni les mêmes parcours ni le même
-              modèle d’identité. Comparez inscription, récupération de compte,
-              droits sur les données, consentement, marque, accessibilité,
-              volume, coût externe et référencement lorsqu’il est pertinent.
-            </p>
-            <p>
-              Si Power Pages couvre le parcours, conservez-le dans la
-              comparaison. Si seul un élément de marque ou d’identité manque, un
-              module dédié peut compléter l’ensemble. Une reconstruction
-              complète ne se justifie que si ces écarts persistent et si le coût
-              total la rend soutenable.
-            </p>
-          </GuidePremiumCase>
-
-          <GuidePremiumCase
-            initial="MP"
-            eyebrow="Scénario fictif composite 5 · maker parti"
-            title="L’application fonctionne mais personne n’ose la modifier"
-          >
-            <p>
-              Le départ du maker révèle d’abord un défaut de propriété et de
-              documentation. Inventoriez solutions, flux, connexions, comptes,
-              règles et données ; nommez un suppléant ; restaurez sur un
-              environnement séparé. Si l’application redevient déployable et
-              compréhensible, le bon choix est probablement de la renforcer. Une
-              reconstruction ne se justifie que si une limite fonctionnelle ou
-              d’exploitation persiste après cette reprise.
-            </p>
-          </GuidePremiumCase>
+          <h3>Les deux hypothèses que nous posons, et comment les remplacer</h3>
+          <p>
+            Deux montants ne se lisent nulle part et doivent donc être posés à
+            découvert. Le premier&nbsp;: <strong>350&nbsp;€ le jour chargé</strong>{" "}
+            pour le temps interne de l’administrateur Microsoft&nbsp;365 et de
+            la responsable administrative. Remplacez-le par le vôtre&nbsp;;
+            votre expert-comptable ou votre contrôleur de gestion le sort en
+            cinq minutes à partir du salaire brut, des charges patronales et du
+            nombre de jours réellement travaillés. Le second&nbsp;:{" "}
+            <strong>six semaines de double exploitation</strong> après une
+            bascule, à raison de vingt minutes de ressaisie par jour ouvré,
+            soit dix heures. Aucun des deux ne sort d’une source&nbsp;: ce sont
+            des hypothèses, elles sont écrites ici pour que vous puissiez les
+            contester.
+          </p>
 
           <GuideTable
-            caption="Comment la même situation peut produire plusieurs conclusions"
+            caption="Le décompte sur cinq ans du cas construit, poste par poste"
             headers={[
-              "Situation",
-              "Preuve favorable à Power Apps",
-              "Preuve favorable au dédié",
-              "Verdict sans preuve",
+              "Poste",
+              "Power Apps avec connecteur premium",
+              "Application dédiée",
             ]}
             rows={[
               [
-                "20 salariés",
-                "Requêtes, licences et gouvernance validées",
-                "Parcours clé impossible à couvrir",
-                "Ne pas trancher",
+                "Cadrage payé avant construction",
+                "—",
+                "Discovery Sprint 1\u00a0500\u00a0€, déduit au lancement\u00a0: 0\u00a0€",
               ],
               [
-                "Terrain",
-                "Offline-first Dataverse testé avec succès",
-                "Offline critique, échec reproduit et frontière inséparable",
-                "Ne pas trancher",
+                "Construction ou adaptation",
+                "4\u00a0j × 350\u00a0€ = 1\u00a0400\u00a0€ (connecteur SQL, passerelle, formules reprises)",
+                "8\u00a0000\u00a0€ (repère Starter publié)",
               ],
               [
-                "250 utilisateurs",
-                "Coût et exploitation maîtrisés",
-                "Limite durable et bénéfices documentés justifiant le coût total ou le surcoût du dédié",
-                "Ne pas trancher",
+                "Reprise des 3\u00a0200 lignes et six semaines de double exploitation",
+                "—",
+                "3\u00a0j × 350\u00a0€ + 10\u00a0h de ressaisie = 1\u00a0490\u00a0€",
               ],
               [
-                "Portail client",
-                "Power Pages couvre identité et marque",
-                "Parcours externe essentiel non couvert",
-                "Ne pas trancher",
+                "Licences éditeur sur 60 mois",
+                "9 × 17,30\u00a0€ × 60 = 9\u00a0342\u00a0€",
+                "0\u00a0€",
               ],
               [
-                "Maker parti",
-                "Reprise et restauration réussies",
-                "Maintenance toujours impraticable après remédiation",
-                "Ne pas trancher",
+                "Hébergement et maintenance sur 60 mois",
+                "0\u00a0€ au-delà de l’abonnement Microsoft 365 déjà payé",
+                "2\u00a0500\u00a0€ × 60 = 150\u00a0000\u00a0€",
               ],
+              [
+                "Administration interne sur 60 mois",
+                "0,5\u00a0j/mois × 350\u00a0€ × 60 = 10\u00a0500\u00a0€",
+                "0,25\u00a0j/mois × 350\u00a0€ × 60 = 5\u00a0250\u00a0€",
+              ],
+              [
+                "Sortie prévue au terme des cinq ans",
+                "Reconstruire ailleurs\u00a0: 8\u00a0000\u00a0€ + 1\u00a0490\u00a0€ = 9\u00a0490\u00a0€",
+                "Transfert à une autre équipe\u00a0: 6\u00a0j × 350\u00a0€ = 2\u00a0100\u00a0€",
+              ],
+              ["Total sur cinq ans", "30\u00a0732\u00a0€", "166\u00a0840\u00a0€"],
             ]}
           />
 
           <p>
-            Ces exemples ne désignent pas une solution valable partout. Quand un
-            test échoue, tentez d’abord une correction ciblée avant de financer
-            une reconstruction.
+            Aux deux horizons plus courts, en comptant la sortie une seule fois
+            quelle que soit la durée&nbsp;: 14&nbsp;858&nbsp;€ contre
+            42&nbsp;640&nbsp;€ à un an, 22&nbsp;795&nbsp;€ contre
+            104&nbsp;740&nbsp;€ à trois ans. L’écart ne se referme jamais.
           </p>
+
+          <h3>Le point de bascule, et les trois variables qui le déplacent</h3>
+          <p>
+            Posons l’équation avec N&nbsp;utilisateurs. La colonne Power Apps
+            vaut 21&nbsp;390&nbsp;€ de coûts fixes plus
+            1&nbsp;038&nbsp;€&nbsp;×&nbsp;N de licences sur cinq ans. Elle
+            rattrape les 166&nbsp;840&nbsp;€ de la colonne dédiée à{" "}
+            <strong>141&nbsp;utilisateurs</strong>. Avec neuf, la réponse est
+            nette&nbsp;: sur le seul terrain du prix, garder Power Apps gagne
+            de très loin.
+          </p>
+          <p>
+            Ce seuil n’est pourtant pas piloté par le nombre d’utilisateurs. Il
+            est piloté par la façon dont l’application dédiée est maintenue.
+            Divisez le forfait de maintenance par deux, à 1&nbsp;250&nbsp;€ HT
+            par mois, et la bascule tombe à <strong>68&nbsp;utilisateurs</strong>.
+            Renoncez au forfait, confiez la maintenance à un développeur
+            interne à raison d’un jour par mois, et elle tombe à{" "}
+            <strong>11&nbsp;utilisateurs</strong>&nbsp;— hébergement à chiffrer
+            en plus. La troisième variable est binaire&nbsp;: sans connecteur
+            premium, la colonne licence vaut 0&nbsp;€ et aucun nombre
+            d’utilisateurs ne fait basculer quoi que ce soit.
+          </p>
+
+          <InfoBox
+            variant="emerald"
+            title="Ce que ce décompte dit, et ce qu’il ne dit pas"
+          >
+            <p>
+              Il dit qu’on ne quitte pas Power Apps pour économiser sur la
+              licence. Il ne dit rien des raisons qui font réellement partir
+              une équipe&nbsp;: un parcours externe que Power Pages ne couvre
+              pas, un travail hors ligne incompatible, une règle métier que
+              Power&nbsp;Fx n’exprime pas, une contrainte d’hébergement. Ces
+              raisons-là se démontrent sur un cas réel, pas sur un tableur.
+            </p>
+          </InfoBox>
+
+          <p>
+            L’atelier ci-dessous s’ouvre sur ce même dossier, déjà résolu. Les
+            deux colonnes centrales restent volontairement vides&nbsp;: à vous
+            de les remplir. Le bouton{" "}
+            <em>Repartir d’une feuille vierge</em> efface tout si vous
+            préférez démarrer de zéro. Rien ne quitte votre navigateur.
+          </p>
+
+          <PowerAppsDecisionWorkbench
+            initialDecisionInputs={createIncarnatedCaseDecisionInputs()}
+            initialTcoOptions={createIncarnatedCaseTcoOptions()}
+          />
+
+          <p>
+            Une heure gagnée n’est pas une économie de trésorerie tant
+            qu’aucune dépense n’est évitée&nbsp;: gardez séparés l’argent
+            sorti, la capacité réaffectée et le confort. Si le besoin lui-même
+            n’est pas encore établi, le{" "}
+            <Link href="/guides/signes-besoin-logiciel-metier">
+              diagnostic en 6 réponses
+            </Link>{" "}
+            évite d’acheter une solution avant d’avoir nommé le problème, et le
+            guide{" "}
+            <Link href="/guides/automatiser-processus-metier">
+              quel processus automatiser en premier
+            </Link>{" "}
+            aide à choisir sur quel flux commencer.
+          </p>
+        </GuidePremiumSection>
+
+        <GuidePremiumSection
+          id="incidents"
+          number="06"
+          label="Ce qui rate"
+          readingTime="3 min"
+          title="Ce qui rate, et ce que ça coûte"
+        >
+          <p>
+            Les trois incidents ci-dessous sont construits sur le dossier de
+            Sabine à partir de mécanismes documentés par Microsoft&nbsp;— ce ne
+            sont pas des dossiers clients. Les montants suivent les hypothèses
+            posées en section&nbsp;05.
+          </p>
+
+          <h3>Une commande passée deux fois&nbsp;: 4&nbsp;180&nbsp;€ et 2&nbsp;jours perdus</h3>
+          <p>
+            L’écran «&nbsp;demandes déjà commandées&nbsp;» filtre la liste avec
+            une formule non déléguée. Sur 3&nbsp;200&nbsp;lignes, il n’en
+            examine que 500&nbsp;: la demande de profilés aluminium saisie en
+            mars n’apparaît plus. Un chef d’atelier la ressaisit, le
+            fournisseur livre deux fois. La commande porte sur
+            4&nbsp;180&nbsp;€ HT, le retour coûte des frais de reprise, et la
+            régularisation mobilise deux jours de la responsable administrative
+            et du contrôleur de gestion, soit 700&nbsp;€ de temps interne. Rien
+            n’a planté&nbsp;: l’application a simplement répondu faux.
+          </p>
+
+          <h3>Un flux mis en quarantaine&nbsp;: 23&nbsp;demandes bloquées 4&nbsp;jours</h3>
+          <p>
+            L’administrateur durcit la politique de prévention de la perte de
+            données pour séparer les connecteurs métier des connecteurs grand
+            public. La règle prend effet le vendredi&nbsp;; le flux qui envoie
+            les demandes en validation se retrouve suspendu. Personne ne
+            regarde le centre d’administration avant le mardi. Bilan&nbsp;:
+            quatre jours ouvrés de validations à l’arrêt,
+            23&nbsp;demandes en attente, six heures de rattrapage manuel, deux
+            livraisons décalées d’une semaine. La parade tient en un mot&nbsp;:
+            simuler la règle avant de l’enregistrer.
+          </p>
+
+          <h3>Le créateur est parti&nbsp;: 6&nbsp;jours-homme pour reprendre la main</h3>
+          <p>
+            L’application vit dans l’environnement par défaut, et les
+            connexions sont attachées au compte personnel de Sabine. Elle
+            change de poste. L’application continue de tourner, mais plus
+            personne ne peut publier une correction. Retrouver le propriétaire
+            de chaque connexion, recréer les références, exporter la solution
+            et la redéployer dans un environnement dédié occupe six jours de
+            l’administrateur Microsoft&nbsp;365, soit 2&nbsp;100&nbsp;€, et
+            gèle trois semaines d’évolutions. Le coût du blocage dépasse
+            largement celui de la reprise.
+          </p>
+
+          <GuidePremiumMemo
+            eyebrow="Les cinq conclusions possibles"
+            title="Aucune décision ne se prend sans sa preuve, et aucune n’est décidée d’avance"
+          >
+            <ul>
+              {outcomes.map((outcome) => (
+                <li key={outcome.status}>
+                  <strong>
+                    {outcome.status} — {outcome.title}.
+                  </strong>{" "}
+                  {outcome.trigger}
+                </li>
+              ))}
+            </ul>
+          </GuidePremiumMemo>
         </GuidePremiumSection>
 
         <GuidePremiumSection
           id="remediation"
-          number="06"
+          number="07"
           label="Avant la refonte"
-          readingTime="5 min"
-          title="Testez une correction ciblée avant de financer une reconstruction"
+          readingTime="2 min"
+          title={"Faut-il réparer avant de reconstruire\u00a0?"}
         >
           <p>
-            Décrivez le problème et le résultat attendu, puis nommez le
-            responsable, l’échéance et le test qui permettra de conclure. Un
-            résultat toujours insatisfaisant renforce le dossier de
-            reconstruction. Si la correction tient, une migration entière
-            devient peut-être inutile.
-          </p>
-          <p>
-            Le test vous aide alors à distinguer un
-            <strong> défaut remédiable</strong> d’une limite durable de
-            plateforme.
+            Trois des quatre symptômes qui déclenchent un projet de refonte se
+            corrigent sans changer de plateforme. Le tableau ci-dessous chiffre
+            la correction et l’inaction, parce qu’un dossier de décision se
+            tranche sur des montants, pas sur une gêne.
           </p>
 
           <GuideTable
-            caption="Corrections à tester avant de conclure à une limite de plateforme"
+            caption="Quatre corrections, leur coût et le coût de ne pas les faire"
             headers={[
               "Symptôme",
-              "Ce qu’il faut vérifier",
               "Correction à tenter",
-              "Comment décider",
+              "Ce que la correction coûte",
+              "Ce que coûte l’inaction",
             ]}
             rows={[
               [
                 "Résultats incomplets",
-                "Formule non délégable, type de colonne, filtre ou source",
-                "Réécrire la requête, indexer ou déplacer la logique vers une source adaptée",
-                "Comparer les résultats au-delà de 500 et 2 000 lignes",
-              ],
-              [
-                "Lenteur",
-                "Appels répétés pour chaque ligne (effet N+1), flux synchrone, pièces jointes ou réseau",
-                "Mesurer, réduire les appels, mettre en cache ce qui peut l’être ou revoir le modèle",
-                "Temps et exactitude sur trois scénarios réels",
+                "Réécrire les formules avec des fonctions déléguables, indexer la colonne filtrée",
+                "1 à 3\u00a0j de développeur, soit 350 à 1\u00a0050\u00a0€",
+                "Une décision fausse par écran non corrigé\u00a0: 4\u00a0180\u00a0€ sur le cas raconté plus haut",
               ],
               [
                 "Droits incohérents",
-                "Rôles cumulatifs, partage direct ou autorisation de source",
-                "Revoir groupes, rôles, équipes et principe du moindre privilège",
-                "Tests avec comptes internes, invités, révoqués et sans privilège",
+                "Revoir groupes, rôles cumulatifs et autorisations sur la source",
+                "1\u00a0j, plus une demi-journée de tests avec comptes réels",
+                "Une lecture de salaires ou de marges par un compte qui ne devrait pas la voir",
               ],
               [
                 "Déploiement fragile",
-                "Environnement par défaut, absence de solution ou connexion codée en dur",
-                "Séparer environnements, utiliser solutions, variables et références de connexion",
-                "Déploiement reproductible puis retour arrière sur environnement de test",
+                "Sortir de l’environnement par défaut, passer en solutions avec variables et références de connexion",
+                "3 à 5\u00a0j, soit 1\u00a0050 à 1\u00a0750\u00a0€",
+                "Chaque correction devient un risque de production, et le retour arrière n’existe pas",
               ],
               [
-                "Dépendance au maker",
-                "Propriétaire unique, flux personnels, absence de documentation",
-                "Suppléance, comptes appropriés, inventaire et procédure d’incident",
-                "Modification et restauration menées sans le maker initial",
-              ],
-              [
-                "Usage externe difficile",
-                "Mauvaise surface, identité ou licence non choisie",
-                "Comparer invités B2B, Power Pages, hybride et dédié sur un parcours",
-                "Inscription, droits, révocation, marque et coût validés",
-              ],
-              [
-                "Hors-ligne insuffisant",
-                "Architecture SharePoint/navigateur ou profil Dataverse inadéquat",
-                "Pilote Power Apps Mobile + Dataverse ou extraction d’un module terrain",
-                "Coupures, conflits et reprise réussis sur appareils réels",
+                "Dépendance au créateur",
+                "Nommer un suppléant, transférer les connexions vers des comptes appropriés, inventorier",
+                "2\u00a0j de reprise documentée",
+                "6\u00a0j en urgence après un départ, plus trois semaines sans évolution possible",
               ],
             ]}
           />
 
           <p>
-            Chaque correction doit donc avoir un test, une échéance interne et
-            une décision attendue. Sans ces trois éléments, le défaut reste
-            ouvert et l’arbitrage est seulement repoussé.
-          </p>
-
-          <GuidePremiumMemo
-            eyebrow="Lecture du résultat"
-            title="Un résultat satisfaisant, insatisfaisant ou absent ne conduit pas à la même décision"
-          >
-            <ul>
-              <li>
-                Résultat satisfaisant : archivez la trace datée et poursuivez la
-                comparaison.
-              </li>
-              <li>
-                Résultat insatisfaisant : un défaut corrigeable appelle une
-                nouvelle correction ciblée ; un périmètre ou un inventaire de
-                licences incomplet maintient la décision en suspens ; une limite
-                de plateforme reproduite ouvre l’étude de l’hybride puis de
-                l’application dédiée.
-              </li>
-              <li>
-                Preuve absente : aucune conclusion fiable n’est encore possible.
-                La décision reste en attente et le prochain test doit être
-                nommé.
-              </li>
-            </ul>
-          </GuidePremiumMemo>
-
-          <p>
-            Si le test reste négatif après cette correction bornée, la migration
-            devient une hypothèse sérieuse. Elle doit encore préserver une voie
-            de retour.
+            Additionnez la colonne des corrections&nbsp;: entre sept et onze
+            jours, soit 2&nbsp;450 à 3&nbsp;850&nbsp;€ de temps interne. C’est
+            le tiers du seul cadrage d’une reconstruction, et cela se décide en
+            une réunion. Si le résultat reste insatisfaisant après ces
+            corrections, le dossier de reconstruction se défend enfin sur des
+            faits. Le{" "}
+            <Link href="/guides/plan-recette-application-metier">
+              plan de recette d’une application métier
+            </Link>{" "}
+            donne la forme des cas à rejouer avant et après, et les{" "}
+            <Link href="/guides/securite-application-metier">
+              contrôles de sécurité d’une application métier
+            </Link>{" "}
+            listent ce qu’il faut prouver avant d’élargir l’audience.
           </p>
         </GuidePremiumSection>
 
         <GuidePremiumSection
           id="audit"
-          number="07"
-          label="Migration exécutable"
-          readingTime="8 min"
-          title="Si vous reconstruisez, organisez la migration, les tests et le retour à l’ancien outil"
+          number="08"
+          label="Sortie"
+          readingTime="3 min"
+          title={"Si vous partez, comment garder la porte ouverte\u00a0?"}
         >
           <p>
-            Le mot « migration » masque souvent quatre travaux : comprendre
-            l’existant, construire la cible, déplacer les données et faire
-            changer l’organisation. Aucun export de solution ne réalise seul ces
-            quatre travaux. Transformez la décision en séquence vérifiable.
+            Le mot «&nbsp;migration&nbsp;» masque quatre travaux distincts&nbsp;:
+            comprendre l’existant, construire la cible, déplacer les données et
+            faire changer l’organisation. Aucun export de solution n’en réalise
+            un seul. Cinq étapes, dans cet ordre.
           </p>
 
           <ol>
             <li>
-              <strong>Consigner l’existant.</strong> Notez la version de
-              l’application, les solutions, flux, connecteurs, environnements,
-              propriétaires, sources, comptes, licences et politiques de
-              données.
+              <strong>Consigner l’existant.</strong> Version de l’application,
+              solutions, flux, connecteurs, environnements, propriétaires,
+              sources, comptes, licences et politiques de données.
             </li>
             <li>
-              <strong>La recette avant les écrans.</strong> Décrivez trois cas
+              <strong>Écrire la recette avant les écrans.</strong> Trois cas
               normaux, les exceptions, les erreurs, les droits, les documents
-              produits et les temps de réponse attendus. Ces résultats servent
-              de référence métier ; les captures des écrans actuels ne suffisent
-              pas.
+              produits et les temps de réponse attendus. Une capture d’écran ne
+              tient pas lieu de référence métier.
             </li>
             <li>
-              <strong>Une restauration indépendante.</strong> Exportez puis
-              restaurez l’ancien outil sur un environnement séparé. Vérifiez les
-              données, connexions, identités, secrets, rôles et automatisations
-              avant de dépendre de cette reprise.
+              <strong>Rendre le transfert reproductible.</strong> Doublons,
+              clés, valeurs manquantes, pièces jointes et historiques reçoivent
+              un propriétaire, puis le transfert passe par un script versionné,
+              un journal des rejets et un rapprochement des comptes. Une copie
+              manuelle unique ne suffit pas.
             </li>
             <li>
-              <strong>Un transfert reproductible.</strong> Avant de déplacer les
-              données, attribuez un propriétaire aux doublons, clés, valeurs
-              manquantes, pièces jointes, historiques, référentiels et règles de
-              conservation. Le transfert utilise ensuite un script ou une
-              procédure versionnée, un journal des rejets, un rapprochement des
-              comptes et une vérification d’intégrité. Une copie manuelle unique
-              ne suffit pas.
-            </li>
-            <li>
-              <strong>Le parcours complet, puis les tests utilisateurs.</strong>
-              Construisez d’abord un seul parcours avec identité, données,
-              règle, sortie, journal et support. Testez ensuite cas normaux,
-              exceptions, droits, accessibilité, charge utile, appareils et
-              fonctionnement dégradé avec les utilisateurs. Chaque écart reçoit
-              un responsable et une décision. Ne reproduisez pas tous les écrans
-              avant d’avoir prouvé l’architecture.
-            </li>
-            <li>
-              <strong>Coexistence, bascule et retour à l’ancien outil.</strong>
-              Nommez le système maître, les écritures autorisées, la
-              synchronisation, la gestion des conflits et la durée de double
-              exploitation afin d’éviter deux sources de vérité. Avant la
-              bascule, jouez le retour : précisez le déclencheur, le décideur,
-              la dernière donnée fiable, la durée maximale, la communication et
-              la procédure de réactivation de l’ancien outil. Un document non
+              <strong>Jouer le retour arrière avant la bascule.</strong>{" "}
+              Déclencheur, décideur, dernière donnée fiable, durée maximale et
+              procédure de réactivation de l’ancien outil. Un document non
               testé reste une hypothèse.
             </li>
             <li>
-              <strong>L’extinction après stabilité.</strong> Une fois la
-              stabilité mesurée, retirez les accès et connexions, archivez ce
-              qui doit l’être, révoquez les secrets, arrêtez les flux et les
-              licences, conservez les preuves et fixez la durée de rétention.
+              <strong>Éteindre après stabilité mesurée.</strong> Retirer les
+              accès, archiver, révoquer les secrets, arrêter les flux et les
+              licences, fixer la durée de conservation.
             </li>
           </ol>
 
-          <div className="not-prose my-7 grid gap-4 md:grid-cols-3">
-            {[
-              {
-                icon: Database,
-                title: "Données",
-                text: "Système maître, clés, correspondance des champs, rejets, intégrité, historique et conservation.",
-              },
-              {
-                icon: GitBranch,
-                title: "Bascule",
-                text: "Coexistence, synchronisation, gel des écritures, conditions de bascule ou de suspension et retour à l’ancien outil.",
-              },
-              {
-                icon: ShieldCheck,
-                title: "Exploitation",
-                text: "Rôles, secrets, supervision, incident, support, sauvegarde, restauration et extinction.",
-              },
-            ].map(({ icon: Icon, title, text }) => (
-              <div
-                key={title}
-                className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950"
-              >
-                <Icon
-                  className="size-6 text-indigo-700 dark:text-indigo-300"
-                  aria-hidden="true"
-                />
-                <h3 className="mt-3 text-base font-bold text-zinc-950 dark:text-white">
-                  {title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
-                  {text}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <InfoBox
-            variant="amber"
-            title="Ne supprimez pas l’ancien outil au premier succès"
-          >
-            <p>
-              Définissez avant la bascule la période d’observation, les
-              indicateurs d’erreur, le décideur d’extinction et les preuves à
-              conserver. La coexistence coûte de l’argent, mais une extinction
-              prématurée peut rendre le retour à l’ancien outil impossible.
-            </p>
-          </InfoBox>
-
           <p>
-            Vous n’avez pas besoin d’attendre la décision finale. Répartissez
-            dès maintenant les preuves à réunir, les essais à mener et leurs
-            responsables ; la réunion suivante pourra alors s’appuyer sur des
-            résultats plutôt que sur des préférences.
-          </p>
-        </GuidePremiumSection>
-
-        <GuidePremiumSection
-          id="lundi"
-          number="08"
-          label="Action immédiate"
-          readingTime="3 min"
-          title="Ce que vous pouvez faire lundi sans choisir encore la technologie"
-        >
-          <p>
-            Réunissez le responsable métier, un créateur ou administrateur Power
-            Platform, la personne en charge du tenant et un utilisateur
-            représentatif. Ces quatre-vingt-dix minutes servent à inventorier
-            les preuves disponibles et celles qui manquent, pas à choisir déjà
-            une architecture.
+            L’étape 4 a un prix, et il est temps de le donner. Six semaines de
+            double exploitation à vingt minutes de ressaisie par jour ouvré
+            coûtent dix heures de la responsable administrative, soit environ
+            440&nbsp;€&nbsp;— et pendant ces six semaines, les licences Premium
+            courent toujours, à 155,70&nbsp;€ par mois pour neuf personnes. Une
+            extinction prématurée coûte beaucoup plus&nbsp;: sans la liste
+            SharePoint d’origine, le retour arrière n’existe plus.
           </p>
 
-          <div className="not-prose my-7 rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950 sm:p-6">
-            <ol className="space-y-4">
-              {[
-                "Choisir trois tâches réelles, dont une exception et un échec récent ; nommer l’audience et les comptes de test.",
-                "Inventorier application, données, flux, connecteurs, passerelles, connexions et propriétaires.",
-                "Relever les avertissements de délégation, comparer un résultat au-delà des premières lignes et tester une restauration séparée.",
-                "Ouvrir licences et factures réelles, puis identifier les politiques DLP, environnements et rôles effectivement appliqués.",
-                "Remplir l’atelier de décision et laisser la décision en attente si une preuve critique manque ou si un contrôle fondateur est insatisfaisant.",
-                "Définir une correction ciblée ou un prototype du cas le plus risqué, avec un responsable, une date et les critères de la prochaine décision.",
-              ].map((item, index) => (
-                <li
-                  key={item}
-                  className="flex gap-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-200"
-                >
-                  <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-xs font-bold text-indigo-700 dark:bg-indigo-950 dark:text-indigo-200">
-                    {index + 1}
-                  </span>
-                  <span className="pt-1">{item}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
-
-          <GuidePremiumMemo
-            eyebrow="Livrable de la réunion"
-            title="Le contenu minimal du compte rendu"
-          >
-            <ul>
-              <li>
-                Orientation actuelle : décision en attente, conserver,
-                renforcer, hybride ou dédié.
-              </li>
-              <li>Preuves positives et contradictions observées.</li>
-              <li>Première inconnue critique à lever.</li>
-              <li>
-                Estimation du coût total des quatre options, ou liste exacte des
-                montants encore inconnus.
-              </li>
-              <li>Responsable, test et date de la prochaine décision.</li>
-            </ul>
-          </GuidePremiumMemo>
-
+          <h3>Et si vous quittez l’application sur mesure&nbsp;?</h3>
           <p>
-            Si la question dépasse Power Platform, deux comparaisons voisines
-            éclairent la même décision. Le guide{" "}
-            <Link href="/guides/power-apps-ou-application-sur-mesure">
-              Airtable, Notion ou application métier
-            </Link>{" "}
-            traite du même arbitrage hors écosystème Microsoft, et celui
-            consacré au remplacement de{" "}
-            <Link href="/services/outils-internes-sur-mesure">
-              Microsoft Access par une application web
-            </Link>{" "}
-            couvre le cas d’une base héritée. Si le besoin lui-même n’est pas
-            encore établi, le{" "}
-            <Link href="/guides/signes-besoin-logiciel-metier">
-              diagnostic en trois situations
-            </Link>{" "}
-            évite d’acheter une solution avant d’avoir nommé le problème.
+            La question se pose dans les deux sens, et c’est la première
+            objection d’un DSI. Quitter Power Apps suppose de reconstruire
+            l’interface et la logique&nbsp;: les fichiers de solution extraits
+            servent à l’audit et au contrôle de version dans Power Platform,
+            ils ne produisent pas de code web portable. Sur le cas construit,
+            cette sortie vaut les 9&nbsp;490&nbsp;€ de la colonne dédiée.
           </p>
           <p>
-            Trois contrôles décident ensuite du niveau d’exigence. La{" "}
-            <Link href="/guides/securite-application-metier">
-              gestion des droits d’accès
+            Quitter une application sur mesure coûte moins cher, et autre
+            chose. Le code et la base restent lisibles par n’importe quelle
+            équipe de développement&nbsp;: nous chiffrons six jours de
+            transfert, soit 2&nbsp;100&nbsp;€, pour remettre dépôt, accès,
+            documentation d’exploitation et procédure de déploiement. Restent
+            deux charges permanentes que Power Apps porte à votre place&nbsp;:
+            l’hébergement, facturé tous les mois, et les montées de version des
+            bibliothèques, qui ne se reportent pas indéfiniment. Le{" "}
+            <Link href="/guides/cahier-des-charges-saas">
+              cahier des charges SaaS
             </Link>{" "}
-            confronte les rôles réellement appliqués dans le tenant à ceux que
-            le métier croit en place. Les{" "}
-            <Link href="/guides/securite-application-metier">
-              contrôles de sécurité d’une application métier
+            détaille les clauses de réversibilité à écrire avant de signer, et
+            le guide{" "}
+            <Link href="/guides/mvp-saas-quoi-inclure">
+              quoi inclure dans un MVP
             </Link>{" "}
-            listent ce qu’il faut prouver avant d’élargir l’audience. Une
-            bascule éventuelle suit la méthode de{" "}
-            <Link href="/services/outils-internes-sur-mesure">
-              migration sans interruption de service
-            </Link>
-            , retour arrière compris.
+            aide à borner une première version au lieu de reconstruire tous les
+            écrans d’un coup.
           </p>
+
           <p>
             Si votre équipe ne peut pas réunir ces éléments, ne commandez pas
-            encore une réécriture. Commencez par un inventaire et un prototype
-            des cas difficiles. Vous pouvez ensuite{` `}
+            de réécriture. Commencez par l’inventaire et un prototype du cas le
+            plus risqué. Vous pouvez ensuite{" "}
             <TrackedGuideCtaLink
               href="/demarrer-un-projet"
               placement="article_end_inline"
             >
               décrire votre projet
             </TrackedGuideCtaLink>{" "}
-            à
-            Hagnéré Code — ou d’abord vérifier{" "}
-            <Link href="/guides/cahier-des-charges-saas">
-              comment choisir un prestataire sur preuves
-            </Link>{" "}
-            ; indiquez explicitement que conserver Power Apps reste une issue
-            acceptable.
-          </p>
-          <p>
-            Avant de transmettre ce dossier, vérifiez enfin ce que chaque source
-            prouve — et ce qu’elle ne prouve pas.
-          </p>
-        </GuidePremiumSection>
-
-        <GuidePremiumSection
-          id="sources"
-          number="09"
-          label="Traçabilité"
-          readingTime="4 min"
-          title="Comment lire les sources et les limites de ce guide"
-        >
-          <p>
-            Les affirmations techniques et tarifaires de cette page reposent sur
-            les pages produit, le guide de licences, Microsoft Learn et la
-            Commission nationale de l’informatique et des libertés (CNIL),
-            consultés à nouveau le 3 août 2026. La documentation officielle
-            décrit le cadre général de la plateforme ; elle ne prouve pas que
-            votre tenant, votre contrat, vos données et votre application
-            correspondent au scénario décrit.
-          </p>
-          <p>
-            Les prix, licences, capacités et limites d’API sont volatils. Le
-            chiffre public sert de repère daté, jamais de devis. Les contrôles
-            de sécurité, accessibilité et conformité nécessitent les politiques,
-            rôles, technologies d’assistance et obligations de votre contexte.
-            Les scénarios fictifs illustrent une méthode et ne constituent pas
-            des références de coût, de délai ou de performance.
-          </p>
-
-          <GuideTable
-            caption="Portée des principales familles de sources"
-            headers={[
-              "Source",
-              "Ce qu’elle peut établir",
-              "Ce qu’elle n’établit pas",
-            ]}
-            rows={[
-              [
-                "Page tarifaire",
-                "Prix marketing public à une date",
-                "Votre prix contractuel ou TCO",
-              ],
-              [
-                "Guide de licences",
-                "Cadre général, droits publiés et règle de multiplexing",
-                "L’interprétation de votre contrat particulier",
-              ],
-              [
-                "Microsoft Learn",
-                "Fonctionnement et limites documentés",
-                "La réussite dans votre application",
-              ],
-              [
-                "CNIL",
-                "Principes de protection des données dès la conception",
-                "La conformité de votre traitement particulier",
-              ],
-              [
-                "Test dans le tenant",
-                "Résultat observable dans une configuration",
-                "La stabilité future après changement",
-              ],
-              [
-                "Atelier de décision local",
-                "Inconnues, contradictions et calculs saisis",
-                "Audit, devis ou recommandation professionnelle",
-              ],
-            ]}
-          />
-
-          <p>
-            Une source officielle décrit le cadre général ; vos essais montrent
-            le comportement obtenu dans votre configuration. Il faut les deux
-            pour décider, sans confondre documentation et résultat observé.
+            à Hagnéré Code, en indiquant que conserver Power Apps reste une
+            issue acceptable.
           </p>
 
           <div className="not-prose my-7 rounded-2xl border border-emerald-200 bg-emerald-50/60 p-5 dark:border-emerald-900 dark:bg-emerald-950/25">
@@ -1716,6 +1187,19 @@ coût confirmé à 0 € : le total peut être calculé`}
               </div>
             </div>
           </div>
+
+          <p className="text-sm">
+            <strong>Transparence.</strong> Hagnéré Code développe des
+            applications métier sur mesure et perçoit des honoraires si vous
+            retenez cette option&nbsp;— l’une des deux que ce guide arbitre.
+            Rien ici n’exige de passer par nous&nbsp;: la règle du connecteur,
+            les trois seuils, le test de la limite de lignes à 1 et le décompte
+            à cinq ans se refont avec vos propres nombres. Les prix Microsoft
+            et notre grille ont été relevés le 28&nbsp;août 2026 et sont à
+            revérifier tous les douze mois. Aucun coût, aucun délai et aucun
+            résultat ne sont garantis par cette page&nbsp;: seul un devis signé
+            engage.
+          </p>
         </GuidePremiumSection>
       </GuidePremiumLayout>
     </GuidesShell>

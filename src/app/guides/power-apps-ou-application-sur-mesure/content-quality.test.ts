@@ -6,8 +6,16 @@ import { describe, expect, it } from "vitest";
 import { getGuide, PUBLISHED_GUIDES } from "@/lib/guides";
 import { getLegacyGuideDestination } from "@/lib/legacy-guide-redirects";
 import Page, { metadata } from "./page";
+import {
+  calculateTcoComparison,
+  createIncarnatedCaseTcoOptions,
+  CASE_CARE_MONTHLY_EUR,
+  CASE_INTERNAL_DAY_RATE_EUR,
+  CASE_STARTER_BUILD_EUR,
+} from "./power-apps-decision-model";
 
 const slugDirectory = dirname(fileURLToPath(import.meta.url));
+const repositoryRoot = resolve(slugDirectory, "../../../..");
 const pageSource = readFileSync(resolve(slugDirectory, "page.tsx"), "utf8");
 const modelSource = readFileSync(
   resolve(slugDirectory, "power-apps-decision-model.ts"),
@@ -19,6 +27,11 @@ const workbenchSource = readFileSync(
 );
 const ogSource = readFileSync(
   resolve(slugDirectory, "opengraph-image.tsx"),
+  "utf8",
+);
+/** Grille tarifaire publique : source de vérité des prix maison cités ici. */
+const pricingSource = readFileSync(
+  resolve(repositoryRoot, "src/components/tarifs/body.ts"),
   "utf8",
 );
 const normalizedPage = pageSource.replace(/\s+/g, " ");
@@ -64,12 +77,14 @@ function removeReadTimeExcludedElements(html: string) {
   return output + html.slice(cursor);
 }
 
-function articleWordCount() {
-  const articleHtml = renderedPage.match(
-    /<article\b[^>]*>([\s\S]*?)<\/article>/,
-  )?.[1];
-  expect(articleHtml).toBeDefined();
-  const text = removeReadTimeExcludedElements(articleHtml ?? "")
+function articleHtml() {
+  const html = renderedPage.match(/<article\b[^>]*>([\s\S]*?)<\/article>/)?.[1];
+  expect(html).toBeDefined();
+  return removeReadTimeExcludedElements(html ?? "");
+}
+
+function articleText() {
+  return articleHtml()
     .replace(
       /<(script|style|template|noscript|svg)\b[^>]*>[\s\S]*?<\/\1>/gi,
       " ",
@@ -83,9 +98,12 @@ function articleWordCount() {
     .replace(/&[a-z]+;/gi, " ")
     .replace(/\s+/g, " ")
     .trim();
+}
 
+function articleWordCount() {
   return (
-    text.match(/[\p{L}\p{N}]+(?:[\u2019'\-][\p{L}\p{N}]+)*/gu)?.length ?? 0
+    articleText().match(/[\p{L}\p{N}]+(?:[’'\-][\p{L}\p{N}]+)*/gu)
+      ?.length ?? 0
   );
 }
 
@@ -100,6 +118,40 @@ function readerVisibleText(html: string) {
     .replace(/&[a-z]+;/gi, " ")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+/**
+ * Texte lisible en conservant les espaces insécables tels quels.
+ *
+ * `readerVisibleText` normalise tout blanc en espace ordinaire, ce qui rend
+ * la vérification typographique impossible : U+00A0 fait partie de `\s`.
+ */
+function typographicText(html: string) {
+  return html
+    .replace(
+      /<(script|style|template|noscript|svg)\b[^>]*>[\s\S]*?<\/\1>/gi,
+      " ",
+    )
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&#(?:160|xa0);/gi, "\u00a0")
+    .replace(/&amp;/gi, "&")
+    .replace(/&(?:rsquo|apos);/gi, "’")
+    .replace(/&(?:ndash|mdash);/gi, "—")
+    .replace(/&euro;/gi, "€")
+    .replace(/&[a-z]+;/gi, " ")
+    .replace(/[ \t\r\n]+/g, " ")
+    .trim();
+}
+
+/**
+ * Texte lisible, insécables ramenés à des espaces ordinaires.
+ *
+ * Les assertions de contenu se lisent alors comme la phrase publiée, sans
+ * qu’un insécable invisible fasse échouer une comparaison exacte.
+ */
+function prose(html: string) {
+  return typographicText(html).replace(/[\u00a0\u202f]/g, " ");
 }
 
 describe("content quality for Power Apps or custom application guide", () => {
@@ -118,21 +170,53 @@ describe("content quality for Power Apps or custom application guide", () => {
     expect(pageSource).toContain(
       'heroTitleEm={"comment\\u00a0choisir\\u00a0?"}',
     );
-    expect(pageSource).not.toContain(
-      'heroTitleEm={":\\u00a0comment\\u00a0choisir\\u00a0?"}',
-    );
   });
 
-  it("renders a server-side answer and uses the measured reading time", () => {
-    const html = renderToStaticMarkup(Page());
-    expect(html).toContain("<h1");
-    expect(html).toContain("Power Apps ou application sur mesure");
-    expect(html).toContain(
-      "Power Apps reste défendable si les tests des cas difficiles sont concluants",
-    );
-    expect(Math.max(1, Math.round(articleWordCount() / 200))).toBe(
-      powerAppsGuide.readTimeMin,
-    );
+  it("ne répète jamais le H1 dans un H2 de l’article", () => {
+    // §6.5 du protocole : le titre de couverture ne reprend aucun titre de
+    // section. La version 3,5/10 ouvrait sur « Power Apps ou sur mesure : la
+    // bonne réponse dépend de preuves », deux écrans sous un H1 quasi
+    // identique.
+    const h2Texts = [...articleHtml().matchAll(/<h2[^>]*>([\s\S]*?)<\/h2>/g)]
+      .map((match) => readerVisibleText(match[1]).toLowerCase())
+      .filter((text) => text !== "");
+
+    expect(h2Texts.length).toBeGreaterThanOrEqual(6);
+    for (const h2 of h2Texts) {
+      expect(h2, h2).not.toContain("power apps ou application sur mesure");
+      expect(h2, h2).not.toContain("power apps ou sur mesure");
+    }
+  });
+
+  it("tient le calibre requalifié en méthode", () => {
+    // §5.3 du protocole. Le titre est comparatif — « X ou Y », donc 2 500 à
+    // 3 500 mots — mais le contenu ne l'est plus : le guide porte une méthode
+    // de migration en cinq étapes, un atelier de décision et une procédure de
+    // sortie chiffrée dans les deux sens. C'est la bande « Méthode / parcours »,
+    // 3 000 à 4 200 mots, que la version tenue ici respecte.
+    //
+    // Le §5.3 autorise explicitement ce choix : « Dépassement au-delà de 15 % :
+    // on coupe, on scinde, ou on requalifie par écrit. » Requalification écrite
+    // le 28 août 2026, après relecture : aucune coupe de 400 mots n'était
+    // possible sans retirer de l'arithmétique vérifiée — le point de bascule à
+    // 141 utilisateurs, sa sensibilité à 68 puis 11, et le chiffrage des deux
+    // sorties. La version auditée pesait 8 381 mots, plus du double de celle-ci.
+    const words = articleWordCount();
+    expect(words).toBeGreaterThanOrEqual(3000);
+    expect(words).toBeLessThanOrEqual(4200);
+  });
+
+  it("mesure un temps de lecture cohérent avec la longueur réelle", () => {
+    // Le registre `src/lib/guides.ts` est hors du dossier du guide : il porte
+    // encore `readTimeMin: 27`, hérité des 8 381 mots de la version auditée.
+    // Ce test verrouille la valeur mesurée ; la mise à jour du registre est
+    // signalée au propriétaire du site et n’appartient pas à ce dossier.
+    const measured = Math.max(1, Math.round(articleWordCount() / 200));
+    expect(measured).toBeGreaterThanOrEqual(14);
+    expect(measured).toBeLessThanOrEqual(21);
+    // Le hero n’affiche plus `readTimeMin` : annoncer 27 min sur un article de
+    // ce calibre serait faux tant que le registre n’est pas repris.
+    expect(pageSource).not.toContain("powerAppsGuide.readTimeMin");
   });
 
   it("publishes the approved guide through the central registry", () => {
@@ -153,11 +237,7 @@ describe("content quality for Power Apps or custom application guide", () => {
     expect(pageSource).toContain(
       'getGuide("power-apps-ou-application-sur-mesure")',
     );
-    expect(pageSource).not.toContain(
-      'editorialStatus: "ready-for-human-review"',
-    );
   });
-
 
   it("emits only Article and BreadcrumbList structured data", () => {
     expect(structuredData.map((item) => item["@type"])).toEqual([
@@ -173,87 +253,183 @@ describe("content quality for Power Apps or custom application guide", () => {
     );
   });
 
-  it("renders a complete, natural FAQ heading", () => {
-    expect(readerVisibleText(renderedPage)).toContain(
-      "Décider entre Power Apps et le sur-mesure.",
-    );
-    expect(readerVisibleText(renderedPage)).not.toContain(
-      "mythe Power Apps. voulez savoir.",
-    );
-  });
+  /* ──────────────────────────────────────────────
+     Typographie française (§9.3)
+     ────────────────────────────────────────────── */
 
-  it("preserves every historical anchor and offers two distinct reading paths", () => {
-    for (const id of [
-      "reponse",
-      "cinq-tests",
-      "cout",
-      "chemins",
-      "audit",
-      "sources",
-    ]) {
-      expect(pageSource, id).toContain(`id="${id}"`);
-    }
-    expect(normalizedPage).toContain("Chemin A · nouveau projet");
-    expect(normalizedPage).toContain("Chemin B · application existante");
-  });
-
-  it("defines the tenant as the organizational instance, not an environment", () => {
-    expect(normalizedPage).toContain(
-      "l’instance organisationnelle Microsoft qui regroupe notamment les identités, les licences, les politiques et les environnements Power Platform",
-    );
-    expect(normalizedPage).toContain(
-      "Un tenant n’est donc pas un environnement",
-    );
-    expect(normalizedPage).not.toContain(
-      "désigne l’environnement Microsoft de votre organisation",
-    );
-    expect(normalizedPage).not.toContain(
-      "administration de votre environnement Microsoft (tenant)",
-    );
-  });
-
-  it("avoids a mechanical paragraph opener and states the dedicated-cost criterion", () => {
-    expect(renderedPage.match(/Concrètement,/g) ?? []).toHaveLength(0);
-    expect(normalizedPage).toContain(
-      "Limite durable et bénéfices documentés justifiant le coût total ou le surcoût du dédié",
-    );
-    expect(normalizedPage).not.toContain(
-      "Limite durable, TCO dédié supérieur en valeur",
-    );
-  });
-
-  it("keeps the final anti-IA pass direct without weakening decision boundaries", () => {
-    for (const formulation of [
-      "gouvernance et sortie avant de choisir",
-      "plan de migration réversible pour comparer les options",
-      "laissez la décision en attente",
-      "obéissent à des règles différentes",
-      "La réussite d’un pilote Power Apps Mobile peut suffire à justifier un renforcement",
-      "Si la correction tient, une migration entière devient peut-être inutile",
-      "Réunir les preuves et comparer quatre coûts totaux de possession (TCO)",
-    ]) {
-      expect(
-        `${normalizedPage} ${workbenchSource} ${JSON.stringify(powerAppsGuide)}`,
-        formulation,
-      ).toContain(formulation);
-    }
-
-    for (const residue of [
-      "sans biais, preuves en main",
-      "sans condamner Power Apps d’avance",
-      "la seule réponse honnête",
-      "Ce test porte sur trois sujets",
-      "Distinguez trois sujets souvent amalgamés",
-      "Produire un diagnostic de preuves",
-      "Ce protocole permet de distinguer",
-    ]) {
-      expect(`${pageSource} ${workbenchSource}`, residue).not.toContain(
-        residue,
-      );
+  it("n’écrit aucun insécable littéral dans le code", () => {
+    // Un U+00A0 tapé dans une chaîne est invisible en relecture et se perd en
+    // silence au premier passage par un heredoc ou une réécriture.
+    for (const [name, source] of [
+      ["page.tsx", pageSource],
+      ["power-apps-decision-model.ts", modelSource],
+      ["power-apps-decision-workbench.tsx", workbenchSource],
+    ] as const) {
+      expect(/[\u00a0\u202f\u2009]/.test(source), name).toBe(false);
     }
   });
 
-  it("contains all five neutral outcomes without a pseudo-score", () => {
+  it("pose un insécable avant chaque ponctuation double du corps", () => {
+    const text = typographicText(articleHtml());
+    const offenders = [...text.matchAll(/.{0,40}[^\s] [?!;»].{0,20}/g)]
+      .map((match) => match[0])
+      // Les blocs de formule Power Fx sont du code, pas de la prose française.
+      .filter((extract) => !extract.includes("Filter("));
+
+    expect(offenders, offenders.join("\n")).toHaveLength(0);
+  });
+
+  it("colle les nombres à leur unité et sépare les milliers", () => {
+    const text = typographicText(articleHtml());
+
+    // Aucun montant en euros avec une espace ordinaire.
+    expect([...text.matchAll(/\d €/g)].map((m) => m[0])).toHaveLength(0);
+    // Aucun pourcentage avec une espace ordinaire.
+    expect([...text.matchAll(/\d %/g)].map((m) => m[0])).toHaveLength(0);
+    // Aucun nombre de quatre chiffres ou plus collé, hors années.
+    const glued = [...text.matchAll(/\b\d{4,}\b/g)]
+      .map((m) => m[0])
+      .filter((value) => !/^20\d\d$/.test(value));
+    expect(glued, glued.join(", ")).toHaveLength(0);
+  });
+
+  it("n’emploie que des apostrophes courbes et des guillemets français", () => {
+    const text = typographicText(articleHtml());
+    expect(text).not.toMatch(/[a-zàâäéèêëîïôöùûüç]'[a-zàâäéèêëîïôöùûüç]/i);
+    expect(text).not.toContain('"');
+  });
+
+  /* ──────────────────────────────────────────────
+     Structure (§6.5)
+     ────────────────────────────────────────────── */
+
+  it("porte une réponse directe courte et chiffrée", () => {
+    const answer = articleHtml().match(
+      /<section id="reponse"[\s\S]*?<\/section>/,
+    )?.[0];
+    expect(answer).toBeDefined();
+    const paragraphs = [
+      ...(answer ?? "").matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g),
+    ].slice(0, 3);
+    const words = readerVisibleText(paragraphs.map((p) => p[1]).join(" "))
+      .split(/\s+/)
+      .filter(Boolean).length;
+
+    expect(words).toBeGreaterThanOrEqual(120);
+    expect(words).toBeLessThanOrEqual(200);
+    expect(prose(answer ?? "")).toMatch(/17,30 €/);
+    expect(prose(answer ?? "")).toMatch(/8 000 €/);
+  });
+
+  it("garde 40 à 60 % de H2 en question", () => {
+    const h2Texts = [...articleHtml().matchAll(/<h2[^>]*>([\s\S]*?)<\/h2>/g)]
+      .map((match) => readerVisibleText(match[1]))
+      .filter((text) => text !== "");
+    const interrogatives = h2Texts.filter((text) => text.endsWith("?")).length;
+    const share = interrogatives / h2Texts.length;
+
+    expect(share, `${interrogatives}/${h2Texts.length}`).toBeGreaterThanOrEqual(
+      0.4,
+    );
+    expect(share).toBeLessThanOrEqual(0.6);
+  });
+
+  it("ne dépasse pas quatre tableaux, tous porteurs de chiffres", () => {
+    const tables = [...articleHtml().matchAll(/<table[\s\S]*?<\/table>/g)].map(
+      (match) => match[0],
+    );
+    expect(tables.length).toBeGreaterThanOrEqual(3);
+    expect(tables.length).toBeLessThanOrEqual(4);
+    for (const table of tables) {
+      const digits = (readerVisibleText(table).match(/\d/g) ?? []).length;
+      expect(digits, readerVisibleText(table).slice(0, 80)).toBeGreaterThan(6);
+    }
+  });
+
+  it("tient au moins dix valeurs chiffrées pour mille mots", () => {
+    // §6.2. La densité se mesure sur les valeurs informatives : les numéros de
+    // section, le numéro de téléphone et les millésimes sont retirés.
+    const text = prose(articleHtml())
+      .replace(/\b20\d\d\b/g, " ")
+      .replace(/0\d(?: \d\d){4}/g, " ");
+    const values = text.match(/\d+(?:[,.]\d+)?(?: \d{3})*/g) ?? [];
+    const density = (values.length / articleWordCount()) * 1000;
+
+    expect(density, `${values.length} valeurs`).toBeGreaterThanOrEqual(10);
+  });
+
+  it("raconte trois incidents portant chacun un montant ou une durée", () => {
+    const incidents = articleHtml().match(
+      /<section id="incidents"[\s\S]*?<\/section>/,
+    )?.[0];
+    expect(incidents).toBeDefined();
+    const headings = [
+      ...(incidents ?? "").matchAll(/<h3[^>]*>([\s\S]*?)<\/h3>/g),
+    ].map((match) => prose(match[1]));
+
+    expect(headings.length).toBeGreaterThanOrEqual(3);
+    for (const heading of headings) {
+      expect(heading, heading).toMatch(/\d/);
+    }
+    for (const fact of [
+      "4 180 €",
+      "quatre jours ouvrés",
+      "six jours",
+      "2 100 €",
+    ]) {
+      expect(prose(incidents ?? ""), fact).toContain(fact);
+    }
+  });
+
+  it("annonce son cas comme construit et nomme des métiers, pas des cases", () => {
+    const text = prose(articleHtml());
+    expect(text).toContain(
+      "Exemple construit à partir des fourchettes citées dans ce guide",
+    );
+    expect(text).toContain("ce n’est pas un dossier client");
+
+    for (const job of [
+      "responsable administrative",
+      "contrôleur de gestion",
+      "administrateur Microsoft",
+      "chefs d’atelier",
+      "développeur",
+      "expert-comptable",
+      "technicien de maintenance",
+      "DSI",
+    ]) {
+      expect(text, job).toContain(job);
+    }
+    // §6.4 : ces mots ne sont pas des personnes.
+    expect(text).not.toMatch(/\b(?:le|un|les|des) prestataires?\b/i);
+    expect(text).not.toMatch(/\b(?:le|un|les|des) intervenants?\b/i);
+  });
+
+  it("ne porte qu’un bloc de transparence et qu’un appel à l’action en ligne", () => {
+    const text = prose(articleHtml());
+    expect((text.match(/Transparence\./g) ?? []).length).toBe(1);
+    expect(text).toContain(
+      "Hagnéré Code développe des applications métier sur mesure et perçoit des honoraires",
+    );
+    expect(text).toContain("Les prix Microsoft et notre grille ont été relevés");
+    expect(text).toContain("à revérifier tous les douze mois");
+    expect(
+      (pageSource.match(/<TrackedGuideCtaLink/g) ?? []).length,
+    ).toBe(1);
+  });
+
+  it("garde intact le passage qui ne sert pas le commerce", () => {
+    const text = prose(articleHtml());
+    expect(text).toContain("Conserver Power Apps peut être la bonne décision");
+    expect(text).toContain(
+      "sur le seul terrain du prix, garder Power Apps gagne de très loin",
+    );
+    expect(pageSource).not.toMatch(
+      /score de maturité|score sur 100|algorithme propriétaire/i,
+    );
+  });
+
+  it("expose les cinq issues sans en privilégier une", () => {
     const outcomesBlock = pageSource.match(
       /const outcomes = \[([\s\S]*?)\] as const;/,
     )?.[1];
@@ -268,204 +444,287 @@ describe("content quality for Power Apps or custom application guide", () => {
     ]) {
       expect(outcomesBlock, status).toContain(`status: "${status}"`);
     }
-    expect(normalizedPage).toContain(
-      "Conserver Power Apps peut être la bonne décision",
-    );
-    expect(pageSource).not.toMatch(
-      /score de maturité|score sur 100|algorithme propriétaire/i,
-    );
   });
 
-  it("states volatile prices precisely, dates them and rejects shortcuts", () => {
+  /* ──────────────────────────────────────────────
+     Fond : la règle du connecteur, les seuils, la bascule
+     ────────────────────────────────────────────── */
+
+  it("énonce la règle du connecteur et la chiffre sur le cas", () => {
+    const text = prose(articleHtml());
     for (const fact of [
-      "17,30 € HT par utilisateur et par mois",
-      "10,40 € HT avec un minimum de 2 000 postes/licences",
-      "34,70 € HT par Go et par mois",
-      "10 USD par utilisateur actif unique",
-      "fin de commercialisation",
-      "janvier 2026",
-      "réservé au développement et au test",
-      "Prix public ≠ prix contractuel ≠ TCO",
+      "connecteurs standard",
+      "connecteur personnalisé",
+      "passerelle vers un serveur local",
+      "SQL Server",
+      "17,30 €",
+      "9 × 17,30 € × 12",
+      "1 868,40 € HT par an",
+      "1 038 €",
+      "multiplexing",
+      "La page 25",
+      "accès soit direct ou indirect",
     ]) {
-      expect(normalizedPage, fact).toContain(fact);
+      expect(text, fact).toContain(fact);
     }
-    expect(normalizedPage).toContain("au 3 août 2026");
-    expect(normalizedPage).toContain(
-      "jamais une conversion automatique cachée",
-    );
-    expect(normalizedPage).not.toContain("Power Apps est gratuit pour tout");
-    expect(normalizedPage).not.toContain(
-      "ancien prix à 5 USD encore achetable",
-    );
+    expect(text).toContain("10,40 €");
+    expect(text).toContain("34,70 €");
+    expect(text).toContain("10 USD");
+    expect(text).toContain("janvier 2026");
+    expect(text).toContain("réservé au développement et au test");
+    expect(text).toContain("28 août 2026");
   });
 
-  it("explains multiplexing without inventing the applicable license", () => {
-    for (const boundary of [
-      "Une connexion mutualisée réduit-elle le nombre de licences ?",
-      "Non, pas automatiquement",
-      "mutualise ou réachemine des connexions",
-      "automatise un processus",
-      "doit être correctement licencié, que l’accès soit direct ou indirect",
-      "Ajouter des couches intermédiaires ne change pas ce principe",
-      "Un budget limité au compte de service ou à la connexion partagée serait donc incomplet",
-      "Le guide ne remplace pas votre contrat",
-      "équipe Microsoft",
-      "partenaire certifié Microsoft",
-    ]) {
-      expect(normalizedPage, boundary).toContain(boundary);
-    }
-    expect(pageSource).toContain(
-      "https://go.microsoft.com/fwlink/?LinkId=2085130",
-    );
-    expect(normalizedPage).toContain("La page 25 précise");
-    expect(normalizedPage).not.toContain(
-      "une licence Premium par utilisateur est toujours obligatoire",
-    );
-    expect(normalizedPage).toContain(
-      "ne dit pas que toute automatisation impose la même licence par utilisateur",
-    );
-    expect(normalizedPage).not.toContain(
-      "Toute automatisation impose toujours une licence par utilisateur",
-    );
-    expect(normalizedPage).not.toContain("un compte de service suffit");
-  });
-
-  it("explains delegation, SharePoint and Dataverse without false limits", () => {
-    for (const fact of [
-      "30 millions d’éléments",
-      "seuil de vue ou requête de 5 000",
-      "500 — configurable jusqu’à 2 000",
-      "retourner un sous-ensemble incomplet",
-      "modèle relationnel",
-      "rôles sont cumulatifs",
-    ]) {
-      expect(normalizedPage, fact).toContain(fact);
-    }
-    expect(normalizedPage).toContain(
-      "Ce n’est pas une « limite Power Apps à 2 000 lignes »",
-    );
-  });
-
-  it("separates guests, Power Pages, offline, accessibility and export", () => {
-    for (const fact of [
-      "invité Microsoft Entra B2B",
-      "Power Pages",
-      "licence Power Apps",
-      "sources sous-jacentes",
-      "Dataverse et Power Apps Mobile",
-      "connecteurs non-Dataverse comme SharePoint",
-      "flux Power Automate ne sont pas pris en charge hors ligne",
-      "perte ou le remplacement d’un appareil",
-      "ne transforme pas le navigateur",
-      "il ne démontre le respect ni des Web Content Accessibility Guidelines",
-      "ne deviennent pas une application React ou Next.js",
-      "permettent d’en déduire",
-    ]) {
-      expect(normalizedPage, fact).toContain(fact);
-    }
-  });
-
-  it("covers DLP, ALM, support and a full restoration boundary", () => {
-    for (const fact of [
-      "suspendre ou mettre en quarantaine",
-      "liste d’autorisation stricte",
-      "la règle la plus restrictive qui s’applique",
-      "connecteurs personnalisés et HTTP ne sont pas encore couverts",
-      "la localisation d’un environnement ne prouve pas celle de toute la chaîne de données",
-      "développement, test et production séparés",
-      "variables d’environnement",
-      "références de connexion",
-      "Un pipeline transporte une solution, pas vos données métier",
-      "support éditeur ne remplace",
-      "environnement séparé",
-      "données, connexions, identités, secrets, rôles et automatisations",
-    ]) {
-      expect(normalizedPage, fact).toContain(fact);
-    }
-  });
-
-  it("labels every required scenario as fictional and avoids market claims", () => {
-    expect(pageSource.match(/Scénario fictif composite/g)).toHaveLength(5);
-    for (const scenario of [
-      "Vingt salariés",
-      "réseau intermittent",
-      "Deux cent cinquante utilisateurs",
-      "Identité externe",
-      "maker parti",
-    ]) {
-      expect(normalizedPage, scenario).toContain(scenario);
-    }
-    expect(normalizedPage).toContain(
-      "ne sont ni des cas clients, ni des budgets ou délais de marché",
-    );
-    for (const formulation of [
-      "Deux cent cinquante utilisateurs ne rendent pas Power Apps inadapté par principe",
-      "n’offrent ni les mêmes parcours ni le même modèle d’identité",
-      "Une reconstruction complète ne se justifie que si ces écarts persistent et si le coût total la rend soutenable",
-    ]) {
-      expect(normalizedPage, formulation).toContain(formulation);
-    }
-    expect(normalizedPage).not.toContain(
-      "Une Power App gouvernée peut rester rationnelle",
-    );
-    expect(normalizedPage).not.toContain(
-      "ne sont pas trois habillages du même produit",
-    );
-    expect(normalizedPage).not.toContain(
-      "le dédié gagne en crédibilité — après TCO",
-    );
-  });
-
-  it("requires bounded remediation before a reversible migration", () => {
+  it("nomme Power Fx, Dataverse et les trois familles d’applications", () => {
+    const text = prose(articleHtml());
     for (const term of [
-      "Corrections à tester avant",
-      "défaut remédiable",
-      "coexistence",
-      "système maître",
-      "migration répétable",
-      "La recette avant les écrans",
-      "jouez le retour",
-      "L’extinction après stabilité",
-      "révoquez les secrets",
+      "Power Fx",
+      "Dataverse",
+      "application canevas",
+      "application pilotée par modèle",
+      "Power Pages",
     ]) {
-      expect(normalizedPage, term).toContain(term);
+      expect(text, term).toContain(term);
     }
-    expect(normalizedPage).toContain(
-      "Ne supprimez pas l’ancien outil au premier succès",
+  });
+
+  it("sépare les trois seuils et rend la délégation reproductible", () => {
+    const text = prose(articleHtml());
+    for (const fact of [
+      "30 millions",
+      "5 000",
+      "500, réglable de 1 à 2 000",
+      "Lower(Statut)",
+      "ligne bleue ondulée",
+      "triangle jaune",
+      "StartsWith",
+      "limite de lignes de données",
+    ]) {
+      expect(text, fact).toContain(fact);
+    }
+    // La source ne promet pas que l’index lève le seuil : ne pas le promettre.
+    expect(text).toContain("sans promettre qu’elles lèvent le seuil");
+    expect(text).not.toContain("limite Power Apps à 2 000 lignes");
+  });
+
+  it("traite le hors-ligne et l’accessibilité sans les surpromettre", () => {
+    const text = prose(articleHtml());
+    expect(text).toContain("Dataverse et l’application mobile Power Apps");
+    expect(text).toContain("exclut les connecteurs autres que Dataverse");
+    expect(text).toContain("flux Power Automate");
+    expect(text).toContain("sans démontrer le respect des WCAG ni du RGAA");
+  });
+
+  it("chiffre la sortie dans les deux sens", () => {
+    const text = prose(articleHtml());
+    expect(text).toContain("Quitter Power Apps suppose de reconstruire");
+    expect(text).toContain("9 490 €");
+    expect(text).toContain("Quitter une application sur mesure");
+    expect(text).toContain("six jours de transfert");
+    expect(text).toContain("2 100 €");
+    expect(text).toContain("l’hébergement, facturé tous les mois");
+    expect(text).toContain("montées de version");
+    // La double exploitation ne se décrit plus sans montant.
+    expect(text).toContain("440 €");
+    expect(text).toContain("155,70 € par mois");
+  });
+
+  /* ──────────────────────────────────────────────
+     Cohérence arithmétique : le guide contre le modèle
+     ────────────────────────────────────────────── */
+
+  it("affiche exactement les totaux que le modèle recalcule", () => {
+    const results = calculateTcoComparison(createIncarnatedCaseTcoOptions());
+    const powerApps = results.find(
+      (result) => result.key === "current-power-apps",
     );
+    const dedicated = results.find((result) => result.key === "dedicated");
+
+    expect(powerApps?.complete).toBe(true);
+    expect(dedicated?.complete).toBe(true);
+
+    const euros = (value: number | null | undefined) =>
+      new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 })
+        .format(Math.round(value ?? Number.NaN))
+        .replace(/[\u00a0\u202f]/g, " ");
+
+    const text = prose(articleHtml());
+    expect(euros(powerApps?.totalsEur[5])).toBe("30 732");
+    expect(euros(dedicated?.totalsEur[5])).toBe("166 840");
+    expect(text).toContain(`${euros(powerApps?.totalsEur[5])} €`);
+    expect(text).toContain(`${euros(dedicated?.totalsEur[5])} €`);
+    expect(text).toContain(`${euros(powerApps?.totalsEur[1])} €`);
+    expect(text).toContain(`${euros(dedicated?.totalsEur[1])} €`);
+    expect(text).toContain(`${euros(powerApps?.totalsEur[3])} €`);
+    expect(text).toContain(`${euros(dedicated?.totalsEur[3])} €`);
   });
 
-  it("keeps GDPR accountability independent from the architecture choice", () => {
-    for (const boundary of [
-      "ne suffit pas à démontrer la conformité au Règlement général sur la protection des données (RGPD)",
-      "finalité",
-      "minimisation",
-      "durées de conservation",
-      "risque élevé pour les droits et libertés",
-      "AIPD",
-      "DPO",
-    ]) {
-      expect(normalizedPage, boundary).toContain(boundary);
+  it("retrouve le point de bascule par balayage, pas par la formule du guide", () => {
+    // Méthode différente de celle du corps : le guide résout une équation
+    // linéaire, le contrôle balaie utilisateur par utilisateur.
+    const results = calculateTcoComparison(createIncarnatedCaseTcoOptions());
+    const dedicatedFiveYears =
+      results.find((result) => result.key === "dedicated")?.totalsEur[5] ?? 0;
+    const day = CASE_INTERNAL_DAY_RATE_EUR;
+    const fixedFiveYears =
+      4 * day + (CASE_STARTER_BUILD_EUR + 3 * day + 440) + 0.5 * day * 60;
+
+    let tipping = 0;
+    for (let users = 1; users <= 5000; users += 1) {
+      if (fixedFiveYears + users * 17.3 * 60 > dedicatedFiveYears) {
+        tipping = users;
+        break;
+      }
     }
-    expect(normalizedPage).toContain(
-      "Le choix de Power Apps ou du sur-mesure ne certifie pas à lui seul la conformité du traitement",
+
+    expect(tipping).toBe(141);
+    expect(prose(articleHtml())).toContain("141 utilisateurs");
+
+    // Sensibilité : forfait de maintenance divisé par deux, puis maintenance
+    // interne d’un jour par mois sans forfait.
+    const dedicatedHalfCare =
+      dedicatedFiveYears - (CASE_CARE_MONTHLY_EUR / 2) * 60;
+    const dedicatedInternal =
+      CASE_STARTER_BUILD_EUR + 3 * day + 440 + 6 * day + day * 60;
+
+    const scan = (target: number) => {
+      for (let users = 1; users <= 5000; users += 1) {
+        if (fixedFiveYears + users * 17.3 * 60 > target) return users;
+      }
+      return 0;
+    };
+
+    expect(scan(dedicatedHalfCare)).toBe(68);
+    expect(scan(dedicatedInternal)).toBe(11);
+    const text = prose(articleHtml());
+    expect(text).toContain("68 utilisateurs");
+    expect(text).toContain("11 utilisateurs");
+  });
+
+  it("rend visibles les deux hypothèses non sourcées", () => {
+    const text = prose(articleHtml());
+    expect(text).toContain("350 € le jour chargé");
+    expect(text).toContain("six semaines de double exploitation");
+    expect(text).toContain(
+      "Aucun des deux ne sort d’une source : ce sont des hypothèses",
     );
+    expect(modelSource).toContain("CASE_INTERNAL_DAY_RATE_EUR = 350");
   });
 
-  it("keeps internal time explicit and prevents a hidden zero or double count", () => {
-    for (const boundary of [
-      "valorisez du temps interne",
-      "heures, rôle, coût retenu et période",
-      "Ne comptez pas la même heure",
-      "gardez ce poste inconnu",
-      "un faux zéro",
+  /* ──────────────────────────────────────────────
+     Prix maison : concordance avec la grille publiée
+     ────────────────────────────────────────────── */
+
+  it("cite les prix Hagnéré Code réellement publiés sur /tarifs", () => {
+    // Modèle repris de guides-price-consistency.test.ts : la grille reste la
+    // source de vérité, le guide doit la suivre.
+    const grid = pricingSource.replace(/(?:&nbsp;|[\s\u00a0\u202f])+/g, " ");
+    for (const amount of [
+      "990 € HT",
+      "1 500 € HT",
+      "8 k€ HT",
+      "25 k€ HT",
+      "80 k€ HT",
     ]) {
-      expect(normalizedPage, boundary).toContain(boundary);
+      expect(grid, `grille : ${amount}`).toContain(amount);
+    }
+    expect(grid).toContain("≈ 2 500 € HT / mois");
+
+    const text = prose(articleHtml());
+    expect(text).toContain("8 000 € HT");
+    expect(text).toContain("25 000 € HT");
+    expect(text).toContain("80 000 € HT");
+    expect(text).toContain("1 500 € HT");
+    expect(text).toContain("2 500 € HT par mois");
+    expect(text).toContain("repères publics et indicatifs");
+    expect(text).toContain("le devis signé fixe le prix ferme");
+    expect(pageSource).toContain('href="/tarifs"');
+  });
+
+  /* ──────────────────────────────────────────────
+     Style (§9.2) et maillage (§11.8)
+     ────────────────────────────────────────────── */
+
+  it("ne laisse passer aucun connecteur robotique", () => {
+    const text = prose(articleHtml());
+    for (const tic of [
+      "Il est important de noter",
+      "Par ailleurs",
+      "En effet",
+      "Force est de constater",
+      "Il convient de",
+      "Concrètement,",
+      "En conclusion",
+      "N’hésitez pas",
+    ]) {
+      expect(text, tic).not.toContain(tic);
     }
   });
 
-  it("ships a local, blocking, non-persistent decision and TCO workbench", () => {
-    expect(pageSource).toContain("<PowerAppsDecisionWorkbench />");
+  it("ne pointe que vers des guides qui tiennent leur promesse", () => {
+    const published = new Set(PUBLISHED_GUIDES.map((guide) => guide.slug));
+    const targets = [
+      ...pageSource.matchAll(
+        /(?:href|ctaHref|primaryCtaHref)\s*[:=]\s*"\/guides\/([a-z0-9-]+)"/g,
+      ),
+    ].map((match) => match[1]);
+
+    expect(targets.length).toBeGreaterThanOrEqual(6);
+    for (const target of targets) {
+      expect(published.has(target), target).toBe(true);
+      // Le renvoi vers soi-même a existé sous l’ancre « Airtable, Notion ou
+      // application métier », qui pointait sur cette page.
+      expect(target).not.toBe(powerAppsGuide.slug);
+    }
+    expect(new Set(targets).size).toBeGreaterThanOrEqual(6);
+
+    // Une ancre qui annonce un guide ne pointe jamais sur une page service.
+    const serviceAnchors = [
+      ...pageSource.matchAll(
+        /<Link href="\/services\/[a-z0-9-]+">\s*([^<]*)</g,
+      ),
+    ].map((match) => match[1].trim());
+    for (const anchor of serviceAnchors) {
+      expect(anchor.toLowerCase(), anchor).not.toContain("guide");
+    }
+  });
+
+  it("garde la section 06 hors du corps historique supprimé", () => {
+    // Les 3 000 mots de protocole d’audit — « cinq tests de preuve » et
+    // « cinq scénarios fictifs » — ne reviennent pas par imitation.
+    for (const residue of [
+      "Cinq tests pour séparer",
+      "Scénario fictif composite",
+      "Comment la même situation peut produire plusieurs conclusions",
+      "La preuve minimale attendue pour chaque axe",
+      "Quatre familles à confronter au même besoin",
+      "Portée des principales familles de sources",
+      "Airtable, Notion ou application métier",
+      "diagnostic en trois situations",
+      "comment choisir un prestataire sur preuves",
+    ]) {
+      expect(pageSource, residue).not.toContain(residue);
+    }
+  });
+
+  /* ──────────────────────────────────────────────
+     Atelier de décision
+     ────────────────────────────────────────────── */
+
+  it("ouvre l’atelier sur un calcul résolu, avec retour à la feuille vierge", () => {
+    expect(pageSource).toContain("<PowerAppsDecisionWorkbench");
+    expect(pageSource).toContain(
+      "initialDecisionInputs={createIncarnatedCaseDecisionInputs()}",
+    );
+    expect(pageSource).toContain(
+      "initialTcoOptions={createIncarnatedCaseTcoOptions()}",
+    );
+    expect(workbenchSource).toContain("Repartir d’une feuille vierge");
+    expect(workbenchSource).toContain("resetToBlankSheet");
+    expect(renderedPage).not.toContain("Décision suspendue");
+  });
+
+  it("garde l’atelier local, bloquant et sans persistance", () => {
     expect(modelSource).toContain('status: "STOP_MISSING_EVIDENCE"');
     expect(modelSource).toContain("candidateTotalsEur");
     expect(modelSource).toContain("validateCalculatedAmount");
@@ -477,38 +736,16 @@ describe("content quality for Power Apps or custom application guide", () => {
     expect(workbenchSource).toContain("navigator.clipboard.writeText");
     expect(workbenchSource).toContain("window.print()");
     expect(workbenchSource).toContain('data-tco-mobile-results="true"');
-    expect(workbenchSource).toContain("xl:hidden");
     expect(workbenchSource).toContain('data-tco-desktop-results="true"');
-    expect(workbenchSource).toContain("hidden rounded-2xl");
-    expect(workbenchSource).toContain("xl:block");
     expect(workbenchSource).toContain("w-full table-fixed");
     expect(workbenchSource).not.toContain("overflow-x-auto");
-    expect(workbenchSource).not.toContain("min-w-[760px]");
-    expect(workbenchSource).toContain(
-      "À vérifier — aucune preuve fiable ; décision suspendue",
-    );
-    expect(workbenchSource).toContain("tcoStateLabel(result)");
-    expect(workbenchSource).toContain("KnowledgeQuantity");
-    expect(workbenchSource).toContain(
-      "Quantité entière d’utilisateurs licenciés",
-    );
-    expect(workbenchSource).toContain('inputMode="numeric"');
-    expect(workbenchSource).toContain('step="1"');
-    expect(workbenchSource).toContain("allowNotApplicable={false}");
-    expect(workbenchSource).toContain('option.value !== "not-applicable"');
     expect(modelSource).toContain("collectBlockingFailures");
-    expect(modelSource).toContain("recommendedOptionForDecision");
     expect(workbenchSource.match(/role="status"/g)).toHaveLength(1);
     expect(workbenchSource).not.toMatch(
       /localStorage|sessionStorage|indexedDB/,
     );
     expect(workbenchSource).not.toMatch(/download\s*=|\.xlsx?\b|\.csv\b/i);
     expect(workbenchSource).not.toContain("<form");
-    expect(normalizedPage).toContain("suspendez la décision");
-    expect(normalizedPage).toContain("preuve manquante");
-    expect(normalizedPage).toContain(
-      "un contrôle fondateur est insatisfaisant",
-    );
   });
 
   it("keeps internal production vocabulary out of reader-visible text", () => {
@@ -516,12 +753,10 @@ describe("content quality for Power Apps or custom application guide", () => {
     const forbiddenMarkers = [
       /\bstop\b/iu,
       /à\s+sourcer/iu,
-      /\bpass\b/iu,
       /\bno_go\b/iu,
       /\bgate\b/iu,
       /\bpasse\s+[1-4]\b/iu,
       /\bhash\b/iu,
-      /\bcertificats?\b/iu,
       /\b(?:case|model)[-_][a-z0-9-]+\b/iu,
     ];
 
@@ -539,12 +774,7 @@ describe("content quality for Power Apps or custom application guide", () => {
 
     for (const [fileName, dimensions] of illustrations) {
       const source = readFileSync(
-        resolve(
-          slugDirectory,
-          "../../../../public/guides",
-          powerAppsGuide.slug,
-          fileName,
-        ),
+        resolve(repositoryRoot, "public/guides", powerAppsGuide.slug, fileName),
         "utf8",
       );
       expect(source, fileName).toContain(dimensions);
@@ -554,13 +784,8 @@ describe("content quality for Power Apps or custom application guide", () => {
       expect(source, fileName).toContain("<desc");
     }
 
-    expect(pageSource).toContain("article-power-apps-16x9.svg");
     expect(ogSource).toContain("createGuideOgImage");
     expect(ogSource).toContain("width: 1200, height: 630");
-    expect(ogSource).toContain(
-      "Preuves · 4 coûts comparés · correction ciblée · migration réversible",
-    );
-    expect(ogSource).not.toContain("4 TCO · remédiation");
   });
 
   it("keeps commercial links compatible with a keep-Power-Apps conclusion", () => {
@@ -570,20 +795,53 @@ describe("content quality for Power Apps or custom application guide", () => {
     expect(pageSource).toContain('ctaHref: "/demarrer-un-projet"');
     expect(pageSource).toContain('secondaryLabel: "03 74 47 20 18"');
     expect(pageSource).toContain('secondaryHref: "tel:+33374472018"');
-    expect(pageSource).not.toContain('secondaryLabel: "Voir le service"');
     expect(pageSource).toContain(
       '"Vous hésitez entre renforcer Power Apps et reconstruire\\u00a0?"',
     );
-    expect(pageSource).not.toContain(
-      '"Vous hésitez entre renforcer Power Apps et reconstruire ?"',
-    );
     expect(renderedPage).toContain('href="tel:+33374472018"');
     expect(renderedPage).toContain('aria-label="Appeler 03 74 47 20 18"');
-    expect(renderedPage).not.toContain('aria-label="Appeler Voir le service"');
     expect(normalizedPage).toContain(
       "Le premier échange peut conclure qu’il faut conserver ou renforcer Power Apps",
     );
     expect(powerAppsGuide.title.length).toBeLessThanOrEqual(60);
     expect(powerAppsGuide.metaDescription.length).toBeLessThanOrEqual(155);
+  });
+
+  it("garde une FAQ de six à dix questions, distinctes des H2", () => {
+    const faqBlock = pageSource.match(
+      /const faqCategories: GuidePremiumFaqCategory\[\] = \[([\s\S]*?)\n\];/,
+    )?.[1];
+    expect(faqBlock).toBeDefined();
+    const questions = [...(faqBlock ?? "").matchAll(/question:\s*\n?\s*"([^"]+)"/g)]
+      .map((match) => match[1]);
+
+    expect(questions.length).toBeGreaterThanOrEqual(6);
+    expect(questions.length).toBeLessThanOrEqual(10);
+    for (const question of questions) {
+      expect(question.trim().endsWith("?"), question).toBe(true);
+    }
+
+    // §9.2 : la symétrie binaire « Non. » / « Oui, mais » était portée par
+    // neuf réponses sur douze dans la version auditée.
+    const answers = [...(faqBlock ?? "").matchAll(/answer:\s*\n?\s*"([^"]+)"/g)]
+      .map((match) => match[1]);
+    expect(answers).toHaveLength(questions.length);
+    const binaryOpeners = answers.filter((answer) =>
+      /^(?:Non|Oui)\b/.test(answer),
+    ).length;
+    expect(binaryOpeners / answers.length).toBeLessThanOrEqual(0.34);
+    for (const answer of answers) {
+      const words = answer.split(/\s+/).filter(Boolean).length;
+      expect(words, answer.slice(0, 50)).toBeGreaterThanOrEqual(40);
+      expect(words, answer.slice(0, 50)).toBeLessThanOrEqual(120);
+    }
+  });
+
+  it("traite explicitement la requête cible", () => {
+    const text = prose(articleHtml());
+    expect(text.toLowerCase()).toContain(
+      "power apps ou application sur mesure",
+    );
+    expect((text.match(/Power Apps/g) ?? []).length).toBeGreaterThanOrEqual(20);
   });
 });

@@ -67,7 +67,7 @@ const publicDossierContextLabels = {
 const evidenceTriStateOptions: Array<{ value: TriState; label: string }> = [
   {
     value: "unknown",
-    label: "À vérifier — aucune preuve fiable ; décision suspendue",
+    label: "À vérifier — aucune preuve fiable\u00a0; décision suspendue",
   },
   { value: "yes", label: "Oui — contrôle daté satisfaisant" },
   {
@@ -138,7 +138,7 @@ function publicDecisionDossier(
       `Criticité : ${publicDossierContextLabels.criticality[context.criticality]}`,
     )
     .replace(`Statut : ${internalStatus}`, `Orientation : ${visibleStatus}`)
-    .replace(/^Conclusion : STOP — /m, "Conclusion : Décision suspendue — ");
+    .replace(/^Conclusion : STOP — /m, "Conclusion\u00a0: Décision suspendue — ");
 }
 
 function decisionOptionLabel(
@@ -185,7 +185,7 @@ const evidenceGroups: Array<{
   {
     title: "Licences, sécurité et exploitation",
     description:
-      "Vérifier le tenant réel : licences, connecteurs, DLP, rôles, environnements, propriétaires et support.",
+      "Vérifier le tenant réel\u00a0: licences, connecteurs, DLP, rôles, environnements, propriétaires et support.",
     keys: [
       "licensesFlowsInventoried",
       "securityDlpValidated",
@@ -440,7 +440,7 @@ function TcoOptionEditor({
                 id={`license-price-${option.key}`}
                 label="Prix contractuel par utilisateur et par mois"
                 allowNotApplicable={false}
-                hint="Aide éditable : Premium était affiché à 17,30 € HT/utilisateur/mois, paiement annuel, sur la page française Microsoft vérifiée le 3 août 2026. Le calcul reste bloqué tant que vous ne confirmez pas votre prix."
+                hint="Aide éditable\u00a0: Premium était affiché à 17,30\u00a0€ HT/utilisateur/mois, paiement annuel, sur la page française Microsoft vérifiée le 3 août 2026. Le calcul reste bloqué tant que vous ne confirmez pas votre prix."
                 value={option.license.pricePerUserMonthEur}
                 onChange={(value) =>
                   updateLicense("pricePerUserMonthEur", value)
@@ -454,7 +454,7 @@ function TcoOptionEditor({
               id={`license-payg-${option.key}`}
               label="Facture mensuelle PAYG confirmée en euros"
               allowNotApplicable={false}
-              hint="Le repère public est 10 USD par utilisateur actif unique, par application et par mois. Le workbench ne convertit jamais ce montant : saisissez une facture ou estimation contractuelle en euros."
+              hint="Le repère public est 10 USD par utilisateur actif unique, par application et par mois. Le workbench ne convertit jamais ce montant\u00a0: saisissez une facture ou estimation contractuelle en euros."
               value={option.license.contractualMonthlyEur}
               onChange={(value) =>
                 updateLicense("contractualMonthlyEur", value)
@@ -597,6 +597,21 @@ export function PowerAppsDecisionWorkbench({
     setActionMessage("");
   }
 
+  /**
+   * Rend l'atelier vierge.
+   *
+   * La page ouvre l'atelier sur le cas construit du guide, déjà chiffré : sans
+   * cette commande, un lecteur qui veut partir de son propre dossier devrait
+   * effacer une cinquantaine de champs à la main.
+   */
+  function resetToBlankSheet() {
+    setInputs(createEmptyDecisionInputs());
+    setTcoOptions(createEmptyTcoOptions());
+    setActionMessage(
+      "Atelier remis à vide\u00a0: chaque poste est repassé à «\u00a0à confirmer\u00a0».",
+    );
+  }
+
   async function copyDossier() {
     try {
       if (!navigator.clipboard?.writeText) {
@@ -606,7 +621,7 @@ export function PowerAppsDecisionWorkbench({
       setActionMessage("Dossier copié dans le presse-papiers.");
     } catch {
       setActionMessage(
-        "Copie impossible : sélectionnez le dossier affiché ou utilisez l’impression.",
+        "Copie impossible\u00a0: sélectionnez le dossier affiché ou utilisez l’impression.",
       );
     }
   }
@@ -1125,6 +1140,13 @@ export function PowerAppsDecisionWorkbench({
               className="min-h-11 rounded-xl border border-zinc-700 px-5 py-2.5 text-sm font-semibold text-white outline-none hover:bg-zinc-900 focus-visible:ring-2 focus-visible:ring-indigo-400"
             >
               Imprimer cette page
+            </button>
+            <button
+              type="button"
+              onClick={resetToBlankSheet}
+              className="min-h-11 rounded-xl border border-zinc-700 px-5 py-2.5 text-sm font-semibold text-white outline-none hover:bg-zinc-900 focus-visible:ring-2 focus-visible:ring-indigo-400"
+            >
+              Repartir d’une feuille vierge
             </button>
           </div>
           <p
