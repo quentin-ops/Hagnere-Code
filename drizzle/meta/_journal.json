@@ -29,6 +29,13 @@
       "when": 1787048833063,
       "tag": "0005_funnel_analytics_event",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1787918400000,
+      "tag": "0006_brief_lead_source",
+      "breakpoints": true
     }
   ]
 }
