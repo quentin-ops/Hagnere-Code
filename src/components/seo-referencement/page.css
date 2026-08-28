@@ -26,7 +26,9 @@
   --line-2: var(--seo-line);
   --accent: var(--seo-accent);
   --accent-btn: #6d28d9;
-  --accent-ink: var(--seo-accent-bright);
+  /* Version « encre » de l'accent : elle sert de couleur de TEXTE, souvent
+     sur fond clair. --seo-accent-bright (#8B5CF6) n'y tenait que 4,23:1. */
+  --accent-ink: var(--seo-accent);
   --accent-soft: var(--seo-accent-soft);
 
   background: var(--seo-paper);
@@ -48,6 +50,7 @@ html.dark .seo-public-page {
   /* Le token dédié au texte blanc posé sur l'accent : en sombre, --seo-accent
      s'éclaircit et ne conviendrait pas comme fond de bouton. */
   --accent-btn: #7c3aed;
+  --accent-ink: var(--seo-accent-bright);
 }
 
 .seo-public-page *,

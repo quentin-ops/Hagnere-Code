@@ -57,7 +57,12 @@
    soit le thème. Même littéral que `.eyebrow.on-dark`. */
 .sf-contact-head h1 .sf-accent,
 .sf-contact-head h2 .sf-accent { color: #a78bfa; }
-.sf-contact-head p {
+/* Spécificité volontairement doublée (`.sf-contact-inner`) : une page qui
+   porte son propre système de style peut déclarer un `.page-root p { color }`
+   de spécificité égale et l'emporter par simple ordre de source. C'est ce qui
+   arrivait sur /services/referencement-google, où ce paragraphe — posé sur le
+   #0a0a0a de `.sf-contact` — retombait à 3,50:1. */
+.sf-contact-inner .sf-contact-head p {
   color: rgba(255, 255, 255, 0.7);
   font-size: 17px;
   margin-top: 20px;
