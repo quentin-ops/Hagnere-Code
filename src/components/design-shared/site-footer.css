@@ -318,7 +318,12 @@ a.sf-direct-v:hover { color: var(--accent); }
   margin: 0;
   padding-top: 4px;
   font-size: 11.5px;
-  color: var(--mute);
+  /* Posée sur le #0a0a0a littéral de `.sf-contact`, identique dans les deux
+     thèmes. `var(--mute)` y échouait (3,50:1), et sur les pages qui portent
+     leur propre système de tokens — /services/referencement-google — la
+     variable n'est même pas définie : la couleur était alors héritée du
+     parent. #9A9AA5 tient 7,11:1 sur ce fond, quel que soit le thème. */
+  color: #9a9aa5;
   line-height: 1.5;
 }
 

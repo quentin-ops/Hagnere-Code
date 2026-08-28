@@ -218,7 +218,9 @@
 .sap-foot-hot .sap-foot-k {
   background: var(--paper);
   color: #fff;
-  background-color: var(--accent);
+  /* `--accent` vaut #8B5CF6 en sombre : le libellé blanc n'y tenait que 4,23:1.
+     `--accent-btn` est le token dédié au blanc posé sur l'accent. */
+  background-color: var(--accent-btn);
 }
 .sap-foot-hot .sap-foot-v { color: var(--accent-ink); font-weight: 600; }
 

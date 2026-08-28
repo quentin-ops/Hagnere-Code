@@ -70,7 +70,7 @@ export const bodyHtml = `
       </div>
     </div>
 
-    <p style="margin:18px 0 10px;font-family:'Geist Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;color:#737373">
+    <p style="margin:18px 0 10px;font-family:'Geist Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;color:var(--mute)">
       EXEMPLE INTERNE ILLUSTRATIF — PAS UN RAPPORT CLIENT NI UNE MESURE RÉELLE
     </p>
 
