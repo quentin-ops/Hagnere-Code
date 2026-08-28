@@ -1,7 +1,4 @@
-import { navHtml } from "@/components/design-shared/nav-html";
-
 export const bodyHtml = `
-${navHtml}
 <div class="wrap">
   <div class="crumb">
     <a href="/">Accueil</a>
@@ -32,6 +29,10 @@ ${navHtml}
         paiement, livraison, ERP et facturation électronique sont cadrés selon vos outils et vos obligations.
         Pas de commission Hagnéré sur vos ventes, pas de dépendance à un outil propriétaire de l'agence.
         <b>Votre code, votre serveur, votre marge.</b>
+      </p>
+      <p class="shero-sub" style="margin-top:10px;font-size:13px;opacity:0.78">
+        Les boutiques montrées sur cette page sont des maquettes&nbsp;: « ÆTHER » est une MARQUE FICTIVE, et les
+        prix, commandes et chiffres affichés sont des DONNÉES FICTIVES.
       </p>
       <div class="shero-cta">
         <a href="#contact" class="btn btn-accent btn-lg">
@@ -422,6 +423,8 @@ ${navHtml}
       <div class="right">
         Une boutique e-commerce mobilise six chantiers liés. Le devis précise ceux qui sont nécessaires,
         les personnes mobilisées, les livrables attendus et les éventuels partenaires techniques.
+        <b>Les visuels de cette section sont des maquettes</b>&nbsp;: « ÆTHER » est une MARQUE FICTIVE, et les
+        prix, commandes et montants affichés sont des DONNÉES FICTIVES — ce ne sont pas des captures d'un site client.
       </div>
     </div>
 
@@ -989,29 +992,4 @@ ${navHtml}
 
 <!-- FAQ -->
 <!-- Source unique injectée depuis faq-content.ts par composed-body.ts. -->
-
-<!-- CTA -->
-<section class="scta" id="contact">
-  <div class="scta-bg"></div>
-  <div class="wrap inner">
-    <div class="eyebrow on-dark">— Prochaine étape</div>
-    <h2 style="margin-top:14px">Parlons de votre boutique.<br><span class="accent">30 minutes, c'est tout.</span></h2>
-    <p>Un échange avec un expert : nous examinons votre stack actuelle ou votre brief, puis nous précisons le périmètre, les prochaines étapes et le délai de chiffrage. Si une autre solution paraît plus adaptée, nous vous le disons.</p>
-    <div class="scta-cta">
-      <a href="/rendez-vous" class="btn btn-accent btn-lg">
-        📅 &nbsp;Réserver 30 min sur Calendly
-        <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-      <a href="mailto:quentin@hagnere-patrimoine.fr" class="btn btn-ghost btn-lg" style="background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.15)">
-        Envoyer un email →
-      </a>
-    </div>
-    <div class="scta-meta">OBJECTIF : PROCHAIN JOUR OUVRÉ · DÉLAI NON GARANTI · PAR UN ASSOCIÉ · SANS ENGAGEMENT</div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="wrap"></div>
-</footer>
 `;

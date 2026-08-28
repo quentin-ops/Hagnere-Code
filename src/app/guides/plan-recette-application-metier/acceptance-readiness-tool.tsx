@@ -154,7 +154,7 @@ export function AcceptanceReadinessTool() {
                         event.target.value as AcceptanceGateStatus,
                       )
                     }
-                    className="mt-3 w-full rounded-xl border border-zinc-300 bg-white px-3 py-3 text-sm text-zinc-900 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                    className="mt-3 w-full rounded-xl border border-zinc-300 bg-white px-3 py-3 text-base sm:text-sm text-zinc-900 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                   >
                     {statusOptions.map((option) => (
                       <option key={option.value} value={option.value}>
@@ -209,7 +209,7 @@ export function AcceptanceReadinessTool() {
                       updateFact(field.id, event.target.value)
                     }
                     placeholder="Non renseigné"
-                    className="mt-3 w-full rounded-xl border border-zinc-300 bg-white px-3 py-3 text-sm tabular-nums text-zinc-900 outline-none placeholder:text-zinc-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                    className="mt-3 w-full rounded-xl border border-zinc-300 bg-white px-3 py-3 text-base sm:text-sm tabular-nums text-zinc-900 outline-none placeholder:text-zinc-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                   />
                 </div>
               );

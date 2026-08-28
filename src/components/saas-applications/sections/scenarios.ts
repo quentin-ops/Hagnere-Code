@@ -9,7 +9,9 @@ export const scenariosHtml = `
       </div>
       <div class="right">
         Ces trois archétypes couvrent des décisions différentes. Cliquez sur le vôtre :
-        le point d'entrée, les livrables et les risques à traiter changent.
+        les livrables, l'ordre de grandeur du budget et les risques à traiter changent — et
+        pour une reprise, le point d'entrée payant n'est pas le même. Les fourchettes citées
+        sont celles des <a href="#tarifs">forfaits publiés plus bas</a> ; seul le devis engage.
       </div>
     </div>
 
@@ -27,7 +29,7 @@ export const scenariosHtml = `
       <button type="button" class="sa-scen-tab" data-scenario="rebuild" role="tab" aria-selected="false" id="sa-scenario-tab-rebuild" aria-controls="sa-scenario-panel-rebuild" tabindex="-1">
         <span class="sa-scen-tab-k">SCÉNARIO 03</span>
         <span class="sa-scen-tab-t">Rebuild legacy</span>
-        <span class="sa-scen-tab-d">Sur devis</span>
+        <span class="sa-scen-tab-d">Chiffré après audit</span>
       </button>
     </div>
 
@@ -55,11 +57,11 @@ export const scenariosHtml = `
         </div>
         <div class="sa-scen-aside">
           <div class="sa-scen-meta">
-            <div class="sa-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Ordre de grandeur</span><span class="v">15–30 k€ HT · forfait Essentiel</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Prix</span><span class="v">Fixé au devis, après cadrage</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Durée</span><span class="v">Planning et jalons arrêtés au devis</span></div>
             <div class="sa-scen-meta-row"><span class="k">Équipe</span><span class="v">Rôles et disponibilité définis au devis</span></div>
-            <div class="sa-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis</span></div>
-            <div class="sa-scen-meta-row"><span class="k">Démarrage</span><span class="v">Date confirmée après cadrage</span></div>
-            <div class="sa-scen-meta-row"><span class="k">Point d'entrée</span><span class="v">Discovery Sprint 2j · 1 500 €</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Point d'entrée</span><span class="v">Discovery Sprint 2 jours · 1 500 € HT · déduit si phase 2, conditions au devis</span></div>
           </div>
           <a href="#contact" class="btn btn-accent sa-scen-cta">
             Discuter de ce scénario
@@ -95,11 +97,11 @@ export const scenariosHtml = `
         </div>
         <div class="sa-scen-aside">
           <div class="sa-scen-meta">
-            <div class="sa-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Ordre de grandeur</span><span class="v">30–60 k€ HT · forfait Standard</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Prix</span><span class="v">Fixé au devis, après audit et priorisation</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Durée</span><span class="v">Lots successifs, jalons arrêtés au devis</span></div>
             <div class="sa-scen-meta-row"><span class="k">Équipe</span><span class="v">Équipe projet définie après audit</span></div>
-            <div class="sa-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis</span></div>
-            <div class="sa-scen-meta-row"><span class="k">Démarrage</span><span class="v">Planifié après audit et priorisation</span></div>
-            <div class="sa-scen-meta-row"><span class="k">Point d'entrée</span><span class="v">Audit technique 1 jour · 1 500 €</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Point d'entrée</span><span class="v">Discovery Sprint 2 jours · 1 500 € HT · déduit si phase 2, conditions au devis</span></div>
           </div>
           <a href="#contact" class="btn btn-accent sa-scen-cta">
             Discuter de ce scénario
@@ -135,17 +137,17 @@ export const scenariosHtml = `
         </div>
         <div class="sa-scen-aside">
           <div class="sa-scen-meta">
-            <div class="sa-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Ordre de grandeur</span><span class="v">Chiffré après l'audit — stabiliser, reprendre ou réécrire ne coûtent pas la même chose</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Prix</span><span class="v">Fixé au devis remis avec le rapport d'audit</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Durée</span><span class="v">Trajectoire arrêtée avec vous après l'audit</span></div>
             <div class="sa-scen-meta-row"><span class="k">Équipe</span><span class="v">Compétences dimensionnées après lecture du code</span></div>
-            <div class="sa-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis après audit</span></div>
-            <div class="sa-scen-meta-row"><span class="k">Démarrage</span><span class="v">Créneau confirmé avant commande</span></div>
-            <div class="sa-scen-meta-row"><span class="k">Point d'entrée</span><span class="v">Audit technique · 1 500 € (déductibles)</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Point d'entrée</span><span class="v">Audit de reprise · 2 000 € HT · déduction éventuelle au devis</span></div>
           </div>
           <a href="#contact" class="btn btn-accent sa-scen-cta">
             Discuter de ce scénario
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <div class="sa-scen-ref">Le rapport compare trois options : stabilisation, reprise progressive et réécriture ciblée. La recommandation dépend des preuves trouvées dans le code et les données.</div>
+          <div class="sa-scen-ref">Le rapport compare trois options : stabilisation, reprise progressive et réécriture ciblée. La recommandation dépend des preuves trouvées dans le code et les données. Le point d'entrée payant d'une reprise est l'audit publié sur <a href="/services/maintenance-evolution">maintenance &amp; évolution</a> ; le Discovery Sprint, lui, ouvre un projet de développement. Un seul cadrage payant est engagé, jamais les deux.</div>
         </div>
       </div>
     </div>

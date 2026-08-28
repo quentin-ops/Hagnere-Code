@@ -1,5 +1,9 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { composedBodyHtml } from "./composed-body";
+import { checklistHtml } from "./sections/checklist";
+
+const bodySource = readFileSync(new URL("./body.ts", import.meta.url), "utf8");
 
 describe("audit technique public claims", () => {
   it("ne présente pas CERT-FR comme une qualification de pentest", () => {
@@ -27,6 +31,32 @@ describe("audit technique public claims", () => {
     expect(composedBodyHtml).toContain("EXEMPLE · FICTIF");
   });
 
+  /**
+   * Le hero sert une maquette étiquetée « EXEMPLE · FICTIF » qui affiche
+   * « Rapport 52 pages · Deck 16 slides · Backlog 28 tickets » et
+   * « 28 tickets · 12 quick wins ». La liste des livrables, elle, décrit ce qui
+   * est réellement facturé et n'est pas étiquetée : aucun volume de la maquette
+   * ne doit y être repris tel quel, sous peine de transformer un décor en
+   * engagement — et de contredire la fourchette annoncée juste au-dessus
+   * (« 20 à 30 tickets actionnables »).
+   */
+  it("ne reprend aucun volume de la maquette fictive dans les livrables facturés", () => {
+    for (const figure of [
+      /\b52\s*pages?\b/i,
+      /\b16\s*slides?\b/i,
+      /\b28\s*tickets?\b/i,
+      /\b12\s*quick\s*wins?\b/i,
+    ]) {
+      expect(
+        checklistHtml,
+        `volume de la maquette du hero repris dans les livrables : ${figure}`,
+      ).not.toMatch(figure);
+    }
+
+    // La seule quantité de tickets publiée reste la fourchette du backlog.
+    expect(checklistHtml).toMatch(/20 à 30 tickets/);
+  });
+
   it("ne publie pas de preuve client, d'équipe ou de délai inventés", () => {
     expect(composedBodyHtml).not.toMatch(/attorney-client privilege/i);
     expect(composedBodyHtml).not.toMatch(/ouvrés médian|méthodologie mesurée sur audits livrés/i);
@@ -50,5 +80,34 @@ describe("audit technique public claims", () => {
       /premiers mouvements à 3 mois|trafic significatif à 6[–-]9 mois|ROI business mesurable à 9[–-]12 mois/i,
     );
     expect(composedBodyHtml).not.toMatch(/faire que votre site soit[^<.]{0,80}l'une de ces sources/i);
+  });
+  it("regroupe programmatiquement les boutons radio du mini-audit (WCAG 1.3.1 / RGAA 11.5)", () => {
+    const radioNames = new Set(
+      [...composedBodyHtml.matchAll(/name="(audit-q\d)"/g)].map((m) => m[1]),
+    );
+    const groups = [...composedBodyHtml.matchAll(
+      /<div class="at-audit-options" role="radiogroup" aria-labelledby="(at-audit-q\d-title)">/g,
+    )];
+
+    expect(groups).toHaveLength(radioNames.size);
+    for (const [, labelId] of groups) {
+      expect(composedBodyHtml).toContain(`<h3 id="${labelId}">`);
+    }
+  });
+
+  it("ne conserve aucun footer hérité dans le body", () => {
+    expect(bodySource).not.toContain("<footer");
+    expect(bodySource).not.toContain("<!-- FOOTER -->");
+  });
+
+  it("situe l'audit Express par rapport au Discovery Sprint de la grille tarifaire", () => {
+    expect(composedBodyHtml).toMatch(/porte d'entrée payante propre à ce service/i);
+    expect(composedBodyHtml).toContain('href="/tarifs"');
+  });
+
+  it("publie un maillage service→service dans le corps de la page", () => {
+    expect(composedBodyHtml).toContain('href="/services/securite-rgpd"');
+    expect(composedBodyHtml).toContain('href="/services/maintenance-evolution"');
+    expect(composedBodyHtml).toContain('href="/services/saas-applications-metier"');
   });
 });

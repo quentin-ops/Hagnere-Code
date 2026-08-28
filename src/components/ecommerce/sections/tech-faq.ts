@@ -15,11 +15,11 @@ export const techFaqHtml = `
 
     <div class="ec-tfaq-list reveal reveal-d-1">
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-shop-tech-1">
           Quelle stack préconisez-vous pour ce projet ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-shop-tech-1" hidden>
           Il n'existe pas de stack unique. Next.js et React peuvent porter le storefront ; TypeScript, PostgreSQL,
           Redis, Meilisearch ou pgvector sont retenus seulement si le besoin les justifie. React Native peut couvrir
           l'app mobile. Le moteur e-commerce, le fournisseur IA, le cloud et les services tiers sont comparés puis
@@ -28,11 +28,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-shop-tech-2">
           Combien de commandes/minute votre infra tient-elle sous charge ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-shop-tech-2" hidden>
           Il n'y a pas de capacité générique : panier, promotions, stock, PSP, ERP et base de données n'ont pas les
           mêmes limites. On part de votre pic attendu, on définit un scénario k6, les jeux de données, seuils et
           services inclus, puis on livre le rapport. La capacité annoncée ne vaut que pour cette configuration et ce test.
@@ -40,11 +40,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-shop-tech-3">
           Vous gérez comment la PCI-DSS côté paiement ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-shop-tech-3" hidden>
           Les composants hébergés ou tokenisés du prestataire de paiement peuvent réduire le périmètre PCI, mais le
           questionnaire et les obligations exactes dépendent de l'intégration et doivent être validés avec l'acquéreur
           ou un conseil compétent. Les données carte ne doivent pas être stockées ni journalisées par l'application ;
@@ -53,11 +53,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-shop-tech-4">
           Migration depuis Shopify / Prestashop — procédure exacte ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-shop-tech-4" hidden>
           <b>Shopify</b> : export via Admin API (produits, collections, commandes, clients, metafields,
           redirections existantes). <b>Prestashop</b> : dump SQL + API webservice pour les attachements.
           L'import est conçu pour être rejouable. Le mapping 301 combine inventaire, règles automatiques et revue
@@ -67,11 +67,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-shop-tech-5">
           Backup, DR, RTO/RPO ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-shop-tech-5" hidden>
           Le RPO et le RTO sont fixés selon le coût d'une perte de données et d'une indisponibilité. Le devis décrit
           les sauvegardes, leur chiffrement, la rétention, l'éventuelle copie chez un second fournisseur et la
           fréquence des tests de restauration. Un runbook identifie les responsables, accès et critères de succès.
@@ -79,11 +79,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-shop-tech-6">
           Observabilité : logs, traces, alertes, dashboards ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-shop-tech-6" hidden>
           Logs, erreurs, métriques et traces sont choisis selon l'architecture. Les données personnelles et secrets
           sont minimisés ou masqués, les durées de conservation documentées et les accès limités. Le devis fixe les
           signaux utiles — erreurs 5xx, files, paiements, stock, disponibilité — ainsi que les seuils et canaux d'alerte.
@@ -91,11 +91,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-shop-tech-7">
           Tests : coverage, E2E, régression ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-shop-tech-7" hidden>
           Le plan de test part des risques : règles métier en unitaire, intégrations en tests de contrat, parcours
           critiques en E2E et contrôles de migration sur données représentatives. Les seuils de couverture ne remplacent
           pas les scénarios. Les fonctions IA sont testées avec jeux de référence, mocks et critères d'acceptation explicites.
@@ -103,11 +103,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-shop-tech-8">
           SLA maintenance, temps de déploiement, rollback ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-shop-tech-8" hidden>
           Le SLA dépend du forfait de maintenance : plage de service, sévérités, délai de réponse, délai cible de
           rétablissement et exclusions sont écrits. Le pipeline prévoit staging, contrôles avant production et retour
           arrière ; ses durées sont mesurées sur l'infrastructure retenue, pas promises avec un chiffre générique.

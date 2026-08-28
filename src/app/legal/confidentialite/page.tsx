@@ -2,8 +2,15 @@ import type { Metadata } from "next";
 import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
 import { confidentialiteSections } from "@/components/legal/content/confidentialite";
 import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
+import { PRIVACY_NOTICE_VERSION } from "@/lib/privacy-notice";
 
-const LAST_UPDATED = "2026-08-18";
+// Toute modification de fond de cette page doit porter cette date ET ajouter
+// une ligne au tableau « Versions de cette politique » (section `versions` de
+// content/confidentialite.tsx). L'invariant est verrouillé par
+// components/legal/legal-compliance.test.ts.
+// Doit rester égal à PRIVACY_NOTICE_VERSION : chaque lead est horodaté avec
+// la version de la politique réellement affichée (cf. src/lib/privacy-notice.ts).
+const LAST_UPDATED = PRIVACY_NOTICE_VERSION;
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité · Hagnéré Code",

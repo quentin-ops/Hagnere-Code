@@ -1,7 +1,4 @@
-import { navHtml } from "@/components/design-shared/nav-html";
-
 export const bodyHtml = `
-${navHtml}
 <!-- BREADCRUMB -->
 <div class="wrap">
   <div class="crumb">
@@ -38,7 +35,7 @@ ${navHtml}
         <a href="#contact" class="btn btn-accent btn-lg">
           Cadrer mon projet <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="#contact" class="btn btn-ghost btn-lg">Discovery Sprint · 2j · 1 500 €</a>
+        <a href="#contact" class="btn btn-ghost btn-lg">Discovery Sprint · 2 jours · 1 500 € HT</a>
       </div>
       <div class="shero-meta">
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> MVP cadré et chiffré au devis</span>
@@ -75,7 +72,7 @@ ${navHtml}
 
           <!-- header -->
           <text x="164" y="40" font-family="Geist" font-weight="700" font-size="18" fill="#0A0A0A">Vue d'ensemble</text>
-          <text x="164" y="58" font-family="Geist Mono" font-size="9" fill="#737373">aperçu — données de démo</text>
+          <text x="164" y="58" font-family="Geist Mono" font-size="9" fill="#737373">aperçu — DONNÉES FICTIVES</text>
 
           <!-- Stat cards -->
           <rect x="164" y="80" width="110" height="72" rx="8" fill="#F5F5F5"/>
@@ -91,7 +88,7 @@ ${navHtml}
           <rect x="404" y="80" width="120" height="72" rx="8" fill="#0A0A0A"/>
           <text x="418" y="102" font-family="Geist Mono" font-size="8" fill="#737373">AI TASKS</text>
           <text x="418" y="132" font-family="Geist" font-weight="700" font-size="18" fill="#fff">1 240 / jour</text>
-          <text x="418" y="146" font-family="Geist Mono" font-size="9" fill="#6D28D9">98,4% OK</text>
+          <text x="418" y="146" font-family="Geist Mono" font-size="9" fill="#6D28D9">statut : OK</text>
 
           <!-- Chart -->
           <rect x="164" y="166" width="360" height="172" rx="8" fill="#fff" stroke="#E5E5E5"/>
@@ -545,6 +542,7 @@ ${navHtml}
             <text x="425" y="150" font-family="Geist" font-weight="700" font-size="16" fill="#fff">Prête ✓</text>
             <rect x="175" y="185" width="365" height="150" rx="6" fill="#fff" stroke="#E5E5E5"/>
             <path d="M195 310 L235 290 L315 275 L395 260 L475 210 L515 215" stroke="#6D28D9" stroke-width="2.5" fill="none"/>
+            <text x="175" y="352" font-family="Geist Mono" font-size="9" fill="#737373">EXEMPLE ILLUSTRATIF · DONNÉES FICTIVES</text>
           </svg>
         </div>
         <div class="scase-body">
@@ -563,7 +561,7 @@ ${navHtml}
           <svg width="100%" height="100%" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" style="background:#0A0A0A">
             <rect width="600" height="380" fill="#0A0A0A"/>
             <text x="40" y="60" font-family="Geist" font-weight="700" font-size="16" fill="#fff">SCI<tspan fill="#6D28D9">-AI.app</tspan></text>
-            <text x="40" y="80" font-family="Geist Mono" font-size="9" fill="#737373">comptabilité SCI · IR / IS</text>
+            <text x="40" y="80" font-family="Geist Mono" font-size="9" fill="#737373">EXEMPLE ILLUSTRATIF · DONNÉES FICTIVES</text>
             <g font-family="Geist Mono" font-size="10">
               <rect x="40" y="100" width="520" height="22" fill="rgba(255,255,255,0.03)" rx="4"/>
               <text x="52" y="115" fill="#737373">2025-03-14</text>
@@ -608,8 +606,12 @@ ${navHtml}
         <h2>Trois formats,<br>des budgets de cadrage.</h2>
       </div>
       <div class="right">
-        Les fourchettes sont indicatives. Le devis fixe le périmètre, le prix,
-        les livrables, les coûts tiers et le planning avant engagement.
+        Ces fourchettes sont celles de la ligne <b>SaaS &amp; applis métier</b> de
+        <a href="/tarifs">la grille tarifaire</a>. Attention en comparant&nbsp;: les cartes « Essentiel » et « Standard »
+        de la grille couvrent <b>tous les services</b> et démarrent donc plus bas qu'un projet SaaS, dont le ticket
+        d'entrée publié est de 15 k€ HT. Le devis fixe le périmètre, le prix, les livrables, les coûts tiers et le
+        planning avant engagement&nbsp;; <a href="/demarrer-un-projet">le formulaire de cadrage</a> sert à décrire ce
+        qui est déjà arbitré.
       </div>
     </div>
 
@@ -658,8 +660,8 @@ ${navHtml}
         <h3>Partenariat</h3>
         <div class="plan-sub">On construit avec vous dans la durée : feuille de route produit, lots successifs, exploitation et support.</div>
         <div class="plan-price">
-          <span class="amount">Sur-mesure</span>
-          <span class="per">à partir de 120 k€ HT</span>
+          <span class="amount">8–20 k€</span>
+          <span class="per">HT / mois · forfait mensuel</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
@@ -689,11 +691,11 @@ ${navHtml}
       </div>
       <div class="faq-list reveal reveal-d-1">
         <div class="faq-item open">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="true" aria-controls="faq-a-saas-faq-1">
             Combien de temps pour livrer un SaaS ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-saas-faq-1">
             Le délai dépend du périmètre validé : nombre de parcours, règles métier, reprise de données,
             intégrations et exigences de sécurité. Après le cadrage, le devis fixe les jalons, les critères
             de recette et la date contractuelle. Les fourchettes affichées plus haut servent à vous situer,
@@ -702,25 +704,25 @@ ${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
-            C'est quoi le Discovery Sprint à 1 500 € ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-saas-faq-2">
+            C'est quoi le Discovery Sprint à 1 500 € HT ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-saas-faq-2" hidden>
             Un format d'entrée <b>peu engageant</b> pour valider qu'on est la bonne équipe. <b>2 jours</b>,
             <b>1 500 € HT</b>. On challenge votre besoin, on défriche le parcours critique et ses écrans nécessaires,
             on sort un <b>prototype Figma cliquable</b> et un <b>cadrage technique chiffré</b>. Si on part
-            ensemble derrière, les 1 500 € sont <b>déduits du forfait final</b>. Si on ne part pas, vous repartez avec
+            ensemble derrière, <b>le devis précise la déduction applicable</b>. Si on ne part pas, vous repartez avec
             un livrable utilisable par une autre équipe.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-saas-faq-3">
             Est-ce qu'on est propriétaire du code ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-saas-faq-3" hidden>
             Les livrables spécifiques sont transférés après paiement complet selon les CGV. Le devis précise le dépôt,
             les accès, la documentation et la réversibilité. Les composants préexistants, open source et licences tierces
             restent soumis à leurs droits propres.
@@ -728,11 +730,11 @@ ${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-saas-faq-4">
             Vous faites du low-code / no-code ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-saas-faq-4" hidden>
             Nous écrivons principalement du <b>code TypeScript</b>, testé, typé et versionné. Le no-code reste pertinent
             pour valider un usage simple ou automatiser un processus interne. Le sur-mesure prend l'avantage quand
             les règles métier, les intégrations, la réversibilité ou le coût à plusieurs années deviennent structurants.
@@ -741,24 +743,24 @@ ${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-saas-faq-5">
             Que se passe-t-il après la livraison ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-saas-faq-5" hidden>
             Trois options, au choix. <b>(1)</b> Vous reprenez le code et votre équipe technique prend le relais.
-            <b>(2)</b> Vous prenez un forfait de maintenance mensuel chez nous (bug fixes, petites évos, support).
+            <b>(2)</b> Vous prenez un forfait de <a href="/services/maintenance-evolution">maintenance et d'évolution</a> mensuel chez nous (bug fixes, petites évos, support).
             <b>(3)</b> On continue à construire avec vous en mode co-build long terme. La recette,
             la période de correction, les sévérités couvertes et les délais cibles sont précisés au devis.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-saas-faq-6">
             Vous reprenez un projet existant mal fichu ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-saas-faq-6" hidden>
             Oui, après un <b>audit technique</b>. On examine le code, les dépendances, les données, la sécurité,
             la couverture de tests et les conditions de déploiement. Le rapport compare trois scénarios chiffrés :
             stabiliser l'existant, reprendre progressivement, ou réécrire seulement les zones qui le justifient.
@@ -766,11 +768,11 @@ ${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-saas-faq-7">
             Nos données sont-elles hébergées en France ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-saas-faq-7" hidden>
             Un hébergement en France ou dans l'Union européenne peut être retenu selon les contraintes du projet.
             Le devis documente les sous-traitants, la localisation, le chiffrement, la fréquence des sauvegardes
             et les objectifs de reprise attendus. Ces choix ne sont pas identiques pour une application interne,
@@ -779,11 +781,11 @@ ${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-saas-faq-8">
             Vous faites aussi du mobile iOS / Android ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-saas-faq-8" hidden>
             <b>Oui.</b> On utilise <b>React Native + Expo</b> : une seule codebase, deux stores (App Store + Play Store),
             même API que le web. Idéal quand il faut <b>du push, de la caméra, du GPS, du hors-ligne ou de la signature tactile</b>.
             Compter +10 à 20 k€ sur le forfait SaaS pour une app mobile compagnon bien finie, publiée sur les stores avec vos comptes.
@@ -791,11 +793,11 @@ ${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-saas-faq-9">
             React, Next.js, Laravel… qu'est-ce qui détermine la stack ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-saas-faq-9" hidden>
             Le cas d'usage, pas la mode. <b>Next.js + React (TypeScript)</b> pour l'immense majorité des SaaS B2B :
             interfaces temps-réel, éditeurs, apps très interactives et pages publiques SEO-critiques. <b>React Native</b>
             pour le mobile. On reprend et on étend aussi les <b>SaaS Laravel existants</b> — audit, maintenance,
@@ -807,72 +809,4 @@ ${navHtml}
     </div>
   </div>
 </section>
-
-<!-- CTA -->
-<section class="scta" id="contact">
-  <div class="scta-bg"></div>
-  <div class="wrap inner">
-    <div class="eyebrow on-dark">— Prochaine étape</div>
-    <h2 style="margin-top:14px">Parlons de votre SaaS.<br><span class="accent">30 minutes suffisent.</span></h2>
-    <p>Un échange de cadrage gratuit avec un membre de l'équipe. On vous dit honnêtement si le projet est assez défini, si notre approche convient et quelle information manque avant un devis.</p>
-    <div class="scta-cta">
-      <a href="/rendez-vous" class="btn btn-accent btn-lg">
-        📅 &nbsp;Réserver 30 min sur Calendly
-        <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-      <a href="mailto:quentin@hagnere-patrimoine.fr" class="btn btn-ghost btn-lg" style="background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.15)">
-        Envoyer un email →
-      </a>
-    </div>
-    <div class="scta-meta">OBJECTIF : PROCHAIN JOUR OUVRÉ · DÉLAI NON GARANTI · PAR UN ASSOCIÉ · SANS ENGAGEMENT</div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <a href="/" class="brand" style="margin-bottom:16px">
-          <div class="brand-mark">HC</div>
-          <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
-        </a>
-        <p>Agence de développement SaaS AI-native basée à Bassens, aux portes de Chambéry. Dev, design, SEO, ads, vidéo intégrée.</p>
-      </div>
-      <div class="foot-cols">
-        <div class="foot-col">
-          <h3>SERVICES</h3>
-          <a href="/services/saas-applications-metier">SaaS &amp; applications métier</a>
-          <a href="/services/outils-internes-sur-mesure">Outils internes</a>
-          <a href="/services/sites-vitrines">Sites vitrines</a>
-          <a href="/services/referencement-google">SEO</a>
-          <a href="/services/publicite-en-ligne">Publicité</a>
-        </div>
-        <div class="foot-col">
-          <h3>STUDIO</h3>
-          <a href="/methode">Méthode</a>
-          <a href="/realisations">Réalisations</a>
-          <a href="/equipe">Équipe</a>
-          <a href="/tarifs">Tarifs</a>
-        </div>
-        <div class="foot-col">
-          <h3>CONTACT</h3>
-          <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>
-          <a href="https://www.linkedin.com/in/quentin-hagnere" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        </div>
-        <div class="foot-col">
-          <h3>LÉGAL</h3>
-          <a href="/legal/cgv">CGV</a>
-          <a href="/legal/mentions">Mentions légales</a>
-          <a href="/legal/confidentialite">Confidentialité</a>
-        </div>
-      </div>
-    </div>
-    <div class="foot-bot">
-      <div>© 2026 HAGNERE CODE · SASU au capital de 10 € · RCS Chambéry 993 672 856 · TVA FR30 993 672 856 · NAF 62.01Z · 82 impasse de Bellevue, 73000 Bassens</div>
-      <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
-    </div>
-  </div>
-</footer>
-
 `;

@@ -1,5 +1,5 @@
 /* ======================================================================
-   Sprint Fixe™ — branded method manifesto inside .methode section.
+   Sprint Fixe — branded method manifesto inside .methode section.
    ====================================================================== */
 
 .sf-brand {
@@ -8,15 +8,8 @@
   position: relative;
   display: inline-block;
 }
-.sf-brand-tm {
-  font-family: var(--font-geist-mono);
-  font-size: 0.38em;
-  font-weight: 600;
-  color: var(--accent);
-  vertical-align: super;
-  margin-left: 2px;
-  letter-spacing: 0;
-}
+/* `.sf-brand-tm` (exposant ™) a été retiré : « Sprint Fixe » est un nom de
+   méthode, pas une marque déposée. Cf. règle d'or de CLAUDE.md. */
 
 .sf-manifesto {
   margin: 44px 0 54px;

@@ -1,5 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { LegalSection } from "../LegalPageLayout";
+import { LEGAL_POSTAL_ADDRESS } from "../legal-contact";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_E164,
+} from "@/lib/contact-details";
 
 export const confidentialiteSections: LegalSection[] = [
   {
@@ -17,11 +23,11 @@ export const confidentialiteSections: LegalSection[] = [
           <dt>Contact vie privée</dt>
           <dd>Quentin Hagnéré, président</dd>
           <dt>Courriel</dt>
-          <dd><a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a></dd>
+          <dd><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></dd>
           <dt>Adresse de correspondance</dt>
-          <dd>82 impasse de Bellevue, 73000 Bassens, France</dd>
+          <dd>{LEGAL_POSTAL_ADDRESS}</dd>
           <dt>Téléphone</dt>
-          <dd><a href="tel:+33374472018">+33 3 74 47 20 18</a></dd>
+          <dd><a href={`tel:${CONTACT_PHONE_E164}`}>{CONTACT_PHONE_DISPLAY}</a></dd>
         </dl>
         <p>
           Aucun délégué à la protection des données (DPO) n'est désigné à ce
@@ -124,7 +130,9 @@ export const confidentialiteSections: LegalSection[] = [
               <tr><td>Vercel Inc.</td><td>Hébergement et acheminement de la version publique du site</td><td>Requêtes, IP, données techniques et données transmises aux routes serveur</td></tr>
               <tr><td>Neon, LLC (société affiliée à Databricks, Inc.)</td><td>Base PostgreSQL applicative ; région, entité contractuelle et garanties applicables selon la configuration réelle du compte</td><td>Brief envoyé, coordonnées, métadonnées de sécurité et journaux applicatifs</td></tr>
               <tr><td>Plus Five Five, Inc. (Resend)</td><td>Envoi des confirmations et notifications transactionnelles</td><td>Adresse électronique, identité et contenu nécessaire du message</td></tr>
-              <tr><td>Google Workspace</td><td>Réception et gestion de la messagerie professionnelle</td><td>Adresses, en-têtes, contenu et pièces des courriels</td></tr>
+              <tr><td>Google Ireland Limited / Google LLC (Google Workspace)</td><td>Hébergement de la messagerie du domaine hagnere-patrimoine.fr, sur lequel est hébergée l'adresse de contact publiée sur ces pages, d'après les enregistrements MX publics de ce domaine</td><td>Adresses, en-têtes, contenu et pièces des courriels reçus à cette adresse</td></tr>
+              <tr><td>Google Ireland Limited / Google LLC (Google Ads, Google Analytics)</td><td>Mesure d'audience et rattachement d'une demande à la campagne qui l'a amenée. Ce tag n'est chargé que si un identifiant de mesure est configuré pour le site <em>et</em> après un choix positif sur la bannière ; sans ces deux conditions, aucun script Google de mesure n'est chargé et aucune requête ne part vers Google</td><td>Événements de mesure, données techniques de la requête et cookies déposés par le tag Google dans votre navigateur</td></tr>
+              <tr><td>Zoho Corporation (Zoho Mail, infrastructure européenne)</td><td>Hébergement de la messagerie du domaine hagnere-code.ai, utilisé comme expéditeur des courriels du site et pour la réception des réponses, d'après les enregistrements MX publics de ce domaine</td><td>Adresses, en-têtes, contenu et pièces des courriels échangés avec ce domaine</td></tr>
               <tr><td>Groq, Inc.</td><td>Transcription vocale facultative</td><td>Audio envoyé et texte transcrit</td></tr>
               <tr><td>Calendly, LLC</td><td>Prise de rendez-vous après clic ou autorisation explicite</td><td>Données techniques puis informations saisies chez Calendly</td></tr>
               <tr><td>API Recherche Entreprises (service public)</td><td>Vérification facultative d'une entreprise</td><td>SIREN recherché</td></tr>
@@ -138,6 +146,15 @@ export const confidentialiteSections: LegalSection[] = [
           pas nécessaires pour envoyer un formulaire : vous pouvez utiliser le
           courriel ou le formulaire du site.
         </p>
+        <p>
+          L'adresse de contact publiée sur les pages légales est hébergée sur un
+          domaine du groupe Hagnéré, distinct du domaine du site. Les messages
+          qui y parviennent, y compris les demandes d'exercice de droits, sont
+          traités par HAGNERE CODE en tant que responsable de traitement ; ils ne
+          sont pas exploités par une autre société du groupe pour ses propres
+          finalités. L'hébergeur de messagerie concerné est celui indiqué dans le
+          tableau ci-dessus pour le domaine de l'adresse utilisée.
+        </p>
       </>
     ),
   },
@@ -148,11 +165,11 @@ export const confidentialiteSections: LegalSection[] = [
     body: (
       <>
         <p>
-          Vercel, Neon, Resend, Groq, Calendly, Google et Meta peuvent impliquer
-          des entités, équipes ou sous-traitants établis hors de l'Espace
-          économique européen, notamment aux États-Unis. Une région de stockage
-          européenne ne suffit donc pas, à elle seule, à exclure tout transfert
-          ou accès depuis un pays tiers.
+          Vercel, Neon, Resend, Zoho, Groq, Calendly, Google et Meta peuvent
+          impliquer des entités, équipes ou sous-traitants établis hors de
+          l'Espace économique européen, notamment aux États-Unis. Une région de
+          stockage européenne ne suffit donc pas, à elle seule, à exclure tout
+          transfert ou accès depuis un pays tiers.
         </p>
         <p>
           Lorsque le traitement l'exige, les garanties prévues par le chapitre V
@@ -163,12 +180,21 @@ export const confidentialiteSections: LegalSection[] = [
           selon le service et les données.
         </p>
         <p>
-          Le mécanisme pertinent doit être vérifié fournisseur par fournisseur,
-          pour le compte et la configuration réellement utilisés. Vous pouvez
-          demander les informations disponibles sur ces garanties au contact vie
-          privée, sous réserve de la confidentialité contractuelle. Lorsqu'une
-          garantie requise ne peut pas être établie, le traitement concerné ne
-          doit pas être activé dans cette configuration.
+          Le mécanisme réellement applicable dépend du prestataire, du compte et
+          de la configuration utilisés ; cette vérification incombe à HAGNERE
+          CODE et non à la personne concernée. Pour un
+          prestataire donné, vous pouvez demander au contact vie privée le
+          mécanisme invoqué pour le compte et la configuration réellement
+          utilisés, ainsi qu'une copie ou une description des garanties
+          correspondantes, dans les limites imposées par la confidentialité
+          contractuelle. Lorsque la garantie n'est pas encore documentée pour un
+          service, la réponse l'indique expressément plutôt que de présenter un
+          mécanisme comme acquis.
+        </p>
+        <p>
+          Lorsqu'une garantie requise ne peut pas être établie, le traitement
+          concerné n'est pas activé dans cette configuration. Cette page est mise
+          à jour lorsque le mécanisme applicable à un prestataire change.
         </p>
       </>
     ),
@@ -188,10 +214,12 @@ export const confidentialiteSections: LegalSection[] = [
           l'audio est transmis à Groq pour produire une transcription. HAGNERE
           CODE ne l'enregistre pas volontairement dans sa base applicative. Selon
           la documentation publique de Groq, les requêtes d'inférence ne sont pas
-          conservées par défaut. Les entrées et sorties peuvent néanmoins être
-          journalisées temporairement, jusqu'à 30 jours, lorsqu'elles sont
-          nécessaires au diagnostic d'une défaillance ou à l'examen d'un abus
-          suspecté, sauf option de non-conservation effectivement activée.
+          conservées par défaut. Des journaux temporaires d'entrées et de sorties
+          peuvent néanmoins exister selon la politique du fournisseur, lorsqu'ils
+          sont nécessaires au diagnostic d'une défaillance ou à l'examen d'un abus
+          suspecté. Aucune durée précise n'est publiée ici tant que le réglage
+          réellement applicable au compte utilisé n'est pas vérifié et archivé ;
+          ce réglage est communiqué sur demande adressée au contact vie privée.
         </p>
         <p>
           Vous pouvez saisir le même texte au clavier et éviter ce transfert. Le
@@ -224,7 +252,7 @@ export const confidentialiteSections: LegalSection[] = [
               <tr><td>Événements de parcours first-party après consentement</td><td>13 mois maximum dans la table de mesure, sans IP, user-agent, cookie ni identifiant visiteur ajouté par le collecteur</td></tr>
               <tr><td>Brouillon du formulaire dans votre navigateur, uniquement après activation volontaire</td><td>24 heures au plus après la dernière sauvegarde, sans dépasser la session de l'onglet ; les coordonnées et identifiants de contact ne sont pas enregistrés dans ce brouillon</td></tr>
               <tr><td>Préférence relative aux traceurs</td><td>6 mois, puis le choix est redemandé si la bannière est active</td></tr>
-              <tr><td>Audio de dictée</td><td>Non stocké volontairement par HAGNERE CODE ; Groq annonce ne pas conserver les requêtes d'inférence par défaut, sous réserve de journaux temporaires pouvant aller jusqu'à 30 jours pour diagnostiquer une défaillance ou examiner un abus suspecté</td></tr>
+              <tr><td>Audio de dictée</td><td>Non stocké volontairement par HAGNERE CODE ; Groq annonce ne pas conserver les requêtes d'inférence par défaut, sous réserve de journaux temporaires pouvant exister selon la politique du fournisseur pour diagnostiquer une défaillance ou examiner un abus suspecté. Le réglage réellement applicable au compte utilisé est communiqué sur demande</td></tr>
             </tbody>
           </table>
         </div>
@@ -254,7 +282,7 @@ export const confidentialiteSections: LegalSection[] = [
           la nécessité d'établir un droit peut justifier une conservation limitée.
         </p>
         <p>
-          Écrivez à <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>
+          Écrivez à <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>{" "}
           en précisant l'objet de votre demande. Une preuve d'identité n'est
           demandée qu'en cas de doute raisonnable. HAGNERE CODE répond en principe
           dans un délai d'un mois, prolongeable de deux mois pour une demande
@@ -291,7 +319,41 @@ export const confidentialiteSections: LegalSection[] = [
           Cette politique évolue avec les services réellement utilisés. Une
           modification substantielle est signalée par une nouvelle date de mise
           à jour et, lorsque la loi l'exige, par une information spécifique ou un
-          nouveau recueil de choix.
+          nouveau recueil de choix. Les changements de fond successifs sont
+          récapitulés dans la section suivante.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "versions",
+    label: "Historique",
+    title: "Versions de cette politique",
+    body: (
+      <>
+        <p>
+          Chaque version est identifiée par sa date de mise à jour, affichée en
+          haut et en bas de cette page. Le tableau ci-dessous rattache une date
+          aux changements de fond correspondants, afin qu'une personne puisse
+          savoir ce qui distingue la version qu'elle a lue de la version en
+          vigueur.
+        </p>
+        <div className="lp-table-wrap">
+          <table className="lp-table">
+            <thead><tr><th>Version</th><th>Changements de fond</th></tr></thead>
+            <tbody>
+              <tr><td>2026-08-27 (version en vigueur)</td><td>Identification des hébergeurs de messagerie dans le tableau des destinataires et de la boîte de contact hébergée sur un domaine du groupe ; retrait de la durée chiffrée attribuée aux journaux du prestataire de transcription, remplacée par le renvoi au réglage vérifié du compte ; transferts hors EEE : la copie ou la description des garanties est obtenue auprès du contact vie privée au lieu d'une vérification laissée à la personne concernée ; déclaration de la mesure Google (Google Ads / Google Analytics) comme destinataire distinct de la messagerie Workspace, chargée seulement si un identifiant est configuré et après consentement ; ajout du présent historique</td></tr>
+              <tr><td>2026-08-18</td><td>Ajout de la catégorie de données « mesure de parcours facultative » et de la ligne de conservation « Événements de parcours first-party après consentement — 13 mois maximum »</td></tr>
+              <tr><td>2026-07-20</td><td>Version antérieure à l'introduction de la mesure de parcours facultative : ni cette catégorie de données, ni la durée de conservation correspondante n'y figuraient</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Le courriel de confirmation envoyé après une demande adressée depuis le
+          site mentionne la version de notice enregistrée avec cette demande. Si
+          cette date diffère de la version en vigueur ci-dessus, le tableau
+          indique ce qui les sépare ; le texte de la version concernée peut être
+          demandé au contact vie privée.
         </p>
       </>
     ),

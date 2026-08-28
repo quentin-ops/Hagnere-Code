@@ -21,7 +21,7 @@ purge a été exécutée.
   précisément documentée liée à un incident ou un contentieux.
 - Messageries, exports, fichiers locaux, environnements de test et éventuels CRM :
   appliquer la même durée que le dossier auquel ils se rattachent.
-- Journaux et copies Vercel, Neon, Resend, Google Workspace, Groq et Calendly :
+- Journaux et copies Vercel, Neon, Resend, Google Workspace, Zoho Mail, Groq, Calendly et — dès activation — la mesure Google (Ads/Analytics) :
   vérifier séparément le contrat, les paramètres et les procédures de suppression ;
   ils ne sont pas purgés par les requêtes ci-dessous.
 - Sauvegardes : documenter leur cycle d'expiration, empêcher leur usage courant
@@ -109,7 +109,9 @@ une page commerciale.
 | Vercel | Requêtes, journaux, données transitant par les routes | [à vérifier] | [à compléter] | [à compléter] |
 | Neon | Briefs, journaux applicatifs, sauvegardes | [à vérifier] | [à compléter] | [à compléter] |
 | Resend | Messages transactionnels et métadonnées | [à vérifier] | [à compléter] | [à compléter] |
-| Google Workspace | Courriels, pièces et corbeilles | [à vérifier] | [à compléter] | [à compléter] |
+| Google Workspace | Courriels, pièces et corbeilles (domaine hagnere-patrimoine.fr, MX aspmx.l.google.com) | [à vérifier] | [à compléter] | [à compléter] |
+| Zoho Mail (Zoho Corporation) | Courriels du domaine hagnere-code.ai, expéditeur des messages du site (MX mx.zoho.eu) | [à vérifier] | [à compléter] | [à compléter] |
+| Google Ads / Google Analytics | Mesure de conversion, uniquement après consentement analytics et si `NEXT_PUBLIC_GOOGLE_ADS_ID` est posé. Aucun script n'est chargé sans ces deux conditions. | [à vérifier à l'activation] | [à compléter] | [à compléter] |
 | Groq | Audio et journaux éventuels | [réglage réel à vérifier] | [à compléter] | [à compléter] |
 | Calendly | Rendez-vous et métadonnées | [à vérifier] | [à compléter] | [à compléter] |
 | Postes, exports et tests | Copies locales ou temporaires | [à vérifier] | [à compléter] | [à compléter] |

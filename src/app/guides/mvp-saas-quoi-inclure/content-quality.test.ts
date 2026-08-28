@@ -107,11 +107,31 @@ describe("public content quality for the MVP SaaS contract guide", () => {
     );
     expect(articleHeadline).toBe(registeredGuide.heroTitle);
     expect(pageSource).toContain('profileUrl: "/equipe#fondateur"');
-    expect(registeredGuide.dateModified).toBe("2026-08-03T04:14:58+02:00");
     expect(ogSource).toContain('title: "MVP SaaS : quoi inclure ?"');
     expect(ogSource).toContain(
       'subtitle: "Transformer le périmètre en contrat de test explicite"',
     );
+  });
+
+  // `src/lib/guides.ts` est la source de vérité des dates : elle alimente le
+  // sitemap, les metadata et le JSON-LD Article. Figer `dateModified` sur une
+  // valeur littérale rendait le test rouge à la première correction éditoriale
+  // légitime — donc incitait à ne plus toucher la date, exactement l'inverse
+  // de l'invariant SEO. On vérifie la forme et la cohérence, pas la valeur.
+  it("keeps a well-formed, non-anticipated modification date", () => {
+    const published = Date.parse(registeredGuide.datePublished);
+    const modified = Date.parse(registeredGuide.dateModified);
+
+    expect(registeredGuide.dateModified).toMatch(
+      /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})$/,
+    );
+    expect(Number.isNaN(modified)).toBe(false);
+    expect(Number.isNaN(published)).toBe(false);
+    expect(modified).toBeGreaterThanOrEqual(published);
+    expect(
+      modified,
+      "dateModified ne peut pas être postérieure à maintenant",
+    ).toBeLessThanOrEqual(Date.now());
   });
 
   it("keeps a non-breaking space before the visible and structured question mark", () => {
@@ -138,6 +158,14 @@ describe("public content quality for the MVP SaaS contract guide", () => {
     expect(pageSource).not.toContain("<GuideInlineCTA");
   });
 
+  // Dispositif commercial volontairement minimal, à ne pas confondre avec un
+  // oubli. Ce guide est le seul, avec `combien-de-temps-developper-saas`, à
+  // appliquer la règle de la charte « au maximum un CTA éditorial dans
+  // l'article » : un unique bloc `strategyCta`, sans action téléphonique.
+  // Conséquences assumées : pas de barre d'action collante en lecture mobile
+  // (GuidePremiumLayout ne la rend qu'avec un `sidebarContextCta`) et pas de
+  // CTA de bas de FAQ (le guide n'utilise pas `faqCategories`). Y ajouter un
+  // point de contact est une décision éditoriale à prendre explicitement.
   it("renders the single frozen project CTA without a phone action", () => {
     const strategyCtaMarkup =
       pageMarkup.match(

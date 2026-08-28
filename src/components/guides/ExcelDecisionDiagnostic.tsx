@@ -1,5 +1,29 @@
 "use client";
 
+/**
+ * EN RÉSERVE — composant volontairement monté sur aucune page.
+ *
+ * Destination : le guide dont le slug est `transformer-excel-en-application`.
+ * Ce slug figure aujourd'hui dans `LEGACY_GUIDE_SLUGS`
+ * (src/lib/legacy-guide-redirects.ts:92), c'est-à-dire qu'il est redirigé en
+ * attendant sa réécriture — le guide n'existe donc pas encore sous
+ * `src/app/guides/`. Le brief de rédaction prévoit explicitement ce
+ * composant : docs/research/transformer-excel-en-application.md:4
+ * (« Format cible ») et :650 (« ressource : composant
+ * `ExcelDecisionDiagnostic`, inclus dans le guide »).
+ *
+ * Ce n'est donc pas du code mort : il est maintenu par
+ * `src/lib/excel-decision-diagnostic.ts` et sa suite de tests en attendant la
+ * publication du guide. Si ce commentaire survit à la mise en ligne du guide,
+ * c'est que le montage a été oublié — et inversement, un outil réellement
+ * démonté par erreur reste détectable parce qu'il n'aura pas cet en-tête.
+ *
+ * Ne pas écrire ici le chemin public du guide : le contrôle « does not keep
+ * internal links to a redirected guide » de
+ * `src/lib/legacy-guide-redirects.test.ts` interdit ce littéral tant que le
+ * slug est redirigé.
+ */
+
 import Link from "next/link";
 import { useState } from "react";
 import { ArrowRight, Check, ClipboardCheck, RotateCcw } from "lucide-react";

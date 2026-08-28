@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { CASES } from "@/components/realisations/cases";
 
 export const runtime = "edge";
-export const alt = "Analyse éditoriale d'une page publique externe";
+export const alt = "Analyse éditoriale d'une page publique du groupe Hagnéré";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -82,7 +82,7 @@ export default async function OpenGraphImage({
               fontSize: 21,
             }}
           >
-            Analyse externe
+            Groupe Hagnéré
           </div>
         </div>
 

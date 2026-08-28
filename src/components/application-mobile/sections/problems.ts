@@ -62,7 +62,7 @@ export const problemsHtml = `
           au démarrage sur les iPhone récents. Vous payez l'abonnement Apple Developer chaque année pour une app fantôme.
           Vous savez qu'il faut décider : refondre ou enterrer.
         </p>
-        <div class="mob-problem-foot">Ce qu'on fait : <b>audit honnête (gratuit) puis reprise ou refonte au forfait</b>.</div>
+        <div class="mob-problem-foot">Ce qu'on fait&nbsp;: <b>un échange de cadrage sans frais</b>, puis un avis franc sur la reprise ou la refonte. Le périmètre, les livrables et le prix d'un éventuel audit approfondi sont écrits au devis.</div>
       </div>
 
       <div class="mob-problem-card reveal reveal-d-1">

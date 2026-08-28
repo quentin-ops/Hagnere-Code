@@ -1,5 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { LegalSection } from "../LegalPageLayout";
+import { LEGAL_POSTAL_ADDRESS } from "../legal-contact";
+import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY } from "@/lib/contact-details";
 
 export const cgvSections: LegalSection[] = [
   {
@@ -471,18 +473,16 @@ export const cgvSections: LegalSection[] = [
         </p>
         <p>
           Le client peut exercer son droit en adressant le formulaire ou toute
-          déclaration dénuée d'ambiguïté à HAGNERE CODE, 82 impasse de Bellevue,
-          73000 Bassens, France, ou à
-          <a href="mailto:quentin@hagnere-patrimoine.fr">
-            {" "}quentin@hagnere-patrimoine.fr
-          </a>, avant l'expiration du délai.
+          déclaration dénuée d'ambiguïté à HAGNERE CODE, {LEGAL_POSTAL_ADDRESS},
+          ou à{" "}
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>, avant
+          l'expiration du délai.
         </p>
         <div className="lp-note is-info">
           <strong>Formulaire type de rétractation</strong>
           <p>
-            À l'attention de HAGNERE CODE, 82 impasse de Bellevue, 73000 Bassens,
-            France — téléphone : +33 3 74 47 20 18 — courriel :
-            quentin@hagnere-patrimoine.fr
+            À l'attention de HAGNERE CODE, {LEGAL_POSTAL_ADDRESS} — téléphone :{" "}
+            {CONTACT_PHONE_DISPLAY} — courriel : {CONTACT_EMAIL}
           </p>
           <p>
             Je/Nous (*) vous notifie/notifions (*) par la présente ma/notre (*)

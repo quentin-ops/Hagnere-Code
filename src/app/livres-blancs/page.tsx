@@ -4,6 +4,7 @@ import { ArrowRight, Check, ChevronRight, FileText, Sheet } from "lucide-react";
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import { DEFAULT_OG_IMAGE, OG_BASE, SITE_URL } from "@/lib/seo";
 import { WHITE_PAPERS, whitePaperUrl } from "@/lib/white-papers";
+import { PUBLIC_ORGANIZATION_ENTITY } from "@/lib/organization-structured-data";
 
 export const metadata: Metadata = {
   title: "Livres blancs web gratuits · Modèles et grilles Hagnéré Code",
@@ -50,7 +51,10 @@ const collectionJsonLd = JSON.stringify({
   description:
     "Des ressources gratuites et directement exploitables pour cadrer, budgéter et choisir un projet web.",
   url: `${SITE_URL}/livres-blancs`,
-  author: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
+  // Entité complète plutôt qu'un @id nu : Google ne résout un @id que dans
+  // le graphe de la page courante, et le nœud réduit se lisait comme un
+  // éditeur anonyme.
+  author: PUBLIC_ORGANIZATION_ENTITY,
   mainEntity: {
     "@type": "ItemList",
     itemListElement: WHITE_PAPERS.map((entry, index) => ({
@@ -203,6 +207,65 @@ export default function Page() {
               </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Le hub ne pointait que vers /ressources, /guides et la fiche du livre
+          blanc : aucun service, aucun accès au tunnel. Un visiteur qui vient
+          d'outiller sa décision n'avait donc aucune étape suivante. */}
+      <section className="border-t border-zinc-200 bg-zinc-50 py-12 sm:py-16 dark:border-zinc-800 dark:bg-zinc-900">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="max-w-3xl">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-zinc-500">
+              Une fois la décision documentée
+            </p>
+            <h2 className="mt-2 text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white">
+              À quel type de projet cela mène.
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
+              Ces pages décrivent ce que nous construisons, avec les périmètres
+              et les repères de budget correspondants. Les montants publiés y
+              sont indicatifs et hors taxes ; le devis signé après cadrage fixe
+              le prix ferme.
+            </p>
+          </div>
+          <ul className="mt-7 grid gap-3 sm:grid-cols-2">
+            {[
+              {
+                href: "/services/sites-vitrines",
+                label: "Sites vitrines et landing pages",
+              },
+              { href: "/services/ecommerce", label: "E-commerce sur mesure" },
+              {
+                href: "/services/saas-applications-metier",
+                label: "SaaS et applications métier",
+              },
+              {
+                href: "/services/outils-internes-sur-mesure",
+                label: "Outils internes sur mesure",
+              },
+            ].map((service) => (
+              <li key={service.href}>
+                <Link
+                  href={service.href}
+                  className="flex min-h-11 items-center justify-between gap-4 rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm font-semibold text-zinc-950 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-zinc-800 dark:bg-zinc-950 dark:text-white dark:hover:border-violet-800 dark:hover:bg-violet-950/30"
+                >
+                  {service.label}
+                  <ArrowRight
+                    className="size-4 shrink-0 text-violet-700 dark:text-violet-300"
+                    aria-hidden="true"
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Link
+            href="/demarrer-un-projet"
+            className="mt-8 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-zinc-950 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-zinc-800 sm:w-fit dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
+          >
+            Décrire mon projet en 3 minutes
+            <ArrowRight className="size-4" aria-hidden="true" />
+          </Link>
         </div>
       </section>
     </GuidesShell>

@@ -146,9 +146,12 @@ ${navHtml}
         <div class="kpi-n">0<span class="kpi-s">%</span></div>
         <div class="kpi-l">Offshore, white-label,<br>pool anonyme.</div>
       </div>
+      <!-- Repère vérifiable sur cette page même : chaque personne renvoie vers
+           son profil public (LinkedIn, ou Codeur pour Peter). Verrouillé par
+           content-claims.test.ts. -->
       <div class="kpi reveal reveal-d-3">
-        <div class="kpi-n">1<span class="kpi-s"></span></div>
-        <div class="kpi-l">Source d'effectif<br>commune à tout le site.</div>
+        <div class="kpi-n kpi-n-word">NOMMÉS<span class="kpi-s"></span></div>
+        <div class="kpi-l">Profil public consultable<br>pour chacun des ${TEAM_TOTAL_COUNT}.</div>
       </div>
     </div>
   </div>
@@ -321,7 +324,7 @@ ${navHtml}
             <div class="cto-block-h">SPÉCIALITÉS</div>
             <ul class="cto-block-list">
               <li>Architecture Laravel 13 (Domain-Driven, Service Pattern)</li>
-              <li>Cadrage technique de projets &gt; 60 k€</li>
+              <li>Cadrage technique de projets à fort périmètre</li>
               <li>Revue de code selon le protocole et les risques du projet</li>
               <li>Mentorat &amp; montée en compétence des devs</li>
             </ul>
@@ -332,7 +335,7 @@ ${navHtml}
               <li>Validation des choix d'architecture au cadrage</li>
               <li>Garant des standards qualité &amp; sécurité</li>
               <li>Point d'escalade pour toute question technique</li>
-              <li>Comité produit mensuel sur les forfaits Care Pro</li>
+              <li>Comité produit lorsqu'il est prévu au contrat de maintenance</li>
             </ul>
           </div>
         </div>
@@ -666,12 +669,13 @@ ${navHtml}
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Comment on travaille</div>
-        <h2>Quatre rituels<br>pour piloter<br>les délais.</h2>
+        <h2>Quatre gestes<br>qu'on répète<br>sur chaque projet.</h2>
       </div>
       <div class="right">
-        La cadence des points, démonstrations, revues et décisions est adaptée
-        au projet. Elle aide à suivre les risques et les délais, sans constituer
-        une garantie universelle de calendrier.
+        Voici ce que l'équipe fait concrètement pendant une mission. La cadence
+        exacte — jours, participants, durée — est arrêtée avec vous au lancement
+        et inscrite au devis&nbsp;: elle aide à suivre les risques et les délais,
+        sans constituer une garantie universelle de calendrier.
       </div>
     </div>
 
@@ -681,10 +685,10 @@ ${navHtml}
         <div class="rit-ic">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M12 7v5l3 2"/></svg>
         </div>
-        <h3>Point court · cadence convenue</h3>
-        <p>La cadence, les participants et la durée des points d'équipe sont adaptés au projet et inscrits dans le dispositif de pilotage.</p>
+        <h3>On fait le point sur l'avancement et les blocages</h3>
+        <p>L'équipe se réunit pour dire où en est chaque chantier, ce qui bloque et ce qui attend une décision de votre côté. Les participants et la durée sont fixés au lancement.</p>
         <div class="rit-foot">
-          <span class="rit-tag">AU LANCEMENT</span>
+          <span class="rit-tag">PILOTAGE</span>
         </div>
       </div>
 
@@ -693,10 +697,10 @@ ${navHtml}
         <div class="rit-ic">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
-        <h3>Démonstration · cadence convenue</h3>
-        <p>Le devis fixe quand les versions sont présentées, qui les valide et comment les retours modifient le planning ou le périmètre.</p>
+        <h3>On vous montre une version que vous manipulez</h3>
+        <p>À chaque jalon de suivi, vous ouvrez le produit déployé plutôt qu'un compte rendu. Le devis nomme les valideurs et précise comment vos retours modifient le planning ou le périmètre.</p>
         <div class="rit-foot">
-          <span class="rit-tag">AU DEVIS</span>
+          <span class="rit-tag">VALIDATION</span>
         </div>
       </div>
 
@@ -705,10 +709,10 @@ ${navHtml}
         <div class="rit-ic">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
         </div>
-        <h3>Revue de code · règles écrites</h3>
-        <p>Le niveau de revue, les branches protégées, les validateurs et les exceptions sont définis selon le risque et vérifiables dans le dépôt lorsque cet accès est prévu.</p>
+        <h3>Un autre développeur relit avant intégration</h3>
+        <p>Les changements passent par une revue humaine avant d'être intégrés. Son niveau, les branches protégées et les validateurs sont adaptés au risque, et vérifiables dans le dépôt lorsque cet accès est prévu.</p>
         <div class="rit-foot">
-          <span class="rit-tag">SELON PROJET</span>
+          <span class="rit-tag">QUALITÉ</span>
         </div>
       </div>
 
@@ -717,10 +721,10 @@ ${navHtml}
         <div class="rit-ic">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
-        <h3>Rétrospective · cadence convenue</h3>
-        <p>Lorsque le projet le justifie, une rétrospective consigne les écarts, les décisions et les améliorations à appliquer au cycle suivant.</p>
+        <h3>En fin de jalon, on écrit ce qu'on change</h3>
+        <p>Écarts constatés, décisions prises et ajustements à appliquer au cycle suivant sont consignés par écrit, pour que la trajectoire du projet reste lisible des deux côtés.</p>
         <div class="rit-foot">
-          <span class="rit-tag">SELON PROJET</span>
+          <span class="rit-tag">AMÉLIORATION</span>
         </div>
       </div>
     </div>
@@ -844,7 +848,7 @@ ${navHtml}
         <div class="val-ic">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
         </div>
-        <h4>Point de contact défini</h4>
+        <h3>Point de contact défini</h3>
         <p>Quentin assure le premier cadrage. Le devis nomme ensuite le point de contact, les responsables et les relais prévus pour la mission.</p>
       </div>
 
@@ -852,7 +856,7 @@ ${navHtml}
         <div class="val-ic">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5l-8-3z"/></svg>
         </div>
-        <h4>Intervenants identifiés</h4>
+        <h3>Intervenants identifiés</h3>
         <p>Les personnes affectées à la mission, leur statut et leur rôle sont précisés avant intervention. Les obligations de confidentialité et les accès dépendent du contrat — <b>${TEAM_PUBLIC_COMPOSITION}</b> est présenté publiquement.</p>
       </div>
 
@@ -860,7 +864,7 @@ ${navHtml}
         <div class="val-ic">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
-        <h4>Niveau senior &amp; encadrement</h4>
+        <h3>Niveau senior &amp; encadrement</h3>
         <p>Les expériences publiques figurent sur les profils. Le devis précise les rôles, et le dispositif de revue est adapté aux composants et aux risques de la mission.</p>
       </div>
 
@@ -868,7 +872,7 @@ ${navHtml}
         <div class="val-ic">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
         </div>
-        <h4>Code &amp; data chez vous</h4>
+        <h3>Code &amp; data chez vous</h3>
         <p>Les accès au dépôt et à l'hébergement sont organisés selon le devis. La réversibilité et le transfert des livrables spécifiques suivent les CGV et interviennent après paiement complet.</p>
       </div>
 
@@ -876,7 +880,7 @@ ${navHtml}
         <div class="val-ic">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
         </div>
-        <h4>Honnêteté dans le diagnostic</h4>
+        <h3>Honnêteté dans le diagnostic</h3>
         <p>Si nous ne sommes pas la bonne équipe, nous le disons pendant le cadrage et pouvons suggérer un profil plus adapté, sans inventer de statistique historique.</p>
       </div>
 
@@ -884,74 +888,8 @@ ${navHtml}
         <div class="val-ic">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
         </div>
-        <h4>Délais tenus</h4>
+        <h3>Délais tenus</h3>
         <p>Le devis fixe les jalons, les dépendances et la procédure applicable en cas d'écart. Une pénalité n'existe que si elle est expressément acceptée dans le document signé.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ON RECRUTE -->
-<section class="recrute">
-  <div class="wrap">
-    <div class="rec-card reveal">
-      <div class="rec-bg-grid"></div>
-      <div class="rec-bg-radial"></div>
-
-      <div class="rec-left">
-        <div class="rec-tag">
-          <span>RECRUTEMENT</span>
-          <span>Candidatures spontanées</span>
-        </div>
-        <h3>Vous pouvez<br><span class="accent">nous écrire.</span></h3>
-        <p class="rec-lead">
-          Nous ouvrons un recrutement uniquement lorsqu'un besoin, un statut et un budget sont validés.
-          Cette page n'est pas une offre d'emploi. Vous pouvez néanmoins envoyer une candidature spontanée&nbsp;:
-          nous visons un premier retour sous cinq jours ouvrés, sans délai garanti.
-        </p>
-
-        <div class="rec-jobs">
-          <div class="rec-job">
-            <div class="rec-job-status open">
-              <span class="dot"></span>
-              DOMAINE POSSIBLE · BESOIN À CONFIRMER
-            </div>
-            <div class="rec-job-name">Design produit / UX</div>
-            <div class="rec-job-meta">Statut, lieu et niveau précisés uniquement dans une offre publiée</div>
-          </div>
-          <div class="rec-job">
-            <div class="rec-job-status soon">
-              <span class="dot"></span>
-              DOMAINE POSSIBLE · BESOIN À CONFIRMER
-            </div>
-            <div class="rec-job-name">Développement React / Next.js</div>
-            <div class="rec-job-meta">Statut, lieu et niveau précisés uniquement dans une offre publiée</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="rec-right">
-        <div class="rec-cta-card">
-          <div class="rec-cta-tag">CANDIDATURES SPONTANÉES</div>
-          <h4>Vous ne trouvez pas votre poste ?</h4>
-          <p>Si votre expérience correspond à nos métiers et à notre manière de travailler, vous pouvez nous envoyer votre CV et quelques réalisations.</p>
-          <a href="mailto:quentin@hagnere-patrimoine.fr?subject=Candidature%20spontan%C3%A9e" class="btn btn-accent">
-            Envoyer ma candidature
-            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
-          <div class="rec-cta-meta">Objectif de retour sous cinq jours ouvrés · sans délai garanti</div>
-        </div>
-
-        <div class="rec-criteria">
-          <div class="rec-cri-h">CE QU'ON CHERCHE</div>
-          <ul>
-            <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Expérience et réalisations vérifiables</li>
-            <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Goût pour le craft &amp; les bons outils</li>
-            <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Capacité à communiquer avec des non-techs</li>
-            <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Envie de bosser en équipe restreinte</li>
-            <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Basé / prêt à venir à Bassens</li>
-          </ul>
-        </div>
       </div>
     </div>
   </div>

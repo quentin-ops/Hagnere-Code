@@ -6,6 +6,9 @@ import {
   PayloadTooLargeError,
   readRequestBytesWithLimit,
 } from "@/lib/read-request-body";
+import { checkServiceRateLimit } from "@/lib/ai-rate-limit";
+import { getClientIp } from "@/lib/rate-limit";
+import { log } from "@/lib/logger";
 import { getDb } from "@/db";
 import { funnelAnalyticsEvent } from "@/db/schema";
 
@@ -73,10 +76,41 @@ export async function POST(request: Request): Promise<Response> {
     return Response.json({ error: "Payload trop volumineux." }, { status: 413 });
   }
 
+  // En-tête `Origin` EXIGÉ, pas seulement vérifié s'il est présent :
+  // `sendBeacon` comme `fetch` l'envoient sur un POST, y compris same-origin.
+  // Un client hors navigateur qui l'omettait passait auparavant sans contrôle.
   const requestOrigin = new URL(request.url).origin;
   const origin = request.headers.get("origin");
-  if (origin && origin !== requestOrigin) {
+  if (!origin || origin !== requestOrigin) {
     return Response.json({ error: "Origine refusée." }, { status: 403 });
+  }
+
+  // Seule route d'écriture en base qui n'avait aucun compteur. Chaque
+  // événement accepté provoque une écriture Neon : sans plafond persistant,
+  // le volume ET la fiabilité des données de conversion — celles qui
+  // piloteront les enchères Ads — dépendraient du premier script venu.
+  // Le compteur vit dans `ai_call_log` (journal anti-abus, distinct de la
+  // table d'événements qui reste, elle, sans IP ni identifiant visiteur).
+  const ip = getClientIp(request);
+  let rateCheck: Awaited<ReturnType<typeof checkServiceRateLimit>>;
+  try {
+    rateCheck = await checkServiceRateLimit(ip, null, "analytics", null);
+  } catch (error) {
+    // La mesure ne doit jamais bloquer le visiteur : on échoue en silence
+    // côté produit, mais sans écrire l'événement.
+    log.error("funnel_analytics_rate_limit_unavailable", {
+      err: error as Error,
+    });
+    return Response.json({ error: "Collecteur indisponible." }, { status: 503 });
+  }
+  if (!rateCheck.allowed) {
+    return Response.json(
+      { error: "Trop d'événements de mesure." },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rateCheck.retryAfterSec) },
+      },
+    );
   }
 
   let rawBody: string;
@@ -98,7 +132,10 @@ export async function POST(request: Request): Promise<Response> {
   // En développement, aucun événement n'est ajouté à la base de production.
   // Le log rend le parcours observable sans prétendre l'avoir persisté.
   if (process.env.NEXT_PUBLIC_ENV !== "production") {
-    console.info("[funnel-analytics:dev]", payload);
+    log.debug("funnel_analytics_dev_event", {
+      eventName: payload.name,
+      path: payload.path,
+    });
     return new Response(null, { status: 204 });
   }
 
@@ -113,7 +150,10 @@ export async function POST(request: Request): Promise<Response> {
     });
     return new Response(null, { status: 204 });
   } catch (error) {
-    console.error("[funnel-analytics] Écriture impossible.", error);
+    // Passe par le logger sanitisant comme les autres routes : en production
+    // une Error est réduite à son nom, l'objet Neon complet (hôte de la base,
+    // sourceError HTTP) n'atterrit jamais dans les logs de la plateforme.
+    log.error("funnel_analytics_write_failed", { err: error as Error });
     return Response.json({ error: "Collecteur indisponible." }, { status: 503 });
   }
 }

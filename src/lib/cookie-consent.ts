@@ -1,4 +1,9 @@
 export const COOKIE_CONSENT_STORAGE_KEY = "hc_consent_v1";
+/**
+ * Émis sur `window` chaque fois que le visiteur enregistre un choix. Permet aux
+ * intégrations de mesure (Consent Mode Google) de réagir sans sondage.
+ */
+export const COOKIE_CONSENT_EVENT = "hc:consent-change";
 export const COOKIE_CONSENT_EXPIRY_DAYS = 183;
 export const COOKIE_CONSENT_VERSION = 2 as const;
 
@@ -13,11 +18,46 @@ export type CookieConsent = {
   ts: number;
 };
 
+/**
+ * Vrai pendant la diffusion d'un retrait de consentement. `isAnalyticsAllowed`
+ * rappelle `clearStoredCookieConsent`, et les écouteurs rappellent
+ * `isAnalyticsAllowed` : sans ce verrou, la paire boucle indéfiniment.
+ */
+let notifyingConsentChange = false;
+
 export function clearStoredCookieConsent(): void {
+  if (typeof window === "undefined") return;
+
+  let hadStoredChoice = false;
+  try {
+    hadStoredChoice =
+      window.localStorage?.getItem(COOKIE_CONSENT_STORAGE_KEY) != null;
+  } catch {
+    /* Le stockage peut être désactivé par le navigateur. */
+  }
   try {
     window.localStorage?.removeItem(COOKIE_CONSENT_STORAGE_KEY);
   } catch {
-    /* Le stockage peut être désactivé par le navigateur. */
+    /* Idem : l'absence de purge ne doit jamais faire échouer l'appelant. */
+  }
+
+  // Le retrait doit être diffusé comme l'enregistrement : c'est ici que le
+  // consentement est effacé quand il a expiré, qu'il est corrompu ou que la
+  // bannière est désactivée. Sans cet événement, GoogleMeasurement gardait
+  // `consented = true` et gtag.js restait injecté et actif jusqu'au
+  // rechargement de la page.
+  if (!hadStoredChoice || notifyingConsentChange) return;
+  notifyingConsentChange = true;
+  try {
+    window.dispatchEvent(
+      new CustomEvent<CookieConsent | null>(COOKIE_CONSENT_EVENT, {
+        detail: null,
+      }),
+    );
+  } catch {
+    /* Sans diffusion, la mesure se resynchronise au prochain chargement. */
+  } finally {
+    notifyingConsentChange = false;
   }
 }
 
@@ -72,6 +112,11 @@ export function writeCookieConsent(
     window.localStorage?.setItem(
       COOKIE_CONSENT_STORAGE_KEY,
       JSON.stringify(storedConsent),
+    );
+    window.dispatchEvent(
+      new CustomEvent<CookieConsent>(COOKIE_CONSENT_EVENT, {
+        detail: storedConsent,
+      }),
     );
   } catch {
     /* Le stockage peut être désactivé par le navigateur. */

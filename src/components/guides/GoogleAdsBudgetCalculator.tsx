@@ -1,5 +1,21 @@
 "use client";
 
+/**
+ * EN RÉSERVE — composant volontairement monté sur aucune page.
+ *
+ * Destination : le guide dont le slug est `budget-google-ads-pme`, non encore
+ * réécrit — son slug figure dans `LEGACY_GUIDE_SLUGS`
+ * (src/lib/legacy-guide-redirects.ts:19) et reste donc redirigé.
+ * Feuille de route : docs/roadmap-guides-seo.md:140 (« Récupérer P4 ») et
+ * :241 (« Calculateur seuil de rentabilité et scénarios »).
+ *
+ * Ce n'est donc pas du code mort : il est maintenu par
+ * `src/lib/google-ads-budget.ts` et sa suite de tests en attendant la
+ * publication du guide. Si ce commentaire survit à la mise en ligne du guide,
+ * c'est que le montage a été oublié — et inversement, un outil réellement
+ * démonté par erreur reste détectable parce qu'il n'aura pas cet en-tête.
+ */
+
 import { useState } from "react";
 import {
   calculateGoogleAdsBudget,

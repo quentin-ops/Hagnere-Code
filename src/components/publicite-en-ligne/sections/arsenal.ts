@@ -70,7 +70,7 @@ export const arsenalHtml = `
             </div>
           </div>
           <div class="ads-arsenal-tool-body">Budgets estimés concurrents, search terms payants, landing pages, creative rotations. <b>Le point de départ pour toute stratégie SEA sérieuse</b>.</div>
-          <div class="ads-arsenal-tool-chip">Licence pro incluse</div>
+          <div class="ads-arsenal-tool-chip">Licence portée selon le devis</div>
         </div>
       </div>
 
@@ -171,7 +171,7 @@ export const arsenalHtml = `
             </div>
           </div>
           <div class="ads-arsenal-tool-body">Ads × CRM × marge selon les sources disponibles. <b>Indicateurs et fréquence d'actualisation</b> sont définis avec leur méthode de calcul.</div>
-          <div class="ads-arsenal-tool-chip">Licence Google · gratuite</div>
+          <div class="ads-arsenal-tool-chip">Looker Studio gratuit · BigQuery facturé à l'usage</div>
         </div>
 
         <div class="ads-arsenal-tool">

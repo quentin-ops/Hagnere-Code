@@ -31,9 +31,9 @@ export const miniAuditHtml = `
 
         <div class="at-audit-q is-active" data-audit-q="0">
           <div class="at-audit-q-num">01 · Déclencheur</div>
-          <h3>Qu'est-ce qui déclenche votre besoin d'audit aujourd'hui ?</h3>
+          <h3 id="at-audit-q0-title">Qu'est-ce qui déclenche votre besoin d'audit aujourd'hui ?</h3>
           <p>Le trigger d'achat change radicalement le format recommandé (Express / Standard / Deep / M&amp;A).</p>
-          <div class="at-audit-options">
+          <div class="at-audit-options" role="radiogroup" aria-labelledby="at-audit-q0-title">
             <label class="at-audit-opt">
               <input type="radio" name="audit-q0" value="25" data-audit-answer>
               <span class="at-audit-opt-body">
@@ -87,9 +87,9 @@ export const miniAuditHtml = `
 
         <div class="at-audit-q" data-audit-q="1">
           <div class="at-audit-q-num">02 · Enjeu de la décision</div>
-          <h3>Quel est le niveau d'enjeu business lié à l'audit ?</h3>
+          <h3 id="at-audit-q1-title">Quel est le niveau d'enjeu business lié à l'audit ?</h3>
           <p>Plus l'enjeu est haut (levée, M&amp;A, décision &gt; 500 k€), plus le format doit être robuste.</p>
-          <div class="at-audit-options">
+          <div class="at-audit-options" role="radiogroup" aria-labelledby="at-audit-q1-title">
             <label class="at-audit-opt">
               <input type="radio" name="audit-q1" value="5" data-audit-answer>
               <span class="at-audit-opt-body">
@@ -127,9 +127,9 @@ export const miniAuditHtml = `
 
         <div class="at-audit-q" data-audit-q="2">
           <div class="at-audit-q-num">03 · Timeline</div>
-          <h3>Dans quels délais vous faut-il le rapport ?</h3>
+          <h3 id="at-audit-q2-title">Dans quels délais vous faut-il le rapport ?</h3>
           <p>La date de démarrage dépend des disponibilités, des accès et du périmètre&nbsp;; elle est confirmée au devis.</p>
-          <div class="at-audit-options">
+          <div class="at-audit-options" role="radiogroup" aria-labelledby="at-audit-q2-title">
             <label class="at-audit-opt">
               <input type="radio" name="audit-q2" value="10" data-audit-answer>
               <span class="at-audit-opt-body">
@@ -167,9 +167,9 @@ export const miniAuditHtml = `
 
         <div class="at-audit-q" data-audit-q="3">
           <div class="at-audit-q-num">04 · Destinataires du rapport</div>
-          <h3>À qui sera présenté le rapport final ?</h3>
+          <h3 id="at-audit-q3-title">À qui sera présenté le rapport final ?</h3>
           <p>Plus le public est senior / externe, plus le format exige une version "board-safe" solide.</p>
-          <div class="at-audit-options">
+          <div class="at-audit-options" role="radiogroup" aria-labelledby="at-audit-q3-title">
             <label class="at-audit-opt">
               <input type="radio" name="audit-q3" value="5" data-audit-answer>
               <span class="at-audit-opt-body">
@@ -207,9 +207,9 @@ export const miniAuditHtml = `
 
         <div class="at-audit-q" data-audit-q="4">
           <div class="at-audit-q-num">05 · État de maturité</div>
-          <h3>Comment évaluez-vous la maturité actuelle de votre tech ?</h3>
+          <h3 id="at-audit-q4-title">Comment évaluez-vous la maturité actuelle de votre tech ?</h3>
           <p>Un contexte "on sent que ça dérape" demande plus de profondeur qu'un "tout va bien apparemment".</p>
-          <div class="at-audit-options">
+          <div class="at-audit-options" role="radiogroup" aria-labelledby="at-audit-q4-title">
             <label class="at-audit-opt">
               <input type="radio" name="audit-q4" value="5" data-audit-answer>
               <span class="at-audit-opt-body">
@@ -294,7 +294,7 @@ export const miniAuditHtml = `
         </div>
       </div>
 
-      <!-- CTA -->
+      <!-- Résultat · boutons d'action (libellé volontairement distinct du marqueur de CTA finale strippé au rendu) -->
       <div class="at-audit-result-cta">
         <a href="/demarrer-un-projet" class="btn btn-ghost at-audit-cta">
           Décrire mon projet (3 min) — objectif : prochain jour ouvré

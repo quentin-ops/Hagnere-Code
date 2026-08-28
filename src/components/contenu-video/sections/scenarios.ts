@@ -61,7 +61,7 @@ export const scenariosHtml = `
             <div class="cv-scen-meta-row"><span class="k">Cadence</span><span class="v">1 longue + 4 shorts / semaine</span></div>
             <div class="cv-scen-meta-row"><span class="k">Votre temps</span><span class="v">1 h de tournage / semaine</span></div>
             <div class="cv-scen-meta-row"><span class="k">Démarrage</span><span class="v">Date confirmée au devis</span></div>
-            <div class="cv-scen-meta-row"><span class="k">Option voix IA</span><span class="v">+600 € / mois (clone vôtre)</span></div>
+            <div class="cv-scen-meta-row"><span class="k">Option voix IA</span><span class="v">+600 € HT / mois (clone vôtre)</span></div>
           </div>
           <a href="#contact" class="btn btn-accent cv-scen-cta">
             Discuter de ce pack

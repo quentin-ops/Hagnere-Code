@@ -21,8 +21,8 @@ export const trustBadgesHtml = `
 
       <div class="sr-trust-section-card reveal reveal-d-1">
         <div class="sr-trust-section-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-        <h3>Tous vos livrables, tout de suite</h3>
-        <p>Support de registre, dossier de preuves pour l'AIPD, plan d'action technique, scripts d'audit et <b>code de remédiation</b> : vous y accédez dès qu'ils existent, sur votre Notion et votre Git. Aucun outil propriétaire Hagnéré obligatoire.</p>
+        <h3>Accès aux livrables au fil de la mission</h3>
+        <p>Support de registre, dossier de preuves pour l'AIPD, plan d'action technique, scripts d'audit et <b>code de remédiation</b> sont déposés sur votre Notion et votre Git au fur et à mesure. Aucun outil propriétaire Hagnéré obligatoire. Les livrables spécifiques sont transférés après paiement complet selon les CGV, sous réserve des composants préexistants et licences tierces.</p>
         <div class="sr-trust-section-foot">— Cession écrite dans les CGV</div>
       </div>
 

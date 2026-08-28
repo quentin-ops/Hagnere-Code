@@ -313,9 +313,13 @@ describe("content quality for the Microsoft Access replacement guide", () => {
   });
 
   it("uses one restrained editorial link and contextual shared CTAs", () => {
+    // Le lien éditorial unique reste unique, mais il est désormais instrumenté :
+    // un `<Link>` brut vers le funnel n'émettrait aucun `guide_cta_click`.
+    expect(pageSource.match(/<Link href="\/demarrer-un-projet">/g)).toBeNull();
     expect(
-      pageSource.match(/<Link href="\/demarrer-un-projet">/g),
+      pageSource.match(/<TrackedGuideCtaLink\s+href="\/demarrer-un-projet"/g),
     ).toHaveLength(1);
+    expect(pageSource).toContain('placement="article_end_inline"');
     expect(pageSource).toContain(
       'primaryCtaLabel: "Décrire mon application Access"',
     );

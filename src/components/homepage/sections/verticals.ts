@@ -216,7 +216,7 @@ export const verticalsHtml = `
         <p>
           App native iOS + Android (React Native + Expo), publiée sous vos comptes
           App Store + Google Play, paiement Apple Pay, push géolocalisée, fidélité,
-          mode hors-ligne. Comptes stores, livrables, accès et droits sont précisés au devis.
+          mode hors-ligne.
         </p>
         <div class="vt-mini vt-mini-stack" aria-hidden="true">
           <span></span><span></span><span></span>
@@ -226,7 +226,7 @@ export const verticalsHtml = `
           <span>App Store + Play Store</span>
           <span>OTA EAS</span>
         </div>
-        <div class="vt-outcome">Résultat : présence sur l'écran d'accueil, panier moyen +40 %.</div>
+        <div class="vt-outcome">Objectif à mesurer : installer l'app sur l'écran d'accueil et suivre la récurrence d'usage sur votre audience.</div>
       </a>
     </div>
 

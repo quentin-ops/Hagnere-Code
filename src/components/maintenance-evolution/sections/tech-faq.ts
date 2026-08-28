@@ -15,11 +15,11 @@ export const techFaqHtml = `
 
     <div class="me-tfaq-list reveal reveal-d-1">
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-tech-1">
           Comment vous gérez les migrations de base en production ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-care-tech-1" hidden>
           Les migrations peuvent être versionnées et revues en pair avant merge. Pour les schémas sensibles,
           une stratégie expand / migrate / contract vise à limiter les interruptions.
           Pour les très grosses tables, on utilise <b>pt-online-schema-change</b> ou des
@@ -29,11 +29,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-tech-2">
           Stratégie de queues et de jobs background ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-care-tech-2" hidden>
           <b>Laravel Horizon + Redis</b> (ou BullMQ côté Node). Queues séparées par criticité
           (default, notifications, ai-heavy, exports). <b>Retries exponentiels</b>,
           dead-letter queue sur échec définitif, alerting Sentry + Pulse sur backlog &gt; X.
@@ -42,11 +42,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-tech-3">
           Vos stratégies de backup et de disaster recovery ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-care-tech-3" hidden>
           WAL continu, snapshots et second fournisseur sont des options à dimensionner selon la criticité.
           Le devis précise la fréquence, la rétention, le chiffrement, la responsabilité et la cadence des tests.
           <b>RTO et RPO cibles</b> sont documentés dans le runbook lorsque le périmètre l'exige.
@@ -54,11 +54,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-tech-4">
           Observabilité, logs, traces — qu'est-ce qu'on a ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-care-tech-4" hidden>
           <b>Sentry</b> pour les erreurs (front + back + mobile) avec context riche (user,
           tenant, release). <b>Laravel Pulse</b> pour perfs &amp; slow queries. <b>Horizon</b>
           pour les queues. <b>Logs structurés JSON</b> (Monolog → stdout → Axiom). <b>Grafana Cloud</b>
@@ -68,11 +68,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-tech-5">
           Comment validez-vous la capacité sous charge ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-care-tech-5" hidden>
           Architecture pensée <b>stateless</b>, scale horizontal via Docker/Laravel Forge ou
           Laravel Cloud. <b>PostgreSQL avec index ciblés + partitioning sur tables chaudes</b>.
           Redis pour le cache applicatif, les sessions, le rate-limit. Queries lentes
@@ -82,11 +82,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-tech-6">
           Votre stratégie de tests et qualité code ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-care-tech-6" hidden>
           <b>Pyramide classique</b>. Unit tests sur la logique métier (Pest / Vitest).
           Feature tests sur chaque route critique (billing, auth, permissions).
           Les parcours <b>end-to-end Playwright</b> sont sélectionnés selon leur criticité.
@@ -95,11 +95,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-tech-7">
           Vous êtes SOC2 / ISO27001 ready ? Pour nos audits clients grands comptes ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-care-tech-7" hidden>
           Nous pouvons cadrer les preuves, journaux, droits, sous-traitants et contrôles
           nécessaires au référentiel retenu. Les outils, la fréquence des revues et les
           pentests sont dimensionnés au contrat. <b>L'audit officiel est mené par un tiers
@@ -108,11 +108,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-tech-8">
           Vous êtes auditables ? Pen test, revue de code externe ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-care-tech-8" hidden>
           Une revue de code ou un pentest externe peut être organisé avec les accès et la
           documentation nécessaires. Le devis précise les contrôles CI, outils SAST,
           fréquences, responsabilités et éventuelles prestations tierces ; rien n'est

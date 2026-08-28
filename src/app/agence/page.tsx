@@ -8,7 +8,7 @@ import {
   GuideInlineCTA,
 } from "@/components/guides/guide-content-blocks";
 import { GuidesShell } from "@/components/guides/GuidesShell";
-import { OG_BASE, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/seo";
+import { OG_BASE, SITE_URL } from "@/lib/seo";
 import {
   formatLocalPageDate,
   getLocalPage,
@@ -19,6 +19,16 @@ import { PUBLIC_ORGANIZATION_JSON_LD } from "@/lib/organization-structured-data"
 import { PUBLISHED_GUIDES } from "@/lib/guides";
 
 const page = getLocalPage("agence", "");
+
+// Image sociale dédiée : les trois pages locales partageaient /og-image.png
+// avec l'accueil et 25 autres URL — un partage LinkedIn de cette page affichait
+// exactement la même vignette que la home.
+const LOCAL_OG_IMAGE = {
+  url: `${SITE_URL}/agence/opengraph-image`,
+  width: 1200,
+  height: 630,
+  alt: "Hagnéré Code — agence web à Bassens, aux portes de Chambéry",
+};
 
 export const metadata: Metadata = {
   title: page.title,
@@ -33,8 +43,9 @@ export const metadata: Metadata = {
     title: page.title,
     description: page.metaDescription,
     url: localPagePath(page),
-    images: [DEFAULT_OG_IMAGE],
+    images: [LOCAL_OG_IMAGE],
   },
+  twitter: { images: [LOCAL_OG_IMAGE.url] },
 };
 
 // --- JSON-LD : ProfessionalService rattaché à l'entité #organization déclarée
@@ -70,7 +81,7 @@ const faqItems = [
   {
     question: "Combien coûte un site chez vous, et pourquoi affichez-vous vos prix ?",
     answer:
-      "Un site vitrine sur mesure démarre à 6 900 €, avec deux périmètres publics à 14 900 € et 22 000 € et plus. Une boutique en ligne sur mesure va de 15 000 à 120 000 €, une première version de logiciel en ligne démarre à 15 000 €. Nous publions ces repères pour permettre un premier filtre ; seul le devis signé fixe le périmètre, le prix, le planning et les conditions d'avenant. Le détail est sur notre page tarifs.",
+      "Un site vitrine sur mesure démarre à 6 900 € HT, avec deux périmètres publics à 14 900 € HT et 22 000 € HT et plus. Une boutique en ligne sur mesure va de 15 000 à 120 000 € HT, une première version de logiciel en ligne démarre à 15 000 € HT. Tous nos prix sont indiqués hors taxes, TVA 20 % en sus, pour une clientèle professionnelle. Ces repères de prix sont publics et indicatifs ; le devis signé après cadrage fixe le prix ferme, le périmètre, le planning et les conditions d'avenant. Le détail est sur notre page tarifs.",
   },
   {
     question: "Que se passe-t-il après la mise en ligne ?",
@@ -104,11 +115,15 @@ export default function Page() {
           { number: "01", title: "Bassens, aux portes de Chambéry", description: "", color: "violet" },
           { number: "02", title: "Savoie et Haute-Savoie sur place", description: "", color: "blue" },
           { number: "03", title: "Toute la France à distance", description: "", color: "emerald" },
-          { number: "04", title: "Forfait fixe, prix publiés", description: "", color: "amber" },
+          { number: "04", title: "Forfait fixe, prix publiés HT", description: "", color: "amber" },
         ]}
         relatedLinks={[
+          { href: "/agence/savoie", label: "Notre territoire en Savoie" },
+          { href: "/agence/savoie/chambery", label: "Agence web à Chambéry" },
           { href: "/services/sites-vitrines", label: "Création de sites vitrines" },
           { href: "/services/saas-applications-metier", label: "SaaS et applications métier" },
+          { href: "/agence-next-js", label: "Agence Next.js" },
+          { href: "/agence-react", label: "Agence React" },
           { href: "/services/referencement-google", label: "Référencement naturel" },
           { href: "/services/publicite-en-ligne", label: "Publicité en ligne" },
           { href: "/tarifs", label: "Nos tarifs" },

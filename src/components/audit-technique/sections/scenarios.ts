@@ -10,7 +10,7 @@ export const scenariosHtml = `
       </div>
       <div class="right">
         Ces cinq scénarios servent à préparer le cadrage, sans prétendre refléter une fréquence client.
-        <b>Cliquez sur le vôtre</b>&nbsp;: les questions de périmètre et de livrables changent.
+        <b>Cliquez sur le vôtre</b>&nbsp;: les questions de périmètre et de livrables changent. Tous les montants de cette section sont indiqués hors taxes.
       </div>
     </div>
 

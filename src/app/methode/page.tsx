@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { MethodePage } from "@/components/methode/MethodePage";
-import { OG_BASE } from "@/lib/seo";
+import { OG_BASE, SITE_URL } from "@/lib/seo";
 
+// Image sociale dédiée plutôt que /og-image.png, partagée par 28 URL.
 const METHODE_OG_IMAGE = {
-  url: "/og-image.png",
+  url: `${SITE_URL}/methode/opengraph-image`,
   width: 1200,
   height: 630,
   alt: "Sprint Fixe™ — méthode de cadrage et de suivi de projet Hagnéré Code",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     url: "/methode",
     images: [METHODE_OG_IMAGE],
   },
-  twitter: { images: [METHODE_OG_IMAGE] },
+  twitter: { images: [METHODE_OG_IMAGE.url] },
 };
 
 const breadcrumbJsonLd = JSON.stringify({

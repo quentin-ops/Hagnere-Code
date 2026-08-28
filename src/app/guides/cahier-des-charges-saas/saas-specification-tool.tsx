@@ -97,7 +97,7 @@ function FieldLabel({
             ? "Écrivez « Aucune identifiée » ou décrivez précisément le STOP"
             : "À décider — laissez vide si personne ne peut encore trancher"
         }
-        className="mt-3 w-full resize-y rounded-xl border border-zinc-300 bg-white px-3 py-3 text-sm leading-relaxed text-zinc-950 outline-none transition placeholder:text-zinc-400 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-500/25 motion-reduce:transition-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:placeholder:text-zinc-500"
+        className="mt-3 w-full resize-y rounded-xl border border-zinc-300 bg-white px-3 py-3 text-base sm:text-sm leading-relaxed text-zinc-950 outline-none transition placeholder:text-zinc-400 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-500/25 motion-reduce:transition-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:placeholder:text-zinc-500"
       />
     </label>
   );
@@ -203,7 +203,7 @@ export function SaasSpecificationTool() {
                 setCopyStatus("");
               }}
               placeholder="Ex. : nom de travail du SaaS"
-              className="mt-3 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-3 text-sm text-zinc-950 outline-none transition placeholder:text-zinc-400 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-500/25 motion-reduce:transition-none dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:placeholder:text-zinc-500"
+              className="mt-3 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-3 text-base sm:text-sm text-zinc-950 outline-none transition placeholder:text-zinc-400 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-500/25 motion-reduce:transition-none dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:placeholder:text-zinc-500"
             />
           </label>
         </section>

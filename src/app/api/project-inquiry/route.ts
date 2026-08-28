@@ -1,5 +1,13 @@
 import { NextResponse } from "next/server";
+import { PRIVACY_NOTICE_VERSION } from "@/lib/privacy-notice";
 import { CALENDLY_URL } from "@/lib/calendly";
+import {
+  CONTACT_ADDRESS,
+  CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_E164,
+  DEFAULT_CONTACT_SENDER_EMAIL,
+} from "@/lib/contact-details";
 import { Resend } from "resend";
 import { eq } from "drizzle-orm";
 import { getClientIp } from "@/lib/rate-limit";
@@ -8,6 +16,7 @@ import {
   checkServiceRateLimit,
   hashEmail,
   logAiCall,
+  releaseReservation,
 } from "@/lib/ai-rate-limit";
 import {
   getMathChallengeSecret,
@@ -35,7 +44,7 @@ import {
 export const runtime = "nodejs";
 
 const MAX_BODY_BYTES = 50_000;
-const PROJECT_INQUIRY_PRIVACY_NOTICE_VERSION = "2026-07-20";
+const PROJECT_INQUIRY_PRIVACY_NOTICE_VERSION = PRIVACY_NOTICE_VERSION;
 
 // Extended payload — the funnel sends the FULL state so we can persist
 // every field in the DB (the email message stays the human-readable summary).
@@ -68,13 +77,44 @@ type Body = {
   consent?: boolean;
 };
 
+// Les valeurs légitimes sont des libellés d'options du funnel : quelques mots.
+// Le plafond par élément aligne ces colonnes text[] sur la rigueur déjà
+// appliquée aux champs scalaires (le nombre d'éléments était seul borné).
+const MAX_ARRAY_ITEMS = 64;
+const MAX_ARRAY_ITEM_LENGTH = 120;
+
 function asStringArray(v: unknown): string[] {
   if (!Array.isArray(v)) return [];
-  return v.filter((x): x is string => typeof x === "string").slice(0, 64);
+  return v
+    .filter((x): x is string => typeof x === "string")
+    .slice(0, MAX_ARRAY_ITEMS)
+    .map((x) => normalizeSingleLine(x).slice(0, MAX_ARRAY_ITEM_LENGTH));
 }
 
 function asText(value: unknown): string {
   return typeof value === "string" ? value : "";
+}
+
+/**
+ * Retire les caractères de contrôle et replie les sauts de ligne. Appliqué
+ * aux identités et à la société : ces valeurs sont relues par un backoffice
+ * et composent le sujet de l'email — une valeur multi-lignes n'a aucune
+ * raison d'exister, autant ne jamais la produire.
+ */
+function normalizeSingleLine(value: string): string {
+  return value
+    .replace(/[\u0000-\u001F\u007F-\u009F]+/g, " ")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
+/**
+ * SIREN persisté : même règle que /api/sirene (9 chiffres exactement).
+ * Toute autre saisie est stockée à null plutôt que dénormalisée.
+ */
+function asSiren(value: unknown): string | null {
+  const cleaned = asText(value).replace(/\s/g, "");
+  return /^\d{9}$/.test(cleaned) ? cleaned : null;
 }
 
 /**
@@ -134,8 +174,8 @@ function renderEmailShell(preheader: string, innerHtml: string): string {
                 <tr>
                   <td style="padding:22px 28px;background:#fafafa;border-top:1px solid #ededed;color:#737373;font-size:12px;line-height:1.55">
                     HAGNERE CODE · SASU au capital de 10 € · RCS Chambéry 993 672 856<br>
-                    82 impasse de Bellevue, 73000 Bassens<br>
-                    <a href="mailto:quentin@hagnere-patrimoine.fr" style="color:#4c1d95;text-decoration:none">quentin@hagnere-patrimoine.fr</a> · <a href="tel:+33374472018" style="color:#4c1d95;text-decoration:none">+33 3 74 47 20 18</a>
+                    ${CONTACT_ADDRESS.street}, ${CONTACT_ADDRESS.postalCode} ${CONTACT_ADDRESS.locality}<br>
+                    <a href="mailto:${CONTACT_EMAIL}" style="color:#4c1d95;text-decoration:none">${CONTACT_EMAIL}</a> · <a href="tel:${CONTACT_PHONE_E164}" style="color:#4c1d95;text-decoration:none">${CONTACT_PHONE_DISPLAY}</a>
                   </td>
                 </tr>
               </table>
@@ -166,17 +206,22 @@ export async function POST(request: Request) {
   }
 
   // 1. Anti-bot honeypot: bots fill every field, humans never see it.
-  // Feign success silently so the bot doesn't retry.
+  // La réponse reste un 200 « ok » pour qu'un robot ne comprenne pas qu'il est
+  // filtré, mais elle ne porte PAS `captured: true` : le client sait ainsi
+  // qu'aucune demande n'a été enregistrée et ne doit ni purger le brouillon,
+  // ni rediriger vers /merci, ni compter une conversion. Un faux positif
+  // (gestionnaire de mots de passe qui remplit le champ piège) reste ainsi
+  // rattrapable au lieu de perdre définitivement le lead.
   if (asText(body.honeypot)) {
-    return NextResponse.json({ ok: true });
+    log.warn("project_inquiry_honeypot_triggered");
+    return NextResponse.json({ ok: true, captured: false });
   }
 
   const mathChallengeSecret = getMathChallengeSecret();
   if (!mathChallengeSecret) {
     return NextResponse.json(
       {
-        error:
-          "Le contrôle anti-robot est temporairement indisponible. Écrivez à quentin@hagnere-patrimoine.fr ou réessayez plus tard.",
+        error: `Le contrôle anti-robot est temporairement indisponible. Écrivez à ${CONTACT_EMAIL} ou réessayez plus tard.`,
       },
       { status: 503 },
     );
@@ -198,8 +243,7 @@ export async function POST(request: Request) {
     log.error("project_inquiry_rate_limit_unavailable", { err: err as Error });
     return NextResponse.json(
       {
-        error:
-          "Le formulaire est temporairement indisponible. Écrivez à quentin@hagnere-patrimoine.fr ou réessayez plus tard.",
+        error: `Le formulaire est temporairement indisponible. Écrivez à ${CONTACT_EMAIL} ou réessayez plus tard.`,
       },
       { status: 503 },
     );
@@ -228,20 +272,19 @@ export async function POST(request: Request) {
     });
     return NextResponse.json(
       {
-        error:
-          "La réponse au calcul anti-robot est incorrecte. Vérifiez le calcul puis réessayez, ou écrivez à quentin@hagnere-patrimoine.fr.",
+        error: `La réponse au calcul anti-robot est incorrecte. Vérifiez le calcul puis réessayez, ou écrivez à ${CONTACT_EMAIL}.`,
       },
       { status: 403 },
     );
   }
 
-  const firstName = asText(body.firstName).trim().slice(0, 80);
-  const lastName = asText(body.lastName).trim().slice(0, 80);
-  const email = asText(body.email).trim().slice(0, 200);
-  const company = asText(body.company).trim().slice(0, 120);
-  const projectType = asText(body.projectType).trim().slice(0, 120);
-  const timeline = asText(body.timeline).trim().slice(0, 80);
-  const budget = asText(body.budget).trim().slice(0, 40);
+  const firstName = normalizeSingleLine(asText(body.firstName)).slice(0, 80);
+  const lastName = normalizeSingleLine(asText(body.lastName)).slice(0, 80);
+  const email = normalizeSingleLine(asText(body.email)).slice(0, 200);
+  const company = normalizeSingleLine(asText(body.company)).slice(0, 120);
+  const projectType = normalizeSingleLine(asText(body.projectType)).slice(0, 120);
+  const timeline = normalizeSingleLine(asText(body.timeline)).slice(0, 80);
+  const budget = normalizeSingleLine(asText(body.budget)).slice(0, 40);
   // 9000 : le message du funnel est un brief structuré complet — le
   // client compile jusqu'à 8000 caractères (brief-format.ts) plus un
   // en-tête ; la marge évite de tronquer les dernières lignes du brief.
@@ -278,13 +321,13 @@ export async function POST(request: Request) {
   }
 
   if (Object.keys(errors).length > 0) {
-    await logAiCall({
+    // Une faute de saisie ne consomme pas le quota du prospect : le créneau
+    // réservé plus haut est rendu. Le martèlement automatisé reste borné par
+    // le plafond « tentatives relâchées » du limiteur.
+    await releaseReservation({
       reservationId: rateCheck.reservationId,
       service: "inquiry",
-      ip,
-      email,
-      userAgent,
-      status: "validation",
+      reason: "validation",
     });
     return NextResponse.json({ errors }, { status: 400 });
   }
@@ -302,10 +345,14 @@ export async function POST(request: Request) {
     log.error("project_inquiry_email_rate_limit_unavailable", {
       err: err as Error,
     });
+    await releaseReservation({
+      reservationId: rateCheck.reservationId,
+      service: "inquiry",
+      reason: "ai_error",
+    });
     return NextResponse.json(
       {
-        error:
-          "Le formulaire est temporairement indisponible. Écrivez à quentin@hagnere-patrimoine.fr ou réessayez plus tard.",
+        error: `Le formulaire est temporairement indisponible. Écrivez à ${CONTACT_EMAIL} ou réessayez plus tard.`,
       },
       { status: 503 },
     );
@@ -376,8 +423,8 @@ export async function POST(request: Request) {
         email,
         phone: phone || null,
         company,
-        role: asText(body.role).trim().slice(0, 80) || null,
-        siren: asText(body.siren).replace(/\s/g, "").slice(0, 20) || null,
+        role: normalizeSingleLine(asText(body.role)).slice(0, 80) || null,
+        siren: asSiren(body.siren),
         projectKinds: asStringArray(body.projectKinds),
         objectives: asStringArray(body.objectives),
         description: asText(body.description).slice(0, 4000) || null,
@@ -414,8 +461,14 @@ export async function POST(request: Request) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const toAddr = process.env.CONTACT_TO_EMAIL || "quentin@hagnere-patrimoine.fr";
-  const fromAddr = process.env.CONTACT_FROM_EMAIL || "contact@hagnere-code.ai";
+  // Destinataire des notifications d'équipe. Le repli est l'adresse RÉELLEMENT
+  // publiée sur le site : sans cela, basculer l'affichage sur une nouvelle
+  // adresse laissait les leads arriver silencieusement dans l'ancienne boîte.
+  // `CONTACT_TO_EMAIL` reste prioritaire pour router les notifications ailleurs
+  // que l'adresse publique quand c'est voulu.
+  const toAddr = process.env.CONTACT_TO_EMAIL || CONTACT_EMAIL;
+  const fromAddr =
+    process.env.CONTACT_FROM_EMAIL || DEFAULT_CONTACT_SENDER_EMAIL;
 
   const subject = `[Projet] ${company} — ${fullName}`;
   const textBody = [
@@ -435,6 +488,17 @@ export async function POST(request: Request) {
   ].join("\n");
 
   const escapedMessage = escapeHtml(message);
+
+  // L'accusé de réception part vers une adresse fournie par le soumetteur,
+  // depuis un domaine que l'on veut garder authentifié : on n'y renvoie qu'un
+  // extrait court du message. Le prospect sait ce qu'il vient d'écrire, et le
+  // récapitulatif société/projet/budget suffit à confirmer la bonne réception.
+  const CONFIRMATION_EXCERPT_LENGTH = 300;
+  const confirmationExcerpt =
+    message.length > CONFIRMATION_EXCERPT_LENGTH
+      ? `${message.slice(0, CONFIRMATION_EXCERPT_LENGTH).trimEnd()}…`
+      : message;
+  const escapedConfirmationExcerpt = escapeHtml(confirmationExcerpt);
   const htmlBody = renderEmailShell(
     `Nouveau contact projet : ${company}`,
     `
@@ -486,8 +550,8 @@ export async function POST(request: Request) {
     `Échéance   : ${timeline || "non précisée"}`,
     `Notice vie privée lue : version ${PROJECT_INQUIRY_PRIVACY_NOTICE_VERSION}`,
     "",
-    "Votre message :",
-    message,
+    "Début de votre message :",
+    confirmationExcerpt,
     "",
     `Pour aller plus vite, vous pouvez aussi réserver 30 min ici : ${CALENDLY_URL}`,
     "",
@@ -529,7 +593,7 @@ export async function POST(request: Request) {
             <div style="padding:13px 16px;border-bottom:1px solid #ededed"><b>Budget</b><br><span style="color:#525252">${escapeHtml(budget || "non précisé")}</span></div>
             <div style="padding:13px 16px;border-bottom:1px solid #ededed"><b>Échéance</b><br><span style="color:#525252">${escapeHtml(timeline || "non précisée")}</span></div>
             <div style="padding:13px 16px;border-bottom:1px solid #ededed"><b>Information vie privée</b><br><span style="color:#525252">Version ${PROJECT_INQUIRY_PRIVACY_NOTICE_VERSION} — prise de connaissance confirmée</span></div>
-            <div style="padding:13px 16px"><b>Message</b><br><span style="color:#525252;white-space:pre-wrap">${escapedMessage}</span></div>
+            <div style="padding:13px 16px"><b>Début de votre message</b><br><span style="color:#525252;white-space:pre-wrap">${escapedConfirmationExcerpt}</span></div>
           </div>
         </td>
       </tr>
@@ -549,6 +613,15 @@ export async function POST(request: Request) {
       briefId,
       persisted: briefId != null,
     });
+    if (briefId == null) {
+      // Rien n'a été capturé et le visiteur est invité à réessayer : lui
+      // laisser son créneau est la seule réponse cohérente.
+      await releaseReservation({
+        reservationId: rateCheck.reservationId,
+        service: "inquiry",
+        reason: "ai_error",
+      });
+    }
     const outcome = missingMailProviderOutcome(
       process.env.NODE_ENV === "production",
       briefId != null,
@@ -612,13 +685,12 @@ export async function POST(request: Request) {
       providerErrorName: delivery.errorName,
       briefId,
     });
-    await logAiCall({
+    // Panne d'envoi : l'échec est imputable au site, pas au prospect. Le
+    // créneau est rendu pour que le « Réessayez » affiché soit tenable.
+    await releaseReservation({
       reservationId: rateCheck.reservationId,
       service: "inquiry",
-      ip,
-      email,
-      userAgent,
-      status: "ai_error",
+      reason: "ai_error",
       briefId,
     });
     const outcome = teamMailFailureOutcome(briefId != null);

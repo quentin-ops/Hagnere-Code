@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { isValidElement, type ReactNode } from "react";
 import Link from "next/link";
 import {
   ChevronRight,
@@ -148,6 +148,16 @@ export interface GuidePremiumLegalSource {
   source: string;
   description: string;
   href?: string;
+  /**
+   * Ajoute `nofollow` au lien sortant.
+   *
+   * Les sources institutionnelles (Google, CNIL, Légifrance, référentiels
+   * publics) restent en dofollow : la citation y est le but. À réserver aux
+   * pages commerciales de concurrents citées comme échantillon de prix, où le
+   * lien transmettrait un signal de classement sur la requête même que la page
+   * vise.
+   */
+  nofollow?: boolean;
 }
 
 export interface GuidePremiumDisclaimerData {
@@ -699,6 +709,23 @@ interface GuidePremiumSectionProps {
   hideAnchor?: boolean;
 }
 
+/**
+ * Réduit un titre de section à son texte.
+ *
+ * Les 168 sections du corpus passent aujourd'hui une chaîne, mais la prop est
+ * typée `ReactNode` : un titre enrichi (emphase, `<br />`) doit rester lisible
+ * pour construire le nom accessible de l'ancre.
+ */
+function sectionTitleText(node: ReactNode): string {
+  if (typeof node === "string") return node;
+  if (typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(sectionTitleText).join("");
+  if (isValidElement<{ children?: ReactNode }>(node)) {
+    return sectionTitleText(node.props.children);
+  }
+  return "";
+}
+
 export function GuidePremiumSection({
   number,
   label,
@@ -708,6 +735,10 @@ export function GuidePremiumSection({
   children,
   hideAnchor = false,
 }: GuidePremiumSectionProps) {
+  const headingId = `${id}-titre`;
+  const anchorLinkId = `${id}-ancre`;
+  const hasReadableTitle = sectionTitleText(title).trim() !== "";
+
   return (
     <section
       id={id}
@@ -729,18 +760,37 @@ export function GuidePremiumSection({
           )}
         </div>
         {!hideAnchor && (
+          /* Le nom accessible reprend le texte visible « ancrer » puis le titre
+             de la section : sans lui, les 168 ancres du corpus partagent le
+             même intitulé et la liste des liens d'un lecteur d'écran ne
+             distingue plus une cible d'une autre (WCAG 2.4.4, et 2.5.3 qui
+             impose que le nom contienne le libellé visible).
+
+             Le titre est référencé par `aria-labelledby` plutôt que recopié
+             dans un `sr-only` : le recopier remettrait le texte du H2 une
+             seconde fois dans le DOM, ce que le corpus évite précisément pour
+             les extracteurs de texte (guide-premium-layout-single-render).
+             Le « # » est décoratif, donc retiré de l'arbre d'accessibilité. */
           <a
+            id={anchorLinkId}
             href={`#${id}`}
             className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-[11px] font-medium text-zinc-500 dark:text-white hover:text-zinc-900 hover:border-zinc-300 transition-colors shrink-0"
-            aria-label="Lien direct vers cette section"
+            aria-labelledby={
+              hasReadableTitle ? `${anchorLinkId} ${headingId}` : undefined
+            }
           >
-            <span className="text-zinc-400">#</span>
+            <span className="text-zinc-400" aria-hidden="true">
+              #
+            </span>
             ancrer
           </a>
         )}
       </div>
 
-      <h2 className="font-[family-name:var(--font-playfair)] text-[28px] sm:text-[32px] md:text-[38px] leading-tight tracking-[-0.02em] font-bold text-zinc-950 dark:text-white mb-6">
+      <h2
+        id={headingId}
+        className="font-[family-name:var(--font-playfair)] text-[28px] sm:text-[32px] md:text-[38px] leading-tight tracking-[-0.02em] font-bold text-zinc-950 dark:text-white mb-6"
+      >
         {title}
       </h2>
 
@@ -967,7 +1017,11 @@ function PremiumSources({ sources }: { sources: GuidePremiumLegalSource[] }) {
                   <a
                     href={entry.href}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel={
+                      entry.nofollow
+                        ? "nofollow noopener noreferrer"
+                        : "noopener noreferrer"
+                    }
                     className="inline-flex items-center justify-center px-3 py-1 rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.12em] text-zinc-700 dark:text-white shrink-0 w-fit underline decoration-zinc-300 underline-offset-2 transition-colors hover:border-indigo-400 hover:text-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     {entry.source}

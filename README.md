@@ -73,6 +73,30 @@ valeur entre preview et production. Le workflow GitHub
 `.github/workflows/quality.yml` et les builds Vercel exécutent les contrôles SEO
 avant build, puis vérifient l'artefact public après build.
 
+### Réglages anti-abus — optionnels, défaut sûr
+
+Aucune de ces variables n'est requise : la valeur par défaut est écrite dans le
+code et c'est elle qui s'applique. Elles existent pour desserrer ou resserrer un
+plafond sans redéployer une constante.
+
+| Variable | Défaut | Ce qu'elle borne |
+|---|---|---|
+| `INQUIRY_RETRY_PER_IP_HOUR` | `30` | Nouvelles tentatives d'une IP sur `/api/project-inquiry` après un refus de validation ou un échec d'envoi |
+| `INQUIRY_RETRY_GLOBAL_DAY` | `500` | Idem, toutes IP confondues, sur 24 h |
+| `ANALYTICS_RATE_PER_IP_HOUR` | `200` | Événements acceptés par `/api/funnel-analytics` pour une IP sur une heure |
+| `ANALYTICS_RATE_PER_IP_DAY` | `600` | Idem sur 24 h |
+| `ANALYTICS_RATE_GLOBAL_DAY` | `5000` | Idem sur 24 h, toutes IP confondues |
+| `MATH_CHALLENGE_PER_IP_HOUR` | `60` | Équations servies par `/api/math-challenge` pour une IP sur une heure (compteur mémoire, par instance) |
+| `CSP_REPORT_PER_IP_HOUR` | `30` | Rapports acceptés par `/api/csp-report` pour une IP sur une heure (compteur mémoire, par instance) |
+| `TRANSCRIBE_MAX_CONCURRENT` | `4` | Transcriptions simultanées par instance de `/api/transcribe` ; au-delà, `503` « réessayez » |
+
+Les valeurs sont lues avec `parseInt` : une valeur non entière produit `NaN` et
+**fait disparaître la limite en mémoire, sans erreur ni journal**. N'y poser que
+des entiers positifs. Les plafonds persistants vivent dans
+`src/lib/ai-rate-limit.ts`, qui reste la source de vérité ; le détail et les
+effets de bord sont dans
+[docs/variables-environnement.md](docs/variables-environnement.md).
+
 ## Architecture
 
 - `src/app/` — routes App Router (pages marketing, `/guides`, `/outils`, légal, API).

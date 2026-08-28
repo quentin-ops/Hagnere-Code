@@ -6,6 +6,11 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useDesignInteractive } from "@/components/design-shared/useDesignInteractive";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
 import { MainNav } from "@/components/design-shared/MainNav";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_E164,
+} from "@/lib/contact-details";
 import "./legal-page.css";
 import "@/components/design-shared/responsive.css";
 import "@/components/design-shared/nav-dropdown.css";
@@ -133,13 +138,14 @@ export function LegalPageLayout({
         <div className="lp-hero-bg-grid" aria-hidden="true" />
         <div className="lp-hero-radial" aria-hidden="true" />
         <div className="wrap lp-hero-inner">
+          {/* Deux niveaux, comme le BreadcrumbList JSON-LD injecté par chacune
+              des six pages. Il n'existe pas de page d'index /legal : un niveau
+              intermédiaire « Légal » renverrait vers les mentions légales et
+              contredirait le balisage. */}
           <nav className="lp-breadcrumb" aria-label="Fil d’Ariane">
             <ol>
               <li>
                 <Link href="/">Accueil</Link>
-              </li>
-              <li>
-                <Link href="/legal/mentions">Légal</Link>
               </li>
               <li aria-current="page">
                 <span>{breadcrumb}</span>
@@ -256,13 +262,13 @@ export function LegalPageLayout({
                 </p>
               </div>
               <div className="lp-contact-details">
-                <a href="mailto:quentin@hagnere-patrimoine.fr">
+                <a href={`mailto:${CONTACT_EMAIL}`}>
                   <span>Adresse e-mail</span>
-                  <strong>quentin@hagnere-patrimoine.fr</strong>
+                  <strong>{CONTACT_EMAIL}</strong>
                 </a>
-                <a href="tel:+33374472018">
+                <a href={`tel:${CONTACT_PHONE_E164}`}>
                   <span>Téléphone</span>
-                  <strong>+33 3 74 47 20 18</strong>
+                  <strong>{CONTACT_PHONE_DISPLAY}</strong>
                 </a>
               </div>
             </section>

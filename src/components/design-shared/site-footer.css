@@ -50,8 +50,13 @@
   letter-spacing: 0;
   margin-top: 18px;
 }
+/* Le fragment accentué du titre est posé sur le #0a0a0a littéral de
+   `.sf-contact`, identique dans les deux thèmes — sa couleur doit l'être
+   aussi. `var(--accent)` vaut #6D28D9 en clair : 2,79:1, sous le seuil 3:1
+   des grands textes (WCAG 1.4.3). #A78BFA tient 7,27:1 sur ce fond, quel que
+   soit le thème. Même littéral que `.eyebrow.on-dark`. */
 .sf-contact-head h1 .sf-accent,
-.sf-contact-head h2 .sf-accent { color: var(--accent); }
+.sf-contact-head h2 .sf-accent { color: #a78bfa; }
 .sf-contact-head p {
   color: rgba(255, 255, 255, 0.7);
   font-size: 17px;
@@ -101,10 +106,18 @@
   place-items: center;
   flex-shrink: 0;
 }
+/* Surtitre de la carte Calendly (« LE PLUS RAPIDE », « OU ÉCRIVEZ-NOUS »),
+   rendu sur chaque page. Il est posé sur le dégradé #171717 → #0f0f0f de
+   `.sf-card`, sombre dans les deux thèmes : `var(--accent)` y tombait à
+   2,52:1 en clair (#6D28D9) et 4,23:1 en sombre (#8B5CF6), donc hors seuil
+   des DEUX côtés pour un corps de 10,5 px. #A78BFA tient 6,59:1 sur #171717
+   et 7,04:1 sur #0f0f0f, les deux extrémités du dégradé.
+   La reprise claire du même surtitre dans la carte formulaire garde sa
+   teinte propre plus bas (`.sf-form-head .sf-card-kind`). */
 .sf-card-kind {
   font-family: var(--font-geist-mono);
   font-size: 10.5px;
-  color: var(--accent);
+  color: #a78bfa;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-weight: 600;
@@ -123,10 +136,14 @@
   margin: 0;
 }
 .sf-card-cta { align-self: flex-start; }
+/* Mention sous le CTA Calendly, rendue sur chaque page du site. À 0,45
+   d'opacité sur le dégradé #171717 → #0f0f0f de la carte, elle tombait à
+   ~4,5:1 — sous le seuil WCAG 1.4.3 pour un corps de 11px. 0,55 la remonte
+   au-delà de 6:1 sans changer la hiérarchie visuelle. */
 .sf-card-meta {
   font-family: var(--font-geist-mono);
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.55);
   display: flex;
   align-items: center;
   gap: 6px;
@@ -318,6 +335,26 @@ a.sf-direct-v:hover { color: var(--accent); }
 }
 .sf-consent a { color: inherit; text-decoration: underline; }
 .sf-consent-error { color: #b91c1c; font-size: 11px; }
+/* Numéro de version de la notice, affiché à côté de la case : l'accusé de
+   réception atteste « Version <date> — prise de connaissance confirmée », la
+   personne doit pouvoir rattacher cette attestation à ce qu'elle a lu. */
+.sf-consent-version {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-geist-mono);
+  font-size: 11px;
+  color: var(--ink-4);
+  letter-spacing: 0.01em;
+}
+
+/* Voie de sortie sous le contrôle anti-robot. */
+.sf-captcha-escape {
+  margin: -4px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+.sf-captcha-escape a { color: inherit; text-decoration: underline; }
 
 /* Trust row */
 .sf-trust-row {
@@ -385,7 +422,7 @@ a.sf-direct-v:hover { color: var(--accent); }
 /* ──────────────────────────────────────────────────────────────
    Layout : 3 rangées
      1. Brand row    → pitch + chips à gauche, gros CTA à droite
-     2. Services row → 10 services en grille 5 cols
+     2. Services row → les services du registre SERVICE_LINKS, grille 5 cols
      3. 3 colonnes   → Studio | Contact | Légal
    ──────────────────────────────────────────────────────────── */
 
@@ -407,6 +444,14 @@ a.sf-direct-v:hover { color: var(--accent); }
   margin: 14px 0 0;
   max-width: 480px;
 }
+/* La mention du siège devient le lien vers la page /agence : c'est
+   l'ancrage le plus naturel, et il était le seul manquant. */
+.sf-foot-inline-link {
+  color: var(--ink-3);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.sf-foot-inline-link:hover { color: var(--ink); }
 
 /* ---- Brand chips ---- */
 .sf-foot-trust {
@@ -437,7 +482,7 @@ a.sf-direct-v:hover { color: var(--accent); }
 .sf-foot-chip .dot-green { background: #16A34A; box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.18); }
 .sf-foot-chip .dot-accent { background: var(--accent); box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.18); }
 
-/* ---- Row 1 right : gros CTA "10 services" ---- */
+/* ---- Row 1 right : gros CTA « N services » (N dérivé du registre) ---- */
 .sf-foot-cta {
   display: flex;
   align-items: center;
@@ -509,6 +554,13 @@ a.sf-direct-v:hover { color: var(--accent); }
 
 .sf-tile-grid-services {
   grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+/* Bloc d'ancrage local. `auto-fit` plutôt qu'un nombre fixe de colonnes :
+   le registre LOCAL_PAGES grandit page par page, la grille suit sans
+   nouvelle règle et sans point de rupture supplémentaire. */
+.sf-tile-grid-local {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 /* ---- Row 3 : 3 colonnes (Studio | Contact | Légal) ---- */

@@ -1,5 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { LegalSection } from "../LegalPageLayout";
+import { LEGAL_POSTAL_ADDRESS } from "../legal-contact";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_E164,
+} from "@/lib/contact-details";
 
 export const mentionsLegalesSections: LegalSection[] = [
   {
@@ -28,11 +34,11 @@ export const mentionsLegalesSections: LegalSection[] = [
           <dt>Code APE</dt>
           <dd>62.01Z — Programmation informatique</dd>
           <dt>Siège social et adresse de correspondance</dt>
-          <dd>82 impasse de Bellevue, 73000 Bassens, France</dd>
+          <dd>{LEGAL_POSTAL_ADDRESS}</dd>
           <dt>Téléphone</dt>
-          <dd><a href="tel:+33374472018">+33 3 74 47 20 18</a></dd>
+          <dd><a href={`tel:${CONTACT_PHONE_E164}`}>{CONTACT_PHONE_DISPLAY}</a></dd>
           <dt>Courriel</dt>
-          <dd><a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a></dd>
+          <dd><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></dd>
         </dl>
       </>
     ),
@@ -81,8 +87,17 @@ export const mentionsLegalesSections: LegalSection[] = [
         </dl>
         <p>
           Les autres prestataires qui peuvent intervenir pour la base de
-          données, la messagerie, la transcription ou la prise de rendez-vous
-          sont présentés, avec leur rôle, dans la <a href="/legal/confidentialite">politique de confidentialité</a>.
+          données, la messagerie, la mesure d'audience, la transcription ou la
+          prise de rendez-vous sont présentés, avec leur rôle, dans la <a href="/legal/confidentialite">politique de confidentialité</a>.
+          Le tableau des destinataires de cette politique fait foi sur la liste
+          complète et à jour.
+        </p>
+        <p>
+          L'hébergeur mentionné ci-dessus est celui de la version publique en
+          ligne à la date de mise à jour de cette page. Un changement
+          d'hébergeur est répercuté ici et dans le tableau des destinataires de
+          la politique de confidentialité avant la mise en ligne de la version
+          concernée.
         </p>
       </>
     ),
@@ -132,8 +147,8 @@ export const mentionsLegalesSections: LegalSection[] = [
           affichée sur la ressource concernée.
         </p>
         <p>
-          Pour signaler une atteinte à un droit, écrivez à
-          <a href="mailto:quentin@hagnere-patrimoine.fr"> quentin@hagnere-patrimoine.fr</a>
+          Pour signaler une atteinte à un droit, écrivez à{" "}
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>{" "}
           en identifiant l'URL, le contenu et le droit invoqué.
         </p>
       </>
@@ -179,8 +194,8 @@ export const mentionsLegalesSections: LegalSection[] = [
           dans la <a href="/legal/cookies">politique cookies</a>.
         </p>
         <p>
-          Pour une demande liée à vos données :
-          <a href="mailto:quentin@hagnere-patrimoine.fr"> quentin@hagnere-patrimoine.fr</a>.
+          Pour une demande liée à vos données :{" "}
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
           Vous pouvez également saisir la CNIL dans les conditions précisées sur
           la page de confidentialité.
         </p>

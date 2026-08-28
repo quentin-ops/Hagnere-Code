@@ -12,6 +12,7 @@ import {
   GuidePremiumSection,
 } from "@/components/guides/guide-premium-layout";
 import type { GuidePremiumFaqCategory } from "@/components/guides/guide-premium-types";
+import { TrackedGuideCtaLink } from "@/components/guides/tracked-guide-cta-link";
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import {
   buildGuideMetadata,
@@ -368,7 +369,6 @@ export default function Page() {
               width={1600}
               height={900}
               className="h-auto w-full"
-              priority
             />
           </div>
 
@@ -983,7 +983,13 @@ export default function Page() {
             </Link>{" "}
             peut transformer la matrice en fonctions et critères de réception.
             Pour transmettre un besoin déjà préparé, vous pouvez ensuite{" "}
-            <Link href="/demarrer-un-projet">décrire le projet</Link>.
+            <TrackedGuideCtaLink
+              href="/demarrer-un-projet"
+              placement="article_end_inline"
+            >
+              décrire le projet
+            </TrackedGuideCtaLink>
+            .
           </p>
         </GuidePremiumSection>
       </GuidePremiumLayout>

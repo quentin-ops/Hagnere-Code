@@ -186,8 +186,14 @@ export function ExcelCalculator() {
         message?: string;
         error?: string;
         errors?: Record<string, string>;
+        captured?: boolean;
       };
-      if (!res.ok) {
+      // Un 200 ne vaut pas réception : /api/project-inquiry renvoie
+      // `{ ok: true, captured: false }` sans rien enregistrer (piège à robots,
+      // ou absence de fournisseur d'envoi hors production). Annoncer « demande
+      // envoyée » dans ce cas ferait repartir un visiteur rassuré alors que
+      // personne n'a reçu ses coordonnées.
+      if (!res.ok || json.captured !== true) {
         const serverFields = Object.fromEntries(
           CAPTURE_FIELD_ORDER.flatMap((name) => {
             const apiName =
@@ -200,7 +206,9 @@ export function ExcelCalculator() {
           kind: "error",
           message:
             json.error ||
-            "Envoi impossible pour le moment. Vérifiez les champs indiqués.",
+            (res.ok
+              ? "Votre demande n'a pas été enregistrée. Réessayez, ou écrivez-nous à quentin@hagnere-patrimoine.fr."
+              : "Envoi impossible pour le moment. Vérifiez les champs indiqués."),
           fields: serverFields,
         });
         focusFirstCaptureError(form, serverFields);

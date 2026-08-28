@@ -108,6 +108,14 @@ describe("public content quality for the SaaS schedule guide", () => {
     expect(pageSource.match(/<GuidePremiumSection/g)).toHaveLength(9);
     expect(pageSource).toContain("faqCategories={faqCategories}");
     expect(faqCategoriesInSource()).toBe(3);
+    // Choix éditorial assumé, pas un oubli : ce guide applique la règle de la
+    // charte « au maximum un CTA éditorial dans l'article ». L'absence de
+    // `sidebarContextCta` supprime donc aussi la barre d'action collante en
+    // lecture mobile (GuidePremiumLayout ne la rend que si ce bloc existe) :
+    // le seul point de contact commercial est le `strategyCta` de fin
+    // d'article, doublé de la CTA de bas de FAQ. Rétablir la barre mobile
+    // reviendrait à repasser à trois points de contact — c'est une décision
+    // éditoriale, à prendre explicitement, pas un correctif technique.
     expect(pageSource).not.toContain("sidebarHeroCta=");
     expect(pageSource).not.toContain("sidebarContextCta=");
     expect(pageSource).not.toContain("<GuideInlineCTA");

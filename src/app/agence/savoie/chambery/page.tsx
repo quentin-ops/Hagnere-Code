@@ -8,15 +8,29 @@ import {
   GuideInlineCTA,
 } from "@/components/guides/guide-content-blocks";
 import { GuidesShell } from "@/components/guides/GuidesShell";
-import { OG_BASE, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/seo";
+import { OG_BASE, SITE_URL } from "@/lib/seo";
 import {
   formatLocalPageDate,
   getLocalPage,
   localPagePath,
   localPageUrl,
 } from "@/lib/local-pages";
+import {
+  ORGANIZATION_ID,
+  PUBLIC_ORGANIZATION_JSON_LD,
+} from "@/lib/organization-structured-data";
 
 const page = getLocalPage("agence", "savoie/chambery");
+
+// Image sociale dédiée : les trois pages locales partageaient /og-image.png
+// avec l'accueil et 25 autres URL — un partage LinkedIn de cette page affichait
+// exactement la même vignette que la home.
+const LOCAL_OG_IMAGE = {
+  url: `${SITE_URL}/agence/savoie/chambery/opengraph-image`,
+  width: 1200,
+  height: 630,
+  alt: "Hagnéré Code à Chambéry — développement web dans le bassin chambérien",
+};
 
 export const metadata: Metadata = {
   title: page.title,
@@ -31,9 +45,16 @@ export const metadata: Metadata = {
     title: page.title,
     description: page.metaDescription,
     url: localPagePath(page),
-    images: [DEFAULT_OG_IMAGE],
+    images: [LOCAL_OG_IMAGE],
   },
+  twitter: { images: [LOCAL_OG_IMAGE.url] },
 };
+
+// Même raison que sur /agence et /agence/savoie : sans ce nœud, le `provider`
+// du Service reste un @id pendant, non résolu par Google, et la page ville
+// n'émet aucun signal d'entreprise. L'@id est unique, l'adresse reste celle de
+// Bassens : aucune adresse ni téléphone par ville n'est créé.
+const organizationJsonLd = JSON.stringify(PUBLIC_ORGANIZATION_JSON_LD);
 
 const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
@@ -42,7 +63,7 @@ const serviceJsonLd = JSON.stringify({
   url: localPageUrl(page),
   serviceType:
     "Création de site internet, e-commerce, applications métier, référencement naturel et campagnes Google Ads",
-  provider: { "@id": `${SITE_URL}/#organization` },
+  provider: { "@id": ORGANIZATION_ID },
   areaServed: { "@type": "City", name: "Chambéry" },
 });
 
@@ -86,7 +107,7 @@ const faqItems = [
   {
     question: "Combien coûte un site à Chambéry, et pourquoi affichez-vous vos prix ?",
     answer:
-      "Un site vitrine sur mesure démarre chez nous à 6 900 €, avec des paliers à 14 900 € et 22 000 € et plus. Nous les affichons parce que nous travaillons au forfait fixe contractuel : le prix est arrêté avant de commencer et ne bouge pas. Aucune des agences savoyardes dont nous avons consulté le site en juillet 2026 ne publie ses tarifs — ce n'est pas une faute de leur part, c'est un choix commercial différent. Le nôtre a un avantage pratique : il filtre les projets hors budget avant le premier rendez-vous, ce qui fait gagner du temps à tout le monde.",
+      "Un site vitrine sur mesure démarre chez nous à 6 900 € HT, avec des paliers à 14 900 € HT et 22 000 € HT et plus. Tous nos prix sont indiqués hors taxes, TVA 20 % en sus, pour une clientèle professionnelle. Nous les affichons comme des repères publics et indicatifs : le devis signé après cadrage fixe le prix ferme, au forfait fixe contractuel, et il ne bouge plus ensuite. Aucune des agences savoyardes dont nous avons consulté le site en juillet 2026 ne publie ses tarifs — ce n'est pas une faute de leur part, c'est un choix commercial différent. Le nôtre a un avantage pratique : il filtre les projets hors budget avant le premier rendez-vous, ce qui fait gagner du temps à tout le monde.",
   },
 ];
 
@@ -94,6 +115,7 @@ const faqItems = [
 export default function Page() {
   return (
     <GuidesShell>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: organizationJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
       <GuideLayout
@@ -114,12 +136,14 @@ export default function Page() {
           { number: "01", title: "À Bassens, limitrophe de Chambéry", description: "", color: "violet" },
           { number: "02", title: "85 % de l'emploi dans les services", description: "", color: "blue" },
           { number: "03", title: "Grand Chambéry : 38 communes", description: "", color: "emerald" },
-          { number: "04", title: "Forfait fixe dès 6 900 €", description: "", color: "amber" },
+          { number: "04", title: "Forfait fixe dès 6 900 € HT", description: "", color: "amber" },
         ]}
         relatedLinks={[
+          { href: "/agence", label: "Notre agence" },
           { href: "/agence/savoie", label: "Notre territoire en Savoie" },
           { href: "/services/sites-vitrines", label: "Création de sites vitrines" },
           { href: "/services/saas-applications-metier", label: "SaaS et applications métier" },
+          { href: "/agence-next-js", label: "Agence Next.js" },
           { href: "/services/referencement-google", label: "Référencement naturel" },
           { href: "/methode", label: "Notre méthode de cadrage" },
           { href: "/tarifs", label: "Nos tarifs" },
@@ -296,7 +320,7 @@ export default function Page() {
           même de nous appeler.
         </p>
         <GuideTable
-          headers={["Profil d'entreprise", "Le besoin réel", "Ce qu'on construit", "Ordre de budget"]}
+          headers={["Profil d'entreprise", "Le besoin réel", "Ce qu'on construit", "Ordre de budget (HT)"]}
           rows={[
             ["Cabinet de conseil, avocat, expert-comptable", "Être crédible avant le premier appel, et se différencier de confrères qui disent tous la même chose", "Site vitrine structuré par expertise, pages de contenu qui répondent aux vraies questions des clients", "6 900 – 14 900 €"],
             ["Artisan, entreprise du bâtiment", "Apparaître quand on cherche un professionnel à proximité, et montrer des chantiers", "Site rapide avec galerie de réalisations, fiche Google travaillée, pages par prestation et par zone", "6 900 € et fiche locale"],
@@ -308,7 +332,10 @@ export default function Page() {
           ]}
         />
         <p>
-          Ce tableau présente des scénarios de besoin, pas la distribution de nos
+          Ces ordres de budget sont indiqués hors taxes, TVA 20 % en sus, pour
+          une clientèle professionnelle : ce sont des repères publics et
+          indicatifs, et le devis signé après cadrage fixe le prix ferme. Ce
+          tableau présente des scénarios de besoin, pas la distribution de nos
           demandes ni une étude représentative du bassin. Le bon périmètre dépend
           de vos usages, de l&apos;existant, du budget et des contraintes ; une
           solution standard peut être préférable au sur-mesure.

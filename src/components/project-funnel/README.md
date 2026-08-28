@@ -40,12 +40,36 @@ Succès → router.push("/demarrer-un-projet/merci")
 Erreur → message inline + retry (l'état du formulaire est conservé).
 ```
 
+## Ne pas perdre un prospect — invariants
+
+- **Contact direct partout** : pastille `03 74 47 20 18` dans la barre du
+  tunnel (visible aussi en mobile), bloc « Préférez appeler ou écrire ? »
+  dans la carte latérale, et voie de sortie permanente sous le contrôle
+  anti-robot. Constantes `DIRECT_PHONE_HREF` / `DIRECT_EMAIL`.
+- **Historique navigateur** : chaque étape pousse une entrée
+  (`history.pushState({ pfStep })`, URL inchangée — pas de variante
+  indexable). Le geste Retour revient à l'étape précédente au lieu de
+  quitter la page. `beforeunload` prévient dès qu'une description ou un
+  e-mail est saisi.
+- **Focus** : le `<h2>` de l'étape (`.pf-step-heading`, `tabIndex={-1}`) est
+  focalisé à chaque changement d'étape. C'est ce qui remplace l'ancien
+  `aria-live` posé sur toute la carte — ne pas le réintroduire, il faisait
+  relire l'étape entière au lecteur d'écran.
+- **Bouton d'envoi** : `aria-disabled` pendant l'envoi, jamais `disabled`
+  (sinon le focus retombe sur `<body>`) ; le double envoi est bloqué dans
+  `submitBrief`.
+- **`RadioBlock`** porte `role="radiogroup"`, donc le contrat clavier qui va
+  avec : tabindex roving + flèches, Home et End.
+
 ## Anti-spam
 
 - **Question de calcul maison** (`MathChallenge.tsx`) : affichée à l'étape
   envoi, réponse vérifiée côté client puis revalidée par
   `/api/project-inquiry` (bornes + somme, voir `src/lib/math-challenge.ts`).
-  Zéro dépendance externe, aucune env var.
+  Zéro dépendance externe, aucune env var. `getMathChallengeError()`
+  distingue trois cas — défi non chargé, champ vide, réponse fausse : ne
+  jamais afficher « réponse incorrecte » quand le champ est vide et
+  désactivé faute de défi chargé.
 - **Honeypot** : champ caché `pf-hp`, rejet silencieux côté route.
 - **Rate limit** : Postgres, service `inquiry` (voir `src/lib/ai-rate-limit.ts`).
 
@@ -72,7 +96,12 @@ ORDER BY created_at DESC;
 ## Ajouter un nouveau type de projet (kind)
 
 1. Ajouter l'id dans `ProjectKindId` + le tableau `projectKinds` (avec
-   `family`, `label`, `text`).
+   `family`, `label`, `text`). `family` se limite aux **trois** familles du
+   site — `Build` (« Construire »), `Grow` (« Faire grandir »),
+   `Operate` (« Protéger & opérer ») — ou `À définir`. En créer une quatrième
+   donnerait au visiteur une découpe d'offre différente de celle de l'accueil,
+   de la navigation et du hub services ; `funnel-contract.test.tsx` compare
+   les libellés rendus à ceux de `src/components/homepage/body.ts`.
 2. Ajouter les chips spécifiques dans `featuresByKind`,
    `integrationsByKind`, `assetsByKind`.
 3. Optionnel : copy contextuelle dans `getStepCopy` et `getContextFields`.

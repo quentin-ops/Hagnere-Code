@@ -202,7 +202,7 @@ function TextField({ id, label, value, rows = 2, onChange }: TextFieldProps) {
         rows={rows}
         value={value}
         onChange={(event) => onChange(id, event.target.value)}
-        className="mt-2 w-full resize-y rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm leading-relaxed text-zinc-950 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
+        className="mt-2 w-full resize-y rounded-lg border border-zinc-300 bg-white px-3 py-2 text-base sm:text-sm leading-relaxed text-zinc-950 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
       />
     </label>
   );
@@ -265,7 +265,7 @@ export function ValidationTestPlanner() {
                   }));
                   setCopyStatus("");
                 }}
-                className="mt-2 min-h-11 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-950 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
+                className="mt-2 min-h-11 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-base sm:text-sm text-zinc-950 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
               >
                 {Object.entries(riskLabels).map(([value, label]) => (
                   <option key={value} value={value}>
@@ -288,7 +288,7 @@ export function ValidationTestPlanner() {
                   }));
                   setCopyStatus("");
                 }}
-                className="mt-2 min-h-11 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-950 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
+                className="mt-2 min-h-11 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-base sm:text-sm text-zinc-950 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
               >
                 {Object.entries(testDetails).map(([value, details]) => (
                   <option key={value} value={value}>

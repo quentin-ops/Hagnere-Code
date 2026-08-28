@@ -60,20 +60,14 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
     const cleanups: Array<() => void> = [];
     let cancelDeferred: (() => void) | null = null;
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("in");
-            io.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-    );
-    root.querySelectorAll(".reveal").forEach((el) => io.observe(el));
-    cleanups.push(() => io.disconnect());
+    // Pas d'IntersectionObserver sur `.reveal` : l'effet d'apparition au
+    // défilement est neutralisé par responsive.css (`.reveal { opacity: 1 }`,
+    // chargé après chaque page.css), pour que le contenu reste visible sans
+    // JavaScript, à l'impression et en capture pleine page. Observer 56 à 364
+    // nœuds par page ne produisait donc plus aucune animation — seulement du
+    // travail de thread principal juste après l'hydratation.
 
+    let faqSeq = 0;
     root.querySelectorAll(".faq-item").forEach((item) => {
       const q = item.querySelector<HTMLElement>(".faq-q");
       const a = item.querySelector<HTMLElement>(".faq-a");
@@ -83,6 +77,18 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       const initiallyOpen = item.classList.contains("open");
       q.setAttribute("aria-expanded", initiallyOpen ? "true" : "false");
       if (a) {
+        // Relation question ↔ réponse : sans aria-controls, un lecteur d'écran
+        // ne sait pas quel bloc le bouton déplie.
+        if (!a.id) {
+          faqSeq += 1;
+          let candidate = `faq-a-${faqSeq}`;
+          while (document.getElementById(candidate)) {
+            faqSeq += 1;
+            candidate = `faq-a-${faqSeq}`;
+          }
+          a.id = candidate;
+        }
+        q.setAttribute("aria-controls", a.id);
         a.setAttribute("aria-hidden", initiallyOpen ? "false" : "true");
         a.toggleAttribute("inert", !initiallyOpen);
       }
@@ -978,12 +984,25 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       const cats = Array.from(megaRoot.querySelectorAll<HTMLElement>(".hc-mega-cat[data-cat]"));
       const panes = Array.from(megaRoot.querySelectorAll<HTMLElement>(".hc-mega-pane[data-pane]"));
 
+      // Sous 720 px la feuille est en position:fixed : sans verrou, la page
+      // continue de défiler derrière elle dès qu'un geste démarre hors du
+      // panneau. Le verrou est conditionné au tactile pour ne pas provoquer de
+      // saut de barre de défilement sur desktop.
+      const isMobileSheet = () =>
+        typeof window.matchMedia === "function" &&
+        window.matchMedia("(max-width: 720px)").matches;
+      const setScrollLock = (locked: boolean) => {
+        document.documentElement.classList.toggle("nav-menu-lock", locked);
+        document.body.classList.toggle("nav-menu-lock", locked);
+      };
+
       const setOpen = (open: boolean) => {
         if (!open && panel.contains(document.activeElement)) trigger.focus();
         megaRoot.dataset.megaOpen = open ? "true" : "false";
         trigger.setAttribute("aria-expanded", open ? "true" : "false");
         panel.setAttribute("aria-hidden", open ? "false" : "true");
         panel.toggleAttribute("inert", !open);
+        setScrollLock(open && isMobileSheet());
       };
       const setActive = (cat: string) => {
         cats.forEach((c) => {
@@ -1089,6 +1108,7 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
         document.removeEventListener("click", onDocClick);
         document.removeEventListener("keydown", onKey);
         cancelClose();
+        setScrollLock(false);
       });
     });
 

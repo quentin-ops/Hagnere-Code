@@ -17,6 +17,7 @@ import {
   GuidePremiumSection,
 } from "@/components/guides/guide-premium-layout";
 import type { GuidePremiumFaqCategory } from "@/components/guides/guide-premium-types";
+import { TrackedGuideCtaLink } from "@/components/guides/tracked-guide-cta-link";
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import { buildGuideMetadata } from "@/lib/guide-page-seo";
 import { formatGuideDate } from "@/lib/guides";
@@ -365,6 +366,10 @@ export default function Page() {
           titleEnd: "",
           subtitle:
             "Des réponses directes sur le support, OneDrive, l’automatisation, Dataverse, l’interruption, le devis et l’arrêt définitif.",
+          ctaDescription:
+            "Décrivez le dossier de sortie et les tâches prioritaires, sans joindre de base ni de donnée personnelle.",
+          ctaLabel: "Décrire mon application Access",
+          ctaHref: "/demarrer-un-projet",
         }}
         legalSources={[
           {
@@ -597,7 +602,6 @@ export default function Page() {
               width={1600}
               height={900}
               unoptimized
-              priority
               alt="Une base Access au centre d’un inventaire menant à sept trajectoires possibles et à des preuves de reprise"
               className="h-auto w-full"
             />
@@ -1167,9 +1171,12 @@ export default function Page() {
               être menée sérieusement sans accès à l’application, sans
               utilisateurs, sans données de test ou pendant un incident actif.
               Vous pouvez{" "}
-              <Link href="/demarrer-un-projet">
+              <TrackedGuideCtaLink
+                href="/demarrer-un-projet"
+                placement="article_end_inline"
+              >
                 présenter le dossier de sortie et les trois tâches prioritaires
-              </Link>{" "}
+              </TrackedGuideCtaLink>{" "}
               ; le premier résultat attendu est une liste de vérifications, pas
               une promesse de développement.
             </p>

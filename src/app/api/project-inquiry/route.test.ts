@@ -4,6 +4,7 @@ import {
   bindReservationEmail,
   checkServiceRateLimit,
   logAiCall,
+  releaseReservation,
 } from "@/lib/ai-rate-limit";
 import {
   getMathChallengeSecret,
@@ -22,6 +23,7 @@ vi.mock("@/lib/ai-rate-limit", () => ({
   checkServiceRateLimit: vi.fn(),
   hashEmail: vi.fn(() => "hashed-email"),
   logAiCall: vi.fn(),
+  releaseReservation: vi.fn(),
 }));
 
 vi.mock("@/lib/math-challenge", () => ({
@@ -56,6 +58,7 @@ const mockedGetDb = vi.mocked(getDb);
 const mockedCheckServiceRateLimit = vi.mocked(checkServiceRateLimit);
 const mockedBindReservationEmail = vi.mocked(bindReservationEmail);
 const mockedLogAiCall = vi.mocked(logAiCall);
+const mockedReleaseReservation = vi.mocked(releaseReservation);
 const mockedGetMathChallengeSecret = vi.mocked(getMathChallengeSecret);
 const mockedIsValidMathChallenge = vi.mocked(isValidMathChallenge);
 const mockedGetClientIp = vi.mocked(getClientIp);
@@ -164,6 +167,7 @@ describe("POST /api/project-inquiry", () => {
       reservationId: 101,
     });
     mockedLogAiCall.mockResolvedValue(undefined);
+    mockedReleaseReservation.mockResolvedValue(undefined);
     mockedSendResendEmail.mockResolvedValue({
       data: { id: "email-test-id" },
       error: null,
@@ -294,13 +298,15 @@ describe("POST /api/project-inquiry", () => {
     });
     expect(payload).not.toHaveProperty("ok", true);
     expect(mockedSendResendEmail).toHaveBeenCalledTimes(1);
-    expect(mockedLogAiCall).toHaveBeenCalledWith(
-      expect.objectContaining({
-        reservationId: 101,
-        status: "ai_error",
-        briefId: 42,
-      }),
-    );
+    // Panne d'envoi : le créneau est rendu au prospect, sinon le
+    // « Réessayez » affiché l'enverrait droit sur un 429.
+    expect(mockedReleaseReservation).toHaveBeenCalledWith({
+      reservationId: 101,
+      service: "inquiry",
+      reason: "ai_error",
+      briefId: 42,
+    });
+    expect(mockedLogAiCall).not.toHaveBeenCalled();
   });
 
   it("ne renvoie aucun faux succès si la base et l'email équipe échouent", async () => {
@@ -328,12 +334,89 @@ describe("POST /api/project-inquiry", () => {
     });
     expect(payload).not.toHaveProperty("ok", true);
     expect(mockedSendResendEmail).toHaveBeenCalledTimes(1);
-    expect(mockedLogAiCall).toHaveBeenCalledWith(
-      expect.objectContaining({
-        reservationId: 101,
-        status: "ai_error",
-        briefId: null,
+    expect(mockedReleaseReservation).toHaveBeenCalledWith({
+      reservationId: 101,
+      service: "inquiry",
+      reason: "ai_error",
+      briefId: null,
+    });
+  });
+
+  it("rend le créneau réservé quand la demande est refusée pour champs invalides", async () => {
+    const response = await POST(
+      buildRequest({ ...VALID_BODY, company: "", message: "trop court" }),
+    );
+    const payload = await readPublicPayload(response);
+
+    expect(response.status).toBe(400);
+    expect(payload.errors).toMatchObject({ company: expect.any(String) });
+    expect(mockedReleaseReservation).toHaveBeenCalledWith({
+      reservationId: 101,
+      service: "inquiry",
+      reason: "validation",
+    });
+    // Aucune ligne d'issue supplémentaire : la réservation elle-même porte
+    // désormais le résultat, elle n'est pas doublée par un INSERT.
+    expect(mockedLogAiCall).not.toHaveBeenCalled();
+    expect(mockedGetDb).not.toHaveBeenCalled();
+    expect(mockedSendResendEmail).not.toHaveBeenCalled();
+  });
+
+  it("ne prétend pas avoir enregistré la demande quand le champ piège est rempli", async () => {
+    const response = await POST(
+      buildRequest({ ...VALID_BODY, honeypot: "https://spam.example" }),
+    );
+    const payload = await readPublicPayload(response);
+
+    // Réponse volontairement indistinguable d'un succès pour un robot…
+    expect(response.status).toBe(200);
+    expect(payload.ok).toBe(true);
+    // …mais sans `captured: true`, le seul marqueur sur lequel le client peut
+    // s'appuyer pour rediriger vers /merci et compter une conversion.
+    expect(payload.captured).toBe(false);
+    expect(mockedCheckServiceRateLimit).not.toHaveBeenCalled();
+    expect(mockedGetDb).not.toHaveBeenCalled();
+    expect(mockedSendResendEmail).not.toHaveBeenCalled();
+  });
+
+  it("normalise le SIREN et borne chaque élément des tableaux persistés", async () => {
+    const mock = createMockDatabase();
+    mockedGetDb.mockReturnValue(mock.db as unknown as ReturnType<typeof getDb>);
+
+    await POST(
+      buildRequest({
+        ...VALID_BODY,
+        company: "Exemple\r\nSAS",
+        siren: "12 345",
+        objectives: ["a".repeat(400), "Gagner du temps"],
       }),
     );
+
+    const values = mock.values.mock.calls[0][0] as {
+      company: string;
+      siren: string | null;
+      objectives: string[];
+    };
+    expect(values.company).toBe("Exemple SAS");
+    expect(values.siren).toBeNull();
+    expect(values.objectives[0]).toHaveLength(120);
+    expect(values.objectives[1]).toBe("Gagner du temps");
+  });
+
+  it("n'expédie qu'un extrait du message dans l'accusé de réception", async () => {
+    const longMessage = `${"Contexte détaillé du projet. ".repeat(60)}FIN`;
+
+    await POST(buildRequest({ ...VALID_BODY, message: longMessage }));
+
+    const [teamEmail, confirmationEmail] = mockedSendResendEmail.mock.calls.map(
+      (call) => call[1] as { text: string; html: string },
+    );
+    // L'équipe reçoit le brief complet…
+    expect(teamEmail.text).toContain("FIN");
+    // …le prospect, seulement un extrait : l'accusé part vers une adresse
+    // fournie par le soumetteur depuis un domaine authentifié.
+    expect(confirmationEmail.text).not.toContain("FIN");
+    expect(confirmationEmail.html).not.toContain("FIN");
+    expect(confirmationEmail.text).toContain("Début de votre message");
   });
 });

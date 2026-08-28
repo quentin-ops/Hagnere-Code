@@ -1,7 +1,4 @@
-import { navHtml } from "@/components/design-shared/nav-html";
-
 export const bodyHtml = `
-${navHtml}
 <div class="wrap">
   <div class="crumb">
     <a href="/">Accueil</a>
@@ -319,19 +316,4 @@ ${navHtml}
     </div>
   </div>
 </section>
-
-<!-- CTA -->
-<section class="scta" id="contact">
-  <div class="scta-bg"></div>
-  <div class="wrap inner">
-    <div class="eyebrow on-dark">— Prochaine étape</div>
-    <h2 style="margin-top:14px">Auditons votre exposition.<br><span class="accent">Périmètre et livrables chiffrés.</span></h2>
-    <p>Un cadrage avec un référent RGPD et un lead dev. On cartographie vos sous-traitants, vos flux et vos risques techniques, puis on chiffre la remédiation. Votre DPO ou votre conseil valide les choix juridiques quand nécessaire.</p>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="wrap"></div>
-</footer>
 `;

@@ -385,7 +385,7 @@ export function AccessExitDossierTool() {
                       updateItem(item.id, "name", event.target.value)
                     }
                     placeholder="Ex. éditer et envoyer le bon d’intervention"
-                    className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 text-sm text-zinc-950 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                    className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 text-base sm:text-sm text-zinc-950 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                   />
                 </div>
 
@@ -401,7 +401,7 @@ export function AccessExitDossierTool() {
                         event.target.value as AccessItemType,
                       )
                     }
-                    className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 text-sm text-zinc-950 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                    className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 text-base sm:text-sm text-zinc-950 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                   >
                     {TYPE_OPTIONS.map((option) => (
                       <option key={option.value} value={option.value}>
@@ -422,7 +422,7 @@ export function AccessExitDossierTool() {
                       updateItem(item.id, "owner", event.target.value)
                     }
                     placeholder="Nom ou rôle, sinon À vérifier"
-                    className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 text-sm text-zinc-950 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                    className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 text-base sm:text-sm text-zinc-950 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                   />
                 </div>
 
@@ -437,7 +437,7 @@ export function AccessExitDossierTool() {
                       updateItem(item.id, "frequency", event.target.value)
                     }
                     placeholder="Ex. 12 fois par semaine depuis 3 mois"
-                    className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 text-sm text-zinc-950 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                    className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 text-base sm:text-sm text-zinc-950 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                   />
                 </div>
 
@@ -455,7 +455,7 @@ export function AccessExitDossierTool() {
                         event.target.value as Criticality,
                       )
                     }
-                    className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 text-sm text-zinc-950 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                    className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 text-base sm:text-sm text-zinc-950 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                   >
                     {CRITICALITY_OPTIONS.map((option) => (
                       <option key={option.value} value={option.value}>
@@ -477,7 +477,7 @@ export function AccessExitDossierTool() {
                     }
                     placeholder="Ex. requête Q_Commandes, modèle Word, dossier réseau, Outlook, import comptable, compte de service"
                     rows={3}
-                    className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                    className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                   />
                 </div>
 
@@ -495,7 +495,7 @@ export function AccessExitDossierTool() {
                         event.target.value as TernaryAnswer,
                       )
                     }
-                    className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 text-sm text-zinc-950 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                    className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 text-base sm:text-sm text-zinc-950 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                   >
                     {TERNARY_OPTIONS.map((option) => (
                       <option key={option.value} value={option.value}>
@@ -519,7 +519,7 @@ export function AccessExitDossierTool() {
                         event.target.value as ExitTarget,
                       )
                     }
-                    className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 text-sm text-zinc-950 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                    className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 text-base sm:text-sm text-zinc-950 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                   >
                     {TARGET_OPTIONS.map((option) => (
                       <option key={option.value} value={option.value}>
@@ -541,7 +541,7 @@ export function AccessExitDossierTool() {
                     }
                     placeholder="Ex. trois dossiers rejoués, totaux identiques, pièce jointe retrouvée, impression validée et retour arrière testé"
                     rows={3}
-                    className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                    className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                   />
                 </div>
               </div>

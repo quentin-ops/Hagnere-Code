@@ -1,0 +1,96 @@
+import fs from "node:fs";
+import path from "node:path";
+import { describe, expect, it } from "vitest";
+import { CASES, RELATED_SERVICES } from "@/components/realisations/cases";
+
+const projectRoot = process.cwd();
+
+function read(relativePath: string): string {
+  return fs.readFileSync(path.join(projectRoot, relativePath), "utf8");
+}
+
+const caseStudySource = read("src/components/realisations/CaseStudyPage.tsx");
+const indexSource = read("src/components/realisations/RealisationsIndexPage.tsx");
+const indexCss = read("src/components/realisations/index-page.css");
+
+/** Contenu du bloc `@media (max-width: 480px)` de index-page.css. */
+function smallScreenBlock(): string {
+  const start = indexCss.indexOf("@media (max-width: 480px)");
+  if (start === -1) return "";
+  const end = indexCss.indexOf("\n}\n", start);
+  return indexCss.slice(start, end === -1 ? indexCss.length : end);
+}
+
+describe("realisations → services internal linking", () => {
+  it("resolves every related-service key to a real /services route", () => {
+    for (const [key, service] of Object.entries(RELATED_SERVICES)) {
+      expect(service.href, key).toBe(`/services/${key}`);
+      expect(service.label.length, key).toBeGreaterThan(0);
+      expect(service.blurb.length, key).toBeGreaterThan(0);
+      expect(
+        fs.existsSync(path.join(projectRoot, "src/app/services", key, "page.tsx")),
+        `route manquante pour ${service.href}`,
+      ).toBe(true);
+    }
+  });
+
+  it("gives every case study at least two service links", () => {
+    for (const caseStudy of Object.values(CASES)) {
+      expect(caseStudy.relatedServices.length, caseStudy.slug).toBeGreaterThanOrEqual(2);
+      for (const key of caseStudy.relatedServices) {
+        expect(RELATED_SERVICES, `${caseStudy.slug} → ${key}`).toHaveProperty(key);
+      }
+      expect(new Set(caseStudy.relatedServices).size, caseStudy.slug).toBe(
+        caseStudy.relatedServices.length,
+      );
+    }
+  });
+
+  it("renders the service bridge and the funnel CTA on each case study", () => {
+    expect(caseStudySource).toContain("RELATED_SERVICES");
+    expect(caseStudySource).toContain("relatedServices");
+    expect(caseStudySource).toContain('href="/services"');
+    // Le CTA funnel est un bouton de section, plus une note de bas de bloc.
+    expect(caseStudySource).toMatch(
+      /href="\/demarrer-un-projet"\s+className="btn btn-primary btn-lg"/,
+    );
+  });
+
+  it("renders a service band and the funnel CTA on the /realisations hub", () => {
+    expect(indexSource).toContain("RELATED_SERVICES");
+    expect(indexSource).toContain("rlm-svc-grid");
+    expect(indexSource).toContain('href="/services"');
+    expect(indexSource).toContain('href="/demarrer-un-projet"');
+  });
+
+  it("never presents the service bridge as work done on a group product", () => {
+    for (const source of [caseStudySource, indexSource]) {
+      expect(source).toMatch(/ne (?:décrivent|décrit) aucune\s+intervention/);
+      expect(source).toMatch(/valent pas preuve de réalisation/);
+    }
+    const bridgeClaims = [
+      caseStudySource,
+      indexSource,
+      JSON.stringify(RELATED_SERVICES),
+    ].join("\n");
+    expect(bridgeClaims).not.toMatch(
+      /(?:conçu|réalisé|développé|livré)e?s?\s+par Hagnéré Code/i,
+    );
+    expect(bridgeClaims).not.toMatch(/notre client/i);
+  });
+});
+
+describe("realisations hero visual — garde sous 480 px", () => {
+  it("hides the absolutely positioned hero badge that overlapped the logo", () => {
+    expect(smallScreenBlock()).toMatch(
+      /\.rlm-float-status\s*\{\s*display:\s*none;?\s*\}/,
+    );
+  });
+
+  it("shrinks the hero card content so it fits the ~170x140 px tiles", () => {
+    const block = smallScreenBlock();
+    expect(block).toMatch(/\.rlm-float-card\s*\{[^}]*padding:\s*14px/);
+    expect(block).toMatch(/\.rlm-float-logo\s*\{[^}]*width:\s*34px/);
+    expect(block).toMatch(/\.rlm-float-name\s*\{[^}]*font-size:\s*13px/);
+  });
+});

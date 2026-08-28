@@ -36,6 +36,13 @@ export const gmvCalculatorHtml = `
                 ECOMMERCE_COST_EXAMPLE.horizonMonths,
           )} € sur trois ans</b>. Le coût initial est compté intégralement : aucun amortissement sur cinq ans.
         </p>
+        <p>
+          Ces deux montants sont des <b>hypothèses de calcul, pas un tarif</b>. La TMA Hagnéré Code est publiée
+          « sur devis » sur <a href="/tarifs">la grille tarifaire</a> et sur
+          <a href="/services/maintenance-evolution">la page maintenance &amp; évolution</a> : remplacez
+          ${formatNumber(ECOMMERCE_COST_EXAMPLE.hagnereMonthlyMaintenance)} €/mois par le montant de votre devis
+          dès que vous l'avez.
+        </p>
         <ul class="chks">
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Horizon identique de ${ECOMMERCE_COST_EXAMPLE.horizonMonths} mois pour les deux options</li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Aucun taux Shopify ajouté en dehors du champ « frais variables »</li>

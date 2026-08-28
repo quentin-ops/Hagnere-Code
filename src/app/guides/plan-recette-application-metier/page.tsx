@@ -12,6 +12,7 @@ import {
   GuidePremiumSection,
 } from "@/components/guides/guide-premium-layout";
 import type { GuidePremiumFaqCategory } from "@/components/guides/guide-premium-types";
+import { TrackedGuideCtaLink } from "@/components/guides/tracked-guide-cta-link";
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import {
   buildGuideMetadata,
@@ -351,7 +352,6 @@ export default function Page() {
               width={1600}
               height={900}
               className="h-auto w-full"
-              priority
             />
           </div>
 
@@ -1070,7 +1070,18 @@ export default function Page() {
             </Link>
             . Pour faire cadrer le périmètre, les rôles et les preuves de votre
             projet, vous pouvez en{" "}
-            <Link href="/demarrer-un-projet">décrire le contexte</Link>.
+            <TrackedGuideCtaLink
+              href="/demarrer-un-projet"
+              placement="article_end_inline"
+            >
+              décrire le contexte
+            </TrackedGuideCtaLink>
+            . Le périmètre que nous prenons en charge est décrit sur la page{" "}
+            <Link href="/services/saas-applications-metier">
+              SaaS et applications métier
+            </Link>
+            ; les preuves de recette attendues restent celles écrites au
+            contrat, pas celles annoncées par une page commerciale.
           </p>
 
           <p>

@@ -1,7 +1,4 @@
-import { navHtml } from "@/components/design-shared/nav-html";
-
 export const bodyHtml = `
-${navHtml}
 <!-- BREADCRUMB -->
 <div class="wrap">
   <div class="crumb">
@@ -37,7 +34,7 @@ ${navHtml}
         <a href="#contact" class="btn btn-accent btn-lg">
           Cadrer mon projet <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="#contact" class="btn btn-ghost btn-lg">Audit gratuit de mon site actuel</a>
+        <a href="#contact" class="btn btn-ghost btn-lg">Échange de cadrage · 30 min, sans frais</a>
       </div>
       <div class="shero-meta">
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Planning et dépendances au devis</span>
@@ -555,31 +552,47 @@ ${navHtml}
     </div>
 
     <div class="scase-grid">
-      <a class="scase reveal" href="/realisations/lmnp-ai">
+      <a class="scase reveal" href="/realisations/hagnere-patrimoine">
         <div class="scase-shot">
-          <svg width="100%" height="100%" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" style="background:#F5F5F5">
-            <rect width="600" height="380" fill="#F5F5F5"/>
-            <rect x="40" y="30" width="520" height="330" rx="10" fill="#fff" stroke="#E5E5E5"/>
-            <rect x="40" y="30" width="110" height="330" fill="#FAFAFA" stroke="#E5E5E5"/>
-            <text x="60" y="55" font-family="Geist" font-weight="700" font-size="13" fill="#0A0A0A">LMNP<tspan fill="#6D28D9">.AI</tspan></text>
-            <rect x="55" y="80" width="80" height="6" rx="2" fill="#0A0A0A"/>
-            <rect x="55" y="100" width="60" height="4" rx="2" fill="#d4d4d4"/>
-            <rect x="55" y="115" width="70" height="4" rx="2" fill="#d4d4d4"/>
-            <text x="175" y="60" font-family="Geist" font-weight="700" font-size="18" fill="#0A0A0A">Dashboard fiscal</text>
-            <rect x="175" y="100" width="110" height="70" rx="6" fill="#F5F5F5"/>
-            <text x="185" y="150" font-family="Geist" font-weight="700" font-size="22" fill="#0A0A0A">18 420€</text>
-            <rect x="295" y="100" width="110" height="70" rx="6" fill="#EDE9FE"/>
-            <text x="305" y="150" font-family="Geist" font-weight="700" font-size="22" fill="#0A0A0A">+4 210€</text>
-            <rect x="415" y="100" width="125" height="70" rx="6" fill="#0A0A0A"/>
-            <text x="425" y="150" font-family="Geist" font-weight="700" font-size="16" fill="#fff">Prête ✓</text>
-            <rect x="175" y="185" width="365" height="150" rx="6" fill="#fff" stroke="#E5E5E5"/>
-            <path d="M195 310 L235 290 L315 275 L395 260 L475 210 L515 215" stroke="#6D28D9" stroke-width="2.5" fill="none"/>
+          <svg width="100%" height="100%" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" style="background:#FAF3E3" role="img" aria-label="Représentation schématique d'un site éditorial patrimonial">
+            <rect width="600" height="380" fill="#FAF3E3"/>
+            <rect x="40" y="26" width="520" height="330" rx="10" fill="#fff" stroke="#EADFC4"/>
+            <rect x="40" y="26" width="520" height="40" fill="#fff" stroke="#EADFC4"/>
+            <text x="60" y="52" font-family="Geist" font-weight="700" font-size="13" fill="#0A0A0A">Hagnéré<tspan fill="#C9A96E"> Patrimoine</tspan></text>
+            <g fill="#D9D2C2">
+              <rect x="330" y="43" width="52" height="6" rx="3"/>
+              <rect x="394" y="43" width="46" height="6" rx="3"/>
+              <rect x="452" y="43" width="40" height="6" rx="3"/>
+            </g>
+            <rect x="504" y="37" width="42" height="18" rx="9" fill="#C9A96E"/>
+            <rect x="64" y="92" width="230" height="12" rx="4" fill="#0A0A0A"/>
+            <rect x="64" y="114" width="180" height="12" rx="4" fill="#0A0A0A"/>
+            <rect x="64" y="146" width="250" height="6" rx="3" fill="#C8C0AE"/>
+            <rect x="64" y="162" width="210" height="6" rx="3" fill="#C8C0AE"/>
+            <rect x="64" y="190" width="104" height="26" rx="6" fill="#0A0A0A"/>
+            <rect x="180" y="190" width="104" height="26" rx="6" fill="#fff" stroke="#EADFC4"/>
+            <rect x="330" y="92" width="230" height="124" rx="8" fill="#FAF3E3" stroke="#EADFC4"/>
+            <text x="346" y="116" font-family="Geist Mono" font-size="10" fill="#8A7C5E">EXPERTISES</text>
+            <g fill="#fff" stroke="#EADFC4">
+              <rect x="346" y="128" width="94" height="34" rx="6"/>
+              <rect x="450" y="128" width="94" height="34" rx="6"/>
+              <rect x="346" y="170" width="94" height="34" rx="6"/>
+              <rect x="450" y="170" width="94" height="34" rx="6"/>
+            </g>
+            <rect x="64" y="242" width="480" height="1" fill="#EFE7D6"/>
+            <text x="64" y="272" font-family="Geist Mono" font-size="10" fill="#8A7C5E">SIMULATEURS · GUIDES · CONTACT</text>
+            <g fill="#fff" stroke="#EADFC4">
+              <rect x="64" y="286" width="150" height="46" rx="8"/>
+              <rect x="228" y="286" width="150" height="46" rx="8"/>
+              <rect x="392" y="286" width="152" height="46" rx="8"/>
+            </g>
+            <text x="40" y="374" font-family="Geist Mono" font-size="9" fill="#9A9182">REPRÉSENTATION SCHÉMATIQUE · PAGE PUBLIQUE</text>
           </svg>
         </div>
         <div class="scase-body">
-          <div class="scase-meta"><span>Comptabilité LMNP</span><span class="tag-stack">Fonctions présentées en ligne</span><span>— page publique</span></div>
-          <h3>LMNP.AI</h3>
-          <p>La page publique présente une offre de comptabilité fiscale pour loueurs meublés. Le lien permet de contrôler les fonctions affichées, pas leur exploitation ni leurs résultats.</p>
+          <div class="scase-meta"><span>Site éditorial patrimonial</span><span class="tag-stack">Fonctions présentées en ligne</span><span>— page publique</span></div>
+          <h3>Hagnéré Patrimoine</h3>
+          <p>Société du groupe Hagnéré, pas un client indépendant. La page publique organise expertises, simulateurs, guides et prise de contact. Le lien permet de contrôler ce qui est affiché, pas la conception ni l'exploitation du site.</p>
           <div class="scase-metric">
             <div class="scm"><div class="n">VISIBLE</div><div class="l">Fonctions présentées publiquement</div></div>
             <div class="scm"><div class="n">PUBLIC</div><div class="l">Étude de cas consultable</div></div>
@@ -587,39 +600,48 @@ ${navHtml}
         </div>
       </a>
 
-      <a class="scase reveal reveal-d-1" href="/realisations/sci-ai">
+      <a class="scase reveal reveal-d-1" href="/realisations/hagnere-investissement">
         <div class="scase-shot">
-          <svg width="100%" height="100%" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" style="background:#0A0A0A">
-            <rect width="600" height="380" fill="#0A0A0A"/>
-            <text x="40" y="60" font-family="Geist" font-weight="700" font-size="16" fill="#fff">Comptabilité<tspan fill="#6D28D9"> AI</tspan></text>
-            <text x="40" y="80" font-family="Geist Mono" font-size="9" fill="#737373">bilan.2025.xlsx</text>
-            <g font-family="Geist Mono" font-size="10">
-              <rect x="40" y="100" width="520" height="22" fill="rgba(255,255,255,0.03)" rx="4"/>
-              <text x="52" y="115" fill="#737373">2025-03-14</text>
-              <text x="142" y="115" fill="#fff">HT Vente produit A</text>
-              <text x="330" y="115" fill="#fff">707000</text>
-              <text x="440" y="115" fill="#6D28D9">+ 14 800,00</text>
-              <rect x="40" y="128" width="520" height="22" fill="rgba(255,255,255,0.03)" rx="4"/>
-              <text x="52" y="143" fill="#737373">2025-03-14</text>
-              <text x="142" y="143" fill="#fff">TVA collectée 20%</text>
-              <text x="330" y="143" fill="#fff">445710</text>
-              <text x="440" y="143" fill="#6D28D9">+ 2 960,00</text>
-              <rect x="40" y="184" width="520" height="22" fill="rgba(109,40,217,0.1)" stroke="#6D28D9" stroke-width="0.5" rx="4"/>
-              <text x="52" y="199" fill="#6D28D9">AI-SUGG</text>
-              <text x="142" y="199" fill="#fff">Détection doublon avec écriture #1042</text>
+          <svg width="100%" height="100%" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" style="background:#D1FAE5" role="img" aria-label="Représentation schématique d'un site vitrine avec mini-simulateur">
+            <rect width="600" height="380" fill="#D1FAE5"/>
+            <rect x="40" y="26" width="520" height="330" rx="10" fill="#fff" stroke="#B6EAD6"/>
+            <rect x="40" y="26" width="520" height="40" fill="#fff" stroke="#B6EAD6"/>
+            <text x="60" y="52" font-family="Geist" font-weight="700" font-size="13" fill="#0A0A0A">Hagnéré<tspan fill="#0F766E"> Investissement</tspan></text>
+            <g fill="#CBE7DC">
+              <rect x="342" y="43" width="48" height="6" rx="3"/>
+              <rect x="402" y="43" width="44" height="6" rx="3"/>
             </g>
-            <rect x="40" y="232" width="520" height="108" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)"/>
-            <text x="54" y="254" font-family="Geist Mono" font-size="9" fill="#6D28D9">◆ BILAN AI · génération en cours</text>
-            <rect x="54" y="268" width="360" height="4" rx="2" fill="rgba(255,255,255,0.1)"/>
-            <rect x="54" y="268" width="280" height="4" rx="2" fill="#6D28D9"/>
+            <rect x="460" y="37" width="86" height="18" rx="9" fill="#0F766E"/>
+            <rect x="64" y="92" width="240" height="12" rx="4" fill="#0A0A0A"/>
+            <rect x="64" y="114" width="176" height="12" rx="4" fill="#0A0A0A"/>
+            <rect x="64" y="146" width="240" height="6" rx="3" fill="#C3D8CF"/>
+            <rect x="64" y="162" width="196" height="6" rx="3" fill="#C3D8CF"/>
+            <rect x="64" y="192" width="118" height="26" rx="6" fill="#0F766E"/>
+            <rect x="336" y="92" width="224" height="150" rx="8" fill="#F3FBF7" stroke="#B6EAD6"/>
+            <text x="352" y="116" font-family="Geist Mono" font-size="10" fill="#4B7A6C">MINI-SIMULATEUR · INDICATIF</text>
+            <rect x="352" y="128" width="192" height="8" rx="4" fill="#DCEFE7"/>
+            <rect x="352" y="128" width="112" height="8" rx="4" fill="#0F766E"/>
+            <rect x="352" y="152" width="192" height="8" rx="4" fill="#DCEFE7"/>
+            <rect x="352" y="152" width="70" height="8" rx="4" fill="#0F766E"/>
+            <rect x="352" y="178" width="192" height="46" rx="6" fill="#fff" stroke="#B6EAD6"/>
+            <rect x="366" y="194" width="86" height="8" rx="4" fill="#CBE7DC"/>
+            <rect x="366" y="208" width="120" height="6" rx="3" fill="#E1F0EA"/>
+            <rect x="64" y="262" width="480" height="1" fill="#DCEFE7"/>
+            <text x="64" y="292" font-family="Geist Mono" font-size="10" fill="#4B7A6C">ÉTAPES · PARTENAIRES · RENDEZ-VOUS</text>
+            <g fill="#F3FBF7" stroke="#B6EAD6">
+              <rect x="64" y="304" width="150" height="34" rx="8"/>
+              <rect x="228" y="304" width="150" height="34" rx="8"/>
+              <rect x="392" y="304" width="152" height="34" rx="8"/>
+            </g>
+            <text x="40" y="374" font-family="Geist Mono" font-size="9" fill="#6C8B80">REPRÉSENTATION SCHÉMATIQUE · PAGE PUBLIQUE</text>
           </svg>
         </div>
         <div class="scase-body">
-          <div class="scase-meta"><span>Comptabilité SCI</span><span class="tag-stack">IR et IS présentés</span><span>— page publique</span></div>
-          <h3>SCI-AI.app</h3>
-          <p>La page publique présente une offre de comptabilité pour SCI. Le lien permet de contrôler les fonctions affichées, pas l'architecture, l'exploitation ou les résultats.</p>
+          <div class="scase-meta"><span>Site vitrine · investissement locatif</span><span class="tag-stack">Parcours présentés en ligne</span><span>— page publique</span></div>
+          <h3>Hagnéré Investissement</h3>
+          <p>Société du groupe Hagnéré, pas un client indépendant. La page publique présente le service, un mini-simulateur indicatif et une prise de rendez-vous. Le lien permet de contrôler ce qui est affiché, pas les résultats commerciaux.</p>
           <div class="scase-metric">
-            <div class="scm"><div class="n">VISIBLE</div><div class="l">Fonctions présentées publiquement</div></div>
+            <div class="scm"><div class="n">VISIBLE</div><div class="l">Parcours présentés publiquement</div></div>
             <div class="scm"><div class="n">PUBLIC</div><div class="l">Étude de cas consultable</div></div>
           </div>
         </div>
@@ -723,111 +745,111 @@ ${navHtml}
 
       <div class="faq-list reveal reveal-d-1">
         <div class="faq-item open">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="true" aria-controls="faq-a-showcase-faq-1">
             Combien de temps pour livrer mon site ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-showcase-faq-1">
             <b>Le délai dépend du périmètre</b> — gabarits, contenus, intégrations, migration et validations. Le devis fixe les jalons, les dépendances et, si les parties le souhaitent, les conséquences précises d'un retard.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-faq-2">
             Est-ce qu'on est propriétaire du code et du site ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-showcase-faq-2" hidden>
             Le devis précise les accès au dépôt, au domaine et à l'hébergement. Les livrables spécifiques sont transférés après paiement complet conformément aux CGV, sous réserve des composants préexistants et licences tierces.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-faq-3">
             Comment mettre à jour le contenu après la livraison ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-showcase-faq-3" hidden>
             Via un <b>CMS headless</b> adapté à l'équipe. Le devis liste les contenus modifiables, les rôles, la formation et la documentation ; l'autonomie est vérifiée pendant la recette sur des opérations convenues.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-faq-4">
             Et le référencement ? Je vais perdre mes positions si je refais ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
-            Une refonte peut faire varier les positions. Le plan de migration inventorie les URLs, prépare les redirections, conserve les signaux utiles et définit un suivi post-mise en ligne. Aucun classement n'est garanti.
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-showcase-faq-4" hidden>
+            Une refonte peut faire varier les positions. Le plan de migration inventorie les URLs, prépare les redirections, conserve les signaux utiles et définit un suivi post-mise en ligne. Aucun classement n'est garanti. Notre guide <a href="/guides/pourquoi-site-pas-visible-google">pourquoi un site n'est pas visible sur Google</a> détaille les causes à écarter avant d'incriminer la refonte.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-faq-5">
             Pourquoi Next.js et pas WordPress, c'est moins cher ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-showcase-faq-5" hidden>
             Le coût sur trois ans dépend de l'hébergement, du CMS, des intégrations, de la maintenance et de l'équipe disponible. Nous comparons ces postes avec vos chiffres&nbsp;; Next.js n'offre ni gain de conversion ni ROI automatique.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-faq-6">
             Combien coûte la maintenance après ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-showcase-faq-6" hidden>
             Même un site statique demande un suivi des dépendances, du domaine, des formulaires, des contenus et des services tiers. Le besoin et le budget de maintenance sont chiffrés selon l'architecture. Notre <a href="/services/maintenance-evolution">service de maintenance et d'évolution</a> détaille les responsabilités à prévoir après la livraison.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-faq-7">
             Vous gérez les textes, les photos, le contenu ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-showcase-faq-7" hidden>
             La rédaction et les visuels sont chiffrés selon le volume, les droits et le niveau de validation requis. Le devis identifie la source de chaque image, sa licence et les éventuels coûts tiers ; un photographe peut être proposé séparément. Le <a href="/demarrer-un-projet">formulaire de cadrage</a> précise ce que vous pouvez fournir, faire produire ou confirmer avant le démarrage.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-faq-8">
             Et si je veux ajouter des pages ou fonctionnalités après ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-showcase-faq-8" hidden>
             Toute page ou fonctionnalité supplémentaire est chiffrée avant exécution. Un forfait d'évolution peut prévoir un volume, des exclusions et une procédure d'arbitrage ; il ne vaut pas autorisation de dépassement du périmètre signé.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-faq-9">
             Nos données et le site sont hébergés où ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-showcase-faq-9" hidden>
             Le devis précise l'hébergeur, la région, les sous-traitants, les sauvegardes et le propriétaire du compte. Vercel, OVH ou Scaleway peuvent être étudiés selon le projet. Une localisation en France ou dans l'Union européenne ne suffit pas, à elle seule, à établir la conformité RGPD ; les garanties contractuelles et les accès doivent aussi être vérifiés.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-faq-10">
             Qu'est-ce qui garantit que le site convertira ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-showcase-faq-10" hidden>
             Aucune agence ne peut garantir un taux de conversion. Le devis peut fixer un budget de performance, les pages et conditions de mesure, la structure SEO technique et les étapes de recette. Le trafic, le contenu, l'offre et les scripts tiers restent des variables distinctes.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-faq-11">
             On paye comment, on signe quand ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-showcase-faq-11" hidden>
             L'échéancier, les jalons de facturation et les moyens de signature figurent dans le devis et les CGV applicables. Les livrables spécifiques sont transférés après paiement complet selon ces documents, sous réserve des composants préexistants et licences tierces.
           </div>
         </div>
@@ -835,72 +857,4 @@ ${navHtml}
     </div>
   </div>
 </section>
-
-<!-- CTA -->
-<section class="scta">
-  <div class="stats-bg" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="eyebrow on-dark">— Prochaine étape</div>
-    <h2 style="margin-top:18px">Un site orienté conversion,<br>avec un planning écrit au devis.</h2>
-    <p>Un échange de 30 min pour cadrer le projet. La fourchette est établie après ce cadrage&nbsp;; notre objectif est de répondre le prochain jour ouvré, sans délai garanti.</p>
-    <div class="scta-cta">
-      <a href="#contact" class="btn btn-accent btn-lg">
-        📅 &nbsp;Demander un échange avec un expert
-        <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-      <a href="mailto:quentin@hagnere-patrimoine.fr" class="btn btn-ghost btn-lg" style="background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.15)">
-        Envoyer un email →
-      </a>
-    </div>
-    <div class="scta-meta">RÉPONSE PERSONNELLE · PAR UN ASSOCIÉ QUI CODE · SANS ENGAGEMENT</div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <a href="/" class="brand" style="margin-bottom:16px">
-          <div class="brand-mark">HC</div>
-          <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
-        </a>
-        <p>Agence de développement SaaS AI-native basée à Bassens, aux portes de Chambéry. Dev, design, SEO, ads, vidéo intégrée.</p>
-      </div>
-      <div class="foot-cols">
-        <div class="foot-col">
-          <h3>SERVICES</h3>
-          <a href="/services/saas-applications-metier">SaaS &amp; applications métier</a>
-          <a href="/services/outils-internes-sur-mesure">Outils internes</a>
-          <a href="/services/sites-vitrines">Sites vitrines</a>
-          <a href="/services/referencement-google">SEO</a>
-          <a href="/services/publicite-en-ligne">Publicité</a>
-        </div>
-        <div class="foot-col">
-          <h3>STUDIO</h3>
-          <a href="/methode">Méthode</a>
-          <a href="/realisations">Réalisations</a>
-          <a href="/equipe">Équipe</a>
-          <a href="/tarifs">Tarifs</a>
-        </div>
-        <div class="foot-col">
-          <h3>CONTACT</h3>
-          <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>
-          <a href="https://www.linkedin.com/in/quentin-hagnere" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        </div>
-        <div class="foot-col">
-          <h3>LÉGAL</h3>
-          <a href="/legal/cgv">CGV</a>
-          <a href="/legal/mentions">Mentions légales</a>
-          <a href="/legal/confidentialite">Confidentialité</a>
-        </div>
-      </div>
-    </div>
-    <div class="foot-bot">
-      <div>© 2026 HAGNERE CODE · SASU au capital de 10 € · RCS Chambéry 993 672 856 · TVA FR30 993 672 856 · NAF 62.01Z · 82 impasse de Bellevue, 73000 Bassens</div>
-      <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
-    </div>
-  </div>
-</footer>
-
 `;

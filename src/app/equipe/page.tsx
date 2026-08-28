@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { EquipePage } from "@/components/equipe/EquipePage";
-import { OG_BASE } from "@/lib/seo";
+import { OG_BASE, SITE_URL } from "@/lib/seo";
 import { TEAM, TEAM_PUBLIC_COMPOSITION, TEAM_TOTAL_COUNT } from "@/lib/team";
 import {
   PUBLIC_ORGANIZATION_JSON_LD,
@@ -8,11 +8,12 @@ import {
   QUENTIN_HAGNERE_URL,
 } from "@/lib/organization-structured-data";
 
+// Image sociale dédiée plutôt que /og-image.png, partagée par 28 URL.
 const EQUIPE_OG_IMAGE = {
-  url: "/og-image.png",
+  url: `${SITE_URL}/equipe/opengraph-image`,
   width: 1200,
   height: 630,
-  alt: "Hagnéré Code — studio de développement à Bassens",
+  alt: "L'équipe Hagnéré Code — studio de développement à Bassens, en Savoie",
 };
 
 export const metadata: Metadata = {
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     url: "/equipe",
     images: [EQUIPE_OG_IMAGE],
   },
-  twitter: { images: [EQUIPE_OG_IMAGE] },
+  twitter: { images: [EQUIPE_OG_IMAGE.url] },
 };
 
 const orgJsonLd = JSON.stringify({

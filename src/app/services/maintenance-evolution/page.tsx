@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { MaintenanceEvolution } from "@/components/maintenance-evolution/MaintenanceEvolution";
 import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
+import { PUBLIC_ORGANIZATION_ENTITY } from "@/lib/organization-structured-data";
 
 export const metadata: Metadata = {
   title: "Maintenance applicative & TMA sur mesure · Hagnéré Code",
@@ -25,25 +26,11 @@ const serviceJsonLd = JSON.stringify({
   url: "https://hagnere-code.ai/services/maintenance-evolution",
   serviceType:
     "Tierce maintenance applicative (TMA), supervision et évolution de logiciels",
-  provider: {
-    "@type": "Organization",
-    name: "Hagnéré Code",
-    "@id": "https://hagnere-code.ai/#organization",
-    legalName: "HAGNERE CODE",
-    vatID: "FR30993672856",
-    url: "https://hagnere-code.ai",
-    logo: "https://hagnere-code.ai/logos/logo-dark.png",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "82 impasse de Bellevue",
-      postalCode: "73000",
-      addressLocality: "Bassens",
-      addressRegion: "Savoie",
-      addressCountry: "FR",
-    },
-    email: "quentin@hagnere-patrimoine.fr",
-    telephone: "+33374472018",
-  },
+  // Fournisseur = l'entité publique unique, importée du registre plutôt que
+  // recopiée : adresse, TVA, e-mail et téléphone n'existent qu'à un seul
+  // endroit, et la forme du logo reste celle validée pour Google (ImageObject
+  // dimensionné) sur toutes les pages.
+  provider: PUBLIC_ORGANIZATION_ENTITY,
   areaServed: { "@type": "Country", name: "France" },
   description:
     "Maintenance applicative pour PME, ETI et scale-up : reprise, supervision, correctifs de sécurité, évolutions, exploitation d'infrastructure et reporting. Le devis précise l'équipe, les outils, les horaires de couverture, les objectifs de service, les accès et la réversibilité.",

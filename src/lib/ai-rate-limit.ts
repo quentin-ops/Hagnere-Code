@@ -6,6 +6,7 @@
  *   - 'transcribe' → Groq Whisper (cost = bytes audio uploadés)
  *   - 'inquiry'    → Resend mail (pas de cost unit, juste compteur)
  *   - 'sirene'     → API Recherche d'entreprises (compteur uniquement)
+ *   - 'analytics'  → collecteur de parcours first-party (écriture Neon)
  *
  * 4 protections empilées par service :
  *   1. Per-IP / heure   → anti-burst d'un même prospect
@@ -15,6 +16,13 @@
  *
  * 5e protection : circuit breaker COÛT — si cost units cumulés/jour > seuil,
  * on bloque tout le monde pour la journée (anti-attaque distribuée).
+ *
+ * 6e mécanisme : la LIBÉRATION d'une réservation (`releaseReservation`).
+ * Une tentative qui échoue pour une raison imputable au site ou à une simple
+ * faute de saisie ne doit pas brûler un créneau du prospect. La ligne réservée
+ * passe alors en status='released' : elle sort des compteurs principaux mais
+ * reste comptée sous un plafond « tentatives relâchées » beaucoup plus large,
+ * pour qu'un robot ne puisse pas marteler la route gratuitement.
  *
  * Toutes les vérifications sont issues de `ai_call_log` (table indexée
  * sur (service, ip, created_at) et (service, email_hash, created_at)).
@@ -27,12 +35,13 @@
 import { sql } from "drizzle-orm";
 import { getDb } from "@/db";
 import { createHash } from "node:crypto";
+import { CONTACT_EMAIL } from "@/lib/contact-details";
 import { log } from "@/lib/logger";
 
 // ── Service identifiers ──────────────────────────────────────────────
 // NB : la table ai_call_log contient encore des rows historiques avec
 // service='estimate' (ancien estimateur IA supprimé) — ne pas purger.
-export type ServiceId = "transcribe" | "inquiry" | "sirene";
+export type ServiceId = "transcribe" | "inquiry" | "sirene" | "analytics";
 
 // ── Limites par service (defaults conservateurs) ─────────────────────
 //
@@ -51,6 +60,15 @@ interface ServiceLimits {
   globalDay: number;
   /** null = pas de cost breaker. Sinon : seuil cumulé sur 24h. */
   costBreaker: number | null;
+  /**
+   * Plafond horaire des tentatives RELÂCHÉES par IP (status='released').
+   * null = le service ne libère jamais de réservation. Volontairement très
+   * au-dessus du plafond nominal : il ne doit borner qu'un martèlement
+   * automatisé, jamais un prospect qui corrige son formulaire.
+   */
+  releasedPerIpHour: number | null;
+  /** Même logique, borne globale sur 24h. null = pas de libération. */
+  releasedGlobalDay: number | null;
 }
 
 const SERVICE_LIMITS: Record<ServiceId, ServiceLimits> = {
@@ -65,6 +83,10 @@ const SERVICE_LIMITS: Record<ServiceId, ServiceLimits> = {
      * uploadés (proxy raisonnable de la durée audio).
      */
     costBreaker: parseInt(process.env.TRANSCRIBE_COST_BREAKER_BYTES_DAY || "524288000", 10),
+    // Le coût Groq est déjà réservé sur la ligne : on ne relâche jamais une
+    // réservation de transcription, sinon le cost breaker perdrait sa mémoire.
+    releasedPerIpHour: null,
+    releasedGlobalDay: null,
   },
   inquiry: {
     perIpHour: parseInt(process.env.INQUIRY_RATE_PER_IP_HOUR || "5", 10),
@@ -72,6 +94,11 @@ const SERVICE_LIMITS: Record<ServiceId, ServiceLimits> = {
     perEmailDay: parseInt(process.env.INQUIRY_RATE_PER_EMAIL_DAY || "2", 10),
     globalDay: parseInt(process.env.INQUIRY_RATE_GLOBAL_DAY || "100", 10),
     costBreaker: null, // pas de coût marginal mesurable côté serveur
+    // Une demande refusée pour champ manquant ou panne d'envoi est relâchée :
+    // seul le martèlement automatisé reste borné, à un niveau qu'un prospect
+    // qui corrige son formulaire n'atteint jamais.
+    releasedPerIpHour: parseInt(process.env.INQUIRY_RETRY_PER_IP_HOUR || "30", 10),
+    releasedGlobalDay: parseInt(process.env.INQUIRY_RETRY_GLOBAL_DAY || "500", 10),
   },
   sirene: {
     perIpHour: parseInt(process.env.SIRENE_RATE_PER_IP_HOUR || "60", 10),
@@ -79,6 +106,25 @@ const SERVICE_LIMITS: Record<ServiceId, ServiceLimits> = {
     perEmailDay: null,
     globalDay: parseInt(process.env.SIRENE_RATE_GLOBAL_DAY || "5000", 10),
     costBreaker: null,
+    releasedPerIpHour: null,
+    releasedGlobalDay: null,
+  },
+  /**
+   * Collecteur de parcours : aucune dépendance externe, mais CHAQUE requête
+   * acceptée provoque une écriture Neon. Sans compteur persistant, le volume
+   * et la qualité des données de conversion seraient à la merci du premier
+   * script venu — or ce sont ces données qui piloteront les enchères Ads.
+   * Les paliers sont larges : une session de funnel émet quelques dizaines
+   * d'événements, un réseau d'entreprise partagé peut en cumuler beaucoup plus.
+   */
+  analytics: {
+    perIpHour: parseInt(process.env.ANALYTICS_RATE_PER_IP_HOUR || "200", 10),
+    perIpDay: parseInt(process.env.ANALYTICS_RATE_PER_IP_DAY || "600", 10),
+    perEmailDay: null,
+    globalDay: parseInt(process.env.ANALYTICS_RATE_GLOBAL_DAY || "5000", 10),
+    costBreaker: null,
+    releasedPerIpHour: null,
+    releasedGlobalDay: null,
   },
 };
 
@@ -87,11 +133,16 @@ export type BlockReason =
   | "rate_ip_day"
   | "rate_email_day"
   | "rate_global_day"
+  | "rate_retry_ip_hour"
+  | "rate_retry_global_day"
   | "cost_breaker"
   | "captcha_failed"
   | "validation"
   | "ai_error"
   | "secret_misconfigured";
+
+/** Issues qui rendent le créneau au visiteur au lieu de le consommer. */
+export type ReleaseReason = Extract<BlockReason, "validation" | "ai_error">;
 
 export type RateLimitDecision =
   | {
@@ -148,21 +199,32 @@ export async function checkServiceRateLimit(
     counters AS (
       SELECT
         COUNT(*) FILTER (
-          WHERE ip = ${ip}
+          WHERE status = 'reserved'
+            AND ip = ${ip}
             AND created_at >= ${oneHourAgo}
         )::int AS ip_hour,
         COUNT(*) FILTER (
-          WHERE ip = ${ip}
+          WHERE status = 'reserved'
+            AND ip = ${ip}
         )::int AS ip_day,
         COUNT(*) FILTER (
-          WHERE email_hash = ${emailHash}
+          WHERE status = 'reserved'
+            AND email_hash = ${emailHash}
         )::int AS email_day,
-        COUNT(*)::int AS global_day,
-        COALESCE(SUM(tokens_used), 0)::bigint AS cost_day
+        COUNT(*) FILTER (WHERE status = 'reserved')::int AS global_day,
+        COALESCE(
+          SUM(tokens_used) FILTER (WHERE status = 'reserved'),
+          0
+        )::bigint AS cost_day,
+        COUNT(*) FILTER (
+          WHERE status = 'released'
+            AND ip = ${ip}
+            AND created_at >= ${oneHourAgo}
+        )::int AS released_ip_hour,
+        COUNT(*) FILTER (WHERE status = 'released')::int AS released_global_day
       FROM ai_call_log, rate_lock
       WHERE service = ${service}
         AND created_at >= ${oneDayAgo}
-        AND status = 'reserved'
     ),
     reservation AS (
       INSERT INTO ai_call_log (
@@ -184,6 +246,14 @@ export async function checkServiceRateLimit(
           ${limits.costBreaker === null}
           OR cost_day < ${limits.costBreaker ?? 0}
         )
+        AND (
+          ${limits.releasedPerIpHour === null}
+          OR released_ip_hour < ${limits.releasedPerIpHour ?? 0}
+        )
+        AND (
+          ${limits.releasedGlobalDay === null}
+          OR released_global_day < ${limits.releasedGlobalDay ?? 0}
+        )
       RETURNING id
     )
     SELECT
@@ -201,19 +271,23 @@ export async function checkServiceRateLimit(
   const emailDay = Number(row.email_day) || 0;
   const globalDay = Number(row.global_day) || 0;
   const costDay = Number(row.cost_day) || 0;
+  const releasedIpHour = Number(row.released_ip_hour) || 0;
+  const releasedGlobalDay = Number(row.released_global_day) || 0;
   const reservationId = Number(row.reservation_id) || 0;
 
   if (reservationId > 0) {
     return { allowed: true, reservationId };
   }
 
+  // Les messages sont affichés tels quels au visiteur : ils vouvoient comme
+  // le reste du site et rappellent toujours un canal de secours.
+  //
   // Circuit breaker coût en premier — protection ultime
   if (limits.costBreaker !== null && costDay >= limits.costBreaker) {
     return {
       allowed: false,
       reason: "cost_breaker",
-      message:
-        "Service temporairement indisponible (volume exceptionnel). Réessaye demain ou contacte quentin@hagnere-patrimoine.fr.",
+      message: `Service temporairement indisponible (volume exceptionnel). Réessayez demain ou écrivez à ${CONTACT_EMAIL}.`,
       retryAfterSec: 3600,
     };
   }
@@ -223,8 +297,7 @@ export async function checkServiceRateLimit(
     return {
       allowed: false,
       reason: "rate_global_day",
-      message:
-        "Le service est très demandé aujourd'hui. Réessaye dans quelques heures ou écris-nous directement.",
+      message: `Le service est très demandé aujourd'hui. Réessayez dans quelques heures ou écrivez-nous à ${CONTACT_EMAIL}.`,
       retryAfterSec: 3600,
     };
   }
@@ -234,8 +307,7 @@ export async function checkServiceRateLimit(
     return {
       allowed: false,
       reason: "rate_email_day",
-      message:
-        "Tu as déjà soumis plusieurs demandes aujourd'hui. Si tu as un projet précis, écris-nous à quentin@hagnere-patrimoine.fr.",
+      message: `Vous avez déjà soumis plusieurs demandes aujourd'hui. Si votre projet est précis, écrivez-nous à ${CONTACT_EMAIL}.`,
       retryAfterSec: DAY_MS / 1000,
     };
   }
@@ -245,8 +317,7 @@ export async function checkServiceRateLimit(
     return {
       allowed: false,
       reason: "rate_ip_day",
-      message:
-        "Trop de tentatives depuis ton réseau aujourd'hui. Réessaye demain ou contacte-nous directement.",
+      message: `Trop de tentatives depuis votre réseau aujourd'hui. Réessayez demain ou écrivez-nous à ${CONTACT_EMAIL}.`,
       retryAfterSec: DAY_MS / 1000,
     };
   }
@@ -256,8 +327,33 @@ export async function checkServiceRateLimit(
     return {
       allowed: false,
       reason: "rate_ip_hour",
-      message:
-        "Trop de tentatives sur la dernière heure. Réessaye dans une heure.",
+      message: `Trop de tentatives sur la dernière heure. Réessayez dans une heure ou écrivez-nous à ${CONTACT_EMAIL}.`,
+      retryAfterSec: HOUR_MS / 1000,
+    };
+  }
+
+  // Plafonds des tentatives relâchées — atteints uniquement par un
+  // martèlement automatisé, jamais par un prospect qui corrige sa saisie.
+  if (
+    limits.releasedGlobalDay !== null &&
+    releasedGlobalDay >= limits.releasedGlobalDay
+  ) {
+    return {
+      allowed: false,
+      reason: "rate_retry_global_day",
+      message: `Le service est très demandé aujourd'hui. Réessayez dans quelques heures ou écrivez-nous à ${CONTACT_EMAIL}.`,
+      retryAfterSec: 3600,
+    };
+  }
+
+  if (
+    limits.releasedPerIpHour !== null &&
+    releasedIpHour >= limits.releasedPerIpHour
+  ) {
+    return {
+      allowed: false,
+      reason: "rate_retry_ip_hour",
+      message: `Trop de tentatives infructueuses sur la dernière heure. Réessayez dans une heure ou écrivez-nous à ${CONTACT_EMAIL}.`,
       retryAfterSec: HOUR_MS / 1000,
     };
   }
@@ -382,15 +478,70 @@ export async function reserveServiceCost(
   }).rows?.[0];
   if (!row) throw new Error("Cost reservation returned no row");
   const updatedId = Number(row.reservation_id) || 0;
-  if (updatedId > 0) return { allowed: true, reservationId: updatedId };
+  if (updatedId > 0) {
+    // Alerte à mi-parcours du disjoncteur : on veut voir l'abus AVANT
+    // l'indisponibilité totale du service, pas après.
+    const costDay = Number(row.cost_day) || 0;
+    const projected = costDay + safeTokens;
+    if (projected >= limits.costBreaker / 2) {
+      log.warn("service_cost_breaker_half_reached", {
+        service,
+        costDay: projected,
+        costBreaker: limits.costBreaker,
+      });
+    }
+    return { allowed: true, reservationId: updatedId };
+  }
 
   return {
     allowed: false,
     reason: "cost_breaker",
     message:
-      "Service temporairement indisponible (volume exceptionnel). Réessaye demain ou saisis ton texte.",
+      "Service temporairement indisponible (volume exceptionnel). Réessayez demain ou saisissez votre texte.",
     retryAfterSec: 3600,
   };
+}
+
+/**
+ * Rend le créneau réservé au visiteur : la ligne passe de 'reserved' à
+ * 'released' et sort donc des compteurs principaux. Utilisé quand l'échec
+ * n'est pas imputable à un abus — champs invalides ou panne d'envoi côté
+ * site. Sans cela, cinq maladresses suffisaient à bloquer un prospect une
+ * heure entière alors qu'aucune demande n'avait été transmise.
+ *
+ * Une réservation qui porte déjà un coût réel (`tokens_used > 0`, cas Groq)
+ * n'est jamais libérée : le disjoncteur coût doit garder la mémoire de la
+ * dépense engagée.
+ */
+export async function releaseReservation(args: {
+  reservationId: number;
+  service: ServiceId;
+  reason: ReleaseReason;
+  briefId?: number | null;
+}): Promise<void> {
+  try {
+    if (!Number.isInteger(args.reservationId) || args.reservationId <= 0) {
+      throw new Error("Reservation release requires a valid reservation");
+    }
+    await getDb().execute(sql`
+      UPDATE ai_call_log
+      SET status = 'released',
+          block_reason = ${args.reason},
+          brief_id = COALESCE(${args.briefId ?? null}, brief_id)
+      WHERE id = ${args.reservationId}
+        AND service = ${args.service}
+        AND status = 'reserved'
+        AND tokens_used = 0
+    `);
+  } catch (err) {
+    // Échec fermé : le créneau reste consommé, ce qui est le comportement
+    // historique. On logge pour pouvoir alerter sur un taux anormal.
+    log.error("ai_call_release_failed", {
+      err: err as Error,
+      service: args.service,
+      reason: args.reason,
+    });
+  }
 }
 
 /**

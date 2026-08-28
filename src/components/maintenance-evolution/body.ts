@@ -1,7 +1,4 @@
-import { navHtml } from "@/components/design-shared/nav-html";
-
 export const bodyHtml = `
-${navHtml}
 <!-- BREADCRUMB -->
 <div class="wrap">
   <div class="crumb">
@@ -247,72 +244,4 @@ ${navHtml}
 </section>
 
 <!-- WHAT WE BUILD -->
-
-<!-- CTA -->
-<section class="scta">
-  <div class="stats-bg" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="eyebrow on-dark">— Prochaine étape</div>
-    <h2 style="margin-top:18px">Un audit pour savoir<br>où on peut vous emmener.</h2>
-    <p>Un échange avec un consultant senior pour analyser votre situation et vous donner un avis franc. Le périmètre, le délai et le chiffrage éventuel sont confirmés après cadrage. <b>Sans engagement.</b></p>
-    <div class="scta-cta">
-      <a href="#contact" class="btn btn-accent btn-lg">
-        📊 &nbsp;Demander un échange d'audit
-        <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-      <a href="mailto:quentin@hagnere-patrimoine.fr" class="btn btn-ghost btn-lg" style="background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.15)">
-        Envoyer un email →
-      </a>
-    </div>
-    <div class="scta-meta">AUDIT 30 MIN OFFERT · PÉRIMÈTRE ET DÉLAI CONFIRMÉS APRÈS CADRAGE</div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <a href="/" class="brand" style="margin-bottom:16px">
-          <div class="brand-mark">HC</div>
-          <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
-        </a>
-        <p>Agence de développement SaaS AI-native basée à Bassens, aux portes de Chambéry. Dev, design, SEO, ads, vidéo intégrée.</p>
-      </div>
-      <div class="foot-cols">
-        <div class="foot-col">
-          <h3>SERVICES</h3>
-          <a href="/services/saas-applications-metier">Sites vitrines &amp; landing pages</a>
-          <a href="/services/outils-internes-sur-mesure">Outils internes</a>
-          <a href="/services/sites-vitrines">Sites vitrines</a>
-          <a href="/services/referencement-google">SEO</a>
-          <a href="/services/publicite-en-ligne">Publicité</a>
-        </div>
-        <div class="foot-col">
-          <h3>STUDIO</h3>
-          <a href="/methode">Méthode</a>
-          <a href="/realisations">Réalisations</a>
-          <a href="/equipe">Équipe</a>
-          <a href="/tarifs">Tarifs</a>
-        </div>
-        <div class="foot-col">
-          <h3>CONTACT</h3>
-          <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>
-          <a href="https://www.linkedin.com/in/quentin-hagnere" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        </div>
-        <div class="foot-col">
-          <h3>LÉGAL</h3>
-          <a href="/legal/cgv">CGV</a>
-          <a href="/legal/mentions">Mentions légales</a>
-          <a href="/legal/confidentialite">Confidentialité</a>
-        </div>
-      </div>
-    </div>
-    <div class="foot-bot">
-      <div>© 2026 HAGNERE CODE · SASU au capital de 10 € · RCS Chambéry 993 672 856 · TVA FR30 993 672 856 · NAF 62.01Z · 82 impasse de Bellevue, 73000 Bassens</div>
-      <div>BUILT WITH LARAVEL + CLAUDE CODE</div>
-    </div>
-  </div>
-</footer>
-
 `;

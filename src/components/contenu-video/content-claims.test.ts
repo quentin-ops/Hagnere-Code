@@ -2,7 +2,10 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { composedBodyHtml } from "./composed-body";
 import { problemsHtml } from "./sections/problems";
+import { pricingHtml } from "./sections/pricing";
 import { whatWeProduceHtml } from "./sections/what-we-produce";
+
+const bodySource = readFileSync(new URL("./body.ts", import.meta.url), "utf8");
 
 const servicePageSource = readFileSync(
   new URL("../../app/services/contenu-video/page.tsx", import.meta.url),
@@ -57,5 +60,51 @@ describe("contenu video public claims", () => {
       /imbattable|arrêtent le scroll|qu'on maîtrise|pas soixante qu'on survole|le calendrier est rempli/i,
     );
     expect(auditedSections).not.toMatch(/testés en A\/B|AB-testés/i);
+  });
+  it("annonce le même nombre de retainers que la grille en contient", () => {
+    const retainerTags = pricingHtml.match(/RETAINER · \d\d/g) ?? [];
+
+    expect(retainerTags).toHaveLength(2);
+    expect(retainerTags).toEqual(["RETAINER · 01", "RETAINER · 02"]);
+    expect(pricingHtml).toMatch(/les deux retainers/i);
+    expect(pricingHtml).not.toMatch(/les trois retainers/i);
+  });
+
+  it("affiche chaque prix en hors taxes et l'engagement total minimum", () => {
+    const amounts = [...pricingHtml.matchAll(/<div class="cv-price-amount">([\s\S]*?)<\/div>/g)]
+      .map((match) => match[1].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim());
+
+    expect(amounts.length).toBeGreaterThanOrEqual(4);
+    for (const amount of amounts) {
+      expect(amount, `montant sans mention HT : ${amount}`).toMatch(/HT/);
+    }
+
+    // Un prix mensuel affiché avec une durée minimale doit publier son total.
+    expect(pricingHtml).toMatch(/Engagement minimum 6 mois · 21 000 € HT au total/);
+    expect(pricingHtml).toMatch(/Engagement minimum 6 mois · 41 400 € HT au total/);
+    expect(pricingHtml).toMatch(/hors taxes/i);
+  });
+
+  it("étiquette la maquette du hero comme fictive", () => {
+    expect(bodySource).toContain("MAQUETTE · MARQUE FICTIVE");
+    // Le marqueur doit précéder la marque inventée affichée dans la maquette.
+    expect(bodySource.indexOf("MAQUETTE · MARQUE FICTIVE")).toBeLessThan(
+      bodySource.indexOf("<!-- Timeline -->"),
+    );
+  });
+
+  it("ne présente aucune licence comme incluse d'office", () => {
+    expect(composedBodyHtml).not.toMatch(/licences?[^<]{0,60}inclus/i);
+  });
+
+  it("ne conserve aucun footer hérité dans le body", () => {
+    expect(bodySource).not.toContain("<footer");
+    expect(bodySource).not.toContain("<!-- FOOTER -->");
+  });
+
+  it("publie un maillage service→service dans le corps de la page", () => {
+    expect(composedBodyHtml).toContain('href="/services/publicite-en-ligne"');
+    expect(composedBodyHtml).toContain('href="/services/sites-vitrines"');
+    expect(composedBodyHtml).toContain('href="/services/referencement-google"');
   });
 });

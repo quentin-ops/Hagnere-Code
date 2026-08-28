@@ -1,7 +1,4 @@
-import { navHtml } from "@/components/design-shared/nav-html";
-
 export const bodyHtml = `
-${navHtml}
 <div class="wrap">
   <div class="crumb">
     <a href="/">Accueil</a>
@@ -156,6 +153,9 @@ ${navHtml}
             <text x="440" y="242" text-anchor="end" font-family="Geist Mono" font-size="9" fill="rgba(255,255,255,0.4)">4K · ProRes HQ</text>
           </svg>
 
+          <!-- Étiquetage obligatoire de la maquette (règle d'or : zéro invention) -->
+          <div class="cv-editor-flag">MAQUETTE · MARQUE FICTIVE</div>
+
           <!-- Overlay play button -->
           <div class="cv-editor-play" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>
@@ -228,19 +228,4 @@ ${navHtml}
     </div>
   </div>
 </section>
-
-<!-- CTA -->
-<section class="scta" id="contact">
-  <div class="scta-bg"></div>
-  <div class="wrap inner">
-    <div class="eyebrow on-dark">— Prochaine étape</div>
-    <h2 style="margin-top:14px">Parlons de votre contenu.<br><span class="accent">30 minutes, c'est tout.</span></h2>
-    <p>Un échange de cadrage gratuit avec un réalisateur et un expert. Nous examinons vos besoins, votre audience et votre cadence, puis nous précisons les prochaines étapes et le délai de chiffrage.</p>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="wrap"></div>
-</footer>
 `;

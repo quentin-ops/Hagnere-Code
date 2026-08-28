@@ -44,6 +44,20 @@ const commercialPublicSources = allPublicSources.filter(
     !file.endsWith("opengraph-image.tsx"),
 );
 
+/**
+ * Fichiers qui publient encore une durée d'engagement abrégée.
+ *
+ * `content-claims.test.ts` de /services/maintenance-evolution interdisait déjà
+ * « N mois min. » sur cette seule page. Une durée minimale d'engagement est une
+ * clause contractuelle : abrégée dans une grille présentée comme un ordre de
+ * grandeur indicatif, elle se lit comme un engagement ferme que le devis n'a
+ * pas encore fixé. L'exception ci-dessous est un reste à traiter par le
+ * propriétaire de la grille, pas une autorisation permanente.
+ */
+const ENGAGEMENT_SHORTHAND_EXEMPTIONS = new Set<string>([
+  "src/components/tarifs/body.ts",
+]);
+
 describe("public commercial claims", () => {
   it("does not turn an unmeasured sales-response objective into a 24-hour guarantee", () => {
     const forbidden = [
@@ -234,6 +248,44 @@ describe("public commercial claims", () => {
           ).toMatch(qualification);
         }
       }
+    }
+  });
+
+  it("ne publie nulle part une taille d'équipe projet chiffrée", () => {
+    // CLAUDE.md interdit d'annoncer un effectif. Une composition d'équipe
+    // projet — « équipe 3 pers. », « équipe 2-4 pers » — est un engagement de
+    // moyens que seul le devis peut prendre, et un effectif revendiqué que
+    // rien ne vérifie. Le contrôle était limité à /services/maintenance-evolution.
+    const teamSizeShorthand = /équipe\s*\d(?:\s*[–-]\s*\d)?\s*pers/i;
+
+    for (const { file, claimText } of allPublicSources) {
+      expect(
+        claimText,
+        `${path.relative(process.cwd(), file)}: taille d'équipe projet chiffrée`,
+      ).not.toMatch(teamSizeShorthand);
+    }
+  });
+
+  it("ne publie pas de durée d'engagement abrégée hors du devis", () => {
+    const engagementShorthand = /\d+\s*mois min\./i;
+
+    for (const { file, claimText } of commercialPublicSources) {
+      const relativePath = path.relative(process.cwd(), file);
+      if (ENGAGEMENT_SHORTHAND_EXEMPTIONS.has(relativePath)) continue;
+
+      expect(
+        claimText,
+        `${relativePath}: durée d'engagement abrégée, à confirmer au devis`,
+      ).not.toMatch(engagementShorthand);
+    }
+  });
+
+  it("garde la liste d'exceptions d'engagement alignée sur des fichiers réels", () => {
+    for (const relativePath of ENGAGEMENT_SHORTHAND_EXEMPTIONS) {
+      expect(
+        fs.existsSync(path.join(process.cwd(), relativePath)),
+        relativePath,
+      ).toBe(true);
     }
   });
 

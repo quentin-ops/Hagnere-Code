@@ -9,16 +9,10 @@
   height: 540px;
 }
 
-/* Tower moved to the background — low opacity, no animation drag */
-.hero-visual .tower-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  opacity: 0.5;
-  filter: saturate(0.9);
-  pointer-events: none;
-}
-.hero-visual .tower-bg svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+/* La tour isométrique décorative (`.tower-bg`) n'est plus rendue nulle part —
+   0 occurrence dans le HTML servi comme dans les composants. Ses règles ont
+   été retirées ici et dans le bloc mobile plus bas, avec celle qui vivait dans
+   design-shared/responsive.css. */
 
 /* Video card in the foreground */
 .hero-video-wrap {
@@ -213,7 +207,6 @@
 }
 @media (max-width: 768px) {
   .hero-visual { height: 300px; margin-top: 24px; }
-  .hero-visual .tower-bg { opacity: 0.3; }
   .hero-video { max-width: 360px; aspect-ratio: 16 / 11; }
   .hero-video-soon { display: none; }
   .hero-video-title { font-size: 12.5px; max-width: 260px; }

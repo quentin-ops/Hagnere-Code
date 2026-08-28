@@ -73,6 +73,14 @@ html.dark {
   background: var(--accent-ink);
   transform: translateY(-1px);
 }
+/* Thème sombre : --accent vaut #8B5CF6 et --accent-ink #C4B5FD. Le libellé
+   blanc tombait à 4,23:1 au repos et 1,85:1 au survol, sous le seuil WCAG
+   1.4.3 AA. Violets plus foncés : #fff sur #6D28D9 = 7,1:1, sur #7C3AED = 5,7:1. */
+html.dark .rl-modern .btn-accent {
+  background: #6D28D9;
+  box-shadow: 0 4px 14px -4px rgba(109, 40, 217, 0.6);
+}
+html.dark .rl-modern .btn-accent:hover { background: #7C3AED; }
 .rl-modern .btn-ghost {
   color: var(--ink-3);
   border-color: var(--line);
@@ -414,6 +422,11 @@ html.dark {
   background: var(--accent);
   color: #fff;
   border-color: var(--accent);
+}
+/* En thème sombre `--accent` = #8B5CF6 : le pictogramme blanc tombe à 4,23:1. */
+html.dark .rlm-stat:hover .rlm-stat-ic {
+  background: #6D28D9;
+  border-color: #6D28D9;
 }
 
 .rlm-stat-body {
@@ -833,6 +846,67 @@ html.dark {
 /* ============================================================
  * 4. CTA "Mise en relation"
  * ============================================================ */
+/* ============================================================
+ * 3 bis. BANDE SERVICES (passerelle preuve → offre)
+ * ============================================================ */
+.rlm-svc {
+  padding: 60px 0 100px;
+}
+.rlm-svc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.rlm-svc-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 22px 24px;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: opacity 0.7s ease, transform 0.7s ease, box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+.rlm-svc-card:hover {
+  box-shadow: 0 24px 44px -22px rgba(0, 0, 0, 0.15);
+  border-color: var(--accent);
+}
+.rlm-svc-name {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+.rlm-svc-blurb {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+.rlm-svc-foot {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-2);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-geist-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  color: var(--mute);
+}
+.rlm-svc-foot svg { transition: transform 0.2s ease; }
+.rlm-svc-card:hover .rlm-svc-foot { color: var(--accent); }
+.rlm-svc-card:hover .rlm-svc-foot svg { transform: translateX(3px); }
+.rlm-svc-actions {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .rlm-cta {
   padding: 80px 0 130px;
 }
@@ -1059,6 +1133,8 @@ html.dark {
   }
   .rl-modern .section-head h2 { font-size: 40px; }
 
+  .rlm-svc-grid { grid-template-columns: repeat(2, 1fr); }
+
   .rlm-stats-grid { grid-template-columns: repeat(2, 1fr); }
 
   .rlm-cases { padding: 80px 0 60px; }
@@ -1090,6 +1166,9 @@ html.dark {
   .rlm-case-body { padding: 24px 22px 22px; gap: 16px; }
   .rlm-case h3 { font-size: 24px; }
 
+  .rlm-svc-grid { grid-template-columns: 1fr; }
+  .rlm-svc { padding-bottom: 72px; }
+
   .rlm-cta-card { padding: 36px 22px; gap: 32px; }
   .rlm-cta-card h2 { font-size: 28px; }
   .rlm-cta-side { gap: 10px; }
@@ -1099,7 +1178,23 @@ html.dark {
 
 @media (max-width: 480px) {
   .rl-modern .wrap { padding-left: 16px; padding-right: 16px; }
-  .rlm-hero-visual { aspect-ratio: 1.2 / 1; max-width: 360px; }
+  .rlm-hero-visual { aspect-ratio: 1.2 / 1; max-width: 360px; gap: 12px; }
+  /* Chaque carte du visuel 2×2 ne fait plus que ~170×140 px : le badge
+     décoratif en position absolue chevauchait le logo, et le logo + le nom
+     sur deux lignes + la catégorie affleuraient la hauteur disponible avec
+     overflow:hidden. Le badge est purement décoratif (le visuel entier est
+     aria-hidden) et l'information « page publique » reste portée par les
+     cartes de la section détaillée. */
+  .rlm-float-status { display: none; }
+  .rlm-float-card { padding: 14px; border-radius: 14px; }
+  .rlm-float-logo {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+  .rlm-float-name { font-size: 13px; line-height: 1.25; }
+  .rlm-float-cat { font-size: 9px; letter-spacing: 0.03em; }
   .rlm-cta-side { grid-template-columns: 1fr 1fr; }
 }
 

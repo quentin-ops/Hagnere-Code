@@ -30,109 +30,109 @@ export const faqHtml = `
 
       <div class="faq-list reveal reveal-d-1" data-faq-filter="all">
         <div class="faq-item open" data-persona="ceo cto daf">
-          <div class="faq-q">Combien de temps avant les premiers effets mesurables ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="true" aria-controls="faq-a-care-faq-1">Combien de temps avant les premiers effets mesurables ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-care-faq-1">
             Après le diagnostic initial, le devis fixe les accès, priorités, outils, jalons et critères observables. Les délais dépendent de la documentation, des environnements disponibles et des incidents ouverts.
           </div>
         </div>
 
         <div class="faq-item" data-persona="ceo daf">
-          <div class="faq-q">Qui paye le cloud / l'hébergement ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-faq-2">Qui paye le cloud / l'hébergement ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-care-faq-2" hidden>
             Le devis identifie le titulaire de chaque compte AWS, OVH, Scaleway, Vercel ou équivalent, le payeur, les licences et les rôles d'administration. Une facturation directe au client peut être retenue pour faciliter la réversibilité.
           </div>
         </div>
 
         <div class="faq-item" data-persona="ceo daf">
-          <div class="faq-q">Pourquoi refusez-vous le TJM / la régie ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-faq-3">Pourquoi refusez-vous le TJM / la régie ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-care-faq-3" hidden>
             Refus de principe. La régie pousse à facturer des heures, pas à produire du résultat. Le forfait fixe nous <b>oblige à être efficaces</b>&nbsp;: moins de temps passé sur un incident = meilleure marge pour nous ET meilleur service pour vous. Les intérêts sont alignés par construction.
           </div>
         </div>
 
         <div class="faq-item" data-persona="ceo daf">
-          <div class="faq-q">Si je ne suis pas satisfait au bout de 3 mois ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-faq-4">Si je ne suis pas satisfait au bout de 3 mois ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-care-faq-4" hidden>
             Les conditions de révision, la durée d'engagement, le préavis et le traitement d'un écart de service sont ceux du devis ou du contrat signé. Les comptes placés au nom du client restent sous son contrôle et les livrables sont remis selon les CGV.
           </div>
         </div>
 
         <div class="faq-item" data-persona="ceo cto">
-          <div class="faq-q">Quels niveaux de service pouvez-vous contractualiser ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-faq-5">Quels niveaux de service pouvez-vous contractualiser ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-care-faq-5" hidden>
             Disponibilité, temps de prise en charge, plage d'astreinte, outil de mesure et éventuelles pénalités sont adaptés à l'architecture. Ils ne sont opposables que lorsqu'ils figurent explicitement dans le contrat signé.
           </div>
         </div>
 
         <div class="faq-item" data-persona="ceo cto">
-          <div class="faq-q">Combien de temps prend l'onboarding ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-faq-6">Combien de temps prend l'onboarding ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-care-faq-6" hidden>
             La durée dépend des accès, de la documentation, de l'infrastructure et des incidents déjà ouverts. Le plan d'onboarding, ses responsables et ses jalons sont validés au cadrage.
           </div>
         </div>
 
         <div class="faq-item" data-persona="ceo cto">
-          <div class="faq-q">On a déjà un freelance / un prestataire, comment ça se passe ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-faq-7">On a déjà un freelance / un prestataire, comment ça se passe ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-care-faq-7" hidden>
             Le <a href="/guides/reprendre-logiciel-metier-existant">test de relève du logiciel existant</a> aide d'abord à distinguer les preuves disponibles, les inconnues et les blocages. Nous proposons ensuite un inventaire des accès, une reprise progressive, des points avec le prestataire sortant et une documentation partagée. La durée et le coût de ce recouvrement sont définis au devis avec les parties concernées.
           </div>
         </div>
 
         <div class="faq-item" data-persona="ceo cto">
-          <div class="faq-q">Qui va s'occuper concrètement de mon app ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-faq-8">Qui va s'occuper concrètement de mon app ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-care-faq-8" hidden>
             Les intervenants, leurs rôles et leur statut sont nommés dans le devis — <a href="#equipe" style="color:var(--accent-ink);text-decoration:underline">voir la composition publique</a>. Le canal, les horaires, les délais cibles et les modalités de continuité sont également précisés.
           </div>
         </div>
 
         <div class="faq-item" data-persona="ceo daf">
-          <div class="faq-q">Quelle taille d'app faut-il pour que ça vaille le coup ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-faq-9">Quelle taille d'app faut-il pour que ça vaille le coup ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-care-faq-9" hidden>
             La taille d'audience ne suffit pas à décider. La criticité, la fréquence des changements, la dette existante, les obligations de sécurité et le niveau de support attendu déterminent le dispositif utile.
           </div>
         </div>
 
         <div class="faq-item" data-persona="cto ceo">
-          <div class="faq-q">Que se passe-t-il si le dev qui gère mon compte part ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-faq-10">Que se passe-t-il si le dev qui gère mon compte part ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-care-faq-10" hidden>
             Le devis précise l'équipe référente, la documentation attendue et les modalités de remplacement ou de recouvrement. Aucun délai de transition ni absence totale d'impact n'est promis hors contrat.
           </div>
         </div>
 
         <div class="faq-item" data-persona="ceo cto daf">
-          <div class="faq-q">Si on part, on récupère quoi ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-faq-11">Si on part, on récupère quoi ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-care-faq-11" hidden>
             Les comptes placés au nom du client restent sous son contrôle. Les éléments nécessaires à la reprise sont remis conformément aux CGV&nbsp;; le contenu, la durée et l'éventuel coût d'une passation sont précisés au devis.
           </div>
         </div>
 
         <div class="faq-item" data-persona="ceo daf">
-          <div class="faq-q">C'est quoi exactement dans les 2 000 € de l'audit flash ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-faq-12">C'est quoi exactement dans les 2 000 € HT de l'audit flash ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-care-faq-12" hidden>
             Le diagnostic initial est cadré au devis&nbsp;: intervenants, jours mobilisés, code et infrastructure couverts, livrables et restitution. Aucune déduction automatique n'est prévue par les CGV publiques.
           </div>
         </div>

@@ -27,7 +27,7 @@ purges et revues d'accès doivent être archivés séparément.
 | Données | Identité, coordonnées, société, rôle, SIREN, description, contraintes, budget et échéance ; IP et user-agent sont aussi collectés pour la sécurité et relèvent de T4 |
 | Source | Personne concernée ; données publiques d'entreprise via l'API Recherche Entreprises |
 | Obligatoire | Champs marqués comme requis pour pouvoir répondre ; autres champs facultatifs |
-| Destinataires | Personnes habilitées chez HAGNERE CODE ; Vercel, Neon, Resend et Google Workspace selon l'étape |
+| Destinataires | Personnes habilitées chez HAGNERE CODE ; Vercel, Neon, Resend, Google Workspace et Zoho Mail selon l'étape |
 | Conservation | Prospect : jusqu'à 3 ans après le dernier contact actif pertinent ; client : durée de la relation puis durée nécessaire à la preuve, en principe 5 ans ; factures et pièces comptables : 10 ans |
 | Contrôle à effectuer | Vérifier que l'IP et le user-agent ne restent pas attachés au brief au-delà des 12 mois de T4 ; supprimer leur duplication si elle n'est pas nécessaire |
 | Décision automatisée | Aucune décision produisant un effet juridique ; réponse et devis humains |
@@ -39,8 +39,8 @@ purges et revues d'accès doivent être archivés séparément.
 | Finalités | Recevoir et envoyer des messages transactionnels ; organiser un rendez-vous |
 | Base légale | Mesures précontractuelles ou contrat lorsque la personne est partie ; intérêt légitime pour répondre et suivre les échanges avec l'interlocuteur d'une organisation ; consentement distinct si une prospection l'exige |
 | Données | Adresses, en-têtes, contenu des messages, pièces jointes, créneau et informations saisies |
-| Destinataires | Resend pour l'envoi transactionnel, Google Workspace pour la boîte professionnelle ; Calendly après action volontaire |
-| Conservation | Alignée sur le dossier prospect ou client ; paramètres et durées propres à Resend, Google Workspace et Calendly à vérifier, archiver et intégrer au cycle d'effacement |
+| Destinataires | Resend pour l'envoi transactionnel, Google Workspace et Zoho Mail pour les boîtes professionnelles ; Calendly après action volontaire |
+| Conservation | Alignée sur le dossier prospect ou client ; paramètres et durées propres à Resend, Google Workspace, Zoho Mail et Calendly à vérifier, archiver et intégrer au cycle d'effacement |
 
 ## T3 — Dictée vocale facultative
 

@@ -101,18 +101,18 @@ const COLLECTIONS: Collection[] = [
     anchor: "google-ads-acquisition",
     accent: "blue",
     icon: Megaphone,
-    title: "Investir dans Google Ads avec des chiffres vérifiables.",
-    text: "Budget, mesure et diagnostic expliqués à partir des demandes et des ventes réelles, sans confondre clic, formulaire et client.",
-    laneText: "Budget, mesure et décisions pour vos campagnes Google Ads.",
+    title: "Comparer le coût réel d’une gestion Google Ads.",
+    text: "Quatre modes de rémunération remis sur la même base, le coût complet à 3, 6 et 12 mois et un calculateur local : de quoi lire un devis sans se fier à une moyenne de marché.",
+    laneText: "Coût complet et modes de rémunération d’une gestion Google Ads.",
   },
   {
     section: "Référencement naturel",
     anchor: "referencement-naturel",
     accent: "green",
     icon: Globe,
-    title: "Être trouvé sur Google et savoir quoi mesurer.",
-    text: "Prix, audits et priorités expliqués sans promesse de position : ce que le travail doit produire et comment suivre les demandes obtenues.",
-    laneText: "Budget SEO, audit et suivi des résultats.",
+    title: "Trouver où la visibilité s’arrête.",
+    text: "Une URL suivie de l’exploration aux clics dans Search Console, quatre contrôles pour situer le blocage, puis une fiche pour décider entre corriger, recontrôler ou faire auditer.",
+    laneText: "Diagnostic Search Console, de l’exploration aux clics.",
   },
   {
     section: "Comparatifs & choix",
@@ -183,13 +183,23 @@ const GUIDE_ICONS: Record<string, LucideIcon> = {
   "pourquoi-site-pas-visible-google": SearchCheck,
 };
 
-/** Étapes du visuel du premier guide, sans chiffre de marché ni promesse. */
-const DECISION_PATH = [
-  { label: "Cartographier", value: "le travail réel", left: 2, width: 32 },
-  { label: "Écarter", value: "les risques bloquants", left: 10, width: 44 },
-  { label: "Comparer", value: "sept réponses possibles", left: 18, width: 54 },
-  { label: "Calculer", value: "la capacité réaffectée", left: 26, width: 62 },
-  { label: "Tester", value: "l’erreur et la reprise", left: 34, width: 64 },
+/**
+ * Étapes du visuel décoratif de l'encart « Essentiel ».
+ *
+ * Ces libellés décrivaient auparavant un seul guide — « sept réponses
+ * possibles », « la capacité réaffectée » — alors que le guide mis en avant est
+ * désigné par le drapeau `featured` du registre et peut changer sans toucher à
+ * ce fichier. Ils reprennent donc la promesse éditoriale du hub, celle du
+ * sous-titre du héros, et ne portent plus aucun décompte propre à un guide :
+ * un chiffre laissé ici deviendrait faux au premier changement de mise en
+ * avant. Toute donnée réellement variable vient du registre (`featuredGuide`).
+ */
+const METHOD_PATH = [
+  { label: "Cadrer", value: "le besoin réel", left: 2, width: 32 },
+  { label: "Écarter", value: "les cas bloquants", left: 10, width: 44 },
+  { label: "Comparer", value: "les options", left: 18, width: 54 },
+  { label: "Calculer", value: "avec vos hypothèses", left: 26, width: 62 },
+  { label: "Décider", value: "ou ne rien développer", left: 34, width: 64 },
 ];
 
 const featuredGuide =
@@ -199,6 +209,11 @@ const latestGuide = PUBLISHED_GUIDES.reduce((latest, candidate) =>
     ? candidate
     : latest,
 );
+
+/** Réduit une date de guide au mois et à l'année, sans le quantième. */
+function monthAndYear(iso: string): string {
+  return formatGuideDate(iso).split(" ").slice(1).join(" ");
+}
 
 function collectionsWithGuides(): Array<Collection & { guides: GuideEntry[] }> {
   const known = COLLECTIONS.map((c) => ({
@@ -260,10 +275,9 @@ export function GuidesHubPage() {
                 avant de développer
               </h1>
               <p className="ghub-hero-sub">
-                Nous reconstruisons cette bibliothèque guide par guide. Chaque
-                publication doit donner aux dirigeants une méthode claire, des
-                sources vérifiables, des calculs reproductibles et les cas où il
-                vaut mieux ne rien développer.
+                Chaque publication doit donner aux dirigeants une méthode
+                claire, des sources vérifiables, des calculs reproductibles et
+                les cas où il vaut mieux ne rien développer.
               </p>
 
               <div className="ghub-hero-actions">
@@ -326,10 +340,7 @@ export function GuidesHubPage() {
                 </span>
                 <span>
                   <Check size={13} aria-hidden="true" /> Mis à jour{" "}
-                  {formatGuideDate(latestGuide.dateModified)
-                    .split(" ")
-                    .slice(1)
-                    .join(" ")}
+                  {monthAndYear(latestGuide.dateModified)}
                 </span>
               </div>
             </div>
@@ -375,9 +386,9 @@ export function GuidesHubPage() {
                   <div className="ghub-ranges-body">
                     <div className="ghub-ranges-title">
                       <b>Méthode de décision</b>
-                      <span>PROCESSUS</span>
+                      <span>ESSENTIEL</span>
                     </div>
-                    {DECISION_PATH.map((r) => (
+                    {METHOD_PATH.map((r) => (
                       <div key={r.label} className="ghub-range-row">
                         <span>{r.label}</span>
                         <i>{r.value}</i>
@@ -390,8 +401,8 @@ export function GuidesHubPage() {
                       </div>
                     ))}
                     <div className="ghub-ranges-note">
-                      Hypothèses, formules et limites dans le guide · juillet
-                      2026
+                      Hypothèses, formules et limites dans le guide ·{" "}
+                      {monthAndYear(featuredGuide.dateModified)}
                     </div>
                   </div>
                 </div>
@@ -401,8 +412,8 @@ export function GuidesHubPage() {
                     <ShieldCheck size={14} strokeWidth={2.4} />
                   </div>
                   <div>
-                    <b>5 portes bloquantes</b>
-                    <span>avant le calcul</span>
+                    <b>Conditions à écarter</b>
+                    <span>avant de décider</span>
                   </div>
                 </div>
                 <div className="ghub-float ghub-float-2">
@@ -410,8 +421,8 @@ export function GuidesHubPage() {
                     <Check size={14} strokeWidth={2.6} />
                   </div>
                   <div>
-                    <b>Calcul transparent</b>
-                    <span>avec vos hypothèses</span>
+                    <b>Sources vérifiables</b>
+                    <span>citées dans le guide</span>
                   </div>
                 </div>
               </div>

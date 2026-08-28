@@ -12,6 +12,7 @@ import {
   GuidePremiumSection,
 } from "@/components/guides/guide-premium-layout";
 import type { GuidePremiumFaqCategory } from "@/components/guides/guide-premium-types";
+import { TrackedGuideCtaLink } from "@/components/guides/tracked-guide-cta-link";
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import {
   buildGuideMetadata,
@@ -451,7 +452,6 @@ export default function Page() {
               height={900}
               sizes="(max-width: 1024px) 100vw, 760px"
               className="h-auto w-full"
-              priority
             />
           </div>
 
@@ -1253,7 +1253,13 @@ export default function Page() {
             </Link>
             . Si cet accompagnement correspond au test à mener, décrivez le
             besoin sur la page{" "}
-            <Link href="/demarrer-un-projet">démarrer un projet</Link>. Apportez
+            <TrackedGuideCtaLink
+              href="/demarrer-un-projet"
+              placement="article_end_inline"
+            >
+              démarrer un projet
+            </TrackedGuideCtaLink>
+            . Apportez
             la carte de test, les faits qui ont contredit votre idée, le rôle du
             payeur et les contraintes de données. Pour reprendre la démarche sur
             un autre sujet, consultez le{" "}

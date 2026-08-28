@@ -82,9 +82,19 @@ export default function Page() {
               <ArrowRight size={16} />
             </a>
             <Link href="/realisations" className="pf-secondary">
-              Voir les réalisations
+              Voir les produits du groupe
             </Link>
           </div>
+          {/* Une demande urgente ne doit pas attendre le prochain jour ouvré :
+              les deux canaux directs sont offerts ici comme partout ailleurs. */}
+          <p className="pf-success-direct">
+            Besoin de nous joindre avant&nbsp;?{" "}
+            <a href="tel:+33374472018">+33 3 74 47 20 18</a> ou{" "}
+            <a href="mailto:quentin@hagnere-patrimoine.fr">
+              quentin@hagnere-patrimoine.fr
+            </a>
+            .
+          </p>
         </div>
       </main>
       <LegalLinksFooter />

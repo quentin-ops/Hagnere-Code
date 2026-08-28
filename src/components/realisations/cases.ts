@@ -1,3 +1,59 @@
+/**
+ * Offre Hagnéré Code rattachable au *type* de produit analysé.
+ *
+ * Ces entrées décrivent uniquement nos services : elles ne décrivent aucune
+ * intervention sur les produits du groupe analysés dans ces fiches, et ne
+ * doivent jamais être présentées comme telles (CLAUDE.md, règle d'or).
+ */
+export type RelatedService = {
+  href: string;
+  label: string;
+  blurb: string;
+};
+
+export const RELATED_SERVICES: Record<string, RelatedService> = {
+  "saas-applications-metier": {
+    href: "/services/saas-applications-metier",
+    label: "Développement SaaS sur mesure",
+    blurb: "Plateformes métier, espaces clients, abonnements et facturation.",
+  },
+  "outils-internes-sur-mesure": {
+    href: "/services/outils-internes-sur-mesure",
+    label: "Outils internes sur mesure",
+    blurb: "Interfaces d'administration, workflows et automatisations métier.",
+  },
+  "maintenance-evolution": {
+    href: "/services/maintenance-evolution",
+    label: "Maintenance & évolution",
+    blurb: "Correctifs, mises à jour et évolutions après la mise en ligne.",
+  },
+  "securite-rgpd": {
+    href: "/services/securite-rgpd",
+    label: "Sécurité & RGPD",
+    blurb: "Conformité, hébergement en France, registre et sous-traitance.",
+  },
+  "sites-vitrines": {
+    href: "/services/sites-vitrines",
+    label: "Sites vitrines & landings",
+    blurb: "Sites de présentation orientés prise de contact et rendez-vous.",
+  },
+  "referencement-google": {
+    href: "/services/referencement-google",
+    label: "SEO & référencement",
+    blurb: "Contenu, technique et netlinking pour la recherche Google.",
+  },
+  "publicite-en-ligne": {
+    href: "/services/publicite-en-ligne",
+    label: "Publicité en ligne",
+    blurb: "Acquisition payante et mesure des conversions.",
+  },
+  "audit-technique": {
+    href: "/services/audit-technique",
+    label: "Audit technique",
+    blurb: "Revue de code, performance, sécurité et dette technique.",
+  },
+};
+
 export type CaseStudy = {
   slug: string;
   /** Title/description SEO dédiés (fallback : template brandName · category). */
@@ -29,6 +85,11 @@ export type CaseStudy = {
     role: string;
     initials: string;
   };
+  /**
+   * Clés de RELATED_SERVICES : l'offre Hagnéré Code correspondant au *type*
+   * de produit analysé. Jamais une prestation réalisée pour cette marque.
+   */
+  relatedServices: string[];
 };
 
 const PUBLIC_SOURCE_CHECKED_AT = "20 juillet 2026";
@@ -37,9 +98,9 @@ export const CASES: Record<string, CaseStudy> = {
   "lmnp-ai": {
     slug: "lmnp-ai",
     seo: {
-      title: "Analyse publique externe : LMNP.AI · Hagnéré Code",
+      title: "Produit du groupe : LMNP.AI · Hagnéré Code",
       description:
-        "Analyse éditoriale d'une source publique externe : fonctions et offres visibles sur LMNP.AI, sans attribution de sa conception à Hagnéré Code.",
+        "Analyse éditoriale d'un produit du groupe Hagnéré : fonctions et offres visibles sur LMNP.AI, sans attribution de sa conception à Hagnéré Code.",
     },
     brandName: "LMNP.AI",
     brandLogo: "L",
@@ -50,9 +111,9 @@ export const CASES: Record<string, CaseStudy> = {
     sourceCheckedAt: PUBLIC_SOURCE_CHECKED_AT,
     tagline: "Une page publique consacrée à la comptabilité LMNP/LMP au régime réel.",
     heroIntro:
-      "Cette analyse porte sur une source publique externe à Hagnéré Code. Elle recense uniquement les fonctions et offres affichées sur LMNP.AI et ne prouve ni l'auteur du code, ni l'équipe, ni la technologie utilisée, ni un résultat obtenu.",
-    status: "Analyse publique externe",
-    engagement: `Source externe consultée le ${PUBLIC_SOURCE_CHECKED_AT}`,
+      "LMNP.AI est un produit du groupe Hagnéré, pas un client indépendant. Cette analyse recense uniquement les fonctions et offres affichées sur LMNP.AI et ne prouve ni l'auteur du code, ni l'équipe, ni la technologie utilisée, ni un résultat obtenu.",
+    status: "Groupe Hagnéré · analyse publique",
+    engagement: `Page publique du groupe consultée le ${PUBLIC_SOURCE_CHECKED_AT}`,
     context:
       "La page publique présente un logiciel de comptabilité pour les loueurs en meublé LMNP ou LMP. Elle organise son offre autour de la tenue comptable, des amortissements, des documents fiscaux, de la transmission EDI, de deux niveaux d'accompagnement et de ressources éditoriales.",
     problem: [
@@ -128,14 +189,19 @@ export const CASES: Record<string, CaseStudy> = {
       role: "Note éditoriale de l'auteur · pas un avis client",
       initials: "QH",
     },
+    relatedServices: [
+      "saas-applications-metier",
+      "outils-internes-sur-mesure",
+      "maintenance-evolution",
+    ],
   },
 
   "sci-ai": {
     slug: "sci-ai",
     seo: {
-      title: "Analyse publique externe : SCI-AI.app · Hagnéré Code",
+      title: "Produit du groupe : SCI-AI.app · Hagnéré Code",
       description:
-        "Analyse éditoriale d'une source publique externe : fonctions visibles sur SCI-AI.app, sans attribution de sa conception à Hagnéré Code.",
+        "Analyse éditoriale d'un produit du groupe Hagnéré : fonctions visibles sur SCI-AI.app, sans attribution de sa conception à Hagnéré Code.",
     },
     brandName: "SCI-AI.app",
     brandLogo: "S",
@@ -146,9 +212,9 @@ export const CASES: Record<string, CaseStudy> = {
     sourceCheckedAt: PUBLIC_SOURCE_CHECKED_AT,
     tagline: "Une page publique consacrée à la comptabilité des SCI à l'IR et à l'IS.",
     heroIntro:
-      "Cette analyse porte sur une source publique externe à Hagnéré Code. Elle recense uniquement les fonctions et offres affichées sur SCI-AI.app et ne prouve ni l'auteur du code, ni l'équipe, ni la technologie utilisée, ni un résultat obtenu.",
-    status: "Analyse publique externe",
-    engagement: `Source externe consultée le ${PUBLIC_SOURCE_CHECKED_AT}`,
+      "SCI-AI.app est un produit du groupe Hagnéré, pas un client indépendant. Cette analyse recense uniquement les fonctions et offres affichées sur SCI-AI.app et ne prouve ni l'auteur du code, ni l'équipe, ni la technologie utilisée, ni un résultat obtenu.",
+    status: "Groupe Hagnéré · analyse publique",
+    engagement: `Page publique du groupe consultée le ${PUBLIC_SOURCE_CHECKED_AT}`,
     context:
       "La page publique présente un logiciel de comptabilité pour les SCI à l'IR et à l'IS. Elle expose les déclarations associées à chaque régime, la gestion des associés et des parts, des documents comptables et la transmission EDI.",
     problem: [
@@ -223,14 +289,19 @@ export const CASES: Record<string, CaseStudy> = {
       role: "Note éditoriale de l'auteur · pas un avis client",
       initials: "QH",
     },
+    relatedServices: [
+      "saas-applications-metier",
+      "outils-internes-sur-mesure",
+      "securite-rgpd",
+    ],
   },
 
   "hagnere-patrimoine": {
     slug: "hagnere-patrimoine",
     seo: {
-      title: "Analyse publique externe : Hagnéré Patrimoine",
+      title: "Société du groupe : Hagnéré Patrimoine",
       description:
-        "Analyse éditoriale d'une source publique externe : contenus visibles sur Hagnéré Patrimoine, sans attribution de sa conception à Hagnéré Code.",
+        "Analyse éditoriale d'une société du groupe Hagnéré : contenus visibles sur Hagnéré Patrimoine, sans attribution de sa conception à Hagnéré Code.",
     },
     brandName: "Hagnéré Patrimoine",
     brandLogo: "HP",
@@ -241,9 +312,9 @@ export const CASES: Record<string, CaseStudy> = {
     sourceCheckedAt: PUBLIC_SOURCE_CHECKED_AT,
     tagline: "Un site public qui organise expertises, simulateurs, guides et prise de contact.",
     heroIntro:
-      "Cette analyse porte sur une source publique externe à Hagnéré Code. Elle recense uniquement les contenus et parcours visibles sur Hagnéré Patrimoine et ne prouve ni l'auteur du code, ni un outil interne, ni l'équipe, ni la technologie utilisée, ni une performance commerciale.",
-    status: "Analyse publique externe",
-    engagement: `Source externe consultée le ${PUBLIC_SOURCE_CHECKED_AT}`,
+      "Hagnéré Patrimoine est une société du groupe Hagnéré, pas un client indépendant. Cette analyse recense uniquement les contenus et parcours visibles sur son site et ne prouve ni l'auteur du code, ni un outil interne, ni l'équipe, ni la technologie utilisée, ni une performance commerciale.",
+    status: "Groupe Hagnéré · analyse publique",
+    engagement: `Page publique du groupe consultée le ${PUBLIC_SOURCE_CHECKED_AT}`,
     context:
       "La page publique présente un cabinet de gestion de patrimoine et de fortune, ses informations réglementaires, un catalogue d'expertises, des simulateurs, des guides et plusieurs portes d'entrée vers un rendez-vous ou un bilan patrimonial.",
     problem: [
@@ -318,14 +389,19 @@ export const CASES: Record<string, CaseStudy> = {
       role: "Note éditoriale de l'auteur · pas un avis client",
       initials: "QH",
     },
+    relatedServices: [
+      "sites-vitrines",
+      "referencement-google",
+      "audit-technique",
+    ],
   },
 
   "hagnere-investissement": {
     slug: "hagnere-investissement",
     seo: {
-      title: "Analyse publique externe : Hagnéré Investissement",
+      title: "Société du groupe : Hagnéré Investissement",
       description:
-        "Analyse éditoriale d'une source publique externe : contenus visibles sur Hagnéré Investissement, sans attribution de sa conception à Hagnéré Code.",
+        "Analyse éditoriale d'une société du groupe Hagnéré : contenus visibles sur Hagnéré Investissement, sans attribution de sa conception à Hagnéré Code.",
     },
     brandName: "Hagnéré Investissement",
     brandLogo: "HI",
@@ -336,9 +412,9 @@ export const CASES: Record<string, CaseStudy> = {
     sourceCheckedAt: PUBLIC_SOURCE_CHECKED_AT,
     tagline: "Un site public qui présente un service, un mini-simulateur et une prise de rendez-vous.",
     heroIntro:
-      "Cette analyse porte sur une source publique externe à Hagnéré Code. Elle recense uniquement les contenus et parcours visibles sur Hagnéré Investissement et ne prouve ni l'auteur du code, ni l'équipe, ni la technologie, ni les canaux d'acquisition, ni les résultats commerciaux.",
-    status: "Analyse publique externe",
-    engagement: `Source externe consultée le ${PUBLIC_SOURCE_CHECKED_AT}`,
+      "Hagnéré Investissement est une société du groupe Hagnéré, pas un client indépendant. Cette analyse recense uniquement les contenus et parcours visibles sur son site et ne prouve ni l'auteur du code, ni l'équipe, ni la technologie, ni les canaux d'acquisition, ni les résultats commerciaux.",
+    status: "Groupe Hagnéré · analyse publique",
+    engagement: `Page publique du groupe consultée le ${PUBLIC_SOURCE_CHECKED_AT}`,
     context:
       "La page publique présente un accompagnement en investissement locatif clé en main. Elle expose le service et sa tarification, un mini-simulateur indicatif, des pages d'information, des partenaires et plusieurs liens de prise de rendez-vous.",
     problem: [
@@ -413,6 +489,11 @@ export const CASES: Record<string, CaseStudy> = {
       role: "Note éditoriale de l'auteur · pas un avis client",
       initials: "QH",
     },
+    relatedServices: [
+      "sites-vitrines",
+      "referencement-google",
+      "publicite-en-ligne",
+    ],
   },
 };
 

@@ -10,8 +10,27 @@ import { isAnalyticsAllowed } from "@/lib/cookie-consent";
 type EventProps = Record<string, string | number | boolean | undefined>;
 
 export const FUNNEL_EVENT_NAMES = [
+  "contact_form_open",
+  "contact_form_submit_error",
+  "contact_form_submit_success",
   "excel_diagnostic_result_copy",
   "guide_cta_click",
+  // Confirmation d'un créneau pris depuis l'embarqué Calendly. `FunnelEventName`
+  // est une union fermée et la route API n'accepte que les noms de cette liste.
+  //
+  // Émis par GoogleMeasurement, seul point de montage global de la mesure : il
+  // écoute le `CustomEvent` que `trackCalendlyEvent` diffuse déjà sur `window`.
+  // Le nom a longtemps été déclaré ici SANS émetteur — l'écouteur du widget,
+  // construit en parallèle, n'envoyait qu'un événement gtag nommé
+  // (`calendly_booking_confirmed`, sans `send_to`), donc rien dans la table
+  // first-party. La prise de rendez-vous, premier canal de conversion mis en
+  // avant sur le site, n'y laissait aucune ligne.
+  //
+  // Ce n'est PAS une conversion Google Ads : seul `trackLeadConversion` envoie
+  // un `send_to` avec le libellé de conversion, et aucun libellé n'a été créé
+  // pour Calendly. Le rattachement se fait côté Google, à partir de l'événement
+  // gtag nommé — ce qui suppose un identifiant GA4 configuré.
+  "pf:calendly_booking_confirmed",
   "pf:funnel_open",
   "pf:landing_cta_click",
   "pf:lead_confirmed",
@@ -31,6 +50,32 @@ export const FUNNEL_EVENT_NAMES = [
 ] as const;
 
 export type FunnelEventName = (typeof FUNNEL_EVENT_NAMES)[number];
+
+/**
+ * Événements à n'écrire qu'une fois par valeur de propriété, dans la durée de
+ * vie du document courant.
+ *
+ * `pf:step_complete` est émis à chaque appui sur « Continuer ». Un visiteur qui
+ * revient en arrière puis avance à nouveau — le tunnel expose un bouton
+ * « Retour » — produisait autant de lignes que d'allers-retours : le taux de
+ * complétion par étape, qui pilotera les enchères, était mécaniquement gonflé
+ * par les hésitations. La déduplication porte sur le couple (nom, étape) et ne
+ * conserve aucune donnée : ni identifiant, ni horodatage, ni écriture dans le
+ * navigateur. Elle disparaît avec l'onglet ou le rechargement de la page.
+ */
+const DEDUPED_BY_PROPERTY: Partial<Record<FunnelEventName, string>> = {
+  "pf:step_complete": "step",
+};
+
+const emittedOnce = new Set<string>();
+
+/**
+ * Vide la mémoire de déduplication. Utilisé par les tests ; en production, le
+ * cycle de vie du document suffit.
+ */
+export function resetFunnelDeduplication(): void {
+  emittedOnce.clear();
+}
 
 /**
  * La mesure reste explicitement inactive tant que le stockage, la bannière et
@@ -54,6 +99,13 @@ export function trackFunnelEvent(
   const cleanProps: EventProps = {};
   for (const [k, v] of Object.entries(props)) {
     if (v !== undefined) cleanProps[k] = v;
+  }
+
+  const dedupeProperty = DEDUPED_BY_PROPERTY[name];
+  if (dedupeProperty) {
+    const key = `${name}|${String(cleanProps[dedupeProperty] ?? "")}`;
+    if (emittedOnce.has(key)) return;
+    emittedOnce.add(key);
   }
 
   const payload = JSON.stringify({

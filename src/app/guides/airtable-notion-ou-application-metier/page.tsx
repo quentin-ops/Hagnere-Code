@@ -9,6 +9,7 @@ import {
   GuidePremiumSection,
 } from "@/components/guides/guide-premium-layout";
 import type { GuidePremiumFaqCategory } from "@/components/guides/guide-premium-types";
+import { TrackedGuideCtaLink } from "@/components/guides/tracked-guide-cta-link";
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import { formatGuideDate } from "@/lib/guides";
 import { TEAM } from "@/lib/team";
@@ -313,6 +314,11 @@ export default function Page() {
           titleEnd: "et une application métier.",
           subtitle:
             "Usage, permissions, hors-ligne, API, export, résidence des données, RGPD et migration progressive.",
+          ctaTitle: "Une question qui reste ouverte sur votre base ?",
+          ctaDescription:
+            "Décrivez l’usage réel, les droits attendus et ce que la sortie doit restituer, sans donnée personnelle ni identifiant d’accès.",
+          ctaLabel: "Décrire ma situation Airtable ou Notion",
+          ctaHref: "/demarrer-un-projet",
         }}
         legalSources={[
           {
@@ -559,7 +565,6 @@ export default function Page() {
               width={1600}
               height={900}
               className="h-auto w-full"
-              priority
             />
             <figcaption className="px-5 py-3 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">
               L’ordre compte : observer, tester, documenter, puis choisir. Le
@@ -1548,7 +1553,13 @@ export default function Page() {
           <p>
             Si vous souhaitez un regard extérieur, transmettez le dossier sans
             donnée personnelle ni secret via la page{" "}
-            <Link href="/demarrer-un-projet">démarrer un projet</Link>. Le
+            <TrackedGuideCtaLink
+              href="/demarrer-un-projet"
+              placement="article_end_inline"
+            >
+              démarrer un projet
+            </TrackedGuideCtaLink>
+            . Le
             premier échange doit pouvoir conclure que l’outil actuel reste
             préférable. Demandez une proposition de développement seulement
             lorsque la limite, la valeur attendue, les responsabilités et la

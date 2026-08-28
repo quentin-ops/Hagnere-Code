@@ -3,13 +3,23 @@ import type { GuideEntry } from "./guides";
 import { guideRobots, guideUrl } from "./guides";
 import {
   ORGANIZATION_ID,
-  QUENTIN_HAGNERE_ID,
+  QUENTIN_HAGNERE_PERSON,
   QUENTIN_HAGNERE_URL,
 } from "./organization-structured-data";
 import { OG_BASE, SITE_URL } from "./seo";
 import { TEAM } from "./team";
 
 export const GUIDES_COLLECTION_ID = `${SITE_URL}/guides#collection`;
+
+/**
+ * Nom de la collection éditoriale, à côté de son `@id`.
+ *
+ * Chaque Article publié déclare `isPartOf` vers la même CollectionPage : le
+ * nom doit être écrit une fois, jamais retapé au fil des pages. Deux
+ * orthographes du même nœud dans un même graphe se lisent comme deux
+ * collections.
+ */
+export const GUIDES_COLLECTION_NAME = "Guides Hagnéré Code";
 
 export function buildGuideMetadata(
   guide: GuideEntry,
@@ -72,17 +82,9 @@ export function buildGuideStructuredData(
       isPartOf: {
         "@type": "CollectionPage",
         "@id": GUIDES_COLLECTION_ID,
-        name: "Guides Hagnéré Code",
+        name: GUIDES_COLLECTION_NAME,
       },
-      author: {
-        "@type": "Person",
-        "@id": QUENTIN_HAGNERE_ID,
-        name: TEAM.quentin.fullName,
-        jobTitle: TEAM.quentin.role,
-        url: QUENTIN_HAGNERE_URL,
-        sameAs: TEAM.quentin.linkedin ? [TEAM.quentin.linkedin] : undefined,
-        worksFor: { "@id": ORGANIZATION_ID },
-      },
+      author: QUENTIN_HAGNERE_PERSON,
       publisher: {
         "@type": "Organization",
         "@id": ORGANIZATION_ID,

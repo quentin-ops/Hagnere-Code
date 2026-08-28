@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   description: "La page demandée n'existe pas ou a été déplacée.",
   // index:false (ne pas indexer la 404) mais follow:true pour que Google
   // suive les liens de récupération vers /, /services, /contact ci-dessous.
+  //
+  // Cette déclaration est nécessaire : sans elle, c'est la directive du layout
+  // racine qui s'applique (`index, follow` en production). Next.js ajoute par
+  // ailleurs sa propre balise `noindex` sur la 404 — il y a donc toujours deux
+  // balises, toutes deux en noindex. Le contrôle postbuild le tolère.
   robots: { index: false, follow: true },
 };
 

@@ -44,9 +44,11 @@ function compose(raw: string): string {
 
   // Le contenu visible et le JSON-LD utilisent la même source structurée.
   // Le bloc historique du template est remplacé avant toute autre insertion.
+  // body.ts se termine désormais sur ce marqueur : la CTA finale et le
+  // <footer> hérités en ont été retirés, ils sont rendus par <SiteFooter />.
   out = out.replace(
-    /<!-- FAQ -->[\s\S]*?(?=<!-- CTA -->)/,
-    ecommerceFaqSectionHtml.trim() + "\n\n",
+    /<!-- FAQ -->[\s\S]*$/,
+    ecommerceFaqSectionHtml.trim() + "\n",
   );
 
   // Logo wall + Problems ordering: logo wall goes right after HERO, before PROBLEMS.
@@ -101,11 +103,9 @@ function compose(raw: string): string {
       "\n\n<!-- FAQ -->",
   );
 
-  // Tech FAQ : après FAQ commerciale, avant CTA (qui sera strippé ensuite)
-  out = out.replace(
-    "<!-- CTA -->",
-    techFaqHtml.trim() + "\n\n<!-- CTA -->",
-  );
+  // TECH FAQ : dernière section du document. La CTA finale et le <footer>
+  // hérités ont été retirés de body.ts — ils sont rendus par <SiteFooter />.
+  out = out.trimEnd() + "\n\n" + techFaqHtml.trim() + "\n";
 
   return out;
 }

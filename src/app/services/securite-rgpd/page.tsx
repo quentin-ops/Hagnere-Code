@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SecuriteRgpd } from "@/components/securite-rgpd/SecuriteRgpd";
 import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
+import { PUBLIC_ORGANIZATION_ENTITY } from "@/lib/organization-structured-data";
 
 export const metadata: Metadata = {
   title: "Audit sécurité & conformité RGPD, AI Act · Hagnéré Code",
@@ -24,25 +25,11 @@ const serviceJsonLd = JSON.stringify({
   name: "Audit sécurité et conformité RGPD, AI Act",
   url: "https://hagnere-code.ai/services/securite-rgpd",
   serviceType: "Audit technique RGPD et AI Act, remédiation de sécurité",
-  provider: {
-    "@type": "Organization",
-    name: "Hagnéré Code",
-    "@id": "https://hagnere-code.ai/#organization",
-    legalName: "HAGNERE CODE",
-    vatID: "FR30993672856",
-    url: "https://hagnere-code.ai",
-    logo: "https://hagnere-code.ai/logos/logo-dark.png",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "82 impasse de Bellevue",
-      postalCode: "73000",
-      addressLocality: "Bassens",
-      addressRegion: "Savoie",
-      addressCountry: "FR",
-    },
-    email: "quentin@hagnere-patrimoine.fr",
-    telephone: "+33374472018",
-  },
+  // Fournisseur = l'entité publique unique, importée du registre plutôt que
+  // recopiée : adresse, TVA, e-mail et téléphone n'existent qu'à un seul
+  // endroit, et la forme du logo reste celle validée pour Google (ImageObject
+  // dimensionné) sur toutes les pages.
+  provider: PUBLIC_ORGANIZATION_ENTITY,
   areaServed: { "@type": "Country", name: "France" },
   description:
     "Audit technique pour PME et équipes produit : cartographie des sous-traitants et flux, analyse des mesures de sécurité, documentation des écarts et remédiation codée. Les qualifications juridiques et missions de DPO restent validées par le professionnel désigné par le client.",

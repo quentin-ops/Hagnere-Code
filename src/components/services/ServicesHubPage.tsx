@@ -28,10 +28,33 @@ import "@/components/design-shared/nav-dropdown.css";
 import "@/components/design-shared/responsive.css";
 import "@/components/design-shared/site-footer.css";
 
+/**
+ * Taxonomie unique du site : la navigation (`nav-html.ts`) et l'accueil
+ * (`homepage/body.ts`) rangent les onze services sous trois familles —
+ * « Construire », « Faire grandir », « Protéger & opérer ». Le hub reprend
+ * exactement ces trois familles : un visiteur qui bascule du menu au catalogue
+ * doit retrouver le même rangement, pas une quatrième classification.
+ */
+type FamilyId = "build" | "grow" | "operate";
+
+type Family = {
+  id: FamilyId;
+  /** Libellé repris tel quel de la navigation et de l'accueil. */
+  kicker: string;
+  title: string;
+  text: string;
+  /** Service représentatif : cible de la voie d'orientation du héros. */
+  href: string;
+  lane: string;
+  laneText: string;
+  accent: "purple" | "blue" | "green";
+};
+
 type Service = {
   href: string;
   label: string;
   eyebrow: string;
+  family: FamilyId;
   title: string;
   description: string;
   proof: string;
@@ -41,6 +64,39 @@ type Service = {
   accent: "purple" | "blue" | "green" | "amber" | "red" | "slate";
   icon: ComponentType<{ size?: number; strokeWidth?: number }>;
 };
+
+const families: Family[] = [
+  {
+    id: "build",
+    kicker: "Construire",
+    title: "Créer le produit ou l'outil dont votre équipe a besoin.",
+    text: "Du site vitrine au SaaS métier : on transforme un besoin en interface utilisable, maintenable et connectée à vos outils.",
+    href: "/services/saas-applications-metier",
+    lane: "SaaS, outils, sites, e-commerce, mobile",
+    laneText: "Créer un actif produit.",
+    accent: "purple",
+  },
+  {
+    id: "grow",
+    kicker: "Faire grandir",
+    title: "Générer plus de demandes qualifiées après la mise en ligne.",
+    text: "Un bon produit ne suffit pas toujours : on travaille l'acquisition, le contenu et la mesure de la conversion.",
+    href: "/services/referencement-google",
+    lane: "SEO, ads, contenu vidéo",
+    laneText: "Générer la demande.",
+    accent: "blue",
+  },
+  {
+    id: "operate",
+    kicker: "Protéger & opérer",
+    title: "Garder le produit fiable, sécurisé et capable d'évoluer.",
+    text: "Après la livraison, on reste pour maintenir, auditer, sécuriser et faire évoluer votre socle sans repartir de zéro.",
+    href: "/services/maintenance-evolution",
+    lane: "Maintenance, sécurité, audit",
+    laneText: "Stabiliser, sécuriser, faire évoluer.",
+    accent: "green",
+  },
+];
 
 type RouteCard = {
   title: string;
@@ -55,13 +111,14 @@ const services: Service[] = [
     href: "/services/saas-applications-metier",
     label: "SaaS sur mesure",
     eyebrow: "Produit",
+    family: "build",
     title: "Concevoir un SaaS exploitable et réversible.",
     description:
       "MVP SaaS, portail client, app métier, API, auth, facturation, IA et back-office. On part du besoin business et on livre un produit exploitable.",
-    proof: "MVP cadré et chiffré au devis",
+    proof: "Auth, facturation, back-office et API livrés",
     idealFor: "Création ou refonte produit",
     duration: "Sur devis",
-    budget: "Sur devis",
+    budget: "À partir de 15 k€ HT",
     accent: "purple",
     icon: Layers3,
   },
@@ -69,13 +126,14 @@ const services: Service[] = [
     href: "/services/outils-internes-sur-mesure",
     label: "Outils internes",
     eyebrow: "Ops",
+    family: "build",
     title: "Sortir d'Excel sans créer une usine à gaz.",
     description:
       "CRM métier, back-office, pipeline Kanban, automatisations, documents, relances, reporting. Le bon outil pour un processus précis.",
-    proof: "Premier workflow chiffré au devis",
+    proof: "Workflow automatisé branché à vos outils",
     idealFor: "Excel, Notion, process manuel",
     duration: "Sur devis",
-    budget: "Sur devis",
+    budget: "À partir de 8 k€ HT",
     accent: "green",
     icon: Wrench,
   },
@@ -83,13 +141,14 @@ const services: Service[] = [
     href: "/services/sites-vitrines",
     label: "Sites vitrines",
     eyebrow: "Conversion",
+    family: "build",
     title: "Un site clair, rapide, crédible et orienté leads.",
     description:
       "Site institutionnel, landing pages, architecture SEO, contenus, tracking, formulaires, pages locales et pages offres.",
     proof: "Pages prêtes pour campagnes et SEO",
     idealFor: "PME, cabinets, offres premium",
     duration: "Sur devis",
-    budget: "Sur devis",
+    budget: "À partir de 6,9 k€ HT",
     accent: "blue",
     icon: Gauge,
   },
@@ -97,13 +156,14 @@ const services: Service[] = [
     href: "/services/ecommerce",
     label: "E-commerce",
     eyebrow: "Vente",
+    family: "build",
     title: "Boutiques, catalogues et tunnels qui tiennent la marge.",
     description:
-      "Catalogue, tunnel, paiement, ERP, stock, facturation, tracking server-side et SEO produit. Alternative maîtrisée au bricolage Shopify.",
+      "Catalogue, tunnel, paiement, ERP, stock, facturation, tracking server-side et SEO produit. Shopify Plus outillé ou stack headless, selon votre contrainte.",
     proof: "Tunnel + tracking + catalogue propre",
     idealFor: "Retail, B2B, catalogue complexe",
     duration: "Sur devis",
-    budget: "Sur devis",
+    budget: "À partir de 15 k€ HT",
     accent: "amber",
     icon: ShoppingCart,
   },
@@ -111,10 +171,11 @@ const services: Service[] = [
     href: "/services/application-mobile",
     label: "Application mobile",
     eyebrow: "Mobile",
+    family: "build",
     title: "Une vraie app iOS + Android, publiée sous vos comptes stores.",
     description:
       "App React Native + Expo, paiement, push, mode hors-ligne et soumission aux stores selon le périmètre. Comptes, accès, livrables et droits sont écrits au devis.",
-    proof: "MVP cadré et chiffré au devis",
+    proof: "Soumission App Store et Play Store incluse",
     idealFor: "Fidélité, RDV, e-com, terrain B2B",
     duration: "Sur devis",
     budget: "Sur devis",
@@ -125,10 +186,11 @@ const services: Service[] = [
     href: "/services/referencement-google",
     label: "SEO Google",
     eyebrow: "Acquisition",
+    family: "grow",
     title: "Construire une machine d'acquisition durable.",
     description:
       "Audit technique, contenus, cocons, maillage, schema.org, performance, Search Console et pages à intention business.",
-    proof: "Architecture + production + reporting",
+    proof: "Constats reliés à des URL et priorisés",
     idealFor: "Trafic qualifié long terme",
     duration: "Sur devis",
     budget: "Sur devis",
@@ -139,13 +201,14 @@ const services: Service[] = [
     href: "/services/publicite-en-ligne",
     label: "Publicité en ligne",
     eyebrow: "Acquisition",
+    family: "grow",
     title: "Ads pilotées par la marge, pas par les impressions.",
     description:
       "Google, Meta, LinkedIn, TikTok, YouTube, landing pages, tracking server-side, CRM et tableaux de bord orientés CAC.",
-    proof: "Tracking propre avant scaling",
+    proof: "Tracking server-side avant toute montée en budget",
     idealFor: "Demande active ou retargeting",
     duration: "Mensuel",
-    budget: "Sur devis",
+    budget: "Dès 1 800 € HT/mois",
     accent: "red",
     icon: Sparkles,
   },
@@ -153,13 +216,14 @@ const services: Service[] = [
     href: "/services/contenu-video",
     label: "Contenu & vidéo",
     eyebrow: "Marque",
+    family: "grow",
     title: "Rendre visible ce que vous savez déjà faire.",
     description:
       "Vidéos, scripts, motion, formats courts, YouTube, pages de preuve, contenus experts et assets réutilisables en ads ou sales.",
     proof: "Pipeline contenu + diffusion",
     idealFor: "Expertise difficile à expliquer",
     duration: "Sprint ou récurrent",
-    budget: "Sur devis",
+    budget: "À partir de 2 500 € HT/vidéo",
     accent: "slate",
     icon: PlaySquare,
   },
@@ -167,13 +231,14 @@ const services: Service[] = [
     href: "/services/maintenance-evolution",
     label: "Maintenance & évolution",
     eyebrow: "Run",
+    family: "operate",
     title: "Reprendre, stabiliser et faire évoluer sans tout refaire.",
     description:
       "TMA Next.js / Laravel, dette technique, monitoring, dépendances, incidents, roadmap, documentation et passation propre.",
     proof: "Audit flash puis run mensuel",
     idealFor: "App existante, équipe absente",
     duration: "Audit + mensuel",
-    budget: "Sur devis",
+    budget: "Audit dès 2 000 € HT",
     accent: "green",
     icon: Clock3,
   },
@@ -181,13 +246,14 @@ const services: Service[] = [
     href: "/services/audit-technique",
     label: "Audit technique",
     eyebrow: "Diagnostic",
+    family: "operate",
     title: "Savoir où agir avant d'empiler des tickets.",
     description:
       "Audit code, performance, SEO technique, sécurité, dette, infra, tracking et roadmap priorisée. On transforme le flou en décisions.",
-    proof: "Rapport actionnable + plan chiffré",
+    proof: "Rapport PDF 40-70 p. + backlog chiffré",
     idealFor: "Avant refonte, reprise ou levée",
     duration: "10 j ouvrés",
-    budget: "Sur devis",
+    budget: "À partir de 8 000 € HT",
     accent: "slate",
     icon: LockKeyhole,
   },
@@ -195,17 +261,36 @@ const services: Service[] = [
     href: "/services/securite-rgpd",
     label: "Sécurité & RGPD",
     eyebrow: "Confiance",
+    family: "operate",
     title: "Rendre vos outils vendables aux DPO, RSSI et grands comptes.",
     description:
       "Audit sécurité, RGPD, DPA, registre, flux, droits, hébergement, logs, durées de conservation et corrections prioritaires.",
-    proof: "Plan d'action exploitable",
+    proof: "Constats sécurité et RGPD priorisés",
     idealFor: "Données sensibles, due diligence",
     duration: "Sur devis",
-    budget: "Sur devis",
+    budget: "Cadrage dès 5 000 € HT",
     accent: "purple",
     icon: ShieldCheck,
   },
 ];
+
+/**
+ * Le titre du catalogue est dérivé des tableaux réellement rendus : il ne peut
+ * plus annoncer un nombre de services ni un nombre de familles différents de ce
+ * que la page affiche.
+ */
+export const CATALOG_HEADING = `${services.length} services, ${families.length} familles, une seule logique : livrer utile.`;
+
+/** Exposé pour les tests d'invariants : le catalogue doit refléter SERVICE_LINKS. */
+export const SERVICE_CARDS: ReadonlyArray<Service> = services;
+
+/** Exposé pour les tests d'invariants : mêmes familles que la nav et l'accueil. */
+export const SERVICE_FAMILIES: ReadonlyArray<Family> = families;
+
+/** Cartes d'une famille, dans l'ordre du catalogue. */
+export function servicesOfFamily(id: FamilyId): Service[] {
+  return services.filter((service) => service.family === id);
+}
 
 const routes: RouteCard[] = [
   {
@@ -241,7 +326,7 @@ const routes: RouteCard[] = [
 const bundles = [
   {
     name: "Cadrage premium",
-    price: "Gratuit ou déductible",
+    price: "1 500 € HT · déduit si phase 2, conditions au devis",
     text: "30 min pour qualifier, puis atelier si le périmètre mérite d'être verrouillé avant devis.",
     links: [
       { href: "/contact", label: "Contact" },
@@ -269,7 +354,7 @@ const bundles = [
 ];
 
 const proofLinks = [
-  { href: "/realisations", label: "Réalisations", value: "4 études publiques déclaratives" },
+  { href: "/realisations", label: "Réalisations", value: "4 produits du groupe, en ligne" },
   { href: "/demarrer-un-projet", label: "Décrire mon projet", value: "Objectif : prochain jour ouvré" },
   { href: "/outils/calculateur-cout-excel", label: "Coût Excel", value: "Comparaison brute sur 3 ans" },
   { href: "/equipe", label: "Équipe", value: `${TEAM_TOTAL_COUNT} personnes · équipe nommée` },
@@ -293,7 +378,7 @@ export function ServicesHubPage() {
                 <span /> Services web, SaaS et outils métier
               </div>
               <h1>
-                Nos services web, SaaS et outils métier.
+                Nos services web, SaaS et outils métier.{" "}
                 <br />
                 <span className="services-hero-accent">Le bon levier avant le chantier.</span>
               </h1>
@@ -317,33 +402,24 @@ export function ServicesHubPage() {
                   <span className="router-status" />
                   Orientation projet
                 </div>
-                <b>4 familles</b>
+                <b>{families.length} familles</b>
               </div>
               <div className="router-lanes">
-                <Link href="/services/saas-applications-metier" className="router-lane router-lane-purple">
-                  <span>Construire</span>
-                  <b>SaaS, apps métier, e-commerce</b>
-                  <em>Créer un actif produit.</em>
-                </Link>
-                <Link href="/services/referencement-google" className="router-lane router-lane-blue">
-                  <span>Faire grandir</span>
-                  <b>SEO, ads, contenu vidéo</b>
-                  <em>Générer la demande.</em>
-                </Link>
-                <Link href="/services/maintenance-evolution" className="router-lane router-lane-green">
-                  <span>Opérer</span>
-                  <b>Maintenance, reprise, audit</b>
-                  <em>Stabiliser puis faire évoluer.</em>
-                </Link>
-                <Link href="/services/securite-rgpd" className="router-lane router-lane-amber">
-                  <span>Protéger</span>
-                  <b>Sécurité, RGPD, DPA</b>
-                  <em>Rendre le projet vendable.</em>
-                </Link>
+                {families.map((family) => (
+                  <Link
+                    href={family.href}
+                    className={`router-lane router-lane-${family.accent}`}
+                    key={family.id}
+                  >
+                    <span>{family.kicker}</span>
+                    <b>{family.lane}</b>
+                    <em>{family.laneText}</em>
+                  </Link>
+                ))}
               </div>
               <div className="router-footer">
                 <span><Check size={14} /> Forfait fixe</span>
-                <span><Check size={14} /> Code chez vous</span>
+                <span><Check size={14} /> Dépôt et accès au devis</span>
                 <span><Check size={14} /> Associé qui code</span>
               </div>
             </div>
@@ -382,41 +458,61 @@ export function ServicesHubPage() {
             <div className="section-head">
               <div className="left">
                 <div className="eyebrow">Catalogue complet</div>
-                <h2>Dix services, une seule logique : livrer utile.</h2>
+                <h2>{CATALOG_HEADING}</h2>
               </div>
               <p className="right">
-                Chaque service peut vivre seul, mais les meilleurs projets combinent souvent produit, acquisition, run et confiance.
+                Le catalogue reprend les <b>{families.length} familles du menu</b>&nbsp;: construire, faire grandir,
+                protéger &amp; opérer. Chaque service peut vivre seul, mais les meilleurs projets en combinent plusieurs.
+                Les budgets affichés sont des <b>ordres de grandeur indicatifs</b>, repris de la{" "}
+                <Link href="/tarifs">grille tarifaire</Link>&nbsp;: seul le devis nominatif engage les parties.{" "}
+                <b>Tous nos prix sont indiqués hors taxes, TVA 20&nbsp;% en sus</b>, pour une clientèle professionnelle.
               </p>
             </div>
 
-            <div className="service-grid">
-              {services.map((service) => {
-                const Icon = service.icon;
-                return (
-                  <article className={`service-card service-card-${service.accent}`} key={service.href}>
-                    <Link href={service.href} className="service-card-link">
-                      <div className="service-card-top">
-                        <div className="service-card-icon"><Icon size={18} /></div>
-                        <span>{service.eyebrow}</span>
-                      </div>
-                      <h3>{service.label}</h3>
-                      <p className="service-card-title">{service.title}</p>
-                      <p className="service-card-text">{service.description}</p>
-                      <div className="service-card-proof">
-                        <Check size={14} /> {service.proof}
-                      </div>
-                      <div className="service-card-meta">
-                        <span><Compass size={13} /> {service.idealFor}</span>
-                        <span><Clock3 size={13} /> {service.duration}</span>
-                        <span><Euro size={13} /> {service.budget}</span>
-                      </div>
-                      <div className="service-card-cta">
-                        Explorer <ArrowIcon />
-                      </div>
-                    </Link>
-                  </article>
-                );
-              })}
+            <div className="service-families">
+              {families.map((family) => (
+                <section
+                  className={`service-family service-family-${family.accent}`}
+                  key={family.id}
+                  aria-labelledby={`famille-${family.id}`}
+                >
+                  <div className="service-family-head">
+                    <span className="service-family-kicker">{family.kicker}</span>
+                    <h3 id={`famille-${family.id}`}>{family.title}</h3>
+                    <p>{family.text}</p>
+                  </div>
+
+                  <div className="service-grid">
+                    {servicesOfFamily(family.id).map((service) => {
+                      const Icon = service.icon;
+                      return (
+                        <article className={`service-card service-card-${service.accent}`} key={service.href}>
+                          <Link href={service.href} className="service-card-link">
+                            <div className="service-card-top">
+                              <div className="service-card-icon"><Icon size={18} /></div>
+                              <span>{service.eyebrow}</span>
+                            </div>
+                            <h4>{service.label}</h4>
+                            <p className="service-card-title">{service.title}</p>
+                            <p className="service-card-text">{service.description}</p>
+                            <div className="service-card-proof">
+                              <Check size={14} /> {service.proof}
+                            </div>
+                            <div className="service-card-meta">
+                              <span><Compass size={13} /> {service.idealFor}</span>
+                              <span><Clock3 size={13} /> {service.duration}</span>
+                              <span><Euro size={13} /> {service.budget}</span>
+                            </div>
+                            <div className="service-card-cta">
+                              Explorer <ArrowIcon />
+                            </div>
+                          </Link>
+                        </article>
+                      );
+                    })}
+                  </div>
+                </section>
+              ))}
             </div>
           </div>
         </section>

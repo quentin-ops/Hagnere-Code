@@ -12,6 +12,7 @@ import {
   GuidePremiumSection,
 } from "@/components/guides/guide-premium-layout";
 import type { GuidePremiumFaqCategory } from "@/components/guides/guide-premium-types";
+import { TrackedGuideCtaLink } from "@/components/guides/tracked-guide-cta-link";
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import {
   buildGuideMetadata,
@@ -364,7 +365,6 @@ export default function Page() {
               sizes="(max-width: 768px) calc(100vw - 32px), 760px"
               alt="Passage contrôlé de l’ancien au nouveau logiciel avec une source d’écriture unique, un seuil de décision et un trajet de retour"
               className="h-auto w-full"
-              priority
             />
             <figcaption className="border-t border-zinc-200 px-4 py-3 text-sm leading-relaxed text-zinc-600 dark:border-zinc-800 dark:text-zinc-300 sm:px-5">
               La trajectoire aller ne suffit pas. Le plan réserve un seuil de
@@ -1195,10 +1195,20 @@ export default function Page() {
             </Link>
             . Lorsque l’existant et la cible sont connus, décrivez ensuite les
             parcours, la fenêtre et les dépendances dans la page{" "}
-            <Link href="/demarrer-un-projet">démarrer un projet</Link>. Le
-            premier échange sert à qualifier la prochaine preuve ou à constater
-            qu’un autre chemin est préférable ; il ne vaut pas promesse de
-            bascule.
+            <TrackedGuideCtaLink
+              href="/demarrer-un-projet"
+              placement="article_end_inline"
+            >
+              démarrer un projet
+            </TrackedGuideCtaLink>
+            . Le premier échange sert à qualifier la prochaine preuve ou à
+            constater qu’un autre chemin est préférable ; il ne vaut pas
+            promesse de bascule. Le périmètre que nous prenons en charge sur ce
+            type de sujet est décrit sur la page{" "}
+            <Link href="/services/outils-internes-sur-mesure">
+              outils internes sur mesure
+            </Link>
+            .
           </p>
 
           <p>

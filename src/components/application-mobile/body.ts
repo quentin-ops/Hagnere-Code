@@ -1,7 +1,4 @@
-import { navHtml } from "@/components/design-shared/nav-html";
-
 export const bodyHtml = `
-${navHtml}
 <!-- BREADCRUMB -->
 <div class="wrap">
   <div class="crumb">
@@ -232,6 +229,7 @@ ${navHtml}
 
       <!-- Phone 2 — back, "App Store / Play Store" listings card overlay -->
       <div class="mob-store-card">
+        <div class="mob-store-card-flag">MAQUETTE · DONNÉES FICTIVES</div>
         <div class="mob-store-card-head">
           <div class="mob-store-card-ic">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.1zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
@@ -242,16 +240,17 @@ ${navHtml}
           </div>
         </div>
         <div class="mob-store-card-rating">
-          <span class="mob-store-card-stars">★★★★★</span>
-          <span class="mob-store-card-rate">4,9 · 184 avis</span>
+          <span class="mob-store-card-stars mob-store-card-stars-empty" aria-hidden="true">☆☆☆☆☆</span>
+          <span class="mob-store-card-rate">— · — avis</span>
         </div>
         <div class="mob-store-card-meta">
-          <span class="mob-store-card-pill">Top 50 · Lifestyle</span>
-          <span class="mob-store-card-pill">v1.4.2</span>
+          <span class="mob-store-card-pill">Catégorie à définir</span>
+          <span class="mob-store-card-pill">Version —</span>
         </div>
       </div>
 
       <div class="mob-store-card mob-store-card-android">
+        <div class="mob-store-card-flag">MAQUETTE · DONNÉES FICTIVES</div>
         <div class="mob-store-card-head">
           <div class="mob-store-card-ic mob-store-card-ic-google">
             <svg width="22" height="22" viewBox="0 0 24 24"><path d="M3.6 1.2c-.4.4-.6 1-.6 1.8v18c0 .8.2 1.4.6 1.8l11-11-11-10.6z" fill="#34A853"/><path d="M16.6 8.4l-3-3-9.4 9.2 3 3 9.4-9.2z" fill="#4285F4"/><path d="M21 11l-4.4-2.6-3.4 3.6 3.4 3.6L21 13c1-.6 1-1.4 0-2z" fill="#FBBC04"/><path d="M14 14.6l-9.4 9.2 11-11L14 14.6z" fill="#EA4335"/></svg>
@@ -262,12 +261,12 @@ ${navHtml}
           </div>
         </div>
         <div class="mob-store-card-rating">
-          <span class="mob-store-card-stars">★★★★★</span>
-          <span class="mob-store-card-rate">4,8 · 312 avis</span>
+          <span class="mob-store-card-stars mob-store-card-stars-empty" aria-hidden="true">☆☆☆☆☆</span>
+          <span class="mob-store-card-rate">— · — avis</span>
         </div>
         <div class="mob-store-card-meta">
-          <span class="mob-store-card-pill">Editor's choice</span>
-          <span class="mob-store-card-pill">10 k+ téléch.</span>
+          <span class="mob-store-card-pill">Catégorie à définir</span>
+          <span class="mob-store-card-pill">Téléchargements —</span>
         </div>
       </div>
     </div>
@@ -530,7 +529,7 @@ ${navHtml}
         <div class="proc-num">ÉTAPE 01</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg></div>
         <h3>Discovery Sprint</h3>
-        <p>Atelier <b>payant et déductible</b> (déduit du devis si on continue) : on cadre le scope MVP, on défriche les 5-7 écrans clés, on sort un prototype Figma cliquable. Si on arrête là, vous repartez avec un livrable utilisable par n'importe quel autre studio.</p>
+        <p>Atelier <b>payant</b> (si la phase 2 est lancée, le devis précise la déduction applicable) : on cadre le scope MVP, on défriche les 5-7 écrans clés, on sort un prototype Figma cliquable. Si on arrête là, vous repartez avec un livrable utilisable par n'importe quel autre studio.</p>
         <div class="proc-dur">2 JOURS</div>
       </div>
       <div class="proc-step">
@@ -757,121 +756,121 @@ ${navHtml}
 
       <div class="faq-list reveal reveal-d-1">
         <div class="faq-item open">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="true" aria-controls="faq-a-mobile-faq-1">
             Combien ça coûte vraiment, une vraie app mobile en France ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-mobile-faq-1">
             <b>Sur devis</b>, après un cadrage qui définit le périmètre exact. Le coût varie fortement selon la complexité : un MVP focalisé sur un seul cas d'usage n'a pas le même prix qu'une marketplace 2-sided ou qu'une app entreprise avec intégrations ERP. Notre <a href="/tarifs">grille tarifaire</a> précise les périmètres de départ publiés. <b>On ne chiffre jamais sur un brief de 3 lignes</b> : on commence par un Discovery Sprint, on cadre les écrans clés, et le forfait fixe arrive ensuite — ferme et sans avenant sur le scope validé.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-mobile-faq-2">
             Combien de temps avant qu'elle soit sur les stores ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-mobile-faq-2" hidden>
             Le planning dépend du périmètre, des validations client, des intégrations et des revues Apple et Google. Le devis fixe les jalons, les dépendances et, le cas échéant, les conséquences contractuelles d'un retard.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-mobile-faq-3">
             Qui possède le code et les comptes stores ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-mobile-faq-3" hidden>
             Les comptes Apple Developer, Google Play et les services tiers peuvent être créés <b>à votre nom</b>. Le devis inventorie le dépôt, les accès et les livrables. Les livrables spécifiques sont transférés après paiement complet selon les CGV, sous réserve des composants préexistants et licences tierces.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-mobile-faq-4">
             Et si Apple refuse mon app ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-mobile-faq-4" hidden>
             La décision et le délai de review appartiennent à Apple. La guideline 2.1 fait partie des motifs fréquemment signalés, mais elle ne permet pas d'affirmer que 40&nbsp;% des apps sont refusées au premier envoi. Le devis précise la préparation de la fiche, les tests, le nombre d'itérations incluses et le traitement d'une demande supplémentaire.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-mobile-faq-5">
             React Native vs Flutter vs natif Swift/Kotlin : qu'est-ce qui est mieux ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-mobile-faq-5" hidden>
             On utilise souvent <b>React Native + Expo</b> pour mutualiser une partie du code iOS et Android. Flutter ou du natif Swift/Kotlin peuvent être préférables selon les contraintes matérielles, de performance, d'équipe ou de store. Le choix et les éventuels modules natifs sont justifiés au cadrage, sans promettre un ratio universel de coût ou de fluidité.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-mobile-faq-6">
             Apple/Google prennent-ils 30 % sur tout ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-mobile-faq-6" hidden>
             Les règles et commissions dépendent du type de bien ou service, du programme applicable, du pays et des modalités de paiement autorisées au moment de la soumission. Le cadrage vérifie les règles Apple et Google à jour avant de retenir IAP, paiement externe ou un autre parcours.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-mobile-faq-7">
             La maintenance après le lancement, ça coûte combien ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-mobile-faq-7" hidden>
             Forfait maintenance <b>optionnel, sur devis selon volume et criticité</b>. Compatibilité iOS / Android, correctifs de sécurité, surveillance, hot-fixes OTA et rythme de publication ne sont inclus que s'ils figurent au périmètre. Une app non maintenue s'expose progressivement aux incompatibilités, aux vulnérabilités et aux régressions&nbsp;: la trajectoire est donc cadrée dès le devis initial.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-mobile-faq-8">
             Comment je suis sûr que les utilisateurs téléchargeront ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-mobile-faq-8" hidden>
             Aucune agence ne peut garantir l'adoption d'une application. Le cadrage sert à tester le besoin, prioriser le MVP, identifier le plan de lancement et séparer clairement les hypothèses produit des engagements techniques du devis.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-mobile-faq-9">
             iOS d'abord, Android d'abord, ou les deux ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-mobile-faq-9" hidden>
             React Native permet de mutualiser une partie du code iOS et Android, sans rendre les deux plateformes identiques. La priorité de bêta et l'ordre de publication dépendent de votre audience, des fonctions natives, des tests et des contraintes de chaque store. Le devis précise si les deux plateformes sortent ensemble ou selon des jalons distincts.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-mobile-faq-10">
             On paye comment, on signe quand ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-mobile-faq-10" hidden>
             Le devis signé précise l'échéancier, les jalons de facturation, les critères de validation et les conséquences d'une dépendance aux stores. Sur une véritable opération de R&amp;D, <b>nous pouvons documenter les verrous, essais et résultats si le périmètre le prévoit</b>&nbsp;; votre conseil valide séparément toute éventuelle éligibilité au CIR selon les travaux, votre situation et l'agrément du prestataire.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-mobile-faq-11">
             Et si je veux ajouter des fonctionnalités après le lancement ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-mobile-faq-11" hidden>
             Une évolution est qualifiée puis chiffrée au ticket, au lot ou dans un forfait mensuel selon sa portée. Le devis précise la cadence des releases, le volume réservé, les dépendances, le budget et la procédure d'accord avant développement.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-mobile-faq-12">
             CNIL, RGPD, données santé, mineurs : qu'est-ce qu'on risque ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-mobile-faq-12" hidden>
             Les permissions, finalités, bases légales, sous-traitants et durées sont cadrés avec votre DPO ou conseil. Des données de santé peuvent imposer des mesures renforcées et, selon l'activité et l'échelle du traitement, un hébergement certifié HDS ou la désignation d'un DPO. Pour les moins de 15 ans en France, l'accord conjoint du mineur et d'un titulaire de l'autorité parentale concerne certains services en ligne lorsque le traitement repose sur le consentement. Ces obligations se valident au cas par cas.
           </div>
         </div>
@@ -879,71 +878,4 @@ ${navHtml}
     </div>
   </div>
 </section>
-
-<!-- CTA -->
-<section class="scta">
-  <div class="stats-bg" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="eyebrow on-dark">— Prochaine étape</div>
-    <h2 style="margin-top:18px">Votre app sur les stores,<br>cadrée et chiffrée par quelqu'un qui code.</h2>
-    <p>Un échange de cadrage avec un expert. Le délai et les informations nécessaires à l'établissement d'un éventuel devis sont annoncés après l'analyse du projet, sans engagement.</p>
-    <div class="scta-cta">
-      <a href="/rendez-vous" class="btn btn-accent btn-lg">
-        📅 &nbsp;Réserver 30 min avec un expert
-        <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-      <a href="mailto:quentin@hagnere-patrimoine.fr" class="btn btn-ghost btn-lg" style="background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.15)">
-        Envoyer un email →
-      </a>
-    </div>
-    <div class="scta-meta">DÉLAI DE RÉPONSE ANNONCÉ · SANS ENGAGEMENT · DISCOVERY ET CONDITIONS AU DEVIS</div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <a href="/" class="brand" style="margin-bottom:16px">
-          <div class="brand-mark">HC</div>
-          <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
-        </a>
-        <p>Studio de développement SaaS, applications métier, e-commerce, sites vitrines et apps mobiles. Basé à Bassens, aux portes de Chambéry. Forfait fixe.</p>
-      </div>
-      <div class="foot-cols">
-        <div class="foot-col">
-          <h3>SERVICES</h3>
-          <a href="/services/saas-applications-metier">SaaS &amp; applis métier</a>
-          <a href="/services/outils-internes-sur-mesure">Outils internes</a>
-          <a href="/services/sites-vitrines">Sites vitrines</a>
-          <a href="/services/ecommerce">E-commerce</a>
-          <a href="/services/application-mobile">Application mobile</a>
-        </div>
-        <div class="foot-col">
-          <h3>STUDIO</h3>
-          <a href="/methode">Méthode</a>
-          <a href="/realisations">Réalisations</a>
-          <a href="/equipe">Équipe</a>
-          <a href="/tarifs">Tarifs</a>
-        </div>
-        <div class="foot-col">
-          <h3>CONTACT</h3>
-          <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>
-          <a href="https://www.linkedin.com/in/quentin-hagnere" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        </div>
-        <div class="foot-col">
-          <h3>LÉGAL</h3>
-          <a href="/legal/cgv">CGV</a>
-          <a href="/legal/mentions">Mentions légales</a>
-          <a href="/legal/confidentialite">Confidentialité</a>
-        </div>
-      </div>
-    </div>
-    <div class="foot-bot">
-      <div>© 2026 HAGNERE CODE · SASU au capital de 10 € · RCS Chambéry 993 672 856 · TVA FR30 993 672 856 · NAF 62.01Z · 82 impasse de Bellevue, 73000 Bassens</div>
-      <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
-    </div>
-  </div>
-</footer>
 `;

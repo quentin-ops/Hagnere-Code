@@ -62,10 +62,23 @@ function pageSourceFor(slug: string): string {
   );
 }
 
+/**
+ * Toutes les formes qui produisent un lien rendu vers un guide.
+ *
+ * Le motif ne couvrait que l'attribut JSX `href="…"`. Les guides passent aussi
+ * leurs voisins en données — `relatedGuides={[{ label, href: "/guides/…" }]}`,
+ * `ctaHref` et `primaryCtaHref` des blocs d'appel à l'action — que
+ * `guide-premium-layout.tsx` rend en `<Link>`. Ces liens existent pour le
+ * visiteur et pour le crawler, mais échappaient au comptage : droits-acces,
+ * migrer et remplacer étaient mesurés en dessous de leur maillage réel.
+ */
+const GUIDE_LINK_FORMS =
+  /(?:href|ctaHref|primaryCtaHref|secondaryCtaHref)\s*[:=]\s*"\/guides\/([a-z0-9-]+)"/g;
+
 function outgoingGuideLinks(slug: string): Set<string> {
   const source = pageSourceFor(slug);
   const links = new Set(
-    [...source.matchAll(/href="\/guides\/([a-z0-9-]+)"/g)].map((m) => m[1]),
+    [...source.matchAll(GUIDE_LINK_FORMS)].map((m) => m[1]),
   );
   links.delete(slug);
   return links;
@@ -139,9 +152,11 @@ describe("maillage interne des guides", () => {
     )) {
       const guideSource = pageSourceFor(slug);
       const outgoingServices = new Set(
-        [...guideSource.matchAll(/href="(\/services\/[a-z0-9-]+)"/g)].map(
-          (match) => match[1],
-        ),
+        [
+          ...guideSource.matchAll(
+            /(?:href|ctaHref|primaryCtaHref|secondaryCtaHref)\s*[:=]\s*"(\/services\/[a-z0-9-]+)"/g,
+          ),
+        ].map((match) => match[1]),
       );
       expect(
         outgoingServices.size,

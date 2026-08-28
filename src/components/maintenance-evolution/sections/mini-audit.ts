@@ -5,7 +5,7 @@ export const miniAuditHtml = `
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow on-dark">— Mini-audit gratuit · 90 secondes</div>
+        <div class="eyebrow on-dark">— Mini-audit gratuit&nbsp;: 5 questions, score affiché à l'écran, 90 secondes</div>
         <h2 style="color:#fff">Dans quel état est<br>votre app en prod&nbsp;? <span class="accent">Score en 90 s.</span></h2>
       </div>
       <div class="right" style="color:rgba(255,255,255,0.65)">
@@ -32,9 +32,9 @@ export const miniAuditHtml = `
 
         <div class="me-audit-q is-active" data-audit-q="0">
           <div class="me-audit-q-num">01 · Monitoring</div>
-          <h3>Votre app a-t-elle un monitoring d'erreurs actif (Sentry, Rollbar, Bugsnag…) ?</h3>
+          <h3 id="me-audit-q0-title">Votre app a-t-elle un monitoring d'erreurs actif (Sentry, Rollbar, Bugsnag…) ?</h3>
           <p>Le monitoring d'erreurs, c'est ce qui vous prévient avant vos utilisateurs. Sans ça, vous découvrez les bugs par les plaintes — trop tard.</p>
-          <div class="me-audit-options">
+          <div class="me-audit-options" role="radiogroup" aria-labelledby="me-audit-q0-title">
             <label class="me-audit-opt">
               <input type="radio" name="audit-q0" value="20" data-audit-answer>
               <span class="me-audit-opt-body">
@@ -64,9 +64,9 @@ export const miniAuditHtml = `
 
         <div class="me-audit-q" data-audit-q="1">
           <div class="me-audit-q-num">02 · Sécurité &amp; CVE</div>
-          <h3>Vos dépendances (composer, npm) sont-elles mises à jour régulièrement ?</h3>
+          <h3 id="me-audit-q1-title">Vos dépendances (composer, npm) sont-elles mises à jour régulièrement ?</h3>
           <p>Une vulnérabilité critique connue et exploitable doit être priorisée selon son exposition, ses compensations et les tests nécessaires au correctif.</p>
-          <div class="me-audit-options">
+          <div class="me-audit-options" role="radiogroup" aria-labelledby="me-audit-q1-title">
             <label class="me-audit-opt">
               <input type="radio" name="audit-q1" value="20" data-audit-answer>
               <span class="me-audit-opt-body">
@@ -96,9 +96,9 @@ export const miniAuditHtml = `
 
         <div class="me-audit-q" data-audit-q="2">
           <div class="me-audit-q-num">03 · Backups &amp; DR</div>
-          <h3>Vos backups sont-ils testés en restauration ?</h3>
+          <h3 id="me-audit-q2-title">Vos backups sont-ils testés en restauration ?</h3>
           <p>Une sauvegarde n'est une preuve de reprise que si sa restauration, son intégrité et sa procédure ont été testées.</p>
-          <div class="me-audit-options">
+          <div class="me-audit-options" role="radiogroup" aria-labelledby="me-audit-q2-title">
             <label class="me-audit-opt">
               <input type="radio" name="audit-q2" value="20" data-audit-answer>
               <span class="me-audit-opt-body">
@@ -128,9 +128,9 @@ export const miniAuditHtml = `
 
         <div class="me-audit-q" data-audit-q="3">
           <div class="me-audit-q-num">04 · Incident response</div>
-          <h3>Avez-vous une procédure d'incident documentée (runbook) ?</h3>
+          <h3 id="me-audit-q3-title">Avez-vous une procédure d'incident documentée (runbook) ?</h3>
           <p>Quand un incident P1 arrive, un runbook testé réduit l'improvisation et permet de mesurer le temps réel de reprise.</p>
-          <div class="me-audit-options">
+          <div class="me-audit-options" role="radiogroup" aria-labelledby="me-audit-q3-title">
             <label class="me-audit-opt">
               <input type="radio" name="audit-q3" value="20" data-audit-answer>
               <span class="me-audit-opt-body">
@@ -160,9 +160,9 @@ export const miniAuditHtml = `
 
         <div class="me-audit-q" data-audit-q="4">
           <div class="me-audit-q-num">05 · Bus factor</div>
-          <h3>Combien de personnes connaissent votre codebase en profondeur ?</h3>
+          <h3 id="me-audit-q4-title">Combien de personnes connaissent votre codebase en profondeur ?</h3>
           <p>Si votre unique dev part, combien de mois avant qu'un remplaçant soit opérationnel ? La réponse dit tout sur la fragilité de votre run.</p>
-          <div class="me-audit-options">
+          <div class="me-audit-options" role="radiogroup" aria-labelledby="me-audit-q4-title">
             <label class="me-audit-opt">
               <input type="radio" name="audit-q4" value="20" data-audit-answer>
               <span class="me-audit-opt-body">

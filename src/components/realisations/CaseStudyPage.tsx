@@ -3,7 +3,7 @@ import type { CSSProperties } from "react";
 import { InteractiveDesignRoot } from "@/components/design-shared/InteractiveDesignRoot";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
 import { MainNav } from "@/components/design-shared/MainNav";
-import { CASES } from "./cases";
+import { CASES, RELATED_SERVICES } from "./cases";
 import type { CaseStudy } from "./cases";
 import "./case-study.css";
 import "@/components/design-shared/responsive.css";
@@ -14,6 +14,12 @@ type Props = { caseStudy: CaseStudy };
 
 export function CaseStudyPage({ caseStudy: c }: Props) {
   const otherCases = Object.values(CASES).filter((x) => x.slug !== c.slug);
+  // Offre Hagnéré Code rattachée au TYPE de produit analysé : c'est un lien
+  // éditorial vers nos services, jamais une prestation revendiquée sur cette
+  // marque (le paragraphe de la section le dit explicitement).
+  const relatedServices = c.relatedServices
+    .map((key) => RELATED_SERVICES[key])
+    .filter((service) => service !== undefined);
 
   const brandVars: CSSProperties & Record<string, string> = {
     "--brand": c.brandColor,
@@ -89,7 +95,7 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
           </div>
           <div>
             <div className="cs-info-k">Nature</div>
-            <div className="cs-info-v">Analyse éditoriale d&apos;une page externe</div>
+            <div className="cs-info-v">Analyse éditoriale d&apos;une page du groupe</div>
           </div>
         </div>
       </section>
@@ -248,9 +254,10 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
               }}
             >
               <p style={{ margin: 0 }}>
-                <strong>Avertissement.</strong> Cette analyse porte sur la page
-                publique externe de {c.brandName}. Elle ne constitue pas une preuve
-                de réalisation, d&apos;intervention de Hagnéré Code ou de performance.
+                <strong>Avertissement.</strong> {c.brandName} appartient au groupe
+                Hagnéré et n&apos;est pas un client indépendant. Cette analyse porte sur sa
+                page publique&nbsp;: elle ne constitue pas une preuve de réalisation,
+                d&apos;intervention de Hagnéré Code ou de performance.
                 Les écrans, simulateurs et parcours décrits ici ne constituent <strong>ni une
                 offre, ni une recommandation d&apos;investissement</strong>.
                 Toute simulation repose sur des hypothèses, le capital investi
@@ -297,12 +304,47 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
               </Link>
             ))}
           </div>
-          <p className="cs-placeholder-note">
-            <span>
-              Un projet similaire ?{" "}
-              <Link href="/demarrer-un-projet">Décrivez-le-nous</Link>.
-            </span>
+        </div>
+      </section>
+
+      {/* Passerelle vers le silo « offre » : nos services, pas une prestation
+          revendiquée sur la marque analysée. */}
+      <section className="cs-section cs-services">
+        <div className="wrap">
+          <div className="cs-section-head">
+            <div className="eyebrow">— Nos services</div>
+            <h2>Ce que nous faisons dans ce domaine.</h2>
+          </div>
+          <p className="cs-prose">
+            Ces pages décrivent l&apos;offre de Hagnéré Code sur ce type de produit.
+            Elles ne décrivent aucune intervention sur {c.brandName} et ne
+            valent pas preuve de réalisation.
           </p>
+          <div className="cs-svc-grid">
+            {relatedServices.map((service) => (
+              <Link key={service.href} href={service.href} className="cs-svc">
+                <span className="cs-svc-name">{service.label}</span>
+                <span className="cs-svc-blurb">{service.blurb}</span>
+                <span className="cs-svc-foot">
+                  Voir le service
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </Link>
+            ))}
+          </div>
+          <div className="cs-svc-actions">
+            <Link href="/demarrer-un-projet" className="btn btn-primary btn-lg">
+              Décrire votre projet
+              <svg className="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </Link>
+            <Link href="/services" className="btn btn-ghost btn-lg">
+              Voir tous les services
+            </Link>
+          </div>
         </div>
       </section>
 

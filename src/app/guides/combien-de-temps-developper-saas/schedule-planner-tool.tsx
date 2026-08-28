@@ -99,7 +99,7 @@ function NumberField({
         onChange={(event) =>
           onChange(preserveRawWorkingDays(event.target.value))
         }
-        className="mt-1.5 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 outline-none transition focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 motion-reduce:transition-none dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+        className="mt-1.5 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 outline-none transition focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 motion-reduce:transition-none dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
       />
     </label>
   );
@@ -258,7 +258,7 @@ export function SaasSchedulePlannerTool() {
                 setCopyStatus("");
               }}
               placeholder="Précisez si vous visez un prototype, un pilote privé, une mise en production ou un service soutenable"
-              className="mt-2 w-full resize-y rounded-xl border border-zinc-300 bg-white px-3 py-3 text-sm leading-relaxed text-zinc-950 outline-none transition placeholder:text-zinc-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 motion-reduce:transition-none dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:placeholder:text-zinc-500"
+              className="mt-2 w-full resize-y rounded-xl border border-zinc-300 bg-white px-3 py-3 text-base sm:text-sm leading-relaxed text-zinc-950 outline-none transition placeholder:text-zinc-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 motion-reduce:transition-none dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:placeholder:text-zinc-500"
             />
           </label>
 
@@ -337,7 +337,7 @@ export function SaasSchedulePlannerTool() {
                         onChange={(event) =>
                           updateTask(index, { id: event.target.value })
                         }
-                        className="mt-1.5 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                        className="mt-1.5 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                       />
                     </label>
                     <label htmlFor={`schedule-task-${index}-result`}>
@@ -350,7 +350,7 @@ export function SaasSchedulePlannerTool() {
                         onChange={(event) =>
                           updateTask(index, { result: event.target.value })
                         }
-                        className="mt-1.5 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                        className="mt-1.5 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                       />
                     </label>
                     <label htmlFor={`schedule-task-${index}-owner`}>
@@ -363,7 +363,7 @@ export function SaasSchedulePlannerTool() {
                         onChange={(event) =>
                           updateTask(index, { owner: event.target.value })
                         }
-                        className="mt-1.5 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                        className="mt-1.5 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                       />
                     </label>
                     <label htmlFor={`schedule-task-${index}-capacity`}>
@@ -376,7 +376,7 @@ export function SaasSchedulePlannerTool() {
                         onChange={(event) =>
                           updateTask(index, { capacityId: event.target.value })
                         }
-                        className="mt-1.5 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                        className="mt-1.5 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                       />
                     </label>
                     <label
@@ -402,7 +402,7 @@ export function SaasSchedulePlannerTool() {
                           })
                         }
                         placeholder="Laisser vide seulement si la tâche peut réellement commencer à J1"
-                        className="mt-1.5 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                        className="mt-1.5 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                       />
                     </label>
                   </div>
@@ -437,7 +437,7 @@ export function SaasSchedulePlannerTool() {
                       onChange={(event) =>
                         updateTask(index, { uncertainty: event.target.value })
                       }
-                      className="mt-1.5 w-full resize-y rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                      className="mt-1.5 w-full resize-y rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                     />
                   </label>
 
@@ -455,7 +455,7 @@ export function SaasSchedulePlannerTool() {
                             event.target.value as StressKind | "",
                           )
                         }
-                        className="mt-1.5 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                        className="mt-1.5 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                       >
                         <option value="">Aucun effet additionnel</option>
                         <option value="external-wait">Attente externe</option>

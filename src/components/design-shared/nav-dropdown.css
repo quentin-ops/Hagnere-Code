@@ -213,7 +213,10 @@
   left: 50%;
   transform: translateX(-50%) translateY(-8px);
   width: min(960px, calc(100vw - 64px));
+  /* 100vh reste le repli pour les navigateurs sans unités dynamiques ; 100dvh
+     suit la barre d'outils mobile (Safari iOS notamment). */
   max-height: calc(100vh - 120px);
+  max-height: calc(100dvh - 120px);
   background: var(--paper);
   border: 1px solid rgba(15, 15, 15, 0.08);
   border-radius: 20px;
@@ -595,10 +598,12 @@
   .hc-nav-pill-phone,
   .hc-nav-pill-sep { display: none; }
 
-  /* Trigger becomes a square 40px icon button */
+  /* Trigger becomes a square 44px icon button.
+     40 × 40 px n'atteignait pas la cible tactile de 44 px recommandée, sur
+     l'un des deux seuls contrôles de l'en-tête mobile. */
   .hc-nav-pill-trigger {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     padding: 0;
     border-radius: 12px;
     border: 1px solid rgba(15, 15, 15, 0.1);
@@ -610,6 +615,24 @@
   .hc-nav-pill-trigger > svg:last-child { display: none; }
   .hc-nav-pill-trigger-icon-mobile { display: inline-flex; }
   .hc-nav-pill-trigger-icon-mobile svg { color: var(--ink); }
+  /* Le bouton devient une icône seule : « Menu » reste dans le DOM, masqué
+     visuellement mais exposé, pour donner son nom accessible au bouton
+     (il n'y a plus de texte visible à ce point de rupture). */
+  .hc-nav-pill-trigger-label-mobile {
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+  /* Le repli sans JavaScript reste atteignable au mobile, où les autres
+     liens de la pastille sont masqués. */
+  .hc-nav-pill-link.hc-nav-pill-link-nojs { display: inline-flex; }
 
   /* Actions: single primary CTA only — Démarrer un projet (icon-only square) */
   .hc-nav-actions {
@@ -620,14 +643,24 @@
   .hc-nav .hc-nav-cta-rdv { display: none; }
   /* Backoffice icon stays visible mobile — utile depuis n'importe quel device */
   .hc-nav .hc-nav-cta-primary {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     padding: 0;
     border-radius: 12px;
     justify-content: center;
   }
   .hc-nav .hc-nav-cta-primary > span { display: none; }
   .hc-nav .hc-nav-cta-primary > svg { width: 16px; height: 16px; }
+
+  /* Feuille mobile : les cinq catégories sont la seule façon de changer de
+     pane. À 11px de padding sur un texte de 14px, elles mesuraient ~42px de
+     haut dans une liste à 2px d'écart — deux cibles adjacentes trop petites
+     et trop serrées pour un pouce. */
+  .hc-mega-side-list { gap: 6px; }
+  .hc-mega-cat {
+    min-height: 44px;
+    padding: 12px;
+  }
 
   /* Mega menu: full screen sheet from the top */
   .hc-mega {
@@ -636,12 +669,20 @@
     left: 8px;
     right: 8px;
     width: auto;
+    /* 100vh = large viewport sur iOS Safari : le bas du panneau passait sous
+       la barre d'outils tant qu'elle est affichée. 100dvh suit la hauteur
+       réellement visible ; 100vh reste le repli des navigateurs anciens. */
     max-height: calc(100vh - 80px);
+    max-height: calc(100dvh - 80px);
     overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
     transform: translateY(-8px);
+  }
+  /* Dernières cartes de service atteignables au-dessus de la zone système. */
+  .hc-mega-content {
+    padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px));
   }
   .hc-nav-pill-wrap[data-mega-open="true"] .hc-mega {
     transform: translateY(0);

@@ -52,7 +52,10 @@ export const LOCAL_PAGES: LocalPageEntry[] = [
     path: "",
     root: "agence",
     level: "territoire",
-    title: "Hagnéré Code à Bassens · Agence web en Savoie",
+    // La cible exacte « Agence web en Savoie » est réservée à la page
+    // département : deux pages du même cluster qui la portent se disputent le
+    // même signal de title. Le pilier reste sur l'entité et son siège.
+    title: "Hagnéré Code · Agence web à Bassens (73)",
     metaDescription:
       "Agence web à Bassens, près de Chambéry : sites, e-commerce, applications métier, SEO et Google Ads. Savoie sur place, France à distance.",
     heroTitle: "Hagnéré Code à Bassens : notre agence et notre territoire",

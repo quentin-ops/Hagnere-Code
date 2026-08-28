@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { MobileApplication } from "@/components/application-mobile/MobileApplication";
 import { OG_BASE } from "@/lib/seo";
+import { PUBLIC_ORGANIZATION_ENTITY } from "@/lib/organization-structured-data";
 
 const MOBILE_OG_IMAGE = {
   url: "/og-image-services.png",
@@ -32,57 +33,56 @@ const serviceJsonLd = JSON.stringify({
   url: "https://hagnere-code.ai/services/application-mobile",
   serviceType:
     "Création d'applications mobiles natives iOS et Android sur mesure",
-  provider: {
-    "@type": "Organization",
-    name: "Hagnéré Code",
-    "@id": "https://hagnere-code.ai/#organization",
-    legalName: "HAGNERE CODE",
-    vatID: "FR30993672856",
-    url: "https://hagnere-code.ai",
-    logo: "https://hagnere-code.ai/logos/logo-dark.png",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "82 impasse de Bellevue",
-      postalCode: "73000",
-      addressLocality: "Bassens",
-      addressRegion: "Savoie",
-      addressCountry: "FR",
-    },
-    email: "quentin@hagnere-patrimoine.fr",
-    telephone: "+33374472018",
-  },
+  // Fournisseur = l'entité publique unique, importée du registre plutôt que
+  // recopiée : adresse, TVA, e-mail et téléphone n'existent qu'à un seul
+  // endroit, et la forme du logo reste celle validée pour Google (ImageObject
+  // dimensionné) sur toutes les pages.
+  provider: PUBLIC_ORGANIZATION_ENTITY,
   areaServed: { "@type": "Country", name: "France" },
   description:
     "Développement d'applications mobiles iOS et Android via React Native et Expo. Le devis précise le périmètre de soumission aux stores, les comptes client, le calendrier, les livrables, les droits transférés après paiement complet et la maintenance éventuelle.",
-  offers: [
-    {
-      "@type": "Offer",
-      name: "Lancement · MVP iOS + Android",
-      priceCurrency: "EUR",
-      url: "https://hagnere-code.ai/services/application-mobile#tarifs",
-      availability: "https://schema.org/InStock",
-      description:
-        "App native iOS + Android focalisée sur un cas d'usage : fidélité, réservation, click & collect ou app interne. Périmètre, soumissions, planning indicatif et forfait sont confirmés au devis après cadrage.",
-    },
-    {
-      "@type": "Offer",
-      name: "Performance · App complète",
-      priceCurrency: "EUR",
-      url: "https://hagnere-code.ai/services/application-mobile#tarifs",
-      availability: "https://schema.org/InStock",
-      description:
-        "App complète iOS + Android + Web mobile avec fonctionnalités et intégrations sélectionnées au cadrage. Planning indicatif, tests, soumissions et forfait sont confirmés au devis.",
-    },
-    {
-      "@type": "Offer",
-      name: "Sur-mesure · Marketplace, IoT, IA embarquée",
-      priceCurrency: "EUR",
-      url: "https://hagnere-code.ai/services/application-mobile#tarifs",
-      availability: "https://schema.org/InStock",
-      description:
-        "Marketplace, IoT, modules natifs, extensions Watch ou Wear OS, multilingue et intégrations métier selon faisabilité. Le périmètre, les licences, le planning indicatif et le prix sont définis après cadrage approfondi.",
-    },
-  ],
+  // Aucun `offers` ici : la page affiche « Sur devis » sur les trois formules.
+  // Les trois Offer précédentes déclaraient une devise (`priceCurrency: EUR`)
+  // sans aucun montant et une disponibilité `InStock` qui n'a pas de sens pour
+  // du développement sur mesure — un balisage plus affirmatif que le visible.
+  // Les formules restent décrites sans prix via hasOfferCatalog, comme sur
+  // /services/referencement-google et sur l'entité.
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Formules de développement d'application mobile",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Lancement · MVP iOS + Android",
+          description:
+            "App native iOS + Android focalisée sur un cas d'usage : fidélité, réservation, click & collect ou app interne. Périmètre, soumissions, planning indicatif et forfait sont confirmés au devis après cadrage.",
+          url: "https://hagnere-code.ai/services/application-mobile#tarifs",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Performance · App complète",
+          description:
+            "App complète iOS + Android + Web mobile avec fonctionnalités et intégrations sélectionnées au cadrage. Planning indicatif, tests, soumissions et forfait sont confirmés au devis.",
+          url: "https://hagnere-code.ai/services/application-mobile#tarifs",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Sur-mesure · Marketplace, IoT, IA embarquée",
+          description:
+            "Marketplace, IoT, modules natifs, extensions Watch ou Wear OS, multilingue et intégrations métier selon faisabilité. Le périmètre, les licences, le planning indicatif et le prix sont définis après cadrage approfondi.",
+          url: "https://hagnere-code.ai/services/application-mobile#tarifs",
+        },
+      },
+    ],
+  },
 });
 
 

@@ -26,22 +26,40 @@ import {
   Timer,
   TrendingUp,
   UserRound,
-  Wrench,
   X,
 } from "lucide-react";
-import { useEffect, useMemo, useRef, useState, useCallback, type ReactNode } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useCallback,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type ReactNode,
+} from "react";
 import { useRouter } from "next/navigation";
 import "./project-funnel.css";
 import {
   MathChallenge,
-  isMathAnswerCorrect,
+  getMathChallengeError,
   toMathChallengePayload,
   type MathChallengeValue,
 } from "./MathChallenge";
 import { compileBrief } from "./brief-format";
+import {
+  briefWasCaptured,
+  PROJECT_INQUIRY_TIMEOUT_MS,
+  PROJECT_INQUIRY_TIMEOUT_SECONDS,
+} from "./inquiry-response";
 import { copyTextToClipboard } from "@/lib/clipboard";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY_NATIONAL,
+  CONTACT_PHONE_E164,
+} from "@/lib/contact-details";
 import { isAnalyticsAllowed } from "@/lib/cookie-consent";
 import { trackFunnelEvent } from "@/lib/funnel-analytics";
+import { isProviderTimeoutError } from "@/lib/provider-timeout";
 import { ThemeToggle } from "@/components/design-shared/ThemeToggle";
 import { LegalLinksFooter } from "@/components/legal/LegalLinksFooter";
 import {
@@ -65,6 +83,25 @@ type Status =
 const DRAFT_STORAGE_KEY = PROJECT_DRAFT_STORAGE_KEY;
 const DRAFT_STORAGE_VERSION = 3;
 
+/**
+ * Coordonnées directes déjà publiées sur le reste du site (pastille de
+ * navigation et pied de page). La page du tunnel n'en exposait aucune :
+ * un dirigeant qui préfère appeler n'avait aucune issue.
+ */
+const DIRECT_PHONE_HREF = `tel:${CONTACT_PHONE_E164}`;
+const DIRECT_PHONE_LABEL = CONTACT_PHONE_DISPLAY_NATIONAL;
+const DIRECT_EMAIL = CONTACT_EMAIL;
+
+/**
+ * Journal de diagnostic réservé au développement — la dictée vocale
+ * envoyait user-agent, origine et état de permission dans la console de
+ * tous les visiteurs en production.
+ */
+function debugLog(...args: unknown[]): void {
+  if (process.env.NODE_ENV === "production") return;
+  console.log(...args);
+}
+
 type ProjectKindId =
   | "site"
   | "saas"
@@ -83,7 +120,12 @@ type ProjectKindId =
 type ProjectKind = {
   id: ProjectKindId;
   label: string;
-  family: "Build" | "Grow" | "Run" | "Trust" | "À définir";
+  // Trois familles seulement — les mêmes que l'accueil, la navigation et le
+  // hub services : Construire / Faire grandir / Protéger & opérer. Le tunnel
+  // en exposait une quatrième (« Maintenir / auditer » séparée de
+  // « Sécuriser ») : un visiteur qui traverse le site y voyait une offre
+  // différente de celle annoncée deux pages plus tôt.
+  family: "Build" | "Grow" | "Operate" | "À définir";
   text: string;
 };
 
@@ -305,9 +347,9 @@ const projectKinds: ProjectKind[] = [
   { id: "seo", family: "Grow", label: "SEO / référencement", text: "Audit, architecture, contenus, maillage, pages qui rankent." },
   { id: "ads", family: "Grow", label: "Publicité / tracking", text: "Google, Meta, LinkedIn, landing pages, attribution, CAC." },
   { id: "content", family: "Grow", label: "Contenu & vidéo", text: "Guides, scripts, YouTube, motion, assets pour ads et sales." },
-  { id: "maintenance", family: "Run", label: "Maintenance & évolution", text: "TMA, incidents, dette, monitoring, roadmap, passation." },
-  { id: "audit", family: "Run", label: "Audit technique", text: "Code, sécurité, performance, infra, dette, roadmap chiffrée." },
-  { id: "security", family: "Trust", label: "Sécurité & RGPD", text: "DPA, registre, sous-traitants, droits, logs, conformité." },
+  { id: "maintenance", family: "Operate", label: "Maintenance & évolution", text: "TMA, incidents, dette, monitoring, roadmap, passation." },
+  { id: "audit", family: "Operate", label: "Audit technique", text: "Code, sécurité, performance, infra, dette, roadmap chiffrée." },
+  { id: "security", family: "Operate", label: "Sécurité & RGPD", text: "DPA, registre, sous-traitants, droits, logs, conformité." },
   { id: "automatisation", family: "Build", label: "Automatisation / IA", text: "Workflows, assistants, transcription, génération, reporting." },
   { id: "unknown", family: "À définir", label: "Je ne sais pas encore", text: "Vous avez le problème, pas encore la bonne forme." },
 ];
@@ -1241,17 +1283,26 @@ function ButtonCheck({ active }: { active: boolean }) {
 }
 
 /**
- * Step 1 — grille groupée par famille (Build, Grow, Run, Trust) avec
+ * Step 1 — grille groupée par famille (Build, Grow, Operate) avec
  * compteur de cases cochées par famille et description courte. Évite le
  * mur de 12 cases pour un non-tech, et permet à un boucher de scanner
  * verticalement les 3-4 services qui le concernent.
+ *
+ * Les libellés reprennent mot pour mot les trois familles de l'accueil, de
+ * la navigation et du hub services (« Construire », « Faire grandir »,
+ * « Protéger & opérer »). Toute nouvelle famille ici créerait une taxonomie
+ * concurrente : le visiteur ne retrouverait plus, à l'entrée du tunnel, la
+ * découpe d'offre qu'on lui a montrée sur le site.
  */
-type FamilyId = "Build" | "Grow" | "Run" | "Trust";
+type FamilyId = "Build" | "Grow" | "Operate";
 const FAMILY_META: Record<FamilyId, { label: string; sub: string; Icon: typeof Hammer }> = {
   Build: { label: "Construire", sub: "Site, app, SaaS, outil interne", Icon: Hammer },
   Grow: { label: "Faire grandir", sub: "SEO, Ads, contenu vidéo", Icon: TrendingUp },
-  Run: { label: "Maintenir / auditer", sub: "Run, audit, reprise", Icon: Wrench },
-  Trust: { label: "Sécuriser", sub: "RGPD, DPO, conformité", Icon: ShieldCheck },
+  Operate: {
+    label: "Protéger & opérer",
+    sub: "Maintenance, audit, sécurité, RGPD",
+    Icon: ShieldCheck,
+  },
 };
 
 function ProjectKindsGroupedGrid({
@@ -1264,12 +1315,11 @@ function ProjectKindsGroupedGrid({
   const groups: Record<FamilyId, ProjectKind[]> = {
     Build: [],
     Grow: [],
-    Run: [],
-    Trust: [],
+    Operate: [],
   };
   for (const kind of projectKinds) {
     if (kind.id === "unknown") continue;
-    if (kind.family === "Build" || kind.family === "Grow" || kind.family === "Run" || kind.family === "Trust") {
+    if (kind.family === "Build" || kind.family === "Grow" || kind.family === "Operate") {
       groups[kind.family].push(kind);
     }
   }
@@ -1515,7 +1565,9 @@ function VoiceTextarea({
     setError(null);
     setDiagnosticCopyStatus("idle");
     // Diagnostic logging — surfaces all the conditions for getUserMedia.
-    // Open DevTools → Console to see why a recording attempt fails.
+    // Développement uniquement (debugLog) : en production, ces informations
+    // (user-agent, origine, état de permission) restent dans le bloc
+    // « Copier le diagnostic » proposé à l'utilisateur en cas d'échec.
     const diag = {
       isSecureContext: typeof window !== "undefined" ? window.isSecureContext : null,
       hasMediaDevices: Boolean(navigator.mediaDevices),
@@ -1525,7 +1577,7 @@ function VoiceTextarea({
       userAgent: typeof navigator !== "undefined" ? navigator.userAgent : "",
       origin: typeof window !== "undefined" ? window.location.origin : "",
     };
-    console.log("[VoiceTextarea] startRecording diagnostics:", diag);
+    debugLog("[VoiceTextarea] startRecording diagnostics:", diag);
 
     if (!navigator.mediaDevices?.getUserMedia) {
       startPendingRef.current = false;
@@ -1556,9 +1608,9 @@ function VoiceTextarea({
           name: "microphone" as PermissionName,
         });
         permissionState = status.state;
-        console.log("[VoiceTextarea] permission state =", permissionState);
+        debugLog("[VoiceTextarea] permission state =", permissionState);
       } catch (permErr) {
-        console.log("[VoiceTextarea] permissions.query failed:", permErr);
+        debugLog("[VoiceTextarea] permissions.query failed:", permErr);
       }
     }
 
@@ -1569,7 +1621,7 @@ function VoiceTextarea({
 
     let stream: MediaStream | null = null;
     try {
-      console.log("[VoiceTextarea] calling getUserMedia…");
+      debugLog("[VoiceTextarea] calling getUserMedia…");
       stream = await navigator.mediaDevices.getUserMedia({
         audio: {
           echoCancellation: true,
@@ -1577,7 +1629,7 @@ function VoiceTextarea({
           autoGainControl: true,
         },
       });
-      console.log("[VoiceTextarea] getUserMedia OK — tracks:", stream.getTracks().length);
+      debugLog("[VoiceTextarea] getUserMedia OK — tracks:", stream.getTracks().length);
       if (!mountedRef.current) {
         stream.getTracks().forEach((track) => track.stop());
         startPendingRef.current = false;
@@ -1742,9 +1794,10 @@ function VoiceTextarea({
       stopVisualisation();
       const errName = err instanceof DOMException ? err.name : (err instanceof Error ? err.name : typeof err);
       const errMessage = err instanceof Error ? err.message : String(err);
-      // Use console.log to avoid Next.js dev overlay treating this as an
-      // unhandled error — the UI already surfaces the same info via setError.
-      console.log("[VoiceTextarea] getUserMedia failed", { errName, errMessage, permissionState, diag });
+      // debugLog (console.log en développement) plutôt que console.error :
+      // l'overlay Next traiterait l'appel comme une erreur non gérée, et
+      // l'interface expose déjà la même information via setError.
+      debugLog("[VoiceTextarea] getUserMedia failed", { errName, errMessage, permissionState, diag });
 
       const fullDiag: MicErrorDiagnostics = {
         ...diag,
@@ -1987,10 +2040,20 @@ export function ProjectFunnel() {
   // vérifiée côté client puis revalidée par /api/project-inquiry.
   const [math, setMath] = useState<MathChallengeValue | null>(null);
   const [mathError, setMathError] = useState<string | null>(null);
+  // Le défi n'a pas pu être chargé (secret serveur absent, coupure réseau,
+  // bloqueur) : on propose un autre canal au lieu d'un message d'erreur faux.
+  const [mathUnavailable, setMathUnavailable] = useState(false);
   const [showValidation, setShowValidation] = useState(false);
   const [skippedSteps, setSkippedSteps] = useState<Set<StepId>>(new Set());
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   const submissionKeyRef = useRef<string | null>(null);
+  // Titre de l'étape courante : cible de focus à chaque transition, sinon
+  // le focus retombe sur <body> dès qu'un bouton actionné est désactivé
+  // ou démonté (Retour, Continuer vers Envoi, Envoyer).
+  const stepHeadingRef = useRef<HTMLHeadingElement | null>(null);
+  const focusedStepRef = useRef<number | null>(null);
+  // Étape reflétée dans l'historique du navigateur (voir l'effet plus bas).
+  const historyStepRef = useRef<number | null>(null);
 
   const disableDraftStorage = useCallback(() => {
     try {
@@ -2117,6 +2180,85 @@ export function ProjectFunnel() {
     window.sessionStorage.setItem(key, "1");
     trackFunnelEvent("pf:funnel_open", {});
   }, []);
+
+  // ------------------------------------------------------------------
+  // Historique navigateur : chaque étape pousse une entrée sans changer
+  // l'URL (pas de variante indexable de la page). Le geste Retour — le
+  // plus utilisé sur mobile — revient donc à l'étape précédente au lieu
+  // de quitter la page et de détruire tout le brief saisi.
+  // ------------------------------------------------------------------
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const nextState = { ...(window.history.state ?? {}), pfStep: activeStep };
+    try {
+      if (historyStepRef.current === null) {
+        // Premier rendu : on marque l'entrée courante, sans en créer.
+        window.history.replaceState(nextState, "");
+      } else if (historyStepRef.current !== activeStep) {
+        window.history.pushState(nextState, "");
+      }
+    } catch {
+      /* Historique indisponible (contexte restreint) — sans impact. */
+    }
+    historyStepRef.current = activeStep;
+  }, [activeStep]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const onPopState = (event: PopStateEvent) => {
+      const restored = (event.state as { pfStep?: unknown } | null)?.pfStep;
+      // Entrée hors tunnel (page précédente) : on laisse le navigateur partir.
+      if (typeof restored !== "number") return;
+      const target = Math.min(Math.max(Math.trunc(restored), 0), steps.length - 1);
+      historyStepRef.current = target;
+      setShowValidation(false);
+      setActiveStep(target);
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
+
+  // Filet de sécurité pour la fermeture d'onglet ou un clic sortant : la
+  // conservation du brouillon reste une action volontaire (politique
+  // cookies), donc sans avertissement une saisie de 2-3 minutes disparaît.
+  const hasEnteredContent =
+    state.description.trim().length > 0 ||
+    state.currentSituation.trim().length > 0 ||
+    state.audience.trim().length > 0 ||
+    state.openScope.trim().length > 0 ||
+    state.email.trim().length > 0;
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!hasEnteredContent || status.kind === "captured") return;
+    const onBeforeUnload = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      // Compat navigateurs anciens — le texte affiché reste celui du navigateur.
+      event.returnValue = "";
+    };
+    window.addEventListener("beforeunload", onBeforeUnload);
+    return () => window.removeEventListener("beforeunload", onBeforeUnload);
+  }, [hasEnteredContent, status.kind]);
+
+  // Déplace le focus sur le titre de l'étape à chaque transition. Règle les
+  // trois pertes de focus sur <body> (Retour désactivé, bloc d'actions
+  // démonté à l'étape Envoi, bouton d'envoi désactivé) et rend inutile
+  // l'aria-live posé sur toute la carte, qui relisait l'étape entière.
+  useEffect(() => {
+    // Au chargement, le focus reste où le navigateur l'a mis : le voler
+    // ferait sauter la page au-dessus de la landing. Le repère est la
+    // valeur de l'étape, pas un booléen — le double montage de React en
+    // mode strict rejouerait sinon l'effet et volerait le focus.
+    if (
+      focusedStepRef.current === null ||
+      focusedStepRef.current === activeStep
+    ) {
+      focusedStepRef.current = activeStep;
+      return;
+    }
+    focusedStepRef.current = activeStep;
+    stepHeadingRef.current?.focus();
+  }, [activeStep]);
   const current = steps[activeStep]!;
   const currentCopy = useMemo(() => getStepCopy(current.id, state), [current.id, state]);
   const contextFields = useMemo(() => getContextFields(state), [state]);
@@ -2200,13 +2342,20 @@ export function ProjectFunnel() {
   const isSkippable = current.id === "perimetre" || current.id === "contraintes";
 
   async function submitBrief() {
+    // Le bouton reste focusable pendant l'envoi (aria-disabled seul) :
+    // on se protège ici du double clic, pas en retirant le focus clavier.
+    if (status.kind === "submitting" || status.kind === "captured") return;
     if (!stepIsComplete("contact", state)) {
       setShowValidation(true);
       setActiveStep(4);
       return;
     }
-    if (!isMathAnswerCorrect(math)) {
-      setMathError("Réponse incorrecte — recomptez.");
+    // Distingue « défi non chargé », « champ vide » et « réponse fausse » :
+    // accuser d'erreur un visiteur devant un champ vide et désactivé était
+    // le pire message possible à la dernière étape du tunnel.
+    const challengeError = getMathChallengeError(math);
+    if (challengeError) {
+      setMathError(challengeError);
       return;
     }
     setMathError(null);
@@ -2226,6 +2375,10 @@ export function ProjectFunnel() {
       submissionKeyRef.current = submissionKey;
       const mailRes = await fetch("/api/project-inquiry", {
         method: "POST",
+        // Sans délai maximal, une connexion mobile qui pend laisse le bouton
+        // sur « Envoi… » indéfiniment : le visiteur n'a plus aucune issue.
+        // Au-delà, on rend la main avec les voies directes (cf. le catch).
+        signal: AbortSignal.timeout(PROJECT_INQUIRY_TIMEOUT_MS),
         headers: {
           "Content-Type": "application/json",
           "Idempotency-Key": submissionKey,
@@ -2286,13 +2439,30 @@ export function ProjectFunnel() {
         });
         return;
       }
-      mailOk = mailRes.ok;
+      // Se fier au seul statut HTTP purgeait le brouillon, redirigeait vers
+      // /merci et comptait une conversion pour un brief que personne n'avait
+      // reçu — le pire des deux mondes. Cf. briefWasCaptured.
+      mailOk = briefWasCaptured(mailRes.ok, mailJson);
+      if (!mailOk && mailRes.ok) {
+        // 200 sans capture : le piège à robots s'est déclenché. Le champ garde
+        // sinon la valeur qui vient d'être refusée — un gestionnaire de mots de
+        // passe qui l'avait rempli faisait retomber chaque nouvelle tentative
+        // sur le même refus, et la « récupération » annoncée par la route
+        // n'existait que hors formulaire.
+        patch("honeypot", "");
+      }
       mailError =
         mailJson.error ||
         Object.values(mailJson.errors || {}).join(" ") ||
-        (mailOk ? "" : "Le brief n'a pas pu être envoyé.");
-    } catch {
-      mailError = "Impossible de contacter le serveur d'envoi.";
+        (mailOk
+          ? ""
+          : mailRes.ok
+            ? `Votre brief n'a pas été enregistré. Vos réponses restent sur cette page : réessayez, ou transmettez-nous votre demande à ${DIRECT_EMAIL} ou au ${DIRECT_PHONE_LABEL}.`
+            : "Le brief n'a pas pu être envoyé.");
+    } catch (error) {
+      mailError = isProviderTimeoutError(error)
+        ? `L'envoi a été interrompu après ${PROJECT_INQUIRY_TIMEOUT_SECONDS} secondes sans réponse du serveur. Vos réponses restent sur cette page : réessayez, ou transmettez-nous votre demande à ${DIRECT_EMAIL} ou au ${DIRECT_PHONE_LABEL}.`
+        : "Impossible de contacter le serveur d'envoi.";
     }
 
     if (mailOk) {
@@ -2331,13 +2501,21 @@ export function ProjectFunnel() {
             <span>Démarrer un nouveau projet</span>
           </div>
         </div>
-        <nav className="pf-topnav" aria-label="Navigation secondaire">
-          <ThemeToggle />
-          <Link href="/" className="pf-site-return">
-            <ArrowLeft size={16} strokeWidth={2} />
-            <span>Retour au site vitrine</span>
-          </Link>
-        </nav>
+        <div className="pf-top-right">
+          {/* Même pastille que la navigation du site : la page du tunnel
+              n'exposait ni téléphone ni e-mail, y compris en mobile. */}
+          <a className="pf-top-phone" href={DIRECT_PHONE_HREF}>
+            <Phone size={15} strokeWidth={2} aria-hidden="true" />
+            <span>{DIRECT_PHONE_LABEL}</span>
+          </a>
+          <nav className="pf-topnav" aria-label="Navigation secondaire">
+            <ThemeToggle />
+            <Link href="/" className="pf-site-return">
+              <ArrowLeft size={16} strokeWidth={2} />
+              <span>Retour au site vitrine</span>
+            </Link>
+          </nav>
+        </div>
       </header>
 
       <main id="main-content" tabIndex={-1}>
@@ -2356,8 +2534,11 @@ export function ProjectFunnel() {
             Pas de devis automatique, pas de robot : chaque brief est lu par notre
             équipe. Nous visons une réponse le prochain jour ouvré, sans délai garanti.
           </p>
+          {/* Ancre posée sur la carte du formulaire, pas sur la grille :
+              sous 1100 px la carte latérale passe au-dessus et le CTA
+              atterrissait sur un bloc informatif d'un écran de haut. */}
           <a
-            href="#brief"
+            href="#brief-form"
             className="pf-primary pf-landing-cta"
             onClick={() => trackFunnelEvent("pf:landing_cta_click", {})}
           >
@@ -2469,6 +2650,20 @@ export function ProjectFunnel() {
               <ShieldCheck size={16} />
               <span>Pré-cadrage gratuit. Les données servent uniquement à qualifier votre demande.</span>
             </div>
+
+            {/* Sortie directe pour les profils qui n'aiment pas les
+                formulaires : la page n'offrait aucun autre canal. */}
+            <div className="pf-direct-contact">
+              <b>Préférez appeler ou écrire ?</b>
+              <a href={DIRECT_PHONE_HREF}>
+                <Phone size={14} strokeWidth={2} aria-hidden="true" />
+                <span>{DIRECT_PHONE_LABEL}</span>
+              </a>
+              <a href={`mailto:${DIRECT_EMAIL}`}>
+                <Mail size={14} strokeWidth={2} aria-hidden="true" />
+                <span>{DIRECT_EMAIL}</span>
+              </a>
+            </div>
             {hydrated && (
               <div
                 className={`pf-saved-badge${draftStorageEnabled ? "" : " is-optin"}`}
@@ -2499,11 +2694,16 @@ export function ProjectFunnel() {
           </div>
         </aside>
 
-        <section className="pf-main-card" aria-live="polite">
+        {/* Pas d'aria-live ici : il faisait relire la carte entière à
+            chaque étape. Le focus déplacé sur le titre annonce la
+            nouvelle étape et repositionne la lecture au bon endroit. */}
+        <section className="pf-main-card" id="brief-form">
           <div className="pf-card-head">
             <div>
               <span className="pf-eyebrow">Étape {activeStep + 1} / {steps.length}</span>
-              <h2>{currentCopy.title}</h2>
+              <h2 className="pf-step-heading" ref={stepHeadingRef} tabIndex={-1}>
+                {currentCopy.title}
+              </h2>
               <p>{currentCopy.help}</p>
             </div>
             <div className="pf-estimate-pill">
@@ -2841,14 +3041,31 @@ export function ProjectFunnel() {
                     setMath(value);
                     setMathError(null);
                   }}
+                  onLoadErrorChange={setMathUnavailable}
                   error={mathError}
                 />
+
+                {/* Voie de sortie permanente : le calcul est la seule
+                    barrière cognitive du parcours (dyscalculie, troubles
+                    cognitifs) et le seul point de blocage possible si le
+                    contrôle ne se charge pas. */}
+                <p className={`pf-captcha-escape${mathUnavailable ? " is-blocking" : ""}`}>
+                  {mathUnavailable
+                    ? "Le contrôle anti-robot ne s'est pas chargé — votre saisie n'est pas en cause. Réessayez le contrôle ci-dessus, ou transmettez-nous votre demande directement : "
+                    : "Vous ne pouvez pas répondre au calcul ? Transmettez-nous votre demande directement : "}
+                  <a href={`mailto:${DIRECT_EMAIL}`}>{DIRECT_EMAIL}</a>
+                  {" · "}
+                  <a href={DIRECT_PHONE_HREF}>{DIRECT_PHONE_LABEL}</a>
+                </p>
 
                 <button
                   type="button"
                   className="pf-submit"
                   onClick={submitBrief}
-                  disabled={status.kind === "submitting" || status.kind === "captured"}
+                  // aria-disabled seul pendant l'envoi : `disabled` retirerait
+                  // le focus clavier du bouton qu'on vient d'actionner.
+                  // Le double envoi est bloqué dans submitBrief.
+                  disabled={status.kind === "captured"}
                   aria-disabled={status.kind === "submitting" || status.kind === "captured"}
                 >
                   {status.kind === "submitting" ? (
@@ -2878,12 +3095,20 @@ export function ProjectFunnel() {
                   </div>
                 </div>}
 
-                {status.kind === "error" && <div className="pf-field-error">{status.message}</div>}
+                {/* role="alert" : l'échec d'envoi n'attire ni le focus ni
+                    l'annonce. Sans lui, un lecteur d'écran laissait le
+                    visiteur sur un bouton redevenu « Envoyer mon brief »
+                    sans jamais dire que l'envoi avait échoué. */}
+                {status.kind === "error" && (
+                  <div className="pf-field-error" role="alert">
+                    {status.message}
+                  </div>
+                )}
                 {status.kind === "captured" && (
                   <div className="pf-success" role="status">
                     ✓ {status.message}{" "}
                     Pour un traitement immédiat, écrivez à{" "}
-                    <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>.
+                    <a href={`mailto:${DIRECT_EMAIL}`}>{DIRECT_EMAIL}</a>.
                   </div>
                 )}
               </div>
@@ -2965,7 +3190,16 @@ export function ProjectFunnel() {
   );
 }
 
-function RadioBlock({
+/**
+ * Groupe de choix unique. Prendre `role="radiogroup"` impose le contrat
+ * clavier correspondant : un seul point de tabulation dans le groupe
+ * (tabindex roving) et un déplacement aux flèches, Home et End — sinon
+ * le lecteur d'écran annonce « bouton radio, 1 sur 4 » alors que la
+ * flèche bas ne fait rien. WCAG 2.1.1 et 4.1.2.
+ *
+ * Exporté pour le test de contrat clavier voisin.
+ */
+export function RadioBlock({
   title,
   values,
   value,
@@ -2976,6 +3210,42 @@ function RadioBlock({
   value: string;
   onChange: (value: string) => void;
 }) {
+  const listRef = useRef<HTMLDivElement | null>(null);
+  const selectedIndex = values.indexOf(value);
+  // Aucune option cochée : la première option porte le point de tabulation.
+  const tabbableIndex = selectedIndex >= 0 ? selectedIndex : 0;
+
+  function moveTo(index: number) {
+    if (values.length === 0) return;
+    const next = ((index % values.length) + values.length) % values.length;
+    const target = values[next];
+    if (target === undefined) return;
+    onChange(target);
+    const options = listRef.current?.querySelectorAll<HTMLButtonElement>(
+      '[role="radio"]',
+    );
+    options?.[next]?.focus();
+  }
+
+  function handleKeyDown(
+    event: ReactKeyboardEvent<HTMLButtonElement>,
+    index: number,
+  ) {
+    if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+      event.preventDefault();
+      moveTo(index + 1);
+    } else if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+      event.preventDefault();
+      moveTo(index - 1);
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      moveTo(0);
+    } else if (event.key === "End") {
+      event.preventDefault();
+      moveTo(values.length - 1);
+    }
+  }
+
   return (
     <div className="pf-field">
       <span className="pf-field-label" id={`pf-radio-${slugify(title)}`}>{title}</span>
@@ -2983,15 +3253,18 @@ function RadioBlock({
         className="pf-radio-list"
         role="radiogroup"
         aria-labelledby={`pf-radio-${slugify(title)}`}
+        ref={listRef}
       >
-        {values.map((item) => (
+        {values.map((item, index) => (
           <button
             key={item}
             type="button"
             role="radio"
             aria-checked={value === item}
+            tabIndex={index === tabbableIndex ? 0 : -1}
             className={`pf-radio ${value === item ? "is-selected" : ""}`}
             onClick={() => onChange(item)}
+            onKeyDown={(event) => handleKeyDown(event, index)}
           >
             <ButtonCheck active={value === item} />
             <span>{item}</span>

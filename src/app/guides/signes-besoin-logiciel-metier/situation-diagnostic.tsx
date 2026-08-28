@@ -589,7 +589,7 @@ export function SituationDiagnosticTool() {
                         updateActive(field.key, event.target.value)
                       }
                       placeholder={field.placeholder}
-                      className="mt-1.5 block w-full resize-y rounded-xl border border-zinc-300 bg-white px-3.5 py-3 text-sm leading-relaxed text-zinc-950 outline-none transition placeholder:text-zinc-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:placeholder:text-zinc-500"
+                      className="mt-1.5 block w-full resize-y rounded-xl border border-zinc-300 bg-white px-3.5 py-3 text-base sm:text-sm leading-relaxed text-zinc-950 outline-none transition placeholder:text-zinc-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:placeholder:text-zinc-500"
                     />
                   ) : (
                     <input
@@ -598,7 +598,7 @@ export function SituationDiagnosticTool() {
                         updateActive(field.key, event.target.value)
                       }
                       placeholder={field.placeholder}
-                      className="mt-1.5 block min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2.5 text-sm text-zinc-950 outline-none transition placeholder:text-zinc-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:placeholder:text-zinc-500"
+                      className="mt-1.5 block min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2.5 text-base sm:text-sm text-zinc-950 outline-none transition placeholder:text-zinc-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:placeholder:text-zinc-500"
                     />
                   )}
                 </label>
@@ -636,7 +636,7 @@ export function SituationDiagnosticTool() {
                         event.target.value as DiagnosticAnswer,
                       )
                     }
-                    className="mt-2.5 min-h-11 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm font-medium text-zinc-950 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
+                    className="mt-2.5 min-h-11 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-base sm:text-sm font-medium text-zinc-950 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
                   >
                     {ANSWER_OPTIONS.map((option) => (
                       <option key={option.value} value={option.value}>

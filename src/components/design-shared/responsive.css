@@ -5,7 +5,11 @@
    ========================================================================= */
 
 /* Content must remain visible if JavaScript, IntersectionObserver, print/full-page
-   capture, or reduced-motion tooling does not run the scroll reveal path. */
+   capture, or reduced-motion tooling does not run the scroll reveal path.
+   Décision assumée : le chemin « reveal au scroll » est retiré, pas suspendu.
+   useDesignInteractive n'observe plus `.reveal` — ne pas retirer ces deux
+   règles sans remettre en place un observateur ET un garde-fou no-JS /
+   prefers-reduced-motion, sinon les blocs concernés resteraient à opacity: 0. */
 .reveal,
 .reveal.in {
   opacity: 1;
@@ -14,6 +18,61 @@
 .plan.featured.reveal,
 .sr-price-card.sr-price-card-featured.reveal {
   transform: none;
+}
+
+/* =========================================================================
+   Filet anti-défilement horizontal — SANS condition de largeur.
+   -------------------------------------------------------------------------
+   Il vivait dans `@media (max-width: 480px)` : un débordement de quelques
+   pixels entre 481 et 900 px (grilles à deux colonnes, diagrammes, tableaux)
+   sortait donc du filet, exactement dans la bande où les pages service
+   passent en tablette.
+
+   `clip` et non `hidden`, volontairement : `overflow-x: hidden` force
+   `overflow-y: visible` à devenir `auto` (CSS Overflow 3), ce qui crée un
+   conteneur de défilement. Le seul descendant `position: sticky` concerné ici
+   est la barre `.hc-nav` : elle s'ancrerait alors sur un scrollport qui ne
+   défile jamais et cesserait de coller. `clip` clippe l'axe horizontal sans
+   créer ce conteneur. (Les actions `.pf-actions` du tunnel obéissent au même
+   raisonnement mais ne sont pas concernées par CE fichier :
+   /demarrer-un-projet n'importe que project-funnel.css, qui pose son propre
+   filet — voir le bloc équivalent en tête de cette feuille-là.)
+
+   Pas de `@supports` ni de repli `hidden` : `overflow: clip` n'existe qu'à
+   partir de Safari 16, et sur les versions antérieures la déclaration est
+   simplement ignorée — le filet disparaît, il n'est pas remplacé. Abandon
+   assumé plutôt que réintroduction de `hidden` sous condition de largeur : ce
+   repli casserait le sticky de `.hc-nav` exactement là où il était déjà cassé
+   avant ce chantier, sur les téléphones les plus anciens. Un `@supports`
+   autour du bloc n'apporterait rien de plus que ce que fait déjà le parseur,
+   et retirerait `max-width: 100vw` de `.hc-design` sur ces mêmes navigateurs.
+
+   Ne pas confondre avec le `overflow-x: hidden !important` local des
+   diagrammes d'architecture plus bas : celui-là vise un élément précis, il
+   reste légitime.
+   ========================================================================= */
+html,
+body {
+  overflow-x: clip;
+}
+.hc-design {
+  overflow-x: clip;
+  max-width: 100vw;
+}
+
+/* =========================================================================
+   Budget de peinture hors écran, gabarit partagé.
+   Même levier que homepage.css sur `.hc-homepage`, étendu aux pages qui
+   partagent cette coquille (les 11 pages /services/*, /tarifs, /methode…).
+   La première section de `#main-content` — le hero, quel que soit le nom de
+   sa classe (`shero`, `hero`, `ehero`, `mhero`, `thero`, `c-hero`) — reste
+   peinte : c'est elle qui porte le LCP.
+   ========================================================================= */
+@supports (content-visibility: auto) {
+  .hc-design #main-content > section:not(:first-of-type) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+  }
 }
 
 .hc-design,
@@ -659,13 +718,11 @@ body.nav-menu-lock { overflow: hidden; }
     min-height: 0 !important;
     gap: 28px !important;
   }
-  .hero-visual {
-    height: 240px !important;
-    margin-top: 16px !important;
-  }
-  .hero-visual .tower-bg {
-    opacity: 0.22 !important;
-  }
+  /* Les deux règles `.hero-visual:not(.hero-visual-v2)` qui vivaient ici
+     visaient l'ancien hero, celui qui portait `.tower-bg`. Le seul élément
+     `hero-visual` du dépôt est `<div class="hero-visual hero-visual-v2">`
+     (homepage/body.ts) : la restriction ne pouvait donc plus matcher personne.
+     Retirées plutôt que documentées. */
   .hero-video {
     max-width: 330px !important;
   }
@@ -853,7 +910,18 @@ body.nav-menu-lock { overflow: hidden; }
   .studio-head h2 { font-size: 38px; }
   .fcta h2 { font-size: 40px; }
 
-  /* All multi-col grids → single column */
+  /* All multi-col grids → single column.
+     Décompte au 28/08/2026, à revérifier avant de s'y fier : `.proc-grid` est
+     déclarée dans neuf page.css de pages service (repeat(5,1fr) ou
+     repeat(6,1fr)) et rendue par quatre corps de page — ecommerce,
+     application-mobile, sites-vitrines, saas-applications ; `.scase-grid` est
+     déclarée dans six page.css (repeat(2,1fr)) et rendue par deux —
+     sites-vitrines et saas-applications. Les effondrer ici couvre toutes ces
+     copies d'un coup, y compris celles qui n'ont pas de surcharge locale.
+     Trois feuilles refont le même effondrement chez elles (ecommerce,
+     sites-vitrines, saas-applications) : redondance assumée et verrouillée par
+     sites-vitrines/mobile-and-zoom-css.test.ts, qui exige la règle dans la
+     feuille de la page — retirer l'un ou l'autre côté casse un test. */
   .svc-row,
   .use-grid,
   .meth-grid,
@@ -868,8 +936,15 @@ body.nav-menu-lock { overflow: hidden; }
   .eq-stats,
   .svc-hero-list,
   .dc-q-breakdown,
-  .svc-mock-kanban {
+  .svc-mock-kanban,
+  .proc-grid,
+  .scase-grid {
     grid-template-columns: 1fr !important;
+  }
+  /* 32px de padding horizontal sur un écran de 360px ne laissent pas assez
+     de place au texte d'une étape de process. */
+  .proc-step {
+    padding: 24px 20px;
   }
 
   /* Studio hero service card */
@@ -1118,9 +1193,8 @@ body.nav-menu-lock { overflow: hidden; }
     overflow-wrap: anywhere;
     word-break: break-word;
   }
-  /* Prevent any descendant from forcing horizontal scroll */
-  html, body { overflow-x: hidden; }
-  .hc-design { overflow-x: hidden; max-width: 100vw; }
+  /* Le filet anti-défilement horizontal est désormais posé sans condition en
+     tête de fichier, en `overflow-x: clip` : rien à redéclarer ici. */
 
   /* ----- Global hero pill (hero-pill class is used by .hero-eyebrow,
      .ehero-eyebrow, .shero-eyebrow…). Mobile reformat into 2-row grid. ----- */
@@ -1213,8 +1287,14 @@ body.nav-menu-lock { overflow: hidden; }
    page.css → ces règles gagnent sur la spécificité égale.
    ================================================================== */
 @media (hover: none) and (pointer: coarse) {
-  /* Nav sticky (présente sur 14 page.css en copie identique) */
-  .nav {
+  /* Barre sticky réellement émise par design-shared/nav-html.ts :
+     `<nav class="hc-nav">`. Ce bloc visait `.nav`, le sélecteur de l'ancienne
+     barre — plus aucune page ne le rend (0 occurrence dans le HTML servi comme
+     dans les composants), donc la surcharge ne s'appliquait à rien et le coût
+     de composition du `backdrop-filter` restait entier sur iOS.
+     Le fond de repos de `.hc-nav` est déjà `rgba(var(--paper-rgb), 0.7)`
+     (nav-dropdown.css) : on garde le même jeton, simplement opacifié. */
+  .hc-nav {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     background: rgba(var(--paper-rgb), 0.96) !important;
@@ -1300,18 +1380,12 @@ body.nav-menu-lock { overflow: hidden; }
   }
 }
 
-/* Dark mode overrides */
-/* Menu mobile : les bordures rgba(17,17,17,…) restent littérales en light
-   (rendu strictement identique) mais deviennent invisibles sur fond sombre
-   → liseré blanc translucide. */
-@media (max-width: 900px) {
-  html.dark .nav.nav-open .nav-item:not(.nav-more) {
-    border-color: rgba(255, 255, 255, 0.1);
-  }
-  html.dark .nav.nav-open .nav-more-menu a {
-    border-color: rgba(255, 255, 255, 0.08);
-  }
-  html.dark .nav.nav-open .dd-link {
-    border-color: rgba(255, 255, 255, 0.08);
-  }
-}
+/* Le bloc « Dark mode overrides » qui vivait ici ne portait que des sélecteurs
+   ancrés sur `.nav.nav-open` — l'état ouvert de l'ancien menu mobile. Ni `nav`
+   ni `nav-open` n'apparaissent dans le HTML servi ni dans les composants : le
+   menu réel est `.hc-nav` / `.hc-mega` (nav-dropdown.css), qui porte ses
+   propres surcharges sombres. Règles retirées plutôt que maintenues.
+   Le reste du legacy `.nav` (burger, panneau mobile, `.nav-dd`) est mort de la
+   même façon plus haut dans ce fichier, mais son tri demande de séparer les
+   sélecteurs encore partagés avec le pied de page — `.brand` en particulier —
+   avant toute suppression. */

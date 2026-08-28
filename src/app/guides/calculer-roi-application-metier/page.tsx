@@ -12,6 +12,7 @@ import {
   GuidePremiumSection,
 } from "@/components/guides/guide-premium-layout";
 import type { GuidePremiumFaqCategory } from "@/components/guides/guide-premium-types";
+import { TrackedGuideCtaLink } from "@/components/guides/tracked-guide-cta-link";
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import {
   buildGuideMetadata,
@@ -350,7 +351,6 @@ export default function Page() {
               sizes="(max-width: 768px) calc(100vw - 32px), 760px"
               alt="Une maquette de bureau place des documents, un calendrier, des contrôles et une application autour d’une balance centrale"
               className="h-auto w-full"
-              priority
             />
             <figcaption className="border-t border-zinc-200 px-4 py-3 text-sm leading-relaxed text-zinc-600 dark:border-zinc-800 dark:text-zinc-300 sm:px-5">
               Un dossier défendable relie chaque montant à une source, une date
@@ -1140,9 +1140,12 @@ export default function Page() {
 
           <p>
             Vous pouvez maintenant{" "}
-            <Link href="/demarrer-un-projet">
+            <TrackedGuideCtaLink
+              href="/demarrer-un-projet"
+              placement="article_end_inline"
+            >
               faire vérifier votre dossier économique
-            </Link>
+            </TrackedGuideCtaLink>
             . Indiquez ce qui est observé, estimé, contractuel ou encore
             inconnu. L’objectif du premier échange n’est pas de promettre un
             ROI, mais de repérer le chiffre, le test ou le devis qui manque

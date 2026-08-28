@@ -346,8 +346,11 @@ describe("public content quality for the business-application security guide", (
   it("routes audit first and commercial contact only after the decision path", () => {
     expect(pageSource).toContain('primaryCtaHref: "/services/audit-technique"');
     expect(pageSource).toContain('ctaHref: "/services/audit-technique"');
+    // Le lien commercial de fin d'article passe par `TrackedGuideCtaLink` :
+    // sans lui, le clic le plus bas de la page n'émet aucun `guide_cta_click`
+    // et la conversion n'est attribuable à aucun guide.
     expect(pageSource).toContain(
-      '<Link href="/demarrer-un-projet">décrire le projet</Link>',
+      '<TrackedGuideCtaLink\n              href="/demarrer-un-projet"\n              placement="article_end_inline"\n            >\n              décrire le projet\n            </TrackedGuideCtaLink>',
     );
     expect(pageSource.indexOf('href="/demarrer-un-projet"')).toBeGreaterThan(
       pageSource.indexOf('id="decision"'),

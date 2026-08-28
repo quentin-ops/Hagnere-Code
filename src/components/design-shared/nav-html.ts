@@ -1,4 +1,9 @@
 import { TEAM_PUBLIC_COMPOSITION } from "@/lib/team";
+import {
+  CONTACT_PHONE_DISPLAY_NATIONAL,
+  CONTACT_PHONE_E164,
+} from "@/lib/contact-details";
+import { FIRST_CALL_CONTACT } from "@/components/homepage/first-call";
 
 /**
  * Single canonical nav HTML — used by every page (body.ts string templates and
@@ -12,6 +17,17 @@ import { TEAM_PUBLIC_COMPOSITION } from "@/lib/team";
  *   - Right side: "Démarrer un projet →" primary button
  *
  * Category switching is wired by useDesignInteractive (data-cat / data-pane).
+ *
+ * Deux points volontaires dans le balisage du déclencheur :
+ *
+ *   - pas d'`aria-label` : le nom accessible se calcule depuis le seul libellé
+ *     réellement rendu au point de rupture courant — « Nos services » sur
+ *     desktop (texte visible, donc conforme au critère « Label in Name »),
+ *     « Menu » sous 720 px, où le bouton devient une icône seule et ouvre
+ *     toute la navigation (services, studio, ressources, liens rapides) ;
+ *   - un `<noscript>` vers /services : le panneau est servi `aria-hidden` +
+ *     `inert` et n'est activé qu'à l'hydratation. Sans JavaScript, ce lien
+ *     garde le hub des services atteignable depuis le header.
  */
 
 const ICON = {
@@ -72,6 +88,8 @@ const ICON = {
     '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="12" y2="18"/></svg>',
   guide:
     '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>',
+  code: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 17l-5-5 5-5M16 7l5 5-5 5"/></svg>',
+  pin: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>',
 };
 
 function paneCard(
@@ -115,7 +133,7 @@ function pane(args: {
 const PANE_BUILD = pane({
   cat: "build",
   eyebrow: "PRODUIT",
-  title: "Construire des produits qui<br>deviennent des actifs.",
+  title: "Construire des produits qui <br>deviennent des actifs.",
   seeAllHref: "/services",
   seeAllLabel: "Voir tous les services",
   groupLabel: "PRODUITS NUMÉRIQUES",
@@ -142,7 +160,7 @@ const PANE_BUILD = pane({
       "/services/ecommerce",
       ICON.ecom,
       "E-commerce",
-      "Boutiques haut de gamme, Shopify Plus, headless.",
+      "Boutiques sur mesure, sans commission ni dépendance.",
     ) +
     paneCard(
       "/services/application-mobile",
@@ -155,7 +173,7 @@ const PANE_BUILD = pane({
 const PANE_GROW = pane({
   cat: "grow",
   eyebrow: "ACQUISITION",
-  title: "Construire un moteur<br>d'acquisition durable.",
+  title: "Construire un moteur <br>d'acquisition durable.",
   seeAllHref: "/services",
   seeAllLabel: "Voir tous les services",
   groupLabel: "CANAUX D'ACQUISITION",
@@ -183,7 +201,7 @@ const PANE_GROW = pane({
 const PANE_RUN = pane({
   cat: "run",
   eyebrow: "RUN",
-  title: "Stabiliser, sécuriser,<br>faire évoluer.",
+  title: "Stabiliser, sécuriser, <br>faire évoluer.",
   seeAllHref: "/services",
   seeAllLabel: "Voir tous les services",
   groupLabel: "MAINTENANCE &amp; CONFORMITÉ",
@@ -211,7 +229,7 @@ const PANE_RUN = pane({
 const PANE_CABINET = pane({
   cat: "cabinet",
   eyebrow: "STUDIO",
-  title: "Comprendre comment<br>on travaille.",
+  title: "Comprendre comment <br>on travaille.",
   seeAllHref: "/equipe",
   seeAllLabel: "Voir l'équipe",
   groupLabel: "NOTRE STUDIO",
@@ -220,7 +238,7 @@ const PANE_CABINET = pane({
       "/methode",
       ICON.methode,
       "Méthode",
-      "Sprint Fixe™ : périmètre, prix et jalons écrits au devis.",
+      "Sprint Fixe : périmètre, prix et jalons écrits au devis.",
     ) +
     paneCard(
       "/realisations",
@@ -233,13 +251,34 @@ const PANE_CABINET = pane({
       ICON.equipe,
       "Équipe",
       `${TEAM_PUBLIC_COMPOSITION}. Intervenants confirmés au devis.`,
+    ) +
+    // Trois pages sans emplacement permanent avant cette passe : les deux
+    // pages technologie ne vivaient que de liens éditoriaux, et le pilier
+    // local n'était atteignable depuis aucun gabarit partagé.
+    paneCard(
+      "/agence-next-js",
+      ICON.code,
+      "Agence Next.js",
+      "Sites et applications Next.js, du cadrage à la production.",
+    ) +
+    paneCard(
+      "/agence-react",
+      ICON.code,
+      "Agence React",
+      "Interfaces et applications React sur mesure.",
+    ) +
+    paneCard(
+      "/agence",
+      ICON.pin,
+      "Agence en Savoie",
+      "Bassens, aux portes de Chambéry ; la France à distance.",
     ),
 });
 
 const PANE_OUTILS = pane({
   cat: "outils",
   eyebrow: "RESSOURCES",
-  title: "Kits pratiques, guides<br>et outils gratuits.",
+  title: "Kits pratiques, guides <br>et outils gratuits.",
   seeAllHref: "/ressources",
   seeAllLabel: "Voir les ressources",
   groupLabel: "APPRENDRE &amp; DÉCIDER",
@@ -253,8 +292,16 @@ const PANE_OUTILS = pane({
     paneCard(
       "/ressources/kit-cahier-des-charges-site-internet",
       ICON.audit,
-      "Kit cahier des charges",
+      "Kit cahier des charges — site",
       "Word, exemple rempli et grille Excel — sans email.",
+    ) +
+    // Le pane n'exposait qu'un seul des deux kits publiés : celui qui vise les
+    // projets d'application métier n'avait aucun emplacement permanent.
+    paneCard(
+      "/ressources/kit-cahier-des-charges-application-metier",
+      ICON.tools,
+      "Kit cahier des charges — application métier",
+      "Trois fichiers pour cadrer un outil interne — sans email.",
     ) +
     paneCard(
       "/guides",
@@ -292,20 +339,21 @@ export const navHtml = `<!-- NAV -->
 
     <div class="hc-nav-pill-wrap" data-mega-root>
       <div class="hc-nav-pill">
-        <button type="button" class="hc-nav-pill-trigger" data-mega-trigger aria-expanded="false" aria-label="Nos services">
+        <button type="button" class="hc-nav-pill-trigger" data-mega-trigger aria-expanded="false">
           <span class="hc-nav-pill-trigger-icon-desktop" aria-hidden="true">${ICON.services}</span>
           <span class="hc-nav-pill-trigger-icon-mobile" aria-hidden="true">${ICON.menu}</span>
           <span class="hc-nav-pill-trigger-label">Nos services</span>
           <span class="hc-nav-pill-trigger-label-mobile">Menu</span>
           ${ICON.chevron}
         </button>
+        <noscript><a class="hc-nav-pill-link hc-nav-pill-link-nojs" href="/services">Nos services</a></noscript>
         <a class="hc-nav-pill-link" href="/tarifs">Tarifs</a>
         <a class="hc-nav-pill-link" href="/contact">Contact</a>
         <span class="hc-nav-pill-sep" aria-hidden="true"></span>
-        <a class="hc-nav-pill-phone" href="tel:+33374472018">${ICON.phone}<span>03 74 47 20 18</span></a>
+        <a class="hc-nav-pill-phone" href="tel:${CONTACT_PHONE_E164}">${ICON.phone}<span>${CONTACT_PHONE_DISPLAY_NATIONAL}</span></a>
       </div>
 
-      <div class="hc-mega" data-mega-panel role="region" aria-label="Nos services" aria-hidden="true" inert>
+      <div class="hc-mega" data-mega-panel role="region" aria-label="Menu principal" aria-hidden="true" inert>
         <aside class="hc-mega-side">
           <div class="hc-mega-side-eyebrow">EXPLORER PAR CATÉGORIE</div>
           <div class="hc-mega-side-list">
@@ -319,7 +367,7 @@ export const navHtml = `<!-- NAV -->
               ${ICON.run}<span class="hc-mega-cat-label">Protéger &amp; opérer</span>${ICON.arrowRight}
             </button>
             <button type="button" class="hc-mega-cat" data-cat="cabinet">
-              ${ICON.cabinet}<span class="hc-mega-cat-label">Cabinet</span>${ICON.arrowRight}
+              ${ICON.cabinet}<span class="hc-mega-cat-label">Studio</span>${ICON.arrowRight}
             </button>
             <button type="button" class="hc-mega-cat" data-cat="outils">
               ${ICON.outils}<span class="hc-mega-cat-label">Outils &amp; ressources</span>${ICON.arrowRight}
@@ -329,11 +377,11 @@ export const navHtml = `<!-- NAV -->
             <a href="/tarifs" class="hc-mega-side-mobile-link">Tarifs</a>
             <a href="/contact" class="hc-mega-side-mobile-link">Contact</a>
             <a href="/rendez-vous" class="hc-mega-side-mobile-link">${ICON.calendarCheck}<span>Rendez-vous</span></a>
-            <a href="tel:+33374472018" class="hc-mega-side-mobile-link">${ICON.phone}<span>03 74 47 20 18</span></a>
+            <a href="tel:${CONTACT_PHONE_E164}" class="hc-mega-side-mobile-link">${ICON.phone}<span>${CONTACT_PHONE_DISPLAY_NATIONAL}</span></a>
           </nav>
           <div class="hc-mega-side-cta">
             <div class="hc-mega-side-cta-title">Pas sûr de votre besoin ?</div>
-            <div class="hc-mega-side-cta-sub">30 min en visio avec le fondateur pour cadrer.</div>
+            <div class="hc-mega-side-cta-sub">30 min en visio avec ${FIRST_CALL_CONTACT} pour cadrer.</div>
             <a href="/rendez-vous" class="hc-mega-side-cta-btn">${ICON.calendar}<span>Réserver un appel</span></a>
           </div>
         </aside>

@@ -6,6 +6,8 @@ import {
   LLMS_CORE_LINKS,
   LLMS_LEGAL_LINKS,
   LLMS_SERVICE_LINKS,
+  LLMS_STACK_LINKS,
+  LLMS_TOOL_LINKS,
 } from "./llms";
 import { DOWNLOADABLE_RESOURCES } from "./resources";
 import { SITE_URL } from "./seo";
@@ -88,8 +90,37 @@ describe("llms.txt", () => {
     const declaredLinks = [
       ...LLMS_CORE_LINKS,
       ...LLMS_SERVICE_LINKS,
+      ...LLMS_STACK_LINKS,
+      ...LLMS_TOOL_LINKS,
       ...LLMS_LEGAL_LINKS,
     ];
     expect(declaredLinks.every((entry) => entry.path.startsWith("/"))).toBe(true);
+  });
+
+  /**
+   * Invariant inversé : la liste d'INCLUSIONS ne protège de rien (une page
+   * ajoutée au sitemap reste invisible de llms.txt sans qu'aucun test ne le
+   * remarque — c'est ainsi que /tarifs, les trois pages locales et les quatre
+   * analyses avaient disparu de l'index). On exige donc la couverture
+   * complète du sitemap, avec une liste d'EXCLUSIONS explicites et justifiées.
+   */
+  it("publishes every sitemap URL, save the explicitly excluded ones", () => {
+    const EXCLUDED_FROM_LLMS: { url: string; reason: string }[] = [];
+    const excluded = new Set(EXCLUDED_FROM_LLMS.map((entry) => entry.url));
+    const published = new Set(urls);
+
+    const missing = sitemap()
+      .map((entry) => entry.url)
+      .filter((url) => !published.has(url) && !excluded.has(url));
+
+    expect(missing).toEqual([]);
+
+    // Une exclusion doit rester une décision, pas un oubli : toute entrée de
+    // la liste doit encore exister dans le sitemap et porter une raison.
+    const sitemapUrls = new Set(sitemap().map((entry) => entry.url));
+    for (const entry of EXCLUDED_FROM_LLMS) {
+      expect(sitemapUrls.has(entry.url), entry.url).toBe(true);
+      expect(entry.reason.length, entry.url).toBeGreaterThan(0);
+    }
   });
 });

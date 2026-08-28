@@ -13,6 +13,7 @@ import { trustBadgesHtml } from "./sections/trust-badges";
 import { refuseHtml } from "./sections/refuse";
 import { faqHtml } from "./sections/faq";
 import { techFaqHtml } from "./sections/tech-faq";
+import { relatedServicesHtml } from "./sections/related-services";
 
 /**
  * Direction A — page centrée sur "production de contenu & vidéo".
@@ -24,7 +25,7 @@ import { techFaqHtml } from "./sections/tech-faq";
  *   → PROCESS (roadmap éditoriale) → STACK & STUDIO
  *   → SCÉNARIOS (3 packs interactifs) → CHECKLIST (inclus / hors scope)
  *   → PRICING (4 cards) → TESTIMONIALS → TRUST BADGES
- *   → CE QU'ON REFUSE → FAQ commerciale → TECH/PROD FAQ
+ *   → CE QU'ON REFUSE → FAQ commerciale → TECH/PROD FAQ → SERVICES LIÉS
  *   → [CTA/FOOTER strippés → SiteFooter React]
  */
 function compose(raw: string): string {
@@ -45,12 +46,10 @@ function compose(raw: string): string {
     refuseHtml.trim(),
     faqHtml.trim(),
     techFaqHtml.trim(),
+    relatedServicesHtml.trim(),
   ].join("\n\n");
 
-  out = out.replace(
-    "<!-- CTA -->",
-    stack + "\n\n<!-- CTA -->",
-  );
+  out = out.trimEnd() + "\n\n" + stack + "\n";
 
   return out;
 }

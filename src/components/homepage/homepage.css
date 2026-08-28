@@ -82,11 +82,22 @@
 
   .nav-links a.active{color:var(--ink);font-weight:500}
   .nav-cta{display:flex;gap:8px;align-items:center}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:all 0.15s;white-space:nowrap}
+  /* min-height 44px : padding 10px + interligne 14px laissait une cible de
+     ~41 px, sous le minimum tactile de 44×44 (WCAG 2.5.5 / HIG). Le padding
+     horizontal et la largeur des boutons sont inchangés — seule la hauteur
+     minimale est garantie, y compris pour les variantes compactes. */
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;min-height:44px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:all 0.15s;white-space:nowrap}
   .hc-design .btn-primary{background:var(--ink);color:var(--paper)}
   .hc-design .btn-primary:hover{background:var(--ink-2);transform:translateY(-1px)}
   .hc-design .btn-accent{background:var(--accent);color:#fff;box-shadow:0 4px 14px -4px rgba(109,40,217,0.5)}
   .hc-design .btn-accent:hover{background:var(--accent-ink);transform:translateY(-1px)}
+  /* Thème sombre : --accent-ink vaut #C4B5FD (lavande clair). Le libellé blanc
+     tombait à 1,85:1 au survol et l'état de repos (#8B5CF6) à 4,23:1 pour un
+     libellé de 15 px (.btn-lg), donc du texte normal qui exige 4,5:1.
+     On repasse sur des violets assez foncés : #fff sur #6D28D9 = 7,1:1 au repos,
+     #fff sur #7C3AED = 5,7:1 au survol. WCAG 1.4.3 AA tenu dans les deux états. */
+  html.dark .hc-design .btn-accent{background:#6D28D9;box-shadow:0 4px 14px -4px rgba(109,40,217,0.6)}
+  html.dark .hc-design .btn-accent:hover{background:#7C3AED}
   .hc-design .btn-ghost{color:var(--ink-3);border-color:var(--line);background:var(--paper)}
   .hc-design .btn-ghost:hover{border-color:var(--ink-4);color:var(--ink)}
   .btn-lg{padding:14px 22px;font-size:15px;border-radius:10px}
@@ -107,7 +118,10 @@
     .hero-pill .hero-pill-tag::before{display:none}
   }
   .eyebrow{font-family:var(--font-geist-mono);font-size:12px;font-weight:500;color:var(--accent-ink);text-transform:uppercase;letter-spacing:0.08em}
-  .eyebrow.on-dark{color:var(--accent)}
+  /* Sur fond sombre (#0a0a0a), var(--accent) vaut #6D28D9 en thème clair :
+     2,79:1, hors seuil. On fixe la valeur littérale déjà retenue ailleurs sur
+     le site (#A78BFA = 7,27:1), indépendante du thème comme le fond l'est. */
+  .eyebrow.on-dark{color:#A78BFA}
 
   /* ============ HERO ============ */
   .hero{padding:80px 0 120px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
@@ -626,8 +640,11 @@
   .faq-q:hover{color:var(--accent-ink)}
   .faq-q .ic{width:24px;height:24px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;flex-shrink:0;transition:all 0.2s;color:var(--mute)}
   .faq-item.open .faq-q .ic{background:var(--ink);border-color:var(--ink);color:var(--paper);transform:rotate(45deg)}
-  .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s;color:var(--mute);font-size:15px;line-height:1.6}
-  .faq-item.open .faq-a{max-height:400px;padding-bottom:22px}
+  /* Pas de max-height chiffrée à l'ouverture : à 200 % de taille de texte
+     (WCAG 1.4.4), sur mobile ou à l'impression, les réponses longues étaient
+     rognées sans défilement possible. L'ouverture est signalée par un fondu. */
+  .faq-a{max-height:0;overflow:hidden;opacity:0;transition:opacity 0.25s ease;color:var(--mute);font-size:15px;line-height:1.6}
+  .faq-item.open .faq-a{max-height:none;overflow:visible;opacity:1;padding-bottom:22px}
   .faq-a b{color:var(--ink);font-weight:500}
 
   /* ============ CTA FINAL ============ */

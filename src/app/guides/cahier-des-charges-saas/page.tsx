@@ -8,6 +8,7 @@ import {
   GuidePremiumSection,
 } from "@/components/guides/guide-premium-layout";
 import type { GuidePremiumFaqCategory } from "@/components/guides/guide-premium-types";
+import { TrackedGuideCtaLink } from "@/components/guides/tracked-guide-cta-link";
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import {
   buildGuideMetadata,
@@ -409,7 +410,6 @@ export default function Page() {
               height={900}
               sizes="(max-width: 1024px) 100vw, 760px"
               className="h-auto w-full"
-              priority
             />
           </div>
 
@@ -1405,7 +1405,13 @@ export default function Page() {
               accompagnement SaaS et applications métier
             </Link>
             , puis utilisez la page{" "}
-            <Link href="/demarrer-un-projet">démarrer un projet</Link> en
+            <TrackedGuideCtaLink
+              href="/demarrer-un-projet"
+              placement="article_end_inline"
+            >
+              démarrer un projet
+            </TrackedGuideCtaLink>{" "}
+            en
             joignant une version sans données sensibles. Le{" "}
             <Link href="/guides">répertoire des guides Hagnéré Code</Link>{" "}
             permet de retrouver les méthodes complémentaires.

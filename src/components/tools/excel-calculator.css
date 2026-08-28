@@ -22,6 +22,9 @@
   --good-ink: #166534;
   --good-soft: #DCFCE7;
   --warn: #F59E0B;
+  /* Usage TEXTUEL de l'ambre : #F59E0B sur --warn-soft ne tient que 1,93:1.
+     --warn-ink est la seule teinte ambre autorisée pour du texte ou un chiffre. */
+  --warn-ink: #92400E;
   --warn-soft: #FEF3C7;
 
   background: var(--paper-2);
@@ -191,7 +194,9 @@
   font-family: var(--font-geist-mono), ui-monospace, monospace;
   font-size: 14px;
   font-weight: 700;
-  color: var(--accent);
+  /* --accent sur --accent-soft ne tient que 3,70:1 en thème sombre.
+     --accent-ink est la teinte prévue pour du texte sur fond accent doux. */
+  color: var(--accent-ink);
   letter-spacing: -0.01em;
   white-space: nowrap;
   background: var(--accent-soft);
@@ -199,28 +204,81 @@
   border-radius: 999px;
 }
 
-/* Range slider — solid track + bold accent thumb */
+/* Range slider — cible tactile de 44 px, piste fine dessinée par-dessus.
+   L'élément portait sa piste directement : 8 px de haut, donc 8 px de zone
+   attrapable au doigt. La hauteur vit désormais sur l'input, transparent et
+   sans bordure, et la piste visible est redessinée dans
+   ::-webkit-slider-runnable-track / ::-moz-range-track. La marge négative
+   rend au flux une partie de la hauteur excédentaire : la cible déborde de
+   8 px de chaque côté dans les 12 px de gouttière de .calc-field, donc sans
+   jamais recouvrir le libellé au-dessus ni la légende min/max en dessous.
+   Elle ne rend PAS tout : l'élément pesait 8 px de flux (la piste elle-même),
+   il en pèse 44 − 16 = 28 px, soit +20 px par curseur et ~100 px sur les cinq
+   curseurs de la carte. Allongement assumé — la cible tactile prime — mais
+   réel : ne pas repartir de l'idée que le rythme vertical est inchangé.
+   Ne pas creuser la marge au-delà de 8 px pour compenser : à −18 px, le flux
+   redeviendrait celui d'avant mais la zone attrapable mordrait de 6 px sur le
+   libellé et sur la légende. */
 .calc-field input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
+  /* WCAG 2.2 — 2.5.8 Target Size (Minimum) : 24 px exigés, 44 px visés
+     (2.5.5, niveau AAA), la valeur déjà retenue pour les autres contrôles
+     tactiles du site. */
+  height: 44px;
+  margin: -8px 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+/* Piste visible — WebKit / Blink. Un sélecteur inconnu invalide toute la
+   règle qui le contient : les deux moteurs gardent donc des blocs séparés. */
+.calc-field input[type="range"]::-webkit-slider-runnable-track {
+  box-sizing: content-box;
   height: 8px;
   background: var(--paper-3);
-  border-radius: 999px;
-  outline: none;
-  cursor: pointer;
   border: 1px solid var(--line);
+  border-radius: 999px;
   transition: border-color 0.15s, background 0.15s;
 }
-.calc-field input[type="range"]:hover {
+/* Piste visible — Firefox. */
+.calc-field input[type="range"]::-moz-range-track {
+  box-sizing: content-box;
+  height: 8px;
+  background: var(--paper-3);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  transition: border-color 0.15s, background 0.15s;
+}
+.calc-field input[type="range"]:hover::-webkit-slider-runnable-track {
   border-color: var(--accent-mid);
   background: #ECEAF8;
+}
+.calc-field input[type="range"]:hover::-moz-range-track {
+  border-color: var(--accent-mid);
+  background: #ECEAF8;
+}
+/* Anneau de focus clavier : `outline: none` sur l'input écrasait la règle
+   globale `:focus-visible`, et le curseur ne se voyait plus au Tab. */
+.calc-field input[type="range"]:focus { outline: none; }
+.calc-field input[type="range"]:focus-visible {
+  outline: 2px solid var(--focus-ring, #6d28d9);
+  outline-offset: 2px;
+  border-radius: 999px;
 }
 .calc-field input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 22px;
-  height: 22px;
+  /* 28 px = 22 px de pastille + 3 px de liseré de chaque côté, c'est-à-dire
+     la taille rendue avant le passage en border-box. */
+  box-sizing: border-box;
+  width: 28px;
+  height: 28px;
+  /* WebKit pose le pouce sur le haut de la piste : (10 − 28) / 2 le recentre
+     sur les 8 px de piste + 2 px de bordures. */
+  margin-top: -9px;
   border-radius: 50%;
   background: var(--paper);
   border: 3px solid var(--accent);
@@ -233,9 +291,11 @@
   box-shadow: 0 4px 14px rgba(76, 29, 149, 0.4);
 }
 .calc-field input[type="range"]:active::-webkit-slider-thumb { cursor: grabbing; }
+/* Firefox centre seul le pouce sur la piste : pas de margin-top ici. */
 .calc-field input[type="range"]::-moz-range-thumb {
-  width: 22px;
-  height: 22px;
+  box-sizing: border-box;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: var(--paper);
   border: 3px solid var(--accent);
@@ -636,7 +696,7 @@
   display: grid;
   place-items: center;
   background: var(--warn-soft);
-  color: var(--warn);
+  color: var(--warn-ink);
   border-radius: 10px;
   flex-shrink: 0;
   font-size: 18px;
@@ -709,11 +769,19 @@ html.dark .calc-root {
   --good-ink: #6EE7B7;
   --good-soft: rgba(34, 197, 94, 0.14);
   --warn: #FBBF24;
+  --warn-ink: #FCD34D;
   --warn-soft: rgba(245, 158, 11, 0.16);
   color-scheme: dark;
 }
-/* Piste de slider au hover : lavande claire -> voile violet sombre */
-html.dark .calc-field input[type="range"]:hover { background: rgba(139, 92, 246, 0.18); }
+/* Piste de slider au hover : lavande claire -> voile violet sombre.
+   La piste vit désormais dans les pseudo-éléments : la teinte les vise
+   directement, sinon elle repeindrait la zone tactile transparente. */
+html.dark .calc-field input[type="range"]:hover::-webkit-slider-runnable-track {
+  background: rgba(139, 92, 246, 0.18);
+}
+html.dark .calc-field input[type="range"]:hover::-moz-range-track {
+  background: rgba(139, 92, 246, 0.18);
+}
 /* Bouton retour (fond ink inversé) : hover cohérent avec le thème */
 html.dark .calc-cta-back .btn:hover { background: var(--ink-2); }
 /* Alerte erreur : texte lisible sur sombre */

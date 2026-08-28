@@ -128,6 +128,19 @@
   border-top: 1px solid var(--line, #ededed);
 }
 
+/* design-shared/responsive.css applique `content-visibility: auto` +
+   `contain-intrinsic-size: auto 900px` à toute section de #main-content sauf
+   la première. Cette page n'en a que deux : le hero, puis celle-ci — c'est-à-
+   dire la seule raison d'être de la page, et elle porte un embed tiers de
+   hauteur déclarée (CalendlyEmbed height=780). Tant qu'elle n'est pas rendue,
+   le substitut de 900 px fausse la hauteur de défilement, sur une page où le
+   visiteur descend droit vers le widget. On la sort de l'optimisation.
+   Sélecteur aligné sur celui de responsive.css, plus la classe de la section :
+   il gagne par spécificité, sans dépendre de l'ordre des feuilles. */
+.hc-design #main-content > section.rdv-calendly-section {
+  content-visibility: visible;
+}
+
 .rdv-calendly-head {
   text-align: center;
   max-width: 720px;

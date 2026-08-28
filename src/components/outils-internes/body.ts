@@ -1,7 +1,4 @@
-import { navHtml } from "@/components/design-shared/nav-html";
-
 export const bodyHtml = `
-${navHtml}
 <div class="wrap">
   <div class="crumb">
     <a href="/">Accueil</a>
@@ -167,7 +164,7 @@ ${navHtml}
           </g>
           <!-- Footer stats -->
           <rect x="20" y="256" width="400" height="26" rx="6" fill="#FAFAFA"/>
-          <text x="34" y="272" font-family="Geist Mono" font-size="10" fill="#737373">184 clients · 42,1k€ en attente · 12 relances auto prévues lundi</text>
+          <text x="34" y="272" font-family="Geist Mono" font-size="10" fill="#737373">MAQUETTE · DONNÉES FICTIVES · 184 clients · 42,1k€ en attente</text>
         </svg>
       </div>
     </div>
@@ -276,6 +273,7 @@ ${navHtml}
           </ul>
         </div>
         <div class="uc-visual">
+          <span class="uc-visual-note">EXEMPLE ILLUSTRATIF · DONNÉES FICTIVES · SOCIÉTÉS FICTIVES</span>
           <svg width="100%" height="100%" viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice">
             <rect width="600" height="450" fill="#FAFAFA"/>
             <rect x="20" y="20" width="560" height="410" rx="10" fill="#fff" stroke="#E5E5E5"/>
@@ -369,6 +367,7 @@ ${navHtml}
           </ul>
         </div>
         <div class="uc-visual">
+          <span class="uc-visual-note">EXEMPLE ILLUSTRATIF · DONNÉES FICTIVES · SOCIÉTÉS FICTIVES</span>
           <svg width="100%" height="100%" viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice">
             <rect width="600" height="450" fill="#0A0A0A"/>
             <text x="40" y="50" font-family="Geist" font-weight="700" font-size="18" fill="#fff">Relances automatiques</text>
@@ -410,7 +409,6 @@ ${navHtml}
               <circle cx="16" cy="298" r="8" fill="#fff"/>
               <rect x="40" y="282" width="480" height="40" rx="6" fill="rgba(255,255,255,0.06)"/>
               <text x="52" y="302" font-family="Geist Mono" font-size="10" fill="#fff" font-weight="600">BILAN DU LUNDI · 6 actions effectuées · 0 intervention humaine</text>
-              <text x="52" y="316" font-family="Geist Mono" font-size="9" fill="#737373">temps gagné équipe compta : 3h12</text>
             </g>
           </svg>
         </div>
@@ -435,6 +433,7 @@ ${navHtml}
           </ul>
         </div>
         <div class="uc-visual">
+          <span class="uc-visual-note">EXEMPLE ILLUSTRATIF · DONNÉES FICTIVES · SOCIÉTÉS FICTIVES</span>
           <svg width="100%" height="100%" viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice">
             <rect width="600" height="450" fill="#FAFAFA"/>
             <rect x="20" y="20" width="560" height="410" rx="10" fill="#fff" stroke="#E5E5E5"/>
@@ -518,6 +517,7 @@ ${navHtml}
           </ul>
         </div>
         <div class="uc-visual">
+          <span class="uc-visual-note">EXEMPLE ILLUSTRATIF · DONNÉES FICTIVES · SOCIÉTÉS FICTIVES</span>
           <svg width="100%" height="100%" viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice">
             <rect width="600" height="450" fill="#0A0A0A"/>
             <text x="40" y="50" font-family="Geist" font-weight="700" font-size="18" fill="#fff">Atelier · production en direct</text>
@@ -759,8 +759,9 @@ ${navHtml}
         <h2>De l'audit à l'ERP léger.<br>Un prix fixe à chaque marche.</h2>
       </div>
       <div class="right">
-        Les fourchettes servent au premier cadrage. Le devis fixe le périmètre,
-        le prix, les livrables, les coûts tiers et le planning avant engagement.
+        Les fourchettes servent au premier cadrage et se comparent à <a href="/tarifs">la grille tarifaire complète</a>.
+        Le devis fixe le périmètre, le prix, les livrables, les coûts tiers et le planning avant engagement&nbsp;;
+        <a href="/demarrer-un-projet">le formulaire de cadrage</a> sert à décrire le besoin à étudier.
       </div>
     </div>
 
@@ -768,7 +769,7 @@ ${navHtml}
       <div class="plan plan-audit reveal">
         <div class="plan-tag">DÉMARRAGE</div>
         <h3>Audit processus</h3>
-        <div class="plan-sub">Point d'entrée peu engageant. Déductible du forfait si mission ensuite.</div>
+        <div class="plan-sub">Point d'entrée peu engageant. Si une mission suit, le devis précise la déduction applicable.</div>
         <div class="plan-price">
           <span class="amount">990 €</span>
           <span class="per">HT · 1 jour</span>
@@ -928,10 +929,10 @@ ${navHtml}
 
       <div class="faq-list reveal reveal-d-1">
         <div class="faq-item open">
-          <div class="faq-q">Mes équipes vont-elles vraiment l'utiliser ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="true" aria-controls="faq-a-tools-faq-1">Mes équipes vont-elles vraiment l'utiliser ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-tools-faq-1">
             C'est une question centrale. Associer des utilisateurs finaux au cadrage, aux tests et à la formation
             réduit le risque, sans garantir l'adoption. Le devis précise les personnes consultées et les actions
             d'accompagnement&nbsp;; l'usage réel se mesure ensuite dans les journaux et par entretien.
@@ -939,10 +940,10 @@ ${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">On garde nos logiciels actuels (Pennylane, Pipedrive…) ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-tools-faq-2">On garde nos logiciels actuels (Pennylane, Pipedrive…) ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-tools-faq-2" hidden>
             C'est souvent possible, après vérification des API, licences, droits et limites de chaque éditeur.
             Le cadrage décide ce qui reste source de vérité, ce qui est synchronisé et ce qui doit être remplacé.
             Les écritures sensibles prévoient validation, traçabilité et reprise sur erreur selon le risque.
@@ -950,21 +951,23 @@ ${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Et si notre besoin évolue dans 2 ans ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-tools-faq-3">Et si notre besoin évolue dans 2 ans ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-tools-faq-3" hidden>
             Les livrables spécifiques et les droits transférés sont définis au devis puis cédés après
             paiement complet selon les CGV. Dépôt, accès, documentation, composants préexistants et
             licences tierces sont inventoriés pour permettre une reprise par votre équipe ou un autre prestataire.
+            Si vous préférez nous confier la suite, notre <a href="/services/maintenance-evolution">service de maintenance et d'évolution</a>
+            décrit les responsabilités à prévoir après la mise en service.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Nos données sensibles sont-elles protégées ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-tools-faq-4">Nos données sensibles sont-elles protégées ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-tools-faq-4" hidden>
             La protection dépend de la nature des données et du risque. Localisation de l'hébergement,
             chiffrement, sauvegardes, piste d'audit et permissions sont cadrés dans le devis.
             Le registre, le DPA et les autres documents ne sont fournis que lorsqu'ils appartiennent au périmètre&nbsp;;
@@ -973,10 +976,10 @@ ${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Combien de temps pour former nos équipes ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-tools-faq-5">Combien de temps pour former nos équipes ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-tools-faq-5" hidden>
             La durée dépend des rôles et de la complexité. Notre priorité en design est
             de réduire le besoin de formation et de documenter les gestes qui ne sont pas évidents —
             le logiciel doit autant que possible s'expliquer seul. Le devis précise les publics,
@@ -985,86 +988,20 @@ ${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">On peut commencer petit puis étendre ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-tools-faq-6">On peut commencer petit puis étendre ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-tools-faq-6" hidden>
             <b>C'est même recommandé</b>. L'approche que nous conseillons : démarrer avec le forfait
             <i>Starter</i> sur un processus bien précis (les relances impayés, par exemple). Une fois
             l'outil en production et adopté, on étend avec d'autres modules. Cette approche limite
-            le risque et permet à l'équipe de s'habituer progressivement.
+            le risque et permet à l'équipe de s'habituer progressivement. Si l'outil est ensuite destiné
+            à des clients extérieurs, c'est le terrain de notre page
+            <a href="/services/saas-applications-metier">SaaS et applications métier</a>.
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- CTA -->
-<section class="scta" id="contact">
-  <div class="scta-bg"></div>
-  <div class="wrap inner">
-    <div class="eyebrow on-dark">— Prochaine étape</div>
-    <h2 style="margin-top:14px">Parlons de vos process.<br><span class="accent">30 minutes, c'est tout.</span></h2>
-    <p>Un call de cadrage gratuit avec un de nos seniors. On regarde ensemble vos 2 ou 3 processus les plus douloureux et on vous dit franchement si un outil sur mesure se justifie.</p>
-    <div class="scta-cta">
-      <a href="/rendez-vous" class="btn btn-accent btn-lg">
-        📅 &nbsp;Réserver 30 min sur Calendly
-        <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-      <a href="mailto:quentin@hagnere-patrimoine.fr" class="btn btn-ghost btn-lg" style="background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.15)">
-        Envoyer un email →
-      </a>
-    </div>
-    <div class="scta-meta">OBJECTIF : PROCHAIN JOUR OUVRÉ · DÉLAI NON GARANTI · PAR UN ASSOCIÉ · SANS ENGAGEMENT</div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <a href="/" class="brand" style="margin-bottom:16px">
-          <div class="brand-mark">HC</div>
-          <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
-        </a>
-        <p>Agence de développement SaaS AI-native basée à Bassens, aux portes de Chambéry. Dev, design, SEO, ads, vidéo intégrée.</p>
-      </div>
-      <div class="foot-cols">
-        <div class="foot-col">
-          <h3>SERVICES</h3>
-          <a href="/services/saas-applications-metier">SaaS &amp; applications métier</a>
-          <a href="/services/outils-internes-sur-mesure">Outils internes</a>
-          <a href="/services/sites-vitrines">Sites vitrines</a>
-          <a href="/services/referencement-google">SEO</a>
-          <a href="/services/publicite-en-ligne">Publicité</a>
-        </div>
-        <div class="foot-col">
-          <h3>STUDIO</h3>
-          <a href="/methode">Méthode</a>
-          <a href="/realisations">Réalisations</a>
-          <a href="/equipe">Équipe</a>
-          <a href="/tarifs">Tarifs</a>
-        </div>
-        <div class="foot-col">
-          <h3>CONTACT</h3>
-          <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>
-          <a href="https://www.linkedin.com/in/quentin-hagnere" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        </div>
-        <div class="foot-col">
-          <h3>LÉGAL</h3>
-          <a href="/legal/cgv">CGV</a>
-          <a href="/legal/mentions">Mentions légales</a>
-          <a href="/legal/confidentialite">Confidentialité</a>
-        </div>
-      </div>
-    </div>
-    <div class="foot-bot">
-      <div>© 2026 HAGNERE CODE · SASU au capital de 10 € · RCS Chambéry 993 672 856 · TVA FR30 993 672 856 · NAF 62.01Z · 82 impasse de Bellevue, 73000 Bassens</div>
-      <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
-    </div>
-  </div>
-</footer>
-
 `;

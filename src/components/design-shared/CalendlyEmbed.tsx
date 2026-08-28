@@ -2,6 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import { CALENDLY_URL } from "@/lib/calendly";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY_NATIONAL,
+  CONTACT_PHONE_E164,
+} from "@/lib/contact-details";
+import { listenToCalendlyWidget } from "./calendly-tracking";
 
 const CALENDLY_SCRIPT_SRC = "https://assets.calendly.com/assets/external/widget.js";
 const CALENDLY_LOAD_TIMEOUT_MS = 12_000;
@@ -29,6 +35,18 @@ export function CalendlyEmbed({ height = 700 }: { height?: number }) {
   const [authorised, setAuthorised] = useState(false);
   const [loadFailed, setLoadFailed] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  /**
+   * Le widget intégré publie sa progression par `postMessage`
+   * (`calendly.event_type_viewed`, `calendly.event_scheduled`…). Sans cette
+   * écoute, une prise de rendez-vous — la conversion la plus qualifiée du
+   * site — ne laissait aucune trace mesurable. L'écoute démarre avec
+   * l'autorisation explicite du visiteur, en même temps que le widget.
+   */
+  useEffect(() => {
+    if (!authorised) return;
+    return listenToCalendlyWidget();
+  }, [authorised]);
 
   useEffect(() => {
     if (!authorised) return;
@@ -110,8 +128,12 @@ export function CalendlyEmbed({ height = 700 }: { height?: number }) {
             </a>
           </div>
           <p className="calendly-consent-alt">
-            Sans Calendly : <a href="mailto:quentin@hagnere-patrimoine.fr">envoyer un e-mail</a>
-            {" "}ou appeler le <a href="tel:+33374472018">03 74 47 20 18</a>.
+            Sans Calendly : <a href={`mailto:${CONTACT_EMAIL}`}>envoyer un e-mail</a>
+            {" "}ou appeler le{" "}
+            <a href={`tel:${CONTACT_PHONE_E164}`}>
+              {CONTACT_PHONE_DISPLAY_NATIONAL}
+            </a>
+            .
           </p>
         </div>
       </div>
@@ -128,7 +150,7 @@ export function CalendlyEmbed({ height = 700 }: { height?: number }) {
             <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
               Ouvrir Calendly
             </a>
-            <a href="mailto:quentin@hagnere-patrimoine.fr">Envoyer un e-mail</a>
+            <a href={`mailto:${CONTACT_EMAIL}`}>Envoyer un e-mail</a>
           </div>
         </div>
       </div>

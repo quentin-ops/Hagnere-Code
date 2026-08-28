@@ -13,6 +13,7 @@ import {
   GuidePremiumSection,
 } from "@/components/guides/guide-premium-layout";
 import type { GuidePremiumFaqCategory } from "@/components/guides/guide-premium-types";
+import { TrackedGuideCtaLink } from "@/components/guides/tracked-guide-cta-link";
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import {
   buildGuideMetadata,
@@ -394,21 +395,29 @@ export default function Page() {
             description:
               "Tarifs publics et périmètres actuels de l’offre Hagnéré Code, cités comme prix propres et non comme référence de marché.",
           },
+          // Les trois entrées suivantes sont des pages commerciales de
+          // prestataires concurrents, citées comme échantillon de prix daté.
+          // La citation et le lien restent : ils font la vérifiabilité du
+          // guide. Seul le signal de classement transmis est retiré — cette
+          // page vise la requête « prix gestion Google Ads ».
           {
             source: "MS Web · tarifs",
             href: "https://www.ms-web.fr/creation-et-gestion-de-campagne-google-ads/",
+            nofollow: true,
             description:
               "Exemple daté d’un prix vendeur public ; périmètre à vérifier dans un devis.",
           },
           {
             source: "AdWorks · tarifs",
             href: "https://www.ad-works.fr/tarifs",
+            nofollow: true,
             description:
               "Exemple daté de frais de lancement et de gestion affichés publiquement.",
           },
           {
             source: "DP Medias · tarifs",
             href: "https://www.dpmedias.com/google-ads",
+            nofollow: true,
             description:
               "Exemple daté de prix publics pour audit, création et gestion mensuelle.",
           },
@@ -443,7 +452,7 @@ export default function Page() {
             <a
               href="https://www.ms-web.fr/creation-et-gestion-de-campagne-google-ads/"
               target="_blank"
-              rel="noreferrer"
+              rel="nofollow noreferrer"
             >
               MS Web
             </a>{" "}
@@ -452,7 +461,7 @@ export default function Page() {
             <a
               href="https://www.ad-works.fr/tarifs"
               target="_blank"
-              rel="noreferrer"
+              rel="nofollow noreferrer"
             >
               AdWorks
             </a>{" "}
@@ -465,7 +474,7 @@ export default function Page() {
             <a
               href="https://www.dpmedias.com/google-ads"
               target="_blank"
-              rel="noreferrer"
+              rel="nofollow noreferrer"
             >
               DP Medias
             </a>{" "}
@@ -503,7 +512,6 @@ export default function Page() {
               height={900}
               sizes="(max-width: 1024px) 100vw, 760px"
               className="h-auto w-full"
-              priority
             />
           </div>
 
@@ -1492,18 +1500,20 @@ Coût économique connu
               proposé — ou vous dire qu’une solution plus légère est préférable.
             </p>
             <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-              <Link
+              <TrackedGuideCtaLink
                 href="/services/publicite-en-ligne"
+                placement="article_end_inline"
                 className="inline-flex min-h-11 items-center justify-center rounded-lg bg-white px-4 py-2 text-sm font-bold text-zinc-950 no-underline transition hover:bg-zinc-100"
               >
                 Voir notre périmètre publicitaire
-              </Link>
-              <Link
+              </TrackedGuideCtaLink>
+              <TrackedGuideCtaLink
                 href="/demarrer-un-projet"
+                placement="article_end_inline"
                 className="inline-flex min-h-11 items-center justify-center rounded-lg border border-zinc-700 px-4 py-2 text-sm font-bold text-white no-underline transition hover:bg-zinc-900"
               >
                 Décrire mon projet
-              </Link>
+              </TrackedGuideCtaLink>
             </div>
           </div>
         </GuidePremiumSection>

@@ -743,11 +743,39 @@ Le lecteur doit comprendre, sans publicité répétée :
 
 ### 10.2 Les appels à l'action
 
-Une page possède **au maximum un CTA éditorial dans l'article**, placé après
-une démonstration suffisante. La sidebar commerciale globale compte déjà dans
-la pression ressentie : elle ne justifie ni un second `GuideInlineCTA`, ni une
-répétition finale. Adapter le libellé à l'intention et annoncer un résultat
-compréhensible :
+Le dispositif commercial d'un guide est **fermé et instrumenté**. Cinq
+emplacements existent, décrits ci-dessous ; aucun autre ne s'ajoute sans
+décision explicite. Tous passent par `TrackedGuideCtaLink` avec un `placement`
+distinct, ce qui rend chaque emplacement mesurable séparément.
+
+| Emplacement                                | `placement`                           | Rendu par                                                     |
+| ------------------------------------------ | ------------------------------------- | ------------------------------------------------------------- |
+| Bloc d'action du hero                      | `hero`                                | `GuidePremiumLayout`                                          |
+| Carte commerciale de la colonne de droite  | `sidebar`                             | `GuidePremiumLayout`                                          |
+| Barre basse sous `lg`                      | `mobile`                              | `GuidePremiumMobileCta`                                       |
+| Relance en bas de la FAQ                   | `faq`                                 | `GuidePremiumFaqCategorized`                                  |
+| Encart final, **un seul par guide**        | `article_end` ou `article_end_inline` | section partagée `strategyCta`, ou encart rédigé dans la page |
+
+L'encart final est **soit** la section partagée déclarée par `strategyCta`,
+**soit** un encart écrit dans le guide — jamais les deux. Un guide dont la
+conclusion se suffit à elle-même peut aussi n'en avoir aucun ; c'est un choix
+éditorial légitime, pas un oubli à combler.
+
+Ce qui reste interdit dans le corps :
+
+- une relance commerciale à mi-article, en plus de l'encart final ;
+- un second encart final, même sous une autre forme visuelle ;
+- une carte générique ajoutée à la sidebar en plus de la carte contextuelle ;
+- un lien vers `/demarrer-un-projet`, `/rendez-vous` ou `/contact` posé en
+  `<Link>` brut : il n'émettrait aucun `guide_cta_click`. Le contrat de corpus
+  `src/app/guides/guides-corpus-contract.test.ts` fait échouer ce cas.
+
+La barre basse s'efface d'elle-même dès qu'un autre bloc d'action entre dans
+l'écran — `#faq`, `#contact` et le pied de page. Deux appels visibles en même
+temps sur téléphone ne relèvent donc pas d'un arbitrage éditorial : c'est un
+défaut de rendu à corriger dans le composant.
+
+Adapter le libellé à l'intention et annoncer un résultat compréhensible :
 
 - prix : « Vérifier ce que mon budget permet » ;
 - comparatif : « Comparer les options pour mon entreprise » ;
@@ -757,13 +785,38 @@ compréhensible :
 Le CTA décrit ce qui se passe après le clic. Il ne crée ni urgence
 artificielle ni promesse de résultat invérifiable.
 
-La sidebar `GuideSidebarCTA` et son téléphone sont des accès commerciaux
-persistants : ils comptent dans la pression ressentie, ne remplacent pas le
-CTA adapté au guide et ne justifient pas d'ajouter d'autres cartes génériques.
-Avant publication, vérifier chacune de leurs promesses communes — délai de
-réponse, forfait, garantie — dans la source commerciale actuelle. Si une
-promesse n'est plus exacte, corriger le composant partagé plutôt que la
-contourner dans l'article.
+La carte de sidebar et son numéro de téléphone sont des accès commerciaux
+persistants : ils comptent dans la pression ressentie et ne remplacent pas
+l'encart adapté au guide. Avant publication, vérifier chacune de leurs
+promesses communes — délai de réponse, forfait, garantie — dans la source
+commerciale actuelle. Si une promesse n'est plus exacte, corriger le composant
+partagé plutôt que la contourner dans l'article.
+
+#### Comment cette règle sera révisée
+
+Cette liste décrit le dispositif réellement en place. Ce n'est pas un optimum
+démontré, et elle ne doit pas être lue comme tel. Chaque clic émet un
+`guide_cta_click` portant le guide, le `placement`, le canal et la
+destination : les emplacements peuvent donc être comparés entre eux au lieu
+d'être débattus.
+
+Après les premières semaines de campagne, relire ces événements et trancher
+emplacement par emplacement. Un emplacement qui n'obtient presque aucun clic
+ajoute de la pression commerciale sans rien apporter au lecteur : le retirer,
+plutôt que le conserver par précaution. **Aucun seuil chiffré n'est fixé
+ici** — il n'existe encore aucune mesure sur laquelle l'asseoir, et un seuil
+inventé serait pire que pas de seuil du tout.
+
+Deux limites à connaître avant de lire ces données :
+
+- la mesure ne part qu'après un consentement analytics positif et avec le
+  collecteur activé (`src/lib/funnel-analytics.ts`) : les volumes observés
+  sont un sous-ensemble du trafic réel, jamais son total ;
+- les composants hérités `GuideSidebarCTA` et `GuideInlineCTA` — employés par
+  les pages `/agence*` et `/livres-blancs/*`, jamais par le corpus
+  `/guides/` — posent des liens non instrumentés : ces clics-là n'apparaissent
+  dans aucun événement. Les `placement` propres à ces pages, lorsqu'elles en
+  ont, ne se comparent pas à ceux des guides.
 
 Prévoir aussi une action non commerciale quand elle aide réellement :
 copier une checklist, télécharger un modèle, refaire un calcul, vérifier

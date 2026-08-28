@@ -1,3 +1,5 @@
+import { CONTACT_EMAIL } from "@/lib/contact-details";
+
 export const ctaFinalHtml = `
 <!-- ADS CTA FINAL · custom, ne pas stripper -->
 <section class="scta">
@@ -11,7 +13,7 @@ export const ctaFinalHtml = `
         Demander un échange de cadrage
         <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
-      <a href="mailto:quentin@hagnere-patrimoine.fr" class="btn btn-ghost btn-lg" style="background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.15)">
+      <a href="mailto:${CONTACT_EMAIL}" class="btn btn-ghost btn-lg" style="background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.15)">
         Envoyer un email →
       </a>
     </div>

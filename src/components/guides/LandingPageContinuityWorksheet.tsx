@@ -1,5 +1,22 @@
 "use client";
 
+/**
+ * EN RÉSERVE — composant volontairement monté sur aucune page.
+ *
+ * Destination : le guide dont le slug est `landing-page-google-ads`, non
+ * encore réécrit — son slug figure dans `LEGACY_GUIDE_SLUGS`
+ * (src/lib/legacy-guide-redirects.ts:49) et reste donc redirigé.
+ * Feuille de route : docs/roadmap-guides-seo.md:141 (« continuité
+ * requête/annonce/page », « Récupérer P4 ») et :254 (« Wireframe commenté,
+ * checklist et protocole de test »).
+ *
+ * Ce n'est donc pas du code mort : il est maintenu par
+ * `src/lib/landing-page-continuity.ts` et sa suite de tests en attendant la
+ * publication du guide. Si ce commentaire survit à la mise en ligne du guide,
+ * c'est que le montage a été oublié — et inversement, un outil réellement
+ * démonté par erreur reste détectable parce qu'il n'aura pas cet en-tête.
+ */
+
 import { useRef, useState } from "react";
 import {
   CLAIM_LEVELS,

@@ -21,6 +21,18 @@ const MAX_REQUEST_BYTES = MAX_AUDIO_BYTES + 1024 * 1024;
 // Laisse à la fonction le temps de construire une réponse explicite avant le
 // timeout de plateforme et évite de retenir une exécution sur un fetch suspendu.
 const GROQ_TIMEOUT_MS = 45_000;
+/**
+ * Plafond de transcriptions simultanées PAR INSTANCE. Le rate-limit compte des
+ * requêtes par heure, pas des exécutions concurrentes : sans ce garde-fou,
+ * quelques envois simultanés de taille maximale suffisent à saturer la mémoire
+ * d'une fonction serverless et à faire tomber la route entière en 500.
+ * Le dépassement renvoie un 503 « réessayez », jamais une erreur silencieuse.
+ */
+const MAX_CONCURRENT_TRANSCRIPTIONS = parseInt(
+  process.env.TRANSCRIBE_MAX_CONCURRENT || "4",
+  10,
+);
+let inFlightTranscriptions = 0;
 
 // Allowed MIME prefixes — matches what the funnel's MediaRecorder produces
 // (webm/opus, mp4, mpeg, wav). Anything else is suspicious.
@@ -64,8 +76,42 @@ function isAudioMagic(buf: Uint8Array): boolean {
 }
 
 export async function POST(request: NextRequest) {
+  // Garde-fou de concurrence : la mémoire, pas le quota horaire, est la
+  // ressource critique quand plusieurs uploads maximum arrivent ensemble.
+  if (inFlightTranscriptions >= MAX_CONCURRENT_TRANSCRIPTIONS) {
+    log.warn("transcribe_concurrency_limit_reached", {
+      inFlight: inFlightTranscriptions,
+    });
+    return NextResponse.json(
+      {
+        error:
+          "Trop de dictées en cours. Réessayez dans quelques secondes ou saisissez votre texte.",
+      },
+      { status: 503, headers: { "Retry-After": "10" } },
+    );
+  }
+  inFlightTranscriptions += 1;
+  try {
+    return await handleTranscription(request);
+  } finally {
+    inFlightTranscriptions -= 1;
+  }
+}
+
+async function handleTranscription(request: NextRequest) {
   const ip = getClientIp(request);
   const userAgent = request.headers.get("user-agent");
+
+  // 0. Provenance : la dictée n'est appelée que par une page du site, et
+  // navigateurs comme `sendBeacon` envoient toujours `Origin` sur un POST.
+  // Exiger l'en-tête coupe l'usage hors navigateur de ce proxy Whisper sans
+  // rien retirer à un prospect. Ce n'est pas une preuve d'identité — un
+  // client peut forger l'en-tête — mais cela ferme l'accès trivial.
+  const requestOrigin = new URL(request.url).origin;
+  const origin = request.headers.get("origin");
+  if (!origin || origin !== requestOrigin) {
+    return NextResponse.json({ error: "Origine refusée." }, { status: 403 });
+  }
 
   // 1. Size cap déclarative (optimisation). La taille réelle est contrôlée
   // plus bas pendant la lecture du flux.
@@ -116,10 +162,11 @@ export async function POST(request: NextRequest) {
     const boundedRequest = new Request(request.url, {
       method: "POST",
       headers: request.headers,
-      // La copie garantit un Uint8Array adossé à un ArrayBuffer standard,
-      // compatible avec BodyInit même lorsque le flux source expose un
-      // ArrayBufferLike plus large dans les types TypeScript.
-      body: new Uint8Array(bodyBytes),
+      // Pas de copie supplémentaire : `readRequestBytesWithLimit` retourne
+      // déjà un Uint8Array neuf, adossé à un ArrayBuffer standard exactement
+      // dimensionné. Recopier ici doublait inutilement le pic mémoire d'une
+      // requête (jusqu'à 26 Mo de payload autorisés).
+      body: bodyBytes,
     });
     formData = await boundedRequest.formData();
   } catch (err) {
@@ -279,9 +326,20 @@ export async function POST(request: NextRequest) {
         status: "ai_error",
         durationMs: Date.now() - startedAt,
       });
+      // Le statut du fournisseur ne devient JAMAIS le nôtre. Relayé tel quel,
+      // un 401 de clé expirée ou un 429 de quota Groq se lisait côté client
+      // comme un refus de notre API : le visiteur voyait « trop de tentatives »
+      // alors qu'il n'avait rien dépassé, et nos propres plafonds devenaient
+      // indiscernables d'une panne fournisseur. 429 reste donc réservé au
+      // limiteur d'IP et à la réservation de coût ; toute défaillance amont
+      // sort en 502. Le statut réel du fournisseur reste dans le journal
+      // serveur `transcribe_groq_api_error` ci-dessus.
       return NextResponse.json(
-        { error: "Erreur lors de la transcription" },
-        { status: response.status },
+        {
+          error:
+            "La transcription est momentanément indisponible. Réessayez ou saisissez votre texte.",
+        },
+        { status: 502 },
       );
     }
 

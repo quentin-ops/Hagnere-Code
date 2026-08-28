@@ -1,5 +1,8 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { composedBodyHtml } from "./composed-body";
+
+const bodySource = readFileSync(new URL("./body.ts", import.meta.url), "utf8");
 
 describe("maintenance public claims", () => {
   it("ne transforme pas les CGV génériques en SLA ou remise automatique", () => {
@@ -46,5 +49,41 @@ describe("maintenance public claims", () => {
     expect(composedBodyHtml).not.toMatch(/tout reste en propriété client|propriété client[^<.]{0,80}sans réserve/i);
     expect(composedBodyHtml).toMatch(/titularité, droits, licences et transfert après paiement/i);
     expect(composedBodyHtml).toMatch(/couverture définie au contrat/i);
+  });
+  it("regroupe programmatiquement les boutons radio du mini-audit (WCAG 1.3.1 / RGAA 11.5)", () => {
+    const radioNames = new Set(
+      [...composedBodyHtml.matchAll(/name="(audit-q\d)"/g)].map((m) => m[1]),
+    );
+    const groups = [...composedBodyHtml.matchAll(
+      /<div class="me-audit-options" role="radiogroup" aria-labelledby="(me-audit-q\d-title)">/g,
+    )];
+
+    expect(groups).toHaveLength(radioNames.size);
+    for (const [, labelId] of groups) {
+      expect(composedBodyHtml).toContain(`<h3 id="${labelId}">`);
+    }
+  });
+
+  it("ne conserve aucun footer hérité dans le body", () => {
+    expect(bodySource).not.toContain("<footer");
+    expect(bodySource).not.toContain("<!-- FOOTER -->");
+  });
+
+  it("nomme les forfaits de run comme la grille tarifaire (Care / Care+ / Care Pro)", () => {
+    expect(composedBodyHtml).toContain("<h3>Care</h3>");
+    expect(composedBodyHtml).toContain("<h3>Care+</h3>");
+    expect(composedBodyHtml).toContain("<h3>Care Pro</h3>");
+    expect(composedBodyHtml).not.toMatch(/<h3>(?:Essentiel|Scale|Premium)<\/h3>/);
+  });
+
+  it("ne publie ni taille d'équipe ni durée d'engagement absentes du devis", () => {
+    expect(composedBodyHtml).not.toMatch(/équipe\s*\d(?:\s*[–-]\s*\d)?\s*pers/i);
+    expect(composedBodyHtml).not.toMatch(/\d+\s*mois min\./i);
+  });
+
+  it("publie un maillage service→service dans le corps de la page", () => {
+    expect(composedBodyHtml).toContain('href="/services/audit-technique"');
+    expect(composedBodyHtml).toContain('href="/services/securite-rgpd"');
+    expect(composedBodyHtml).toContain('href="/services/saas-applications-metier"');
   });
 });

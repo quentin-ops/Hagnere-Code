@@ -1,5 +1,23 @@
 "use client";
 
+/**
+ * EN RÉSERVE — composant volontairement monté sur aucune page.
+ *
+ * Destination : le guide dont le slug est
+ * `pourquoi-google-ads-ne-convertit-pas`, non encore réécrit — son slug
+ * figure dans `LEGACY_GUIDE_SLUGS` (src/lib/legacy-guide-redirects.ts:61) et
+ * reste donc redirigé.
+ * Feuille de route : docs/roadmap-guides-seo.md:129 (« Rapprochement clic →
+ * formulaire reçu → prospect qualifié → vente → marge ») et :252 (« Arbre de
+ * diagnostic et ordre des tests »).
+ *
+ * Ce n'est donc pas du code mort : il est maintenu par
+ * `src/lib/conversion-reconciliation.ts` et sa suite de tests en attendant la
+ * publication du guide. Si ce commentaire survit à la mise en ligne du guide,
+ * c'est que le montage a été oublié — et inversement, un outil réellement
+ * démonté par erreur reste détectable parce qu'il n'aura pas cet en-tête.
+ */
+
 import { useState } from "react";
 import {
   CASE_IMPORT_CHECKS,

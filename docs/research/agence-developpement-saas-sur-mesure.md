@@ -55,7 +55,7 @@ La page doit lui permettre de vérifier, avant de prendre contact :
 L'audit a retiré ou réécrit les éléments suivants :
 
 - taux historique de reprise « 70 % / 30 % » sans clientèle externe ;
-- cas « Comptabilité AI » et investisseurs non rattachés aux quatre produits vérifiés ;
+- investisseurs non rattachés aux quatre produits vérifiés (la note antérieure citait ici « Comptabilité AI » : c'est une société réelle du groupe, SIREN 978548899, éditrice de LMNP.AI et SCI-AI.app — voir CLAUDE.md) ;
 - métriques clients et croissance sans fiche de preuve ;
 - « le plus choisi » alors qu'aucune clientèle externe n'existe encore ;
 - seuils arbitraires sur le nombre d'utilisateurs no-code ;

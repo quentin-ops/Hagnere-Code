@@ -36,73 +36,73 @@ export const faqHtml = `
 
       <div class="faq-list reveal reveal-d-1" data-faq-filter="all">
         <div class="faq-item open" data-persona="ceo cto daf vc">
-          <div class="faq-q">Combien de temps avant les premiers insights ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="true" aria-controls="faq-a-audit-faq-1">Combien de temps avant les premiers insights ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-audit-faq-1">
             Le devis fixe les jalons, les restitutions intermédiaires, le rapport final et la procédure à suivre si le périmètre évolue. Aucun paiement au prorata ni droit d'arrêt particulier n'est présumé s'il n'est pas écrit au contrat.
           </div>
         </div>
 
         <div class="faq-item" data-persona="ceo daf vc">
-          <div class="faq-q">Le prix est-il vraiment fixe ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-audit-faq-2">Le prix est-il vraiment fixe ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-audit-faq-2" hidden>
             <b>Oui, et publiquement affiché</b>&nbsp;: Express 8 000 €, Standard 18 000 €, Deep 38 000 €, Tech DD M&amp;A 68 000 € HT. Les extras (pentest, retest, shadow CTO, etc.) sont <b>chiffrés à l'avance dans le devis initial</b>. <b>Zéro avenant surprise</b> en cours d'audit — tout ajout nécessite votre accord écrit.
           </div>
         </div>
 
         <div class="faq-item" data-persona="ceo daf vc">
-          <div class="faq-q">Pourquoi une clause de non-conflit d'intérêt publique ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-audit-faq-3">Pourquoi une clause de non-conflit d'intérêt publique ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-audit-faq-3" hidden>
             Les constats sont séparés des hypothèses de coût et chaque recommandation renvoie à une preuve. Toute remise ou déduction liée à une mission ultérieure doit figurer explicitement dans le devis&nbsp;: elle n'est pas présumée par les CGV publiques.
           </div>
         </div>
 
         <div class="faq-item" data-persona="ceo daf">
-          <div class="faq-q">Si je ne suis pas satisfait du rapport ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-audit-faq-4">Si je ne suis pas satisfait du rapport ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-audit-faq-4" hidden>
             Les critères d'acceptation, le nombre et le format des recommandations, ainsi que la procédure de correction ou de contestation sont écrits au devis. Aucun remboursement automatique n'est annoncé s'il n'est pas prévu par le contrat signé.
           </div>
         </div>
 
         <div class="faq-item" data-persona="ceo cto vc">
-          <div class="faq-q">Vous garantissez quoi exactement ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-audit-faq-5">Vous garantissez quoi exactement ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-audit-faq-5" hidden>
             Le devis liste les livrables, critères d'acceptation, accès, confidentialité, calendrier, réversibilité et droits de propriété. Les CGV s'appliquent ensuite&nbsp;: transfert des livrables spécifiques après paiement complet, avec réserve pour les composants préexistants et licences tierces.
           </div>
         </div>
 
         <div class="faq-item" data-persona="ceo cto">
-          <div class="faq-q">Combien de temps prend l'onboarding / le démarrage ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-audit-faq-6">Combien de temps prend l'onboarding / le démarrage ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-audit-faq-6" hidden>
             La date de démarrage dépend des disponibilités, de la confidentialité, des accès en lecture seule et des personnes à interviewer. Le devis précise les outils autorisés, le plan de mobilisation et la charge attendue côté client.
           </div>
         </div>
 
         <div class="faq-item" data-persona="cto">
-          <div class="faq-q">On a déjà SonarQube, Snyk, Datadog — pourquoi vous ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-audit-faq-7">On a déjà SonarQube, Snyk, Datadog — pourquoi vous ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-audit-faq-7" hidden>
             Les scanners apportent des signaux utiles mais ne remplacent pas l'examen du contexte, de l'architecture, de l'exploitation et de la décision à sécuriser. Le devis précise quelles preuves automatiques et humaines seront utilisées ainsi que les limites de l'analyse.
           </div>
         </div>
 
         <div class="faq-item" data-persona="ceo cto">
-          <div class="faq-q">Qui va ausculter concrètement notre code ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-audit-faq-8">Qui va ausculter concrètement notre code ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-audit-faq-8" hidden>
             Le devis nomme les personnes réellement mobilisées, leur statut, leurs dimensions de revue et le responsable de synthèse
             (<a href="#equipe" style="color:var(--accent-ink);text-decoration:underline">voir les profils mobilisables</a>).
             Il précise aussi les modalités de remplacement et de validation. <b>${TEAM_PUBLIC_COMPOSITION}</b>.
@@ -110,37 +110,37 @@ export const faqHtml = `
         </div>
 
         <div class="faq-item" data-persona="ceo daf">
-          <div class="faq-q">Quelle taille d'app pour que ça vaille le coup ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-audit-faq-9">Quelle taille d'app pour que ça vaille le coup ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-audit-faq-9" hidden>
             Le bon format dépend du périmètre technique, des accès disponibles, du niveau de preuve attendu et de la décision à sécuriser. Le mini-diagnostic ci-dessus aide à préparer le cadrage&nbsp;; il ne promet ni format automatique ni retour financier garanti.
           </div>
         </div>
 
         <div class="faq-item" data-persona="cto vc">
-          <div class="faq-q">Que se passe-t-il si le VC demande plus que notre rapport ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-audit-faq-10">Que se passe-t-il si le VC demande plus que notre rapport ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-audit-faq-10" hidden>
             Le fonds ou son cabinet peut demander des preuves ou analyses supplémentaires. Le devis peut alors prévoir un addendum ciblé ou une réunion de clarification. Le rapport ne remplace pas la due diligence décidée par l'investisseur.
           </div>
         </div>
 
         <div class="faq-item" data-persona="ceo cto daf vc">
-          <div class="faq-q">Si on part, on récupère quoi ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-audit-faq-11">Si on part, on récupère quoi ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-audit-faq-11" hidden>
             Le devis énumère les livrables remis et la procédure de révocation des accès. Conformément aux CGV, les livrables spécifiques sont transférés après paiement complet, sous réserve des éléments préexistants, outils génériques et licences tierces.
           </div>
         </div>
 
         <div class="faq-item" data-persona="ceo daf">
-          <div class="faq-q">C'est quoi exactement dans les 18 000 € du Standard ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-audit-faq-12">C'est quoi exactement dans les 18 000 € HT du Standard ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-audit-faq-12" hidden>
             Le devis Standard précise les jours mobilisés, les intervenants, les dimensions réellement auditées, les outils autorisés, les livrables, le calendrier et les critères d'acceptation. Une licence ou analyse tierce n'est incluse que lorsqu'elle est explicitement chiffrée.
           </div>
         </div>

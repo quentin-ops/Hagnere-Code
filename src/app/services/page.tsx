@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
 import { ServicesHubPage } from "@/components/services/ServicesHubPage";
-import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
+import { OG_BASE, SERVICES_OG_IMAGE, SITE_URL } from "@/lib/seo";
+import { PUBLIC_ORGANIZATION_ENTITY } from "@/lib/organization-structured-data";
+import { SERVICE_LINKS } from "@/lib/services";
+
+// Le nombre affiché est dérivé du registre plutôt que figé : il était écrit en
+// dur dans le title, la meta description, le pied de page et un CTA de
+// l'accueil, et une entrée ajoutée à SERVICE_LINKS aurait laissé les quatre
+// littéraux mentir sans qu'aucun test ne rougisse.
+const SERVICE_COUNT = SERVICE_LINKS.length;
 
 export const metadata: Metadata = {
-  title: "11 services web, SaaS & outils métier · Hagnéré Code",
-  description:
-    "Du SaaS au SEO : 11 services pour construire, lancer et faire évoluer votre produit. Périmètre, délais, livrables, accès et droits sont écrits au devis.",
+  title: `${SERVICE_COUNT} services web, SaaS & outils métier · Hagnéré Code`,
+  description: `Du SaaS au SEO : ${SERVICE_COUNT} services pour construire, lancer et faire évoluer votre produit. Périmètre, délais, livrables, accès et droits sont écrits au devis.`,
   alternates: { canonical: "/services" },
   openGraph: {
     ...OG_BASE,
@@ -26,30 +33,26 @@ export default function Page() {
     description:
       "Services de développement web, SaaS, applications métier, acquisition, maintenance et sécurité pour PME, ETI et scale-up.",
     url: "https://hagnere-code.ai/services",
+    // L'entité est déclarée sur la page : sans elle, le `provider` de chaque
+    // Service est un @id pendant que Google ne résout pas hors du graphe de la
+    // page courante. Elle est écrite une fois, les items la référencent.
+    publisher: PUBLIC_ORGANIZATION_ENTITY,
     mainEntity: {
       "@type": "ItemList",
-      itemListElement: [
-        ["SaaS & applications métier", "/services/saas-applications-metier"],
-        ["Outils internes sur mesure", "/services/outils-internes-sur-mesure"],
-        ["Sites vitrines & landing pages", "/services/sites-vitrines"],
-        ["E-commerce", "/services/ecommerce"],
-        ["Application mobile iOS & Android", "/services/application-mobile"],
-        ["SEO & référencement Google", "/services/referencement-google"],
-        ["Publicité en ligne", "/services/publicite-en-ligne"],
-        ["Contenu & vidéo", "/services/contenu-video"],
-        ["Maintenance & évolution", "/services/maintenance-evolution"],
-        ["Sécurité & RGPD", "/services/securite-rgpd"],
-        ["Audit technique", "/services/audit-technique"],
-      ].map(([name, url], index) => ({
+      numberOfItems: SERVICE_COUNT,
+      // Liste dérivée de SERVICE_LINKS, comme le sitemap, llms.txt et le
+      // catalogue d'offres de l'entité. La liste codée en dur donnait sept noms
+      // divergents pour les mêmes URL et pouvait omettre un service ajouté au
+      // registre sans qu'aucun test ne le détecte.
+      itemListElement: SERVICE_LINKS.map((service, index) => ({
         "@type": "ListItem",
         position: index + 1,
         item: {
           "@type": "Service",
-          name,
-          url: `https://hagnere-code.ai${url}`,
-          provider: {
-            "@id": "https://hagnere-code.ai/#organization",
-          },
+          name: service.title,
+          description: service.description,
+          url: `${SITE_URL}${service.path}`,
+          provider: { "@id": PUBLIC_ORGANIZATION_ENTITY["@id"] },
         },
       })),
     },

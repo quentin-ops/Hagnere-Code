@@ -5,6 +5,36 @@ avant le push en production. Les commandes de build, tests, lint et vérificatio
 Vercel doivent être relancées sur le commit exact à déployer ; ne pas reprendre
 un ancien nombre de pages ou un ancien résultat de contrôle.
 
+## 🎯 CONDITIONS DE LANCEMENT DES CAMPAGNES GOOGLE ADS
+
+Ajouté après l'audit du 27/08/2026. Ces cinq points conditionnent le premier
+euro dépensé — la liste complète des variables est dans
+[docs/variables-environnement.md](docs/variables-environnement.md).
+
+- [ ] **`MATH_CHALLENGE_SECRET` défini en Production** (≥ 32 caractères).
+      Sans lui, `/api/project-inquiry` répond `503` avant toute validation et
+      `/api/math-challenge` ne sert plus l'équation : **aucun formulaire du site
+      ne peut être envoyé**. Contrôle : `GET /api/math-challenge` → `200`, puis
+      une soumission réelle de bout en bout.
+- [ ] **`NEXT_PUBLIC_COOKIE_BANNER=1`** en Preview puis en Production. Tant que
+      la bannière est absente, `isAnalyticsAllowed()` renvoie toujours `false` :
+      aucun événement ne part, ni first-party ni Google.
+- [ ] **`NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED=true`**, puis vérifier qu'un
+      parcours complet écrit bien des lignes dans `funnel_analytics_event`.
+- [ ] **`NEXT_PUBLIC_GOOGLE_ADS_ID` et `NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL`**
+      renseignés. Ils activent le tag `gtag.js` (Consent Mode v2) *et* ouvrent
+      les domaines Google dans la CSP — les deux sont conditionnés à la même
+      variable dans `next.config.ts`, il n'y a rien à modifier à la main.
+- [ ] **Tester les deux chemins de conversion** : le tunnel
+      `/demarrer-un-projet` → `/merci`, et le formulaire de contact du footer
+      (présent sur l'accueil, `/services`, les 11 pages service et `/tarifs`).
+      Les deux passent par `trackLeadConversion` et doivent remonter dans Google
+      Ads.
+
+> Rappel : le tag n'est chargé qu'après un consentement analytics positif.
+> Les conversions ne remontent donc que pour les visiteurs ayant accepté —
+> comportement voulu, à intégrer dans la lecture des campagnes.
+
 ## 🚨 ÉTAT À CONTRÔLER AVANT LE DÉPLOIEMENT
 
 ### 1. Migrations base de données — appliquées et relues le 20 juillet 2026
@@ -69,6 +99,41 @@ chaîne Cloudflare alternative, non active en production.
 > question de calcul maison `MathChallenge`) : `TURNSTILE_SECRET_KEY` et
 > `NEXT_PUBLIC_TURNSTILE_SITE_KEY` ne sont plus utilisés — ils peuvent être
 > retirés des secrets/variables du déploiement.
+
+### 2 bis. Réglages anti-abus — rien à poser par défaut
+
+Huit variables permettent d'ajuster les plafonds anti-abus. **Aucune n'est à
+créer pour lancer** : chacune a un défaut sûr écrit dans le code, et c'est ce
+défaut qui s'applique tant que la variable est absente. Elles sont listées ici
+pour qu'un plafond atteint ne soit pas diagnostiqué comme une panne.
+
+| Variable | Défaut | Ce qu'elle borne |
+|---|---|---|
+| `INQUIRY_RETRY_PER_IP_HOUR` | `30` | `/api/project-inquiry` — tentatives relâchées après un refus de validation ou un échec d'envoi, par IP et par heure |
+| `INQUIRY_RETRY_GLOBAL_DAY` | `500` | `/api/project-inquiry` — mêmes tentatives, toutes IP confondues, par jour |
+| `ANALYTICS_RATE_PER_IP_HOUR` | `200` | `/api/funnel-analytics` — événements acceptés, par IP et par heure |
+| `ANALYTICS_RATE_PER_IP_DAY` | `600` | `/api/funnel-analytics` — par IP et par jour |
+| `ANALYTICS_RATE_GLOBAL_DAY` | `5000` | `/api/funnel-analytics` — toutes IP confondues, par jour |
+| `MATH_CHALLENGE_PER_IP_HOUR` | `60` | `/api/math-challenge` — équations servies, par IP et par heure (compteur mémoire, par instance) |
+| `CSP_REPORT_PER_IP_HOUR` | `30` | `/api/csp-report` — rapports acceptés, par IP et par heure (compteur mémoire, par instance) |
+| `TRANSCRIBE_MAX_CONCURRENT` | `4` | `/api/transcribe` — transcriptions simultanées par instance ; au-delà, `503` « réessayez » |
+
+- [ ] Vérifier qu'aucune de ces huit variables n'a été posée par erreur avec
+      autre chose qu'un entier positif. Elles sont lues avec `parseInt` : une
+      valeur non entière produit `NaN`, la comparaison devient toujours fausse
+      et **la limite en mémoire disparaît sans erreur ni journal**. En cas de
+      doute, retirer la variable : le défaut du code est la valeur sûre.
+- [ ] Pendant la première semaine de campagne, surveiller les réponses `429`
+      de `/api/funnel-analytics` dans les journaux Vercel. Un refus de quota
+      n'écrit aucune ligne en base et le navigateur ne rejoue pas l'événement :
+      la seule trace est le code HTTP. Un trafic important derrière une même IP
+      sortante — réseau d'entreprise, portail Wi-Fi — atteint
+      `ANALYTICS_RATE_PER_IP_HOUR` en premier ; c'est le seul de ces plafonds
+      qu'il soit légitime de relever pour une campagne. Ne jamais relever les
+      plafonds de soumission de formulaire pour « faire du volume ».
+
+Détail complet et effets de bord : [docs/variables-environnement.md](docs/variables-environnement.md).
+Source de vérité des plafonds persistants : `src/lib/ai-rate-limit.ts`.
 
 ### 3. Vérifier les domaines DKIM Resend
 Resend refuse les `from` non-vérifiés. Vérifier que `hagnere-code.ai` est

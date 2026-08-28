@@ -15,19 +15,32 @@ const toolRoutes = [
   "outils/calculateur-cout-excel",
 ];
 
-const legalRoutes = [
-  "legal/mentions",
-  "legal/cgv",
-  "legal/confidentialite",
-  "legal/cookies",
-  "legal/reclamations",
-  "legal/accessibilite",
+/**
+ * Pages légales et leur date de mise à jour réelle.
+ *
+ * Ce ne sont pas des dates de build : chaque page légale affiche déjà cette
+ * date dans son gabarit (`LegalPageLayout`, balise `<time datetime>`), et la
+ * valeur reprise ici est celle de sa constante `LAST_UPDATED`. Le sitemap
+ * publie donc la même information que la page.
+ *
+ * `src/app/route-contracts.test.ts` compare ce tableau aux `LAST_UPDATED` des
+ * six pages : une date modifiée d'un côté et pas de l'autre fait échouer la
+ * suite, ce qui exclut la dérive silencieuse qui justifiait de tout omettre.
+ */
+const legalRoutes: { path: string; lastModified: string }[] = [
+  { path: "legal/mentions", lastModified: "2026-07-20" },
+  { path: "legal/cgv", lastModified: "2026-07-20" },
+  { path: "legal/confidentialite", lastModified: "2026-08-27" },
+  { path: "legal/cookies", lastModified: "2026-08-27" },
+  { path: "legal/reclamations", lastModified: "2026-07-20" },
+  { path: "legal/accessibilite", lastModified: "2026-07-20" },
 ];
 
-// Pas de lastModified : une date régénérée à chaque build pour toutes les
-// URLs est un signal mensonger que Google apprend à ignorer. On l'omet
-// plutôt que de mentir ; à réintroduire si on maintient de vraies dates
-// de mise à jour par page.
+// Pas de lastModified générique : une date régénérée à chaque build pour
+// toutes les URLs est un signal mensonger que Google apprend à ignorer. Seules
+// les familles qui maintiennent une vraie date de mise à jour par page en
+// portent une — guides, livres blancs, ressources, pages locales et pages
+// légales, chacune adossée à un registre ou à un test anti-dérive.
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: baseUrl },
@@ -87,7 +100,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const legalSitemapRoutes: MetadataRoute.Sitemap = legalRoutes.map(
     (route) => ({
-      url: `${baseUrl}/${route}`,
+      url: `${baseUrl}/${route.path}`,
+      lastModified: route.lastModified,
     }),
   );
 

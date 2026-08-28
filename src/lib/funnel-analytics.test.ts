@@ -1,12 +1,17 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { FUNNEL_EVENT_NAMES, trackFunnelEvent } from "./funnel-analytics";
+import {
+  FUNNEL_EVENT_NAMES,
+  resetFunnelDeduplication,
+  trackFunnelEvent,
+} from "./funnel-analytics";
 
 describe("trackFunnelEvent", () => {
   const sendBeacon = vi.fn<Navigator["sendBeacon"]>(() => true);
   const fetch = vi.fn(() => Promise.resolve(new Response(null, { status: 204 })));
 
   beforeEach(() => {
+    resetFunnelDeduplication();
     vi.unstubAllEnvs();
     vi.stubEnv("NEXT_PUBLIC_COOKIE_BANNER", "1");
     vi.stubEnv("NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED", "true");
@@ -39,6 +44,52 @@ describe("trackFunnelEvent", () => {
 
   it("autorise l'état de capture partielle du formulaire", () => {
     expect(FUNNEL_EVENT_NAMES).toContain("pf:submit_partial");
+  });
+
+  it("déclare le nom d'événement nécessaire à une réservation confirmée", () => {
+    // L'union est fermée : sans cette entrée, aucun composant ne peut émettre
+    // la confirmation de créneau et la route API la rejetterait.
+    expect(FUNNEL_EVENT_NAMES).toContain("pf:calendly_booking_confirmed");
+  });
+
+  it("n'écrit qu'une fois par étape, quels que soient les allers-retours", () => {
+    trackFunnelEvent("pf:step_complete", { step: "projet", index: 0 });
+    trackFunnelEvent("pf:step_complete", { step: "projet", index: 0 });
+
+    expect(sendBeacon).toHaveBeenCalledOnce();
+
+    // Une autre étape reste une mesure distincte.
+    trackFunnelEvent("pf:step_complete", { step: "contact", index: 1 });
+    expect(sendBeacon).toHaveBeenCalledTimes(2);
+
+    // Un événement hors table de déduplication n'est jamais filtré.
+    trackFunnelEvent("pf:step_skip", { step: "projet" });
+    trackFunnelEvent("pf:step_skip", { step: "projet" });
+    expect(sendBeacon).toHaveBeenCalledTimes(4);
+  });
+
+  it("ne consomme pas la déduplication quand le consentement manque", () => {
+    vi.stubEnv("NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED", "false");
+    trackFunnelEvent("pf:step_complete", { step: "projet" });
+    expect(sendBeacon).not.toHaveBeenCalled();
+
+    vi.stubEnv("NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED", "true");
+    trackFunnelEvent("pf:step_complete", { step: "projet" });
+    expect(sendBeacon).toHaveBeenCalledOnce();
+  });
+
+  it("n'ajoute aucun identifiant de visiteur aux propriétés envoyées", async () => {
+    // /legal/confidentialite publie « sans identifiant visiteur ajouté par le
+    // collecteur ». Toute clé de corrélation ajoutée ici rendrait cette
+    // mention fausse : la changer suppose de modifier la page, la version de
+    // notice et l'inventaire /legal/cookies dans le même changement.
+    trackFunnelEvent("pf:step_complete", { step: "projet" });
+
+    const blob = sendBeacon.mock.calls[0][1] as Blob;
+    const sent = JSON.parse(await blob.text()) as {
+      props: Record<string, unknown>;
+    };
+    expect(Object.keys(sent.props)).toEqual(["step"]);
   });
 
   it("sends primitive properties to the first-party endpoint", async () => {

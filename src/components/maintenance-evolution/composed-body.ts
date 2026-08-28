@@ -22,6 +22,7 @@ import { pricingHtml } from "./sections/pricing";
 import { trustBadgesHtml } from "./sections/trust-badges";
 import { faqHtml } from "./sections/faq";
 import { techFaqHtml } from "./sections/tech-faq";
+import { relatedServicesHtml } from "./sections/related-services";
 import { ctaFinalHtml } from "./sections/cta-final";
 
 /**
@@ -34,12 +35,15 @@ import { ctaFinalHtml } from "./sections/cta-final";
  *   PROCESS 7 étapes → ARSENAL 9 outils → VERTICALS 6 secteurs →
  *   SCENARIOS 4 tabs → DE-RISK → COMPARISON 5 colonnes →
  *   TESTIMONIALS → REFUSE →
- *   PRICING (Audit 2 000 € + Essentiel 2 500 € / Scale 6 500 € / Premium 14 000 €) →
- *   TRUST BADGES → FAQ 12 Q → TECH FAQ 8 Q → CTA FINAL M&E →
+ *   PRICING (porte d'entrée + 3 forfaits de run) →
+ *   TRUST BADGES → FAQ 12 Q → TECH FAQ 8 Q → SERVICES LIÉS → CTA FINAL M&E →
  *   [SiteFooter React]
  *
- * Le `<!-- CTA -->` du body.ts clone est stripé côté React via `stripFinalCta`.
- * Notre `<!-- ADS CTA FINAL -->` échappe au strip (regex ne matche que "CTA" ou "CTA FINAL").
+ * Aucun montant n'est recopié dans ce commentaire : la seule source des prix
+ * publiés est `sections/pricing.ts`. Les recopier ici les fait dériver.
+ *
+ * La CTA finale héritée a été retirée de body.ts : la seule CTA rendue est
+ * `<!-- ADS CTA FINAL -->`, qui échappe volontairement à `stripFinalCta`.
  */
 function compose(raw: string): string {
   let out = raw;
@@ -68,11 +72,12 @@ function compose(raw: string): string {
     trustBadgesHtml.trim(),
     faqHtml.trim(),
     techFaqHtml.trim(),
+    relatedServicesHtml.trim(),
     ctaFinalHtml.trim(),
   ].join("\n\n");
 
   out = out.replace(
-    /<!-- WHAT WE BUILD -->[\s\S]*?(?=<!-- CTA -->)/,
+    /<!-- WHAT WE BUILD -->[\s\S]*$/,
     meSections + "\n\n",
   );
 

@@ -40,7 +40,7 @@ export const mobileAppHtml = `
         </ul>
         <div class="ec-mobile-note">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-          <span>Elle peut entrer dans les périmètres <b>Scale</b> et <b>Enterprise</b> lorsqu'elle est explicitement chiffrée. Sur Launch, elle reste une option à cadrer selon les parcours et intégrations.</span>
+          <span>Elle peut entrer dans les périmètres <b>Scale</b> et <b>Enterprise</b> lorsqu'elle est explicitement chiffrée. Sur Launch, elle reste une option à cadrer selon les parcours et intégrations. L'écran présenté est une maquette&nbsp;: « ÆTHER » est une MARQUE FICTIVE et les montants affichés sont des DONNÉES FICTIVES.</span>
         </div>
       </div>
 
@@ -50,7 +50,7 @@ export const mobileAppHtml = `
           <div class="ec-phone-sidebtn ec-phone-sidebtn-l2" aria-hidden="true"></div>
           <div class="ec-phone-sidebtn ec-phone-sidebtn-l3" aria-hidden="true"></div>
           <div class="ec-phone-sidebtn ec-phone-sidebtn-r" aria-hidden="true"></div>
-          <svg viewBox="0 0 300 620" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto" role="img" aria-label="Aperçu de l'application mobile ÆTHER">
+          <svg viewBox="0 0 300 620" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto" role="img" aria-label="Maquette d'application mobile pour la marque fictive ÆTHER — données fictives">
             <defs>
               <linearGradient id="mAppBG" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stop-color="#171411"/>

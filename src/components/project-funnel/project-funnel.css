@@ -5,6 +5,10 @@
 
 :root {
   --pf-ink: #0a0a0a;
+  /* Texte lisible posé SUR --pf-ink. Doit être redéfini dans chaque thème :
+     en sombre, --pf-ink devient clair et un #fff littéral disparaissait
+     (contraste 1,10:1 sur les chips sélectionnés du tunnel). */
+  --pf-on-ink: #ffffff;
   --pf-soft: #525252;
   --pf-muted: #737373;
   --pf-line: #e7e5e4;
@@ -12,6 +16,10 @@
   --pf-bg: #f4f4f5;
   --pf-bg-2: #ececef;
   --pf-accent: #6d28d9;
+  /* Fond des boutons pleins portant du texte blanc. Séparé de --pf-accent,
+     qui s'éclaircit en thème sombre pour les bordures et les accents : ce
+     violet clair ne tenait que 4,2:1 avec du blanc, sous le seuil AA. */
+  --pf-accent-btn: #6d28d9;
   --pf-accent-dark: #4c1d95;
   --pf-accent-soft: #ede9fe;
   --pf-green: #059669;
@@ -24,6 +32,7 @@
 
 html.dark {
   --pf-ink: #f4f4f5;
+  --pf-on-ink: #0a0a0a;
   --pf-soft: #b8b8c0;
   --pf-muted: #8b8b94;
   --pf-line: #2a2a30;
@@ -31,6 +40,7 @@ html.dark {
   --pf-bg: #0b0b0d;
   --pf-bg-2: #101015;
   --pf-accent: #8b5cf6;
+  --pf-accent-btn: #7c3aed;
   --pf-accent-dark: #c4b5fd;
   --pf-accent-soft: #2a1458;
   --pf-green: #34d399;
@@ -41,12 +51,32 @@ html.dark {
   --pf-shadow: 0 26px 80px -48px rgba(0, 0, 0, 0.85);
 }
 
+/* ==========================================================================
+   Filet anti-défilement horizontal, propre au tunnel.
+   --------------------------------------------------------------------------
+   design-shared/responsive.css porte le même filet pour le reste du site,
+   mais /demarrer-un-projet ne l'importe pas : ProjectFunnel.tsx ne charge que
+   cette feuille. Les deux routes du tunnel n'avaient donc aucun garde-fou.
+
+   `clip` et non `hidden` : `overflow-x: hidden` force `overflow-y` à devenir
+   `auto` (CSS Overflow 3) et crée un conteneur de défilement, sur lequel
+   `.pf-actions` — `position: sticky; bottom: 0` en mobile — cesserait de
+   coller au bas de l'écran. Sur Safari antérieur à 16, `clip` est ignoré et
+   le filet n'existe simplement pas ; même arbitrage que sur le reste du site.
+   ========================================================================== */
+html,
+body {
+  overflow-x: clip;
+}
+
 .pf-root,
 .pf-root * {
   box-sizing: border-box;
 }
 
 .pf-root {
+  overflow-x: clip;
+  max-width: 100vw;
   min-height: 100vh;
   background:
     linear-gradient(to right, rgba(var(--pf-ink-rgb), 0.035) 1px, transparent 1px),
@@ -134,6 +164,46 @@ html.dark {
   width: 7px;
   height: 7px;
   background: var(--pf-accent);
+}
+
+.pf-top-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+/* Pastille téléphone — reprend celle de la navigation du site. Reste
+   visible en mobile : c'est la seule voie de contact directe de la page. */
+/* `.pf-root a { color: inherit }` est plus spécifique qu'une classe seule :
+   on force la couleur au même niveau, comme pour `.pf-primary`. */
+.pf-top-phone,
+.pf-root a.pf-top-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 14px;
+  color: var(--pf-ink);
+  background: var(--pf-paper);
+  border: 1px solid var(--pf-line);
+  border-radius: 999px;
+  font-weight: 650;
+  font-size: 13.5px;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 12px 28px -24px rgba(var(--pf-ink-rgb), 0.4);
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.pf-top-phone:hover {
+  border-color: var(--pf-ink);
+}
+
+.pf-top-phone svg {
+  flex-shrink: 0;
+  color: var(--pf-accent);
 }
 
 .pf-topnav {
@@ -411,6 +481,26 @@ html.dark {
   border-bottom: 1px solid var(--pf-line);
 }
 
+/* Cible de focus à chaque changement d'étape (tabIndex={-1}) : la marge
+   de défilement évite que le titre passe sous la barre collante. */
+.pf-step-heading {
+  scroll-margin-top: 76px;
+}
+
+.pf-step-heading:focus {
+  outline: none;
+}
+
+.pf-step-heading:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--pf-accent) 34%, transparent);
+  outline-offset: 6px;
+  border-radius: 6px;
+}
+
+.pf-main-card {
+  scroll-margin-top: 76px;
+}
+
 .pf-card-head h2 {
   margin: 7px 0 8px;
   max-width: 820px;
@@ -574,7 +664,7 @@ html.dark {
 }
 
 .pf-chip.is-selected {
-  color: #fff;
+  color: var(--pf-on-ink);
   background: var(--pf-ink);
   border-color: var(--pf-ink);
 }
@@ -748,15 +838,11 @@ html.dark {
   padding-left: 38px;
 }
 
-.pf-consent {
-  display: grid;
-  grid-template-columns: 18px 1fr;
-  gap: 9px;
-  align-items: start;
-  color: var(--pf-soft);
-  font-size: 12.5px;
-  line-height: 1.45;
-}
+/* `.pf-consent` est déclarée une seule fois, plus bas (« Confirmation de
+   lecture RGPD visible ») : une seconde déclaration ici, en `display: grid`,
+   était intégralement écrasée par celle-là — même spécificité, plus loin dans
+   la feuille — et seules ses propriétés héritées survivaient. Elles ont été
+   reportées dans le bloc conservé. */
 
 .pf-consent input {
   width: 18px;
@@ -863,8 +949,8 @@ html.dark {
 .pf-primary,
 .pf-root a.pf-primary {
   color: #fff;
-  background: var(--pf-accent);
-  border: 1px solid var(--pf-accent);
+  background: var(--pf-accent-btn);
+  border: 1px solid var(--pf-accent-btn);
   box-shadow: 0 18px 34px -24px rgba(109, 40, 217, 0.8);
 }
 
@@ -988,6 +1074,14 @@ html.dark {
   .pf-topbar {
     min-height: 58px;
     padding: 0 16px;
+    gap: 10px;
+  }
+
+  /* La pastille téléphone survit à la barre secondaire : c'est le seul
+     contact direct de la page pour un visiteur mobile. */
+  .pf-top-phone {
+    padding: 0 12px;
+    font-size: 13px;
   }
 
   .pf-topnav {
@@ -1157,6 +1251,21 @@ html.dark {
   flex-wrap: wrap;
 }
 
+/* Canaux directs de la page de confirmation : une demande urgente ne doit pas
+   dépendre du délai de réponse annoncé. */
+.pf-success-direct {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--pf-muted);
+}
+.pf-success-direct a {
+  color: var(--pf-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* ==========================================================================
    SIREN auto-fill block
    ========================================================================== */
@@ -1296,7 +1405,7 @@ html.dark {
 }
 
 .pf-summary-edit:hover {
-  background: var(--pf-accent);
+  background: var(--pf-accent-btn);
   color: #fff;
 }
 
@@ -1604,7 +1713,10 @@ html.dark {
 
 .pf-kind-group-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  /* `min(260px, 100%)` : avec auto-fill seul, une piste de 260 px minimum
+     déborde dès que le conteneur est plus étroit (≈ 350 px de viewport,
+     iPhone SE). Aucun changement de rendu au-dessus de cette largeur. */
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
   gap: 10px;
   padding: 4px 14px 14px;
 }
@@ -1766,6 +1878,10 @@ html.dark {
    Confirmation de lecture RGPD visible
    ========================================================================== */
 
+/* Seule déclaration de `.pf-consent`. Les trois dernières propriétés
+   viennent du doublon retiré plus haut : elles étaient les seules qu'il
+   appliquait encore, tout le reste de son bloc `display: grid` étant écrasé
+   ici. */
 .pf-consent {
   display: flex;
   align-items: flex-start;
@@ -1776,6 +1892,9 @@ html.dark {
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.15s ease;
+  color: var(--pf-soft);
+  font-size: 12.5px;
+  line-height: 1.45;
 }
 
 .pf-consent:hover { border-color: var(--pf-accent); }
@@ -1978,13 +2097,139 @@ html.dark {
   font-weight: 500;
 }
 
+.pf-captcha > span small {
+  display: block;
+  margin-top: 4px;
+  color: var(--pf-muted);
+  font-size: 11.5px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
 html.dark .pf-captcha > em {
   color: #f87171;
 }
 
-.pf-submit:disabled {
+/* Voie de sortie permanente sous le contrôle anti-robot */
+/* Le parent .pf-recap est une grille (gap 14px) : pas de marge propre. */
+.pf-captcha-escape {
+  margin: 0;
+  color: var(--pf-soft);
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
+.pf-captcha-escape a {
+  color: var(--pf-accent-dark);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+
+.pf-captcha-escape.is-blocking {
+  padding: 10px 12px;
+  color: var(--pf-ink);
+  background: var(--pf-accent-soft);
+  border: 1px solid rgba(109, 40, 217, 0.24);
+  border-radius: 10px;
+}
+
+.pf-submit:disabled,
+.pf-submit[aria-disabled="true"] {
   opacity: 0.55;
   cursor: not-allowed;
+  transform: none;
+}
+
+/* ==========================================================================
+   Contact direct (carte latérale) — appeler ou écrire sans formulaire
+   ========================================================================== */
+
+/* Parent .pf-side-card : grille avec gap 13px, pas de marge propre. */
+.pf-direct-contact {
+  display: grid;
+  gap: 4px;
+  padding: 11px 12px;
+  background: var(--pf-bg);
+  border: 1px solid var(--pf-line);
+  border-radius: 12px;
+}
+
+.pf-direct-contact b {
+  color: var(--pf-ink);
+  font-size: 11.5px;
+  font-weight: 650;
+}
+
+.pf-direct-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 32px;
+  color: var(--pf-soft);
+  font-size: 12.5px;
+  font-weight: 600;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.pf-direct-contact a:hover {
+  color: var(--pf-accent-dark);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.pf-direct-contact svg {
+  flex-shrink: 0;
+  color: var(--pf-accent);
+}
+
+/* ==========================================================================
+   Cibles tactiles — pointeur grossier (doigt)
+   Les valeurs de bureau restent denses ; au doigt, chaque contrôle du
+   tunnel atteint 44 px et les pastilles sont séparées de 10 px.
+   ========================================================================== */
+
+@media (pointer: coarse) {
+  .pf-chip-row,
+  .pf-chip-grid {
+    gap: 10px;
+  }
+
+  .pf-chip-grid.compact {
+    gap: 9px;
+  }
+
+  .pf-chip {
+    min-height: 44px;
+    padding: 0 14px;
+    font-size: 13px;
+  }
+
+  .pf-root input {
+    min-height: 46px;
+  }
+
+  .pf-submit,
+  .pf-primary,
+  .pf-secondary {
+    min-height: 46px;
+  }
+
+  .pf-radio {
+    min-height: 46px;
+  }
+
+  .pf-mic,
+  .pf-direct-contact a {
+    min-height: 44px;
+  }
+
+  .pf-saved-badge .pf-draft-optin {
+    min-height: 44px;
+  }
 }
 
 /* ==========================================================================

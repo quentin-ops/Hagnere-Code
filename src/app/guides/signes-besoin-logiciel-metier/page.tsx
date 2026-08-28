@@ -19,6 +19,7 @@ import {
   GuidePremiumSection,
 } from "@/components/guides/guide-premium-layout";
 import type { GuidePremiumFaqCategory } from "@/components/guides/guide-premium-types";
+import { TrackedGuideCtaLink } from "@/components/guides/tracked-guide-cta-link";
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import {
   buildGuideMetadata,
@@ -495,7 +496,6 @@ export default function Page() {
               width={1600}
               height={900}
               unoptimized
-              priority
               alt="Trois fiches de situations concrètes orientées vers six réponses, de la sécurisation à l’étude sur mesure"
               className="h-auto w-full"
             />
@@ -1161,13 +1161,14 @@ export default function Page() {
                   y compris lorsque la meilleure décision est de sécuriser,
                   corriger l’existant, choisir un standard ou attendre.
                 </p>
-                <Link
+                <TrackedGuideCtaLink
                   href="/demarrer-un-projet"
+                  placement="article_end_inline"
                   className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-zinc-950 no-underline transition hover:bg-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
                 >
                   Faire examiner mes trois situations
                   <ArrowRight className="size-4" aria-hidden="true" />
-                </Link>
+                </TrackedGuideCtaLink>
               </div>
             </div>
           </div>

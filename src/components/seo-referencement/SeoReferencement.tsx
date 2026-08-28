@@ -16,17 +16,23 @@ import {
   Target,
   X,
 } from "lucide-react";
+import { CONTACT_ADDRESS } from "@/lib/contact-details";
 import { MainNav } from "@/components/design-shared/MainNav";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
 import { InteractiveDesignRoot } from "@/components/design-shared/InteractiveDesignRoot";
 import {
+  SEO_BUDGET_SHAPES,
+  SEO_COMMITMENTS,
   SEO_DELIVERABLES,
   SEO_FAQS,
   SEO_FORMATS,
   SEO_PROCESS,
   SEO_REFUSALS,
   SEO_RELATED_RESOURCES,
+  SEO_SCOPE_EXCLUDED,
+  SEO_SCOPE_INCLUDED,
   SEO_STARTING_POINTS,
+  SEO_TECH_FAQS,
 } from "./content";
 import "./page.css";
 import "@/components/design-shared/nav-dropdown.css";
@@ -45,6 +51,12 @@ const DELIVERABLE_ICONS = [
   BookOpenCheck,
   Link2,
   ClipboardCheck,
+] as const;
+const COMMITMENT_ICONS = [
+  ClipboardCheck,
+  Target,
+  GitBranch,
+  Compass,
 ] as const;
 
 function IconCard({
@@ -270,10 +282,10 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
                 <h2 id="seo-formats-title">Le bon niveau d’engagement pour le problème réel.</h2>
               </div>
               <p>
-                Pas de catalogue artificiel ni de volume automatique. Le
-                périmètre, le calendrier et le prix sont établis après le
-                cadrage, puis écrits au devis. Aucun dépassement ni travail hors
-                périmètre n&apos;est engagé sans accord écrit préalable.
+                Pas de forfait imposé ni de volume automatique. Le périmètre, le
+                calendrier et le prix sont établis après le cadrage, puis écrits
+                au devis. Aucun dépassement ni travail hors périmètre
+                n&apos;est engagé sans accord écrit préalable.
               </p>
             </div>
             <div className="seo-format-grid">
@@ -303,6 +315,99 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
           </div>
         </section>
 
+        <section className="seo-section" id="tarifs" aria-labelledby="seo-budget-title">
+          <div className="seo-shell">
+            <div className="seo-section-heading">
+              <div>
+                <span className="seo-eyebrow">BUDGET &amp; ENGAGEMENT</span>
+                <h2 id="seo-budget-title">Trois formes d&apos;engagement, un prix fixé au devis.</h2>
+              </div>
+              <p>
+                Le référencement est le seul service du studio dont aucun montant
+                n&apos;est publié&nbsp;: ni ici, ni sur la grille tarifaire, qui affiche
+                « Sur devis » sur ses trois colonnes. Le prix dépend du nombre d&apos;URL,
+                des gabarits, des accès disponibles et de la profondeur demandée. Cette
+                page décrit la forme de l&apos;engagement&nbsp;; le montant est établi après
+                le cadrage, dans un devis nominatif.
+              </p>
+            </div>
+            <div className="seo-budget-grid">
+              {SEO_BUDGET_SHAPES.map((shape, index) => (
+                <article className="seo-budget-card" key={shape.title}>
+                  <span className="seo-budget-card__number">{String(index + 1).padStart(2, "0")}</span>
+                  <h3>{shape.title}</h3>
+                  <p>{shape.description}</p>
+                </article>
+              ))}
+            </div>
+            <p className="seo-budget-note">
+              Tous les prix du site sont indiqués hors taxes, TVA en sus. L&apos;audit
+              SEO est la porte d&apos;entrée payante propre à ce service&nbsp;: il ne se
+              cumule pas avec le Discovery Sprint d&apos;un projet de développement, et
+              une éventuelle déduction sur la suite n&apos;existe que si elle est écrite
+              au devis.
+            </p>
+            <div className="seo-budget-actions">
+              <Link className="seo-button seo-button--secondary" href="/tarifs">
+                Voir la grille tarifaire <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+              <Link className="seo-inline-link" href="/demarrer-un-projet">
+                Faire chiffrer mon cas <ArrowRight size={15} aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <section className="seo-section seo-section--soft" aria-labelledby="seo-scope-title">
+          <div className="seo-shell">
+            <div className="seo-section-heading">
+              <div>
+                <span className="seo-eyebrow">PÉRIMÈTRE</span>
+                <h2 id="seo-scope-title">Ce que couvre une mission, et ce qu&apos;elle ne couvre pas.</h2>
+              </div>
+              <p>
+                Cette liste est une base de discussion, pas un socle appliqué à
+                toutes les missions. Le devis nominatif reste la seule référence
+                opposable.
+              </p>
+            </div>
+            <div className="seo-scope-grid">
+              <div className="seo-scope-col">
+                <div className="seo-scope-badge seo-scope-badge--in">
+                  <Check size={14} aria-hidden="true" /> À CADRER DANS LE DEVIS
+                </div>
+                <ul>
+                  {SEO_SCOPE_INCLUDED.map((item) => (
+                    <li key={item.title}>
+                      <Check size={15} aria-hidden="true" />
+                      <div>
+                        <strong>{item.title}</strong>
+                        <span>{item.description}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="seo-scope-col seo-scope-col--out">
+                <div className="seo-scope-badge seo-scope-badge--out">
+                  <X size={14} aria-hidden="true" /> HORS PÉRIMÈTRE
+                </div>
+                <ul>
+                  {SEO_SCOPE_EXCLUDED.map((item) => (
+                    <li key={item.title}>
+                      <X size={15} aria-hidden="true" />
+                      <div>
+                        <strong>{item.title}</strong>
+                        <span>{item.description}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="seo-section" aria-labelledby="seo-refusals-title">
           <div className="seo-shell seo-refusals-layout">
             <div className="seo-refusals-intro">
@@ -323,6 +428,28 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
                   <div><h3>{item.title}</h3><p>{item.description}</p></div>
                 </article>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="seo-section seo-section--soft" aria-labelledby="seo-commitments-title">
+          <div className="seo-shell">
+            <div className="seo-section-heading">
+              <div>
+                <span className="seo-eyebrow">ENGAGEMENTS &amp; POINTS À CONTRACTUALISER</span>
+                <h2 id="seo-commitments-title">Ce qui est signé avant de commencer.</h2>
+              </div>
+              <p>
+                Nous nous engageons sur ce qui dépend de nous&nbsp;: le périmètre,
+                les livrables, la méthode et la traçabilité. Jamais sur ce qui
+                dépend de Google.
+              </p>
+            </div>
+            <div className="seo-start-grid">
+              {SEO_COMMITMENTS.map((item, index) => {
+                const Icon = COMMITMENT_ICONS[index];
+                return <IconCard key={item.title} icon={Icon} {...item} />;
+              })}
             </div>
           </div>
         </section>
@@ -373,6 +500,28 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
           </div>
         </section>
 
+        <section className="seo-section" aria-labelledby="seo-tech-faq-title">
+          <div className="seo-shell seo-faq-layout">
+            <div className="seo-faq-intro">
+              <span className="seo-eyebrow">QUESTIONS TECHNIQUES</span>
+              <h2 id="seo-tech-faq-title">Pour la personne qui relira notre travail.</h2>
+              <p>
+                Ces réponses s&apos;adressent au CTO, au lead développeur ou au
+                prestataire en place. Elles décrivent nos méthodes de
+                vérification, pas des résultats attendus.
+              </p>
+            </div>
+            <div className="seo-faq-list">
+              {SEO_TECH_FAQS.map((faq) => (
+                <details key={faq.question}>
+                  <summary>{faq.question}<span aria-hidden="true">+</span></summary>
+                  <p>{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="seo-final-cta">
           <div className="seo-final-cta__grid" aria-hidden="true" />
           <div className="seo-shell seo-final-cta__inner">
@@ -393,7 +542,7 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
             </div>
             <div className="seo-final-cta__location">
               <MapPin size={15} aria-hidden="true" />
-              82 impasse de Bellevue, 73000 Bassens · Savoie
+              {`${CONTACT_ADDRESS.street}, ${CONTACT_ADDRESS.postalCode} ${CONTACT_ADDRESS.locality}`} · Savoie
             </div>
           </div>
         </section>

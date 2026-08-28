@@ -39,17 +39,18 @@ const serviceJsonLd = JSON.stringify({
     "Développement Next.js et React sur mesure : sites, e-commerce, SaaS et applications métier",
   provider: { "@id": `${SITE_URL}/#organization` },
   areaServed: { "@type": "Country", name: "France" },
+  // Le visible dit « Forfait fixe dès 6 900 € HT » : un plancher, pas un prix
+  // ferme. `price` seul se lisait « ce service coûte 6 900 € » et contredisait
+  // le `minPrice` du même objet ; `availability: InStock` n'a pas de sens pour
+  // une prestation sur mesure. Seul le priceSpecification exprime le « dès ».
   offers: {
     "@type": "Offer",
-    priceCurrency: "EUR",
-    price: "6900",
     priceSpecification: {
       "@type": "PriceSpecification",
       minPrice: "6900",
       priceCurrency: "EUR",
       valueAddedTaxIncluded: false,
     },
-    availability: "https://schema.org/InStock",
   },
 });
 
@@ -71,7 +72,7 @@ const faqItems = [
   {
     question: "Combien coûte un projet Next.js chez vous ?",
     answer:
-      "Un site vitrine sur mesure démarre à 6 900 €, avec deux paliers supérieurs à 14 900 € et 22 000 € et plus selon l'ambition. Une boutique en ligne va de 15 000 à 120 000 €. Une première version d'application métier ou de logiciel en ligne démarre à 15 000 €. Ces prix sont publics et fermes : nous travaillons au forfait fixe contractuel, le montant est arrêté avant de commencer et ne bouge pas. Tout ajout en cours de route passe par un avenant chiffré, jamais par une facture surprise à la livraison.",
+      "Un site vitrine sur mesure démarre à 6 900 € HT, avec deux paliers supérieurs à 14 900 € HT et 22 000 € HT et plus selon l'ambition. Une boutique en ligne va de 15 000 à 120 000 € HT. Une première version d'application métier ou de logiciel en ligne démarre à 15 000 € HT. Tous nos prix sont indiqués hors taxes, TVA 20 % en sus, pour une clientèle professionnelle. Ces repères sont publics et indicatifs ; le devis signé après cadrage fixe le prix ferme, au forfait fixe contractuel, et il ne bouge plus ensuite. Tout ajout en cours de route passe par un avenant chiffré, jamais par une facture surprise à la livraison.",
   },
   {
     question: "Next.js, c'est plus cher qu'un site WordPress ?",
@@ -123,12 +124,13 @@ export default function Page() {
         updatedLabel="Mis à jour le 18 juillet 2026"
         keyPoints={[
           { number: "01", title: "Budget de performance au devis", description: "", color: "violet" },
-          { number: "02", title: "Forfait fixe dès 6 900 €", description: "", color: "blue" },
+          { number: "02", title: "Forfait fixe dès 6 900 € HT", description: "", color: "blue" },
           { number: "03", title: "Dépôt, domaine et droits cadrés", description: "", color: "emerald" },
           { number: "04", title: "Recette et correction au devis", description: "", color: "amber" },
         ]}
         relatedLinks={[
           { href: "/agence-react", label: "Agence React" },
+          { href: "/agence", label: "Notre agence à Bassens" },
           { href: "/services/sites-vitrines", label: "Sites vitrines" },
           { href: "/services/ecommerce", label: "E-commerce sur mesure" },
           { href: "/services/saas-applications-metier", label: "SaaS et applications métier" },
@@ -158,7 +160,7 @@ export default function Page() {
             { id: "pourquoi", label: "2. Pourquoi Next.js, en termes concrets" },
             { id: "preuves", label: "3. Études de cas et limites de preuve" },
             { id: "garanties", label: "4. Ce que le devis doit préciser" },
-            { id: "prix", label: "5. Nos prix, publics et fermes" },
+            { id: "prix", label: "5. Nos prix, publics et hors taxes" },
             { id: "quand-non", label: "6. Quand Next.js n'est pas la bonne réponse" },
             { id: "methode", label: "7. Comment se déroule un projet" },
             { id: "stack", label: "8. Notre stack technique" },
@@ -171,7 +173,7 @@ export default function Page() {
           socle qui porte, chez nous, quatre types de projets très différents.
         </p>
         <GuideTable
-          headers={["Type de projet", "Ce que ça couvre", "Budget d'entrée", "Délai"]}
+          headers={["Type de projet", "Ce que ça couvre", "Budget d'entrée (HT)", "Délai"]}
           rows={[
             ["Site vitrine et landing pages", "Site d'entreprise orienté conversion, blog, pages de référencement", "6 900 €", "Planning confirmé au devis"],
             ["Site à contenu et référencement", "Blog structuré, guides, multilingue, CMS pour votre équipe", "14 900 €", "Planning confirmé au devis"],
@@ -295,21 +297,27 @@ export default function Page() {
           protocole et ne vaut ni classement Google ni taux de conversion garanti.
         </p>
 
-        <h2 id="prix">5. Nos prix, publics et fermes</h2>
+        <h2 id="prix">5. Nos prix, publics et hors taxes</h2>
         <p>
           Nous publions nos tarifs, ce qui reste rare dans ce métier. La raison
           est pratique : cela évite à tout le monde un premier rendez-vous
-          inutile quand le budget n&apos;est pas dans la même zone.
+          inutile quand le budget n&apos;est pas dans la même zone.{" "}
+          <strong>
+            Nos repères de prix sont publics et indicatifs ; le devis signé
+            après cadrage fixe le prix ferme.
+          </strong>{" "}
+          Tous les montants de cette page sont indiqués hors taxes, TVA 20 % en
+          sus, pour une clientèle professionnelle.
         </p>
         <GuideTable
-          headers={["Offre", "Périmètre", "Prix"]}
+          headers={["Offre", "Périmètre", "Prix HT"]}
           rows={[
             ["Site vitrine — Essentiel", "3 à 5 pages orientées conversion, design sur mesure, référencement technique, rédaction incluse", "6 900 €"],
             ["Site vitrine — Performance", "10 à 20 pages, blog structuré pour le référencement, interface d'édition sans toucher au code", "14 900 €"],
             ["Site vitrine — Premium", "Multilingue, e-commerce léger, intégrations avancées", "22 000 € et plus"],
             ["E-commerce sur mesure", "Catalogue, tunnel de commande, connexion au logiciel de gestion", "15 000 à 120 000 €"],
             ["Application métier / logiciel en ligne", "Première version réellement utilisable ; planning défini après cadrage", "Dès 15 000 €"],
-            ["Discovery Sprint", "2 jours de cadrage : périmètre écrit, maquette, devis ferme", "1 500 €, déduits à 100 % si le projet se lance"],
+            ["Discovery Sprint", "2 jours de cadrage : périmètre écrit, maquette, devis ferme", "1 500 € HT, déduit si la phase 2 est lancée (conditions au devis)"],
           ]}
         />
         <p>
@@ -361,10 +369,11 @@ export default function Page() {
         <h2 id="methode">7. Comment se déroule un projet</h2>
         <p>
           Nos projets démarrent par un <strong>Discovery Sprint de deux
-          jours</strong>, facturé 1 500 € et intégralement déduit si le projet
-          se lance. Il produit trois choses : un périmètre écrit, une maquette,
-          et un devis ferme. C&apos;est ce qui permet ensuite de tenir un
-          forfait fixe sans mauvaise surprise pour personne.
+          jours</strong>, facturé 1 500 € HT ; si la phase 2 est lancée avec
+          nous, le devis précise la déduction applicable. Il produit trois
+          choses : un périmètre écrit, une maquette, et un devis ferme. C&apos;est
+          ce qui permet ensuite de tenir un forfait fixe, sans ajout de
+          périmètre sans votre accord écrit.
         </p>
         <p>
           Vient ensuite le cycle de production : design et maquettes,

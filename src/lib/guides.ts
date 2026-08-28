@@ -60,6 +60,12 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Quel processus métier automatiser en premier ?",
     section: "Outils internes et automatisation",
     editorialStatus: "published",
+    // Guide mis en avant dans l'encart « Essentiel » du hub. Le drapeau doit
+    // rester explicite : sans lui, le hub retombait sur PUBLISHED_GUIDES[0],
+    // donc sur un accident d'ordre du tableau, et le badge « Essentiel » des
+    // cartes de collection ne s'affichait jamais. Un seul guide publié peut
+    // le porter (invariant verrouillé par src/lib/guides.test.ts).
+    featured: true,
     datePublished: "2026-07-29T17:01:33+02:00",
     dateModified: "2026-07-29T19:07:13Z",
     readTimeMin: 20,

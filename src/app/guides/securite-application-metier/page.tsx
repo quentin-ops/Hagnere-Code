@@ -12,6 +12,7 @@ import {
   GuidePremiumSection,
 } from "@/components/guides/guide-premium-layout";
 import type { GuidePremiumFaqCategory } from "@/components/guides/guide-premium-types";
+import { TrackedGuideCtaLink } from "@/components/guides/tracked-guide-cta-link";
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import {
   buildGuideMetadata,
@@ -371,7 +372,6 @@ export default function Page() {
               width={1600}
               height={900}
               className="h-auto w-full"
-              priority
             />
           </div>
 
@@ -974,9 +974,21 @@ export default function Page() {
             <Link href="/services/audit-technique">
               service d’audit technique
             </Link>
-            . Si vous avez déjà réuni le contexte et souhaitez le transmettre
+            . Lorsque la question porte sur les données personnelles plutôt que
+            sur l’architecture, la page{" "}
+            <Link href="/services/securite-rgpd">sécurité et RGPD</Link> décrit
+            le périmètre technique que nous prenons en charge, en coordination
+            avec les responsables juridiques du client — la qualification
+            juridique, elle, ne relève pas de ce guide. Si vous avez déjà réuni
+            le contexte et souhaitez le transmettre
             sans secret ni détail d’incident, vous pouvez ensuite{" "}
-            <Link href="/demarrer-un-projet">décrire le projet</Link>.
+            <TrackedGuideCtaLink
+              href="/demarrer-un-projet"
+              placement="article_end_inline"
+            >
+              décrire le projet
+            </TrackedGuideCtaLink>
+            .
           </p>
         </GuidePremiumSection>
 

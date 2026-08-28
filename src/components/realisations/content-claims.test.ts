@@ -3,7 +3,10 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { bodyHtml } from "@/components/homepage/body";
 import { CASES } from "@/components/realisations/cases";
-import { buildCaseStudyStructuredData } from "@/lib/case-study-structured-data";
+import {
+  buildCaseStudyStructuredData,
+  frenchDateToIso,
+} from "@/lib/case-study-structured-data";
 
 const projectRoot = process.cwd();
 
@@ -83,19 +86,21 @@ describe("realization claim safeguards", () => {
     }
   });
 
-  it("publishes only dated external analyses and no unsupported proof pack", () => {
+  it("publishes only dated group analyses and no unsupported proof pack", () => {
     for (const caseStudy of Object.values(CASES)) {
-      expect(caseStudy.status).toBe("Analyse publique externe");
-      expect(caseStudy.sourceCheckedAt).toBe("20 juillet 2026");
+      expect(caseStudy.status).toBe("Groupe Hagnéré · analyse publique");
       expect(caseStudy.engagement).toBe(
-        "Source externe consultée le 20 juillet 2026",
+        `Page publique du groupe consultée le ${caseStudy.sourceCheckedAt}`,
       );
       expect(caseStudy).not.toHaveProperty("services");
       expect(caseStudy).not.toHaveProperty("team");
       expect(caseStudy).not.toHaveProperty("stack");
-      expect(caseStudy.heroIntro).toMatch(/source publique externe/i);
+      // Le lien capitalistique doit être divulgué sur chaque fiche : ce sont
+      // des produits du groupe, jamais des clients indépendants (CLAUDE.md).
+      expect(caseStudy.heroIntro).toMatch(/du groupe Hagnéré/i);
+      expect(caseStudy.heroIntro).toMatch(/pas un client indépendant/i);
       expect(caseStudy.heroIntro).toMatch(/ne prouve ni/i);
-      expect(caseStudy.seo?.description).toMatch(/source publique externe/i);
+      expect(caseStudy.seo?.description).toMatch(/du groupe Hagnéré/i);
     }
 
     expect(realizationClaims).not.toMatch(/produits? opérés? en production/i);
@@ -106,7 +111,40 @@ describe("realization claim safeguards", () => {
     expect(realizationClaims).toMatch(/ne (?:prouvent|prouve) (?:pas|ni)/i);
   });
 
-  it("labels every public surface as an external editorial analysis", () => {
+  /**
+   * La date de consultation des quatre pages du groupe doit rester
+   * re-vérifiable : la figer sur « 20 juillet 2026 » obligeait à choisir entre
+   * un test rouge et une date qui ne bouge plus jamais. On verrouille ici ce
+   * qui compte — une date française complète, réellement lisible, identique
+   * sur les quatre fiches et jamais anticipée — sans interdire de la mettre à
+   * jour après une nouvelle consultation.
+   */
+  it("keeps one re-verifiable consultation date shared by the four sheets", () => {
+    const cases = Object.values(CASES);
+    expect(cases.length).toBe(4);
+
+    const dates = new Set(cases.map((caseStudy) => caseStudy.sourceCheckedAt));
+    expect([...dates], "les quatre fiches doivent citer la même consultation").toHaveLength(1);
+
+    const [checkedAt] = [...dates];
+    const iso = frenchDateToIso(checkedAt);
+    expect(iso, `date de consultation illisible : « ${checkedAt} »`).toBeDefined();
+
+    const checkedAtTime = Date.parse(`${iso}T12:00:00Z`);
+    expect(checkedAtTime).toBeLessThanOrEqual(Date.now());
+
+    const monthsSinceCheck =
+      (Date.now() - checkedAtTime) / (1000 * 60 * 60 * 24 * 30.4375);
+    if (monthsSinceCheck > 12) {
+      console.warn(
+        `[realisations] Les quatre pages du groupe n'ont pas été reconsultées depuis ${checkedAt} ` +
+          `(${Math.floor(monthsSinceCheck)} mois). Reconsulter les pages puis mettre à jour ` +
+          "PUBLIC_SOURCE_CHECKED_AT dans src/components/realisations/cases.ts.",
+      );
+    }
+  });
+
+  it("labels every public surface as a group product, never as an external reference", () => {
     const indexSource = read(
       "src/components/realisations/RealisationsIndexPage.tsx",
     );
@@ -115,12 +153,19 @@ describe("realization claim safeguards", () => {
       "src/app/realisations/[slug]/opengraph-image.tsx",
     );
 
-    expect(homepageRealizationClaims).toMatch(/pages publiques externes/i);
-    expect(homepageRealizationClaims).toMatch(/ne revendiquent ni leur conception/i);
-    expect(indexSource).toMatch(/Hagnéré Code analyse ici quatre pages publiques externes/i);
+    expect(homepageRealizationClaims).toMatch(/appartiennent au\s+groupe Hagnéré/i);
+    expect(homepageRealizationClaims).toMatch(/ne sont pas des clients indépendants/i);
+    expect(indexSource).toMatch(/appartiennent au groupe Hagnéré/i);
     expect(indexSource).toMatch(/ne sont ni des références client/i);
-    expect(routeSource).toContain("Analyse publique externe");
-    expect(ogSource).toContain("Analyse externe");
+    expect(routeSource).toContain("Produit du groupe Hagnéré");
+    expect(ogSource).toContain("Groupe Hagnéré");
+
+    // Le cadrage « externe » est FAUX et interdit : ces marques sont du groupe.
+    // C'est l'invariant qui avait été verrouillé à l'envers avant l'audit 2026-08.
+    expect(realizationClaims).not.toMatch(/externe à Hagnéré Code/i);
+    expect(realizationClaims).not.toMatch(/sources? publiques? externes?/i);
+    expect(realizationClaims).not.toMatch(/pages? publiques? externes?/i);
+    expect(realizationClaims).not.toMatch(/analyses? (?:publiques? )?externes?/i);
 
     expect(realizationClaims).not.toMatch(/Réalisations Hagnéré Code/i);
     expect(realizationClaims).not.toMatch(/Étude de cas Hagnéré Code/i);
@@ -146,15 +191,17 @@ describe("realization claim safeguards", () => {
     }
   });
 
-  it("describes structured data as an analysis based on the external source", () => {
+  it("describes structured data as an analysis of a group product page", () => {
     for (const caseStudy of Object.values(CASES)) {
       const [article] = buildCaseStudyStructuredData(caseStudy);
 
       expect(article.headline).toBe(
-        `Analyse publique externe : ${caseStudy.brandName}`,
+        `Produit du groupe Hagnéré : ${caseStudy.brandName}`,
       );
-      expect(article.name).toContain("page publique externe");
-      expect(article.articleSection).toBe("Analyse de page publique externe");
+      expect(article.name).toContain("page publique du groupe Hagnéré");
+      expect(article.articleSection).toBe(
+        "Analyse d'une page publique du groupe Hagnéré",
+      );
       expect(article.citation).toBe(caseStudy.url);
       expect(article.isBasedOn).toBe(caseStudy.url);
     }

@@ -15,11 +15,11 @@ export const techFaqHtml = `
 
     <div class="sa-tfaq-list reveal reveal-d-1">
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-saas-tech-1">
           Comment vous gérez les migrations de base en production ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-saas-tech-1" hidden>
           <b>Migrations SQL versionnées</b> + revue en pair avant merge. Déploiement
           zero-downtime (expand / migrate / contract) pour les schémas sensibles. Pour les
           grosses tables PostgreSQL, les données sont réécrites par lots avant de retirer l'ancien
@@ -28,11 +28,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-saas-tech-2">
           Quelle stratégie de queues et de jobs ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-saas-tech-2" hidden>
           Les tâches longues sortent du cycle HTTP : queue managée, workflow durable ou workers,
           selon l'infrastructure retenue. <b>Retries exponentiels</b>, idempotence, dead-letter queue,
           limites de débit et seuils d'alerte sont définis par type de tâche. Les traitements IA
@@ -41,11 +41,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-saas-tech-3">
           Vos stratégies de backup et de disaster recovery ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-saas-tech-3" hidden>
           On commence par fixer le <b>RPO</b> (perte de données acceptable) et le <b>RTO</b>
           (durée maximale d'indisponibilité). Fréquence, rétention, réplication hors fournisseur
           et exercices de restauration sont ensuite inscrits dans le runbook. Une sauvegarde
@@ -54,11 +54,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-saas-tech-4">
           Observabilité, logs, traces — qu'est-ce qu'on a ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-saas-tech-4" hidden>
           Erreurs front, back et mobile corrélées à une release ; logs structurés sans données
           sensibles ; métriques sur latence, jobs et base de données ; événements produit définis
           avec le métier. Les outils — Sentry, OpenTelemetry, PostHog ou équivalents — sont choisis
@@ -67,11 +67,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-saas-tech-5">
           Comment vous tenez la charge à 10 000+ users actifs ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-saas-tech-5" hidden>
           Le nombre d'inscrits ne suffit pas : on chiffre les utilisateurs simultanés, les pics,
           les volumes de données et les traitements coûteux. L'architecture reste stateless quand
           c'est pertinent ; PostgreSQL est indexé à partir des requêtes réelles ; cache et queues
@@ -80,11 +80,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-saas-tech-6">
           Votre stratégie de tests ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-saas-tech-6" hidden>
           <b>Pyramide classique</b>. Unit tests sur la logique métier (Vitest).
           Feature tests sur chaque route critique (billing, auth, permissions).
           <b>End-to-end Playwright</b> sur les 5 parcours utilisateurs principaux.
@@ -94,11 +94,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-saas-tech-7">
           SSO SAML / SCIM pour un plan entreprise — vous savez faire ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-saas-tech-7" hidden>
           <b>Oui, nativement</b>. SAML 2.0 via WorkOS ou intégration directe (Azure AD,
           Okta, Google Workspace, JumpCloud). SCIM pour le provisioning / deprovisioning auto.
           Audit logs conservés horodatés. C'est souvent un feature-flag réservé aux plans
@@ -107,11 +107,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-saas-tech-8">
           Vous êtes auditables ? Pen test, SOC2, audit de code extérieur ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-saas-tech-8" hidden>
           <b>Oui.</b> Le code et l'infrastructure peuvent être audités par un tiers choisi par le client.
           On prépare les environnements, fournit la documentation nécessaire et traite les écarts
           dans le périmètre convenu. Les contrôles automatisés (types, dépendances, analyse statique)

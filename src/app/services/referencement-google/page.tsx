@@ -3,6 +3,7 @@ import { SeoReferencement } from "@/components/seo-referencement/SeoReferencemen
 import { SEO_FORMATS } from "@/components/seo-referencement/content";
 import { PUBLISHED_GUIDES } from "@/lib/guides";
 import { OG_BASE, SERVICES_OG_IMAGE, SITE_URL } from "@/lib/seo";
+import { PUBLIC_ORGANIZATION_ENTITY } from "@/lib/organization-structured-data";
 
 export const metadata: Metadata = {
   title: "Agence SEO pour PME · Hagnéré Code",
@@ -37,25 +38,11 @@ const serviceJsonLd = JSON.stringify({
   serviceType: "Audit et accompagnement en référencement naturel",
   description:
     "Audit technique, mesure Search Console, architecture par intentions, contenus sourcés, maillage interne, référencement local et construction d'autorité.",
-  provider: {
-    "@type": "Organization",
-    "@id": `${SITE_URL}/#organization`,
-    name: "Hagnéré Code",
-    legalName: "HAGNERE CODE",
-    url: SITE_URL,
-    logo: `${SITE_URL}/logos/logo-dark.png`,
-    vatID: "FR30993672856",
-    email: "quentin@hagnere-patrimoine.fr",
-    telephone: "+33374472018",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "82 impasse de Bellevue",
-      postalCode: "73000",
-      addressLocality: "Bassens",
-      addressRegion: "Savoie",
-      addressCountry: "FR",
-    },
-  },
+  // Fournisseur = l'entité publique unique, importée du registre plutôt que
+  // recopiée : adresse, TVA, e-mail et téléphone n'existent qu'à un seul
+  // endroit, et la forme du logo reste celle validée pour Google (ImageObject
+  // dimensionné) sur toutes les pages.
+  provider: PUBLIC_ORGANIZATION_ENTITY,
   areaServed: [
     { "@type": "Country", name: "France" },
     { "@type": "AdministrativeArea", name: "Savoie" },

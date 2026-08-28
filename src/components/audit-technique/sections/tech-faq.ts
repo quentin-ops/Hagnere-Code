@@ -15,11 +15,11 @@ export const techFaqHtml = `
 
     <div class="at-tfaq-list reveal reveal-d-1">
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-audit-tech-1">
           Accès read-only, OK · mais comment garantissez-vous que rien ne soit modifié ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-audit-tech-1" hidden>
           Les accès sont configurés au <b>niveau minimal nécessaire</b> sur le cloud, le dépôt et les outils d'observabilité.
           Les rôles, journaux disponibles, exceptions indispensables et date de révocation sont documentés avant l'audit.
           Un accès en lecture seule est privilégié&nbsp;; toute action nécessitant une écriture reste exécutée ou validée par l'équipe du client.
@@ -27,11 +27,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-audit-tech-2">
           Comment vous branchez SonarQube Enterprise sur un repo privé sans tout casser ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-audit-tech-2" hidden>
           Le mode d'analyse est choisi avec vous&nbsp;: exécution dans votre environnement, copie de travail isolée ou outil déjà autorisé.
           Le périmètre, les éventuels transferts, la durée de conservation et la suppression sont écrits avant tout accès.
           Les exports réellement produits sont remis dans les formats prévus au devis, sans promettre un outil ou une licence non nécessaire.
@@ -39,11 +39,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-audit-tech-3">
           SAST + DAST + SCA · quelle couverture en 10 jours ouvrés ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-audit-tech-3" hidden>
           Le devis précise la couverture SAST, SCA et DAST réellement adaptée au dépôt, aux environnements disponibles et aux contraintes d'accès.
           Les zones exclues et limites des outils sont explicites. Pour un <b>DAST exhaustif ou un pentest complet</b>,
           le devis peut prévoir un pentest indépendant réalisé par un prestataire qualifié PASSI sélectionné
@@ -52,11 +52,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-audit-tech-4">
           RPO / RTO mesurés vs. déclarés · comment vous vérifiez ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-audit-tech-4" hidden>
           <b>On demande une restauration test sur un environnement isolé</b> pendant l'audit&nbsp;: votre équipe lance la procédure,
           on chronomètre le RTO réel (temps de restauration effectif), on vérifie le RPO réel (point de restauration atteint vs. promis).
           L'écart entre le RTO annoncé et le temps observé est documenté sans présumer son ampleur. Son impact peut ensuite être estimé à partir du coût d'indisponibilité et d'hypothèses explicites.
@@ -64,11 +64,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-audit-tech-5">
           Comment vous faites les entretiens équipe sans fragiliser le management ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-audit-tech-5" hidden>
           <b>Off-the-record total</b>&nbsp;: les interviews ne sont ni enregistrées, ni retranscrites nominativement dans le rapport.
           Framework SPACE (Satisfaction, Performance, Activity, Communication, Efficiency) de Google + MS Research. <b>Focus sur les systèmes, pas les personnes</b>&nbsp;:
           un bottleneck vient presque toujours d'une contrainte orga ou temporelle, pas d'un dev. Les devs sont <b>co-auteurs du plan de remédiation</b>,
@@ -77,11 +77,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-audit-tech-6">
           Méthodologie ISO 19011 · c'est quoi concrètement ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-audit-tech-6" hidden>
           ISO 19011 fournit des lignes directrices pour les audits de systèmes de management. Nous pouvons nous en inspirer pour
           structurer l'indépendance, les preuves, les risques et la restitution, sans présenter la mission comme une certification ISO.
           La grille utilisée et un exemple expurgé de livrable peuvent être présentés pendant le cadrage, selon leur disponibilité.
@@ -89,11 +89,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-audit-tech-7">
           Comment situez-vous nos scores · méthodologie ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-audit-tech-7" hidden>
           <b>Grille documentée et publique</b>, pas une boîte noire. Chaque audit score /100 par dimension (code, archi, perf, sécu, infra, DevEx, FinOps, équipe),
           selon une grille de critères remise avec le devis et adossée à des <b>référentiels externes vérifiables</b>&nbsp;:
           DORA pour la livraison, OWASP ASVS pour la sécurité applicative, Core Web Vitals et le Web Almanac pour la performance, ISO 19011 pour la conduite d'audit.
@@ -102,11 +102,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-audit-tech-8">
           Conformité SOC2 / ISO 27001 / HDS / ACPR · vous auditez officiellement ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-audit-tech-8" hidden>
           <b>Non.</b> L'évaluation officielle et la certification relèvent des organismes, auditeurs ou autorités compétents.
           Nous pouvons fournir les éléments techniques prévus au devis et contribuer à une analyse d'écart sous leur cadrage.
           Le référentiel, les contrôles applicables, le calendrier et les preuves attendues doivent être confirmés avec eux&nbsp;;

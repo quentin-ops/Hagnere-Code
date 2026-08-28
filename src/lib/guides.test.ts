@@ -104,6 +104,31 @@ const auditTechniqueDimensionsSource = fs.readFileSync(
   "utf8",
 );
 
+const publishedSlugs = new Set(PUBLISHED_GUIDES.map((guide) => guide.slug));
+
+/** Nombre minimal de guides cités dans le bloc « suite de lecture ». */
+const MIN_RELATED_GUIDES = 2;
+
+/**
+ * Guides publiés dont la page ne rend aucun bloc de suite de lecture.
+ *
+ * `guide-premium-layout.tsx` n'affiche la section que si `relatedGuides`
+ * contient au moins une entrée : un tableau vide et une prop absente
+ * produisent exactement la même page, une impasse en bas de lecture. Ces
+ * guides reçoivent des liens entrants mais n'offrent pas de sortie éditoriale
+ * au lecteur arrivé au bout. Chaque entrée disparaît dès que le bloc est
+ * ajouté — le test le vérifie alors comme pour les autres.
+ */
+const GUIDES_WITHOUT_RELATED_BLOCK: Record<string, string> = {
+  "pourquoi-site-pas-visible-google":
+    "relatedGuides={[]} : seul tableau explicitement vide du corpus, en attente du silo SEO frère",
+  "automatiser-processus-metier": "prop absente de la page",
+  "calculer-roi-application-metier": "prop absente de la page",
+  "prix-gestion-google-ads": "prop absente de la page",
+  "reprendre-logiciel-metier-existant": "prop absente de la page",
+  "valider-idee-saas-avant-developper": "prop absente de la page",
+};
+
 afterEach(() => {
   vi.unstubAllEnvs();
 });
@@ -222,13 +247,18 @@ describe("guide registry after the editorial reset", () => {
     }
 
     for (const guide of GUIDES) {
+      // Limites alignées sur celles documentées dans le registre
+      // (src/lib/guides.ts : « ≤ 60 caractères », « ≤ 155 caractères »).
+      // Le test tolérait 65 et 160 : l'invariant exécuté était plus laxiste
+      // que la règle affichée, ce qui laissait passer un guide hors limite en
+      // croyant la respecter. Les 18 guides publiés tiennent déjà 58 et 154.
       expect(guide.title.length, `${guide.slug}: title`).toBeLessThanOrEqual(
-        65,
+        60,
       );
       expect(
         guide.metaDescription.length,
         `${guide.slug}: description`,
-      ).toBeLessThanOrEqual(160);
+      ).toBeLessThanOrEqual(155);
       expect(guide.datePublished).toMatch(
         /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})$/,
       );
@@ -246,6 +276,22 @@ describe("guide registry after the editorial reset", () => {
       }
     }
     expect(guidesHubSource).toContain("latestGuide.dateModified");
+  });
+
+  /**
+   * Le hub sélectionne son encart « Essentiel » avec
+   * `PUBLISHED_GUIDES.find((g) => g.featured) ?? PUBLISHED_GUIDES[0]`.
+   * Tant qu'aucune entrée ne portait le drapeau, la mise en avant dépendait
+   * de l'ordre du tableau : publier un guide en tête — le geste le plus
+   * naturel — déplaçait silencieusement l'encart. Le drapeau doit donc être
+   * renseigné, et une seule fois.
+   */
+  it("promotes exactly one published guide through an explicit featured flag", () => {
+    const featured = PUBLISHED_GUIDES.filter((guide) => guide.featured);
+
+    expect(featured.map((guide) => guide.slug)).toHaveLength(1);
+    expect(guidesHubSource).toContain("(g) => g.featured");
+    expect(featured[0]).toBe(PUBLISHED_GUIDES.find((g) => g.featured));
   });
 
   it("matches the static guide routes and their social images", () => {
@@ -310,6 +356,45 @@ describe("guide registry after the editorial reset", () => {
       expect(guidesHubSource, `${guide.slug}: icon`).toContain(
         `"${guide.slug}":`,
       );
+    }
+  });
+
+  it("propose une suite de lecture à la fin de chaque guide publié", () => {
+    for (const guide of PUBLISHED_GUIDES) {
+      const source = fs.readFileSync(
+        path.join(guidesRoot, guide.slug, "page.tsx"),
+        "utf8",
+      );
+      const block = /relatedGuides=\{\[([\s\S]*?)\]\}/.exec(source);
+      const targets = block
+        ? [...block[1].matchAll(/href:\s*"\/guides\/([a-z0-9-]+)"/g)].map(
+            (match) => match[1],
+          )
+        : [];
+
+      // Les cibles citées doivent exister et ne jamais renvoyer sur soi-même :
+      // ce contrôle s'applique aussi aux guides encore en dette de bloc.
+      for (const target of targets) {
+        expect(
+          publishedSlugs.has(target),
+          `${guide.slug} → ${target} : guide inconnu ou non publié`,
+        ).toBe(true);
+        expect(target, `${guide.slug} : autoréférence`).not.toBe(guide.slug);
+      }
+
+      if (guide.slug in GUIDES_WITHOUT_RELATED_BLOCK) continue;
+
+      expect(
+        targets.length,
+        `${guide.slug} : bloc « suite de lecture » vide ou absent`,
+      ).toBeGreaterThanOrEqual(MIN_RELATED_GUIDES);
+    }
+  });
+
+  it("garde la dette de suite de lecture alignée sur les guides publiés", () => {
+    for (const [slug, reason] of Object.entries(GUIDES_WITHOUT_RELATED_BLOCK)) {
+      expect(publishedSlugs.has(slug), slug).toBe(true);
+      expect(reason.length, slug).toBeGreaterThan(0);
     }
   });
 

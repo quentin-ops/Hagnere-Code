@@ -224,6 +224,22 @@
   background: #000;
   overflow: hidden;
 }
+/* Étiquette de maquette : le hero ne doit jamais se lire comme un projet client livré. */
+.cv-editor-flag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  font-family: var(--font-geist-mono);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(10, 10, 10, 0.72);
+  border: 1px solid rgba(212, 165, 116, 0.45);
+  color: #d4a574;
+}
 .cv-editor-play {
   position: absolute;
   top: 50%;
@@ -2130,6 +2146,7 @@
   color: var(--ink);
   line-height: 1;
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: baseline;
   gap: 3px;
 }
@@ -2141,6 +2158,15 @@
   letter-spacing: 0;
 }
 .cv-price-card-featured .cv-price-amount span { color: rgba(255,255,255,0.55); }
+.cv-price-note {
+  margin-top: 8px;
+  font-family: var(--font-geist-mono);
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: var(--mute);
+  letter-spacing: 0.01em;
+}
+.cv-price-card-featured .cv-price-note { color: rgba(255,255,255,0.55); }
 .cv-price-feats {
   list-style: none;
   padding: 16px 0 0;
@@ -2438,7 +2464,7 @@
   font-size: 14px;
   line-height: 1.65;
 }
-.cv-faq-list .faq-item.open .faq-a { max-height: 500px; padding-bottom: 20px; }
+.cv-faq-list .faq-item.open .faq-a { max-height: none; overflow: visible; padding-bottom: 20px; }
 .cv-faq-list .faq-a b { color: var(--ink); font-weight: 600; }
 
 @media (max-width: 900px) { .cv-faq-grid { grid-template-columns: 1fr; gap: 40px; } }
@@ -2489,7 +2515,7 @@
   font-size: 14px;
   line-height: 1.65;
 }
-.cv-tfaq-list .faq-item.open .faq-a { max-height: 600px; padding-bottom: 20px; }
+.cv-tfaq-list .faq-item.open .faq-a { max-height: none; overflow: visible; padding-bottom: 20px; }
 .cv-tfaq-list .faq-a b { color: var(--ink); font-weight: 600; }
 
 /* ==================== RESPONSIVE HERO ==================== */
@@ -2585,3 +2611,55 @@ html.dark .cv-price-card-featured { border-color: rgba(255, 255, 255, 0.14); }
 /* Logos clients : inversés pour rester lisibles sur fond sombre */
 html.dark .cv-cw-logo img { filter: grayscale(100%) invert(1) contrast(0.9); }
 html.dark .cv-cw-logo:hover img { filter: grayscale(100%) invert(1); }
+
+/* ═══════════ SERVICES LIÉS (maillage interne rendu dans <main>) ═══════════ */
+.rel-svc {
+  padding: 72px 0;
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+}
+.rel-svc-lead {
+  color: var(--mute);
+  max-width: 660px;
+  margin: 10px 0 30px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.rel-svc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 14px;
+}
+.rel-svc-card {
+  display: block;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--paper);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.rel-svc-card:hover {
+  border-color: var(--ink-3);
+  transform: translateY(-2px);
+}
+.rel-svc-kind {
+  font-family: var(--font-geist-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.rel-svc-title {
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 7px 0 5px;
+  letter-spacing: -0.01em;
+}
+.rel-svc-why {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--mute);
+}

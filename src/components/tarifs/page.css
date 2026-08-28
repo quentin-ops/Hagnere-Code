@@ -48,7 +48,11 @@ html.dark {
 .nav-cta{display:flex;gap:8px;align-items:center}
 
 /* Buttons / pills / eyebrows (shared) */
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:all 0.15s;white-space:nowrap}
+/* min-height 44px : padding 10px + interligne 14px laissait une cible de
+   ~41 px, sous le minimum tactile de 44x44 (WCAG 2.5.5 / HIG). Le padding
+   horizontal et la largeur des boutons sont inchangés — seule la hauteur
+   minimale est garantie, y compris pour les variantes compactes. */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;min-height:44px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:all 0.15s;white-space:nowrap}
 .hc-design .btn-primary{background:var(--ink);color:var(--paper)}
 .hc-design .btn-primary:hover{background:var(--ink-2);transform:translateY(-1px)}
 .hc-design .btn-accent{background:var(--accent);color:#fff;box-shadow:0 4px 14px -4px rgba(109,40,217,0.5)}
@@ -62,7 +66,10 @@ html.dark {
 .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--ink-3);background:var(--paper);font-family:var(--font-geist-mono);font-weight:500}
 .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(109,40,217,0.18)}
 .eyebrow{font-family:var(--font-geist-mono);font-size:12px;font-weight:500;color:var(--accent-ink);text-transform:uppercase;letter-spacing:0.08em}
-.eyebrow.on-dark{color:var(--accent)}
+/* Sur fond sombre (#0a0a0a), var(--accent) vaut #6D28D9 en thème clair :
+   2,79:1, hors seuil. On fixe la valeur littérale déjà retenue ailleurs sur
+   le site (#A78BFA = 7,27:1), indépendante du thème comme le fond l'est. */
+.eyebrow.on-dark{color:#A78BFA}
 
 /* Breadcrumb */
 .crumb{padding:20px 0;font-family:var(--font-geist-mono);font-size:12px;color:var(--mute);border-bottom:1px solid var(--line-2)}
@@ -115,6 +122,9 @@ html.dark {
 .qmock-path span{color:var(--ink-3);font-weight:500}
 .qmock-status{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-geist-mono);font-size:10.5px;color:#0F5A2E;background:#D1FADF;padding:4px 10px;border-radius:999px;letter-spacing:0.06em;font-weight:700}
 .qmock-dot{width:6px;height:6px;border-radius:50%;background:#16A34A;box-shadow:0 0 0 3px rgba(22,163,74,0.25)}
+/* Le mock de devis est un exemple : pas de signal « validé / signé ». */
+.qmock-status.is-sample{color:var(--accent-ink);background:var(--accent-soft)}
+.qmock-status.is-sample .qmock-dot{background:var(--accent);box-shadow:0 0 0 3px rgba(109,40,217,0.25)}
 
 .qmock-head{display:flex;justify-content:space-between;align-items:flex-start;padding:18px 20px;border-bottom:1px solid var(--line-2);gap:16px}
 .qmock-from{display:flex;gap:12px;align-items:center}
@@ -142,7 +152,7 @@ html.dark {
 .qmock-total::before{content:"";position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:22px 22px;mask-image:linear-gradient(90deg,#000,transparent 70%);-webkit-mask-image:linear-gradient(90deg,#000,transparent 70%);pointer-events:none}
 .qmock-total > *{position:relative}
 .qmock-total-l{display:flex;flex-direction:column;gap:8px;min-width:0}
-.qmock-total-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-geist-mono);font-size:10px;color:#fff;letter-spacing:0.12em;font-weight:700;background:rgba(109,40,217,0.22);border:1px solid rgba(167,139,250,0.35);padding:4px 10px;border-radius:999px;align-self:flex-start}
+.qmock-total-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-geist-mono);font-size:10px;color:#fff;letter-spacing:0.12em;font-weight:700;background:rgba(109,40,217,0.22);border:1px solid rgba(167,139,250,0.35);padding:4px 10px;border-radius:999px;align-self:flex-start;flex-wrap:wrap;max-width:100%}
 .qmock-total-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(109,40,217,0.35)}
 .qmock-total-sub{font-family:var(--font-geist-mono);font-size:11px;color:rgba(255,255,255,0.58);letter-spacing:0.02em;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .qmock-total-sub .sep{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,0.25)}
@@ -234,15 +244,15 @@ html.dark {
 .plan.featured:hover{box-shadow:0 40px 80px -30px rgba(76,29,149,0.6)}
 .plan.plan-discovery{border:1px dashed var(--accent);background:linear-gradient(180deg,rgba(109,40,217,0.04),var(--paper) 45%)}
 .plan.plan-discovery .plan-tag{color:var(--accent-ink)}
-.plan.plan-discovery h4{color:var(--accent-ink)}
+.plan.plan-discovery h3{color:var(--accent-ink)}
 .plan.plan-discovery .plan-price .amount{color:var(--accent-ink)}
 .plan.plan-discovery .plan-cta .btn-ghost{border-color:var(--accent);color:var(--accent-ink);background:var(--paper)}
 .plan.plan-discovery .plan-cta .btn-ghost:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
 .plan-tag{font-family:var(--font-geist-mono);font-size:11px;color:var(--mute);letter-spacing:0.06em;text-transform:uppercase}
 .plan.featured .plan-tag{color:var(--accent)}
 .plan-badge{position:absolute;top:-10px;right:24px;background:var(--accent);color:#fff;font-family:var(--font-geist-mono);font-size:10px;padding:4px 10px;border-radius:999px;letter-spacing:0.04em;font-weight:600}
-.plan h4{font-size:22px;margin-top:10px;margin-bottom:8px}
-.plan.featured h4{color:#fff}
+.plan h3{font-size:22px;margin-top:10px;margin-bottom:8px}
+.plan.featured h3{color:#fff}
 .plan-sub{font-size:14px;color:var(--mute);min-height:42px;line-height:1.5}
 .plan.featured .plan-sub{color:rgba(255,255,255,0.62)}
 .plan-price{margin-top:28px;display:flex;align-items:baseline;gap:8px}
@@ -287,13 +297,28 @@ html.dark {
 .ptf-body b{color:var(--ink);font-weight:600}
 .ptf-cta{flex-shrink:0}
 
+/* ============ ENTRY POINTS (cadrages payants) ============ */
+.entrypoints{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+.ep-table{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 1px 0 var(--line-2)}
+.ep-head{display:grid;grid-template-columns:1.5fr 0.8fr 1.2fr 1.6fr;background:var(--paper-2);border-bottom:1px solid var(--line);font-family:var(--font-geist-mono);font-size:10.5px;color:var(--mute);letter-spacing:0.08em;font-weight:600;text-transform:uppercase}
+.ep-head .ep-col{padding:16px 20px}
+.ep-row{display:grid;grid-template-columns:1.5fr 0.8fr 1.2fr 1.6fr;border-bottom:1px solid var(--line-2);transition:background 0.15s}
+.ep-row:last-child{border-bottom:none}
+.ep-row:hover{background:var(--paper-2)}
+.ep-row .ep-col{padding:18px 20px;display:flex;flex-direction:column;justify-content:center;gap:4px}
+.ep-row .ep-col b{font-family:var(--font-geist);font-weight:600;color:var(--ink);font-size:14.5px;letter-spacing:-0.01em}
+.ep-row .ep-col span{font-family:var(--font-geist-mono);font-size:11px;color:var(--mute);letter-spacing:0.02em;line-height:1.5}
+.ep-col-wide span{max-width:36ch}
+.ep-col-name a{display:flex;flex-direction:column;gap:3px;text-decoration:none;color:inherit}
+.ep-col-name a:hover b{color:var(--accent-ink)}
+
 /* ============ INCLUDED ============ */
 .included{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
 .incl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .incl{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s}
 .incl:hover{transform:translateY(-2px);border-color:#d4d4d4;box-shadow:0 14px 28px -16px rgba(0,0,0,0.08)}
 .incl-ic{width:42px;height:42px;border-radius:11px;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center}
-.incl h4{font-size:15.5px;letter-spacing:-0.015em;margin:0;font-weight:600;color:var(--ink)}
+.incl h3{font-size:15.5px;letter-spacing:-0.015em;margin:0;font-weight:600;color:var(--ink)}
 .incl p{margin:0;color:var(--mute);font-size:13px;line-height:1.5}
 
 /* ============ CARE (3 monthly retainers) ============ */
@@ -315,6 +340,12 @@ html.dark {
 .care-card.featured .care-price .amount{color:#fff}
 .care-price .per{font-family:var(--font-geist-mono);font-size:12px;color:var(--mute)}
 .care-card.featured .care-price .per{color:rgba(255,255,255,0.5)}
+.care-hint{margin:10px 0 0;font-size:12.5px;line-height:1.5;color:var(--mute)}
+.care-hint b{color:var(--ink-3);font-weight:600}
+.care-hint a{color:var(--accent-ink);text-decoration:underline}
+.care-card.featured .care-hint{color:rgba(255,255,255,0.55)}
+.care-card.featured .care-hint b{color:rgba(255,255,255,0.9)}
+.care-card.featured .care-hint a{color:#fff}
 .care-hr{height:1px;background:var(--line);margin:24px 0}
 .care-card.featured .care-hr{background:rgba(255,255,255,0.1)}
 .care-features{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;font-size:14px;flex:1}
@@ -361,7 +392,7 @@ html.dark {
 .ref-card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:24px 22px;display:flex;flex-direction:column;gap:10px;transition:transform 0.2s,border-color 0.2s}
 .ref-card:hover{transform:translateY(-2px);border-color:#d4d4d4}
 .ref-x{width:30px;height:30px;border-radius:8px;background:#FEE2E2;color:#B91C1C;display:grid;place-items:center;flex-shrink:0;margin-bottom:4px}
-.ref-card h4{font-size:15.5px;letter-spacing:-0.015em;margin:0;color:var(--ink);font-weight:600;line-height:1.3}
+.ref-card h3{font-size:15.5px;letter-spacing:-0.015em;margin:0;color:var(--ink);font-weight:600;line-height:1.3}
 .ref-card p{margin:0;color:var(--ink-3);font-size:13.5px;line-height:1.55}
 .ref-because{margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);font-family:var(--font-geist-mono);font-size:11px;color:var(--accent-ink);letter-spacing:0.02em;font-weight:500}
 
@@ -417,8 +448,11 @@ html.dark {
 .faq-q:hover{color:var(--accent-ink)}
 .faq-q .ic{width:24px;height:24px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;flex-shrink:0;transition:all 0.2s;color:var(--mute)}
 .faq-item.open .faq-q .ic{background:var(--ink);border-color:var(--ink);color:var(--paper);transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s;color:var(--mute);font-size:15px;line-height:1.6}
-.faq-item.open .faq-a{max-height:500px;padding-bottom:22px}
+/* Pas de max-height chiffrée à l'ouverture : à 200 % de taille de texte
+   (WCAG 1.4.4), sur mobile ou à l'impression, les réponses longues étaient
+   rognées sans défilement possible. L'ouverture est signalée par un fondu. */
+.faq-a{max-height:0;overflow:hidden;opacity:0;transition:opacity 0.25s ease;color:var(--mute);font-size:15px;line-height:1.6}
+.faq-item.open .faq-a{max-height:none;overflow:visible;opacity:1;padding-bottom:22px}
 .faq-a b{color:var(--ink);font-weight:500}
 
 /* ============ Page-local responsive overrides ============ */
@@ -434,6 +468,7 @@ html.dark {
   .prin-grid{grid-template-columns:repeat(2,1fr)}
   .refuse-grid{grid-template-columns:repeat(2,1fr)}
   .ptable-head, .ptable-row{grid-template-columns:1.4fr 1fr 1fr 1fr 0.8fr}
+  .ep-head, .ep-row{grid-template-columns:1.3fr 0.8fr 1.1fr 1.5fr}
   .vsm-head, .vsm-row{grid-template-columns:1.1fr 1fr 1fr 1fr}
   .kpi-grid{grid-template-columns:repeat(2,1fr);gap:24px 0}
   .kpi{padding:16px 24px;border-right:1px solid var(--line)}
@@ -460,7 +495,18 @@ html.dark {
   .disc-foot .btn{justify-content:center}
 
   /* Sections padding */
-  .principes,.pricing,.ptable,.included,.care,.vsmarket,.refuse,.calc-teaser,.faq{padding:72px 0}
+  .principes,.pricing,.ptable,.entrypoints,.included,.care,.vsmarket,.refuse,.calc-teaser,.faq{padding:72px 0}
+
+  /* Entry points → cartes empilées, labels rendus par ::before */
+  .ep-head{display:none}
+  .ep-row{grid-template-columns:1fr;padding:8px 0;border-bottom:1px solid var(--line)}
+  .ep-row .ep-col{padding:8px 16px;flex-direction:row;justify-content:space-between;align-items:baseline;gap:12px}
+  .ep-row .ep-col::before{flex-shrink:0;font-family:var(--font-geist-mono);font-size:10px;color:var(--mute);letter-spacing:0.08em;font-weight:600;text-transform:uppercase}
+  .ep-row .ep-col-name{padding:14px 16px;flex-direction:column !important;align-items:flex-start !important;border-bottom:1px solid var(--line-2)}
+  .ep-row .ep-col:nth-child(2)::before{content:"Prix"}
+  .ep-row .ep-col:nth-child(3)::before{content:"Durée"}
+  .ep-row .ep-col:nth-child(4)::before{content:"Suite"}
+  .ep-row .ep-col:nth-child(n+3) span{text-align:right}
 
   /* Grids → 1 col */
   .prin-grid,.price-grid,.incl-grid,.care-grid,.refuse-grid{grid-template-columns:1fr !important}
@@ -552,10 +598,15 @@ html.dark {
    - pastels décoratifs (badges verts/rouges, pastilles services inline)
    - insertion des blocs volontairement sombres (bordures invisibles sur fond sombre)
    ========================================================================= */
+/* L'état de repos manquait : --accent vaut #8B5CF6 en sombre, soit 4,23:1
+   avec un libellé blanc de 15 px (.btn-lg), sous le seuil 4,5:1. #fff sur
+   #6D28D9 = 7,1:1 au repos, #fff sur #7C3AED = 5,7:1 au survol. */
+html.dark .hc-design .btn-accent{background:#6D28D9;box-shadow:0 4px 14px -4px rgba(109,40,217,0.6)}
 html.dark .hc-design .btn-accent:hover{background:#7C3AED}
 
-/* Badge "SIGNÉ" du mock devis (pastel vert clair → teinte translucide) */
+/* Badge d'état du mock devis (pastel clair → teinte translucide) */
 html.dark .qmock-status{background:rgba(34,197,94,0.16);color:#4ADE80}
+html.dark .qmock-status.is-sample{background:rgba(139,92,246,0.18);color:#C4B5FD}
 
 /* Insertion des blocs sombres : bordure lisible sur fond sombre */
 html.dark .qmock-total{border-top-color:rgba(255,255,255,0.10)}

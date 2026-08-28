@@ -59,7 +59,7 @@ const faqItems = [
   {
     question: "Combien coûte une application React sur mesure ?",
     answer:
-      "Une première version réellement utilisable démarre à 15 000 €. Les projets plus larges — plusieurs rôles utilisateurs, connexions à vos logiciels existants, volumétrie importante — se situent entre 25 000 et 80 000 €. Le planning dépend du périmètre, des intégrations et des validations ; il est arrêté après cadrage dans le devis. Nous travaillons au forfait fixe contractuel : tout ajout passe par un avenant chiffré. Les projets démarrent par un Discovery Sprint de deux jours à 1 500 €, intégralement déduit si le projet se lance.",
+      "Une première version réellement utilisable démarre à 15 000 € HT. Les projets plus larges — plusieurs rôles utilisateurs, connexions à vos logiciels existants, volumétrie importante — se situent entre 25 000 et 80 000 € HT. Tous nos prix sont indiqués hors taxes, TVA 20 % en sus, pour une clientèle professionnelle. Ces repères sont publics et indicatifs ; le devis signé après cadrage fixe le prix ferme, au forfait fixe contractuel, et tout ajout passe ensuite par un avenant chiffré. Les projets démarrent par un Discovery Sprint de deux jours à 1 500 € HT ; si la phase 2 est lancée avec nous, le devis précise la déduction applicable.",
   },
   {
     question: "Pouvez-vous reprendre une application React existante ?",
@@ -105,13 +105,14 @@ export default function Page() {
         }}
         updatedLabel="Mis à jour le 18 juillet 2026"
         keyPoints={[
-          { number: "01", title: "Applications sur mesure dès 15 000 €", description: "", color: "violet" },
+          { number: "01", title: "Applications sur mesure dès 15 000 € HT", description: "", color: "violet" },
           { number: "02", title: "Planning défini après cadrage", description: "", color: "blue" },
           { number: "03", title: "Code et documentation à votre nom", description: "", color: "emerald" },
           { number: "04", title: "Reprise d'existant possible après audit", description: "", color: "amber" },
         ]}
         relatedLinks={[
           { href: "/agence-next-js", label: "Agence Next.js" },
+          { href: "/agence", label: "Notre agence à Bassens" },
           { href: "/services/saas-applications-metier", label: "SaaS et applications métier" },
           { href: "/services/outils-internes-sur-mesure", label: "Outils internes sur mesure" },
           { href: "/services/audit-technique", label: "Audit technique" },
@@ -151,7 +152,7 @@ export default function Page() {
           intensif plutôt que par une visite ponctuelle.
         </p>
         <GuideTable
-          headers={["Type de projet", "Ce que ça remplace", "Budget d'entrée", "Délai"]}
+          headers={["Type de projet", "Ce que ça remplace", "Budget d'entrée (HT)", "Délai"]}
           rows={[
             ["Application métier", "Des tableurs partagés qui ont atteint leurs limites", "15 000 €", "Planning confirmé au devis"],
             ["Espace client ou portail", "Des échanges par e-mail et des documents éparpillés", "15 000 €", "Planning confirmé au devis"],
@@ -272,10 +273,18 @@ export default function Page() {
         </p>
 
         <h2 id="prix">6. Budgets et délais</h2>
+        <p>
+          <strong>
+            Nos repères de prix sont publics et indicatifs ; le devis signé
+            après cadrage fixe le prix ferme.
+          </strong>{" "}
+          Tous les montants de cette page sont indiqués hors taxes, TVA 20 % en
+          sus, pour une clientèle professionnelle.
+        </p>
         <GuideTable
-          headers={["Périmètre", "Prix", "Délai"]}
+          headers={["Périmètre", "Prix HT", "Délai"]}
           rows={[
-            ["Discovery Sprint : cadrage, maquette, devis ferme", "1 500 €, déduits à 100 % si le projet se lance", "2 jours"],
+            ["Discovery Sprint : cadrage, maquette, devis ferme", "1 500 € HT, déduit si la phase 2 est lancée (conditions au devis)", "2 jours"],
             ["Première version utilisable (un rôle, périmètre resserré)", "Dès 15 000 €", "Planning confirmé au devis"],
             ["Application complète (plusieurs rôles, connexions à vos outils)", "25 000 à 80 000 €", "Planning confirmé au devis"],
             ["Audit d'une application existante", "Sur devis", "Durée définie après accès au périmètre"],

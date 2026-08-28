@@ -130,9 +130,10 @@ export const equipeHtml = `
         <h2>${TEAM_TOTAL_COUNT} personnes :<br>un président, un CTO et ${TEAM_OTHER_DEVELOPERS_COUNT} autres développeurs.</h2>
       </div>
       <div class="right">
-        <b>${TEAM_PUBLIC_COMPOSITION}</b>. Les profils, rôles et statuts affichés viennent de notre
-        source d'équipe publique. Les personnes réellement affectées à votre projet sont
-        <b>nommées au cadrage</b> et figurent dans le devis.
+        Pas de pool anonyme, pas d'offshore, pas de white-label.
+        <b>${TEAM_PUBLIC_COMPOSITION}</b>, présentés ici avec leur rôle et leur profil public.
+        Les personnes affectées à votre projet sont <b>nommées au devis</b>, avant la première
+        ligne de code.
       </div>
     </div>
 
@@ -182,8 +183,8 @@ export const equipeHtml = `
           <h3>Un CTO et des développeurs<br>nommés,<br>assistés par <em>Claude Code</em>.</h3>
           <p>
             Nicolas au CTO, puis Killian, Frédéric, Arthur, Ryan et Peter sur l'exécution —
-            avec les rôles et spécialités déclarés sur chaque carte. La composition réellement mobilisée,
-            la disponibilité et les responsabilités sont confirmées au devis.
+            avec les rôles et spécialités déclarés sur chaque carte. La composition réellement
+            mobilisée et les responsabilités de chacun sont écrites avant la signature.
             Claude Code peut assister la recherche, l'exploration technique et les plans d'implémentation&nbsp;:
             <b>ses sorties restent relues, testées et validées par un intervenant humain</b>.
           </p>
@@ -208,19 +209,19 @@ export const equipeHtml = `
         <div class="eq-stats reveal reveal-d-3">
           <div class="eqs">
             <div class="n">${TEAM_TOTAL_COUNT}</div>
-            <div class="l">profils présentés dans la source d'équipe publique</div>
+            <div class="l">personnes dans l'équipe, président et CTO compris</div>
           </div>
           <div class="eqs">
-            <div class="n">1 + ${TEAM_OTHER_DEVELOPERS_COUNT}</div>
-            <div class="l">CTO et autres développeurs présentés</div>
+            <div class="n">${TEAM_OTHER_DEVELOPERS_COUNT}</div>
+            <div class="l">développeurs en plus du président et du CTO</div>
           </div>
           <div class="eqs">
-            <div class="n">DEVIS</div>
-            <div class="l">intervenants, rôles et statuts confirmés</div>
+            <div class="n">0</div>
+            <div class="l">offshore, white-label ou pool anonyme</div>
           </div>
           <div class="eqs">
-            <div class="n">REVUE</div>
-            <div class="l">sorties IA vérifiées par un humain</div>
+            <div class="n">1</div>
+            <div class="l">interlocuteur senior, du premier appel au devis</div>
           </div>
         </div>
       </div>

@@ -14,11 +14,15 @@ import { techFaqHtml } from "./sections/tech-faq";
 
 /**
  * Direction A — page centrée sur "construire un SaaS", pas sur présenter l'agence.
- * On retire délibérément : Stats, Verticals, Team (agency-wide, présents sur la homepage).
+ * Les sections Stats, Verticals et Team, communes à toute l'agence, ne sont pas
+ * reprises ici : elles vivent sur la homepage et sur /equipe.
  *
- * Final layout :
- *   NAV → Breadcrumb → HERO →
- *   LOGO WALL (compact) → PROBLEMS (6 douleurs SaaS) →
+ * La navigation, la CTA finale et le <footer> ne sont plus dans body.ts :
+ * <MainNav /> et <SiteFooter /> les rendent hors du landmark <main>.
+ *
+ * Ordre de scroll réel :
+ *   Breadcrumb → HERO →
+ *   LOGO WALL (produits du groupe, qualifié) → PROBLEMS (6 douleurs SaaS) →
  *   WHAT WE BUILD (6 cards) → CHECKLIST INCLUS/HORS SCOPE (12 in / 6 out) →
  *   ARCHITECTURE SCHEMATIC → CAPABILITIES (20 briques) →
  *   INTEGRATIONS WALL (6 groupes segmentés) → PROCESS → STACK →
@@ -75,11 +79,9 @@ function compose(raw: string): string {
     trustBadgesHtml.trim() + "\n\n<!-- FAQ -->",
   );
 
-  // TECH FAQ : après la FAQ commerciale (avant la CTA qui sera strippée)
-  out = out.replace(
-    "<!-- CTA -->",
-    techFaqHtml.trim() + "\n\n<!-- CTA -->",
-  );
+  // TECH FAQ : dernière section du document. La CTA finale et le <footer>
+  // hérités ont été retirés de body.ts — ils sont rendus par <SiteFooter />.
+  out = out.trimEnd() + "\n\n" + techFaqHtml.trim() + "\n";
 
   return out;
 }

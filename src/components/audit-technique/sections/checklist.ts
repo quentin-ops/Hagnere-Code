@@ -10,6 +10,7 @@ export const checklistHtml = `
       <div class="right">
         Cette grille présente le contenu envisagé pour le format Standard. Le devis confirme la liste, le volume,
         les formats, les destinataires et les options adaptés au contexte réel.
+        <b>Tous les montants de cette section sont indiqués hors taxes.</b>
       </div>
     </div>
 
@@ -19,7 +20,7 @@ export const checklistHtml = `
         <div class="at-check-head">
           <div class="at-check-badge at-check-badge-in">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>
-            INCLUS DANS L'AUDIT STANDARD · 18 k€
+            INCLUS DANS L'AUDIT STANDARD · 18 k€ HT
           </div>
           <h3>Douze livrables, à chaque audit.</h3>
         </div>
@@ -46,7 +47,7 @@ export const checklistHtml = `
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Matrice impact × effort 2×2</b> — les 28 tickets placés graphiquement&nbsp;: quick wins, strategic, fill-ins, back-burner. Aide à la décision pour les 90 jours suivants.</div>
+            <div><b>Matrice impact × effort 2×2</b> — les tickets du backlog placés graphiquement&nbsp;: quick wins, strategic, fill-ins, back-burner. Aide à la décision pour les 90 jours suivants.</div>
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>

@@ -25,6 +25,7 @@ import {
   readCookieConsent,
   writeCookieConsent,
 } from "@/lib/cookie-consent";
+import { CONTACT_EMAIL } from "@/lib/contact-details";
 import "./cookie-banner.css";
 
 declare global {
@@ -194,12 +195,20 @@ export function CookieBanner() {
                 </label>
               </header>
               <p>
-                Ce choix autorise, uniquement lorsqu&apos;un collecteur est
-                techniquement disponible, l&apos;envoi de quelques actions de
-                conversion à une route du même domaine, sans identifiant
-                persistant ni adresse IP ajoutée au jeu de mesure. Aucun outil
-                d&apos;analytics tiers n&apos;est chargé. Tout futur outil soumis au
-                consentement devra respecter le choix exprimé ici.
+                Ce choix autorise l&apos;envoi de quelques actions de conversion à
+                une route du même domaine. Cette mesure interne n&apos;ajoute ni
+                identifiant persistant, ni adresse IP au jeu de données.
+              </p>
+              <p>
+                Le même choix conditionne le chargement de la mesure Google
+                (Google&nbsp;Ads et, le cas échéant, Analytics), utilisée pour
+                rattacher une demande à la campagne qui l&apos;a amenée. Lorsqu&apos;elle
+                est chargée, elle dépose ses propres cookies et peut recourir à un
+                identifiant publicitaire&nbsp;: le tag Google est configuré pour
+                n&apos;activer la mesure et la publicité qu&apos;après votre acceptation.
+                Tant que vous n&apos;avez pas accepté, aucun script Google n&apos;est
+                chargé et aucune requête ne part vers Google. Tout futur outil
+                soumis au consentement respectera le choix exprimé ici.
               </p>
             </section>
 
@@ -210,9 +219,7 @@ export function CookieBanner() {
                 « Gérer mes cookies » disponible dans le pied de page du site.
                 Pour toute demande relative à vos droits RGPD (accès,
                 rectification, effacement) :{" "}
-                <a href="mailto:quentin@hagnere-patrimoine.fr">
-                  quentin@hagnere-patrimoine.fr
-                </a>
+                <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
                 .
               </p>
             </section>
@@ -244,8 +251,10 @@ export function CookieBanner() {
       <p id="hc-cb-toast-desc" className="hc-cb-toast-desc">
         Le thème peut être conservé et un brouillon sans coordonnées ne l&apos;est
         que si vous le demandez dans le formulaire. « Accepter » autorise aussi une mesure
-        d&apos;audience facultative, sans identifiant publicitaire ; « Refuser » la
-        laisse désactivée. Détails dans notre{" "}
+        d&apos;audience facultative et, lorsqu&apos;un identifiant de mesure est
+        configuré, le chargement de la mesure Google (Google&nbsp;Ads,
+        Google&nbsp;Analytics) ainsi que les cookies qu&apos;elle dépose ;
+        « Refuser » les laisse désactivées. Détails dans notre{" "}
         <a href="/legal/cookies">politique cookies</a>.
       </p>
       <div className="hc-cb-toast-actions">

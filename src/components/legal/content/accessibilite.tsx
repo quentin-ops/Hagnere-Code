@@ -1,5 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { LegalSection } from "../LegalPageLayout";
+import { LEGAL_POSTAL_ADDRESS } from "../legal-contact";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_E164,
+} from "@/lib/contact-details";
 
 export const accessibiliteSections: LegalSection[] = [
   {
@@ -95,11 +101,11 @@ export const accessibiliteSections: LegalSection[] = [
         </p>
         <dl className="lp-facts">
           <dt>Courriel</dt>
-          <dd><a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a></dd>
+          <dd><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></dd>
           <dt>Téléphone</dt>
-          <dd><a href="tel:+33374472018">+33 3 74 47 20 18</a></dd>
+          <dd><a href={`tel:${CONTACT_PHONE_E164}`}>{CONTACT_PHONE_DISPLAY}</a></dd>
           <dt>Courrier</dt>
-          <dd>82 impasse de Bellevue, 73000 Bassens, France</dd>
+          <dd>{LEGAL_POSTAL_ADDRESS}</dd>
         </dl>
         <p>
           La demande est examinée au regard de son urgence et de sa complexité.

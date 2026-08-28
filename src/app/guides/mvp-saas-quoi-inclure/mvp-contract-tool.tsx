@@ -144,7 +144,7 @@ function CapabilityEditor({
                   .value as MvpCapabilityInput["necessaryForTest"],
               })
             }
-            className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+            className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
           >
             {mvpNecessities.map((necessity) => (
               <option key={necessity} value={necessity}>
@@ -175,7 +175,7 @@ function CapabilityEditor({
                   .value as MvpCapabilityInput["treatment"],
               })
             }
-            className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+            className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
           >
             {mvpTreatments.map((treatment) => (
               <option key={treatment} value={treatment}>
@@ -198,7 +198,7 @@ function CapabilityEditor({
             value={capability.owner}
             onChange={(event) => update({ owner: event.target.value })}
             placeholder="Rôle ou personne responsable"
-            className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 outline-none placeholder:text-zinc-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+            className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 outline-none placeholder:text-zinc-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
           />
           <FieldError
             fieldId={`${prefix}-owner`}
@@ -215,7 +215,7 @@ function CapabilityEditor({
             value={capability.reviewTrigger}
             onChange={(event) => update({ reviewTrigger: event.target.value })}
             placeholder="Volume, événement ou limite qui impose une nouvelle décision"
-            className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 outline-none placeholder:text-zinc-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+            className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 outline-none placeholder:text-zinc-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
           />
           <FieldError
             fieldId={`${prefix}-trigger`}
@@ -233,7 +233,7 @@ function CapabilityEditor({
             onChange={(event) => update({ expectedProof: event.target.value })}
             rows={3}
             placeholder="Ce qui sera observé, rejoué ou accepté"
-            className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 outline-none placeholder:text-zinc-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+            className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 outline-none placeholder:text-zinc-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
           />
           <FieldError
             fieldId={`${prefix}-proof`}
@@ -253,7 +253,7 @@ function CapabilityEditor({
             }
             rows={3}
             placeholder="Qui détecte, suspend, informe, corrige et revient en arrière ?"
-            className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 outline-none placeholder:text-zinc-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+            className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 outline-none placeholder:text-zinc-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
           />
           <FieldError
             fieldId={`${prefix}-failure`}
@@ -278,7 +278,7 @@ function CapabilityEditor({
                 onChange={(event) =>
                   updateManual({ label: event.target.value })
                 }
-                className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
               />
               <FieldError
                 fieldId={`${prefix}-manual-label`}
@@ -296,7 +296,7 @@ function CapabilityEditor({
                 onChange={(event) =>
                   updateManual({ explicitLimit: event.target.value })
                 }
-                className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
               />
               <FieldError
                 fieldId={`${prefix}-manual-limit`}
@@ -329,7 +329,7 @@ function CapabilityEditor({
                     ),
                   })
                 }
-                className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
               />
               <FieldError
                 fieldId={`${prefix}-manual-minutes`}
@@ -363,7 +363,7 @@ function CapabilityEditor({
                     ),
                   })
                 }
-                className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
               />
               <FieldError
                 fieldId={`${prefix}-manual-occurrences`}
@@ -524,7 +524,7 @@ export function MvpFirstClientContractTool() {
                   .value as MvpContractInput["testFormat"],
               })
             }
-            className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+            className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
           >
             <option value="">À vérifier</option>
             {mvpTestFormats.map((format) => (
@@ -551,7 +551,7 @@ export function MvpFirstClientContractTool() {
                 salesMode: event.target.value as MvpContractInput["salesMode"],
               })
             }
-            className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+            className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
           >
             <option value="">À vérifier</option>
             {mvpSalesModes.map((mode) => (
@@ -583,7 +583,7 @@ export function MvpFirstClientContractTool() {
             }
             rows={2}
             placeholder="Ex. du 7 septembre au 18 octobre 2026 inclus — période propre à ce test"
-            className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 outline-none placeholder:text-zinc-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+            className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 outline-none placeholder:text-zinc-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
           />
           <FieldError
             fieldId="mvp-test-horizon"
@@ -603,7 +603,7 @@ export function MvpFirstClientContractTool() {
             }
             rows={3}
             placeholder="Ce que le client obtient, dans ses mots"
-            className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 outline-none placeholder:text-zinc-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+            className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 outline-none placeholder:text-zinc-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
           />
           <FieldError
             fieldId="mvp-sold-outcome"
@@ -623,7 +623,7 @@ export function MvpFirstClientContractTool() {
             }
             rows={3}
             placeholder="Action, état ou trace observable — pas une simple connexion"
-            className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 outline-none placeholder:text-zinc-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+            className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 outline-none placeholder:text-zinc-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
           />
           <FieldError
             fieldId="mvp-proof-event"
@@ -652,7 +652,7 @@ export function MvpFirstClientContractTool() {
                 pilotClientCount: preserveRawDecimal(event.target.value),
               })
             }
-            className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+            className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
           />
           <FieldError
             fieldId="mvp-client-count"
@@ -683,7 +683,7 @@ export function MvpFirstClientContractTool() {
                 manualCapacityMinutes: preserveRawDecimal(event.target.value),
               })
             }
-            className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+            className="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
           />
           <FieldError
             fieldId="mvp-manual-capacity"
@@ -714,7 +714,7 @@ export function MvpFirstClientContractTool() {
                 updateDraft({ autonomousPurchaseStates: event.target.value })
               }
               rows={3}
-              className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+              className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
             />
             <FieldError
               fieldId="mvp-autonomous-states"
@@ -737,7 +737,7 @@ export function MvpFirstClientContractTool() {
                 })
               }
               rows={3}
-              className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+              className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-base sm:text-sm text-zinc-950 outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
             />
             <FieldError
               fieldId="mvp-autonomous-failure"

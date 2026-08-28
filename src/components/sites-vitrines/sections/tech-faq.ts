@@ -15,11 +15,11 @@ export const techFaqHtml = `
 
     <div class="sv-tfaq-list reveal reveal-d-1">
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-tech-1">
           Comment vous gérez les migrations de base en production ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-showcase-tech-1" hidden>
           <b>Migrations SQL versionnées (Drizzle)</b> + review en pair avant merge. Déploiement
           zero-downtime (expand / migrate / contract) pour les schémas sensibles. Pour les
           très grosses tables, on utilise <b>pt-online-schema-change</b> ou des colonnes temporaires
@@ -29,11 +29,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-tech-2">
           Quelle stratégie de queues et de jobs ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-showcase-tech-2" hidden>
           <b>Files d'attente (Redis)</b>. Queues séparées par criticité (default, notifications,
           ai-heavy, exports). <b>Retries exponentiels</b>, dead-letter queue sur échec définitif,
           alerting Sentry sur backlog &gt; X. Les jobs IA coûteux tournent sur
@@ -42,11 +42,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-tech-3">
           Vos stratégies de backup et de disaster recovery ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-showcase-tech-3" hidden>
           La sauvegarde dépend de l'hébergement et de la criticité : journal continu,
           snapshots, rétention et copie chez un autre fournisseur sont des options à
           dimensionner. Le devis précise fréquence, chiffrement, responsables, tests de
@@ -55,11 +55,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-tech-4">
           Observabilité, logs, traces — qu'est-ce qu'on a ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-showcase-tech-4" hidden>
           <b>Sentry</b> pour les erreurs (front + back + mobile) avec context riche (user,
           tenant, release). <b>Monitoring applicatif</b> pour perfs &amp; slow queries. <b>Dashboards
           dédiés</b> pour les queues. <b>Logs structurés JSON</b> (Monolog → stdout → agrégateur).
@@ -69,11 +69,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-tech-5">
           Comment vous tenez la charge à 10 000+ users actifs ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-showcase-tech-5" hidden>
           Architecture pensée <b>stateless</b>, scale horizontal via Docker/Coolify ou
           Vercel / Cloudflare. <b>PostgreSQL avec index ciblés + partitioning sur tables chaudes</b>.
           Redis pour le cache applicatif, les sessions, le rate-limit. Queries lentes
@@ -83,11 +83,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-tech-6">
           Votre stratégie de tests ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-showcase-tech-6" hidden>
           <b>Pyramide classique</b>. Unit tests sur la logique métier (Vitest).
           Feature tests sur chaque route critique (billing, auth, permissions).
           <b>End-to-end Playwright</b> sur les 5 parcours utilisateurs principaux.
@@ -97,11 +97,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-tech-7">
           Accessibilité WCAG pour nos gros clients B2B — vous savez faire ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-showcase-tech-7" hidden>
           <b>Oui — cible RGAA / WCAG 2.1 niveau AA</b>. Contrastes vérifiés dès les maquettes,
           navigation clavier complète (focus visibles, skip-links), attributs <b>aria</b> et
           landmarks sémantiques, alternatives textuelles, formulaires étiquetés. Chaque
@@ -111,11 +111,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-tech-8">
           SSO / comptes entreprise pour un espace client — vous savez faire ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-showcase-tech-8" hidden>
           <b>Oui, nativement</b>. SAML 2.0 via WorkOS ou intégration directe (Azure AD,
           Okta, Google Workspace, JumpCloud). SCIM pour le provisioning / deprovisioning auto.
           Audit logs conservés horodatés. Utile dès qu'un espace client ou un extranet
@@ -124,11 +124,11 @@ export const techFaqHtml = `
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-tech-9">
           Vous êtes auditables ? Pen test, SOC2, audit de code extérieur ?
-          <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-        </div>
-        <div class="faq-a">
+          <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a" id="faq-a-showcase-tech-9" hidden>
           Les revues externes, pentests et dossiers SOC 2 peuvent être préparés avec le
           client, puis réalisés par les tiers compétents. Les contrôles CI, le périmètre du
           SAST et la cadence des audits sont écrits dans le devis : ils ne sont pas réputés

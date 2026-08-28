@@ -32,6 +32,27 @@ Il est **interdit** de créer :
   contredis jamais — mais ne le mets pas en avant : on ne compense pas un
   historique court en l'inventant, on met en avant ce qui est réel.
 
+**Sociétés et marques réelles du groupe Hagnéré** (vérifiées à l'annuaire des
+entreprises — ne jamais les traiter comme des inventions) :
+
+| Entité | SIREN | Rôle |
+| --- | --- | --- |
+| HAGNERE CODE | — | L'agence, éditrice de ce site |
+| COMPTABILITE-AI | 978548899 | Éditrice des logiciels **LMNP.AI** et **SCI-AI.app** (active depuis le 02/08/2023, NAF 58.29C) |
+| Hagnéré Patrimoine | — | Cabinet de conseil en gestion de patrimoine du groupe |
+| Hagnéré Investissement | — | Société d'investissement du groupe |
+
+⚠️ **« Comptabilité AI » est une marque RÉELLE, pas une invention.** Deux audits
+successifs (07/2026 et 08/2026) l'ont prise pour un produit fictif et l'ont
+interdite par test, ce qui empêchait de nommer une société du groupe sur son
+propre site. Avant de qualifier une marque d'inventée, la **vérifier à
+l'annuaire des entreprises** (`recherche-entreprises.api.gouv.fr`, déjà appelé
+par `/api/sirene`) — son absence de ce fichier ne prouve rien.
+
+Symétriquement, nommer ces entités ne dispense d'aucune réserve : elles restent
+des sociétés du groupe et non des clients indépendants, et leurs résultats
+d'exploitation ne sont pas revendicables.
+
 **Ce qui reste autorisé :**
 
 - les fonctions et informations visibles sur les pages publiques des produits

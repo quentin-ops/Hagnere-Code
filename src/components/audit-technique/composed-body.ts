@@ -22,6 +22,7 @@ import { trustBadgesHtml } from "./sections/trust-badges";
 import { miniAuditHtml } from "./sections/mini-audit";
 import { faqHtml } from "./sections/faq";
 import { techFaqHtml } from "./sections/tech-faq";
+import { relatedServicesHtml } from "./sections/related-services";
 import { ctaFinalHtml } from "./sections/cta-final";
 
 /**
@@ -37,10 +38,10 @@ import { ctaFinalHtml } from "./sections/cta-final";
  *   SCENARIOS 5 tabs → DE-RISK 6 peurs → COMPARISON 5 col → TESTIMONIALS →
  *   TEAM 6 auditors → REFUSE 6 missions → PRICING 4 tiers + 6 extras →
  *   TRUST BADGES 8 engagements → MINI-AUDIT interactif → FAQ filtrée →
- *   TECH FAQ 8 Q → CTA FINAL → [SiteFooter React]
+ *   TECH FAQ 8 Q → SERVICES LIÉS → CTA FINAL → [SiteFooter React]
  *
- * Le `<!-- CTA -->` du body.ts clone est stripé côté React via `stripFinalCta`.
- * Notre `<!-- ADS CTA FINAL -->` échappe au strip (regex ne matche que "CTA" ou "CTA FINAL").
+ * La CTA finale héritée a été retirée de body.ts : la seule CTA rendue est
+ * `<!-- ADS CTA FINAL -->`, qui échappe volontairement à `stripFinalCta`.
  */
 function compose(raw: string): string {
   let out = raw;
@@ -69,11 +70,12 @@ function compose(raw: string): string {
     miniAuditHtml.trim(),
     faqHtml.trim(),
     techFaqHtml.trim(),
+    relatedServicesHtml.trim(),
     ctaFinalHtml.trim(),
   ].join("\n\n");
 
   out = out.replace(
-    /<!-- WHAT WE BUILD -->[\s\S]*?(?=<!-- CTA -->)/,
+    /<!-- WHAT WE BUILD -->[\s\S]*$/,
     atSections + "\n\n",
   );
 

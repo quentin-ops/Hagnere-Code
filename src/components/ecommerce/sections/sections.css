@@ -1584,11 +1584,34 @@
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }
+.ec-cw-kicker {
+  font-family: var(--font-geist-mono);
+  font-size: 12px;
+  color: var(--mute);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 28px;
+}
 .ec-cw-grid {
   display: grid;
   grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
   align-items: center;
   gap: 12px;
+}
+.ec-cw-foot {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--mute);
+}
+.ec-cw-foot b { color: var(--ink); font-weight: 600; }
+.ec-cw-dot {
+  display: inline-block;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  margin-right: 6px;
+  vertical-align: middle;
 }
 .ec-cw-logo {
   display: flex; align-items: center; justify-content: center;
@@ -2630,14 +2653,20 @@
   background: var(--accent); border-color: var(--accent);
   color: #fff; transform: rotate(45deg);
 }
+/* Ouverture sans max-height chiffrée : à 200 % de taille de texte (WCAG 1.4.4)
+   ou sur écran étroit, une valeur fixe rognait les réponses longues sans
+   défilement possible (overflow: hidden). */
 .ec-tfaq-list .faq-a {
   max-height: 0; overflow: hidden;
-  transition: max-height 0.3s;
+  opacity: 0;
+  transition: opacity 0.25s ease;
   color: var(--mute);
   font-size: 14px; line-height: 1.65;
 }
 .ec-tfaq-list .faq-item.open .faq-a {
-  max-height: 600px;
+  max-height: none;
+  overflow: visible;
+  opacity: 1;
   padding-bottom: 20px;
 }
 .ec-tfaq-list .faq-a b { color: var(--ink); font-weight: 600; }

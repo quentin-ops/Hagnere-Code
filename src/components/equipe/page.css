@@ -4,7 +4,7 @@
    .section-head, .reveal, .faq, .kpi-bar) from tarifs/page.css patterns.
    Adds page-specific blocks: ehero (hero), emos (mosaic preview),
    founder (Quentin editorial), cto (Nicolas editorial), tech (4 devs),
-   stack-collective, rituals, claude, values, recrute.
+   stack-collective, rituals, claude, values.
    ========================================================================= */
 
 :root {
@@ -55,11 +55,20 @@ html.dark {
    `.btn-accent {color:#fff}` (0,1,0), which would silently turn button text
    black inside this scope. Color rules below are scoped under `.hc-design`
    to win the cascade. */
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:all 0.15s;white-space:nowrap}
+/* min-height 44px : padding 10px + interligne 14px laissait une cible de
+   ~41 px, sous le minimum tactile de 44x44 (WCAG 2.5.5 / HIG). */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;min-height:44px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:all 0.15s;white-space:nowrap}
 .hc-design .btn-primary{background:var(--ink);color:var(--paper)}
 .hc-design .btn-primary:hover{background:var(--ink-2);transform:translateY(-1px)}
 .hc-design .btn-accent{background:var(--accent);color:#fff;box-shadow:0 4px 14px -4px rgba(109,40,217,0.5)}
 .hc-design .btn-accent:hover{background:var(--accent-ink);transform:translateY(-1px)}
+/* Thème sombre : --accent-ink vaut #C4B5FD (lavande clair). Le libellé blanc
+   tombait à 1,85:1 au survol et l'état de repos (#8B5CF6) à 4,23:1 pour un
+   libellé de 15 px (.btn-lg), donc du texte normal qui exige 4,5:1.
+   On repasse sur des violets assez foncés : #fff sur #6D28D9 = 7,1:1 au repos,
+   #fff sur #7C3AED = 5,7:1 au survol. WCAG 1.4.3 AA tenu dans les deux états. */
+html.dark .hc-design .btn-accent{background:#6D28D9;box-shadow:0 4px 14px -4px rgba(109,40,217,0.6)}
+html.dark .hc-design .btn-accent:hover{background:#7C3AED}
 .hc-design .btn-ghost{color:var(--ink-3);border-color:var(--line);background:var(--paper)}
 .hc-design .btn-ghost:hover{border-color:var(--ink-4);color:var(--ink)}
 .btn-lg{padding:14px 22px;font-size:15px;border-radius:10px}
@@ -68,7 +77,10 @@ html.dark {
 .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--ink-3);background:var(--paper);font-family:var(--font-geist-mono);font-weight:500}
 .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(109,40,217,0.18)}
 .eyebrow{font-family:var(--font-geist-mono);font-size:12px;font-weight:500;color:var(--accent-ink);text-transform:uppercase;letter-spacing:0.08em}
-.eyebrow.on-dark{color:var(--accent)}
+/* Sur fond sombre (#0a0a0a), var(--accent) vaut #6D28D9 en thème clair :
+   2,79:1, hors seuil. On fixe la valeur littérale déjà retenue ailleurs sur
+   le site (#A78BFA = 7,27:1), indépendante du thème comme le fond l'est. */
+.eyebrow.on-dark{color:#A78BFA}
 
 /* Breadcrumb */
 .crumb{padding:20px 0;font-family:var(--font-geist-mono);font-size:12px;color:var(--mute);border-bottom:1px solid var(--line-2)}
@@ -153,6 +165,10 @@ html.dark {
 .kpi:last-child{border-right:none}
 .kpi-n{font-family:var(--font-geist);font-size:42px;font-weight:600;letter-spacing:-0.04em;line-height:1;color:var(--ink)}
 .kpi-n .kpi-s{color:var(--accent);font-size:0.55em;font-weight:600;margin-left:4px;letter-spacing:0;font-family:var(--font-geist-mono)}
+/* Repere dont la valeur est un mot et non un nombre : meme corps que les
+   valeurs textuelles de l'accueil (.tr-rating-value), pour qu'il ne deborde
+   pas de sa colonne quand le texte est agrandi (WCAG 1.4.4). */
+.kpi-n-word{font-size:32px;letter-spacing:-0.03em}
 .kpi-l{margin-top:12px;color:var(--ink-3);font-size:13px;line-height:1.4}
 
 /* ============ FONDATEUR ============ */
@@ -318,48 +334,8 @@ html.dark {
 .val-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s}
 .val-card:hover{transform:translateY(-2px);border-color:#d4d4d4;box-shadow:0 14px 28px -16px rgba(0,0,0,0.08)}
 .val-ic{width:42px;height:42px;border-radius:11px;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center}
-.val-card h4{font-size:16px;letter-spacing:-0.015em;margin:0;font-weight:600;color:var(--ink)}
+.val-card h3{font-size:16px;letter-spacing:-0.015em;margin:0;font-weight:600;color:var(--ink)}
 .val-card p{margin:0;color:var(--mute);font-size:13.5px;line-height:1.55}
-
-/* ============ RECRUTE ============ */
-.recrute{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
-.rec-card{position:relative;background:linear-gradient(180deg,#0A0A0A 0%,#171717 100%);color:#fff;border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1.15fr 1fr;gap:0;border:1px solid #171717;box-shadow:0 40px 80px -40px rgba(76,29,149,0.45),0 10px 30px -15px rgba(0,0,0,0.4)}
-.rec-bg-grid{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:32px 32px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 85%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 85%);pointer-events:none}
-.rec-bg-radial{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 0% 100%,rgba(109,40,217,0.28),transparent 60%);pointer-events:none}
-
-.rec-left{position:relative;padding:52px 48px;display:flex;flex-direction:column;justify-content:center}
-.rec-tag{display:inline-flex;align-items:center;gap:10px;margin-bottom:24px;font-family:var(--font-geist-mono);font-size:11px;letter-spacing:0.12em;font-weight:600;color:var(--accent)}
-.rec-tag > span:first-child{background:var(--accent);color:#fff;padding:3px 8px;border-radius:4px;font-weight:700;letter-spacing:0.04em}
-.rec-card h3{color:#fff;font-size:42px;line-height:1.05;letter-spacing:-0.04em}
-.rec-card h3 .accent{background:linear-gradient(90deg,#A78BFA,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
-.rec-lead{color:rgba(255,255,255,0.65);font-size:15px;line-height:1.6;margin-top:20px;max-width:520px}
-.rec-lead b{color:#fff;font-weight:500}
-
-.rec-jobs{margin-top:32px;display:flex;flex-direction:column;gap:10px}
-.rec-job{padding:18px 22px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;display:flex;flex-direction:column;gap:6px;transition:background 0.2s,border-color 0.2s}
-.rec-job:hover{background:rgba(255,255,255,0.06);border-color:rgba(167,139,250,0.25)}
-.rec-job-status{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-geist-mono);font-size:10px;letter-spacing:0.08em;font-weight:700;width:fit-content}
-.rec-job-status.open{color:#5AD27D}
-.rec-job-status.open .dot{width:6px;height:6px;border-radius:50%;background:#5AD27D;box-shadow:0 0 0 3px rgba(90,210,125,0.25)}
-.rec-job-status.soon{color:rgba(255,255,255,0.5)}
-.rec-job-status.soon .dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.4)}
-.rec-job-name{font-size:16.5px;font-weight:600;color:#fff;letter-spacing:-0.015em}
-.rec-job-meta{font-family:var(--font-geist-mono);font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.02em}
-
-.rec-right{position:relative;background:#0F0F0F;padding:36px 32px;display:flex;flex-direction:column;gap:18px;border-left:1px solid #1A1A1A}
-.rec-cta-card{background:linear-gradient(180deg,rgba(109,40,217,0.14),rgba(109,40,217,0.02) 100%),#171717;border:1px solid rgba(167,139,250,0.25);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:14px}
-.rec-cta-tag{font-family:var(--font-geist-mono);font-size:10px;color:var(--accent);letter-spacing:0.12em;font-weight:700}
-.rec-cta-card h4{color:#fff;font-size:18px;letter-spacing:-0.02em;margin:0}
-.rec-cta-card p{margin:0;color:rgba(255,255,255,0.65);font-size:13px;line-height:1.55}
-.rec-cta-card p b{color:#fff;font-weight:500}
-.rec-cta-card .btn-accent{align-self:stretch;justify-content:center;font-size:13.5px}
-.rec-cta-meta{font-family:var(--font-geist-mono);font-size:10.5px;color:rgba(255,255,255,0.45);letter-spacing:0.04em;text-align:center;margin-top:-4px}
-
-.rec-criteria{padding:18px 22px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px}
-.rec-cri-h{font-family:var(--font-geist-mono);font-size:10px;color:var(--accent);letter-spacing:0.08em;font-weight:600;margin-bottom:12px;text-transform:uppercase}
-.rec-criteria ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
-.rec-criteria li{display:flex;gap:8px;align-items:center;font-size:12.5px;color:rgba(255,255,255,0.78);line-height:1.4}
-.rec-criteria svg{color:var(--accent);flex-shrink:0}
 
 /* ============ FAQ — same as service pages ============ */
 .faq{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper)}
@@ -372,8 +348,11 @@ html.dark {
 .faq-q:hover{color:var(--accent-ink)}
 .faq-q .ic{width:24px;height:24px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;flex-shrink:0;transition:all 0.2s;color:var(--mute)}
 .faq-item.open .faq-q .ic{background:var(--ink);border-color:var(--ink);color:var(--paper);transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s;color:var(--mute);font-size:15px;line-height:1.6}
-.faq-item.open .faq-a{max-height:500px;padding-bottom:22px}
+/* Pas de max-height chiffrée à l'ouverture : à 200 % de taille de texte
+   (WCAG 1.4.4), sur mobile ou à l'impression, les réponses longues étaient
+   rognées sans défilement possible. L'ouverture est signalée par un fondu. */
+.faq-a{max-height:0;overflow:hidden;opacity:0;transition:opacity 0.25s ease;color:var(--mute);font-size:15px;line-height:1.6}
+.faq-item.open .faq-a{max-height:none;overflow:visible;opacity:1;padding-bottom:22px}
 .faq-a b{color:var(--ink);font-weight:500}
 .faq-a a{color:var(--accent-ink)}
 
@@ -393,8 +372,6 @@ html.dark {
   .claude-card{grid-template-columns:1fr}
   .claude-right{border-left:none;border-top:1px solid #1A1A1A;flex-direction:row;gap:12px;flex-wrap:wrap;padding:28px}
   .claude-stat{flex:1 1 200px}
-  .rec-card{grid-template-columns:1fr}
-  .rec-right{border-left:none;border-top:1px solid #1A1A1A}
   .dev-grid{grid-template-columns:1fr 1fr}
   .rit-grid{grid-template-columns:repeat(2,1fr)}
   .val-grid{grid-template-columns:repeat(2,1fr)}
@@ -420,7 +397,7 @@ html.dark {
   .emos-card.emos-founder .emos-avatar{width:54px;height:54px;font-size:16px}
 
   /* Sections padding */
-  .founder, .cto, .tech, .stack-collective, .rituals, .claude, .values, .recrute, .faq{padding:72px 0}
+  .founder, .cto, .tech, .stack-collective, .rituals, .claude, .values, .faq{padding:72px 0}
 
   /* Founder */
   .founder-card{gap:24px}
@@ -453,16 +430,13 @@ html.dark {
   .claude-card h3{font-size:26px}
   .claude-bullets{grid-template-columns:1fr}
 
-  /* Recrute */
-  .rec-left{padding:32px 24px}
-  .rec-right{padding:24px}
-  .rec-card h3{font-size:28px}
 
   /* KPI */
   .kpi-grid{grid-template-columns:1fr 1fr;gap:0}
   .kpi{padding:18px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);text-align:left}
   .kpi:last-child, .kpi:nth-last-child(2){border-bottom:none}
   .kpi-n{font-size:30px}
+  .kpi-n-word{font-size:22px}
 
   /* FAQ */
   .faq-grid{grid-template-columns:1fr;gap:32px}
@@ -485,8 +459,7 @@ html.dark {
 /* Cartes volontairement sombres : leur bordure quasi-noire disparaît sur fond
    sombre — on la remplace par un liseré clair translucide. */
 html.dark .cto-card,
-html.dark .claude-card,
-html.dark .rec-card { border-color: rgba(255,255,255,0.10); }
+html.dark .claude-card { border-color: rgba(255,255,255,0.10); }
 /* Hover neutre #d4d4d4 illisible sur carte sombre. */
 html.dark .val-card:hover { border-color: rgba(255,255,255,0.18); }
 /* Photo fondateur (bloc sombre) : liseré pour la détacher du fond sombre. */

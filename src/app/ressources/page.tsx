@@ -14,6 +14,10 @@ import {
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import { APP_CDC_KIT, SITE_CDC_KIT, resourceKitUrl } from "@/lib/resources";
 import { DEFAULT_OG_IMAGE, OG_BASE, SITE_URL } from "@/lib/seo";
+import {
+  PUBLIC_ORGANIZATION_ENTITY,
+  WEBSITE_JSON_LD,
+} from "@/lib/organization-structured-data";
 
 export const metadata: Metadata = {
   title: "Ressources web gratuites · Kits, guides et outils pratiques",
@@ -85,6 +89,14 @@ const featuredKits = [
   },
 ];
 
+// Nom canonique de la collection /ressources. Les pages enfants (les deux
+// kits) référencent le même @id : elles doivent reprendre ce libellé plutôt
+// que de le retaper, sous peine de publier deux noms pour un seul nœud.
+const RESOURCES_COLLECTION_ID = `${SITE_URL}/ressources#webpage`;
+const RESOURCES_COLLECTION_NAME = "Ressources web gratuites Hagnéré Code";
+
+const websiteJsonLd = JSON.stringify(WEBSITE_JSON_LD);
+
 const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -102,14 +114,17 @@ const breadcrumbJsonLd = JSON.stringify({
 const collectionJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "@id": `${SITE_URL}/ressources#webpage`,
-  name: "Ressources web gratuites Hagnéré Code",
+  "@id": RESOURCES_COLLECTION_ID,
+  name: RESOURCES_COLLECTION_NAME,
   description:
     "Des kits, modèles, grilles, guides et outils pour cadrer et comparer un projet web.",
   url: `${SITE_URL}/ressources`,
   inLanguage: "fr-FR",
-  isPartOf: { "@id": `${SITE_URL}/#website` },
-  author: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
+  isPartOf: { "@id": WEBSITE_JSON_LD["@id"] },
+  // Entité complète et non un @id nu : Google ne résout un @id que dans le
+  // graphe de la page courante, et un `author` réduit à { "@type", "@id" } se
+  // lit comme un éditeur anonyme.
+  author: PUBLIC_ORGANIZATION_ENTITY,
   mainEntity: {
     "@type": "ItemList",
     numberOfItems: resources.length,
@@ -121,6 +136,32 @@ const collectionJsonLd = JSON.stringify({
     })),
   },
 });
+
+// Le silo ressources capte une intention haute (« cahier des charges »,
+// « comparer des devis ») mais n'émettait aucun lien vers une offre : le
+// visiteur qui a fini de cadrer n'avait aucun chemin éditorial vers un service.
+const serviceRoutes = [
+  {
+    href: "/services/sites-vitrines",
+    label: "Sites vitrines et landing pages",
+    hint: "Site public à construire ou à refondre",
+  },
+  {
+    href: "/services/ecommerce",
+    label: "E-commerce sur mesure",
+    hint: "Vente en ligne et tunnel de commande",
+  },
+  {
+    href: "/services/saas-applications-metier",
+    label: "SaaS et applications métier",
+    hint: "Produit ou logiciel derrière un identifiant",
+  },
+  {
+    href: "/services/outils-internes-sur-mesure",
+    label: "Outils internes sur mesure",
+    hint: "Sortir des tableurs et automatiser un processus",
+  },
+];
 
 const secondaryResources = [
   {
@@ -155,6 +196,12 @@ const secondaryResources = [
 export default function Page() {
   return (
     <GuidesShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: websiteJsonLd.replace(/</g, "\\u003c"),
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -345,6 +392,47 @@ export default function Page() {
       </section>
 
       <section className="bg-white py-12 sm:py-16 dark:bg-zinc-950">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="max-w-3xl">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-zinc-500">
+              Et après le cadrage
+            </p>
+            <h2 className="mt-2 text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white">
+              À quel type de projet ces ressources mènent.
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
+              Une fois le besoin écrit, il reste à savoir de quelle nature est
+              le projet. Ces quatre pages décrivent ce que nous construisons,
+              avec les périmètres et les repères de budget correspondants.
+            </p>
+          </div>
+          <ul className="mt-7 grid gap-3 sm:grid-cols-2">
+            {serviceRoutes.map((service) => (
+              <li key={service.href}>
+                <Link
+                  href={service.href}
+                  className="flex min-h-11 items-center justify-between gap-4 rounded-xl border border-zinc-200 bg-white px-4 py-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:border-violet-800 dark:hover:bg-violet-950/30"
+                >
+                  <span>
+                    <span className="block text-sm font-semibold text-zinc-950 dark:text-white">
+                      {service.label}
+                    </span>
+                    <span className="block text-xs text-zinc-600 dark:text-zinc-400">
+                      {service.hint}
+                    </span>
+                  </span>
+                  <ArrowRight
+                    className="size-4 shrink-0 text-violet-700 dark:text-violet-300"
+                    aria-hidden="true"
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="border-t border-zinc-200 bg-white py-12 sm:py-16 dark:border-zinc-800 dark:bg-zinc-950">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
             <div className="flex size-11 items-center justify-center rounded-xl bg-zinc-100 text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">

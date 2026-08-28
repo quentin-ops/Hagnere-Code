@@ -9,7 +9,7 @@ export const scenariosHtml = `
         <h2>Quatre situations,<br>quatre plans d'action.</h2>
       </div>
       <div class="right">
-        La plupart des missions Ads qu'on signe entrent dans un de ces quatre scénarios.
+        Ces quatre scénarios couvrent les situations pour lesquelles nous cadrons une mission Ads.
         <b>Cliquez sur le vôtre</b>&nbsp;: les livrables, le budget media typique et le rythme changent.
       </div>
     </div>

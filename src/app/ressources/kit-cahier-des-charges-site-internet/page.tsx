@@ -19,12 +19,16 @@ import { ResourceDownloadCard } from "@/components/resources/ResourceDownloadCar
 import { TrackedDownloadLink } from "@/components/resources/TrackedDownloadLink";
 import { SITE_CDC_KIT, resourceKitUrl } from "@/lib/resources";
 import { OG_BASE, SITE_URL } from "@/lib/seo";
+import {
+  ORGANIZATION_ID,
+  PUBLIC_ORGANIZATION_ENTITY,
+} from "@/lib/organization-structured-data";
 
 const resource = SITE_CDC_KIT;
 const pageUrl = resourceKitUrl(resource);
 
 export const metadata: Metadata = {
-  title: "Kit cahier des charges site internet · Word et Excel gratuits",
+  title: "Kit cahier des charges site internet · Word + Excel gratuit",
   description:
     "Téléchargez sans email un modèle Word en 18 rubriques, un exemple rempli, une grille Excel de 56 tests et un mode d'emploi pour cadrer votre site.",
   authors: [{ name: "Quentin Hagnéré" }],
@@ -123,7 +127,9 @@ const webPageJsonLd = JSON.stringify({
     name: "Quentin Hagnéré",
     url: `${SITE_URL}/equipe`,
   },
-  publisher: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
+  // Entité complète : un @id nu n'est pas résolu par Google hors du graphe
+  // de la page courante, et l'éditeur du kit se lisait comme anonyme.
+  publisher: PUBLIC_ORGANIZATION_ENTITY,
   mainEntity: {
     "@type": "CreativeWork",
     "@id": `${pageUrl}#kit`,
@@ -136,7 +142,7 @@ const webPageJsonLd = JSON.stringify({
     inLanguage: "fr-FR",
     isAccessibleForFree: true,
     audience: { "@type": "Audience", audienceType: resource.audience },
-    creator: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
+    creator: { "@id": ORGANIZATION_ID },
     potentialAction: {
       "@type": "DownloadAction",
       target: `${SITE_URL}${resource.primary.href}`,
@@ -624,6 +630,48 @@ export default function Page() {
               Voir notre méthode de cadrage
               <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
+            {/* Le kit ne pointait vers aucun service ni aucun contenu de suite,
+                contrairement à son jumeau application métier : le visiteur le
+                plus proche de l'intention « création de site » se retrouvait
+                sans étape suivante autre que le tunnel. */}
+            <div className="mt-6 border-t border-violet-200 pt-5 dark:border-violet-900">
+              <p className="text-xs font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
+                Pour aller plus loin
+              </p>
+              <ul className="mt-3 grid gap-2 sm:grid-cols-3">
+                {[
+                  {
+                    href: "/services/sites-vitrines",
+                    label: "Ce que nous construisons : sites vitrines",
+                  },
+                  {
+                    href: "/livres-blancs/comparer-devis-site-internet",
+                    label: "Comparer les devis reçus sur 3 ans",
+                  },
+                  {
+                    href: "/guides/pourquoi-site-pas-visible-google",
+                    label: "Pourquoi un site n'est pas visible sur Google",
+                  },
+                  {
+                    href: "/ressources/kit-cahier-des-charges-application-metier",
+                    label: "Le kit équivalent pour une application métier",
+                  },
+                ].map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="flex min-h-11 items-center gap-2 text-sm leading-snug font-medium text-zinc-700 hover:text-violet-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 dark:text-zinc-300 dark:hover:text-violet-200"
+                    >
+                      <ArrowRight
+                        className="size-4 shrink-0 text-violet-700 dark:text-violet-300"
+                        aria-hidden="true"
+                      />
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>

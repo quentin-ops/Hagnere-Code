@@ -37,6 +37,10 @@ export const ECOMMERCE_FAQ_ITEMS: readonly EcommerceFaqItem[] = [
         part("grille tarifaire publiée", {
           href: "/tarifs",
         }),
+        part(" ; pour situer le vôtre, décrivez-le dans "),
+        part("le formulaire de cadrage", {
+          href: "/demarrer-un-projet",
+        }),
         part("."),
       ],
     ],
@@ -73,8 +77,12 @@ export const ECOMMERCE_FAQ_ITEMS: readonly EcommerceFaqItem[] = [
       [
         part("Trois options : "),
         part("(1)", { strong: true }),
+        part(" un forfait de "),
+        part("maintenance et d'évolution", {
+          href: "/services/maintenance-evolution",
+        }),
         part(
-          " un forfait TMA mensuel chez nous — monitoring, évolutions et hotline, généralement 800 à 2 500 €/mois selon le périmètre ; ",
+          " mensuel chez nous — monitoring, évolutions et hotline. Les forfaits Care, Care+ et Care Pro sont publiés « sur devis » : le montant dépend du périmètre retenu et n'est arrêté qu'au devis ; ",
         ),
         part("(2)", { strong: true }),
         part(
@@ -107,7 +115,13 @@ export const ECOMMERCE_FAQ_ITEMS: readonly EcommerceFaqItem[] = [
       ],
       [
         part(
-          "Cette méthode réduit le risque mais ne permet pas de garantir un trafic ou des positions immobiles. Les indicateurs suivis et la référence de comparaison sont définis avant la bascule afin de documenter les variations et les corrections.",
+          "Cette méthode réduit le risque mais ne permet pas de garantir un trafic ou des positions immobiles. Les indicateurs suivis et la référence de comparaison sont définis avant la bascule afin de documenter les variations et les corrections. Notre guide ",
+        ),
+        part("pourquoi un site n'est pas visible sur Google", {
+          href: "/guides/pourquoi-site-pas-visible-google",
+        }),
+        part(
+          " liste les causes à écarter avant d'attribuer une baisse à la migration.",
         ),
       ],
     ],
@@ -229,24 +243,54 @@ export function ecommerceFaqAnswerText(item: EcommerceFaqItem): string {
     .join(" ");
 }
 
+const FAQ_ICON_HTML =
+  '<span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>';
+
+/** Identifiant de la réponse n° `index` (1-based dans le HTML servi). */
+export function ecommerceFaqAnswerId(index: number): string {
+  return `faq-a-shop-faq-${index + 1}`;
+}
+
+function renderAnswerBodyHtml(item: EcommerceFaqItem): string {
+  return item.answer
+    .map((paragraph) => `<p>${paragraph.map(renderPartHtml).join("")}</p>`)
+    .join("\n");
+}
+
+/**
+ * Une seule question est dépliée dans le HTML servi : la première. Les deux
+ * variantes sont écrites en toutes lettres — `aria-expanded="true"` sans
+ * `hidden`, puis `aria-expanded="false"` avec `hidden` — parce que l'état
+ * annoncé au lecteur d'écran et l'état réel du bloc doivent rester lisibles
+ * dans le gabarit, sans être reconstitués à l'exécution.
+ *
+ * L'identifiant dépend de l'index : une page qui sert dix réponses sous le
+ * même `id` renvoie tous les `aria-controls` vers le premier bloc.
+ */
 export function renderEcommerceFaqItemsHtml(
   items: readonly EcommerceFaqItem[] = ECOMMERCE_FAQ_ITEMS,
 ): string {
   return items
-    .map(
-      (item, index) => `
-        <div class="faq-item${index === 0 ? " open" : ""}">
-          <div class="faq-q">
+    .map((item, index) =>
+      index === 0
+        ? `
+        <div class="faq-item open">
+          <button type="button" class="faq-q" aria-expanded="true" aria-controls="faq-a-shop-faq-1">
             ${escapeHtml(item.question)}
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></div>
+            ${FAQ_ICON_HTML}
+          </button>
+          <div class="faq-a" id="faq-a-shop-faq-1">
+            ${renderAnswerBodyHtml(item)}
           </div>
-          <div class="faq-a">
-            ${item.answer
-              .map(
-                (paragraph) =>
-                  `<p>${paragraph.map(renderPartHtml).join("")}</p>`,
-              )
-              .join("\n")}
+        </div>`
+        : `
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="${ecommerceFaqAnswerId(index)}">
+            ${escapeHtml(item.question)}
+            ${FAQ_ICON_HTML}
+          </button>
+          <div class="faq-a" id="${ecommerceFaqAnswerId(index)}" hidden>
+            ${renderAnswerBodyHtml(item)}
           </div>
         </div>`,
     )

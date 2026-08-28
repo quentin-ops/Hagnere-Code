@@ -805,16 +805,22 @@
   color: #fff;
   transform: rotate(45deg);
 }
+/* Ouverture sans max-height chiffrée : à 200 % de taille de texte (WCAG 1.4.4)
+   ou sur écran étroit, une valeur fixe rognait les réponses longues sans
+   défilement possible (overflow: hidden). */
 .oi-tfaq-list .faq-a {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s;
+  opacity: 0;
+  transition: opacity 0.25s ease;
   color: var(--mute);
   font-size: 14px;
   line-height: 1.65;
 }
 .oi-tfaq-list .faq-item.open .faq-a {
-  max-height: 550px;
+  max-height: none;
+  overflow: visible;
+  opacity: 1;
   padding-bottom: 20px;
 }
 .oi-tfaq-list .faq-a b { color: var(--ink); font-weight: 600; }

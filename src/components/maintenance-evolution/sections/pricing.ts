@@ -1,5 +1,5 @@
 export const pricingHtml = `
-<!-- PRICING M&E · 3 tiers + audit -->
+<!-- PRICING M&E · porte d'entrée + 3 forfaits Care (mêmes noms que la grille /tarifs) -->
 <section class="pricing" id="tarifs">
   <div class="wrap">
     <div class="section-head reveal" style="margin-bottom:0">
@@ -35,15 +35,16 @@ export const pricingHtml = `
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Demander l'audit</a></div>
       </div>
 
-      <!-- ESSENTIEL -->
+      <!-- CARE -->
       <div class="plan reveal reveal-d-1">
-        <div class="plan-tag">ESSENTIEL · RUN</div>
-        <h3>Essentiel</h3>
+        <div class="plan-tag">CARE · RUN</div>
+        <h3>Care</h3>
         <div class="plan-sub">App stable, peu d'évolutions, PME 10-30 salariés. On tient la prod, on patche, on évolue au rythme de vos besoins métier.</div>
         <div class="plan-price">
           <span class="amount">Sur devis</span>
-          <span class="per">forfait mensuel</span>
+          <span class="per">HT · forfait mensuel</span>
         </div>
+        <p class="plan-hint">Repère indicatif&nbsp;: <b>≈ 2 500 € HT / mois</b> sur un scénario-type publié plus haut. Le forfait est fixé au devis.</p>
         <div class="plan-hr"></div>
         <ul class="plan-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>1-2 j/mois d'intervention dev</li>
@@ -57,19 +58,20 @@ export const pricingHtml = `
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Cadrer mon forfait</a></div>
       </div>
 
-      <!-- SCALE (featured) -->
+      <!-- CARE+ (featured) -->
       <div class="plan featured reveal reveal-d-2">
         <div class="plan-badge">ÉVOLUTIONS RÉGULIÈRES</div>
-        <div class="plan-tag">SCALE · ÉVOLUTION</div>
-        <h3>Scale</h3>
+        <div class="plan-tag">CARE+ · ÉVOLUTION</div>
+        <h3>Care+</h3>
         <div class="plan-sub">Scale-up ou SaaS en croissance. Capacité, rythme d'évolution et éventuelle astreinte sont dimensionnés dans le devis.</div>
         <div class="plan-price">
           <span class="amount">Sur devis</span>
-          <span class="per">forfait mensuel</span>
+          <span class="per">HT · forfait mensuel</span>
         </div>
+        <p class="plan-hint">Repère indicatif&nbsp;: <b>≈ 3 500 € HT / mois</b> sur un scénario-type publié plus haut. Le forfait est fixé au devis.</p>
         <div class="plan-hr"></div>
         <ul class="plan-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Capacité mensuelle et intervenants précisés</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Capacité mensuelle et intervenants précisés au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Stack obs complète + Grafana Cloud</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Astreinte optionnelle et chiffrée</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Support prioritaire selon horaires convenus</li>
@@ -78,21 +80,22 @@ export const pricingHtml = `
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Scan Snyk + pentest annuel sur option</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Engagement défini au devis</li>
         </ul>
-        <div class="plan-cta"><a href="#contact" class="btn btn-accent">Démarrer le scale</a></div>
+        <div class="plan-cta"><a href="#contact" class="btn btn-accent">Cadrer Care+</a></div>
       </div>
 
-      <!-- PREMIUM -->
+      <!-- CARE PRO -->
       <div class="plan reveal reveal-d-3">
-        <div class="plan-tag">PREMIUM · PARTNER</div>
-        <h3>Premium</h3>
+        <div class="plan-tag">CARE PRO · PARTNER</div>
+        <h3>Care Pro</h3>
         <div class="plan-sub">Dispositif renforcé pour applications critiques&nbsp;: équipe, couverture, reprise et accompagnement sécurité configurés sur mesure.</div>
         <div class="plan-price">
           <span class="amount">Sur devis</span>
-          <span class="per">forfait mensuel</span>
+          <span class="per">HT · forfait mensuel</span>
         </div>
+        <p class="plan-hint">Repère indicatif&nbsp;: <b>≈ 14 000 € HT / mois</b> sur un scénario-type publié plus haut. Le forfait est fixé au devis.</p>
         <div class="plan-hr"></div>
         <ul class="plan-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>12-16 j/mois · équipe 3-4 pers. + PO</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Capacité renforcée&nbsp;: jours/mois et intervenants nommés au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Couverture d'astreinte à dimensionner</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SLA et conséquences contractuelles sur mesure</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Audit offensif par tiers qualifié si requis</li>
@@ -106,7 +109,17 @@ export const pricingHtml = `
     </div>
 
     <p style="text-align:center;margin-top:44px;color:var(--mute);font-size:14px">
+      <b style="color:var(--ink)">Les trois montants mensuels sont des repères indicatifs</b>, hors taxes&nbsp;: ce sont les ordres de grandeur
+      des scénarios-types publiés plus haut sur cette page. Le forfait réel est fixé au devis, en fonction du volume, de la criticité et de la couverture retenue.
+    </p>
+    <p style="text-align:center;margin-top:14px;color:var(--mute);font-size:14px">
       <b style="color:var(--ink)">À confirmer dans chaque devis</b> : outils de supervision, dépendances, sécurité, suivi, canaux de support, comptes au nom du client et règles de consommation.
+    </p>
+    <p style="text-align:center;margin-top:14px;color:var(--mute);font-size:14px">
+      Care, Care+ et Care Pro sont les mêmes forfaits que ceux publiés sur la
+      <a href="/tarifs">grille tarifaire</a>. L'audit flash est la porte d'entrée payante propre à ce service&nbsp;:
+      il ne remplace pas le Discovery Sprint d'un projet de développement, et une éventuelle déduction
+      n'existe que si elle est écrite au devis.
     </p>
   </div>
 </section>

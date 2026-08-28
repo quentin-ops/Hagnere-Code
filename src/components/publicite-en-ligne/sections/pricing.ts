@@ -106,6 +106,12 @@ export const pricingHtml = `
       <b style="color:var(--ink)">À vérifier dans chaque devis</b> : hébergement du conteneur, licences, volume de créations, alertes, horaires de surveillance et délai cible d'intervention. Rien n'est ajouté automatiquement par cette page.
     </p>
     <p style="text-align:center;margin-top:14px;color:var(--mute);font-size:14px">
+      L'Audit Ads est la <b style="color:var(--ink)">porte d'entrée payante propre à ce service</b>. Il ne se cumule pas
+      avec le Discovery Sprint d'un projet de développement, qui a son propre prix sur la
+      <a href="/tarifs">grille tarifaire</a>&nbsp;: un seul cadrage payant est engagé, celui qui correspond à votre demande.
+      Une éventuelle déduction sur la suite n'existe que si elle est écrite au devis.
+    </p>
+    <p style="text-align:center;margin-top:14px;color:var(--mute);font-size:14px">
       Pour remettre forfait, pourcentage, hybride et temps passé sur la même base, consultez notre
       <a href="/guides/prix-gestion-google-ads">guide du coût complet d’une gestion Google Ads</a>.
     </p>

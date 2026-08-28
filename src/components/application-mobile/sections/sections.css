@@ -150,6 +150,20 @@
   50%      { transform: var(--mob-store-base, rotate(0)) translateY(-6px); }
 }
 
+/* Étiquette obligatoire : ces fiches store sont des maquettes, jamais une app publiée. */
+.mob-store-card-flag {
+  display: inline-block;
+  font-family: var(--font-geist-mono);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--paper-3);
+  color: var(--mute);
+  border: 1px solid var(--line);
+  margin-bottom: 10px;
+}
 .mob-store-card-head {
   display: flex;
   align-items: center;
@@ -195,6 +209,9 @@
   color: #FFB800;
   font-size: 14px;
   letter-spacing: 1px;
+}
+.mob-store-card-stars-empty {
+  color: var(--line-2, var(--line));
 }
 .mob-store-card-rate {
   font-family: var(--font-geist-mono);
@@ -979,3 +996,110 @@ html.dark .mob-compar-cell-no{color:#F87171}
 html.dark .mob-compar-cell-mid-yes{color:#FBBF24}
 html.dark .mob-ownership-foot{box-shadow:0 0 0 1px rgba(255,255,255,0.10)}
 html.dark .mob-compar-head .mob-compar-cell-best{background:linear-gradient(135deg,#7C3AED,#5B21B6)}
+
+/* ═══════════ SERVICES LIÉS (maillage interne rendu dans <main>) ═══════════ */
+.rel-svc {
+  padding: 72px 0;
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+}
+.rel-svc-lead {
+  color: var(--mute);
+  max-width: 660px;
+  margin: 10px 0 30px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.rel-svc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 14px;
+}
+.rel-svc-card {
+  display: block;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--paper);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.rel-svc-card:hover {
+  border-color: var(--ink-3);
+  transform: translateY(-2px);
+}
+.rel-svc-kind {
+  font-family: var(--font-geist-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.rel-svc-title {
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 7px 0 5px;
+  letter-spacing: -0.01em;
+}
+.rel-svc-why {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--mute);
+}
+
+/* ═══════════ PREUVES PUBLIQUES (pas de client externe) ═══════════ */
+.mob-proof {
+  padding: 88px 0;
+  background: var(--paper-2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.mob-proof-logos {
+  margin-top: 40px;
+  padding: 28px 30px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--paper);
+}
+.mob-proof-logos-kicker {
+  font-family: var(--font-geist-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--mute);
+  margin-bottom: 20px;
+}
+.mob-proof-logos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 34px;
+}
+.mob-proof-logo img {
+  display: block;
+  height: auto;
+  max-width: 150px;
+  opacity: 0.72;
+  filter: grayscale(1);
+}
+.mob-proof-note {
+  margin: 22px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--mute);
+}
+.mob-proof-foot {
+  margin-top: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+@media (max-width: 640px) {
+  .mob-proof { padding: 64px 0; }
+  .mob-proof-logos { padding: 22px 20px; }
+  .mob-proof-logos-grid { gap: 22px; }
+  .mob-proof-logo img { max-width: 118px; }
+}

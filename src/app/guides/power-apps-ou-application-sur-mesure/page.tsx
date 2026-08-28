@@ -20,6 +20,7 @@ import {
   GuidePremiumSection,
 } from "@/components/guides/guide-premium-layout";
 import type { GuidePremiumFaqCategory } from "@/components/guides/guide-premium-types";
+import { TrackedGuideCtaLink } from "@/components/guides/tracked-guide-cta-link";
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import {
   buildGuideMetadata,
@@ -301,6 +302,11 @@ export default function Page() {
           titleEnd: "et le sur-mesure.",
           subtitle:
             "Prix, délégation, SharePoint, Dataverse, invités, hors-ligne, accessibilité, politiques de données, export, support et conditions d’une reconstruction.",
+          ctaTitle: "Un point encore ouvert sur votre outil interne ?",
+          ctaDescription:
+            "Décrivez les licences envisagées, les connecteurs nécessaires et la sortie attendue, sans transmettre de donnée sensible.",
+          ctaLabel: "Décrire mon outil interne",
+          ctaHref: "/demarrer-un-projet",
         }}
         legalSources={[
           {
@@ -1598,7 +1604,13 @@ coût confirmé à 0 € : le total peut être calculé`}
             Si votre équipe ne peut pas réunir ces éléments, ne commandez pas
             encore une réécriture. Commencez par un inventaire et un prototype
             des cas difficiles. Vous pouvez ensuite{` `}
-            <Link href="/demarrer-un-projet">décrire votre projet</Link> à
+            <TrackedGuideCtaLink
+              href="/demarrer-un-projet"
+              placement="article_end_inline"
+            >
+              décrire votre projet
+            </TrackedGuideCtaLink>{" "}
+            à
             Hagnéré Code — ou d’abord vérifier{" "}
             <Link href="/guides/choisir-prestataire-application-metier">
               comment choisir un prestataire sur preuves

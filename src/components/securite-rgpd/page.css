@@ -36,11 +36,25 @@
   .nav-links a:hover{color:var(--ink)}
   .nav-links a.active{color:var(--ink);font-weight:500}
   .nav-cta{display:flex;gap:8px;align-items:center}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:all 0.15s;white-space:nowrap}
+  /* min-height 44px : padding 10px + interligne 14px laissait une cible de
+     ~41 px, sous le minimum tactile de 44x44 (WCAG 2.5.5 / HIG). Le padding
+     horizontal et la largeur des boutons sont inchangés — seule la hauteur
+     minimale est garantie, y compris pour les variantes compactes. */
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;min-height:44px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:all 0.15s;white-space:nowrap}
   .hc-design .btn-primary{background:var(--ink);color:var(--paper)}
   .hc-design .btn-primary:hover{background:var(--ink-2);transform:translateY(-1px)}
   .hc-design .btn-accent{background:var(--accent);color:#fff;box-shadow:0 4px 14px -4px rgba(109,40,217,0.5)}
   .hc-design .btn-accent:hover{background:var(--accent-ink);transform:translateY(-1px)}
+  /* Thème sombre : --accent vaut #8B5CF6 et --accent-ink #C4B5FD. Le libellé
+     blanc tombait à 4,23:1 au repos et 1,85:1 au survol, sous le seuil WCAG
+     1.4.3 AA (4,5:1 pour du texte normal — .btn-lg fait 15 px). Violets plus
+     foncés : #fff sur #6D28D9 = 7,1:1, #fff sur #7C3AED = 5,7:1. */
+  html.dark .hc-design .btn-accent{background:#6D28D9;box-shadow:0 4px 14px -4px rgba(109,40,217,0.6)}
+  html.dark .hc-design .btn-accent:hover{background:#7C3AED}
+  /* Même raison : ces pastilles posent du blanc sur `--accent`, qui vaut
+     #8B5CF6 en thème sombre (4,23:1). Elles reprennent le violet foncé. */
+  html.dark .plan-badge,
+  html.dark .ba-arrow{background:#6D28D9}
   .hc-design .btn-ghost{color:var(--ink-3);border-color:var(--line);background:var(--paper)}
   .hc-design .btn-ghost:hover{border-color:var(--ink-4);color:var(--ink)}
   .btn-lg{padding:14px 22px;font-size:15px;border-radius:10px}
@@ -263,11 +277,20 @@
   .faq-list{border-top:1px solid var(--line)}
   .faq-item{border-bottom:1px solid var(--line);padding:4px 0}
   .faq-q{display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;font-size:17px;font-weight:500;letter-spacing:-0.01em;gap:20px}
+  /* .faq-q est un <button> : neutraliser le style natif du contrôle sans
+     écraser les règles de liste plus spécifiques (police, couleur). */
+  button.faq-q{width:100%;margin:0;background:none;border:0;border-radius:0;color:inherit;font-family:inherit;line-height:inherit;text-align:left;-webkit-appearance:none;appearance:none}
   .faq-q:hover{color:var(--accent-ink)}
   .faq-q .ic{width:24px;height:24px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;flex-shrink:0;transition:all 0.2s;color:var(--mute)}
   .faq-item.open .faq-q .ic{background:var(--ink);border-color:var(--ink);color:var(--paper);transform:rotate(45deg)}
   .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s;color:var(--mute);font-size:15px;line-height:1.6}
-  .faq-item.open .faq-a{max-height:400px;padding-bottom:22px}
+  /* Repli : la réponse sort de l'arbre d'accessibilité et du rendu tant que
+     l'accordéon est fermé, y compris avant hydratation. */
+  .faq-a[hidden]{display:none}
+  /* Preflight Tailwind applique `[hidden]{display:none!important}`. La règle
+     d'ouverture doit donc porter `!important` elle aussi : à spécificité
+     supérieure (0,3,0 contre 0,1,0), c'est elle qui l'emporte. */
+  .faq-item.open .faq-a{display:block!important;max-height:none;overflow:visible;opacity:1;padding-bottom:22px}
   .faq-a b{color:var(--ink);font-weight:500}
 
   /* ============ CTA ============ */

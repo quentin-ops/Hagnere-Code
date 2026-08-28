@@ -90,6 +90,12 @@ export const pricingHtml = `
       n'incluent ni consultation juridique, ni qualification réglementaire, ni représentation : elles restent
       confiées au DPO, à l'avocat ou au professionnel habilité choisi par le client.
     </p>
+    <p class="sr-price-foot">
+      Le cadrage initial est la <b>porte d'entrée payante propre à ce service</b>. Il ne se cumule pas avec le
+      Discovery Sprint d'un projet de développement publié sur la <a href="/tarifs">grille tarifaire</a>&nbsp;:
+      un seul cadrage payant est engagé, celui qui correspond à votre demande. Une éventuelle déduction
+      sur la suite n'existe que si elle est écrite au devis.
+    </p>
   </div>
 </section>
 `;

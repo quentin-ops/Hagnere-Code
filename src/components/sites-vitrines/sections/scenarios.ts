@@ -127,7 +127,7 @@ export const scenariosHtml = `
             </div>
             <div class="sv-scen-meta-row">
               <dt>Paiement</dt>
-              <dd>30 % / 40 % / 30 %</dd>
+              <dd>Échéancier au devis</dd>
             </div>
             <div class="sv-scen-meta-row">
               <dt>Garantie</dt>

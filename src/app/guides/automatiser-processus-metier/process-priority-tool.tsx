@@ -189,7 +189,7 @@ function NumberField({
           step={step}
           value={value}
           onChange={(event) => onChange(id, Number(event.target.value))}
-          className="min-w-0 flex-1 rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm tabular-nums text-zinc-950 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
+          className="min-w-0 flex-1 rounded-lg border border-zinc-300 bg-white px-3 py-2 text-base sm:text-sm tabular-nums text-zinc-950 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
         />
         {suffix ? (
           <span className="shrink-0 text-xs text-zinc-500 dark:text-zinc-400">

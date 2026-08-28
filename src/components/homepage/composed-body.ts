@@ -11,9 +11,14 @@ import { equipeHtml } from "./sections/equipe";
  * into the original design HTML at known anchor comments.
  *
  * Layout order after splicing:
- *   Hero → Logo wall → Studio → Verticals → Describe → Réalisations → Stats →
- *   Méthode → Trust → Comparison → Équipe → Stack → Calculator → Tarifs →
- *   FAQ → Final CTA
+ *   Hero → Logo wall → Studio → Verticals → Réalisations → Tarifs → Méthode →
+ *   Trust → Comparison → Premier cadrage → Équipe → Stack → Calculator → FAQ
+ *
+ * L'ordre suit une question d'acheteur par section : ce qu'on fait, si mon cas
+ * en fait partie, ce qui existe déjà, combien ça coûte, comment ça se passe,
+ * pourquoi vous, comment démarrer, avec qui. La demande de contact la plus
+ * insistante (« Premier cadrage ») arrive donc après les preuves et le prix,
+ * plus en 5ᵉ position comme avant l'audit d'août 2026.
  */
 function getCommentedSection(source: string, marker: string): string {
   const start = source.indexOf(marker);
@@ -30,6 +35,8 @@ function compose(raw: string): string {
   let out = raw;
   const stackHtml = getCommentedSection(out, "<!-- LOGO BAR -->");
   const methodeHtml = getCommentedSection(out, "<!-- METHODE -->");
+  const describeHtml = getCommentedSection(out, "<!-- DESCRIBE YOUR PROJECT -->");
+  const tarifsHtml = getCommentedSection(out, "<!-- TARIFS -->");
   const rawEquipeHtml = getCommentedSection(out, "<!-- EQUIPE -->");
 
   // Replace the early technical stack with a compact proof strip.
@@ -37,9 +44,10 @@ function compose(raw: string): string {
     out = out.replace(stackHtml, logoWallHtml.trim());
   }
 
-  // Move the method below the proof sections, where process questions come up.
-  if (methodeHtml) {
-    out = out.replace(methodeHtml, "");
+  // Les trois sections déplacées sont retirées de leur position d'origine,
+  // puis réinsérées plus bas dans l'ordre de lecture voulu.
+  for (const moved of [methodeHtml, describeHtml, tarifsHtml]) {
+    if (moved) out = out.replace(moved, "");
   }
 
   // Replace the static EQUIPE section with the team-driven version.
@@ -50,30 +58,33 @@ function compose(raw: string): string {
 
   // Verticals: after services, so prospects can quickly recognize their case.
   out = out.replace(
-    "<!-- DESCRIBE YOUR PROJECT -->",
-    verticalsHtml.trim() + "\n\n<!-- DESCRIBE YOUR PROJECT -->",
+    "<!-- REALISATIONS -->",
+    verticalsHtml.trim() + "\n\n<!-- REALISATIONS -->",
   );
 
-  // Method + trust + comparison: objection handling after visible proof.
+  // Après la preuve : le prix, puis la méthode, la confiance, le comparatif et
+  // enfin la demande de cadrage.
   out = out.replace(
     "<!-- EQUIPE -->",
     [
+      tarifsHtml.trim(),
       methodeHtml.trim(),
       trustHtml.trim(),
       comparisonHtml.trim(),
+      describeHtml.trim(),
       "<!-- EQUIPE -->",
     ]
       .filter(Boolean)
       .join("\n\n"),
   );
 
-  // Stack + calculator: late-stage reassurance before pricing.
+  // Stack + calculator: late-stage reassurance before the FAQ.
   out = out.replace(
-    "<!-- TARIFS -->",
+    "<!-- FAQ -->",
     [
       stackHtml.trim(),
       calcTeaserHtml.trim(),
-      "<!-- TARIFS -->",
+      "<!-- FAQ -->",
     ]
       .filter(Boolean)
       .join("\n\n"),

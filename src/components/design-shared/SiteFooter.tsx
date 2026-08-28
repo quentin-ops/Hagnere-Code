@@ -1,20 +1,51 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useRef, useState, type FormEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type FormEvent,
+} from "react";
 import { VoiceDictateButton } from "./VoiceDictateButton";
 import {
   MathChallenge,
-  isMathAnswerCorrect,
+  getMathChallengeError,
   toMathChallengePayload,
   type MathChallengeValue,
 } from "@/components/project-funnel/MathChallenge";
+import {
+  briefWasCaptured,
+  PROJECT_INQUIRY_TIMEOUT_MS,
+  PROJECT_INQUIRY_TIMEOUT_SECONDS,
+} from "@/components/project-funnel/inquiry-response";
+import {
+  FIRST_CALL_CONTACT,
+  FIRST_CALL_CONTACT_SHORT,
+  FIRST_CALL_META,
+} from "@/components/homepage/first-call";
 import { TEAM_TOTAL_COUNT } from "@/lib/team";
+import { SERVICE_LINKS } from "@/lib/services";
+import { LOCAL_PAGES, localPagePath } from "@/lib/local-pages";
+import { PRIVACY_NOTICE_VERSION } from "@/lib/privacy-notice";
 import { CALENDLY_URL } from "@/lib/calendly";
+import {
+  CONTACT_ADDRESS,
+  CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_E164,
+  CONTACT_WHATSAPP_URL,
+} from "@/lib/contact-details";
+import { isCookieBannerEnabled } from "@/lib/cookie-consent";
 import {
   clearProjectInquiryClientKey,
   getProjectInquiryClientKey,
 } from "@/lib/project-inquiry-client-key";
+import { trackFunnelEvent } from "@/lib/funnel-analytics";
+import { trackLeadConversion } from "@/lib/lead-conversion";
+import { isProviderTimeoutError } from "@/lib/provider-timeout";
 import "./site-footer.css";
 
 type Status =
@@ -41,6 +72,33 @@ const TIMELINES = [
   "Pas encore défini",
 ];
 
+/**
+ * Repli sans JavaScript du formulaire court.
+ *
+ * Le <form> n'a ni `action` ni `method` : sans JS, l'envoi déclencherait une
+ * navigation GET vers la page courante — prénom, nom, e-mail professionnel et
+ * message partiraient dans la barre d'adresse, donc aussi dans le `Referer` et
+ * dans les journaux serveur. Masquer le bouton ne suffisait pas : la soumission
+ * IMPLICITE (touche Entrée dans un champ texte) part sans lui.
+ *
+ * D'où le `<input type="submit" disabled>` en tête de ce repli. Le contenu d'un
+ * <noscript> n'est analysé comme des éléments QUE si le script est désactivé :
+ * ce bouton n'existe donc que dans ce cas, où il devient le bouton par défaut du
+ * formulaire (premier bouton d'envoi dans l'ordre du document). La spécification
+ * HTML ne déclenche la soumission implicite que si ce bouton par défaut n'est
+ * pas désactivé — et n'utilise le repli « formulaire sans bouton d'envoi » que
+ * s'il n'y en a aucun. Entrée ne fait donc plus rien du tout. Avec JavaScript,
+ * ce bouton n'existe pas et Entrée continue d'envoyer normalement.
+ *
+ * On masque en plus le bouton visible et on affiche les voies directes.
+ *
+ * (Chaîne constante : React ne peut pas hydrater le contenu d'un <noscript>
+ * comme des éléments. Aucune donnée utilisateur, surface XSS nulle.)
+ */
+const NOSCRIPT_FORM_FALLBACK = `<input type="submit" disabled hidden aria-hidden="true" tabindex="-1" />
+<style>.sf-form .sf-submit{display:none}</style>
+<div class="sf-alert sf-alert-err">Ce formulaire a besoin de JavaScript pour être envoyé. Écrivez-nous à <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>, appelez le <a href="tel:${CONTACT_PHONE_E164}">${CONTACT_PHONE_DISPLAY}</a> ou <a href="${CALENDLY_URL}" rel="noopener noreferrer">réservez un créneau</a>.</div>`;
+
 type ContactProjectSectionProps = {
   headingLevel?: "h1" | "h2";
   className?: string;
@@ -58,8 +116,54 @@ export function ContactProjectSection({
   // Anti-bot maison : question de calcul, vérifiée côté client avant envoi
   // puis revalidée server-side par /api/project-inquiry.
   const [math, setMath] = useState<MathChallengeValue | null>(null);
+  // Vrai quand /api/math-challenge n'a pas répondu : le champ reste vide et
+  // désactivé, il faut alors proposer une autre voie plutôt qu'un message
+  // qui accuse le visiteur d'une erreur de calcul jamais affichée.
+  const [mathUnavailable, setMathUnavailable] = useState(false);
   const messageRef = useRef<HTMLTextAreaElement>(null);
   const submissionKeyRef = useRef<string | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  // Vrai uniquement quand c'est l'envoi qui vient de faire apparaître le
+  // contrôle anti-robot : on n'y déplace le focus que dans ce cas, jamais
+  // quand l'utilisateur vient simplement de cliquer dans un champ.
+  const focusChallengeRef = useRef(false);
+  // `contact_form_open` est le dénominateur du formulaire : sans lui, on sait
+  // combien de gens ont envoyé, jamais combien ont commencé — donc aucun taux
+  // d'abandon sur les pages service, cibles naturelles des annonces. Le nom
+  // était déclaré dans FUNNEL_EVENT_NAMES sans que rien ne l'émette. Un seul
+  // événement par montage : le premier focus dans le formulaire.
+  const openTrackedRef = useRef(false);
+  const fieldId = useId();
+  const errorId = (field: string) => `${fieldId}-${field}-error`;
+  const describedBy = (field: string, hasError: unknown) =>
+    hasError ? errorId(field) : undefined;
+  const labelId = (field: string) => `${fieldId}-${field}-label`;
+
+  // Le champ inséré est `disabled` tant que /api/math-challenge n'a pas
+  // répondu : on attend qu'il devienne utilisable avant d'y poser le focus.
+  useEffect(() => {
+    if (!challengeEnabled || !focusChallengeRef.current) return;
+    let frame = 0;
+    let attempts = 0;
+    const tryFocus = () => {
+      const input = formRef.current?.querySelector<HTMLInputElement>(
+        'input[name="mathChallengeAnswer"]',
+      );
+      if (input && !input.disabled) {
+        focusChallengeRef.current = false;
+        input.focus();
+        return;
+      }
+      attempts += 1;
+      if (attempts > 150) {
+        focusChallengeRef.current = false;
+        return;
+      }
+      frame = requestAnimationFrame(tryFocus);
+    };
+    frame = requestAnimationFrame(tryFocus);
+    return () => cancelAnimationFrame(frame);
+  }, [challengeEnabled]);
 
   const handleTranscribed = useCallback((text: string) => {
     setMessage((prev) => {
@@ -83,6 +187,7 @@ export function ContactProjectSection({
     const data = new FormData(form);
 
     if (!challengeEnabled) {
+      focusChallengeRef.current = true;
       setChallengeEnabled(true);
       setStatus({
         kind: "error",
@@ -92,11 +197,15 @@ export function ContactProjectSection({
       return;
     }
 
-    if (!isMathAnswerCorrect(math)) {
+    // Distingue « défi non chargé », « champ vide » et « réponse fausse » :
+    // afficher « Réponse incorrecte » devant un champ vide et désactivé
+    // accusait le visiteur d'un calcul qui ne lui avait jamais été montré.
+    const challengeError = getMathChallengeError(math);
+    if (challengeError) {
       setStatus({
         kind: "error",
-        message: "La réponse au calcul anti-robot est incorrecte.",
-        fields: { mathChallenge: "Réponse incorrecte — recomptez." },
+        message: challengeError,
+        fields: { mathChallenge: challengeError },
       });
       return;
     }
@@ -124,15 +233,30 @@ export function ContactProjectSection({
       submissionKeyRef.current = submissionKey;
       const res = await fetch("/api/project-inquiry", {
         method: "POST",
+        // Le bouton est réellement `disabled` pendant l'envoi : sans délai
+        // maximal, une requête qui ne répond jamais laissait le visiteur sur
+        // « Envoi en cours… » sans issue, et ce formulaire ne conserve aucun
+        // brouillon. Le catch rend la main avec e-mail et téléphone.
+        signal: AbortSignal.timeout(PROJECT_INQUIRY_TIMEOUT_MS),
         headers: {
           "Content-Type": "application/json",
           "Idempotency-Key": submissionKey,
         },
         body: JSON.stringify(payload),
       });
-      const json = await res.json().catch(() => ({}));
+      const json: {
+        ok?: boolean;
+        error?: string;
+        errors?: Record<string, string>;
+        captured?: boolean;
+        message?: string;
+      } = await res.json().catch(() => ({}));
 
       if (!res.ok) {
+        trackFunnelEvent("contact_form_submit_error", {
+          page: window.location.pathname,
+          status: res.status,
+        });
         setStatus({
           kind: "error",
           message:
@@ -142,18 +266,62 @@ export function ContactProjectSection({
         });
         return;
       }
+      // 200 ne veut pas dire « enregistré ». La route répond volontairement
+      // `{ ok: true, captured: false }` quand le piège à robots s'est
+      // déclenché — un gestionnaire de mots de passe suffit à le remplir.
+      // Afficher « Message bien reçu » à ce visiteur perdrait le lead en
+      // silence : on garde sa saisie et on lui donne une voie directe.
+      //
+      // Le prédicat est celui du tunnel (`captured === true`, rien d'autre) :
+      // tester `json.captured === false` faisait passer pour un succès un 200
+      // au corps illisible — page d'erreur insérée par un proxy, corps tronqué,
+      // `res.json()` qui échoue et retombe sur `{}` — donc effaçait la saisie
+      // et comptait une conversion pour un lead jamais enregistré.
+      if (!briefWasCaptured(res.ok, json)) {
+        // Le champ piège n'est pas contrôlé et n'est jamais vidé sur ce chemin :
+        // sans cette remise à zéro, chaque nouvelle tentative renvoyait la même
+        // valeur et retombait sur le même refus. Le faux positif n'était donc
+        // « rattrapable » que hors formulaire.
+        const honeypot = formRef.current?.querySelector<HTMLInputElement>(
+          'input[name="honeypot"]',
+        );
+        if (honeypot) honeypot.value = "";
+        trackFunnelEvent("contact_form_submit_error", {
+          page: window.location.pathname,
+          status: res.status,
+        });
+        setStatus({
+          kind: "error",
+          message: `Votre message n'a pas pu être enregistré. Écrivez-nous directement à ${CONTACT_EMAIL} ou appelez le ${CONTACT_PHONE_DISPLAY} — votre saisie reste affichée ci-dessus.`,
+        });
+        return;
+      }
       setStatus({ kind: "success", message: json.message });
+      // Le formulaire est remis à zéro après un succès et reste utilisable, et
+      // le pied de page est rendu sur une quinzaine de pages : sans
+      // déduplication, un second envoi comptait un second lead payant pour le
+      // même prospect — le tunnel, lui, dédupliquait déjà (cf.
+      // ConversionTracker). Portée « document » et non « session » : la portée
+      // session écrirait une clé dans le navigateur, donc une ligne de plus au
+      // tableau « Stockages utilisés par le site » de /legal/cookies, qui
+      // s'annonce exhaustif. Une conversion en double survit ici à un
+      // rechargement complet, pas aux navigations internes.
+      trackLeadConversion("contact_form", "contact_form_submit_success", {
+        dedupeKey: "contact_form:converted",
+        dedupeScope: "document",
+      });
       submissionKeyRef.current = null;
       clearProjectInquiryClientKey();
       form.reset();
       setMessage("");
       setMath(null);
       setChallengeEnabled(false);
-    } catch {
+    } catch (error) {
       setStatus({
         kind: "error",
-        message:
-          "Impossible de contacter le serveur. Réessayez dans un instant ou écrivez-nous directement.",
+        message: isProviderTimeoutError(error)
+          ? `Le serveur n'a pas répondu en ${PROJECT_INQUIRY_TIMEOUT_SECONDS} secondes et l'envoi a été interrompu. Votre saisie reste affichée : réessayez, écrivez-nous à ${CONTACT_EMAIL} ou appelez le ${CONTACT_PHONE_DISPLAY}.`
+          : "Impossible de contacter le serveur. Réessayez dans un instant ou écrivez-nous directement.",
       });
     }
   }
@@ -181,8 +349,9 @@ export function ContactProjectSection({
     </>
   ) : (
     <>
-      Choisissez ce qui vous va : un créneau direct avec un expert, un email
-      rapide, ou un formulaire si vous préférez écrire.
+      Choisissez ce qui vous va : un créneau direct avec{" "}
+      {FIRST_CALL_CONTACT_SHORT}, un email rapide, ou un formulaire si vous
+      préférez écrire.
       <b> Objectif de réponse le prochain jour ouvré, sans délai garanti.</b>
     </>
   );
@@ -221,11 +390,11 @@ export function ContactProjectSection({
                 </div>
                 <div>
                   <div className="sf-card-kind">LE PLUS RAPIDE</div>
-                  <div className="sf-card-title">30 min avec un expert</div>
+                  <div className="sf-card-title">{FIRST_CALL_META}</div>
                 </div>
               </div>
               <p className="sf-card-body">
-                Pas un commercial, pas un chef de projet : un expert qui code
+                Pas un commercial, pas un chef de projet : {FIRST_CALL_CONTACT}{" "}
                 vous écoute, vous donne un avis franc, et repart avec votre
                 brief si ça matche.
               </p>
@@ -279,89 +448,121 @@ export function ContactProjectSection({
               <div className="sf-direct-row">
                 <div className="sf-direct-k">Email</div>
                 <a
-                  href="mailto:quentin@hagnere-patrimoine.fr"
+                  href={`mailto:${CONTACT_EMAIL}`}
                   className="sf-direct-v"
                 >
-                  quentin@hagnere-patrimoine.fr
+                  {CONTACT_EMAIL}
                 </a>
               </div>
               <div className="sf-direct-row">
                 <div className="sf-direct-k">Téléphone</div>
-                <a href="tel:+33374472018" className="sf-direct-v">
-                  +33 3 74 47 20 18
+                <a href={`tel:${CONTACT_PHONE_E164}`} className="sf-direct-v">
+                  {CONTACT_PHONE_DISPLAY}
                 </a>
               </div>
               <div className="sf-direct-row">
                 <div className="sf-direct-k">Adresse</div>
                 <div className="sf-direct-v sf-direct-addr">
-                  82 impasse de Bellevue
+                  {/* L'espace explicite avant le <br /> évite que
+                      « Bellevue73000 » soit restitué d'un bloc par une
+                      technologie d'assistance ou une extraction de texte. */}
+                  {CONTACT_ADDRESS.street}{" "}
                   <br />
-                  73000 Bassens
+                  {CONTACT_ADDRESS.postalCode} {CONTACT_ADDRESS.locality}
                 </div>
               </div>
             </div>
           </div>
 
           {/* Colonne droite — formulaire */}
+          {/* Pas de `noValidate` : la validation native du navigateur est la
+              seule qui fonctionne avant que le JavaScript de la page ait
+              répondu, et elle évite qu'un envoi incomplet parte jusqu'au
+              serveur pour revenir en erreur. Les messages de champ renvoyés
+              par l'API restent affichés par-dessus. */}
           <form
             className="sf-form"
+            ref={formRef}
             onSubmit={onSubmit}
-            onFocusCapture={() => setChallengeEnabled(true)}
-            noValidate
+            onFocusCapture={() => {
+              setChallengeEnabled(true);
+              if (openTrackedRef.current) return;
+              openTrackedRef.current = true;
+              trackFunnelEvent("contact_form_open", {
+                page: window.location.pathname,
+              });
+            }}
           >
             <div className="sf-form-head">
               <div className="sf-card-kind">OU ÉCRIVEZ-NOUS</div>
               <div className="sf-card-title">Formulaire projet</div>
             </div>
 
+            {/* aria-labelledby pointe sur le seul libellé : sans lui, le message
+                d'erreur rendu dans le <label> polluerait le nom accessible du
+                champ. L'erreur est reliée par aria-describedby. */}
             <div className="sf-grid-2">
               <label className="sf-field">
-                <span>Prénom</span>
+                <span id={labelId("firstName")}>Prénom</span>
                 <input
                   name="firstName"
                   type="text"
                   required
                   autoComplete="given-name"
+                  aria-labelledby={labelId("firstName")}
                   aria-invalid={!!errs.firstName}
+                  aria-describedby={describedBy("firstName", errs.firstName)}
                 />
-                {errs.firstName && <em>{errs.firstName}</em>}
+                {errs.firstName && (
+                  <em id={errorId("firstName")}>{errs.firstName}</em>
+                )}
               </label>
               <label className="sf-field">
-                <span>Nom</span>
+                <span id={labelId("lastName")}>Nom</span>
                 <input
                   name="lastName"
                   type="text"
                   required
                   autoComplete="family-name"
+                  aria-labelledby={labelId("lastName")}
                   aria-invalid={!!errs.lastName}
+                  aria-describedby={describedBy("lastName", errs.lastName)}
                 />
-                {errs.lastName && <em>{errs.lastName}</em>}
+                {errs.lastName && (
+                  <em id={errorId("lastName")}>{errs.lastName}</em>
+                )}
               </label>
             </div>
 
             <label className="sf-field">
-              <span>Email professionnel</span>
+              <span id={labelId("email")}>Email professionnel</span>
               <input
                 name="email"
                 type="email"
                 required
                 autoComplete="email"
+                aria-labelledby={labelId("email")}
                 aria-invalid={!!errs.email}
+                aria-describedby={describedBy("email", errs.email)}
               />
-              {errs.email && <em>{errs.email}</em>}
+              {errs.email && <em id={errorId("email")}>{errs.email}</em>}
             </label>
 
             <div className="sf-grid-2">
               <label className="sf-field">
-                <span>Entreprise</span>
+                <span id={labelId("company")}>Entreprise</span>
                 <input
                   name="company"
                   type="text"
                   required
                   autoComplete="organization"
+                  aria-labelledby={labelId("company")}
                   aria-invalid={!!errs.company}
+                  aria-describedby={describedBy("company", errs.company)}
                 />
-                {errs.company && <em>{errs.company}</em>}
+                {errs.company && (
+                  <em id={errorId("company")}>{errs.company}</em>
+                )}
               </label>
               <label className="sf-field">
                 <span>
@@ -372,13 +573,15 @@ export function ContactProjectSection({
             </div>
 
             <label className="sf-field">
-              <span>
+              <span id={labelId("projectType")}>
                 Type de projet <em className="sf-opt">(optionnel)</em>
               </span>
               <select
                 name="projectType"
                 defaultValue=""
+                aria-labelledby={labelId("projectType")}
                 aria-invalid={!!errs.projectType}
+                aria-describedby={describedBy("projectType", errs.projectType)}
               >
                 <option value="" disabled>
                   Choisir le sujet…
@@ -389,16 +592,20 @@ export function ContactProjectSection({
                   </option>
                 ))}
               </select>
-              {errs.projectType && <em>{errs.projectType}</em>}
+              {errs.projectType && (
+                <em id={errorId("projectType")}>{errs.projectType}</em>
+              )}
             </label>
 
             <div className="sf-grid-2">
               <label className="sf-field">
-                <span>Budget envisagé</span>
+                <span id={labelId("budget")}>Budget envisagé</span>
                 <select
                   name="budget"
                   defaultValue=""
+                  aria-labelledby={labelId("budget")}
                   aria-invalid={!!errs.budget}
+                  aria-describedby={describedBy("budget", errs.budget)}
                 >
                   <option value="" disabled>
                     Choisir une fourchette…
@@ -409,17 +616,19 @@ export function ContactProjectSection({
                     </option>
                   ))}
                 </select>
-                {errs.budget && <em>{errs.budget}</em>}
+                {errs.budget && <em id={errorId("budget")}>{errs.budget}</em>}
               </label>
 
               <label className="sf-field">
-                <span>
+                <span id={labelId("timeline")}>
                   Échéance <em className="sf-opt">(optionnel)</em>
                 </span>
                 <select
                   name="timeline"
                   defaultValue=""
+                  aria-labelledby={labelId("timeline")}
                   aria-invalid={!!errs.timeline}
+                  aria-describedby={describedBy("timeline", errs.timeline)}
                 >
                   <option value="" disabled>
                     Choisir un timing…
@@ -430,13 +639,15 @@ export function ContactProjectSection({
                     </option>
                   ))}
                 </select>
-                {errs.timeline && <em>{errs.timeline}</em>}
+                {errs.timeline && (
+                  <em id={errorId("timeline")}>{errs.timeline}</em>
+                )}
               </label>
             </div>
 
             <label className="sf-field sf-field-message">
               <div className="sf-field-head">
-                <span>En quelques phrases</span>
+                <span id={labelId("message")}>En quelques phrases</span>
                 <VoiceDictateButton
                   className="sf-mic"
                   onTranscribed={handleTranscribed}
@@ -449,10 +660,12 @@ export function ContactProjectSection({
                 required
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
+                aria-labelledby={labelId("message")}
                 aria-invalid={!!errs.message}
+                aria-describedby={describedBy("message", errs.message)}
                 placeholder="Ex. : on veut remplacer nos Excels par une plateforme qui centralise nos 42 clients et sort les factures auto. Cliquez sur Dicter pour parler au lieu d'écrire."
               />
-              {errs.message && <em>{errs.message}</em>}
+              {errs.message && <em id={errorId("message")}>{errs.message}</em>}
             </label>
 
             {/* honeypot (invisible) */}
@@ -471,6 +684,7 @@ export function ContactProjectSection({
                 className="sf-field sf-field-captcha"
                 onChange={setMath}
                 error={errs.mathChallenge}
+                onLoadErrorChange={setMathUnavailable}
               />
             ) : (
               <div className="sf-field sf-field-captcha sf-captcha-pending">
@@ -482,8 +696,30 @@ export function ContactProjectSection({
               </div>
             )}
 
+            {/* Voie de sortie permanente : le calcul est la seule barrière
+                cognitive du formulaire, et le seul point de blocage possible
+                si le contrôle ne se charge pas. */}
+            {challengeEnabled && (
+              <p className="sf-captcha-escape">
+                {mathUnavailable
+                  ? "Le contrôle anti-robot ne s'est pas chargé — votre saisie n'est pas en cause. Réessayez le contrôle ci-dessus, ou transmettez-nous votre demande directement : "
+                  : "Vous ne pouvez pas répondre au calcul ? Transmettez-nous votre demande directement : "}
+                <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+                {" · "}
+                <a href={`tel:${CONTACT_PHONE_E164}`}>
+                  {CONTACT_PHONE_DISPLAY}
+                </a>
+              </p>
+            )}
+
             <label className="sf-consent">
-              <input type="checkbox" name="consent" required />
+              <input
+                type="checkbox"
+                name="consent"
+                required
+                aria-invalid={!!errs.consent}
+                aria-describedby={describedBy("consent", errs.consent)}
+              />
               <span>
                 J&apos;ai pris connaissance de la{" "}
                 <a href="/legal/confidentialite">
@@ -497,11 +733,30 @@ export function ContactProjectSection({
                 CODE et aux prestataires nécessaires, puis conservées au maximum
                 trois ans après le dernier échange utile en l&apos;absence de
                 contrat. La politique détaille les destinataires et vos droits.
+                {/* L'accusé de réception envoyé après l'envoi porte la mention
+                    « Version <date> — prise de connaissance confirmée ». Sans
+                    ce numéro affiché ici, la personne ne peut pas rattacher
+                    l'attestation au texte qu'elle a réellement pu lire. */}
+                <small className="sf-consent-version">
+                  Politique en vigueur : version {PRIVACY_NOTICE_VERSION}. C&apos;est
+                  cette version qui sera enregistrée avec votre demande.
+                </small>
               </span>
             </label>
             {errs.consent && (
-              <em className="sf-consent-error">{errs.consent}</em>
+              <em className="sf-consent-error" id={errorId("consent")}>
+                {errs.consent}
+              </em>
             )}
+
+            {/* Sans JavaScript, l'envoi AJAX ne peut pas s'exécuter : le bouton
+                déclencherait une navigation GET vers la page courante, la saisie
+                partirait dans la barre d'adresse et la page se rechargerait vide
+                sans le moindre message. On masque donc le bouton dans ce cas et
+                on affiche les voies de contact directes. */}
+            <noscript
+              dangerouslySetInnerHTML={{ __html: NOSCRIPT_FORM_FALLBACK }}
+            />
 
             <button
               type="submit"
@@ -560,6 +815,22 @@ export function ContactProjectSection({
   );
 }
 
+/**
+ * Libellés courts des pages locales dans le pied de page.
+ *
+ * Le registre `LOCAL_PAGES` ne porte qu'un `title` SEO (trop long ici) et une
+ * `locality`. Plutôt que de fabriquer une préposition française par calcul
+ * (« à Bassens », « en Savoie », « au Havre »…), on nomme explicitement les
+ * pages publiées ; toute page ajoutée au registre retombe sur sa `locality`,
+ * ce qui garde le lien présent — donc l'invariant de maillage vrai — même
+ * sans passer ici.
+ */
+const LOCAL_PAGE_LABELS: Record<string, string> = {
+  "/agence": "Agence à Bassens (73)",
+  "/agence/savoie": "Agence web en Savoie",
+  "/agence/savoie/chambery": "Agence web à Chambéry",
+};
+
 type SiteFooterProps = {
   showContact?: boolean;
 };
@@ -582,8 +853,11 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
               </Link>
               <p>
                 Studio de développement SaaS, applications métier et outils
-                internes, basé à Bassens, aux portes de Chambéry. Next.js,
-                React, Claude Code, forfait fixe.
+                internes, basé à{" "}
+                <Link href="/agence" className="sf-foot-inline-link">
+                  Bassens, aux portes de Chambéry
+                </Link>
+                . Next.js, React, Claude Code, forfait fixe.
               </p>
               <div className="sf-foot-trust">
                 <span className="sf-foot-chip">
@@ -598,7 +872,11 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
 
             <Link href="/services" className="sf-foot-cta">
               <div className="sf-foot-cta-body">
-                <span className="sf-foot-cta-kicker">11 services</span>
+                {/* Dérivé du registre : le hub, le sitemap, le JSON-LD et ce
+                    libellé ne peuvent plus annoncer trois nombres différents. */}
+                <span className="sf-foot-cta-kicker">
+                  {SERVICE_LINKS.length} services
+                </span>
                 <span className="sf-foot-cta-title">
                   Découvrir tout ce qu&apos;on peut construire pour vous
                 </span>
@@ -852,6 +1130,45 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
             </div>
           </div>
 
+          {/* ── Row 2 bis : ancrage local ─────────────────────────────
+              Les pages /agence, /agence/savoie et /agence/savoie/chambery
+              n'avaient aucun emplacement permanent : le pied de page en est
+              un, présent sur chaque page du site. La liste est dérivée du
+              registre `LOCAL_PAGES` pour qu'une page locale ouverte plus tard
+              ne puisse plus rester orpheline (invariant verrouillé par
+              shared-shell-contract.test.tsx). */}
+          <div className="sf-foot-services sf-foot-local">
+            <p className="sf-foot-title">Agence en Savoie</p>
+            <div className="sf-tile-grid sf-tile-grid-local">
+              {LOCAL_PAGES.map((page) => {
+                const href = localPagePath(page);
+                return (
+                  <Link className="sf-tile" href={href} key={href}>
+                    <span className="sf-tile-ic">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" />
+                        <circle cx="12" cy="10" r="2.5" />
+                      </svg>
+                    </span>
+                    <span className="sf-tile-label">
+                      {LOCAL_PAGE_LABELS[href] ?? page.locality}
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+
           {/* ── Row 3 : Studio | Contact | Légal ─────────────────── */}
           <div className="sf-foot-cols">
             <div className="sf-foot-col">
@@ -873,7 +1190,60 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                     <path d="M3 9h18M9 21V9" />
                   </svg>
                 </span>
-                <span className="sf-tile-label">Méthode Sprint Fixe™</span>
+                <span className="sf-tile-label">Méthode Sprint Fixe</span>
+              </Link>
+              {/* Pages technologie : aucun emplacement permanent avant cette
+                  passe (elles ne vivaient que de liens éditoriaux). */}
+              <Link className="sf-tile" href="/agence-next-js">
+                <span className="sf-tile-ic">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M8 17l-5-5 5-5M16 7l5 5-5 5" />
+                  </svg>
+                </span>
+                <span className="sf-tile-label">Agence Next.js</span>
+              </Link>
+              <Link className="sf-tile" href="/agence-react">
+                <span className="sf-tile-ic">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="2" />
+                    <ellipse cx="12" cy="12" rx="10" ry="4.2" />
+                    <ellipse
+                      cx="12"
+                      cy="12"
+                      rx="10"
+                      ry="4.2"
+                      transform="rotate(60 12 12)"
+                    />
+                    <ellipse
+                      cx="12"
+                      cy="12"
+                      rx="10"
+                      ry="4.2"
+                      transform="rotate(120 12 12)"
+                    />
+                  </svg>
+                </span>
+                <span className="sf-tile-label">Agence React</span>
               </Link>
               <Link className="sf-tile" href="/realisations">
                 <span className="sf-tile-ic">
@@ -1032,10 +1402,7 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
 
             <div className="sf-foot-col">
               <p className="sf-foot-title">Contact</p>
-              <a
-                className="sf-tile"
-                href="mailto:quentin@hagnere-patrimoine.fr"
-              >
+              <a className="sf-tile" href={`mailto:${CONTACT_EMAIL}`}>
                 <span className="sf-tile-ic">
                   <svg
                     width="14"
@@ -1052,11 +1419,9 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                     <path d="M3 7l9 6 9-6" />
                   </svg>
                 </span>
-                <span className="sf-tile-label">
-                  quentin@hagnere-patrimoine.fr
-                </span>
+                <span className="sf-tile-label">{CONTACT_EMAIL}</span>
               </a>
-              <a className="sf-tile" href="tel:+33374472018">
+              <a className="sf-tile" href={`tel:${CONTACT_PHONE_E164}`}>
                 <span className="sf-tile-ic">
                   <svg
                     width="14"
@@ -1072,7 +1437,7 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                     <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.7.6 2.5a2 2 0 01-.5 2.1L8 9.6a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.8.3 1.6.5 2.5.6a2 2 0 011.7 2z" />
                   </svg>
                 </span>
-                <span className="sf-tile-label">+33 3 74 47 20 18</span>
+                <span className="sf-tile-label">{CONTACT_PHONE_DISPLAY}</span>
               </a>
               <Link className="sf-tile" href="/demarrer-un-projet">
                 <span className="sf-tile-ic">
@@ -1156,25 +1521,32 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                 </span>
                 <span className="sf-tile-label">Réserver 30 min</span>
               </a>
-              <a
-                className="sf-tile"
-                href="https://wa.me/33374472018"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="sf-tile-ic">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.3-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.4.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2.1-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4M12 22h-.1a9.9 9.9 0 01-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.9 9.9 0 014.4 2.1 9.9 9.9 0 0112 0a9.8 9.8 0 017 2.9 9.8 9.8 0 012.9 7c0 5.5-4.4 9.9-9.9 9.9m8.4-18.3A11.8 11.8 0 0012.1 0C5.5 0 .2 5.3.2 11.9c0 2.1.5 4.1 1.6 5.9L.1 24l6.3-1.7a11.9 11.9 0 005.7 1.4h.1c6.5 0 11.9-5.3 11.9-11.9a11.8 11.8 0 00-3.5-8.4z" />
-                  </svg>
-                </span>
-                <span className="sf-tile-label">WhatsApp</span>
-              </a>
+              {/* Canal WhatsApp : rendu tant qu'il n'est pas désactivé par
+                  `NEXT_PUBLIC_CONTACT_WHATSAPP=off`. Le lien est dérivé de la
+                  ligne publiée, et `wa.me` n'aboutit que si ce numéro est
+                  réellement inscrit sur WhatsApp — voir `resolveWhatsAppUrl`
+                  dans src/lib/contact-details.ts. */}
+              {CONTACT_WHATSAPP_URL && (
+                <a
+                  className="sf-tile"
+                  href={CONTACT_WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="sf-tile-ic">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.3-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.4.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2.1-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4M12 22h-.1a9.9 9.9 0 01-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.9 9.9 0 014.4 2.1 9.9 9.9 0 0112 0a9.8 9.8 0 017 2.9 9.8 9.8 0 012.9 7c0 5.5-4.4 9.9-9.9 9.9m8.4-18.3A11.8 11.8 0 0012.1 0C5.5 0 .2 5.3.2 11.9c0 2.1.5 4.1 1.6 5.9L.1 24l6.3-1.7a11.9 11.9 0 005.7 1.4h.1c6.5 0 11.9-5.3 11.9-11.9a11.8 11.8 0 00-3.5-8.4z" />
+                    </svg>
+                  </span>
+                  <span className="sf-tile-label">WhatsApp</span>
+                </a>
+              )}
             </div>
 
             <div className="sf-foot-col">
@@ -1257,6 +1629,10 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                 </span>
                 <span className="sf-tile-label">Cookies</span>
               </Link>
+              {/* Sans bannière active, aucun traceur facultatif n'est déposé :
+                  il n'y a donc aucune préférence à rouvrir. Afficher le bouton
+                  promettrait un panneau qui n'existe pas. */}
+              {isCookieBannerEnabled() ? (
               <button
                 type="button"
                 className="sf-tile"
@@ -1287,6 +1663,7 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                 </span>
                 <span className="sf-tile-label">Gérer mes cookies</span>
               </button>
+              ) : null}
               <Link className="sf-tile" href="/legal/reclamations">
                 <span className="sf-tile-ic">
                   <svg
@@ -1334,7 +1711,8 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
             <div>
               © {new Date().getUTCFullYear()} HAGNERE CODE · SASU au capital de
               10 € · RCS CHAMBÉRY 993 672 856 · TVA FR30 993 672 856 · Adresse
-              du siège social : 82 impasse de Bellevue, 73000 Bassens
+              du siège social : {CONTACT_ADDRESS.street},{" "}
+              {CONTACT_ADDRESS.postalCode} {CONTACT_ADDRESS.locality}
             </div>
             <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
           </div>

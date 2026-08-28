@@ -21,8 +21,12 @@ export interface WhitePaperEntry {
 export const QUOTE_COMPARISON_WHITE_PAPER: WhitePaperEntry = {
   slug: "comparer-devis-site-internet",
   path: "/livres-blancs/comparer-devis-site-internet",
-  title:
-    "Comparer des devis de site internet sur 3 ans · Grille gratuite",
+  // 45 caractères. L'ancien title en comptait 63 : Google le tronquait dans la
+  // SERP, et « Grille gratuite » — le fragment coupé — annonçait un prix sans
+  // dire ce que couvre la gratuité. Le registre alimente `metadata.title` de la
+  // page ; le contrôle de longueur des titles littéraux ne voyait pas cette
+  // valeur, puisqu'elle arrive par référence.
+  title: "Comparer des devis de site internet sur 3 ans",
   cardTitle: "Grille de comparaison de devis web sur trois ans",
   description:
     "Une méthode vérifiable, une grille compatible Excel et Google Sheets, et un exemple rempli pour comparer trois devis web au-delà du prix de départ.",

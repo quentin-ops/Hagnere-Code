@@ -1,8 +1,13 @@
-import { navHtml } from "@/components/design-shared/nav-html";
 import { CALENDLY_URL } from "@/lib/calendly";
+import {
+  CONTACT_ADDRESS,
+  CONTACT_ADDRESS_LINE,
+  CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_E164,
+} from "@/lib/contact-details";
 
 export const bodyHtml = `
-${navHtml}
 <!-- CONTACT HERO -->
 <section class="c-hero">
   <div class="wrap c-hero-inner">
@@ -41,24 +46,24 @@ ${navHtml}
         <div class="c-dir-kicker">CANAUX DIRECTS</div>
         <div class="c-dir-title">Vous préférez un contact direct ?</div>
 
-        <a href="mailto:quentin@hagnere-patrimoine.fr" class="c-dir-row">
+        <a href="mailto:${CONTACT_EMAIL}" class="c-dir-row">
           <div class="c-dir-ic">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
           </div>
           <div class="c-dir-body">
             <div class="c-dir-k">Email</div>
-            <div class="c-dir-v">quentin@hagnere-patrimoine.fr</div>
+            <div class="c-dir-v">${CONTACT_EMAIL}</div>
           </div>
           <svg class="c-dir-arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
         </a>
 
-        <a href="tel:+33374472018" class="c-dir-row">
+        <a href="tel:${CONTACT_PHONE_E164}" class="c-dir-row">
           <div class="c-dir-ic">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0122 16.92z"/></svg>
           </div>
           <div class="c-dir-body">
             <div class="c-dir-k">Téléphone</div>
-            <div class="c-dir-v">+33 3 74 47 20 18</div>
+            <div class="c-dir-v">${CONTACT_PHONE_DISPLAY}</div>
           </div>
           <svg class="c-dir-arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
         </a>
@@ -69,7 +74,7 @@ ${navHtml}
           </div>
           <div class="c-dir-body">
             <div class="c-dir-k">Bureau</div>
-            <div class="c-dir-v">82 impasse de Bellevue · 73000 Bassens</div>
+            <div class="c-dir-v">${CONTACT_ADDRESS_LINE}</div>
           </div>
         </div>
 
@@ -130,7 +135,7 @@ ${navHtml}
         <div class="eyebrow">— Studio basé à Bassens, aux portes de Chambéry</div>
         <h2>Savoie, Haute-Savoie, Lyon, Grenoble — et France entière en visio.</h2>
         <p>
-          Notre bureau est au <b>82 impasse de Bellevue, 73000 Bassens</b>.
+          Notre bureau est au <b>${CONTACT_ADDRESS.street}, ${CONTACT_ADDRESS.postalCode} ${CONTACT_ADDRESS.locality}</b>.
           On travaille localement avec les dirigeants et équipes métiers quand
           la proximité aide, et à distance quand le projet demande surtout de la
           méthode, du code propre et des points courts.
@@ -140,7 +145,7 @@ ${navHtml}
         <div class="c-local-row"><span>Réponse visée</span><b>Prochain jour ouvré</b></div>
         <div class="c-local-row"><span>Premier échange</span><b>30 min gratuites</b></div>
         <div class="c-local-row"><span>Horaires</span><b>Lun-ven · 9 h-19 h</b></div>
-        <div class="c-local-row"><span>Téléphone</span><a href="tel:+33374472018">+33 3 74 47 20 18</a></div>
+        <div class="c-local-row"><span>Téléphone</span><a href="tel:${CONTACT_PHONE_E164}">${CONTACT_PHONE_DISPLAY}</a></div>
       </div>
     </div>
 
@@ -189,7 +194,7 @@ ${navHtml}
           <div class="c-flow-num">01</div>
           <div class="c-flow-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
         </div>
-        <h4>Vous nous écrivez</h4>
+        <h3>Vous nous écrivez</h3>
         <p>Formulaire, email, téléphone ou Calendly — selon ce qui vous va. Même brief flou, même idée floue : c'est OK.</p>
         <div class="c-flow-tag">Vous · quelques minutes</div>
       </div>
@@ -199,7 +204,7 @@ ${navHtml}
           <div class="c-flow-num">02</div>
           <div class="c-flow-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg></div>
         </div>
-        <h4>Un expert vous répond</h4>
+        <h3>Un expert vous répond</h3>
         <p>Votre demande est lue par une personne de l'équipe. Nous visons une réponse le prochain jour ouvré, sans délai garanti.</p>
         <div class="c-flow-tag">Objectif · prochain jour ouvré</div>
       </div>
@@ -209,7 +214,7 @@ ${navHtml}
           <div class="c-flow-num">03</div>
           <div class="c-flow-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
         </div>
-        <h4>30 min de cadrage offert</h4>
+        <h3>30 min de cadrage offert</h3>
         <p>Visio ou téléphone. On écoute, on pose les bonnes questions, on donne un avis franc. Zéro engagement, zéro pression.</p>
         <div class="c-flow-tag">Ensemble · 30 min · gratuit</div>
       </div>
@@ -219,7 +224,7 @@ ${navHtml}
           <div class="c-flow-num">04</div>
           <div class="c-flow-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12l5 5L20 7"/></svg></div>
         </div>
-        <h4>Devis ferme ou orientation</h4>
+        <h3>Devis ferme ou orientation</h3>
         <p>Soit on vous propose un forfait fixe avec date de livraison, soit on vous oriente vers le bon interlocuteur. Dans les deux cas, vous repartez avec une direction claire.</p>
         <div class="c-flow-tag">Vous décidez · délai annoncé après l'échange</div>
       </div>
@@ -239,10 +244,10 @@ ${navHtml}
 
       <div class="faq-list reveal reveal-d-1">
         <div class="faq-item open">
-          <div class="faq-q">Je n'ai pas encore de brief précis — je vous dérange ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="true" aria-controls="faq-a-contact-faq-1">Je n'ai pas encore de brief précis — je vous dérange ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-contact-faq-1">
             <b>Non, au contraire.</b> Vous pouvez arriver avec une idée sans cahier des charges.
             Un premier cadrage sert précisément à clarifier le besoin et les prochaines décisions. On vous pose les bonnes
             questions, vous repartez avec une direction claire — même si on ne bosse finalement pas ensemble.
@@ -250,31 +255,32 @@ ${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">C'est gratuit, vraiment ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-contact-faq-2">C'est gratuit, vraiment ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-contact-faq-2" hidden>
             <b>Oui, 100 %.</b> Le premier échange (30 min), le cadrage léger et l'avis franc sont gratuits.
-            Si on décide ensemble de creuser, on passe à un Discovery Sprint payé (1 500 €, 2 jours,
-            entièrement déduit du devis final). Aucune facturation avant signature d'un forfait.
+            Si on décide ensemble de creuser, on passe à un Discovery Sprint payé (1 500 € HT, 2 jours).
+            Si la phase 2 est lancée avec nous, le devis précise la déduction applicable. Aucune facturation
+            avant signature d'un forfait.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Combien de temps avant votre réponse ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-contact-faq-3">Combien de temps avant votre réponse ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-contact-faq-3" hidden>
             Nous visons une réponse <b>le prochain jour ouvré</b>, sans engagement contractuel de délai avant
             accord écrit. Le week-end et les jours fériés ne sont pas comptés comme jours ouvrés.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Et si mon projet n'est pas pour vous ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-contact-faq-4">Et si mon projet n'est pas pour vous ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-contact-faq-4" hidden>
             On vous le dit en 2 minutes et on vous oriente. Réseau de confrères freelances et studios sur
             Chambéry, Lyon, Paris, Bordeaux. Si ce n'est pas du web (Next.js/React ou reprise Laravel/PHP),
             pas PME/ETI — on vous envoie vers le bon interlocuteur. <b>Zéro intérêt à vous garder chez nous si on n'est pas la bonne équipe.</b>
@@ -282,14 +288,14 @@ ${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Je veux voir du code avant de vous parler.
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
-            Normal. <a href="/realisations" style="color:var(--accent-ink);text-decoration:underline">Nos 4 projets publics</a>
-            (LMNP.AI, SCI-AI, Hagnéré Patrimoine, Hagnéré Investissement) sont tous visitables en direct.
-            Pendant l'appel de 30 min, on peut aussi vous faire une démo live en partage d'écran sur nos
-            repos Git privés.
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-contact-faq-5">Je veux voir du code avant de vous parler.
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-contact-faq-5" hidden>
+            Normal. <a href="/realisations" style="color:var(--accent-ink);text-decoration:underline">Les quatre produits du groupe</a>
+            (LMNP.AI, SCI-AI.app, Hagnéré Patrimoine, Hagnéré Investissement) sont en ligne et visitables
+            en direct&nbsp;: ce sont nos produits, pas des clients indépendants. Pendant l'appel de 30 min,
+            on parcourt avec vous les fonctions publiques qui ressemblent le plus à votre besoin.
           </div>
         </div>
       </div>

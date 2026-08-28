@@ -1,5 +1,12 @@
 import { navHtml } from "@/components/design-shared/nav-html";
+import {
+  FIRST_CALL_CONTACT,
+  FIRST_CALL_CONTACT_SHORT,
+  FIRST_CALL_CTA,
+  FIRST_CALL_META,
+} from "./first-call";
 import { CALENDLY_URL } from "@/lib/calendly";
+import { SERVICE_LINKS } from "@/lib/services";
 import {
   TEAM_OTHER_DEVELOPERS_COUNT,
   TEAM_PUBLIC_COMPOSITION,
@@ -13,15 +20,14 @@ export const bodyHtml = `${navHtml}
   <div class="hero-radial"></div>
   <div class="wrap hero-inner">
     <div>
-      <div class="hero-eyebrow"><span class="pill hero-pill"><span class="dot"></span><span class="hero-pill-brand">Hagnéré Code</span><span class="hero-pill-tag">L'expertise humaine boostée à l'intelligence artificielle</span></span></div>
+      <div class="hero-eyebrow"><span class="pill hero-pill"><span class="dot"></span><span class="hero-pill-brand">Hagnéré Code</span><span class="hero-pill-tag">Studio produit à Bassens, aux portes de Chambéry</span></span></div>
       <h1 data-variant="A">
-        <span id="h1-content">Le studio qui construit<br>le SaaS, le site ou l'outil métier<br><span class="accent">dont vous rêvez.</span></span>
+        <span id="h1-content">Le studio qui construit<br>votre SaaS, votre site<br>ou votre outil métier — <span class="accent">au forfait fixe.</span></span>
       </h1>
       <p class="hero-sub" id="hero-sub">
-        On imagine, on conçoit, on développe, on lance et on maintient vos
-        <b>sites, applications métier et SaaS sur mesure</b>. Une équipe d'experts
-        qui combine savoir-faire technique pointu et intelligence artificielle
-        pour livrer plus vite des produits qui transforment vraiment votre activité.
+        Un process qui coûte du temps, un site qui ne convertit pas, un logiciel à lancer&nbsp;:
+        on conçoit, on développe, on met en ligne et on maintient l'outil qui règle le problème.
+        <b>Au premier appel, vous parlez à ${FIRST_CALL_CONTACT}</b>, jamais à un commercial.
       </p>
       <div class="hero-cta">
         <a href="/demarrer-un-projet" class="btn btn-accent btn-lg">
@@ -34,7 +40,8 @@ export const bodyHtml = `${navHtml}
         </a>
       </div>
       <p class="hero-micro">
-        Vous tomberez sur <b>quelqu'un qui code</b>, pas sur un commercial. 30 min, sans engagement.
+        ${FIRST_CALL_META}, sans engagement. Une fois le devis signé, le périmètre et le prix
+        sont figés&nbsp;: <b>aucun dépassement sans votre accord écrit</b>.
       </p>
       <ul class="hero-badges" role="list">
         <li class="hero-badge">
@@ -127,12 +134,12 @@ export const bodyHtml = `${navHtml}
           </div>
           <div class="hv-product-stats">
             <div class="hv-stat">
-              <div class="hv-stat-v">—</div>
-              <div class="hv-stat-k">donnée à connecter</div>
+              <div class="hv-stat-v">42</div>
+              <div class="hv-stat-k">dossiers en cours</div>
             </div>
             <div class="hv-stat hv-stat-accent">
-              <div class="hv-stat-v">—</div>
-              <div class="hv-stat-k">objectif à définir</div>
+              <div class="hv-stat-v">312 k€</div>
+              <div class="hv-stat-k">pipeline suivi</div>
             </div>
           </div>
           <div class="hv-product-chart">
@@ -312,11 +319,11 @@ export const bodyHtml = `${navHtml}
           <div class="lb-chips">
             <span class="lb-chip">
               <img src="/logos/stack/anthropic.svg" alt="Anthropic Claude" width="18" height="18" loading="lazy" decoding="async" />
-              Claude Opus 4.7 <span class="lb-chip-dim">agents &amp; code</span>
+              Claude <span class="lb-chip-dim">agents &amp; code</span>
             </span>
             <span class="lb-chip">
               <img src="/logos/stack/openai.svg" alt="OpenAI" width="18" height="18" loading="lazy" decoding="async" />
-              GPT-5.5 <span class="lb-chip-dim">raisonnement &amp; code</span>
+              GPT <span class="lb-chip-dim">raisonnement &amp; code</span>
             </span>
             <span class="lb-chip">
               <img src="/logos/stack/prism.webp" alt="Prism PHP" width="18" height="18" loading="lazy" decoding="async" />
@@ -390,7 +397,7 @@ export const bodyHtml = `${navHtml}
         Vous pouvez venir avec une idée, un process qui bloque, un site qui ne convertit pas
         ou un produit existant à reprendre. On couvre le cadrage, le design, le développement,
         l'acquisition et l'exploitation technique.
-        <a href="/services">Voir les 11 services&nbsp;→</a>
+        <a href="/services">Voir les ${SERVICE_LINKS.length} services&nbsp;→</a>
       </p>
     </div>
 
@@ -434,7 +441,7 @@ export const bodyHtml = `${navHtml}
             Parler d'un outil sur mesure
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </span>
-          <span class="svc-hero-price">Projet cadré dès <b>8 k€</b></span>
+          <span class="svc-hero-price">Projet cadré dès <b>8 k€ HT</b></span>
         </div>
       </div>
 
@@ -544,6 +551,12 @@ export const bodyHtml = `${navHtml}
             <b>E-commerce</b>
             <em>Boutiques, paiements, catalogue, tunnels d'achat et automatisations.</em>
           </a>
+          <a class="svc-mini-card" href="/services/application-mobile">
+            <span class="svc-mini-num">05</span>
+            <span class="svc-mini-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span>
+            <b>Application mobile</b>
+            <em>iOS et Android, publiés sous vos comptes App Store et Google Play.</em>
+          </a>
         </div>
       </div>
 
@@ -555,19 +568,19 @@ export const bodyHtml = `${navHtml}
         </div>
         <div class="svc-family-list">
           <a class="svc-mini-card" href="/services/referencement-google">
-            <span class="svc-mini-num">05</span>
+            <span class="svc-mini-num">06</span>
             <span class="svc-mini-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></span>
             <b>SEO &amp; référencement</b>
             <em>Structure technique, contenus, pages business, suivi Search Console.</em>
           </a>
           <a class="svc-mini-card" href="/services/publicite-en-ligne">
-            <span class="svc-mini-num">06</span>
+            <span class="svc-mini-num">07</span>
             <span class="svc-mini-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8v18L3 13zM11 7v10"/></svg></span>
             <b>Publicité en ligne</b>
             <em>Google, Meta, LinkedIn, landing pages et tracking des conversions.</em>
           </a>
           <a class="svc-mini-card" href="/services/contenu-video">
-            <span class="svc-mini-num">07</span>
+            <span class="svc-mini-num">08</span>
             <span class="svc-mini-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></span>
             <b>Contenu &amp; vidéo</b>
             <em>Pages, scripts, motion, contenus produit et supports de vente.</em>
@@ -583,19 +596,19 @@ export const bodyHtml = `${navHtml}
         </div>
         <div class="svc-family-list">
           <a class="svc-mini-card" href="/services/maintenance-evolution">
-            <span class="svc-mini-num">08</span>
+            <span class="svc-mini-num">09</span>
             <span class="svc-mini-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
             <b>Maintenance &amp; évolution</b>
             <em>Corrections, petites évolutions, monitoring, support prioritaire.</em>
           </a>
           <a class="svc-mini-card" href="/services/securite-rgpd">
-            <span class="svc-mini-num">09</span>
+            <span class="svc-mini-num">10</span>
             <span class="svc-mini-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
             <b>Sécurité &amp; RGPD</b>
             <em>Audit, hébergement, sauvegardes, conformité et données sensibles.</em>
           </a>
           <a class="svc-mini-card" href="/services/audit-technique">
-            <span class="svc-mini-num">10</span>
+            <span class="svc-mini-num">11</span>
             <span class="svc-mini-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></span>
             <b>Audit technique</b>
             <em>Performance, sécurité, dette technique et plan de reprise.</em>
@@ -608,10 +621,10 @@ export const bodyHtml = `${navHtml}
       <div>
         <div class="sfoot-tag">PAS SÛR DU BON SERVICE ?</div>
         <div class="sfoot-t">On vous aide à cadrer en 30 minutes.</div>
-        <div class="sfoot-sub">Appel direct avec un développeur senior, aucun commercial dans la boucle.</div>
+        <div class="sfoot-sub">Appel direct avec ${FIRST_CALL_CONTACT}, aucun commercial dans la boucle.</div>
       </div>
       <a href="#contact" class="btn btn-primary btn-lg">
-        Parler à un expert
+        ${FIRST_CALL_CTA}
         <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -628,19 +641,17 @@ export const bodyHtml = `${navHtml}
         <p>
           Pas besoin d'un cahier des charges de 80 pages. En <b>30 minutes d'appel</b>, on comprend
           votre contexte, votre urgence, vos contraintes. Nous visons une réponse argumentée le
-          <b>prochain jour ouvré</b>, sans délai garanti ; le calendrier de cadrage est annoncé après
-          l'échange — le devis ferme est établi après le
-          Discovery Sprint (1 500 € HT ; l&apos;offre signée précise la déduction
-          éventuelle sur la phase suivante et son délai).
+          <b>prochain jour ouvré</b>, sans délai garanti. Le devis ferme, lui, est établi après le
+          Discovery Sprint (1 500 € HT).
         </p>
         <ul class="chks">
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Un seul interlocuteur senior pendant toute la discussion</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Un seul interlocuteur, ${FIRST_CALL_CONTACT_SHORT}, pendant toute la discussion</li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Aucun engagement tant que vous n'avez pas validé le devis</li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Franchise totale : si ce n'est pas pour nous, on vous le dit</li>
         </ul>
         <div class="cta-row">
           <a href="#contact" class="btn btn-accent btn-lg">
-            Parler à un expert
+            ${FIRST_CALL_CTA}
             <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
         </div>
@@ -669,27 +680,27 @@ export const bodyHtml = `${navHtml}
           <div class="dc-hero">
             <div class="dc-thread">
               <div class="dc-subj-l">
-                <div class="dc-subj-avatar">MD</div>
+                <div class="dc-subj-avatar">01</div>
                 <div>
-                  <div class="dc-subj-from"><b>Scénario fictif composite</b> <span class="dc-subj-co">· ni client ni témoignage réel</span></div>
-                  <div class="dc-subj-to">PME fictive · 8 personnes · comptabilité</div>
+                  <div class="dc-subj-from"><b>Ce que vous nous décrivez</b> <span class="dc-subj-co">· exemple de besoin, pas un client réel</span></div>
+                  <div class="dc-subj-to">Un process répétitif, des outils qui ne se parlent pas</div>
                 </div>
               </div>
-              <p>Exemple de besoin : recopier des dossiers entre Excel, un CRM et un outil comptable, puis centraliser la facturation.</p>
+              <p>Exemple : recopier des dossiers entre un tableur, un CRM et un outil comptable, puis centraliser la facturation.</p>
               <div class="dc-signal-row">
-                <span><b>3</b> outils à connecter</span>
-                <span><b>5</b> semaines</span>
-                <span><b>1</b> périmètre à cadrer</span>
+                <span><b>Outils</b> à connecter</span>
+                <span><b>Écrans</b> à cadrer</span>
+                <span><b>Budget</b> à fixer</span>
               </div>
             </div>
 
             <div class="dc-decision">
               <div class="dc-decision-kicker">Réponse Hagnéré Code</div>
-              <h3>Back-office commercial sur mesure</h3>
-              <p>Un outil interne branché sur l'existant, livré au forfait fixe, avec devis signable en ligne.</p>
+              <h3>Un back-office branché sur vos logiciels</h3>
+              <p>Un outil interne construit sur l'existant, livré au forfait fixe, avec un devis signable en ligne.</p>
               <div class="dc-decision-price">
                 <span>Forfait HT</span>
-                <b>28 000 €</b>
+                <b>Au devis</b>
               </div>
             </div>
           </div>
@@ -697,8 +708,8 @@ export const bodyHtml = `${navHtml}
           <div class="dc-output">
             <div class="dc-output-head">
               <div>
-                <div class="dc-q-tag">DEVIS CADRÉ · RÉF 2026-0247</div>
-                <div class="dc-q-title">Votre devis ferme après le Discovery Sprint</div>
+                <div class="dc-q-tag">ANATOMIE D'UN DEVIS HAGNÉRÉ CODE</div>
+                <div class="dc-q-title">Voici à quoi ressemble votre devis.</div>
               </div>
               <div class="dc-q-logo">HC</div>
             </div>
@@ -707,41 +718,41 @@ export const bodyHtml = `${navHtml}
               <div class="dc-plan-card">
                 <span class="dc-plan-num">01</span>
                 <b>Diagnostic</b>
-                <p>CRM du marché inutile : besoin d'un back-office branché sur vos outils.</p>
+                <p>Le problème décrit, l'existant à reprendre et ce qu'on ne fera pas.</p>
               </div>
               <div class="dc-plan-card">
                 <span class="dc-plan-num">02</span>
                 <b>Périmètre</b>
-                <p>Pipeline Kanban, relances IA, facturation auto, rapports hebdo.</p>
+                <p>Écrans, workflows, intégrations et livrables listés un par un.</p>
               </div>
               <div class="dc-plan-card">
                 <span class="dc-plan-num">03</span>
                 <b>Engagement</b>
-                <p>Planning, intervenants et budget arrêtés au devis après cadrage, avant la première ligne de code.</p>
+                <p>Planning, intervenants nommés et budget arrêtés avant la première ligne de code.</p>
               </div>
             </div>
 
             <div class="dc-quote-compact">
               <div class="dc-mini-breakdown">
-                <div><span>Produit &amp; ateliers</span><b>5 400 €</b></div>
-                <div><span>Développement · 4 sprints</span><b>18 200 €</b></div>
-                <div><span>Intégrations + IA</span><b>4 400 €</b></div>
+                <div><span>Produit &amp; ateliers de cadrage</span><b>montant ferme</b></div>
+                <div><span>Développement, sprint par sprint</span><b>montant ferme</b></div>
+                <div><span>Intégrations et reprise de données</span><b>montant ferme</b></div>
               </div>
               <div class="dc-q-total">
                 <div class="dc-q-tleft">
                   <div class="dc-q-ttag">FORFAIT TOUT COMPRIS · HT</div>
                   <div class="dc-q-tsub">
-                    <span><b>30 %</b> signature</span>
+                    <span>Acompte à la signature</span>
                     <span class="sep"></span>
-                    <span><b>30 %</b> mi-parcours</span>
+                    <span>Jalon mi-parcours</span>
                     <span class="sep"></span>
-                    <span><b>40 %</b> livraison</span>
+                    <span>Solde à la livraison</span>
                   </div>
-                  <div class="dc-q-footline">Hébergement, formation, correction et dépôt précisés au devis</div>
+                  <div class="dc-q-footline">Hébergement, formation, recette et transfert du dépôt : chaque ligne est écrite, aucune n'est sous-entendue</div>
                 </div>
                 <div class="dc-q-tright">
                   <div class="dc-q-tcurrency">MONTANT TOTAL</div>
-                  <div class="dc-q-tval">28 000 €</div>
+                  <div class="dc-q-tval">Ferme</div>
                 </div>
               </div>
             </div>
@@ -751,7 +762,7 @@ export const bodyHtml = `${navHtml}
                 Obtenir mon cadrage
                 <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
               </a>
-              <div class="dc-action-note">30 min avec le fondateur · calendrier annoncé après l'échange · devis ferme après Discovery Sprint</div>
+              <div class="dc-action-note">${FIRST_CALL_META} · devis ferme après le Discovery Sprint</div>
             </div>
           </div>
         </div>
@@ -767,7 +778,7 @@ export const bodyHtml = `${navHtml}
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Notre méthode</div>
-        <h2>La méthode<br><span class="sf-brand">Sprint Fixe<span class="sf-brand-tm">™</span></span>.</h2>
+        <h2>La méthode<br><span class="sf-brand">Sprint Fixe</span>.</h2>
       </div>
       <div class="right">
         Pas de mystère, pas de « consulting » qui traîne. Quatre étapes claires,
@@ -775,7 +786,7 @@ export const bodyHtml = `${navHtml}
       </div>
     </div>
 
-    <!-- Sprint Fixe™ manifesto -->
+    <!-- Sprint Fixe manifesto -->
     <div class="sf-manifesto reveal">
       <div class="sf-manifesto-pitch">
         <div class="sf-manifesto-tag">
@@ -785,16 +796,16 @@ export const bodyHtml = `${navHtml}
         <h3>
           Aucun dépassement <span class="sf-manifesto-accent">sans</span> accord écrit.<br>
           Le périmètre signé <span class="sf-manifesto-accent">cadre</span> la livraison.<br>
-          Les arbitrages suivent le rythme défini au devis.
+          Chaque avenant est <span class="sf-manifesto-accent">chiffré</span> avant d'être codé.
         </h3>
         <p class="sf-manifesto-copy">
           Une méthode courte pour passer d'un besoin flou à un périmètre signé,
-          puis à des démos régulières sans tunnel ni surprise budgétaire.
+          puis à des démos à la cadence convenue, sans tunnel de six mois.
         </p>
         <div class="sf-proof-strip">
           <span><b>30 min</b> cadrage</span>
-          <span><b>Après échange</b> fourchette &amp; plan</span>
-          <span><b>Au devis</b> jalons et conditions</span>
+          <span><b>Forfait</b> jamais de régie</span>
+          <span><b>Périmètre signé</b> prix figé</span>
         </div>
       </div>
 
@@ -812,7 +823,7 @@ export const bodyHtml = `${navHtml}
           <div class="sf-pillar-n">02</div>
           <div class="sf-pillar-title">Démos au rythme convenu</div>
           <div class="sf-pillar-body">
-            Le devis fixe la cadence, les participants et le mode de validation.
+            À chaque jalon, vous voyez une version testable et vous arbitrez dessus.
             Les retours et leurs effets sur le périmètre restent tracés.
           </div>
         </div>
@@ -830,8 +841,8 @@ export const bodyHtml = `${navHtml}
           <div class="sf-pillar-n">04</div>
           <div class="sf-pillar-title">Code &amp; données à vous</div>
           <div class="sf-pillar-body">
-            Le devis inventorie le dépôt, l'hébergement, les accès, la documentation
-            et la passation. Les livrables spécifiques sont transférés après paiement
+            Dépôt, hébergement, accès, documentation et passation sont inventoriés
+            avant la signature. Les livrables spécifiques sont transférés après paiement
             complet selon les CGV, avec les exclusions et licences applicables.
           </div>
         </div>
@@ -843,9 +854,9 @@ export const bodyHtml = `${navHtml}
           <path d="M9 12l2 2 4-4"/>
         </svg>
         <div>
-          <b>La garantie Sprint Fixe™</b> — devis clair, périmètre écrit,
-          démos régulières, aucune ligne de régie cachée. Si le projet doit changer,
-          l'avenant est chiffré avant de coder.
+          <b>Sprint Fixe, concrètement</b> — devis clair, périmètre écrit,
+          démos à la cadence convenue, facturation au forfait et non à la journée.
+          Si le projet doit changer, l'avenant est chiffré et signé avant de coder.
         </div>
       </div>
     </div>
@@ -862,7 +873,7 @@ export const bodyHtml = `${navHtml}
           <div class="meth-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
         </div>
         <h4>On écoute vraiment.</h4>
-        <p>Un appel de <b>30 min avec un expert</b>. On comprend ce que vous voulez faire, pour qui et pourquoi. Sans jargon technique.</p>
+        <p>Un appel de <b>30 min avec ${FIRST_CALL_CONTACT_SHORT}</b>. On comprend ce que vous voulez faire, pour qui et pourquoi. Sans jargon technique.</p>
         <div class="meth-foot">
           <div class="meth-dur"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>30 min</div>
           <div class="meth-tag free">Gratuit</div>
@@ -875,7 +886,7 @@ export const bodyHtml = `${navHtml}
           <div class="meth-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
         </div>
         <h4>On vous renvoie un chiffrage clair.</h4>
-        <p>Nous visons une réponse argumentée le <b>prochain jour ouvré</b>, sans délai garanti. Le calendrier de cadrage est annoncé après l'échange ; devis ferme après le Discovery Sprint (1 500 € HT, avec conditions de déduction précisées dans l'offre signée).</p>
+        <p>Nous visons une réponse argumentée le <b>prochain jour ouvré</b>, sans délai garanti. Le devis ferme, lui, arrive après le Discovery Sprint (1 500 € HT).</p>
         <div class="meth-foot">
           <div class="meth-dur"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Après échange</div>
           <div class="meth-tag">Forfait fixe</div>
@@ -888,7 +899,7 @@ export const bodyHtml = `${navHtml}
           <div class="meth-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
         </div>
         <h4>On construit, vous suivez.</h4>
-        <p>Démonstrations à la cadence convenue au devis. Vous voyez des versions testables aux jalons prévus et arbitrez la trajectoire sur des éléments concrets.</p>
+        <p>Vous voyez des versions testables aux jalons prévus et vous arbitrez la trajectoire sur des éléments concrets, pas sur des comptes rendus.</p>
         <div class="meth-foot">
           <div class="meth-dur"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>4 à 12 sem.</div>
           <div class="meth-tag">Cadence convenue</div>
@@ -901,9 +912,9 @@ export const bodyHtml = `${navHtml}
           <div class="meth-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg></div>
         </div>
         <h4>On livre et on reste.</h4>
-        <p>Formation, mise en ligne, recette et période de correction sont définies dans le devis. La maintenance ultérieure reste optionnelle.</p>
+        <p>On forme vos équipes, on met en ligne, puis on corrige pendant la période de recette convenue avant la signature. La maintenance ensuite reste optionnelle.</p>
         <div class="meth-foot">
-          <div class="meth-dur"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Au devis</div>
+          <div class="meth-dur"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Après mise en ligne</div>
           <div class="meth-tag guarantee">Recette</div>
         </div>
       </div>
@@ -913,12 +924,12 @@ export const bodyHtml = `${navHtml}
       <div class="meth-deepdive-copy">
         <span class="meth-deepdive-tag">Aller plus loin</span>
         <p>
-          Livrables détaillés par étape, exemples concrets, garanties contractuelles et
+          Livrables détaillés par étape, exemples concrets, engagements écrits et
           comparatif avec une agence classique — tout est documenté.
         </p>
       </div>
       <a href="/methode" class="btn btn-accent btn-lg meth-deepdive-cta">
-        Découvrir la méthode Sprint Fixe™ en détail
+        Découvrir la méthode Sprint Fixe en détail
         <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M5 12h14M13 5l7 7-7 7"/>
         </svg>
@@ -933,15 +944,19 @@ export const bodyHtml = `${navHtml}
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Pages publiques</div>
-        <h2>Quatre cas à examiner<br>avec le bon niveau de preuve.</h2>
+        <div class="eyebrow">— Les produits du groupe</div>
+        <h2>Quatre produits en ligne,<br>consultables dès maintenant.</h2>
       </div>
       <div class="right">
-        Hagnéré Code analyse quatre pages publiques externes&nbsp;: deux offres de
-        comptabilité immobilière et deux sites de services patrimoniaux. Ces inventaires
-        datés ne revendiquent ni leur conception, ni leur livraison, ni leur technologie,
-        ni leur acquisition, ni leurs résultats.
-        <a href="/realisations">Toutes les analyses&nbsp;→</a>
+        LMNP.AI, SCI-AI.app, Hagnéré Patrimoine et Hagnéré Investissement appartiennent au
+        groupe Hagnéré&nbsp;: ce ne sont pas des clients indépendants. Vous pouvez ouvrir
+        chaque page et vérifier vous-même les fonctions publiées — ces inventaires datés
+        ne revendiquent en revanche ni leur conception, ni leurs résultats.
+        <!-- Passerelle preuve → offre, comme sur /realisations : les deux
+             sorties sont ouvertes ensemble. Verrouillé par content-claims.test.ts. -->
+        <a href="/realisations">Voir les quatre&nbsp;→</a>
+        <span aria-hidden="true">·</span>
+        <a href="/services">Voir nos services&nbsp;→</a>
       </div>
     </div>
 
@@ -976,7 +991,7 @@ export const bodyHtml = `${navHtml}
           <span class="real-chip">SaaS B2C</span>
         </div>
         <div class="real-body">
-          <div class="real-meta">PAGE PUBLIQUE EXTERNE <span class="dot"></span> INVENTAIRE DATÉ</div>
+          <div class="real-meta">PRODUIT DU GROUPE <span class="dot"></span> INVENTAIRE DATÉ</div>
           <p>La page publique présente une offre de comptabilité LMNP/LMP, des fonctions de saisie, d'amortissement, de documents fiscaux, de transmission EDI et des guides.</p>
           <div class="real-metric">
             <div class="rm"><div class="n">EDI</div><div class="l">télétransmission DGFiP</div></div>
@@ -1033,7 +1048,7 @@ export const bodyHtml = `${navHtml}
           <span class="real-chip">SaaS B2C</span>
         </div>
         <div class="real-body">
-          <div class="real-meta">PAGE PUBLIQUE EXTERNE <span class="dot"></span> INVENTAIRE DATÉ</div>
+          <div class="real-meta">PRODUIT DU GROUPE <span class="dot"></span> INVENTAIRE DATÉ</div>
           <p>La page publique présente une offre de comptabilité SCI à l'IR et à l'IS, les déclarations citées, la gestion des associés et la transmission EDI.</p>
           <div class="real-metric">
             <div class="rm"><div class="n">IR</div><div class="l">déclaration 2072</div></div>
@@ -1074,7 +1089,7 @@ export const bodyHtml = `${navHtml}
           <span class="real-chip">Site vitrine</span>
         </div>
         <div class="real-body">
-          <div class="real-meta">PAGE PUBLIQUE EXTERNE <span class="dot"></span> INVENTAIRE DATÉ</div>
+          <div class="real-meta">PRODUIT DU GROUPE <span class="dot"></span> INVENTAIRE DATÉ</div>
           <p>La page publique présente le cabinet, ses expertises, ses informations réglementaires, des simulateurs, des guides et plusieurs portes d'entrée vers une prise de contact.</p>
           <div class="real-metric">
             <div class="rm"><div class="n">Expertises</div><div class="l">catalogue public</div></div>
@@ -1130,7 +1145,7 @@ export const bodyHtml = `${navHtml}
           <span class="real-chip">Site vitrine</span>
         </div>
         <div class="real-body">
-          <div class="real-meta">PAGE PUBLIQUE EXTERNE <span class="dot"></span> INVENTAIRE DATÉ</div>
+          <div class="real-meta">PRODUIT DU GROUPE <span class="dot"></span> INVENTAIRE DATÉ</div>
           <p>La page publique présente un service d'investissement locatif, sa tarification, un mini-simulateur indicatif, des ressources, des partenaires et des liens de rendez-vous.</p>
           <div class="real-metric">
             <div class="rm"><div class="n">Service</div><div class="l">périmètre affiché</div></div>
@@ -1139,41 +1154,6 @@ export const bodyHtml = `${navHtml}
           </div>
         </div>
       </a>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section class="stats">
-  <div class="stats-bg"></div>
-  <div class="wrap inner">
-    <div class="stats-head reveal">
-      <div class="eyebrow on-dark">— Périmètre documenté</div>
-      <h2 style="margin-top:14px">Quatre pages externes,<br>quatre analyses datées.</h2>
-      <p>Chaque fiche se limite aux éléments visibles sur la source liée. Aucune intervention, technologie, campagne ou performance de Hagnéré Code n'est attribuée à ces sites.</p>
-    </div>
-
-    <div class="stats-grid">
-      <div class="stat reveal">
-        <div class="k">PAGES PUBLIQUES</div>
-        <div class="n">4</div>
-        <div class="l">Deux logiciels présentés et deux sites de services observés sur leurs pages publiques.</div>
-      </div>
-      <div class="stat reveal reveal-d-1">
-        <div class="k">SAAS FISCAUX</div>
-        <div class="n">2</div>
-        <div class="l">Parcours guidés, déclarations, télétransmission et assistance en contexte.</div>
-      </div>
-      <div class="stat reveal reveal-d-2">
-        <div class="k">SITES MÉTIER</div>
-        <div class="n">2</div>
-        <div class="l">Contenus, outils, qualification, rendez-vous et back-office reliés.</div>
-      </div>
-      <div class="stat reveal reveal-d-3">
-        <div class="k">RÈGLE DE PUBLICATION</div>
-        <div class="n">Preuve</div>
-        <div class="l">Pas de volume, de délai ni de performance sans dossier de justification.</div>
-      </div>
     </div>
   </div>
 </section>
@@ -1349,7 +1329,7 @@ export const bodyHtml = `${navHtml}
           </div>
           <div class="eqs">
             <div class="n">1</div>
-            <div class="l">source canonique pour l'effectif public</div>
+            <div class="l">interlocuteur senior, du premier appel au devis</div>
           </div>
         </div>
       </div>
@@ -1367,8 +1347,9 @@ export const bodyHtml = `${navHtml}
       </div>
       <div class="right">
         On vend au forfait, pas à la journée. Un Discovery Sprint payé pour cadrer,
-        puis un plan chiffré forfait ferme. Chaque projet est unique : <b>pas de prix de catalogue</b> —
-        chaque devis est calé sur votre périmètre réel.
+        puis un plan chiffré forfait ferme. Les <a href="/tarifs">fourchettes publiées</a> situent
+        un budget par type de projet&nbsp;: ce sont des <b>ordres de grandeur indicatifs</b>, et
+        chaque devis reste calé sur votre périmètre réel.
       </div>
     </div>
 
@@ -1379,9 +1360,9 @@ export const bodyHtml = `${navHtml}
       </div>
       <p>
         Les fourchettes ci-dessous sont <b>indicatives sur des projets-types récurrents</b>
-        (site vitrine, SaaS PME, partenariat tech). Votre projet — son périmètre, sa complexité, ses intégrations,
-        son délai — sera <b>chiffré individuellement après cadrage</b>. Décrivez votre projet en 3 minutes :
-        nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti ; pour un devis ferme, on commence par un Discovery Sprint.
+        (site vitrine, SaaS PME, partenariat tech). Votre projet — périmètre, complexité, intégrations,
+        délai — est <b>chiffré individuellement après cadrage</b>. Décrivez-le en 3 minutes :
+        nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti.
       </p>
       <a href="/demarrer-un-projet" class="price-context-cta">
         Décrire mon projet (3 min)
@@ -1396,7 +1377,7 @@ export const bodyHtml = `${navHtml}
         <div class="plan-sub">2 jours payés pour transformer votre idée en plan exécutable. Aucun engagement sur la phase 2.</div>
         <div class="plan-price">
           <span class="amount">1 500 €</span>
-          <span class="per">forfait fixe · 2 jours</span>
+          <span class="per">HT · forfait fixe · 2 jours</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
@@ -1404,7 +1385,7 @@ export const bodyHtml = `${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Prototype Figma cliquable</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Architecture technique cadrée</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Devis phase 2 chiffré forfait fixe</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Déduit à 100 % si vous lancez avec nous</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Déduit si phase 2 · conditions au devis</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Démarrer un Discovery</a></div>
       </div>
@@ -1415,13 +1396,13 @@ export const bodyHtml = `${navHtml}
         <div class="plan-sub">Un site vitrine ou une landing qui convertit. Idéal pour une première collaboration.</div>
         <div class="plan-price">
           <span class="amount">Sur devis</span>
-          <span class="per">≈ 6–15 k€ sur projet-type · forfait fixe</span>
+          <span class="per">≈ 6–15 k€ HT sur projet-type · forfait fixe</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Design sur mesure</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SEO technique de série</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement 1 an inclus</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement et durée précisés au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Délai variable selon scope (cadrage en 30 min)</li>
         </ul>
         <div class="plan-cta"><a href="/demarrer-un-projet" class="btn btn-ghost">Décrire mon projet</a></div>
@@ -1434,7 +1415,7 @@ export const bodyHtml = `${navHtml}
         <div class="plan-sub">Un SaaS, un outil interne ou une marketplace. Le sweet spot des PME ambitieuses.</div>
         <div class="plan-price">
           <span class="amount">Sur devis</span>
-          <span class="per">≈ 25–60 k€ sur projet-type · forfait fixe</span>
+          <span class="per">≈ 25–60 k€ HT sur projet-type · forfait fixe</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
@@ -1454,7 +1435,7 @@ export const bodyHtml = `${navHtml}
         <div class="plan-sub">On devient votre équipe tech externalisée. Plusieurs projets, forfait mensuel.</div>
         <div class="plan-price">
           <span class="amount">Sur mesure</span>
-          <span class="per">≈ 8–20 k€ / mois selon équipe dédiée</span>
+          <span class="per">≈ 8–20 k€ HT / mois selon équipe dédiée</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
@@ -1467,9 +1448,19 @@ export const bodyHtml = `${navHtml}
       </div>
     </div>
 
-    <p style="text-align:center;margin-top:44px;color:var(--mute);font-size:14px">
-      Chaque devis précise : <b style="color:var(--ink)">livrables et droits · dépôt et accès · formation · recette et éventuelle garantie</b>
-    </p>
+    <div class="price-foot reveal" style="text-align:center;margin-top:44px">
+      <p style="margin:0;color:var(--mute);font-size:14px">
+        <b style="color:var(--ink)">Montants en euros hors taxes, TVA en sus</b>, pour une clientèle professionnelle. Les fourchettes sont des ordres de grandeur indicatifs&nbsp;: seul le devis nominatif engage les parties.
+      </p>
+      <p style="margin:14px 0 0;color:var(--mute);font-size:14px">
+        Chaque devis liste <b style="color:var(--ink)">vos livrables et vos droits, le dépôt et les accès, la formation et la recette</b>.
+      </p>
+      <p style="margin:14px 0 0;font-size:14px">
+        <a href="/tarifs" style="color:var(--accent-ink);font-weight:500">Voir le détail des tarifs par service&nbsp;→</a>
+        <span aria-hidden="true" style="color:var(--line);margin:0 12px">·</span>
+        <a href="/services" style="color:var(--accent-ink);font-weight:500">Parcourir les ${SERVICE_LINKS.length} services&nbsp;→</a>
+      </p>
+    </div>
   </div>
 </section>
 
@@ -1536,9 +1527,9 @@ export const bodyHtml = `${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Le devis précise les critères de recette, la période de correction, les anomalies couvertes et les délais cibles.
-            Ensuite, vous pouvez choisir un <b>forfait de maintenance</b>, une intervention ponctuelle ou une reprise par votre équipe.
-            Aucune option n'est automatique.
+            Vous disposez d'une période de recette et de correction : ses critères, les anomalies couvertes et les délais
+            cibles sont écrits avant la signature. Ensuite, vous pouvez choisir un <b>forfait de maintenance</b>,
+            une intervention ponctuelle ou une reprise par votre équipe. Aucune option n'est automatique.
           </div>
         </div>
 
@@ -1563,7 +1554,7 @@ export const bodyHtml = `${navHtml}
   <div class="wrap inner">
     <div class="eyebrow on-dark">— Prochaine étape</div>
     <h2 style="margin-top:18px">Parlons de<br>votre projet.<br><span class="accent">30 min, c'est tout.</span></h2>
-    <p>Un échange de cadrage gratuit avec un expert. Vous repartez avec un avis franc ; la fourchette, le plan et leur délai sont précisés selon le périmètre — sans engagement.</p>
+    <p>Un échange de cadrage gratuit avec ${FIRST_CALL_CONTACT_SHORT}. Vous repartez avec un avis franc ; la fourchette, le plan et leur délai sont précisés selon le périmètre — sans engagement.</p>
     <div class="fcta-cta">
       <a href="${CALENDLY_URL}" target="_blank" rel="noopener noreferrer" class="btn btn-accent btn-lg">
         📅 &nbsp;Réserver 30 min sur Calendly
@@ -1573,7 +1564,7 @@ export const bodyHtml = `${navHtml}
         Envoyer un email →
       </a>
     </div>
-    <div class="fcta-meta">OBJECTIF : PROCHAIN JOUR OUVRÉ · DÉLAI NON GARANTI · PAR UN ASSOCIÉ · SANS ENGAGEMENT</div>
+    <div class="fcta-meta">OBJECTIF : PROCHAIN JOUR OUVRÉ · DÉLAI NON GARANTI · PAR UN DÉVELOPPEUR SENIOR · SANS ENGAGEMENT</div>
   </div>
 </section>
 

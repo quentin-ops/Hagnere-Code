@@ -38,16 +38,16 @@ export const deriskHtml = `
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
           « Je vais sortir un budget pour une app que personne ne télécharge. »
         </div>
-        <h3>Discovery Sprint payant · déductible du devis.</h3>
+        <h3>Discovery Sprint payant · déduction précisée au devis.</h3>
         <p>
-          Avant de signer le forfait, on vous propose un <b>Discovery Sprint payant et déductible</b> :
+          Avant de signer le forfait, on vous propose un <b>Discovery Sprint payant</b> :
           on challenge le besoin, on défriche les écrans clés, on sort un prototype Figma cliquable.
-          Si on continue, c'est <b>déduit du devis</b>. Si on arrête, vous repartez avec un livrable utilisable par un autre studio.
+          Si la phase 2 est lancée, <b>le devis précise la déduction applicable</b>. Si on arrête, vous repartez avec un livrable utilisable par un autre studio.
         </p>
         <div class="mob-derisk-proof">
           <span>✓ Durée de cadrage au devis</span>
           <span>✓ Prototype cliquable</span>
-          <span>✓ Déductible du forfait</span>
+          <span>✓ Déduit si phase 2</span>
         </div>
       </div>
 

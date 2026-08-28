@@ -106,14 +106,6 @@
   color: #0a0a0a;
 }
 
-.hc-cb-btn-primary {
-  background: #0a0a0a;
-  color: #ffffff;
-}
-.hc-cb-btn-primary:hover {
-  background: #1f1f1f;
-}
-
 .hc-cb-btn-choice {
   background: #0a0a0a;
   border-color: #0a0a0a;
@@ -348,11 +340,6 @@ html.dark .hc-cb-btn-ghost:hover {
   border-color: rgba(255, 255, 255, 0.22);
   color: #FAFAFA;
 }
-html.dark .hc-cb-btn-primary {
-  background: #FAFAFA;
-  color: #0B0B0D;
-}
-html.dark .hc-cb-btn-primary:hover { background: #E7E7EA; }
 html.dark .hc-cb-btn-choice {
   background: #FAFAFA;
   border-color: #FAFAFA;

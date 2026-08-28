@@ -69,6 +69,12 @@
   font-size: 13px;
   color: var(--mute);
 }
+/* La qualification « produits du groupe / pas des clients indépendants » doit
+   se lire d'un coup d'œil : même traitement que sur les pages services. */
+.cw-foot b {
+  color: var(--ink);
+  font-weight: 600;
+}
 .cw-dot {
   display: inline-block;
   width: 6px;

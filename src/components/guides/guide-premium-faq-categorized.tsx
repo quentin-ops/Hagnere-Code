@@ -10,6 +10,14 @@ import type {
 } from "./guide-premium-types";
 import { TrackedGuideCtaLink } from "./tracked-guide-cta-link";
 
+/**
+ * Repli de destination et de libellé, identiques à ceux de
+ * `guide-premium-layout.tsx`. Ils sont redéclarés ici plutôt qu'importés :
+ * ce composant est importé par le layout, un import inverse créerait un cycle.
+ */
+const CTA_HREF_DEFAUT = "/demarrer-un-projet";
+const CTA_LABEL_DEFAUT = "Décrire mon projet";
+
 interface GuidePremiumFaqCategorizedProps {
   categories: GuidePremiumFaqCategory[];
   eyebrow?: string;
@@ -33,8 +41,16 @@ export function GuidePremiumFaqCategorized({
   ctaTitle = "Pas trouvé votre réponse ?",
   ctaDescription =
     "Objectif de réponse le prochain jour ouvré, sans délai garanti.",
-  ctaLabel = "Poser ma question",
-  ctaHref = "/contact",
+  /**
+   * Repli aligné sur le funnel unique des guides. La valeur par défaut
+   * pointait vers `/contact` : trois guides qui ne renseignaient pas ces
+   * champs affichaient donc une destination commerciale concurrente de
+   * `/demarrer-un-projet`, avec l'ancre non descriptive « Poser ma question ».
+   * Chaque guide publié déclare désormais ses propres libellés ; ce repli ne
+   * sert plus qu'à empêcher la réapparition du second point d'entrée.
+   */
+  ctaLabel = CTA_LABEL_DEFAUT,
+  ctaHref = CTA_HREF_DEFAUT,
 }: GuidePremiumFaqCategorizedProps) {
   const [activeKey, setActiveKey] = useState<string>(categories[0].key);
   const [openIndex, setOpenIndex] = useState<number | null>(0);

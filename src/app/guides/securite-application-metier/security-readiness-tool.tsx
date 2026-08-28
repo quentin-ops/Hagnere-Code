@@ -171,7 +171,7 @@ export function SecurityReadinessTool() {
                     event.target.value as BusinessImpact,
                   )
                 }
-                className="mt-3 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-3 text-sm text-zinc-900 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                className="mt-3 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-3 text-base sm:text-sm text-zinc-900 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
               >
                 {impactOptions.map((option) => (
                   <option key={option.value} value={option.value}>
@@ -214,7 +214,7 @@ export function SecurityReadinessTool() {
                   onChange={(event) =>
                     updateContext(field.id, event.target.value as TernaryChoice)
                   }
-                  className="mt-3 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-3 text-sm text-zinc-900 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                  className="mt-3 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-3 text-base sm:text-sm text-zinc-900 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                 >
                   {ternaryOptions.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -274,7 +274,7 @@ export function SecurityReadinessTool() {
                         event.target.value as ControlStatus,
                       )
                     }
-                    className="mt-3 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-3 text-sm text-zinc-900 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                    className="mt-3 min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-3 text-base sm:text-sm text-zinc-900 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
                   >
                     {statusOptions.map((option) => (
                       <option key={option.value} value={option.value}>

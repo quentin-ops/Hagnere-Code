@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { CookieBanner } from "@/components/cookies/CookieBanner";
+import { GoogleMeasurement } from "@/components/design-shared/GoogleMeasurement";
 import { SkipToContent } from "@/components/design-shared/SkipToContent";
 import {
   INDEXABLE_ROBOTS,
@@ -25,11 +26,19 @@ const geistMono = Geist_Mono({
   display: "optional",
 });
 
+// Playfair n'est utilisé que par les gabarits de guides
+// (src/components/guides/*). Déclarée au layout racine, next/font la
+// préchargerait sur 100 % des routes : 75,6 Ko de woff2 en priorité maximale
+// sur le chemin critique de l'accueil, des 11 pages service, de /tarifs et du
+// tunnel, pour zéro caractère affiché. `preload: false` garde la police
+// disponible — elle se charge à la demande via son `display: "swap"` — sans
+// concurrencer le CSS bloquant et le JS du LCP.
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
   style: ["normal", "italic"],
   display: "swap",
+  preload: false,
 });
 
 const isProd = isSearchIndexingEnabled(
@@ -140,6 +149,9 @@ export default function RootLayout({
             Les intégrations tierces existantes restent bloquées localement
             jusqu'à une action explicite, indépendamment de cette bannière. */}
         {isCookieBannerEnabled ? <CookieBanner /> : null}
+        {/* gtag.js — n'est injecté qu'avec un identifiant configuré ET un
+            consentement analytics positif (cf. GoogleMeasurement). */}
+        <GoogleMeasurement />
       </body>
     </html>
   );

@@ -1,8 +1,3 @@
-/* =====================================================================
-   SECTIONS additionnelles pour /services/saas-applications-metier
-   Préfixe "sa-" pour éviter tout conflit avec la page d'accueil.
-   ===================================================================== */
-
 /* ==================== LOGO WALL ==================== */
 .sa-clients-wall {
   padding: 48px 0 56px;
@@ -54,6 +49,7 @@
   font-size: 13px;
   color: var(--mute);
 }
+.sa-cw-foot b { color: var(--ink); font-weight: 600; }
 .sa-cw-dot {
   display: inline-block;
   width: 6px;
@@ -122,44 +118,7 @@
 }
 
 /* ==================== STATS ==================== */
-.sa-stats {
-  padding: 120px 0;
-  background: #0A0A0A;
-  color: #fff;
-  position: relative;
-  overflow: hidden;
-  border-bottom: 1px solid #0A0A0A;
-}
-.sa-stats-bg {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, #000 30%, transparent 90%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, #000 30%, transparent 90%);
-}
-.sa-stats .inner {
-  position: relative;
-}
-.sa-stats h2 {
-  color: #fff;
-}
-.sa-stats-head {
-  max-width: 640px;
-}
-.sa-stats-head p {
-  color: rgba(255,255,255,0.65);
-  margin-top: 20px;
-  font-size: 16px;
-}
-.sa-stats-grid {
-  margin-top: 56px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  max-width: 720px;
-}
+
 .sa-stat {
   border-left: 2px solid rgba(255,255,255,0.1);
   padding: 12px 0 12px 24px;
@@ -363,10 +322,7 @@
   background: #e7f7ee;
   color: #166534;
 }
-.sa-vt-tag-expertise {
-  background: var(--accent-soft);
-  color: var(--accent-ink);
-}
+
 .sa-vt-card h3 {
   font-size: 18px;
 }
@@ -457,209 +413,6 @@
   font-size: 13px;
   color: var(--mute);
 }
-
-/* ==================== TEAM COMPACT ==================== */
-.sa-team {
-  padding: 120px 0;
-  background: var(--paper-2);
-  border-bottom: 1px solid var(--line);
-}
-.sa-team-grid {
-  display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: 40px;
-  align-items: start;
-}
-.sa-team-founder {
-  background: #0A0A0A;
-  color: #fff;
-  border-radius: 18px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-.sa-team-founder-photo {
-  position: relative;
-  aspect-ratio: 1 / 1.1;
-  background: #171717;
-}
-.sa-team-founder-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.sa-team-founder-tag {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  font-family: var(--font-geist-mono);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.85);
-  background: rgba(0,0,0,0.5);
-  padding: 6px 10px;
-  border-radius: 999px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-.sa-team-founder-tag .dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 3px rgba(109,40,217,0.3);
-}
-.sa-team-founder-body {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.sa-team-founder-name {
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-.sa-team-founder-role {
-  font-family: var(--font-geist-mono);
-  font-size: 12px;
-  color: var(--accent);
-  letter-spacing: 0.04em;
-}
-.sa-team-founder-quote {
-  font-size: 14px;
-  line-height: 1.55;
-  color: rgba(255,255,255,0.75);
-  padding: 16px;
-  background: rgba(255,255,255,0.04);
-  border-radius: 10px;
-  border-left: 2px solid var(--accent);
-}
-.sa-team-founder-meta {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px 16px;
-  font-size: 12px;
-}
-.sa-team-founder-meta > div {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.sa-team-founder-meta .k {
-  font-family: var(--font-geist-mono);
-  color: rgba(255,255,255,0.4);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 10px;
-}
-.sa-team-founder-meta .v {
-  color: rgba(255,255,255,0.85);
-}
-.sa-team-founder-li {
-  margin-top: 4px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: rgba(255,255,255,0.8);
-  text-decoration: none;
-  padding: 8px 12px;
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 8px;
-  align-self: flex-start;
-  transition: background 0.15s, border-color 0.15s;
-}
-.sa-team-founder-li:hover {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(255,255,255,0.25);
-}
-.sa-team-devs-head h3 {
-  font-size: 26px;
-  line-height: 1.15;
-}
-.sa-team-devs-head h3 em {
-  color: var(--accent-ink);
-  font-style: normal;
-}
-.sa-team-devs-head p {
-  margin-top: 14px;
-  color: var(--mute);
-  font-size: 15px;
-  line-height: 1.55;
-  max-width: 540px;
-}
-.sa-team-dev-grid {
-  margin-top: 32px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-}
-.sa-team-dev {
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.sa-team-dev-av {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background: var(--ink);
-  color: var(--paper);
-  display: grid;
-  place-items: center;
-  font-family: var(--font-geist-mono);
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 6px;
-  overflow: hidden;
-}
-.sa-team-dev-av-photo { padding: 0; background: #171717; }
-.sa-team-dev-av-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; border-radius: inherit; }
-.sa-team-dev-name {
-  font-weight: 600;
-  font-size: 14px;
-}
-.sa-team-dev-role {
-  font-size: 12px;
-  color: var(--mute);
-}
-.sa-team-dev-tags {
-  margin-top: 8px;
-  display: flex;
-  gap: 4px;
-  flex-wrap: wrap;
-}
-.sa-team-dev-tags span {
-  font-family: var(--font-geist-mono);
-  font-size: 9px;
-  padding: 2px 6px;
-  background: var(--paper-3);
-  color: var(--ink-3);
-  border-radius: 3px;
-  letter-spacing: 0.04em;
-}
-.sa-team-note {
-  margin-top: 24px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: var(--mute);
-  background: var(--paper);
-  padding: 10px 16px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-}
-.sa-team-note svg { color: var(--accent); }
 
 /* ==================== TRUST BADGES ==================== */
 .sa-trust {
@@ -1369,16 +1122,22 @@
   color: #fff;
   transform: rotate(45deg);
 }
+/* Ouverture sans max-height chiffrée : à 200 % de taille de texte (WCAG 1.4.4)
+   ou sur écran étroit, une valeur fixe rognait les réponses longues sans
+   défilement possible (overflow: hidden). */
 .sa-tfaq-list .faq-a {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s;
+  opacity: 0;
+  transition: opacity 0.25s ease;
   color: var(--mute);
   font-size: 14px;
   line-height: 1.65;
 }
 .sa-tfaq-list .faq-item.open .faq-a {
-  max-height: 500px;
+  max-height: none;
+  overflow: visible;
+  opacity: 1;
   padding-bottom: 20px;
 }
 .sa-tfaq-list .faq-a b {
@@ -1394,22 +1153,15 @@
   .sa-trust-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .sa-stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
-  }
+  
   .sa-cmp-head,
   .sa-cmp-row {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     font-size: 12px;
   }
   .sa-cmp-col { padding: 14px 12px; }
-  .sa-team-grid {
-    grid-template-columns: 1fr;
-  }
-  .sa-team-dev-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  
+  
   .sa-check-grid {
     grid-template-columns: 1fr;
   }
@@ -1434,11 +1186,10 @@
   .sap-grid,
   .sa-vt-grid,
   .sa-testi-grid,
-  .sa-trust-grid,
-  .sa-team-dev-grid {
+  .sa-trust-grid{
     grid-template-columns: 1fr;
   }
-  .sa-stats-grid { grid-template-columns: 1fr; gap: 24px; }
+  
   .sa-stat { border-left: none; border-top: 2px solid rgba(255,255,255,0.1); padding: 16px 0 0; }
   .sa-cw-grid {
     grid-template-columns: 1fr 1fr;
@@ -1491,4 +1242,4 @@ html.dark .sa-check-list-out .sa-check-ic{color:#F87171;background:rgba(239,68,6
 html.dark .sa-derisk-fear{background:rgba(239,68,68,0.10);border-color:rgba(239,68,68,0.30);color:#FCA5A5}
 html.dark .sa-derisk-fear svg{color:#F87171}
 html.dark .sa-derisk-proof span{background:rgba(74,222,128,0.13);color:#4ADE80}
-html.dark .sa-team-founder{box-shadow:0 0 0 1px rgba(255,255,255,0.10)}
+

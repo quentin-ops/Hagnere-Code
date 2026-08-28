@@ -81,11 +81,9 @@ function compose(raw: string): string {
       "\n\n<!-- FAQ -->",
   );
 
-  // TECH FAQ : après FAQ commerciale, avant CTA (qui sera strippé)
-  out = out.replace(
-    "<!-- CTA -->",
-    techFaqHtml.trim() + "\n\n<!-- CTA -->",
-  );
+  // TECH FAQ : dernière section du document. La CTA finale et le <footer>
+  // hérités ont été retirés de body.ts — ils sont rendus par <SiteFooter />.
+  out = out.trimEnd() + "\n\n" + techFaqHtml.trim() + "\n";
 
   return out;
 }

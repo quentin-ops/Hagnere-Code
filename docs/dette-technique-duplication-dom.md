@@ -128,6 +128,69 @@ thème sombre compris.
 
 Le poids restant tient surtout à la charge RSC, qui re-sérialise le contenu
 des composants client pour l'hydratation. Piste : garder la prose non
-interactive en Server Component et charger les outils avec
-`dynamic(() => import(...), { ssr: false })`. Cible raisonnable : **moins de
-250 Ko de HTML par guide**, avec mesure avant et après sur les mêmes URL.
+interactive en Server Component et charger les outils à la demande plutôt
+qu'au premier rendu.
+
+### Pourquoi la cible en kilo-octets est abandonnée
+
+Ce document visait auparavant « moins de 250 Ko de HTML par guide ». Cette
+cible est retirée : elle n'est pas atteignable et elle ne mesure pas ce que
+l'on cherche à corriger.
+
+Une page App Router sert deux choses dans le même fichier : le HTML rendu, et
+la charge RSC qui décrit à nouveau l'arbre pour l'hydratation. Cette seconde
+partie suit le nombre et la taille des composants clients, pas ce que le
+lecteur voit à l'écran. Le correctif ci-dessus le montre directement : la
+duplication a été **entièrement** supprimée et le poids n'a baissé que de 14 à
+23 %. Le reste est une constante du framework, pas de la dette de rendu.
+Viser un nombre de kilo-octets revient donc à se fixer un objectif sur une
+grandeur que le code de la page ne contrôle qu'à la marge.
+
+### La cible est désormais un nombre d'éléments
+
+**Protocole**, à appliquer à l'identique avant et après, sur les mêmes URL :
+
+```bash
+node -e 'const fs=require("fs");
+const html=fs.readFileSync(process.argv[1],"utf8");
+console.log((html.match(/<[a-zA-Z][a-zA-Z0-9-]*[\s>\/]/g)||[]).length);' \
+  .next/server/app/guides/<slug>.html
+```
+
+Le comptage est identique que l'on neutralise ou non les blocs `<script>` et
+`<style>` : la charge RSC est sérialisée en chaînes échappées et n'introduit
+aucune balise. Équivalent côté navigateur, utile pour recouper une valeur :
+`document.querySelectorAll("*").length`.
+
+**Référence du 27 août 2026**, 18 guides publiés, artefact de build, protocole
+ci-dessus :
+
+| Repère | Valeur | Guide |
+|---|---|---|
+| Minimum | 1 482 éléments | `pourquoi-site-pas-visible-google` |
+| Médiane | 1 820 éléments | — |
+| Maximum | 2 697 éléments | `power-apps-ou-application-sur-mesure` |
+
+**Cibles retenues :**
+
+1. **Plafond de non-régression : 2 700 éléments par guide.** C'est le maximum
+   déjà servi en production, arrondi. Un guide qui le dépasse a ajouté de la
+   structure, pas du contenu : dire laquelle et pourquoi, ou la retirer.
+2. **Seuil d'alerte : 2 500 éléments.** Au-dessus, relire la page à la
+   recherche de composants empilés — cartes qui répètent un tableau, encadrés
+   décoratifs, listes converties en grilles.
+3. **Aucune cible de réduction n'est fixée sous le minimum observé.** Le
+   corpus tient déjà entre 1 500 et 2 700 éléments ; se donner un chiffre plus
+   bas serait un objectif choisi sans mesure, et c'est précisément l'erreur
+   que la cible en kilo-octets avait commise.
+
+La longueur du texte n'explique qu'une partie des écarts : sur ces 18 guides,
+la corrélation entre le temps de lecture déclaré et le nombre d'éléments vaut
+0,71 — deux guides annoncés à 23 minutes s'écartent tout de même de près de
+500 éléments, et le guide le plus long du corpus n'est pas le plus lourd. Le
+nombre d'éléments suit surtout les composants employés — tableaux, cartes,
+outils interactifs — et c'est donc là qu'il se corrige.
+
+Refaire cette mesure avant et après tout chantier touchant
+`GuidePremiumLayout` ou un composant de contenu partagé, et consigner les deux
+valeurs plutôt qu'un pourcentage seul.

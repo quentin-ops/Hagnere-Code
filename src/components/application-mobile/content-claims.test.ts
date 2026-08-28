@@ -1,5 +1,8 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { composedBodyHtml } from "./composed-body";
+
+const bodySource = readFileSync(new URL("./body.ts", import.meta.url), "utf8");
 
 describe("application mobile public claims", () => {
   it("aligne les droits sur les CGV", () => {
@@ -53,5 +56,38 @@ describe("application mobile public claims", () => {
   it("identifie les situations commerciales comme fictives", () => {
     expect(composedBodyHtml).toMatch(/situations-types fictives/i);
     expect(composedBodyHtml).toMatch(/exemples sont fictifs/i);
+  });
+  it("n'affiche ni note, ni volume de téléchargements, ni label éditorial de store inventés", () => {
+    expect(composedBodyHtml).not.toMatch(/★{2,}/);
+    expect(composedBodyHtml).not.toMatch(/\d[,.]\d\s*·\s*\d+\s*avis/);
+    expect(composedBodyHtml).not.toMatch(/Editor'?s choice/i);
+    expect(composedBodyHtml).not.toMatch(/\d+\s*k\+?\s*téléch/i);
+    expect(composedBodyHtml).not.toMatch(/Top\s*\d+\s*·/i);
+  });
+
+  it("étiquette les fiches store du hero comme des maquettes", () => {
+    const flags = composedBodyHtml.match(/MAQUETTE · DONNÉES FICTIVES/g) ?? [];
+    expect(flags).toHaveLength(2);
+  });
+
+  it("publie la même posture de preuve que les autres pages services", () => {
+    expect(composedBodyHtml).toMatch(/pas encore de client externe/i);
+    expect(composedBodyHtml).toMatch(/aucun témoignage/i);
+    expect(composedBodyHtml).toContain('href="/realisations"');
+    expect(composedBodyHtml).toContain("LMNP.AI");
+    expect(composedBodyHtml).toContain("SCI-AI.app");
+    expect(composedBodyHtml).toMatch(/produits du groupe Hagnéré/i);
+    expect(composedBodyHtml).not.toMatch(/nos clients LMNP|client LMNP\.AI/i);
+  });
+
+  it("ne conserve aucun footer hérité dans le body", () => {
+    expect(bodySource).not.toContain("<footer");
+    expect(bodySource).not.toContain("<!-- FOOTER -->");
+  });
+
+  it("publie un maillage service→service dans le corps de la page", () => {
+    expect(composedBodyHtml).toContain('href="/services/maintenance-evolution"');
+    expect(composedBodyHtml).toContain('href="/services/saas-applications-metier"');
+    expect(composedBodyHtml).toContain('href="/services/securite-rgpd"');
   });
 });

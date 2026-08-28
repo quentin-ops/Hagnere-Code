@@ -19,12 +19,16 @@ import { ResourceDownloadCard } from "@/components/resources/ResourceDownloadCar
 import { TrackedDownloadLink } from "@/components/resources/TrackedDownloadLink";
 import { APP_CDC_KIT, resourceKitUrl } from "@/lib/resources";
 import { OG_BASE, SITE_URL } from "@/lib/seo";
+import {
+  ORGANIZATION_ID,
+  PUBLIC_ORGANIZATION_ENTITY,
+} from "@/lib/organization-structured-data";
 
 const resource = APP_CDC_KIT;
 const pageUrl = resourceKitUrl(resource);
 
 export const metadata: Metadata = {
-  title: "Modèle de cahier des charges application métier · Kit gratuit",
+  title: "Modèle cahier des charges application métier · Kit gratuit",
   description:
     "Téléchargez sans email un modèle Word, un exemple rempli et un mode d'emploi pour cadrer, comparer et recetter une application métier.",
   authors: [{ name: "Quentin Hagnéré" }],
@@ -108,7 +112,7 @@ const webPageJsonLd = JSON.stringify({
     "@type": "CollectionPage",
     "@id": `${SITE_URL}/ressources#webpage`,
     url: `${SITE_URL}/ressources`,
-    name: "Ressources gratuites Hagnéré Code",
+    name: "Ressources web gratuites Hagnéré Code",
   },
   about: [
     { "@type": "Thing", name: "Cahier des charges d'application métier" },
@@ -121,7 +125,9 @@ const webPageJsonLd = JSON.stringify({
     name: "Quentin Hagnéré",
     url: `${SITE_URL}/equipe`,
   },
-  publisher: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
+  // Entité complète : un @id nu n'est pas résolu par Google hors du graphe
+  // de la page courante, et l'éditeur du kit se lisait comme anonyme.
+  publisher: PUBLIC_ORGANIZATION_ENTITY,
   mainEntity: {
     "@type": "CreativeWork",
     "@id": `${pageUrl}#kit`,
@@ -134,7 +140,7 @@ const webPageJsonLd = JSON.stringify({
     inLanguage: "fr-FR",
     isAccessibleForFree: true,
     audience: { "@type": "Audience", audienceType: resource.audience },
-    creator: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
+    creator: { "@id": ORGANIZATION_ID },
     potentialAction: {
       "@type": "DownloadAction",
       target: `${SITE_URL}${resource.primary.href}`,
@@ -428,6 +434,16 @@ export default function Page() {
                 Découvrir les outils internes sur mesure
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
+              <p className="mt-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                Votre projet est un site public plutôt qu&apos;un logiciel ?{" "}
+                <Link
+                  href="/ressources/kit-cahier-des-charges-site-internet"
+                  className="font-semibold text-violet-700 underline underline-offset-2 hover:text-violet-900 dark:text-violet-300 dark:hover:text-violet-200"
+                >
+                  Le kit cahier des charges de site internet
+                </Link>{" "}
+                couvre ce cas, avec sa propre grille de recette.
+              </p>
             </div>
             <ol className="grid gap-4 sm:grid-cols-2">
               {workflow.map((step) => (

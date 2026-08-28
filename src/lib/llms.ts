@@ -1,4 +1,6 @@
+import { CASES } from "@/components/realisations/cases";
 import { PUBLISHED_GUIDES } from "./guides";
+import { LOCAL_PAGES, localPagePath } from "./local-pages";
 import { DOWNLOADABLE_RESOURCES } from "./resources";
 import { SITE_URL } from "./seo";
 import { SERVICE_LINKS } from "./services";
@@ -43,10 +45,28 @@ export const LLMS_CORE_LINKS: LlmsLink[] = [
       "Études longues et outils de décision consultables en ligne avant téléchargement.",
   },
   {
+    title: "Tarifs",
+    path: "/tarifs",
+    description:
+      "Fourchettes budgétaires par type de projet, ce qu'elles couvrent et ce qui les fait varier.",
+  },
+  {
     title: "Méthode Sprint Fixe",
     path: "/methode",
     description:
       "Méthode de cadrage, de livraison, de recette et de transfert appliquée aux projets.",
+  },
+  {
+    title: "Démarrer un projet",
+    path: "/demarrer-un-projet",
+    description:
+      "Formulaire de brief détaillé pour décrire un besoin et obtenir une réponse humaine.",
+  },
+  {
+    title: "Prendre rendez-vous",
+    path: "/rendez-vous",
+    description:
+      "Prise de rendez-vous pour un premier échange de cadrage avec le studio.",
   },
   {
     title: "Réalisations",
@@ -68,6 +88,32 @@ export const LLMS_CORE_LINKS: LlmsLink[] = [
 
 export const LLMS_SERVICE_LINKS: LlmsLink[] = SERVICE_LINKS;
 
+/** Pages de spécialisation technique, hors registre /services. */
+export const LLMS_STACK_LINKS: LlmsLink[] = [
+  {
+    title: "Agence Next.js",
+    path: "/agence-next-js",
+    description:
+      "Angle site public : sites, e-commerce et applications métier développés avec Next.js.",
+  },
+  {
+    title: "Agence React",
+    path: "/agence-react",
+    description:
+      "Angle applicatif : applications web, interfaces métier et espaces clients développés avec React.",
+  },
+];
+
+/** Outils interactifs publics, sans compte ni adresse e-mail obligatoire. */
+export const LLMS_TOOL_LINKS: LlmsLink[] = [
+  {
+    title: "Calculateur du coût d'un fichier Excel",
+    path: "/outils/calculateur-cout-excel",
+    description:
+      "Estimation du coût annuel d'un fichier Excel métier : temps passé, erreurs et ressaisies, hypothèses visibles.",
+  },
+];
+
 export const LLMS_LEGAL_LINKS: LlmsLink[] = [
   {
     title: "Mentions légales",
@@ -79,6 +125,30 @@ export const LLMS_LEGAL_LINKS: LlmsLink[] = [
     path: "/legal/confidentialite",
     description:
       "Traitements de données, finalités, durées, destinataires et exercice des droits.",
+  },
+  {
+    title: "Conditions générales de vente",
+    path: "/legal/cgv",
+    description:
+      "Conditions contractuelles applicables aux prestations vendues par le studio.",
+  },
+  {
+    title: "Politique cookies et stockages",
+    path: "/legal/cookies",
+    description:
+      "Inventaire des stockages navigateur utilisés par le site, leur finalité et leur durée.",
+  },
+  {
+    title: "Réclamations et médiation",
+    path: "/legal/reclamations",
+    description:
+      "Procédure de réclamation et voies de médiation ouvertes au client.",
+  },
+  {
+    title: "Démarche d'accessibilité",
+    path: "/legal/accessibilite",
+    description:
+      "État de la démarche d'accessibilité numérique du site et modalités de signalement.",
   },
 ];
 
@@ -125,6 +195,25 @@ export function whitePaperLlmsLinks(): LlmsLink[] {
   }));
 }
 
+/** Pages locales, dérivées du registre src/lib/local-pages.ts. */
+export function localPageLlmsLinks(): LlmsLink[] {
+  return LOCAL_PAGES.map((page) => ({
+    title: page.title,
+    path: localPagePath(page),
+    description: page.metaDescription,
+    dateModified: page.dateModified,
+  }));
+}
+
+/** Analyses des produits du groupe, dérivées du registre des réalisations. */
+export function caseStudyLlmsLinks(): LlmsLink[] {
+  return Object.values(CASES).map((entry) => ({
+    title: `${entry.brandName} · ${entry.category}`,
+    path: `/realisations/${entry.slug}`,
+    description: entry.heroIntro,
+  }));
+}
+
 function section(title: string, links: LlmsLink[]): string {
   return [`## ${title}`, ...links.map(formatLink)].join("\n");
 }
@@ -147,11 +236,19 @@ export function buildLlmsText(): string {
     "",
     section("Services", LLMS_SERVICE_LINKS),
     "",
+    section("Spécialisations techniques", LLMS_STACK_LINKS),
+    "",
+    section("Territoire", localPageLlmsLinks()),
+    "",
+    section("Analyses publiques des produits du groupe", caseStudyLlmsLinks()),
+    "",
     section("Guides", guideLlmsLinks()),
     "",
     section("Livres blancs", whitePaperLlmsLinks()),
     "",
     section("Ressources pratiques", resourceLlmsLinks()),
+    "",
+    section("Outils publics", LLMS_TOOL_LINKS),
     "",
     section("Informations légales", LLMS_LEGAL_LINKS),
     "",

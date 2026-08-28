@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { RendezVousPage } from "@/components/rendez-vous/RendezVousPage";
 import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { CALENDLY_URL } from "@/lib/calendly";
+import { PUBLIC_ORGANIZATION_ENTITY } from "@/lib/organization-structured-data";
 
 export const metadata: Metadata = {
   title: "Rendez-vous 30 min avec un développeur senior · Hagnéré Code",
@@ -25,7 +26,9 @@ const rdvJsonLd = JSON.stringify({
   url: "https://hagnere-code.ai/rendez-vous",
   description:
     "Rendez-vous découverte de 30 minutes en visio ou téléphone avec Hagnéré Code pour cadrer un projet web sur mesure.",
-  provider: { "@id": "https://hagnere-code.ai/#organization" },
+  // Entité complète : le @id nu n'était résolu par aucun nœud de cette page,
+  // et Google ne résout un @id que dans le graphe de la page courante.
+  provider: PUBLIC_ORGANIZATION_ENTITY,
   offers: {
     "@type": "Offer",
     price: "0",

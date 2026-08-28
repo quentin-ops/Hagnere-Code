@@ -175,7 +175,7 @@ export const matrixHtml = `
           </div>
           <div class="sr-matrix-meta">
             <span class="sr-matrix-meta-k">À partir de</span>
-            <span class="sr-matrix-meta-v sr-matrix-meta-price">1 200 € / mois</span>
+            <span class="sr-matrix-meta-v sr-matrix-meta-price">1 200 € HT / mois</span>
           </div>
         </div>
       </article>

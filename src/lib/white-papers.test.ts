@@ -26,6 +26,26 @@ describe("white papers", () => {
     }
   });
 
+  it("keeps registry titles and descriptions within search-result limits", () => {
+    // `page-metadata-invariants.test.ts` ne mesure que les `title:` littéraux
+    // écrits dans un page.tsx. Le livre blanc passe le sien par référence au
+    // registre : sans ce contrôle, sa longueur n'était vérifiée nulle part.
+    const titles = new Set<string>();
+
+    for (const entry of WHITE_PAPERS) {
+      expect(
+        entry.title.length,
+        `${entry.slug} : title de ${entry.title.length} caractères — « ${entry.title} »`,
+      ).toBeLessThanOrEqual(60);
+      expect(entry.description.length, entry.slug).toBeGreaterThanOrEqual(50);
+      expect(entry.description.length, entry.slug).toBeLessThanOrEqual(160);
+      expect(entry.cardTitle.trim().length, entry.slug).toBeGreaterThan(0);
+
+      expect(titles.has(entry.title), entry.title).toBe(false);
+      titles.add(entry.title);
+    }
+  });
+
   it("uses stable public paths and matching download names", () => {
     const paths = WHITE_PAPERS.map((entry) => entry.path);
     const pdfHrefs = WHITE_PAPERS.map((entry) => entry.pdf.href);

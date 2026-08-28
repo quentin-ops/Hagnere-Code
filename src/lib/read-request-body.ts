@@ -10,10 +10,16 @@ export class PayloadTooLargeError extends Error {
  * limite est franchie. Ne se fie pas à Content-Length, absent en chunked et
  * contrôlable par le client.
  */
+/**
+ * Le retour est typé `Uint8Array<ArrayBuffer>` : le buffer produit ici est
+ * neuf et exactement dimensionné, donc directement utilisable comme `BodyInit`
+ * sans recopie — c'est ce qui permet aux appelants de ne pas doubler le pic
+ * mémoire d'un gros payload.
+ */
 export async function readRequestBytesWithLimit(
   request: Request,
   maxBytes: number,
-): Promise<Uint8Array> {
+): Promise<Uint8Array<ArrayBuffer>> {
   const declaredLength = Number(request.headers.get("content-length"));
   if (Number.isFinite(declaredLength) && declaredLength > maxBytes) {
     throw new PayloadTooLargeError(maxBytes);

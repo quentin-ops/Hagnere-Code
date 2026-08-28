@@ -41,6 +41,32 @@ describe("local SEO pages", () => {
     expect(chambery.locality).toBe("Chambéry");
   });
 
+  /**
+   * Symétrique de la règle ci-dessus : la cannibalisation d'un cluster local
+   * à trois niveaux se joue d'abord sur le <title>. Chaque requête tête
+   * appartient à une seule page ; aucune page d'un autre niveau ne doit
+   * porter la chaîne exacte réservée à une autre.
+   */
+  it("gives each exact search target to exactly one page of the cluster", () => {
+    const RESERVED_TARGETS: { path: string; target: string }[] = [
+      { path: "savoie", target: "Agence web en Savoie" },
+      { path: "savoie/chambery", target: "Agence web à Chambéry" },
+    ];
+
+    for (const { path: reservedPath, target } of RESERVED_TARGETS) {
+      const owner = getLocalPage("agence", reservedPath);
+      expect(owner.title, target).toContain(target);
+
+      for (const page of LOCAL_PAGES) {
+        if (page === owner) continue;
+        expect(
+          page.title,
+          `${localPagePath(page)} ne doit pas viser « ${target} »`,
+        ).not.toContain(target);
+      }
+    }
+  });
+
   it("formats registry dates deterministically in French UTC", () => {
     expect(formatLocalPageDate("2026-07-20")).toBe("20 juillet 2026");
   });

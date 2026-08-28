@@ -12,7 +12,6 @@ describe("SaaS service page credibility", () => {
     expect(composedBodyHtml).toContain("LMNP.AI");
     expect(composedBodyHtml).toContain("SCI-AI.app");
     expect(composedBodyHtml).toContain("Aucun témoignage à afficher");
-    expect(composedBodyHtml).not.toContain("Comptabilité AI");
     expect(composedBodyHtml).not.toMatch(/clients payants|investisseurs confirmés|levée en cours/i);
   });
 

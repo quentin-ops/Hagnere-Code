@@ -99,11 +99,12 @@ export const scenariosHtml = `
         </div>
         <div class="me-scen-aside">
           <div class="me-scen-aside-head">
-            <span class="me-scen-aside-kind">Forfait mensuel</span>
+            <span class="me-scen-aside-kind">Ordre de grandeur mensuel</span>
             <div class="me-scen-aside-price">3 500 <span>€ HT / mois</span></div>
+            <div class="me-scen-aside-note">Repère indicatif pour ce scénario — le forfait est fixé au devis.</div>
           </div>
           <dl class="me-scen-meta">
-            <div class="me-scen-meta-row"><dt>Tier recommandé</dt><dd>Scale (reprise + run)</dd></div>
+            <div class="me-scen-meta-row"><dt>Tier recommandé</dt><dd>Care+ (reprise + run)</dd></div>
             <div class="me-scen-meta-row"><dt>Onboarding</dt><dd>Planning défini après inventaire</dd></div>
             <div class="me-scen-meta-row"><dt>Premier effet</dt><dd>Jalon observable inscrit au devis</dd></div>
             <div class="me-scen-meta-row"><dt>Engagement</dt><dd>Durée et préavis au devis</dd></div>
@@ -144,11 +145,12 @@ export const scenariosHtml = `
         </div>
         <div class="me-scen-aside">
           <div class="me-scen-aside-head">
-            <span class="me-scen-aside-kind">Forfait mensuel</span>
+            <span class="me-scen-aside-kind">Ordre de grandeur mensuel</span>
             <div class="me-scen-aside-price">2 500 <span>€ HT / mois</span></div>
+            <div class="me-scen-aside-note">Repère indicatif pour ce scénario — le forfait est fixé au devis.</div>
           </div>
           <dl class="me-scen-meta">
-            <div class="me-scen-meta-row"><dt>Tier recommandé</dt><dd>Essentiel ou Scale</dd></div>
+            <div class="me-scen-meta-row"><dt>Tier recommandé</dt><dd>Care ou Care+</dd></div>
             <div class="me-scen-meta-row"><dt>Overlap freelance</dt><dd>Durée et coût au devis</dd></div>
             <div class="me-scen-meta-row"><dt>Équipe</dt><dd>Intervenants et relais nommés</dd></div>
             <div class="me-scen-meta-row"><dt>Engagement</dt><dd>Durée et préavis au devis</dd></div>
@@ -189,8 +191,9 @@ export const scenariosHtml = `
         </div>
         <div class="me-scen-aside me-scen-aside-hot">
           <div class="me-scen-aside-head">
-            <span class="me-scen-aside-kind">Tier Premium</span>
+            <span class="me-scen-aside-kind">Ordre de grandeur mensuel · Care Pro</span>
             <div class="me-scen-aside-price">14 000 <span>€ HT / mois</span></div>
+            <div class="me-scen-aside-note">Repère indicatif pour ce scénario — le forfait est fixé au devis.</div>
           </div>
           <dl class="me-scen-meta">
             <div class="me-scen-meta-row"><dt>Formule</dt><dd>Dimensionnée sur devis</dd></div>
@@ -235,15 +238,16 @@ export const scenariosHtml = `
         </div>
         <div class="me-scen-aside">
           <div class="me-scen-aside-head">
-            <span class="me-scen-aside-kind">Forfait mensuel</span>
+            <span class="me-scen-aside-kind">Ordre de grandeur mensuel</span>
             <div class="me-scen-aside-price">2 500 <span>€ HT / mois</span></div>
+            <div class="me-scen-aside-note">Repère indicatif pour ce scénario — le forfait est fixé au devis.</div>
           </div>
           <dl class="me-scen-meta">
-            <div class="me-scen-meta-row"><dt>Tier recommandé</dt><dd>Essentiel · focus run + remédiation</dd></div>
+            <div class="me-scen-meta-row"><dt>Tier recommandé</dt><dd>Care · focus run + remédiation</dd></div>
             <div class="me-scen-meta-row"><dt>Durée</dt><dd>Horizon réévalué après diagnostic</dd></div>
             <div class="me-scen-meta-row"><dt>Objectif</dt><dd>Tenir · pas accélérer</dd></div>
             <div class="me-scen-meta-row"><dt>Engagement</dt><dd>Durée et préavis au devis</dd></div>
-            <div class="me-scen-meta-row"><dt>Démarrage</dt><dd>Audit legacy 2 000 € (déductible)</dd></div>
+            <div class="me-scen-meta-row"><dt>Démarrage</dt><dd>Audit legacy 2 000 € HT · déduction au devis</dd></div>
           </dl>
           <a href="#contact" class="btn btn-accent btn-lg me-scen-cta">
             Planifier l'audit legacy

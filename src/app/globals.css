@@ -23,6 +23,12 @@
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
+  /* Jeton de focus clavier, volontairement découplé de `--ring` (jeton shadcn
+     réutilisé par des anneaux décoratifs). `--ring` en clair vaut ≈ #A1A1A1,
+     soit 2,58:1 sur blanc — sous le seuil de 3:1 exigé par WCAG 1.4.11 pour un
+     composant d'interface. #6D28D9 (violet-700, déjà la couleur d'accent des
+     guides, ressources et images OG) donne 7,1:1 sur blanc. */
+  --focus-ring: #6d28d9;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -63,6 +69,8 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
+  /* #C4B5FD (violet-300) : 10,9:1 sur le fond sombre #0a0a0a. */
+  --focus-ring: #c4b5fd;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -362,16 +370,41 @@
   }
 }
 
-/* Global keyboard focus indicator (a11y WCAG 2.4.7) */
+/* Global keyboard focus indicator (a11y WCAG 2.4.7 + 1.4.11).
+   Le jeton dédié `--focus-ring` remplace `--ring` : ce dernier n'atteint que
+   2,58:1 sur fond blanc. Pas de `border-radius` ici — il écrasait le rayon
+   propre des boutons pilules pendant le focus ; l'outline suit désormais la
+   forme réelle de l'élément. */
 :focus-visible {
-  outline: 2px solid var(--ring, #ff6b2b);
+  outline: 2px solid var(--focus-ring, #6d28d9);
   outline-offset: 2px;
-  border-radius: 4px;
 }
 button:focus:not(:focus-visible),
 a:focus:not(:focus-visible),
 [role="button"]:focus:not(:focus-visible) {
   outline: none;
+}
+
+/* iOS Safari — et iOS Chrome, qui partage WebKit — zoome la fenêtre dès qu'un
+   champ prend le focus avec une taille calculée sous 16 px, et ne dézoome
+   jamais ensuite : l'utilisateur reste sur une page agrandie, nav sticky et
+   `.pf-actions` décalés. `maximumScale: 5` reste volontaire (accessibilité),
+   donc la seule parade est la taille de police.
+
+   La règle est restreinte au tactile pour ne rien changer au rendu desktop, et
+   sa spécificité (`html` + `:not([type=…])`) est volontairement supérieure à
+   celle des règles 14 px des feuilles de composants — site-footer.css,
+   project-funnel.css, excel-calculator.css — comme aux utilitaires Tailwind
+   `text-sm` des outils de guides, toutes chargées après ce fichier. */
+@media (hover: none) and (pointer: coarse) {
+  html
+    input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not(
+      [type="color"]
+    ):not([type="submit"]):not([type="button"]):not([type="reset"]),
+  html textarea,
+  html select {
+    font-size: 16px;
+  }
 }
 
 /* Respect reduced-motion preference */

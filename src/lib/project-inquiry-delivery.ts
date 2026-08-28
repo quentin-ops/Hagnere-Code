@@ -1,3 +1,5 @@
+import { CONTACT_EMAIL } from "@/lib/contact-details";
+
 export type InquiryDeliveryPayload = {
   ok?: true;
   error?: string;
@@ -79,8 +81,7 @@ export function missingMailProviderOutcome(
     return {
       status: 503,
       payload: {
-        error:
-          "Votre demande est enregistrée mais aucune notification n'a pu partir. Réessayez ou écrivez à quentin@hagnere-patrimoine.fr ; un retry identique ne dupliquera pas le brief.",
+        error: `Votre demande est enregistrée mais aucune notification n'a pu partir. Réessayez ou écrivez à ${CONTACT_EMAIL} ; un retry identique ne dupliquera pas le brief.`,
         captured: true,
         teamNotified: false,
         confirmationSent: false,
@@ -91,8 +92,7 @@ export function missingMailProviderOutcome(
   return {
     status: 503,
     payload: {
-      error:
-        "Le service d'envoi est temporairement indisponible et votre demande n'a pas été enregistrée. Écrivez à quentin@hagnere-patrimoine.fr.",
+      error: `Le service d'envoi est temporairement indisponible et votre demande n'a pas été enregistrée. Écrivez à ${CONTACT_EMAIL}.`,
       captured: false,
       teamNotified: false,
       confirmationSent: false,
@@ -105,8 +105,7 @@ export function teamMailFailureOutcome(persisted: boolean): InquiryDeliveryOutco
     return {
       status: 502,
       payload: {
-        error:
-          "Votre demande est enregistrée mais la notification e-mail a échoué. Réessayez ou écrivez à quentin@hagnere-patrimoine.fr ; un retry identique ne dupliquera pas le brief.",
+        error: `Votre demande est enregistrée mais la notification e-mail a échoué. Réessayez ou écrivez à ${CONTACT_EMAIL} ; un retry identique ne dupliquera pas le brief.`,
         captured: true,
         teamNotified: false,
         confirmationSent: false,
@@ -117,8 +116,7 @@ export function teamMailFailureOutcome(persisted: boolean): InquiryDeliveryOutco
   return {
     status: 502,
     payload: {
-      error:
-        "L'envoi a échoué et votre demande n'a pas été enregistrée. Réessayez ou écrivez à quentin@hagnere-patrimoine.fr.",
+      error: `L'envoi a échoué et votre demande n'a pas été enregistrée. Réessayez ou écrivez à ${CONTACT_EMAIL}.`,
       captured: false,
       teamNotified: false,
       confirmationSent: false,

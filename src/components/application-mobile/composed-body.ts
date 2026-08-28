@@ -8,18 +8,22 @@ import { comparisonHtml } from "./sections/comparison";
 import { refuseHtml } from "./sections/refuse";
 import { trustBadgesHtml } from "./sections/trust-badges";
 import { techFaqHtml } from "./sections/tech-faq";
+import { proofHtml } from "./sections/proof";
+import { relatedServicesHtml } from "./sections/related-services";
 
 /**
  * Final layout for /services/application-mobile :
  *
  *   NAV → Breadcrumb → HERO →
- *   TRUST STRIP (chiffres + logos stack) → PROBLEMS (6 situations) →
+ *   TRUST STRIP (chiffres + logos stack) →
+ *   PREUVES PUBLIQUES (aucun client externe · 4 produits du groupe) →
+ *   PROBLEMS (6 situations) →
  *   WHAT WE BUILD (9 verticals) → CAPABILITIES (20 features natives) →
  *   STORES (App Store + Play Store) → OWNERSHIP (9 actifs à inventorier) →
  *   PROCESS (5 étapes) → STACK (RN + Expo + EAS) → RELATED CASES →
  *   DE-RISK (4 peurs) → COMPARISON (vs site/PWA) → REFUSE (red flags) →
  *   PRICING (3 forfaits) → TRUST BADGES (9 engagements) →
- *   FAQ commerciale → TECH FAQ (CTO) →
+ *   FAQ commerciale → TECH FAQ (CTO) → SERVICES LIÉS →
  *   [SiteFooter React rendu à part]
  */
 function compose(raw: string): string {
@@ -29,6 +33,8 @@ function compose(raw: string): string {
   out = out.replace(
     "<!-- WHAT WE BUILD -->",
     trustStripHtml.trim() +
+      "\n\n" +
+      proofHtml.trim() +
       "\n\n" +
       problemsHtml.trim() +
       "\n\n<!-- WHAT WE BUILD -->",
@@ -60,11 +66,10 @@ function compose(raw: string): string {
     trustBadgesHtml.trim() + "\n\n<!-- FAQ -->",
   );
 
-  // TECH FAQ — après la FAQ commerciale, avant la CTA (qui sera strippée)
-  out = out.replace(
-    "<!-- CTA -->",
-    techFaqHtml.trim() + "\n\n<!-- CTA -->",
-  );
+  // TECH FAQ : dernières sections du document.
+  out = out.trimEnd() + "\n\n" + techFaqHtml.trim() +
+      "\n\n" +
+      relatedServicesHtml.trim() + "\n";
 
   return out;
 }

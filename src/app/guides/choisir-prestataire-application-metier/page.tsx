@@ -12,6 +12,7 @@ import {
   GuidePremiumSection,
 } from "@/components/guides/guide-premium-layout";
 import type { GuidePremiumFaqCategory } from "@/components/guides/guide-premium-types";
+import { TrackedGuideCtaLink } from "@/components/guides/tracked-guide-cta-link";
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import {
   buildGuideMetadata,
@@ -375,7 +376,6 @@ export default function Page() {
               width={1600}
               height={900}
               className="h-auto w-full"
-              priority
             />
           </div>
 
@@ -1114,12 +1114,20 @@ export default function Page() {
           <p>
             Si vous voulez faire relire les écarts entre votre besoin et les
             propositions, vous pouvez{" "}
-            <Link href="/demarrer-un-projet">
+            <TrackedGuideCtaLink
+              href="/demarrer-un-projet"
+              placement="article_end_inline"
+            >
               décrire votre projet et les décisions encore ouvertes
-            </Link>
+            </TrackedGuideCtaLink>
             . Le formulaire recueille un premier contexte ; il ne produit ni
             devis automatique, ni certification du prestataire, ni avis
-            juridique.
+            juridique. Notre propre périmètre est publié sur la page{" "}
+            <Link href="/services/saas-applications-metier">
+              SaaS et applications métier
+            </Link>{" "}
+            : soumettez-la aux mêmes questions que les autres candidats, sans
+            traitement de faveur.
           </p>
 
           <GuidePremiumMemo title="Ne retenir personne reste une décision valide">

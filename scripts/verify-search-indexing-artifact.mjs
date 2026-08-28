@@ -23,6 +23,7 @@ const indexingEnabled = platformIndexingEnv
   ? platformIndexingEnv === "production"
   : explicitIndexingEnv === "production";
 let failureCount = 0;
+let warningCount = 0;
 const allowedSocialImageOrigins = new Set([SITE_ORIGIN]);
 
 if (!indexingEnabled) {
@@ -58,6 +59,16 @@ let checkedGuideReadTimeCount = 0;
 function fail(message) {
   failureCount += 1;
   console.error(`[SEO artifact] ${message}`);
+}
+
+/**
+ * Défaut réel mais sans conséquence d'indexation, qu'on refuse de transformer
+ * en blocage de déploiement : il est signalé à chaque build jusqu'à sa
+ * correction, sans jamais retenir une mise en ligne.
+ */
+function warn(message) {
+  warningCount += 1;
+  console.warn(`[SEO artifact] avertissement : ${message}`);
 }
 
 function readRequired(path, label) {
@@ -303,19 +314,62 @@ function artifactHtmlPath(url) {
   );
 }
 
-function checkDocumentBasics(html, canonicalUrl) {
-  const { pathname } = new URL(canonicalUrl);
-  const canonicalTags = htmlTagsWithAttribute(html, "link", "rel", "canonical");
-  if (canonicalTags.length !== 1) {
+/**
+ * Retire les blocs dont le contenu n'appartient pas au texte du document :
+ * un `<svg>` ou un `<template>` peut porter un titre qui ne fait pas partie du
+ * plan lu par un lecteur d'écran ni par un moteur.
+ */
+function stripNonDocumentBlocks(html) {
+  return html.replace(
+    /<(script|style|template|noscript|svg)\b[^>]*>[\s\S]*?<\/\1>/gi,
+    " ",
+  );
+}
+
+/**
+ * Continuité des niveaux de titres.
+ *
+ * Compter les H1 ne dit rien de la suite : une page peut n'avoir qu'un H1 et
+ * enchaîner h2 → h4, ce qui fait disparaître un niveau entier de la structure.
+ * Un lecteur d'écran annonce alors une section orpheline, et l'extraction de
+ * plan (moteurs, agents de réponse) rattache le contenu au mauvais parent.
+ * La règle est volontairement asymétrique : descendre d'un cran à la fois,
+ * remonter d'autant de crans qu'on veut.
+ */
+function checkHeadingOutline(html, pathname) {
+  const levels = Array.from(
+    stripNonDocumentBlocks(html).matchAll(/<h([1-6])(?:\s[^>]*)?>/gi),
+    (match) => Number(match[1]),
+  );
+  // Une page sans titre du tout est déjà signalée par le compte de H1.
+  if (levels.length === 0) return;
+
+  if (levels[0] !== 1) {
     fail(
-      `canonical présente ${canonicalTags.length} fois au lieu d'une : ${pathname}`,
+      `plan de titres ouvert par un h${levels[0]} au lieu d'un h1 : ${pathname}`,
     );
   }
-  const canonical = tagAttribute(canonicalTags[0], "href");
-  if (canonical !== canonicalUrl) {
-    fail(`canonical incohérent pour ${pathname} : ${canonical ?? "absent"}`);
-  }
 
+  const jumps = [];
+  for (let index = 1; index < levels.length; index += 1) {
+    const previous = levels[index - 1];
+    const current = levels[index];
+    if (current > previous + 1) {
+      jumps.push(`h${previous} → h${current} (titre ${index + 1})`);
+    }
+  }
+  if (jumps.length > 0) {
+    fail(
+      `saut de niveau dans le plan de titres [${jumps.join(" ; ")}] : ${pathname}`,
+    );
+  }
+}
+
+/**
+ * Structure du document, indépendamment de son canonique : une page hors
+ * sitemap (404, confirmation d'envoi) doit la respecter aussi.
+ */
+function checkDocumentStructure(html, pathname) {
   const titleCount = (html.match(/<title\b[^>]*>[\s\S]*?<\/title>/gi) ?? [])
     .length;
   if (titleCount !== 1) {
@@ -325,6 +379,7 @@ function checkDocumentBasics(html, canonicalUrl) {
   if (h1Count !== 1) {
     fail(`H1 présent ${h1Count} fois au lieu d'un : ${pathname}`);
   }
+  checkHeadingOutline(html, pathname);
   if (htmlTagsWithAttribute(html, "html", "lang", "fr").length !== 1) {
     fail(`langue racine absente ou différente de fr : ${pathname}`);
   }
@@ -346,12 +401,24 @@ function checkDocumentBasics(html, canonicalUrl) {
   }
 }
 
+function checkDocumentBasics(html, canonicalUrl) {
+  const { pathname } = new URL(canonicalUrl);
+  const canonicalTags = htmlTagsWithAttribute(html, "link", "rel", "canonical");
+  if (canonicalTags.length !== 1) {
+    fail(
+      `canonical présente ${canonicalTags.length} fois au lieu d'une : ${pathname}`,
+    );
+  }
+  const canonical = tagAttribute(canonicalTags[0], "href");
+  if (canonical !== canonicalUrl) {
+    fail(`canonical incohérent pour ${pathname} : ${canonical ?? "absent"}`);
+  }
+
+  checkDocumentStructure(html, pathname);
+}
+
 function decodeHtmlText(html) {
-  return html
-    .replace(
-      /<(script|style|template|noscript|svg)\b[^>]*>[\s\S]*?<\/\1>/gi,
-      " ",
-    )
+  return stripNonDocumentBlocks(html)
     .replace(/<[^>]+>/g, " ")
     .replace(/&#(x?[0-9a-f]+);/gi, (_match, value) => {
       const hexadecimal = value[0].toLowerCase() === "x";
@@ -876,6 +943,71 @@ if (llms) {
   }
 }
 
+/**
+ * Pages rendues mais volontairement absentes du sitemap.
+ *
+ * La boucle principale ne parcourt que les URL du sitemap : ces deux pages
+ * n'étaient donc inspectées par rien. Ce sont pourtant les deux frontières les
+ * plus sensibles du site — la 404 est la page la plus visitée par les robots
+ * après l'accueil, et la confirmation d'envoi est la page où atterrit chaque
+ * lead payé. Une régression y est invisible jusqu'à ce qu'elle coûte quelque
+ * chose : une confirmation entrée dans le sitemap serait indexée et
+ * cannibaliserait le funnel, une 404 devenue indexable diluerait le site.
+ */
+const OUT_OF_SITEMAP_PAGES = [
+  { pathname: "/_not-found", label: "page 404" },
+  {
+    pathname: "/demarrer-un-projet/merci",
+    label: "confirmation d'envoi du brief",
+  },
+];
+
+for (const { pathname, label } of OUT_OF_SITEMAP_PAGES) {
+  const canonicalUrl = `${SITE_ORIGIN}${pathname}`;
+  const pagePath = artifactHtmlPath(canonicalUrl);
+
+  if (sitemapUrlSet.has(canonicalUrl)) {
+    fail(`${label} présente dans le sitemap : ${pathname}`);
+  }
+  if (llmsUrlSet.has(canonicalUrl)) {
+    fail(`${label} présente dans llms.txt : ${pathname}`);
+  }
+  if (!existsSync(pagePath)) {
+    fail(`artefact absent pour la ${label} : ${pathname}`);
+    continue;
+  }
+
+  const html = readFileSync(pagePath, "utf8");
+  checkDocumentStructure(html, pathname);
+
+  const robotsTags = htmlTagsWithAttribute(html, "meta", "name", "robots");
+  if (robotsTags.length === 0) {
+    fail(`${label} sans directive robots : ${pathname}`);
+  }
+  for (const robotsTag of robotsTags) {
+    const robotsContent = tagAttribute(robotsTag, "content")?.toLowerCase();
+    if (!robotsContent?.includes("noindex")) {
+      fail(
+        `${label} indexable : ${pathname} (robots « ${robotsContent ?? "content absent"} »)`,
+      );
+    }
+  }
+  // Sur /_not-found, Next.js pose sa propre balise `noindex` en plus de celle
+  // dérivée de la metadata. La déclaration de page reste nécessaire : sans
+  // elle, c'est la directive du layout racine (`index, follow` en production)
+  // qui s'appliquerait. Deux balises toutes deux en noindex sont donc l'état
+  // NORMAL de cette page, pas un défaut à corriger — la boucle ci-dessus a déjà
+  // vérifié qu'aucune n'autorise l'indexation.
+  const duplicateIsExpected = pathname === "/_not-found";
+  if (robotsTags.length > 1 && !duplicateIsExpected) {
+    // Ailleurs, un doublon finit par diverger : on le signale sans retenir la
+    // mise en ligne, puisque Google retient la directive la plus restrictive.
+    warn(
+      `${robotsTags.length} balises meta robots sur la ${label} (${pathname}) : retirer la directive redondante déclarée dans la metadata de la page.`,
+    );
+  }
+}
+
 const pendingGuideSlugs = guideEntries
   .filter(({ editorialStatus }) => editorialStatus !== "published")
   .map(({ slug }) => slug);
@@ -990,6 +1122,6 @@ if (failureCount > 0) {
   process.exitCode = 1;
 } else {
   console.log(
-    `[SEO artifact] OK (${indexingEnabled ? "production indexable" : "preview noindex"}) : robots.txt, sitemap.xml (${sitemapUrls.length} URL), llms.txt (${llmsUrls.length} liens), ${checkedPageCount} pages, ${checkedGuideReadTimeCount} temps de lecture et ${checkedStructuredDataCount} blocs JSON-LD contrôlés.`,
+    `[SEO artifact] OK (${indexingEnabled ? "production indexable" : "preview noindex"}) : robots.txt, sitemap.xml (${sitemapUrls.length} URL), llms.txt (${llmsUrls.length} liens), ${checkedPageCount} pages du sitemap, ${OUT_OF_SITEMAP_PAGES.length} pages hors sitemap, ${checkedGuideReadTimeCount} temps de lecture et ${checkedStructuredDataCount} blocs JSON-LD contrôlés${warningCount > 0 ? `, ${warningCount} avertissement(s)` : ""}.`,
   );
 }

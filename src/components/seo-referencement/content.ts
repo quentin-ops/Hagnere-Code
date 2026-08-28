@@ -1,3 +1,5 @@
+import { CONTACT_ADDRESS } from "@/lib/contact-details";
+
 export type SeoItem = {
   title: string;
   description: string;
@@ -168,11 +170,156 @@ export const SEO_REFUSALS: SeoItem[] = [
   },
 ];
 
+/**
+ * Formes d'engagement publiées. Aucun montant n'est recopié ici : la grille
+ * tarifaire (/tarifs) est la seule page qui publie les prix, pour éviter deux
+ * catalogues qui divergent. Ce bloc décrit uniquement la forme de l'engagement.
+ */
+export const SEO_BUDGET_SHAPES: SeoItem[] = [
+  {
+    title: "Diagnostic ponctuel",
+    description:
+      "Un audit se paie une fois, sans suite obligatoire. Son prix dépend du nombre d'URL, des gabarits, des accès disponibles et de la profondeur demandée ; il est fixé au devis après le cadrage.",
+  },
+  {
+    title: "Sprint à périmètre borné",
+    description:
+      "Une correction délimitée — migration, indexation, architecture, données structurées — est chiffrée au forfait sur un périmètre écrit avant intervention. Aucun travail hors périmètre n'est engagé sans accord écrit.",
+  },
+  {
+    title: "Accompagnement mensuel",
+    description:
+      "L'accompagnement organique prend la forme d'un abonnement mensuel. Aucun palier n'est publié : le volume de production, les chantiers techniques et la mesure varient trop d'un site à l'autre. Le palier retenu, son prix mensuel hors taxes, la durée et le préavis figurent au devis.",
+  },
+];
+
+export const SEO_SCOPE_INCLUDED: SeoItem[] = [
+  {
+    title: "Accès et mesure",
+    description:
+      "Lecture de la Search Console, de l'outil d'analyse d'audience et des journaux serveur lorsqu'ils sont disponibles, avec les droits strictement nécessaires.",
+  },
+  {
+    title: "Corrections livrées sur votre dépôt",
+    description:
+      "Les modifications techniques sont poussées sur votre Git, en branches relues, avec le détail de ce qui a changé.",
+  },
+  {
+    title: "Recette avant et après mise en ligne",
+    description:
+      "Contrôle du rendu, des redirections, des canonicals, du sitemap et des données structurées, puis vérification après bascule.",
+  },
+  {
+    title: "Journal des actions daté",
+    description:
+      "Chaque intervention est consignée avec sa date et son intention, pour pouvoir relier une variation observée à une cause plausible.",
+  },
+  {
+    title: "Restitution et transmission",
+    description:
+      "Les constats, priorités et procédures sont écrits pour pouvoir être repris par votre équipe ou par un autre prestataire.",
+  },
+];
+
+export const SEO_SCOPE_EXCLUDED: SeoItem[] = [
+  {
+    title: "Achat de liens et réseaux privés",
+    description:
+      "Aucun achat de lien, ferme de contenus ou réseau de sites n'entre dans le périmètre, quel que soit le budget proposé.",
+  },
+  {
+    title: "Budget publicitaire",
+    description:
+      "Les enchères et le budget média relèvent d'une autre prestation et restent sur vos propres comptes.",
+  },
+  {
+    title: "Rédaction en volume sans intention",
+    description:
+      "Un quota d'articles mensuel n'est pas vendu comme tel. Le volume découle du nombre d'intentions réellement distinctes.",
+  },
+  {
+    title: "Licences et abonnements tiers",
+    description:
+      "Outils de crawl, de suivi de positions ou de netlinking : le devis dit lesquels sont nécessaires, qui porte la licence et à quel coût.",
+  },
+  {
+    title: "Traduction et conseil juridique",
+    description:
+      "Localisation professionnelle, mentions légales et qualification réglementaire sont confiées aux professionnels compétents.",
+  },
+];
+
+export const SEO_COMMITMENTS: SeoItem[] = [
+  {
+    title: "Périmètre écrit avant de commencer",
+    description:
+      "Le devis liste les livrables, les exclusions, le calendrier de travail, les intervenants et les critères d'acceptation. Aucun dépassement n'est facturé sans accord écrit préalable.",
+  },
+  {
+    title: "Aucune position garantie",
+    description:
+      "Nous nous engageons sur des actions et des livrables vérifiables, jamais sur un classement, un volume de trafic ou une citation par une IA. Google reste seul maître de son index.",
+  },
+  {
+    title: "Droits et accès au devis",
+    description:
+      "Le devis inventorie les dépôts, comptes et accès. Les livrables spécifiques sont transférés après paiement complet selon les CGV, sous réserve des composants préexistants et licences tierces.",
+  },
+  {
+    title: "Réversibilité prévue dès le départ",
+    description:
+      "Procédures, journaux et documentation sont rédigés pour être repris sans nous. Aucun outil propriétaire Hagnéré n'est imposé pour continuer le travail.",
+  },
+];
+
+export const SEO_TECH_FAQS = [
+  {
+    question: "Travaillez-vous sur un site rendu côté client (React, Vue, SPA) ?",
+    answer:
+      "Oui. Nous vérifions d'abord ce que voit réellement le robot : rendu du HTML initial, contenu injecté après hydratation, liens accessibles sans JavaScript, codes de statut et balises servies. Selon le constat, la correction passe par du rendu serveur, du prérendu ou une simple restructuration des liens.",
+  },
+  {
+    question: "Comment décidez-vous entre canonical, noindex et redirection 301 ?",
+    answer:
+      "Par ce que la page doit devenir. Une variante à consolider reçoit une canonical ; une page qui ne doit plus être servie mais reste utile aux visiteurs reçoit un noindex ; une page remplacée par une autre reçoit une 301 vers son équivalent le plus proche. Le choix est consigné URL par URL dans le plan de migration.",
+  },
+  {
+    question: "Analysez-vous les journaux serveur ?",
+    answer:
+      "Lorsqu'ils sont disponibles et exploitables, oui. Ils permettent de voir la fréquence réelle de passage des robots, les gabarits qui consomment le budget d'exploration et les codes renvoyés. Quand ils ne sont pas accessibles, nous l'écrivons dans le diagnostic plutôt que d'extrapoler.",
+  },
+  {
+    question: "Les Core Web Vitals font-ils partie du périmètre ?",
+    answer:
+      "Nous mesurons les données de terrain lorsqu'elles existent et les données de laboratoire sinon, puis nous priorisons les correctifs qui touchent le parcours réel. Aucun score cible n'est garanti : la performance dépend aussi de l'hébergement, des scripts tiers et des contenus ajoutés après notre intervention.",
+  },
+  {
+    question: "Quelles données structurées mettez-vous en place ?",
+    answer:
+      "Celles qui correspondent à un contenu réellement présent sur la page — organisation, fil d'Ariane, article, FAQ, produit, établissement local. Le balisage n'invente jamais une information absente de la page visible, et aucun affichage enrichi n'est promis : Google décide seul de l'utiliser.",
+  },
+  {
+    question: "Comment gérez-vous les robots d'IA et les fichiers robots.txt / llms.txt ?",
+    answer:
+      "Le devis précise les agents autorisés ou bloqués, les répertoires exclus et la manière dont le sitemap et le fichier llms.txt sont générés. C'est une décision d'exposition qui vous appartient : nous documentons les conséquences de chaque option, sans promettre d'être repris par un assistant.",
+  },
+  {
+    question: "Que se passe-t-il si une mise à jour de Google fait chuter le trafic ?",
+    answer:
+      "Nous reprenons la mesure avant d'agir : périmètre des pages touchées, requêtes concernées, date exacte et évolution des impressions. Aucune contre-mesure n'est appliquée à l'aveugle, et aucune récupération n'est garantie — ni dans son ampleur, ni dans son délai.",
+  },
+] as const;
+
 export const SEO_RELATED_RESOURCES = [
   {
     href: "/guides/pourquoi-site-pas-visible-google",
     label: "Visibilité Google",
     title: "Trouver où une URL disparaît entre exploration et clics",
+  },
+  {
+    href: "/services/publicite-en-ligne",
+    label: "Acquisition payante",
+    title: "Compléter l’organique par des campagnes Google, Meta ou LinkedIn",
   },
   {
     href: "/services/audit-technique",
@@ -225,7 +372,7 @@ export const SEO_FAQS = [
   {
     question: "Travaillez-vous aussi le référencement local ?",
     answer:
-      "Oui. Nous travaillons la cohérence NAP, Google Business Profile, les avis, les citations, les pages territoriales et leur maillage. Hagnéré Code est installé au 82 impasse de Bellevue à Bassens, aux portes de Chambéry, et intervient en Savoie comme à distance partout en France.",
+      `Oui. Nous travaillons la cohérence NAP, Google Business Profile, les avis, les citations, les pages territoriales et leur maillage. Hagnéré Code est installé au ${CONTACT_ADDRESS.street} à ${CONTACT_ADDRESS.locality}, aux portes de Chambéry, et intervient en Savoie comme à distance partout en France.`,
   },
   {
     question: "Pouvez-vous accompagner une migration ou une refonte ?",

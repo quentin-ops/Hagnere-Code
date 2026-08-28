@@ -272,6 +272,15 @@ html.dark {
   text-transform: uppercase;
 }
 
+/* La règle ci-dessus (0,2,0) portait aussi l'eyebrow du pied de page partagé,
+   rendu à l'intérieur de `.services-hub` : --accent-ink vaut #4C1D95 en thème
+   clair, soit 1,81:1 sur le #0a0a0a littéral de `.sf-contact`. Le littéral
+   retenu partout ailleurs sur le site tient 7,27:1 sur ce fond, dans les deux
+   thèmes, comme le fond lui-même. */
+.services-hub .eyebrow.on-dark {
+  color: #a78bfa;
+}
+
 .services-hub .section-head {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
@@ -293,6 +302,16 @@ html.dark {
   color: var(--ink-3);
   font-size: 16px;
   line-height: 1.6;
+}
+
+.services-hub .section-head .right b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.services-hub .section-head .right a {
+  color: var(--accent-ink);
+  text-decoration: underline;
 }
 
 .services-hero {
@@ -477,7 +496,6 @@ html.dark {
 .router-lane-purple span { background: rgba(139, 92, 246, 0.20); color: #ddd6fe; }
 .router-lane-blue span { background: rgba(37, 99, 235, 0.22); color: #bfdbfe; }
 .router-lane-green span { background: rgba(5, 150, 105, 0.22); color: #bbf7d0; }
-.router-lane-amber span { background: rgba(217, 119, 6, 0.22); color: #fde68a; }
 
 .router-footer {
   justify-content: flex-start;
@@ -560,6 +578,46 @@ html.dark {
   border-bottom: 1px solid var(--line);
 }
 
+/* Catalogue rangé sous les trois familles de la nav et de l'accueil. */
+.service-families {
+  display: grid;
+  gap: 56px;
+}
+
+.service-family {
+  --family-accent: var(--accent);
+  display: grid;
+  gap: 22px;
+}
+
+.service-family-purple { --family-accent: var(--accent); }
+.service-family-blue { --family-accent: var(--blue); }
+.service-family-green { --family-accent: var(--green); }
+
+.service-family-head {
+  display: grid;
+  gap: 8px;
+  max-width: 720px;
+  padding-left: 16px;
+  border-left: 3px solid var(--family-accent);
+}
+
+.service-family-kicker {
+  color: var(--family-accent);
+  font-family: var(--font-geist-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.service-family-head p {
+  margin: 0;
+  color: var(--ink-3);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
 .service-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -626,9 +684,12 @@ html.dark {
   text-transform: uppercase;
 }
 
-.service-card h3 {
+/* Le titre de carte est passé en h4 : les cartes sont désormais rangées sous le
+   h3 de leur famille. Le style visuel, lui, ne change pas. */
+.service-card h4 {
   margin-bottom: 12px;
   font-size: 24px;
+  line-height: 1.18;
 }
 
 .service-card-title {
@@ -678,6 +739,11 @@ html.dark {
   color: var(--mute);
   font-family: var(--font-geist-mono);
   font-size: 11px;
+  line-height: 1.45;
+}
+
+.service-card-meta span > svg {
+  flex-shrink: 0;
 }
 
 .service-card-cta {
@@ -961,6 +1027,10 @@ html.dark {
     grid-template-columns: 1fr;
   }
 
+  .service-families {
+    gap: 40px;
+  }
+
   .path-card {
     min-height: 230px;
   }
@@ -1000,8 +1070,9 @@ html.dark {
   .services-hub h2 { font-size: 24px; line-height: 1.1; }
   .services-hub p, .services-hero p { font-size: 14.5px; }
   .services-hero { padding-top: 48px; padding-bottom: 32px; }
-  .service-card-content h3, .path-card h3 { font-size: 17px; }
-  .services-hub h1, .services-hub h2, .services-hub h3 {
+  .service-card h4, .path-card h3 { font-size: 17px; }
+  .service-family-head { padding-left: 12px; }
+  .services-hub h1, .services-hub h2, .services-hub h3, .services-hub h4 {
     overflow-wrap: anywhere; word-break: break-word;
   }
 }

@@ -42,16 +42,17 @@ export const deriskHtml = `
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
           « Je vais dépenser 50 k€ pour un truc sans PMF. »
         </div>
-        <h3>Discovery Sprint 2 jours · 1 500 € · déductibles.</h3>
+        <h3>Discovery Sprint 2 jours · 1 500 € HT.</h3>
         <p>
           Avant de signer un gros forfait, on vous propose un <b>Discovery Sprint
-          de 2 jours à 1 500 €</b> : on challenge le besoin, on défriche les écrans clés,
-          on sort un prototype Figma cliquable. Si on part ensemble, c'est <b>déduit du devis</b>.
+          de 2 jours à 1 500 € HT</b> : on challenge le besoin, on défriche les écrans clés,
+          on sort un prototype Figma cliquable. Si la phase 2 est lancée, <b>le devis précise la déduction applicable</b> :
+          aucune remise n'est présumée hors du devis.
         </p>
         <div class="sa-derisk-proof">
-          <span>✓ 2 jours · 1 500 €</span>
+          <span>✓ 2 jours · 1 500 € HT</span>
           <span>✓ Livrable cliquable</span>
-          <span>✓ Déductible</span>
+          <span>✓ Déduit si phase 2 · conditions au devis</span>
         </div>
       </div>
 

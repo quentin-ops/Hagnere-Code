@@ -357,7 +357,6 @@ export default function Page() {
               sizes="(max-width: 768px) calc(100vw - 32px), 760px"
               alt="Schéma du test de relève d’un logiciel métier : observer, construire, déployer, restaurer et organiser la sortie avant le procès-verbal de reprise"
               className="h-auto w-full"
-              priority
             />
             <figcaption className="border-t border-zinc-200 px-4 py-3 text-sm leading-relaxed text-zinc-600 dark:border-zinc-800 dark:text-zinc-300 sm:px-5">
               Chaque capacité exige une preuve datée et reproductible. Une

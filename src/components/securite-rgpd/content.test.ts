@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
 import { composedBodyHtml } from "./composed-body";
 import { riskRadarHtml } from "./sections/risk-radar";
+
+const bodySource = readFileSync(new URL("./body.ts", import.meta.url), "utf8");
 
 describe("security and GDPR service credibility", () => {
   it("does not claim an unverified DPO designation or certification", () => {
@@ -32,7 +35,11 @@ describe("security and GDPR service credibility", () => {
     );
   });
 
-  it("keeps the optional sanction radar sourced and free of invented client gains", () => {
+  it("keeps the sanction radar rendered, sourced and free of invented client gains", () => {
+    // Le radar doit être réellement publié : un invariant posé sur une section
+    // morte donnait une fausse impression de couverture sur le sujet le plus
+    // sensible de la page.
+    expect(composedBodyHtml).toContain(riskRadarHtml.trim());
     expect(riskRadarHtml).toContain("https://www.cnil.fr/fr/bilan-sanctions-2025");
     expect(riskRadarHtml).toContain("Amazon France Logistique");
     expect(riskRadarHtml).not.toContain("ANONYMISÉ · 2025");
@@ -52,5 +59,27 @@ describe("security and GDPR service credibility", () => {
     expect(composedBodyHtml).not.toMatch(/que nous exploitons nous-mêmes tous les jours|cloisonnement des accès aux fiches|traçabilité des consultations|les sauvegardes et leur restauration|presque aucune agence/i);
     expect(composedBodyHtml).toContain("Ils ne démontrent ni conformité RGPD, ni niveau de sécurité");
     expect(composedBodyHtml).toContain("Une page publique ne prouve");
+  });
+  it("conditionne l'accès aux livrables au paiement complet comme les autres pages", () => {
+    expect(composedBodyHtml).not.toMatch(/tous vos livrables, tout de suite/i);
+    expect(composedBodyHtml).toMatch(
+      /livrables spécifiques[^<.]{0,160}paiement complet[^<.]{0,120}(?:CGV|licences tierces)/i,
+    );
+  });
+
+  it("situe le cadrage payant par rapport au Discovery Sprint de la grille tarifaire", () => {
+    expect(composedBodyHtml).toMatch(/porte d'entrée payante propre à ce service/i);
+    expect(composedBodyHtml).toContain('href="/tarifs"');
+  });
+
+  it("ne conserve aucun footer hérité dans le body", () => {
+    expect(bodySource).not.toContain("<footer");
+    expect(bodySource).not.toContain("<!-- FOOTER -->");
+  });
+
+  it("publie un maillage service→service dans le corps de la page", () => {
+    expect(composedBodyHtml).toContain('href="/services/audit-technique"');
+    expect(composedBodyHtml).toContain('href="/services/maintenance-evolution"');
+    expect(composedBodyHtml).toContain('href="/services/saas-applications-metier"');
   });
 });

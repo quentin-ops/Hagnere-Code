@@ -180,6 +180,12 @@ export const pricingHtml = `
     <p style="text-align:center;margin-top:44px;color:var(--mute);font-size:14px">
       <b style="color:var(--ink)">Le devis précise</b> : confidentialité, accès, équipe, outils, livrables, critères d'acceptation, délais et options. Le transfert des livrables spécifiques intervient selon les CGV après paiement complet.
     </p>
+    <p style="text-align:center;margin-top:14px;color:var(--mute);font-size:14px">
+      Le format Express est la <b style="color:var(--ink)">porte d'entrée payante propre à ce service</b>. Il ne se cumule pas
+      avec le Discovery Sprint d'un projet de développement publié sur la <a href="/tarifs">grille tarifaire</a>&nbsp;:
+      un seul cadrage payant est engagé, celui qui correspond à votre demande. Une éventuelle déduction sur la suite
+      n'existe que si elle est écrite au devis.
+    </p>
   </div>
 </section>
 `;

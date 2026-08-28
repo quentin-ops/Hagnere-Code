@@ -8,7 +8,7 @@ import {
   GuideInlineCTA,
 } from "@/components/guides/guide-content-blocks";
 import { GuidesShell } from "@/components/guides/GuidesShell";
-import { OG_BASE, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/seo";
+import { OG_BASE, SITE_URL } from "@/lib/seo";
 import {
   formatLocalPageDate,
   getLocalPage,
@@ -16,8 +16,22 @@ import {
   localPageUrl,
 } from "@/lib/local-pages";
 import { PUBLISHED_GUIDES } from "@/lib/guides";
+import {
+  ORGANIZATION_ID,
+  PUBLIC_ORGANIZATION_JSON_LD,
+} from "@/lib/organization-structured-data";
 
 const page = getLocalPage("agence", "savoie");
+
+// Image sociale dédiée : les trois pages locales partageaient /og-image.png
+// avec l'accueil et 25 autres URL — un partage LinkedIn de cette page affichait
+// exactement la même vignette que la home.
+const LOCAL_OG_IMAGE = {
+  url: `${SITE_URL}/agence/savoie/opengraph-image`,
+  width: 1200,
+  height: 630,
+  alt: "Hagnéré Code en Savoie — six territoires, six économies",
+};
 
 export const metadata: Metadata = {
   title: page.title,
@@ -32,9 +46,19 @@ export const metadata: Metadata = {
     title: page.title,
     description: page.metaDescription,
     url: localPagePath(page),
-    images: [DEFAULT_OG_IMAGE],
+    images: [LOCAL_OG_IMAGE],
   },
+  twitter: { images: [LOCAL_OG_IMAGE.url] },
 };
+
+// L'entité #organization est déclarée sur la page, comme sur /agence : sans
+// elle, le `provider` du Service ci-dessous est un @id pendant que Google ne
+// résout pas (il ne résout un @id que dans le graphe de la page courante), et
+// la page n'émet alors aucun signal d'entreprise — ni nom, ni adresse, ni
+// téléphone. L'@id restant unique, la règle « un seul ProfessionalService sur
+// le domaine » de docs/plan-seo-local-savoie.md §10.1 est respectée : c'est la
+// même entité de Bassens, jamais une adresse ou un téléphone par ville.
+const organizationJsonLd = JSON.stringify(PUBLIC_ORGANIZATION_JSON_LD);
 
 const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
@@ -43,7 +67,7 @@ const serviceJsonLd = JSON.stringify({
   url: localPageUrl(page),
   serviceType:
     "Création de site internet, e-commerce, applications métier, référencement naturel et campagnes Google Ads",
-  provider: { "@id": `${SITE_URL}/#organization` },
+  provider: { "@id": ORGANIZATION_ID },
   areaServed: { "@type": "AdministrativeArea", name: "Savoie" },
 });
 
@@ -76,7 +100,7 @@ const faqItems = [
   {
     question: "Quel budget prévoir pour un site d'entreprise en Savoie ?",
     answer:
-      "Nos forfaits démarrent à 6 900 € pour un site vitrine sur mesure, 14 900 € pour un site avec blog et référencement travaillé, 22 000 € et plus pour du multilingue ou des fonctionnalités avancées. Une boutique en ligne sur mesure va de 15 000 à 120 000 €. Les abonnements et offres d'entrée de gamme peuvent répondre à d'autres besoins : avant de comparer, vérifiez dans chaque contrat la propriété des livrables, l'accès au code et aux comptes, les possibilités d'export, les coûts récurrents et les conditions de sortie. Nos guides sur les prix détaillent ce que recouvre chaque niveau de budget.",
+      "Nos forfaits démarrent à 6 900 € HT pour un site vitrine sur mesure, 14 900 € HT pour un site avec blog et référencement travaillé, 22 000 € HT et plus pour du multilingue ou des fonctionnalités avancées. Une boutique en ligne sur mesure va de 15 000 à 120 000 € HT. Tous nos prix sont indiqués hors taxes, TVA 20 % en sus, pour une clientèle professionnelle : ces repères sont publics et indicatifs, et le devis signé après cadrage fixe le prix ferme. Les abonnements et offres d'entrée de gamme peuvent répondre à d'autres besoins : avant de comparer, vérifiez dans chaque contrat la propriété des livrables, l'accès au code et aux comptes, les possibilités d'export, les coûts récurrents et les conditions de sortie. Nos guides sur les prix détaillent ce que recouvre chaque niveau de budget.",
   },
   {
     question: "Pourquoi choisir une agence savoyarde plutôt qu'une agence parisienne ou lyonnaise ?",
@@ -94,6 +118,7 @@ const faqItems = [
 export default function Page() {
   return (
     <GuidesShell>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: organizationJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
       <GuideLayout
@@ -117,9 +142,12 @@ export default function Page() {
         ]}
         relatedLinks={[
           { href: "/agence", label: "Notre agence" },
+          { href: "/agence/savoie/chambery", label: "Agence web à Chambéry" },
           { href: "/services/sites-vitrines", label: "Création de sites vitrines" },
           { href: "/services/saas-applications-metier", label: "SaaS et applications métier" },
+          { href: "/services/ecommerce", label: "E-commerce sur mesure" },
           { href: "/services/referencement-google", label: "Référencement naturel" },
+          { href: "/services/publicite-en-ligne", label: "Publicité en ligne" },
           { href: "/guides/automatiser-processus-metier", label: "Quel processus automatiser en premier ?" },
           { href: "/tarifs", label: "Nos tarifs" },
         ]}
@@ -350,7 +378,9 @@ export default function Page() {
         <h2 id="notre-place">7. Où nous nous situons</h2>
         <p>
           Nous sommes installés à Bassens, aux portes de Chambéry, au 82 impasse de Bellevue, et nous
-          développons en React et Next.js. Concrètement, cela nous place sur
+          développons en{" "}
+          <Link href="/agence-react">React</Link> et{" "}
+          <Link href="/agence-next-js">Next.js</Link>. Concrètement, cela nous place sur
           les projets où la performance et le sur-mesure comptent :
           sites d&apos;entreprises qui doivent convertir, boutiques en ligne,
           applications métier, outils internes. Nous couvrons également le
@@ -364,7 +394,14 @@ export default function Page() {
           vous le dirons au premier rendez-vous plutôt que de vous vendre un
           forfait surdimensionné. Le détail de notre positionnement, et la
           façon de nous auditer nous-mêmes, sont sur notre page{" "}
-          <Link href="/agence">agence</Link>.
+          <Link href="/agence">agence</Link>. Le bassin chambérien, qui
+          concentre l&apos;essentiel de la demande tertiaire du département,
+          fait l&apos;objet d&apos;une page dédiée :{" "}
+          <Link href="/agence/savoie/chambery">
+            notre agence web à Chambéry
+          </Link>{" "}
+          y détaille l&apos;économie de la ville, ses zones d&apos;activité et
+          ses principaux employeurs.
         </p>
 
         <h2 id="guides">8. Nos guides pour préparer votre projet</h2>
