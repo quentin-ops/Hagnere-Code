@@ -1,7 +1,9 @@
 import {
   CONTACT_ADDRESS,
   CONTACT_EMAIL,
+  CONTACT_GEO,
   CONTACT_PHONE_E164,
+  OPENING_HOURS,
 } from "@/lib/contact-details";
 import { SITE_URL } from "@/lib/seo";
 import { SERVICE_LINKS } from "@/lib/services";
@@ -91,6 +93,25 @@ export const PUBLIC_ORGANIZATION_ENTITY = {
     postalCode: CONTACT_ADDRESS.postalCode,
     addressCountry: CONTACT_ADDRESS.country,
   },
+  // Coordonnées géocodées sur la Base Adresse Nationale, pas saisies à la main.
+  // Google s'en sert pour rattacher l'entité à une position réelle : c'est un
+  // signal local direct, et il doit désigner le même point que la fiche
+  // d'établissement.
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: CONTACT_GEO.latitude,
+    longitude: CONTACT_GEO.longitude,
+  },
+  // Horaires dérivés de la même constante que les blocs affichés : le balisage
+  // ne peut pas annoncer une plage que la page contredit.
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: OPENING_HOURS.days,
+      opens: OPENING_HOURS.opens,
+      closes: OPENING_HOURS.closes,
+    },
+  ],
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",

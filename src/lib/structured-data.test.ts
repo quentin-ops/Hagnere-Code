@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { OPENING_HOURS } from "./contact-details";
 import renderCaseStudyOpenGraphImage from "@/app/realisations/[slug]/opengraph-image";
 import { CASES } from "@/components/realisations/cases";
 import {
@@ -74,11 +75,13 @@ const ALLOWED_SCHEMA_TYPES = new Set([
   "DigitalDocument",
   "DownloadAction",
   "EntryPoint",
+  "GeoCoordinates",
   "ImageObject",
   "ItemList",
   "ListItem",
   "Offer",
   "OfferCatalog",
+  "OpeningHoursSpecification",
   "Organization",
   "Person",
   "PostalAddress",
@@ -285,10 +288,16 @@ describe("public structured data safeguards", () => {
     expect(organization).toContain("82 impasse de Bellevue");
     expect(organization).toContain("73000");
     expect(organization).toContain("Bassens");
-    // Aucune plage horaire fictive : le studio reçoit sur rendez-vous et
-    // aucune amplitude n'est publiée tant qu'elle n'est pas réellement tenue.
-    expect(organization).not.toMatch(/opens["']?\s*:/);
-    expect(organization).not.toMatch(/closes["']?\s*:/);
+    // Les horaires ont longtemps été interdits ici : aucune amplitude ne
+    // devait être publiée tant qu'elle n'était pas réellement tenue. Le
+    // dirigeant a fourni la plage réelle le 28/08/2026 (lun–ven, 8 h – 18 h),
+    // qui est désormais publiée. L'invariant n'est pas levé mais déplacé : la
+    // plage doit venir de la constante partagée et rester identique à celle
+    // qu'affichent /contact et /rendez-vous — cohérence vérifiée par
+    // src/lib/local-seo-signals.test.ts. Ce qui reste interdit, c'est une
+    // amplitude écrite en dur ici, hors de cette source unique.
+    expect(organization).toContain(`"opens":"${OPENING_HOURS.opens}"`);
+    expect(organization).toContain(`"closes":"${OPENING_HOURS.closes}"`);
     expect(organization).not.toMatch(/993\s?672\s?856\s?00016/);
     expect(sources).not.toMatch(/993\s?672\s?856\s?00016/);
     expect(organization).not.toContain("https://lmnp.ai");

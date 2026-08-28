@@ -59,6 +59,39 @@ export const CONTACT_ADDRESS = {
 /** Adresse postale sur une ligne, pour les blocs de contact. */
 export const CONTACT_ADDRESS_LINE = `${CONTACT_ADDRESS.street} · ${CONTACT_ADDRESS.postalCode} ${CONTACT_ADDRESS.locality}`;
 
+/**
+ * Coordonnées du siège, géocodées sur la Base Adresse Nationale
+ * (api-adresse.data.gouv.fr) le 28/08/2026 : correspondance exacte au numéro
+ * de rue (`type: housenumber`, score 0,955), commune INSEE 73031.
+ *
+ * Elles alimentent la propriété `geo` de l'entité publique. Ne pas les
+ * retoucher à la main : regéocoder si l'adresse change.
+ */
+export const CONTACT_GEO = {
+  latitude: 45.583513,
+  longitude: 5.929597,
+} as const;
+
+/**
+ * Horaires d'ouverture publiés, source unique.
+ *
+ * Le balisage `openingHoursSpecification` et les blocs visibles en dérivent :
+ * un écart entre les deux est exactement ce que Google sanctionne en local,
+ * et ce que la fiche d'établissement doit également refléter.
+ */
+export const OPENING_HOURS = {
+  /** Jours au format schema.org, pour `dayOfWeek`. */
+  days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+  /** Format 24 h `HH:MM`, attendu par schema.org. */
+  opens: "08:00",
+  closes: "18:00",
+} as const;
+
+/** Formulation affichée, dérivée de OPENING_HOURS pour ne pas pouvoir diverger. */
+export const OPENING_HOURS_DISPLAY = `lun–ven · ${Number(
+  OPENING_HOURS.opens.slice(0, 2),
+)} h – ${Number(OPENING_HOURS.closes.slice(0, 2))} h`;
+
 /** URL wa.me correspondant à la ligne publiée. */
 const DERIVED_WHATSAPP_URL = `https://wa.me/${CONTACT_PHONE_E164.replace(/\D/g, "")}`;
 

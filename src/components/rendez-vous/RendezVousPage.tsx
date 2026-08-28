@@ -1,3 +1,4 @@
+import { OPENING_HOURS_DISPLAY } from "@/lib/contact-details";
 import Link from "next/link";
 import { MainNav } from "@/components/design-shared/MainNav";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
@@ -88,7 +89,7 @@ export function RendezVousPage() {
                 </ul>
                 <div className="rdv-side-foot">
                   <span className="rdv-side-dot"></span>
-                  Disponible lun–ven · 9 h – 19 h
+                  Disponible {OPENING_HOURS_DISPLAY}
                 </div>
               </div>
             </div>

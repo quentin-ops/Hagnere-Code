@@ -5,6 +5,7 @@ import {
   CONTACT_EMAIL,
   CONTACT_PHONE_DISPLAY,
   CONTACT_PHONE_E164,
+  OPENING_HOURS_DISPLAY,
 } from "@/lib/contact-details";
 
 export const bodyHtml = `
@@ -81,7 +82,7 @@ export const bodyHtml = `
         <div class="c-dir-foot">
           <div class="c-dir-avail">
             <span class="c-dir-dot"></span>
-            Disponible lun–ven · 9 h – 19 h
+            Disponible ${OPENING_HOURS_DISPLAY}
           </div>
         </div>
       </div>
@@ -144,7 +145,7 @@ export const bodyHtml = `
       <div class="c-local-aside">
         <div class="c-local-row"><span>Réponse visée</span><b>Prochain jour ouvré</b></div>
         <div class="c-local-row"><span>Premier échange</span><b>30 min gratuites</b></div>
-        <div class="c-local-row"><span>Horaires</span><b>Lun-ven · 9 h-19 h</b></div>
+        <div class="c-local-row"><span>Horaires</span><b>${OPENING_HOURS_DISPLAY}</b></div>
         <div class="c-local-row"><span>Téléphone</span><a href="tel:${CONTACT_PHONE_E164}">${CONTACT_PHONE_DISPLAY}</a></div>
       </div>
     </div>
