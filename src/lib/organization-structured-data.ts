@@ -122,13 +122,30 @@ export const PUBLIC_ORGANIZATION_ENTITY = {
   },
   email: CONTACT_EMAIL,
   telephone: CONTACT_PHONE_E164,
+  // Miroir des zones desservies déclarées sur la fiche d'établissement, à
+  // laquelle Google applique sa limite d'environ deux heures de trajet. Les
+  // villes et départements alimentent la cohérence locale ; « France » reste
+  // déclaré parce que les missions se mènent réellement à distance sur tout le
+  // territoire — c'est le référencement naturel et les campagnes, pas la fiche,
+  // qui portent cette portée-là.
   areaServed: [
+    { "@type": "City", name: "Chambéry" },
+    { "@type": "City", name: "Aix-les-Bains" },
+    { "@type": "City", name: "Albertville" },
+    { "@type": "City", name: "Annecy" },
+    { "@type": "City", name: "Grenoble" },
+    { "@type": "City", name: "Voiron" },
+    { "@type": "City", name: "Lyon" },
+    { "@type": "City", name: "Bourg-en-Bresse" },
+    { "@type": "City", name: "Valence" },
+    { "@type": "City", name: "Genève" },
     { "@type": "AdministrativeArea", name: "Savoie" },
     { "@type": "AdministrativeArea", name: "Haute-Savoie" },
     { "@type": "AdministrativeArea", name: "Isère" },
     { "@type": "AdministrativeArea", name: "Ain" },
     { "@type": "AdministrativeArea", name: "Auvergne-Rhône-Alpes" },
     { "@type": "Country", name: "France" },
+    { "@type": "Country", name: "Suisse" },
   ],
   knowsAbout: [
     "Création de site internet",
