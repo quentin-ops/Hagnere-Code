@@ -173,6 +173,14 @@
   align-items: baseline;
   font-size: 13.5px;
 }
+/* WCAG 2.5.8 : l'e-mail et le téléphone sont ici des cibles autonomes dans une
+   liste de canaux, pas des liens en ligne dans une phrase — l'exception ne
+   s'applique pas. Ils ne mesuraient que 20px de haut. */
+.sf-direct-row a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+}
 .sf-direct-k {
   font-family: var(--font-geist-mono);
   font-size: 10.5px;
