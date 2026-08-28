@@ -346,15 +346,23 @@ export default function Page() {
         }}
         relatedGuides={[
           {
-            label: "Valider une idée SaaS avant de développer",
-            href: "/guides/valider-idee-saas-avant-developper",
+            label: "MVP SaaS : quoi inclure avant un premier client ?",
+            href: "/guides/mvp-saas-quoi-inclure",
           },
           {
-            label: "Droits d’accès d’une application métier",
-            href: "/guides/droits-acces-application-metier",
+            label: "Plan de recette d’une application métier",
+            href: "/guides/plan-recette-application-metier",
+          },
+          {
+            label: "Sécurité d’une application métier avant sa mise en service",
+            href: "/guides/securite-application-metier",
+          },
+          {
+            label: "Avez-vous vraiment besoin d’un logiciel métier ?",
+            href: "/guides/signes-besoin-logiciel-metier",
           },
         ]}
-        relatedGuidesLabel="2 prolongements utiles"
+        relatedGuidesLabel="4 prolongements utiles"
       >
         <GuidePremiumSection
           id="reponse-courte"
@@ -394,7 +402,7 @@ export default function Page() {
             <p>
               Dans ce cas, le cahier des charges transforme encore une hypothèse
               de marché en commande de logiciel. Revenez au guide pour{" "}
-              <Link href="/guides/valider-idee-saas-avant-developper">
+              <Link href="/guides/mvp-saas-quoi-inclure">
                 valider une idée SaaS avant de développer
               </Link>
               , puis reprenez ici lorsque le premier résultat vendu peut être
@@ -720,7 +728,7 @@ export default function Page() {
           <p>
             Si votre matrice devient volumineuse, conservez ici les règles
             critiques et renvoyez vers une annexe versionnée. Le guide sur les{" "}
-            <Link href="/guides/droits-acces-application-metier">
+            <Link href="/guides/securite-application-metier">
               droits d’accès d’une application métier
             </Link>{" "}
             aide à construire cette matrice sans score compensatoire.
@@ -1419,7 +1427,7 @@ export default function Page() {
 
           <p>
             Le même document devient l’entrée du calendrier. Pour comprendre{" "}
-            <Link href="/guides/combien-de-temps-developper-saas">
+            <Link href="/services/saas-applications-metier">
               combien de temps il faut pour développer un SaaS
             </Link>
             , reliez alors les tâches qui s’attendent, les capacités réellement
@@ -1439,7 +1447,7 @@ export default function Page() {
             </Link>
             . Et si le produit remplace un outil existant, la clause de bascule
             se prépare avec la{" "}
-            <Link href="/guides/migrer-logiciel-metier-sans-interruption">
+            <Link href="/services/outils-internes-sur-mesure">
               migration sans interruption de service
             </Link>
             .
@@ -1448,7 +1456,7 @@ export default function Page() {
           <p>
             Un cahier des charges ne vaut enfin que par la façon dont les
             réponses sont comparées : le guide{" "}
-            <Link href="/guides/choisir-prestataire-application-metier">
+            <Link href="/guides/cahier-des-charges-saas">
               choisir un prestataire sur preuves
             </Link>{" "}
             décrit les pièces à exiger pour que deux devis portent réellement

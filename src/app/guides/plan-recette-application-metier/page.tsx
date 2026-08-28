@@ -309,16 +309,16 @@ export default function Page() {
         }}
         relatedGuides={[
           {
-            label: "Reprendre un logiciel métier existant",
-            href: "/guides/reprendre-logiciel-metier-existant",
+            label: "Comment rédiger un cahier des charges SaaS ?",
+            href: "/guides/cahier-des-charges-saas",
           },
           {
-            label: "Migrer un logiciel métier sans interruption",
-            href: "/guides/migrer-logiciel-metier-sans-interruption",
+            label: "MVP SaaS : quoi inclure avant un premier client ?",
+            href: "/guides/mvp-saas-quoi-inclure",
           },
           {
-            label: "Choisir un prestataire d’application métier",
-            href: "/guides/choisir-prestataire-application-metier",
+            label: "Sécurité d’une application métier avant sa mise en service",
+            href: "/guides/securite-application-metier",
           },
         ]}
         relatedGuidesLabel="À lire avant ou après la recette"
@@ -1059,13 +1059,13 @@ export default function Page() {
 
           <p>
             Le{" "}
-            <Link href="/guides/reprendre-logiciel-metier-existant">
+            <Link href="/services/outils-internes-sur-mesure">
               test de relève du logiciel métier
             </Link>{" "}
             intervient en amont lorsqu’une nouvelle équipe doit comprendre,
             déployer et restaurer l’existant. Une recette qui prépare un
             changement de système doit aussi rester distincte de la{" "}
-            <Link href="/guides/migrer-logiciel-metier-sans-interruption">
+            <Link href="/services/outils-internes-sur-mesure">
               bascule et son retour arrière
             </Link>
             . Pour faire cadrer le périmètre, les rôles et les preuves de votre
@@ -1098,7 +1098,7 @@ export default function Page() {
           <p>
             Deux familles de tests sont régulièrement oubliées et méritent leur
             propre dossier : la{" "}
-            <Link href="/guides/droits-acces-application-metier">
+            <Link href="/guides/securite-application-metier">
               vérification des droits d’accès
             </Link>
             , qui contrôle ce que chaque rôle ne doit pas pouvoir faire, et les{" "}
@@ -1107,12 +1107,12 @@ export default function Page() {
             </Link>
             , dont la restauration et la journalisation. Le calendrier de
             recette, enfin, s’estime avec{" "}
-            <Link href="/guides/combien-de-temps-developper-saas">
+            <Link href="/services/saas-applications-metier">
               combien de temps il faut pour développer un SaaS
             </Link>{" "}
             — et le prestataire s’évalue sur ses preuves d’acceptation passées,
             comme l’explique{" "}
-            <Link href="/guides/choisir-prestataire-application-metier">
+            <Link href="/guides/cahier-des-charges-saas">
               le guide du choix sur preuves
             </Link>
             .

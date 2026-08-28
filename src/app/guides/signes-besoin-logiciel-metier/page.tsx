@@ -421,15 +421,19 @@ export default function Page() {
             href: "/guides/automatiser-processus-metier",
           },
           {
-            label: "Calculer le ROI d’une application métier",
-            href: "/guides/calculer-roi-application-metier",
+            label: "Power Apps ou application sur mesure : comment choisir ?",
+            href: "/guides/power-apps-ou-application-sur-mesure",
           },
           {
-            label: "Remplacer Microsoft Access sans perdre le métier",
-            href: "/guides/remplacer-microsoft-access-application-web",
+            label: "Rédiger le cahier des charges de votre logiciel",
+            href: "/guides/cahier-des-charges-saas",
+          },
+          {
+            label: "MVP : quoi inclure dans une première version ?",
+            href: "/guides/mvp-saas-quoi-inclure",
           },
         ]}
-        relatedGuidesLabel="3 étapes suivantes possibles"
+        relatedGuidesLabel="4 étapes suivantes possibles"
       >
         <GuidePremiumSection
           id="reponse"
@@ -1060,7 +1064,7 @@ export default function Page() {
           <p>
             Pour construire ensuite des scénarios de trésorerie et de capacité
             sans compter deux fois le temps, utilisez le guide{" "}
-            <Link href="/guides/calculer-roi-application-metier">
+            <Link href="/services/outils-internes-sur-mesure">
               Calculer le ROI d’une application métier
             </Link>
             . Si la réponse retenue est une connexion limitée, le guide{" "}
@@ -1113,7 +1117,7 @@ export default function Page() {
               quel processus métier automatiser en premier
             </Link>
             . Si vous devez défendre un budget, le{" "}
-            <Link href="/guides/calculer-roi-application-metier">
+            <Link href="/services/outils-internes-sur-mesure">
               calcul du retour sur investissement
             </Link>{" "}
             sépare le gain de trésorerie du gain de capacité, sans les
@@ -1123,7 +1127,7 @@ export default function Page() {
           <p>
             Si un outil existe déjà et atteint ses limites, la comparaison utile
             dépend de ce qui est en place :{" "}
-            <Link href="/guides/airtable-notion-ou-application-metier">
+            <Link href="/guides/power-apps-ou-application-sur-mesure">
               Airtable ou Notion face à une application métier
             </Link>
             ,{" "}
@@ -1131,7 +1135,7 @@ export default function Page() {
               Power Apps face à une application sur mesure
             </Link>{" "}
             en environnement Microsoft, ou le remplacement d’une base{" "}
-            <Link href="/guides/remplacer-microsoft-access-application-web">
+            <Link href="/services/outils-internes-sur-mesure">
               Microsoft Access par une application web
             </Link>
             . Si la décision est prise, le{" "}
@@ -1139,7 +1143,7 @@ export default function Page() {
               cahier des charges
             </Link>{" "}
             fige ce qui doit être construit, et le guide sur{" "}
-            <Link href="/guides/choisir-prestataire-application-metier">
+            <Link href="/guides/cahier-des-charges-saas">
               le choix d’un prestataire sur preuves
             </Link>{" "}
             évite de confier ce travail sur une simple impression.

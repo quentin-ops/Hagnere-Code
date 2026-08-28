@@ -77,11 +77,29 @@ export function GoogleMeasurement() {
           widget?: string;
         } | null>
       ).detail;
-      if (detail?.name !== CALENDLY_EVENTS.bookingConfirmed) return;
-      trackFunnelEvent("pf:calendly_booking_confirmed", {
-        widget: detail.widget,
-        page: detail.page,
-      });
+      // Les trois étapes du canal de réservation, et non la seule
+      // confirmation : sans le clic sortant ni l'entrée dans le widget, on
+      // observe un numérateur sans savoir où les gens décrochent.
+      //
+      // Chaque nom est passé en littéral, et non via une table de
+      // correspondance : `funnel-analytics-emitters.test.ts` vérifie qu'un nom
+      // déclaré dans `FUNNEL_EVENT_NAMES` est réellement émis quelque part, et
+      // ne sait lire que les arguments littéraux d'un appel. Une table rendrait
+      // ces trois événements invisibles à cette garde.
+      const props = { widget: detail?.widget, page: detail?.page };
+      switch (detail?.name) {
+        case CALENDLY_EVENTS.outboundClick:
+          trackFunnelEvent("pf:calendly_outbound_click", props);
+          return;
+        case CALENDLY_EVENTS.bookingStarted:
+          trackFunnelEvent("pf:calendly_booking_started", props);
+          return;
+        case CALENDLY_EVENTS.bookingConfirmed:
+          trackFunnelEvent("pf:calendly_booking_confirmed", props);
+          return;
+        default:
+          return;
+      }
     };
     window.addEventListener(CALENDLY_TRACKING_EVENT, onCalendly);
     return () => window.removeEventListener(CALENDLY_TRACKING_EVENT, onCalendly);

@@ -22,62 +22,6 @@ const guidesHubSource = fs.readFileSync(
   path.join(process.cwd(), "src/components/guides/GuidesHubPage.tsx"),
   "utf8",
 );
-const validationGuideSource = fs.readFileSync(
-  path.join(
-    process.cwd(),
-    "src/app/guides/valider-idee-saas-avant-developper/page.tsx",
-  ),
-  "utf8",
-);
-const powerAppsGuideSource = fs.readFileSync(
-  path.join(
-    process.cwd(),
-    "src/app/guides/power-apps-ou-application-sur-mesure/page.tsx",
-  ),
-  "utf8",
-);
-const repriseGuideSource = fs.readFileSync(
-  path.join(
-    process.cwd(),
-    "src/app/guides/reprendre-logiciel-metier-existant/page.tsx",
-  ),
-  "utf8",
-);
-const migrationGuideSource = fs.readFileSync(
-  path.join(
-    process.cwd(),
-    "src/app/guides/migrer-logiciel-metier-sans-interruption/page.tsx",
-  ),
-  "utf8",
-);
-const acceptancePlanGuideSource = fs.readFileSync(
-  path.join(
-    process.cwd(),
-    "src/app/guides/plan-recette-application-metier/page.tsx",
-  ),
-  "utf8",
-);
-const providerSelectionGuideSource = fs.readFileSync(
-  path.join(
-    process.cwd(),
-    "src/app/guides/choisir-prestataire-application-metier/page.tsx",
-  ),
-  "utf8",
-);
-const securityGuideSource = fs.readFileSync(
-  path.join(
-    process.cwd(),
-    "src/app/guides/securite-application-metier/page.tsx",
-  ),
-  "utf8",
-);
-const accessRightsGuideSource = fs.readFileSync(
-  path.join(
-    process.cwd(),
-    "src/app/guides/droits-acces-application-metier/page.tsx",
-  ),
-  "utf8",
-);
 const saasSpecificationGuideSource = fs.readFileSync(
   path.join(process.cwd(), "src/app/guides/cahier-des-charges-saas/page.tsx"),
   "utf8",
@@ -123,10 +67,7 @@ const GUIDES_WITHOUT_RELATED_BLOCK: Record<string, string> = {
   "pourquoi-site-pas-visible-google":
     "relatedGuides={[]} : seul tableau explicitement vide du corpus, en attente du silo SEO frère",
   "automatiser-processus-metier": "prop absente de la page",
-  "calculer-roi-application-metier": "prop absente de la page",
   "prix-gestion-google-ads": "prop absente de la page",
-  "reprendre-logiciel-metier-existant": "prop absente de la page",
-  "valider-idee-saas-avant-developper": "prop absente de la page",
 };
 
 afterEach(() => {
@@ -137,21 +78,12 @@ describe("guide registry after the editorial reset", () => {
   it("registers rebuilt guides but publishes only approved guides", () => {
     expect(GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
-      "calculer-roi-application-metier",
       "signes-besoin-logiciel-metier",
-      "remplacer-microsoft-access-application-web",
-      "valider-idee-saas-avant-developper",
       "prix-gestion-google-ads",
       "power-apps-ou-application-sur-mesure",
-      "airtable-notion-ou-application-metier",
-      "reprendre-logiciel-metier-existant",
-      "migrer-logiciel-metier-sans-interruption",
       "plan-recette-application-metier",
-      "choisir-prestataire-application-metier",
       "securite-application-metier",
-      "droits-acces-application-metier",
       "cahier-des-charges-saas",
-      "combien-de-temps-developper-saas",
       "mvp-saas-quoi-inclure",
       "pourquoi-site-pas-visible-google",
     ]);
@@ -169,61 +101,23 @@ describe("guide registry after the editorial reset", () => {
     expect(GUIDES.at(-1)?.editorialStatus).toBe("published");
   });
 
-  it("links the Airtable and Notion decision guide from the Power Apps comparison", () => {
-    expect(powerAppsGuideSource).toContain(
-      "/guides/airtable-notion-ou-application-metier",
-    );
-  });
 
-  it("links the migration guide from the takeover guide and service context", () => {
-    const migrationPath = "/guides/migrer-logiciel-metier-sans-interruption";
-
-    expect(repriseGuideSource).toContain(migrationPath);
-    expect(outilsScenariosSource).toContain(migrationPath);
-  });
 
   it("links the acceptance-plan guide from migration and service context", () => {
     const acceptancePlanPath = "/guides/plan-recette-application-metier";
 
-    expect(migrationGuideSource).toContain(acceptancePlanPath);
     expect(outilsScenariosSource).toContain(acceptancePlanPath);
   });
 
-  it("links the provider-selection guide from acceptance and service context", () => {
-    const providerSelectionPath =
-      "/guides/choisir-prestataire-application-metier";
-
-    expect(acceptancePlanGuideSource).toContain(providerSelectionPath);
-    expect(outilsScenariosSource).toContain(providerSelectionPath);
-  });
 
   it("links the security guide from provider selection and service context", () => {
     const securityPath = "/guides/securite-application-metier";
 
-    expect(providerSelectionGuideSource).toContain(securityPath);
     expect(outilsScenariosSource).toContain(securityPath);
   });
 
-  it("links the access-rights guide from security and service context", () => {
-    const accessRightsPath = "/guides/droits-acces-application-metier";
 
-    expect(securityGuideSource).toContain(accessRightsPath);
-    expect(outilsScenariosSource).toContain(accessRightsPath);
-  });
 
-  it("links the SaaS specification guide from validation and access rights", () => {
-    const saasSpecificationPath = "/guides/cahier-des-charges-saas";
-
-    expect(validationGuideSource).toContain(saasSpecificationPath);
-    expect(accessRightsGuideSource).toContain(saasSpecificationPath);
-  });
-
-  it("links the SaaS schedule guide from validation and specification", () => {
-    const saasSchedulePath = "/guides/combien-de-temps-developper-saas";
-
-    expect(validationGuideSource).toContain(saasSchedulePath);
-    expect(saasSpecificationGuideSource).toContain(saasSchedulePath);
-  });
 
   it("links the first SEO guide from two relevant service contexts", () => {
     const searchVisibilityPath =
@@ -236,7 +130,6 @@ describe("guide registry after the editorial reset", () => {
   it("links the MVP contract guide from validation and specification", () => {
     const mvpContractPath = "/guides/mvp-saas-quoi-inclure";
 
-    expect(validationGuideSource).toContain(mvpContractPath);
     expect(saasSpecificationGuideSource).toContain(mvpContractPath);
   });
 

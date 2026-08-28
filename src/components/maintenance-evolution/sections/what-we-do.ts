@@ -25,7 +25,7 @@ export const whatWeDoHtml = `
           <span class="me-wwd-badge me-wwd-badge-handover">Reprise</span>
         </div>
         <h3>Reprise d'app orpheline</h3>
-        <p>Votre prestataire a disparu, le code est là, mais plus d'équipe. Commencez par le <a href="/guides/reprendre-logiciel-metier-existant"><b>test de relève avant engagement durable</b></a>, puis utilisez un <a href="/services/audit-technique"><b>diagnostic initial</b></a> pour examiner le code, l'infrastructure, la sécurité et la dette avant de définir une reprise progressive.</p>
+        <p>Votre prestataire a disparu, le code est là, mais plus d'équipe. Commencez par le <a href="/services/outils-internes-sur-mesure"><b>test de relève avant engagement durable</b></a>, puis utilisez un <a href="/services/audit-technique"><b>diagnostic initial</b></a> pour examiner le code, l'infrastructure, la sécurité et la dette avant de définir une reprise progressive.</p>
         <div class="me-wwd-tags">
           <span class="me-wwd-tag">Diagnostic chiffré</span>
           <span class="me-wwd-tag">Plan de reprise</span>

@@ -31,6 +31,13 @@ export const FUNNEL_EVENT_NAMES = [
   // pour Calendly. Le rattachement se fait côté Google, à partir de l'événement
   // gtag nommé — ce qui suppose un identifiant GA4 configuré.
   "pf:calendly_booking_confirmed",
+  // Les deux étapes qui PRÉCÈDENT la confirmation. `trackCalendlyEvent` les
+  // diffusait déjà, mais elles n'étaient ni dans cette union fermée ni dans le
+  // pont de GoogleMeasurement : la réservation n'avait qu'un numérateur, sans
+  // le clic sortant ni l'entrée dans le widget qui permettent de savoir où on
+  // perd les gens. Aucun nouvel émetteur n'est créé ici.
+  "pf:calendly_booking_started",
+  "pf:calendly_outbound_click",
   "pf:funnel_open",
   "pf:landing_cta_click",
   "pf:lead_confirmed",
@@ -38,6 +45,11 @@ export const FUNNEL_EVENT_NAMES = [
   "pf:siren_lookup_success",
   "pf:step_complete",
   "pf:step_skip",
+  // Entrée dans une étape. Sans lui, la chaîne ne se reconstitue qu'en cousant
+  // step_complete et step_skip : une étape ATTEINTE puis abandonnée sans clic
+  // n'émettait rien du tout, et c'est précisément l'abandon qu'on cherche à
+  // mesurer. Un « % de visiteurs qui atteignent l'étape N » était incalculable.
+  "pf:step_view",
   "pf:step_validation_block",
   "pf:submit_error",
   "pf:submit_partial",
@@ -65,6 +77,10 @@ export type FunnelEventName = (typeof FUNNEL_EVENT_NAMES)[number];
  */
 const DEDUPED_BY_PROPERTY: Partial<Record<FunnelEventName, string>> = {
   "pf:step_complete": "step",
+  // Même raison pour l'entrée d'étape : le bouton « Retour » du tunnel ferait
+  // recompter chaque passage, et le dénominateur du décrochage gonflerait avec
+  // les hésitations au lieu de compter des visiteurs.
+  "pf:step_view": "step",
 };
 
 const emittedOnce = new Set<string>();
@@ -78,13 +94,23 @@ export function resetFunnelDeduplication(): void {
 }
 
 /**
- * La mesure reste explicitement inactive tant que le stockage, la bannière et
- * le consentement n'ont pas été déployés et validés. Ce drapeau public ne
- * contient aucun secret.
+ * Collecteur actif par défaut, désactivable explicitement. Ce drapeau public
+ * ne contient aucun secret.
+ *
+ * Les trois conditions qui justifiaient l'attente sont remplies : la table
+ * `funnel_analytics_event` est migrée et reçoit déjà des écritures, la
+ * bannière de consentement est en place (`isCookieBannerEnabled`), et la
+ * collecte reste subordonnée à un choix analytics positif — `trackFunnelEvent`
+ * ne part jamais sans `isAnalyticsAllowed()`.
+ *
+ * Comme pour la bannière, le sens du défaut est le sujet : un drapeau à poser
+ * s'oublie en silence, et son oubli coûtait ici la totalité de la mesure du
+ * tunnel. Poser `NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED=0` suffit à revenir en
+ * arrière.
  */
 export function isFunnelAnalyticsCollectionEnabled(): boolean {
-  const value = process.env.NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED;
-  return value === "1" || value === "true";
+  const value = process.env.NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED?.trim().toLowerCase();
+  return value !== "0" && value !== "false";
 }
 
 export function trackFunnelEvent(

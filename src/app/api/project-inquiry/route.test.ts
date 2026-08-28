@@ -9,6 +9,7 @@ import {
 import {
   getMathChallengeSecret,
   isValidMathChallenge,
+  isMathChallengeExpired,
 } from "@/lib/math-challenge";
 import { getClientIp } from "@/lib/rate-limit";
 import { sendResendEmail } from "@/lib/resend-email";
@@ -29,6 +30,7 @@ vi.mock("@/lib/ai-rate-limit", () => ({
 vi.mock("@/lib/math-challenge", () => ({
   getMathChallengeSecret: vi.fn(),
   isValidMathChallenge: vi.fn(),
+  isMathChallengeExpired: vi.fn(),
 }));
 
 vi.mock("@/lib/rate-limit", () => ({
@@ -61,6 +63,7 @@ const mockedLogAiCall = vi.mocked(logAiCall);
 const mockedReleaseReservation = vi.mocked(releaseReservation);
 const mockedGetMathChallengeSecret = vi.mocked(getMathChallengeSecret);
 const mockedIsValidMathChallenge = vi.mocked(isValidMathChallenge);
+const mockedIsMathChallengeExpired = vi.mocked(isMathChallengeExpired);
 const mockedGetClientIp = vi.mocked(getClientIp);
 const mockedSendResendEmail = vi.mocked(sendResendEmail);
 
@@ -158,6 +161,7 @@ describe("POST /api/project-inquiry", () => {
     mockedGetClientIp.mockReturnValue("203.0.113.24");
     mockedGetMathChallengeSecret.mockReturnValue("test-math-secret");
     mockedIsValidMathChallenge.mockReturnValue(true);
+    mockedIsMathChallengeExpired.mockReturnValue(false);
     mockedCheckServiceRateLimit.mockResolvedValue({
       allowed: true,
       reservationId: 101,
@@ -207,6 +211,37 @@ describe("POST /api/project-inquiry", () => {
         blockReason: "captcha_failed",
       }),
     );
+  });
+
+  /**
+   * Un jeton authentique dont l'échéance est passée n'est pas une tentative de
+   * fraude : c'est quelqu'un qui a pris son temps, très souvent parce que son
+   * navigateur mobile a gelé l'onglet. Lui répondre « réponse incorrecte » en
+   * lui décomptant un envoi le poussait à réessayer jusqu'au verrouillage.
+   */
+  it("relâche le créneau et redemande une question quand le jeton anti-robot a expiré", async () => {
+    mockedIsValidMathChallenge.mockReturnValue(false);
+    mockedIsMathChallengeExpired.mockReturnValue(true);
+
+    const response = await POST(buildRequest());
+    const payload = await readPublicPayload(response);
+
+    expect(response.status).toBe(403);
+    expect(payload.mathChallengeExpired).toBe(true);
+    // Le message ne doit pas accuser d'erreur de calcul.
+    expect(payload.error).not.toMatch(/incorrecte/i);
+    expect(payload.error).toMatch(/expir/i);
+
+    // Le créneau est rendu : la tentative ne compte pas contre le prospect.
+    expect(mockedReleaseReservation).toHaveBeenCalledWith(
+      expect.objectContaining({ reservationId: 101, service: "inquiry" }),
+    );
+    // Et elle n'est pas journalisée comme un blocage anti-robot.
+    expect(mockedLogAiCall).not.toHaveBeenCalledWith(
+      expect.objectContaining({ blockReason: "captcha_failed" }),
+    );
+    expect(mockedBindReservationEmail).not.toHaveBeenCalled();
+    expect(mockedSendResendEmail).not.toHaveBeenCalled();
   });
 
   it("réserve d'abord IP/global, puis attache l'email uniquement après captcha et validation", async () => {

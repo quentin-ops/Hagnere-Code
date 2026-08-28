@@ -6,6 +6,17 @@
  * réécrit et republié, son slug doit être retiré de cette liste.
  */
 export const LEGACY_GUIDE_SLUGS = [
+  // Retirés le 28 août 2026 : volume de recherche nul ou marginal sur leur
+  // requête cible et ses variantes (mesure DataForSEO, Google Ads + Labs).
+  "airtable-notion-ou-application-metier",
+  "calculer-roi-application-metier",
+  "choisir-prestataire-application-metier",
+  "combien-de-temps-developper-saas",
+  "droits-acces-application-metier",
+  "migrer-logiciel-metier-sans-interruption",
+  "remplacer-microsoft-access-application-web",
+  "reprendre-logiciel-metier-existant",
+  "valider-idee-saas-avant-developper",
   "agence-saas-ou-freelance",
   "agence-web-ou-freelance",
   "aides-creation-site-internet",
@@ -103,6 +114,13 @@ const destinationRules: ReadonlyArray<{
   pattern: RegExp;
   destination: string;
 }> = [
+  // Prioritaire : « remplacer-microsoft-access-application-web » contient « web »
+  // et tomberait sinon sur /services/sites-vitrines. Qui veut sortir d'Access
+  // cherche un outil interne.
+  {
+    pattern: /microsoft-access|(?:^|-)access(?:-|$)/,
+    destination: "/services/outils-internes-sur-mesure",
+  },
   {
     pattern:
       /google-ads|google-search-ads|meta-ads|cout-par-lead|landing-page-google|suivi-conversions/,

@@ -3,6 +3,13 @@ import {
   CONTACT_PHONE_DISPLAY_NATIONAL,
   CONTACT_PHONE_E164,
 } from "@/lib/contact-details";
+import {
+  PRIMARY_ACTION_HREF,
+  PRIMARY_ACTION_LABEL,
+  PRIMARY_ACTION_LABEL_SHORT,
+  SECONDARY_ACTION_LABEL,
+  SECONDARY_ACTION_LABEL_SHORT,
+} from "@/lib/cta-labels";
 import { FIRST_CALL_CONTACT } from "@/components/homepage/first-call";
 
 /**
@@ -14,7 +21,7 @@ import { FIRST_CALL_CONTACT } from "@/components/homepage/first-call";
  *   - Mega menu opens from "Nos services" trigger:
  *       - Left dark sidebar with 5 categories + bottom CTA card
  *       - Right pane with eyebrow + H2 + 2-col grid of service cards
- *   - Right side: "Démarrer un projet →" primary button
+ *   - Right side: primary button (libellé unique du site, cf. `@/lib/cta-labels`)
  *
  * Category switching is wired by useDesignInteractive (data-cat / data-pane).
  *
@@ -28,6 +35,14 @@ import { FIRST_CALL_CONTACT } from "@/components/homepage/first-call";
  *   - un `<noscript>` vers /services : le panneau est servi `aria-hidden` +
  *     `inert` et n'est activé qu'à l'hydratation. Sans JavaScript, ce lien
  *     garde le hub des services atteignable depuis le header.
+ *
+ * Le CTA primaire suit la même logique de nom accessible que le déclencheur :
+ * plus d'`aria-label` figé, mais DEUX libellés dont un seul est rendu au point
+ * de rupture courant (`hc-nav-cta-label` au-dessus de 720 px,
+ * `hc-nav-cta-label-mobile` en dessous). Un `aria-label` unique aurait annoncé
+ * « Décrire mon projet » à un bouton n'affichant que « Mon projet », ce que le
+ * critère « Label in Name » (WCAG 2.5.3) sanctionne dans l'autre sens : la
+ * commande vocale doit pouvoir prononcer ce qui est écrit.
  */
 
 const ICON = {
@@ -322,9 +337,9 @@ const PANE_OUTILS = pane({
       "Combien vous coûte vraiment votre Excel ?",
     ) +
     paneCard(
-      "/demarrer-un-projet",
+      PRIMARY_ACTION_HREF,
       ICON.estim,
-      "Décrire mon projet",
+      PRIMARY_ACTION_LABEL,
       "3 minutes — demande relue par l'équipe, objectif le prochain jour ouvré.",
     ),
 });
@@ -382,7 +397,7 @@ export const navHtml = `<!-- NAV -->
           <div class="hc-mega-side-cta">
             <div class="hc-mega-side-cta-title">Pas sûr de votre besoin ?</div>
             <div class="hc-mega-side-cta-sub">30 min en visio avec ${FIRST_CALL_CONTACT} pour cadrer.</div>
-            <a href="/rendez-vous" class="hc-mega-side-cta-btn">${ICON.calendar}<span>Réserver un appel</span></a>
+            <a href="/rendez-vous" class="hc-mega-side-cta-btn">${ICON.calendar}<span>${SECONDARY_ACTION_LABEL}</span></a>
           </div>
         </aside>
         <div class="hc-mega-content">${PANE_BUILD}${PANE_GROW}${PANE_RUN}${PANE_CABINET}${PANE_OUTILS}
@@ -403,10 +418,10 @@ export const navHtml = `<!-- NAV -->
         <svg data-icon-sun width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
       </button>
       <a href="/rendez-vous" class="hc-nav-cta hc-nav-cta-rdv">
-        ${ICON.calendarCheck}<span>Rendez-vous</span>
+        ${ICON.calendarCheck}<span>${SECONDARY_ACTION_LABEL_SHORT}</span>
       </a>
-      <a href="/demarrer-un-projet" class="hc-nav-cta hc-nav-cta-primary" aria-label="Démarrer un projet">
-        ${ICON.rocket}<span>Démarrer un projet</span>
+      <a href="${PRIMARY_ACTION_HREF}" class="hc-nav-cta hc-nav-cta-primary">
+        ${ICON.rocket}<span class="hc-nav-cta-label">${PRIMARY_ACTION_LABEL}</span><span class="hc-nav-cta-label-mobile">${PRIMARY_ACTION_LABEL_SHORT}</span>
       </a>
     </div>
   </div>

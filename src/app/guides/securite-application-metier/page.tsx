@@ -318,16 +318,16 @@ export default function Page() {
         }}
         relatedGuides={[
           {
-            label: "Choisir un prestataire d’application métier",
-            href: "/guides/choisir-prestataire-application-metier",
-          },
-          {
             label: "Plan de recette d’une application métier",
             href: "/guides/plan-recette-application-metier",
           },
           {
-            label: "Reprendre un logiciel métier existant",
-            href: "/guides/reprendre-logiciel-metier-existant",
+            label: "Comment rédiger un cahier des charges SaaS ?",
+            href: "/guides/cahier-des-charges-saas",
+          },
+          {
+            label: "MVP SaaS : quoi inclure avant un premier client ?",
+            href: "/guides/mvp-saas-quoi-inclure",
           },
         ]}
         relatedGuidesLabel="Compléter la décision"
@@ -448,7 +448,7 @@ export default function Page() {
 
           <p>
             Pour rendre la ligne « contrôle d’accès » testable,{" "}
-            <Link href="/guides/droits-acces-application-metier">
+            <Link href="/guides/securite-application-metier">
               définissez qui peut voir et modifier quoi
             </Link>{" "}
             objet par objet, puis associez à chaque autorisation critique un cas
@@ -1062,7 +1062,7 @@ export default function Page() {
 
           <p>
             Ces contrôles ne vivent pas isolément. Ils commencent par les{" "}
-            <Link href="/guides/droits-acces-application-metier">
+            <Link href="/guides/securite-application-metier">
               droits d’accès
             </Link>
             , se rédigent comme exigences dans le{" "}
@@ -1075,7 +1075,7 @@ export default function Page() {
             </Link>
             , restauration et journalisation comprises. Un prestataire se juge
             aussi là-dessus, comme le détaille{" "}
-            <Link href="/guides/choisir-prestataire-application-metier">
+            <Link href="/guides/cahier-des-charges-saas">
               le choix d’un prestataire sur preuves
             </Link>
             .
@@ -1083,17 +1083,17 @@ export default function Page() {
 
           <p>
             Deux situations imposent une vigilance supplémentaire. Reprendre un{" "}
-            <Link href="/guides/reprendre-logiciel-metier-existant">
+            <Link href="/services/outils-internes-sur-mesure">
               logiciel métier existant
             </Link>{" "}
             oblige à inventorier des accès dont plus personne ne connaît le
             périmètre, et une{" "}
-            <Link href="/guides/migrer-logiciel-metier-sans-interruption">
+            <Link href="/services/outils-internes-sur-mesure">
               migration sans interruption de service
             </Link>{" "}
             multiplie temporairement les copies de données. Sur une plateforme
             partagée, enfin, les guides{" "}
-            <Link href="/guides/airtable-notion-ou-application-metier">
+            <Link href="/guides/power-apps-ou-application-sur-mesure">
               Airtable ou Notion face à une application métier
             </Link>{" "}
             et{" "}

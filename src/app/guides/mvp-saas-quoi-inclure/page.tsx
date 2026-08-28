@@ -387,16 +387,16 @@ export default function Page() {
         }}
         relatedGuides={[
           {
-            label: "Valider une idée SaaS avant de développer",
-            href: "/guides/valider-idee-saas-avant-developper",
-          },
-          {
-            label: "Écrire un cahier des charges SaaS comparable",
+            label: "Comment rédiger un cahier des charges SaaS ?",
             href: "/guides/cahier-des-charges-saas",
           },
           {
-            label: "Calculer un calendrier SaaS par dépendances",
-            href: "/guides/combien-de-temps-developper-saas",
+            label: "Plan de recette d’une application métier",
+            href: "/guides/plan-recette-application-metier",
+          },
+          {
+            label: "Sécurité d’une application métier avant sa mise en service",
+            href: "/guides/securite-application-metier",
           },
         ]}
         relatedGuidesLabel="3 décisions voisines à relier au contrat"
@@ -1031,7 +1031,7 @@ export default function Page() {
 
         <p className="text-sm text-zinc-500 dark:text-zinc-400">
           Pour préparer les décisions en amont, consultez aussi{" "}
-          <Link href="/guides/valider-idee-saas-avant-developper">
+          <Link href="/guides/mvp-saas-quoi-inclure">
             la validation d’une idée SaaS
           </Link>
           . Pour rendre le résultat comparable entre prestataires, reliez ce
@@ -1044,7 +1044,7 @@ export default function Page() {
 
         <p className="text-sm text-zinc-500 dark:text-zinc-400">
           Un périmètre réduit ne dispense d’aucune obligation. Les{" "}
-          <Link href="/guides/droits-acces-application-metier">
+          <Link href="/guides/securite-application-metier">
             droits d’accès
           </Link>{" "}
           et les{" "}
@@ -1062,16 +1062,16 @@ export default function Page() {
 
         <p className="text-sm text-zinc-500 dark:text-zinc-400">
           Côté décision, le{" "}
-          <Link href="/guides/calculer-roi-application-metier">
+          <Link href="/services/outils-internes-sur-mesure">
             calcul du retour sur investissement
           </Link>{" "}
           arbitre ce qui mérite d’entrer dans le premier lot, et{" "}
-          <Link href="/guides/combien-de-temps-developper-saas">
+          <Link href="/services/saas-applications-metier">
             combien de temps il faut pour développer un SaaS
           </Link>{" "}
           traduit ce périmètre en calendrier défendable. Pour comparer les
           réponses reçues, appuyez-vous sur{" "}
-          <Link href="/guides/choisir-prestataire-application-metier">
+          <Link href="/guides/cahier-des-charges-saas">
             le choix d’un prestataire sur preuves
           </Link>
           .

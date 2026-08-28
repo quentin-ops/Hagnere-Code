@@ -80,6 +80,25 @@ export const projectBrief = pgTable("project_brief", {
   userAgent: text("user_agent"),
   mailSent: boolean("mail_sent").notNull().default(false),
 
+  /**
+   * Provenance du lead — les trois seules colonnes qui permettent de savoir
+   * quelle page, quel guide ou quelle campagne amène des clients.
+   *
+   * Sans elles, un site qui publie des dizaines de guides ne peut pas
+   * distinguer ceux qui travaillent de ceux qui décorent : `/livres-blancs/…`
+   * pointe déjà vers `/demarrer-un-projet?source=…`, et ce paramètre n'était
+   * lu par personne.
+   *
+   * Volontairement non identifiantes, dans la même ligne que l'abandon de `ip`
+   * et `user_agent` ci-dessus : on garde le HÔTE du référent et non l'URL
+   * complète (qui peut porter une requête de recherche ou un identifiant), le
+   * CHEMIN d'atterrissage sans sa query string, et les seuls paramètres de
+   * campagne. Aucune de ces valeurs ne désigne une personne.
+   */
+  landingPage: text("landing_page"),
+  referrerHost: text("referrer_host"),
+  utm: text("utm"),
+
   createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
   updatedAt: timestamp("updated_at", { mode: "date" }).defaultNow().notNull(),
 });

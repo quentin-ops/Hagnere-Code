@@ -327,7 +327,12 @@ export default function Page() {
           description:
             "Les interfaces et libellés de Search Console peuvent évoluer. Les sources officielles ont été revérifiées le 18 août 2026. La fiche ne mesure pas la demande, ne prédit aucun délai et ne conclut pas à partir d’une position observée ponctuellement. Elle s’arrête dès que l’URL est indexée et reçoit des impressions : le diagnostic de trafic, de concurrence et d’intention mérite alors une analyse séparée.",
         }}
-        relatedGuides={[]}
+        relatedGuides={[
+          {
+            label: "Prix de la gestion Google Ads en 2026",
+            href: "/guides/prix-gestion-google-ads",
+          },
+        ]}
       >
         <GuidePremiumSection
           id="url-recherche"

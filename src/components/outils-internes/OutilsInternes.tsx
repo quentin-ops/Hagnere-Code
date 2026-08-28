@@ -38,7 +38,7 @@ export function OutilsInternes() {
                   "Choisir le premier processus à automatiser",
                 ],
                 [
-                  "/guides/calculer-roi-application-metier",
+                  "/services/outils-internes-sur-mesure",
                   "Calculer le ROI sans inventer les gains",
                 ],
                 [

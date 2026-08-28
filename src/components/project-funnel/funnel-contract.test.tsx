@@ -373,4 +373,44 @@ describe("feuille de style du tunnel", () => {
     expect(mobile).not.toMatch(/\.pf-top-phone\s*{[^}]*display:\s*none/);
     expect(funnelStyles).toMatch(/\.pf-top-phone\s*{[^}]*min-height:\s*44px/);
   });
+
+  /**
+   * La case de consentement RGPD est bloquante : sans elle, impossible
+   * d'atteindre l'étape d'envoi, donc impossible d'atteindre la voie de sortie
+   * téléphone. `display: none` la retirait de l'ordre de tabulation ET de
+   * l'arbre d'accessibilité — une personne au clavier ou au lecteur d'écran ne
+   * pouvait plus rien envoyer. Elle doit être masquée à l'œil, jamais au
+   * clavier.
+   */
+  it("laisse la case de consentement atteignable au clavier", () => {
+    expect(funnelStyles).not.toMatch(
+      /\.pf-consent input\[type="checkbox"\]\s*{[^}]*display:\s*none/,
+    );
+    expect(funnelStyles).toMatch(
+      /\.pf-consent input\[type="checkbox"\]\s*{[^}]*clip-path:\s*inset\(50%\)/,
+    );
+    // Le focus doit se voir sur l'habillage, puisque l'input est masqué.
+    expect(funnelStyles).toContain(
+      '.pf-consent input[type="checkbox"]:focus-visible + .pf-consent-box',
+    );
+  });
+
+  /**
+   * `.pf-main-card` est le parent direct de `.pf-actions`, qui passe en
+   * `position: sticky` sous 760 px. Un `overflow: hidden` sur ce parent en
+   * ferait un conteneur de défilement et neutraliserait le collage : le bouton
+   * « Continuer » ne réapparaîtrait qu'en bas de l'étape, plusieurs écrans
+   * plus bas sur mobile. Même arbitrage que le filet `overflow-x: clip` posé
+   * en tête de feuille sur html/body.
+   */
+  it("ne recrée pas de conteneur de défilement au-dessus de la barre collante", () => {
+    expect(funnelStyles).toMatch(/\.pf-main-card\s*{[^}]*overflow:\s*clip/);
+    expect(funnelStyles).not.toMatch(
+      /\.pf-main-card\s*{[^}]*overflow:\s*hidden/,
+    );
+    const mobile = funnelStyles.slice(
+      funnelStyles.indexOf("@media (max-width: 760px)"),
+    );
+    expect(mobile).toMatch(/\.pf-actions\s*{[^}]*position:\s*sticky/);
+  });
 });

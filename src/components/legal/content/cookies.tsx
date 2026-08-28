@@ -111,7 +111,8 @@ export const cookiesSections: LegalSection[] = [
           <tbody>
             <tr><td><code>theme</code></td><td>localStorage</td><td>Mémoriser le thème clair ou sombre demandé</td><td>Jusqu'à modification ou suppression par l'utilisateur</td><td>Fonctionnel</td></tr>
             <tr><td><code>pf:draft:v3</code></td><td>sessionStorage</td><td>Après activation volontaire du bouton, conserver dans l'onglet le brouillon des seules informations de projet ; nom, courriel, téléphone, SIREN, société, rôle et validation juridique en sont exclus</td><td>24 heures au plus après la dernière sauvegarde, sans dépasser la session de l'onglet ; effacé après envoi, retrait du choix ou remise à zéro</td><td>Fonction expressément demandée par l'utilisateur</td></tr>
-            <tr><td><code>hc_consent_v1</code></td><td>localStorage</td><td>Mémoriser la version du format de consentement et le choix nécessaire/analytics lorsque la bannière est activée. Ce numéro de format identifie la structure de l'enregistrement, pas la version publiée de la présente politique : un changement de format ou l'expiration ci-contre redemandent le choix</td><td>183 jours</td><td>Preuve du choix</td></tr>
+            <tr><td><code>pf:src:v1</code></td><td>sessionStorage</td><td>Retenir dans l&apos;onglet par quelle page vous êtes arrivé, l&apos;hébergeur du site qui vous a orienté vers nous et les paramètres de campagne présents dans l&apos;adresse, afin de savoir quels contenus amènent des demandes. Ni l&apos;adresse complète du site référent, ni la suite de votre navigation, ni aucun identifiant de visiteur ne sont enregistrés. Ces informations ne quittent votre navigateur que si vous envoyez une demande, et sont alors conservées avec elle</td><td>Session de l&apos;onglet</td><td>Rattachement d&apos;une demande à son origine</td></tr>
+            <tr><td><code>hc_consent_v1</code></td><td>localStorage</td><td>Mémoriser la version du format de consentement, le choix nécessaire/analytics et l&apos;autorisation donnée pour l&apos;affichage du calendrier Calendly, lorsque la bannière est activée. Ce numéro de format identifie la structure de l&apos;enregistrement, pas la version publiée de la présente politique : l&apos;expiration ci-contre, ou un changement de format que le site ne sait pas convertir, redemandent le choix</td><td>183 jours</td><td>Preuve du choix</td></tr>
             <tr><td><code>pf:opened</code></td><td>sessionStorage</td><td>Éviter de compter deux fois l'ouverture du formulaire dans un même onglet</td><td>Session</td><td>Analytics facultatif, après choix positif</td></tr>
             <tr><td><code>pf:converted</code></td><td>sessionStorage</td><td>Éviter de compter deux fois une confirmation dans un même onglet</td><td>Session</td><td>Analytics facultatif, après choix positif</td></tr>
             <tr><td><code>hc:project-inquiry:idempotency:v1</code></td><td>sessionStorage</td><td>Identifiant d'envoi tiré au hasard par le navigateur, pour qu'un double clic ou une nouvelle tentative ne crée pas deux fois la même demande ; il ne contient aucune donnée saisie dans le formulaire</td><td>Session de l'onglet ; effacé dès qu'un envoi aboutit</td><td>Strictement nécessaire au service demandé</td></tr>
@@ -164,7 +165,12 @@ export const cookiesSections: LegalSection[] = [
           <a href="https://calendly.com/legal/privacy-notice" target="_blank" rel="noopener noreferrer"> politique de confidentialité</a>.
         </p>
         <p>
-          L'autorisation n'est pas conservée après rechargement. Vous pouvez
+          Votre autorisation est conservée avec vos autres préférences dans
+          l'enregistrement <code>hc_consent_v1</code> décrit à l'inventaire : elle
+          n'est donc redemandée ni d'une page à l'autre, ni au rechargement. Elle
+          disparaît dès que vous réenregistrez vos préférences depuis « Gérer mes
+          cookies » en pied de page, et au plus tard à l'expiration indiquée.
+          Vous pouvez
           prendre contact sans Calendly par courriel, téléphone ou formulaire.
           L'ouverture volontaire d'un lien WhatsApp, GitHub ou autre service tiers
           vous place de la même manière dans l'environnement de cet éditeur.

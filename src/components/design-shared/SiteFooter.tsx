@@ -43,6 +43,7 @@ import {
   clearProjectInquiryClientKey,
   getProjectInquiryClientKey,
 } from "@/lib/project-inquiry-client-key";
+import { readLeadSource } from "@/lib/lead-source";
 import { trackFunnelEvent } from "@/lib/funnel-analytics";
 import { trackLeadConversion } from "@/lib/lead-conversion";
 import { isProviderTimeoutError } from "@/lib/provider-timeout";
@@ -223,6 +224,10 @@ export function ContactProjectSection({
       honeypot: String(data.get("honeypot") || ""),
       mathChallenge: toMathChallengePayload(math),
       consent: data.get("consent") === "on",
+      // Ce formulaire est servi sur l'accueil, /services, les pages service et
+      // /tarifs : c'est une porte d'entrée à part entière, elle doit tracer sa
+      // provenance comme le tunnel. Cf. src/lib/lead-source.ts.
+      ...readLeadSource(),
     };
 
     setStatus({ kind: "submitting" });
@@ -368,6 +373,46 @@ export function ContactProjectSection({
           <div className="eyebrow on-dark">— Prochaine étape</div>
           <Heading id="contact-project-title">{heading}</Heading>
           <p>{intro}</p>
+          {/*
+            Raccourci vers le calendrier embarqué, réservé à /contact.
+
+            Le titre promet « 30 minutes, c'est tout », mais sur cette page le
+            widget de réservation est le DERNIER enfant de <main> : hero,
+            formulaire, trois sections et FAQ le séparent du haut de page, soit
+            près de neuf écrans de défilement. L'ancre existait déjà et aucun
+            lien du site ne pointait dessus.
+
+            Le rendu est conditionné à `contactPageCopy` parce que la cible,
+            `#contact-calendly-heading`, n'existe QUE sur /contact : ce même
+            composant est rendu en pied de page sur les 60+ autres pages, où ce
+            lien mènerait à un fragment absent.
+
+            Il ne double pas la carte « Réserver un créneau » de la colonne
+            gauche : celle-ci ouvre Calendly dans un nouvel onglet, celui-ci
+            reste sur la page. Les libellés sont donc volontairement distincts.
+          */}
+          {contactPageCopy ? (
+            <div className="sf-contact-jump">
+              <a href="#contact-calendly-heading" className="sf-jump-link">
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" />
+                  <path d="M16 2v4M8 2v4M3 10h18" />
+                  <path d="M12 14v4M10 16l2 2 2-2" />
+                </svg>
+                Choisir un créneau sur cette page
+              </a>
+            </div>
+          ) : null}
         </div>
 
         <div className="sf-contact-grid">

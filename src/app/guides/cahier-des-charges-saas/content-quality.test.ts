@@ -412,16 +412,20 @@ describe("public content quality for the SaaS specification guide", () => {
       ),
     ].map((match) => match[1]);
     const allowed = new Set([
-      "/guides/valider-idee-saas-avant-developper",
-      "/guides/droits-acces-application-metier",
-      "/guides/combien-de-temps-developper-saas",
       "/guides/mvp-saas-quoi-inclure",
+      "/guides/securite-application-metier",
+      "/services/saas-applications-metier",
+      "/guides/mvp-saas-quoi-inclure",
+      // Ajouté le 28 août 2026 : après le retrait des guides sans volume de
+      // recherche, le guide amont « avez-vous besoin d'un logiciel métier »
+      // devient le quatrième prolongement honnête de ce cahier des charges.
+      "/guides/signes-besoin-logiciel-metier",
       // Ajoutés le 7 août 2026 lors de la reprise du maillage interne :
       // chapitres du cahier des charges qui possèdent leur propre dossier.
       "/guides/plan-recette-application-metier",
       "/guides/securite-application-metier",
-      "/guides/migrer-logiciel-metier-sans-interruption",
-      "/guides/choisir-prestataire-application-metier",
+      "/services/outils-internes-sur-mesure",
+      "/guides/cahier-des-charges-saas",
       "/guides",
       "/services/saas-applications-metier",
       "/demarrer-un-projet",

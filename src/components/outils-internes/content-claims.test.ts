@@ -62,7 +62,7 @@ describe("outils internes public claims", () => {
 
   it("relie le service au guide de calcul du ROI avec une ancre descriptive", () => {
     expect(componentSource).toContain(
-      '"/guides/calculer-roi-application-metier"',
+      '"/services/outils-internes-sur-mesure"',
     );
     expect(componentSource).toContain(
       '"Calculer le ROI sans inventer les gains"',

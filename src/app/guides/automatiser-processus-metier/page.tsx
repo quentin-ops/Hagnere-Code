@@ -1307,13 +1307,13 @@ export default function Page() {
           <p>
             Avant d’outiller le processus retenu, deux vérifications évitent de
             construire au mauvais endroit. Le{" "}
-            <Link href="/guides/calculer-roi-application-metier">
+            <Link href="/services/outils-internes-sur-mesure">
               calcul du retour sur investissement
             </Link>{" "}
             chiffre ce que l’automatisation libère vraiment, et distingue une
             facture évitée d’un temps rendu disponible. Si l’équipe a déjà
             bricolé une solution, la comparaison porte alors sur{" "}
-            <Link href="/guides/airtable-notion-ou-application-metier">
+            <Link href="/guides/power-apps-ou-application-sur-mesure">
               Airtable ou Notion face à une application métier
             </Link>{" "}
             — ou sur{" "}
@@ -1330,7 +1330,7 @@ export default function Page() {
               cahier des charges
             </Link>{" "}
             pour figer les règles et les exceptions, la{" "}
-            <Link href="/guides/droits-acces-application-metier">
+            <Link href="/guides/securite-application-metier">
               gestion des droits d’accès
             </Link>{" "}
             pour décider qui valide et qui corrige, et le{" "}

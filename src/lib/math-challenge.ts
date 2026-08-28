@@ -125,3 +125,65 @@ export function isValidMathChallenge(
     return false;
   }
 }
+
+/**
+ * Vrai quand le jeton est authentique et la réponse juste, mais que l'échéance
+ * est passée. Sert à ne pas accuser d'erreur quelqu'un qui a simplement pris
+ * son temps.
+ *
+ * Le cas est fréquent et coûteux : le jeton vit 15 minutes, et les navigateurs
+ * mobiles gèlent les `setTimeout` d'un onglet passé en arrière-plan. Un
+ * prospect qui bascule sur ses mails pour retrouver son SIREN revient avec un
+ * jeton périmé, tape la bonne réponse, et s'entend dire qu'elle est fausse —
+ * autant de fois qu'il réessaie, en brûlant son quota à chaque tentative.
+ *
+ * Distinct de `isValidMathChallenge`, dont le garde de type reste inchangé :
+ * on ne valide RIEN ici, on qualifie seulement un refus déjà prononcé.
+ */
+export function isMathChallengeExpired(
+  value: unknown,
+  secret: string,
+  now = Date.now(),
+): boolean {
+  if (!value || typeof value !== "object") return false;
+  const { token, answer } = value as Record<string, unknown>;
+  if (
+    typeof token !== "string" ||
+    token.length > 1024 ||
+    typeof answer !== "number" ||
+    !Number.isInteger(answer)
+  ) {
+    return false;
+  }
+
+  const [encodedPayload, receivedSignature, extra] = token.split(".");
+  if (!encodedPayload || !receivedSignature || extra) return false;
+
+  // Signature d'abord : un jeton non signé par nous n'est pas « périmé », il
+  // est forgé. On ne lui offre aucune indulgence.
+  const expectedSignature = sign(encodedPayload, secret);
+  const received = Buffer.from(receivedSignature, "utf8");
+  const expected = Buffer.from(expectedSignature, "utf8");
+  if (received.length !== expected.length || !timingSafeEqual(received, expected)) {
+    return false;
+  }
+
+  try {
+    const payload = JSON.parse(
+      Buffer.from(encodedPayload, "base64url").toString("utf8"),
+    ) as Partial<SignedChallenge>;
+    return (
+      isTermInRange(payload.a) &&
+      isTermInRange(payload.b) &&
+      typeof payload.exp === "number" &&
+      Number.isInteger(payload.exp) &&
+      typeof payload.nonce === "string" &&
+      payload.nonce.length >= 16 &&
+      answer === payload.a + payload.b &&
+      // Le seul motif de rejet doit être l'échéance dépassée.
+      payload.exp < now
+    );
+  } catch {
+    return false;
+  }
+}

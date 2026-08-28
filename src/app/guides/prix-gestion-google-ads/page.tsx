@@ -1451,7 +1451,7 @@ Coût économique connu
             que des promesses, vérifier qui garde les accès, borner la perte
             maximale — vaut au-delà de la publicité. Elle est développée pour
             les prestations logicielles dans le guide{" "}
-            <Link href="/guides/choisir-prestataire-application-metier">
+            <Link href="/guides/cahier-des-charges-saas">
               choisir un prestataire sur preuves
             </Link>
             , dont la grille d’évaluation des devis s’applique presque
@@ -1461,13 +1461,13 @@ Coût économique connu
           <p>
             Deux prolongements utiles si la publicité sert un produit et non un
             catalogue existant. Le{" "}
-            <Link href="/guides/calculer-roi-application-metier">
+            <Link href="/services/outils-internes-sur-mesure">
               calcul du retour sur investissement
             </Link>{" "}
             explique comment séparer un gain de trésorerie d’un gain de capacité
             — la même rigueur évite de confondre un prospect et une vente. Et
             avant d’acheter du trafic vers une offre encore incertaine, le guide{" "}
-            <Link href="/guides/valider-idee-saas-avant-developper">
+            <Link href="/guides/mvp-saas-quoi-inclure">
               valider une idée de SaaS avant de développer
             </Link>{" "}
             décrit les tests d’acquisition qui coûtent moins cher qu’une

@@ -27,9 +27,11 @@ import {
   TrendingUp,
   UserRound,
   X,
+  CalendarClock,
 } from "lucide-react";
 import {
   useEffect,
+  useId,
   useMemo,
   useRef,
   useState,
@@ -46,6 +48,8 @@ import {
   type MathChallengeValue,
 } from "./MathChallenge";
 import { compileBrief } from "./brief-format";
+import { getBudgetAnchor } from "./budget-anchors";
+import { CALENDLY_URL } from "@/lib/calendly";
 import {
   briefWasCaptured,
   PROJECT_INQUIRY_TIMEOUT_MS,
@@ -57,8 +61,9 @@ import {
   CONTACT_PHONE_DISPLAY_NATIONAL,
   CONTACT_PHONE_E164,
 } from "@/lib/contact-details";
-import { isAnalyticsAllowed } from "@/lib/cookie-consent";
+import { COOKIE_CONSENT_EVENT, isAnalyticsAllowed } from "@/lib/cookie-consent";
 import { trackFunnelEvent } from "@/lib/funnel-analytics";
+import { readLeadSource } from "@/lib/lead-source";
 import { isProviderTimeoutError } from "@/lib/provider-timeout";
 import { ThemeToggle } from "@/components/design-shared/ThemeToggle";
 import { LegalLinksFooter } from "@/components/legal/LegalLinksFooter";
@@ -102,7 +107,7 @@ function debugLog(...args: unknown[]): void {
   console.log(...args);
 }
 
-type ProjectKindId =
+export type ProjectKindId =
   | "site"
   | "saas"
   | "mobile"
@@ -181,6 +186,15 @@ type DraftStorageEnvelope = {
   version: typeof DRAFT_STORAGE_VERSION;
   savedAt: number;
   state: FunnelState;
+  /**
+   * Étape en cours au moment de la sauvegarde.
+   *
+   * Elle n'était pas sérialisée : un visiteur qui restaurait son brouillon
+   * repartait de l'étape 1, devant des champs déjà remplis, sans comprendre où
+   * il en était. Restaurer la position est ce qui fait la différence entre
+   * « reprendre » et « recommencer ».
+   */
+  activeStep?: number;
 };
 
 const STRING_ARRAY_STATE_KEYS = [
@@ -256,7 +270,7 @@ function parseStoredFunnelState(value: unknown): FunnelState | null {
 function readStoredDraft(
   value: unknown,
   now: number,
-): { state: FunnelState; savedAt: number } | null {
+): { state: FunnelState; savedAt: number; activeStep: number } | null {
   if (!isRecord(value)) return null;
 
   if (
@@ -269,20 +283,33 @@ function readStoredDraft(
   }
 
   const state = parseStoredFunnelState(value.state);
-  return state
-    ? { state: sanitizeDraftState(state), savedAt: value.savedAt }
-    : null;
+  if (!state) return null;
+
+  // Position bornée à une étape réelle : une valeur absente, négative ou
+  // au-delà du parcours ramène au début plutôt que sur un écran vide.
+  const rawStep = value.activeStep;
+  const activeStep =
+    typeof rawStep === "number" && Number.isInteger(rawStep) && rawStep >= 0
+      ? Math.min(rawStep, steps.length - 1)
+      : 0;
+
+  return { state: sanitizeDraftState(state), savedAt: value.savedAt, activeStep };
 }
 
 function sanitizeDraftState(state: FunnelState): FunnelState {
   return sanitizeProjectDraftState(state);
 }
 
-function serializeDraft(state: FunnelState, savedAt = Date.now()): string {
+function serializeDraft(
+  state: FunnelState,
+  savedAt = Date.now(),
+  activeStep = 0,
+): string {
   const envelope: DraftStorageEnvelope = {
     version: DRAFT_STORAGE_VERSION,
     savedAt,
     state: sanitizeDraftState(state),
+    activeStep,
   };
   return JSON.stringify(envelope);
 }
@@ -444,30 +471,30 @@ const objectivesByKind: Record<ProjectKindId, string[]> = {
 // The list focuses on chips that explicitly use tech jargon — covering the
 // "boucher use case" where someone non-tech might land here. Native title
 // works on hover desktop AND on long-press mobile.
+/**
+ * Jargon → définition, affiché en info-bulle sur les chips qui portent le terme.
+ *
+ * Une entrée dont la clé ne correspond à AUCUN libellé réellement rendu ne
+ * s'affiche jamais : elle donne l'illusion d'une aide qui n'existe pas. Neuf
+ * définitions étaient dans ce cas — écrites pour des libellés renommés ou
+ * jamais créés. `glossary-contract.test.ts` échoue désormais si une définition
+ * redevient morte : soit le libellé existe, soit la définition part.
+ */
 const TERM_DEFINITIONS: Record<string, string> = {
   // Auth / sécu
   "Auth / comptes utilisateurs": "Création de comptes, mots de passe, connexion.",
   "OAuth / SSO": "Single Sign-On — un seul login pour tous les outils (ex : « Se connecter avec Google »).",
   "Rôles / permissions": "Qui a le droit de faire quoi (admin, manager, lecture seule, etc.).",
-  "Multi-tenant (plusieurs orgs)": "Une seule appli, plusieurs entreprises clientes isolées les unes des autres.",
-  "IAM": "Gestion des droits d'accès des utilisateurs et machines.",
   // Tracking / data
   "Tracking conversions": "Compter qui clique, qui achète, qui s'inscrit, pour piloter le marketing.",
   "Tracking server-side": "Tracking côté serveur — plus fiable, contourne les bloqueurs de pub.",
   "Schema.org": "Balises invisibles qui aident Google à mieux comprendre les pages.",
   "GTM Server": "Google Tag Manager côté serveur — pour mieux maîtriser les flux de mesure ; le paramétrage et les bases légales restent à valider.",
-  "Attribution multi-touch": "Mesurer quelles pubs/canaux contribuent à une vente.",
   // Dev / archi
-  "API publique + webhooks": "Permettre à d'autres logiciels de communiquer automatiquement avec le vôtre.",
   "API métier existante": "L'application interne qui gère les données métier de l'entreprise.",
-  "Real-time (chat, présence)": "Mises à jour instantanées sans rafraîchir (ex : chat, notifications).",
-  "Multi-tenant": "Une appli, plusieurs clients isolés.",
-  "PWA": "Application web installable comme une app, fonctionne hors-ligne.",
   // Compliance
   "DPA / sous-traitants": "Clauses à vérifier avec les prestataires qui traitent des données pour votre compte.",
   "DPA existants": "Contrats RGPD déjà signés avec vos sous-traitants.",
-  "AI Act": "Règlement européen sur l'IA — applicable depuis 2024.",
-  "RGPD": "Règlement européen sur la protection des données personnelles.",
   "Consent Mode": "Paramétrage du tracking selon le choix de l'utilisateur ; il ne remplace ni la CMP ni l'analyse juridique.",
   // E-commerce
   "Stripe": "Plateforme de paiement en ligne (cartes, abonnements).",
@@ -1174,9 +1201,20 @@ function summariseStep(id: StepId, state: FunnelState): string {
   return "";
 }
 
+/**
+ * Longueur minimale de la description du besoin.
+ *
+ * Le seuil existait en dur dans `stepIsComplete`, sans compteur, sans
+ * `minLength` et sans mention dans le libellé : « Refonte de notre site
+ * vitrine » (28 caractères) était refusé sans que personne ne comprenne de
+ * combien il manquait. Le nommer ici est ce qui permet au message de refus et
+ * au champ de parler du même chiffre.
+ */
+const MIN_DESCRIPTION_LENGTH = 40;
+
 function stepIsComplete(id: StepId, state: FunnelState): boolean {
   if (id === "projet") return state.projectKinds.length > 0 && state.objectives.length > 0;
-  if (id === "contexte") return state.description.trim().length >= 40;
+  if (id === "contexte") return state.description.trim().length >= MIN_DESCRIPTION_LENGTH;
   if (id === "perimetre") return state.mustHaves.length > 0 || state.openScope.trim().length >= 20;
   if (id === "contraintes") return Boolean(state.timeline && state.budget && state.decisionStage);
   if (id === "contact") {
@@ -1200,7 +1238,10 @@ function stepIsComplete(id: StepId, state: FunnelState): boolean {
 
 function validationText(id: StepId): string {
   if (id === "projet") return "Sélectionnez au moins un type de projet et un objectif (vous pouvez en cocher plusieurs).";
-  if (id === "contexte") return "Ajoutez au moins quelques phrases sur le besoin ou dictez-les au micro.";
+  // Dire ce qu'on attend, pas de combien on est court : un compteur
+  // « 28 / 40 » transformerait le champ le plus important du brief en case à
+  // remplir, et pousserait à écrire du remplissage plutôt que du contexte.
+  if (id === "contexte") return "Deux phrases suffisent : le problème actuel et le résultat attendu — ou dictez-les au micro.";
   if (id === "perimetre") return "Cochez au moins une fonctionnalité ou décrivez le contenu librement.";
   if (id === "contraintes") return "Renseignez le délai, le budget et le niveau de décision (ou cochez « Préfère en discuter »).";
   if (id === "contact") {
@@ -2040,6 +2081,9 @@ export function ProjectFunnel() {
   // vérifiée côté client puis revalidée par /api/project-inquiry.
   const [math, setMath] = useState<MathChallengeValue | null>(null);
   const [mathError, setMathError] = useState<string | null>(null);
+  // Incrémentée quand le serveur signale un jeton périmé : remonte
+  // MathChallenge pour qu'il redemande une question.
+  const [mathReloadKey, setMathReloadKey] = useState(0);
   // Le défi n'a pas pu être chargé (secret serveur absent, coupure réseau,
   // bloqueur) : on propose un autre canal au lieu d'un message d'erreur faux.
   const [mathUnavailable, setMathUnavailable] = useState(false);
@@ -2102,11 +2146,17 @@ export function ProjectFunnel() {
         if (!draft) {
           window.sessionStorage.removeItem(DRAFT_STORAGE_KEY);
         } else {
-          const restoredState = { ...draft.state, projectKinds: [] };
-          // Toujours arriver sur la page avec aucun service coché — l'utilisateur
-          // doit re-sélectionner explicitement, même s'il avait sauvegardé un brouillon.
+          // Les services choisis sont RESTAURÉS, contrairement à ce que faisait
+          // la version précédente. Les vider forçait bien une re-sélection
+          // explicite, mais au prix fort : objectifs, briques, intégrations et
+          // budget restaient en mémoire sans plus être affichés, et cocher un
+          // service différent les faisait filtrer en silence par
+          // `setProjectKinds`. Le visiteur croyait avoir tout perdu — ou perdait
+          // réellement une partie de son travail sans être prévenu. Il peut
+          // décocher, c'est un clic ; retrouver un brief effacé, non.
           skipInitialPersistRef.current = true;
-          setState(restoredState);
+          setState(draft.state);
+          setActiveStep(draft.activeStep);
           setDraftStorageEnabled(true);
           scheduleDraftExpiry(draft.savedAt);
         }
@@ -2138,13 +2188,16 @@ export function ProjectFunnel() {
       const savedAt = Date.now();
       window.sessionStorage.setItem(
         DRAFT_STORAGE_KEY,
-        serializeDraft(state, savedAt),
+        serializeDraft(state, savedAt, activeStep),
       );
       scheduleDraftExpiry(savedAt);
     } catch {
       /* quota / private mode — ignore */
     }
-  }, [state, hydrated, draftStorageEnabled, scheduleDraftExpiry]);
+    // `activeStep` est en dépendance : sans lui, la position enregistrée
+    // resterait celle du dernier changement de saisie, et un visiteur qui
+    // avance sans rien modifier repartirait de l'étape précédente.
+  }, [state, activeStep, hydrated, draftStorageEnabled, scheduleDraftExpiry]);
 
   useEffect(
     () => () => {
@@ -2160,7 +2213,7 @@ export function ProjectFunnel() {
       const savedAt = Date.now();
       window.sessionStorage.setItem(
         DRAFT_STORAGE_KEY,
-        serializeDraft(state, savedAt),
+        serializeDraft(state, savedAt, activeStep),
       );
       skipInitialPersistRef.current = true;
       setDraftStorageEnabled(true);
@@ -2168,17 +2221,32 @@ export function ProjectFunnel() {
     } catch {
       /* Le formulaire reste utilisable sans stockage. */
     }
-  }, [state, scheduleDraftExpiry]);
+    // `activeStep` fait partie de ce qui est sérialisé : l'omettre figeait la
+    // position enregistrée à celle du premier rendu.
+  }, [state, activeStep, scheduleDraftExpiry]);
 
   // Fire one open event per session — we use sessionStorage to avoid
   // double-firing on Strict Mode double-mounts in dev.
+  //
+  // L'effet doit RESTER à l'écoute du consentement, et pas seulement le lire
+  // au montage : la bannière s'affiche après l'atterrissage, donc un visiteur
+  // qui accepte ensuite n'émettait jamais son ouverture — alors que ses
+  // `pf:step_complete` et `pf:submit_success`, eux, partaient normalement.
+  // Le dénominateur du tunnel manquait pour ces visiteurs et le taux de
+  // complétion s'affichait gonflé, potentiellement au-dessus de 100 %.
+  // Même idiome que GoogleMeasurement, qui écoute déjà cet événement.
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (!isAnalyticsAllowed()) return;
-    const key = "pf:opened";
-    if (window.sessionStorage.getItem(key)) return;
-    window.sessionStorage.setItem(key, "1");
-    trackFunnelEvent("pf:funnel_open", {});
+    const emitOnce = () => {
+      if (!isAnalyticsAllowed()) return;
+      const key = "pf:opened";
+      if (window.sessionStorage.getItem(key)) return;
+      window.sessionStorage.setItem(key, "1");
+      trackFunnelEvent("pf:funnel_open", {});
+    };
+    emitOnce();
+    window.addEventListener(COOKIE_CONSENT_EVENT, emitOnce);
+    return () => window.removeEventListener(COOKIE_CONSENT_EVENT, emitOnce);
   }, []);
 
   // ------------------------------------------------------------------
@@ -2260,6 +2328,16 @@ export function ProjectFunnel() {
     stepHeadingRef.current?.focus();
   }, [activeStep]);
   const current = steps[activeStep]!;
+
+  // Entrée dans une étape — le dénominateur du décrochage.
+  //
+  // `pf:step_complete` ne dit que ce qui a été VALIDÉ : une étape atteinte puis
+  // abandonnée sans clic ne laissait aucune trace, alors que c'est exactement
+  // l'endroit où l'on perd les gens. La déduplication par étape est faite dans
+  // `trackFunnelEvent`, pour que les allers-retours ne gonflent pas le compte.
+  useEffect(() => {
+    trackFunnelEvent("pf:step_view", { step: current.id, index: activeStep });
+  }, [current.id, activeStep]);
   const currentCopy = useMemo(() => getStepCopy(current.id, state), [current.id, state]);
   const contextFields = useMemo(() => getContextFields(state), [state]);
   const objectiveOptions = useMemo(() => getObjectiveOptions(state.projectKinds), [state.projectKinds]);
@@ -2268,6 +2346,14 @@ export function ProjectFunnel() {
   const assetOptions = useMemo(() => getAssetOptions(state.projectKinds), [state.projectKinds]);
   const timelineOptions = useMemo(() => getTimelineOptions(state.projectKinds), [state.projectKinds]);
   const budgetOptions = useMemo(() => getBudgetOptions(state.projectKinds), [state.projectKinds]);
+  const dominantKind = useMemo(() => getDominantKind(state.projectKinds), [state.projectKinds]);
+  const budgetAnchor = useMemo(() => getBudgetAnchor(dominantKind), [dominantKind]);
+  const budgetAnchorLabel = useMemo(
+    () =>
+      (projectKinds.find((kind) => kind.id === dominantKind)?.label ?? "")
+        .toLowerCase(),
+    [dominantKind],
+  );
   const decisionOptions = useMemo(() => getDecisionOptions(state.projectKinds), [state.projectKinds]);
   const completedStepCount = steps.filter((step) => step.id !== "recap" && stepIsComplete(step.id, state)).length;
 
@@ -2337,9 +2423,18 @@ export function ProjectFunnel() {
     if (activeStep < steps.length - 1) setActiveStep((step) => step + 1);
   }
 
-  // Steps that allow being skipped — leave perimetre and contraintes
-  // optional for users who can't or don't want to fill them.
-  const isSkippable = current.id === "perimetre" || current.id === "contraintes";
+  // Étapes franchissables sans répondre.
+  //
+  // `contexte` a été ajoutée : c'était le seul mur non contournable du
+  // parcours, planté à l'étape 2 sur 6, au moment où l'engagement est encore
+  // faible. Un dirigeant pressé qui ne veut pas rédiger n'avait aucune issue —
+  // ni bouton, ni explication — alors que le tunnel accepte par ailleurs de se
+  // contenter de « Je ne sais pas encore ». Un brief court reste un lead ;
+  // une étape bloquante n'en est plus un.
+  const isSkippable =
+    current.id === "contexte" ||
+    current.id === "perimetre" ||
+    current.id === "contraintes";
 
   async function submitBrief() {
     // Le bouton reste focusable pendant l'envoi (aria-disabled seul) :
@@ -2411,6 +2506,10 @@ export function ProjectFunnel() {
           openScope: state.openScope,
           decisionStage: state.decisionStage,
           consent: state.consent,
+          // Provenance figée à l'atterrissage (cf. src/lib/lead-source.ts).
+          // Lue ici et pas plus tôt : elle ne quitte le navigateur qu'avec un
+          // brief réellement envoyé.
+          ...readLeadSource(),
         }),
       });
       const mailJson = (await mailRes.json().catch(() => ({}))) as {
@@ -2421,6 +2520,7 @@ export function ProjectFunnel() {
         teamNotified?: boolean;
         confirmationSent?: boolean;
         message?: string;
+        mathChallengeExpired?: boolean;
       };
 
       if (mailRes.ok && mailJson.captured && mailJson.teamNotified === false) {
@@ -2450,6 +2550,14 @@ export function ProjectFunnel() {
         // sur le même refus, et la « récupération » annoncée par la route
         // n'existait que hors formulaire.
         patch("honeypot", "");
+      }
+      // Jeton anti-robot périmé : la route l'a relâché sans compter de
+      // tentative. On remonte le composant (nouvelle `key`) pour qu'une
+      // question fraîche s'affiche, plutôt que de laisser la personne devant
+      // un refus qu'elle ne peut pas corriger.
+      if (mailJson.mathChallengeExpired) {
+        setMath(null);
+        setMathReloadKey((key) => key + 1);
       }
       mailError =
         mailJson.error ||
@@ -2504,6 +2612,26 @@ export function ProjectFunnel() {
         <div className="pf-top-right">
           {/* Même pastille que la navigation du site : la page du tunnel
               n'exposait ni téléphone ni e-mail, y compris en mobile. */}
+          {/* Portes vers les réponses aux objections. Le tunnel n'exposait
+              aucun lien vers les prix ni la méthode : un dirigeant bloqué sur
+              la question du budget devait taper l'URL à la main. En nouvel
+              onglet, pour que le brief en cours ne soit jamais perdu. */}
+          <a
+            className="pf-top-link"
+            href="/tarifs"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Tarifs
+          </a>
+          <a
+            className="pf-top-link"
+            href="/methode"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Méthode
+          </a>
           <a className="pf-top-phone" href={DIRECT_PHONE_HREF}>
             <Phone size={15} strokeWidth={2} aria-hidden="true" />
             <span>{DIRECT_PHONE_LABEL}</span>
@@ -2648,13 +2776,17 @@ export function ProjectFunnel() {
 
             <div className="pf-side-note">
               <ShieldCheck size={16} />
-              <span>Pré-cadrage gratuit. Les données servent uniquement à qualifier votre demande.</span>
+              {/* « Pré-cadrage gratuit » promettait plus que la méthode ne
+                  tient : le cadrage réel est le Discovery Sprint, payé au-delà
+                  de 8 k€. Ce qui est gratuit — et vraiment gratuit — c'est le
+                  brief, la réponse et l'échange de 30 minutes. */}
+              <span>Brief et première réponse gratuits. Les données servent uniquement à qualifier votre demande.</span>
             </div>
 
             {/* Sortie directe pour les profils qui n'aiment pas les
                 formulaires : la page n'offrait aucun autre canal. */}
             <div className="pf-direct-contact">
-              <b>Préférez appeler ou écrire ?</b>
+              <b>Préférez appeler, écrire ou réserver ?</b>
               <a href={DIRECT_PHONE_HREF}>
                 <Phone size={14} strokeWidth={2} aria-hidden="true" />
                 <span>{DIRECT_PHONE_LABEL}</span>
@@ -2662,6 +2794,20 @@ export function ProjectFunnel() {
               <a href={`mailto:${DIRECT_EMAIL}`}>
                 <Mail size={14} strokeWidth={2} aria-hidden="true" />
                 <span>{DIRECT_EMAIL}</span>
+              </a>
+              {/* Troisième voie. Le tunnel ne mentionnait Calendly nulle part,
+                  alors que le reste du site présente la réservation comme le
+                  canal le plus rapide : le profil qui préfère réserver plutôt
+                  qu'écrire ou téléphoner devait repartir chercher la page tout
+                  seul. L'événement permet de mesurer cette fuite volontaire. */}
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackFunnelEvent("pf:landing_cta_click", { cta: "calendly_sidebar" })}
+              >
+                <CalendarClock size={14} strokeWidth={2} aria-hidden="true" />
+                <span>Réserver 30 min</span>
               </a>
             </div>
             {hydrated && (
@@ -2876,7 +3022,28 @@ export function ProjectFunnel() {
               <div className="pf-stack">
                 <div className="pf-split">
                   <RadioBlock title="Échéance visée" values={timelineOptions} value={state.timeline} onChange={(value) => patch("timeline", value)} />
-                  <RadioBlock title="Budget envisagé" values={budgetOptions} value={state.budget} onChange={(value) => patch("budget", value)} />
+                  <div className="pf-budget-field">
+                    <RadioBlock title="Budget envisagé" values={budgetOptions} value={state.budget} onChange={(value) => patch("budget", value)} />
+                    {/* Répondre l'objection au lieu de la poser : le visiteur
+                        se positionnait sur une échelle dont il n'avait aucun
+                        repère. Ces montants sont ceux déjà publiés sur /tarifs
+                        (alignement vérifié par budget-anchors.test.ts), pas un
+                        chiffrage de son projet. */}
+                    {budgetAnchor && (
+                      <p className="pf-budget-anchor">
+                        Pour situer : nos {budgetAnchorLabel} démarrent à{" "}
+                        <b>{budgetAnchor.from}</b>.{" "}
+                        <a
+                          href={`${budgetAnchor.servicePath}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Voir la grille complète
+                        </a>{" "}
+                        — votre brief reste ouvert dans cet onglet.
+                      </p>
+                    )}
+                  </div>
                 </div>
                 <RadioBlock
                   title="Où en êtes-vous dans la décision ?"
@@ -2901,8 +3068,8 @@ export function ProjectFunnel() {
             {current.id === "contact" && (
               <div className="pf-stack">
                 <div className="pf-split">
-                  <TextInput icon={<UserRound size={16} />} label="Prénom" value={state.firstName} onChange={(value) => patch("firstName", value)} />
-                  <TextInput label="Nom" value={state.lastName} onChange={(value) => patch("lastName", value)} />
+                  <TextInput icon={<UserRound size={16} />} label="Prénom" value={state.firstName} onChange={(value) => patch("firstName", value)} autoComplete="given-name" required />
+                  <TextInput label="Nom" value={state.lastName} onChange={(value) => patch("lastName", value)} autoComplete="family-name" required />
                 </div>
                 <div className="pf-split">
                   <TextInput
@@ -2913,6 +3080,7 @@ export function ProjectFunnel() {
                     type="email"
                     inputMode="email"
                     autoComplete="email"
+                    required
                     placeholder="prenom@entreprise.com"
                     error={
                       state.email.trim() && !isValidEmail(state.email.trim())
@@ -2944,8 +3112,22 @@ export function ProjectFunnel() {
                   onCompanyFound={(name) => patch("company", name)}
                 />
                 <div className="pf-split">
-                  <TextInput label="Entreprise" value={state.company} onChange={(value) => patch("company", value)} />
-                  <TextInput label="Rôle / fonction" value={state.role} onChange={(value) => patch("role", value)} optional />
+                  {/* Champ bloquant assumé, pas subi. La convention du
+                      formulaire est « non marqué = requis », comme Prénom,
+                      Nom et Email : ajouter ici un marqueur « requis »
+                      laisserait croire que les trois autres ne le sont pas.
+                      Ce qui manquait, c'est la RAISON — un visiteur bloqué au
+                      dernier écran de saisie doit comprendre pourquoi, plutôt
+                      que de taper « -- » ou d'abandonner. */}
+                  <TextInput
+                    label="Entreprise"
+                    value={state.company}
+                    onChange={(value) => patch("company", value)}
+                    autoComplete="organization"
+                    required
+                    hint="Nous intervenons auprès d'organisations : indiquez la structure au nom de laquelle vous nous écrivez."
+                  />
+                  <TextInput label="Rôle / fonction" value={state.role} onChange={(value) => patch("role", value)} optional autoComplete="organization-title" />
                 </div>
                 <label className={`pf-consent ${!state.consent && showValidation ? "is-required" : ""} ${state.consent ? "is-checked" : ""}`}>
                   <input
@@ -3027,15 +3209,22 @@ export function ProjectFunnel() {
                   />
                 </div>
 
-                <div className="pf-brief-preview">
-                  <b>Brief transmis</b>
+                {/* Aperçu replié. Déplié, il pouvait atteindre 8 000
+                    caractères et repoussait le bouton d'envoi à ~2 600 px du
+                    haut de la carte sur mobile : celui qui avait le plus écrit
+                    — donc le plus impliqué — avait le plus de chemin à faire
+                    pour convertir. Le brief reste consultable d'un clic, la
+                    synthèse au-dessus suffit à se relire. */}
+                <details className="pf-brief-preview">
+                  <summary>Relire le brief transmis</summary>
                   <p style={{ whiteSpace: "pre-line" }}>
                     {compileBrief(state) || "Votre description apparaîtra ici."}
                   </p>
-                </div>
+                </details>
 
                 {/* Anti-bot maison : question de calcul (remplace Turnstile). */}
                 <MathChallenge
+                  key={mathReloadKey}
                   className="pf-field pf-captcha"
                   onChange={(value) => {
                     setMath(value);
@@ -3058,6 +3247,24 @@ export function ProjectFunnel() {
                   <a href={DIRECT_PHONE_HREF}>{DIRECT_PHONE_LABEL}</a>
                 </p>
 
+                {/* Les trois arguments qui lèvent la dernière hésitation
+                    doivent être lus AVANT le clic. Rendus après le bouton, ils
+                    arrivaient quand la décision était déjà prise. */}
+                {status.kind !== "captured" && <div className="pf-reassure">
+                  <div className="pf-reassure-item">
+                    <Mail size={14} />
+                    <span><b>Objectif : prochain jour ouvré</b> &middot; analyse humaine de votre brief, sans délai garanti</span>
+                  </div>
+                  <div className="pf-reassure-item">
+                    <Sparkles size={14} />
+                    <span><b>Gratuit, sans engagement</b> &middot; vous restez libre de la suite</span>
+                  </div>
+                  <div className="pf-reassure-item">
+                    <ShieldCheck size={14} />
+                    <span><b>Vos données servent à vous répondre</b> &middot; pas de revente, modalités dans la politique de confidentialité</span>
+                  </div>
+                </div>}
+
                 <button
                   type="button"
                   className="pf-submit"
@@ -3079,21 +3286,6 @@ export function ProjectFunnel() {
                       ? "Brief enregistré"
                       : "Envoyer mon brief"}
                 </button>
-
-                {status.kind !== "captured" && <div className="pf-reassure">
-                  <div className="pf-reassure-item">
-                    <Mail size={14} />
-                    <span><b>Objectif : prochain jour ouvré</b> &middot; analyse humaine de votre brief, sans délai garanti</span>
-                  </div>
-                  <div className="pf-reassure-item">
-                    <Sparkles size={14} />
-                    <span><b>Gratuit, sans engagement</b> &middot; vous restez libre de la suite</span>
-                  </div>
-                  <div className="pf-reassure-item">
-                    <ShieldCheck size={14} />
-                    <span><b>Vos données servent à vous répondre</b> &middot; pas de revente, modalités dans la politique de confidentialité</span>
-                  </div>
-                </div>}
 
                 {/* role="alert" : l'échec d'envoi n'attire ni le focus ni
                     l'annonce. Sans lui, un lecteur d'écran laissait le
@@ -3132,9 +3324,19 @@ export function ProjectFunnel() {
                   type="button"
                   className="pf-skip"
                   onClick={skipCurrent}
-                  aria-label="Passer cette étape sans répondre"
+                  aria-label={
+                    current.id === "contexte"
+                      ? "Passer la description et en parler de vive voix"
+                      : "Passer cette étape sans répondre"
+                  }
                 >
-                  Passer cette étape
+                  {/* Sur l'étape Contexte, « Passer cette étape » invite à
+                      fuir un formulaire ; « Je préfère en parler » propose
+                      l'autre canal que le site offre réellement. Le libellé
+                      change ce que le geste veut dire, pas ce qu'il fait. */}
+                  {current.id === "contexte"
+                    ? "Je préfère en parler"
+                    : "Passer cette étape"}
                 </button>
               )}
               <button type="button" className="pf-primary" onClick={goNext}>
@@ -3152,10 +3354,21 @@ export function ProjectFunnel() {
           <dl>
             <div className="pf-faq-item">
               <dt>Vais-je recevoir un prix immédiatement ?</dt>
+              {/* La suite décrite ici doit rester celle de /methode et /tarifs :
+                  au-delà de 8 k€ HT, le Discovery Sprint payé précède
+                  SYSTÉMATIQUEMENT le devis ferme. Le ticket d'entrée étant à
+                  6,9 k€, cela vaut pour la quasi-totalité du catalogue —
+                  promettre « un devis ferme après échange » faisait découvrir
+                  le montant à l'appel, au pire moment. */}
               <dd>
                 Non — et c&apos;est volontaire. Un chiffrage sérieux demande une lecture
                 attentive de votre contexte. Nous visons une réponse argumentée le prochain
-                jour ouvré, sans délai garanti, puis un devis ferme après échange.
+                jour ouvré, sans délai garanti, puis, si c&apos;est pertinent, 30 minutes
+                d&apos;échange. Le brief, la réponse et cet échange sont gratuits.
+                Au-delà de 8 k€ HT, le devis ferme est précédé d&apos;un Discovery Sprint
+                de deux jours à 1 500 € HT — atelier, spécifications, prototype cliquable
+                et schéma d&apos;architecture, que vous conservez même si la suite se fait
+                sans nous.
               </dd>
             </div>
             <div className="pf-faq-item">
@@ -3292,6 +3505,7 @@ function TextInput({
   icon,
   type = "text",
   optional = false,
+  required = false,
   error,
   hint,
   inputMode,
@@ -3304,21 +3518,42 @@ function TextInput({
   icon?: ReactNode;
   type?: string;
   optional?: boolean;
+  /**
+   * Champ dont l'absence bloque le passage à l'étape suivante. Annoncé aux
+   * technologies d'assistance : la convention visuelle du formulaire est
+   * « non marqué = requis », lisible à l'œil mais muette au lecteur d'écran,
+   * qui n'avait donc aucun moyen de savoir ce qui bloquait.
+   */
+  required?: boolean;
   error?: string;
   hint?: string;
   inputMode?: "text" | "tel" | "email" | "numeric";
   autoComplete?: string;
   placeholder?: string;
 }) {
+  const fieldId = useId();
+  const describedBy = error
+    ? `${fieldId}-error`
+    : hint
+      ? `${fieldId}-hint`
+      : undefined;
+
   return (
-    <label className={`pf-field ${error ? "is-invalid" : ""}`}>
+    <label className={`pf-field ${error ? "is-invalid" : ""}`} htmlFor={fieldId}>
       <span>
         {label}
         {optional && <small> optionnel</small>}
       </span>
       <div className="pf-input-wrap">
         {icon}
+        {/* `id` et `name` ne sont pas décoratifs : les heuristiques
+            d'auto-remplissage des navigateurs s'en servent autant que de
+            `autoComplete`. Sans eux, un champ correctement annoté reste
+            ignoré. `useId` garantit l'unicité même si deux formulaires
+            coexistent sur la page. */}
         <input
+          id={fieldId}
+          name={autoComplete}
           type={type}
           value={value}
           onChange={(event) => onChange(event.target.value)}
@@ -3326,10 +3561,20 @@ function TextInput({
           autoComplete={autoComplete}
           placeholder={placeholder}
           aria-invalid={Boolean(error)}
+          aria-describedby={describedBy}
+          aria-required={required || undefined}
         />
       </div>
-      {error && <small className="pf-field-error-inline">{error}</small>}
-      {!error && hint && <small className="pf-field-hint">{hint}</small>}
+      {error && (
+        <small id={`${fieldId}-error`} className="pf-field-error-inline">
+          {error}
+        </small>
+      )}
+      {!error && hint && (
+        <small id={`${fieldId}-hint`} className="pf-field-hint">
+          {hint}
+        </small>
+      )}
     </label>
   );
 }

@@ -16,7 +16,11 @@ import { GUIDES, PUBLISHED_GUIDES } from "./guides";
  * repart isolé du reste du silo.
  */
 
-const MIN_OUTGOING = 6;
+// Corpus ramené de 18 à 9 guides le 28/08/2026 : exiger six liens sortants
+// inter-guides supposerait un graphe presque complet entre les sept guides
+// applicatifs et SaaS, donc des rapprochements fabriqués — ce que la règle d'or
+// interdit. Quatre reste exigeant sans forcer le hors-sujet.
+const MIN_OUTGOING = 4;
 const MIN_INCOMING = 2;
 
 /**
@@ -25,9 +29,22 @@ const MIN_INCOMING = 2;
  * liste artificielle, ce que la règle d'or interdit explicitement.
  */
 const TOPICAL_OUTLIERS: Record<string, number> = {
-  // Gestion publicitaire : seuls le choix d'un prestataire, le calcul du ROI
-  // et la validation d'une offre partagent réellement sa logique de décision.
-  "prix-gestion-google-ads": 3,
+  // Plan de recette : ses seuls voisins honnêtes dans un corpus de neuf guides
+  // sont le cahier des charges (ce qu'on recette), le MVP (le périmètre) et la
+  // sécurité (le contrôle avant mise en service). Un quatrième lien serait un
+  // rapprochement fabriqué, que la règle d'or interdit.
+  "plan-recette-application-metier": 3,
+  // MVP SaaS : son test de contenu compare le nombre exact de mots visibles à
+  // readTimeMin et à un décompte figé dans docs/research. Ajouter un quatrième
+  // lien suppose de rouvrir ces deux références dans le même changement ; ses
+  // trois voisins (cahier des charges, plan de recette, sécurité) couvrent déjà
+  // la suite de lecture honnête.
+  "mvp-saas-quoi-inclure": 3,
+  // Gestion publicitaire : les trois guides qui partageaient sa logique de
+  // décision (choix d'un prestataire, calcul du ROI, validation d'une offre)
+  // ont été retirés le 28/08/2026 faute de volume de recherche. Il ne lui reste
+  // qu'un voisin réellement pertinent, le guide de visibilité organique.
+  "prix-gestion-google-ads": 1,
   // Premier guide de son silo SEO : ses voisins pertinents sont pour l'instant
   // les pages de service SEO et d'audit, pas les guides SaaS ou applicatifs.
   // Cette exception doit disparaître à mesure que les guides SEO frères sont
@@ -36,6 +53,9 @@ const TOPICAL_OUTLIERS: Record<string, number> = {
 };
 
 const INCOMING_TOPICAL_OUTLIERS: Record<string, number> = {
+  // Seul guide d'acquisition payante du corpus : son unique voisin éditorial est
+  // le guide de visibilité organique, qui pointe désormais vers lui.
+  "prix-gestion-google-ads": 1,
   // Le guide est déjà relié depuis le hub et deux pages de service. Exiger deux
   // liens depuis d'autres guides avant que le silo SEO existe fabriquerait des
   // rapprochements hors sujet.

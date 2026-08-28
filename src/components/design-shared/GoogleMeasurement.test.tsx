@@ -235,23 +235,40 @@ describe("GoogleMeasurement — pont Calendly vers la mesure first-party", () =>
     const { CALENDLY_EVENTS, CALENDLY_TRACKING_EVENT, trackCalendlyEvent } =
       await import("./calendly-tracking");
 
-    // Un autre événement Calendly n'est pas une confirmation.
+    // Le pont couvre les TROIS étapes du canal de réservation, et non la seule
+    // confirmation : sans le clic sortant ni l'entrée dans le widget, on
+    // observe un numérateur sans savoir où les gens décrochent.
+    async function nameSentFor(event: string): Promise<string> {
+      sendBeacon.mockClear();
+      act(() => {
+        trackCalendlyEvent(event as never, { widget: "inline" });
+      });
+      expect(sendBeacon).toHaveBeenCalledOnce();
+      const [url, blob] = sendBeacon.mock.calls[0] as unknown as [string, Blob];
+      expect(url).toBe("/api/funnel-analytics");
+      return (JSON.parse(await blob.text()) as { name: string }).name;
+    }
+
+    expect(await nameSentFor(CALENDLY_EVENTS.outboundClick)).toBe(
+      "pf:calendly_outbound_click",
+    );
+    expect(await nameSentFor(CALENDLY_EVENTS.bookingStarted)).toBe(
+      "pf:calendly_booking_started",
+    );
+    expect(await nameSentFor(CALENDLY_EVENTS.bookingConfirmed)).toBe(
+      "pf:calendly_booking_confirmed",
+    );
+
+    // Le pont reste une allowlist : un nom inconnu n'ouvre pas la route.
+    sendBeacon.mockClear();
     act(() => {
-      trackCalendlyEvent(CALENDLY_EVENTS.outboundClick, { canonical: true });
+      window.dispatchEvent(
+        new CustomEvent(CALENDLY_TRACKING_EVENT, {
+          detail: { name: "calendly_evenement_inconnu" },
+        }),
+      );
     });
     expect(sendBeacon).not.toHaveBeenCalled();
-
-    act(() => {
-      trackCalendlyEvent(CALENDLY_EVENTS.bookingConfirmed, {
-        widget: "inline",
-      });
-    });
-
-    expect(sendBeacon).toHaveBeenCalledOnce();
-    const [url, blob] = sendBeacon.mock.calls[0] as unknown as [string, Blob];
-    expect(url).toBe("/api/funnel-analytics");
-    const body = JSON.parse(await blob.text()) as { name: string };
-    expect(body.name).toBe("pf:calendly_booking_confirmed");
 
     // Le canal reste first-party : aucune conversion Ads n'est inventée.
     expect(CALENDLY_TRACKING_EVENT).toBe("hc:calendly");

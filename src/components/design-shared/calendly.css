@@ -5,7 +5,24 @@
    (définis dans homepage.css :root).
    ========================================================================= */
 
+/* La hauteur du cadre était écrite en style inline par CalendlyEmbed.tsx
+   (720 px depuis /contact, 780 px depuis /rendez-vous) : aucune règle CSS ne
+   pouvait la corriger, et sur un petit téléphone le cadre dépassait la hauteur
+   visible — le visiteur se retrouvait avec deux défilements imbriqués, celui de
+   la page et celui du calendrier. Le composant ne publie plus qu'un SOUHAIT,
+   --calendly-h ; la borne haute est décidée ici.
+
+   `100dvh` suit les barres rétractables des navigateurs mobiles, là où `100vh`
+   décrit la fenêtre barres déployées : la première déclaration reste le repli
+   des navigateurs qui ignorent dvh. Les 120 px réservés laissent respirer le
+   padding du cadre parent et la barre d'adresse.
+
+   Plancher à 420 px : en paysage sur téléphone, la borne haute tomberait sous
+   la hauteur utilisable du widget, qui gère son propre défilement interne. */
 .calendly-inline-widget {
+  height: clamp(420px, var(--calendly-h, 700px), calc(100vh - 120px));
+  height: clamp(420px, var(--calendly-h, 700px), calc(100dvh - 120px));
+  min-width: 0;
   border-radius: 12px;
   overflow: hidden;
   background: var(--paper-2, #fafafa);
@@ -14,12 +31,24 @@
 .calendly-consent {
   display: grid;
   place-items: center;
+  /* Le mur d'autorisation ne réserve jamais plus que le cadre qu'il remplace,
+     ni plus que l'écran : `min-height` n'a ici qu'un rôle d'aplomb visuel, le
+     contenu centré décide de la hauteur réelle. */
+  min-height: min(var(--calendly-h, 700px), 520px, calc(100vh - 160px));
+  min-height: min(var(--calendly-h, 700px), 520px, calc(100dvh - 160px));
   padding: clamp(24px, 5vw, 64px) 16px;
   border: 1px solid var(--line-2, #e5e5e5);
   border-radius: 16px;
   background:
     radial-gradient(circle at 50% 0%, rgb(109 40 217 / 9%), transparent 48%),
     var(--paper-2, #fafafa);
+}
+
+/* Le message d'échec tient en trois lignes : il n'a pas besoin de la même
+   réserve de hauteur que le mur d'autorisation. */
+.calendly-consent--error {
+  min-height: min(var(--calendly-h, 700px), 420px, calc(100vh - 160px));
+  min-height: min(var(--calendly-h, 700px), 420px, calc(100dvh - 160px));
 }
 
 .calendly-consent-card {

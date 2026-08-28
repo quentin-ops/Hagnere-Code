@@ -37,6 +37,11 @@ import { getDb } from "@/db";
 import { createHash } from "node:crypto";
 import { CONTACT_EMAIL } from "@/lib/contact-details";
 import { log } from "@/lib/logger";
+import {
+  checkRateLimit,
+  createRateLimitStore,
+  gcRateLimitStore,
+} from "@/lib/rate-limit";
 
 // ── Service identifiers ──────────────────────────────────────────────
 // NB : la table ai_call_log contient encore des rows historiques avec
@@ -91,7 +96,21 @@ const SERVICE_LIMITS: Record<ServiceId, ServiceLimits> = {
   inquiry: {
     perIpHour: parseInt(process.env.INQUIRY_RATE_PER_IP_HOUR || "5", 10),
     perIpDay: parseInt(process.env.INQUIRY_RATE_PER_IP_DAY || "15", 10),
-    perEmailDay: parseInt(process.env.INQUIRY_RATE_PER_EMAIL_DAY || "2", 10),
+    /**
+     * Envois ABOUTIS par adresse et par 24 h. Relevé de 2 à 5.
+     *
+     * À 2, la séquence la plus banale d'un prospect sérieux suffisait à le
+     * verrouiller : le formulaire court du pied de page, puis le brief complet
+     * du tunnel — les deux tapent ce même compteur — et toute correction
+     * ensuite était refusée pendant 24 h. On éjectait le visiteur le plus
+     * engagé du parcours.
+     *
+     * L'asymétrie de coût tranche seule : un prospect bloqué à tort, c'est un
+     * client perdu ; un robot qui passe de 2 à 5 messages, c'est trois e-mails
+     * de plus. Et ce plafond n'est pas seul — `perIpHour` (5), `perIpDay` (15)
+     * et `globalDay` (100) restent devant lui.
+     */
+    perEmailDay: parseInt(process.env.INQUIRY_RATE_PER_EMAIL_DAY || "5", 10),
     globalDay: parseInt(process.env.INQUIRY_RATE_GLOBAL_DAY || "100", 10),
     costBreaker: null, // pas de coût marginal mesurable côté serveur
     // Une demande refusée pour champ manquant ou panne d'envoi est relâchée :
@@ -128,6 +147,62 @@ const SERVICE_LIMITS: Record<ServiceId, ServiceLimits> = {
   },
 };
 
+/**
+ * Délai maximal d'une requête du limiteur.
+ *
+ * Aucune requête n'était bornée, alors que le client du tunnel abandonne à
+ * 20 s : une base qui répond en 30 s produisait donc une soumission perdue
+ * côté visiteur ET une invocation serveur qui continuait de tourner. Cinq
+ * secondes couvrent très largement une requête indexée sur 24 h de journal ;
+ * au-delà, la base n'est pas lente, elle est indisponible, et il vaut mieux
+ * basculer tout de suite sur le mode dégradé que faire patienter le prospect.
+ */
+const RATE_LIMIT_QUERY_TIMEOUT_MS_DEFAULT = 5_000;
+
+function queryTimeoutMs(): number {
+  const raw = parseInt(process.env.RATE_LIMIT_QUERY_TIMEOUT_MS || "", 10);
+  return Number.isFinite(raw) && raw > 0
+    ? raw
+    : RATE_LIMIT_QUERY_TIMEOUT_MS_DEFAULT;
+}
+
+/**
+ * `name = "TimeoutError"` : c'est ce nom que le logger conserve en production
+ * (il réduit une Error à son nom) et qui permet de distinguer, dans les
+ * journaux, une base injoignable d'une base qui répond une erreur.
+ */
+class RateLimitQueryTimeoutError extends Error {
+  constructor(operation: string) {
+    super(`Rate-limit query timed out after ${queryTimeoutMs()}ms (${operation})`);
+    this.name = "TimeoutError";
+  }
+}
+
+/**
+ * Le pilote Neon HTTP n'expose pas de délai par requête : on borne donc côté
+ * appelant. La requête distante peut continuer sa vie, mais elle ne retient
+ * plus la réponse au visiteur.
+ */
+async function withQueryTimeout<T>(
+  operation: string,
+  run: () => Promise<T>,
+): Promise<T> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  try {
+    return await Promise.race([
+      run(),
+      new Promise<never>((_resolve, reject) => {
+        timer = setTimeout(
+          () => reject(new RateLimitQueryTimeoutError(operation)),
+          queryTimeoutMs(),
+        );
+      }),
+    ]);
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
+}
+
 export type BlockReason =
   | "rate_ip_hour"
   | "rate_ip_day"
@@ -135,6 +210,11 @@ export type BlockReason =
   | "rate_global_day"
   | "rate_retry_ip_hour"
   | "rate_retry_global_day"
+  /**
+   * Refus prononcé pendant une indisponibilité du limiteur persistant. Jamais
+   * écrit en base : par construction, la base est justement injoignable.
+   */
+  | "rate_degraded"
   | "cost_breaker"
   | "captcha_failed"
   | "validation"
@@ -144,11 +224,24 @@ export type BlockReason =
 /** Issues qui rendent le créneau au visiteur au lieu de le consommer. */
 export type ReleaseReason = Extract<BlockReason, "validation" | "ai_error">;
 
+/**
+ * Réservation « fantôme » du mode dégradé : aucune ligne n'existe en base.
+ * Distincte de 0, qui reste une valeur invalide signalée comme une anomalie —
+ * confondre les deux ferait passer un bug d'appelant pour un incident
+ * d'infrastructure, et l'inverse.
+ */
+export const DEGRADED_RESERVATION_ID = -1;
+
 export type RateLimitDecision =
   | {
       allowed: true;
       /** Ligne réservée atomiquement avant tout appel externe. */
       reservationId: number;
+      /**
+       * Vrai quand la décision vient du repli mémoire et non de la base : rien
+       * n'a été réservé, il n'y a donc rien à lier, à relâcher ni à journaliser.
+       */
+      degraded?: true;
     }
   | {
       allowed: false;
@@ -174,6 +267,48 @@ export function hashEmail(email: string | undefined | null): string | null {
 }
 
 /**
+ * Repli mémoire, utilisé UNIQUEMENT quand la base ne répond pas.
+ *
+ * Sans lui, une indisponibilité Neon refusait 100 % des soumissions : le
+ * compteur est vérifié avant tout, et son échec renvoyait un 503. Or le chemin
+ * qui compte vraiment — l'e-mail à l'équipe — restait, lui, parfaitement
+ * fonctionnel. On refusait donc des prospects pour protéger un journal.
+ *
+ * L'arbitrage est assumé : pendant une panne de base, mieux vaut recevoir le
+ * lead par e-mail sans pouvoir l'enregistrer que ne pas le recevoir du tout.
+ * Le plafond est délibérément bas et par instance — il ne prétend pas borner un
+ * attaquant distribué, seulement empêcher qu'une panne de base ouvre la porte
+ * en grand. Le honeypot et le contrôle anti-robot signé, eux, restent actifs :
+ * ils ne dépendent d'aucune base.
+ */
+const degradedStore = createRateLimitStore();
+const DEGRADED_WINDOW_MS = HOUR_MS;
+
+function degradedPerIpHour(): number {
+  const raw = parseInt(process.env.INQUIRY_DEGRADED_PER_IP_HOUR || "", 10);
+  return Number.isFinite(raw) && raw > 0 ? raw : 3;
+}
+
+export function checkDegradedRateLimit(ip: string): RateLimitDecision {
+  gcRateLimitStore(degradedStore);
+  const rate = checkRateLimit(degradedStore, ip, {
+    windowMs: DEGRADED_WINDOW_MS,
+    max: degradedPerIpHour(),
+  });
+
+  if (rate.ok) {
+    return { allowed: true, reservationId: DEGRADED_RESERVATION_ID, degraded: true };
+  }
+
+  return {
+    allowed: false,
+    reason: "rate_ip_hour",
+    message: `Trop de tentatives sur la dernière heure. Réessayez dans une heure ou écrivez-nous à ${CONTACT_EMAIL}.`,
+    retryAfterSec: rate.retryAfterSec ?? 3600,
+  };
+}
+
+/**
  * Vérifie tous les rate limits en UNE seule query SQL (FILTER WHERE).
  * Filtre sur le service indiqué pour partitionner les compteurs.
  */
@@ -192,7 +327,8 @@ export async function checkServiceRateLimit(
   // Une seule requête prend un verrou transactionnel par service, lit les
   // compteurs puis insère la réservation. Deux appels concurrents ne peuvent
   // plus tous observer le même compteur avant leur INSERT.
-  const result = await getDb().execute(sql`
+  const result = await withQueryTimeout("check", () =>
+    getDb().execute(sql`
     WITH rate_lock AS (
       SELECT pg_advisory_xact_lock(hashtext(${"hagnere-code-rate:" + service})) AS locked
     ),
@@ -261,7 +397,8 @@ export async function checkServiceRateLimit(
       reservation.id AS reservation_id
     FROM counters
     LEFT JOIN reservation ON TRUE
-  `);
+  `),
+  );
 
   const row = (result as unknown as { rows: Array<Record<string, number | string>> }).rows?.[0];
   if (!row) throw new Error("Rate-limit reservation returned no row");
@@ -371,6 +508,13 @@ export async function bindReservationEmail(
   service: ServiceId,
   email: string,
 ): Promise<RateLimitDecision> {
+  // Mode dégradé : pas de réservation à laquelle attacher l'adresse. Le
+  // plafond par e-mail est perdu pendant la panne — c'est le prix assumé pour
+  // continuer à recevoir les demandes, et le repli mémoire par IP reste devant.
+  if (reservationId === DEGRADED_RESERVATION_ID) {
+    return { allowed: true, reservationId };
+  }
+
   const limits = SERVICE_LIMITS[service];
   const emailLimit = limits.perEmailDay;
   const emailHash = hashEmail(email);
@@ -382,7 +526,8 @@ export async function bindReservationEmail(
   }
 
   const oneDayAgo = new Date(Date.now() - DAY_MS);
-  const result = await getDb().execute(sql`
+  const result = await withQueryTimeout("bind_email", () =>
+    getDb().execute(sql`
     WITH rate_lock AS (
       SELECT pg_advisory_xact_lock(hashtext(${"hagnere-code-rate:" + service})) AS locked
     ),
@@ -408,7 +553,8 @@ export async function bindReservationEmail(
     SELECT email_total.value AS email_day, updated.id AS reservation_id
     FROM email_total
     LEFT JOIN updated ON TRUE
-  `);
+  `),
+  );
 
   const row = (result as unknown as {
     rows: Array<Record<string, number | string | null>>;
@@ -421,8 +567,11 @@ export async function bindReservationEmail(
     return {
       allowed: false,
       reason: "rate_email_day",
-      message:
-        "Cette adresse a déjà soumis plusieurs demandes aujourd'hui. Réessayez demain ou écrivez-nous directement.",
+      // Ce refus vise le prospect le PLUS engagé du parcours — celui qui a
+      // déjà écrit un brief et revient corriger une coordonnée. C'était le
+      // seul message du fichier à dire « écrivez-nous directement » sans
+      // dire où : on l'aligne sur les sept autres.
+      message: `Cette adresse a déjà soumis plusieurs demandes aujourd'hui. Réessayez demain ou écrivez-nous à ${CONTACT_EMAIL}.`,
       retryAfterSec: DAY_MS / 1000,
     };
   }
@@ -447,7 +596,8 @@ export async function reserveServiceCost(
 
   const oneDayAgo = new Date(Date.now() - DAY_MS);
   const safeTokens = Math.max(0, Math.trunc(tokensUsed));
-  const result = await getDb().execute(sql`
+  const result = await withQueryTimeout("reserve_cost", () =>
+    getDb().execute(sql`
     WITH rate_lock AS (
       SELECT pg_advisory_xact_lock(hashtext(${"hagnere-code-rate:" + service})) AS locked
     ),
@@ -472,7 +622,8 @@ export async function reserveServiceCost(
     SELECT totals.cost_day, updated.id AS reservation_id
     FROM totals
     LEFT JOIN updated ON TRUE
-  `);
+  `),
+  );
   const row = (result as unknown as {
     rows: Array<Record<string, number | string | null>>;
   }).rows?.[0];
@@ -519,11 +670,15 @@ export async function releaseReservation(args: {
   reason: ReleaseReason;
   briefId?: number | null;
 }): Promise<void> {
+  // Mode dégradé : aucune ligne n'a été réservée, il n'y a rien à relâcher —
+  // et la base qui a provoqué le repli est de toute façon injoignable.
+  if (args.reservationId === DEGRADED_RESERVATION_ID) return;
   try {
     if (!Number.isInteger(args.reservationId) || args.reservationId <= 0) {
       throw new Error("Reservation release requires a valid reservation");
     }
-    await getDb().execute(sql`
+    await withQueryTimeout("release", () =>
+      getDb().execute(sql`
       UPDATE ai_call_log
       SET status = 'released',
           block_reason = ${args.reason},
@@ -532,7 +687,8 @@ export async function releaseReservation(args: {
         AND service = ${args.service}
         AND status = 'reserved'
         AND tokens_used = 0
-    `);
+    `),
+    );
   } catch (err) {
     // Échec fermé : le créneau reste consommé, ce qui est le comportement
     // historique. On logge pour pouvoir alerter sur un taux anormal.
@@ -562,11 +718,15 @@ export async function logAiCall(args: {
   briefId?: number | null;
   userAgent?: string | null;
 }): Promise<void> {
+  // Mode dégradé : aucune ligne à mettre à jour, et la base est injoignable.
+  // Le journal de cette requête est perdu — c'est le seul effet accepté ici.
+  if (args.reservationId === DEGRADED_RESERVATION_ID) return;
   try {
     if (!Number.isInteger(args.reservationId) || args.reservationId <= 0) {
       throw new Error("Outcome log requires a valid rate-limit reservation");
     }
-    await getDb().execute(sql`
+    await withQueryTimeout("log_outcome", () =>
+      getDb().execute(sql`
       INSERT INTO ai_call_log (
         service, ip, email_hash, status, block_reason, tokens_used,
         duration_ms, brief_id, user_agent
@@ -581,7 +741,8 @@ export async function logAiCall(args: {
         AND reservation.service = ${args.service}
         AND reservation.status = 'reserved'
       LIMIT 1
-    `);
+    `),
+    );
   } catch (err) {
     // Loggé pour observabilité — sans propager pour ne pas casser la
     // réponse. Si la DB tombe, le cost breaker est neutralisé silencieusement

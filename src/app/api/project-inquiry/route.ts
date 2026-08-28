@@ -2,10 +2,7 @@ import { NextResponse } from "next/server";
 import { PRIVACY_NOTICE_VERSION } from "@/lib/privacy-notice";
 import { CALENDLY_URL } from "@/lib/calendly";
 import {
-  CONTACT_ADDRESS,
   CONTACT_EMAIL,
-  CONTACT_PHONE_DISPLAY,
-  CONTACT_PHONE_E164,
   DEFAULT_CONTACT_SENDER_EMAIL,
 } from "@/lib/contact-details";
 import { Resend } from "resend";
@@ -13,13 +10,20 @@ import { eq } from "drizzle-orm";
 import { getClientIp } from "@/lib/rate-limit";
 import {
   bindReservationEmail,
+  checkDegradedRateLimit,
   checkServiceRateLimit,
   hashEmail,
   logAiCall,
   releaseReservation,
 } from "@/lib/ai-rate-limit";
 import {
+  escapeHtml,
+  renderEmailShell,
+  teamMailIdempotencyKey,
+} from "@/lib/project-inquiry-mail";
+import {
   getMathChallengeSecret,
+  isMathChallengeExpired,
   isValidMathChallenge,
 } from "@/lib/math-challenge";
 import { getDb } from "@/db";
@@ -36,6 +40,10 @@ import {
   createInquirySlug,
   isValidInquiryIdempotencyKey,
 } from "@/lib/inquiry-idempotency";
+import {
+  inquiryProvenanceRows,
+  inquiryRowsToTextLines,
+} from "./inquiry-email";
 import {
   PayloadTooLargeError,
   readJsonWithLimit,
@@ -75,6 +83,12 @@ type Body = {
   openScope?: string;
   decisionStage?: string;
   consent?: boolean;
+  // Provenance figée côté client à l'atterrissage (src/lib/lead-source.ts).
+  // Purement indicative : jamais validée en dur, jamais bloquante — une
+  // provenance absente ou fantaisiste ne doit pas coûter un lead.
+  landingPage?: string;
+  referrerHost?: string;
+  utm?: string;
 };
 
 // Les valeurs légitimes sont des libellés d'options du funnel : quelques mots.
@@ -112,6 +126,22 @@ function normalizeSingleLine(value: string): string {
  * SIREN persisté : même règle que /api/sirene (9 chiffres exactement).
  * Toute autre saisie est stockée à null plutôt que dénormalisée.
  */
+/**
+ * Provenance : valeurs venues du navigateur, donc traitées comme du texte
+ * hostile. On replie les caractères de contrôle, on borne, et on ne rejette
+ * jamais la soumission pour autant — l'attribution est un confort d'analyse,
+ * pas une condition de réception du lead.
+ */
+function asLeadSource(value: unknown, max: number): string | null {
+  return normalizeSingleLine(asText(value)).slice(0, max) || null;
+}
+
+/** Hôte du référent : on ne persiste que ce qui ressemble à un nom d'hôte. */
+function asReferrerHost(value: unknown): string | null {
+  const host = normalizeSingleLine(asText(value)).toLowerCase().slice(0, 200);
+  return /^[a-z0-9.-]+\.[a-z]{2,}$/.test(host) ? host : null;
+}
+
 function asSiren(value: unknown): string | null {
   const cleaned = asText(value).replace(/\s/g, "");
   return /^\d{9}$/.test(cleaned) ? cleaned : null;
@@ -137,54 +167,6 @@ function isPlausibleLabel(v: string): boolean {
 
 function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
-}
-
-function escapeHtml(s: string): string {
-  return s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
-
-function renderEmailShell(preheader: string, innerHtml: string): string {
-  return `
-    <!doctype html>
-    <html lang="fr">
-      <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Hagnéré Code</title>
-      </head>
-      <body style="margin:0;background:#f6f5f8;color:#0a0a0a;font-family:Inter,Arial,sans-serif">
-        <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent">${escapeHtml(preheader)}</div>
-        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f6f5f8;padding:32px 12px">
-          <tr>
-            <td align="center">
-              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;background:#ffffff;border:1px solid #e7e5ea;border-radius:20px;overflow:hidden;box-shadow:0 24px 70px rgba(17,17,17,0.08)">
-                <tr>
-                  <td style="background:#0a0a0a;padding:24px 28px;color:#fff">
-                    <div style="display:inline-block;background:#fff;color:#0a0a0a;border-radius:8px;padding:7px 8px;font-weight:800;font-size:13px;letter-spacing:0">HC</div>
-                    <div style="display:inline-block;margin-left:10px;vertical-align:middle;font-size:15px;font-weight:700">Hagnéré <span style="font-weight:400;color:#c4b5fd">Code</span></div>
-                    <div style="height:3px;width:92px;background:#7c3aed;border-radius:999px;margin-top:18px"></div>
-                  </td>
-                </tr>
-                ${innerHtml}
-                <tr>
-                  <td style="padding:22px 28px;background:#fafafa;border-top:1px solid #ededed;color:#737373;font-size:12px;line-height:1.55">
-                    HAGNERE CODE · SASU au capital de 10 € · RCS Chambéry 993 672 856<br>
-                    ${CONTACT_ADDRESS.street}, ${CONTACT_ADDRESS.postalCode} ${CONTACT_ADDRESS.locality}<br>
-                    <a href="mailto:${CONTACT_EMAIL}" style="color:#4c1d95;text-decoration:none">${CONTACT_EMAIL}</a> · <a href="tel:${CONTACT_PHONE_E164}" style="color:#4c1d95;text-decoration:none">${CONTACT_PHONE_DISPLAY}</a>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </table>
-      </body>
-    </html>
-  `;
 }
 
 export async function POST(request: Request) {
@@ -240,13 +222,12 @@ export async function POST(request: Request) {
       userAgent,
     );
   } catch (err) {
+    // La base ne répond pas. Refuser ici coûtait 100 % des soumissions pendant
+    // toute la panne, alors que l'e-mail à l'équipe — le seul chemin qui fait
+    // vraiment arriver le lead — reste fonctionnel. On bascule sur un compteur
+    // mémoire, volontairement bas, et on poursuit sans base.
     log.error("project_inquiry_rate_limit_unavailable", { err: err as Error });
-    return NextResponse.json(
-      {
-        error: `Le formulaire est temporairement indisponible. Écrivez à ${CONTACT_EMAIL} ou réessayez plus tard.`,
-      },
-      { status: 503 },
-    );
+    rateCheck = checkDegradedRateLimit(ip);
   }
   if (!rateCheck.allowed) {
     return NextResponse.json(
@@ -262,6 +243,29 @@ export async function POST(request: Request) {
   // anti-automatisation, complétée par le rate-limit ; ce n'est pas une preuve
   // autonome qu'un humain est à l'origine de la requête.
   if (!isValidMathChallenge(body.mathChallenge, mathChallengeSecret)) {
+    // Un jeton authentique, une bonne réponse, mais l'échéance dépassée : la
+    // personne a pris son temps, elle n'a rien fait de mal. Lui répondre
+    // « réponse incorrecte » l'envoyait recompter une addition juste, autant de
+    // fois qu'elle réessayait — en consommant son quota à chaque tentative,
+    // jusqu'au verrouillage. On relâche le créneau et on le dit autrement.
+    if (isMathChallengeExpired(body.mathChallenge, mathChallengeSecret)) {
+      await releaseReservation({
+        reservationId: rateCheck.reservationId,
+        service: "inquiry",
+        reason: "validation",
+      });
+      return NextResponse.json(
+        {
+          // `mathChallengeExpired` permet au client de recharger une question
+          // au lieu de laisser la personne face à un refus qu'elle ne peut pas
+          // corriger.
+          mathChallengeExpired: true,
+          error:
+            "Le contrôle anti-robot avait expiré. Une nouvelle question vient d'être chargée : validez-la puis renvoyez votre brief.",
+        },
+        { status: 403 },
+      );
+    }
     await logAiCall({
       reservationId: rateCheck.reservationId,
       service: "inquiry",
@@ -412,6 +416,13 @@ export async function POST(request: Request) {
     clientKey: idempotencyKey,
     canonicalPayload,
   });
+  // Provenance normalisée UNE fois : elle est écrite en base et relue dans le
+  // mail d'équipe. Deux normalisations séparées auraient fini par répondre
+  // différemment à la même question — le mail affirmant une provenance que la
+  // colonne ne contient pas.
+  const landingPage = asLeadSource(body.landingPage, 200);
+  const referrerHost = asReferrerHost(body.referrerHost);
+  const utm = asLeadSource(body.utm, 400);
   try {
     const db = getDb();
     const inserted = await db
@@ -439,6 +450,9 @@ export async function POST(request: Request) {
         decisionStage: asText(body.decisionStage).slice(0, 200) || null,
         consent: body.consent === true,
         privacyNoticeVersion: PROJECT_INQUIRY_PRIVACY_NOTICE_VERSION,
+        landingPage,
+        referrerHost,
+        utm,
         mailSent: false,
       })
       .onConflictDoNothing({ target: projectBrief.publicSlug })
@@ -471,6 +485,16 @@ export async function POST(request: Request) {
     process.env.CONTACT_FROM_EMAIL || DEFAULT_CONTACT_SENDER_EMAIL;
 
   const subject = `[Projet] ${company} — ${fullName}`;
+  // Provenance + référence en base : le mail d'équipe est le seul endroit où
+  // ces informations sont lues sans ouvrir la base. Elles ne partent QUE vers
+  // l'équipe — l'accusé de réception du prospect n'a rien à faire d'une
+  // référence interne ni de sa propre provenance.
+  const provenanceRows = inquiryProvenanceRows({
+    landingPage,
+    referrerHost,
+    utm,
+    publicSlug: briefSlug,
+  });
   const textBody = [
     "Nouveau contact projet — hagnere-code.ai",
     "",
@@ -482,6 +506,9 @@ export async function POST(request: Request) {
     `Budget    : ${budget || "non précisé"}`,
     `Échéance  : ${timeline || "non précisée"}`,
     `Notice vie privée lue : version ${PROJECT_INQUIRY_PRIVACY_NOTICE_VERSION}`,
+    "",
+    "Provenance :",
+    ...inquiryRowsToTextLines(provenanceRows),
     "",
     "Message :",
     message,
@@ -520,6 +547,12 @@ export async function POST(request: Request) {
             <tr><td style="width:130px;color:#737373;font-size:12px;text-transform:uppercase;letter-spacing:0.08em">Budget</td><td style="font-size:15px">${escapeHtml(budget || "non précisé")}</td></tr>
             <tr><td style="width:130px;color:#737373;font-size:12px;text-transform:uppercase;letter-spacing:0.08em">Échéance</td><td style="font-size:15px">${escapeHtml(timeline || "non précisée")}</td></tr>
             <tr><td style="width:130px;color:#737373;font-size:12px;text-transform:uppercase;letter-spacing:0.08em">Notice vie privée</td><td style="font-size:15px">Version ${PROJECT_INQUIRY_PRIVACY_NOTICE_VERSION} — prise de connaissance confirmée</td></tr>
+            ${provenanceRows
+              .map(
+                (row) =>
+                  `<tr><td style="width:130px;color:#737373;font-size:12px;text-transform:uppercase;letter-spacing:0.08em">${escapeHtml(row.label)}</td><td style="font-size:15px;color:#525252">${escapeHtml(row.value)}</td></tr>`,
+              )
+              .join("")}
           </table>
         </td>
       </tr>
@@ -655,7 +688,7 @@ export async function POST(request: Request) {
           text: textBody,
           html: htmlBody,
         },
-        `inquiry-${briefSlug}-team`,
+        teamMailIdempotencyKey(briefSlug),
       );
       return result.error
         ? { ok: false, errorName: result.error.name }

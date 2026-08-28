@@ -1,17 +1,19 @@
 /**
- * Repli de réservation, hébergé sur l'organisation Calendly du groupe.
+ * Réservation de créneau, hébergée sur l'organisation Calendly du groupe.
  *
- * L'ÉVÉNEMENT est bien celui de Hagnéré Code — `hagnere-code-entretien-de-
- * decouverte` — mais l'ORGANISATION propriétaire du lien est
- * `hagnere-patrimoine`. Un prospect arrivé par une annonce Hagnéré Code voit
- * donc le nom d'une autre société du groupe dans l'URL, dans l'objet de
- * l'invitation et dans la confirmation Calendly. Avant l'ouverture des
- * campagnes, poser `NEXT_PUBLIC_CALENDLY_URL` sur un compte au nom de Hagnéré
- * Code : c'est un changement de configuration, pas de code, et aucune URL de
- * remplacement n'est écrite ici tant que le compte n'existe pas.
+ * L'ÉVÉNEMENT est celui de Hagnéré Code — `hagnere-code-entretien-de-
+ * decouverte` — et l'ORGANISATION propriétaire du lien est
+ * `hagnere-patrimoine`. Un prospect voit donc le nom d'une autre société du
+ * groupe dans l'URL, dans l'objet de l'invitation et dans la confirmation.
  *
- * La création du compte et le choix du slug relèvent du dirigeant ; ce module
- * garantit seulement que la variable, si elle est posée, l'emporte.
+ * ARBITRAGE DU DIRIGEANT, 28/08/2026 : c'est assumé et ce n'est pas un défaut.
+ * Le compte Calendly du groupe est au domaine Hagnéré Patrimoine, aucun compte
+ * au nom de Hagnéré Code n'existe et il n'est pas prévu d'en créer un — « c'est
+ * la même chose ». Un audit précédent avait classé cet écart en incohérence de
+ * marque à corriger : la question est tranchée, ne la rouvrez pas.
+ *
+ * `NEXT_PUBLIC_CALENDLY_URL` reste disponible si l'arbitrage change un jour ;
+ * ce module garantit seulement que la variable, si elle est posée, l'emporte.
  */
 export const DEFAULT_CALENDLY_URL =
   "https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte";

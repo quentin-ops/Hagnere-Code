@@ -58,10 +58,7 @@ function internalLinksOf(source: string): string[] {
  * qu'en même temps que ces deux valeurs, qui vivent hors du répertoire des
  * guides.
  */
-const SERVICE_LINK_EXEMPTIONS: Record<string, string> = {
-  "mvp-saas-quoi-inclure":
-    "content-quality.test.ts compare le nombre exact de mots visibles à readTimeMin (src/lib/guides.ts) et au décompte figé dans docs/research/mvp-saas-quoi-inclure.md : ajouter une phrase de rattachement suppose de mettre ces deux fichiers à jour dans le même changement.",
-};
+const SERVICE_LINK_EXEMPTIONS: Record<string, string> = {};
 
 describe("contrat transversal du corpus de guides", () => {
   it("rattache chaque guide publié à au moins une page de service", () => {
@@ -502,7 +499,9 @@ describe("confort tactile des outils de guides", () => {
     }
 
     // Sans cette borne, un changement de mise en forme ferait échouer la
-    // lecture des balises et le test passerait à vide.
-    expect(inspected, "aucun contrôle relu").toBeGreaterThan(40);
+    // lecture des balises et le test passerait à vide. Seuil ramené de 40 à 25
+    // le 28/08/2026 : le corpus est passé de 18 à 9 guides, donc le nombre de
+    // balises relues a mécaniquement baissé (34 à la mesure).
+    expect(inspected, "aucun contrôle relu").toBeGreaterThan(25);
   });
 });

@@ -480,17 +480,16 @@ export default function Page() {
         }}
         relatedGuides={[
           {
-            label: "Remplacer Microsoft Access sans perdre le métier",
-            href: "/guides/remplacer-microsoft-access-application-web",
+            label: "Besoin d’un logiciel métier : le diagnostic en 6 réponses",
+            href: "/guides/signes-besoin-logiciel-metier",
           },
           {
-            label:
-              "Calculer le retour sur investissement d’une application métier",
-            href: "/guides/calculer-roi-application-metier",
+            label: "Quel processus métier automatiser en premier ?",
+            href: "/guides/automatiser-processus-metier",
           },
           {
-            label: "Airtable, Notion ou application métier",
-            href: "/guides/airtable-notion-ou-application-metier",
+            label: "Comment rédiger un cahier des charges SaaS ?",
+            href: "/guides/cahier-des-charges-saas",
           },
         ]}
         relatedGuidesLabel="3 guides complémentaires"
@@ -1104,7 +1103,7 @@ coût confirmé à 0 € : le total peut être calculé`}
             libérée ne devient une économie de trésorerie que si une dépense est
             réellement évitée. Pour une analyse financière plus large, utilisez
             ensuite le guide dédié au{` `}
-            <Link href="/guides/calculer-roi-application-metier">
+            <Link href="/services/outils-internes-sur-mesure">
               retour sur investissement (ROI) d’une application métier
             </Link>
             , en gardant séparées trésorerie, capacité réaffectée et bénéfices
@@ -1568,12 +1567,12 @@ coût confirmé à 0 € : le total peut être calculé`}
           <p>
             Si la question dépasse Power Platform, deux comparaisons voisines
             éclairent la même décision. Le guide{" "}
-            <Link href="/guides/airtable-notion-ou-application-metier">
+            <Link href="/guides/power-apps-ou-application-sur-mesure">
               Airtable, Notion ou application métier
             </Link>{" "}
             traite du même arbitrage hors écosystème Microsoft, et celui
             consacré au remplacement de{" "}
-            <Link href="/guides/remplacer-microsoft-access-application-web">
+            <Link href="/services/outils-internes-sur-mesure">
               Microsoft Access par une application web
             </Link>{" "}
             couvre le cas d’une base héritée. Si le besoin lui-même n’est pas
@@ -1585,7 +1584,7 @@ coût confirmé à 0 € : le total peut être calculé`}
           </p>
           <p>
             Trois contrôles décident ensuite du niveau d’exigence. La{" "}
-            <Link href="/guides/droits-acces-application-metier">
+            <Link href="/guides/securite-application-metier">
               gestion des droits d’accès
             </Link>{" "}
             confronte les rôles réellement appliqués dans le tenant à ceux que
@@ -1595,7 +1594,7 @@ coût confirmé à 0 € : le total peut être calculé`}
             </Link>{" "}
             listent ce qu’il faut prouver avant d’élargir l’audience. Une
             bascule éventuelle suit la méthode de{" "}
-            <Link href="/guides/migrer-logiciel-metier-sans-interruption">
+            <Link href="/services/outils-internes-sur-mesure">
               migration sans interruption de service
             </Link>
             , retour arrière compris.
@@ -1612,7 +1611,7 @@ coût confirmé à 0 € : le total peut être calculé`}
             </TrackedGuideCtaLink>{" "}
             à
             Hagnéré Code — ou d’abord vérifier{" "}
-            <Link href="/guides/choisir-prestataire-application-metier">
+            <Link href="/guides/cahier-des-charges-saas">
               comment choisir un prestataire sur preuves
             </Link>{" "}
             ; indiquez explicitement que conserver Power Apps reste une issue

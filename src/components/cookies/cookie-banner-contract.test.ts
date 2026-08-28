@@ -53,3 +53,26 @@ describe("bannière cookies — feuille de style et composant", () => {
     ).toEqual([]);
   });
 });
+
+/**
+ * La condition d'affichage de la bannière a une seule source :
+ * `isCookieBannerEnabled()`. Elle était recopiée dans `layout.tsx`, et c'est la
+ * copie qui décidait du montage réel — un site pouvait donc autoriser la mesure
+ * sans jamais afficher de bannière, ou l'inverse, sans qu'aucun test ne le voie.
+ */
+describe("condition d'affichage de la bannière", () => {
+  const layout = readFileSync(
+    new URL("../../app/layout.tsx", import.meta.url),
+    "utf8",
+  );
+
+  it("est lue depuis la source unique, jamais recopiée dans le layout", () => {
+    expect(layout).toContain('from "@/lib/cookie-consent"');
+    expect(layout).toContain("isCookieBannerEnabled()");
+    expect(layout).not.toMatch(/NEXT_PUBLIC_COOKIE_BANNER\s*===/);
+  });
+
+  it("monte la bannière derrière cette condition", () => {
+    expect(layout).toMatch(/cookieBannerEnabled \? <CookieBanner \/> : null/);
+  });
+});

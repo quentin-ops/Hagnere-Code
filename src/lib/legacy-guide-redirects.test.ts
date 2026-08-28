@@ -8,11 +8,12 @@ import {
 } from "./legacy-guide-redirects";
 
 /**
- * L'inventaire du reset du 29 juillet 2026 comptait 88 routes. Il ne peut que
+ * L'inventaire du reset du 29 juillet 2026 comptait 88 routes, portées à 96
+ * par le retrait du 28 août 2026 (guides sans volume de recherche). Il ne peut que
  * décroître : chaque guide reconstruit sort de la liste. Une borne haute
  * remplace donc l'égalité stricte, qu'il fallait décrémenter à la main.
  */
-const RESET_INVENTORY_SIZE = 88;
+const RESET_INVENTORY_SIZE = 96;
 
 describe("legacy guide redirects", () => {
   it("keeps the reset inventory bounded and unique", () => {

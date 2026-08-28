@@ -708,9 +708,7 @@ describe("public content quality for the MVP SaaS contract guide", () => {
 
   it("keeps every editorial or commercial internal link on an existing route", () => {
     for (const route of [
-      "guides/valider-idee-saas-avant-developper",
       "guides/cahier-des-charges-saas",
-      "guides/combien-de-temps-developper-saas",
       "demarrer-un-projet",
       "guides",
       "equipe",

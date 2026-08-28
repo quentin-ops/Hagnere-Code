@@ -395,10 +395,23 @@ describe("garde-fous CSS de la coquille partagée", () => {
     const mobile = NAV_CSS.slice(NAV_CSS.indexOf("@media (max-width: 720px)"));
     expect(mobile).toMatch(/\.hc-nav-pill-trigger\s*{[^}]*width:\s*44px/);
     expect(mobile).toMatch(/\.hc-nav-pill-trigger\s*{[^}]*height:\s*44px/);
+    // Le CTA primaire n'est plus un carré de 44 px : il porte désormais un
+    // libellé court en mobile — un bouton muet, réduit à une icône, ne disait
+    // plus au visiteur ce qu'il déclenchait, sur la seule action de conversion
+    // de l'en-tête. La cible tactile reste garantie par la hauteur, la largeur
+    // suivant le mot.
     expect(mobile).toMatch(
-      /\.hc-nav \.hc-nav-cta-primary\s*{[^}]*width:\s*44px/,
+      /\.hc-nav \.hc-nav-cta-primary\s*{[^}]*min-height:\s*44px/,
     );
     expect(mobile).toMatch(/\.hc-mega-cat\s*{[^}]*min-height:\s*44px/);
+  });
+
+  it("laisse au CTA primaire un libellé lisible en mobile", () => {
+    const mobile = NAV_CSS.slice(NAV_CSS.indexOf("@media (max-width: 720px)"));
+    // La paire de libellés doit s'inverser : le complet cède la place au court,
+    // jamais au silence.
+    expect(mobile).toMatch(/\.hc-nav-cta-label\s*{[^}]*display:\s*none/);
+    expect(mobile).toMatch(/\.hc-nav-cta-label-mobile\s*{[^}]*display:\s*inline/);
   });
 });
 

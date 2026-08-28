@@ -76,27 +76,6 @@ export const GUIDES: GuideEntry[] = [
     ],
   },
   {
-    slug: "calculer-roi-application-metier",
-    title: "ROI d’une application métier : calcul et cas complet",
-    cardTitle: "Calculer le ROI d’une application métier",
-    metaDescription:
-      "Calculez le ROI d’une application métier sans confondre trésorerie et temps gagné : coût total, scénarios, délai de retour et comparaison des options.",
-    cardDescription:
-      "Deux lectures du ROI, douze familles de coûts et trois scénarios pour décider sans transformer une inconnue en zéro.",
-    heroTitle:
-      "Calculer le ROI d’une application métier sans inventer les gains",
-    section: "Outils internes et automatisation",
-    editorialStatus: "published",
-    datePublished: "2026-07-31T05:30:49+02:00",
-    dateModified: "2026-07-31T05:30:49+02:00",
-    readTimeMin: 23,
-    articleImagePaths: [
-      "/guides/calculer-roi-application-metier/article-roi-16x9.webp",
-      "/guides/calculer-roi-application-metier/article-roi-4x3.webp",
-      "/guides/calculer-roi-application-metier/article-roi-1x1.webp",
-    ],
-  },
-  {
     slug: "signes-besoin-logiciel-metier",
     title: "Besoin d’un logiciel métier : le diagnostic en 6 réponses",
     cardTitle: "Votre entreprise a-t-elle besoin d’un logiciel métier ?",
@@ -114,47 +93,6 @@ export const GUIDES: GuideEntry[] = [
       "/guides/signes-besoin-logiciel-metier/article-diagnostic-16x9.svg",
       "/guides/signes-besoin-logiciel-metier/article-diagnostic-4x3.svg",
       "/guides/signes-besoin-logiciel-metier/article-diagnostic-1x1.svg",
-    ],
-  },
-  {
-    slug: "remplacer-microsoft-access-application-web",
-    title: "Remplacer Microsoft Access : 7 options comparées",
-    cardTitle: "Remplacer Microsoft Access sans perdre le métier",
-    metaDescription:
-      "Comment remplacer Access sans perdre données ni règles métier ? Inventaire, 7 options, limites des conversions automatiques et migration progressive.",
-    cardDescription:
-      "Un dossier de sortie local, sept options comparées sur les mêmes critères et une migration progressive, sans imposer d’emblée une application web.",
-    heroTitle:
-      "Remplacer Microsoft Access sans perdre le travail qu’il contient",
-    section: "Outils internes et automatisation",
-    editorialStatus: "published",
-    datePublished: "2026-07-22T11:09:47+02:00",
-    dateModified: "2026-08-02T22:15:51+02:00",
-    readTimeMin: 20,
-    articleImagePaths: [
-      "/guides/remplacer-microsoft-access-application-web/article-sortie-access-16x9.svg",
-      "/guides/remplacer-microsoft-access-application-web/article-sortie-access-4x3.svg",
-      "/guides/remplacer-microsoft-access-application-web/article-sortie-access-1x1.svg",
-    ],
-  },
-  {
-    slug: "valider-idee-saas-avant-developper",
-    title: "Comment valider une idée SaaS avant de développer ?",
-    cardTitle: "Valider une idée SaaS avant de développer",
-    metaDescription:
-      "Testez une idée SaaS avant de développer : problème, acheteur, prix, usage et critères pour continuer, changer ou arrêter.",
-    cardDescription:
-      "Séparez six questions, choisissez un test sans produit et décidez s’il faut continuer, changer l’idée, attendre ou arrêter.",
-    heroTitle: "Valider une idée SaaS avant de développer",
-    section: "SaaS et MVP",
-    editorialStatus: "published",
-    datePublished: "2026-07-30T07:04:32+02:00",
-    dateModified: "2026-07-30T07:04:32+02:00",
-    readTimeMin: 20,
-    articleImagePaths: [
-      "/guides/valider-idee-saas-avant-developper/article-validation-16x9.webp",
-      "/guides/valider-idee-saas-avant-developper/article-validation-4x3.webp",
-      "/guides/valider-idee-saas-avant-developper/article-validation-1x1.webp",
     ],
   },
   {
@@ -198,66 +136,6 @@ export const GUIDES: GuideEntry[] = [
     ],
   },
   {
-    slug: "airtable-notion-ou-application-metier",
-    title: "Airtable, Notion ou application métier : comment choisir ?",
-    cardTitle: "Airtable, Notion ou application métier",
-    metaDescription:
-      "Comparez Airtable, Notion et une application métier avec 12 tests sur les droits, les données, l’exploitation et la sortie, sans imposer le sur-mesure.",
-    cardDescription:
-      "Douze preuves, cinq issues et une grille de sortie pour décider s’il faut garder Airtable ou Notion, renforcer l’organisation, hybrider ou migrer.",
-    heroTitle: "Airtable, Notion ou application métier : comment choisir ?",
-    section: "Outils internes et automatisation",
-    editorialStatus: "published",
-    datePublished: "2026-08-05T21:41:54+02:00",
-    dateModified: "2026-08-05T21:41:54+02:00",
-    readTimeMin: 25,
-    articleImagePaths: [
-      "/guides/airtable-notion-ou-application-metier/article-airtable-notion-16x9.svg",
-      "/guides/airtable-notion-ou-application-metier/article-airtable-notion-4x3.svg",
-      "/guides/airtable-notion-ou-application-metier/article-airtable-notion-1x1.svg",
-    ],
-  },
-  {
-    slug: "reprendre-logiciel-metier-existant",
-    title: "Reprendre un logiciel métier : le test de relève",
-    cardTitle: "Reprendre un logiciel métier existant",
-    metaDescription:
-      "Faites le test de relève : vérifiez code, accès, déploiement, sauvegardes, données et contrat avant de confier votre logiciel à une nouvelle équipe.",
-    cardDescription:
-      "Un test de relève en cinq capacités et un procès-verbal de reprise pour décider de reprendre, limiter la mission ou reporter la bascule.",
-    heroTitle: "Reprendre un logiciel métier existant sans signer à l’aveugle",
-    section: "Maintenance & reprise",
-    editorialStatus: "published",
-    datePublished: "2026-07-30T12:47:39+02:00",
-    dateModified: "2026-07-30T12:47:39+02:00",
-    readTimeMin: 12,
-    articleImagePaths: [
-      "/guides/reprendre-logiciel-metier-existant/reprise-logiciel-16x9.webp",
-      "/guides/reprendre-logiciel-metier-existant/reprise-logiciel-4x3.webp",
-      "/guides/reprendre-logiciel-metier-existant/reprise-logiciel-1x1.webp",
-    ],
-  },
-  {
-    slug: "migrer-logiciel-metier-sans-interruption",
-    title: "Migrer un logiciel métier sans interruption",
-    cardTitle: "Migrer un logiciel métier sans interrompre l’activité",
-    metaDescription:
-      "Préparez une migration sans arrêt subi : un logiciel de référence, cinq preuves, une répétition et assez de temps pour décider ou revenir.",
-    cardDescription:
-      "Cinq preuves et un budget en minutes pour basculer, réduire le lot ou reporter sans masquer les inconnues.",
-    heroTitle: "Migrer un logiciel métier sans interrompre l’activité",
-    section: "Outils internes et migration",
-    editorialStatus: "published",
-    datePublished: "2026-07-30T14:53:22+02:00",
-    dateModified: "2026-07-30T14:53:22+02:00",
-    readTimeMin: 19,
-    articleImagePaths: [
-      "/guides/migrer-logiciel-metier-sans-interruption/migration-reversible-16x9.webp",
-      "/guides/migrer-logiciel-metier-sans-interruption/migration-reversible-4x3.webp",
-      "/guides/migrer-logiciel-metier-sans-interruption/migration-reversible-1x1.webp",
-    ],
-  },
-  {
     slug: "plan-recette-application-metier",
     title: "Plan de recette d’une application métier",
     cardTitle: "Préparer la recette d’une application métier",
@@ -276,26 +154,6 @@ export const GUIDES: GuideEntry[] = [
       "/guides/plan-recette-application-metier/recette-preuve-16x9.webp",
       "/guides/plan-recette-application-metier/recette-preuve-4x3.webp",
       "/guides/plan-recette-application-metier/recette-preuve-1x1.webp",
-    ],
-  },
-  {
-    slug: "choisir-prestataire-application-metier",
-    title: "Choisir un prestataire d’application métier",
-    cardTitle: "Choisir le prestataire de son application métier",
-    metaDescription:
-      "Comparez des prestataires sur un même cas : périmètre, coûts, validation, données, droits, maintenance et sortie, sans score global.",
-    cardDescription:
-      "Un cas métier commun, huit points non compensables et un outil local pour choisir, préciser, cadrer ou reporter.",
-    heroTitle: "Comment choisir le prestataire de votre application métier ?",
-    section: "Préparer son projet",
-    editorialStatus: "published",
-    datePublished: "2026-07-30T18:41:28+02:00",
-    dateModified: "2026-07-30T18:41:28+02:00",
-    readTimeMin: 17,
-    articleImagePaths: [
-      "/guides/choisir-prestataire-application-metier/comparaison-preuves-16x9.webp",
-      "/guides/choisir-prestataire-application-metier/comparaison-preuves-4x3.webp",
-      "/guides/choisir-prestataire-application-metier/comparaison-preuves-1x1.webp",
     ],
   },
   {
@@ -319,26 +177,6 @@ export const GUIDES: GuideEntry[] = [
     ],
   },
   {
-    slug: "droits-acces-application-metier",
-    title: "Droits d’accès d’une application métier",
-    cardTitle: "Droits d’accès d’une application métier",
-    metaDescription:
-      "Définissez qui peut voir, modifier, valider, exporter ou supprimer quoi : matrice sans score, portée, refus, cycle de vie et tests d’accès.",
-    cardDescription:
-      "Une matrice de dix dimensions, des STOP non compensables et un outil local pour préciser rôles, portée, refus, revue et tests.",
-    heroTitle: "Qui peut voir et modifier quoi dans votre application métier ?",
-    section: "Applications métiers et outils internes",
-    editorialStatus: "published",
-    datePublished: "2026-07-31T01:07:59+02:00",
-    dateModified: "2026-07-31T01:07:59+02:00",
-    readTimeMin: 14,
-    articleImagePaths: [
-      "/guides/droits-acces-application-metier/matrice-droits-16x9.webp",
-      "/guides/droits-acces-application-metier/matrice-droits-4x3.webp",
-      "/guides/droits-acces-application-metier/matrice-droits-1x1.webp",
-    ],
-  },
-  {
     slug: "cahier-des-charges-saas",
     title: "Comment rédiger un cahier des charges SaaS ?",
     cardTitle: "Rédiger un cahier des charges SaaS",
@@ -356,26 +194,6 @@ export const GUIDES: GuideEntry[] = [
       "/guides/cahier-des-charges-saas/cahier-saas-16x9.webp",
       "/guides/cahier-des-charges-saas/cahier-saas-4x3.webp",
       "/guides/cahier-des-charges-saas/cahier-saas-1x1.webp",
-    ],
-  },
-  {
-    slug: "combien-de-temps-developper-saas",
-    title: "Combien de temps faut-il pour développer un SaaS ?",
-    cardTitle: "Estimer le délai de développement d’un SaaS",
-    metaDescription:
-      "Calculez un calendrier SaaS à partir des dépendances, des capacités et de quatre scénarios, sans durée moyenne ni promesse de date.",
-    cardDescription:
-      "Un planificateur local pour relier les tâches, tester quatre scénarios, garder les inconnues visibles et mesurer l’écart au délai disponible.",
-    heroTitle: "Combien de temps faut-il pour développer un SaaS ?",
-    section: "Préparer son projet",
-    editorialStatus: "published",
-    datePublished: "2026-07-23T00:59:26+02:00",
-    dateModified: "2026-08-02T22:39:26+02:00",
-    readTimeMin: 17,
-    articleImagePaths: [
-      "/guides/combien-de-temps-developper-saas/calendrier-saas-16x9.webp",
-      "/guides/combien-de-temps-developper-saas/calendrier-saas-4x3.webp",
-      "/guides/combien-de-temps-developper-saas/calendrier-saas-1x1.webp",
     ],
   },
   {

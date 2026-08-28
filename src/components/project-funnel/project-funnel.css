@@ -469,10 +469,17 @@ body {
   line-height: 1.35;
 }
 
+/* `overflow: clip` et non `hidden`, pour la raison exposée en tête de feuille :
+   cette carte est le parent direct de `.pf-actions`, qui passe en
+   `position: sticky; bottom: 0` sous 760 px. La valeur `hidden` en faisait un
+   conteneur de défilement et neutralisait le collage — le bouton « Continuer »
+   n'apparaissait qu'en bas de l'étape, soit environ 3,5 écrans plus bas sur
+   mobile. `clip` découpe les coins arrondis à l'identique sans créer ce
+   conteneur. Ne pas revenir en arrière : `funnel-contract.test.tsx` le vérifie. */
 .pf-main-card {
   align-self: start;
   min-width: 0;
-  overflow: hidden;
+  overflow: clip;
   background: var(--pf-paper);
   border: 1px solid rgba(var(--pf-ink-rgb), 0.08);
   border-radius: 20px;
@@ -922,8 +929,28 @@ body {
   margin: 0;
 }
 
+/* Replié par défaut : le bouton d'envoi doit rester atteignable même quand le
+   brief compilé approche les 8 000 caractères. La borne de hauteur évite qu'un
+   brief très long redevienne un mur une fois déplié. */
+.pf-brief-preview > summary {
+  cursor: pointer;
+  color: var(--pf-ink);
+  font-weight: 650;
+  font-size: 13.5px;
+  list-style-position: inside;
+}
+
+.pf-brief-preview > summary:focus-visible {
+  outline: 2px solid var(--pf-accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
 .pf-brief-preview p {
   margin-top: 8px;
+  max-height: 40vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   color: var(--pf-soft);
   line-height: 1.55;
   white-space: pre-wrap;
@@ -1923,7 +1950,31 @@ body {
   75% { transform: translateX(6px); }
 }
 
-.pf-consent input[type="checkbox"] { display: none; }
+/* La case est habillée par `.pf-consent-box` : l'input natif doit disparaître
+   à l'œil, jamais au clavier. `display: none` le retirait de l'ordre de
+   tabulation ET de l'arbre d'accessibilité — or ce consentement est bloquant
+   (`stepIsComplete("contact")`), donc une personne au clavier ou au lecteur
+   d'écran ne pouvait ni le cocher, ni atteindre l'étape d'envoi où se trouve
+   la voie de sortie téléphone. Même masquage que `.sf-honeypot`, qui reste
+   focusable. */
+.pf-consent input[type="checkbox"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Le focus clavier doit se voir sur l'habillage, puisque l'input est masqué. */
+.pf-consent:focus-within { border-color: var(--pf-accent); }
+
+.pf-consent input[type="checkbox"]:focus-visible + .pf-consent-box {
+  outline: 2px solid var(--pf-accent);
+  outline-offset: 2px;
+}
 
 .pf-consent-box {
   display: inline-flex;
@@ -2457,4 +2508,81 @@ html.dark .pf-choice.is-selected {
 
 html.dark .pf-radio.is-selected {
   background: #201538;
+}
+
+/* ==========================================================================
+   Repère de prix à l'étape budget.
+   --------------------------------------------------------------------------
+   On demandait au visiteur de se situer sur une échelle dont rien, dans le
+   tunnel, ne donnait l'ordre de grandeur — et /tarifs n'y était jamais
+   mentionné. Le bloc reste discret : c'est une réponse à une objection, pas
+   une offre. Les montants viennent de budget-anchors.ts, aligné par test sur
+   la grille publiée.
+   ========================================================================== */
+.pf-budget-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.pf-budget-anchor {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--pf-line);
+  border-radius: 10px;
+  background: var(--pf-bg);
+  color: var(--pf-soft);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.pf-budget-anchor b {
+  color: var(--pf-ink);
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.pf-budget-anchor a {
+  color: var(--pf-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Portes vers les réponses aux objections, dans la barre du tunnel.
+   Discrètes : elles ne doivent pas concurrencer la pastille téléphone, mais un
+   visiteur bloqué sur le prix ne doit plus avoir à taper l'URL à la main. */
+.pf-top-link,
+.pf-root a.pf-top-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 10px;
+  color: var(--pf-soft);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: color 0.15s, background 0.15s;
+}
+
+.pf-top-link:hover {
+  color: var(--pf-ink);
+  background: var(--pf-bg);
+}
+
+.pf-top-link:focus-visible {
+  outline: 2px solid var(--pf-accent);
+  outline-offset: 2px;
+}
+
+/* Sous 760 px, la barre est déjà dense : les deux portes cèdent la place à la
+   pastille téléphone, qui reste la sortie prioritaire. Elles restent
+   atteignables depuis le pied de page du site. */
+@media (max-width: 760px) {
+  .pf-top-link,
+  .pf-root a.pf-top-link {
+    display: none;
+  }
 }

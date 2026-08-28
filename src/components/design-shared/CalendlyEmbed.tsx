@@ -1,7 +1,19 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 import { CALENDLY_URL } from "@/lib/calendly";
+import {
+  COOKIE_CONSENT_EVENT,
+  isCalendlyEmbedAllowed,
+  rememberCalendlyEmbedConsent,
+} from "@/lib/cookie-consent";
 import {
   CONTACT_EMAIL,
   CONTACT_PHONE_DISPLAY_NATIONAL,
@@ -11,6 +23,24 @@ import { listenToCalendlyWidget } from "./calendly-tracking";
 
 const CALENDLY_SCRIPT_SRC = "https://assets.calendly.com/assets/external/widget.js";
 const CALENDLY_LOAD_TIMEOUT_MS = 12_000;
+
+/**
+ * Canal local au document, en plus de `COOKIE_CONSENT_EVENT`.
+ *
+ * Le titre de la section et le widget doivent décrire le même écran. Le clic
+ * sur « Autoriser » est normalement diffusé par l'écriture du consentement,
+ * mais un navigateur qui refuse le stockage n'écrit rien, donc ne diffuse
+ * rien : sans ce second canal, le widget s'affichait pendant que le titre
+ * continuait d'annoncer une autorisation à donner.
+ */
+const CALENDLY_AUTHORISED_EVENT = "hc:calendly-authorised";
+
+/** La hauteur passe par une variable CSS : voir le commentaire de `height`. */
+type CalendlyHeightStyle = CSSProperties & { "--calendly-h": string };
+
+const heightStyle = (height: number): CalendlyHeightStyle => ({
+  "--calendly-h": `${height}px`,
+});
 
 type CalendlyApi = {
   initInlineWidget: (options: {
@@ -26,13 +56,73 @@ declare global {
 }
 
 /**
+ * Autorisation courante du widget tiers, telle qu'elle est mémorisée.
+ *
+ * L'état de départ est TOUJOURS « non autorisé » : c'est ce que le serveur rend
+ * (il n'a pas accès au stockage du visiteur) et l'hydratation doit lui
+ * correspondre. La lecture réelle se fait au montage, puis à chaque changement
+ * de consentement — un « Refuser tout » dans la bannière doit retirer l'iframe
+ * Calendly sans attendre un rechargement.
+ */
+function useCalendlyAuthorisation(): [boolean, () => void] {
+  const [authorised, setAuthorised] = useState(false);
+
+  useEffect(() => {
+    const syncFromStorage = () => setAuthorised(isCalendlyEmbedAllowed());
+    const authoriseLocally = () => setAuthorised(true);
+
+    // setTimeout : évite un setState synchrone dans l'effet
+    // (react-hooks/set-state-in-effect), comme dans CookieBanner.
+    const id = window.setTimeout(syncFromStorage, 0);
+    window.addEventListener(COOKIE_CONSENT_EVENT, syncFromStorage);
+    window.addEventListener(CALENDLY_AUTHORISED_EVENT, authoriseLocally);
+    return () => {
+      window.clearTimeout(id);
+      window.removeEventListener(COOKIE_CONSENT_EVENT, syncFromStorage);
+      window.removeEventListener(CALENDLY_AUTHORISED_EVENT, authoriseLocally);
+    };
+  }, []);
+
+  const authorise = useCallback(() => {
+    rememberCalendlyEmbedConsent(true);
+    window.dispatchEvent(new Event(CALENDLY_AUTHORISED_EVENT));
+  }, []);
+
+  return [authorised, authorise];
+}
+
+/**
+ * Rend la copie qui correspond à ce que le visiteur a réellement sous les yeux.
+ *
+ * Le titre de /rendez-vous annonçait « Réservez directement ci-dessous »
+ * au-dessus d'un mur d'autorisation : la réservation n'était pas à un clic mais
+ * à deux, et le calendrier promis n'existait nulle part sur l'écran.
+ */
+export function CalendlyAuthorisationSwitch({
+  pending,
+  ready,
+}: {
+  pending: ReactNode;
+  ready: ReactNode;
+}) {
+  const [authorised] = useCalendlyAuthorisation();
+  return <>{authorised ? ready : pending}</>;
+}
+
+/**
  * Le widget Calendly est un service tiers susceptible de déposer des cookies.
  * Aucun script, iframe ou appel réseau Calendly n'est déclenché avant le clic
- * explicite sur le bouton d'autorisation. Le choix n'est pas mémorisé : un
- * rechargement remet donc le widget dans son état bloqué.
+ * explicite sur le bouton d'autorisation. Ce choix est mémorisé avec les autres
+ * consentements (`hc_consent_v1`) : il n'est plus redemandé d'une page à
+ * l'autre ni à chaque rechargement, et reste révocable depuis « Gérer mes
+ * cookies » en pied de page.
+ *
+ * `height` est une hauteur SOUHAITÉE, pas une hauteur imposée : elle est
+ * publiée en variable CSS et bornée par la feuille de styles à la hauteur
+ * réellement visible.
  */
 export function CalendlyEmbed({ height = 700 }: { height?: number }) {
-  const [authorised, setAuthorised] = useState(false);
+  const [authorised, authorise] = useCalendlyAuthorisation();
   const [loadFailed, setLoadFailed] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -110,17 +200,18 @@ export function CalendlyEmbed({ height = 700 }: { height?: number }) {
 
   if (!authorised) {
     return (
-      <div className="calendly-consent" style={{ minHeight: Math.min(height, 520) }}>
+      <div className="calendly-consent" style={heightStyle(height)}>
         <div className="calendly-consent-card">
           <span className="calendly-consent-kicker">Service externe</span>
           <h3>Afficher le calendrier Calendly ?</h3>
           <p>
             Calendly ne sera contacté qu&apos;après votre accord. Son affichage peut
             entraîner le dépôt de cookies et le transfert de données techniques
-            vers ce prestataire.
+            vers ce prestataire. Votre accord est conservé avec vos autres
+            préférences cookies, et se retire depuis « Gérer mes cookies ».
           </p>
           <div className="calendly-consent-actions">
-            <button type="button" onClick={() => setAuthorised(true)}>
+            <button type="button" onClick={authorise}>
               Autoriser et afficher le calendrier
             </button>
             <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
@@ -142,7 +233,11 @@ export function CalendlyEmbed({ height = 700 }: { height?: number }) {
 
   if (loadFailed) {
     return (
-      <div className="calendly-consent" style={{ minHeight: Math.min(height, 420) }} role="alert">
+      <div
+        className="calendly-consent calendly-consent--error"
+        style={heightStyle(height)}
+        role="alert"
+      >
         <div className="calendly-consent-card">
           <h3>Le calendrier ne répond pas.</h3>
           <p>Vous pouvez ouvrir directement la page de réservation ou nous écrire.</p>
@@ -161,7 +256,7 @@ export function CalendlyEmbed({ height = 700 }: { height?: number }) {
     <div
       ref={containerRef}
       className="calendly-inline-widget"
-      style={{ minWidth: 0, height }}
+      style={heightStyle(height)}
       aria-label="Réserver un créneau de découverte avec Hagnéré Code"
     />
   );

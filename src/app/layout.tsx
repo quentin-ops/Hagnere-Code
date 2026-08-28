@@ -10,6 +10,8 @@ import {
   isSearchIndexingEnabled,
 } from "@/lib/search-indexing";
 import { LegacyProjectDraftCleanup } from "@/components/privacy/LegacyProjectDraftCleanup";
+import { isCookieBannerEnabled } from "@/lib/cookie-consent";
+import { LeadSourceCapture } from "@/components/analytics/LeadSourceCapture";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -45,9 +47,12 @@ const isProd = isSearchIndexingEnabled(
   process.env.NEXT_PUBLIC_ENV,
   process.env.VERCEL_ENV,
 );
-const isCookieBannerEnabled =
-  process.env.NEXT_PUBLIC_COOKIE_BANNER === "1" ||
-  process.env.NEXT_PUBLIC_COOKIE_BANNER === "true";
+// Source unique : `src/lib/cookie-consent.ts`. Cette condition était
+// recopiée ici, et la copie l'emportait sur le montage réel de la bannière —
+// une divergence entre les deux aurait donné un site où `isAnalyticsAllowed()`
+// autorise la mesure sans qu'aucune bannière ne soit jamais affichée, ou
+// l'inverse. Les deux cas sont invisibles jusqu'à l'audit.
+const cookieBannerEnabled = isCookieBannerEnabled();
 
 // Applique la préférence avant le premier rendu, sans hydrater toute
 // l'application dans un provider client. Le code est statique et ne contient
@@ -143,12 +148,17 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <LegacyProjectDraftCleanup />
+        <LeadSourceCapture />
         <SkipToContent />
         {children}
-        {/* Pré-installé, désactivé tant que NEXT_PUBLIC_COOKIE_BANNER!=1.
-            Les intégrations tierces existantes restent bloquées localement
-            jusqu'à une action explicite, indépendamment de cette bannière. */}
-        {isCookieBannerEnabled ? <CookieBanner /> : null}
+        {/* Active par défaut, désactivable par NEXT_PUBLIC_COOKIE_BANNER=0
+            (cf. `isCookieBannerEnabled`). Le sens du défaut est volontaire :
+            une bannière oubliée éteint TOUTE la mesure en silence, une
+            bannière affichée en trop se voit au premier chargement.
+            La bannière propose le choix, elle ne le présume pas — sans choix
+            positif, le Consent Mode reste en `denied` et gtag.js n'est pas
+            même injecté. */}
+        {cookieBannerEnabled ? <CookieBanner /> : null}
         {/* gtag.js — n'est injecté qu'avec un identifiant configuré ET un
             consentement analytics positif (cf. GoogleMeasurement). */}
         <GoogleMeasurement />

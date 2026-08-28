@@ -2,7 +2,10 @@ import { OPENING_HOURS_DISPLAY } from "@/lib/contact-details";
 import Link from "next/link";
 import { MainNav } from "@/components/design-shared/MainNav";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
-import { CalendlyEmbed } from "@/components/design-shared/CalendlyEmbed";
+import {
+  CalendlyAuthorisationSwitch,
+  CalendlyEmbed,
+} from "@/components/design-shared/CalendlyEmbed";
 import { InteractiveDesignRoot } from "@/components/design-shared/InteractiveDesignRoot";
 import "@/components/homepage/homepage.css";
 import "@/components/homepage/sections/sections.css";
@@ -101,16 +104,44 @@ export function RendezVousPage() {
           className="rdv-calendly-section"
         >
           <div className="wrap">
+            {/* Le titre décrit l'écran, pas l'intention de la page. Tant que
+                Calendly n'est pas autorisé, le visiteur a sous les yeux un mur
+                d'autorisation, pas un calendrier : lui annoncer « Réservez
+                directement ci-dessous » promettait une réservation immédiate et
+                un calendrier introuvable. L'état « non autorisé » est aussi
+                celui du rendu serveur, donc du premier affichage et du visiteur
+                sans JavaScript. */}
             <div className="rdv-calendly-head">
-              <p className="rdv-calendly-eyebrow">— Choisissez votre créneau</p>
-              <h2 id="rdv-calendly-heading">
-                Réservez directement ci-dessous.
-              </h2>
-              <p className="rdv-calendly-sub">
-                Sélectionnez la date et l&apos;heure qui vous conviennent. Calendly
-                affiche au moment de la réservation les modalités de confirmation,
-                le lien de visio et les éventuels rappels configurés.
-              </p>
+              <CalendlyAuthorisationSwitch
+                pending={
+                  <>
+                    <p className="rdv-calendly-eyebrow">— Une étape avant le calendrier</p>
+                    <h2 id="rdv-calendly-heading">
+                      Autorisez Calendly, puis choisissez votre créneau.
+                    </h2>
+                    <p className="rdv-calendly-sub">
+                      Le calendrier est fourni par Calendly, un service externe :
+                      rien n&apos;est chargé chez lui tant que vous ne l&apos;avez pas
+                      autorisé, dans le bloc ci-dessous. Ce même bloc permet
+                      aussi de nous écrire, de nous appeler ou d&apos;ouvrir Calendly
+                      dans un onglet séparé si vous préférez.
+                    </p>
+                  </>
+                }
+                ready={
+                  <>
+                    <p className="rdv-calendly-eyebrow">— Choisissez votre créneau</p>
+                    <h2 id="rdv-calendly-heading">
+                      Réservez directement ci-dessous.
+                    </h2>
+                    <p className="rdv-calendly-sub">
+                      Sélectionnez la date et l&apos;heure qui vous conviennent. Calendly
+                      affiche au moment de la réservation les modalités de confirmation,
+                      le lien de visio et les éventuels rappels configurés.
+                    </p>
+                  </>
+                }
+              />
             </div>
             <div className="rdv-calendly-frame">
               <CalendlyEmbed height={780} />

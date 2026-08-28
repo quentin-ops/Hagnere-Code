@@ -135,7 +135,7 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* --------- CTAs (right side: Rendez-vous + Démarrer un projet) ----------- */
+/* --------- CTAs (right side: Rendez-vous + CTA primaire) ---------------- */
 .hc-nav-actions {
   justify-self: end;
   display: inline-flex;
@@ -180,6 +180,12 @@
 .hc-nav .hc-nav-cta-primary {
   background: var(--ink);
   color: var(--paper);
+}
+/* Le CTA primaire porte deux libellés (complet / court) et n'en rend qu'un.
+   Le court est masqué par défaut : c'est le point de rupture mobile qui
+   inverse la paire, pas l'inverse. */
+.hc-nav .hc-nav-cta-label-mobile {
+  display: none;
 }
 .hc-nav .hc-nav-cta-primary > svg {
   color: var(--paper);
@@ -637,7 +643,10 @@
      liens de la pastille sont masqués. */
   .hc-nav-pill-link.hc-nav-pill-link-nojs { display: inline-flex; }
 
-  /* Actions: single primary CTA only — Démarrer un projet (icon-only square) */
+  /* Actions : un seul CTA subsiste ici — le primaire. « Rendez-vous », le
+     téléphone et le lien Contact sont masqués à ce point de rupture ; ils
+     restent atteignables dans la feuille du méga-menu (`hc-mega-side-mobile`),
+     qui les reprend tous les trois. */
   .hc-nav-actions {
     grid-row: auto;
     grid-column: auto;
@@ -645,15 +654,25 @@
   }
   .hc-nav .hc-nav-cta-rdv { display: none; }
   /* Backoffice icon stays visible mobile — utile depuis n'importe quel device */
+
+  /* Le CTA primaire était réduit à un carré d'icône : sur le seul bouton de
+     conversion encore visible dans l'en-tête mobile, une fusée seule ne dit
+     ni où elle mène ni ce qu'elle engage. Il redevient une pastille avec un
+     mot, la hauteur de 44 px restant garantie par `min-height` — c'est la
+     cible tactile qui compte, pas le carré. */
   .hc-nav .hc-nav-cta-primary {
-    width: 44px;
-    height: 44px;
-    padding: 0;
+    min-height: 44px;
+    padding: 0 12px;
     border-radius: 12px;
+    font-size: 13px;
     justify-content: center;
   }
-  .hc-nav .hc-nav-cta-primary > span { display: none; }
-  .hc-nav .hc-nav-cta-primary > svg { width: 16px; height: 16px; }
+  /* L'icône est ce qui paie la largeur du mot : à 360 px, l'en-tête ne tient
+     pas la marque, le déclencheur, la bascule de thème, la fusée ET le
+     libellé. Entre les deux, on garde le libellé. */
+  .hc-nav .hc-nav-cta-primary > svg { display: none; }
+  .hc-nav .hc-nav-cta-label { display: none; }
+  .hc-nav .hc-nav-cta-label-mobile { display: inline; }
 
   /* Feuille mobile : les cinq catégories sont la seule façon de changer de
      pane. À 11px de padding sur un texte de 14px, elles mesuraient ~42px de
@@ -693,6 +712,28 @@
 
   /* Show the mobile-only extra links inside mega menu sidebar */
   .hc-mega-side-mobile { display: flex; }
+}
+
+/* --------- Très petits écrans (≤ 380 px) -------------------------------- */
+/* Sous 380 px, la ligne unique de l'en-tête ne tient plus quatre éléments :
+   marque complète, déclencheur 44 px, bascule de thème et CTA libellé. Le
+   dernier arrivé est le libellé du CTA — c'est aussi le seul qui porte une
+   intention commerciale, donc pas celui qu'on sacrifie.
+   Le nom de la marque passe en masquage visuel plutôt qu'en `display: none` :
+   le bloc « HC » reste visible, et le lien conserve son nom accessible
+   « Hagnéré Code » — sinon il s'annoncerait « HC » à un lecteur d'écran. */
+@media (max-width: 380px) {
+  .hc-nav-brand-name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
 }
 
 /* Dark mode overrides */
