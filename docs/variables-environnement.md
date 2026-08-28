@@ -21,7 +21,7 @@ fonctionnement des formulaires.
 
 | Variable | Valeur attendue | Usage |
 |---|---|---|
-| `NEXT_PUBLIC_GA4_ID` | `G-XXXXXXXXXX` | Flux GA4. Configuré en même temps que Google Ads si l'on veut l'analyse d'audience. Active également les domaines Google dans la CSP. |
+| `NEXT_PUBLIC_GA4_ID` | `G-XXXXXXXXXX` | Flux GA4. **Posé depuis le 2026-08-28** — c'est aujourd'hui le seul identifiant de mesure configuré : il suffit à lui seul à charger gtag.js, à ouvrir les domaines Google dans la CSP et à basculer l'inventaire de `/legal/cookies` sur « cookies déposés ». Ne pas attendre Google Ads pour le vérifier. |
 
 ## Fonctionnement du site
 
@@ -109,3 +109,19 @@ Google dans la CSP : la politique reste aussi fermée qu'avant.
 Conséquence à connaître : les conversions ne remontent que pour les visiteurs
 ayant accepté. C'est le comportement voulu au regard de ce que `/legal/cookies`
 annonce au visiteur ; prévoir l'écart de volume dans la lecture des campagnes.
+
+**Les deux variables sont lues au BUILD, pas au démarrage.** `next.config.ts`
+compose la CSP à la construction et `NEXT_PUBLIC_*` est inlinée dans le bundle
+client : ajouter `NEXT_PUBLIC_GA4_ID` sur Vercel ou Cloudflare sans relancer un
+déploiement ne change rien: le site continue de servir un HTML sans tag et une
+CSP fermée. Toujours reposer la variable **puis** redéployer.
+
+Ordre de vérification après déploiement, dans cet ordre — chaque étape
+conditionne la suivante :
+
+1. La bannière s'affiche au premier chargement (sinon `NEXT_PUBLIC_COOKIE_BANNER`
+   est à `0`, et rien d'autre ne peut fonctionner).
+2. Après « Accepter », `https://www.googletagmanager.com/gtag/js?id=G-…` part
+   dans l'onglet Réseau et aucune violation n'apparaît dans `/api/csp-report`.
+3. Le temps réel GA4 compte la visite. S'il reste vide alors que la requête
+   part, l'identifiant est valide au format mais ne correspond à aucun flux.
