@@ -1008,7 +1008,7 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
               ],
               [
                 "6 · Sur mesure",
-                "Au-delà de 8\u00a0000\u00a0€ HT de projet, cadrage payé systématique. Forfaits publiés\u00a0: 8\u00a0000 à 15\u00a0000\u00a0€ HT pour un processus, 25\u00a0000 à 50\u00a0000\u00a0€ HT pour un back-office de 8 à 12 écrans, à partir de 80\u00a0000\u00a0€ HT pour un outil central.",
+                "Au-delà de 8\u00a0000\u00a0€ HT de projet, cadrage payé systématique. Forfaits publiés\u00a0: 8\u00a0000\u00a0€ HT pour un processus ciblé sur une équipe, 25\u00a0000\u00a0€ HT pour un CRM ou ERP léger avec intégrations, 80\u00a0000\u00a0€ HT pour un outil multi-services avec authentification unique.",
                 "Le premier résultat vérifiable est la plus petite fonction livrée, pas la mise en service complète.",
               ],
             ]}
@@ -1415,7 +1415,7 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
                 "2 · Paramétrage ou réalisation",
                 "Sans objet",
                 "Inconnu",
-                "25\u00a0000 à 50\u00a0000\u00a0€ (forfait publié)",
+                "25\u00a0000 à 80\u00a0000\u00a0€ (repères publiés)",
               ],
               [
                 "3 · Migration",
