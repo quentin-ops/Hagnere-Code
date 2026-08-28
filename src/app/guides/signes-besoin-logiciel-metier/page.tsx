@@ -1127,8 +1127,10 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
             chargés d’affaires. Environ <strong>700 interventions par mois</strong>
             , 300 contrats d’entretien en cours et 1&nbsp;200 équipements suivis.{" "}
             <em>
-              Exemple construit à partir des fourchettes citées dans ce guide —
-              ce n’est pas un dossier client.
+              Exemple construit&nbsp;: les volumes, l’effectif et le coût horaire
+              sont choisis pour l’exemple et ne viennent d’aucune source&nbsp;; seuls
+              les montants de prestation sont repris de la grille publiée. Ce n’est
+              pas un dossier client.
             </em>{" "}
             Aucun résultat n’y est mesuré et aucun gain n’en est déduit.
           </p>

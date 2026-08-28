@@ -309,7 +309,7 @@ describe("content quality for the software-needs guide", () => {
 
   it("carries one constructed case, announced as constructed, across the guide", () => {
     expect(readablePage).toContain(
-      "Exemple construit à partir des fourchettes citées dans ce guide — ce n’est pas un dossier client.",
+      "Exemple construit : les volumes, l’effectif et le coût horaire sont choisis pour l’exemple et ne viennent d’aucune source ; seuls les montants de prestation sont repris de la grille publiée. Ce n’est pas un dossier client.",
     );
     expect(readablePage).toContain(
       "Aucun résultat n’y est mesuré et aucun gain n’en est déduit.",
