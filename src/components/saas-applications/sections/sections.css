@@ -1117,7 +1117,7 @@
   color: var(--mute);
 }
 .sa-tfaq-list .faq-item.open .faq-q .ic {
-  background: var(--accent);
+  background:var(--accent-btn);
   border-color: var(--accent);
   color: #fff;
   transform: rotate(45deg);

@@ -493,7 +493,7 @@
   font-size: 10px;
   font-weight: 700;
   padding: 5px 12px;
-  background: var(--accent);
+  background:var(--accent-btn);
   color: #fff;
   border-radius: 999px;
   letter-spacing: 0.08em;
@@ -2650,7 +2650,7 @@
   flex-shrink: 0; transition: all 0.2s; color: var(--mute);
 }
 .ec-tfaq-list .faq-item.open .faq-q .ic {
-  background: var(--accent); border-color: var(--accent);
+  background:var(--accent-btn); border-color: var(--accent);
   color: #fff; transform: rotate(45deg);
 }
 /* Ouverture sans max-height chiffrée : à 200 % de taille de texte (WCAG 1.4.4)

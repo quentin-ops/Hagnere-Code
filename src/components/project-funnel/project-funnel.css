@@ -676,14 +676,15 @@ body {
 }
 
 .pf-root textarea,
-.pf-root input {
+.pf-root input {  /* 16px minimum : en dessous, iOS Safari zoome à la prise de focus. */
+
   width: 100%;
   color: var(--pf-ink);
   background: var(--pf-paper);
   border: 1px solid var(--pf-line);
   border-radius: 12px;
   font: inherit;
-  font-size: 14px;
+  font-size: 16px;
   outline: none;
   transition: border-color 0.16s, box-shadow 0.16s;
 }
@@ -1293,14 +1294,15 @@ body {
   position: relative;
 }
 
-.pf-siren-wrap input {
+.pf-siren-wrap input {  /* 16px minimum : en dessous, iOS Safari zoome à la prise de focus. */
+
   width: 100%;
   padding: 0 14px 0 38px;
   height: 44px;
   border: 1px solid var(--pf-line);
   border-radius: 12px;
   background: var(--pf-paper);
-  font-size: 14px;
+  font-size: 16px;
   font-family: inherit;
   letter-spacing: 0.04em;
   outline: none;

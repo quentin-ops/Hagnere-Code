@@ -539,9 +539,9 @@
    rendu clair quel que soit le thème, on re-pinne les tokens localement. */
 html.dark .hv-product {
   --ink: #0A0A0A; --ink-2: #171717; --ink-3: #262626; --ink-4: #404040;
-  --mute: #737373; --line: #E5E5E5; --line-2: #EFEFEF;
+  --mute:#6B6B6B; --line: #E5E5E5; --line-2: #EFEFEF;
   --paper: #FFFFFF; --paper-2: #FAFAFA; --paper-3: #F5F5F5;
-  --accent: #6D28D9; --accent-ink: #4C1D95; --accent-soft: #EDE9FE;
+  --accent: #6D28D9;--accent-btn:#6D28D9; --accent-ink: #4C1D95; --accent-soft: #EDE9FE;
   --ink-rgb: 10,10,10; --paper-rgb: 255,255,255;
 }
 /* Icônes des pills orbitales : les logos <img> sombres (Next.js…) ont

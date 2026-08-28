@@ -321,7 +321,7 @@ body.nav-menu-lock { overflow: hidden; }
     min-height: 40px;
     padding: 0 12px;
     color: #fff;
-    background: var(--accent);
+    background:var(--accent-btn);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     font-size: 13px;

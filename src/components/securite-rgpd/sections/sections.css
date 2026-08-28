@@ -2123,7 +2123,7 @@
   transition: transform 0.3s;
 }
 .sr-faq-list .faq-item.open .faq-q .ic {
-  background: var(--accent);
+  background:var(--accent-btn);
   color: #fff;
   transform: rotate(45deg);
 }
@@ -2185,7 +2185,7 @@
   transition: transform 0.3s;
 }
 .sr-tfaq-list .faq-item.open .faq-q .ic {
-  background: var(--accent);
+  background:var(--accent-btn);
   color: #fff;
   transform: rotate(45deg);
 }

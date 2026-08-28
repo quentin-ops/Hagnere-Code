@@ -1272,7 +1272,7 @@
   color: var(--mute);
 }
 .ads-tfaq-list .faq-item.open .faq-q .ic {
-  background: var(--accent);
+  background:var(--accent-btn);
   border-color: var(--accent);
   color: #fff;
   transform: rotate(45deg);
@@ -2792,6 +2792,16 @@
 .ads-proc-step[data-phase="setup"] { --phase-color: #6D28D9; }
 .ads-proc-step[data-phase="launch"] { --phase-color: #075985; }
 .ads-proc-step[data-phase="pilot"] { --phase-color: #047857; }
+/* Couleurs de phase : les teintes ci-dessus sont calibrées pour un fond clair.
+   Sur le fond quasi noir du thème sombre elles tombaient entre 2,5:1 et 3,4:1
+   (mesuré au navigateur). On reprend la même famille de teintes, en clair. */
+html.dark .ads-proc-phase-head[data-phase="setup"] { --phase-color: #A78BFA; }
+html.dark .ads-proc-phase-head[data-phase="launch"] { --phase-color: #7DD3FC; }
+html.dark .ads-proc-phase-head[data-phase="pilot"] { --phase-color: #34D399; }
+html.dark .ads-proc-step[data-phase="setup"] { --phase-color: #A78BFA; }
+html.dark .ads-proc-step[data-phase="launch"] { --phase-color: #7DD3FC; }
+html.dark .ads-proc-step[data-phase="pilot"] { --phase-color: #34D399; }
+
 
 .ads-proc-step:hover {
   transform: translateY(-3px);

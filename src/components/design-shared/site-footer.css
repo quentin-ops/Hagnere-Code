@@ -235,7 +235,11 @@ a.sf-direct-v:hover { color: var(--accent); }
 .sf-field select,
 .sf-field textarea {
   font: inherit;
-  font-size: 14px;
+  /* 16px minimum : sous ce seuil, iOS Safari zoome sur le champ à chaque prise
+     de focus et le visiteur doit re-dézoomer à la main. Ce formulaire est rendu
+     sur l'accueil, le hub et les onze pages service — c'est le point d'entrée
+     de la conversion sur mobile. */
+  font-size: 16px;
   padding: 12px 14px;
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -533,7 +537,7 @@ a.sf-direct-v:hover { color: var(--accent); }
   flex-shrink: 0;
   transition: background 0.18s, color 0.18s;
 }
-.sf-foot-cta:hover .sf-foot-cta-arrow { background: var(--accent); color: #fff; border-color: var(--accent); }
+.sf-foot-cta:hover .sf-foot-cta-arrow { background:var(--accent-btn); color: #fff; border-color: var(--accent); }
 
 /* ---- Row 2 : Services full width ---- */
 .sf-foot-services {
@@ -655,7 +659,7 @@ button.sf-tile {
   border-color: rgba(109, 40, 217, 0.16);
 }
 .sf-tile:hover .sf-tile-ic {
-  background: var(--accent);
+  background:var(--accent-btn);
   color: #fff;
   border-color: var(--accent);
   transform: scale(1.06);

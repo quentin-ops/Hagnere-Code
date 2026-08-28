@@ -531,7 +531,7 @@ html.dark .guides-hub {
   padding: 3px 14px;
   border-radius: 6px;
   background: #1c1c1c;
-  color: #737373;
+  color:#8A8A8A;
   font-family: var(--font-geist-mono);
   font-size: 10.5px;
 }
@@ -621,7 +621,7 @@ html.dark .guides-hub {
   margin-top: 14px;
   padding-top: 12px;
   border-top: 1px solid #1f1f1f;
-  color: #737373;
+  color:#8A8A8A;
   font-family: var(--font-geist-mono);
   font-size: 9.5px;
   letter-spacing: 0.04em;
@@ -653,7 +653,7 @@ html.dark .guides-hub {
   width: 26px;
   height: 26px;
   border-radius: 7px;
-  background: var(--accent);
+  background:var(--accent-btn);
   color: #fff;
   flex-shrink: 0;
 }

@@ -1209,7 +1209,7 @@
   margin-bottom: 18px;
 }
 .cv-track-label-full {
-  background: var(--accent);
+  background:var(--accent-btn);
   color: #fff;
 }
 .cv-track-title {
@@ -2109,7 +2109,7 @@
   font-family: var(--font-geist-mono);
   font-size: 10px;
   padding: 4px 10px;
-  background: var(--accent);
+  background:var(--accent-btn);
   color: #fff;
   border-radius: 999px;
   letter-spacing: 0.08em;
@@ -2502,7 +2502,7 @@
   transition: all 0.2s;
 }
 .cv-tfaq-list .faq-item.open .faq-q .ic {
-  background: var(--accent);
+  background:var(--accent-btn);
   border-color: var(--accent);
   color: #fff;
   transform: rotate(45deg);

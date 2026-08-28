@@ -8,13 +8,13 @@
   --ink-2: #171717;
   --ink-3: #262626;
   --ink-4: #404040;
-  --mute: #737373;
+  --mute:#6B6B6B;
   --line: #E5E5E5;
   --line-2: #EFEFEF;
   --paper: #FFFFFF;
   --paper-2: #FAFAFA;
   --paper-3: #F5F5F5;
-  --accent: #6D28D9;
+  --accent: #6D28D9;--accent-btn:#6D28D9;
   --accent-ink: #4C1D95;
   --accent-soft: #EDE9FE;
   --accent-mid: #A78BFA;
@@ -550,9 +550,10 @@
   letter-spacing: 0.06em;
   font-weight: 600;
 }
-.calc-capture-field input {
+.calc-capture-field input {  /* 16px minimum : en dessous, iOS Safari zoome à la prise de focus. */
+
   font: inherit;
-  font-size: 14px;
+  font-size: 16px;
   padding: 12px 14px;
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -761,7 +762,7 @@ html.dark .calc-root {
   --paper: #0B0B0D;
   --paper-2: #121216;
   --paper-3: #1A1A1F;
-  --accent: #8B5CF6;
+  --accent: #8B5CF6;--accent-btn:#7C3AED;
   --accent-ink: #C4B5FD;
   --accent-soft: #2A1458;
   --accent-mid: #A78BFA;

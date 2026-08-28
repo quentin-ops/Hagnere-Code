@@ -165,7 +165,7 @@
   flex-shrink: 0;
 }
 .c-dir-row:hover .c-dir-ic {
-  background: var(--accent);
+  background:var(--accent-btn);
   color: #fff;
   border-color: var(--accent);
 }
@@ -449,7 +449,7 @@
   transition: all 0.2s;
 }
 .c-flow-step:hover .c-flow-ic {
-  background: var(--accent);
+  background:var(--accent-btn);
   color: #fff;
   border-color: var(--accent);
   transform: rotate(-4deg);
