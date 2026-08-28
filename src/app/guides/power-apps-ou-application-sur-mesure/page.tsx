@@ -688,8 +688,8 @@ export default function Page() {
           />
 
           <p>
-            La ligne du milieu mérite une nuance que la plupart des articles
-            escamotent&nbsp;: la page de support Microsoft décrit le rôle des
+            La ligne du milieu mérite une nuance&nbsp;: la page de support
+            Microsoft décrit le rôle des
             colonnes indexées dans les vues filtrées, sans promettre qu’elles
             lèvent le seuil de 5&nbsp;000.
           </p>

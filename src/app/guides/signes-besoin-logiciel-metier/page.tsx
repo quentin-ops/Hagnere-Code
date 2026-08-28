@@ -618,8 +618,7 @@ export default function Page() {
           title="Combien vous coûte, en euros, la situation actuelle&nbsp;?"
         >
           <p>
-            La plupart des dossiers logiciels commencent par le prix de la
-            solution. C’est l’ordre inverse du bon. Le seul montant que vous
+            Commencer par le prix de la solution est l’ordre inverse du bon. Le seul montant que vous
             pouvez établir seul, aujourd’hui, sans demander un devis à personne,
             c’est celui de votre fonctionnement actuel. Il sert de dénominateur
             à toutes les comparaisons qui suivent.
@@ -796,8 +795,8 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
           />
 
           <p>
-            La deuxième ligne cite une règle que la plupart des dossiers
-            oublient d’écrire. La{" "}
+            La deuxième ligne cite une règle qu’il vaut mieux écrire noir sur
+            blanc dans le dossier. La{" "}
             <a
               href="https://www.cnil.fr/fr/securite-des-donnees-les-regles-essentielles"
               target="_blank"
@@ -1493,9 +1492,9 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
         >
           <p>
             L’horizon retenu dans ce guide est de <strong>trois ans</strong>,
-            pour une raison précise&nbsp;: c’est la durée au bout de laquelle,
-            en général, une règle du métier ou une obligation a bougé, et c’est
-            aussi celle qu’applique le calculateur de coût du site. Un an est
+            pour une raison précise&nbsp;: c’est l’horizon sur lequel une règle
+            du métier ou une obligation a le temps de bouger, et c’est aussi
+            celle qu’applique le calculateur de coût du site. Un an est
             trop court pour voir un renouvellement&nbsp;; cinq ans supposent une
             stabilité que peu de PME connaissent. Quatre choses arrivent en
             année 3.
