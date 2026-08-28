@@ -3,6 +3,10 @@
     --mute:#6B6B6B; --line:#E5E5E5; --line-2:#EFEFEF;
     --paper:#FFFFFF; --paper-2:#FAFAFA; --paper-3:#F5F5F5;
     --accent:#6D28D9;--accent-btn:#6D28D9; --accent-ink:#4C1D95; --accent-soft:#EDE9FE;
+    /* Accent posé sur une surface `--ink` : l'onglet de scénario actif et le
+       bloc de résultat du calculateur inversent avec le thème, donc l'accent
+       qu'ils portent doit s'inverser aussi. #A78BFA sur #0A0A0A = 7,27:1. */
+    --accent-on-ink:#A78BFA;
     --ink-rgb:10,10,10; --paper-rgb:255,255,255;
   }
   html.dark {
@@ -10,6 +14,9 @@
     --mute:#8B8B94; --line:#27272C; --line-2:#1F1F24;
     --paper:#0B0B0D; --paper-2:#121216; --paper-3:#1A1A1F;
     --accent:#8B5CF6;--accent-btn:#7C3AED; --accent-ink:#C4B5FD; --accent-soft:#2A1458;
+    /* `--ink` devient #FAFAFA : la surface est claire, l'accent doit être
+       foncé. #6D28D9 sur #FAFAFA = 6,81:1 (le violet clair y tombait à 2,61:1). */
+    --accent-on-ink:#6D28D9;
     --ink-rgb:250,250,250; --paper-rgb:11,11,13;
     color-scheme: dark;
   }
@@ -67,7 +74,7 @@
   .eyebrow.on-dark{color:#A78BFA}
 
   .crumb{padding:20px 0;font-family:var(--font-geist-mono);font-size:12px;color:var(--mute);border-bottom:1px solid var(--line-2)}
-  .crumb a{color:inherit;text-decoration:none}
+  .crumb a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;min-height:24px}
   .crumb a:hover{color:var(--ink)}
   .crumb .sep{margin:0 10px;color:var(--line)}
 
@@ -164,7 +171,12 @@
   .flow-node h3{font-size:14px;margin:0 0 4px;color:#fff;font-weight:600}
   .flow-node p{margin:0;font-size:12px;color:rgba(255,255,255,0.55);line-height:1.45}
   .flow-node .tag{margin-top:10px;display:inline-block;font-family:var(--font-geist-mono);font-size:10px;padding:2px 7px;border-radius:4px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.6)}
-  .flow-node.ai .tag{background:rgba(109,40,217,0.15);color:var(--accent)}
+  /* La bannière `.autom` est un fond noir FIXE (#0A0A0A) dans les deux thèmes :
+     composée, la pastille se pose sur rgb(37,22,61). `--accent` y échouait des
+     deux côtés — #6D28D9 = 2,34:1 en clair, #8B5CF6 = 3,92:1 en sombre. La
+     couleur doit donc être littérale et indépendante du thème, comme
+     `.eyebrow.on-dark` juste au-dessus : #A78BFA = 6,12:1. */
+  .flow-node.ai .tag{background:rgba(109,40,217,0.15);color:#A78BFA}
   .flow-arrow{color:rgba(255,255,255,0.3)}
 
   .flow-stats{margin-top:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.08)}
@@ -233,7 +245,10 @@
   .roi-input input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--accent);cursor:pointer;border:2px solid var(--paper)}
   .roi-val{min-width:100px;text-align:right;font-family:var(--font-geist-mono);font-size:14px;font-weight:600;color:var(--ink)}
   .roi-result{margin-top:28px;padding:24px;background:var(--ink);color:var(--paper);border-radius:12px}
-  .roi-result .label{font-family:var(--font-geist-mono);font-size:11px;color:#A78BFA;letter-spacing:0.06em;text-transform:uppercase}
+  /* `.roi-result` prend `background:var(--ink)` : sa surface s'inverse avec le
+     thème. Le violet clair figé, calibré pour le fond noir, tombait à 2,61:1
+     sur le #FAFAFA du thème sombre. `--accent-on-ink` suit la surface. */
+  .roi-result .label{font-family:var(--font-geist-mono);font-size:11px;color:var(--accent-on-ink);letter-spacing:0.06em;text-transform:uppercase}
   .roi-result .big{font-size:56px;font-weight:600;letter-spacing:-0.04em;margin-top:8px;line-height:1}
   .roi-result .big .s{color:var(--accent)}
   .roi-result .sub{color:rgba(var(--paper-rgb),0.6);font-size:13px;margin-top:8px}
@@ -243,6 +258,13 @@
   .roi-copy .chks{margin-top:24px}
   .roi-copy .chks li{list-style:none;display:flex;gap:10px;align-items:start;padding:8px 0;font-size:14px;color:var(--ink-3)}
   .roi-copy .chks svg{color:var(--accent);flex-shrink:0;margin-top:3px}
+  /* Encart « À retenir » : son fond est écrit en ligne à `#fff` alors que sa
+     bordure utilise déjà `var(--line)`. En thème sombre la carte restait donc
+     blanche pendant que son texte suivait la palette sombre — `--mute`
+     (#8B8B94) à 3,38:1 et `--ink-3` (#C2C2C9) à 1,77:1, illisible. On rend le
+     fond au thème, comme le `.roi-calc` voisin : 5,53:1 et 10,55:1 sur
+     `--paper-2`. `!important` est nécessaire pour battre le style en ligne. */
+  html.dark .roi-copy > div{background:var(--paper-2) !important}
 
   /* ============ FAQ ============ */
   .faq{padding:120px 0;border-bottom:1px solid var(--line)}

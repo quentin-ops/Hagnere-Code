@@ -1085,6 +1085,15 @@ html.dark .path-card:hover {
   border-color: rgba(255, 255, 255, 0.18);
 }
 
+/* Kicker de la famille "Construire" : --family-accent vaut --accent, soit
+   #8B5CF6 en sombre, qui plafonne à 4,41:1 sur --paper-2 — juste sous les
+   4,5:1 d'AA pour du 11px gras. On éclaircit le texte seul vers --accent-ink
+   (#C4B5FD → 10,1:1) ; le filet vertical garde la teinte d'accent.
+   Les familles blue (#60A5FA) et green (#34D399) passent déjà. */
+html.dark .service-family-purple .service-family-kicker {
+  color: var(--accent-ink);
+}
+
 /* Carte "slate" : littéraux clairs → équivalents sombres. */
 html.dark .service-card-slate {
   --card-accent: #94A3B8;

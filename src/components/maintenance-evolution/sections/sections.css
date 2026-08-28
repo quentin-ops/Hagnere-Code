@@ -428,7 +428,9 @@
 .me-vt-tag {
   font-family: var(--font-geist-mono);
   font-size: 10px;
-  color: #666;
+  /* Gris figé #666 : illisible sur `--paper-3` sombre (#1A1A1F, 3,02:1).
+     Le token suit le thème — 5,13:1 en sombre, 4,89:1 en clair. */
+  color: var(--mute);
   padding: 4px 8px;
   background: var(--paper-3);
   border-radius: 999px;
@@ -4083,3 +4085,11 @@ html.dark .me-eco-foot { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.10); }
   line-height: 1.55;
   color: var(--mute);
 }
+
+/* ================================================================
+   CONTRASTE — thème sombre
+   ================================================================ */
+/* `--accent` (#8B5CF6) posé sur `--accent-soft` (#2A1458) ne donnait que
+   3,70:1. `--accent-ink` (#C4B5FD en sombre) monte à 8,49:1. Le thème clair
+   reste inchangé (#6D28D9 sur #EDE9FE = 5,98:1). */
+html.dark .me-scen-kind { color: var(--accent-ink); }

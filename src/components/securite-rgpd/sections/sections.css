@@ -461,7 +461,9 @@
   font-family: var(--font-geist-mono);
   font-size: 9.5px;
   letter-spacing: 0.08em;
-  color: #666;
+  /* Gris figé #666 : 3,42:1 sur `--paper` sombre (#0B0B0D). Le token suit le
+     thème — 5,82:1 en sombre, 5,35:1 en clair. */
+  color: var(--mute);
   opacity: 1;
   text-transform: none;
   font-style: italic;
@@ -589,7 +591,10 @@
 }
 .sr-symp-tag.sr-symp-tag-cto { background: rgba(109,40,217,0.08); color: var(--accent-ink); border-color: rgba(109,40,217,0.18); }
 .sr-symp-tag.sr-symp-tag-dpo { background: rgba(34,197,94,0.10); color: #166534; border-color: rgba(34,197,94,0.22); }
-.sr-symp-tag.sr-symp-tag-ceo { background: rgba(249,115,22,0.10); color: #c2410c; border-color: rgba(249,115,22,0.22); }
+/* #c2410c sur le voile orange composé (#FAEDE3) tombait pile sous le seuil
+   (4,49:1). L'orange 800 reste dans la même famille et donne 6,36:1. Le thème
+   sombre garde son propre override (#FB923C) plus bas. */
+.sr-symp-tag.sr-symp-tag-ceo { background: rgba(249,115,22,0.10); color: #9A3412; border-color: rgba(249,115,22,0.22); }
 .sr-symp-tag.sr-symp-tag-daf { background: rgba(239,68,68,0.10); color: #b91c1c; border-color: rgba(239,68,68,0.22); }
 .sr-symp-tag.sr-symp-tag-rh { background: rgba(14,165,233,0.10); color: #0369a1; border-color: rgba(14,165,233,0.22); }
 
@@ -1246,7 +1251,11 @@
   transform: translateX(-50%);
   font-family: var(--font-geist-mono);
   font-size: 10px;
-  color: var(--mute);
+  /* Ces libellés se posent sur le tick lui-même, dont le fond est `--line`
+     (#E5E5E5 clair / #27272C sombre). `--mute` y échouait des deux côtés
+     (4,23:1 et 4,40:1) ; `--ink-4` donne 8,23:1 en clair et 5,39:1 en sombre
+     tout en restant un gris secondaire. */
+  color: var(--ink-4);
   letter-spacing: 0.04em;
   white-space: nowrap;
 }
@@ -2437,3 +2446,23 @@ html.dark .sr-price-card.sr-price-card-featured { border-color: rgba(255, 255, 2
   line-height: 1.55;
   color: var(--mute);
 }
+
+/* ================================================================
+   CONTRASTE — thème sombre
+   ================================================================ */
+/* Ces eyebrows et intitulés forcent `--accent`, qui vaut #8B5CF6 en sombre :
+   sur `--paper-2` (#121216) ils plafonnaient à 4,41:1. `--accent-ink`
+   (#C4B5FD) — la valeur par défaut de `.eyebrow` — donne 10,12:1. Toutes ces
+   sections sont posées sur `--paper` / `--paper-2`, qui suivent le thème ;
+   le thème clair reste inchangé (#6D28D9 = 6,81:1). */
+html.dark .sr-matrix-kind,
+html.dark .sr-symp .section-head .left .eyebrow,
+html.dark .sr-matrix .section-head .left .eyebrow,
+html.dark .sr-proc .section-head .left .eyebrow,
+html.dark .sr-comp .section-head .left .eyebrow,
+html.dark .sr-radar .section-head .left .eyebrow,
+html.dark .sr-check .section-head .left .eyebrow,
+html.dark .sr-pricing .section-head .left .eyebrow,
+html.dark .sr-proofs .section-head .left .eyebrow,
+html.dark .sr-tfaq .section-head .left .eyebrow,
+html.dark .sr-trust-section-head .eyebrow { color: var(--accent-ink); }

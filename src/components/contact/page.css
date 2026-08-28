@@ -552,3 +552,16 @@ button.faq-q{width:100%;margin:0;background:none;border:0;border-radius:0;color:
 /* Preflight Tailwind applique `[hidden]{display:none!important}` : la règle
    d'ouverture doit porter `!important` pour l'emporter. */
 .faq-item.open .faq-a{display:block!important}
+
+/* =========================================================================
+   Dark mode overrides
+   ========================================================================= */
+/* Bloc Calendly : le kicker « — Réserver directement ici » porte sa couleur en
+   style inline (color:var(--accent)) dans ContactPage.tsx. On agit donc sur la
+   valeur du token dans ce sous-arbre plutôt que sur la déclaration : en sombre
+   #8B5CF6 ne tient que 4,41:1 sur --paper-2, sous les 4,5:1 d'AA pour du 12px
+   gras. --accent-ink (#C4B5FD) monte à 10,1:1, même famille violette.
+   Le bouton de consentement passe par --accent-btn et n'est pas affecté. */
+html.dark section[aria-labelledby="contact-calendly-heading"] {
+  --accent: var(--accent-ink);
+}

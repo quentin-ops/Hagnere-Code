@@ -68,7 +68,7 @@
 
   /* Breadcrumb */
   .crumb{padding:20px 0;font-family:var(--font-geist-mono);font-size:12px;color:var(--mute);border-bottom:1px solid var(--line-2)}
-  .crumb a{color:inherit;text-decoration:none}
+  .crumb a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;min-height:24px}
   .crumb a:hover{color:var(--ink)}
   .crumb .sep{margin:0 10px;color:var(--line)}
 
@@ -93,6 +93,11 @@
   .mock-window .win-dots{display:flex;gap:6px}
   .mock-window .win-dots span{width:10px;height:10px;border-radius:50%;background:#e5e5e5}
   .mock-window .win-url{flex:1;text-align:center;font-family:var(--font-geist-mono);font-size:11px;color:var(--mute)}
+  /* La maquette de navigateur garde une chrome CLAIRE (#fff / #fafafa) dans les
+     deux thèmes : `--mute` bascule pourtant à #8B8B94 en sombre et l'URL tombait
+     à 3,24:1 sur #FAFAFA. On rétablit le gris clair (#6B6B6B = --mute clair),
+     qui donne 5,11:1 sur cette chrome, sans toucher au thème clair. */
+  html.dark .mock-window .win-url{color:#6B6B6B}
   .mw-main{width:540px;left:0;top:30px;z-index:3}
   .mw-side{width:320px;right:0;top:280px;z-index:4}
 

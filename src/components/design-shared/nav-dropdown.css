@@ -387,6 +387,9 @@
 .hc-mega-pane-all {
   display: inline-flex;
   align-items: center;
+  /* WCAG 2.5.8 : lien de navigation autonome, hors flux d'une phrase.
+     Sans hauteur minimale il ne mesurait que 20px. */
+  min-height: 24px;
   gap: 6px;
   font-size: 13px;
   font-weight: 500;

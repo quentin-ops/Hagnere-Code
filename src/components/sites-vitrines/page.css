@@ -68,7 +68,7 @@
 
   /* Breadcrumb */
   .crumb{padding:20px 0;font-family:var(--font-geist-mono);font-size:12px;color:var(--mute);border-bottom:1px solid var(--line-2)}
-  .crumb a{color:inherit;text-decoration:none}
+  .crumb a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;min-height:24px}
   .crumb a:hover{color:var(--ink)}
   .crumb .sep{margin:0 10px;color:var(--line)}
 
@@ -93,6 +93,13 @@
   .mock-window .win-dots{display:flex;gap:6px}
   .mock-window .win-dots span{width:10px;height:10px;border-radius:50%;background:#e5e5e5}
   .mock-window .win-url{flex:1;text-align:center;font-family:var(--font-geist-mono);font-size:11px;color:var(--mute)}
+  /* La fenêtre maquette reste CLAIRE dans les deux thèmes (`background:#fff`,
+     chrome `#fafafa`) : le thème du document ne dit pas la couleur de cette
+     surface. En sombre, `--mute` bascule à #8B8B94 et l'URL tombe à 3,24:1 sur
+     #FAFAFA. On rend au chrome la palette claire qu'il illustre — #6B6B6B sur
+     #FAFAFA = 5,11:1. La fenêtre `.mw-side`, elle, force ses couleurs en ligne
+     (fond #0d0d0d) et n'est pas concernée. */
+  html.dark .mock-window .win-chrome{--mute:#6B6B6B}
   .mw-main{width:540px;left:0;top:30px;z-index:3}
   .mw-side{width:320px;right:0;top:280px;z-index:4}
 

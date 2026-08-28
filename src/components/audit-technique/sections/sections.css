@@ -428,7 +428,9 @@
 .at-vt-tag {
   font-family: var(--font-geist-mono);
   font-size: 10px;
-  color: #666;
+  /* Gris figé #666 : illisible sur `--paper-3` sombre (#1A1A1F, 3,02:1).
+     Le token suit le thème — 5,13:1 en sombre, 4,89:1 en clair. */
+  color: var(--mute);
   padding: 4px 8px;
   background: var(--paper-3);
   border-radius: 999px;
@@ -1907,7 +1909,12 @@
 .at-wwd-card[data-family="handover"]     { --wwd-color: #0A0A0A; }
 .at-wwd-card[data-family="maintenance"]  { --wwd-color: #6D28D9; }
 .at-wwd-card[data-family="observability"]{ --wwd-color: #10B981; }
-.at-wwd-card[data-family="security"]     { --wwd-color: #F59E0B; }
+/* Seule famille qui porte aujourd'hui `.at-wwd-flag`. L'ambre est trop
+   lumineux pour du blanc (2,15:1) ; l'encre sombre de la même famille ambrée
+   donne 6,97:1 sur #F59E0B, dans les deux thèmes — la pastille reste ambre,
+   seul son texte s'inverse. Toute autre famille qui recevrait le drapeau doit
+   déclarer son propre `--wwd-flag-ink` si le blanc n'y tient pas. */
+.at-wwd-card[data-family="security"]     { --wwd-color: #F59E0B; --wwd-flag-ink: #451A03; }
 .at-wwd-card[data-family="infra"]        { --wwd-color: #0EA5E9; }
 .at-wwd-card[data-family="roadmap"]      { --wwd-color: #A855F7; }
 .at-wwd-card[data-family="performance"]  { --wwd-color: #EC4899; }
@@ -1995,7 +2002,9 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 600;
-  color: #fff;
+  /* Le blanc ne tient que sur les familles sombres ; une famille trop
+     lumineuse fournit sa propre encre via `--wwd-flag-ink`. */
+  color: var(--wwd-flag-ink, #fff);
   background: var(--wwd-color);
   padding: 4px 8px;
   border-radius: 6px;
@@ -4541,3 +4550,17 @@ html.dark .at-eco-foot { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.10); }
   line-height: 1.55;
   color: var(--mute);
 }
+
+/* ================================================================
+   CONTRASTE — thème sombre
+   ================================================================ */
+/* `--accent` (#8B5CF6) posé sur `--accent-soft` (#2A1458) ne donnait que
+   3,70:1. `--accent-ink` (#C4B5FD en sombre) monte à 8,49:1. Le thème clair
+   reste inchangé (#6D28D9 sur #EDE9FE = 5,98:1). */
+html.dark .at-scen-kind { color: var(--accent-ink); }
+
+/* En-tête de la colonne « nous » : son fond est `var(--ink)`, donc CLAIR
+   (#FAFAFA) en thème sombre. Le violet clair #A78BFA, calibré pour le fond
+   noir du thème clair (7,27:1), n'y tenait que 2,61:1. On repasse au violet
+   foncé, qui donne 6,81:1 sur #FAFAFA. */
+html.dark .at-cmp-head .at-cmp-col-us .at-cmp-kind { color: #6D28D9; }

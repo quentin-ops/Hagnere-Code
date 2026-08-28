@@ -285,7 +285,9 @@
 }
 .mob-trust-strip-chips-note {
   font-size: 11px;
-  color: #666;
+  /* Gris figé #666 : 2,90:1 sur le voile sombre composé (#1E1E22). Le token
+     suit le thème — 4,92:1 en sombre, 5,11:1 en clair. */
+  color: var(--mute);
   line-height: 1.55;
   margin-bottom: 4px;
   padding: 10px 12px;
@@ -741,7 +743,10 @@
 }
 .mob-compar-cell-sub {
   font-size: 11.5px;
-  color: #666;
+  /* Gris figé #666 : 3,02:1 sur `--paper-3` (#1A1A1F) et 3,18:1 sur les
+     cellules voilées (#151517). Le token suit le thème — 5,13:1 et 5,40:1 en
+     sombre, ≥5:1 en clair. */
+  color: var(--mute);
   margin-top: 2px;
   font-family: var(--font-geist-mono);
   font-weight: 400;

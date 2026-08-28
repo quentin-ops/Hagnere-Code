@@ -24,6 +24,10 @@
   --pf-accent-soft: #ede9fe;
   --pf-green: #059669;
   --pf-green-soft: #ecfdf5;
+  /* Texte vert posé sur --pf-green-soft. Doit être redéfini par thème : le
+     vert-900 #14532d passe à 8,7:1 sur le pastel clair mais tombe à 1,6:1 sur
+     le voile sombre, où il faut au contraire un vert clair. */
+  --pf-green-ink: #14532d;
   --pf-paper-2: #fafafa;
   --pf-ink-rgb: 10, 10, 10;
   --pf-paper-rgb: 255, 255, 255;
@@ -45,6 +49,7 @@ html.dark {
   --pf-accent-soft: #2a1458;
   --pf-green: #34d399;
   --pf-green-soft: rgba(52, 211, 153, 0.12);
+  --pf-green-ink: #6ee7b7;
   --pf-paper-2: #1a1a20;
   --pf-ink-rgb: 244, 244, 245;
   --pf-paper-rgb: 20, 20, 25;
@@ -456,7 +461,7 @@ body {
   align-self: auto;
   gap: 8px;
   padding: 10px;
-  color: #14532d;
+  color: var(--pf-green-ink);
   background: var(--pf-green-soft);
   border: 1px solid rgba(5, 150, 105, 0.18);
   border-radius: 13px;

@@ -12,6 +12,10 @@
   --mute:#6B6B6B; --line:#E5E5E5; --line-2:#EFEFEF;
   --paper:#FFFFFF; --paper-2:#FAFAFA; --paper-3:#F5F5F5;
   --accent:#6D28D9;--accent-btn:#6D28D9; --accent-ink:#4C1D95; --accent-soft:#EDE9FE;
+  /* Violet de TEXTE posé sur une surface volontairement sombre (bloc discovery,
+     bandeau verdict) : ces surfaces sont identiques dans les deux thèmes, donc
+     ce token l'est aussi. #6D28D9 n'y tenait que 2,5 à 2,6:1. */
+  --accent-on-dark:#C4B5FD;
   --ink-rgb:10,10,10; --paper-rgb:255,255,255;
 }
 html.dark {
@@ -19,6 +23,8 @@ html.dark {
   --mute:#8B8B94; --line:#27272C; --line-2:#1F1F24;
   --paper:#0B0B0D; --paper-2:#121216; --paper-3:#1A1A1F;
   --accent:#8B5CF6;--accent-btn:#7C3AED; --accent-ink:#C4B5FD; --accent-soft:#2A1458;
+  /* Les surfaces pinées sombres le restent en thème sombre : même valeur. */
+  --accent-on-dark:#C4B5FD;
   --ink-rgb:250,250,250; --paper-rgb:11,11,13;
 }
 *{box-sizing:border-box}
@@ -73,7 +79,7 @@ html.dark {
 
 /* Breadcrumb */
 .crumb{padding:20px 0;font-family:var(--font-geist-mono);font-size:12px;color:var(--mute);border-bottom:1px solid var(--line-2)}
-.crumb a{color:inherit;text-decoration:none}
+.crumb a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;min-height:24px}
 .crumb a:hover{color:var(--ink)}
 .crumb .sep{margin:0 10px;color:var(--line)}
 
@@ -232,7 +238,9 @@ html.dark {
 .disc-stack{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:6px 14px}
 .disc-stack-row{display:grid;grid-template-columns:80px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);align-items:center}
 .disc-stack-row.last{border-bottom:none}
-.disc-stack-k{font-family:var(--font-geist-mono);font-size:10px;color:var(--accent);letter-spacing:0.08em;font-weight:600}
+/* Bloc .disc-stack posé sur .disc-right (#0F0F0F) dans les deux thèmes :
+   --accent y donne 2,6:1 en clair et 4,36:1 en sombre → 10,0:1. */
+.disc-stack-k{font-family:var(--font-geist-mono);font-size:10px;color:var(--accent-on-dark);letter-spacing:0.08em;font-weight:600}
 .disc-stack-v{font-size:12.5px;color:rgba(255,255,255,0.78);letter-spacing:-0.005em}
 
 /* ============ PRICING (4 plans) — reuse global tokens ============ */
@@ -381,7 +389,9 @@ html.dark {
 .vsm-verdict .vsm-cell-label{background:transparent;color:rgba(255,255,255,0.5);font-family:var(--font-geist-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.08em;font-weight:600}
 .vsm-verdict .vsm-cell b{color:#fff;font-size:14.5px}
 .vsm-verdict .vsm-cell-us{background:rgba(109,40,217,0.18) !important}
-.vsm-verdict .vsm-cell-us b{color:var(--accent) !important}
+/* Bandeau verdict pinné noir : la cellule "nous" compose à rgb(28,15,47), où
+   --accent donne 2,55:1 en clair et 4,27:1 en sombre → 9,8:1. */
+.vsm-verdict .vsm-cell-us b{color:var(--accent-on-dark) !important}
 
 .vsm-disclaimer{margin-top:24px;display:flex;align-items:center;gap:14px;padding:16px 20px;background:var(--paper);border:1px solid var(--line);border-radius:12px;font-size:13.5px;color:var(--ink-3);line-height:1.55}
 .vsm-dis-ic{width:30px;height:30px;border-radius:8px;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center;flex-shrink:0}
@@ -570,7 +580,12 @@ html.dark {
   .vsm-head,.vsm-row{grid-template-columns:130px 200px 200px 200px;min-width:740px}
   .vsm-cell{padding:14px 14px;font-size:12.5px}
   .vsm-cell-label{position:sticky;left:0;background:var(--paper-3);z-index:1;font-size:10.5px}
-  .vsm-row .vsm-cell-label{background:var(--paper-3)}
+  /* La colonne de libellés devient sticky : il lui faut un fond opaque. Mais le
+     bandeau verdict est pinné noir avec un libellé blanc à 50 % — lui repeindre
+     --paper-3 (#F5F5F5) écrasait `.vsm-verdict .vsm-cell-label{transparent}` et
+     tombait à 1,04:1. On l'exclut et on lui redonne son propre noir (5,3:1). */
+  .vsm-row:not(.vsm-verdict) .vsm-cell-label{background:var(--paper-3)}
+  .vsm-row.vsm-verdict .vsm-cell-label{background:#0A0A0A}
   .vsm-head .vsm-cell-us::before{font-size:9px;padding:2px 8px;top:-9px}
 
   /* FAQ */

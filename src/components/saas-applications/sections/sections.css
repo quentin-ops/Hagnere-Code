@@ -943,8 +943,11 @@
   letter-spacing: 0.08em;
   color: var(--mute);
 }
+/* L'onglet actif prend `background: var(--ink)` : sa surface s'inverse avec le
+   thème (noir en clair, #FAFAFA en sombre). Le violet clair figé, calibré pour
+   le fond noir, tombait à 2,61:1 en sombre. `--accent-on-ink` suit la surface. */
 .sa-scen-tab.is-active .sa-scen-tab-k {
-  color: #A78BFA;
+  color: var(--accent-on-ink);
 }
 .sa-scen-tab-t {
   font-size: 18px;

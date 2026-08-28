@@ -1157,7 +1157,11 @@
   max-width: 760px;
   margin-bottom: 56px;
 }
-.cv-pipeline-head .eyebrow { color: var(--accent); }
+/* Cette bande reste NOIRE dans les deux thèmes (h2 en #fff, p en blanc voilé).
+   `--accent` y vaut #6D28D9 en thème clair, soit 2,79:1 — c'est la surcharge
+   qui écrasait `.eyebrow.on-dark`. On reprend sa valeur (#A78BFA), qui donne
+   7,27:1 sur #0A0A0A quel que soit le thème. */
+.cv-pipeline-head .eyebrow { color: #A78BFA; }
 .cv-pipeline-head h2 {
   color: #fff;
   font-size: 48px;
@@ -1201,7 +1205,11 @@
   font-family: var(--font-geist-mono);
   font-size: 10px;
   letter-spacing: 0.18em;
-  color: var(--accent);
+  /* Pastille posée sur la même bande noire : le fond composé vaut #1F152F dans
+     les deux thèmes. `--accent` y donnait 2,45:1 en clair et 4,11:1 en sombre.
+     #C4B5FD — déjà la couleur d'emphase de cette bande (`.cv-pipeline-head h2
+     em`) — monte à 9,43:1. */
+  color: #C4B5FD;
   padding: 5px 10px;
   background: rgba(109,40,217,0.15);
   border-radius: 999px;
@@ -2663,3 +2671,11 @@ html.dark .cv-cw-logo:hover img { filter: grayscale(100%) invert(1); }
   line-height: 1.55;
   color: var(--mute);
 }
+
+/* ================================================================
+   CONTRASTE — thème sombre
+   ================================================================ */
+/* L'onglet actif a pour fond `var(--ink)`, donc CLAIR (#FAFAFA) en thème
+   sombre. Le violet clair #A78BFA, calibré pour le fond noir du thème clair
+   (7,27:1), n'y tenait que 2,61:1. Le violet foncé donne 6,81:1. */
+html.dark .cv-scen-tab.is-active .cv-scen-tab-k { color: #6D28D9; }

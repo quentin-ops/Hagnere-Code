@@ -761,12 +761,16 @@ html.dark .rlm-stat:hover .rlm-stat-ic {
 
 .rlm-case-metric:last-child { border-right: none; padding-right: 0; }
 
+/* --brand / --brand-soft sont injectés en style inline depuis cases.ts, donc
+   hors d'atteinte du CSS. --brand-ink n'existe que côté CSS : c'est la version
+   TEXTE de la couleur de marque, surchargée quand la marque est trop claire
+   pour une surface claire (cf. l'or Hagnéré Patrimoine plus bas). */
 .rlm-case-metric strong {
   font-family: var(--font-geist);
   font-size: 18px;
   font-weight: 600;
   letter-spacing: -0.025em;
-  color: var(--brand);
+  color: var(--brand-ink, var(--brand));
   line-height: 1.1;
 }
 
@@ -819,7 +823,7 @@ html.dark .rlm-stat:hover .rlm-stat-ic {
 
 .rlm-case:hover .rlm-case-stack span {
   border-color: rgb(from var(--brand) r g b / 0.3);
-  color: var(--brand);
+  color: var(--brand-ink, var(--brand));
 }
 
 .rlm-case-foot {
@@ -836,12 +840,18 @@ html.dark .rlm-stat:hover .rlm-stat-ic {
   gap: 8px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--brand);
+  color: var(--brand-ink, var(--brand));
   letter-spacing: -0.005em;
   transition: gap 0.2s ease;
 }
 
 .rlm-case:hover .rlm-case-cta { gap: 12px; }
+
+/* Or Hagnéré Patrimoine : #C9A96E ne tient que 2,1:1 sur --paper-2 et 2,2:1 sur
+   --paper. Bronze de la même famille pour le texte seul → 6,0:1 et 6,2:1. Les
+   trois autres marques passent déjà (4,6 à 18:1). En thème sombre, la règle
+   `color-mix(--brand 60%, #fff)` plus bas reprend la main sur --brand-ink. */
+.rlm-case[href="/realisations/hagnere-patrimoine"] { --brand-ink: #7A5C15; }
 
 /* ============================================================
  * 4. CTA "Mise en relation"

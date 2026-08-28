@@ -218,7 +218,10 @@
 .sap-foot-hot .sap-foot-k {
   background: var(--paper);
   color: #fff;
-  background-color: var(--accent);
+  /* `--accent` vaut #8B5CF6 en sombre : le libellé blanc n'y tenait que 4,23:1.
+     `--accent-btn` est le token dédié au blanc posé sur l'accent (#6D28D9 clair
+     = 7,10:1 inchangé, #7C3AED sombre = 5,70:1). */
+  background-color: var(--accent-btn);
 }
 .sap-foot-hot .sap-foot-v { color: var(--accent-ink); font-weight: 600; }
 
@@ -428,7 +431,9 @@
 .ads-vt-tag {
   font-family: var(--font-geist-mono);
   font-size: 10px;
-  color: #666;
+  /* Gris figé #666 : illisible sur `--paper-3` sombre (#1A1A1F, 3,02:1).
+     Le token suit le thème — 5,13:1 en sombre, 4,89:1 en clair. */
+  color: var(--mute);
   padding: 4px 8px;
   background: var(--paper-3);
   border-radius: 999px;
@@ -3065,3 +3070,12 @@ html.dark .ads-wwd-card[data-family="strategy"] .ads-wwd-flag{color:#0A0A0A}
   line-height: 1.55;
   color: var(--mute);
 }
+
+/* ================================================================
+   CONTRASTE — thème sombre
+   ================================================================ */
+/* `--accent` (#8B5CF6) posé sur `--accent-soft` (#2A1458) ne donnait que
+   3,70:1. `--accent-ink` (#C4B5FD en sombre) monte à 8,49:1 — c'est déjà
+   l'appairage utilisé par .sap-foot-k. Le thème clair reste inchangé
+   (#6D28D9 sur #EDE9FE = 5,98:1). */
+html.dark .ads-scen-kind { color: var(--accent-ink); }

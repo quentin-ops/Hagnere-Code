@@ -218,7 +218,11 @@
 .sap-foot-hot .sap-foot-k {
   background: var(--paper);
   color: #fff;
-  background-color: var(--accent);
+  /* `--accent` vaut #8B5CF6 en sombre : le libellé blanc n'y tenait que
+     4,23:1, sous les 4,5:1 (10 px gras = texte normal). `--accent-btn` est le
+     jeton dédié au texte blanc posé sur l'accent — #6D28D9 en clair (7,10:1),
+     #7C3AED en sombre (5,70:1). */
+  background-color: var(--accent-btn);
 }
 .sap-foot-hot .sap-foot-v { color: var(--accent-ink); font-weight: 600; }
 
@@ -428,7 +432,10 @@
 .sv-vt-tag {
   font-family: var(--font-geist-mono);
   font-size: 10px;
-  color: #666;
+  /* Gris figé calibré pour le fond clair : en sombre `--paper-3` passe à
+     #1A1A1F et #666 y tombe à 3,02:1. Le jeton `--mute` suit la surface —
+     #6B6B6B sur #F5F5F5 = 4,89:1 en clair, #8B8B94 sur #1A1A1F = 5,13:1. */
+  color: var(--mute);
   padding: 4px 8px;
   background: var(--paper-3);
   border-radius: 999px;
@@ -522,7 +529,9 @@
   font-size: 10px;
   padding: 4px 8px;
   background: var(--paper-3);
-  color: #666;
+  /* Même cause que `.sv-vt-tag` : #666 sur `--paper-3` sombre (#1A1A1F) ne
+     donnait que 3,02:1. `--mute` suit la surface (4,89:1 / 5,13:1). */
+  color: var(--mute);
   border-radius: 4px;
   letter-spacing: 0.04em;
 }
@@ -1765,6 +1774,12 @@ html.dark .sv-derisk-fear{background:rgba(239,68,68,0.10);border-color:rgba(239,
 html.dark .sv-derisk-fear svg{color:#F87171}
 html.dark .sv-derisk-proof span{background:rgba(74,222,128,0.13);color:#4ADE80}
 html.dark .sv-scen-tab.is-active{background:linear-gradient(180deg,var(--paper) 0%,rgba(139,92,246,0.10) 100%)}
+/* `.sv-scen-kind` pose `--accent` sur `--accent-soft`. En clair le couple tient
+   (#6D28D9 sur #EDE9FE = 5,98:1) ; en sombre l'accent #8B5CF6 sur le violet
+   profond #2A1458 tombe à 3,70:1. `--accent-ink` est le jeton prévu pour du
+   texte accent sur `--accent-soft` — c'est déjà le couple de `.sap-foot-k` —
+   et vaut #C4B5FD en sombre, soit 8,49:1. */
+html.dark .sv-scen-kind{color:var(--accent-ink)}
 
 html.dark .sap-card:hover .sap-ic,
 html.dark .sv-scen-tab:hover .sv-scen-tab-ic,
