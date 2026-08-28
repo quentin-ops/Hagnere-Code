@@ -290,9 +290,9 @@ describe("SituationDiagnosticTool", () => {
       printSummary?.querySelectorAll("section.break-inside-avoid"),
     ).toHaveLength(3);
     expect(
-      printSummary?.textContent?.match(
-        /La situation s’est-elle répétée sur la période observée \?/g,
-      ),
+      printSummary?.textContent
+        ?.replace(/[\u00A0\u202F]/g, " ")
+        .match(/La situation s’est-elle répétée sur la période observée \?/g),
     ).toHaveLength(3);
     expect(
       printSummary?.textContent?.match(/Réponses brutes aux neuf questions/g),

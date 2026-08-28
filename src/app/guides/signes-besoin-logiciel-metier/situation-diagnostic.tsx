@@ -73,49 +73,49 @@ const ORIENTATION_COPY: Record<DiagnosticOrientation, OrientationCopy> = {
     explanation:
       "Le risque pour les données, les droits d’accès ou la continuité passe avant le choix d’un nouvel outil.",
     nextQuestion:
-      "Qui sécurise, qui reçoit l’alerte et comment l’équipe reprend-elle le travail aujourd’hui ?",
+      "Qui sécurise, qui reçoit l’alerte et comment l’équipe reprend-elle le travail aujourd’hui\u00a0?",
   },
   simplify: {
     label: "2 · Supprimer ou simplifier l’étape",
     explanation:
       "Une étape inutile ou trop compliquée ne gagne pas à être reproduite dans un logiciel.",
     nextQuestion:
-      "Quelle validation, saisie ou transmission peut disparaître sans dégrader le résultat attendu ?",
+      "Quelle validation, saisie ou transmission peut disparaître sans dégrader le résultat attendu\u00a0?",
   },
   configure: {
     label: "3 · Configurer l’outil actuel et former",
     explanation:
       "L’outil en place n’a pas encore été testé avec sa fonction, son paramétrage ou son mode d’emploi adapté.",
     nextQuestion:
-      "Quelle fonction existante faut-il essayer sur trois cas réels, avec quel critère de réussite ?",
+      "Quelle fonction existante faut-il essayer sur trois cas réels, avec quel critère de réussite\u00a0?",
   },
   connect: {
     label: "4 · Connecter ou automatiser de façon limitée",
     explanation:
-      "Les outils peuvent rester utiles chacun de leur côté ; le point à tester est le transfert répétitif entre eux.",
+      "Les outils peuvent rester utiles chacun de leur côté\u00a0; le point à tester est le transfert répétitif entre eux.",
     nextQuestion:
-      "Quel échange précis peut être limité, surveillé, annulé et repris manuellement ?",
+      "Quel échange précis peut être limité, surveillé, annulé et repris manuellement\u00a0?",
   },
   standard: {
     label: "5 · Adopter un logiciel standard",
     explanation:
-      "Le logiciel standard essayé couvre les situations observées et leurs exceptions importantes ; son adoption est raisonnable sous réserve des accès, de la reprise, de l’export, du support et du coût réel.",
+      "Le logiciel standard essayé couvre les situations observées et leurs exceptions importantes\u00a0; son adoption est raisonnable sous réserve des accès, de la reprise, de l’export, du support et du coût réel.",
     nextQuestion:
-      "Quelles réserves devez-vous encore lever avant l’adoption sur les accès, la reprise, l’export, le support et le coût réel ?",
+      "Quelles réserves devez-vous encore lever avant l’adoption sur les accès, la reprise, l’export, le support et le coût réel\u00a0?",
   },
   custom: {
     label: "6 · Étudier une fonction sur mesure",
     explanation:
       "Le besoin paraît répété et stable, les réponses plus simples ont été examinées, et un responsable métier peut porter un pilote.",
     nextQuestion:
-      "Sur quel périmètre minimal et réversible pouvez-vous tester le résultat sans engager tout le processus ?",
+      "Sur quel périmètre minimal et réversible pouvez-vous tester le résultat sans engager tout le processus\u00a0?",
   },
   observe: {
     label: "OBSERVER · compléter les faits avant d’investir",
     explanation:
-      "Il manque encore des faits pour départager les six réponses. Observer n’est pas une septième solution : c’est un verdict de diagnostic.",
+      "Il manque encore des faits pour départager les six réponses. Observer n’est pas une septième solution\u00a0: c’est un verdict de diagnostic.",
     nextQuestion:
-      "Quel fait manque : répétition, conséquence, stabilité, essai de l’existant, comparaison standard ou responsable ?",
+      "Quel fait manque\u00a0: répétition, conséquence, stabilité, essai de l’existant, comparaison standard ou responsable\u00a0?",
   },
 };
 
@@ -124,7 +124,7 @@ const STANDARD_TEST_COPY: OrientationCopy = {
   explanation:
     "Aucun logiciel standard plausible n’a encore été essayé sur les trois situations. Cette orientation demande un test sans présumer de son adoption.",
   nextQuestion:
-    "Quel logiciel standard allez-vous tester sur les trois situations, leurs exceptions, les droits d’accès, la reprise et l’export ?",
+    "Quel logiciel standard allez-vous tester sur les trois situations, leurs exceptions, les droits d’accès, la reprise et l’export\u00a0?",
 };
 
 const STANDARD_WITHOUT_OWNER_COPY: OrientationCopy = {
@@ -132,7 +132,7 @@ const STANDARD_WITHOUT_OWNER_COPY: OrientationCopy = {
   explanation:
     "Le logiciel standard testé ne couvre pas les situations importantes, mais aucun responsable métier ne peut encore décider des règles ni arrêter un pilote.",
   nextQuestion:
-    "Qui peut accepter le résultat, arbitrer les règles et arrêter le pilote si les critères ne sont pas atteints ?",
+    "Qui peut accepter le résultat, arbitrer les règles et arrêter le pilote si les critères ne sont pas atteints\u00a0?",
 };
 
 function standardContradictionCopy(
@@ -142,9 +142,9 @@ function standardContradictionCopy(
 
   return {
     label: "OBSERVER · vérifier la comparaison standard",
-    explanation: `Le logiciel standard est déclaré non testé mais ${statedFit}. Ces réponses se contredisent : sa couverture reste à vérifier par un essai sur les trois situations.`,
+    explanation: `Le logiciel standard est déclaré non testé mais ${statedFit}. Ces réponses se contredisent\u00a0: sa couverture reste à vérifier par un essai sur les trois situations.`,
     nextQuestion:
-      "Quel essai réel permet de vérifier la couverture du résultat attendu et des exceptions importantes ?",
+      "Quel essai réel permet de vérifier la couverture du résultat attendu et des exceptions importantes\u00a0?",
   };
 }
 
@@ -269,53 +269,53 @@ const DIAGNOSTIC_QUESTIONS: Array<{
   {
     key: "securityRisk",
     label:
-      "Une panne, une absence, un accès ou une perte de données peut-il arrêter ou compromettre le travail ?",
+      "Une panne, une absence, un accès ou une perte de données peut-il arrêter ou compromettre le travail\u00a0?",
     help: "Incluez la restauration impossible, le compte partagé et l’action importante non traçable.",
   },
   {
     key: "repeated",
-    label: "La situation s’est-elle répétée sur la période observée ?",
+    label: "La situation s’est-elle répétée sur la période observée\u00a0?",
     help: "Un incident isolé ou un pic temporaire ne suffit pas à définir un besoin durable.",
   },
   {
     key: "stableRules",
     label:
-      "Le résultat attendu et les principales règles sont-ils assez stables ?",
+      "Le résultat attendu et les principales règles sont-ils assez stables\u00a0?",
     help: "Si l’équipe redéfinit encore le travail, observez avant de figer une solution.",
   },
   {
     key: "removableStep",
-    label: "L’étape gênante peut-elle être supprimée ou simplifiée ?",
+    label: "L’étape gênante peut-elle être supprimée ou simplifiée\u00a0?",
     help: "Une validation, un fichier ou une saisie existe parfois seulement par habitude.",
   },
   {
     key: "existingToolTested",
     label:
-      "Une fonction, un paramétrage ou une formation de l’outil actuel a-t-il été testé sur des cas réels ?",
+      "Une fonction, un paramétrage ou une formation de l’outil actuel a-t-il été testé sur des cas réels\u00a0?",
     help: "Une recherche rapide dans les menus n’est pas encore un essai conclu.",
   },
   {
     key: "transferIsProblem",
     label:
-      "Le blocage vient-il surtout du transfert répété entre deux outils qui conviennent pour le reste ?",
-    help: "Exemple : recopier un identifiant et un statut entre devis et facturation.",
+      "Le blocage vient-il surtout du transfert répété entre deux outils qui conviennent pour le reste\u00a0?",
+    help: "Exemple\u00a0: recopier un identifiant et un statut entre devis et facturation.",
   },
   {
     key: "standardTested",
     label:
-      "Un logiciel standard plausible a-t-il été démontré ou essayé sur vos trois situations ?",
+      "Un logiciel standard plausible a-t-il été démontré ou essayé sur vos trois situations\u00a0?",
     help: "Comparez aussi les droits, la reprise, l’export et le coût au volume réel.",
   },
   {
     key: "standardFits",
     label:
-      "Ce logiciel standard couvre-t-il le résultat attendu et les exceptions importantes ?",
-    help: "Répondez « à vérifier » si l’essai n’a pas encore été fait.",
+      "Ce logiciel standard couvre-t-il le résultat attendu et les exceptions importantes\u00a0?",
+    help: "Répondez «\u00a0à vérifier\u00a0» si l’essai n’a pas encore été fait.",
   },
   {
     key: "namedOwner",
     label:
-      "Une personne peut-elle décider des règles, accepter le résultat et arrêter un pilote ?",
+      "Une personne peut-elle décider des règles, accepter le résultat et arrêter un pilote\u00a0?",
     help: "Sans responsable métier, un développement spécifique est prématuré.",
   },
 ];
@@ -349,7 +349,7 @@ const TEXT_FIELDS: Array<{
   {
     key: "observed",
     label: "Ce qui s’est réellement passé",
-    placeholder: "Décrivez un fait datable, pas « l’outil est mauvais »",
+    placeholder: "Décrivez un fait datable, pas «\u00a0l’outil est mauvais\u00a0»",
     rows: 3,
   },
   {
@@ -390,22 +390,22 @@ export function buildDiagnosticSummary(
       const result = orientSituation(situation);
       const facts = [
         `SITUATION ${index + 1} — ${situation.name || "à nommer"}`,
-        `Résultat attendu : ${situation.expected || "à compléter"}`,
-        `Fait observé : ${situation.observed || "à compléter"}`,
-        `Période et fréquence : ${situation.periodAndFrequency || "à compléter"}`,
-        `Conséquence / personnes : ${situation.consequence || "à compléter"}`,
-        `Personnes / outils : ${situation.peopleAndTools || "à compléter"}`,
-        `Contournement / essais : ${situation.workaroundAndAttempts || "à compléter"}`,
+        `Résultat attendu\u00a0: ${situation.expected || "à compléter"}`,
+        `Fait observé\u00a0: ${situation.observed || "à compléter"}`,
+        `Période et fréquence\u00a0: ${situation.periodAndFrequency || "à compléter"}`,
+        `Conséquence / personnes\u00a0: ${situation.consequence || "à compléter"}`,
+        `Personnes / outils\u00a0: ${situation.peopleAndTools || "à compléter"}`,
+        `Contournement / essais\u00a0: ${situation.workaroundAndAttempts || "à compléter"}`,
         "",
-        "Questions de diagnostic :",
+        "Questions de diagnostic\u00a0:",
         ...DIAGNOSTIC_QUESTIONS.map(
           (question) =>
             `- ${question.label} ${answerLabel(situation[question.key])}`,
         ),
         "",
-        `Orientation de préparation : ${result.label}`,
-        `Pourquoi : ${result.explanation}`,
-        `Prochaine question : ${result.nextQuestion}`,
+        `Orientation de préparation\u00a0: ${result.label}`,
+        `Pourquoi\u00a0: ${result.explanation}`,
+        `Prochaine question\u00a0: ${result.nextQuestion}`,
       ];
 
       return facts.join("\n");
@@ -517,8 +517,8 @@ export function SituationDiagnosticTool() {
         </h3>
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
           Notez des faits ordinaires, sans nom de client, mot de passe, donnée
-          personnelle ou information confidentielle. Tout reste dans cette page
-          : ce composant n’envoie ni n’enregistre vos réponses.
+          personnelle ou information confidentielle. Tout reste dans cette
+          page&nbsp;: ce composant n’envoie ni n’enregistre vos réponses.
         </p>
       </div>
 
@@ -572,7 +572,7 @@ export function SituationDiagnosticTool() {
             </p>
             <p className="mt-1 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
               Hors urgence de sécurité, un champ factuel vide conserve le
-              verdict OBSERVER : les neuf réponses ne remplacent pas la
+              verdict OBSERVER&nbsp;: les neuf réponses ne remplacent pas la
               description du travail réel.
             </p>
             <div className="mt-4 grid gap-4">
@@ -673,7 +673,7 @@ export function SituationDiagnosticTool() {
                   {activeOrientation.explanation}
                 </p>
                 <p className="mt-3 text-xs font-semibold leading-relaxed">
-                  Question suivante : {activeOrientation.nextQuestion}
+                  Question suivante&nbsp;: {activeOrientation.nextQuestion}
                 </p>
               </div>
             </div>
@@ -736,7 +736,7 @@ export function SituationDiagnosticTool() {
                 <p className="mt-4 text-sm font-bold">{result.label}</p>
                 <p className="mt-1 text-sm">{result.explanation}</p>
                 <p className="mt-1 text-sm">
-                  Question suivante : {result.nextQuestion}
+                  Question suivante&nbsp;: {result.nextQuestion}
                 </p>
               </section>
             );
