@@ -1031,7 +1031,7 @@ function PremiumSources({ sources }: { sources: GuidePremiumLegalSource[] }) {
                     {entry.source}
                   </span>
                 )}
-                <p className="text-[13px] sm:text-sm text-zinc-600 dark:text-white leading-relaxed">
+                <p className="min-w-0 text-[13px] sm:text-sm text-zinc-600 dark:text-white leading-relaxed">
                   {entry.description}
                 </p>
               </li>
