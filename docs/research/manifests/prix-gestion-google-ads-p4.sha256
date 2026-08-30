@@ -1,8 +1,8 @@
-7c262215935901508adbcf6ca282c03469977f0a752b9289d05a4a378c807d10  docs/research/prix-gestion-google-ads.md
-9f7862e9781814468cab0c2ed3277fbafeb0ea0615efb6f7d2a258ec1e9f1993  src/app/guides/prix-gestion-google-ads/page.tsx
+838c3773befc3fb8f33a7560036382fce02541c44bea1a97d92fbe94352d7429  docs/research/prix-gestion-google-ads.md
+0a7b011bd5291155698474233f2e8b6721fc9fbfc939d3432aeaaa6c1a1239e7  src/app/guides/prix-gestion-google-ads/page.tsx
 e7d63c79689f41fb99942c3442cb2f2b1bcb807d125d536c4070faabfde9034c  src/app/guides/prix-gestion-google-ads/opengraph-image.tsx
-0ff13cb0fa3f5649a43f828cbacda530d4adef656f31e6f0809c60dc8504bc83  src/app/guides/prix-gestion-google-ads/content-quality.test.ts
-2ebb47a75b054b422d6526377e67b6bda9e86c2fabd96e293f1fafa6b1be5011  src/components/guides/GoogleAdsQuoteComparator.tsx
+05c40a2f81472d37425d233a22a87a43e8ff44696dfc50f08787785d44d511d3  src/app/guides/prix-gestion-google-ads/content-quality.test.ts
+67937ae088b53c857a17872686c452ef02464cc3c8819bff1303db2872ac9c85  src/components/guides/GoogleAdsQuoteComparator.tsx
 bf1c581364b860a880e561bfb78cf7edd1a2e5b081f137530195b3f8cf92d70b  src/components/guides/GoogleAdsQuoteComparator.test.tsx
 13b8c4f4345e9ab5fdc83489fedd350dc26bd455fcd8cd3bbe1dc6fc93e8b15a  src/lib/google-ads-quote-comparison.ts
 8d58cf43a0e3ce0a6e7ea817514626e2df91b65f677b1e01295a9918e4809437  src/lib/google-ads-quote-comparison.test.ts
