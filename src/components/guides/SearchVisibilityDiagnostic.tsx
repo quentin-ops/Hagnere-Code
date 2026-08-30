@@ -40,31 +40,31 @@ const stepCopy: Record<
   }
 > = {
   crawl: {
-    question: "Google connaît-il l’adresse et a-t-il pu ouvrir la page ?",
+    question: "Google connaît-il l’adresse et a-t-il pu ouvrir la page\u00a0?",
     help: "L’inspection d’URL affiche la date de la dernière exploration, le résultat de récupération et un éventuel blocage. Relevez ces éléments ou indiquez que l’adresse est inconnue.",
     placeholder:
-      "Exemple de saisie : date affichée ; récupération réussie ; réponse normale du serveur (HTTP 200)",
+      "Exemple de saisie\u00a0: date affichée\u00a0; récupération réussie\u00a0; réponse normale du serveur (HTTP 200)",
     options: ["unknown", "url-unknown", "crawl-success", "crawl-failed"],
   },
   index: {
-    question: "Google a-t-il retenu cette version ?",
+    question: "Google a-t-il retenu cette version\u00a0?",
     help: "Dans la vue Index Google, relevez l’état d’indexation, l’instruction noindex éventuelle, puis l’adresse principale déclarée par le site et celle choisie par Google. Le test en direct ne prouve pas l’indexation.",
     placeholder:
-      "Exemple de saisie : URL non indexée ; autre adresse principale choisie par Google",
+      "Exemple de saisie\u00a0: URL non indexée\u00a0; autre adresse principale choisie par Google",
     options: ["unknown", "indexed", "not-indexed"],
   },
   impressions: {
-    question: "La page est-elle proposée pour cette recherche ?",
+    question: "La page est-elle proposée pour cette recherche\u00a0?",
     help: "Dans Performances, fixez le contexte, filtrez l’adresse canonique choisie par Google et relevez le total de la page. Ajoutez la recherche exacte en dernier. Si aucune ligne n’apparaît, choisissez « aucune donnée visible » plutôt que zéro.",
     placeholder:
-      "Exemple de saisie : total de la page relevé ; ligne présente après le filtre · France · mobile",
+      "Exemple de saisie\u00a0: total de la page relevé\u00a0; ligne présente après le filtre · France · mobile",
     options: ["unknown", "visible-impressions", "no-visible-data"],
   },
   clicks: {
-    question: "Les internautes choisissent-ils ce résultat ?",
+    question: "Les internautes choisissent-ils ce résultat\u00a0?",
     help: "Relevez le nombre de clics avec exactement les mêmes filtres que pour les impressions.",
     placeholder:
-      "Exemple de saisie : clics relevés avec les mêmes filtres et la même période",
+      "Exemple de saisie\u00a0: clics relevés avec les mêmes filtres et la même période",
     options: [
       "unknown",
       "visible-clicks",
@@ -84,7 +84,7 @@ const identityFields: Array<{
   {
     key: "period",
     label: "Période observée",
-    placeholder: "Ex. : les 28 derniers jours",
+    placeholder: "Ex.\u00a0: les 28 derniers jours",
   },
   {
     key: "url",
@@ -95,7 +95,7 @@ const identityFields: Array<{
   {
     key: "query",
     label: "Recherche exacte",
-    placeholder: "Ex. : isolation extérieure Chambéry",
+    placeholder: "Ex.\u00a0: isolation extérieure Chambéry",
   },
   {
     key: "queryType",
@@ -105,7 +105,7 @@ const identityFields: Array<{
   {
     key: "context",
     label: "Pays et appareil",
-    placeholder: "Ex. : France · mobile",
+    placeholder: "Ex.\u00a0: France · mobile",
   },
   {
     key: "owner",

@@ -54,17 +54,17 @@ const structuredData = buildGuideStructuredData(guide, breadcrumbName);
  * annoncé séparément dans la section 04.
  */
 const SECTION_READING_MINUTES = {
-  definition: 2,
+  definition: 3,
   coutActuel: 3,
-  securiser: 2,
-  troisSituations: 1,
-  sixReponses: 3,
-  contreCas: 2,
-  cas: 2,
+  securiser: 3,
+  troisSituations: 7,
+  sixReponses: 5,
+  contreCas: 1,
+  cas: 3,
   ceQuiRate: 2,
-  pilote: 1,
-  coutComplet: 1,
-  anneeTrois: 1,
+  pilote: 2,
+  coutComplet: 2,
+  anneeTrois: 2,
   decision: 1,
 } as const;
 
