@@ -27,7 +27,7 @@ const breadcrumbName = "Plan de recette d’une application métier";
 
 export const metadata = buildGuideMetadata(
   guide,
-  "Chaîne de preuve d’une recette : besoin métier, cas rejouable, preuve et décision",
+  "Décompte des cas de recette, jours d’équipe à bloquer et seuils d’acceptation mesurables",
 );
 
 const structuredData = buildGuideStructuredData(guide, breadcrumbName);
@@ -36,55 +36,49 @@ const toc = [
   {
     id: "reponse",
     number: "01",
-    label: "La réponse courte",
-    shortLabel: "Répondre",
+    label: "Réponse directe",
+    shortLabel: "Réponse",
   },
   {
-    id: "ouvrir",
+    id: "compter",
     number: "02",
-    label: "Ouvrir la campagne",
-    shortLabel: "Ouvrir",
+    label: "Compter les cas",
+    shortLabel: "Compter",
   },
   {
-    id: "cas-rejouable",
+    id: "jours",
     number: "03",
-    label: "Écrire un cas rejouable",
-    shortLabel: "Écrire",
+    label: "Chiffrer les jours",
+    shortLabel: "Jours",
   },
   {
-    id: "donnees-roles",
+    id: "criteres",
     number: "04",
-    label: "Préparer données et rôles",
-    shortLabel: "Préparer",
+    label: "Écrire les seuils",
+    shortLabel: "Seuils",
   },
   {
-    id: "couverture",
+    id: "donnees",
     number: "05",
-    label: "Couvrir les vrais risques",
-    shortLabel: "Couvrir",
+    label: "Choisir les données",
+    shortLabel: "Données",
   },
   {
-    id: "outil",
+    id: "incidents",
     number: "06",
-    label: "Relire le dossier",
-    shortLabel: "Relire",
+    label: "Ce qui rate",
+    shortLabel: "Incidents",
   },
   {
-    id: "anomalies",
+    id: "mesures",
     number: "07",
-    label: "Qualifier les anomalies",
-    shortLabel: "Qualifier",
-  },
-  {
-    id: "cas-fictif",
-    number: "08",
-    label: "Cas fictif complet",
-    shortLabel: "Rejouer",
+    label: "Mesurer la recette",
+    shortLabel: "Mesures",
   },
   {
     id: "decision",
-    number: "09",
-    label: "Décider et conserver",
+    number: "08",
+    label: "Prononcer la décision",
     shortLabel: "Décider",
   },
 ];
@@ -93,70 +87,67 @@ const faqCategories: GuidePremiumFaqCategory[] = [
   {
     key: "preparer",
     num: "01",
-    label: "Préparer",
+    label: "Préparer la campagne",
     items: [
       {
         question:
-          "Quelle est la différence entre un plan de test et un plan de recette ?",
+          "Faut-il un plan de recette pour un projet à 8\u00a0000\u00a0€ HT\u00a0?",
         answer:
-          "La différence tient surtout à l’objectif, même si les noms varient selon les organisations. Dans ce guide, la recette désigne le test d’acceptation centré sur les besoins métier et la décision de mise à disposition. Les tests unitaires, d’intégration, système, de sécurité ou de performance gardent leurs objectifs propres.",
+          "Refaites d’abord le décompte de la section\u00a002 sur vos propres règles\u00a0: c’est leur nombre qui commande le nombre de cas, et le montant du devis n’y change rien. Si le total reste au-dessus de quatre ou cinq jours d’équipe, la campagne complète de ce guide est surdimensionnée pour ce budget. Écrivez alors les quatre ou cinq parcours dont l’échec vous coûterait de l’argent, jouez-les avec des données réelles anonymisées, et gardez un mois d’usage effectif avant de régler le solde. Ce mois d’usage ne bloque aucune journée d’agenda.",
       },
       {
-        question: "Qui doit rédiger les cas de recette ?",
+        question:
+          "Qui écrit les cas de recette, vous ou l’équipe qui développe\u00a0?",
         answer:
-          "Le métier apporte les règles, les parcours et les impacts. L’équipe chargée des tests aide à rendre les cas rejouables. L’équipe technique identifie la version, l’environnement et les traces qui permettront de constater le résultat. Une personne nommée fixe le périmètre ; les responsabilités exactes dépendent du projet.",
+          "L’attendu vient de chez vous, la forme peut venir d’en face. La personne qui relit 340\u00a0factures par mois est la seule à savoir qu’un prorata kilométrique arrondi au kilomètre supérieur en fausserait plusieurs dizaines\u00a0; le développeur, lui, sait quelle trace permettra de le démontrer. Le vrai point de contrôle est la relecture croisée\u00a0: si les deux camps n’écrivent pas le même résultat attendu pour un cas, c’est que la règle n’était pas comprise de la même façon.",
       },
       {
-        question: "Quand faut-il écrire le plan de recette ?",
+        question: "Combien de temps dure une campagne de recette\u00a0?",
         answer:
-          "Avant la livraison soumise à recette. Écrire les cas assez tôt révèle les besoins vagues, les données manquantes et les critères impossibles à observer. La version, les données finales et le calendrier peuvent ensuite être ajustés sans attendre le premier jour d’exécution.",
+          "Comptez les jours de travail, puis étalez-les. Les 6,2\u00a0jours du cas construit dans ce guide ne se passent pas en six jours de calendrier\u00a0: entre chaque cycle, le correctif doit être développé puis redéployé chez vous. Ce délai-là appartient à l’équipe qui développe\u00a0; demandez-le par écrit, cycle par cycle, avant d’arrêter une date. Une campagne annoncée sur cinq jours calendaires prévoit zéro correction, donc zéro rejeu, donc une acceptation sans deuxième passage.",
       },
     ],
   },
   {
     key: "executer",
     num: "02",
-    label: "Exécuter",
+    label: "Exécuter et qualifier",
     items: [
       {
         question:
-          "Combien de cas de test faut-il pour une application métier ?",
+          "Peut-on copier les données de production dans l’environnement de test\u00a0?",
         answer:
-          "Il n’existe pas de nombre universel. Partez des parcours critiques, règles métier, rôles, interfaces, erreurs et qualités pertinentes. Priorisez par risque et rendez visible ce qui reste hors périmètre : le volume seul ne prouve pas la couverture utile.",
+          "Pas les données personnelles\u00a0: la CNIL demande des environnements distincts et un jeu fictif ou anonymisé, et elle demande aussi d’anonymiser les données personnelles contenues dans les configurations importées. Ce qui se copie sans risque, ce sont les formes\u00a0: la liste des valeurs distinctes prises par chaque colonne qui entre dans une règle. Un client sans numéro SIRET, une commune fusionnée, un taux de TVA retiré depuis\u00a0— gardez les cas, pas les personnes.",
       },
       {
-        question: "Peut-on utiliser des données copiées depuis la production ?",
+        question: "Un cas bloqué compte-t-il comme un échec\u00a0?",
         answer:
-          "Non, pas pour des données personnelles dans un environnement de développement ou de test : la CNIL demande des environnements distincts et des données fictives ou anonymisées. Si une vérification en production ou un traitement exceptionnel paraît indispensable, arrêtez la copie. Les responsables compétents doivent alors qualifier la finalité, la base juridique, la minimisation, les accès, la conservation et la suppression. Ce guide ne crée aucune dérogation.",
+          "Non, et les confondre coûte cher. Un cas échoué a été joué et n’a pas donné le résultat attendu\u00a0: vous savez quelque chose. Un cas bloqué n’a pas pu être joué, parce qu’un compte manquait ou qu’un service ne répondait pas. Le premier appelle une correction, le second appelle une condition à rétablir puis une exécution. Un relevé qui les additionne enlève au décideur l’information dont il a besoin.",
       },
       {
-        question: "Un cas bloqué compte-t-il comme un échec ?",
+        question:
+          "Quelle différence entre la gravité et la priorité d’une anomalie\u00a0?",
         answer:
-          "Non. Gardez-le identifié comme bloqué : le résultat fonctionnel n’a pas été observé, contrairement à un cas exécuté dont l’attendu n’est pas atteint. Corrigez la condition de blocage puis rejouez ; ne transformez ni l’un ni l’autre en réussite.",
+          "La gravité décrit l’effet observé\u00a0: un montant faux sur des dizaines de factures par mois est grave, un libellé mal accordé ne l’est pas. La priorité décrit l’ordre de traitement, qui dépend aussi d’une échéance ou d’une démonstration. Les deux peuvent diverger sans que le classement soit fautif\u00a0: une anomalie grave peut être traitée après une anomalie mineure qui bloque une réunion de la semaine. Gardez les deux champs et la raison écrite du classement.",
       },
     ],
   },
   {
     key: "decider",
     num: "03",
-    label: "Décider",
+    label: "Décider et clore",
     items: [
       {
-        question: "Quel taux de réussite autorise l’acceptation ?",
+        question:
+          "Un taux de réussite de 95\u00a0% suffit-il pour accepter la livraison\u00a0?",
         answer:
-          "Aucun taux universel. Un score élevé peut encore masquer un parcours critique non exécuté, un échec non classé, une réserve ou une anomalie bloquante. Décidez avec les critères convenus, les résultats par risque, les écarts, les preuves et les limites de la campagne.",
+          "Le taux ne dit ni ce qui a été joué, ni ce qui compte. Sur 56\u00a0cas, 95\u00a0% laissent près de trois cas non conformes\u00a0: si l’un des trois est l’export comptable, le chiffre est bon et la mise en service est mauvaise. Lisez les résultats par risque et non en moyenne, et vérifiez d’abord combien de cas ont été exécutés\u00a0— un pourcentage se calcule très bien sur la moitié d’une campagne.",
       },
       {
         question:
-          "Quelle différence entre gravité et priorité d’une anomalie ?",
+          "Une recette réussie vaut-elle réception au sens du contrat\u00a0?",
         answer:
-          "La gravité décrit l’impact observé sur le métier, les utilisateurs ou les exigences. La priorité indique l’ordre de traitement décidé. Elles peuvent diverger : conservez les deux champs et la justification au lieu de les fusionner.",
-      },
-      {
-        question:
-          "Une recette réussie vaut-elle automatiquement acceptation juridique ?",
-        answer:
-          "Non, pas à partir de ce guide. Les effets d’une réception, d’une réserve, d’un paiement ou d’un délai dépendent des documents signés et du contexte. Relisez le contrat, le devis et la procédure prévue ; demandez un conseil juridique en cas de désaccord ou d’enjeu important.",
+          "Ce guide ne permet pas de le dire. Les effets d’une réception, d’une réserve, d’un paiement ou d’un délai dépendent des documents signés. En marché public informatique, le CCAG-TIC organise une admission tacite dans un seul cas\u00a0: le silence de l’acheteur pendant sept jours après la vérification de service régulier. Un contrat privé ne reprend cette mécanique que s’il l’écrit. Faites relire vos documents plutôt que cette page.",
       },
     ],
   },
@@ -182,8 +173,8 @@ export default function Page() {
         ]}
         badges={[
           { label: "Guide pratique 2026", variant: "dark" },
-          { label: "Chaîne de preuve de recette", variant: "neutral" },
-          { label: "Aucun taux automatique", variant: "success" },
+          { label: "Recette et acceptation", variant: "neutral" },
+          { label: "Atelier local · aucun envoi", variant: "success" },
           {
             label: `Mis à jour le ${formatGuideDate(guide.dateModified)}`,
             variant: "muted",
@@ -192,13 +183,13 @@ export default function Page() {
         heroTitle="Plan de recette d’une application métier :"
         heroTitleEm="prouver avant"
         heroTitleSuffix="d’accepter"
-        heroDescription="Transformez chaque besoin métier en cas rejouable : version, acteur, données, action, résultat attendu, résultat obtenu et preuve. Puis décidez sans cacher les tests critiques non exécutés derrière un pourcentage."
+        heroDescription={"La recette, c’est le moment où votre équipe rejoue son travail réel dans le logiciel livré, avant de payer le solde. Elle se chiffre avant de s’écrire\u00a0: comptez les cas à partir de vos parcours, de vos règles et de vos échanges, chiffrez les jours que votre équipe doit y passer, puis écrivez des seuils qui disent ce qu’on mesure, sur quoi et pendant combien de temps. Les nombres ci-dessous viennent d’un cas construit pour l’expliquer, dont les volumes sont choisis pour l’exemple\u00a0— jamais d’un dossier client."}
         stats={[
-          { label: "Points à relire", value: "8" },
-          { label: "Verdicts possibles", value: "7" },
+          { label: "Cas comptés", value: "56" },
+          { label: "Jours d’équipe", value: "6,2" },
+          { label: "Temps interne", value: "2\u00a0170\u00a0€" },
+          { label: "Rejeu version 2", value: "4\u00a0h\u00a040" },
           { label: "Seuil universel", value: "Aucun" },
-          { label: "Données envoyées", value: "Aucune" },
-          { label: "Lecture", value: `${guide.readTimeMin} min` },
         ]}
         author={{
           initials: TEAM.quentin.initials,
@@ -207,61 +198,66 @@ export default function Page() {
           profileUrl: "/equipe#fondateur",
         }}
         sidebarHeroCta={{
-          eyebrow: "Projet d’application métier",
-          titleStart: "Cadrer",
-          titleEm: "une recette vérifiable",
+          eyebrow: "Avant la livraison",
+          titleStart: "Faire relire",
+          titleEm: "vos cas de recette",
           description:
-            "Apportez le périmètre, les parcours critiques, les rôles disponibles et les critères déjà convenus. Les inconnues resteront visibles.",
+            "Apportez vos règles écrites, vos parcours critiques et le calendrier annoncé. Le premier échange peut conclure que votre projet est trop petit pour une campagne formelle.",
           benefits: [
-            "Un besoin relié à chaque cas",
-            "Données, attendu et preuve explicites",
-            "Décision confiée à la personne autorisée",
+            "Décompte des cas fait avec vous",
+            "Jours d’équipe chiffrés avant le calendrier",
+            "Seuils réécrits avec ce qu’on mesure et sur quelle durée",
           ],
-          primaryCtaLabel: "Faire cadrer mon plan",
-          primaryCtaHref: "/demarrer-un-projet",
+          primaryCtaLabel: "Voir le service applications métier",
+          primaryCtaHref: "/services/saas-applications-metier",
+          phoneLabel: "03 74 47 20 18",
+          phoneHref: "tel:+33374472018",
         }}
         toc={toc}
-        tocLabel="Chaîne de recette"
-        mobileCtaLabel="Faire cadrer mon plan"
+        tocLabel="Étapes de la recette"
+        mobileCtaLabel="Faire relire mes cas"
         sidebarContextCta={{
-          eyebrow: "Recette métier",
-          title: "Préparer les preuves avant la livraison",
+          eyebrow: "Applications métier",
+          title: "Votre recette tient-elle dans le calendrier annoncé\u00a0?",
           description:
-            "Décrivez la version, les parcours critiques, les personnes capables de tester et les interfaces concernées.",
+            "Décrivez le nombre de règles écrites, les personnes disponibles pour tester et la date de mise en service visée, sans donnée personnelle ni contenu confidentiel.",
           benefits: [
-            "Critères d’entrée et de sortie séparés",
-            "Cas bloqués et non exécutés visibles",
-            "Décideur et procédure réelle identifiés",
+            "Nombre de cas estimé sur vos règles",
+            "Jours à bloquer et cycles de correction",
+            "Décideur et effet du silence identifiés",
           ],
-          ctaLabel: "Décrire mon besoin",
+          ctaLabel: "Décrire mon projet",
           ctaHref: "/demarrer-un-projet",
+          secondaryLabel: "03 74 47 20 18",
+          secondaryHref: "tel:+33374472018",
+          badgeLabel: "Premier échange sans engagement",
         }}
         faqCategories={faqCategories}
         faqMeta={{
           eyebrow: "Questions fréquentes",
-          titleStart: "Vos questions avant",
-          titleEm: "la recette",
-          titleEnd: "de l’application.",
+          titleStart: "Ce qu’on demande avant",
+          titleEm: "de signer",
+          titleEnd: "la recette.",
           subtitle:
-            "Des réponses courtes sur les rôles, les données, les cas bloqués, les anomalies et la portée de la décision.",
-          ctaTitle: "Rendre une recette rejouable",
+            "Taille du projet, répartition de l’écriture, durée réelle, données de test, cas bloqués, gravité contre priorité, taux de réussite et portée contractuelle.",
+          ctaTitle: "Un point encore ouvert sur votre recette\u00a0?",
           ctaDescription:
-            "Décrivez le périmètre et les preuves déjà disponibles, sans transmettre de données personnelles ni de contenu confidentiel.",
-          ctaLabel: "Préparer la recette",
+            "Décrivez les règles à vérifier, les personnes disponibles et la date visée, sans transmettre de donnée sensible.",
+          ctaLabel: "Décrire ma recette",
           ctaHref: "/demarrer-un-projet",
         }}
         legalSources={[
           {
+            source: "Légifrance · arrêté du 30\u00a0mars 2021 approuvant le CCAG-TIC",
+            href: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000043310689",
+            description:
+              "Cahier des clauses administratives générales des marchés publics de techniques de l’information et de la communication. Article\u00a032\u00a0: vérification d’aptitude puis vérification de service régulier, régularité observée trente jours, indisponibilité cumulée limitée à 2\u00a0% de la durée d’utilisation effective, de 8\u00a0h à 18\u00a0h du lundi au vendredi, jours fériés exclus. Article\u00a033\u00a0: trente jours pour notifier la décision après vérification d’aptitude, sept jours après vérification de service régulier. L’admission tacite ne vaut que dans ce second cas, à l’article\u00a033.2.2\u00a0; le silence de trente jours de l’article\u00a033.2.1 n’emporte aucune admission. Consulté le 28\u00a0août 2026.",
+          },
+          {
             source: "ISTQB · CTFL v4.0.1",
             href: "https://istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf",
             description:
-              "Syllabus du 15 septembre 2024 : niveaux et activités de test, acceptation centrée sur les besoins métier, plan, critères d’entrée et de sortie, traçabilité, priorisation et rapports d’anomalie. Référence pédagogique, pas certification du projet.",
-          },
-          {
-            source: "ISO/IEC/IEEE 29119-2:2021",
-            href: "https://www.iso.org/standard/79428.html",
-            description:
-              "Présentation publique de processus génériques de test applicables aux différents cycles de développement. Le texte complet de la norme n’est pas reproduit.",
+              "Syllabus du 15\u00a0septembre 2024\u00a0: niveaux de test, acceptation centrée sur les besoins des utilisateurs, critères d’entrée et de sortie, priorisation, distinction entre gravité et priorité d’une anomalie. Référence pédagogique, pas certification du projet.",
           },
           {
             source: "ISO/IEC/IEEE 29119-3:2021",
@@ -279,45 +275,71 @@ export default function Page() {
             source: "CNIL · Tester vos applications",
             href: "https://www.cnil.fr/fr/tester-vos-applications",
             description:
-              "Fiche du 27 janvier 2020 : métriques définies avec les parties prenantes ; données personnelles de production à ne pas utiliser en développement ou test ; jeu fictif représentatif et anonymisation des configurations importées.",
+              "Fiche du 27\u00a0janvier 2020\u00a0: métriques définies avec les parties prenantes\u00a0; données personnelles de production à ne pas utiliser en développement ou en test\u00a0; jeu fictif représentatif et anonymisation des configurations importées.",
           },
           {
-            source: "CNIL · Encadrer les développements",
+            source: "CNIL · Encadrer les développements informatiques",
             href: "https://www.cnil.fr/fr/securite-encadrer-les-developpements-informatiques",
             description:
-              "Fiche du 14 mars 2024 : tests complets, environnement distinct, données fictives ou anonymisées et non-régression ou revue avant mise en production d’une mise à jour.",
+              "Fiche du 14\u00a0mars 2024\u00a0: environnements de développement, de test et de production distincts, données fictives ou anonymisées, non-régression ou revue avant la mise en production d’une mise à jour.",
           },
           {
             source: "W3C WAI · Évaluer l’accessibilité",
             href: "https://www.w3.org/WAI/test-evaluate/",
             description:
-              "Ressources d’évaluation : agir tôt, combiner outils et évaluation humaine compétente ; aucun outil seul ne détermine la conformité d’accessibilité.",
+              "Évaluer tôt, combiner outils et évaluation humaine compétente\u00a0; aucun outil automatique ne détermine seul la conformité d’accessibilité.",
+          },
+          {
+            source:
+              "Légifrance · loi n°\u00a02005-102 du 11\u00a0février 2005, article\u00a047",
+            href: "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000037388867/",
+            description:
+              "Source de l’obligation française d’accessibilité des services de communication au public en ligne. Le\u00a0I vise les personnes morales de droit public, les délégataires d’un service public, les personnes morales de droit privé créées pour un besoin d’intérêt général autre qu’industriel ou commercial, et les entreprises au-delà d’un seuil de chiffre d’affaires fixé par décret. Consulté le 28\u00a0août 2026.",
+          },
+          {
+            source:
+              "Légifrance · décret n°\u00a02019-768 du 24\u00a0juillet 2019",
+            href: "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000038811937/",
+            description:
+              "Ce décret ne crée pas l’obligation\u00a0: il en fixe le seuil pour les entreprises visées au 4°\u00a0du\u00a0I de l’article\u00a047, à 250\u00a0millions d’euros de chiffre d’affaires annuel moyen en France sur les trois derniers exercices clos. Aucun critère d’effectif n’y figure. Le régime de sanction a été modifié depuis\u00a0: vérifier le texte en vigueur à votre date de lecture. Consulté le 28\u00a0août 2026.",
+          },
+          {
+            source: "EUR-Lex · directive (UE) 2019/882",
+            href: "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32019L0882",
+            description:
+              "Exigences d’accessibilité des produits et des services destinés aux consommateurs\u00a0— commerce en ligne, services bancaires, transport de voyageurs, livres numériques, communications électroniques\u00a0—, applicables à partir du 28\u00a0juin 2025. Les outils internes d’une entreprise n’y figurent pas. Consulté le 28\u00a0août 2026.",
+          },
+          {
+            source: "Henix · Squash\u00a0TM",
+            href: "https://www.henix.com/squashtm",
+            description:
+              "Outil de gestion de tests publié en open source sous licence LGPL\u00a0v3 par Henix, société française d’ingénierie de la qualité logicielle, développé depuis 2011. Cité comme exemple d’outil disponible, sans recommandation exclusive.",
           },
           {
             source: "OWASP · ASVS 5.0.0",
             href: "https://owasp.org/www-project-application-security-verification-standard/",
             description:
-              "Exemple de base versionnée pour vérifier les contrôles techniques de sécurité d’une application web. À sélectionner avec des spécialistes ; ce n’est pas une obligation générale.",
+              "Base versionnée pour vérifier les contrôles techniques de sécurité d’une application web. À sélectionner avec des spécialistes\u00a0; ce n’est pas une obligation générale.",
           },
         ]}
         disclaimer={{
-          eyebrow: "Limites",
+          eyebrow: "Limite du guide",
           title:
-            "Ce plan prépare la recette ; il ne l’exécute pas et ne donne pas d’avis juridique",
+            "Une méthode de préparation, pas une expertise juridique ni un audit de votre application",
           description:
-            "Le guide, l’exemple fictif et l’outil local ne testent pas votre application. Les exigences, la sécurité, l’accessibilité, les données personnelles, les interfaces et les effets contractuels doivent être qualifiés sur le système et les documents réels par les personnes compétentes.",
+            "Ce guide, le cas construit et l’atelier local ne testent pas votre application et ne qualifient ni sa sécurité, ni son accessibilité, ni sa conformité. Les montants du cas construit sont des hypothèses annoncées comme telles. Les délais du CCAG-TIC ne s’appliquent qu’aux marchés qui s’y réfèrent\u00a0: pour un contrat privé, seule la lecture de vos documents signés répond, et un désaccord sérieux appelle un conseil juridique.",
         }}
         relatedGuides={[
           {
-            label: "Comment rédiger un cahier des charges SaaS ?",
+            label: "Comment rédiger un cahier des charges SaaS\u00a0?",
             href: "/guides/cahier-des-charges-saas",
           },
           {
-            label: "MVP SaaS : quoi inclure avant un premier client ?",
+            label: "MVP SaaS\u00a0: quoi inclure avant un premier client\u00a0?",
             href: "/guides/mvp-saas-quoi-inclure",
           },
           {
-            label: "Sécurité d’une application métier avant sa mise en service",
+            label: "Sécurité d’une application métier\u00a0: les 4 mesures à faire",
             href: "/guides/securite-application-metier",
           },
         ]}
@@ -326,805 +348,802 @@ export default function Page() {
         <GuidePremiumSection
           id="reponse"
           number="01"
-          label="Réponse courte"
-          title="Une recette relie un besoin à une preuve exploitable"
+          label="Réponse directe"
+          readingTime="2 min"
+          title="Ce qu’une recette doit produire avant que vous payiez le solde"
         >
           <p>
-            Écrivez le plan avant la livraison. Pour chaque cas, nommez le
-            besoin vérifié, la version, l’acteur et ses droits, l’état de
-            départ, les données, les actions, le résultat attendu observable, le
-            résultat obtenu et la preuve. Ajoutez la personne qui exécute et
-            celle qui décide.
+            La livraison est annoncée pour le 12, la mise en service pour le 15.
+            Personne, chez vous, n’a bloqué une journée pour vérifier quoi que
+            ce soit.
+          </p>
+          <p>
+            Vérifier, ici, porte un nom&nbsp;: la <strong>recette</strong>.
+            C’est le moment où votre équipe, et non celle qui a développé,
+            rejoue son travail réel dans le logiciel livré et note ce qui sort.
+            Un plan de recette est la liste écrite de ces vérifications, avec le
+            résultat attendu de chacune.
+          </p>
+          <p>
+            <strong>Une recette se chiffre avant de s’écrire.</strong> Les cas
+            se comptent à partir de vos parcours, de vos règles, de vos droits
+            et de vos échanges avec vos autres logiciels. Les jours que votre
+            équipe doit y passer s’en déduisent, écriture, exécution et rejeu
+            compris. Les seuils s’écrivent en dernier, chacun avec ce qu’on
+            mesure, sur quoi et pendant combien de temps. Sur le cas construit
+            de ce guide, dont les volumes sont choisis pour
+            l’exemple&nbsp;: 56&nbsp;cas, 6,2&nbsp;jours et 2&nbsp;170&nbsp;€ de
+            temps interne, sur un projet à 25&nbsp;000&nbsp;€ hors taxes (HT).
+          </p>
+          <p>
+            Un taux de réussite ne décide rien&nbsp;:
+            «&nbsp;33&nbsp;cas exécutés, 33&nbsp;réussis&nbsp;» se lit très bien
+            quand 23&nbsp;cas n’ont jamais été joués.
           </p>
 
-          <p>
-            Exécutez d’abord les parcours dont l’échec aurait le plus d’impact.
-            Gardez séparés quatre états : réussi, échoué, bloqué et non exécuté.
-            Un cas critique absent reste absent, même si 99 autres cas sont
-            verts. La campagne se termine par une décision documentée, jamais
-            par un pourcentage isolé.
-          </p>
+          <GuidePremiumCase
+            initial="56"
+            eyebrow="Fil rouge du guide · exemple construit"
+            title={"Une application de tournées, 19\u00a0règles écrites, 340\u00a0factures par mois"}
+          >
+            <p>
+              <em>
+                Exemple construit&nbsp;: les volumes, les durées et le coût du
+                jour chargé sont choisis pour l’exemple et ne viennent d’aucune
+                source&nbsp;; seul le montant du projet est repris de la grille
+                de prix de ce site. Ce n’est pas un dossier client.
+              </em>{" "}
+              Une entreprise de transport et de logistique de Chalon-sur-Saône
+              fait développer une application de suivi de tournées et de
+              préfacturation. Le devis porte sur 25&nbsp;000&nbsp;€ HT, payés en
+              trois fois&nbsp;: 30&nbsp;% à la commande, 40&nbsp;% à la
+              livraison, 30&nbsp;% après recette, soit 7&nbsp;500&nbsp;€ HT
+              suspendus à la vérification.
+            </p>
+            <p>
+              Nadia, responsable facturation, relit 340&nbsp;factures par mois
+              et sera la testeuse principale. Karim, directeur d’exploitation,
+              signera. Le cahier des charges contient 19&nbsp;règles de gestion,
+              trois flux et quatre rôles.
+            </p>
+          </GuidePremiumCase>
 
           <div className="not-prose my-8 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 dark:border-zinc-800">
             <Image
               src="/guides/plan-recette-application-metier/recette-preuve-16x9.webp"
-              alt="Chaîne de preuve reliant besoin métier, cas rejouable, résultat, preuve et décision avec une branche STOP"
+              alt="Quatre étapes numérotées&nbsp;: compter les cas, chiffrer les jours, écrire les seuils, décider, avec un retour vers la correction quand un cas critique n’a pas été joué"
               width={1600}
               height={900}
               className="h-auto w-full"
             />
           </div>
 
-          <GuidePremiumMemo title="Résolvez le désaccord sur l’attendu avant l’exécution">
-            <p>
-              Si le métier et le prestataire ne donnent pas le même résultat
-              attendu à un cas, ils ne testeront pas la même règle. Le plan
-              permet de repérer cette ambiguïté. Corrigez l’attendu avant
-              d’exécuter le cas.
-            </p>
-          </GuidePremiumMemo>
-
           <InfoBox
-            variant="blue"
-            title="La recette métier ne remplace pas tous les tests"
+            variant="amber"
+            title={"L’application est déjà en service\u00a0? Changez de sujet"}
           >
             <p>
-              Le{" "}
-              <a
-                href="https://istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf"
-                target="_blank"
-                rel="noreferrer"
-              >
-                syllabus Foundation Level de l’ISTQB
-              </a>{" "}
-              distingue notamment les tests de composants, d’intégration, de
-              système et d’acceptation. La recette valide les besoins des
-              utilisateurs ; elle ne transforme pas une vérification métier en
-              audit de sécurité, de performance ou d’accessibilité.
+              Si des factures fausses sont déjà parties ou si un compte a été
+              compromis, la recette n’est plus la question. Mesurez ce qui est
+              déjà sorti chez vos clients, organisez le mode dégradé, puis
+              reprenez la vérification sur une version corrigée.
             </p>
           </InfoBox>
         </GuidePremiumSection>
 
         <GuidePremiumSection
-          id="ouvrir"
+          id="compter"
           number="02"
-          label="Préconditions"
-          title="N’ouvrez pas la campagne sans version précise ni décideur nommé"
+          label="Décompte"
+          readingTime="2 min"
+          title={"Combien de cas de recette faut-il écrire\u00a0?"}
         >
           <p>
-            Commencez par identifier exactement ce qui sera testé. « La dernière
-            version » ne suffit pas : consignez l’identifiant de livraison,
-            l’environnement, les données chargées, les interfaces disponibles et
-            les configurations qui influencent le résultat. Une correction
-            installée pendant la recette crée une nouvelle base de comparaison.
-            Notez son impact et les cas à rejouer.
+            Un plan de recette d’application métier tient en une liste de cas,
+            le budget qui va avec et les seuils qu’on saura vérifier. Le nombre
+            de cas se compte, à partir de cinq sources dénombrables sur des
+            documents que vous avez déjà.
           </p>
 
           <GuideTable
-            caption="Conditions à vérifier avant d’exécuter la recette"
-            headers={["Condition", "Question concrète", "Preuve d’ouverture"]}
+            caption="Le décompte des cas de recette, source par source"
+            headers={[
+              "Ce qui produit des cas",
+              "Comment on les compte",
+              "Sur le cas construit",
+            ]}
             rows={[
               [
-                "Périmètre",
-                "Quelles fonctions, interfaces, rôles et qualités sont inclus ou exclus ?",
-                "Liste versionnée et exclusions justifiées",
+                "Parcours de bout en bout",
+                "Un cas par parcours dont l’échec arrêterait le travail",
+                "6\u00a0parcours → 6\u00a0cas",
               ],
               [
-                "Version",
-                "Quel artefact exact est soumis aux tests ?",
-                "Identifiant de livraison et configuration",
+                "Règles de gestion et de calcul",
+                "Un cas courant par règle, plus un cas à la limite pour chaque règle qui porte un seuil, une date ou un arrondi",
+                "19\u00a0règles, dont 11 à seuil → 30\u00a0cas",
               ],
               [
-                "Environnement",
-                "Les services, droits, appareils et dépendances nécessaires répondent-ils ?",
-                "Contrôle de démarrage consigné",
+                "Droits",
+                "Un cas par action qu’un rôle ne doit pas pouvoir faire et qui touche de l’argent ou une donnée",
+                "4\u00a0rôles, 7\u00a0actions interdites → 7\u00a0cas",
               ],
               [
-                "Données",
-                "Les cas normaux, limites et erreurs peuvent-ils être joués sans exposer inutilement des personnes ?",
-                "Jeu fictif ou anonymisé préparé",
+                "Flux avec les autres logiciels",
+                "Trois cas par flux\u00a0: accepté, rejeté, rejoué après correction",
+                "3\u00a0flux × 3 → 9\u00a0cas",
               ],
               [
-                "Responsabilités",
-                "Qui exécute, qualifie, corrige, reteste et décide ?",
-                "Noms ou rôles et disponibilités confirmés",
+                "Reprise après erreur",
+                "Un cas par endroit où le travail peut s’interrompre au milieu",
+                "4\u00a0points de coupure → 4\u00a0cas",
               ],
-              [
-                "Sortie",
-                "Quelles conditions permettent d’arrêter les tests et de soumettre la décision ?",
-                "Critères écrits avant l’exécution",
-              ],
+              ["Total", "Somme des cinq lignes", "56\u00a0cas"],
             ]}
           />
 
           <p>
-            Les{" "}
-            <a
-              href="https://istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf"
-              target="_blank"
-              rel="noreferrer"
-            >
-              critères d’entrée et de sortie présentés par l’ISTQB
-            </a>{" "}
-            répondent à deux questions différentes : que faut-il avoir pour
-            commencer, puis qu’est-ce qui doit être atteint pour déclarer
-            l’activité terminée ? Arriver au bout du temps prévu n’efface pas
-            les critères manquants. Si les parties prenantes décident néanmoins
-            de s’arrêter, le risque résiduel reste à examiner et à consigner.
+            Six plus trente, plus sept, plus neuf, plus quatre&nbsp;:
+            56&nbsp;cas. Ce total n’est pas une norme à recopier. Il varie d’un
+            facteur douze et demi selon la densité de règles&nbsp;: une saisie
+            de congés qui tient en quatre règles produit une douzaine de cas, un
+            calcul de commissions à soixante règles en produit plus de cent
+            cinquante. Ce qui se transporte d’un projet à l’autre, c’est la
+            méthode de comptage.
           </p>
 
-          <GuidePremiumMemo title="Le décideur ne doit pas apparaître le dernier jour">
-            <p>
-              Nommez avant la campagne la personne qui peut accepter, refuser,
-              demander une correction ou appliquer la procédure prévue. Le
-              testeur constate ; il ne reçoit pas automatiquement le pouvoir
-              contractuel de décider.
-            </p>
+          <h3>D’où sortent les 19&nbsp;règles du cas construit</h3>
+          <p>
+            Elles se relèvent dans le{" "}
+            <Link href="/guides/cahier-des-charges-saas">
+              cahier des charges
+            </Link>{" "}
+            quand il existe, dans les courriels de spécification et les comptes
+            rendus de réunion sinon. Une règle qui n’apparaît nulle part ne sera
+            vérifiée par personne.
+          </p>
+          <p>
+            Une règle mérite un cas à la limite dès qu’elle contient un nombre,
+            une date ou un mot comme «&nbsp;au-delà&nbsp;», «&nbsp;sauf
+            si&nbsp;» ou «&nbsp;arrondi&nbsp;». Sur les 19&nbsp;règles,
+            11&nbsp;répondent à ce critère&nbsp;: c’est de là que sortent les
+            30&nbsp;cas de la deuxième ligne.
+          </p>
+
+          <GuidePremiumMemo
+            eyebrow="L’outil, à partir de quel volume"
+            title="Un tableur suffit jusqu’à environ cent cinquante cas"
+          >
+            <ul>
+              <li>
+                À 56&nbsp;cas, une feuille de huit colonnes fait le
+                travail&nbsp;: identifiant, règle couverte, version, rôle,
+                données, attendu, obtenu, preuve.
+              </li>
+              <li>
+                Au-delà d’environ 150&nbsp;cas et de deux campagnes, c’est le
+                rejeu qui pèse, et un outil de gestion de tests devient
+                rentable&nbsp;— Squash&nbsp;TM, publié en open source sous
+                licence LGPL&nbsp;v3 par Henix, en est un exemple.
+              </li>
+              <li>
+                Un référentiel de 400&nbsp;cas dont personne ne sait quelle
+                règle ils couvrent coûte 33&nbsp;h&nbsp;20 de rejeu par
+                campagne, contre 4&nbsp;h&nbsp;40 pour les 56&nbsp;cas du
+                tableur.
+              </li>
+            </ul>
           </GuidePremiumMemo>
         </GuidePremiumSection>
 
         <GuidePremiumSection
-          id="cas-rejouable"
+          id="jours"
           number="03"
-          label="Conception"
-          title="Écrivez un cas qu’une autre personne peut rejouer sans vous appeler"
+          label="Budget"
+          readingTime="3 min"
+          title={"Combien de jours votre équipe doit-elle y passer\u00a0?"}
         >
           <p>
-            « Vérifier la facturation » ne constitue pas encore un cas. Il
-            manque l’acteur, le dossier de départ, la règle appliquée et le
-            résultat qui permettra de conclure. Écrivez une suite courte :
-            besoin, état de départ, données, actions, résultat attendu
-            observable et preuve.
+            Aucune des valeurs ci-dessous ne sort d’une source publiée&nbsp;:
+            ce sont des hypothèses de travail, posées à découvert pour que vous
+            puissiez les remplacer par les vôtres.{" "}
+            <strong>
+              Écrire un cas rejouable prend 15&nbsp;minutes une fois la règle
+              connue, l’exécuter la première fois 10&nbsp;minutes, le rejouer
+              après correction 5&nbsp;minutes.
+            </strong>{" "}
+            La journée utile vaut 7&nbsp;heures, et le temps interne
+            350&nbsp;€ le jour chargé.
+          </p>
+          <p>
+            Pour les remplacer, chronométrez vos cinq premiers cas, de la
+            lecture de la règle à la preuve rangée&nbsp;: cinq suffisent à
+            savoir si votre moyenne d’écriture est de huit ou de vingt-cinq
+            minutes, ce qui fait passer le budget de 5,3 à 7,6&nbsp;jours. Votre
+            contrôleuse de gestion ou votre expert-comptable sort le coût du
+            jour chargé à partir du salaire brut, des charges et des jours
+            réellement travaillés.
           </p>
 
           <GuideTable
-            caption="Du besoin vague au cas de recette rejouable"
-            headers={["Champ", "Question", "Formulation utile"]}
+            caption="Ce que la recette du cas construit coûte à l’équipe interne"
+            headers={["Poste", "Le calcul", "Temps"]}
             rows={[
               [
-                "Référence",
-                "Quelle règle ou quel risque est couvert ?",
-                "R-FAC-04 — une intervention validée crée un seul brouillon de facture",
+                "Écrire les cas",
+                "56 × 15\u00a0min",
+                "840\u00a0min, soit 14\u00a0h",
               ],
               [
-                "Version",
-                "Qu’est-ce qui est testé ?",
-                "Version et environnement identifiables",
+                "Exécuter une première fois",
+                "56 × 10\u00a0min",
+                "560\u00a0min, soit 9\u00a0h\u00a020",
               ],
               [
-                "Acteur",
-                "Qui agit avec quels droits ?",
-                "Responsable d’agence autorisé à valider",
+                "Rejouer après correction",
+                "2\u00a0cycles × 17\u00a0cas touchés × 5\u00a0min",
+                "170\u00a0min, soit 2\u00a0h\u00a050",
               ],
               [
-                "État de départ",
-                "Que doit-il déjà être vrai ?",
-                "Intervention clôturée, non facturée, lignes de temps présentes",
+                "Préparer le jeu de données",
+                "Relevé des valeurs distinctes, génération, anonymisation",
+                "1,5\u00a0jour",
               ],
               [
-                "Données",
-                "Quelles valeurs font fonctionner la règle ?",
-                "Déplacement, temps et pièce fictifs, plus limites prévues",
+                "Relecture croisée des cas avant exécution",
+                "Le chef de projet et la responsable facturation confrontent leurs attendus",
+                "0,5\u00a0jour",
               ],
               [
-                "Action",
-                "Quelles étapes exactes sont réalisées ?",
-                "Ouvrir, relire, valider une fois, consulter le brouillon",
+                "Réunion de décision et relevé écrit",
+                "Une demi-journée, décideur présent",
+                "0,5\u00a0jour",
               ],
               [
-                "Attendu",
-                "Quel résultat permet de conclure ?",
-                "Un brouillon unique, lignes et total exacts, statut modifié",
-              ],
-              [
-                "Preuve",
-                "Que faut-il garder pour relire ?",
-                "Identifiant du cas, journal et capture contextualisée si utile",
+                "Total",
+                "26\u00a0h\u00a010 ÷ 7\u00a0h = 3,74\u00a0j, arrondi à 3,7, plus 2,5\u00a0j",
+                "6,2\u00a0jours, soit 2\u00a0170\u00a0€",
               ],
             ]}
           />
 
           <p>
-            « L’écran est rapide », « le résultat paraît correct » ou «
-            l’interface est intuitive » ne sont pas encore des attendus
-            testables. Fixez la mesure, le contexte et le seuil quand une
-            qualité non fonctionnelle compte. La{" "}
-            <a
-              href="https://www.iso.org/standard/78176.html"
-              target="_blank"
-              rel="noreferrer"
-            >
-              présentation publique d’ISO/IEC 25010:2023
-            </a>{" "}
-            indique que son modèle de qualité peut aider à identifier des
-            objectifs de test et des critères d’acceptation. Elle ne fournit pas
-            un seuil universel pour votre produit.
+            Les 17&nbsp;cas rejoués par cycle correspondent à trois cas sur dix,
+            proportion à ajuster dès la première livraison&nbsp;: si le premier
+            cycle en touche la moitié, doublez la ligne avant de promettre une
+            date. Le total, lui, arrondit la part d’exécution à la dixième de
+            journée&nbsp;; sans cet arrondi, 26&nbsp;h&nbsp;10 valent
+            3,74&nbsp;jours, le total 6,24&nbsp;jours et le coût
+            2&nbsp;183&nbsp;€, treize euros de plus que la ligne affichée. Dans
+            les deux lectures, ces jours pèsent 8,7&nbsp;% du budget du projet,
+            25&nbsp;000&nbsp;€&nbsp;HT. Ils figurent rarement sur un devis, et
+            pour cause&nbsp;: ils ne sont pas vendus, ils sont à vous.
           </p>
 
-          <FormulaBox>
-            {[
-              "CAS DE RECETTE",
-              "",
-              "Identifiant et besoin couvert :",
-              "Version et environnement :",
-              "Acteur et droits :",
-              "État de départ :",
-              "Données de test et règle de construction :",
-              "Actions exactes :",
-              "Résultat attendu observable :",
-              "Résultat obtenu :",
-              "Statut — réussi / échoué / bloqué / non exécuté :",
-              "Preuve et emplacement :",
-              "Testeur et date :",
-              "Anomalie liée, retest et limite connue :",
-            ].join("\n")}
-          </FormulaBox>
+          <h3>Six jours de travail ne tiennent pas dans six jours de calendrier</h3>
+          <p>
+            Entre deux cycles, le correctif doit être développé puis redéployé
+            chez vous. Ce délai-là appartient à l’équipe qui développe&nbsp;:
+            demandez-le par écrit, cycle par cycle, avant d’arrêter une date.
+          </p>
+          <p>
+            La deuxième campagne coûte 56&nbsp;×&nbsp;5&nbsp;minutes de rejeu,
+            soit 4&nbsp;h&nbsp;40 contre 26&nbsp;h&nbsp;10 la première
+            fois&nbsp;: 21&nbsp;h&nbsp;30 économisées. C’est là que l’écriture
+            se rembourse, à condition que les cas soient conservés ailleurs que
+            dans une boîte de réception.
+          </p>
+
+          <InfoBox
+            variant="emerald"
+            title="En dessous d’un certain budget, cette campagne est une erreur"
+          >
+            <p>
+              Les six jours ci-dessus sont dimensionnés sur 19&nbsp;règles et
+              56&nbsp;cas, c’est-à-dire sur le projet à 25&nbsp;000&nbsp;€&nbsp;HT
+              du fil rouge. Transposés tels quels sur un projet à
+              8&nbsp;000&nbsp;€&nbsp;HT, ils coûteraient 2&nbsp;100&nbsp;€ de
+              temps interne, soit un quart du développement. Ce serait une
+              erreur de lecture&nbsp;: un projet plus petit porte moins de
+              règles, donc moins de cas, donc moins de jours. Refaites le
+              décompte de la section&nbsp;02 sur vos propres règles. Si le total
+              dépasse quatre ou cinq jours d’équipe, écrivez seulement les
+              parcours dont l’échec vous coûterait de l’argent, et gardez un
+              mois d’usage réel avant de régler le solde. Le{" "}
+              <Link href="/guides/mvp-saas-quoi-inclure">
+                périmètre d’un premier lot
+              </Link>{" "}
+              se vérifie ainsi.
+            </p>
+          </InfoBox>
         </GuidePremiumSection>
 
         <GuidePremiumSection
-          id="donnees-roles"
+          id="criteres"
           number="04"
-          label="Jeux d’essai"
-          title="Testez la règle avec le bon rôle et les données qui la mettent en difficulté"
+          label="Seuils"
+          readingTime="4 min"
+          title={"Qu’est-ce qu’un critère d’acceptation qu’on peut opposer\u00a0?"}
         >
           <p>
-            Un seul dossier « propre » prouve peu. Pour chaque règle importante,
-            préparez la situation courante, les limites qui changent le
-            comportement, une valeur absente et une action interdite lorsque ces
-            situations peuvent réellement se produire. Ajoutez les doublons,
-            dates, arrondis, volumes et interfaces seulement lorsqu’ils
-            correspondent à un risque du projet.
+            Un critère opposable porte quatre choses&nbsp;: un seuil chiffré,
+            une assiette&nbsp;— sur quoi on mesure&nbsp;—, une fenêtre&nbsp;—
+            pendant combien de temps&nbsp;— et le nom de qui produit la mesure.
+            Qu’il en manque une, et deux personnes de bonne foi lisent le même
+            écran en concluant l’inverse.
+          </p>
+          <p>
+            Un modèle public et gratuit existe. Le cahier des clauses
+            administratives générales des marchés publics de techniques
+            de l’information et de la communication, approuvé par l’arrêté du
+            30&nbsp;mars 2021, sépare la vérification en deux temps à son
+            article&nbsp;32&nbsp;: la vérification d’aptitude, qui contrôle que
+            le logiciel livré peut remplir les fonctions demandées, puis la
+            vérification de service régulier, qui l’observe en fonctionnement.
+          </p>
+
+          <h3>Le seuil de 2&nbsp;%, et ce qu’il fait vraiment</h3>
+          <p>
+            La régularité s’observe pendant <strong>trente jours</strong> à
+            partir de la décision positive de
+            vérification d’aptitude, et le service est réputé régulier si
+            l’indisponibilité cumulée sur le mois ne dépasse pas{" "}
+            <strong>2&nbsp;%</strong> de la durée d’utilisation effective, qui
+            s’étend de 8&nbsp;h à 18&nbsp;h, du lundi au vendredi, jours fériés
+            exclus.
+          </p>
+          <p>
+            Le calcul part de la journée d’ouverture&nbsp;: 10&nbsp;heures, soit
+            600&nbsp;minutes, dont 2&nbsp;% font
+            <strong> 12&nbsp;minutes</strong>. Reste à compter les jours ouvrés
+            de la fenêtre, et ce nombre bouge&nbsp;: trente jours consécutifs en
+            comptent 22 s’ils commencent un lundi, un mardi, un mercredi ou un
+            jeudi, 21 un vendredi ou un dimanche, 20 un samedi&nbsp;— moins les
+            jours fériés. Au maximum, donc&nbsp;: 22&nbsp;×&nbsp;10&nbsp;=&nbsp;220&nbsp;heures,
+            soit 13&nbsp;200&nbsp;minutes, dont 2&nbsp;% font
+            264&nbsp;minutes&nbsp;— 4&nbsp;h&nbsp;24. Du 1er au
+            30&nbsp;mai 2027, fenêtre ouverte un samedi, il n’en reste que
+            20&nbsp;; l’Ascension le 6 et le lundi de Pentecôte le 17 en
+            retirent deux, soit 18&nbsp;jours ouvrés et 3&nbsp;h&nbsp;36.
+            Écrivez la règle des
+            12&nbsp;minutes par jour ouvré plutôt que ce total figé.
+          </p>
+          <p>
+            Une sonde qui appelle une page toutes les 60&nbsp;secondes produit
+            un point par minute, et chaque point manquant compte une minute. À
+            cinq minutes d’intervalle, une coupure de trois minutes n’est vue
+            que si un appel tombe pendant la coupure&nbsp;: sur cinq minutes de
+            départs possibles, deux la laissent passer. L’échantillonnage fixe
+            le grain de ce que vous pourrez démontrer.
+          </p>
+          <p>
+            Le CCAG-TIC parle d’indisponibilités{" "}
+            <em>imputables à chaque élément de matériel</em>. Sur une
+            application hébergée, aucun élément de matériel n’est à
+            vous&nbsp;: la clause doit nommer ce qui est indisponible&nbsp;—
+            l’écran de saisie, le traitement de nuit&nbsp;— et qui produit la
+            mesure.
           </p>
 
           <GuideTable
-            caption="Familles de données à choisir selon la règle testée"
-            headers={["Famille", "Question", "Exemple fictif"]}
+            caption="Quatre critères mous et leur réécriture mesurable"
+            headers={[
+              "Ce qui est écrit d’habitude",
+              "Pourquoi ça ne tranche rien",
+              "Réécriture avec seuil, assiette et fenêtre",
+            ]}
             rows={[
               [
-                "Nominale",
-                "La situation courante aboutit-elle au résultat prévu ?",
-                "Temps, déplacement et une pièce",
+                "«\u00a0L’application doit être rapide.\u00a0»",
+                "Rapide sur quel écran, avec combien de lignes, depuis quel poste\u00a0?",
+                "La liste des tournées du jour s’affiche en moins de 2\u00a0secondes pour 9\u00a0chargements sur 10, sur 200\u00a0chargements mesurés depuis un poste de l’agence",
+              ],
+              [
+                "«\u00a0L’application doit être disponible.\u00a0»",
+                "Aucune fenêtre, aucune assiette horaire, aucun instrument",
+                "Indisponibilité cumulée inférieure à 2\u00a0% de la durée d’utilisation, de 8\u00a0h à 18\u00a0h du lundi au vendredi, jours fériés exclus, sonde toutes les 60\u00a0secondes\u00a0: 12\u00a0minutes tolérées par jour ouvré compté",
+              ],
+              [
+                "«\u00a0Les factures doivent être justes.\u00a0»",
+                "Justes selon qui, et vérifiées sur combien de dossiers\u00a0?",
+                "Sur les 28\u00a0dossiers du jeu d’essai, le total hors taxes calculé égale le total recalculé à la main par la responsable facturation, au centime près",
+              ],
+              [
+                "«\u00a0L’application doit être accessible.\u00a0»",
+                "Un scan automatique ne détermine pas la conformité",
+                "Les 6\u00a0écrans de saisie s’utilisent entièrement au clavier, à 200\u00a0% de zoom, et les champs en erreur sont annoncés par un lecteur d’écran\u00a0: 2\u00a0heures de vérification humaine",
+              ],
+            ]}
+          />
+
+          <p>
+            La ligne d’accessibilité demande une mise au point juridique.
+            L’obligation française d’accessibilité numérique vient de
+            l’article&nbsp;47 de la loi du 11&nbsp;février 2005&nbsp;; le décret
+            du 24&nbsp;juillet 2019 n’en fixe que le seuil. Elle vise les
+            personnes morales de droit public, les délégataires d’un service
+            public, les personnes morales de droit privé créées pour un besoin
+            d’intérêt général autre qu’industriel ou commercial, et les
+            entreprises dont le chiffre d’affaires moyen annuel en France des
+            trois derniers exercices clos dépasse 250&nbsp;millions d’euros. Le
+            critère est un chiffre d’affaires, jamais un effectif.
+          </p>
+          <p>
+            Le second régime, applicable depuis le 28&nbsp;juin 2025, vise des
+            produits et services destinés aux consommateurs&nbsp;— commerce en
+            ligne, banque, transport de voyageurs, livre numérique. Un outil
+            interne utilisé par vos salariés n’y figure pas. Hors de ces deux
+            régimes, ne commandez pas d’audit de conformité pour ce
+            projet-là&nbsp;: faites la traversée au clavier vous-même, deux
+            heures suffisent à trouver les champs qu’on ne peut pas atteindre
+            sans souris. Le W3C rappelle qu’aucun outil automatique ne détermine
+            seul la conformité.
+          </p>
+        </GuidePremiumSection>
+
+        <GuidePremiumSection
+          id="donnees"
+          number="05"
+          label="Jeu d’essai"
+          readingTime="2 min"
+          title="Le jeu d’essai propre laisse passer les erreurs qui coûtent le plus cher"
+        >
+          <p>
+            Une recette jouée sur vingt-huit dossiers bien formés démontre une
+            chose&nbsp;: que le logiciel fonctionne sur vingt-huit dossiers bien
+            formés. Ce qui casse en production, ce sont les situations que
+            personne ne regarde&nbsp;— un client sans numéro SIRET, une commune
+            fusionnée en 2019, une facture qui porte un taux de taxe retiré
+            depuis.
+          </p>
+          <p>
+            Les trouver ne demande pas de copier la production. Pour chaque
+            colonne qui entre dans une règle, comptez les valeurs distinctes
+            réellement présentes, puis gardez au moins un représentant de chaque
+            forme. Sur le cas construit, la colonne «&nbsp;type de client&nbsp;»
+            en contient 7 et la colonne «&nbsp;mode de facturation&nbsp;» 4.
+            Onze valeurs à représenter, donc&nbsp;: sept dossiers suffisent si
+            vous les combinez, vingt-huit s’il faut jouer chaque croisement. Le
+            cas construit retient le croisement complet&nbsp;:
+            7&nbsp;×&nbsp;4&nbsp;=&nbsp;28&nbsp;dossiers.
+          </p>
+
+          <GuideTable
+            caption="Six familles de données et ce que chacune met en défaut"
+            headers={[
+              "Famille",
+              "La question posée",
+              "Sur le cas construit",
+            ]}
+            rows={[
+              [
+                "Courante",
+                "La situation la plus fréquente donne-t-elle le bon résultat\u00a0?",
+                "1 tournée, 2\u00a0points de livraison, 1\u00a0facture",
               ],
               [
                 "Limite",
-                "Que se passe-t-il juste au seuil ou à zéro ?",
-                "Aucune pièce, durée minimale autorisée",
+                "Que se passe-t-il juste au seuil, à zéro, au dernier jour du mois\u00a0?",
+                "Tournée sans livraison, remise exactement au plafond de 8\u00a0%",
               ],
               [
                 "Absente",
-                "Le champ facultatif ou requis manque-t-il proprement ?",
-                "Commentaire vide, référence obligatoire absente",
+                "Une valeur obligatoire manquante est-elle refusée proprement\u00a0?",
+                "Client sans numéro SIRET, adresse sans code postal",
               ],
               [
                 "Interdite",
-                "Un rôle non autorisé peut-il agir ?",
-                "Technicien tentant de modifier un tarif validé",
+                "Un rôle qui ne doit pas agir peut-il agir quand même\u00a0?",
+                "Un exploitant modifie un tarif déjà validé",
               ],
               [
                 "Répétée",
-                "La même action crée-t-elle un doublon ?",
-                "Double clic ou relance de l’interface",
+                "La même action deux fois crée-t-elle un doublon\u00a0?",
+                "Double validation en moins de 2\u00a0secondes, flux réémis",
               ],
               [
-                "Dépendance",
-                "L’échec d’un service externe reste-t-il visible et récupérable ?",
-                "Service de facturation indisponible",
-              ],
-            ]}
-          />
-
-          <InfoBox
-            variant="amber"
-            title="Ne copiez pas la production pour gagner une matinée"
-          >
-            <p>
-              La{" "}
-              <a
-                href="https://www.cnil.fr/fr/tester-vos-applications"
-                target="_blank"
-                rel="noreferrer"
-              >
-                CNIL recommande des données fictives représentatives
-              </a>{" "}
-              et l’anonymisation des données personnelles présentes dans les
-              configurations importées. Sa fiche plus récente sur{" "}
-              <a
-                href="https://www.cnil.fr/fr/securite-encadrer-les-developpements-informatiques"
-                target="_blank"
-                rel="noreferrer"
-              >
-                l’encadrement des développements
-              </a>{" "}
-              demande aussi de séparer développement, test et production et de
-              travailler sur des données fictives ou anonymisées.
-            </p>
-            <p>
-              Ces fiches ne fournissent pas d’exception prête à l’emploi. Si une
-              vérification en production ou un traitement exceptionnel de
-              données personnelles paraît indispensable, suspendez la copie. Les
-              responsables compétents doivent qualifier la finalité, la base
-              juridique, la minimisation, les accès, la conservation et la
-              suppression.
-            </p>
-          </InfoBox>
-
-          <p>
-            Faites tester par les personnes qui connaissent la règle et
-            utiliseront le parcours, sans leur demander de couvrir seules les
-            risques techniques. L’ISTQB place idéalement les utilisateurs visés
-            dans les tests d’acceptation. Une personne métier sait reconnaître
-            une facture incohérente ; elle n’est pas pour autant chargée de
-            démontrer une protection contre les injections ou une conformité
-            d’accessibilité.
-          </p>
-        </GuidePremiumSection>
-
-        <GuidePremiumSection
-          id="couverture"
-          number="05"
-          label="Priorisation"
-          title="Couvrez les parcours critiques avant de multiplier les variantes faciles"
-        >
-          <p>
-            Vous ne testerez presque jamais toutes les combinaisons possibles.
-            Commencez par ce qui ferait le plus de tort : perte ou corruption de
-            données, erreur de montant, droit d’accès incorrect, blocage du
-            travail, doublon, rupture d’interface ou dossier impossible à
-            reprendre. Reliez chaque risque aux cas qui le couvrent et gardez la
-            liste de ce qui reste exclu.
-          </p>
-
-          <GuideTable
-            caption="Ordre de couverture d’une application métier"
-            headers={["Couche", "À prouver", "Question de sortie"]}
-            rows={[
-              [
-                "Parcours critique",
-                "Une opération complète produit le résultat métier attendu",
-                "Le métier peut-il travailler et contrôler l’issue ?",
-              ],
-              [
-                "Règles et calculs",
-                "Seuils, arrondis, états, dates et autorisations",
-                "Chaque règle importante a-t-elle un attendu précis ?",
-              ],
-              [
-                "Erreurs et reprise",
-                "Refus propre, message utile, absence de doublon, reprise possible",
-                "L’utilisateur sait-il quoi faire après l’erreur ?",
-              ],
-              [
-                "Interfaces",
-                "Entrées, sorties, rejets, synchronisation et traçabilité",
-                "Un écart externe est-il détecté et attribué ?",
-              ],
-              [
-                "Qualités pertinentes",
-                "Performance, compatibilité, accessibilité, sécurité ou fiabilité selon le risque",
-                "Le seuil, le contexte et la compétence sont-ils définis ?",
+                "Volume",
+                "Le comportement tient-il sur un mois réel de données\u00a0?",
+                "340\u00a0factures au lieu des 28 du jeu d’essai",
               ],
             ]}
           />
 
           <p>
-            L’ISTQB présente plusieurs stratégies de priorisation : par risque,
-            par couverture ou par priorité des exigences. Les dépendances et la
-            disponibilité des personnes ou environnements peuvent modifier
-            l’ordre. Documentez la raison : « facile à exécuter » n’est pas une
-            priorité métier.
+            Cette dernière famille annule la mesure de la section&nbsp;04.
+            Vingt-huit dossiers représentent 8,2&nbsp;% d’un mois réel à
+            340&nbsp;factures. Un temps d’affichage relevé sur ce volume ne dit
+            rien du 25 du mois, quand la liste charge tout l’historique. Chargez
+            au moins l’équivalent d’un mois avant de mesurer un seuil de deux
+            secondes.
           </p>
 
-          <InfoBox
-            variant="blue"
-            title="Accessibilité et sécurité demandent leurs propres preuves"
-          >
-            <p>
-              Pour une application web, le{" "}
-              <a
-                href="https://www.w3.org/WAI/test-evaluate/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                W3C rappelle qu’aucun outil automatique ne détermine seul la
-                conformité d’accessibilité
-              </a>
-              . Une évaluation humaine compétente reste nécessaire. Pour la
-              sécurité technique web, l’
-              <a
-                href="https://owasp.org/www-project-application-security-verification-standard/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                OWASP ASVS 5.0.0
-              </a>{" "}
-              peut servir de base versionnée à des exigences sélectionnées par
-              les spécialistes. Un clic métier réussi ne remplace ni l’une ni
-              l’autre.
-            </p>
-          </InfoBox>
+          <h3>Ce que la CNIL demande, et ce que «&nbsp;anonymiser&nbsp;» veut dire</h3>
+          <p>
+            Les deux fiches de la CNIL convergent&nbsp;: environnements de
+            développement, de test et de production distincts, jeu de données
+            fictif ou anonymisé, et anonymisation des données personnelles
+            contenues dans les configurations importées. Cette contrainte
+            décide de la forme du jeu d’essai, donc du planning de la
+            section&nbsp;03.
+          </p>
+          <p>
+            Anonymiser ne consiste pas à remplacer les noms par
+            «&nbsp;Dupont&nbsp;»&nbsp;: les identifiants, les adresses, les
+            numéros de compte et les commentaires libres portent autant
+            d’information, et un croisement peut suffire à réidentifier une
+            personne dans un fichier de 340&nbsp;lignes. Une bibliothèque de
+            génération de données factices produit un jeu propre en une
+            journée&nbsp;— c’est la ligne «&nbsp;préparer le jeu de
+            données&nbsp;» du tableau, et elle se sous-traite au développeur qui
+            connaît le schéma de la base.
+          </p>
         </GuidePremiumSection>
 
         <GuidePremiumSection
-          id="outil"
+          id="incidents"
           number="06"
-          label="Outil local"
-          title="Relisez un cas, puis regardez ce que la campagne ne prouve pas encore"
+          label="Ce qui rate"
+          readingTime="3 min"
+          title="Ce qui rate, et ce que ça coûte"
         >
           <p>
-            Vous ne saisissez aucun contenu métier dans l’outil ci-dessous.
-            Relisez d’abord les six maillons du cas, puis les critères de sortie
-            et l’autorité de décision. Reportez enfin les nombres issus du même
-            relevé de campagne. Laissez la réponse à « non renseigné » si vous
-            l’ignorez. Conservez les cas échoués, bloqués, non exécutés ou sans
-            preuve dans leur état, ainsi que les réserves en attente.
+            Les trois incidents ci-dessous prolongent le cas construit de Nadia
+            et de Karim&nbsp;— ce ne sont pas des dossiers clients. Deux valeurs
+            y sont choisies pour l’exemple, en plus des hypothèses de la
+            section&nbsp;03&nbsp;: la part de factures touchées par l’erreur
+            d’arrondi, fixée à 12&nbsp;%, et l’écart moyen sur chacune, fixé à
+            34&nbsp;€. Le reste se déduit des nombres déjà posés.
           </p>
 
-          <AcceptanceReadinessTool />
-
+          <h3>
+            La règle d’arrondi jamais jouée&nbsp;: 4&nbsp;182&nbsp;€ d’avoirs et
+            700&nbsp;€ de reprise
+          </h3>
           <p>
-            L’outil ne calcule aucune moyenne. Il traite les problèmes dans cet
-            ordre : préparation bloquée, information absente ou partielle,
-            compteurs incohérents, cas critique non prouvé, puis anomalie
-            bloquante. Lorsque ces obstacles sont levés, il signale encore le
-            risque résiduel, notamment un échec non classé ou une dérogation en
-            attente. Le dossier n’est candidat que si les deux garde-fous de
-            campagne sont prêts. Même dans ce cas, l’acceptation reste une
-            décision humaine.
+            Le prorata kilométrique n’a été testé que sur des distances
+            entières, parce que le jeu d’essai n’en contenait pas d’autres. À
+            12&nbsp;% des factures, l’erreur en touche 41 des 340&nbsp;émises
+            chaque mois, avec un écart moyen de 34&nbsp;€ dans le même sens.
+            Elle passe inaperçue jusqu’au troisième mois&nbsp;:
+            41&nbsp;×&nbsp;34&nbsp;×&nbsp;3 font 4&nbsp;182&nbsp;€ d’avoirs à
+            émettre. S’y ajoute la reprise des 123&nbsp;factures concernées, une
+            journée pour la responsable facturation et une journée pour la
+            contrôleuse de gestion, soit 2&nbsp;jours-personne et 700&nbsp;€ de
+            temps interne. Un cas à la limite, écrit en quinze minutes, l’aurait
+            attrapé.
           </p>
 
-          <GuidePremiumMemo title="Refaites le test après chaque correction">
-            <p>
-              Une correction peut résoudre l’anomalie et en créer une autre.
-              Rejouez le cas concerné, puis la non-régression pertinente. La
-              fiche conserve la version corrigée, le résultat et la nouvelle
-              preuve.
-            </p>
-          </GuidePremiumMemo>
-        </GuidePremiumSection>
-
-        <GuidePremiumSection
-          id="anomalies"
-          number="07"
-          label="Écarts"
-          title="Décrivez le constat avant de négocier sa priorité"
-        >
+          <h3>
+            Personne ne notifie la décision&nbsp;: 7&nbsp;500&nbsp;€ de levier
+            perdus
+          </h3>
           <p>
-            Une anomalie utile commence par un fait reproductible. Évitez «
-            facturation cassée » ou « bug urgent ». Identifiez la fonction
-            concernée, la version, l’environnement, le cas et les données.
-            Donnez les étapes, le résultat attendu, le résultat obtenu et les
-            pièces disponibles. L’équipe peut alors analyser l’écart, le
-            corriger, constater qu’il n’est pas reproductible ou le reclasser
-            comme demande d’évolution.
+            La campagne se termine un vendredi. Personne n’écrit de décision, et
+            l’application entre en service parce qu’il faut bien facturer. En
+            marché public, le CCAG-TIC organise ce silence à son
+            article&nbsp;33, et une seule fois&nbsp;: si l’acheteur ne notifie
+            pas sa décision dans les sept jours qui suivent la vérification de
+            service régulier, les prestations sont réputées admises. Le délai de
+            trente jours qui suit la vérification d’aptitude ne produit rien de
+            tel&nbsp;: l’acheteur doit y prononcer une approbation, un
+            ajournement ou un rejet. Un contrat privé ne reprend cette
+            mécanique que s’il l’écrit&nbsp;; à défaut, seuls vos documents
+            signés disent ce que produit le silence. Ce qui est perdu est
+            concret&nbsp;: la tranche de 7&nbsp;500&nbsp;€ cesse d’être un
+            levier tant qu’aucune décision n’est écrite.
           </p>
 
-          <GuideTable
-            caption="Champs d’une anomalie exploitable"
-            headers={["Champ", "Ce qu’il répond", "Erreur à éviter"]}
-            rows={[
-              [
-                "Identifiant et titre",
-                "Quel écart suivons-nous ?",
-                "Plusieurs problèmes dans une seule fiche",
-              ],
-              [
-                "Contexte",
-                "Version, environnement, rôle, cas et données",
-                "« Sur la dernière version »",
-              ],
-              [
-                "Reproduction",
-                "Quelles étapes produisent le constat ?",
-                "Interprétation sans étapes",
-              ],
-              [
-                "Attendu / obtenu",
-                "Quelle différence observable existe ?",
-                "Attendu absent ou subjectif",
-              ],
-              [
-                "Preuve",
-                "Quelle trace aide à relire ou résoudre ?",
-                "Capture sans date, objet ni contexte",
-              ],
-              [
-                "Gravité",
-                "Quel est le degré d’impact ?",
-                "La confondre avec l’ordre de correction",
-              ],
-              [
-                "Priorité",
-                "Quand l’équipe décide-t-elle de traiter ?",
-                "La déduire automatiquement de la gravité",
-              ],
-              [
-                "Statut et retest",
-                "Où en est le traitement et la confirmation ?",
-                "Fermer dès que le code est modifié",
-              ],
-            ]}
-          />
-
+          <h3>
+            La testeuse n’a pas eu ses jours&nbsp;: 23&nbsp;cas sur 56 jamais
+            joués
+          </h3>
           <p>
-            Le syllabus ISTQB distingue la gravité — degré d’impact — de la
-            priorité de correction et propose aussi de conserver le statut et la
-            référence du cas. Cette distinction évite deux raccourcis : une
-            anomalie très visible n’est pas forcément la plus grave ; une
-            anomalie grave ne disparaît pas parce qu’elle sera corrigée plus
-            tard.
+            Sur les 6,2&nbsp;jours du tableau de la section&nbsp;03, la part de
+            Nadia est de 3,7&nbsp;jours&nbsp;: l’écriture, l’exécution et le
+            rejeu. Le reste va au développeur pour le jeu de données, à la
+            relecture croisée et à la réunion de décision. Elle a obtenu deux
+            jours, parce que la clôture comptable du mois est tombée la même
+            semaine. Deux jours de 7&nbsp;heures font 840&nbsp;minutes, et un cas
+            écrit puis exécuté en coûte 25&nbsp;: elle joue 33&nbsp;cas, tous
+            conformes, et le compte rendu annonce «&nbsp;33&nbsp;cas exécutés,
+            33&nbsp;réussis&nbsp;». Le chiffre est exact et ne veut rien
+            dire&nbsp;: parmi les 23&nbsp;cas restants figurent quatre des six
+            parcours critiques et les neuf cas de flux. L’export comptable
+            rejette 62&nbsp;écritures à la première clôture&nbsp;; la
+            contrôleuse de gestion et le comptable y passent trois quarts de
+            journée chacun, soit 1,5&nbsp;jour-personne et 525&nbsp;€, et la
+            clôture sort avec quatre jours de retard.
           </p>
 
-          <p>
-            L’étiquette « mineure » ne protège aucune décision. Si l’écart
-            touche fortement le métier, une obligation, un montant, des
-            utilisateurs ou une exigence, revoyez d’abord sa gravité : il a
-            peut-être été mal classé. S’il reste réellement d’impact limité, sa
-            priorité peut néanmoins être élevée à cause d’une échéance ou d’une
-            démonstration proche. Conservez les deux justifications.
-          </p>
-
-          <GuidePremiumMemo title="« Bloqué » décrit le test, pas le comportement fonctionnel">
-            <p>
-              Si l’interface de test ne répond pas, le cas n’a pas démontré que
-              la fonction réussit ou échoue. Corrigez le blocage, puis exécutez
-              le cas. Sans cette séparation, le relevé peut présenter à tort un
-              cas bloqué comme réussi ou échoué.
-            </p>
-          </GuidePremiumMemo>
-        </GuidePremiumSection>
-
-        <GuidePremiumSection
-          id="cas-fictif"
-          number="08"
-          label="Exemple"
-          title="Du besoin de facturation au résultat que le métier peut constater"
-        >
-          <GuidePremiumCase
-            initial="AN"
-            eyebrow="Cas entièrement fictif"
-            title="Atelier Nord · société fictive de maintenance de pompes"
+          <GuidePremiumMemo
+            eyebrow="Le point commun des trois"
+            title="Aucun des trois n’est un défaut de code"
           >
             <p>
-              Après une intervention, un responsable d’agence valide le temps,
-              le déplacement et les pièces. L’application fictive doit créer un
-              seul brouillon de facture, calculer ses lignes et changer le
-              statut du dossier. Aucun nom, tarif ou dossier réel n’est utilisé.
+              Le premier vient du jeu de données. Le deuxième vient d’une
+              décision que personne n’a écrite. Le troisième vient d’un agenda.
+              Aucun ne se corrige en demandant à l’équipe de développement de
+              mieux tester&nbsp;: les trois se traitent avant la livraison, avec
+              le décompte des cas, les jours bloqués et le nom du décideur.
             </p>
-          </GuidePremiumCase>
+          </GuidePremiumMemo>
+        </GuidePremiumSection>
 
-          <h3>1. La règle</h3>
-
+        <GuidePremiumSection
+          id="mesures"
+          number="07"
+          label="Mesures"
+          readingTime="2 min"
+          title="Deux mesures disent si la recette a servi à quelque chose"
+        >
           <p>
-            Une intervention clôturée et non facturée crée un unique brouillon
-            quand un responsable autorisé la valide. Le technicien ne peut plus
-            modifier le tarif après cette validation.
+            Un taux de réussite mesure l’exécution. Deux autres nombres se
+            calculent avec ce que vous avez déjà&nbsp;: l’un dit ce que la
+            campagne a couvert, l’autre ce qu’elle a laissé passer.
           </p>
-
-          <h3>2. Le cas nominal</h3>
-
-          <GuideTable
-            caption="Cas fictif de validation d’une intervention"
-            headers={["Élément", "Valeur fictive", "Attendu observable"]}
-            rows={[
-              [
-                "État de départ",
-                "Intervention clôturée, non facturée",
-                "Le bouton de validation est disponible au responsable",
-              ],
-              ["Déplacement", "40,00 €", "Une ligne à 40,00 €"],
-              ["Temps", "2 heures × 70,00 €", "Une ligne à 140,00 €"],
-              ["Pièce", "1 × 25,00 €", "Une ligne à 25,00 €"],
-              ["Action", "Valider une fois", "Un seul brouillon est créé"],
-              [
-                "Résultat",
-                "40 + 140 + 25",
-                "Total hors taxes affiché : 205,00 €",
-              ],
-              ["Statut", "Après création", "Intervention « prête à facturer »"],
-            ]}
-          />
 
           <FormulaBox>
             {[
-              "CALCUL FICTIF",
+              "Couverture des règles",
+              "  règles couvertes par au moins un cas ÷ règles réellement identifiées",
+              "  cas construit\u00a0: 19 ÷ 26 = 73\u00a0%",
               "",
-              "Déplacement : 40,00 €",
-              "Temps : 2 × 70,00 € = 140,00 €",
-              "Pièce : 1 × 25,00 € = 25,00 €",
-              "Total hors taxes attendu : 40,00 + 140,00 + 25,00 = 205,00 €",
+              "Taux d’échappement",
+              "  anomalies trouvées en production sur 60\u00a0jours",
+              "  ÷ (anomalies trouvées en recette + anomalies trouvées en production)",
+              "  cas construit\u00a0: 8 ÷ (37 + 8) = 17,8\u00a0%",
             ].join("\n")}
           </FormulaBox>
 
-          <h3>3. Les cas qui mettent la règle en difficulté</h3>
-
-          <ul>
-            <li>
-              aucune pièce : la ligne absente ne doit pas produire un montant
-              fantôme ;
-            </li>
-            <li>
-              technicien sans droit : la modification du tarif doit être refusée
-              et expliquée ;
-            </li>
-            <li>
-              double validation : un second brouillon ne doit pas apparaître ;
-            </li>
-            <li>
-              service de facturation indisponible : l’intervention ne doit pas
-              être déclarée facturée sans brouillon traçable ;
-            </li>
-            <li>
-              correction après anomalie : le cas nominal et les variantes
-              pertinentes sont rejoués sur la nouvelle version.
-            </li>
-          </ul>
-
           <p>
-            La preuve dépend du résultat : lignes et identifiant du brouillon,
-            statut du dossier, journal de l’appel ou message de refus. Une
-            capture peut aider, mais elle ne suffit pas si elle ne montre ni la
-            version, ni le contexte, ni la donnée qui établit l’unicité.
+            Le piège de la première mesure tient dans son dénominateur, qui ne
+            contient que les règles déjà écrites. Sur le cas construit, sept
+            règles apparaissent pendant l’exécution&nbsp;— un plafond de remise,
+            un traitement des livraisons hors France, une règle d’arrondi non
+            écrite. Le dénominateur passe de 19 à 26, et la couverture tombe à
+            73&nbsp;%. Ce 73&nbsp;% date du jour où ces sept règles sont
+            apparues&nbsp;; ce n’est pas le verdict de la campagne. Chaque règle
+            découverte rejoint le cahier des charges, puis un cas, avant la
+            décision&nbsp;: 7&nbsp;×&nbsp;25&nbsp;minutes, soit
+            2&nbsp;h&nbsp;55 à ajouter au budget de la section&nbsp;03.
           </p>
+          <p>
+            La seconde mesure demande d’attendre 60&nbsp;jours d’usage. Huit
+            anomalies remontées en production contre 37&nbsp;trouvées en
+            recette donnent 17,8&nbsp;%&nbsp;: quatre anomalies sur cinq ont été
+            attrapées avant. Ce nombre ne dit rien de leur gravité&nbsp;: lisez
+            les deux séries séparément. Il n’existe pas de seuil de référence
+            publiable&nbsp;: la seule comparaison honnête est celle de votre
+            campagne suivante, sur le même produit.
+          </p>
+          <p>
+            Quand ce taux remonte d’une campagne à l’autre, la liste des
+            anomalies échappées dit où regarder&nbsp;: si elles portent sur des
+            situations absentes du jeu d’essai, le correctif est en
+            section&nbsp;05.
+          </p>
+
+          <h3>Relire un cas avant de le compter dans la campagne</h3>
+          <p>
+            L’atelier ci-dessous ne calcule aucune moyenne et ne stocke
+            rien&nbsp;: huit points de relecture, dix compteurs de campagne, sept
+            issues classées dans un ordre fixe. Un blocage de préparation passe
+            devant une information manquante, qui passe devant un cas critique
+            non prouvé. Vous n’y saisissez aucun contenu métier.
+          </p>
+
+          <AcceptanceReadinessTool />
         </GuidePremiumSection>
 
         <GuidePremiumSection
           id="decision"
-          number="09"
+          number="08"
           label="Clôture"
-          title="Donnez au décideur le périmètre testé, les écarts et les limites"
+          readingTime="3 min"
+          title={"Qui prononce l’acceptation, et que se passe-t-il si personne ne le fait\u00a0?"}
         >
           <p>
-            Le relevé final rassemble la version, le périmètre, les critères de
-            sortie, les cas exécutés et non exécutés, les résultats par risque,
-            les cas échoués, les anomalies non closes, les réserves ou
-            dérogations en attente, les preuves, les écarts au plan et le risque
-            résiduel. Le décideur peut alors distinguer ce qui a été vérifié de
-            ce que la campagne n’a pas démontré.
+            La personne qui peut accepter, refuser ou accepter sous réserve se
+            nomme avant la campagne. Sur le cas construit, c’est Karim,
+            directeur d’exploitation. Le testeur constate&nbsp;; le décideur
+            tranche. Cette séparation
+            empêche une testeuse fatiguée de valider à 18&nbsp;heures un dossier
+            qui engage 7&nbsp;500&nbsp;€.
           </p>
-
-          <GuideTable
-            caption="Sorties possibles d’une campagne de recette"
-            headers={["État observé", "Sortie prudente", "Étape suivante"]}
-            rows={[
-              [
-                "Version, données ou cas impossibles à préparer",
-                "STOP de préparation",
-                "Attribuer le blocage et restaurer les conditions",
-              ],
-              [
-                "Cas critique non prouvé ou anomalie bloquante ouverte",
-                "Corriger avant décision",
-                "Corriger, retester et rejouer la non-régression utile",
-              ],
-              [
-                "Cas critiques prouvés, mais échec, écart, réserve ou preuve manquante ailleurs",
-                "Revue du risque résiduel",
-                "Documenter impact, priorité, échéance et responsable",
-              ],
-              [
-                "Critères atteints et aucun échec, écart ou réserve en attente renseigné",
-                "Dossier candidat à la décision",
-                "Le décideur applique les documents convenus",
-              ],
-            ]}
-          />
-
           <p>
-            Les modèles de documentation existent, notamment dans la{" "}
-            <a
-              href="https://www.iso.org/standard/79429.html"
-              target="_blank"
-              rel="noreferrer"
-            >
-              présentation publique d’ISO/IEC/IEEE 29119-3:2021
-            </a>
-            . Ce guide n’en reproduit pas le contenu payant et ne prétend pas
-            qu’un formulaire unique convient à tout projet. Gardez le dossier
-            proportionné, mais assez précis pour expliquer la décision plusieurs
-            mois plus tard.
+            Tenez quatre statuts. <strong>Réussi</strong> pour un cas joué et
+            conforme. <strong>Échoué</strong> pour un cas joué et non conforme.{" "}
+            <strong>Bloqué</strong> pour un cas qu’on n’a pas pu jouer.{" "}
+            <strong>Non exécuté</strong> pour un cas qui n’a pas été tenté. Les
+            deux derniers se confondent facilement dans un compte rendu, et ce
+            sont eux qui ont produit le troisième incident. Le syllabus de
+            l’ISTQB distingue de la même façon la
+            gravité d’une anomalie, qui décrit son effet, et sa priorité, qui
+            décrit l’ordre de traitement retenu&nbsp;: gardez les deux champs.
           </p>
 
           <FormulaBox>
             {[
-              "RELEVÉ DE RECETTE",
+              "RELEVÉ DE FIN DE CAMPAGNE",
               "",
-              "Produit, version et environnement :",
-              "Périmètre inclus et exclusions :",
-              "Critères d’entrée et de sortie :",
-              "Parcours et risques critiques :",
-              "Cas — réussi / échoué / bloqué / non exécuté :",
-              "Anomalies ouvertes — gravité / priorité / statut / responsable :",
-              "Réserves ou dérogations en attente :",
-              "Retests et non-régression :",
-              "Preuves et emplacement :",
-              "Écarts au plan et limites :",
-              "Risque résiduel :",
-              "Décideur, décision, date et éventuelles conditions prévues :",
+              "Version exacte testée et environnement\u00a0:",
+              "Ce qui était inclus, ce qui a été laissé de côté\u00a0:",
+              "Cas — réussis / échoués / bloqués / non exécutés\u00a0:",
+              "Parcours critiques prouvés, et ceux qui ne le sont pas\u00a0:",
+              "Anomalies ouvertes — gravité, priorité, responsable, échéance\u00a0:",
+              "Réserves acceptées et date de revue\u00a0:",
+              "Preuves et endroit où elles sont rangées\u00a0:",
+              "Ce que la campagne n’a pas démontré\u00a0:",
+              "Décideur, décision, date\u00a0:",
             ].join("\n")}
           </FormulaBox>
 
-          <InfoBox
-            variant="amber"
-            title="La portée contractuelle ne se déduit pas de cette page"
-          >
-            <p>
-              Une réception, une réserve, un paiement, une garantie ou un délai
-              dépend des documents signés et du contexte. Vérifiez le contrat,
-              le devis, les conditions applicables et la procédure de recette.
-              En cas de désaccord ou d’enjeu important, demandez un conseil
-              juridique au lieu de transformer ce modèle éditorial en règle de
-              droit.
-            </p>
-          </InfoBox>
-
           <p>
-            Le{" "}
-            <Link href="/services/outils-internes-sur-mesure">
-              test de relève du logiciel métier
+            Ce relevé se juge à sa relisibilité dans six mois, quand une facture
+            fausse remontera. ISO/IEC/IEEE 29119-3:2021 propose publiquement des
+            modèles de documentation, ISO/IEC 25010:2023 aide à ouvrir la liste
+            des critères au-delà des seules fonctions&nbsp;; ni l’une ni l’autre
+            ne fixe de seuil à la place de votre contrat.
+          </p>
+
+          <h3>Ce qui change le lendemain de l’acceptation</h3>
+          <p>
+            Ce que devient une correction demandée après l’acceptation dépend de
+            vos documents&nbsp;: garantie écrite au marché, garantie légale, ou
+            demande traitée au{" "}
+            <Link href="/services/maintenance-evolution">
+              contrat de maintenance
             </Link>{" "}
-            intervient en amont lorsqu’une nouvelle équipe doit comprendre,
-            déployer et restaurer l’existant. Une recette qui prépare un
-            changement de système doit aussi rester distincte de la{" "}
-            <Link href="/services/outils-internes-sur-mesure">
-              bascule et son retour arrière
-            </Link>
-            . Pour faire cadrer le périmètre, les rôles et les preuves de votre
-            projet, vous pouvez en{" "}
+            avec son délai et son coût. Réglez ce point par écrit avant la
+            décision. Vos 56&nbsp;cas, eux, deviennent un actif&nbsp;: la version
+            suivante se vérifie en 4&nbsp;h&nbsp;40 de rejeu au lieu de
+            26&nbsp;h&nbsp;10, à condition de les avoir rangés dans un endroit
+            partagé.
+          </p>
+          <p>
+            Deux vérifications restent en dehors de cette campagne&nbsp;: ce
+            que chaque rôle ne doit pas pouvoir faire, et la restauration d’une
+            sauvegarde réellement testée. Les{" "}
+            <Link href="/guides/securite-application-metier">
+              contrôles de sécurité d’une application métier
+            </Link>{" "}
+            les détaillent. Pour faire relire votre décompte de cas avant la
+            livraison, vous pouvez{" "}
             <TrackedGuideCtaLink
               href="/demarrer-un-projet"
               placement="article_end_inline"
             >
-              décrire le contexte
+              décrire votre projet
             </TrackedGuideCtaLink>
-            . Le périmètre que nous prenons en charge est décrit sur la page{" "}
-            <Link href="/services/saas-applications-metier">
-              SaaS et applications métier
-            </Link>
-            ; les preuves de recette attendues restent celles écrites au
-            contrat, pas celles annoncées par une page commerciale.
-          </p>
-
-          <p>
-            Une recette ne s’écrit pas après coup : ses critères viennent du{" "}
-            <Link href="/guides/cahier-des-charges-saas">
-              cahier des charges
-            </Link>{" "}
-            et du périmètre retenu pour{" "}
-            <Link href="/guides/mvp-saas-quoi-inclure">le premier lot</Link>. Si
-            l’un des deux reste flou, les cas de test le seront aussi, et
-            l’acceptation se jouera sur des impressions.
-          </p>
-
-          <p>
-            Deux familles de tests sont régulièrement oubliées et méritent leur
-            propre dossier : la{" "}
-            <Link href="/guides/securite-application-metier">
-              vérification des droits d’accès
-            </Link>
-            , qui contrôle ce que chaque rôle ne doit pas pouvoir faire, et les{" "}
-            <Link href="/guides/securite-application-metier">
-              contrôles de sécurité d’une application métier
-            </Link>
-            , dont la restauration et la journalisation. Le calendrier de
-            recette, enfin, s’estime avec{" "}
-            <Link href="/services/saas-applications-metier">
-              combien de temps il faut pour développer un SaaS
-            </Link>{" "}
-            — et le prestataire s’évalue sur ses preuves d’acceptation passées,
-            comme l’explique{" "}
-            <Link href="/guides/cahier-des-charges-saas">
-              le guide du choix sur preuves
-            </Link>
             .
           </p>
 
-          <GuidePremiumMemo title="Gardez les quatre statuts séparés dans le relevé">
+          <InfoBox
+            variant="blue"
+            title="La portée contractuelle ne se déduit pas de cette page"
+          >
             <p>
-              Réussi, échoué, bloqué et non exécuté décrivent quatre situations
-              différentes. Les fusionner retirerait au décideur l’information
-              nécessaire pour statuer.
+              Les délais cités viennent du CCAG-TIC, qui ne s’applique qu’aux
+              marchés qui s’y réfèrent. Pour un contrat privé, écrivez
+              vous-même le délai de décision et l’effet du silence, puis faites
+              relire la clause avant de la signer.
             </p>
-          </GuidePremiumMemo>
+          </InfoBox>
+
+          <p className="text-sm">
+            <strong>Transparence.</strong> Hagnéré Code développe des
+            applications métier sur mesure et perçoit des honoraires si vous
+            nous confiez un projet&nbsp;— y compris celui que cette page vous
+            apprend à vérifier. Rien ici n’exige de passer par nous&nbsp;: le
+            décompte des cas, le budget en jours, la réécriture des seuils et
+            les deux mesures se refont avec vos propres nombres, et la section
+            03 conclut qu’en dessous d’un certain budget cette campagne est une
+            erreur. Les textes cités ont été relus le 28&nbsp;août 2026 et sont
+            à revérifier tous les douze mois. Aucun délai, aucun coût et aucun
+            résultat ne sont garantis par cette page&nbsp;: seul un devis signé
+            engage.
+          </p>
         </GuidePremiumSection>
       </GuidePremiumLayout>
     </GuidesShell>

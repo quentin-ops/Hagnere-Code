@@ -93,18 +93,21 @@ export function AcceptanceReadinessTool() {
   );
 
   return (
-    <div className="not-prose my-8 overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+    <div
+      data-read-time-exclude="true"
+      className="not-prose my-8 overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-950"
+    >
       <div className="border-b border-zinc-200 bg-zinc-950 px-5 py-6 text-white dark:border-zinc-800 sm:px-7">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">
-          Chaîne de preuve de recette · outil local
+          Relire un cas de recette · atelier local
         </p>
         <h3 className="mt-2 text-2xl font-semibold tracking-tight">
-          Votre dossier peut-il être soumis au décideur ?
+          Votre dossier peut-il être soumis au décideur&nbsp;?
         </h3>
         <p className="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-300">
           Relisez un cas et les règles de décision, puis saisissez uniquement
           les nombres de la campagne. N’entrez aucun nom, contenu métier ou
-          donnée personnelle : vos réponses restent dans cette page,{" "}
+          donnée personnelle&nbsp;: vos réponses restent dans cette page,{" "}
           {"elles ne sont ni envoyées ni enregistrées"}.
         </p>
       </div>
@@ -112,11 +115,11 @@ export function AcceptanceReadinessTool() {
       <div className="space-y-9 px-5 py-6 sm:px-7 sm:py-8">
         <fieldset>
           <legend className="text-lg font-semibold text-zinc-950 dark:text-white">
-            1. Relire le cas et les deux garde-fous de campagne
+            1. Relire le cas, puis les deux points de campagne
           </legend>
           <p className="mt-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
             Les six premiers points rendent le cas rejouable. Les deux derniers
-            vérifient les critères de sortie et l’autorité réelle de décision.
+            vérifient ce qui est laissé de côté et qui prononcera la décision.
             Choisissez l’état constaté. Une réponse favorable ne compense jamais
             une information manquante.
           </p>
@@ -177,7 +180,7 @@ export function AcceptanceReadinessTool() {
           </legend>
           <p className="mt-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
             Utilisez des entiers issus du même relevé. Zéro signifie que le
-            compteur a été vérifié ; laissez vide lorsque vous ne savez pas.
+            compteur a été vérifié&nbsp;; laissez vide lorsque vous ne savez pas.
           </p>
 
           <div className="mt-5 grid gap-4 sm:grid-cols-2">
@@ -250,13 +253,13 @@ export function AcceptanceReadinessTool() {
 
           {assessment.remainingCriticalCases !== null && (
             <p className="mt-4 text-sm tabular-nums">
-              Cas critiques restant à prouver :{" "}
+              Cas critiques restant à prouver&nbsp;:{" "}
               <strong>{assessment.remainingCriticalCases}</strong>
             </p>
           )}
 
           <p className="mt-4 text-sm leading-relaxed">
-            <strong>Prochaine action :</strong> {assessment.nextAction}
+            <strong>Prochaine action&nbsp;:</strong> {assessment.nextAction}
           </p>
         </section>
 

@@ -37,11 +37,15 @@ export interface ProcessPriorityResult {
 }
 
 const GATE_LABELS = {
-  measurableOutcome: "résultat mesurable",
-  stableRules: "règles et exceptions décrites",
-  reliableData: "source des données fiable et droits d’accès compris",
-  recoverableFailure: "erreur détectable et reprise manuelle possible",
-  namedOwner: "responsable nommé et validation humaine prévue si nécessaire",
+  measurableOutcome:
+    "Deux personnes produisent le même résultat sur les mêmes dossiers",
+  stableRules: "La règle a tenu douze mois sans exception nouvelle",
+  reliableData:
+    "Une seule source fait foi, et elle se lit autrement qu’à l’écran",
+  recoverableFailure:
+    "Une erreur se voit le jour même et se répare sans doublon",
+  namedOwner:
+    "Deux noms sont écrits\u00a0: qui tient la règle, qui reçoit l’alerte",
 } as const;
 
 function finiteOrZero(value: number): number {
@@ -121,23 +125,35 @@ export function calculateProcessPriority(
   };
 }
 
-const INITIAL_INPUTS: ProcessPriorityInputs = {
-  casesPerMonth: 120,
-  minutesPerCase: 9,
-  loadedHourlyCost: 38,
-  automationRate: 70,
-  adoptionRate: 80,
-  redeploymentRate: 60,
-  setupCost: 4_800,
-  internalSetupHours: 32,
+/**
+ * Le dossier du guide, déjà résolu.
+ *
+ * L'outil s'ouvrait auparavant sur cinq conditions décochées, donc sur un
+ * écran « decision bloquee » qui n'apprenait rien avant six clics.
+ * Il s'ouvre désormais sur le flux de relance de la section 05, dont le
+ * décompte est publié dans le guide : le lecteur voit d'abord un calcul
+ * complet, puis remplace les entrées par les siennes.
+ *
+ * Le suivi est saisi en euros parce que le modèle ne connaît que des coûts
+ * mensuels : deux heures par mois au cout horaire retenu, soit 89,40 EUR.
+ */
+export const INITIAL_INPUTS: ProcessPriorityInputs = {
+  casesPerMonth: 90,
+  minutesPerCase: 8,
+  loadedHourlyCost: 44.7,
+  automationRate: 65,
+  adoptionRate: 85,
+  redeploymentRate: 50,
+  setupCost: 0,
+  internalSetupHours: 28,
   additionalKnownCosts: 0,
-  monthlyRunCost: 140,
-  horizonMonths: 24,
-  measurableOutcome: false,
-  stableRules: false,
-  reliableData: false,
-  recoverableFailure: false,
-  namedOwner: false,
+  monthlyRunCost: 89.4,
+  horizonMonths: 12,
+  measurableOutcome: true,
+  stableRules: true,
+  reliableData: true,
+  recoverableFailure: true,
+  namedOwner: true,
 };
 
 const numberFormatter = new Intl.NumberFormat("fr-FR", {
@@ -215,21 +231,21 @@ export function ProcessPriorityTool() {
 
   const decisionCopy = {
     blocked: {
-      label: "Pas encore prêt pour un pilote",
+      label: "Pas encore prêt pour un essai",
       detail:
-        "Le calcul économique ne compense pas une porte bloquée. Corrigez les points listés avant de choisir un outil.",
+        "Le calcul économique ne rachète pas une réponse négative. Traitez les points listés avant de choisir un outil.",
       className:
         "border-amber-200 bg-amber-50 text-amber-950 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-100",
     },
     unfavorable: {
       label: "À simplifier, reporter ou traiter autrement",
       detail:
-        "Avec ces hypothèses, la valeur de capacité ne couvre pas le coût renseigné sur la période.",
+        "Avec ces hypothèses, la valeur de capacité ne couvre pas le coût renseigné sur la période comparée. Ce verdict dépend de cette période\u00a0: allongez-la, puis lisez le délai de récupération ci-dessous. Ce modèle ne compte que des heures\u00a0; une trésorerie encaissée plus tôt ou une erreur évitée se chiffrent à part.",
       className:
         "border-zinc-300 bg-zinc-100 text-zinc-950 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white",
     },
     pilot: {
-      label: "Candidat à vérifier par un pilote limité",
+      label: "Candidat à vérifier par un essai borné",
       detail:
         "Le scénario renseigné est positif, mais il n’autorise aucun déploiement. Confirmez les coûts omis, l’adoption moyenne, les erreurs et la reprise, puis testez sur un petit volume.",
       className:
@@ -238,17 +254,21 @@ export function ProcessPriorityTool() {
   }[result.decision];
 
   return (
-    <div className="not-prose my-8 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900/60">
+    <div
+      data-read-time-exclude="true"
+      className="not-prose my-8 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900/60"
+    >
       <div className="border-b border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950 sm:p-6">
         <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-indigo-600 dark:text-indigo-400">
-          Outil de décision — calcul local dans votre navigateur
+          Calcul local dans votre navigateur — rien n’est envoyé
         </p>
         <h3 className="mt-2 text-xl font-bold tracking-tight text-zinc-950 dark:text-white">
-          Tester un processus avec vos propres hypothèses
+          Refaire le décompte avec vos propres mesures
         </h3>
         <p className="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
-          Les valeurs affichées au départ forment un exemple fictif. Remplacez-les
-          par vos mesures. Aucune donnée n’est envoyée par cet outil.
+          Les valeurs de départ sont celles du flux de relance chiffré plus
+          haut, exemple construit et non dossier client. Remplacez chaque champ
+          par vos mesures.
         </p>
       </div>
 
@@ -256,11 +276,11 @@ export function ProcessPriorityTool() {
         <div>
           <fieldset>
             <legend className="text-sm font-bold text-zinc-950 dark:text-white">
-              1. Les cinq portes qui ne se compensent pas
+              1. Les cinq questions dont la réponse doit être oui
             </legend>
             <p className="mt-1 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
-              Une forte économie théorique ne rend pas acceptable un résultat
-              invérifiable ou une erreur impossible à reprendre.
+              Elles ne s’additionnent pas. Une seule réponse négative écarte le
+              candidat, quel que soit le gain calculé plus bas.
             </p>
             <div className="mt-3 space-y-2">
               {(
@@ -384,8 +404,11 @@ export function ProcessPriorityTool() {
               />
             </div>
             <p className="mt-2 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
-              Un zéro dans « autres coûts ponctuels » signifie seulement
-              qu’aucun montant supplémentaire n’a été saisi.
+              Un zéro dans «&nbsp;autres coûts ponctuels&nbsp;» signifie seulement
+              qu’aucun montant supplémentaire n’a été saisi. Le coût horaire de
+              départ, 44,70&nbsp;€, est celui publié par l’INSEE pour 2025 sur
+              l’ensemble des secteurs marchands, dans les entreprises de dix
+              salariés ou plus&nbsp;: remplacez-le par le vôtre.
             </p>
           </fieldset>
         </div>
@@ -458,13 +481,13 @@ export function ProcessPriorityTool() {
 
           <div className="mt-4 rounded-xl border border-zinc-200 bg-white p-4 text-sm leading-relaxed text-zinc-700 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-200">
             <p>
-              <strong>ROI du scénario de capacité :</strong>{" "}
+              <strong>ROI du scénario de capacité&nbsp;:</strong>{" "}
               {result.roiPercent === null
                 ? "non calculable lorsque le coût est nul"
                 : `${numberFormatter.format(result.roiPercent)} %`}
             </p>
             <p className="mt-1">
-              <strong>Délai théorique de récupération du coût initial :</strong>{" "}
+              <strong>Délai théorique de récupération du coût initial&nbsp;:</strong>{" "}
               {result.breakEvenMonths === null
                 ? "non atteint avec ces hypothèses"
                 : result.breakEvenMonths === 0
@@ -495,9 +518,9 @@ export function ProcessPriorityTool() {
                 ROI = (valeur de capacité − coût renseigné) ÷ coût renseigné.
               </p>
               <p>
-                La valeur de capacité utilise le coût horaire chargé : elle ne
+                La valeur de capacité utilise le coût horaire chargé&nbsp;: elle ne
                 prouve pas une économie de trésorerie. Une dépense n’est évitée
-                que si elle disparaît réellement ; ne la comptez pas une seconde
+                que si elle disparaît réellement&nbsp;; ne la comptez pas une seconde
                 fois. Le délai suppose une contribution mensuelle constante dès
                 le premier mois. Migration, formation, sécurité, fiscalité,
                 financement, indisponibilité et sortie restent à chiffrer s’ils

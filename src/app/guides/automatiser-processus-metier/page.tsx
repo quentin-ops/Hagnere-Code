@@ -12,6 +12,7 @@ import {
   GuidePremiumSection,
 } from "@/components/guides/guide-premium-layout";
 import type { GuidePremiumFaqCategory } from "@/components/guides/guide-premium-types";
+import { TrackedGuideCtaLink } from "@/components/guides/tracked-guide-cta-link";
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import {
   buildGuideMetadata,
@@ -26,70 +27,58 @@ const breadcrumbName = "Automatiser un processus métier";
 
 export const metadata = buildGuideMetadata(
   guide,
-  "Choisir le premier processus métier à automatiser",
+  "Mesurer quatre processus, écarter les mauvais candidats et lire le décompte complet sur douze mois",
 );
 
 const structuredData = buildGuideStructuredData(guide, breadcrumbName);
 
 const toc = [
   {
-    id: "premiere-reponse",
+    id: "reponse",
     number: "01",
-    label: "La réponse courte",
-    shortLabel: "Commencer",
+    label: "Réponse directe",
+    shortLabel: "Réponse",
   },
   {
-    id: "carte-processus",
+    id: "mesurer",
     number: "02",
-    label: "Cartographier le travail",
-    shortLabel: "Cartographier",
+    label: "Mesurer en une semaine",
+    shortLabel: "Mesurer",
   },
   {
-    id: "portes",
+    id: "eliminer",
     number: "03",
-    label: "Écarter les mauvais candidats",
+    label: "Écarter les candidats",
     shortLabel: "Écarter",
   },
   {
-    id: "options",
+    id: "facture",
     number: "04",
-    label: "Comparer sept réponses",
-    shortLabel: "Comparer",
+    label: "Ce que la plateforme facture",
+    shortLabel: "Facture",
   },
   {
-    id: "calcul",
+    id: "decompte",
     number: "05",
-    label: "Calculer le temps réaffecté",
-    shortLabel: "Calculer",
+    label: "Le décompte à douze mois",
+    shortLabel: "Décompte",
   },
   {
-    id: "exemple",
+    id: "tresorerie",
     number: "06",
-    label: "Lire un exemple complet",
-    shortLabel: "Exemple",
+    label: "Quand le temps ne paie pas",
+    shortLabel: "Trésorerie",
   },
   {
-    id: "pilote",
+    id: "incidents",
     number: "07",
-    label: "Préparer un pilote",
-    shortLabel: "Tester",
-  },
-  {
-    id: "responsabilites",
-    number: "08",
-    label: "Nommer les responsables",
-    shortLabel: "Responsabilités",
-  },
-  {
-    id: "securite",
-    number: "09",
-    label: "Sécurité, données et reprise",
-    shortLabel: "Sécuriser",
+    label: "Ce qui rate",
+    shortLabel: "Incidents",
   },
   {
     id: "decision",
-    number: "10",
-    label: "Prendre la décision",
+    number: "08",
+    label: "Lancer, reporter ou renoncer",
     shortLabel: "Décider",
   },
 ];
@@ -101,19 +90,22 @@ const faqCategories: GuidePremiumFaqCategory[] = [
     label: "Choisir le processus",
     items: [
       {
-        question: "Quel processus faut-il automatiser en premier ?",
+        question:
+          "Combien de dossiers faut-il chronométrer pour obtenir une mesure utilisable\u00a0?",
         answer:
-          "Choisissez un processus fréquent, dont le volume et le résultat sont mesurés, dont les règles sont assez stables et dont les données sont fiables. Une personne doit aussi pouvoir le reprendre à la main. Le temps consommé compte, mais il ne compense jamais un résultat invérifiable ou une erreur impossible à annuler.",
+          "Vingt dossiers consécutifs suffisent à sortir un temps moyen et un neuvième décile exploitables, à condition qu’ils se suivent vraiment\u00a0: choisir les vingt dossiers les plus propres fausse tout. Le volume, lui, se compte sur douze mois glissants dans un export, pas sur la semaine du chronométrage. Un processus saisonnier mesuré en juillet dimensionne un flux qui cassera en octobre.",
       },
       {
-        question: "Une tâche très pénible est-elle forcément prioritaire ?",
+        question:
+          "Faut-il commencer par la tâche que l’équipe déteste le plus\u00a0?",
         answer:
-          "Non. Elle mérite d’être observée, mais une tâche rare, très variable ou dépendante d’un jugement humain peut être un mauvais premier essai. Mesurez son volume et ses exceptions, puis comparez-la à des tâches moins visibles mais plus régulières.",
+          "L’agacement signale une friction réelle, il ne mesure ni le volume ni le risque. Dans le cas construit de ce guide, la tâche la plus détestée pèse 32\u00a0heures par mois et se révèle le pire premier essai\u00a0: deux personnes n’en tirent pas le même résultat sur les mêmes dossiers. Chronométrez-la quand même, puis comparez-la aux autres sur les cinq mêmes questions.",
       },
       {
-        question: "Quand faut-il décider de ne pas automatiser ?",
+        question:
+          "Un processus rare mais risqué mérite-t-il d’être automatisé\u00a0?",
         answer:
-          "Reportez le projet si personne ne sait définir le résultat correct, si les données sont peu fiables, si les règles changent souvent ou si l’erreur serait difficile à détecter et à corriger. Simplifier la procédure ou mieux utiliser l’outil actuel peut suffire.",
+          "Rarement en premier. Un processus rare offre peu d’occasions d’apprendre\u00a0: si l’erreur se produit une fois par trimestre, il faut trois trimestres pour savoir si le flux tient. La réponse utile est souvent un contrôle plutôt qu’une automatisation\u00a0— une alerte, une double signature, une liste de vérification\u00a0—, financée comme une dépense de maîtrise du risque et non comme un gain de temps.",
       },
     ],
   },
@@ -123,155 +115,51 @@ const faqCategories: GuidePremiumFaqCategory[] = [
     label: "Choisir la solution",
     items: [
       {
-        question: "Faut-il commencer par un outil no-code ?",
+        question:
+          "Faut-il un outil sans code ou un développement pour un premier flux\u00a0?",
         answer:
-          "Pas automatiquement. Un outil no-code permet d’enchaîner des actions sans créer une application complète. Mais une fonction déjà comprise dans votre logiciel ou un connecteur natif demande souvent moins d’éléments à surveiller. Vérifiez dans tous les cas les limites, le propriétaire, les alertes et le coût au volume réel.",
+          "Prenez le moyen le moins cher à défaire. Un flux monté sur l’abonnement déjà payé se démonte en une heure\u00a0; un développement se démonte au prix d’un projet. Sur notre propre grille publique, le premier palier d’un outil interne s’affiche à 8\u00a0000\u00a0€ HT\u00a0: un processus qui rend 39,78\u00a0heures sur douze mois ne le justifie pas. Le développement se défend quand le besoin engage durablement plusieurs services et survit au changement de logiciel.",
       },
       {
         question:
-          "Quelle différence entre un connecteur et un robot d’interface ?",
+          "Quand un robot d’interface reste-t-il une réponse raisonnable\u00a0?",
         answer:
-          "Un connecteur ou une API échange des données par une interface prévue par les logiciels. Un robot d’interface pilote les éléments d’un écran au moyen de sélecteurs. Il peut servir lorsqu’aucune interface exploitable n’existe, mais une modification de l’écran, une fenêtre inattendue ou une session expirée doit être testée.",
+          "Quand aucune interface d’échange documentée n’existe et que l’écran ne bouge pas. Un robot d’interface repère les champs par des sélecteurs, et ces sélecteurs cassent à la première mise à jour, à la première fenêtre inattendue et à la première session expirée. Comptez le retest à chaque version du logiciel piloté dans le coût annuel, sinon la comparaison avec une interface d’échange est faussée dès la première année.",
       },
       {
-        question: "Quand l’intelligence artificielle apporte-t-elle quelque chose ?",
+        question:
+          "Que peut-on demander à une intelligence artificielle dans un processus\u00a0?",
         answer:
-          "Elle peut aider lorsque l’entrée varie, par exemple pour classer un message ou extraire des champs d’un document. Mesurez sa qualité sur des cas représentatifs et gardez une validation humaine lorsque l’erreur touche une personne, un prix, un contrat ou une action difficile à annuler.",
+          "Traiter une entrée qui varie\u00a0: classer un message, extraire des champs d’un document scanné, rapprocher deux libellés. Constituez d’abord un jeu de cas dont vous connaissez la bonne réponse, mesurez le taux d’erreur dessus, puis décidez du contrôle humain à partir de la conséquence d’une erreur. Une erreur qui change un prix, écarte une personne ou déclenche un paiement demande une validation avant l’action, pas après.",
       },
     ],
   },
   {
-    key: "economie-risque",
+    key: "suite",
     num: "03",
-    label: "Coût, sécurité et suivi",
+    label: "Coût, propriété et suite",
     items: [
       {
         question:
-          "Comment valoriser le temps gagné sans gonfler le retour sur investissement (ROI) ?",
+          "Quel coût horaire chargé faut-il retenir dans le calcul\u00a0?",
         answer:
-          "Séparez les heures techniquement retirables, celles réellement retirées après adoption et celles affectées à un travail utile identifié. Leur valorisation au coût horaire mesure une capacité, pas une économie de trésorerie. Une dépense n’est évitée que si une heure supplémentaire, une prestation, un recrutement ou un autre paiement disparaît réellement, sans compter deux fois la même valeur.",
+          "Le vôtre, pas une moyenne. L’INSEE publie 44,70\u00a0€ pour l’ensemble des secteurs marchands en 2025, mais son champ ne couvre que les entreprises de dix salariés ou plus, apprentis inclus. Votre expert-comptable sort le vôtre de la déclaration sociale nominative en quelques minutes. Retenez qu’il ne change jamais le signe d’un calcul dont tous les postes sont du temps interne\u00a0: il ne fait qu’en changer l’échelle.",
       },
       {
-        question: "Quels coûts faut-il comparer au gain ?",
+        question:
+          "Que devient le flux quand la personne qui l’a créé quitte l’entreprise\u00a0?",
         answer:
-          "Additionnez la préparation, la réalisation, le temps de vos équipes, les abonnements, le suivi, la maintenance et la sortie sur une même période. Ajoutez les postes propres à votre cas, comme la migration, la formation, l’hébergement, les audits, la sécurité ou la reprise de données. Un poste encore inconnu reste à confirmer : zéro ne prouve pas son absence.",
+          "Un flux automatisé ou planifié utilise toujours les limites de son propriétaire, quel que soit l’événement qui le déclenche. Quand ce compte est désactivé, le flux s’arrête, et souvent sans alerte puisque rien n’a échoué. Nommez un suppléant, transférez les connexions vers un compte de service et surveillez l’absence d’exécution, pas seulement les exécutions en erreur.",
       },
       {
-        question: "Qui doit surveiller l’automatisation après le lancement ?",
+        question:
+          "Quand faut-il une analyse d’impact avant de lancer le flux\u00a0?",
         answer:
-          "Nommez un responsable métier pour les règles et un responsable opérationnel pour les alertes et les reprises. Le prestataire maintient seulement ce que le contrat lui attribue. Les utilisateurs doivent savoir reconnaître un dossier bloqué et poursuivre le travail manuellement.",
+          "Une analyse d’impact relative à la protection des données est requise lorsqu’un traitement de données personnelles est susceptible d’engendrer un risque élevé pour les droits et libertés, et cette question se tranche avant la mise en œuvre. L’usage d’une automatisation ou d’une intelligence artificielle ne suffit ni à conclure qu’elle est requise, ni à l’écarter. Posez la question au responsable du traitement et au délégué à la protection des données avant l’essai, pas après.",
       },
     ],
   },
 ];
-
-function QuickDecisionPath() {
-  const steps = [
-    {
-      number: "1",
-      title: "Décrire",
-      text: "Un déclencheur, un résultat vérifiable, le volume et trois exceptions.",
-      href: "#carte-processus",
-    },
-    {
-      number: "2",
-      title: "Filtrer",
-      text: "Cinq portes bloquantes : mesure, stabilité, données, contrôle et reprise.",
-      href: "#portes",
-    },
-    {
-      number: "3",
-      title: "Comparer",
-      text: "La réponse la plus simple parmi sept, y compris ne rien automatiser.",
-      href: "#options",
-    },
-    {
-      number: "4",
-      title: "Chiffrer",
-      text: "Capacité réaffectée, coût complet et éventuelle dépense réellement évitée.",
-      href: "#calcul",
-    },
-    {
-      number: "5",
-      title: "Décider",
-      text: "Un résultat explicite, un responsable et la prochaine preuve à obtenir.",
-      href: "#decision",
-    },
-  ] as const;
-
-  return (
-    <aside
-      aria-labelledby="parcours-decision-rapide"
-      className="not-prose my-8 overflow-hidden rounded-2xl border border-indigo-200/80 bg-indigo-50/60 dark:border-indigo-900 dark:bg-indigo-950/20"
-    >
-      <div className="border-b border-indigo-200/70 px-4 py-4 dark:border-indigo-900 sm:px-6 sm:py-5">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-indigo-700 dark:text-indigo-300">
-          Parcours express
-        </p>
-        <h3
-          id="parcours-decision-rapide"
-          className="mt-2 text-xl font-bold tracking-tight text-zinc-950 dark:text-white"
-        >
-          Obtenir une première orientation avant d’approfondir
-        </h3>
-        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-200">
-          Ce schéma donne une première orientation. Les sections suivantes
-          fournissent les contrôles et les calculs nécessaires pour la confirmer.
-        </p>
-      </div>
-
-      <ol className="grid gap-px bg-indigo-200/70 dark:bg-indigo-900 sm:grid-cols-2">
-        {steps.map((step) => (
-          <li
-            key={step.number}
-            className="flex gap-3 bg-white p-4 dark:bg-zinc-950 sm:min-h-32 sm:gap-4 sm:p-5"
-          >
-            <span className="grid size-8 shrink-0 place-items-center rounded-full bg-indigo-600 text-sm font-bold text-white">
-              {step.number}
-            </span>
-            <span>
-              <Link
-                href={step.href}
-                className="flex min-h-11 items-center text-sm font-bold text-zinc-950 underline decoration-indigo-300 underline-offset-4 hover:text-indigo-700 dark:text-white dark:hover:text-indigo-300"
-              >
-                {step.title}
-              </Link>
-              <span className="mt-1.5 block text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
-                {step.text}
-              </span>
-            </span>
-          </li>
-        ))}
-      </ol>
-
-      <div className="px-4 py-4 dark:bg-zinc-950/60 sm:px-6 sm:py-5">
-        <p className="text-sm font-semibold text-zinc-950 dark:text-white">
-          La sortie n’est pas forcément « développer » :
-        </p>
-        <ul className="mt-3 grid grid-cols-2 gap-2 text-[13px] text-zinc-700 dark:text-zinc-200">
-          <li className="rounded-lg border border-zinc-200 bg-white px-2.5 py-2.5 dark:border-zinc-800 dark:bg-zinc-900 sm:px-3">
-            Activer une fonction déjà disponible
-          </li>
-          <li className="rounded-lg border border-zinc-200 bg-white px-2.5 py-2.5 dark:border-zinc-800 dark:bg-zinc-900 sm:px-3">
-            Lancer un pilote limité et réversible
-          </li>
-          <li className="rounded-lg border border-zinc-200 bg-white px-2.5 py-2.5 dark:border-zinc-800 dark:bg-zinc-900 sm:px-3">
-            Simplifier, fiabiliser, puis remesurer
-          </li>
-          <li className="rounded-lg border border-zinc-200 bg-white px-2.5 py-2.5 dark:border-zinc-800 dark:bg-zinc-900 sm:px-3">
-            Garder le traitement humain
-          </li>
-        </ul>
-        <Link
-          href="#calcul"
-          className="mt-4 inline-flex min-h-11 items-center font-semibold text-indigo-700 underline decoration-indigo-300 underline-offset-4 hover:text-indigo-900 dark:text-indigo-300 dark:hover:text-indigo-200"
-        >
-          Aller directement au calcul et au simulateur
-        </Link>
-      </div>
-    </aside>
-  );
-}
 
 export default function Page() {
   return (
@@ -293,8 +181,12 @@ export default function Page() {
         ]}
         badges={[
           { label: "Guide décisionnel 2026", variant: "dark" },
-          { label: "Dirigeants TPE · PME", variant: "neutral" },
-          { label: "Calcul transparent", variant: "success" },
+          {
+            label: "Exemple construit, pas un dossier client",
+            variant: "neutral",
+          },
+          { label: "Dirigeants et DSI de PME", variant: "neutral" },
+          { label: "Calcul local · aucun envoi", variant: "success" },
           {
             label: `Mis à jour le ${formatGuideDate(guide.dateModified)}`,
             variant: "muted",
@@ -303,13 +195,13 @@ export default function Page() {
         heroTitle="Quel processus métier"
         heroTitleEm="automatiser"
         heroTitleSuffix={"en premier\u00a0?"}
-        heroDescription="Commencez par un travail fréquent, mesuré et facile à reprendre si l’outil échoue. Vous saurez écarter les mauvais candidats, comparer sept réponses et calculer si un essai limité vaut le coût."
+        heroDescription={"Le plus gros gisement d’heures peut être le plus mauvais endroit où commencer. Ce guide le montre sur un exemple construit\u00a0— volumes, durées, effectif et facture moyenne choisis pour la démonstration, rien de relevé chez un client\u00a0: sur quatre processus, celui qui pèse 32\u00a0heures par mois est à écarter, et celui qui n’en pèse que 12 est le seul dont on saura prouver le résultat. Son décompte sort à −546\u00a0€ sur douze mois, et ne repasse au-dessus de zéro qu’au bout de 21,3\u00a0mois."}
         stats={[
-          { label: "Portes bloquantes", value: "5" },
-          { label: "Réponses comparées", value: "7" },
-          { label: "Méthode de calcul", value: "Visible" },
-          { label: "Calculateur · envoi", value: "Aucun" },
-          { label: "Lecture", value: `${guide.readTimeMin} min` },
+          { label: "Exemple construit · processus", value: "4" },
+          { label: "Coût horaire retenu (INSEE)", value: "44,70\u00a0€" },
+          { label: "Écart à douze mois", value: "−546\u00a0€" },
+          { label: "Équilibre du même flux", value: "21,3\u00a0mois" },
+          { label: "Seuil de bascule mensuel", value: "118\u00a0relances" },
         ]}
         author={{
           initials: TEAM.quentin.initials,
@@ -318,140 +210,229 @@ export default function Page() {
           profileUrl: "/equipe#fondateur",
         }}
         sidebarHeroCta={{
-          eyebrow: "Premier échange",
-          titleStart: "Faire vérifier",
-          titleEm: "votre premier choix",
+          eyebrow: "Cadrage sans solution imposée",
+          titleStart: "Faire relire",
+          titleEm: "vos quatre mesures",
           description:
-            "Décrivez le travail actuel, son volume et trois exceptions. L’échange sert à distinguer une amélioration simple, une connexion entre outils et un besoin sur mesure.",
+            "Apportez le volume compté sur douze mois, le chronométrage de vingt dossiers et vos réponses aux cinq questions. Le premier échange peut conclure qu’il ne faut rien automatiser cette année.",
           benefits: [
-            "Le processus actuel est décrit avant l’outil",
-            "Les fonctions déjà disponibles restent une option",
-            "Les inconnues et responsabilités sont listées",
+            "Le volume et le temps sont vérifiés avant l’outil",
+            "Les fonctions déjà payées restent une réponse valable",
+            "Le décompte se refait avec vos propres nombres",
           ],
-          primaryCtaLabel: "Décrire mon premier processus",
-          primaryCtaHref: "/demarrer-un-projet",
-          phoneLabel: "03 74 47 20 18",
-          phoneHref: "tel:+33374472018",
+          primaryCtaLabel: "Voir le service outils internes",
+          primaryCtaHref: "/services/outils-internes-sur-mesure",
         }}
         toc={toc}
-        tocLabel="Sommaire du guide"
-        mobileCtaLabel="Décrire mon besoin · 3 min"
+        tocLabel="Sommaire de la décision"
+        mobileCtaLabel="Faire relire mes mesures"
         sidebarContextCta={{
-          eyebrow: "Automatisation métier",
-          title: "Faire étudier mon premier processus",
+          eyebrow: "Outils internes sur mesure",
+          title: "Vous hésitez entre un flux monté en interne et un projet\u00a0?",
           description:
-            "Apportez le déclencheur, le volume mensuel, les outils utilisés et trois cas qui sortent de l’ordinaire.",
+            "Décrivez le déclencheur, le volume mensuel, les logiciels concernés et trois dossiers qui sortent de l’ordinaire, sans donnée personnelle.",
           benefits: [
-            "Comparer l’existant, les outils sans code et le sur-mesure",
-            "Vérifier les hypothèses de gain",
-            "Prévoir les erreurs et la reprise manuelle",
+            "Aucune solution décidée d’avance",
+            "Les cas difficiles sont chiffrés avant l’architecture",
+            "Le coût de sortie est écrit dès le devis",
           ],
-          ctaLabel: "Décrire mon premier processus",
+          ctaLabel: "Décrire mon processus",
           ctaHref: "/demarrer-un-projet",
-          secondaryLabel: "03 74 47 20 18",
-          secondaryHref: "tel:+33374472018",
+          badgeLabel: "Premier échange sans engagement de faisabilité",
         }}
         faqCategories={faqCategories}
         faqMeta={{
           eyebrow: "Questions fréquentes",
-          titleStart: "Vos questions avant",
+          titleStart: "Ce qu’on demande avant",
           titleEm: "d’automatiser",
           titleEnd: "un processus.",
           subtitle:
-            "Des réponses courtes sur le choix, les outils, le coût et la surveillance après la mise en service.",
-          ctaTitle: "Vous hésitez encore sur le premier choix ?",
+            "Nombre de dossiers à chronométrer, tâche la plus détestée, processus rares, outils sans code, robots d’interface, intelligence artificielle, coût horaire, propriété du flux et analyse d’impact.",
+          ctaTitle: "Un point encore ouvert sur votre premier processus\u00a0?",
           ctaDescription:
-            "Décrivez le processus, son volume et ses exceptions pour clarifier la prochaine étape.",
-          ctaLabel: "Décrire mon premier processus",
+            "Décrivez le volume compté, le temps chronométré et les logiciels concernés, sans transmettre de donnée sensible.",
+          ctaLabel: "Décrire mon processus",
           ctaHref: "/demarrer-un-projet",
         }}
         legalSources={[
           {
-            source: "France Num",
+            source: "INSEE · coût horaire du travail selon l’activité",
+            href: "https://www.insee.fr/fr/statistiques/2381340",
+            description:
+              "Page mise à jour le 2 juillet 2026, consultée le 28 août 2026\u00a0: 44,70\u00a0€ en 2025 pour l’ensemble des secteurs marchands (secteurs B à N de la Nace), entreprises de 10\u00a0salariés ou plus, apprentis inclus\u00a0; 47,70\u00a0€ dans l’industrie, 39,90\u00a0€ dans la construction, 44,20\u00a0€ dans les services marchands. Source Eurostat, enquête quadriennale sur le coût de la main-d’œuvre.",
+          },
+          {
+            source:
+              "Banque de France · Observatoire des délais de paiement, rapport 2024",
+            href: "https://www.banque-france.fr/system/files/2025-07/ODP-2024.pdf",
+            description:
+              "Publié en juillet 2025, consulté le 28 août 2026\u00a0: retard de paiement moyen de 13,6\u00a0jours au quatrième trimestre 2024 pour les entreprises françaises, contre 13,4\u00a0jours en moyenne européenne, en hausse d’environ un jour sur un an.",
+          },
+          {
+            source:
+              "Microsoft Learn · limites et allocations de requêtes Power Platform",
+            href: "https://learn.microsoft.com/fr-fr/power-platform/admin/api-request-limits-allocations",
+            description:
+              "Page du 14 août 2026, consultée le 28 août 2026\u00a0: 6\u00a0000\u00a0requêtes par utilisateur et par 24\u00a0heures sous licence Microsoft\u00a0365, 40\u00a0000 avec Power Automate Premium, 250\u00a0000 par licence Process, +50\u00a0000 par module complémentaire de capacité. Les actions en échec, les nouvelles tentatives et la pagination sont comptabilisées\u00a0; les quotas ne se reportent pas d’un jour sur l’autre\u00a0; un flux automatisé utilise les limites de son propriétaire.",
+          },
+          {
+            source: "Zapier · comment l’usage des tâches est mesuré",
+            href: "https://help.zapier.com/hc/en-us/articles/8496196837261-How-is-task-usage-measured-in-Zapier",
+            description:
+              "Page mise à jour le 21 août 2026, consultée le 28 août 2026\u00a0: seules les actions réussies comptent, les déclencheurs, filtres et chemins ne comptent pas, les actions en erreur non plus\u00a0; rejouer une exécution entière refait tourner les étapes déjà réussies et les recompte.",
+          },
+          {
+            source: "Zapier · grille tarifaire",
+            href: "https://zapier.com/pricing",
+            description:
+              "Relevée le 28 août 2026, plan Professional en facturation annuelle\u00a0: 19,99\u00a0$ pour 750\u00a0tâches par mois, 49\u00a0$ pour 2\u00a0000, 89\u00a0$ pour 5\u00a0000, 489\u00a0$ pour 100\u00a0000. Montants en dollars, hors conversion et hors taxes locales\u00a0; un seul éditeur, cité comme échantillon daté et non comme prix de marché.",
+          },
+          {
+            source: "France Num · l’automatisation, une solution",
             href: "https://www.francenum.gouv.fr/guides-et-conseils/pilotage-de-lentreprise/numerisation-des-processus/lautomatisation-une-solution",
             description:
-              "Dossier officiel mis à jour le 9 juillet 2026 : inventaire des tâches, mesure fréquence × durée, complexité, impact d’une erreur, tests et maintenance. Ses affirmations commerciales sur les outils ne sont pas reprises comme règles générales.",
+              "Dossier public mis à jour le 9 juillet 2026\u00a0: inventorier les tâches répétitives, mesurer fréquence et durée, tenir compte de la complexité, de l’impact d’une erreur, des tests et de la maintenance. Les recommandations d’outils et de prix qu’il contient ne sont pas reprises ici.",
           },
           {
-            source: "CNIL · sécurité",
+            source: "CNIL · guide de la sécurité des données personnelles",
             href: "https://www.cnil.fr/sites/cnil/files/2024-03/cnil_guide_securite_personnelle_2024.pdf",
             description:
-              "Guide 2024 : protection des données dès la conception, tests, droits d’accès, journalisation, sauvegardes, continuité et responsabilités.",
+              "Édition 2024\u00a0: tests avec des données fictives ou anonymisées, habilitations, journalisation, sauvegardes testées et continuité. Guide horizontal, à adapter au risque réel du traitement.",
           },
           {
-            source: "CNIL · sous-traitance",
-            href: "https://www.cnil.fr/fr/securite-gerer-la-sous-traitance",
-            description:
-              "Fiche du 14 mars 2024 : contrat, répartition des responsabilités, incidents, restitution et destruction des données.",
-          },
-          {
-            source: "CNIL · décision automatisée",
-            href: "https://www.cnil.fr/fr/profilage-et-decision-entierement-automatisee",
-            description:
-              "Champ de l’article 22 du RGPD lorsque la décision est entièrement automatisée et produit un effet juridique ou un effet similaire significatif sur une personne.",
-          },
-          {
-            source: "Anact",
-            href: "https://www.anact.fr/sites/default/files/2024-10/boite-a-outils-qvct-numerique.pdf",
-            description:
-              "Boîte à outils 2024 : cadrer un projet numérique à partir du travail réel, articuler les dialogues technique, professionnel et social, puis associer activement les utilisateurs finaux.",
-          },
-          {
-            source: "Microsoft Learn",
-            href: "https://learn.microsoft.com/en-us/power-automate/limits-and-config",
-            description:
-              "Exemple de documentation éditeur montrant que les flux ont des limites d’exécution, de durée de conservation, de volume et de propriété qui dépendent du produit et de la licence.",
-          },
-          {
-            source: "Microsoft Learn · automatisation d’interface",
-            href: "https://learn.microsoft.com/en-us/power-automate/desktop-flows/ui-elements",
-            description:
-              "Documentation éditeur sur les éléments et sélecteurs utilisés pour piloter une interface : ils doivent être testés et peuvent dépendre de la structure de l’application ou de la page.",
-          },
-          {
-            source: "NIST AI RMF",
-            href: "https://www.nist.gov/itl/ai-risk-management-framework",
-            description:
-              "Cadre volontaire de gestion des risques de l’IA : repères pour tester, surveiller dans la durée et prévoir une intervention humaine proportionnée aux conséquences.",
-          },
-          {
-            source: "CNIL · AIPD",
+            source: "CNIL · analyse d’impact relative à la protection des données",
             href: "https://www.cnil.fr/fr/ce-quil-faut-savoir-sur-lanalyse-dimpact-relative-la-protection-des-donnees-aipd",
             description:
-              "Une analyse d’impact est requise lorsqu’un traitement de données personnelles est susceptible d’engendrer un risque élevé pour les droits et libertés ; son besoin s’évalue avant la mise en œuvre.",
+              "Une analyse d’impact est requise lorsqu’un traitement est susceptible d’engendrer un risque élevé pour les droits et libertés des personnes\u00a0; le besoin s’apprécie avant la mise en œuvre. Le recours à une automatisation ne permet ni de conclure, ni d’écarter.",
+          },
+          {
+            source: "Microsoft Learn · éléments d’interface des flux de bureau",
+            href: "https://learn.microsoft.com/fr-fr/power-automate/desktop-flows/ui-elements",
+            description:
+              "Documentation éditeur sur les sélecteurs qui repèrent les champs d’un écran piloté par un robot d’interface\u00a0: ils dépendent de la structure de l’application et doivent être retestés après chaque évolution.",
+          },
+          {
+            source: "Hagnéré Code · tarifs publics",
+            href: "/tarifs",
+            description:
+              "Grille relevée le 28 août 2026\u00a0: audit des processus internes 990\u00a0€ HT (1\u00a0jour), Discovery Sprint 1\u00a0500\u00a0€ HT (2\u00a0jours, déduit si la phase suivante est lancée), outils internes 8\u00a0000 / 25\u00a0000 / 80\u00a0000\u00a0€ HT, maintenance avec un repère indicatif de 2\u00a0500\u00a0€ HT par mois. Repères publics et indicatifs\u00a0: le devis signé fixe le prix ferme.",
           },
         ]}
         disclaimer={{
-          eyebrow: "Périmètre",
-          title: "Une méthode de décision, pas un devis ni un avis juridique",
+          eyebrow: "Limite du guide",
+          title: "Une méthode de mesure, pas un audit de votre système",
           description:
-            "Les calculs et exemples de cette page sont fictifs et servent à rendre la méthode reproductible. Remplacez chaque entrée par vos données. Un traitement de données personnelles, une décision automatisée à effet important ou un système sensible peut exiger l’intervention de votre délégué à la protection des données (DPO), de votre responsable sécurité ou d’un conseil juridique.",
+            "Ce guide ne valide ni licence, ni conformité, ni sécurité, ni faisabilité. Les prix des éditeurs, les quotas de plateforme et les données publiques citées évoluent\u00a0: revérifiez-les à votre date de lecture. Un traitement de données personnelles, une décision automatisée à effet important ou un système critique appelle votre délégué à la protection des données, votre responsable sécurité ou un conseil juridique.",
         }}
+        relatedGuides={[
+          {
+            label: "Besoin d’un logiciel métier\u00a0: le diagnostic en 6 réponses",
+            href: "/guides/signes-besoin-logiciel-metier",
+          },
+          {
+            label: "Power Apps ou application sur mesure\u00a0?",
+            href: "/guides/power-apps-ou-application-sur-mesure",
+          },
+          {
+            label: "Le plan de recette d’une application métier",
+            href: "/guides/plan-recette-application-metier",
+          },
+        ]}
+        relatedGuidesLabel="3 guides complémentaires"
       >
+        {/*
+          Durées de section : la somme fait exactement le readTimeMin du
+          registre, seule valeur que lisent le hub, les données structurées et
+          le bandeau. Le hub affichait 21 minutes et la page en totalisait 24 ;
+          le lecteur comptait l'écart lui-même en descendant.
+
+          Mesure de référence : `npx tsx scripts/measure-guide-readtime.mjs
+          automatiser-processus-metier` sur l'article rendu, blocs exclus et
+          `sr-only` retirés — 4 191 mots, soit 20,955 minutes à 200 mots par
+          minute, donc 21. Décompte par section, au même débit :
+            01 réponse      397 mots  1,99
+            02 mesurer      356 mots  1,78
+            03 écarter      504 mots  2,52
+            04 facture      526 mots  2,63
+            05 décompte     798 mots  3,99
+            06 trésorerie   453 mots  2,27
+            07 incidents    739 mots  3,69
+            08 décision     418 mots  2,09
+                          4 191 mots 20,96
+          Les huit minutes entières sont réparties au plus fort reste : parties
+          entières 1+1+2+2+3+2+3+2 = 16, puis les cinq minutes restantes vont
+          aux cinq plus fortes décimales (0,99 · 0,99 · 0,78 · 0,69 · 0,63),
+          soit réponse, décompte, mesurer, incidents et facture. Résultat
+          2+2+2+3+4+2+4+2 = 21. Toute réécriture qui déplace des paragraphes
+          d'une section à l'autre demande de relancer le script et de refaire
+          cette répartition, pas d'ajuster un chiffre au jugé.
+        */}
         <GuidePremiumSection
-          id="premiere-reponse"
+          id="reponse"
           number="01"
-          label="Décision"
-          title="Commencez par un travail fréquent, mesurable et facile à reprendre"
+          label="Réponse directe"
+          readingTime="2 min"
+          title="Commencez par le processus dont vous prouverez le résultat en un mois"
         >
-          <p className="lead">
-            Vous voyez peut-être une commande copiée d’un courriel vers un
-            tableur, puis ressaisie dans la facturation. La tâche est agaçante,
-            mais ce n’est pas forcément le meilleur premier choix. Commencez par
-            un travail fréquent, dont le résultat se mesure, dont les règles
-            changent peu et dont les données sont fiables. Une personne doit
-            aussi pouvoir reprendre la main si l’outil échoue. Si l’une de ces
-            conditions manque, simplifiez d’abord la procédure ou fiabilisez les
-            données.
+          <p>
+            La ressaisie la plus visible attire l’œil et absorbe le budget. Ce
+            guide le montre sur un exemple construit&nbsp;: un négoce de
+            matériel électrique dont les volumes, les durées et l’effectif sont
+            choisis pour la démonstration, non relevés chez un client. Les
+            commandes y arrivent en PDF par courriel&nbsp;: 320&nbsp;par mois,
+            32&nbsp;heures de saisie. C’est le plus gros tas, et le plus mauvais
+            endroit où commencer.
+          </p>
+          <p>
+            <strong>
+              Prenez en premier le processus dont vous pourrez prouver le
+              résultat en un mois&nbsp;: une règle qui n’a pas bougé depuis un
+              an, une source qui fait foi, une erreur qui se répare pour rien,
+              et deux noms écrits en face du flux.
+            </strong>{" "}
+            Le nombre d’heures arbitre en dernier.
+          </p>
+          <p>
+            Sur les quatre processus chronométrés dans cet exemple, le
+            classement par heures donne 32, 25, 21 et 12&nbsp;heures par mois.
+            Celui qui passe les cinq questions de la section&nbsp;03 est le
+            dernier. Son décompte sur douze mois sort à{" "}
+            <strong>−546&nbsp;€</strong>&nbsp;: à cette échéance, il ne se paie
+            pas en temps gagné. Il s’équilibre à 21,3&nbsp;mois, et se paie plus
+            tôt&nbsp;— ou jamais&nbsp;— sur l’encaissement, que la
+            section&nbsp;06 apprend à vérifier.
           </p>
 
-          <p>
-            Un <strong>processus métier</strong> est la suite d’étapes qui part
-            d’un événement — une commande reçue, un dossier complet, une date
-            atteinte — et aboutit à un résultat utile. L’automatiser consiste à
-            confier certaines de ces étapes à un logiciel. Cela ne suppose ni
-            intelligence artificielle, ni nouvelle application.
-          </p>
+          <GuidePremiumCase
+            initial="90"
+            eyebrow="Fil rouge du guide · exemple construit"
+            title={"Quatre processus, 90\u00a0heures par mois, un seul qu’on saura prouver"}
+          >
+            <p>
+              <em>
+                Exemple construit&nbsp;: les volumes, les durées, l’effectif, la
+                ville et la facture moyenne sont choisis pour la démonstration
+                et ne viennent d’aucune source&nbsp;; seuls le coût horaire de
+                l’INSEE, les quotas des éditeurs et les montants de notre grille
+                publiée sont repris de sources citées. Ce n’est pas un dossier
+                client.
+              </em>{" "}
+              Un négoce de matériel électrique de 26&nbsp;salariés à Nancy.
+              Nadia, responsable administration des ventes, travaille avec un
+              comptable, deux chargés d’affaires et un magasinier. Quatre
+              processus y sont comptés sur douze mois puis chronométrés trois
+              semaines&nbsp;: 320&nbsp;commandes clients, 60&nbsp;devis de
+              dépannage, 140&nbsp;fiches d’intervention et 90&nbsp;relances de
+              factures échues par mois.
+            </p>
+            <p>
+              Ensemble, ces quatre lignes consomment 90&nbsp;heures par mois.
+              Nous les suivrons jusqu’au décompte à douze mois, puis jusqu’aux
+              trois incidents que ce choix rend bon marché. Un processus dont
+              l’ERP ou la procédure viennent de changer ne se mesure pas
+              utilement avant six semaines de fonctionnement continu.
+            </p>
+          </GuidePremiumCase>
 
           <figure className="not-prose my-8 overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
             <Image
@@ -459,899 +440,815 @@ export default function Page() {
               width={1600}
               height={900}
               sizes="(max-width: 768px) calc(100vw - 32px), 760px"
-              alt="Un processus avec une voie simple, une alerte et deux reprises humaines avant validation"
+              alt="Un flux part d’une pile de documents, franchit un contrôle, puis se divise en trois chemins — un traitement automatique, une alerte reprise par une personne et une validation humaine avant le document final"
               className="h-auto w-full"
             />
             <figcaption className="border-t border-zinc-200 px-4 py-3 text-sm leading-relaxed text-zinc-600 dark:border-zinc-800 dark:text-zinc-300 sm:px-5">
-              Un premier essai contrôlable garde une voie manuelle pour les
-              exceptions et une validation identifiable avant la sortie.
+              Un premier flux contrôlable garde une voie manuelle et une
+              validation identifiable avant la sortie.
             </figcaption>
           </figure>
 
-          <QuickDecisionPath />
+        </GuidePremiumSection>
 
+        <GuidePremiumSection
+          id="mesurer"
+          number="02"
+          label="Mesure"
+          readingTime="2 min"
+          title={"Comment mesurer un processus en une semaine, sans consultant\u00a0?"}
+        >
           <p>
-            Dans l’ordre : dessinez le travail réel, passez cinq portes qui ne
-            se compensent pas, puis comparez sept réponses. Vous distinguerez
-            ensuite les heures réaffectées de leur valeur de capacité, puis
-            d’une dépense réellement évitée. Vous préparerez enfin un pilote,
-            c’est-à-dire un essai limité qui peut être arrêté sans bloquer
-            l’activité.
+            Le volume réel d’un processus se lit dans un export, pas dans une
+            estimation de réunion. Comptez d’abord, chronométrez ensuite&nbsp;:
+            une semaine, aucun outil que vous n’ayez déjà.
           </p>
 
-          <GuidePremiumMemo title="La règle à garder">
-            <p>
-              Un bon premier candidat libère un temps mesurable et garde
-              l’erreur sous contrôle. Un gain financier élevé ne rattrape jamais
-              une donnée peu fiable, une décision impossible à vérifier ou
-              l’absence de reprise manuelle.
-            </p>
-          </GuidePremiumMemo>
+          <h3>Compter le volume sur douze mois glissants</h3>
+          <p>
+            Trois exports suffisent&nbsp;: la balance âgée du logiciel
+            comptable, une ligne par facture avec sa date d’échéance et sa date
+            de règlement&nbsp;; l’export CSV de la boîte partagée&nbsp;; la
+            table des commandes de l’ERP. Un tableau croisé qui compte les
+            lignes par mois donne la courbe en dix minutes. Prenez douze mois
+            glissants&nbsp;: une mesure faite en juillet dimensionne un flux qui
+            cassera en octobre.
+          </p>
+
+          <h3>Chronométrer vingt dossiers consécutifs</h3>
+          <p>
+            Vingt dossiers consécutifs, deux colonnes tenues par la personne
+            qui fait le travail&nbsp;: heure de début, heure de fin. Ni minuteur
+            imposé, ni observateur derrière l’épaule. Trois valeurs en
+            sortent&nbsp;: la moyenne, utile pour additionner. La médiane décrit
+            le cas courant. Le neuvième décile décrit le dossier anormal, celui
+            qui déclenche le coup de téléphone.
+          </p>
+          <p>
+            Dix dossiers suffisent à le montrer. Huit passent en
+            3&nbsp;minutes, deux s’enlisent 30&nbsp;minutes&nbsp;:
+            84&nbsp;minutes au total, 8,4&nbsp;minutes de moyenne,
+            3&nbsp;minutes de médiane. Automatisez parfaitement les huit cas
+            simples et vous retirez 24&nbsp;minutes sur 84, soit
+            28,6&nbsp;%. «&nbsp;80&nbsp;% des dossiers&nbsp;» ne veut pas dire
+            «&nbsp;80&nbsp;% du temps&nbsp;»&nbsp;: seule la seconde formulation
+            se convertit en heures.
+          </p>
+
+          <GuideTable
+            caption="Les quatre processus du cas construit, comptés sur douze mois et chronométrés sur trois semaines"
+            headers={[
+              "Processus",
+              "Cas par mois",
+              "Temps moyen",
+              "Neuvième décile",
+              "Heures par mois",
+            ]}
+            rows={[
+              [
+                "Commandes clients reçues par courriel",
+                "320",
+                "6\u00a0min",
+                "22\u00a0min",
+                "32\u00a0h",
+              ],
+              [
+                "Devis de dépannage",
+                "60",
+                "25\u00a0min",
+                "70\u00a0min",
+                "25\u00a0h",
+              ],
+              [
+                "Fiches d’intervention",
+                "140",
+                "9\u00a0min",
+                "26\u00a0min",
+                "21\u00a0h",
+              ],
+              [
+                "Relances de factures échues",
+                "90",
+                "8\u00a0min",
+                "15\u00a0min",
+                "12\u00a0h",
+              ],
+            ]}
+          />
 
           <p>
-            Pour vérifier ces conditions, commencez par suivre quelques dossiers
-            de bout en bout.
+            La colonne des heures se calcule avec le temps moyen&nbsp;: c’est la
+            seule des trois valeurs qui s’additionne. Une médiane multipliée par
+            un volume ne donne rien d’exploitable. Le neuvième décile, lui, sert
+            à dimensionner l’exception&nbsp;: sur les commandes, 22&nbsp;minutes
+            contre 6 en moyenne, près de quatre fois plus. C’est dans cet écart
+            que se logent les cas particuliers, ceux qu’un flux devra renvoyer
+            vers une personne.
           </p>
         </GuidePremiumSection>
 
         <GuidePremiumSection
-          id="carte-processus"
-          number="02"
-          label="Observation"
-          title="Dessinez le travail réel sur une page"
+          id="eliminer"
+          number="03"
+          label="Sélection"
+          readingTime="2 min"
+          title={"Quelles conditions éliminent un candidat avant tout calcul\u00a0?"}
         >
           <p>
-            Ne partez pas du logiciel que vous aimeriez acheter. Suivez plusieurs
-            dossiers jusqu’au bout et notez ce que les personnes font vraiment.
-            Une procédure écrite omet souvent le coup de téléphone, le fichier
-            temporaire ou la vérification qui sauve un cas incomplet.
+            Une grille de notation additionne gain, fréquence et complexité, et
+            laisse un gain élevé racheter une erreur irrattrapable. Les cinq
+            questions ci-dessous ne s’additionnent pas&nbsp;: une seule réponse
+            négative écarte le candidat, et chacune se tranche en moins d’une
+            demi-journée.
           </p>
+
+          <GuideTable
+            caption={"Cinq questions qui ne se compensent pas\u00a0: une seule réponse négative suffit à écarter"}
+            headers={[
+              "La question",
+              "Le test qui y répond",
+              "Ce qu’on fait si la réponse est non",
+            ]}
+            rows={[
+              [
+                "Deux personnes produisent-elles le même résultat sur les mêmes dossiers\u00a0?",
+                "Faire retraiter 10\u00a0dossiers déjà clos, séparément, par deux personnes, puis comparer les sorties",
+                "Écrire la règle et la faire valider avant de parler d’outil",
+              ],
+              [
+                "La règle a-t-elle tenu douze mois sans exception nouvelle\u00a0?",
+                "Relire 12\u00a0mois de messages qui ont modifié la procédure, et dater la dernière exception",
+                "Observer six semaines de plus, ou n’automatiser que la partie stable",
+              ],
+              [
+                "Une seule source fait-elle foi, et se lit-elle autrement qu’à l’écran\u00a0?",
+                "Demander un export ou une interface d’échange documentée, puis ouvrir soi-même les 20\u00a0premières lignes",
+                "Nettoyer les données, ou accepter le coût de retest d’un robot d’interface",
+              ],
+              [
+                "Une erreur se voit-elle le jour même et se répare-t-elle sans doublon\u00a0?",
+                "Provoquer un échec au milieu du flux, le rejouer, puis compter les sorties produites\u00a0: 1, jamais 2",
+                "Concevoir l’état d’attente et la reprise avant d’écrire la première action",
+              ],
+              [
+                "Deux noms sont-ils écrits, celui qui tient la règle et celui qui reçoit l’alerte\u00a0?",
+                "Ouvrir la fiche de décision et y chercher 2\u00a0prénoms",
+                "Nommer les deux, ou renoncer\u00a0: un flux sans propriétaire s’arrête sans témoin",
+              ],
+            ]}
+          />
 
           <p>
-            Le dossier{" "}
-            <a
-              href="https://www.francenum.gouv.fr/guides-et-conseils/pilotage-de-lentreprise/numerisation-des-processus/lautomatisation-une-solution"
-              target="_blank"
-              rel="noreferrer"
-            >
-              France Num consacré à l’automatisation
-            </a>{" "}
-            propose de quantifier la fréquence, la durée, la complexité et
-            l’impact d’une erreur. La carte ci-dessous ajoute les exceptions,
-            les responsabilités et la reprise. Ces éléments montrent si le
-            premier essai restera contrôlable.
+            Reprenons les quatre lignes du cas. Les commandes échouent à la
+            première&nbsp;: sur dix commandes rejouées séparément, le comptable
+            et le magasinier retiennent une référence différente trois fois,
+            parce que quarante clients envoient quarante mises en page. Les
+            devis échouent à la deuxième&nbsp;: la remise dépend de la marge et
+            de l’historique commercial, règle qui a bougé deux fois dans
+            l’année. Les fiches d’intervention échouent à la troisième&nbsp;:
+            l’ERP n’expose aucune interface documentée. Restent les relances de
+            factures échues, dernières au classement des heures et seules à
+            passer les cinq questions.
           </p>
 
-          <FormulaBox>
-            {[
-              "CARTE D’UN PROCESSUS — UNE PAGE",
-              "",
-              "Déclencheur : quel événement lance le travail ?",
-              "Résultat attendu : qu’est-ce qui prouve qu’il est terminé ?",
-              "Volume : combien de cas sur une période représentative ?",
-              "Temps actif : combien de minutes réellement travaillées par cas ?",
-              "Étapes : qui fait quoi, dans quel outil et dans quel ordre ?",
-              "Données : quelle source fait foi pour chaque information ?",
-              "Exceptions : quels cas quittent le chemin normal ?",
-              "Erreur : comment est-elle détectée et quelle est sa conséquence ?",
-              "Reprise : comment poursuivre à la main et éviter un doublon ?",
-              "Responsable : qui modifie la règle et qui reçoit l’alerte ?",
-              "Mesure après : quel indicateur sera comparé avant et après ?",
-            ].join("\n")}
-          </FormulaBox>
-
-          <h3>Suivez des cas, pas seulement une moyenne</h3>
-          <p>
-            <strong>Exemple fictif :</strong> huit demandes complètes prennent
-            trois minutes chacune et deux demandes ambiguës prennent trente
-            minutes chacune. Le travail total représente 84 minutes. Même si
-            les huit cas simples sont entièrement automatisés, seules 24 minutes
-            deviennent techniquement retirables, soit 28,6 % du temps. « 80 %
-            des dossiers » ne veut donc pas dire « 80 % du temps ». Mesurez
-            séparément le chemin normal, les exceptions et le contrôle restant.
-          </p>
-
-          <InfoBox variant="emerald" title="Supprimez avant d’automatiser">
+          <InfoBox
+            variant="blue"
+            title="Écarter un candidat ne veut pas dire ne rien faire"
+          >
             <p>
-              Retirez une validation sans utilité, choisissez une seule source
-              pour chaque donnée et indiquez clairement quels champs sont
-              indispensables. Mesurez à nouveau. Si le problème disparaît, ne
-              créez pas un système à maintenir pour reproduire l’ancienne
-              procédure.
+              Sur les devis, le logiciel peut préparer le document, chercher
+              les prix et signaler que la remise dépasse le seuil. Il n’accorde
+              pas la remise&nbsp;: la frontière passe entre préparer une
+              décision et la prendre.
+            </p>
+          </InfoBox>
+
+          <GuidePremiumMemo
+            eyebrow="Sept réponses au même processus"
+            title="L’automatisation n’est que la quatrième de la liste"
+          >
+            <ul>
+              <li>
+                <strong>Supprimer l’étape.</strong> Une validation que personne
+                ne lit, une double saisie née d’un ancien logiciel.
+              </li>
+              <li>
+                <strong>Activer une fonction déjà payée.</strong> Le module de
+                relance de votre logiciel comptable existe peut-être déjà.
+              </li>
+              <li>
+                <strong>Brancher une interface d’échange documentée.</strong>{" "}
+                Moins de pièces à surveiller qu’un flux, quand elle existe.
+              </li>
+              <li>
+                <strong>Monter un flux sans code.</strong> Le bon choix pour un
+                premier essai&nbsp;: il se démonte en une heure.
+              </li>
+              <li>
+                <strong>Piloter un écran par un robot d’interface.</strong>{" "}
+                Quand aucune interface n’existe, avec son coût de retest.
+              </li>
+              <li>
+                <strong>Développer.</strong> Quand plusieurs équipes, plusieurs
+                règles et plusieurs logiciels sont en jeu durablement.
+              </li>
+              <li>
+                <strong>Garder la décision humaine.</strong> Une réponse
+                complète, pas un échec.
+              </li>
+            </ul>
+          </GuidePremiumMemo>
+        </GuidePremiumSection>
+
+        <GuidePremiumSection
+          id="facture"
+          number="04"
+          label="Coût de la plateforme"
+          readingTime="3 min"
+          title="Ce que votre plateforme facture derrière chaque dossier"
+        >
+          <p>
+            Le budget dérape sur un décalage d’unité&nbsp;: vous comptez des
+            dossiers, la plateforme compte des actions. Un dossier qui traverse
+            six étapes consomme six unités. Les deux familles d’outils ne
+            comptent pas la même chose, ce qui rend deux devis incomparables
+            tant qu’on n’a pas lu leur règle de comptage.
+          </p>
+
+          <GuideTable
+            caption="Deux façons de facturer le même flux, relevées le 28 août 2026"
+            headers={[
+              "Ce qui est compté",
+              "Zapier, plan Professional",
+              "Power Automate compris dans Microsoft\u00a0365",
+            ]}
+            rows={[
+              [
+                "L’unité comptée",
+                "Une action qui réussit. Le déclencheur, les filtres et les chemins ne comptent pas, les actions en erreur non plus.",
+                "Une requête vers un connecteur. Les actions en échec comptent, les nouvelles tentatives et la pagination aussi.",
+              ],
+              [
+                "Ce qui est inclus",
+                "750\u00a0tâches par mois pour 19,99\u00a0$, 2\u00a0000 pour 49\u00a0$, 5\u00a0000 pour 89\u00a0$, 100\u00a0000 pour 489\u00a0$, en facturation annuelle",
+                "6\u00a0000\u00a0requêtes par utilisateur et par 24\u00a0heures, comprises dans la licence",
+              ],
+              [
+                "Ce qui se passe au-delà",
+                "Vous changez de palier et la facture suit",
+                "Le flux est ralenti, et le quota ne se reporte pas au lendemain",
+              ],
+              [
+                "Le piège",
+                "Rejouer une exécution entière refait tourner les étapes déjà réussies, et les recompte",
+                "Un flux automatisé consomme le quota de son propriétaire, pas celui de la personne qui le déclenche",
+              ],
+            ]}
+          />
+
+          <p>
+            Appliquons la grille au flux de relance. Il compte un déclencheur,
+            deux filtres et six actions. Sur 90&nbsp;relances, cela fait
+            540&nbsp;actions réussies par mois chez Zapier, sous le premier
+            palier de 750&nbsp;tâches affiché 19,99&nbsp;$ en facturation
+            annuelle. Côté Microsoft, comptez les neuf étapes&nbsp;:
+            810&nbsp;requêtes par mois, très loin des 6&nbsp;000 que donne une
+            licence Microsoft&nbsp;365. Ici l’abonnement du flux retenu vaut
+            0&nbsp;€ de plus.
+          </p>
+
+          <p>
+            Ce n’est pas toujours le cas, et le franchissement est brutal. Une
+            boucle qui parcourt les 320&nbsp;commandes du mois avec quatre
+            actions à l’intérieur consomme 1&nbsp;280&nbsp;requêtes à chaque
+            exécution&nbsp;; quatre passages par jour font
+            5&nbsp;120&nbsp;requêtes, et les nouvelles tentatives d’un
+            connecteur en défaut finissent le quota. Une boucle écrite ainsi
+            est d’abord un défaut à corriger&nbsp;: la filtrer sur les commandes
+            du jour ramène le compteur à quelques dizaines de requêtes. Si le
+            volume est réellement là, il faut une licence Power Automate
+            Premium, qui monte à 40&nbsp;000&nbsp;requêtes par utilisateur et
+            par jour, une licence Process à 250&nbsp;000&nbsp;requêtes par flux,
+            ou un module de capacité à 50&nbsp;000&nbsp;requêtes.
+          </p>
+
+          <p>
+            Une précision que donne la page Microsoft&nbsp;: toutes les
+            organisations sont encore dans une période de transition, où les
+            limites appliquées sont plus larges que les limites officielles
+            ci-dessus. Dimensionnez sur les officielles, comme l’éditeur le
+            recommande&nbsp;: un flux calibré sur la tolérance du moment tombera
+            le jour où elle disparaîtra. Cette section, et l’incident du quota
+            en section&nbsp;07, décrivent donc le régime officiel, pas ce qui se
+            produit dans un abonnement aujourd’hui.
+          </p>
+
+          <InfoBox
+            variant="blue"
+            title="Prix affiché, prix contractuel et coût complet sont trois choses"
+          >
+            <p>
+              Les montants ci-dessus sont un échantillon daté d’un seul éditeur,
+              en dollars, hors taxes locales&nbsp;: ils montrent la mécanique
+              des paliers, pas un prix de marché. Relevez la grille applicable à
+              votre pays le jour où vous décidez.
             </p>
           </InfoBox>
         </GuidePremiumSection>
 
         <GuidePremiumSection
-          id="portes"
-          number="03"
-          label="Sélection"
-          title="Écartez un candidat dès qu’une condition essentielle manque"
+          id="decompte"
+          number="05"
+          label="Décompte"
+          readingTime="4 min"
+          title="Le décompte sur douze mois, poste par poste"
         >
           <p>
-            Un tableau de notation additionne souvent gain, fréquence et
-            complexité. Il aide à comparer, mais un gain financier élevé peut y
-            compenser une erreur impossible à reprendre. Commencez plutôt par
-            cinq questions auxquelles la réponse doit être « oui ». Le calcul
-            économique vient seulement après.
+            Le temps retiré d’une tâche automatisée n’est pas de l’argent
+            gagné&nbsp;: une partie des cas reste manuelle, une partie contourne
+            l’outil, et les minutes libérées sont parfois trop éparpillées pour
+            servir. Quatre quantités se suivent, chacune retirant à la
+            précédente.
+          </p>
+
+          <FormulaBox>
+            {[
+              "Heures actuelles   = cas par mois × minutes par cas ÷ 60 × mois",
+              "Heures retirables  = heures actuelles × part techniquement retirable",
+              "Heures retirées    = heures retirables × adoption moyenne",
+              "Heures réaffectées = heures retirées × part réellement réemployée",
+              "",
+              "Valeur de capacité = heures réaffectées × coût horaire chargé",
+              "Coût renseigné     = temps interne × coût horaire + abonnements × mois",
+              "Écart              = valeur de capacité − coût renseigné",
+            ].join("\n")}
+          </FormulaBox>
+
+          <h3>Une seule des six hypothèses vient d’une source publique</h3>
+          <p>
+            Un seul nombre de ce décompte vient d’une source publique. L’INSEE
+            publie un coût horaire du travail de 44,70&nbsp;€ pour 2025, sur
+            l’ensemble des secteurs marchands, dans les entreprises de dix
+            salariés ou plus, apprentis inclus. Si vous êtes plus petit,
+            remplacez-le par le vôtre, que votre expert-comptable sort de la
+            déclaration sociale nominative en quelques minutes.
+          </p>
+          <p>
+            Les cinq autres hypothèses ne sortent d’aucune source&nbsp;:
+            65&nbsp;% de temps techniquement retirable, 85&nbsp;% d’adoption
+            moyenne sur douze mois, 50&nbsp;% des heures libérées confiées à un
+            travail identifié, quatre jours de sept heures pour construire le
+            flux, deux heures de suivi par mois. Contestez-les une par une.
+            L’adoption se saisit en moyenne sur toute la période, jamais en
+            cible de fin&nbsp;: en cible de fin, elle gonfle le résultat sans
+            que rien ne le signale.
+          </p>
+          <p>
+            Cette liste couvre le décompte à douze mois, pas le guide entier. La
+            section&nbsp;06 en ajoutera quatre autres, aussi peu sourcées, et ce
+            sont elles qui renversent le verdict.
           </p>
 
           <GuideTable
-            caption="Les cinq portes non compensatoires"
-            headers={["Porte", "Ce qui permet de l’ouvrir", "Si elle reste fermée"]}
+            caption={"Le décompte du flux de relance sur douze mois, au coût horaire de 44,70\u00a0€"}
+            headers={["Poste", "Calcul", "Heures", "Euros"]}
             rows={[
               [
-                "Résultat mesurable",
-                "Deux personnes reconnaissent le même résultat correct",
-                "Définir le résultat et l’indicateur avant tout outil",
+                "Temps consommé aujourd’hui",
+                "90 × 8\u00a0min × 12\u00a0mois",
+                "144\u00a0h",
+                "—",
               ],
               [
-                "Règles assez stables",
-                "Le chemin normal et les exceptions fréquentes sont décrits",
-                "Observer, simplifier ou garder la décision humaine",
+                "Part techniquement retirable",
+                "144 × 65\u00a0%",
+                "93,60\u00a0h",
+                "—",
               ],
               [
-                "Données fiables et autorisées",
-                "Une source fait foi ; les droits d’accès sont compris",
-                "Nettoyer les données et vérifier les accès",
+                "Après adoption moyenne",
+                "93,60 × 85\u00a0%",
+                "79,56\u00a0h",
+                "—",
               ],
               [
-                "Échec récupérable",
-                "Une alerte arrive ; le dossier peut reprendre sans doublon",
-                "Concevoir la reprise avant le pilote",
+                "Réaffecté à un travail identifié",
+                "79,56 × 50\u00a0%",
+                "39,78\u00a0h",
+                "1\u00a0778,17\u00a0€",
               ],
               [
-                "Responsable nommé",
-                "Une personne tient la règle, une autre traite les alertes",
-                "Nommer les rôles et la validation humaine nécessaire",
+                "Construction du flux, en interne",
+                "4\u00a0jours de 7\u00a0heures",
+                "28\u00a0h",
+                "1\u00a0251,60\u00a0€",
+              ],
+              [
+                "Suivi et corrections",
+                "2\u00a0h × 12\u00a0mois",
+                "24\u00a0h",
+                "1\u00a0072,80\u00a0€",
+              ],
+              [
+                "Abonnement de la plateforme",
+                "Compris dans Microsoft\u00a0365, sous le quota",
+                "—",
+                "0\u00a0€",
+              ],
+              [
+                "Écart sur douze mois",
+                "39,78\u00a0h rendues contre 52\u00a0h dépensées",
+                "−12,22\u00a0h",
+                "−546,23\u00a0€",
               ],
             ]}
           />
 
+          <h3>Les trois leviers qui déplacent vraiment l’écart</h3>
           <p>
-            Passer les cinq portes ne prouve pas que le projet est rentable.
-            Cela indique seulement qu’un chiffrage et un essai restent
-            raisonnables. Le candidat peut encore perdre face à une fonction
-            déjà payée ou à une simple amélioration de procédure.
+            Quand tous les postes sont du temps interne, le calcul se réduit à
+            une comparaison d’heures&nbsp;: 39,78&nbsp;heures rendues contre
+            52&nbsp;heures dépensées. Le coût horaire multiplie les deux côtés à
+            l’identique&nbsp;— il ne change jamais le signe du résultat, il n’en
+            change que l’ampleur. Discuter du taux en comité ne déplacera rien.
+          </p>
+          <p>
+            Le volume d’abord&nbsp;: il faudrait 118&nbsp;relances par mois,
+            soit 28 de plus qu’aujourd’hui, pour que le flux s’équilibre sur
+            douze mois. Le suivi ensuite&nbsp;: ramenez les deux heures
+            mensuelles à une seule et l’écart remonte de −546,23&nbsp;€ à
+            −9,83&nbsp;€. Le flux ne se paie toujours pas, il arrête simplement
+            de coûter.
+          </p>
+          <p>
+            L’horizon enfin, et c’est le levier que vous choisissez. Douze mois
+            est une durée de comparaison, pas une propriété du flux&nbsp;: les
+            heures rendues s’accumulent, la construction ne se paie qu’une fois.
+            Aux mêmes hypothèses, le flux rend 79,56&nbsp;heures en vingt-quatre
+            mois contre 76&nbsp;dépensées, soit <strong>+159&nbsp;€</strong>,
+            puis 119,34&nbsp;heures contre 100 en trente-six mois, soit{" "}
+            <strong>+864&nbsp;€</strong>. L’équilibre tombe à
+            21,3&nbsp;mois&nbsp;— le délai que le calculateur ci-dessous affiche
+            déjà. Le «&nbsp;−546&nbsp;€&nbsp;» du bandeau est donc un verdict
+            d’horizon&nbsp;: ce flux ne se rembourse pas en un an, ce qui ne
+            veut pas dire jamais. Calez la période sur la durée pendant laquelle
+            la règle du processus a des chances de tenir.
           </p>
 
-          <GuidePremiumCase
-            initial="E"
-            eyebrow="Contre-exemple fictif"
-            title="Automatiser une remise exceptionnelle n’est pas un bon départ"
+          <InfoBox
+            variant="emerald"
+            title="Ce que notre propre grille dit contre nous"
           >
             <p>
-              Le calcul du temps semble favorable, mais la règle dépend de la
-              marge, de la relation commerciale et d’engagements déjà pris.
-              Gardez la décision humaine. Le logiciel peut préparer les données
-              et signaler les limites, sans accorder la remise.
+              Un flux qui rend 39,78&nbsp;heures sur douze mois ne justifie pas
+              le premier palier de notre grille d’outils internes, affiché{" "}
+              <Link href="/tarifs">8&nbsp;000&nbsp;€ HT</Link>&nbsp;— et
+              allonger l’horizon n’y change rien, puisqu’il dégage 864&nbsp;€
+              sur trois ans. Il se monte en interne, sur l’abonnement déjà payé.
+              Le développement se défend quand le besoin dépasse durablement un
+              service et un logiciel, et notre grille impose alors un cadrage
+              payé au-delà de 8&nbsp;000&nbsp;€ HT de projet&nbsp;:
+              1&nbsp;500&nbsp;€ HT et deux jours, déduits si la phase suivante
+              est lancée. Ce sont des repères publics et indicatifs&nbsp;; le
+              devis signé fixe le prix ferme.
             </p>
-          </GuidePremiumCase>
+          </InfoBox>
 
           <p>
-            Si les cinq conditions sont réunies, le choix reste ouvert : la
-            réponse la plus simple n’est pas toujours un développement.
+            Le calculateur ci-dessous applique ces formules et s’ouvre sur le
+            dossier déjà résolu, suivi compris&nbsp;— deux heures par mois, soit
+            89,40&nbsp;€. Remplacez chaque champ par vos mesures.
+          </p>
+
+          <ProcessPriorityTool />
+
+          <p>
+            Une limite avant de vous fier à son verdict&nbsp;: cet outil ne
+            compte que des heures. L’argent encaissé plus tôt, objet de la
+            section suivante, n’y entre pas&nbsp;— d’où le «&nbsp;à simplifier,
+            reporter ou traiter autrement&nbsp;» qu’il affiche à douze mois,
+            quand la section&nbsp;06 remonte le même flux à +768&nbsp;€.
           </p>
         </GuidePremiumSection>
 
         <GuidePremiumSection
-          id="options"
-          number="04"
-          label="Comparaison"
-          title="Comparez sept réponses avant de demander un développement"
+          id="tresorerie"
+          number="06"
+          label="Autre mesure"
+          readingTime="2 min"
+          title={"Quand le temps ne paie pas, que reste-t-il à mesurer\u00a0?"}
         >
           <p>
-            Comparez toutes les options sur le même résultat, le même volume, la
-            même durée et les mêmes cas d’erreur. Les noms de technologie ne
-            constituent pas un besoin : ils désignent seulement des moyens
-            différents de traiter un processus déjà compris.
+            Un écart de −546&nbsp;€ à douze mois ne clôt pas le dossier&nbsp;:
+            il dit que ce flux ne se rembourse pas en heures dans l’année. Sur
+            une relance de factures, une seconde grandeur se mesure et n’oblige
+            pas à attendre&nbsp;— l’argent qui rentre plus tôt.
           </p>
-
-          <GuideTable
-            caption="Sept réponses au même processus métier"
-            headers={["Réponse", "Quand elle est raisonnable", "Question décisive"]}
-            rows={[
-              [
-                "Simplifier ou supprimer",
-                "Une étape, une validation ou une double saisie n’apporte rien",
-                "Quel contrôle utile disparaîtrait réellement ?",
-              ],
-              [
-                "Activer une fonction existante",
-                "Le logiciel actuel couvre le résultat sans contournement lourd",
-                "La fonction, les droits et l’export sont-ils déjà inclus ?",
-              ],
-              [
-                "Utiliser un connecteur ou une API (interface d’échange)",
-                "Les logiciels proposent une interface documentée pour échanger les données",
-                "Comment sont gérés l’authentification, un rejet, un doublon, une reprise et les limites de volume ?",
-              ],
-              [
-                "Construire un flux sans code (no-code)",
-                "Plusieurs actions et connecteurs doivent être enchaînés sans application complète",
-                "Qui possède, documente et surveille le flux si la licence ou un connecteur change ?",
-              ],
-              [
-                "Utiliser un robot d’interface",
-                "Aucune API exploitable n’existe et l’écran ainsi que les règles restent assez stables",
-                "Quels éléments d’écran, sessions et fenêtres faut-il retester après une mise à jour ?",
-              ],
-              [
-                "Logiciel sur mesure",
-                "Les règles, rôles ou écrans propres à l’entreprise créent une valeur durable",
-                "Le code, les données, les accès et la maintenance seront-ils récupérables ?",
-              ],
-              [
-                "Intelligence artificielle avec contrôle humain",
-                "Un texte, une image ou un document varie trop pour une règle fixe",
-                "Sur quels cas mesure-t-on les erreurs et quand une personne décide-t-elle ?",
-              ],
-            ]}
-          />
-
-          <h3>Un connecteur n’efface ni les limites ni la surveillance</h3>
           <p>
-            Les documentations d’éditeur montrent que les flux ont des limites
-            de volume, de durée d’exécution et de conservation des historiques.
-            Certains dépendent aussi du compte d’un utilisateur désigné comme
-            propriétaire. Par exemple,{" "}
-            <a
-              href="https://learn.microsoft.com/en-us/power-automate/limits-and-config"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Microsoft documente ces limites pour Power Automate
-            </a>
-            . Elles évoluent selon le produit et la licence : vérifiez la
-            documentation applicable au moment du choix, puis ajoutez les
-            alertes et la maintenance au coût.
+            Quatre nombres entrent ici sans venir d’une source&nbsp;: la facture
+            moyenne de 1&nbsp;850&nbsp;€ TTC, les quatre jours gagnés sur le
+            retard et les deux taux essayés plus bas. Ils sont choisis pour
+            l’exemple. Seul le retard de paiement moyen est publié.
+          </p>
+          <p>
+            Le rapport 2024 de l’Observatoire des délais de paiement, publié
+            par la Banque de France en juillet&nbsp;2025, mesure un retard de
+            paiement moyen de 13,6&nbsp;jours au quatrième trimestre&nbsp;2024
+            en France, contre 13,4&nbsp;jours en moyenne européenne, en hausse
+            d’environ un jour sur un an. Une relance partie le jour de
+            l’échéance agit exactement sur ce retard.
+          </p>
+          <p>
+            Trois lignes suffisent. Les 90&nbsp;factures relancées
+            chaque mois pèsent 1&nbsp;850&nbsp;€ TTC en moyenne, soit
+            166&nbsp;500&nbsp;€ par mois et 1&nbsp;998&nbsp;000&nbsp;€ sur
+            l’année. Divisé par 365, chaque jour de décalage immobilise
+            5&nbsp;474&nbsp;€. Gagner quatre jours sur le retard moyen libère
+            donc <strong>21&nbsp;896&nbsp;€</strong> de trésorerie, une fois.
+          </p>
+          <p>
+            Ce montant n’est pas un profit&nbsp;: c’est un besoin de financement
+            qui disparaît, et sa valeur annuelle vaut le taux auquel vous
+            financez ce besoin&nbsp;— découvert autorisé ou affacturage, écrit
+            sur votre convention de compte. À 6&nbsp;%, elle vaut
+            1&nbsp;314&nbsp;€ par an et l’écart passe de −546&nbsp;€ à
+            +768&nbsp;€. À 3&nbsp;%, elle vaut 657&nbsp;€ et l’écart tombe à
+            +111&nbsp;€. Si votre trésorerie dort sur un compte non rémunéré,
+            elle ne vaut rien et l’écart reste à −546&nbsp;€. La section&nbsp;07
+            chiffre ses incidents à 6&nbsp;% avec la même formule&nbsp;: montant
+            décalé × taux annuel × jours de retard ÷ 365.
           </p>
 
-          <h3>Un robot d’interface dépend de l’écran qu’il pilote</h3>
+          <h3>Où lire les quatre jours dans la balance âgée</h3>
           <p>
-            Un robot d’interface peut cliquer, lire ou renseigner des éléments
-            d’un écran lorsqu’aucune API utilisable n’est disponible. Dans la{" "}
-            <a
-              href="https://learn.microsoft.com/en-us/power-automate/desktop-flows/ui-elements"
-              target="_blank"
-              rel="noreferrer"
-            >
-              documentation Microsoft sur l’automatisation d’interface
-            </a>
-            , ces éléments sont repérés par des repères techniques appelés
-            sélecteurs. Testez leur résistance aux mises à jour, aux fenêtres
-            inattendues, aux sessions expirées et aux changements de droits.
-            Prévoyez aussi le traitement manuel quand le robot ne retrouve plus
-            l’élément attendu.
+            Le retard moyen se lit dans la balance âgée&nbsp;: pour chaque
+            facture encaissée, le nombre de jours entre l’échéance et le
+            règlement, pondéré par les montants. Le comptable sort les deux
+            extractions&nbsp;— douze mois avant le flux, six mois après&nbsp;—
+            en une heure. Si l’écart n’apparaît pas, le flux ne vaut que ses
+            heures, et la décision honnête est de le réduire à la préparation de
+            la liste, ou de l’arrêter.
           </p>
 
-          <h3>L’IA traite une incertitude ; elle ne la fait pas disparaître</h3>
-          <p>
-            Pour classer un message ou extraire des champs d’un document,
-            constituez un jeu de cas représentatif, écrivez la réponse correcte
-            et mesurez les erreurs avant le pilote. Le{" "}
-            <a
-              href="https://www.nist.gov/itl/ai-risk-management-framework"
-              target="_blank"
-              rel="noreferrer"
-            >
-              cadre volontaire américain sur les risques de l’intelligence
-              artificielle
-            </a>{" "}
-            insiste sur les tests et la surveillance dans la durée. Si le
-            résultat sert à fixer un prix, à écarter une personne ou à
-            déclencher une action difficile à annuler, ajoutez une validation
-            humaine proportionnée.
-          </p>
-
-          <p>
-            Quand une option paraît adaptée, il reste à vérifier si les heures
-            réellement réaffectées couvrent tous ses coûts.
-          </p>
+          <InfoBox
+            variant="amber"
+            title="Deux gains qui s’additionnent, un qui fait doublon"
+          >
+            <p>
+              Le temps rendu et l’argent encaissé plus tôt sont de nature
+              différente&nbsp;: ils s’additionnent. Le temps rendu et une
+              dépense évitée, non. Si la relance évite un intérimaire, comptez
+              l’intérimaire ou les heures, jamais les deux&nbsp;: ce double
+              compte fait passer un décompte du rouge au vert sans qu’une heure
+              ait bougé.
+            </p>
+          </InfoBox>
         </GuidePremiumSection>
 
         <GuidePremiumSection
-          id="calcul"
-          number="05"
-          label="Économie"
-          title="Calculez d’abord les heures retirées, puis les heures réaffectées"
+          id="incidents"
+          number="07"
+          label="Ce qui rate"
+          readingTime="4 min"
+          title="Ce qui rate, et ce que ça coûte"
         >
           <p>
-            Le temps retiré d’une tâche n’est pas automatiquement de l’argent
-            gagné. Une partie des cas peut rester manuelle. Les équipes peuvent
-            contourner l’outil. Les minutes libérées peuvent être trop
-            fragmentées pour éviter une dépense ou accomplir un autre travail.
-            Séparez donc quatre quantités.
+            Les trois incidents ci-dessous sont construits sur le même dossier,
+            à partir de mécanismes documentés par les éditeurs&nbsp;— ce ne sont
+            pas des dossiers clients. Leur point commun n’est pas un
+            hasard&nbsp;: ils coûtent peu, conséquence directe du choix fait en
+            section&nbsp;03.
+          </p>
+
+          <FormulaBox>
+            {[
+              "UNITÉS TENUES DANS TOUTE CETTE SECTION",
+              "",
+              "Une relance = une facture de 1\u00a0850\u00a0€ TTC, trois par jour.",
+              "Coût de financement = montant décalé × taux × jours ÷ 365, à 6\u00a0%.",
+              "",
+              "Un envoi suspendu N jours ne sort pas avec N jours de retard\u00a0:",
+              "tout sort à la reprise, du plus ancien à N jours au dernier à un",
+              "jour, soit (N + 1) ÷ 2 jours de retard en moyenne.",
+            ].join("\n")}
+          </FormulaBox>
+
+          <h3>
+            Le quota épuisé un mardi&nbsp;: 5&nbsp;550&nbsp;€ décalés d’un jour
+          </h3>
+          <p>
+            Un second flux a été branché sur la même licence&nbsp;: la boucle
+            chiffrée en section&nbsp;04, à elle seule 5&nbsp;120&nbsp;requêtes
+            par jour. Les nouvelles tentatives d’un connecteur en défaut
+            achèvent les 6&nbsp;000 de la licence. Le flux de relance, exécuté
+            ensuite, n’est plus servi, et le quota ne se reporte pas au
+            lendemain. Trois relances&nbsp;— le volume d’une journée&nbsp;—
+            partent avec vingt-quatre heures de retard, soit
+            5&nbsp;550&nbsp;€ décalés d’un jour. Chiffrez ce décalage au lieu de
+            l’invoquer&nbsp;: 5&nbsp;550 × 6&nbsp;% ÷ 365 vaut{" "}
+            <strong>0,91&nbsp;€</strong>. Le coût réel, c’est l’heure passée à
+            comprendre&nbsp;— 44,70&nbsp;€&nbsp;— et le fait que rien n’a
+            planté.
+          </p>
+          <p>
+            Il décrit le régime officiel des quotas, celui de l’après-période de
+            transition rappelée en section&nbsp;04&nbsp;: tant qu’elle dure, les
+            limites appliquées sont plus larges et les deux flux ne se disputent
+            pas ce quota. C’est un incident à préparer, pas un incident
+            d’aujourd’hui.
+          </p>
+
+          <h3>
+            Le rejeu qui écrit deux fois&nbsp;: 23&nbsp;relances en double,
+            199&nbsp;€ mesurables
+          </h3>
+          <p>
+            Une panne de connecteur laisse 23&nbsp;exécutions en erreur, et
+            l’administrateur les rejoue en masse. Chez Zapier, rejouer une
+            exécution entière refait tourner les étapes déjà réussies&nbsp;— la
+            documentation précise qu’elles sont alors recomptées. Vingt-trois
+            clients reçoivent une seconde relance pour une facture réglée la
+            veille. Deux heures du comptable, soit 89,40&nbsp;€. La campagne est
+            ensuite suspendue quinze jours par prudence&nbsp;:
+            45&nbsp;relances s’accumulent, soit 83&nbsp;250&nbsp;€, et repartent
+            à la reprise avec huit jours de retard en moyenne, ce qui vaut
+            109,48&nbsp;€. Total mesurable&nbsp;:{" "}
+            <strong>198,88&nbsp;€</strong>. Ce qui ne se mesure pas, c’est
+            l’appel du client qui demande s’il doit payer deux fois.
+          </p>
+
+          <h3>
+            Le propriétaire du flux change de poste&nbsp;: 48&nbsp;relances
+            jamais parties
+          </h3>
+          <p>
+            Un flux automatisé ou planifié utilise toujours les limites de son
+            propriétaire&nbsp;: il est adossé à un compte, pas à un service.
+            Nadia change de poste, son compte est désactivé, et le flux s’arrête
+            sans alerte&nbsp;— la surveillance ne regardait que les exécutions
+            en erreur, or il n’y en a plus aucune. Seize jours passent avant
+            qu’un client s’étonne&nbsp;: 48&nbsp;relances non parties, soit
+            88&nbsp;800&nbsp;€ qui repartent ensemble avec 8,5&nbsp;jours de
+            retard en moyenne, ce qui vaut 124,08&nbsp;€ de financement. Six
+            heures pour republier le flux sous un compte de service, soit
+            268,20&nbsp;€. Le montant est petit&nbsp;; les seize jours sans
+            témoin ne le sont pas.
+          </p>
+
+          <p>
+            Comparez avec les 320&nbsp;commandes écartées en section&nbsp;03.
+            Là, une erreur se lit en marchandise livrée deux fois, en avoir et
+            en stock à reprendre. Un premier essai bien choisi est un essai dont
+            les incidents sont bon marché&nbsp;: c’est la vraie raison de
+            commencer par les relances.
+          </p>
+
+          <InfoBox
+            variant="blue"
+            title={"L’analyse d’impact se tranche avant la mise en œuvre"}
+          >
+            <p>
+              Si le flux traite des données personnelles, posez la question au
+              responsable du traitement et au délégué à la protection des
+              données la semaine du chronométrage&nbsp;: automatiser ne permet
+              ni de conclure qu’une analyse est requise, ni de l’écarter, et la
+              question ne se rattrape pas après la mise en œuvre. La FAQ en
+              donne le critère exact.
+            </p>
+          </InfoBox>
+
+          <GuidePremiumMemo
+            eyebrow="Les six situations à provoquer avant la mise en service"
+            title="Un test qui n’a pas échoué en répétition échouera en production"
+          >
+            <ul>
+              <li>
+                <strong>Le même dossier reçu deux fois.</strong> La seconde
+                réception ne crée pas de doublon, et la trace le montre.
+              </li>
+              <li>
+                <strong>Un champ obligatoire absent.</strong> Le dossier attend
+                dans un état visible, avec un message clair.
+              </li>
+              <li>
+                <strong>Un accès expiré.</strong> L’action s’arrête et la bonne
+                personne reçoit la cause.
+              </li>
+              <li>
+                <strong>Un échec après une action partielle.</strong> La reprise
+                n’envoie rien une seconde fois.
+              </li>
+              <li>
+                <strong>Une absence d’exécution.</strong> Le silence déclenche
+                une alerte en vingt-quatre heures.
+              </li>
+              <li>
+                <strong>Le retour au manuel.</strong> L’équipe poursuit sans
+                mélanger les dossiers.
+              </li>
+            </ul>
+          </GuidePremiumMemo>
+        </GuidePremiumSection>
+
+        <GuidePremiumSection
+          id="decision"
+          number="08"
+          label="Décision"
+          readingTime="2 min"
+          title={"Faut-il lancer, reporter ou renoncer\u00a0?"}
+        >
+          <p>
+            Quatre sorties sont légitimes, et une seule est un projet. Écrivez
+            celle que vous retenez, avec la mesure qui la révisera.
           </p>
 
           <ol>
             <li>
-              <strong>Heures actuelles :</strong> volume × minutes par cas sur
-              la période.
+              <strong>Lancer un essai borné.</strong> Volume limité, traitement
+              manuel maintenu, date de bilan fixée, et l’indicateur qui
+              tranchera écrit avant le premier cas.
             </li>
             <li>
-              <strong>Heures techniquement retirables :</strong> heures
-              actuelles × part du temps que la solution peut enlever.
+              <strong>Réduire avant d’automatiser.</strong> Retirer une
+              validation, désigner une source unique, activer une fonction déjà
+              payée, puis remesurer. Si le problème disparaît, il n’y a plus
+              rien à maintenir.
             </li>
             <li>
-              <strong>Heures réellement retirées :</strong> heures retirables ×
-              adoption moyenne sur toute la période.
+              <strong>Reporter et continuer de mesurer.</strong> Six semaines
+              d’observation coûtent moins qu’un flux réécrit deux fois.
             </li>
             <li>
-              <strong>Heures réaffectées :</strong> heures réellement retirées ×
-              part confiée à un travail utile identifié.
+              <strong>Renoncer.</strong> Le décompte reste négatif sur
+              l’horizon que vous vous donnez, aucune autre grandeur ne le
+              compense, et personne ne veut porter l’alerte. C’est une décision,
+              pas un échec.
             </li>
           </ol>
 
           <FormulaBox>
             {[
-              "Heures retirables = heures actuelles × part techniquement retirable",
-              "Heures retirées = heures retirables × adoption moyenne",
-              "Heures réaffectées = heures retirées × part affectée à un travail utile",
+              "FICHE DE DÉCISION\u00a0— UNE PAGE",
               "",
-              "Valeur de capacité = heures réaffectées × coût horaire chargé",
-              "",
-              "Coût renseigné = conception, intégration et tests",
-              "                  + temps interne",
-              "                  + autres coûts ponctuels déjà chiffrés",
-              "                  + coût mensuel × durée",
-              "",
-              "Retour sur investissement (ROI) du scénario de capacité",
-              "  = (valeur de capacité − coût renseigné) ÷ coût renseigné",
+              "Processus retenu et résultat qui prouve qu’il est terminé\u00a0:",
+              "Volume sur douze mois, moyenne, médiane et neuvième décile\u00a0:",
+              "Les cinq questions\u00a0: réponse et test qui la fonde\u00a0:",
+              "Réponse retenue parmi les sept, et celles écartées\u00a0:",
+              "Étapes du flux, unités facturées, heures réaffectées\u00a0:",
+              "Coût horaire retenu et sa source\u00a0:",
+              "Période comparée, et raison de cette durée\u00a0:",
+              "Écart sur cette période, et postes encore à confirmer\u00a0:",
+              "Autre grandeur mesurée, et qui tient la règle\u00a0:",
+              "Date du bilan et indicateur qui tranchera\u00a0:",
             ].join("\n")}
           </FormulaBox>
 
           <p>
-            La <strong>valeur de capacité</strong> n’est pas une économie de
-            trésorerie. Elle traduit des heures réaffectées au coût horaire
-            chargé retenu. Une dépense évitée exige la disparition réelle d’un
-            paiement — heures supplémentaires, prestation, recrutement ou
-            autre charge — et ne doit pas être ajoutée une seconde fois pour les
-            mêmes heures.
-          </p>
-
-          <InfoBox
-            variant="amber"
-            title="Contre-cas fictif : une cible d’adoption peut rendre le calcul positif à tort"
-          >
-            <p>
-              À 220 dossiers par mois, en conservant toutes les autres
-              hypothèses de l’exemple, une adoption moyenne de 80 % sur
-              vingt-quatre mois produit un écart de +736,26 €. Si l’adoption
-              atteint 40 % pendant six mois, puis 80 % pendant les dix-huit mois
-              suivants, sa moyenne tombe à 70 %. L’écart devient alors
-              −527,78 €. Saisissez une moyenne réaliste sur la période, pas la
-              cible attendue à la fin.
-            </p>
-          </InfoBox>
-
-          <InfoBox
-            variant="blue"
-            title="Un calcul négatif n’interdit pas un contrôle utile"
-          >
-            <p>
-              Un rappel rare peut rester justifié s’il réduit un risque de
-              non-respect d’une échéance ou facilite une vérification. Dans ce
-              cas, traitez-le comme une dépense de maîtrise du risque avec un
-              budget et un responsable ; ne transformez pas un dommage
-              hypothétique en gain certain pour forcer le ROI.
-            </p>
-          </InfoBox>
-
-          <p>
-            N’ajoutez la valeur des erreurs évitées, des ventes supplémentaires
-            ou d’un délai réduit que si vous avez mesuré la situation de départ
-            et pouvez expliquer ce qui a produit l’amélioration. Sinon,
-            conservez-les comme bénéfices possibles non chiffrés.
-          </p>
-
-          <p>
-            Le calculateur applique ces étapes. Il bloque la décision dès qu’une
-            des cinq portes reste fermée.
-          </p>
-
-          <ProcessPriorityTool />
-        </GuidePremiumSection>
-
-        <GuidePremiumSection
-          id="exemple"
-          number="06"
-          label="Démonstration"
-          title="Les heures retirées ne suffisent pas à justifier l’investissement"
-        >
-          <GuidePremiumCase
-            initial="120"
-            eyebrow="Scénario entièrement fictif — hypothèses arrondies"
-            title="Le traitement de 120 demandes d’intervention par mois"
-          >
-            <p>
-              Une coordinatrice reçoit une demande, vérifie les coordonnées et
-              la catégorie, crée la fiche de suivi puis prévient la bonne équipe.
-              Les demandes incomplètes ou ambiguës restent dans une file
-              manuelle. Le traitement moyen d’une demande prend neuf minutes.
-              Le chemin simple, entièrement fictif et sans donnée issue d’un
-              client, permettrait de retirer techniquement 70 % de ce temps.
-              L’adoption moyenne retenue est de 80 % sur vingt-quatre mois ; 60 %
-              des heures effectivement retirées seraient affectées à un travail
-              utile identifié. Le coût horaire chargé de l’exercice est de 38 €.
-            </p>
-          </GuidePremiumCase>
-
-          <p>
-            Le travail actuel représente{" "}
-            <strong>432 heures sur vingt-quatre mois</strong> :
-            120 × 9 ÷ 60 × 24. La solution pourrait en retirer 302,4 heures.
-            Après l’adoption moyenne, 241,92 heures sont réellement retirées de
-            la tâche. Au total, 145,152 heures sont réaffectées, soit une valeur
-            de capacité théorique de <strong>5 515,78 €</strong>.
-          </p>
-
-          <p>
-            Supposons 4 800 € de conception et de tests, 32 heures de travail
-            interne et 140 € par mois d’abonnement, de suivi et de maintenance.
-            Aucun autre coût ponctuel n’est renseigné dans cet exemple fictif ;
-            cela ne signifie pas qu’un projet réel n’en aurait pas. Le coût
-            renseigné atteint{" "}
-            <strong>9 376 € sur vingt-quatre mois</strong> :
-            4 800 + 32 × 38 + 140 × 24.
-          </p>
-
-          <GuideTable
-            caption="Résultat du scénario fictif sur vingt-quatre mois"
-            headers={["Élément", "Calcul", "Résultat"]}
-            rows={[
-              [
-                "Heures actuelles",
-                "120 × 9 ÷ 60 × 24",
-                "432 h",
-              ],
-              [
-                "Heures techniquement retirables",
-                "432 × 70 %",
-                "302,4 h",
-              ],
-              [
-                "Heures réellement retirées",
-                "302,4 × 80 %",
-                "241,92 h",
-              ],
-              [
-                "Heures réaffectées",
-                "241,92 × 60 %",
-                "145,152 h",
-              ],
-              [
-                "Valeur de capacité",
-                "145,152 × 38 €",
-                "5 515,78 €",
-              ],
-              [
-                "Coût renseigné",
-                "4 800 € + 32 × 38 € + 140 € × 24",
-                "9 376 €",
-              ],
-              [
-                "Écart",
-                "5 515,78 € − 9 376 €",
-                "− 3 860,22 €",
-              ],
-            ]}
-          />
-
-          <p>
-            Le ROI du scénario de capacité est d’environ{" "}
-            <strong>− 41,2 %</strong>. Ce ratio ne représente pas une économie
-            de trésorerie. Avec ces hypothèses, il faut tester une fonction déjà
-            payée, réduire le coût, élargir prudemment le processus ou ne pas
-            investir.
-          </p>
-
-          <p>
-            Si le volume change, vérifiez aussi l’abonnement, l’infrastructure
-            et la surveillance. Avec 600 dossiers par mois, l’écart devient
-            positif à coût mensuel inchangé, mais redevient négatif à partir
-            d’environ 899 € par mois dans ce modèle fictif.
-          </p>
-
-          <p>
-            Si votre propre scénario reste positif, ne généralisez pas encore :
-            vérifiez-le sur un volume limité en gardant le traitement manuel
-            disponible.
-          </p>
-        </GuidePremiumSection>
-
-        <GuidePremiumSection
-          id="pilote"
-          number="07"
-          label="Essai limité"
-          title="Préparez un pilote qui peut échouer sans arrêter l’activité"
-        >
-          <p>
-            Un pilote est un essai limité, pas un déploiement sur tous les
-            dossiers pendant une semaine. Limitez le volume, gardez le
-            traitement manuel disponible et écrivez les résultats attendus
-            avant de lancer le premier cas.
-          </p>
-
-          <GuideTable
-            caption="Jeu minimal de tests avant une mise en service"
-            headers={["Situation provoquée", "Résultat attendu", "Preuve à garder"]}
-            rows={[
-              [
-                "Cas normal",
-                "Une seule sortie correcte est produite",
-                "Identifiant d’entrée et résultat",
-              ],
-              [
-                "Champ obligatoire absent",
-                "Le dossier attend une correction compréhensible",
-                "Message et dossier inchangé",
-              ],
-              [
-                "Même dossier reçu deux fois",
-                "La seconde réception ne crée pas de doublon",
-                "Trace des deux événements",
-              ],
-              [
-                "Accès expiré ou refusé",
-                "L’action s’arrête et la bonne personne est alertée",
-                "Alerte reçue et cause",
-              ],
-              [
-                "Outil tiers indisponible",
-                "Le dossier attend ou rejoint la file manuelle",
-                "Heure, tentatives et état final",
-              ],
-              [
-                "Échec après une action partielle",
-                "La reprise n’envoie ni facture ni message deux fois",
-                "État avant, reprise et état après",
-              ],
-              [
-                "Valeur inhabituelle",
-                "Une personne valide avant l’action sensible",
-                "Décision et auteur de la validation",
-              ],
-              [
-                "Retour au manuel",
-                "L’équipe poursuit sans perdre ni mélanger les dossiers",
-                "Temps de reprise et rapprochement",
-              ],
-            ]}
-          />
-
-          <h3>Écrivez aussi la condition d’arrêt</h3>
-          <p>
-            Arrêtez ou corrigez le pilote si une erreur à forte conséquence
-            échappe au contrôle, si les alertes ne sont pas traitées, si les
-            utilisateurs créent un second processus parallèle ou si le temps
-            résiduel dépasse l’hypothèse économique. Une condition d’arrêt
-            protège mieux qu’une date de déploiement maintenue coûte que coûte.
-          </p>
-
-          <InfoBox
-            variant="amber"
-            title="Commencez les tests avec des données fictives"
-          >
-            <p>
-              Pour les tests techniques, préférez des données fictives ou
-              anonymisées. La{" "}
-              <a
-                href="https://www.cnil.fr/sites/cnil/files/2024-03/cnil_guide_securite_personnelle_2024.pdf"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Commission nationale de l’informatique et des libertés (CNIL)
-                le recommande dans son guide de sécurité 2024
-              </a>
-              . Les essais avec des situations réelles doivent ensuite être
-              contrôlés, limités et compatibles avec l’usage prévu des données
-              et les droits d’accès applicables.
-            </p>
-          </InfoBox>
-
-          <p>
-            Ces tests n’ont de valeur que si une personne traite chaque alerte
-            et peut arrêter l’essai.
-          </p>
-        </GuidePremiumSection>
-
-        <GuidePremiumSection
-          id="responsabilites"
-          number="08"
-          label="Organisation"
-          title="Nommez qui décide, qui surveille et qui reprend la main"
-        >
-          <p>
-            Qui décide si la règle change ou si le propriétaire du flux part ?
-            Qui traite une alerte ? Écrivez les rôles avec des noms, pas
-            seulement « métier », « informatique » et « prestataire ».
-          </p>
-
-          <GuideTable
-            caption="Responsabilités minimales du pilote à l’exploitation"
-            headers={["Rôle", "Décision ou action", "Preuve attendue"]}
-            rows={[
-              [
-                "Commanditaire",
-                "Fixe le résultat, le budget et la condition d’arrêt",
-                "Fiche de décision approuvée",
-              ],
-              [
-                "Responsable métier",
-                "Tient les règles, tranche les exceptions et accepte le résultat",
-                "Règles datées et cas de test",
-              ],
-              [
-                "Utilisateurs concernés",
-                "Testent le travail réel et signalent les contournements",
-                "Retours classés et décisions",
-              ],
-              [
-                "Responsable d’exploitation",
-                "Reçoit les alertes, suit les échecs et déclenche la reprise",
-                "Journal et procédure de reprise",
-              ],
-              [
-                "Prestataire ou équipe technique",
-                "Construit, documente et maintient les fonctions convenues",
-                "Accès, documentation et résultats des tests",
-              ],
-              [
-                "Délégué à la protection des données (DPO) ou responsable sécurité, si nécessaire",
-                "Examine les données, accès et risques qui relèvent de son rôle",
-                "Décision et actions à suivre",
-              ],
-            ]}
-          />
-
-          <p>
-            Faites participer les personnes qui réalisent le travail. La{" "}
-            <a
-              href="https://www.anact.fr/sites/default/files/2024-10/boite-a-outils-qvct-numerique.pdf"
-              target="_blank"
-              rel="noreferrer"
-            >
-              boîte à outils de l’Agence nationale pour l’amélioration des
-              conditions de travail (Anact)
-            </a>{" "}
-            demande de partir du travail réel et d’associer activement les
-            utilisateurs finaux aux étapes clés du projet. Une démonstration
-            réussie par le prestataire ne montre pas encore que l’équipe saura
-            traiter les exceptions un lundi chargé.
-          </p>
-        </GuidePremiumSection>
-
-        <GuidePremiumSection
-          id="securite"
-          number="09"
-          label="Contrôle"
-          title="Protégez les données et prévoyez comment changer d’outil"
-        >
-          <p>
-            Le niveau de contrôle dépend des données et de la conséquence d’une
-            erreur. La copie d’un document public n’appelle pas les mêmes
-            mesures qu’un changement de coordonnées bancaires, une donnée de
-            santé ou une décision qui affecte une personne. Commencez par les
-            questions suivantes.
-          </p>
-
-          <ul>
-            <li>
-              <strong>Données :</strong> quelles informations entrent, sortent,
-              restent stockées et pendant combien de temps ?
-            </li>
-            <li>
-              <strong>Accès :</strong> chaque personne et chaque compte
-              technique disposent-ils seulement des droits nécessaires ?
-            </li>
-            <li>
-              <strong>Trace :</strong> peut-on relier une action à un dossier, un
-              moment et une version de la règle sans enregistrer des secrets ?
-            </li>
-            <li>
-              <strong>Continuité :</strong> que fait l’équipe lorsque le service
-              ou la connexion ne répond plus ?
-            </li>
-            <li>
-              <strong>Sauvegarde :</strong> les données et la configuration
-              utiles sont-elles restaurables et cette restauration a-t-elle été
-              essayée ?
-            </li>
-            <li>
-              <strong>Sortie :</strong> pouvez-vous récupérer données,
-              configuration, documentation, comptes et, s’il existe, code
-              source dans des formats utilisables ?
-            </li>
-            <li>
-              <strong>Sous-traitants :</strong> quels prestataires et
-              sous-traitants ultérieurs accèdent aux données, depuis quels pays,
-              avec quelles garanties et quelle procédure en fin de contrat ?
-            </li>
-          </ul>
-
-          <p>
-            Le{" "}
-            <a
-              href="https://www.cnil.fr/sites/cnil/files/2024-03/cnil_guide_securite_personnelle_2024.pdf"
-              target="_blank"
-              rel="noreferrer"
-            >
-              guide de sécurité des données personnelles de la CNIL
-            </a>{" "}
-            couvre notamment les droits d’accès, la journalisation, les
-            sauvegardes testées, la continuité et les API. Si un prestataire
-            traite des données personnelles pour votre compte, la{" "}
-            <a
-              href="https://www.cnil.fr/fr/securite-gerer-la-sous-traitance"
-              target="_blank"
-              rel="noreferrer"
-            >
-              fiche CNIL sur la sous-traitance
-            </a>{" "}
-            demande un contrat qui répartit les responsabilités, encadre les
-            incidents et prévoit la restitution ou la destruction des données.
-          </p>
-
-          <h3>Une décision automatisée peut demander une analyse distincte</h3>
-          <p>
-            L’article 22 ne vise ni toute automatisation ni toute utilisation
-            d’IA. Son champ suppose une décision individuelle fondée sur des
-            données personnelles, prise exclusivement par un traitement
-            automatisé dans les faits, et produisant un effet juridique ou un
-            effet similaire significatif. La{" "}
-            <a
-              href="https://www.cnil.fr/fr/profilage-et-decision-entierement-automatisee"
-              target="_blank"
-              rel="noreferrer"
-            >
-              CNIL précise ce champ
-            </a>
-            . Un simple classement sans conséquence comparable ne suffit pas ;
-            il peut en revanche devenir significatif si, en pratique, il ferme
-            l’accès à un service, à un emploi, à un contrat ou applique un tarif
-            plus élevé sans réexamen réel.
-          </p>
-
-          <p>
-            Le consentement explicite, la nécessité de conclure ou d’exécuter un
-            contrat, ou une disposition légale peuvent constituer des exceptions
-            prévues par le règlement général sur la protection des données
-            (RGPD). Elles ne dispensent pas des garanties applicables. La
-            personne doit notamment pouvoir être informée, exprimer son point de
-            vue, contester la décision et obtenir une intervention humaine.
-            Cette intervention doit permettre un réexamen réel, pas seulement
-            valider mécaniquement la sortie de l’outil.
-          </p>
-
-          <p>
-            Même lorsque l’article 22 ne s’applique pas, une{" "}
-            <a
-              href="https://www.cnil.fr/fr/ce-quil-faut-savoir-sur-lanalyse-dimpact-relative-la-protection-des-donnees-aipd"
-              target="_blank"
-              rel="noreferrer"
-            >
-              analyse d’impact relative à la protection des données (AIPD)
-            </a>{" "}
-            est requise si le traitement est susceptible d’engendrer un risque
-            élevé pour les droits et libertés. Vérifiez ce besoin avant le
-            pilote avec le responsable du traitement et le DPO. L’usage d’une
-            IA, à lui seul, ne permet ni de conclure qu’une AIPD est toujours
-            requise, ni de l’écarter.
-          </p>
-        </GuidePremiumSection>
-
-        <GuidePremiumSection
-          id="decision"
-          number="10"
-          label="Prochaine action"
-          title="Faites tenir la décision sur une seule page"
-        >
-          <p>
-            À ce stade, ne demandez pas encore « combien coûte une
-            automatisation ? ». Préparez une fiche que la direction, les
-            utilisateurs et un prestataire peuvent contester avec les mêmes
-            informations.
-          </p>
-
-          <FormulaBox>
-            {[
-              "FICHE DE DÉCISION",
-              "",
-              "Processus choisi et résultat attendu :",
-              "Volume, temps actif et période de mesure :",
-              "Exceptions observées :",
-              "Cinq portes : ouvertes / action nécessaire :",
-              "Réponse la plus simple retenue et options écartées :",
-              "Heures retirables, adoption moyenne et heures réaffectées :",
-              "Valeur de capacité et dépense réellement évitée, sans double compte :",
-              "Coûts ponctuels, mensuels et coût de sortie à confirmer :",
-              "Données, droits d’accès et validation humaine :",
-              "Cas de test, alerte, reprise manuelle et condition d’arrêt :",
-              "Responsable métier et responsable des alertes :",
-              "Date et mesure de la décision après pilote :",
-            ].join("\n")}
-          </FormulaBox>
-
-          <p>
-            La décision peut être « activer la fonction existante », « lancer un
-            pilote limité », « simplifier puis mesurer à nouveau » ou « garder
-            cette décision humaine ». Ces quatre sorties sont valables. Le
-            développement sur mesure n’est pertinent que si les règles, les
-            rôles, les écrans ou les intégrations propres à l’entreprise
-            justifient ce coût supplémentaire.
-          </p>
-
-          <p>
-            Si vous ne savez pas encore si vos blocages justifient un nouvel
-            outil, commencez par le{" "}
+            Si vous n’êtes pas certain que le blocage justifie un outil, le{" "}
             <Link href="/guides/signes-besoin-logiciel-metier">
               diagnostic en trois situations
-            </Link>
-            . Il permet d’écarter d’abord un risque d’accès, une étape inutile
-            ou une fonction déjà disponible, avant de choisir un processus à
-            automatiser.
-          </p>
-
-          <p>
-            Si votre fiche montre qu’un même besoin relie plusieurs équipes ou
-            logiciels, consultez la page consacrée aux{" "}
-            <Link href="/services/outils-internes-sur-mesure">
-              outils internes sur mesure
-            </Link>
-            . Elle explique le type de projet étudié. Pour reprendre cette
-            méthode sur un autre sujet, revenez au{" "}
-            <Link href="/guides">répertoire des guides Hagnéré Code</Link>.
-          </p>
-
-          <p>
-            Avant d’outiller le processus retenu, deux vérifications évitent de
-            construire au mauvais endroit. Le{" "}
-            <Link href="/services/outils-internes-sur-mesure">
-              calcul du retour sur investissement
             </Link>{" "}
-            chiffre ce que l’automatisation libère vraiment, et distingue une
-            facture évitée d’un temps rendu disponible. Si l’équipe a déjà
-            bricolé une solution, la comparaison porte alors sur{" "}
-            <Link href="/guides/power-apps-ou-application-sur-mesure">
-              Airtable ou Notion face à une application métier
-            </Link>{" "}
-            — ou sur{" "}
-            <Link href="/guides/power-apps-ou-application-sur-mesure">
-              Power Apps face à une application sur mesure
-            </Link>{" "}
-            dans un environnement Microsoft.
-          </p>
-
-          <p>
-            Une fois le processus choisi, trois dossiers cadrent l’exécution :
-            le{" "}
+            écarte d’abord une étape inutile ou une fonction déjà payée. Après
+            la fiche, trois dossiers cadrent l’exécution&nbsp;: le{" "}
             <Link href="/guides/cahier-des-charges-saas">
               cahier des charges
             </Link>{" "}
-            pour figer les règles et les exceptions, la{" "}
+            pour figer les règles et les exceptions, les{" "}
             <Link href="/guides/securite-application-metier">
-              gestion des droits d’accès
+              contrôles de sécurité
             </Link>{" "}
-            pour décider qui valide et qui corrige, et le{" "}
+            pour décider qui voit quoi, et le{" "}
             <Link href="/guides/plan-recette-application-metier">
               plan de recette
             </Link>{" "}
-            pour prouver que l’automatisation tient sur les cas difficiles, pas
-            seulement sur le cas nominal.
+            pour rejouer les six situations de la section&nbsp;07. Si l’équipe a
+            déjà monté quelque chose côté Microsoft, la comparaison porte sur{" "}
+            <Link href="/guides/power-apps-ou-application-sur-mesure">
+              Power Apps face à une application sur mesure
+            </Link>
+            . Vous pouvez aussi{" "}
+            <TrackedGuideCtaLink
+              href="/demarrer-un-projet"
+              placement="article_end_inline"
+            >
+              décrire votre processus
+            </TrackedGuideCtaLink>{" "}
+            à Hagnéré Code, en précisant que «&nbsp;ne rien automatiser cette
+            année&nbsp;» reste une conclusion acceptable.
           </p>
 
-          <GuidePremiumMemo
-            eyebrow="Décision finale"
-            title="Ne choisissez l’outil qu’après avoir écrit l’échec"
-          >
-            <p>
-              Si vous savez qui voit l’erreur, où attend le dossier, comment
-              reprendre sans doublon et quand arrêter le pilote, vous pouvez
-              comparer des solutions. Si ces réponses manquent, le prochain
-              travail utile consiste à les obtenir.
-            </p>
-          </GuidePremiumMemo>
+          <p className="text-sm">
+            <strong>Transparence.</strong> Hagnéré Code construit des outils
+            internes sur mesure et perçoit des honoraires si vous retenez cette
+            option&nbsp;— la sixième des sept réponses comparées ici, et celle
+            que le décompte écarte sur son propre cas, à douze mois comme à
+            trente-six. Rien n’exige de passer par nous&nbsp;: tout le décompte
+            se refait avec vos nombres. Les données publiques, les quotas de
+            plateforme et les grilles tarifaires citées ont été relevés le
+            28&nbsp;août 2026 et sont à revérifier tous les douze mois. Aucun
+            coût, aucun délai et aucun résultat ne sont garantis par cette
+            page&nbsp;: seul un devis signé engage.
+          </p>
         </GuidePremiumSection>
       </GuidePremiumLayout>
     </GuidesShell>

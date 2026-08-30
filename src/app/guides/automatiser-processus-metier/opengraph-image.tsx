@@ -7,9 +7,9 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const steps = [
-  { number: "01", label: "Cartographier", detail: "le travail réel" },
-  { number: "02", label: "Écarter", detail: "les risques bloquants" },
-  { number: "03", label: "Distinguer", detail: "capacité et dépense évitée" },
+  { number: "01", label: "Mesurer", detail: "volume et temps réels" },
+  { number: "02", label: "Écarter", detail: "les mauvais candidats" },
+  { number: "03", label: "Décompter", detail: "sur douze mois" },
 ];
 
 export default function OgImage() {
@@ -102,7 +102,7 @@ export default function OgImage() {
             color: "#c4b5fd",
           }}
         >
-          Une méthode, cinq portes bloquantes et un calcul transparent
+          Mesurer, écarter, décompter — et savoir renoncer
         </div>
       </div>
 

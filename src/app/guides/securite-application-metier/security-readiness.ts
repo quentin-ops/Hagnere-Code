@@ -3,7 +3,7 @@ export const securityControls = [
     id: "assetsAndImpact",
     label: "Conséquences et actifs",
     question:
-      "Les données, fonctions, dépendances et conséquences d’un accès, d’une erreur ou d’une panne sont-elles décrites ?",
+      "Les données, fonctions, dépendances et conséquences d’un accès, d’une erreur ou d’une panne sont-elles décrites\u00a0?",
     expectedEvidence:
       "Inventaire court, conséquences métier et hypothèses validées par le propriétaire métier",
     minimum: "written",
@@ -12,7 +12,7 @@ export const securityControls = [
     id: "accessAndSecrets",
     label: "Accès et secrets",
     question:
-      "Les comptes sensibles, secrets, accès externes et changements d’habilitation sont-ils protégés et contrôlés ?",
+      "Les comptes sensibles, secrets, accès externes et changements d’habilitation sont-ils protégés et contrôlés\u00a0?",
     expectedEvidence:
       "Exigence versionnée et test d’un accès refusé, révoqué ou renforcé selon le risque",
     minimum: "tested",
@@ -21,7 +21,7 @@ export const securityControls = [
     id: "deliveryAndDependencies",
     label: "Développement, tests et dépendances",
     question:
-      "Les environnements, secrets, composants, mises à jour et tests avant livraison sont-ils maîtrisés ?",
+      "Les environnements, secrets, composants, mises à jour et tests avant livraison sont-ils maîtrisés\u00a0?",
     expectedEvidence:
       "Chaîne de livraison automatisée ou procédure observée, inventaire des dépendances et responsable de correction",
     minimum: "tested",
@@ -30,7 +30,7 @@ export const securityControls = [
     id: "backupAndRestore",
     label: "Sauvegarde et restauration",
     question:
-      "Le périmètre sauvegardé et l’ordre de reprise ont-ils été restaurés dans un environnement isolé ?",
+      "Le périmètre sauvegardé et l’ordre de reprise ont-ils été restaurés dans un environnement isolé\u00a0?",
     expectedEvidence:
       "Compte rendu d’exercice, résultat observé, limites, perte et interruption constatées",
     minimum: "tested",
@@ -39,7 +39,7 @@ export const securityControls = [
     id: "loggingAndDetection",
     label: "Journaux, alerte et détection",
     question:
-      "Un événement sensible déclenche-t-il une trace protégée puis une alerte reçue par une personne nommée ?",
+      "Un événement sensible déclenche-t-il une trace protégée puis une alerte reçue par une personne nommée\u00a0?",
     expectedEvidence:
       "Scénario d’alerte exécuté, horodatage, destinataire et traitement consignés",
     minimum: "tested",
@@ -48,7 +48,7 @@ export const securityControls = [
     id: "incidentResponse",
     label: "Réponse à incident",
     question:
-      "Les contacts, décisions, actions d’isolement et recours au bon spécialiste ont-ils été exercés ?",
+      "Les contacts, décisions, actions d’isolement et recours au bon spécialiste ont-ils été exercés\u00a0?",
     expectedEvidence:
       "Fiche incident versionnée et exercice court avec responsables et suppléance",
     minimum: "tested",
@@ -57,7 +57,7 @@ export const securityControls = [
     id: "maintenance",
     label: "Maintenance et corrections",
     question:
-      "Qui surveille les vulnérabilités, qualifie les mises à jour et corrige après la mise en service ?",
+      "Qui surveille les vulnérabilités, qualifie les mises à jour et corrige après la mise en service\u00a0?",
     expectedEvidence:
       "Périmètre de maintenance, dépendances suivies, canal et propriétaire écrits",
     minimum: "written",
@@ -66,7 +66,7 @@ export const securityControls = [
     id: "responsibilities",
     label: "Responsabilités et suppléance",
     question:
-      "Les décisions métier, les alertes, la restauration, les corrections et l’appel au bon niveau ont-ils un responsable ?",
+      "Les décisions métier, les alertes, la restauration, les corrections et l’appel au bon niveau ont-ils un responsable\u00a0?",
     expectedEvidence:
       "Rôles nommés, limites du prestataire, contacts et suppléance confirmés par un exercice",
     minimum: "tested",
@@ -228,7 +228,7 @@ export function assessSecurityReadiness(
       explanation:
         "Sans trace exploitable, l’état du contrôle reste inconnu. La revue ne peut pas trancher ce point par déduction.",
       nextAction:
-        "Localisez l’exigence, la procédure, le test ou le responsable de chaque point. Conservez « inconnu » lorsqu’aucune trace exploitable n’existe.",
+        "Localisez l’exigence, la procédure, le test ou le responsable de chaque point. Conservez «\u00a0inconnu\u00a0» lorsqu’aucune trace exploitable n’existe.",
       concernedControls: unknownControls,
       concernedContext: [],
     };
@@ -337,8 +337,8 @@ export function assessSecurityReadiness(
     return {
       verdict: "REVIEW_CONTEXTUAL_RISKS",
       title: "Faites relire le dossier dans son contexte",
-      explanation: `Les contrôles déclarés sont documentés ou exercés. Le contexte appelle encore une relecture compétente : ${contextualReasons.join(
-        " ; ",
+      explanation: `Les contrôles déclarés sont documentés ou exercés. Le contexte appelle encore une relecture compétente\u00a0: ${contextualReasons.join(
+        "\u00a0; ",
       )}. Cette compétence peut appartenir à votre organisation ou être mobilisée à l’extérieur.`,
       nextAction:
         "Faites relire les preuves, les limites et les risques qui restent par les compétences adaptées aux raisons signalées, puis confiez la décision à la personne autorisée.",
@@ -351,7 +351,7 @@ export function assessSecurityReadiness(
     verdict: "READY_FOR_REVIEW",
     title: "Dossier présentable à une revue métier limitée",
     explanation:
-      "Le contexte déclaré est limité, sans données personnelles et sans exposition Internet ; les éléments minimaux sont localisés ou exercés. Ce résultat n’atteste pas la sécurité de l’application et n’autorise pas sa mise en production.",
+      "Le contexte déclaré est limité, sans données personnelles et sans exposition Internet\u00a0; les éléments minimaux sont localisés ou exercés. Ce résultat n’atteste pas la sécurité de l’application et n’autorise pas sa mise en production.",
     nextAction:
       "Présentez les résultats, les limites et les risques qui restent au propriétaire métier et au responsable applicatif. Ils doivent encore décider de maintenir le périmètre limité, corriger ou reporter.",
     concernedControls: [],

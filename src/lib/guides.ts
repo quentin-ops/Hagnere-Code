@@ -102,12 +102,16 @@ export const GUIDES: GuideEntry[] = [
     metaDescription:
       "Gestion Google Ads : forfait, pourcentage, hybride ou temps passé, le coût complet à 3, 6 et 12 mois et le budget média où l’ordre s’inverse.",
     cardDescription:
-      "Le décompte ligne à ligne d’un cas construit à 5 000 € HT de média par mois, les trois seuils où le classement des modèles s’inverse, et le prix d’une sortie.",
+      "Le décompte ligne à ligne d’un cas construit à 5 000 € HT de média par mois, les quatre seuils où le classement des modèles s’inverse, et le prix d’une sortie.",
     heroTitle: "Combien coûte vraiment la gestion de Google Ads ?",
     section: "Google Ads & acquisition",
     editorialStatus: "published",
     datePublished: "2026-07-31T00:24:23+02:00",
-    dateModified: "2026-08-28T18:00:00+02:00",
+    // Heure réelle de la dernière écriture de page.tsx. La valeur auditée,
+    // 18 h 00 pile le 28/08/2026, était dans le futur au moment de la
+    // livraison — et elle alimente `openGraph.modifiedTime` et le JSON-LD
+    // Article. À réaligner sur l'horloge à chaque reprise du fichier.
+    dateModified: "2026-08-30T22:18:08+02:00",
     readTimeMin: 15,
     articleImagePaths: [
       "/guides/prix-gestion-google-ads/article-prix-ads-16x9.webp",
@@ -148,8 +152,8 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     editorialStatus: "published",
     datePublished: "2026-07-30T16:30:59+02:00",
-    dateModified: "2026-07-30T16:30:59+02:00",
-    readTimeMin: 20,
+    dateModified: "2026-08-30T22:40:00+02:00",
+    readTimeMin: 21,
     articleImagePaths: [
       "/guides/plan-recette-application-metier/recette-preuve-16x9.webp",
       "/guides/plan-recette-application-metier/recette-preuve-4x3.webp",
@@ -169,8 +173,8 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     editorialStatus: "published",
     datePublished: "2026-07-30T22:03:29+02:00",
-    dateModified: "2026-07-30T22:03:29+02:00",
-    readTimeMin: 16,
+    dateModified: "2026-08-28T18:20:00+02:00",
+    readTimeMin: 22,
     articleImagePaths: [
       "/guides/securite-application-metier/socle-securite-16x9.webp",
       "/guides/securite-application-metier/socle-securite-4x3.webp",
@@ -182,16 +186,16 @@ export const GUIDES: GuideEntry[] = [
     title: "Comment rédiger un cahier des charges SaaS\u00a0?",
     cardTitle: "Rédiger un cahier des charges SaaS",
     metaDescription:
-      "Trois devis pour le même SaaS, de 34\u00a0000 à 129\u00a0000\u00a0€ HT\u00a0: le décompte poste par poste, les exigences testables, la grille de dépouillement.",
+      "Écrire des exigences dont on sait décrire l’échec, trancher les huit états d’un abonnement, préparer la sortie, puis rendre deux devis comparables.",
     cardDescription:
-      "Le décompte qui ramène trois devis au même produit, les exigences dont on sait écrire l’échec, et la grille à joindre aux candidats.",
+      "Le décompte poste par poste qui ramène deux devis au même produit, les exigences dont on sait écrire l’échec, et la grille à joindre aux candidats.",
     heroTitle:
-      "Cahier des charges SaaS\u00a0: trois devis pour le même produit et un écart de 3,8 à 1",
+      "Cahier des charges SaaS\u00a0: écrire les exigences avant de comparer les prix",
     section: "Préparer son projet",
     editorialStatus: "published",
     datePublished: "2026-07-22T07:29:32+02:00",
-    dateModified: "2026-08-28T16:05:00+02:00",
-    readTimeMin: 20,
+    dateModified: "2026-08-28T19:40:00+02:00",
+    readTimeMin: 21,
     articleImagePaths: [
       "/guides/cahier-des-charges-saas/cahier-saas-16x9.webp",
       "/guides/cahier-des-charges-saas/cahier-saas-4x3.webp",
@@ -203,15 +207,15 @@ export const GUIDES: GuideEntry[] = [
     title: "MVP SaaS : quoi inclure avant un premier client\u00a0?",
     cardTitle: "MVP SaaS : quoi inclure\u00a0?",
     metaDescription:
-      "Quoi mettre dans le premier lot d’un SaaS, ce qui peut rester manuel, et pourquoi passer de 5 à 10 écrans coûte 15\u00a0000\u00a0€ HT de plus sur notre grille.",
+      "Quoi mettre dans le premier lot d’un SaaS, ce qui peut rester tenu à la main, et pourquoi notre grille ne tarife rien entre six et neuf écrans.",
     cardDescription:
-      "Sept responsabilités à attribuer, six ajouts inutiles à retirer et une charge humaine calculée avant la première ligne de code.",
+      "Sept responsabilités à attribuer, six ajouts à interroger un par un et une charge humaine calculée avant la première ligne de code.",
     heroTitle: "MVP SaaS : quoi inclure avant le premier test\u00a0?",
     section: "SaaS et MVP",
     editorialStatus: "published",
     datePublished: "2026-07-20T15:19:41+02:00",
-    dateModified: "2026-08-28T17:05:00+02:00",
-    readTimeMin: 19,
+    dateModified: "2026-08-28T18:00:00+02:00",
+    readTimeMin: 20,
     articleImagePaths: [
       "/guides/mvp-saas-quoi-inclure/contrat-test-mvp-16x9.webp",
       "/guides/mvp-saas-quoi-inclure/charge-manuelle-mvp-4x3.webp",
@@ -220,18 +224,18 @@ export const GUIDES: GuideEntry[] = [
   },
   {
     slug: "pourquoi-site-pas-visible-google",
-    title: "Pourquoi mon site n’est-il pas visible sur Google ?",
-    cardTitle: "Pourquoi mon site n’est-il pas visible sur Google ?",
+    title: "Pourquoi mon site n’est-il pas visible sur Google\u00a0?",
+    cardTitle: "Pourquoi mon site n’est-il pas visible sur Google\u00a0?",
     metaDescription:
-      "Cinq pannes se cachent derrière un site invisible sur Google : la commande à taper, le champ à lire dans Search Console, ce que le constat ne prouve pas.",
+      "Cinq pannes se cachent derrière un site invisible sur Google\u00a0: la commande à taper, le champ à lire dans Search Console, ce que le constat ne prouve pas.",
     cardDescription:
       "Cinq pannes derrière un site invisible sur Google, et le protocole de mesure qui dit laquelle est la vôtre avant de corriger quoi que ce soit.",
-    heroTitle: "Pourquoi mon site n’est-il pas visible sur Google ?",
+    heroTitle: "Pourquoi mon site n’est-il pas visible sur Google\u00a0?",
     section: "Référencement naturel",
     editorialStatus: "published",
     datePublished: "2026-08-18T12:42:00Z",
     dateModified: "2026-08-28T09:00:00Z",
-    readTimeMin: 20,
+    readTimeMin: 21,
     articleImagePaths: [
       "/guides/pourquoi-site-pas-visible-google/diagnostic-google-16x9.svg",
       "/guides/pourquoi-site-pas-visible-google/diagnostic-google-4x3.svg",

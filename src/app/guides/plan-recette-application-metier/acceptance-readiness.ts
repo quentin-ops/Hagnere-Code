@@ -1,51 +1,51 @@
 export const acceptanceGates = [
   {
     id: "businessTraceability",
-    label: "Besoin métier traçable",
+    label: "Règle couverte, nommée",
     question:
-      "Le cas nomme-t-il la règle, le parcours ou le risque qu’il doit prouver ?",
+      "Le cas dit-il quelle règle, quel parcours ou quel risque il doit prouver\u00a0?",
   },
   {
     id: "versionAndEnvironment",
-    label: "Version et environnement identifiés",
+    label: "Version et environnement",
     question:
-      "La version, la configuration, l’environnement et les dépendances testés sont-ils identifiables sans ambiguïté ?",
+      "Sait-on exactement quelle version, sur quelle machine et avec quelles données a été testée\u00a0?",
   },
   {
     id: "actorAndStartingState",
-    label: "Acteur, droits et état de départ",
+    label: "Rôle, droits et point de départ",
     question:
-      "Le rôle, ses droits, les préconditions et l’état initial permettent-ils de rejouer le cas ?",
+      "Le rôle, ses droits et l’état du dossier avant l’action permettent-ils de rejouer le cas à l’identique\u00a0?",
   },
   {
     id: "representativeData",
-    label: "Données représentatives",
+    label: "Données préparées",
     question:
-      "Les valeurs normales, limites, absentes ou interdites nécessaires sont-elles préparées ?",
+      "Les valeurs courantes, limites, absentes ou interdites dont la règle a besoin existent-elles dans le jeu d’essai\u00a0?",
   },
   {
     id: "observableExpectedResult",
-    label: "Action et résultat attendu observables",
+    label: "Actions et résultat attendu",
     question:
-      "Les étapes sont-elles exactes et le résultat attendu peut-il être constaté sans jugement vague ?",
+      "Les étapes sont-elles exactes, et le résultat attendu se constate-t-il sans jugement personnel\u00a0?",
   },
   {
     id: "executionAndEvidence",
-    label: "Exécution, résultat et preuve",
+    label: "Résultat obtenu et preuve",
     question:
-      "Le testeur, la date, le résultat obtenu et la pièce utile seront-ils consignés ?",
+      "Le nom du testeur, la date, le résultat obtenu et la pièce qui le montre seront-ils écrits\u00a0?",
   },
   {
     id: "scopeExitAndSpecialistChecks",
-    label: "Périmètre, sortie et contrôles spécialisés",
+    label: "Ce qui est exclu, et quand on s’arrête",
     question:
-      "Les inclusions, exclusions, critères de sortie et contrôles de sécurité, d’accessibilité ou de performance nécessaires sont-ils écrits et attribués ?",
+      "Ce qui est laissé de côté, les conditions d’arrêt et les contrôles de sécurité, d’accessibilité ou de temps de réponse sont-ils écrits et confiés à quelqu’un\u00a0?",
   },
   {
     id: "decisionAuthorityAndContract",
-    label: "Décideur et procédure réelle",
+    label: "Décideur et documents applicables",
     question:
-      "La personne autorisée à décider et les documents applicables — contrat, devis ou procédure — sont-ils identifiés sans inventer leur effet ?",
+      "La personne autorisée à décider et les documents qui s’appliquent — contrat, devis, procédure — sont-ils identifiés sans qu’on invente leur effet\u00a0?",
   },
 ] as const;
 
@@ -69,7 +69,7 @@ export const campaignFactFields = [
     id: "criticalCasesPlanned",
     label: "Cas critiques prévus",
     shortLabel: "Critiques prévus",
-    help: "Tous les parcours dont l’échec compromettrait la décision.",
+    help: "Les parcours dont l’échec vous empêcherait de travailler ou vous coûterait de l’argent.",
     minimum: 1,
   },
   {
@@ -109,9 +109,9 @@ export const campaignFactFields = [
   },
   {
     id: "pendingReservations",
-    label: "Réserves ou dérogations à décider",
+    label: "Réserves encore à trancher",
     shortLabel: "Réserves",
-    help: "Écarts, exceptions ou anomalies différées qui attendent encore une décision explicite.",
+    help: "Écarts acceptés provisoirement ou anomalies reportées, qui attendent une décision écrite.",
     minimum: 0,
   },
   {
@@ -242,7 +242,7 @@ export function assessAcceptanceReadiness(
       explanation:
         "Une absence de réponse n’est pas une preuve. Le cas ou la campagne ne peut pas encore être rejoué puis relu par une autre personne.",
       nextAction:
-        "Complétez le cas, le périmètre, les critères de sortie et l’autorité de décision avant de compter ce dossier dans la campagne.",
+        "Complétez le cas, ce qui est exclu, les conditions d’arrêt et le nom du décideur avant de compter ce dossier dans la campagne.",
       concernedGateIds: unknown,
       concernedFactIds: [],
       remainingCriticalCases: null,

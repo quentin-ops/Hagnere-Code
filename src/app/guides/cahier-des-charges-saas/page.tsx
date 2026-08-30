@@ -1,6 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { GuideTable, InfoBox } from "@/components/guides/guide-content-blocks";
+import {
+  FormulaBox,
+  GuideTable,
+  InfoBox,
+} from "@/components/guides/guide-content-blocks";
 import {
   GuidePremiumCase,
   GuidePremiumLayout,
@@ -28,7 +32,7 @@ const dossierClair = assessSaasSpecification(createDossierClairExample());
 
 export const metadata = buildGuideMetadata(
   guide,
-  "Cahier des charges SaaS : faire chiffrer le même produit",
+  "Le décompte poste par poste qui ramène deux devis au même produit avant de comparer les prix",
 );
 
 const structuredData = buildGuideStructuredData(guide, breadcrumbName);
@@ -37,165 +41,271 @@ const toc = [
   {
     id: "reponse-courte",
     number: "01",
-    label: "Définir le document comparable",
-    shortLabel: "Commencer",
+    label: "La même liste de postes",
+    shortLabel: "Réponse",
   },
   {
-    id: "frontiere",
+    id: "ecart",
     number: "02",
-    label: "Fermer le périmètre vendu",
-    shortLabel: "Cadrer",
+    label: "Le décompte poste par poste",
+    shortLabel: "Décompte",
   },
   {
-    id: "organisation",
+    id: "exigence",
     number: "03",
-    label: "Décrire l’organisation cliente",
-    shortLabel: "Organiser",
-  },
-  {
-    id: "droits",
-    number: "04",
-    label: "Écrire rôles, portées et refus",
-    shortLabel: "Autoriser",
+    label: "Écrire une exigence testable",
+    shortLabel: "Écrire",
   },
   {
     id: "abonnement",
-    number: "05",
-    label: "Relier offre, abonnement et droits",
+    number: "04",
+    label: "Les huit situations d’un abonnement",
     shortLabel: "Abonner",
   },
   {
-    id: "exploitation",
-    number: "06",
-    label: "Prévoir échecs, support et données",
-    shortLabel: "Exploiter",
-  },
-  {
     id: "sortie",
-    number: "07",
-    label: "Prouver restauration et sortie",
+    number: "05",
+    label: "Ce que vous récupérez en partant",
     shortLabel: "Sortir",
   },
   {
-    id: "exigences",
-    number: "08",
-    label: "Rendre les exigences testables",
-    shortLabel: "Recevoir",
+    id: "incidents",
+    number: "06",
+    label: "Ce qui rate, et ce que ça coûte",
+    shortLabel: "Incidents",
   },
   {
-    id: "generateur",
-    number: "09",
-    label: "Générer la trame locale",
-    shortLabel: "Générer",
-  },
-  {
-    id: "exemple",
-    number: "10",
-    label: "Relire un exemple entièrement fictif",
+    id: "depouillement",
+    number: "07",
+    label: "Dépouiller les réponses",
     shortLabel: "Comparer",
+  },
+  {
+    id: "trame",
+    number: "08",
+    label: "La trame locale et son exemple",
+    shortLabel: "Trame",
   },
 ];
 
 const faqCategories: GuidePremiumFaqCategory[] = [
   {
-    key: "perimetre",
+    key: "avant",
     num: "01",
-    label: "Périmètre",
+    label: "Avant d’écrire",
     items: [
       {
-        question: "Quand rédiger le cahier des charges d’un SaaS ?",
+        question:
+          "Combien de pages doit faire un cahier des charges SaaS\u00a0?",
         answer:
-          "Lorsque le problème, l’acheteur et le premier résultat vendu sont assez observés pour décrire un même parcours à tous les répondants. Si le document doit encore deviner qui achète ou pourquoi le produit serait utilisé, revenez d’abord à la validation de l’idée et du parcours.",
+          "Le nombre de pages ne dit rien de la solidité du document. Comptez plutôt les exigences dont vous savez écrire l’échec\u00a0: chaque exigence numérotée porte-t-elle une situation initiale, une action, un résultat observable, une tentative qui doit être refusée et la personne qui contrôlera\u00a0? Dans l’exemple construit pour ce guide\u00a0— des montants et des volumes choisis pour la démonstration, pas un dossier client\u00a0— quatorze pages laissaient passer une phrase de dix mots que deux sociétés sur trois n’ont pas chiffrée. Une exigence sans refus écrit ne se reçoit pas, quelle que soit la longueur du document qui la contient.",
       },
       {
-        question: "Faut-il décrire l’architecture technique ?",
+        question:
+          "Faut-il décrire l’architecture technique dans le document\u00a0?",
         answer:
-          "Pas pour obtenir des offres comparables si vous n’avez pas une contrainte d’architecture déjà validée. Décrivez les utilisateurs, les données, les limites, les comportements attendus et les preuves. Demandez ensuite aux prestataires d’expliquer leurs hypothèses et leur solution technique séparément.",
+          "Décrivez-la seulement si une contrainte vous l’impose déjà\u00a0: un hébergement en France, une base existante, un annuaire d’entreprise. Sinon, décrivez les utilisateurs, les données, les comportements attendus, les refus et les preuves, puis demandez à chaque société consultée d’exposer sa solution technique et ses hypothèses dans une partie séparée. Vous comparez alors des façons différentes de résoudre le même problème, au lieu de trois lectures d’une solution choisie sans en mesurer le coût.",
       },
       {
-        question: "Peut-on laisser un point à préciser avec le prestataire ?",
+        question:
+          "Peut-on laisser une décision ouverte dans le document\u00a0?",
         answer:
-          "Oui, à condition de le marquer explicitement À décider ou STOP, de nommer la personne qui tranchera et d’indiquer son effet sur le devis. Un répondant ne doit pas transformer silencieusement cette inconnue en fonction, en exclusion ou en hypothèse chiffrée.",
+          "Oui, et c’est souvent plus honnête que de trancher à la hâte. La condition\u00a0: écrire la décision comme ouverte, nommer la personne qui la prendra, donner la date, et demander à chaque candidat de chiffrer les deux branches séparément. Ce qui coûte cher, c’est l’inconnue invisible\u00a0: celle que chaque société tranche dans son coin, sans le dire, et dont vous découvrez l’effet au moment de comparer les totaux.",
       },
     ],
   },
   {
     key: "abonnement-donnees",
     num: "02",
-    label: "Abonnement et données",
+    label: "Abonnement, données et sortie",
     items: [
       {
-        question: "Doit-on imposer Stripe dans le cahier des charges ?",
+        question: "Le Data Act me garantit-il de récupérer mes données\u00a0?",
         answer:
-          "Non. Une documentation de paiement peut illustrer la variété des états et événements, mais le document doit d’abord décrire les états internes du produit, leurs effets sur les droits, les échecs et les actions de correction. Le fournisseur reste une décision séparée.",
+          "Partiellement, et pour les seuls services qui entrent dans la définition des services de traitement de données. Le règlement européen applicable depuis le 12\u00a0septembre 2025 encadre le changement de fournisseur\u00a0: son article\u00a025 fixe une période transitoire maximale de 30\u00a0jours calendaires, portée à sept mois au plus si le fournisseur justifie une impossibilité technique dans les 14\u00a0jours ouvrables\u00a0; son article\u00a029 supprime totalement les frais de changement à partir du 12\u00a0janvier 2027. Le texte ne dit rien du code source ni des droits d’exploitation. Faites qualifier votre cas, puis écrivez la clause quand même.",
       },
       {
         question:
-          "Le Data Act donne-t-il un droit d’export à tout client SaaS ?",
+          "Suis-je propriétaire du code une fois la facture payée\u00a0?",
         answer:
-          "Non, pas automatiquement. Le chapitre VI du règlement vise le changement de fournisseur pour les services entrant dans la définition des services de traitement de données, avec son champ, ses catégories exportables et ses limites. Prévoyez contractuellement la sortie utile au client, puis faites qualifier l’application du texte au service concerné.",
+          "Une facture acquittée ne cède aucun droit. L’article L131-3 du code de la propriété intellectuelle impose que chaque droit cédé fasse l’objet d’une mention distincte, et que l’étendue, la destination, le lieu et la durée de l’exploitation soient délimités. L’article L113-9, qui attribue les droits à l’employeur, vise le logiciel écrit par un salarié\u00a0— pas par une société extérieure. Sans clause écrite, vous avez payé un développement dont vous ne maîtrisez pas l’exploitation.",
       },
       {
-        question: "Que faut-il écrire sur l’accès du support ?",
+        question:
+          "Combien d’états d’abonnement faut-il prévoir dans le document\u00a0?",
         answer:
-          "Précisez qui demande et approuve l’intervention, les données et l’organisation accessibles, la durée ou l’événement de fermeture, la trace nécessaire et le test prouvant que l’accès est retiré. Ne promettez pas automatiquement une conformité juridique.",
+          "Huit, si vous prenez pour repère la documentation publique de Stripe\u00a0: trialing, active, incomplete, incomplete_expired, past_due, canceled, unpaid et paused. Pour chacun, votre document tranche trois choses\u00a0: ce que l’utilisateur peut encore faire, le message qu’il voit, et l’action qui remet la situation en ordre. Cela fait vingt-quatre décisions écrites. Le fournisseur de paiement reste un choix séparé\u00a0: les mêmes huit situations existeront ailleurs.",
       },
     ],
   },
   {
-    key: "reception",
+    key: "comparer",
     num: "03",
-    label: "Réception et consultation",
+    label: "Comparer et recevoir",
     items: [
       {
-        question: "Comment comparer plusieurs devis SaaS ?",
+        question: "Comment comparer trois devis SaaS honnêtement\u00a0?",
         answer:
-          "Remettez la même version du document, les mêmes données fictives et les mêmes cas de réception. Exigez une réponse ligne par ligne : couvert, exclu, hypothèse, variante et preuve prévue. Comparez les écarts de périmètre avant les prix ; un montant plus bas peut simplement couvrir un autre produit.",
+          "Alignez d’abord les postes, ensuite les prix. Reprenez chaque réponse, rangez ses montants dans une ligne par poste, et laissez vide ce qu’elle n’a pas chiffré. Un devis qui laisse quatre lignes vides n’est pas moins cher\u00a0: il est incomplet, et il repart avec ses quatre questions. Ne devinez jamais le prix de ce qu’une société n’a pas chiffré. Une fois les colonnes comparables, l’écart qui subsiste devient une vraie question technique et commerciale.",
       },
       {
-        question: "Une checklist WCAG ou OWASP prouve-t-elle la conformité ?",
+        question:
+          "Comment vérifier qu’un document est compris de la même façon par tous\u00a0?",
         answer:
-          "Non. Une référence versionnée aide à choisir des exigences, mais la preuve vient de contrôles exécutés sur le périmètre réel, avec environnement, résultats, écarts et nouveaux tests après correction. La réception reste une décision humaine et les qualifications juridiques ou certifications sont distinctes.",
+          "Donnez-le à deux personnes qui ne l’ont pas écrit, par exemple un utilisateur métier et la personne qui gère l’informatique. Chacune répond seule, par écrit, à cinq questions\u00a0: combien de rôles, qui crée le compte du premier utilisateur d’un client, ce que voit un abonné impayé, avec quoi un client repart s’il résilie, qui prononce la réception. Comptez les divergences\u00a0: chacune est une ligne que vos candidats chiffreraient différemment.",
       },
       {
-        question: "Qui doit accepter le SaaS à la fin du projet ?",
+        question:
+          "Le cahier des charges suffit-il à prononcer la réception\u00a0?",
         answer:
-          "Le document doit nommer l’autorité de réception et les responsables des preuves métier, sécurité, accessibilité, données et exploitation. Le prestataire produit des éléments ; il ne se prononce pas seul sur l’acceptation de son propre travail.",
+          "Non. Il dit ce qui devra être prouvé et par qui\u00a0; le plan de recette dit comment. Le premier contient les scénarios attendus, les refus et les personnes responsables. Le second ajoute les jeux de données, les étapes, les résultats constatés, les anomalies et le nouveau test après correction. Écrire les preuves tôt réduit les interprétations au moment de payer, mais accepter, refuser ou accepter avec réserves reste une décision humaine.",
       },
     ],
   },
 ];
 
-const fieldRows = [
+const quoteRows = [
   [
-    "Décision",
-    "Ce que le produit doit faire dans une situation précise",
-    "Le sponsor produit ou métier qui peut trancher",
-    "Un scénario observable avec résultat attendu",
+    "Onze écrans du parcours principal",
+    "26\u00a0000\u00a0€",
+    "27\u00a0500\u00a0€",
+    "33\u00a0000\u00a0€",
   ],
   [
-    "Responsable",
-    "Qui décide, exécute, contrôle ou accepte",
-    "Une personne ou une fonction nommée",
-    "Une validation ou une trace attribuable",
+    "Portail multi-organisation\u00a0: comptes, rôles, invitations",
+    "5\u00a0000\u00a0€",
+    "9\u00a0000\u00a0€",
+    "12\u00a0000\u00a0€",
   ],
   [
-    "Preuve de réception",
-    "Données initiales, action, attendu, refus et trace",
-    "Le responsable du contrôle",
-    "Un résultat rejouable, pas une promesse",
+    "Reprise des 12\u00a0000 dossiers existants",
+    "Non chiffré",
+    "6\u00a0000\u00a0€",
+    "9\u00a0000\u00a0€",
   ],
   [
-    "Exclusion",
-    "Ce qui ne fait pas partie du lot ni du prix principal",
-    "Le propriétaire du périmètre",
-    "Une variante séparée si elle devient nécessaire",
+    "Abonnement et facturation récurrente",
+    "Non chiffré",
+    "7\u00a0500\u00a0€",
+    "11\u00a0000\u00a0€",
   ],
   [
-    "Inconnue bloquante",
-    "À décider ou STOP, avec effet sur périmètre et devis",
-    "La personne qui pourra lever le STOP",
-    "Une décision datée avant comparaison finale",
+    "Saisie sur le terrain sans réseau",
+    "Non chiffré",
+    "Non chiffré",
+    "44\u00a0000\u00a0€",
+  ],
+  [
+    "Recette et corrections",
+    "3\u00a0000\u00a0€",
+    "5\u00a0000\u00a0€",
+    "12\u00a0000\u00a0€",
+  ],
+  [
+    "Hébergement et maintenance, douze premiers mois",
+    "Non chiffré",
+    "3\u00a0000\u00a0€",
+    "8\u00a0000\u00a0€",
+  ],
+  [
+    "Total annoncé",
+    "34\u00a0000\u00a0€",
+    "58\u00a0000\u00a0€",
+    "129\u00a0000\u00a0€",
+  ],
+];
+
+const subscriptionRows = [
+  [
+    "trialing",
+    "Période d’essai\u00a0; le passage à active est automatique au premier paiement",
+    "Ce que l’essai ouvre, et le message envoyé trois jours avant sa fin",
+  ],
+  [
+    "active",
+    "L’abonnement est en règle, sans garantir que les factures antérieures ont été réglées",
+    "Si une facture ancienne restée ouverte suffit à restreindre l’accès",
+  ],
+  [
+    "incomplete",
+    "Le premier paiement n’a pas abouti\u00a0; le client dispose de 23\u00a0heures",
+    "Ce que le client voit et peut faire pendant ces 23\u00a0heures",
+  ],
+  [
+    "incomplete_expired",
+    "Les 23\u00a0heures sont passées sans paiement abouti",
+    "Si le compte est conservé, relancé ou effacé, et au bout de combien de temps",
+  ],
+  [
+    "past_due",
+    "Le paiement d’une facture a échoué\u00a0; les factures continuent d’être émises",
+    "Le jour exact où l’accès se restreint, et ce qui reste possible avant",
+  ],
+  [
+    "unpaid",
+    "Les tentatives sont épuisées\u00a0; la documentation recommande de retirer l’accès",
+    "Ce qu’on retire\u00a0: l’écriture, la lecture, l’export, ou tout",
+  ],
+  [
+    "canceled",
+    "Résiliation effective\u00a0; état définitif qui ne bouge plus",
+    "Combien de temps les données restent récupérables avant effacement",
+  ],
+  [
+    "paused",
+    "Essai terminé sans moyen de paiement\u00a0; plus aucune facture n’est créée",
+    "Si cet état existe chez vous, ce qu’il autorise et comment on en sort",
+  ],
+];
+
+const exitRows = [
+  [
+    "Les données de vos clients",
+    "Le règlement européen sur les données, applicable depuis le 12\u00a0septembre 2025, pour les seuls services de traitement de données\u00a0: période transitoire de 30\u00a0jours calendaires à l’article\u00a025, portée à sept mois au plus en cas d’impossibilité technique, frais de changement supprimés au 12\u00a0janvier 2027 à l’article\u00a029",
+    "Le format, les données incluses, la fréquence, la personne qui vérifie l’export et le jeu fictif sur lequel il est rejoué avant la mise en service",
+  ],
+  [
+    "Le code source et le droit de le faire évoluer",
+    "L’article L131-3 du code de la propriété intellectuelle\u00a0: mention distincte de chaque droit cédé, étendue, destination, lieu et durée délimités. L’article L113-9 ne vaut que pour un salarié",
+    "La liste des droits cédés, leur durée, leur territoire, et le dépôt où le code est poussé à chaque livraison",
+  ],
+  [
+    "Les accès, les secrets et l’hébergement",
+    "Aucun texte général\u00a0: tout dépend de qui a ouvert les comptes",
+    "Comptes d’hébergement, de paiement et d’envoi d’e-mails ouverts au nom de votre société dès le premier jour, inventaire des secrets et date de leur remplacement",
+  ],
+  [
+    "La documentation d’exploitation",
+    "Aucun texte général",
+    "Ce que votre équipe doit savoir faire seule\u00a0: redéployer, restaurer une sauvegarde, ajouter un compte, lire les journaux",
+  ],
+];
+
+const scoringRows = [
+  [
+    "Couvert · Exclu · Variante",
+    "Un seul de ces trois mots, en face de chaque exigence numérotée",
+    "Le poste qu’une réponse a silencieusement laissé de côté",
+  ],
+  [
+    "Hypothèse ajoutée",
+    "La phrase du document qui a été interprétée, et la lecture retenue",
+    "La divergence de compréhension, avant qu’elle ne devienne un avenant",
+  ],
+  [
+    "Montant isolé",
+    "Le prix de cette exigence seule, hors forfait global",
+    "Le devis dont on ne peut pas retirer une ligne pour le comparer",
+  ],
+  [
+    "Preuve prévue",
+    "Le scénario qui sera rejoué devant vous au moment de recevoir",
+    "La fonction annoncée que personne ne saura vérifier",
+  ],
+  [
+    "Question posée",
+    "Ce que la société n’a pas pu trancher seule",
+    "Ce que vous devrez renvoyer aux trois candidats, jamais à un seul",
   ],
 ];
 
@@ -218,135 +328,161 @@ export default function Page() {
           { label: breadcrumbName },
         ]}
         badges={[
-          { label: "Même produit, mêmes preuves", variant: "dark" },
+          { label: "Méthode de consultation", variant: "dark" },
           { label: "SaaS B2B", variant: "neutral" },
-          { label: "Générateur local", variant: "success" },
+          { label: "Trame locale · aucun envoi", variant: "success" },
+          {
+            label: "Exemple construit · aucun dossier client",
+            variant: "neutral",
+          },
           {
             label: "Mis à jour le " + formatGuideDate(guide.dateModified),
             variant: "muted",
           },
         ]}
-        heroTitle="Cahier des charges SaaS :"
-        heroTitleEm="faire chiffrer"
-        heroTitleSuffix="le même produit"
-        heroDescription="Une trame locale de neuf blocs pour décrire le parcours vendu, l’organisation cliente, les droits, l’abonnement, les échecs, les données et la sortie. Chaque bloc sépare décision, responsable, preuve, exclusion et inconnue bloquante."
+        heroTitle={"Cahier des charges SaaS\u00a0: écrire les exigences"}
+        heroTitleEm="avant de comparer"
+        heroTitleSuffix="les prix"
+        heroDescription={
+          "Exemple construit pour ce guide, et non un dossier client\u00a0: trois sociétés y chiffrent le même document de quatorze pages à 34\u00a0000, 58\u00a0000 et 129\u00a0000\u00a0€ HT. Ces montants, les volumes et l’effectif sont choisis pour la démonstration et ne viennent d’aucun relevé de marché. Le décompte poste par poste isole un poste qui tenait dans une phrase de dix mots, vaut 44\u00a0000\u00a0€ HT, et ramène l’écart entre les deux seuls devis comparables de 2,2 à 1,5 pour 1. Vous y trouverez la relecture à faire sur votre propre document, la façon d’écrire une exigence qu’on ne peut pas lire de deux façons, et la grille à joindre aux candidats."
+        }
         stats={[
-          { label: "Blocs à renseigner", value: "9" },
-          { label: "Champs par bloc", value: "5" },
+          { label: "Exemple construit", value: "3 devis" },
+          { label: "Postes à aligner", value: "7" },
+          { label: "Phrase de dix mots", value: "44\u00a0000\u00a0€ HT" },
+          { label: "États d’abonnement", value: "8" },
+          { label: "Trame locale", value: "9 blocs · 45 champs" },
           { label: "Score global", value: "Aucun" },
-          { label: "Données envoyées", value: "Aucune" },
-          { label: "Exemple", value: "Fictif" },
-          { label: "Lecture", value: guide.readTimeMin + " min" },
         ]}
         author={{
           initials: TEAM.quentin.initials,
           name: TEAM.quentin.fullName,
           role: TEAM.quentin.role,
+          profileUrl: "/equipe#fondateur",
         }}
         sidebarHeroCta={{
-          eyebrow: "Avant les devis",
-          titleStart: "Fermer",
-          titleEm: "les inconnues critiques",
+          eyebrow: "Avant d’envoyer aux candidats",
+          titleStart: "Faire relire",
+          titleEm: "votre cahier des charges",
           description:
-            "Apportez le premier parcours vendu, les rôles connus et les points encore marqués STOP. L’échange sert à distinguer le lot chiffrable des décisions qui restent au client.",
+            "Apportez le document tel qu’il est, les devis déjà reçus s’il y en a, et les décisions encore ouvertes. L’échange peut conclure que votre document est bon et qu’il n’y a rien à ajouter.",
           benefits: [
-            "Un même périmètre remis à chaque candidat",
-            "Des exclusions et variantes visibles",
-            "Des preuves prévues avant la réception",
+            "Les postes qu’un devis a laissés vides, rendus visibles",
+            "Les phrases lues de deux façons, réécrites avec vous",
+            "La grille de dépouillement à joindre aux candidats",
           ],
-          primaryCtaLabel: "Décrire mon projet SaaS",
-          primaryCtaHref: "/demarrer-un-projet",
+          primaryCtaLabel: "Voir le service SaaS et applis métier",
+          primaryCtaHref: "/services/saas-applications-metier",
+          phoneLabel: "03 74 47 20 18",
+          phoneHref: "tel:+33374472018",
         }}
         toc={toc}
-        tocLabel="Du produit vendu à la sortie"
-        mobileCtaLabel="Faire relire mon cadrage SaaS"
+        tocLabel="De la phrase floue au dépouillement"
+        mobileCtaLabel="Faire relire mon cahier des charges"
         sidebarContextCta={{
-          eyebrow: "Consultation SaaS",
-          title: "Faire relire le périmètre avant chiffrage",
+          eyebrow: "SaaS et applications métier",
+          title: "Vos trois devis ne portent pas sur le même produit\u00a0?",
           description:
-            "Partagez une version sans données sensibles, les responsables déjà identifiés et les STOP qui empêchent encore une comparaison loyale.",
+            "Décrivez le parcours vendu, les utilisateurs, les données et les points restés ouverts, sans donnée personnelle ni condition commerciale sensible.",
           benefits: [
-            "Séparer produit, contrat et architecture",
-            "Relier chaque décision à une preuve",
-            "Détecter les périmètres incomparables",
+            "Le décompte poste par poste refait sur vos devis",
+            "Les exigences réécrites avec leur refus attendu",
+            "Sortie, droits et secrets traités avant signature",
           ],
           ctaLabel: "Décrire mon projet SaaS",
           ctaHref: "/demarrer-un-projet",
+          secondaryLabel: "03 74 47 20 18",
+          secondaryHref: "tel:+33374472018",
+          badgeLabel: "Premier échange sans engagement de faisabilité",
         }}
         faqCategories={faqCategories}
         faqMeta={{
           eyebrow: "Questions fréquentes",
-          titleStart: "Cadrer un SaaS",
-          titleEm: "sans décider",
-          titleEnd: "à la place du client.",
+          titleStart: "Aligner trois réponses",
+          titleEm: "sur le même produit",
+          titleEnd: "avant de comparer les prix.",
           subtitle:
-            "Des réponses sur le périmètre, les abonnements, les données, les preuves et la comparaison des offres.",
-          ctaTitle:
-            "Votre cahier des charges produit encore des devis différents ?",
+            "Longueur du document, architecture, décisions laissées ouvertes, portée du Data Act, propriété du code, états d’abonnement, dépouillement et réception.",
+          ctaTitle: "Un point encore ouvert sur votre consultation\u00a0?",
           ctaDescription:
-            "Apportez les écarts de compréhension, les décisions en attente et le parcours que chaque répondant doit chiffrer.",
+            "Envoyez le poste qui vous bloque et la formulation dont vous doutez, sans transmettre de donnée sensible.",
           ctaLabel: "Faire relire mon cadrage",
           ctaHref: "/demarrer-un-projet",
         }}
         legalSources={[
           {
-            source: "CNIL · guide sécurité 2026",
-            href: "https://www.cnil.fr/sites/default/files/2026-05/cnil_guide_securite_personnelle.pdf",
-            description:
-              "Habilitations, encadrement de la maintenance, sous-traitance, sauvegardes et tests de restauration pour les traitements de données personnelles.",
-          },
-          {
-            source: "OWASP ASVS 5.0.0",
-            href: "https://owasp.org/www-project-application-security-verification-standard/",
-            description:
-              "Référentiel de spécification et de vérification ; les identifiants listés sont attachés à la version stable 5.0.0.",
-          },
-          {
-            source: "W3C · WCAG 2.2",
-            href: "https://www.w3.org/TR/WCAG22/",
-            description:
-              "Critères testables pour le clavier, le focus visible, les erreurs, les instructions et les messages de statut.",
-          },
-          {
-            source: "Stripe Docs · abonnements",
-            href: "https://docs.stripe.com/billing/subscriptions/webhooks",
-            description:
-              "Illustration officielle de la variété des événements d’abonnement ; cette source ne constitue pas une recommandation de fournisseur.",
-          },
-          {
-            source: "Stripe Docs · livraison des webhooks",
-            href: "https://docs.stripe.com/webhooks",
-            description:
-              "Illustration officielle des doublons et de l’absence de garantie d’ordre ; ces comportements servent de contre-cas, sans imposer Stripe.",
-          },
-          {
-            source: "EUR-Lex · règlement 2023/2854",
+            source: "EUR-Lex · règlement (UE) 2023/2854, dit Data Act",
             href: "https://eur-lex.europa.eu/eli/reg/2023/2854/oj?locale=fr",
             description:
-              "Texte du Data Act, notamment son champ, ses définitions et les articles 23 à 25 relatifs au changement de fournisseur de services de traitement de données.",
+              "Consulté le 28\u00a0août 2026. Chapitre\u00a0VI, articles\u00a023 à 31\u00a0: changement de fournisseur de services de traitement de données. L’article\u00a025 fixe une période transitoire maximale de 30\u00a0jours calendaires et prévoit, lorsque ce délai est techniquement impossible à tenir, une période alternative «\u00a0qui ne peut excéder sept mois\u00a0», le fournisseur devant en informer le client dans les 14\u00a0jours ouvrables et justifier cette impossibilité. L’article\u00a029 supprime les frais de changement à partir du 12\u00a0janvier 2027. Le règlement est applicable depuis le 12\u00a0septembre 2025 et ne couvre pas le code source.",
           },
           {
-            source: "Commission européenne · Data Act",
-            href: "https://digital-strategy.ec.europa.eu/en/factpages/data-act-explained",
-            description:
-              "Explication institutionnelle du règlement et de ses différentes catégories de règles, sans extension automatique à tout abonnement SaaS.",
-          },
-          {
-            source: "Légifrance · article L131-3",
+            source:
+              "Légifrance · code de la propriété intellectuelle, article L131-3",
             href: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278958",
             description:
-              "Délimitation des droits cédés ; utile pour ne pas confondre export des données, remise des livrables et droits sur le code.",
+              "Consulté le 28\u00a0août 2026. «\u00a0Chacun des droits cédés fait l’objet d’une mention distincte dans l’acte de cession et le domaine d’exploitation des droits cédés est délimité quant à son étendue et à sa destination, quant au lieu et quant à la durée.\u00a0»",
+          },
+          {
+            source:
+              "Légifrance · code de la propriété intellectuelle, article L113-9",
+            href: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039279818",
+            description:
+              "Consulté le 28\u00a0août 2026. Les droits patrimoniaux sur un logiciel créé par un ou plusieurs employés dans l’exercice de leurs fonctions sont dévolus à l’employeur. Le texte vise le salarié\u00a0; il ne s’applique pas à une société extérieure.",
+          },
+          {
+            source: "Stripe Docs · réception des événements",
+            href: "https://docs.stripe.com/webhooks",
+            description:
+              "Consulté le 28\u00a0août 2026. Ordre de remise non garanti, doublons possibles à reconnaître par l’identifiant de l’objet et le type d’événement, nouvelles tentatives pendant trois jours au maximum en production et trois tentatives en quelques heures en environnement de test.",
+          },
+          {
+            source: "Stripe Docs · webhooks et abonnements",
+            href: "https://docs.stripe.com/billing/subscriptions/webhooks",
+            description:
+              "Consulté le 28\u00a0août 2026. Source des huit états d’abonnement cités, du délai de 23\u00a0heures de l’état incomplete, de l’avertissement trois jours avant la fin d’essai, et de la précision selon laquelle l’état active ne signifie pas que toutes les factures ont été réglées. Citée comme repère de dénombrement, pas comme choix de fournisseur.",
+          },
+          {
+            source: "W3C · Web Content Accessibility Guidelines 2.2",
+            href: "https://www.w3.org/TR/WCAG22/",
+            description:
+              "Recommandation du W3C datée du 12\u00a0décembre 2024, consultée le 28\u00a0août 2026. Neuf critères ajoutés par rapport à la version\u00a02.1, dont six aux niveaux A et AA\u00a0; le critère 4.1.1 est déclaré obsolète. Le critère 2.5.8 fixe la taille minimale d’une cible à 24\u00a0×\u00a024\u00a0pixels CSS.",
+          },
+          {
+            source: "OWASP · Application Security Verification Standard 5.0.0",
+            href: "https://owasp.org/www-project-application-security-verification-standard/",
+            description:
+              "Version 5.0.0 publiée le 30\u00a0mai 2025, environ 350\u00a0exigences réparties en dix-sept chapitres. Référentiel de spécification et de vérification\u00a0: en citer un sous-ensemble versionné ne vaut ni audit, ni certification.",
+          },
+          {
+            source: "CNIL · guide de la sécurité des données personnelles",
+            href: "https://www.cnil.fr/sites/default/files/2026-05/cnil_guide_securite_personnelle.pdf",
+            description:
+              "Habilitations reliées aux besoins d’accès, encadrement des interventions de maintenance, sauvegardes et tests de restauration. Utile pour rédiger des exigences\u00a0; ne vaut pas qualification juridique d’un traitement.",
+          },
+          {
+            source: "CNIL · notifier une violation de données personnelles",
+            href: "https://www.cnil.fr/fr/notifier-une-violation-de-donnees-personnelles",
+            description:
+              "Consulté le 28\u00a0août 2026. Délai de 72\u00a0heures après en avoir pris connaissance pour notifier la CNIL, sauf lorsque la violation n’est pas susceptible d’engendrer un risque pour les droits et libertés des personnes concernées.",
+          },
+          {
+            source: "Hagnéré Code · tarifs publics",
+            href: "/tarifs",
+            description:
+              "Grille relevée le 28\u00a0août 2026\u00a0: SaaS et applications métier à 15\u00a0000\u00a0€ HT pour un premier produit de trois à cinq écrans, 30\u00a0000 à 60\u00a0000\u00a0€ HT pour dix à quinze écrans, Discovery Sprint à 1\u00a0500\u00a0€ HT sur deux jours, cadrage payé systématique au-delà de 8\u00a0000\u00a0€ HT de projet. La seconde bande y est libellée «\u00a010–15 écrans + IA\u00a0»\u00a0: elle ne se compare pas telle quelle à un portail sans intelligence artificielle. Repères publics et indicatifs\u00a0: le devis signé fixe le prix ferme.",
           },
         ]}
         disclaimer={{
           eyebrow: "Portée du guide",
-          title: "Une méthode de spécification, pas une conformité automatique",
+          title: "Une méthode de consultation, sans valeur de conseil juridique",
           description:
-            "Les décisions, rôles, seuils, durées et obligations dépendent de votre produit, de vos contrats, de vos données et de vos risques. L’exemple DossierClair est entièrement fictif. Les références CNIL, OWASP, W3C, paiement, Data Act et propriété intellectuelle aident à écrire des questions et des preuves ; elles ne remplacent pas les validations métier, juridiques, sécurité, accessibilité ou comptables compétentes.",
+            "Les décisions, seuils, durées et clauses dépendent de votre produit, de vos contrats, de vos données et de vos risques. Le cas suivi est construit pour ce guide\u00a0: ses montants, ses volumes et son effectif sont choisis pour la démonstration et ne viennent d’aucune source. Les références Data Act, propriété intellectuelle, CNIL, OWASP, W3C et paiement aident à écrire des questions et des preuves\u00a0; elles ne remplacent ni un avocat, ni un délégué à la protection des données, ni un expert-comptable.",
         }}
         relatedGuides={[
           {
-            label: "MVP SaaS : quoi inclure avant un premier client ?",
+            label:
+              "MVP SaaS\u00a0: quoi inclure avant un premier client\u00a0?",
             href: "/guides/mvp-saas-quoi-inclure",
           },
           {
@@ -354,12 +490,14 @@ export default function Page() {
             href: "/guides/plan-recette-application-metier",
           },
           {
-            label: "Sécurité d’une application métier avant sa mise en service",
+            label:
+              "Quel socle de sécurité exiger avant la mise en service\u00a0?",
             href: "/guides/securite-application-metier",
           },
           {
-            label: "Avez-vous vraiment besoin d’un logiciel métier ?",
-            href: "/guides/signes-besoin-logiciel-metier",
+            label:
+              "Power Apps ou application sur mesure\u00a0: comment choisir\u00a0?",
+            href: "/guides/power-apps-ou-application-sur-mesure",
           },
         ]}
         relatedGuidesLabel="4 prolongements utiles"
@@ -368,45 +506,85 @@ export default function Page() {
           id="reponse-courte"
           number="01"
           label="Réponse directe"
-          title="Le cahier des charges fixe le même SaaS pour tous les répondants"
+          readingTime={"2\u00a0min"}
+          title="Deux devis ne se comparent que s’ils portent la même liste de postes"
         >
           <p>
-            Un cahier des charges SaaS utile ne commence ni par une
-            architecture, ni par une liste d’écrans. Il fixe le produit que
-            l’entreprise achète : qui crée l’organisation cliente, qui peut
-            agir, quel parcours justifie l’abonnement, quels droits naissent de
-            l’offre et ce qui se passe en cas d’échec. Il précise aussi comment
-            les données sont récupérées à la sortie. Pour chaque règle, il nomme
-            un responsable, une preuve de réception et une exclusion.
+            Vous devez écrire le document qui servira à faire chiffrer votre
+            logiciel, ou vous venez de recevoir des devis qui ne se ressemblent
+            pas. Les deux situations tiennent au même point&nbsp;:{" "}
+            <strong>
+              un cahier des charges SaaS n’est utile que si deux sociétés qui le
+              lisent chiffrent la même liste de postes.
+            </strong>{" "}
+            Tant que ce n’est pas le cas, la différence de prix entre leurs
+            réponses ne mesure rien.
           </p>
-
           <p>
-            Le document est comparable lorsque chaque candidat peut reprendre
-            les mêmes situations initiales, produire les mêmes résultats
-            attendus et déclarer séparément ses hypothèses. Une inconnue
-            structurante reste écrite <strong>STOP</strong> ou{" "}
-            <strong>À décider</strong>. Un prix ou une fonction bien détaillée
-            ailleurs ne la compense pas.
+            Ce guide part d’un exemple construit pour la démonstration&nbsp;:
+            trois devis à 34&nbsp;000, 58&nbsp;000 et 129&nbsp;000&nbsp;€ hors
+            taxes (HT) pour le même document de quatorze pages. Aucun de ces
+            montants ne vient d’un dossier client ni d’un relevé de marché. Le
+            décompte de la section&nbsp;02 isole un poste, tenu dans une phrase
+            de dix mots page&nbsp;6, qui vaut 44&nbsp;000&nbsp;€ HT.
+          </p>
+          <p>
+            Vous y trouverez la relecture à faire sur votre propre document, la
+            façon d’écrire une exigence qu’on ne peut pas lire de deux façons,
+            les huit états d’abonnement à trancher, ce que la réglementation
+            européenne vous doit à la sortie, puis la grille de dépouillement à
+            joindre aux candidats.
           </p>
 
-          <GuideTable
-            caption="Les cinq natures d’information qui empêchent un périmètre implicite"
-            headers={["Nature", "Contenu", "Propriétaire", "Preuve attendue"]}
-            rows={fieldRows}
-          />
+          <GuidePremiumCase
+            initial="3"
+            eyebrow="Fil rouge du guide · exemple construit"
+            title={
+              "Un portail client, 12\u00a0000 dossiers, une phrase à deux lectures"
+            }
+          >
+            <p>
+              <em>
+                Exemple construit&nbsp;: les montants des devis, les volumes,
+                l’effectif et le prix de l’abonnement sont choisis pour la
+                démonstration et ne viennent d’aucune source&nbsp;; seuls les
+                repères de prix rappelés en section&nbsp;02 sont repris de notre
+                grille publiée. Ce n’est pas un dossier client.
+              </em>{" "}
+              Un bureau de contrôle technique de bâtiments, 46&nbsp;salariés à
+              Nantes. Sonia, sa directrice générale, veut vendre à ses clients
+              bailleurs un portail où ils déposent leurs demandes et récupèrent
+              les rapports. Chaque organisation cliente paie un abonnement
+              annuel de 1&nbsp;490&nbsp;€ HT.
+            </p>
+            <p>
+              Karim, qui gère l’informatique, a écrit le document&nbsp;: onze
+              écrans, six rôles, 12&nbsp;000&nbsp;dossiers à reprendre. Il l’a
+              envoyé le même jour aux sociétés A, B et C. Nous suivrons ce
+              dossier jusqu’au dépouillement.
+            </p>
+          </GuidePremiumCase>
 
           <InfoBox
             variant="amber"
-            title="STOP si le problème, l’acheteur ou le premier parcours vendu restent inconnus"
+            title={"Quand un autre document vous servira mieux"}
           >
             <p>
-              Dans ce cas, le cahier des charges transforme encore une hypothèse
-              de marché en commande de logiciel. Revenez au guide pour{" "}
+              Si le premier parcours vendu n’est pas encore raconté de bout en
+              bout, commencez par{" "}
               <Link href="/guides/mvp-saas-quoi-inclure">
-                valider une idée SaaS avant de développer
+                délimiter un MVP SaaS
               </Link>
-              , puis reprenez ici lorsque le premier résultat vendu peut être
-              raconté de bout en bout.
+              . Si le problème lui-même n’est pas nommé, le{" "}
+              <Link href="/guides/signes-besoin-logiciel-metier">
+                diagnostic du besoin de logiciel métier
+              </Link>{" "}
+              évite d’acheter avant de savoir quoi. Et si l’outil vise vos
+              équipes plutôt que vos clients, le guide{" "}
+              <Link href="/guides/power-apps-ou-application-sur-mesure">
+                Power Apps ou application sur mesure
+              </Link>{" "}
+              chiffre la bascule vers une plateforme déjà payée.
             </p>
           </InfoBox>
 
@@ -420,324 +598,271 @@ export default function Page() {
               className="h-auto w-full"
             />
           </div>
+        </GuidePremiumSection>
 
-          <GuidePremiumMemo title="La phrase de contrôle à mettre en tête du document">
-            <p>
-              « Chaque répondant chiffre les décisions ci-dessous, conserve les
-              STOP, liste les hypothèses qu’il ajoute, isole les variantes et
-              décrit la preuve qui permettra au client de recevoir chaque
-              comportement. »
-            </p>
+        <GuidePremiumSection
+          id="ecart"
+          number="02"
+          label="Décompte"
+          readingTime={"4\u00a0min"}
+          title={
+            "Combien votre cahier des charges coûte-t-il en écart de devis\u00a0?"
+          }
+        >
+          <p>
+            Le tableau ci-dessous range les trois réponses sur une même liste de
+            sept postes&nbsp;— la réunion de ce que chacune nomme&nbsp;— et
+            laisse écrit <em>non chiffré</em> partout où une société n’a rien
+            mis. Les montants sont choisis pour ce guide&nbsp;: ils ne viennent
+            d’aucun relevé de marché, et le plus élevé des trois totaux sort de
+            la bande que notre propre grille publie. Refaites la colonne avec
+            vos devis réels&nbsp;— la méthode ne dépend pas des nombres.
+          </p>
+
+          <GuideTable
+            caption="Les trois devis de l’exemple construit, rangés poste par poste"
+            headers={["Poste", "Société A", "Société B", "Société C"]}
+            rows={quoteRows}
+          />
+
+          <h3>Ce que la colonne A ne dit pas encore</h3>
+          <p>
+            Quatre postes sur sept ne portent aucun montant chez la société
+            A&nbsp;: la reprise des dossiers, l’abonnement, la saisie sans
+            réseau et l’hébergement. La reprise, l’abonnement et l’hébergement
+            devront être payés à quelqu’un, tôt ou tard&nbsp;; la saisie sans
+            réseau, elle, attend un arbitrage que personne n’a encore rendu. On
+            ne devine pas le prix de ce qu’un devis
+            n’a pas chiffré&nbsp;: on lui renvoie les quatre lignes, et on range
+            ses montants à leur retour. Avant cela, son total de
+            34&nbsp;000&nbsp;€ HT n’a aucun équivalent en face.
+          </p>
+
+          <h3>Un seul poste porte l’essentiel de l’écart</h3>
+          <p>
+            La saisie sur le terrain sans réseau vaut 44&nbsp;000&nbsp;€ HT chez
+            la société C, et n’apparaît ni chez A ni chez B. Les trois totaux
+            vont de 34&nbsp;000 à 129&nbsp;000&nbsp;€ HT, soit 3,8 pour 1&nbsp;:
+            un rapport calculé sur trois listes de postes différentes. Seules B
+            et C deviennent comparables une fois cette ligne retirée,
+            puisqu’elle est la seule qui manque à B, quand quatre lignes
+            manquent à A. Sur ce couple B&nbsp;et&nbsp;C, l’écart annoncé vaut
+            129&nbsp;000 contre 58&nbsp;000&nbsp;€ HT, soit 2,2 pour 1&nbsp;; la
+            saisie sans réseau retirée, la société C tombe à 85&nbsp;000&nbsp;€
+            HT et l’écart devient <strong>1,5 pour 1</strong>. Il subsiste
+            27&nbsp;000&nbsp;€ entre deux propositions qui portent enfin sur le
+            même produit, et la phrase non tranchée pèse 1,6&nbsp;fois cette
+            somme.
+          </p>
+          <p>
+            Cette phrase tient sur une ligne, page&nbsp;6&nbsp;: «&nbsp;Les
+            inspecteurs doivent pouvoir saisir leur rapport depuis le
+            terrain.&nbsp;» Les sociétés A et B ont lu «&nbsp;un écran qui
+            s’affiche correctement sur téléphone&nbsp;», compris dans les onze
+            écrans. La société C a lu «&nbsp;une application qui fonctionne dans
+            un local technique sans réseau, avec synchronisation ensuite&nbsp;».
+            Les deux lectures se défendent. L’une coûte 44&nbsp;000&nbsp;€ HT,
+            soit 34&nbsp;% du devis le plus élevé.
+          </p>
+
+          <h3>
+            Ce que notre propre grille situe, et ce qu’elle ne compare pas
+          </h3>
+          <p>
+            Le repère qui suit est le nôtre, relevé sur notre{" "}
+            <Link href="/tarifs">grille publique</Link> le 28&nbsp;août 2026, et
+            non une observation du marché&nbsp;: nous vendons ce type de projet.
+            Elle situe un premier SaaS de trois à cinq écrans à
+            15&nbsp;000&nbsp;€ HT, et un produit standard de dix à quinze écrans
+            entre 30&nbsp;000 et 60&nbsp;000&nbsp;€ HT. Deux réserves. Cette
+            seconde bande est libellée «&nbsp;10–15 écrans + IA&nbsp;», quand le
+            portail de l’exemple ne comporte aucune fonction d’intelligence
+            artificielle&nbsp;: la comparaison ne porte pas sur les mêmes
+            fonctions. Et les montants de l’exemple ont été choisis pour la
+            démonstration&nbsp;: le total C de 129&nbsp;000&nbsp;€ HT vaut plus
+            du double de sa borne haute, et ramené à 85&nbsp;000&nbsp;€ il reste
+            25&nbsp;000&nbsp;€ au-dessus. Ces montants restent des repères
+            publics et indicatifs&nbsp;; seul un devis signé fixe un prix ferme.
+          </p>
+
+          <GuidePremiumMemo
+            eyebrow="Le contrôle qui précède l’envoi"
+            title="Faites lire le document par deux personnes qui ne l’ont pas écrit"
+          >
+            <ul>
+              <li>
+                Un utilisateur métier et la personne qui gère l’informatique. Ni
+                l’auteur du document, ni son commanditaire.
+              </li>
+              <li>
+                Chacune répond seule et par écrit à cinq questions&nbsp;:
+                combien de rôles distincts&nbsp;? qui crée le compte du premier
+                utilisateur d’un nouveau client&nbsp;? que voit un abonné dont
+                le paiement vient d’échouer&nbsp;? avec quoi un client repart-il
+                s’il résilie&nbsp;? qui prononce la réception&nbsp;?
+              </li>
+              <li>
+                Comptez les réponses divergentes. Chacune est une ligne que vos
+                candidats chiffreront différemment.
+              </li>
+              <li>
+                Sur le dossier de Sonia, la quatrième question aurait suffi à
+                faire remonter la saisie sans réseau.
+              </li>
+            </ul>
           </GuidePremiumMemo>
         </GuidePremiumSection>
 
         <GuidePremiumSection
-          id="frontiere"
-          number="02"
-          label="Périmètre produit"
-          title="Le résultat vendu fixe la frontière des fonctions"
-        >
-          <p>
-            Écrivez d’abord une histoire courte : une organisation cliente part
-            d’un état initial, une personne autorisée accomplit le premier
-            parcours et obtient le résultat vendu. Nommez le déclencheur, les
-            données nécessaires, le début, la fin et les cas où ce résultat ne
-            doit pas être promis. Cette histoire devient le fil rouge des rôles,
-            de l’abonnement, de l’exploitation et de la recette.
-          </p>
-
-          <h3>Les neuf réponses minimales avant une consultation</h3>
-          <ol>
-            <li>Quelle entreprise achète et qui peut engager la décision ?</li>
-            <li>
-              Qui utilise le produit et dans quelle organisation cliente ?
-            </li>
-            <li>Quel événement déclenche le premier parcours ?</li>
-            <li>Quel résultat observable met fin à ce parcours ?</li>
-            <li>Quelles données entrent, changent et sortent ?</li>
-            <li>
-              Quels rôles peuvent agir, sur quels objets et dans quelle portée ?
-            </li>
-            <li>Quel droit d’usage l’offre ouvre-t-elle ou retire-t-elle ?</li>
-            <li>
-              Que voit le client lorsque le parcours ou l’abonnement échoue ?
-            </li>
-            <li>
-              Quelle preuve permettra d’accepter ou de refuser la livraison ?
-            </li>
-          </ol>
-
-          <p>
-            Si une réponse manque, indiquez l’inconnue, son responsable et la
-            date ou la condition de décision. Ne laissez pas « à voir avec le
-            prestataire » sans effet explicite : selon le sujet, cela peut
-            changer le produit, la charge d’exploitation, le contrat et le prix.
-          </p>
-
-          <h3>Le développement se compare d’abord à l’option la plus simple</h3>
-          <p>
-            Avant de consulter des développeurs, rejouez le même résultat avec
-            une fonction déjà payée, une configuration légère, un processus
-            manuel maîtrisé et l’option de ne pas développer. Comparez les mêmes
-            préconditions, données, refus, preuves et responsabilités. Si une
-            option plus simple couvre le résultat sans déplacer un risque
-            inacceptable, gardez-la : un cahier des charges n’est pas une raison
-            de commander du code.
-          </p>
-
-          <GuideTable
-            caption="Le contre-cas à documenter avant de retenir un développement"
-            headers={["Option", "Même base de comparaison", "Décision"]}
-            rows={[
-              [
-                "Fonction déjà payée",
-                "Rejouer le parcours et les refus avec la licence et les droits existants",
-                "Configurer si le résultat et les preuves sont couverts",
-              ],
-              [
-                "Processus plus léger",
-                "Tester formulaire, automatisation bornée ou contrôle manuel avec les mêmes données",
-                "Conserver si la charge et le risque restent acceptés",
-              ],
-              [
-                "Développement",
-                "Joindre les écarts décisifs que les options simples ne couvrent pas",
-                "Consulter seulement sur ces écarts et le parcours vendu",
-              ],
-              [
-                "Ne pas développer",
-                "Vérifier si le résultat, son propriétaire ou sa preuve restent inconnus",
-                "STOP tant que le logiciel servirait à masquer l’inconnue",
-              ],
-            ]}
-          />
-
-          <GuideTable
-            caption="Séparer les couches pour ne pas faire choisir le produit par la solution technique"
-            headers={["Couche", "À écrire ici", "À garder séparé"]}
-            rows={[
-              [
-                "Produit",
-                "Utilisateurs, organisation, parcours, états, règles, messages, sorties",
-                "Choix d’architecture ou de fournisseur",
-              ],
-              [
-                "Preuve",
-                "Préconditions, action, attendu, refus, trace, personne qui reçoit",
-                "Démonstration libre sans attendu écrit",
-              ],
-              [
-                "Contrat",
-                "Responsabilités à arbitrer, livrables, sortie, inconnues juridiques",
-                "Avis juridique ou engagement non validé",
-              ],
-              [
-                "Réponse prestataire",
-                "Hypothèses, exclusions, variantes, méthode, risques et preuves",
-                "Réécriture silencieuse du besoin",
-              ],
-            ]}
-          />
-
-          <InfoBox
-            variant="blue"
-            title="Le prix, le délai et le niveau de service restent des décisions du projet"
-          >
-            <p>
-              Aucun montant, aucune durée ni aucun niveau de service contractuel
-              (SLA) universel ne s’applique ici. Demandez aux candidats de
-              chiffrer le même lot, de lister ce qui fait varier leur estimation
-              et de séparer les options. Les responsables du client arbitrent
-              ensuite avec les informations réellement disponibles.
-            </p>
-          </InfoBox>
-        </GuidePremiumSection>
-
-        <GuidePremiumSection
-          id="organisation"
+          id="exigence"
           number="03"
-          label="Cycle de vie client"
-          title="L’organisation cliente possède son propre cycle de vie"
+          label="Rédaction"
+          readingTime={"3\u00a0min"}
+          title={
+            "Comment écrire une exigence qu’on ne peut pas lire de deux façons\u00a0?"
+          }
         >
           <p>
-            Un SaaS B2B ne gère pas seulement des comptes individuels. Il doit
-            savoir à quelle entreprise appartiennent les utilisateurs, les
-            données, les droits d’usage et la facturation. Le cahier des charges
-            doit donc décrire la création de l’organisation, son premier
-            propriétaire, ses administrateurs, le transfert de responsabilité,
-            la suspension, la fermeture et la séparation avec les autres
-            organisations.
+            Une exigence est testable quand vous savez écrire son échec. Si
+            personne ne peut dire quelle tentative doit être refusée, personne
+            ne saura recevoir la fonction, et le jour de la livraison se réglera
+            à la discussion.
+          </p>
+          <p>
+            Reprenons la phrase de la page&nbsp;6. Voici ce qu’elle devient une
+            fois écrite pour qu’un devis puisse l’isoler et la chiffrer seule.
           </p>
 
-          <h3>Chaque changement d’état mérite sa propre règle</h3>
-          <GuideTable
-            caption="Cycle de vie minimal d’une organisation cliente"
-            headers={[
-              "Situation",
-              "Décision à écrire",
-              "Cas de preuve",
-              "Refus utile",
-            ]}
-            rows={[
-              [
-                "Création",
-                "Qui peut créer, avec quelles données et qui devient propriétaire",
-                "Organisation créée une seule fois avec un premier administrateur",
-                "Création incomplète ou doublon non autorisé",
-              ],
-              [
-                "Administration",
-                "Qui invite, change les rôles et voit l’état de l’organisation",
-                "Invitation attribuée et journalisée dans la bonne organisation",
-                "Administration d’une autre organisation",
-              ],
-              [
-                "Transfert",
-                "Qui demande, valide et reçoit la propriété",
-                "Anciennes et nouvelles responsabilités visibles",
-                "Transfert sans approbation prévue",
-              ],
-              [
-                "Suspension",
-                "Effets sur accès, données, abonnement et correction",
-                "Une organisation suspendue sans effet sur une autre",
-                "Action interdite pendant la suspension",
-              ],
-              [
-                "Fermeture",
-                "Export, annulation, récupération, suppression et trace finale",
-                "Parcours de sortie rejoué sur des données fictives",
-                "Nouvel accès après la suppression prévue",
-              ],
-            ]}
-          />
+          <FormulaBox>
+            {`EXIGENCE R-14 — Saisir un rapport sans réseau
+
+Situation initiale\u00a0: un inspecteur connecté, affecté au dossier 2\u00a0481
+de l’organisation Bailleur Nord, dans un local technique sans réseau
+mobile ni Wi-Fi.
+
+Action\u00a0: il ouvre le dossier, renseigne douze champs, joint trois photos,
+valide.
+
+Résultat attendu\u00a0: le rapport est conservé sur l’appareil. Dès le retour
+du réseau, il apparaît côté serveur avec ses trois photos, au plus tard
+quatre heures après la validation.
+
+Refus attendu\u00a0: un inspecteur non affecté au dossier 2\u00a0481 ne peut pas
+l’ouvrir, avec ou sans réseau.
+
+Preuve de réception\u00a0: mode avion activé, saisie complète, mode avion
+coupé, capture du rapport côté serveur avec ses trois photos.
+
+Hors de cette exigence\u00a0: la consultation sans réseau des rapports des
+autres dossiers.
+
+Décision encore ouverte\u00a0: deux inspecteurs modifient le même rapport sans
+réseau, lequel gagne\u00a0? Tranché par Sonia avant le 15\u00a0septembre.
+Chiffrer les deux branches séparément.`}
+          </FormulaBox>
 
           <p>
-            Utilisez au moins deux organisations fictives dans les cas de
-            réception. Un test qui montre seulement qu’une personne autorisée
-            voit ses données ne prouve pas que la même requête est refusée dans
-            l’organisation voisine. Cette séparation est une règle produit ; la
-            manière technique de l’obtenir reste à expliquer par le prestataire.
+            Sept blocs au lieu d’une ligne, et aucun ne nomme une
+            technologie&nbsp;: ni le langage, ni la base de données, ni le
+            mécanisme de synchronisation. Chaque société reste libre de sa
+            solution, et aucune ne peut plus se tromper de produit. Le seul
+            ajout coûteux, l’arbitrage sur le conflit d’écriture, est déclaré
+            ouvert et sera chiffré deux fois.
           </p>
 
-          <InfoBox
-            variant="emerald"
-            title="Une adhésion relie une personne, une organisation, un rôle et une portée"
-          >
-            <p>
-              Évitez « l’utilisateur est administrateur » sans contexte. Une
-              même personne peut avoir des responsabilités différentes selon
-              l’organisation, le dossier ou l’action. La règle doit rester vraie
-              après une invitation, une modification de rôle et une révocation.
-            </p>
-          </InfoBox>
+          <h3>La mesure à faire sur votre propre document</h3>
+          <p>
+            Exportez votre cahier des charges en texte, puis comptez les mots
+            qui repoussent une décision. Cette commande fonctionne dans un
+            terminal macOS ou Linux, et sous Windows depuis le sous-système
+            Linux&nbsp;:
+          </p>
+
+          <FormulaBox>
+            {`grep -onEi 'etc\\.|notamment|le cas échéant|si nécessaire|si besoin|idéalement|ergonomique|intuitif|convivial|performant|moderne|standard du marché|à définir avec' cahier-des-charges.txt`}
+          </FormulaBox>
 
           <p>
-            Le cycle de l’organisation fixe le périmètre. Les rôles peuvent
-            alors être testés sur des actions permises et des refus attendus.
+            Chaque ligne renvoyée porte son numéro et devient une entrée de
+            votre liste de travail&nbsp;: soit une exigence écrite comme
+            ci-dessus, soit une décision déclarée ouverte, avec son nom et sa
+            date. Aucun seuil publié n’existe pour cette densité, et en inventer
+            un serait pire que de s’en passer. Le repère utile reste interne à
+            votre texte&nbsp;: relancez la commande après réécriture, puis
+            reprenez une par une les occurrences qui subsistent. Chacune est
+            soit une décision que personne n’a voulu prendre, soit un mot que
+            vous gardez sciemment&nbsp;: écrivez lequel.
+          </p>
+
+          <h3>Les deux exigences qu’un adjectif ne remplace jamais</h3>
+          <p>
+            <strong>«&nbsp;Interface accessible&nbsp;»</strong> ne se reçoit
+            pas. Les règles WCAG&nbsp;2.2, recommandation du W3C datée du
+            12&nbsp;décembre 2024, ajoutent neuf critères à la version
+            précédente, dont six aux niveaux A et AA, et déclarent obsolète
+            l’ancien critère 4.1.1. Le critère 2.5.8 fixe par exemple la taille
+            minimale d’une cible tactile à 24&nbsp;×&nbsp;24&nbsp;pixels CSS,
+            vérifiable sur une maquette. Écrivez les critères que vous retenez,
+            le parcours concerné et la personne qui les contrôle.
+          </p>
+          <p>
+            <strong>«&nbsp;Application sécurisée&nbsp;»</strong> non plus. Le
+            référentiel OWASP ASVS, version 5.0.0 publiée le 30&nbsp;mai 2025,
+            compte environ 350&nbsp;exigences réparties en dix-sept chapitres.
+            Vous en choisissez quelques-unes, vous les citez avec leur numéro de
+            version, et vous dites lesquelles seront testées et par qui. Le{" "}
+            <Link href="/guides/securite-application-metier">
+              socle de sécurité à exiger avant la mise en service
+            </Link>{" "}
+            détaille ce tri, et le{" "}
+            <Link href="/guides/plan-recette-application-metier">
+              plan de recette d’une application métier
+            </Link>{" "}
+            donne la forme des scénarios à rejouer.
           </p>
         </GuidePremiumSection>
 
         <GuidePremiumSection
-          id="droits"
+          id="abonnement"
           number="04"
-          label="Autorisation"
-          title="Un droit se vérifie par son objet, son action, sa portée et son refus"
+          label="Abonnement"
+          readingTime={"3\u00a0min"}
+          title="Les huit situations qu’un abonnement traverse"
         >
           <p>
-            « Gestion des rôles » est une fonction, pas une exigence vérifiable.
-            Décrivez qui peut lire, créer, modifier, valider, exporter ou
-            supprimer quel objet et dans quel périmètre — organisation, dossier
-            ou donnée concernée. Ajoutez un cas autorisé, un cas refusé et le
-            comportement attendu après retrait du droit.
+            Un cahier des charges qui s’arrête à «&nbsp;l’accès s’ouvre à la
+            souscription et se ferme à la résiliation&nbsp;» décrit deux états.
+            La documentation publique de Stripe en décrit huit. Les six autres
+            sont laissées à l’appréciation de la personne qui code, et trois
+            d’entre elles décrivent une situation où le paiement n’a pas abouti
+            sans que l’accès se ferme de lui-même&nbsp;: <em>incomplete</em>,{" "}
+            <em>past_due</em> et <em>unpaid</em>.
           </p>
 
           <GuideTable
-            caption="Exemple de formulation d’un droit sans décider l’implémentation"
-            headers={["Élément", "Question", "Formulation observable"]}
-            rows={[
-              [
-                "Rôle",
-                "Au nom de quelle responsabilité agit la personne ?",
-                "Une administratrice d’Atelier Nord invite une contributrice",
-              ],
-              [
-                "Objet",
-                "Sur quelle ressource porte l’action ?",
-                "L’adhésion à Atelier Nord, pas le profil global de la personne",
-              ],
-              [
-                "Action",
-                "Que peut-elle réellement faire ?",
-                "Créer l’invitation et choisir un rôle autorisé",
-              ],
-              [
-                "Portée",
-                "Dans quelle organisation ou quel dossier ?",
-                "Uniquement Atelier Nord",
-              ],
-              [
-                "Refus",
-                "Quelle tentative doit échouer ?",
-                "Modifier une adhésion de Studio Rivage",
-              ],
-              [
-                "Révocation",
-                "Que deviennent les accès déjà ouverts ?",
-                "La requête suivante sur la portée retirée est refusée ; toutes les sessions prennent fin si le compte entier est désactivé ou supprimé",
-              ],
+            caption="Les huit états d’abonnement et la décision que chacun impose au document"
+            headers={[
+              "État",
+              "Ce que dit la documentation",
+              "Ce que votre document doit trancher",
             ]}
+            rows={subscriptionRows}
           />
 
           <p>
-            Le guide sécurité de la CNIL relie les habilitations aux besoins
-            d’accès, à leur validation et à la suppression des permissions
-            devenues inutiles. Le référentiel OWASP ASVS 5.0.0 permet de
-            versionner les contrôles retenus :
-          </p>
-
-          <ul>
-            <li>
-              <strong>v5.0.0-8.1.1</strong> pour documenter les règles
-              fonctionnelles ;
-            </li>
-            <li>
-              <strong>v5.0.0-8.2.2</strong> pour les restrictions sur les
-              données ;
-            </li>
-            <li>
-              <strong>v5.0.0-8.3.1</strong> pour les vérifications côté service
-              ;
-            </li>
-            <li>
-              <strong>v5.0.0-8.3.2</strong> pour l’effet immédiat d’un
-              changement d’autorisation ou ses mesures compensatoires ;
-            </li>
-            <li>
-              <strong>v5.0.0-8.4.1</strong> pour les opérations entre
-              organisations ;
-            </li>
-            <li>
-              <strong>v5.0.0-7.4.2</strong> pour terminer les sessions d’un
-              compte désactivé ou supprimé.
-            </li>
-          </ul>
-
-          <p>Cette sélection ne vaut ni audit exhaustif, ni certification.</p>
-
-          <p>
-            Si votre matrice devient volumineuse, conservez ici les règles
-            critiques et renvoyez vers une annexe versionnée. Le guide sur les{" "}
-            <Link href="/guides/securite-application-metier">
-              droits d’accès d’une application métier
-            </Link>{" "}
-            aide à construire cette matrice sans score compensatoire.
+            Ces huit lignes viennent de la documentation Stripe, consultée le
+            28&nbsp;août 2026 et citée ici comme repère de dénombrement&nbsp;:
+            que vous reteniez Stripe, un prélèvement SEPA ou une facturation
+            manuelle, les mêmes huit situations existeront, sous d’autres noms.
+            Trois décisions par état, cela fait vingt-quatre&nbsp;lignes à
+            écrire&nbsp;— exactement le travail qu’un devis chiffre différemment
+            selon qu’il l’a vu ou non.
           </p>
 
           <div className="not-prose my-8 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 dark:border-zinc-800">
             <Image
               src="/guides/cahier-des-charges-saas/cahier-saas-4x3.webp"
-              alt="Cycle SaaS reliant événements, états internes, droits, messages et actions de correction"
+              alt="Cycle d’abonnement reliant événement, état interne, droit, message et action de correction"
               width={1200}
               height={900}
               sizes="(max-width: 1024px) 100vw, 760px"
@@ -745,555 +870,327 @@ export default function Page() {
             />
           </div>
 
+          <h3>Ce qu’il faut écrire même si vous changez de fournisseur</h3>
           <p>
-            Une fois les droits décrits, chaque offre doit préciser ceux qu’elle
-            ouvre, modifie ou retire.
+            Les notifications de paiement n’arrivent ni dans l’ordre, ni une
+            seule fois, ni forcément tout de suite. La documentation le dit
+            explicitement, et chacun de ces faits produit une exigence.
           </p>
-        </GuidePremiumSection>
-
-        <GuidePremiumSection
-          id="abonnement"
-          number="05"
-          label="Offre et facturation"
-          title="Une offre ouvre des droits ; l’abonnement les fait évoluer"
-        >
-          <p>
-            Une offre commerciale ne doit pas rester un nom affiché sur une page
-            de prix. Écrivez la table qui relie chaque offre aux droits d’usage
-            : fonctions ouvertes, limites, rôles autorisés, consommation
-            éventuelle et comportement lors d’un changement. Puis décrivez les
-            états internes de l’abonnement et leur effet sur ces droits.
-          </p>
-
-          <h3>La table de décision à demander</h3>
-          <GuideTable
-            caption="Relier chaque événement d’abonnement à une décision du produit"
-            headers={[
-              "Événement observé",
-              "État interne",
-              "Effet sur le droit",
-              "Message client",
-              "Action et responsable",
-            ]}
-            rows={[
-              [
-                "Souscription confirmée",
-                "À définir",
-                "À définir",
-                "À définir",
-                "À attribuer",
-              ],
-              [
-                "Renouvellement confirmé",
-                "À définir",
-                "À définir",
-                "À définir",
-                "À attribuer",
-              ],
-              [
-                "Paiement non abouti",
-                "À définir",
-                "À définir",
-                "À définir",
-                "À attribuer",
-              ],
-              [
-                "Action du client requise",
-                "À définir",
-                "À définir",
-                "À définir",
-                "À attribuer",
-              ],
-              [
-                "Changement d’offre",
-                "À définir",
-                "À définir",
-                "À définir",
-                "À attribuer",
-              ],
-              [
-                "Résiliation demandée",
-                "À définir",
-                "À définir",
-                "À définir",
-                "À attribuer",
-              ],
-              [
-                "Événement reçu deux fois",
-                "État inchangé attendu",
-                "Aucun doublon",
-                "Selon décision",
-                "Exploitation",
-              ],
-            ]}
-          />
-
-          <p>
-            La documentation officielle de Stripe illustre pourquoi un
-            abonnement ne se réduit pas à « payé » ou « impayé » : des
-            événements peuvent être traités plus tard et plusieurs états doivent
-            être coordonnés avec l’accès au service. Cette documentation reste
-            un exemple de fournisseur. Le cahier des charges ne choisit pas
-            Stripe, ne copie pas ses statuts comme modèle universel et ne lui
-            délègue pas la décision produit.
-          </p>
-
-          <h3>Les événements imparfaits font partie du test</h3>
           <ul>
-            <li>le même événement est reçu plusieurs fois ;</li>
-            <li>deux événements arrivent dans un ordre différent ;</li>
             <li>
-              une confirmation manque ou arrive après une action du client ;
+              <strong>L’ordre n’est pas garanti.</strong> Votre produit doit
+              rester juste si la confirmation de paiement arrive avant la
+              création de l’abonnement. L’exigence&nbsp;: rejouer les deux
+              ordres et obtenir le même état final.
             </li>
-            <li>une correction manuelle remet l’état en cohérence ;</li>
             <li>
-              un changement d’offre ne supprime pas silencieusement les données
-              ;
+              <strong>Le même événement peut arriver deux fois.</strong> Il se
+              reconnaît à l’identifiant de l’objet et au type d’événement.
+              L’exigence&nbsp;: le second passage ne change rien et ne crée
+              aucun deuxième droit.
             </li>
-            <li>une résiliation déclenche le parcours de sortie décidé.</li>
+            <li>
+              <strong>
+                Une notification perdue est réessayée jusqu’à trois jours
+              </strong>{" "}
+              en production, avec des délais croissants&nbsp;; trois tentatives
+              en quelques heures en environnement de test. L’exigence&nbsp;: un
+              écran qui liste les événements non traités, et une reprise
+              manuelle attribuée à quelqu’un.
+            </li>
           </ul>
 
-          <InfoBox
-            variant="amber"
-            title="Ne confondez pas état de paiement, état produit et droit d’usage"
-          >
+          <InfoBox variant="blue" title={"Actif ne veut pas dire payé"}>
             <p>
-              Le prestataire de paiement observe une partie du processus. Le
-              SaaS doit conserver un état produit explicable, décider de
-              l’accès, afficher une prochaine action et permettre une
-              correction. Le responsable de chaque changement d’état doit être
-              nommé avant la réception.
+              La documentation précise que l’état <em>active</em> ne signifie
+              pas que toutes les factures rattachées à l’abonnement ont été
+              réglées. Un abonnement peut redevenir actif en laissant une
+              facture ouverte. Une règle d’accès résumée à «&nbsp;actif donc
+              autorisé&nbsp;» laisse courir cette facture sans que rien ne se
+              ferme, et cela se lit ensuite sur votre trésorerie.
             </p>
           </InfoBox>
-        </GuidePremiumSection>
-
-        <GuidePremiumSection
-          id="exploitation"
-          number="06"
-          label="Vie réelle"
-          title="Chaque échec appelle une action, un responsable et une trace"
-        >
-          <p>
-            Un parcours nominal ne suffit pas à exploiter un SaaS. Pour chaque
-            étape critique, demandez ce que voit le client, ce qui est conservé,
-            qui reçoit l’alerte, qui peut corriger l’état, quelle action permet
-            de reprendre et quelle trace restera. Une « gestion des erreurs »
-            sans scénario ni responsable n’est pas réceptionnable.
-          </p>
-
-          <GuideTable
-            caption="Transformer les situations d’exploitation en exigences observables"
-            headers={[
-              "Situation",
-              "Question produit",
-              "Pouvoir d’exploitation",
-              "Preuve",
-            ]}
-            rows={[
-              [
-                "Action échouée",
-                "Quel message, quelles données préservées, quelle prochaine action ?",
-                "Relancer, corriger ou escalader selon un rôle défini",
-                "Échec rejoué puis retour à un état cohérent",
-              ],
-              [
-                "Événement manquant",
-                "Comment l’écart devient-il visible ?",
-                "Remettre l’état en cohérence sans créer de doublon",
-                "État avant/après et trace de la correction",
-              ],
-              [
-                "Tiers indisponible",
-                "Que reste-t-il possible sans paiement, notification ou autre dépendance critique ?",
-                "Détecter, mettre en attente, informer, reprendre ou revenir en arrière selon la règle",
-                "Indisponibilité simulée, aucune perte ni double droit, reprise attribuée",
-              ],
-              [
-                "Incident",
-                "Qui est affecté et que peut encore faire le client ?",
-                "Qualifier, communiquer et restaurer selon le cadre décidé",
-                "Chronologie et décisions attribuées",
-              ],
-              [
-                "Accès support",
-                "Qui demande, approuve, limite et ferme l’accès ?",
-                "Intervenir sur un périmètre borné",
-                "Ouverture, intervention, fermeture, puis refus",
-              ],
-              [
-                "Correction manuelle",
-                "Quels champs ou états peuvent changer et pourquoi ?",
-                "Action réservée, contrôlée et tracée",
-                "Ancienne valeur, nouvelle valeur, motif et auteur",
-              ],
-            ]}
-          />
-
-          <p>
-            Pour chaque échec, nommez qui le détecte, qui choisit le mode
-            dégradé, qui peut remettre l’état en cohérence ou revenir en arrière
-            et qui vérifie le résultat. Une dépendance indisponible ne doit ni
-            ouvrir un droit par défaut, ni supprimer des données, ni laisser une
-            correction sans auteur.
-          </p>
-
-          <p>
-            Pour des données personnelles, le guide sécurité de la CNIL
-            recommande notamment de borner les accès de maintenance :
-            intervention demandée, accès limité, traçabilité et fermeture.
-            Écrivez cette exigence dans le contexte réel du produit. Ne déduisez
-            pas d’un écran de journalisation une conformité générale au RGPD.
-          </p>
-
-          <h3>L’inventaire de données doit servir une décision</h3>
-          <p>
-            Pour chaque catégorie, notez la finalité produit, l’organisation à
-            laquelle elle appartient, les rôles qui y accèdent, sa provenance,
-            ses sorties, la règle de conservation à valider et le responsable.
-            Gardez distincts les fichiers clients, les métadonnées, les
-            journaux, les données de facturation et les données de support. Une
-            durée inconnue reste « à décider » ; aucun chiffre ne doit la
-            remplacer.
-          </p>
-
-          <GuidePremiumMemo
-            eyebrow="Contrat et produit"
-            title="Séparez l’exigence produit de la qualification juridique"
-          >
-            <p>
-              Le cahier des charges peut exiger un inventaire, une restriction
-              d’accès, une restitution, une suppression et une preuve. La base
-              légale, les durées finales, les rôles RGPD, les obligations de
-              sous-traitance et les clauses applicables doivent être validés par
-              les personnes compétentes sur le traitement et le contrat réels.
-            </p>
-          </GuidePremiumMemo>
-
-          <p>
-            Lorsqu’un incident rend le service ou ses données indisponibles, le
-            dossier précise ce qui sera restauré et comment le client pourra
-            sortir.
-          </p>
         </GuidePremiumSection>
 
         <GuidePremiumSection
           id="sortie"
-          number="07"
-          label="Sauvegarde et sortie"
-          title="Une sauvegarde n’est prouvée que lorsqu’un scénario est restauré"
+          number="05"
+          label="Réversibilité"
+          readingTime={"3\u00a0min"}
+          title={"Que récupérez-vous exactement si vous partez\u00a0?"}
         >
           <p>
-            « Sauvegardes incluses » ne précise ni ce qui est sauvegardé, ni ce
-            qui peut être perdu, ni comment la restauration est vérifiée.
-            Décrivez les données et configurations concernées, l’environnement
-            de restauration, le contrôle d’intégrité, la personne qui observe le
-            résultat et la décision prise en cas d’échec. Les objectifs chiffrés
-            de perte et de reprise restent à décider selon les risques ; aucun
-            seuil universel n’est fourni ici.
+            Le mot «&nbsp;réversibilité&nbsp;» recouvre quatre objets qui
+            n’obéissent pas aux mêmes règles. Deux d’entre eux sont adossés à un
+            texte&nbsp;: vos données au règlement européen, le code source au
+            code de la propriété intellectuelle. Les deux autres ne tiennent
+            qu’à ce que votre contrat prévoit. Une clause unique ne les couvre
+            donc pas.
           </p>
 
           <GuideTable
-            caption="Distinguer les preuves de résilience et de sortie"
+            caption="Quatre objets à récupérer, et la clause à écrire pour chacun"
             headers={[
-              "Capacité",
-              "Question à trancher",
-              "Preuve de réception",
-              "Inconnue à ne pas masquer",
+              "Ce que vous voulez récupérer",
+              "Ce qui l’encadre aujourd’hui",
+              "La clause à écrire quand même",
             ]}
-            rows={[
-              [
-                "Sauvegarder",
-                "Quelles données et configurations sont couvertes ?",
-                "Inventaire et trace de sauvegarde sur le périmètre choisi",
-                "Fréquence ou conservation non décidée",
-              ],
-              [
-                "Restaurer",
-                "Dans quel environnement et avec quel contrôle d’intégrité ?",
-                "Jeu fictif restauré, relu et utilisable",
-                "Objectif de reprise non arbitré",
-              ],
-              [
-                "Fonctionner avec un service réduit (mode dégradé)",
-                "Quelle action reste possible et quel message est affiché ?",
-                "Scénario d’indisponibilité rejoué",
-                "SLA ou promesse de continuité non signée",
-              ],
-              [
-                "Exporter",
-                "Quelles données, métadonnées et relations sont utiles au client ?",
-                "Export documenté, relu et rattachable",
-                "Format ou périmètre contractuel à décider",
-              ],
-              [
-                "Supprimer",
-                "Quel déclencheur, quelles exceptions et quelle preuve ?",
-                "Accès refusé après l’étape de suppression prévue",
-                "Durée légale ou contractuelle non qualifiée",
-              ],
-            ]}
+            rows={exitRows}
           />
 
           <p>
-            Le chapitre VI du règlement européen 2023/2854 encadre le changement
-            de fournisseur pour les services qui entrent dans la définition des
-            <em> services de traitement de données</em>. Ses articles 23 à 25 et
-            ses définitions déterminent le champ, les données exportables et les
-            actifs numériques concernés, avec des limites.
+            Le règlement européen sur les données mérite une lecture précise,
+            parce qu’il est souvent résumé en un droit d’export universel qui
+            n’existe pas. Il vise les <em>services de traitement de données</em>
+            , au sens de sa propre définition, et non tout abonnement qu’on
+            appelle SaaS. Sur ce champ, il est net&nbsp;: applicable depuis le
+            12&nbsp;septembre 2025, période transitoire maximale de
+            30&nbsp;jours calendaires à l’article&nbsp;25, frais de changement
+            supprimés au 12&nbsp;janvier 2027 à l’article&nbsp;29. Ces
+            30&nbsp;jours ne sont pas un plancher ferme&nbsp;: le même article
+            prévoit que, si ce délai est techniquement impossible à tenir, le
+            fournisseur informe le client dans les 14&nbsp;jours ouvrables,
+            justifie l’impossibilité et propose une période alternative
+            «&nbsp;qui ne peut excéder sept mois&nbsp;». Écrivez donc dans le
+            contrat la date que vous visez. Il ne dit rien du code source, rien
+            des droits d’exploitation, rien de la documentation de déploiement.
           </p>
 
+          <h3>Payer un développement ne vous en rend pas propriétaire</h3>
           <p>
-            Il serait donc inexact d’écrire que tout abonnement appelé SaaS
-            donne automatiquement le même droit d’export. Décrivez malgré tout
-            la sortie nécessaire au client dans le produit et le contrat, puis
-            faites qualifier l’application du Data Act au service concerné.
+            Cette clause se renégocie une fois le développement payé,
+            c’est-à-dire au moment où vous avez le moins de prise. L’article
+            L131-3 du code de la propriété intellectuelle demande que chacun des
+            droits cédés fasse l’objet d’une mention distincte, et que
+            l’étendue, la destination, le lieu et la durée de l’exploitation
+            soient délimités. Une facture acquittée n’énumère aucun de ces
+            éléments. La portée exacte de ce formalisme sur un logiciel se
+            plaide encore, raison de plus d’écrire la clause.
           </p>
-
           <p>
-            Ne mélangez pas trois objets : l’export des données de
-            l’organisation cliente, la remise des livrables du projet et les
-            droits d’exploitation sur le code. Si une cession de droits est
-            négociée sous droit français, l’article L131-3 du Code de la
-            propriété intellectuelle exige de distinguer les droits cédés et de
-            délimiter leur exploitation. Le contrat applicable doit être relu au
-            cas par cas.
+            L’article L113-9, celui qui attribue à l’employeur les droits sur un
+            logiciel, vise le salarié dans l’exercice de ses fonctions. Une
+            société de développement extérieure n’est pas votre salariée&nbsp;:
+            confondre les deux articles se paie le jour où votre équipe veut
+            reprendre le produit ailleurs.
           </p>
-
-          <p>
-            Sauvegarde, restauration et sortie ne deviennent comparables que si
-            leurs conditions de contrôle sont écrites. La même règle s’applique
-            maintenant aux exigences non fonctionnelles.
-          </p>
-        </GuidePremiumSection>
-
-        <GuidePremiumSection
-          id="exigences"
-          number="08"
-          label="Non fonctionnel"
-          title="« Rapide », « sécurisé » et « accessible » exigent des contrôles"
-        >
-          <p>
-            Une exigence non fonctionnelle devient comparable lorsqu’elle
-            indique le parcours concerné, les conditions, l’environnement, le
-            seuil décidé, la méthode, la preuve et le propriétaire. Si le seuil
-            manque, marquez-le « à décider » et demandez aux répondants
-            d’expliquer l’effet de leurs hypothèses. N’utilisez pas une note
-            globale : une bonne performance ne compense pas un défaut
-            d’autorisation ou une restauration impossible.
-          </p>
-
-          <GuideTable
-            caption="Passer d’un adjectif invérifiable à une exigence réceptionnable"
-            headers={[
-              "Sujet",
-              "Formulation insuffisante",
-              "Questions à compléter",
-              "Preuve",
-            ]}
-            rows={[
-              [
-                "Accessibilité",
-                "Interface accessible",
-                "Parcours, critères WCAG 2.2 retenus, technologies et responsable",
-                "Clavier, focus, erreurs, labels et messages de statut contrôlés",
-              ],
-              [
-                "Performance",
-                "Pages rapides",
-                "Action, jeu de données, terminal, réseau, seuil et répétitions",
-                "Mesure datée dans l’environnement documenté",
-              ],
-              [
-                "Capacité et coût",
-                "Le produit tient la charge",
-                "Volume de référence fourni, passage au double, limites et postes de coût concernés",
-                "Même parcours au volume déclaré puis à son double, mesures et variation de coût séparées",
-              ],
-              [
-                "Sécurité",
-                "Application sécurisée",
-                "Menaces, données, exigences ASVS versionnées, tests autorisés/refusés",
-                "Résultats, écarts, corrections et nouveaux tests",
-              ],
-              [
-                "Mobile",
-                "Responsive",
-                "Largeur, contenu, ordre, actions et orientation concernés",
-                "Parcours principal sans perte à 320 px selon le cas prévu",
-              ],
-              [
-                "Exploitation",
-                "Facile à maintenir",
-                "Diagnostic, alertes, rôles, sauvegarde, restauration et correction",
-                "Incident fictif expliqué puis résolu avec trace",
-              ],
-            ]}
-          />
-
-          <p>
-            Pour un parcours Web, le standard WCAG 2.2 fournit des critères
-            directement transformables en cas de réception :
-          </p>
-
-          <ul>
-            <li>
-              <strong>2.1.1</strong> pour l’usage au clavier ;
-            </li>
-            <li>
-              <strong>2.4.7</strong> pour le focus visible ;
-            </li>
-            <li>
-              <strong>3.3.1</strong> pour l’identification textuelle des erreurs
-              ;
-            </li>
-            <li>
-              <strong>3.3.2</strong> pour les labels ou instructions ;
-            </li>
-            <li>
-              <strong>4.1.3</strong> pour les messages de statut perceptibles.
-            </li>
-          </ul>
-
-          <p>
-            Citer ces numéros ne prouve pas la conformité : le périmètre, les
-            tests et les éventuels écarts doivent être examinés.
-          </p>
-
-          <h3>La réception se prépare avant le développement</h3>
-          <ul>
-            <li>un identifiant stable relie chaque exigence à ses cas ;</li>
-            <li>
-              les données de test sont fictives, préparées et reproductibles ;
-            </li>
-            <li>les résultats attendus incluent les refus et les erreurs ;</li>
-            <li>
-              la preuve précise son auteur, sa date, son environnement et sa
-              version ;
-            </li>
-            <li>
-              les écarts restent visibles jusqu’au nouveau test après correction
-              ou à une décision explicite ;
-            </li>
-            <li>
-              la personne habilitée prononce l’acceptation, le refus ou les
-              réserves.
-            </li>
-          </ul>
-
-          <InfoBox
-            variant="blue"
-            title="Préparez le futur plan de recette sans confondre les deux documents"
-          >
-            <p>
-              Le cahier des charges décrit ce qui devra être prouvé et par qui.
-              Le plan de recette — le document qui détaille les tests de
-              réception — précisera ensuite les jeux de données, les étapes, les
-              résultats, les anomalies, les nouveaux tests et la décision. Une
-              preuve prévue tôt réduit les interprétations sans garantir à elle
-              seule la qualité finale.
-            </p>
-          </InfoBox>
-
-          <p>
-            Une fois chaque responsable et chaque preuve nommés, la trame de
-            consultation peut être remplie sans inventer les choix manquants.
-          </p>
-        </GuidePremiumSection>
-
-        <GuidePremiumSection
-          id="generateur"
-          number="09"
-          label="Outil local"
-          title="La trame se construit localement puis se copie en Markdown"
-        >
-          <p>
-            L’outil ci-dessous fonctionne dans votre navigateur. Il ne fait
-            aucun appel réseau et n’enregistre pas vos réponses. Utilisez
-            uniquement des formulations génériques : ne saisissez pas de données
-            personnelles, de secrets, de conditions commerciales sensibles ou
-            d’informations de sécurité. La sortie reste lisible, sélectionnable
-            et copiable en Markdown ; aucun fichier XLS, XLSX ou CSV n’est
-            proposé.
-          </p>
-
-          <p>
-            Le moteur présente 45 zones de texte : cinq champs séparés dans
-            chacun des neuf blocs. Une décision vide ou marquée STOP, TBD,
-            inconnue, à confirmer ou à décider bloque le document. Un
-            responsable, une preuve ou une exclusion manquante exige une
-            clarification.
-          </p>
-
-          <p>
-            Pour l’inconnue bloquante, un champ vide force un STOP. La
-            déclaration explicite « Aucune identifiée » signifie qu’aucun
-            blocage n’est déclaré ; toute autre formulation décrit un blocage et
-            force elle aussi un STOP.
-          </p>
-
-          <p>
-            Aucun score ne compense ces défauts. L’outil ne vérifie pas la
-            vérité de ce que vous écrivez.
-          </p>
-
-          <SaasSpecificationTool />
 
           <GuidePremiumMemo
-            eyebrow="Avant envoi"
-            title="La relecture croisée réunit les personnes nommées"
+            eyebrow="À ajouter au contrat"
+            title="Une sortie possible se prépare dès la première semaine"
           >
             <ul>
-              <li>le métier relit le parcours et les résultats vendus ;</li>
               <li>
-                le produit relit les états, droits, exclusions et variantes ;
+                Le code est poussé sur un dépôt{" "}
+                <strong>que vous possédez</strong> à chaque livraison. Une
+                livraison dont le dépôt n’a pas bougé laisse le code hors de
+                votre portée.
               </li>
               <li>
-                les opérations relisent les échecs, corrections et restaurations
-                ;
+                Les comptes d’hébergement, de paiement et d’envoi d’e-mails sont
+                ouverts au nom de votre société dès la première semaine,
+                l’équipe de développement y étant invitée.
               </li>
               <li>
-                les compétences juridiques, données, sécurité et accessibilité
-                valident leur périmètre ;
-              </li>
-              <li>
-                l’autorité de réception confirme les preuves qu’elle utilisera.
+                La procédure de redéploiement est exécutée une fois par une
+                personne de chez vous, avant la réception&nbsp;: tant que
+                personne ne l’a jouée, elle n’est qu’un document.
               </li>
             </ul>
           </GuidePremiumMemo>
         </GuidePremiumSection>
 
         <GuidePremiumSection
-          id="exemple"
-          number="10"
-          label="Exemple rempli"
-          title="DossierClair sert uniquement d’exemple de structure"
+          id="incidents"
+          number="06"
+          label="Ce qui rate"
+          readingTime={"2\u00a0min"}
+          title="Ce qui rate, et ce que ça coûte"
         >
-          <GuidePremiumCase
-            initial="DC"
-            eyebrow="Exemple entièrement fictif"
-            title="DossierClair · suivi de pièces pour de petits cabinets de conseil"
+          <p>
+            Les situations ci-dessous sont construites sur le dossier de Sonia,
+            à partir des mécanismes décrits par les sources citées en bas de
+            page. Leurs montants et leurs volumes sont ceux de l’exemple&nbsp;:
+            ce ne sont pas des dossiers clients. Chacune vient d’une ligne qui
+            manquait au cahier des charges.
+          </p>
+
+          <h3>
+            La phrase à deux lectures&nbsp;: 44&nbsp;000&nbsp;€ HT d’écart
+          </h3>
+          <p>
+            Dix mots page&nbsp;6, deux lectures défendables, un poste que deux
+            sociétés sur trois n’ont pas chiffré. Si Sonia retient la société B
+            sans avoir tranché, la saisie sans réseau reviendra en avenant, le
+            jour où les inspecteurs se plaindront&nbsp;— et un avenant se
+            négocie sans concurrent en face. La relecture croisée de la
+            section&nbsp;02 aurait sorti le sujet dès sa quatrième question.
+          </p>
+
+          <h3>
+            L’abonnement câblé sur un seul événement&nbsp;: 11&nbsp;accès
+            ouverts, 16&nbsp;390&nbsp;€ HT non facturés
+          </h3>
+          <p>
+            Le document disait «&nbsp;l’accès s’ouvre à la souscription&nbsp;».
+            L’équipe a écouté l’événement de première souscription, et rien
+            d’autre. Dix-huit mois plus tard, quarante-trois organisations sont
+            abonnées&nbsp;; onze d’entre elles, soit 26&nbsp;%, ont vu leur
+            prélèvement annuel échouer sans que rien ne se ferme. À
+            1&nbsp;490&nbsp;€ HT l’abonnement, cela fait 16&nbsp;390&nbsp;€ HT à
+            rattraper, plus la conversation avec onze clients à qui l’on va
+            demander de payer un service qu’ils utilisaient gratuitement. Les
+            vingt-quatre lignes de la section&nbsp;04 nomment cette situation
+            avant la première ligne de code.
+          </p>
+
+          <h3>
+            La séparation entre clients jamais testée&nbsp;: 72&nbsp;heures pour
+            reconstituer qui a vu quoi
+          </h3>
+          <p>
+            Le document exigeait que chaque bailleur ne voie que ses dossiers.
+            Il ne demandait pas de le prouver. La recette a montré qu’une
+            utilisatrice autorisée voyait bien ses rapports&nbsp;; personne n’a
+            vérifié qu’une autre se voyait refuser l’accès. Le jour où un
+            rapport apparaît chez le mauvais bailleur, la CNIL doit être
+            notifiée dans les 72&nbsp;heures suivant le moment où l’entreprise
+            prend connaissance de la violation&nbsp;— et non celui où elle
+            survient&nbsp;— sauf si cette violation n’est pas susceptible
+            d’engendrer un risque pour les droits et libertés des personnes
+            concernées. Ces 72&nbsp;heures partent d’abord à établir qui a vu
+            quoi parmi 12&nbsp;000&nbsp;dossiers et quarante-trois
+            organisations&nbsp;— une reconstitution qui mobilise la responsable
+            informatique et le délégué à la protection des données, et que rien
+            n’a préparée. Le test qui l’aurait évitée s’écrit avant la mise en
+            service&nbsp;: deux organisations fictives, une requête qui doit
+            être refusée, le résultat attendu au plan de recette.
+          </p>
+
+          <InfoBox
+            variant="emerald"
+            title="Le cas où ce guide conclut contre nous"
           >
             <p>
-              Atelier Nord et Studio Rivage sont deux organisations inventées.
-              Claire, Léa, l’offre Équipe, les rôles, les états et toutes les
-              décisions ci-dessous servent uniquement à montrer un cahier des
-              charges rempli. Ils ne constituent ni une recommandation d’offre,
-              ni un prix, ni un délai, ni un SLA, ni une architecture.
+              Si vos trois devis, une fois rangés poste par poste, portent les
+              mêmes lignes et que chaque société sait décrire la preuve qu’elle
+              rejouera à la réception, votre document est bon. Un échange avec
+              nous ne vous apprendra rien de plus&nbsp;: prenez la moins chère
+              des deux qui savent expliquer leur recette.
             </p>
-            <p>
-              Les volumes de 20 puis 40 organisations, 100 puis 200 personnes
-              internes et 2 000 puis 4 000 dossiers sont eux aussi des
-              hypothèses fictives de consultation. Ils illustrent un test au
-              double d’une référence déclarée ; ils ne constituent aucune norme
-              ni cible pour un autre produit.
-            </p>
-          </GuidePremiumCase>
+          </InfoBox>
+        </GuidePremiumSection>
 
-          <div className="not-prose my-8 grid gap-6 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
+        <GuidePremiumSection
+          id="depouillement"
+          number="07"
+          label="Dépouillement"
+          readingTime={"2\u00a0min"}
+          title={
+            "Comment comparer trois réponses sans se faire piéger par le prix\u00a0?"
+          }
+        >
+          <p>
+            Les postes, les hypothèses et les preuves se regardent avant les
+            prix. Joignez au cahier des charges une grille à cinq colonnes, la
+            même pour tous, et demandez une ligne par exigence numérotée. Une
+            réponse qui arrive sans cette grille se renvoie.
+          </p>
+
+          <GuideTable
+            caption="La grille de dépouillement à joindre au document, et ce que chaque colonne attrape"
+            headers={[
+              "Colonne à remplir",
+              "Ce qu’elle doit contenir",
+              "Ce qu’elle attrape",
+            ]}
+            rows={scoringRows}
+          />
+
+          <p>Quatre règles de consultation rendent cette grille exploitable.</p>
+          <ol>
+            <li>
+              <strong>Une version figée, datée et numérotée.</strong> Toute
+              correction postérieure repart aux trois candidats avec un nouveau
+              numéro, faute de quoi vous comparerez des réponses à des documents
+              différents.
+            </li>
+            <li>
+              <strong>Les mêmes données fictives pour tous.</strong> Deux
+              organisations, six rôles, une centaine de dossiers, qui serviront
+              ensuite à recevoir.
+            </li>
+            <li>
+              <strong>Les questions centralisées.</strong> Une question posée
+              par une société reçoit une réponse envoyée aux trois, le même
+              jour.
+            </li>
+            <li>
+              <strong>Les écarts de produit avant les écarts de prix.</strong>{" "}
+              Alignez les postes, repérez les non chiffrés, puis seulement
+              regardez les totaux.
+            </li>
+          </ol>
+
+          <p>
+            Sur le dossier de Sonia, ce dépouillement fait apparaître trois
+            décisions, dont une seule est financière&nbsp;: trancher la saisie
+            sans réseau, obtenir de la société A ses quatre postes manquants,
+            demander à la société C ce qu’elle a vu de plus. Les deux dernières
+            partent par écrit, le même jour, aux trois candidats.
+          </p>
+        </GuidePremiumSection>
+
+        <GuidePremiumSection
+          id="trame"
+          number="08"
+          label="Trame locale"
+          readingTime={"2\u00a0min"}
+          title="La trame à remplir, et ce qu’elle refuse de faire"
+        >
+          <p>
+            L’outil ci-dessous fonctionne dans votre navigateur. Il n’envoie
+            rien, n’enregistre rien et ne produit aucun fichier&nbsp;: la sortie
+            se copie en Markdown. Neuf blocs, cinq champs par bloc,
+            quarante-cinq zones de texte. Chaque bloc sépare la décision, la
+            personne qui la porte, la preuve attendue, ce qui est exclu et
+            l’inconnue qui bloque.
+          </p>
+          <p>
+            Une décision laissée vide, ou remplie d’un mot d’attente, arrête le
+            document. La trame emploie deux mots pour le dire&nbsp;:{" "}
+            <strong>STOP</strong> marque une décision à prendre avant l’envoi,
+            une ligne «&nbsp;à décider&nbsp;» marque une question qui peut
+            partir aux candidats telle quelle, à condition qu’ils en chiffrent
+            les deux branches. Aucun score ne compense un blocage, et l’outil ne
+            vérifie jamais si ce que vous écrivez est vrai&nbsp;— seulement si
+            une réponse manque à un endroit qui empêcherait deux sociétés de
+            chiffrer la même chose.
+          </p>
+
+          <div data-read-time-exclude="true">
+            <SaasSpecificationTool />
+          </div>
+
+          <h3>Un exemple rempli de bout en bout</h3>
+          <p>
+            Le document ci-dessous sort de la même trame, sur un cas entièrement
+            fictif&nbsp;: DossierClair, un suivi de pièces pour de petits
+            cabinets de conseil. Atelier Nord et Studio Rivage sont deux
+            organisations inventées, comme les rôles, les états et les volumes
+            de 20 puis 40&nbsp;organisations qui servent à tester un doublement
+            de charge. Rien là-dedans n’est un prix, un délai ni un engagement
+            de service.
+          </p>
+
+          <div
+            data-read-time-exclude="true"
+            className="not-prose my-8 grid gap-6 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start"
+          >
             <pre
               tabIndex={0}
               aria-label="Exemple fictif complet de cahier des charges SaaS en Markdown"
-              className="max-h-[760px] overflow-auto whitespace-pre-wrap rounded-2xl border border-zinc-200 bg-zinc-950 p-5 text-xs leading-relaxed text-zinc-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 dark:border-zinc-800 sm:p-6"
+              className="max-h-[760px] overflow-auto whitespace-pre-wrap rounded-2xl border border-zinc-200 bg-zinc-950 p-5 text-xs leading-relaxed text-zinc-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 dark:border-zinc-800 sm:p-6"
             >
               {dossierClair.markdown}
             </pre>
@@ -1321,7 +1218,7 @@ export default function Page() {
           <div className="not-prose my-8 mx-auto max-w-xl overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 dark:border-zinc-800">
             <Image
               src="/guides/cahier-des-charges-saas/cahier-saas-1x1.webp"
-              alt="Carte de décision, responsable, preuve, exclusion et STOP sans score"
+              alt="Carte d’une décision de cahier des charges avec sa décision, son responsable, sa preuve, son exclusion et son inconnue bloquante"
               width={900}
               height={900}
               sizes="(max-width: 640px) 100vw, 560px"
@@ -1330,151 +1227,35 @@ export default function Page() {
           </div>
 
           <p>
-            Si le premier lot n’est pas encore délimité, commencez par le{" "}
-            <Link href="/guides/mvp-saas-quoi-inclure">
-              contrat de test du MVP SaaS
-            </Link>
-            . Il distingue les décisions indispensables, le travail manuel
-            borné, les intégrations et les reports avant de demander un prix sur
-            un périmètre encore ambigu.
-          </p>
-
-          <h3>Le coût complet garde le même périmètre</h3>
-          <p>
-            Le prix initial ne suffit pas à comparer les réponses. Demandez à
-            chaque candidat d’isoler les mêmes familles, sans transformer une
-            inconnue en zéro : ce qui est inclus, exclu, récurrent, facturé à
-            l’usage ou laissé en variante doit rester visible.
-          </p>
-
-          <GuideTable
-            caption="Postes à rendre comparables sans inventer de montant"
-            headers={[
-              "Famille",
-              "À faire isoler dans la réponse",
-              "Risque de comparaison",
-            ]}
-            rows={[
-              [
-                "Cadrage et reprise",
-                "Ateliers, clarification, conception, reprise d’un existant et données de test",
-                "Travail indispensable absent du prix principal",
-              ],
-              [
-                "Intégrations et licences",
-                "Abonnements tiers, consommation, connecteurs et dépendances déjà payées",
-                "Même fonction comptée deux fois ou coût variable masqué",
-              ],
-              [
-                "Migration et adoption",
-                "Nettoyage, import, contrôles, formation et accompagnement au changement",
-                "Charge déplacée vers les équipes du client",
-              ],
-              [
-                "Exploitation et maintenance",
-                "Supervision, support, maintenance corrective et évolutive, mises à jour et nouveaux tests après correction",
-                "Produit livré mais non exploitable dans la durée",
-              ],
-              [
-                "Sortie",
-                "Export, documentation, assistance au changement, récupération, suppression et preuve",
-                "Coût de sortie ou dépendance découverts après signature",
-              ],
-            ]}
-          />
-
-          <h3>Chaque répondant reçoit la même version figée</h3>
-          <ol>
-            <li>
-              Attribuez un numéro et une date à la version de consultation.
-            </li>
-            <li>Joignez les mêmes annexes et les mêmes données fictives.</li>
-            <li>
-              Demandez une réponse pour chaque décision, preuve et exclusion.
-            </li>
-            <li>
-              Faites isoler les hypothèses ajoutées et les variantes de prix.
-            </li>
-            <li>
-              Centralisez les questions puis partagez les mêmes réponses à tous.
-            </li>
-            <li>
-              Comparez d’abord les écarts de produit, ensuite les modalités et
-              le prix.
-            </li>
-          </ol>
-
-          <p>
-            Si les réponses montrent encore plusieurs produits, réduisez le
-            premier lot ou levez les STOP avant de choisir. Si le périmètre est
-            comparable et que vous souhaitez confronter la trame à une
-            réalisation, consultez notre{" "}
-            <Link href="/services/saas-applications-metier">
-              accompagnement SaaS et applications métier
-            </Link>
-            , puis utilisez la page{" "}
+            Une fois la trame remplie et les trois réponses dépouillées, vous
+            pouvez{" "}
             <TrackedGuideCtaLink
               href="/demarrer-un-projet"
               placement="article_end_inline"
             >
-              démarrer un projet
+              décrire votre projet
             </TrackedGuideCtaLink>{" "}
-            en
-            joignant une version sans données sensibles. Le{" "}
-            <Link href="/guides">répertoire des guides Hagnéré Code</Link>{" "}
-            permet de retrouver les méthodes complémentaires.
-          </p>
-
-          <p>
-            Le même document devient l’entrée du calendrier. Pour comprendre{" "}
+            à Hagnéré Code en joignant une version sans donnée sensible, ou lire
+            comment nous travaillons sur la page{" "}
             <Link href="/services/saas-applications-metier">
-              combien de temps il faut pour développer un SaaS
-            </Link>
-            , reliez alors les tâches qui s’attendent, les capacités réellement
-            disponibles et les inconnues qui interdisent encore une date.
-          </p>
-
-          <p>
-            Trois chapitres du cahier des charges méritent leur propre dossier,
-            parce qu’ils sont les plus souvent sous-spécifiés. Les critères
-            d’acceptation se construisent avec le{" "}
-            <Link href="/guides/plan-recette-application-metier">
-              plan de recette d’une application métier
-            </Link>
-            . Les exigences de protection se rédigent à partir des{" "}
-            <Link href="/guides/securite-application-metier">
-              contrôles de sécurité d’une application métier
-            </Link>
-            . Et si le produit remplace un outil existant, la clause de bascule
-            se prépare avec la{" "}
-            <Link href="/services/outils-internes-sur-mesure">
-              migration sans interruption de service
+              SaaS et applications métier
             </Link>
             .
           </p>
 
-          <p>
-            Un cahier des charges ne vaut enfin que par la façon dont les
-            réponses sont comparées : le guide{" "}
-            <Link href="/guides/cahier-des-charges-saas">
-              choisir un prestataire sur preuves
-            </Link>{" "}
-            décrit les pièces à exiger pour que deux devis portent réellement
-            sur le même périmètre.
+          <p className="text-sm">
+            <strong>Transparence.</strong> Hagnéré Code développe des SaaS et
+            des applications métier sur mesure, et fait partie des sociétés
+            qu’un cahier des charges comme celui-ci met en concurrence&nbsp;:
+            nous percevons des honoraires si vous nous retenez. Rien ici
+            n’oblige à passer par nous&nbsp;— le décompte poste par poste, la
+            mesure des mots flous, les huit états d’abonnement et la grille de
+            dépouillement se refont avec vos propres documents, y compris pour
+            nous écarter. Nos prix et les références citées ont été relevés le
+            28&nbsp;août 2026, à revérifier tous les douze mois. Aucun coût,
+            aucun délai et aucun résultat ne sont garantis par cette page&nbsp;:
+            seul un devis signé engage.
           </p>
-
-          <GuidePremiumMemo
-            eyebrow="Décision finale"
-            title="Comparable ne veut pas dire prêt à signer"
-          >
-            <p>
-              Un document complet autorise une comparaison conditionnelle. Il
-              reste à contrôler la faisabilité, le contrat, le prix, le
-              calendrier, les compétences, les risques et les preuves proposées.
-              Toute correction substantielle du produit doit être renvoyée aux
-              répondants concernés avant une décision loyale.
-            </p>
-          </GuidePremiumMemo>
         </GuidePremiumSection>
       </GuidePremiumLayout>
     </GuidesShell>

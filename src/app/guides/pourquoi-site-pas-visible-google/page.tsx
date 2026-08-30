@@ -1,18 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Bot,
-  Database,
-  FileSearch,
-  MousePointerClick,
-  type LucideIcon,
-} from "lucide-react";
-import { GuideTable, InfoBox } from "@/components/guides/guide-content-blocks";
+  FormulaBox,
+  GuideTable,
+  InfoBox,
+} from "@/components/guides/guide-content-blocks";
 import {
+  GuidePremiumCase,
   GuidePremiumLayout,
   GuidePremiumMemo,
   GuidePremiumSection,
 } from "@/components/guides/guide-premium-layout";
+import type { GuidePremiumFaqCategory } from "@/components/guides/guide-premium-types";
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import { SearchVisibilityDiagnostic } from "@/components/guides/SearchVisibilityDiagnostic";
 import {
@@ -35,20 +34,20 @@ const toc = [
   {
     id: "url-recherche",
     number: "01",
-    label: "Choisir une URL et une recherche",
-    shortLabel: "Cadrer",
+    label: "Réponse directe",
+    shortLabel: "Réponse",
   },
   {
     id: "exploration",
     number: "02",
-    label: "Vérifier l’exploration",
-    shortLabel: "Exploration",
+    label: "Ce que répond votre serveur",
+    shortLabel: "Serveur",
   },
   {
     id: "indexation",
     number: "03",
-    label: "Vérifier l’indexation",
-    shortLabel: "Indexation",
+    label: "Ce que Google a retenu",
+    shortLabel: "Index",
   },
   {
     id: "impressions",
@@ -59,132 +58,110 @@ const toc = [
   {
     id: "clics",
     number: "05",
-    label: "Lire les clics sans surinterpréter",
-    shortLabel: "Clics",
+    label: "Ce que Performances mesure",
+    shortLabel: "Performances",
+  },
+  {
+    id: "incidents",
+    number: "06",
+    label: "Ce qui rate",
+    shortLabel: "Incidents",
   },
   {
     id: "fiche",
-    number: "06",
-    label: "Remplir la fiche URL-recherche",
-    shortLabel: "Fiche",
+    number: "07",
+    label: "Le délai et le relevé",
+    shortLabel: "Délai",
   },
   {
     id: "decision",
-    number: "07",
-    label: "Corriger, recontrôler ou auditer",
+    number: "08",
+    label: "Corriger, attendre ou auditer",
     shortLabel: "Décider",
   },
 ];
 
-const faqItems = [
+const faqCategories: GuidePremiumFaqCategory[] = [
   {
-    question: "Combien de temps faut-il pour apparaître après une correction ?",
-    answer: (
-      <>
-        Il n’existe pas de délai garanti. Google indique qu’une nouvelle
-        exploration peut prendre de quelques jours à quelques semaines, sans
-        garantir l’inclusion dans les résultats. Une demande répétée n’accélère
-        pas le processus. Datez donc l’URL et la correction, puis prévoyez un
-        recontrôle sans promettre un délai de classement. Voir la documentation
-        officielle sur la{" "}
-        <a
-          href="https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl?hl=fr"
-          target="_blank"
-          rel="noreferrer"
-        >
-          nouvelle exploration
-        </a>
-        .
-      </>
-    ),
+    key: "verifier",
+    num: "01",
+    label: "Vérifier par soi-même",
+    items: [
+      {
+        question:
+          "La commande site: prouve-t-elle que ma page est indexée\u00a0?",
+        answer:
+          "L’opérateur est utile pour trouver une page, jamais pour prouver son absence. Sa documentation écrit qu’il ne renvoie pas nécessairement toutes les URL indexées sous le préfixe demandé, et qu’une requête site: sans mot-clé ne classe pas les résultats. La même page ajoute un piège\u00a0: site:https://www.exemple.fr et site:https://exemple.fr/ ne renvoient pas les mêmes résultats. Pour connaître l’état enregistré par Google, il n’existe qu’un endroit, l’inspection d’URL de la Search Console.",
+      },
+      {
+        question:
+          "Ma page sort sur mon téléphone mais pas sur celui de mon associé\u00a0: qui a raison\u00a0?",
+        answer:
+          "Les deux, et aucun des deux ne mesure quoi que ce soit. Une recherche manuelle dépend du lieu, de l’appareil, de la langue et de l’historique du navigateur\u00a0; deux personnes ne voient pas la même page de résultats. Le rapport Performances, lui, enregistre les impressions réellement servies, avec un pays, un appareil et une période que vous fixez. Comparez toujours deux relevés pris avec exactement les mêmes filtres, sinon vous comparez deux contextes.",
+      },
+      {
+        question:
+          "Un sitemap est-il utile quand on a moins de cent pages\u00a0?",
+        answer:
+          "Il aide Google à découvrir des URL, sans garantir ni exploration ni indexation. Sa limite officielle est de 50\u00a0000\u00a0URL et 50\u00a0Mo par fichier, très loin d’un site de cent pages\u00a0: le sitemap n’est donc jamais le facteur limitant à cette taille. Ce qui compte davantage, c’est qu’il ne déclare que les adresses que vous voulez voir retenues, et qu’il ne contredise ni vos redirections ni vos balises canoniques.",
+      },
+    ],
   },
   {
-    question: "La commande site: prouve-t-elle que ma page est indexée ?",
-    answer: (
-      <>
-        Non. Google précise que les résultats de l’opérateur <code>site:</code>
-        ne sont pas exhaustifs. Une page affichée donne un indice utile ; son
-        absence ne suffit pas à conclure qu’elle n’est pas indexée. Inspectez
-        l’URL dans Search Console pour connaître l’état enregistré par Google.
-        Voir les limites officielles de l’
-        <a
-          href="https://developers.google.com/search/docs/monitor-debug/search-operators/all-search-site?hl=fr"
-          target="_blank"
-          rel="noreferrer"
-        >
-          opérateur site:
-        </a>
-        .
-      </>
-    ),
+    key: "delais",
+    num: "02",
+    label: "Délais et frontières",
+    items: [
+      {
+        question:
+          "Je n’ai jamais ouvert de Search Console\u00a0: par où commencer\u00a0?",
+        answer:
+          "Par la création de la propriété, avant tout diagnostic. Le service est gratuit, et Google demande de prouver que le site vous appartient avant d’ouvrir les rapports\u00a0: la personne qui gère votre hébergement ou votre nom de domaine sait le faire. Sans cette étape, les sections 03 à 05 de ce guide ne sont pas reproductibles, puisque leurs champs n’existent nulle part ailleurs. Les commandes de la section 02, elles, se jouent depuis n’importe quel poste, sans aucun compte.",
+      },
+      {
+        question:
+          "Mon site vient d’être mis en ligne\u00a0: à partir de quand faut-il s’inquiéter\u00a0?",
+        answer:
+          "L’aide du rapport sur l’indexation des pages annonce qu’il faut jusqu’à une semaine pour que Google commence à explorer et à indexer une nouvelle page ou un nouveau site. Avant ce délai, l’absence ne signifie rien. Après, la question n’est plus «\u00a0est-ce indexé\u00a0» mais «\u00a0quel libellé s’affiche dans le rapport\u00a0»\u00a0: détectée sans exploration, explorée sans indexation et double d’une autre page appellent trois corrections sans rapport entre elles.",
+      },
+      {
+        question: "Le budget d’exploration me concerne-t-il\u00a0?",
+        answer:
+          "Le guide Google sur le sujet vise les sites de plus d’un million de pages uniques dont le contenu change chaque semaine, ceux de plus de 10\u00a0000\u00a0pages dont le contenu change chaque jour, et ceux dont une part importante des URL est classée «\u00a0Détectée, actuellement non indexée\u00a0». Il précise que ces nombres sont des approximations. Pour un site vitrine ou un catalogue de quelques centaines de pages, ce n’est pas le sujet, et une prestation vendue sur cet argument mérite une question précise.",
+      },
+      {
+        question: "Ce guide explique-t-il une absence dans Google Maps\u00a0?",
+        answer:
+          "Il traite une page web dans les résultats de recherche et les rapports de la Search Console. Une fiche d’établissement absente de Google Maps relève d’un autre produit, avec d’autres contrôles et d’autres motifs de suspension. Commencez par séparer les deux objets\u00a0: l’URL de la page d’un côté, le nom exact de la fiche locale de l’autre. Les corrections, les délais et les interlocuteurs ne sont pas les mêmes.",
+      },
+    ],
   },
   {
-    question: "Dois-je donner mon mot de passe Search Console ?",
-    answer: (
-      <>
-        Non. Ajoutez la personne comme utilisateur avec le niveau d’autorisation
-        nécessaire, puis retirez cet accès quand l’intervention est terminée.
-        Google documente séparément les rôles de propriétaire et d’utilisateur.
-        Ne transmettez ni votre mot de passe, ni un code de connexion. Voir la
-        gestion officielle des{" "}
-        <a
-          href="https://support.google.com/webmasters/answer/7687615?hl=fr"
-          target="_blank"
-          rel="noreferrer"
-        >
-          utilisateurs et autorisations
-        </a>
-        .
-      </>
-    ),
-  },
-  {
-    question: "Ce guide explique-t-il une absence dans Google Maps ?",
-    answer:
-      "Non. Il traite une page web dans les résultats de recherche et les rapports Search Console. Une fiche établissement absente de Google Maps relève d’un autre produit, avec d’autres contrôles. Commencez par préciser si vous cherchez une URL, une fiche locale ou les deux.",
+    key: "acces",
+    num: "03",
+    label: "Accès, outils et coûts",
+    items: [
+      {
+        question:
+          "Dois-je donner mon mot de passe Search Console à mon agence\u00a0?",
+        answer:
+          "Non. Ajoutez la personne comme utilisateur, avec le niveau d’autorisation nécessaire, puis retirez cet accès à la fin de l’intervention. Google documente séparément le rôle de propriétaire et celui d’utilisateur, et la demande d’indexation exige d’être propriétaire ou utilisateur avec accès complet. Ne transmettez ni mot de passe ni code de connexion\u00a0: une agence qui l’exige vous demande aussi de perdre la trace de qui a fait quoi.",
+      },
+      {
+        question:
+          "Un outil SEO du marché remplace-t-il la Search Console\u00a0?",
+        answer:
+          "Un robot d’exploration tiers voit ce que votre serveur sert\u00a0: codes HTTP, balises, redirections, temps de réponse. C’est précieux, et c’est la moitié du diagnostic. Il ne voit pas ce que Google a enregistré\u00a0: l’URL canonique sélectionnée par Google, le motif d’exclusion, la date de dernière exploration, les impressions par requête. Ces champs n’existent que dans la Search Console de votre propriété. Les deux outils sont complémentaires, ils ne sont pas interchangeables.",
+      },
+      {
+        question:
+          "Combien coûte une intervention si je ne trouve pas la panne\u00a0?",
+        answer:
+          "Nos points d’entrée payants publiés sur la page tarifs encadrent la dépense\u00a0: audit flash à 2\u00a0000\u00a0€ HT côté maintenance, audit Express à 8\u00a0000\u00a0€ HT côté audit technique, Discovery Sprint à 1\u00a0500\u00a0€ HT et deux jours pour un projet. Notre offre de référencement, elle, ne publie aucun montant\u00a0: il dépend du nombre d’URL et des gabarits, et il est fixé au devis. Un blocage que l’inspection d’URL affiche en clair ne justifie aucun de ces montants.",
+      },
+    ],
   },
 ];
-
-function OfficialSource({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <a href={href} target="_blank" rel="noreferrer">
-      {children}
-    </a>
-  );
-}
-
-function ReadingCard({
-  icon: Icon,
-  title,
-  question,
-  source,
-}: {
-  icon: LucideIcon;
-  title: string;
-  question: string;
-  source: string;
-}) {
-  return (
-    <li className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950">
-      <Icon className="mb-3 size-5 text-indigo-600" aria-hidden="true" />
-      <p className="m-0 text-sm font-bold text-zinc-950 dark:text-white">
-        {title}
-      </p>
-      <p className="mb-0 mt-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
-        {question}
-      </p>
-      <p className="mb-0 mt-3 text-xs font-semibold uppercase tracking-wide text-zinc-500">
-        À relever : {source}
-      </p>
-    </li>
-  );
-}
 
 export default function Page() {
   return (
@@ -207,18 +184,21 @@ export default function Page() {
         badges={[
           { label: "Diagnostic SEO", variant: "dark" },
           { label: "Search Console", variant: "neutral" },
-          { label: "Fiche locale", variant: "success" },
+          { label: "Outil local · aucun envoi", variant: "success" },
           {
             label: `Mis à jour le ${formatGuideDate(guide.dateModified)}`,
             variant: "muted",
           },
         ]}
         heroTitle="Pourquoi mon site n’est-il pas"
-        heroTitleEm="visible sur Google ?"
-        heroDescription="Prenez une page et une recherche précises. Vérifiez dans l’ordre : Google a-t-il pu ouvrir l’URL ? L’a-t-il indexée ? L’a-t-il affichée pour cette recherche ? Le résultat a-t-il reçu un clic ? Vous saurez alors s’il faut corriger, patienter ou approfondir le diagnostic."
+        heroTitleEm={"visible sur Google\u00a0?"}
+        heroDescription={
+          "«\u00a0Mon site est invisible\u00a0» recouvre cinq pannes distinctes, qui ne se corrigent ni au même endroit ni au même prix. Ce guide donne le protocole de mesure\u00a0: la commande à taper, le champ à lire dans la Search Console, ce que le constat prouve et ce qu’il ne prouve pas. Vous saurez lequel des cinq maillons a cédé, et si la suite se règle chez vous ou demande un audit payant."
+        }
         stats={[
-          { label: "Contrôles successifs", value: "4" },
-          { label: "Unité de diagnostic", value: "1 URL + 1 recherche" },
+          { label: "Pannes distinctes", value: "5" },
+          { label: "Écrans à ouvrir", value: "3" },
+          { label: "HTML lu par Googlebot", value: "2\u00a0Mo" },
           { label: "Fiche · envoi", value: "Aucun" },
           { label: "Lecture", value: `${guide.readTimeMin} min` },
         ]}
@@ -231,25 +211,25 @@ export default function Page() {
         toc={toc}
         tocLabel="Trouver où la visibilité s’arrête"
         mobileCtaLabel="Faire relire mon diagnostic"
-        faqItems={faqItems}
+        faqCategories={faqCategories}
         faqMeta={{
           eyebrow: "Questions fréquentes",
           titleStart: "Écarter les",
           titleEm: "faux verdicts",
           titleEnd: "avant de modifier le site.",
           subtitle:
-            "Quatre réponses sur les délais, la commande site:, les accès et Google Maps.",
-          ctaTitle: "Vous avez une fiche URL-recherche complète ?",
+            "Opérateur site:, recherche manuelle, sitemap, première propriété Search Console, délai d’un site neuf, budget d’exploration, fiche Google Maps, accès par rôle, outils du marché et coût d’une intervention.",
+          ctaTitle: "Vous avez un relevé complet et un premier arrêt\u00a0?",
           ctaDescription:
-            "Partagez vos constats sans communiquer vos mots de passe. Nous pouvons vérifier l’ordre des contrôles et choisir la prochaine intervention utile.",
-          ctaLabel: "Faire relire la fiche",
+            "Transmettez l’URL, la recherche, les filtres et les motifs relevés, sans communiquer vos mots de passe. Nous vérifions l’ordre des contrôles avant de proposer quoi que ce soit.",
+          ctaLabel: "Faire relire le relevé",
           ctaHref: "/demarrer-un-projet",
         }}
         strategyCta={{
           titleStart: "Faire relire",
           titleEm: "un diagnostic daté",
           description:
-            "Transmettez l’URL, la recherche, la période et les constats relevés. Nous regardons d’abord si le problème vient de l’exploration, de l’indexation ou s’il demande une analyse distincte de la visibilité.",
+            "Transmettez l’URL, la recherche, la période et les motifs relevés. Nous regardons d’abord si le blocage vient du serveur, de l’indexation ou s’il demande une analyse distincte de la visibilité. La conclusion peut être qu’il n’y a rien à acheter.",
           badges: [
             "Accès Search Console par rôle",
             "Aucune promesse de position",
@@ -264,148 +244,290 @@ export default function Page() {
             source: "Google Search Central · fonctionnement de la recherche",
             href: "https://developers.google.com/search/docs/fundamentals/how-search-works?hl=fr",
             description:
-              "Étapes d’exploration, d’indexation et de diffusion, sans garantie de réalisation pour une page donnée.",
+              "Exploration, indexation et diffusion des résultats, avec la mention explicite qu’aucune de ces étapes n’est garantie pour une page donnée. Consultée le 28 août 2026.",
           },
           {
-            source: "Google Search Console · inspection d’URL",
-            href: "https://support.google.com/webmasters/answer/9012289?hl=fr",
+            source: "Google Search Central · Googlebot",
+            href: "https://developers.google.com/search/docs/crawling-indexing/googlebot?hl=fr",
             description:
-              "Différence entre la version indexée et le test en direct, récupération, indexation et adresse canonique.",
+              "Page mise à jour le 5 février 2026\u00a0: Googlebot explore les 2 premiers Mo d’un type de fichier compatible et les 64 premiers Mo d’un PDF, limite appliquée aux données non compressées, chaque ressource référencée étant récupérée séparément.",
           },
           {
-            source: "Google Search Console · rapport Performances",
-            href: "https://support.google.com/webmasters/answer/7576553?hl=fr",
+            source:
+              "Google Search Central · présentation des robots d’exploration Google",
+            href: "https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers?hl=fr",
             description:
-              "Clics, impressions et filtres par page, requête, pays, appareil et période.",
+              "Page mise à jour le 16 juin 2026\u00a0: par défaut, les robots d’exploration et les extracteurs de Google n’explorent que les 15 premiers Mo d’un fichier. C’est l’origine du repère de 15\u00a0Mo souvent attribué à tort à Googlebot pour la recherche.",
           },
           {
-            source: "Google Search Console · dimensions et regroupements",
-            href: "https://support.google.com/webmasters/answer/17011259?hl=fr",
+            source:
+              "Google Search Central · codes d’état HTTP et erreurs réseau",
+            href: "https://developers.google.com/search/docs/crawling-indexing/http-network-errors?hl=fr",
             description:
-              "Attribution de la plupart des données à l’URL canonique Google, requêtes anonymisées et lignes tronquées.",
+              "Page mise à jour le 5 mars 2026\u00a0: un 2xx ne garantit pas l’indexation, les 4xx sortent l’URL de l’index, les 5xx et 429 ralentissent l’exploration, la redirection 301 est un signal fort et 302 un signal faible, jusqu’à 10 sauts suivis — mais les outils d’inspection Google ne suivent pas les redirections.",
           },
           {
-            source: "Google Search Central · opérateur site:",
-            href: "https://developers.google.com/search/docs/monitor-debug/search-operators/all-search-site?hl=fr",
+            source: "Google Search Central · réduire la vitesse d’exploration",
+            href: "https://developers.google.com/search/docs/crawling-indexing/reduce-crawl-rate?hl=fr",
             description:
-              "Résultats non exhaustifs de l’opérateur site: et usage de Search Console pour le diagnostic.",
+              "Renvoyer 500, 503 ou 429 est réservé à quelques heures, un à deux jours au plus. Au-delà, Google avertit qu’une URL servant ces codes plusieurs jours peut être supprimée de l’index, et le ralentissement porte sur le nom d’hôte entier.",
           },
           {
-            source: "Google Search Central · nouvelle exploration",
-            href: "https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl?hl=fr",
+            source:
+              "Google Search Central · spécifications du fichier robots.txt",
+            href: "https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt?hl=fr",
             description:
-              "Demande d’indexation, délai indicatif en jours ou semaines et absence de garantie d’inclusion.",
-          },
-          {
-            source: "Google Search Central · sitemaps",
-            href: "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview?hl=fr",
-            description:
-              "Aide à la découverte des URL, sans garantie d’exploration ni d’indexation.",
+              "Limite de taille de 500\u00a0Kio, contenu au-delà ignoré, mise en cache d’environ 24 heures, et traitement d’un robots.txt en erreur 5xx\u00a0: arrêt d’exploration pendant 12 heures, puis 30 jours sur la dernière version valide.",
           },
           {
             source: "Google Search Central · règle noindex",
             href: "https://developers.google.com/search/docs/crawling-indexing/block-indexing?hl=fr",
             description:
-              "Règle meta ou en-tête HTTP lue lors de l’exploration ; limite lorsqu’un blocage robots.txt empêche Google de la voir.",
+              "Balise meta ou en-tête X-Robots-Tag lus pendant l’exploration. La page ne doit pas être bloquée par robots.txt, sinon la règle n’est pas détectée et la page peut continuer à s’afficher.",
           },
           {
             source: "Google Search Central · choix de l’URL canonique",
             href: "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls?hl=fr",
             description:
-              "Redirections, balise canonical et sitemap comme indications de force différente, sans garantie du choix final.",
+              "Hiérarchie explicite des signaux\u00a0: la redirection et l’annotation link rel=canonical sont des signaux forts, l’inclusion dans un sitemap un signal faible.",
+          },
+          {
+            source: "Google Search Central · sitemaps",
+            href: "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap?hl=fr",
+            description:
+              "Limites de 50\u00a0000\u00a0URL et 50\u00a0Mo non compressés par fichier, encodage UTF-8, URL absolues et canoniques. Le sitemap aide la découverte, il ne garantit ni exploration ni indexation.",
+          },
+          {
+            source: "Google Search Central · demander une nouvelle exploration",
+            href: "https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl?hl=fr",
+            description:
+              "L’exploration peut prendre plusieurs jours, voire plusieurs semaines, l’inclusion n’est pas garantie et peut ne jamais avoir lieu. Un quota limite l’envoi d’URL individuelles, et répéter la demande pour la même URL n’accélère rien.",
+          },
+          {
+            source:
+              "Google Search Central · changement d’adresse avec modification des URL",
+            href: "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes?hl=fr",
+            description:
+              "Page mise à jour le 24 juin 2026\u00a0: la migration est considérée comme terminée lorsque Googlebot a accédé au moins une fois à toutes les URL de l’ancien et du nouveau site, et les redirections sont à conserver aussi longtemps que possible, généralement au moins un an.",
+          },
+          {
+            source: "Google Search Central · optimiser le budget d’exploration",
+            href: "https://developers.google.com/search/docs/crawling-indexing/large-site-managing-crawl-budget?hl=fr",
+            description:
+              "Guide réservé aux sites de plus d’un million de pages uniques changeant chaque semaine, à ceux de plus de 10\u00a0000\u00a0pages changeant chaque jour, et à ceux dont une part importante des URL est classée «\u00a0Détectée, actuellement non indexée\u00a0». Ces nombres sont annoncés comme des approximations.",
+          },
+          {
+            source: "Google Search Central · opérateur de recherche site:",
+            href: "https://developers.google.com/search/docs/monitor-debug/search-operators/all-search-site",
+            description:
+              "L’opérateur ne renvoie pas nécessairement toutes les URL indexées sous le préfixe demandé, une requête sans mot-clé ne classe pas les résultats, et la page précise que site:https://www.example.com ne renvoie pas les mêmes résultats que site:https://example.com/.",
+          },
+          {
+            source:
+              "Google Search Console · rapport sur l’indexation des pages",
+            href: "https://support.google.com/webmasters/answer/7440203?hl=fr",
+            description:
+              'Motifs d’indexation et leur sens, avec les libellés repris mot pour mot dans ce guide\u00a0: «\u00a0Explorée, actuellement non indexée\u00a0», «\u00a0Détectée, actuellement non indexée\u00a0», «\u00a0Page en double sans URL canonique sélectionnée par l’utilisateur\u00a0», «\u00a0URL marquée "noindex"\u00a0» et «\u00a0URL bloquée par le fichier robots.txt\u00a0». Tableau d’exemples plafonné à 1\u00a0000\u00a0lignes, et délai d’environ une semaine avant la première exploration d’un site neuf.',
+          },
+          {
+            source: "Google Search Console · inspection d’URL",
+            href: "https://support.google.com/webmasters/answer/9012289?hl=fr",
+            description:
+              "Différence entre la version indexée et le test en direct, «\u00a0URL canonique déclarée par l’utilisateur\u00a0» et «\u00a0URL canonique sélectionnée par Google\u00a0», et limites du message «\u00a0Cette URL est sur Google\u00a0».",
+          },
+          {
+            source: "Google Search Console · rapport Performances",
+            href: "https://support.google.com/webmasters/answer/7576553?hl=fr",
+            description:
+              "Définition des clics, des impressions et de la position moyenne — dans le graphique, celle du résultat le mieux classé de l’ensemble du site\u00a0; dans le tableau, celle de la ligne affichée. Vue par défaut sur les trois derniers mois, vue 24 heures en données préliminaires.",
+          },
+          {
+            source: "Google Search Console · dimensions et regroupements",
+            href: "https://support.google.com/webmasters/answer/17011259?hl=fr",
+            description:
+              "Attribution de la plupart des données à l’URL canonique et non aux doublons, requêtes anonymisées exclues du total dès qu’un filtre de requête est appliqué, et troncature du tableau aux lignes les plus importantes.",
           },
           {
             source: "Google Search Console · utilisateurs et autorisations",
             href: "https://support.google.com/webmasters/answer/7687615?hl=fr",
             description:
-              "Ajout d’utilisateurs et niveaux d’autorisation sans partager un compte personnel.",
+              "Ajout d’utilisateurs et niveaux d’autorisation, sans partage d’un compte personnel. La demande d’indexation exige d’être propriétaire ou utilisateur avec accès complet.",
+          },
+          {
+            source: "Google Search Console API · quotas d’utilisation",
+            href: "https://developers.google.com/webmaster-tools/limits",
+            description:
+              "Inspection d’URL\u00a0: 2\u00a0000\u00a0requêtes par jour et 600 par minute et par site. Search Analytics\u00a0: 1\u00a0200\u00a0requêtes par minute et par site. Consultée le 28 août 2026.",
+          },
+          {
+            source: "Google Search Console API · searchAnalytics.query",
+            href: "https://developers.google.com/webmaster-tools/v1/searchanalytics/query",
+            description:
+              "Paramètre rowLimit compris entre 1 et 25\u00a0000, valeur par défaut 1\u00a0000, pagination par startRow. C’est la seule façon de dépasser l’affichage du rapport sans passer par l’exportation groupée.",
+          },
+          {
+            source: "web.dev · Time to First Byte",
+            href: "https://web.dev/articles/ttfb",
+            description:
+              "Repères publiés\u00a0: 0,8\u00a0seconde ou moins pour un bon TTFB, au-delà de 1,8\u00a0seconde pour un mauvais. La page rattache son 75e centile au First Contentful Paint, pas à ces deux seuils, et rappelle que le TTFB n’est pas un signal web essentiel.",
+          },
+          {
+            source: "Hagnéré Code · tarifs publics",
+            href: "/tarifs",
+            description:
+              "Grille relevée le 28 août 2026\u00a0: audit flash 2\u00a0000\u00a0€ HT, audit Express 8\u00a0000\u00a0€ HT, Discovery Sprint 1\u00a0500\u00a0€ HT sur deux jours. L’offre de référencement ne publie aucun montant\u00a0; le prix est fixé au devis.",
           },
         ]}
         disclaimer={{
           eyebrow: "Périmètre du guide",
-          title: "Ce guide localise un blocage ; il ne promet aucun classement",
+          title:
+            "Ce guide localise un blocage\u00a0; il ne promet aucun classement",
           description:
-            "Les interfaces et libellés de Search Console peuvent évoluer. Les sources officielles ont été revérifiées le 18 août 2026. La fiche ne mesure pas la demande, ne prédit aucun délai et ne conclut pas à partir d’une position observée ponctuellement. Elle s’arrête dès que l’URL est indexée et reçoit des impressions : le diagnostic de trafic, de concurrence et d’intention mérite alors une analyse séparée.",
+            "Les interfaces et libellés de la Search Console évoluent, et les sources officielles citées ici ont été relues le 28 août 2026\u00a0: revérifiez-les avant de vous engager sur un chiffre. Les durées et les coûts internes de ce guide sont des hypothèses éditoriales choisies pour l’exemple, jamais des relevés faits chez un client. Le protocole ne mesure ni la demande, ni la concurrence, ni l’intention derrière une recherche, et il ne prédit aucun délai de retour. Il s’arrête dès que l’URL est indexée et reçoit des impressions.",
         }}
         relatedGuides={[
           {
             label: "Prix de la gestion Google Ads en 2026",
             href: "/guides/prix-gestion-google-ads",
           },
+          {
+            label: "Plan de recette d’une application métier",
+            href: "/guides/plan-recette-application-metier",
+          },
         ]}
+        relatedGuidesLabel="2 guides complémentaires"
       >
         <GuidePremiumSection
           id="url-recherche"
           number="01"
-          label="Point de départ"
-          title="Commencez par une URL et une recherche précises"
+          label="Réponse directe"
+          title={
+            "Cinq pannes différentes se cachent derrière le mot «\u00a0invisible\u00a0»"
+          }
         >
           <p>
-            Quand une page manque dans Google, ne partez pas du domaine entier.
-            Notez son URL et la recherche exacte sur laquelle vous l’attendez.
-            Dans Search Console, vérifiez d’abord si Google a pu explorer cette
-            adresse, puis s’il l’a indexée. Si oui, ouvrez Performances : la
-            page reçoit-elle des impressions pour cette recherche, puis des
-            clics ? Arrêtez-vous à la première réponse manquante. Tant qu’elle
-            reste inconnue, vous ne savez pas encore si une refonte, des liens
-            ou de nouveaux articles répondraient au problème.
+            Vous tapez la recherche sur laquelle vous attendez votre page de
+            service. Elle n’est pas là. La réunion qui suit parle de contenu, de
+            mots-clés et de refonte, avant que personne ait ouvert la Search
+            Console — l’outil gratuit où Google dit au propriétaire d’un site ce
+            qu’il a vu, retenu et affiché.
           </p>
 
           <p>
-            « Mon site est invisible » mélange souvent plusieurs situations : la
-            page d’accueil apparaît sur le nom de l’entreprise, mais une page de
-            service ne s’affiche pas pour une recherche métier ; une ancienne
-            adresse est indexée à la place de la nouvelle ; ou la page reçoit
-            des impressions sans clic. Ces cas n’appellent pas la même
-            correction.
+            <strong>
+              Une page absente de Google n’est jamais un problème unique&nbsp;:
+              c’est une chaîne dont un maillon a cédé, et il y en a cinq.
+            </strong>{" "}
+            Google décrit lui-même trois temps — exploration, indexation,
+            diffusion — et écrit qu’aucun n’est garanti pour une page donnée.
+            Chaque maillon se lit dans un champ précis.
           </p>
 
-          <GuidePremiumMemo
-            eyebrow="La fiche minimale"
-            title="Quatre repères rendent deux contrôles comparables"
+          <p>
+            Le tri initial demande une vingtaine de minutes par adresse&nbsp;:
+            trois commandes à taper sur votre serveur, puis trois écrans de la
+            Search Console — l’inspection d’URL, le rapport sur l’indexation des
+            pages et le rapport Performances. Cette durée est une{" "}
+            <strong>estimation éditoriale Hagnéré Code</strong>, pas un
+            relevé&nbsp;: une seule adresse, des accès déjà ouverts. À
+            l’arrivée, vous savez lequel des cinq maillons a cédé, et si la
+            suite se règle chez vous ou demande un audit payant.
+          </p>
+
+          <GuidePremiumCase
+            initial="68"
+            eyebrow="Fil rouge du guide · exemple construit"
+            title={
+              "Soixante-huit pages, une refonte, et la page qui vend n’apparaît plus"
+            }
           >
-            <ul>
-              <li>l’URL complète, avec le bon protocole et le bon domaine ;</li>
-              <li>la recherche exacte, de marque ou métier ;</li>
-              <li>la période, le pays et l’appareil observés ;</li>
-              <li>la date du contrôle et la personne qui l’a réalisé.</li>
-            </ul>
-          </GuidePremiumMemo>
+            <p>
+              <em>
+                Exemple construit&nbsp;: le métier, la ville, les volumes et les
+                durées d’intervention sont choisis pour l’exemple et ne viennent
+                d’aucune source&nbsp;; seuls les mécanismes décrits par Google
+                sont repris de sa documentation. Ce n’est pas un dossier client.
+              </em>{" "}
+              Un imprimeur d’étiquettes adhésives, à Tours. Le site aurait été
+              refait il y a quatre mois&nbsp;: 68&nbsp;pages en ligne, un
+              sitemap qui en déclare 74. La page{" "}
+              <code>/etiquettes-adhesives-personnalisees</code> ne ressortirait
+              sur aucune recherche métier, quand l’ancienne adresse{" "}
+              <code>/nos-produits/etiquettes.html</code> apparaîtrait encore.
+            </p>
+            <p>
+              La responsable marketing aurait demandé l’indexation trois fois en
+              six semaines&nbsp;; le développeur qui a livré la refonte ne
+              serait plus sous contrat. Nous suivrons ce dossier jusqu’à la
+              section&nbsp;08.
+            </p>
+          </GuidePremiumCase>
 
-          <figure className="not-prose my-8 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 dark:border-zinc-800">
-            <Image
-              src="/guides/pourquoi-site-pas-visible-google/diagnostic-google-16x9.svg"
-              width={1600}
-              height={900}
-              sizes="(max-width: 768px) calc(100vw - 32px), 760px"
-              alt="Une fiche avec une URL et une recherche reliée aux contrôles d’exploration, d’indexation, d’impressions et de clics"
-              className="h-auto w-full"
-              unoptimized
-            />
-            <figcaption className="border-t border-zinc-800 bg-zinc-950 px-4 py-3 text-sm leading-relaxed text-zinc-300 sm:px-5">
-              Gardez la même URL et la même recherche. Le premier contrôle non
-              confirmé détermine la prochaine vérification.
-            </figcaption>
-          </figure>
-
-          <h3>Une recherche Google reste un indice</h3>
           <p>
-            Une recherche manuelle varie selon le contexte et ne remplace pas
-            les rapports de votre propriété Search Console. Même la commande{" "}
-            <code>site:votredomaine.fr/page</code> n’est pas un verdict : Google
-            indique que les résultats de l’opérateur <code>site:</code> ne sont
-            pas exhaustifs. Son absence ne prouve donc pas la non-indexation. La{" "}
-            <OfficialSource href="https://developers.google.com/search/docs/monitor-debug/search-operators/all-search-site?hl=fr">
-              documentation officielle de l’opérateur site:
-            </OfficialSource>{" "}
-            renvoie vers l’inspection d’URL pour un diagnostic plus fiable.
+            Un mot revient dans deux des cinq lignes ci-dessous&nbsp;: la{" "}
+            <strong>canonique</strong>, l’adresse que Google retient comme
+            version officielle quand plusieurs adresses affichent le même
+            contenu. Les autres passent pour des doubles et n’apparaissent pas
+            dans les résultats.
           </p>
 
-          <InfoBox variant="blue" title="Vous cherchez une fiche Google Maps ?">
+          <GuideTable
+            caption="Les cinq endroits où la chaîne casse, et ce que chaque constat ne prouve pas"
+            headers={[
+              "Ce que vous constatez",
+              "Où la preuve se lit",
+              "Ce que le constat ne prouve pas",
+            ]}
+            rows={[
+              [
+                "Google ne connaît pas l’adresse",
+                "Inspection d’URL\u00a0: URL inconnue de Google",
+                "Que la page soit mauvaise\u00a0: elle n’a jamais été atteinte",
+              ],
+              [
+                "L’adresse est connue mais jamais explorée",
+                "Rapport Indexation\u00a0: «\u00a0Détectée, actuellement non indexée\u00a0»",
+                "Un défaut de contenu\u00a0: Google l’attribue à une exploration reportée pour ne pas surcharger le serveur",
+              ],
+              [
+                "La page est explorée mais reste hors index",
+                "Rapport Indexation\u00a0: «\u00a0Explorée, actuellement non indexée\u00a0»",
+                "Une sanction\u00a0: Google écrit qu’il est inutile de renvoyer l’URL",
+              ],
+              [
+                "Une autre adresse est indexée à sa place",
+                "Inspection d’URL\u00a0: l’URL canonique sélectionnée par Google diffère de celle déclarée par l’utilisateur",
+                "Que votre page soit en cause\u00a0: deux adresses se ressemblent, Google en garde une seule",
+              ],
+              [
+                "L’URL est indexée, sans ligne pour la recherche visée",
+                "Performances, filtre page puis filtre requête",
+                "Zéro impression\u00a0: les requêtes anonymisées sortent du total filtré",
+              ],
+            ]}
+          />
+
+          <p>
+            Les sections suivantes les prennent dans l’ordre où elles se
+            mesurent, en partant de votre serveur. Si vous n’avez aucune
+            propriété dans la Search Console, ouvrez-la d’abord&nbsp;: le
+            service est gratuit, la personne qui gère votre hébergement sait
+            prouver que le site vous appartient, et les sections&nbsp;03
+            à&nbsp;05 n’ont aucun sens sans elle.
+          </p>
+
+          <InfoBox
+            variant="amber"
+            title={
+              "Le site entier a disparu\u00a0: arrêtez le diagnostic page par page"
+            }
+          >
             <p className="m-0">
-              Ce parcours concerne les pages web. Si votre problème touche une
-              fiche établissement, séparez d’abord les deux objets : l’URL de la
-              page d’un côté, le nom de la fiche locale de l’autre.
+              Si plus aucune page ne ressort, y compris sur le nom de
+              l’entreprise, traitez d’abord l’incident&nbsp;: piratage, domaine
+              expiré, certificat invalide, migration inachevée, propriété
+              Search&nbsp;Console perdue. Un diagnostic URL par URL suppose un
+              site qui répond normalement.
             </p>
           </InfoBox>
         </GuidePremiumSection>
@@ -414,102 +536,138 @@ export default function Page() {
           id="exploration"
           number="02"
           label="Contrôle 1"
-          title="Google a-t-il trouvé et ouvert cette page ?"
+          title={
+            "Google peut-il ouvrir votre page, et à quel prix pour votre serveur\u00a0?"
+          }
         >
           <p>
-            Google décrit trois grandes étapes : exploration, indexation puis
-            diffusion des résultats. Il précise aussi qu’aucune de ces étapes
-            n’est garantie pour une page donnée. Pendant l’exploration, ses
-            systèmes découvrent des URL et tentent de récupérer leur contenu.
-            Cette séquence est présentée dans le guide officiel{" "}
-            <OfficialSource href="https://developers.google.com/search/docs/fundamentals/how-search-works?hl=fr">
-              Comment fonctionne la recherche Google
-            </OfficialSource>
-            .
+            Le premier contrôle ne se fait pas dans la Search Console&nbsp;:
+            elle montre ce que Google a vu à sa dernière visite, pas ce que le
+            serveur répond maintenant. Trois commandes donnent le code HTTP, le
+            temps jusqu’au premier octet, la cible d’une redirection et les deux
+            endroits où se cache une consigne <code>noindex</code>.
           </p>
 
+          <FormulaBox>
+            {`# 1. Ce que le serveur répond maintenant, sur l’URL exacte
+curl -sS -o /dev/null -A Googlebot \\
+  -w '%{http_code} | %{time_starttransfer}s | %{redirect_url}\\n' \\
+  https://exemple.fr/etiquettes-adhesives-personnalisees
+
+# 2. L’en-tête X-Robots-Tag, sous le même nom d’agent
+curl -sS -A Googlebot -D - -o page.html \\
+  https://exemple.fr/etiquettes-adhesives-personnalisees | grep -i x-robots-tag
+
+# 3. La balise meta robots du HTML initial
+grep -io '<meta[^>]*name=.robots.[^>]*>' page.html`}
+          </FormulaBox>
+
           <p>
-            Ouvrez Search Console, sélectionnez la bonne propriété, puis collez
-            l’URL complète dans l’inspection. L’écran principal décrit la
-            version connue de Google. Le test en direct vérifie si la version
-            disponible maintenant peut être récupérée ; il ne remplace pas
-            l’état indexé. Il ne peut pas non plus confirmer qu’une page est
-            déjà dans l’index ni détecter les doublons comme le fait la vue de
-            l’index. Google documente cette différence dans l’
-            <OfficialSource href="https://support.google.com/webmasters/answer/9012289?hl=fr">
-              aide de l’inspection d’URL
-            </OfficialSource>
-            .
+            Ce relevé ne vaut qu’assorti de ses réserves. L’option{" "}
+            <code>-A</code> annonce un nom d’agent&nbsp;: elle révèle un
+            traitement différencié fondé sur ce nom, jamais un filtrage par
+            adresse IP. Elle figure sur les trois commandes parce qu’un{" "}
+            <code>noindex</code> servi au seul Googlebot passerait à travers un
+            contrôle joué sous le nom d’agent de votre navigateur. Le HTML
+            récupéré est le HTML initial&nbsp;: des balises posées par du
+            JavaScript n’y figurent pas, et seul le test en direct montre la
+            version rendue. Enfin, les outils d’inspection de Google ne suivent
+            pas les redirections&nbsp;: inspectez la cible finale, jamais
+            l’adresse de départ.
           </p>
 
           <GuideTable
-            caption="Les quatre informations à relever dans l’inspection"
+            caption="Ce que Google fait de chaque code, et ce que vous en tirez"
             headers={[
-              "Champ",
-              "Information à relever",
-              "Ce que cela n’établit pas",
+              "Code observé",
+              "Ce que Google en fait",
+              "Ce que vous mesurez ensuite",
+              "L’action proportionnée",
             ]}
             rows={[
               [
-                "Adresse connue",
-                "URL connue ou inconnue dans l’inspection",
-                "Une URL connue n’est pas forcément indexée",
+                "200",
+                "Le contenu peut être indexé, sans aucune garantie",
+                "Le contenu servi, pas celui de votre navigateur connecté",
+                "Passer au contrôle d’indexation",
               ],
               [
-                "Dernière exploration",
-                "Date affichée ou absence de date",
-                "La prochaine date d’exploration",
+                "301",
+                "Signal fort désignant la cible comme adresse principale",
+                "Le nombre de sauts et l’adresse finale\u00a0; jusqu’à 10 sauts sont suivis",
+                "Inspecter la cible, jamais l’adresse de départ",
               ],
               [
-                "Récupération",
-                "Réussite ou motif exact de l’échec",
-                "La qualité éditoriale de la page",
+                "302",
+                "Signal faible\u00a0: la cible n’est pas désignée avec la même force",
+                "Depuis quand la redirection est en place",
+                "Passer en 301 si le déplacement est définitif",
               ],
               [
-                "Accès",
-                "Blocage robots, réponse serveur ou redirection observée",
-                "L’adresse principale finalement retenue",
+                "404 ou 410",
+                "L’URL n’est pas indexée, et si elle l’était, elle est retirée de l’index",
+                "Si cette adresse recevait des impressions avant la refonte",
+                "Rétablir la page ou rediriger vers l’équivalent réel, jamais vers l’accueil",
+              ],
+              [
+                "429, 500 ou 503",
+                "Exploration ralentie sur tout le nom d’hôte, et suppression possible de l’index après plusieurs jours",
+                "La fréquence et la fenêtre horaire des erreurs sur 28 jours",
+                "Traiter la capacité du serveur\u00a0; ces codes sont réservés à un ou deux jours au plus",
               ],
             ]}
           />
 
-          <h3>Si l’adresse est inconnue</h3>
+          <h3>Trois plafonds documentés, et ce qu’ils limitent vraiment</h3>
           <p>
-            Cherchez un lien interne qui mène réellement à la page, puis la
-            bonne URL dans le sitemap soumis. Un sitemap aide Google à découvrir
-            des pages, mais ne garantit ni leur exploration ni leur indexation.
-            Voir la{" "}
-            <OfficialSource href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview?hl=fr">
-              documentation officielle sur les sitemaps
-            </OfficialSource>
-            . Le sitemap doit contenir l’adresse que vous souhaitez voir retenue
-            comme principale, plutôt que toutes ses variantes : Google le
-            considère comme une indication plus faible qu’une redirection ou une
-            balise canonique. Une URL orpheline, uniquement connue par une
-            ancienne campagne ou par votre historique de navigateur, peut rester
-            difficile à découvrir.
+            <strong>La taille lue.</strong> La page Googlebot, mise à jour le
+            5&nbsp;février 2026, écrit que le robot explore les{" "}
+            <strong>2 premiers Mo</strong> d’un type de fichier compatible et
+            les 64 premiers Mo d’un PDF, sur les données non compressées. Le
+            repère de 15&nbsp;Mo qui circule encore vient d’une autre page, la
+            présentation des robots d’exploration Google&nbsp;: il y décrit le
+            comportement par défaut de l’ensemble des robots et extracteurs de
+            Google, pas celui de Googlebot pour la recherche. Un gabarit qui
+            embarque son catalogue en JSON dans le HTML atteint vite la
+            limite&nbsp;; la partie tronquée n’est jamais indexée.
           </p>
-
-          <h3>Si la récupération échoue</h3>
           <p>
-            Commencez par le motif affiché. Une interdiction dans les règles
-            d’exploration, une erreur serveur, une boucle de redirection ou une
-            page introuvable nécessitent des corrections différentes. Le test en
-            direct permet ensuite de vérifier la version corrigée. Une nouvelle
-            demande d’exploration devient utile lorsque le défaut visé a
-            disparu.
+            <strong>
+              Le fichier <code>robots.txt</code>.
+            </strong>{" "}
+            Google en lit au plus 500&nbsp;Kio, ignore le reste, le met en cache
+            environ 24&nbsp;heures, et traite ses erreurs serveur en trois
+            temps&nbsp;: exploration arrêtée pendant les 12&nbsp;premières
+            heures, puis 30&nbsp;jours sur la dernière version valide, puis
+            absence de restriction ou arrêt complet selon la disponibilité du
+            site. Une règle corrigée à 9&nbsp;heures ne produit pas d’effet à
+            9&nbsp;h&nbsp;05.
+          </p>
+          <p>
+            <strong>Le temps de réponse</strong>, où aucun seuil officiel
+            n’existe côté exploration&nbsp;: la capacité monte quand les temps
+            de réponse restent stables, baisse quand la latence grimpe ou que le
+            serveur renvoie des erreurs. Les repères publiés pour le Time to
+            First Byte, le délai avant le premier octet, donnent un ordre de
+            grandeur&nbsp;: 0,8&nbsp;seconde ou moins est bon, au-delà de
+            1,8&nbsp;seconde mauvais. Deux précautions&nbsp;: web.dev rattache
+            son 75<sup>e</sup> centile au First Contentful Paint, pas à ces deux
+            seuils&nbsp;; et la commande ci-dessus mesure un seul chargement
+            depuis votre poste, ce qui n’est ni un centile ni une mesure de
+            terrain.
           </p>
 
           <InfoBox
-            variant="amber"
-            title="Distinguez l’état enregistré du test en direct"
+            variant="blue"
+            title={
+              "Une page de maintenance qui dure devient un signal de disponibilité"
+            }
           >
             <p className="m-0">
-              Votre navigateur peut disposer d’une session, de cookies ou d’un
-              accès que Google n’a pas. À l’inverse, un échec de récupération
-              actuel ne prouve pas qu’une ancienne version a déjà disparu de
-              l’index. Gardez séparément le résultat de la vue Index Google,
-              celui du test en direct et l’URL exacte testée.
+              Renvoyer 500, 503 ou 429 est la bonne réponse pour quelques
+              heures, un à deux jours au plus. Au-delà, Google avertit qu’une
+              URL servant ces codes plusieurs jours peut être supprimée de
+              l’index, et que le ralentissement s’applique au nom d’hôte entier.
             </p>
           </InfoBox>
         </GuidePremiumSection>
@@ -518,107 +676,132 @@ export default function Page() {
           id="indexation"
           number="03"
           label="Contrôle 2"
-          title="Quelle version de la page Google a-t-il indexée ?"
+          title={
+            "Pourquoi une page lue par Google peut-elle ne jamais être indexée\u00a0?"
+          }
         >
           <p>
-            Une récupération réussie ne signifie pas que cette URL a été
-            indexée. À l’étape suivante, Google analyse le contenu, les balises
-            principales et les versions proches, puis peut choisir une autre URL
-            comme version principale. L’inspection distingue notamment l’adresse
-            canonique déclarée par le site et celle sélectionnée par Google. Ces
-            champs figurent dans l’
-            <OfficialSource href="https://support.google.com/webmasters/answer/9012289?hl=fr">
-              aide officielle de l’inspection
-            </OfficialSource>
-            .
+            Un code 200 n’est pas une promesse&nbsp;: la documentation écrit que
+            pour la recherche Google, un code d’état 2xx ne garantit pas
+            l’indexation. Entre la lecture et l’index, Google compare la page à
+            ses voisines et choisit une adresse principale. Le rapport sur
+            l’indexation des pages nomme le résultat de ce choix&nbsp;; les cinq
+            libellés ci-dessous sont reproduits tels que l’aide de Google les
+            écrit.
           </p>
 
-          <h3>
-            Lisez le motif, la consigne noindex et les deux adresses principales
-          </h3>
-          <ol>
-            <li>
-              <strong>État d’indexation.</strong> Écrivez le libellé complet,
-              sans le résumer par « problème SEO ».
-            </li>
-            <li>
-              <strong>Instruction noindex.</strong> Une instruction
-              <code> noindex</code> demande aux moteurs de ne pas conserver la
-              page dans leurs résultats. Google en détaille le fonctionnement
-              dans sa documentation sur la{" "}
-              <OfficialSource href="https://developers.google.com/search/docs/crawling-indexing/block-indexing?hl=fr">
-                règle noindex
-              </OfficialSource>
-              . Pour que Google lise cette instruction, la page doit rester
-              accessible à l’exploration : une interdiction dans
-              <code> robots.txt</code> peut empêcher Googlebot de voir le
-              <code> noindex</code>. Vérifiez séparément les deux réglages, puis
-              testez la version en direct après une correction volontaire.
-            </li>
-            <li>
-              <strong>Adresse canonique déclarée.</strong> C’est la version que
-              votre site présente comme principale.
-            </li>
-            <li>
-              <strong>Adresse canonique choisie par Google.</strong> Si elle est
-              différente, inspectez aussi cette adresse pour comparer les deux
-              versions.
-            </li>
-          </ol>
+          <GuideTable
+            caption="Cinq libellés du rapport, leur cause réelle et la correction qui leur correspond"
+            headers={[
+              "Le libellé affiché",
+              "Ce qu’il dit vraiment",
+              "Le contrôle qui tranche",
+              "La correction",
+            ]}
+            rows={[
+              [
+                "«\u00a0Explorée, actuellement non indexée\u00a0»",
+                "Page lue, non retenue, peut-être retenue plus tard\u00a0; Google précise qu’il est inutile de renvoyer l’URL",
+                "Comparer la page à celles du même site qui sont indexées",
+                "Travailler la page elle-même, pas le bouton de demande d’indexation",
+              ],
+              [
+                "«\u00a0Détectée, actuellement non indexée\u00a0»",
+                "Adresse connue, jamais explorée\u00a0; exploration reportée pour ne pas surcharger le site",
+                "Temps de réponse et taux d’erreurs 5xx sur les 28 derniers jours",
+                "Capacité du serveur et temps de réponse, pas le contenu",
+              ],
+              [
+                "«\u00a0Page en double sans URL canonique sélectionnée par l’utilisateur\u00a0»",
+                "Deux adresses se ressemblent et Google a choisi l’autre",
+                "Comparer l’URL canonique déclarée par l’utilisateur et l’URL canonique sélectionnée par Google",
+                "Aligner redirection, balise canonique et sitemap sur une seule adresse",
+              ],
+              [
+                '«\u00a0URL marquée "noindex"\u00a0»',
+                "Une balise meta ou un en-tête X-Robots-Tag a été lu pendant l’exploration",
+                "En-tête HTTP et HTML initial, puis version rendue par le test en direct",
+                "Retirer la règle, rejouer le test en direct, puis dater la demande",
+              ],
+              [
+                "«\u00a0URL bloquée par le fichier robots.txt\u00a0»",
+                "La règle empêche la lecture, donc aussi celle d’un éventuel noindex",
+                "Tester l’URL exacte contre le fichier réellement servi",
+                "Ouvrir l’exploration avant toute autre correction",
+              ],
+            ]}
+          />
 
           <p>
-            Si la page est exclue parce qu’une autre version a été retenue, la
-            question utile devient : ces deux URL répondent-elles au même besoin
-            ? Si oui, les redirections, la balise canonique et les liens
-            internes doivent désigner la même version principale. Si non, leur
-            rôle doit être réellement distinct dans le contenu, les liens
-            internes et la structure du site. Le simple changement d’un titre ne
-            garantit pas que Google modifiera son choix.
+            Les deux dernières lignes se contredisent souvent&nbsp;: pour qu’une
+            règle <code>noindex</code> soit efficace, la page ne doit pas être
+            bloquée par <code>robots.txt</code>, sinon le robot ne détecte
+            jamais la règle et la page peut continuer à s’afficher. Empiler les
+            deux protections produit l’effet inverse.
           </p>
 
-          <InfoBox
-            variant="blue"
-            title="Dans Performances, suivez l’adresse principale choisie par Google"
-          >
-            <p className="m-0">
-              Search Console attribue la plupart des impressions et clics à
-              l’adresse canonique choisie par Google, pas à ses doublons. Si
-              cette adresse est différente et que ce choix vous convient, ouvrez
-              une nouvelle fiche avec l’adresse canonique. Si ce choix est
-              inattendu, arrêtez-vous ici et corrigez la divergence avant de
-              conclure qu’une URL n’a aucune impression. Voir l’aide sur l’
-              <OfficialSource href="https://support.google.com/webmasters/answer/17011259?hl=fr">
-                attribution des données par page
-              </OfficialSource>
-              .
-            </p>
-          </InfoBox>
-
-          <h3>
-            Demandez une nouvelle exploration seulement après la correction
-          </h3>
           <p>
-            Google indique que le traitement d’une demande peut prendre de
-            quelques jours à quelques semaines, sans garantir l’inclusion de la
-            page. Répéter la demande ne l’accélère pas. Ces limites figurent
-            dans la documentation sur la{" "}
-            <OfficialSource href="https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl?hl=fr">
-              demande de nouvelle exploration
-            </OfficialSource>
-            . Le relevé doit donc contenir la correction, la date de demande et
-            la date du prochain contrôle, sans annoncer une date d’apparition.
+            Une réserve sur la deuxième ligne. L’explication par la charge du
+            serveur est celle de Google, mais elle ne couvre pas tous les
+            cas&nbsp;: un site aux temps de réponse irréprochables qui reste des
+            mois dans cet état se heurte à un arbitrage que Google ne détaille
+            dans aucun champ public. Mesurez le serveur d’abord&nbsp;: c’est la
+            seule piste que vous puissiez fermer.
+          </p>
+
+          <h3>Le cas de l’imprimeur, résolu ligne à ligne</h3>
+          <p>
+            Dans l’exemple, l’inspection de{" "}
+            <code>/etiquettes-adhesives-personnalisees</code> afficherait une
+            URL canonique déclarée par l’utilisateur pointant vers elle-même, et
+            une URL canonique sélectionnée par Google pointant vers{" "}
+            <code>/nos-produits/etiquettes.html</code>. Les deux répondraient
+            200, décriraient le même produit, et aucune redirection ne les
+            relierait. Le sitemap déclarerait ces deux adresses en ligne, plus
+            six adresses supprimées lors de la refonte&nbsp;: 74&nbsp;URL
+            déclarées pour 68&nbsp;pages en ligne.
+          </p>
+          <p>
+            La hiérarchie officielle des signaux règle le dossier. Une
+            redirection est un signal fort, une annotation{" "}
+            <code>link rel=canonical</code> aussi, l’inclusion dans un sitemap
+            un signal faible. Aucun signal fort ne désignerait la nouvelle page
+            comme remplaçante&nbsp;: Google garde l’ancienne, mieux connue. Deux
+            gestes suffisent — une redirection 301 vers la nouvelle, et les six
+            adresses supprimées retirées du sitemap.
+          </p>
+
+          <h3>Vérifier 68 pages sans cliquer 68 fois</h3>
+          <p>
+            Le tableau d’exemples du rapport plafonne à 1&nbsp;000&nbsp;lignes,
+            et l’inspection manuelle ne tient pas au-delà de quelques dizaines
+            d’URL. L’API d’inspection accepte 2&nbsp;000&nbsp;requêtes par jour
+            et 600 par minute et par propriété&nbsp;— ce n’est pas un écran mais
+            un appel de programme, à confier à un développeur autorisé sur la
+            propriété. Les 68&nbsp;pages de l’exemple tiennent dans une seule
+            minute de quota, avec pour chacune l’état d’indexation, les deux URL
+            canoniques et la dernière exploration. Un catalogue de
+            12&nbsp;000&nbsp;URL demande six jours au quota journalier&nbsp;: un
+            travail à planifier.
           </p>
 
           <GuidePremiumMemo
-            eyebrow="Décision d’indexation"
-            title="La cause affichée détermine la correction"
+            eyebrow="Ordre des gestes"
+            title="Une correction, puis une demande, puis une date — jamais l’inverse"
           >
             <ul>
-              <li>récupération impossible : rétablir d’abord l’accès ;</li>
-              <li>noindex involontaire : retirer la consigne puis tester ;</li>
-              <li>autre canonique : comparer les deux versions ;</li>
               <li>
-                motif encore incompris : conserver le relevé et faire auditer.
+                <strong>Corriger d’abord.</strong> Une demande envoyée avant la
+                correction ne fait que consommer le quota.
+              </li>
+              <li>
+                <strong>Rejouer le test en direct.</strong> Il prouve que la
+                version servie maintenant est récupérable, rien de plus.
+              </li>
+              <li>
+                <strong>Dater.</strong> Correction, demande, recontrôle&nbsp;:
+                sans ces trois dates, le contrôle suivant n’est comparable à
+                rien.
               </li>
             </ul>
           </GuidePremiumMemo>
@@ -631,83 +814,46 @@ export default function Page() {
           title="Une URL indexée peut rester absente de la recherche que vous visez"
         >
           <p>
-            Le message « l’URL est sur Google » dans l’inspection signifie que
-            la page peut être éligible à l’affichage ; Google précise que cela
-            ne garantit pas qu’elle apparaîtra dans tous les résultats. Passez
-            donc au rapport Performances pour vérifier une URL et une recherche
-            sur une période définie. La documentation de l’
-            <OfficialSource href="https://support.google.com/webmasters/answer/9012289?hl=fr">
-              inspection d’URL
-            </OfficialSource>{" "}
-            explicite cette limite.
+            Le message «&nbsp;Cette URL est sur Google&nbsp;» signifie que la
+            page peut être éligible à l’affichage. Il ne dit pas qu’elle a été
+            affichée, ni pour quelle recherche. La suite se lit dans le rapport
+            Performances, et l’ordre des filtres change ce que vous lisez&nbsp;:
+            fixez d’abord le contexte — période, pays, appareil, type de
+            recherche —, puis la page, puis la requête.
           </p>
 
           <p>
-            Dans Search Console, ouvrez le rapport Performances, puis les
-            résultats de recherche. Fixez d’abord la période, le pays,
-            l’appareil et le type de recherche. Filtrez la page avec l’adresse
-            canonique relevée dans l’inspection et relevez ses totaux. La
-            recherche exacte — appelée « requête » dans le rapport — vient en
-            dernier. Vous garderez ainsi la différence entre « cette page est
-            affichée pour d’autres recherches » et « aucune donnée n’est visible
-            pour celle-ci ». Google définit une impression comme l’affichage ou
-            l’accès potentiel à un lien dans un résultat, selon le type de
-            résultat, et documente les filtres dans l’
-            <OfficialSource href="https://support.google.com/webmasters/answer/7576553?hl=fr">
-              aide du rapport Performances
-            </OfficialSource>
-            .
+            Cet ordre a une raison. La page filtrée seule donne son total, donc
+            l’information «&nbsp;affichée, mais pour autre chose&nbsp;». La
+            requête posée d’abord ne donne qu’une absence de ligne. Filtrez sur
+            l’URL canonique sélectionnée par Google, relevée à l’étape
+            précédente&nbsp;: la Search Console attribue la plupart des données
+            à cette adresse, pas à ses doublons.
           </p>
 
-          <GuideTable
-            caption="Filtres à conserver pour que deux contrôles restent comparables"
-            headers={["Dimension", "Valeur à noter", "Erreur fréquente"]}
-            rows={[
-              [
-                "1. Contexte",
-                "Période, pays, appareil et type de recherche",
-                "Changer le contexte pendant le contrôle",
-              ],
-              [
-                "2. Page",
-                "URL canonique Google et total de la page",
-                "Filtrer un doublon ou lire le total du site",
-              ],
-              [
-                "3. Requête",
-                "Expression exacte et résultat après ajout du filtre",
-                "Remplacer l’absence de ligne par un zéro certain",
-              ],
-            ]}
-          />
-
-          <h3>Une requête absente du tableau ne prouve pas zéro impression</h3>
           <p>
-            Pour protéger la confidentialité, certaines requêtes sont
-            anonymisées et ne figurent pas dans les tableaux. Google explique
-            aussi que des limites de lignes et des différences entre totaux
-            peuvent exister. Lorsque vous appliquez un filtre de requête, ces
-            requêtes anonymisées ne sont plus comprises dans le total filtré.
-            Écrivez donc « aucune donnée visible avec ces filtres » plutôt que «
-            zéro impression prouvée » lorsque la requête n’apparaît pas. Voir
-            l’aide officielle sur les{" "}
-            <OfficialSource href="https://support.google.com/webmasters/answer/17011259?hl=fr">
-              requêtes anonymisées et les limites des données
-            </OfficialSource>
-            .
+            C’est le piège de l’exemple&nbsp;: la nouvelle page afficherait zéro
+            impression, ses clics étant comptés sur{" "}
+            <code>/nos-produits/etiquettes.html</code>. Tant que la redirection
+            n’est pas posée, chaque relevé confirmerait une panne qui n’existe
+            pas.
           </p>
 
           <InfoBox
-            variant="emerald"
-            title="Des impressions changent la nature du problème"
+            variant="blue"
+            title={
+              "Une requête absente du tableau ne prouve pas zéro impression"
+            }
           >
             <p className="m-0">
-              Si l’adresse canonique reçoit des impressions pour la recherche et
-              la période choisies, revenir à une demande d’indexation n’est plus
-              la première réponse. Relevez maintenant les clics avec les mêmes
-              filtres. Ce constat reste propre à l’adresse canonique : il ne
-              s’applique pas séparément à une URL en double que Google a
-              regroupée sous cette adresse.
+              Certaines requêtes sont anonymisées pour protéger la
+              confidentialité des internautes. Elles comptent dans les totaux du
+              graphique, mais elles en sortent dès qu’un filtre de requête est
+              appliqué, et la Search Console tronque le tableau aux lignes les
+              plus importantes. Écrivez donc «&nbsp;aucune donnée visible avec
+              ces filtres&nbsp;», jamais «&nbsp;zéro impression
+              prouvée&nbsp;»&nbsp;: la liste la plus complète passe par
+              l’exportation groupée de données.
             </p>
           </InfoBox>
         </GuidePremiumSection>
@@ -716,201 +862,374 @@ export default function Page() {
           id="clics"
           number="05"
           label="Contrôle 4"
-          title="Ce que les clics disent — et ne disent pas"
+          title="Ce que le rapport Performances mesure vraiment"
         >
           <p>
-            Un clic dans le rapport Performances correspond à une action qui
-            conduit l’internaute depuis un résultat Google vers une page hors de
-            Google, avec des règles qui peuvent varier selon le type de
-            résultat. Lisez le nombre avec exactement les mêmes filtres que les
-            impressions. Les définitions et particularités se trouvent dans la{" "}
-            <OfficialSource href="https://support.google.com/webmasters/answer/7576553?hl=fr">
-              documentation du rapport Performances
-            </OfficialSource>
-            .
+            Une impression compte un affichage de votre site dans les résultats,
+            un clic un départ vers votre site. La position moyenne, elle, se lit
+            de deux façons selon l’endroit où elle s’affiche.
           </p>
 
           <p>
-            Des impressions sans clic prouvent seulement que la page a été
-            proposée sans être choisie dans ce relevé. Elles ne disent pas si la
-            demande est forte, si la position était stable, si le résultat
-            répondait à l’intention, ni si les autres résultats étaient plus
-            attractifs. Relevez le titre et l’extrait visibles. Ce constat seul
-            ne justifie ni une refonte ni une production massive de contenus.
+            Dans le graphique, la valeur est la position moyenne du{" "}
+            <strong>résultat le mieux classé de l’ensemble du site</strong>.
+            Dans le tableau, c’est celle de la ligne affichée. Une
+            «&nbsp;position moyenne de 6,2&nbsp;» sur le graphique n’est donc
+            pas la position moyenne de vos pages&nbsp;: c’est une moyenne de vos
+            meilleurs résultats, sur les seules requêtes qui ont généré des
+            impressions ce mois-là. La comparer d’un mois à l’autre revient à
+            comparer deux ensembles différents. Même prudence sur la
+            période&nbsp;: la vue par défaut porte sur les trois derniers mois,
+            et la vue 24&nbsp;heures affiche des données préliminaires.
           </p>
 
-          <GuideTable
-            caption="Frontière entre ce guide et le diagnostic suivant"
-            headers={[
-              "Constat",
-              "Conclusion raisonnable",
-              "À examiner ensuite",
-            ]}
-            rows={[
-              [
-                "Aucune impression visible",
-                "Le rapport ne montre pas la page pour cette recherche et ces filtres",
-                "Vérifier formulation, filtres, intention et pages candidates",
-              ],
-              [
-                "Impressions, aucun clic visible",
-                "La page a été proposée mais aucun clic n’est visible dans ce relevé",
-                "Étudier résultat affiché, contexte concurrentiel et adéquation",
-              ],
-              [
-                "Impressions et clics",
-                "Le chemin technique a abouti au moins une fois dans ce relevé",
-                "Mesurer séparément trafic utile, demandes et valeur commerciale",
-              ],
-            ]}
-          />
+          <h3>Sortir du tableau quand il ne suffit plus</h3>
+          <p>
+            L’affichage tronque, l’API Search Analytics beaucoup moins — à
+            condition qu’un développeur l’appelle pour vous, depuis un accès
+            autorisé. Le paramètre <code>rowLimit</code> accepte de 1 à
+            25&nbsp;000&nbsp;lignes, sa valeur par défaut est 1&nbsp;000, et{" "}
+            <code>startRow</code> parcourt la suite. Le quota,
+            1&nbsp;200&nbsp;requêtes par minute et par site, reste hors
+            d’atteinte pour un relevé mensuel.
+          </p>
 
-          <GuidePremiumMemo
-            eyebrow="Limite volontaire"
-            title="Le guide s’arrête avant « indexé mais sans trafic »"
-          >
-            <p className="m-0">
-              Une fois des impressions observées, la suite demande une analyse
-              de la recherche, du résultat affiché, des pages concurrentes et de
-              l’objectif commercial. Cette fiche classe le problème ; elle ne
-              remplace pas cette étude.
-            </p>
-          </GuidePremiumMemo>
+          <FormulaBox>
+            {`# searchAnalytics.query — une extraction page par requête
+startDate  : 2026-07-01
+endDate    : 2026-07-28
+dimensions : page, query
+rowLimit   : 25000     # maximum autorisé, 1000 par défaut
+startRow   : 0         # puis 25000, 50000… tant que des lignes reviennent`}
+          </FormulaBox>
+
+          <p>
+            Des impressions sans clic prouvent une seule chose&nbsp;: la page a
+            été proposée et n’a pas été choisie, dans ce relevé. Elles ne disent
+            ni si la demande est forte, ni si la position était stable, ni si le
+            titre affiché était le vôtre — Google peut le réécrire. Ce constat
+            seul ne justifie ni une refonte ni une production de contenus, et
+            c’est ici que ce guide s’arrête&nbsp;: la suite relève d’une analyse
+            de la recherche, du résultat affiché et de la concurrence.
+          </p>
+        </GuidePremiumSection>
+
+        <GuidePremiumSection
+          id="incidents"
+          number="06"
+          label="Ce qui rate"
+          title="Ce qui rate, et ce que ça coûte"
+        >
+          <p>
+            Les trois scénarios ci-dessous sont construits sur le site de
+            l’imprimeur&nbsp;— ce ne sont pas des dossiers clients, et ils ne se
+            cumulent pas&nbsp;: ce sont trois façons distinctes dont une même
+            refonte peut mal tourner.
+          </p>
+
+          <p>
+            Deux familles d’hypothèses les chiffrent, toutes deux choisies pour
+            l’exemple. La première est un coût interne de{" "}
+            <strong>350&nbsp;€ le jour chargé</strong>, soit 50&nbsp;€ l’heure
+            sur une base de sept heures&nbsp;; remplacez-la par la vôtre, que
+            votre expert-comptable calcule à partir du brut, des charges et des
+            jours réellement travaillés. La seconde est la durée de chaque
+            intervention — une heure, une demi-journée, deux, trois ou quatre
+            jours. Aucune de ces durées ne vient d’une source&nbsp;: elles
+            rendent le décompte vérifiable, rien de plus. Tous les montants de
+            cette section en découlent.
+          </p>
+
+          <h3>
+            Un noindex oublié sur la version d’essai&nbsp;: 34&nbsp;pages hors
+            index et 750&nbsp;€
+          </h3>
+          <p>
+            Supposons que la version d’essai du site — celle où l’on vérifie
+            tout avant d’ouvrir au public — porte une règle <code>noindex</code>{" "}
+            sur le gabarit des pages produit, et que la mise en ligne reprenne
+            ce gabarit sans la retirer. Au fil des explorations, 34&nbsp;pages
+            sur 68 basculeraient en «&nbsp;URL marquée "noindex"&nbsp;», et le
+            défaut vivrait cinq semaines faute d’un regard sur le rapport. La
+            correction demanderait une heure, soit 50&nbsp;€&nbsp;; la reprise,
+            deux jours — relever les 34&nbsp;URL, demander l’indexation dans la
+            limite du quota, vérifier une à une —, soit 700&nbsp;€. Total,
+            750&nbsp;€, sans compter cinq semaines de diffusion perdues que rien
+            ne rattrape&nbsp;: la documentation ne promet aucun délai de retour.
+            Le contrôle qui l’aurait évité tient dans les trois commandes de la
+            section&nbsp;02, jouées le jour de la mise en ligne.
+          </p>
+
+          <h3>
+            Un sitemap qui contredit la balise canonique&nbsp;:
+            1&nbsp;400&nbsp;€ de réécriture pour rien
+          </h3>
+          <p>
+            La nouvelle page afficherait zéro impression, parce que la Search
+            Console compte tout sur l’URL canonique sélectionnée par Google.
+            L’équipe pourrait en déduire que la page ne fonctionne pas et la
+            réécrire&nbsp;: quatre jours, 1&nbsp;400&nbsp;€. Trois mois plus
+            tard, rien n’aurait bougé&nbsp;— le texte n’avait jamais été en
+            cause. La vraie correction coûterait une heure et 50&nbsp;€&nbsp;:
+            une redirection 301, et six lignes retirées du sitemap. L’écart
+            entre les deux, 1&nbsp;350&nbsp;€, se joue sur la lecture de deux
+            champs de l’inspection d’URL.
+          </p>
+
+          <h3>
+            Une sauvegarde nocturne qui répond 503&nbsp;: 1&nbsp;050&nbsp;€ sur
+            la mauvaise piste
+          </h3>
+          <p>
+            Supposons la base verrouillée de 2&nbsp;h à 3&nbsp;h&nbsp;30 chaque
+            nuit, le site répondant 503 pendant 90&nbsp;minutes. Au bout de six
+            semaines, des URL passeraient en «&nbsp;Détectée, actuellement non
+            indexée&nbsp;», libellé que la documentation attribue à une
+            exploration reportée pour ne pas surcharger le site. L’agence en
+            place chercherait du côté des titres et des descriptions&nbsp;:
+            trois jours, 1&nbsp;050&nbsp;€ facturés. La correction serait de
+            servir le cache en lecture seule pendant le verrou, ce qui rend un
+            200 avec le vrai contenu au lieu d’un 503&nbsp;— une demi-journée
+            d’administrateur système, 175&nbsp;€.
+          </p>
+          <p>
+            La réserve appartient à ce scénario. Il applique à une cause
+            plausible le mécanisme décrit par l’aide du rapport, mais il
+            n’établit pas qu’une fenêtre de 503 nocturnes produise ce libellé,
+            et aucun champ de la Search Console ne le confirmerait&nbsp;: la
+            fenêtre de sauvegarde est la piste à fermer en premier, pas un
+            diagnostic rendu.
+          </p>
+
+          <p>
+            Additionnés, les trois scénarios pèsent 3&nbsp;425&nbsp;€&nbsp;:
+            50&nbsp;€ et 700&nbsp;€ pour le premier, 1&nbsp;400&nbsp;€ et
+            50&nbsp;€ pour le deuxième, 1&nbsp;050&nbsp;€ et 175&nbsp;€ pour le
+            troisième. Ce total se lit de deux manières. Par nature de
+            dépense&nbsp;: 275&nbsp;€ de corrections utiles, 2&nbsp;450&nbsp;€
+            engagés sur la mauvaise cause, 700&nbsp;€ de reprise qu’un contrôle
+            le jour de la mise en ligne aurait évités. Par payeur&nbsp;:
+            2&nbsp;375&nbsp;€ de temps interne et 1&nbsp;050&nbsp;€ facturés par
+            une agence extérieure — ce total ne s’appelle donc pas «&nbsp;temps
+            interne&nbsp;». Aucun de ces montants ne dépend d’un outil payant.
+          </p>
         </GuidePremiumSection>
 
         <GuidePremiumSection
           id="fiche"
-          number="06"
-          label="Outil local"
-          title="Rassemblez vos constats dans une fiche datée"
+          number="07"
+          label="Délai et relevé"
+          title={"Combien de temps faut-il attendre avant de conclure\u00a0?"}
         >
           <p>
-            Une capture sans URL, sans filtre et sans date perd vite son sens.
-            La fiche ci-dessous regroupe l’identité du contrôle et le premier
-            point à reprendre. Elle fonctionne dans votre navigateur : aucune
-            valeur n’est envoyée à Hagnéré Code, enregistrée sur un serveur ou
-            récupérée automatiquement dans Search Console.
+            La documentation répond sans ambiguïté&nbsp;: une nouvelle
+            exploration peut prendre plusieurs jours, voire plusieurs semaines,
+            l’inclusion dans les résultats n’est pas garantie et peut ne jamais
+            avoir lieu. Un quota limite l’envoi d’URL individuelles, et répéter
+            la demande n’accélère rien. Pour un site neuf, l’aide annonce
+            jusqu’à une semaine avant que Google commence seulement à explorer.
           </p>
 
-          <ul className="not-prose my-7 grid list-none gap-3 p-0 sm:grid-cols-2">
-            <ReadingCard
-              icon={Bot}
-              title="Exploration"
-              question="Google connaît-il l’adresse et a-t-il pu ouvrir la page ?"
-              source="date, récupération, motif"
-            />
-            <ReadingCard
-              icon={Database}
-              title="Indexation"
-              question="Cette URL est-elle la version retenue ?"
-              source="vue Index Google, noindex, deux canoniques"
-            />
-            <ReadingCard
-              icon={FileSearch}
-              title="Impressions"
-              question="La page est-elle proposée pour cette recherche ?"
-              source="canonique, total page, requête, contexte"
-            />
-            <ReadingCard
-              icon={MousePointerClick}
-              title="Clics"
-              question="Le résultat a-t-il été choisi dans ce même relevé ?"
-              source="clics avec filtres inchangés"
-            />
-          </ul>
-
-          <SearchVisibilityDiagnostic />
+          <GuidePremiumMemo
+            eyebrow="Le calendrier de recontrôle"
+            title="Quatre relevés, quatre décisions possibles, aucune promesse de date"
+          >
+            <ul>
+              <li>
+                <strong>Jour 0.</strong> Correction posée, test en direct
+                rejoué, demande envoyée une fois. Notez le motif affiché avant
+                correction.
+              </li>
+              <li>
+                <strong>Jour 3.</strong> Inspection d’URL seule. Une date de
+                dernière exploration inchangée n’est pas un échec, c’est un
+                délai normal.
+              </li>
+              <li>
+                <strong>Jour 10.</strong> Le libellé a-t-il changé de
+                catégorie&nbsp;? Un passage de «&nbsp;bloquée&nbsp;» à
+                «&nbsp;Explorée, actuellement non indexée&nbsp;» est un progrès,
+                même sans impression.
+              </li>
+              <li>
+                <strong>Jour 30.</strong> Exploration faite, motif
+                inchangé&nbsp;: la correction n’était pas la bonne. Rouvrez le
+                diagnostic plutôt que de renvoyer l’URL une quatrième fois.
+              </li>
+            </ul>
+          </GuidePremiumMemo>
 
           <p>
-            Vous pouvez copier ou imprimer la fiche. Relisez-la avant de la
-            transmettre : elle peut contenir une URL non publique ou des notes
-            internes. Pour ouvrir Search Console à un intervenant, créez un
-            accès utilisateur avec le rôle nécessaire, sans partager votre
-            compte. Google détaille les niveaux dans l’aide sur les{" "}
-            <OfficialSource href="https://support.google.com/webmasters/answer/7687615?hl=fr">
-              utilisateurs et autorisations
-            </OfficialSource>
-            .
+            Une migration d’URL suit un calendrier plus long encore. La page de
+            Google sur le changement d’adresse avec modification des URL
+            considère la migration terminée lorsque Googlebot a accédé au moins
+            une fois à toutes les anciennes et à toutes les nouvelles adresses,
+            et recommande de conserver les redirections aussi longtemps que
+            possible, généralement au moins un an. Les démonter trois mois après
+            une refonte est une façon fiable de perdre deux fois le même trafic.
           </p>
+
+          <p>
+            Acheter de la visibilité pendant l’attente reste légitime, à
+            condition de ne pas la confondre avec une correction&nbsp;: une
+            campagne payante ne modifie ni l’exploration ni l’indexation. Le
+            guide sur le{" "}
+            <Link href="/guides/prix-gestion-google-ads">
+              prix de la gestion Google Ads
+            </Link>{" "}
+            donne les modèles de facturation.
+          </p>
+
+          <h3>Le relevé qui rend le dossier transmissible</h3>
+          <p>
+            Une capture d’écran sans URL, sans filtre et sans date ne vaut rien
+            trois semaines plus tard. La fiche ci-dessous rassemble l’identité
+            du contrôle, les quatre constats et le premier point à
+            reprendre&nbsp;: elle fonctionne dans votre navigateur, aucune
+            valeur n’est envoyée à Hagnéré Code ni enregistrée.
+          </p>
+
+          <div data-read-time-exclude="true">
+            <SearchVisibilityDiagnostic />
+          </div>
+
+          <p>
+            Relisez la fiche avant de la transmettre&nbsp;: elle peut contenir
+            une adresse non publique. Pour ouvrir la Search Console à un
+            développeur ou à un consultant, créez un accès utilisateur plutôt
+            que de partager votre compte, et retirez-le à la fin de
+            l’intervention.
+          </p>
+
+          <figure className="not-prose my-8 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 dark:border-zinc-800">
+            <Image
+              src="/guides/pourquoi-site-pas-visible-google/diagnostic-google-16x9.svg"
+              width={1600}
+              height={900}
+              sizes="(max-width: 768px) calc(100vw - 32px), 760px"
+              alt="Une fiche avec une URL et une recherche reliée aux contrôles d’exploration, d’indexation, d’impressions et de clics"
+              className="h-auto w-full"
+              unoptimized
+            />
+            <figcaption className="border-t border-zinc-800 bg-zinc-950 px-4 py-3 text-sm leading-relaxed text-zinc-300 sm:px-5">
+              Une URL, une recherche, quatre constats. Le premier contrôle non
+              confirmé détermine la seule action à engager.
+            </figcaption>
+          </figure>
         </GuidePremiumSection>
 
         <GuidePremiumSection
           id="decision"
-          number="07"
+          number="08"
           label="Suite proportionnée"
-          title="Quelle suite choisir après le diagnostic ?"
+          title={
+            "Corriger, attendre ou payer un audit\u00a0: comment trancher\u00a0?"
+          }
         >
           <p>
-            Votre fiche doit déboucher sur une seule action à la fois. S’il
-            reste une étape inconnue, complétez le constat. Si un défaut précis
-            empêche l’exploration ou l’indexation, corrigez-le puis utilisez le
-            test en direct. Une page déjà indexée avec des impressions demande
-            une autre analyse, pas une nouvelle demande d’indexation.
+            Le relevé débouche sur une seule action, choisie par le premier
+            contrôle non confirmé. Le tableau ci-dessous met en face de chaque
+            arrêt son coût de correction et son coût d’inaction, aux mêmes
+            350&nbsp;€ le jour que la section&nbsp;06. Ses durées viennent,
+            comme là-bas, de l’exemple et d’aucune source&nbsp;: remplacez-les
+            par les vôtres avant d’en tirer un budget.
           </p>
 
           <GuideTable
-            caption="Décision à prendre selon le premier contrôle non confirmé"
-            headers={["Premier arrêt", "Action proportionnée", "À éviter"]}
+            caption="Le premier arrêt commande l’action, son coût et le coût de ne rien faire"
+            headers={[
+              "Premier arrêt",
+              "Action proportionnée",
+              "Ce qu’elle coûte",
+              "Ce que coûte l’attente",
+            ]}
             rows={[
               [
-                "Exploration",
-                "Rétablir la découverte ou corriger le motif de récupération",
-                "Réécrire toute la page avant de la rendre accessible",
+                "Adresse inconnue de Google",
+                "Poser un lien interne depuis une page déjà explorée, corriger le sitemap",
+                "1\u00a0h, soit 50\u00a0€",
+                "Une page qui n’existe pas pour Google",
               ],
               [
-                "Indexation",
-                "Traiter le motif, noindex ou le choix d’une autre version",
-                "Répéter une demande d’indexation sans correction",
+                "Récupération en échec",
+                "Traiter le code exact\u00a0: hébergement, redirection, capacité — jamais le contenu",
+                "0,5 à 2\u00a0j, soit 175 à 700\u00a0€",
+                "Après plusieurs jours d’erreurs, l’URL peut sortir de l’index",
               ],
               [
-                "Impressions",
-                "Vérifier filtres et ouvrir l’analyse de la recherche visée",
-                "Déduire un volume nul d’une ligne absente",
+                "Exclue par noindex ou robots.txt",
+                "Retirer la règle, rejouer le test en direct, dater la demande",
+                "1\u00a0h, soit 50\u00a0€",
+                "Chaque semaine d’exclusion est une semaine de diffusion perdue",
               ],
               [
-                "Clics",
-                "Conserver le relevé et examiner le résultat réellement affiché",
-                "Promettre qu’un changement de titre suffira",
+                "Autre adresse choisie comme canonique",
+                "Redirection 301, balise canonique et sitemap alignés sur une seule adresse",
+                "1 à 2\u00a0h, soit 50 à 100\u00a0€",
+                "Impressions et clics restent comptés sur l’ancienne adresse",
+              ],
+              [
+                "Explorée, actuellement non indexée",
+                "Comparer la page à celles du même site qui sont indexées",
+                "1\u00a0j, soit 350\u00a0€",
+                "Rien ne se dégrade, mais rien ne bouge non plus",
+              ],
+              [
+                "Indexée, avec impressions, sans clic",
+                "Sortir de ce guide\u00a0: c’est une question de résultat affiché et de concurrence",
+                "Une analyse dédiée, chiffrée au nombre d’URL et de gabarits",
+                "Une refonte lancée sur un mauvais diagnostic",
               ],
             ]}
           />
 
-          <h3>
-            Réunissez les éléments qui permettront de reprendre le dossier
-          </h3>
-          <ul>
-            <li>la fiche URL-recherche datée ;</li>
-            <li>le motif exact relevé, sans données personnelles ;</li>
-            <li>les captures qui montrent URL, période et filtres ;</li>
-            <li>la correction déjà tentée et sa date ;</li>
-            <li>la personne responsable et la date du recontrôle.</li>
-          </ul>
-
           <p>
-            Avec ces éléments, un développeur, un rédacteur ou un consultant
-            peut reprendre le dossier sans recommencer par une recherche au
-            hasard. Si le premier arrêt reste technique ou si plusieurs URL se
-            remplacent, un{" "}
-            <Link href="/services/audit-technique">audit technique ciblé</Link>{" "}
-            peut vérifier la chaîne. Si l’URL est indexée mais que vous ne savez
-            pas quelle recherche ou quelle page travailler, une analyse de{" "}
+            Les quatre premières lignes se règlent en interne, avec un
+            développeur ou un administrateur système, et aucune ne dépasse
+            700&nbsp;€. Si le premier arrêt reste technique après correction, un{" "}
+            <Link href="/services/audit-technique">audit technique</Link>{" "}
+            devient défendable&nbsp;: notre point d’entrée publié est l’audit
+            Express à 8&nbsp;000&nbsp;€ HT, et l’audit flash de la page{" "}
+            <Link href="/services/maintenance-evolution">
+              maintenance et évolution
+            </Link>{" "}
+            à 2&nbsp;000&nbsp;€ HT couvre les cas plus resserrés. Pour une URL
+            indexée qui reçoit des impressions, c’est une analyse de{" "}
             <Link href="/services/referencement-google">
               référencement Google
             </Link>{" "}
-            devient plus utile.
+            qui répond&nbsp;: son prix dépend du nombre d’URL et des gabarits,
+            et aucune de nos pages n’en publie de montant, ni la{" "}
+            <Link href="/tarifs">grille tarifaire</Link> ni la page service.
           </p>
 
           <InfoBox
-            variant="blue"
-            title="La bonne réponse peut être de ne rien acheter aujourd’hui"
+            variant="emerald"
+            title={"Ne rien acheter aujourd’hui est souvent la bonne décision"}
           >
             <p className="m-0">
-              Si une correction vient d’être vérifiée et qu’une nouvelle
-              exploration a été demandée, gardez le relevé et attendez le
-              recontrôle fixé. Acheter un outil ou lancer une refonte
-              n’accélère pas le traitement de cette demande par Google.
+              Si une correction vient d’être posée et qu’une demande
+              d’exploration a été envoyée, le seul geste utile est d’attendre la
+              date de recontrôle&nbsp;: aucun outil et aucune prestation
+              n’accélère le traitement de cette demande par Google. Un blocage
+              que l’inspection d’URL affiche en clair ne justifie pas
+              2&nbsp;000&nbsp;€ d’audit, et nous le dirons avant de vous envoyer
+              un devis.
             </p>
           </InfoBox>
+
+          <p className="text-sm">
+            <strong>Transparence.</strong> Hagnéré Code vend du développement
+            web, de la maintenance et des prestations de référencement&nbsp;: la
+            dernière ligne du tableau ci-dessus peut donc nous rapporter, les
+            cinq autres non. Rien ici n’exige de passer par nous&nbsp;: les
+            commandes, les libellés, les quotas d’API et le calendrier de
+            recontrôle se rejouent avec vos propres relevés. Les sources
+            officielles ont été relues le 28&nbsp;août 2026 et les libellés de
+            la Search Console changent&nbsp;: revérifiez-les avant de vous
+            engager. Aucune position, aucune date d’indexation et aucun volume
+            de trafic ne sont garantis par cette page.
+          </p>
         </GuidePremiumSection>
       </GuidePremiumLayout>
     </GuidesShell>

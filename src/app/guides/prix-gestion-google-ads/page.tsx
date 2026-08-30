@@ -16,219 +16,163 @@ import type { GuidePremiumFaqCategory } from "@/components/guides/guide-premium-
 import { TrackedGuideCtaLink } from "@/components/guides/tracked-guide-cta-link";
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import {
+  CONTACT_PHONE_DISPLAY_NATIONAL,
+  CONTACT_PHONE_E164,
+} from "@/lib/contact-details";
+import {
   buildGuideMetadata,
   buildGuideStructuredData,
 } from "@/lib/guide-page-seo";
 import { formatGuideDate, getGuide } from "@/lib/guides";
 import { TEAM } from "@/lib/team";
 
+/**
+ * Les trois phrases de prix maison, dans la forme exacte que le contrôle
+ * croisé `guides-price-consistency.test.ts` compare à la grille publique du
+ * service publicité en ligne (`src/components/publicite-en-ligne/sections/
+ * pricing.ts`), relevée le 28 août 2026.
+ *
+ * Ces chaînes ne sont pas un commentaire recopié pour faire taire un contrôle :
+ * ce sont les phrases réellement rendues au lecteur, plus bas dans le §01. Le
+ * contrôle croisé lit le fichier source et n'y décode ni `&nbsp;` ni la
+ * séquence d'échappement `\u00a0` ; elles sont donc écrites avec des espaces
+ * ordinaires, et `typographieFrancaise` pose les insécables à l'affichage.
+ * Modifier un montant visible fait maintenant échouer le contrôle — ce que la
+ * version précédente, qui portait ces phrases dans un commentaire d'en-tête,
+ * ne garantissait plus.
+ */
+const PRIX_MAISON_PUBLIES = {
+  audit: "un audit à 1 500 € HT",
+  forfaits: "des forfaits fixes à 1 800 €, 3 500 € et 4 500 € HT par mois",
+  starter:
+    "situe le forfait Starter à partir de 8 000 € de budget média mensuel",
+} as const;
+
+/**
+ * Pose les insécables du §9.3 sur une chaîne écrite en espaces ordinaires :
+ * séparateur de milliers, unité collée à son nombre, ponctuation double.
+ * Écrite une fois, appliquée aux trois phrases ci-dessus.
+ */
+function typographieFrancaise(texte: string) {
+  return texte
+    .replace(/(\d) (\d{3})/g, "$1\u00a0$2")
+    .replace(/(\d) (?=€|%|mois|heures?|h\b)/g, "$1\u00a0")
+    .replace(/ (?=[?!;:»])/g, "\u00a0")
+    .replace(/« /g, "«\u00a0");
+}
+
 const guide = getGuide("prix-gestion-google-ads");
 const breadcrumbName = "Prix d’une gestion Google Ads";
 
 export const metadata = buildGuideMetadata(
   guide,
-  "Comparer le coût complet de quatre modes de rémunération",
+  "Quatre modes de rémunération d’une gestion Google Ads ramenés au même décompte",
 );
 
 const structuredData = buildGuideStructuredData(guide, breadcrumbName);
 
 const toc = [
-  {
-    id: "reponse-prix",
-    number: "01",
-    label: "Répondre au prix sans inventer une moyenne",
-    shortLabel: "Prix",
-  },
+  { id: "reponse", number: "01", label: "Réponse directe", shortLabel: "Réponse" },
   {
     id: "cout-complet",
     number: "02",
-    label: "Reconstituer le coût complet",
-    shortLabel: "Coût complet",
+    label: "Les six lignes du coût",
+    shortLabel: "Le coût",
   },
   {
     id: "modeles",
     number: "03",
-    label: "Comparer quatre rémunérations",
-    shortLabel: "Modèles",
+    label: "Le point de bascule",
+    shortLabel: "Bascule",
   },
   {
-    id: "horizons",
+    id: "temps-interne",
     number: "04",
-    label: "Lire 3, 6 et 12 mois",
-    shortLabel: "Durée",
-  },
-  {
-    id: "calculateur",
-    number: "05",
-    label: "Recalculer avec vos devis",
-    shortLabel: "Calculer",
+    label: "Ce que votre équipe absorbe",
+    shortLabel: "Temps interne",
   },
   {
     id: "indicateurs",
-    number: "06",
-    label: "Séparer CPC, CPA, CPL et CAC",
+    number: "05",
+    label: "CPA, CPL et coût d’un client",
     shortLabel: "Mesurer",
   },
-  {
-    id: "perimetre",
-    number: "07",
-    label: "Contrôler ce qui est inclus",
-    shortLabel: "Périmètre",
-  },
-  {
-    id: "propriete",
-    number: "08",
-    label: "Sécuriser compte et sortie",
-    shortLabel: "Propriété",
-  },
-  {
-    id: "decision",
-    number: "09",
-    label: "Choisir le dispositif proportionné",
-    shortLabel: "Décider",
-  },
+  { id: "incidents", number: "06", label: "Ce qui rate", shortLabel: "Incidents" },
+  { id: "sortie", number: "07", label: "Changer d’agence", shortLabel: "Sortie" },
+  { id: "decision", number: "08", label: "Décider", shortLabel: "Décider" },
 ];
 
 const faqCategories: GuidePremiumFaqCategory[] = [
   {
-    key: "prix",
+    key: "facture",
     num: "01",
-    label: "Prix et factures",
+    label: "Facture et budget",
     items: [
       {
-        question: "Combien coûte la gestion de Google Ads par mois ?",
+        question:
+          "Le budget publicitaire est-il compris dans les honoraires\u00a0?",
         answer:
-          "Il n’existe pas de montant fiable sans périmètre précis. Dans l’échantillon de pages publiques consulté, les prix vont d’une gestion à partir de 90 € HT à plusieurs milliers d’euros par mois. Les campagnes, canaux, créations, pages, mesures et rythmes de travail ne sont pourtant pas équivalents. Comparez donc le coût complet sur une durée identique, pas l’étiquette mensuelle seule.",
+          "Ce sont deux lignes différentes, et le devis doit les porter séparément. Le budget média part chez Google, sur un profil de paiement rattaché à votre entreprise\u00a0; les honoraires rémunèrent le travail de l’agence ou de l’indépendant. Sur le cas construit de ce guide, 5\u00a0000\u00a0€ HT de média par mois côtoient 750 à 1\u00a0000\u00a0€ HT d’honoraires\u00a0: confondre les deux fait passer la facture mensuelle de 900\u00a0€ à 5\u00a0900\u00a0€. Demandez aussi qui reçoit la facture Google et qui la transmet à la comptabilité.",
       },
       {
-        question: "Le budget publicitaire est-il inclus dans les honoraires ?",
+        question: "Faut-il comparer les devis en HT ou en TTC\u00a0?",
         answer:
-          "Pas nécessairement, et il vaut mieux exiger deux lignes distinctes. Le budget média finance la diffusion auprès de Google ; les honoraires rémunèrent le travail du prestataire. Demandez aussi si le coût réglementaire, les créations, la page, la mesure, les outils et les frais de lancement sont ajoutés.",
-      },
-      {
-        question: "Les frais de lancement sont-ils toujours justifiés ?",
-        answer:
-          "Ils peuvent rémunérer un audit, la reprise du compte, la mesure, la structure, les créations et la documentation. Ils ne doivent pas rester une ligne opaque. Demandez les livrables, les accès modifiés, les contrôles effectués et ce qui se passe si le compte est déjà propre.",
-      },
-      {
-        question: "Faut-il comparer les prix HT ou TTC ?",
-        answer:
-          "Comparez les prestations externes sur une même base HT, puis calculez séparément le décaissement TTC et la part de TVA réellement récupérable. Le traitement dépend des factures, des fournisseurs et de votre situation. Le temps interne valorisé n’est pas une facture HT : c’est un coût économique à ajouter à part.",
-      },
-    ],
-  },
-  {
-    key: "calcul",
-    num: "02",
-    label: "Budget et indicateurs",
-    items: [
-      {
-        question: "Que représente le coût réglementaire Google France de 2 % ?",
-        answer:
-          "Google indique actuellement un coût réglementaire de 2 % pour les annonces diffusées en France. Il s’ajoute à la dépense concernée. Vérifiez le lieu de diffusion et la facture à la date de votre calcul, puis évitez de l’ajouter une seconde fois si votre montant de départ l’inclut déjà.",
+          "Comparez les offres en HT, puis calculez à part ce que vous sortez réellement de trésorerie. Le HT met les propositions sur la même base\u00a0; le TTC dit ce que votre banque voit passer. La TVA facturée dépend de l’entité Google qui sert votre compte et de votre situation\u00a0: l’aide Google distingue les comptes servis par Google France SARL de ceux servis depuis l’Irlande. Faites trancher votre expert-comptable plutôt qu’un tableau de comparaison.",
       },
       {
         question:
-          "Google peut-il dépenser plus que le budget quotidien moyen ?",
+          "Le coût réglementaire de 2\u00a0% s’ajoute-t-il à mon budget\u00a0?",
         answer:
-          "Pour la plupart des campagnes, Google indique qu’une journée peut atteindre jusqu’à deux fois le budget quotidien moyen, tandis que la limite mensuelle correspond généralement à 30,4 fois ce budget. Des exceptions existent et un budget total de campagne suit d’autres règles. Pilotez donc la trésorerie avec les règles du type de campagne réellement utilisé.",
-      },
-      {
-        question: "Quelle différence entre CPA, CPL et CAC ?",
-        answer:
-          "Le CPA divise une dépense par l’action définie ; cette action peut être un formulaire, un appel ou un achat. Le CPL porte sur un prospect, idéalement qualifié selon une règle écrite. Le CAC divise le coût d’acquisition complet par les nouveaux clients. Sans rapprochement avec le suivi commercial, ces trois nombres ne répondent pas à la même question.",
-      },
-      {
-        question: "Le calculateur prédit-il la rentabilité d’une campagne ?",
-        answer:
-          "Non. Il applique vos hypothèses à quatre structures de prix et rend les coûts visibles. Les clics, actions, prospects, clients et marges initiaux sont fictifs. Testez un cas central et un cas défavorable, puis remplacez les prévisions par des données rapprochées dès qu’elles existent.",
+          "Il s’ajoute à la dépense des annonces diffusées en France, et Google le fait apparaître sur la facture. Sur 5\u00a0000\u00a0€ HT de média mensuel, il vaut 100\u00a0€\u00a0; sur douze mois, 1\u00a0200\u00a0€. Le piège tient en une question\u00a0: votre montant de départ l’inclut-il déjà\u00a0? S’il l’inclut, l’ajouter une seconde fois gonfle le budget de 2\u00a0% pour rien. Vérifiez la zone de diffusion et la facture à la date de votre calcul.",
       },
     ],
   },
   {
-    key: "choix",
-    num: "03",
-    label: "Prestataire et contrôle",
+    key: "contrat",
+    num: "02",
+    label: "Contrat et rémunération",
     items: [
       {
-        question: "Le pourcentage du budget média est-il toujours plus cher ?",
+        question:
+          "Qu’est-ce que l’assiette d’une rémunération au pourcentage\u00a0?",
         answer:
-          "Non. Il dépend du taux, de l’assiette, du minimum, du plafond et de la durée. Un pourcentage peut coûter moins qu’un forfait à faible dépense et davantage après une hausse de budget. Recalculez chaque modèle avec sa propre assiette contractuelle, puis rendez comparables le périmètre, les coûts annexes et la sortie.",
+          "C’est la somme sur laquelle le taux s’applique, et elle change tout. Dépense média facturée, budget prévu, montant net d’avoirs, avec ou sans le coût réglementaire\u00a0: quatre définitions donnent quatre factures. Sur 5\u00a0000\u00a0€ HT de média, 15\u00a0% font 750\u00a0€\u00a0; sur 12\u00a0000\u00a0€, 1\u00a0800\u00a0€, sans qu’aucune ligne du contrat n’ait bougé. Faites écrire l’assiette, un plafond mensuel en euros et ce qui se passe quand le budget change.",
       },
       {
-        question: "Qui doit posséder le compte Google Ads ?",
+        question: "Les frais de lancement se négocient-ils\u00a0?",
         answer:
-          "L’entreprise annonceuse devrait conserver un accès administrateur direct au compte, aux factures, à la mesure et aux actifs utiles. Google précise qu’un compte existant lié à un compte administrateur garde son historique et que le compte administrateur ne devient pas propriétaire par défaut dans ce cas. Vérifiez néanmoins les rôles réels avant de signer.",
+          "Ils se discutent surtout à la ligne. Un lancement à 750\u00a0€ HT peut couvrir un audit, la reprise du compte, la structure des campagnes, les accès et un plan de mesure\u00a0; il peut aussi ne rien couvrir de tout cela. Demandez la liste des travaux, ce qui vous est remis à la fin et ce qui se passe si le compte est déjà propre. Sur le cas construit, le lancement vaut 750 à 900\u00a0€ HT une seule fois, quand un mois d’honoraires passé à rattraper un compte mal repris coûte 750 à 1\u00a0000\u00a0€ HT et recommence le mois suivant.",
       },
       {
-        question: "Quelle durée d’engagement accepter ?",
+        question: "Quelle durée d’engagement accepter\u00a0?",
         answer:
-          "Acceptez une durée compatible avec le travail promis, le cycle commercial et le risque financier que vous pouvez supporter. Cette durée ne remplace pas un plan de contrôle. Précisez les livrables, les points de revue, les conditions de résiliation, les frais de sortie et la restitution des accès.",
+          "Celle qui laisse le temps d’accumuler assez de prospects qualifiés pour décider, et pas une semaine de plus. Sur le cas construit, 20\u00a0prospects qualifiés par mois donnent 60\u00a0prospects et 12\u00a0clients en trois mois\u00a0: c’est ce volume, pas le calendrier, qui rend une décision défendable. Écrivez dans le même paragraphe le préavis, les sommes encore dues, la restitution des accès et ce que vous récupérez. Une durée sans clause de sortie chiffrée n’engage que vous.",
+      },
+    ],
+  },
+  {
+    key: "compte",
+    num: "03",
+    label: "Compte, mesure et autonomie",
+    items: [
+      {
+        question: "Qui doit posséder le compte Google Ads\u00a0?",
+        answer:
+          "Votre entreprise, avec un accès administrateur direct et le profil de paiement à son nom. Google indique qu’associer un compte existant à un compte administrateur ne fait perdre ni l’historique ni la propriété\u00a0; en revanche, un compte créé depuis le compte administrateur d’une agence peut lui appartenir par défaut. Connectez-vous vous-même avant le premier euro dépensé et regardez les rôles réellement attribués, plutôt que la phrase du contrat.",
       },
       {
-        question: "Quand gérer Google Ads soi-même ?",
+        question: "Que vaut un audit Google Ads gratuit\u00a0?",
         answer:
-          "C’est envisageable si le périmètre est simple, la mesure fiable, le temps disponible et la perte maximale définie. Demandez plutôt un audit ou une assistance ponctuelle si vous savez exécuter mais voulez contrôler la structure. Reportez si la page, le suivi des ventes ou la capacité commerciale empêchent encore de juger les résultats.",
+          "Il vaut ce qu’il remet par écrit, et le mot «\u00a0audit\u00a0» ne dit rien de sa profondeur\u00a0: sur l’échantillon consulté le 30\u00a0juillet 2026, une même page vend un audit payant et propose à côté un audit gratuit décrit comme synthétique. L’audit Ads publié par Hagnéré Code coûte 1\u00a0500\u00a0€ HT et ressort avec un rapport écrit et une feuille de route à 90\u00a0jours. Pour toute offre, demandez la liste des points examinés, le format de la restitution et ce que vous gardez si vous n’allez pas plus loin.",
+      },
+      {
+        question: "Peut-on gérer Google Ads en interne\u00a0?",
+        answer:
+          "C’est jouable quand une personne a du temps réservé chaque semaine, que la mesure fonctionne et que la perte maximale est écrite. Comptez ce temps à son coût horaire chargé\u00a0: sur le cas construit, trois heures par mois à 50\u00a0€ l’heure valent 150\u00a0€, soit exactement l’écart mensuel entre l’offre la moins chère et le forfait. Sous 3\u00a0000\u00a0€ HT de média mensuel, un forfait de 900\u00a0€ pèse au moins 30\u00a0% de la dépense\u00a0: comparez-le d’abord à un audit ponctuel ou à une mission bornée en heures.",
       },
     ],
   },
 ];
-
-function QuoteReadingOrder() {
-  const items = [
-    {
-      number: "1",
-      title: "Même objectif",
-      text: "Même offre, zone, canal, période et définition d’un prospect qualifié.",
-    },
-    {
-      number: "2",
-      title: "Base commune minimale",
-      text: "Média et coûts réellement identiques, puis éléments manquants et temps interne ajoutés offre par offre.",
-    },
-    {
-      number: "3",
-      title: "Rémunération isolée",
-      text: "Forfait, pourcentage, hybride ou temps passé recalculé séparément.",
-    },
-    {
-      number: "4",
-      title: "Même durée",
-      text: "Décaissement et coût connu comparés à 3, 6 puis 12 mois.",
-    },
-  ];
-
-  return (
-    <aside
-      className="not-prose my-7 overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950"
-      aria-label="Ordre de lecture d’un devis Google Ads"
-    >
-      <div className="border-b border-zinc-200 bg-zinc-950 px-5 py-4 text-white dark:border-zinc-800">
-        <p className="m-0 text-[10px] font-bold uppercase tracking-[0.16em] text-indigo-300">
-          Rendre les offres comparables
-        </p>
-        <p className="mb-0 mt-1 text-base font-semibold">
-          Quatre contrôles, dans cet ordre
-        </p>
-      </div>
-      <ol className="grid gap-px bg-zinc-200 dark:bg-zinc-800 sm:grid-cols-2">
-        {items.map((item) => (
-          <li key={item.number} className="bg-white p-5 dark:bg-zinc-950">
-            <span className="inline-flex size-7 items-center justify-center rounded-full bg-indigo-100 text-xs font-bold text-indigo-800 dark:bg-indigo-950 dark:text-indigo-200">
-              {item.number}
-            </span>
-            <p className="mb-0 mt-3 text-sm font-bold text-zinc-950 dark:text-white">
-              {item.title}
-            </p>
-            <p className="mb-0 mt-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
-              {item.text}
-            </p>
-          </li>
-        ))}
-      </ol>
-    </aside>
-  );
-}
 
 export default function Page() {
   return (
@@ -250,22 +194,21 @@ export default function Page() {
         ]}
         badges={[
           { label: "Coût complet", variant: "dark" },
-          { label: "Google Ads", variant: "neutral" },
-          { label: "Calcul local", variant: "success" },
+          { label: "Exemple construit", variant: "neutral" },
+          { label: "Calcul local · aucun envoi", variant: "success" },
           {
             label: `Mis à jour le ${formatGuideDate(guide.dateModified)}`,
             variant: "muted",
           },
         ]}
         heroTitle="Combien coûte vraiment"
-        heroTitleEm="la gestion de Google Ads ?"
-        heroDescription="Une mensualité ne suffit pas. Comparez quatre modèles de rémunération sur la même durée, sans confondre honoraires et média. Ajoutez ensuite le lancement, la mesure, les créations, la TVA à décaisser et le temps de votre équipe."
+        heroTitleEm={"la gestion de Google Ads\u00a0?"}
+        heroDescription={"Exemple construit, pas un dossier client\u00a0: les quatre offres comparées, les volumes et le coût horaire interne sont choisis pour l’exemple. Sur douze mois, 5\u00a0000\u00a0€ HT de média par mois donnent un coût connu de 78\u00a0300 à 81\u00a0200\u00a0€ selon le mode de rémunération, soit 2\u00a0900\u00a0€ d’écart contre 61\u00a0200\u00a0€ de média. Ce guide donne le budget où un pourcentage dépasse un forfait, et les heures que l’offre la moins chère laisse à votre équipe."}
         stats={[
-          { label: "Modèles comparés", value: "4" },
-          { label: "Durées comparées", value: "3 · 6 · 12" },
+          { label: "Bascule pourcentage", value: "6\u00a0000\u00a0€ HT/mois" },
+          { label: "Écart des 4 modèles à 12 mois", value: "2\u00a0900\u00a0€" },
+          { label: "Seuil de charge interne", value: "3\u00a0h/mois" },
           { label: "Moyenne de marché", value: "Aucune" },
-          { label: "Calculateur · envoi", value: "Aucun" },
-          { label: "Indicateurs séparés", value: "4" },
           { label: "Lecture", value: `${guide.readTimeMin} min` },
         ]}
         author={{
@@ -277,123 +220,123 @@ export default function Page() {
         sidebarHeroCta={{
           eyebrow: "Publicité en ligne",
           titleStart: "Faire chiffrer",
-          titleEm: "un périmètre comparable",
+          titleEm: "une offre comparable",
           description:
-            "Décrivez le budget média, les zones, le cycle commercial, la mesure existante et ce que votre équipe peut prendre en charge. La proposition doit rendre visibles honoraires, lancement, actifs, exclusions et conditions de sortie.",
+            "Donnez le budget média, les zones, le cycle de vente, la mesure déjà en place et ce que votre équipe peut prendre en charge. La proposition sépare honoraires, lancement, actifs, exclusions et conditions de sortie.",
           benefits: [
-            "Honoraires fixes séparés du budget média",
-            "Propriété, accès et actifs inventoriés au devis",
-            "Refus explicite si la base de pilotage n’est pas prête",
+            "Honoraires fixes, séparés du budget média",
+            "Accès, factures et actifs inventoriés au devis",
+            "Refus explicite si la mesure n’est pas prête",
           ],
           primaryCtaLabel: "Voir le service publicité en ligne",
           primaryCtaHref: "/services/publicite-en-ligne",
-          phoneLabel: "03 74 47 20 18",
-          phoneHref: "tel:+33374472018",
+          phoneLabel: CONTACT_PHONE_DISPLAY_NATIONAL,
+          phoneHref: `tel:${CONTACT_PHONE_E164}`,
         }}
         toc={toc}
-        tocLabel="Comparer le coût complet"
-        mobileCtaLabel="Décrire mon périmètre"
+        tocLabel="Sommaire du coût complet"
+        mobileCtaLabel="Faire relire mon devis"
         sidebarContextCta={{
           eyebrow: "Devis Google Ads",
-          title: "Faire remettre mon devis à plat",
+          title: "Faire remettre deux devis sur la même base",
           description:
-            "Apportez les lignes du devis, le budget média hors surcoût, les accès et la définition d’une vente attribuée.",
+            "Apportez les lignes des offres, le budget média hors coût réglementaire, les accès et votre définition d’une vente attribuée.",
           benefits: [
-            "Comparer la même chose sur la même durée",
-            "Rendre visibles les coûts hors honoraires",
-            "Écrire les conditions de contrôle et de sortie",
+            "Même contenu, même durée, mêmes exclusions",
+            "Coûts hors honoraires rendus visibles",
+            "Conditions de contrôle et de sortie écrites",
           ],
           ctaLabel: "Décrire mon projet",
           ctaHref: "/demarrer-un-projet",
-          secondaryLabel: "03 74 47 20 18",
-          secondaryHref: "tel:+33374472018",
+          secondaryLabel: CONTACT_PHONE_DISPLAY_NATIONAL,
+          secondaryHref: `tel:${CONTACT_PHONE_E164}`,
         }}
         faqCategories={faqCategories}
         faqMeta={{
           eyebrow: "Questions fréquentes",
-          titleStart: "Comparer un devis",
+          titleStart: "Lire un devis",
           titleEm: "sans confondre",
-          titleEnd: "prix, budget et acquisition.",
+          titleEnd: "média, honoraires et clients.",
           subtitle:
-            "Des réponses courtes sur la facture, la TVA, les modèles, les indicateurs et la propriété du compte.",
-          ctaTitle: "Votre périmètre reste impossible à comparer ?",
+            "Neuf réponses courtes sur la facture, la TVA, l’assiette d’un pourcentage, la durée d’engagement, la propriété du compte et la gestion en interne.",
+          ctaTitle: "Deux devis restent impossibles à comparer\u00a0?",
           ctaDescription:
-            "Partagez les lignes du devis et les hypothèses manquantes, sans transmettre de données personnelles de prospects.",
-          ctaLabel: "Décrire le périmètre",
+            "Envoyez les lignes des offres et les hypothèses manquantes, sans transmettre de données personnelles de prospects.",
+          ctaLabel: "Décrire ma situation",
           ctaHref: "/demarrer-un-projet",
         }}
         legalSources={[
           {
-            source: "Google Ads · budgets",
+            source: "Google Ads · budgets quotidiens",
             href: "https://support.google.com/google-ads/answer/10486536?hl=fr",
             description:
-              "Budget quotidien moyen, limite quotidienne et limite mensuelle de 30,4 jours pour la plupart des campagnes.",
+              "Pour la plupart des campagnes\u00a0: une journée peut atteindre deux fois le budget quotidien moyen, et la limite mensuelle vaut généralement 30,4 fois ce budget. Consultée le 30\u00a0juillet 2026.",
           },
           {
-            source: "Google Ads · budget total",
+            source: "Google Ads · budget total de campagne",
             href: "https://support.google.com/google-ads/answer/10486938?hl=fr",
             description:
-              "Règles distinctes du budget total de campagne sur une période fixée.",
+              "Règles distinctes du budget total sur une période fixée\u00a0: ne pas y appliquer le raisonnement du budget quotidien.",
           },
           {
-            source: "Google Ads · coût France",
+            source: "Google Ads · coûts réglementaires",
             href: "https://support.google.com/google-ads/answer/9750227?hl=fr",
             description:
-              "Coût réglementaire actuellement indiqué pour les annonces diffusées en France.",
+              "Coût réglementaire actuellement indiqué à 2\u00a0% pour les annonces diffusées en France. Vérifier la zone et la facture à la date du calcul.",
           },
           {
-            source: "Google Ads · TVA",
+            source: "Google Ads · TVA et facturation",
             href: "https://support.google.com/google-ads/answer/2375370?hl=fr",
             description:
-              "Repères de facturation selon l’entité Google qui sert le compte ; vérification fiscale individuelle nécessaire.",
+              "Traitement décrit selon l’entité Google qui sert le compte, notamment Google France SARL ou Google Ireland. Cité au §02. Aucune conclusion fiscale universelle n’en découle.",
           },
           {
-            source: "Google Ads · facturation France",
+            source: "Google Ads · facturation en France",
             href: "https://support.google.com/google-ads/answer/2375371?hl=fr",
             description:
-              "Indisponibilité indiquée de la facturation consolidée pour les agences médias en France ; rôles de facturation à vérifier avant le lancement.",
+              "Indisponibilité indiquée de la facturation consolidée pour les agences médias achetant au nom d’annonceurs en France, avec renvoi au cadre de la loi Sapin.",
           },
           {
             source: "Légifrance · loi n° 93-122, article 20",
             href: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031011011",
             description:
-              "Mandat écrit pour l’achat d’espace par un intermédiaire, rémunérations détaillées, avantages portés sur facture et facture du vendeur communiquée à l’annonceur.",
+              "Mandat écrit pour l’achat d’espace par un intermédiaire, rémunération détaillée, rabais et avantages portés sur la facture remise à l’annonceur, facture du vendeur communiquée à celui-ci.",
           },
           {
-            source: "Google Ads · association",
+            source: "Google Ads · associer un compte existant",
             href: "https://support.google.com/google-ads/answer/7456530?hl=fr",
             description:
-              "Effets de l’association d’un compte existant à un compte administrateur, notamment sur l’historique et la propriété.",
+              "L’association d’un compte existant à un compte administrateur ne change pas l’historique et ne transfère pas la propriété par défaut.",
           },
           {
-            source: "Google Ads · propriété",
+            source: "Google Ads · propriété d’un compte",
             href: "https://support.google.com/google-ads/answer/7456532?hl=fr",
             description:
-              "Rôles de propriété d’un compte administrateur et possibilité de dissocier les comptes.",
+              "Règles de propriété d’un compte administrateur, cas de la création depuis ce compte et procédure de dissociation.",
           },
           {
-            source: "Google Ads · conversions",
+            source: "Google Ads · actions de conversion",
             href: "https://support.google.com/google-ads/answer/11461796?hl=fr",
             description:
-              "Différence entre actions de conversion principales et secondaires dans les objectifs et les enchères.",
+              "Distinction entre actions de conversion principales et secondaires, et usage de chacune dans les objectifs et les enchères.",
           },
           {
-            source: "Google Ads · historique",
+            source: "Google Ads · historique des modifications",
             href: "https://support.google.com/google-ads/answer/2454137?hl=fr",
             description:
-              "Historique des modifications du compte sur les deux dernières années.",
+              "Historique des modifications du compte sur les deux dernières années. Il retrace les décisions\u00a0; il ne prouve pas leur pertinence.",
           },
           {
             source: "CNIL · FAQ cookies et traceurs",
             href: "https://www.cnil.fr/fr/cookies-et-autres-traceurs/regles/cookies/FAQ",
             description:
-              "Cadre du consentement pour les traceurs de mesure publicitaire et exigence d’un refus aussi facile que l’acceptation.",
+              "Mise à jour du 29\u00a0avril 2026\u00a0: les traceurs de mesure publicitaire relèvent le plus souvent du consentement, et le refus doit être aussi facile que l’acceptation. Citée au §02.",
           },
           {
-            source: "Hagnéré Code · offre",
+            source: "Hagnéré Code · publicité en ligne",
             href: "https://hagnere-code.ai/services/publicite-en-ligne",
             description:
-              "Tarifs publics et périmètres actuels de l’offre Hagnéré Code, cités comme prix propres et non comme référence de marché.",
+              "Nos propres tarifs publics, relevés le 28\u00a0août 2026 et cités comme prix maison, jamais comme référence de marché.",
           },
           // Les trois entrées suivantes sont des pages commerciales de
           // prestataires concurrents, citées comme échantillon de prix daté.
@@ -405,258 +348,262 @@ export default function Page() {
             href: "https://www.ms-web.fr/creation-et-gestion-de-campagne-google-ads/",
             nofollow: true,
             description:
-              "Exemple daté d’un prix vendeur public ; périmètre à vérifier dans un devis.",
+              "Prix vendeur public relevé le 30\u00a0juillet 2026\u00a0: création 149\u00a0€ HT, gestion à partir de 90\u00a0€ HT par mois.",
           },
           {
             source: "AdWorks · tarifs",
             href: "https://www.ad-works.fr/tarifs",
             nofollow: true,
             description:
-              "Exemple daté de frais de lancement et de gestion affichés publiquement.",
+              "Prix vendeur public relevé le 30\u00a0juillet 2026\u00a0: lancement à partir de 750\u00a0€ HT, gestion à partir de 450\u00a0€ HT par mois.",
           },
           {
             source: "DP Medias · tarifs",
             href: "https://www.dpmedias.com/google-ads",
             nofollow: true,
             description:
-              "Exemple daté de prix publics pour audit, création et gestion mensuelle.",
+              "Prix vendeur public relevé le 30\u00a0juillet 2026\u00a0: audit 500\u00a0€ HT, création de compte 250\u00a0€ HT, gestion à partir de 450\u00a0€ HT par mois.",
           },
         ]}
         disclaimer={{
-          eyebrow: "Limites des calculs",
-          title: "Une comparaison de coûts, pas une promesse de performance",
+          eyebrow: "Limites de ce guide",
+          title: "Une comparaison de coûts, pas une promesse de résultat",
           description:
-            "Les prix vendeurs cités ont été consultés le 30 juillet 2026 et peuvent changer. Ils forment un échantillon de pages publiques à périmètres non comparables, pas une statistique du marché français. Les scénarios sont fictifs. Le calculateur applique notamment une hypothèse de TVA commune par simplification ; vérifiez chaque facture, votre droit à récupération et les règles à jour avec les professionnels compétents.",
+            "Les prix vendeurs cités ont été relevés le 30 juillet 2026 et notre grille le 28 août 2026\u00a0; ils changent. Quatre pages publiques ne forment pas une statistique du marché français. Les quatre offres suivies, les volumes, les marges et les heures internes du cas sont choisis pour l’exemple, et le calculateur applique un taux de TVA unique par simplification. Vérifiez chaque facture, votre droit à récupération et les règles en vigueur avec votre expert-comptable. Fourchettes et règles de plateforme à revérifier tous les douze mois.",
         }}
+        relatedGuides={[
+          {
+            label:
+              "Pourquoi mon site n’apparaît pas dans Google\u00a0: le diagnostic",
+            href: "/guides/pourquoi-site-pas-visible-google",
+          },
+          {
+            label: "Rédiger un cahier des charges qui tient devant un devis",
+            href: "/guides/cahier-des-charges-saas",
+          },
+        ]}
+        relatedGuidesLabel="2 guides complémentaires"
       >
         <GuidePremiumSection
-          id="reponse-prix"
+          id="reponse"
           number="01"
-          label="Réponse immédiate"
-          title="Les prix affichés vont de 90 € HT à plusieurs milliers d’euros par mois — mais ils ne couvrent pas la même chose"
+          label="Réponse directe"
+          title="Ce que les pages publiques affichent, et ce qu’elles ne comparent pas"
         >
           <p>
-            Pour répondre sans détour : une page publique peut annoncer une
-            gestion à partir de <strong>90 € HT par mois</strong>, une autre à
-            partir de <strong>450 € HT par mois</strong>, et des offres plus
-            structurées à{" "}
-            <strong>1 800 €, 3 500 € ou 4 500 € HT par mois</strong>. Ces
-            nombres ne forment pas un « prix moyen français ». Ils proviennent
-            d’un petit échantillon de vendeurs, consulté le 30 juillet 2026,
-            avec des budgets, canaux, rythmes de travail et livrables
-            différents.
+            Trois pages de vendeurs, relevées le 30&nbsp;juillet 2026,
+            affichent une gestion Google&nbsp;Ads mensuelle à partir de
+            90&nbsp;€, 450&nbsp;€ et
+            450&nbsp;€ HT. La nôtre, relevée le 28&nbsp;août 2026, démarre à
+            1&nbsp;800&nbsp;€ HT&nbsp;: un facteur vingt entre les deux
+            extrêmes. Quatre offres ne font pas une moyenne de marché.
+          </p>
+          <p>
+            <strong>La dépense de l’année se joue ailleurs.</strong>{" "}
+            Sur un cas construit à 5&nbsp;000&nbsp;€ HT de média par mois, le
+            coût connu sur douze mois&nbsp;— média, coût réglementaire,
+            honoraires, lancement, mesure et heures internes — va de
+            78&nbsp;300&nbsp;€ à 81&nbsp;200&nbsp;€ selon le modèle
+            facturé&nbsp;: 2&nbsp;900&nbsp;€ d’écart, soit 3,6&nbsp;% des
+            79&nbsp;950&nbsp;€ du forfait. Le média et son coût réglementaire y
+            pèsent 61&nbsp;200&nbsp;€&nbsp;— 76,5&nbsp;%&nbsp;; le lancement et
+            les honoraires de gestion, 11&nbsp;550&nbsp;€.
+          </p>
+          <p>
+            Aucune page de tarifs ne publie les deux nombres qui décident&nbsp;:
+            le budget média où un pourcentage dépasse un forfait, et les heures
+            que la moins chère laisse à votre équipe.
           </p>
 
+          <GuidePremiumCase
+            initial="H"
+            eyebrow="Fil rouge du guide · exemple construit"
+            title={"Hélène compare quatre devis pour 5\u00a0000\u00a0€ de média par mois"}
+          >
+            <p>
+              <em>
+                Exemple construit&nbsp;: les quatre offres, les volumes,
+                l’effectif et le coût horaire interne sont choisis pour
+                l’exemple et ne viennent d’aucun devis reçu. Les seuls montants
+                relevés sur des pages publiques sont les prix vendeurs et notre
+                grille, cités avec leur date. Ce n’est pas un dossier client.
+              </em>{" "}
+              Hélène est dirigeante d’une entreprise de 24&nbsp;personnes qui
+              installe des pompes à chaleur en Loire-Atlantique. Elle veut
+              5&nbsp;000&nbsp;€ HT de média par mois, diffusés en France. Un
+              chargé d’affaires rappelle les demandes, sa comptable veut savoir
+              ce qui sort de la banque.
+            </p>
+          </GuidePremiumCase>
+
           <p>
-            Côté prix d’entrée,{" "}
+            Le détail des trois pages&nbsp;:{" "}
             <a
               href="https://www.ms-web.fr/creation-et-gestion-de-campagne-google-ads/"
               target="_blank"
               rel="nofollow noreferrer"
             >
               MS Web
-            </a>{" "}
-            affiche une création à 149 € HT et une gestion à partir de 90 € HT
-            par mois.{" "}
+            </a>
+            , création 149&nbsp;€ HT puis 90&nbsp;€ HT&nbsp;;{" "}
             <a
               href="https://www.ad-works.fr/tarifs"
               target="_blank"
               rel="nofollow noreferrer"
             >
               AdWorks
-            </a>{" "}
-            affiche un lancement à partir de 750 € HT et une gestion à partir de
-            450 € HT par mois.
-          </p>
-
-          <p>
-            Le détail change encore :{" "}
+            </a>
+            , lancement dès 750&nbsp;€ HT puis 450&nbsp;€ HT&nbsp;;{" "}
             <a
               href="https://www.dpmedias.com/google-ads"
               target="_blank"
               rel="nofollow noreferrer"
             >
               DP Medias
-            </a>{" "}
-            publie séparément un audit à 500 € HT, une création de compte à 250
-            € HT et une gestion à partir de 450 € HT par mois. La même page
-            renvoie aussi vers un « audit Google Ads gratuit » décrit comme
-            synthétique. Le mot « audit » ne désigne donc pas le même niveau
-            d’analyse, de livrables ou de restitution.
+            </a>
+            , audit 500&nbsp;€ HT, création de compte 250&nbsp;€ HT, gestion dès
+            450&nbsp;€ HT&nbsp;— et, sur la même page, un audit gratuit
+            «&nbsp;synthétique&nbsp;».
           </p>
-
           <p>
-            Ces pages décrivent seulement leur propre offre. Avec un échantillon
-            aussi limité, impossible d’en déduire un classement : il faut
-            d’abord comparer le même périmètre.
-          </p>
-
-          <p>
-            Pour situer notre propre offre, et non le marché, la page{" "}
+            Pour situer notre propre offre, et non le marché&nbsp;: notre{" "}
             <Link href="/services/publicite-en-ligne">
-              Publicité en ligne de Hagnéré Code
+              page publicité en ligne
             </Link>{" "}
-            publie actuellement un audit à 1 500 € HT, puis des forfaits fixes à
-            1 800 €, 3 500 € et 4 500 € HT par mois associés à des budgets média
-            et périmètres croissants. Le budget média est dépensé sur le compte
-            du client et n’est pas remplacé par ces honoraires.
+            affichait le 28&nbsp;août 2026{" "}
+            {typographieFrancaise(PRIX_MAISON_PUBLIES.audit)}, puis{" "}
+            {typographieFrancaise(PRIX_MAISON_PUBLIES.forfaits)}. La même page{" "}
+            {typographieFrancaise(PRIX_MAISON_PUBLIES.starter)}. Le média reste
+            dépensé sur votre compte&nbsp;: ces honoraires ne le remplacent pas.
           </p>
-
-          <QuoteReadingOrder />
 
           <div className="not-prose my-8 overflow-hidden rounded-2xl border border-zinc-200 bg-[#0b1020] dark:border-zinc-800">
             <Image
               src="/guides/prix-gestion-google-ads/article-prix-ads-16x9.webp"
-              alt="Quatre offres Google Ads représentées sur la même table de comparaison"
+              alt="Quatre offres Google Ads ramenées sur la même table de comparaison"
               width={1600}
               height={900}
               sizes="(max-width: 1024px) 100vw, 760px"
               className="h-auto w-full"
             />
           </div>
-
-          <GuidePremiumMemo title="La question à poser avant de comparer">
-            <p>
-              « À 3, 6 et 12 mois, combien allons-nous réellement décaisser,
-              quel sera le coût connu après TVA récupérable et temps interne, et
-              que garderons-nous sous notre contrôle si nous changeons de
-              prestataire ? »
-            </p>
-          </GuidePremiumMemo>
         </GuidePremiumSection>
 
         <GuidePremiumSection
           id="cout-complet"
           number="02"
           label="Décomposition"
-          title="Séparez sept lignes avant d’additionner quoi que ce soit"
+          title={"Que payez-vous vraiment quand vous payez «\u00a0la gestion\u00a0»\u00a0?"}
         >
           <p>
-            « Gestion Google Ads : 900 € par mois » ne décrit qu’une ligne. Un
-            lancement peut exiger une reprise du suivi, une nouvelle page, des
-            créations, un outil de rapprochement et du temps de validation. Deux
-            offres affichées au même prix peuvent donc produire des
-            décaissements très différents — ou l’une peut laisser à votre équipe
-            un travail que l’autre prend en charge.
+            «&nbsp;Gestion Google Ads&nbsp;: 900&nbsp;€ par mois&nbsp;» décrit
+            une ligne sur six. Les cinq autres sont facturées ailleurs, ou par
+            personne&nbsp;— ce qui revient à les faire porter par votre équipe.
           </p>
 
           <GuideTable
-            caption="Les sept familles à isoler dans un coût Google Ads complet"
+            caption="Les six lignes d’un coût Google Ads complet, chiffrées sur le cas d’Hélène"
             headers={[
               "Ligne",
               "Ce qu’elle finance",
-              "Question de contrôle",
-              "Traitement dans le calcul",
+              "Sa valeur dans le cas construit",
             ]}
             rows={[
               [
                 "Média",
-                "La diffusion des annonces",
-                "Montant prévu, compte facturé, zone et type de budget ?",
-                "HT externe, hors coût réglementaire si ajouté séparément",
+                "La diffusion des annonces, facturée par Google",
+                "5\u00a0000\u00a0€ HT par mois, 60\u00a0000\u00a0€ sur douze mois",
               ],
               [
-                "Gestion",
-                "Pilotage, analyse, optimisation et échanges",
-                "Forfait, assiette, taux, minimum, plafond ou heures ?",
-                "Récurrent selon le modèle du devis",
+                "Coût réglementaire France",
+                "Le supplément appliqué par Google aux annonces diffusées en France",
+                "2\u00a0% du média, soit 100\u00a0€ par mois et 1\u00a0200\u00a0€ sur douze mois",
+              ],
+              [
+                "Honoraires de gestion",
+                "Pilotage, analyse des requêtes, arbitrages, échanges",
+                "750 à 1\u00a0000\u00a0€ HT par mois selon le modèle facturé",
               ],
               [
                 "Lancement",
-                "Audit, reprise, structure, accès et mise en route",
-                "Quels livrables et quelles corrections sont remis ?",
-                "Coût ponctuel inclus une fois dans chaque comparaison",
+                "Audit, reprise ou création du compte, structure, accès",
+                "750 à 900\u00a0€ HT, une seule fois",
               ],
               [
-                "Mesure",
-                "Balises, consentement, conversions et rapprochement",
-                "Qui implémente, teste et maintient chaque signal ?",
-                "Ponctuel et/ou récurrent",
-              ],
-              [
-                "Page et créations",
-                "Page d’atterrissage, textes, images, variantes",
-                "Combien de variantes et d’allers-retours sont inclus ?",
-                "Ponctuel, récurrent ou hors périmètre",
-              ],
-              [
-                "Outils et frais",
-                "Logiciels, appels, coût réglementaire, autres fournisseurs",
-                "Quelle facture, quelle base et quelle périodicité ?",
-                "Externe HT puis trésorerie fiscale séparée",
+                "Mesure, page et créations",
+                "Balises, consentement, page d’atterrissage, visuels, outils",
+                "2\u00a0000\u00a0€ HT au lancement puis 250\u00a0€ HT par mois",
               ],
               [
                 "Temps interne",
-                "Cadrage, validation, traitement et retour commercial",
-                "Qui intervient, combien d’heures et à quel coût ?",
-                "Coût économique, pas facture fournisseur",
+                "Cadrage, validations, rappel des demandes, retour sur les ventes",
+                "8\u00a0h au lancement puis 3\u00a0h par mois, à 50\u00a0€ l’heure",
               ],
             ]}
           />
 
+          <p>
+            Ces six lignes se totalisent de trois façons, et chacune répond à
+            une question différente.
+          </p>
+
           <FormulaBox>
             {`Décaissement externe HT
-= média hors surcoût
-+ coût réglementaire applicable
-+ gestion
-+ lancement
-+ mesure
-+ page, créations et outils
-+ sommes dues à la date d’arrêt comparée
+= média + coût réglementaire + honoraires
++ lancement + mesure, page et créations
++ sommes encore dues si vous vous arrêtez à cette date
 
 Décaissement TTC
 = décaissement externe HT + TVA effectivement facturée
 
-Coût économique connu
+Coût connu
 = décaissement externe HT
 + TVA non récupérable
-+ temps interne valorisé`}
++ heures internes × coût horaire chargé`}
           </FormulaBox>
 
-          <h3>Le coût réglementaire français ne doit apparaître qu’une fois</h3>
           <p>
-            Google indique actuellement un{" "}
+            Le coût réglementaire de 2&nbsp;% que{" "}
             <a
               href="https://support.google.com/google-ads/answer/9750227?hl=fr"
               target="_blank"
               rel="noreferrer"
             >
-              coût réglementaire de 2 % pour les annonces diffusées en France
-            </a>
-            . Dans ce guide et dans le calculateur, la dépense média saisie est
-            la base <strong>avant</strong> ce coût ; le pourcentage est ajouté
-            seulement sur la part France. Si votre export comptable ou votre
-            devis l’a déjà intégré, mettez le taux à zéro pour éviter un double
-            comptage.
-          </p>
-
-          <h3>La TVA décaissée n’est pas toujours un coût final</h3>
-          <p>
-            L’aide Google précise que les comptes servis par Google France SARL
-            sont soumis aux taux français standards et distingue le cas de
-            comptes servis par Google Ireland. Consultez{" "}
+              Google indique pour les annonces diffusées en France
+            </a>{" "}
+            ne se compte qu’une fois. Ici, la dépense média est la base{" "}
+            <strong>avant</strong> ce coût. Si votre export comptable l’intègre
+            déjà, mettez le taux à zéro. La ligne mesure dépend, elle, d’une
+            autorisation&nbsp;: la{" "}
             <a
-              href="https://support.google.com/google-ads/answer/2375370?hl=fr"
+              href="https://www.cnil.fr/fr/cookies-et-autres-traceurs/regles/cookies/FAQ"
               target="_blank"
               rel="noreferrer"
             >
-              la page de facturation Google
-            </a>{" "}
-            puis vos factures. Le calculateur applique un seul taux de TVA à
-            tous les coûts externes uniquement pour rendre un scénario lisible.
-            Ce traitement simplifié peut être faux pour un fournisseur ou pour
-            votre situation : adaptez le taux, la récupération et votre
-            prévision de trésorerie avec votre comptable.
+              CNIL rappelle que les traceurs de mesure publicitaire relèvent le
+              plus souvent du consentement
+            </a>
+            , et que le refus doit être aussi facile que l’acceptation. Ce qui
+            est refusé ne remonte pas dans vos conversions.
           </p>
 
           <InfoBox
             variant="amber"
-            title="Une TVA récupérable peut peser sur votre trésorerie"
+            title="Une TVA récupérable sort quand même de la banque"
           >
             <p>
-              Une taxe récupérable peut tout de même être décaissée avant sa
-              récupération. Conservez trois colonnes : HT externe, TTC décaissé
-              et coût économique après récupération estimée.
+              L’
+              <a
+                href="https://support.google.com/google-ads/answer/2375370?hl=fr"
+                target="_blank"
+                rel="noreferrer"
+              >
+                aide Google distingue les comptes servis par Google France SARL
+                de ceux servis depuis l’Irlande
+              </a>
+              . Gardez trois colonnes&nbsp;: HT externe, TTC décaissé, coût
+              connu après récupération estimée. La troisième revient à votre
+              expert-comptable, pas à ce guide.
             </p>
           </InfoBox>
         </GuidePremiumSection>
@@ -665,165 +612,331 @@ Coût économique connu
           id="modeles"
           number="03"
           label="Rémunération"
-          title="Forfait, pourcentage, hybride ou temps passé : que payez-vous vraiment ?"
+          title={"Forfait, pourcentage ou hybride\u00a0: à partir de quel budget l’ordre s’inverse-t-il\u00a0?"}
         >
           <p>
-            Le nom du modèle ne dit rien de la qualité du travail. Il indique
-            seulement comment les honoraires évoluent lorsque le budget ou la
-            charge change. Pour comparer, commencez par écrire l’assiette :
-            dépense média facturée, budget prévu, somme nette d’avoirs ou autre
-            définition prévue au devis.
+            Un nom de modèle décrit une mécanique de facturation&nbsp;: la façon
+            dont les honoraires d’une gestion Google Ads suivent le budget
+            média, ou ne le suivent pas.
+            Les quatre offres d’Hélène, toutes en HT&nbsp;: un forfait à
+            750&nbsp;€ puis 900&nbsp;€ par mois&nbsp;; un pourcentage à
+            900&nbsp;€ puis 15&nbsp;% de l’assiette&nbsp;; un hybride à
+            800&nbsp;€ puis 500&nbsp;€ plus 8&nbsp;% de cette assiette&nbsp;; un
+            temps passé à 8&nbsp;h puis 10&nbsp;h par mois, à 100&nbsp;€
+            l’heure.
           </p>
 
           <GuideTable
-            caption="Forces, risques et clauses à demander pour quatre modèles de gestion"
-            headers={["Modèle", "Calcul", "Peut convenir si", "À écrire"]}
-            rows={[
-              [
-                "Forfait fixe",
-                "Lancement + montant mensuel",
-                "Le périmètre et le rythme sont assez stables",
-                "Inclus, exclusions, révision, volumes et fréquence",
-              ],
-              [
-                "Pourcentage",
-                "Assiette × taux, puis minimum et plafond éventuels",
-                "La charge et le budget évoluent ensemble de façon documentée",
-                "Assiette, taux, minimum, plafond, avoirs et changement de budget",
-              ],
-              [
-                "Hybride",
-                "Socle fixe + assiette × taux, bornés si le devis le prévoit",
-                "Un minimum de travail existe et une part varie réellement",
-                "Ce que couvre le socle et ce qui déclenche la part variable",
-              ],
-              [
-                "Temps passé",
-                "Heures × taux horaire",
-                "Mission ponctuelle, reprise incertaine ou besoin fluctuant",
-                "Estimation, relevé, plafond, validation des dépassements et livrables",
-              ],
-            ]}
-          />
-
-          <h3>Ce que donnent les quatre modèles avec les mêmes hypothèses</h3>
-          <p>
-            Prenons un cas fictif : 5 000 € HT de média par mois, entièrement
-            diffusé en France ; 2 % de coût réglementaire ; 2 000 € HT de
-            mesure, page et créations au lancement ; 250 € HT d’outils ou de
-            créations récurrentes ; huit heures internes initiales puis trois
-            heures mensuelles valorisées 50 €/h dans chacune des quatre offres.
-          </p>
-
-          <p>
-            Tous les honoraires de ce scénario sont HT : forfait à 750 € de
-            lancement puis 900 € par mois ; pourcentage à 900 € de lancement
-            puis 15 % d’une assiette de 5 000 € ; hybride à 800 € puis 500 € + 8
-            % de la même assiette dans ce seul exemple.
-          </p>
-
-          <p>
-            Le modèle au temps passé retient huit heures initiales puis dix
-            heures par mois, à 100 €/h. Les deux assiettes variables restent
-            distinctes dans l’outil : recopiez pour chacune la définition du
-            devis. Ces montants servent à comparer les calculs ; ils ne
-            constituent ni une recommandation tarifaire ni une estimation de
-            performance.
-          </p>
-
-          <GuideTable
-            caption="Résultat reproductible du cas fictif, TVA supposée entièrement récupérable"
+            caption="Coût connu des quatre offres, ramenées au même contenu par hypothèse"
             headers={[
               "Modèle",
-              "Gestion mensuelle HT",
-              "Coût connu à 3 mois",
-              "Coût connu à 6 mois",
-              "Coût connu à 12 mois",
+              "Lancement puis mensuel",
+              "À 3\u00a0mois",
+              "À 6\u00a0mois",
+              "À 12\u00a0mois",
             ]}
             rows={[
-              ["Forfait", "900 € HT", "22 350 €", "41 550 €", "79 950 €"],
-              ["Pourcentage", "750 € HT", "22 050 €", "40 800 €", "78 300 €"],
-              ["Hybride", "900 € HT", "22 400 €", "41 600 €", "80 000 €"],
-              ["Temps passé", "1 000 € HT", "22 700 €", "42 200 €", "81 200 €"],
+              [
+                "Forfait",
+                "750\u00a0€ puis 900\u00a0€",
+                "22\u00a0350\u00a0€",
+                "41\u00a0550\u00a0€",
+                "79\u00a0950\u00a0€",
+              ],
+              [
+                "Pourcentage, 15\u00a0%",
+                "900\u00a0€ puis 750\u00a0€",
+                "22\u00a0050\u00a0€",
+                "40\u00a0800\u00a0€",
+                "78\u00a0300\u00a0€",
+              ],
+              [
+                "Hybride, 500\u00a0€ + 8\u00a0%",
+                "800\u00a0€ puis 900\u00a0€",
+                "22\u00a0400\u00a0€",
+                "41\u00a0600\u00a0€",
+                "80\u00a0000\u00a0€",
+              ],
+              [
+                "Temps passé, 10\u00a0h à 100\u00a0€",
+                "800\u00a0€ puis 1\u00a0000\u00a0€",
+                "22\u00a0700\u00a0€",
+                "42\u00a0200\u00a0€",
+                "81\u00a0200\u00a0€",
+              ],
             ]}
           />
+
+          <p>
+            Refaites la première case à la main&nbsp;; sans cela, aucun de ces
+            totaux n’est vérifiable. Le coût réglementaire vaut 5&nbsp;000&nbsp;×&nbsp;2&nbsp;%
+            = 100&nbsp;€ par mois. Le forfait à trois mois donne donc
+            2&nbsp;000&nbsp;€ de mesure et de page, plus 750&nbsp;€ de
+            lancement, plus 3&nbsp;×&nbsp;(5&nbsp;000 + 100 + 250 + 900) =
+            18&nbsp;750&nbsp;€, soit <strong>21&nbsp;500&nbsp;€ HT</strong>. La
+            TVA à 20&nbsp;% porte le décaissement à 25&nbsp;800&nbsp;€, et les
+            17&nbsp;heures internes à 50&nbsp;€ ajoutent 850&nbsp;€&nbsp;:
+            22&nbsp;350&nbsp;€ de coût connu, TVA supposée entièrement
+            récupérable.
+          </p>
+
+          <h3>Les quatre points où le classement s’inverse</h3>
+          <p>
+            À 5&nbsp;000&nbsp;€ de média, le pourcentage gagne&nbsp;; il cesse
+            de gagner au-dessus d’un certain budget, et chaque seuil se résout
+            en une ligne. Appelez M le média mensuel&nbsp;:
+          </p>
+
+          <FormulaBox>
+            {`Pourcentage contre forfait
+0,15 × M = 900   →   M = 6\u00a0000\u00a0€ HT par mois
+
+Hybride contre forfait
+500 + 0,08 × M = 900   →   M = 5\u00a0000\u00a0€ HT par mois
+
+Hybride contre pourcentage
+500 + 0,08 × M = 0,15 × M   →   M = 7\u00a0143\u00a0€ HT par mois
+
+Temps passé contre forfait
+h × 100 = 900   →   h = 9\u00a0heures par mois`}
+          </FormulaBox>
+
+          <p>
+            Hélène monte son budget de saison à 12&nbsp;000&nbsp;€ HT par
+            mois&nbsp;: le forfait reste à 900&nbsp;€, le temps passé à
+            1&nbsp;000&nbsp;€, l’hybride monte à 1&nbsp;460&nbsp;€ et le
+            pourcentage à 1&nbsp;800&nbsp;€&nbsp;— 10&nbsp;800&nbsp;€ d’écart
+            annuel face au forfait, pour un travail qui n’a pas doublé. Le seuil
+            suit le taux&nbsp;: à 10&nbsp;%, le pourcentage ne dépasse le
+            forfait qu’à partir de 9&nbsp;000&nbsp;€&nbsp;de média mensuel.
+          </p>
 
           <InfoBox
             variant="blue"
-            title="Le classement n’est valable que pour cette assiette"
+            title="Ce classement suppose quatre devis au même contenu"
           >
             <p>
-              Pour un budget média mensuel HT de 5 000 à 10 000 €, les modèles
-              variables changent alors que le forfait reste fixe jusqu’à sa
-              clause de révision. Si la charge réelle dépasse dix heures, le
-              temps passé change aussi. Rejouez donc une hausse, une baisse et
-              un arrêt.
+              Les colonnes ci-dessus tiennent le même lancement, la même mesure
+              et les mêmes trois heures internes pour les quatre offres. Aucun
+              devis réel ne s’aligne ainsi, et la section suivante chiffre
+              l’écart. Un minimum mensuel, un plafond, une assiette qui inclut
+              le coût réglementaire ou qui retire les avoirs déplacent chacun de
+              ces quatre seuils.
             </p>
           </InfoBox>
         </GuidePremiumSection>
 
         <GuidePremiumSection
-          id="horizons"
+          id="temps-interne"
           number="04"
-          label="Trésorerie"
-          title="Trois mois montrent le lancement ; douze mois révèlent le récurrent"
+          label="Charge interne"
+          title={"Le devis le moins cher laisse-t-il du travail à votre équipe\u00a0?"}
         >
           <p>
-            Un devis avec peu de frais initiaux peut devenir plus coûteux
-            ensuite ; un lancement plus élevé peut être dilué sur un an. Le prix
-            mensuel ne doit donc jamais être classé avant d’avoir choisi une
-            durée cohérente avec le cycle commercial, le contrat et la perte
-            maximale acceptable. Si la comparaison suppose un arrêt à cette
-            date, ajoutez aussi le préavis encore facturé et les frais de sortie
-            propres à chaque offre.
+            Les quatre colonnes du §03 tiennent parce qu’elles supposent le même
+            contenu. Une ligne retirée d’un devis&nbsp;— le{" "}
+            <Link href="/guides/automatiser-processus-metier">
+              rapprochement entre demandes reçues et ventes signées
+            </Link>
+            , par exemple&nbsp;— retombe sur votre planning, au coût horaire
+            chargé.
+          </p>
+
+          <FormulaBox>
+            {`Heures à partir desquelles l’offre la moins chère cesse de l’être
+= écart mensuel d’honoraires ÷ coût horaire interne chargé
+
+Face au forfait et à l’hybride, à 900\u00a0€ par mois
+(900 − 750) ÷ 50\u00a0€/h = 3\u00a0heures par mois
+
+Face au temps passé, à 1\u00a0000\u00a0€ par mois
+(1\u00a0000 − 750) ÷ 50\u00a0€/h = 5\u00a0heures par mois`}
+          </FormulaBox>
+
+          <p>
+            À 5&nbsp;000&nbsp;€ de média, l’offre la moins chère au mois est le
+            pourcentage, 750&nbsp;€. Trois&nbsp;heures de charge en plus par
+            mois annulent son avance sur le forfait et sur l’hybride&nbsp;;
+            cinq&nbsp;heures l’annulent aussi face au temps passé.
+            Trois&nbsp;heures par mois font 36&nbsp;heures par an, soit{" "}
+            <strong>1&nbsp;800&nbsp;€</strong> au coût horaire posé
+            ici&nbsp;— exactement l’écart annuel d’honoraires.
+          </p>
+          <p>
+            Ces 50&nbsp;€ de l’heure sont une hypothèse, pas une source, et les
+            heures de charge en sont une autre&nbsp;: les deux sont écrites ici
+            pour que vous puissiez les contester. Votre expert-comptable sort le
+            coût horaire du salaire brut, des charges patronales et des heures
+            réellement travaillées&nbsp;; les heures, elles, se comptent en
+            listant ce que chaque devis ne fait pas.
+          </p>
+
+          <p>
+            Le calculateur ci-dessous ouvre sur ces quatre offres, à contenu
+            supposé identique. Chaque modèle y porte ses propres heures
+            internes&nbsp;: montez celles de l’offre la moins chère et regardez
+            le classement se retourner.
+          </p>
+
+          <div data-read-time-exclude="true">
+            <GoogleAdsQuoteComparator />
+          </div>
+
+          <GuidePremiumMemo title={"Ce que la ligne «\u00a0coût connu\u00a0» ne sait pas"}>
+            <ul>
+              <li>Les coûts non saisis, les avoirs et les remises à venir.</li>
+              <li>
+                Les frais de sortie, sauf si vous les entrez pour la date
+                concernée.
+              </li>
+              <li>
+                Les clics, prospects et clients&nbsp;: elle les additionne après
+                coup.
+              </li>
+            </ul>
+          </GuidePremiumMemo>
+        </GuidePremiumSection>
+
+        <GuidePremiumSection
+          id="indicateurs"
+          number="05"
+          label="Mesure"
+          title={"Du CPA à 102\u00a0€ au coût réel d’un client"}
+        >
+          <p>
+            Le mot «&nbsp;conversion&nbsp;» recouvre des événements très
+            différents. Google Ads distingue les{" "}
+            <a
+              href="https://support.google.com/google-ads/answer/11461796?hl=fr"
+              target="_blank"
+              rel="noreferrer"
+            >
+              actions de conversion principales et secondaires
+            </a>&nbsp;: les premières alimentent la colonne Conversions et les
+            enchères, les secondes servent à observer. Aucune des deux ne
+            devient une vente.
           </p>
 
           <GuideTable
-            caption="Questions différentes selon la durée de comparaison"
-            headers={["Durée", "Ce qu’elle révèle", "Décision à préparer"]}
+            caption="Quatre coûts unitaires, leurs dénominateurs et ce qu’ils ne prouvent pas"
+            headers={[
+              "Indicateur",
+              "Calcul retenu ici",
+              "Sur trois mois du cas construit",
+              "Ce qu’il ne prouve pas",
+            ]}
             rows={[
               [
-                "3 mois",
-                "Poids du lancement, mise en place de la mesure, premier besoin de trésorerie",
-                "Avons-nous la capacité d’installer et de contrôler le dispositif ?",
+                "CPC média chargé",
+                "(média + coût réglementaire) ÷ clics",
+                "15\u00a0300\u00a0€ ÷ 3\u00a0000 = 5,10\u00a0€ HT",
+                "Que la visite intéresse votre offre",
               ],
               [
-                "6 mois",
-                "Récurrence des honoraires, outils, créations et temps interne",
-                "Le cycle commercial permet-il déjà de rapprocher prospects et clients ?",
+                "CPA média chargé",
+                "÷ actions de conversion principales",
+                "15\u00a0300\u00a0€ ÷ 150 = 102\u00a0€ HT",
+                "Qu’une action remplie soit un prospect",
               ],
               [
-                "12 mois",
-                "Effet des taux variables, des révisions et du coût d’exploitation",
-                "Quel budget annuel et quelles conditions de sortie acceptons-nous ?",
+                "CPL qualifié",
+                "÷ prospects reconnus qualifiés par le commercial",
+                "15\u00a0300\u00a0€ ÷ 60 = 255\u00a0€ HT",
+                "Qu’un prospect qualifié achète",
+              ],
+              [
+                "Coût connu par client",
+                "coût connu ÷ nouveaux clients attribués",
+                "22\u00a0350\u00a0€ ÷ 12 = 1\u00a0862,50\u00a0€",
+                "La marge future ni une causalité parfaite",
               ],
             ]}
           />
 
           <p>
-            Dans l’exemple forfaitaire précédent, le décaissement externe à
-            trois mois est de 21 500 € HT, soit 25 800 € TTC si l’on applique
-            l’hypothèse uniforme de 20 %. Le coût économique connu est de 22 350
-            € après récupération totale supposée de la TVA et ajout du temps
-            interne. À douze mois, ces trois lectures deviennent respectivement
-            77 750 € HT, 93 300 € TTC décaissés et 79 950 € de coût connu.
+            Les volumes du cas&nbsp;: 1&nbsp;000&nbsp;clics, 50&nbsp;actions
+            principales, 20&nbsp;prospects qualifiés et 4&nbsp;nouveaux clients
+            par mois. Les deux dernières lignes ne partagent ni numérateur ni
+            dénominateur&nbsp;: le CPA divise 15&nbsp;300&nbsp;€ de média chargé
+            par 150&nbsp;actions, quand le coût connu par client divise
+            22&nbsp;350&nbsp;€&nbsp;— honoraires, lancement, mesure et heures
+            internes compris — par 12&nbsp;clients. À dénominateur seul, le
+            média chargé coûte déjà 1&nbsp;275&nbsp;€ par client, douze fois et
+            demie le CPA&nbsp;; les <strong>587,50&nbsp;€</strong> restants sont
+            ce que le CPA ne compte pas. Piloter sur 102&nbsp;€ revient à
+            ignorer 1&nbsp;760,50&nbsp;€ par client.
+          </p>
+
+          <h3>Le seuil que votre marge fixe, et non l’agence</h3>
+          <p>
+            Hélène retient 2&nbsp;500&nbsp;€ de marge par client sur douze mois.
+            Douze clients valent 30&nbsp;000&nbsp;€&nbsp;; rapportés aux
+            60&nbsp;prospects qualifiés de la période, ils fixent un plafond de
+            500&nbsp;€ de coût connu par prospect. Le coût réel vaut
+            22&nbsp;350&nbsp;€&nbsp;÷&nbsp;60 = 372,50&nbsp;€&nbsp;: il reste
+            127,50&nbsp;€ par prospect, avant les coûts non saisis.
+          </p>
+          <p>
+            Rejouez l’hypothèse basse, celle qu’aucune proposition commerciale
+            ne contient. Un client par mois, 1&nbsp;000&nbsp;€ de
+            marge&nbsp;: 3&nbsp;000&nbsp;€ contre 22&nbsp;350&nbsp;€ de coûts,
+            un manque de 19&nbsp;350&nbsp;€, et le client coûte
+            7&nbsp;450&nbsp;€. Écrivez ce scénario, et la date à laquelle vous
+            arrêterez, avant la première diffusion.
+          </p>
+
+          <InfoBox
+            variant="amber"
+            title={"Cette différence n’est pas un retour sur investissement"}
+          >
+            <p>
+              Un retour sur investissement suppose des gains, des coûts, une
+              période et une règle d’attribution tenus ensemble. Ce calcul-ci
+              répond à une seule question&nbsp;: la marge saisie couvre-t-elle
+              les coûts saisis&nbsp;? Il ignore les ventes qui seraient venues
+              sans publicité.
+            </p>
+          </InfoBox>
+        </GuidePremiumSection>
+
+        <GuidePremiumSection
+          id="incidents"
+          number="06"
+          label="Ce qui rate"
+          title="Ce qui rate, et ce que ça coûte"
+        >
+          <p>
+            Les incidents ci-dessous se déduisent du dossier d’Hélène et de
+            règles publiées par Google. Aucun n’est un incident observé chez un
+            client.
           </p>
 
           <h3>
-            Le budget quotidien moyen n’est pas un plafond quotidien strict
+            Le plafond de facturation autorise 979,20&nbsp;€ de plus par an
           </h3>
           <p>
-            Pour la plupart des campagnes, Google indique qu’une journée peut
-            atteindre jusqu’à{" "}
+            Hélène règle un budget quotidien moyen de 200&nbsp;€ et compte
+            trente jours&nbsp;: 6&nbsp;000&nbsp;€ pour le mois. Google Ads
+            indique que, pour la plupart des campagnes, la{" "}
             <a
               href="https://support.google.com/google-ads/answer/10486536?hl=fr"
               target="_blank"
               rel="noreferrer"
             >
-              deux fois le budget quotidien moyen
+              limite mensuelle vaut généralement 30,4&nbsp;fois le budget
+              quotidien moyen
             </a>
-            , avec une limite mensuelle généralement égale à 30,4 fois ce
-            budget. Les règles comportent des exceptions. Un{" "}
+            , soit 6&nbsp;080&nbsp;€ ici, et qu’une journée peut atteindre le
+            double, 400&nbsp;€. C’est un plafond de facturation, pas une
+            dépense certaine&nbsp;: un pic à 400&nbsp;€ un mardi ne dit rien du
+            mois. Séparez ensuite les deux dépassements. Le coût réglementaire
+            n’en est pas un&nbsp;: il vaut 120&nbsp;€ sur 6&nbsp;000&nbsp;€ de
+            média, 1&nbsp;440&nbsp;€ sur douze mois, et le §02 l’annonçait
+            déjà. La règle des 30,4&nbsp;jours, elle, n’ajoute que les
+            80&nbsp;€ de média qui séparent 6&nbsp;080&nbsp;€ de
+            6&nbsp;000&nbsp;€, plus 1,60&nbsp;€ de coût réglementaire&nbsp;:
+            81,60&nbsp;€ par mois, 979,20&nbsp;€ sur douze, et une facture
+            haute à 6&nbsp;201,60&nbsp;€ au lieu de 6&nbsp;120&nbsp;€. Un{" "}
             <a
               href="https://support.google.com/google-ads/answer/10486938?hl=fr"
               target="_blank"
@@ -831,27 +944,42 @@ Coût économique connu
             >
               budget total de campagne
             </a>{" "}
-            obéit à une logique distincte sur une période définie. Demandez le
-            type de budget réellement configuré et rapprochez la facture du
-            scénario, pas seulement le réglage affiché un jour donné.
+            obéit à d’autres règles&nbsp;: demandez lequel est configuré.
           </p>
 
-          <GuidePremiumCase
-            initial="D"
-            eyebrow="Décision fictive · directrice commerciale"
-            title="Le devis le moins cher au mois bloque 18 heures internes"
-          >
-            <p className="m-0">
-              Deux devis semblent séparés de 300 € HT/mois. Le premier exclut la
-              page, le rapprochement des ventes et la préparation des créations
-              ; l’équipe estime 18 h/mois supplémentaires à 55 €/h, soit 990
-              €/mois de coût interne. La différence devient 690 €/mois en
-              défaveur de l’offre affichée comme la moins chère. La dirigeante
-              ne choisit pas encore : elle demande les responsabilités ligne par
-              ligne et refait le calcul avec un scénario de 8 h/mois, puis de 18
-              h/mois.
-            </p>
-          </GuidePremiumCase>
+          <h3>
+            L’assiette sans plafond ajoute 9&nbsp;450&nbsp;€ en neuf mois
+          </h3>
+          <p>
+            Le devis au pourcentage ne définit ni plafond ni palier. Au
+            quatrième mois, Hélène passe de 5&nbsp;000 à 12&nbsp;000&nbsp;€ de
+            média pour la saison de chauffe&nbsp;: les honoraires passent
+            mécaniquement de 750&nbsp;€ à 1&nbsp;800&nbsp;€ par mois,
+            1&nbsp;050&nbsp;€ de plus sur les neuf mois restants, soit
+            9&nbsp;450&nbsp;€. Un plafond mensuel écrit à 1&nbsp;200&nbsp;€
+            aurait limité la hausse à 4&nbsp;050&nbsp;€. La clause manquante
+            coûte 5&nbsp;400&nbsp;€, et elle tient en une phrase.
+          </p>
+
+          <h3>
+            Le compte recréé coûte 1&nbsp;950&nbsp;€ et deux ans d’historique
+          </h3>
+          <p>
+            Le compte a été créé depuis le compte administrateur de l’agence.
+            Hélène n’en récupère pas l’accès et repart d’un compte
+            neuf&nbsp;: 750&nbsp;€ de lancement chez la suivante,
+            6&nbsp;heures internes à 50&nbsp;€ soit 300&nbsp;€, et le mois de
+            préavis facturé 900&nbsp;€&nbsp;— 1&nbsp;950&nbsp;€. Ce qui coûte
+            ensuite, c’est l’
+            <a
+              href="https://support.google.com/google-ads/answer/2454137?hl=fr"
+              target="_blank"
+              rel="noreferrer"
+            >
+              historique des modifications, conservé deux ans
+            </a>
+            , et l’historique de conversions&nbsp;: les deux repartent de zéro.
+          </p>
 
           <div className="not-prose my-8 grid overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950 md:grid-cols-[0.9fr_1.1fr]">
             <Image
@@ -864,375 +992,47 @@ Coût économique connu
             />
             <div className="flex flex-col justify-center p-6">
               <p className="m-0 text-[10px] font-bold uppercase tracking-[0.16em] text-indigo-700 dark:text-indigo-300">
-                Test de résistance
-              </p>
-              <p className="mb-0 mt-2 text-lg font-bold text-zinc-950 dark:text-white">
-                Recalculez trois événements avant de signer
+                Scénarios à rejouer avant de signer
               </p>
               <ul className="mb-0 mt-4 space-y-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
-                <li>Le budget média double au quatrième mois.</li>
-                <li>Les ventes attribuées sont divisées par deux.</li>
-                <li>Vous arrêtez après trois mois selon le contrat proposé.</li>
+                <li>Budget doublé au quatrième mois.</li>
+                <li>Ventes attribuées divisées par deux.</li>
+                <li>Arrêt au troisième mois, préavis compris.</li>
               </ul>
             </div>
           </div>
         </GuidePremiumSection>
 
         <GuidePremiumSection
-          id="calculateur"
-          number="05"
-          label="Outil"
-          title="Recalculez vos quatre offres sans envoyer vos montants"
-        >
-          <p>
-            La comparaison suit un ordre simple. Commencez par ce que les devis
-            ont réellement en commun, puis complétez chaque offre avant de lire
-            les résultats :
-          </p>
-
-          <ol>
-            <li>
-              <strong>Recopiez la base commune.</strong> Gardez seulement le
-              média et les coûts réellement identiques dans les quatre offres.
-            </li>
-            <li>
-              <strong>Complétez chaque offre.</strong> Ajoutez son assiette, son
-              minimum, son plafond, les éléments de périmètre manquants, le
-              temps laissé à votre équipe et les sommes dues si vous arrêtez à
-              3, 6 ou 12 mois.
-            </li>
-            <li>
-              <strong>Comparez les trois dates.</strong> Lisez séparément le HT
-              externe, le TTC décaissé et le coût connu ; chaque somme de sortie
-              reste attachée à la date et à l’offre concernées.
-            </li>
-          </ol>
-
-          <p>
-            Pour chaque modèle variable, utilisez l’assiette écrite dans son
-            devis ; 0 signifie « aucun plafond ». Si vous conservez le taux de 2
-            %, saisissez le média avant ce coût réglementaire. Le taux de TVA
-            commun reste une hypothèse de scénario : il ne décrit pas
-            nécessairement chaque facture ni votre droit à récupération.
-          </p>
-
-          <p>
-            Le calcul suppose que le nombre mensuel de clics, d’actions, de
-            prospects et de clients reste constant dès le départ. Il ne simule
-            ni montée en charge ni saisonnalité. Pour un lancement, ajoutez donc
-            un scénario mois par mois. La marge saisie pour chaque client porte
-            sur toute la période retenue, même si une partie arrive après la
-            date comparée. Le calcul la rapproche des coûts connus ; il ne
-            produit pas un échéancier de trésorerie. Si vous modifiez la
-            période, adaptez aussi la marge par client : le calculateur ne la
-            recalcule pas automatiquement.
-          </p>
-
-          <GoogleAdsQuoteComparator />
-
-          <GuidePremiumMemo title="Lecture correcte de la ligne « coût connu »">
-            <ul>
-              <li>
-                Elle additionne les coûts externes, la TVA non récupérable
-                saisie et le temps interne valorisé.
-              </li>
-              <li>
-                Elle ne connaît pas les coûts oubliés, les avoirs futurs, les
-                remises ni les variations de périmètre.
-              </li>
-              <li>
-                Les frais de sortie saisis à 3, 6 ou 12 mois ne sont inclus que
-                dans la comparaison de la même date et de la même offre.
-              </li>
-              <li>
-                Elle ne prédit aucun clic, prospect, client ou niveau de marge.
-              </li>
-            </ul>
-          </GuidePremiumMemo>
-        </GuidePremiumSection>
-
-        <GuidePremiumSection
-          id="indicateurs"
-          number="06"
-          label="Économie"
-          title="Un bon CPA Google peut coexister avec un mauvais coût d’acquisition client"
-        >
-          <p>
-            Le mot « conversion » ne dit pas ce qui s’est produit. Google
-            distingue notamment les{" "}
-            <a
-              href="https://support.google.com/google-ads/answer/11461796?hl=fr"
-              target="_blank"
-              rel="noreferrer"
-            >
-              actions principales et secondaires
-            </a>
-            . Une action principale peut alimenter la colonne Conversions et les
-            enchères selon la configuration de l’objectif ; une action
-            secondaire sert généralement à l’observation, avec des exceptions
-            décrites par Google. Ni l’une ni l’autre ne devient automatiquement
-            un prospect qualifié ou une vente.
-          </p>
-
-          <GuideTable
-            caption="Quatre indicateurs qui doivent conserver leur propre dénominateur"
-            headers={[
-              "Indicateur",
-              "Formule retenue ici",
-              "Ce qu’il répond",
-              "Ce qu’il ne prouve pas",
-            ]}
-            rows={[
-              [
-                "CPC média chargé HT",
-                "(média + coût réglementaire) ÷ clics",
-                "Coût de la visite publicitaire",
-                "Qualité du prospect ou vente",
-              ],
-              [
-                "CPA média chargé HT",
-                "(média + coût réglementaire) ÷ actions principales",
-                "Coût de l’action configurée",
-                "Qualification si l’action est un simple formulaire",
-              ],
-              [
-                "CPL qualifié média chargé HT",
-                "(média + coût réglementaire) ÷ prospects qualifiés",
-                "Coût média d’un prospect reconnu comme qualifié",
-                "Coûts de gestion, page et commercial",
-              ],
-              [
-                "CAC complet connu",
-                "coût économique connu ÷ nouveaux clients attribués",
-                "Coût connu pour acquérir un client",
-                "Marge future, rétention ou causalité parfaite",
-              ],
-            ]}
-          />
-
-          <h3>Ce que montre le cas central</h3>
-          <p>
-            Chaque mois, l’exemple forfaitaire retient 5 100 € de média et de
-            coût réglementaire, 1 000 clics, 50 actions principales, 20
-            prospects qualifiés et quatre nouveaux clients.
-          </p>
-
-          <p>
-            Le CPC média chargé vaut 5,10 € HT, le CPA média chargé 102 € HT et
-            le CPL qualifié média chargé 255 € HT. « Chargé » signifie ici que
-            le coût réglementaire saisi est ajouté au média. Ces valeurs peuvent
-            donc différer de celles affichées dans l’interface Google Ads.
-          </p>
-
-          <p>
-            À trois mois, le coût complet connu atteint 22 350 €. Divisé par
-            douze clients attribués, il donne un CAC connu de 1 862,50 €.
-          </p>
-
-          <p>
-            Avec 2 500 € de marge contributive par client sur une période fixe
-            de douze mois, les douze clients représentent 30 000 € de marge
-            totale. Elle dépasse les coûts connus de 7 650 €, avant les coûts
-            non renseignés. Rapportée aux 60 prospects qualifiés, cette marge
-            vaut 500 € par prospect et le coût complet connu 372,50 €, soit un
-            écart de 127,50 €. Une partie de la marge peut arriver après le
-            troisième mois : cette comparaison porte sur la marge complète des
-            clients attribués, pas sur la trésorerie à cette date. Elle ne
-            garantit ni le volume, ni l’attribution, ni la marge.
-          </p>
-
-          <h3>Scénario défavorable à écrire avant le lancement</h3>
-          <p>
-            Si le dispositif ne produit qu’un client mensuel et si sa marge
-            contributive n’est que de 1 000 €, le même coût à trois mois dépasse
-            la marge contributive de 19 350 €. Le CAC connu atteint 7 450 €. Le
-            résultat ne condamne pas le modèle : avec ces hypothèses
-            commerciales, la marge ne couvre plus le dispositif. Avant de
-            lancer, fixez le seuil d’arrêt, la durée du test et la donnée qui
-            permettra de décider.
-          </p>
-
-          <FormulaBox>
-            {`Seuil de coût complet par prospect qualifié
-= marge contributive par client sur la période retenue
-× nouveaux clients attribués
-÷ prospects qualifiés
-
-Écart au seuil
-= seuil de coût complet par prospect qualifié
-− coût économique connu ÷ prospects qualifiés`}
-          </FormulaBox>
-
-          <InfoBox
-            variant="amber"
-            title="Ne baptisez pas automatiquement cette différence « ROI »"
-          >
-            <p>
-              Un retour sur investissement demande un périmètre de gains, de
-              coûts, une période et une attribution adaptés. Ici, le calcul
-              montre seulement si la marge contributive saisie couvre les coûts
-              connus du scénario.
-            </p>
-          </InfoBox>
-        </GuidePremiumSection>
-
-        <GuidePremiumSection
-          id="perimetre"
+          id="sortie"
           number="07"
-          label="Devis"
-          title="Un périmètre vérifiable vaut plus qu’une liste de mots comme « optimisation continue »"
+          label="Sortie"
+          title={"Que gardez-vous si vous changez d’agence\u00a0?"}
         >
           <p>
-            Le devis doit permettre de vérifier ce qui sera fait, par qui, à
-            quelle fréquence et avec quel livrable. « Gestion complète », «
-            suivi régulier » ou « optimisation continue » ne donnent ni volume,
-            ni responsabilité, ni condition d’acceptation.
-          </p>
-
-          <GuideTable
-            caption="Questions à poser avant de comparer la ligne d’honoraires"
-            headers={["Bloc", "À faire préciser", "Preuve ou livrable utile"]}
-            rows={[
-              [
-                "Cadrage",
-                "Objectif, offre, zone, exclusions, saisonnalité et perte maximale",
-                "Note d’hypothèses datée",
-              ],
-              [
-                "Compte",
-                "Création ou reprise, structure, campagnes et conventions de nommage",
-                "Plan de compte et liste des changements",
-              ],
-              [
-                "Mesure",
-                "Actions primaires, secondaires, consentement, appels et rapprochement CRM",
-                "Plan de mesure et recette documentée",
-              ],
-              [
-                "Annonces",
-                "Textes, visuels, nombre de variantes, validations et politique de marque",
-                "Inventaire des actifs et historique des versions",
-              ],
-              [
-                "Page",
-                "Création, correction, tests, hébergement et responsabilité technique",
-                "URL, propriétaire, accès et recette",
-              ],
-              [
-                "Pilotage",
-                "Fréquence réelle, requêtes, exclusions, budgets, enchères et audiences",
-                "Journal des décisions et historique du compte",
-              ],
-              [
-                "Retour commercial",
-                "Définition d’un prospect qualifié, délai de réponse et raisons de perte",
-                "Rapprochement mensuel des demandes et ventes",
-              ],
-              [
-                "Rapport",
-                "Indicateurs, source, période, attribution, commentaire et décision",
-                "Rapport reproductible, pas capture isolée",
-              ],
-            ]}
-          />
-
-          <h3>Faites écrire aussi les exclusions</h3>
-          <p>
-            La traduction, le tournage, la production d’images, le développement
-            de la page, la correction du consentement, la configuration CRM, le
-            traitement des appels et la disponibilité du commercial peuvent être
-            hors forfait. Leur absence n’est pas forcément un défaut ; leur
-            invisibilité empêche la comparaison.
-          </p>
-
-          <h3>
-            La mesure publicitaire ne dispense pas de gérer le consentement
-          </h3>
-          <p>
-            La{" "}
-            <a
-              href="https://www.cnil.fr/fr/cookies-et-autres-traceurs/regles/cookies/FAQ"
-              target="_blank"
-              rel="noreferrer"
-            >
-              FAQ de la CNIL mise à jour le 29 avril 2026
-            </a>{" "}
-            rappelle que les traceurs utilisés pour mesurer la performance
-            publicitaire sont, dans de nombreux cas, soumis au consentement.
-            Lorsqu’un traceur n’est pas strictement nécessaire, le refus doit
-            être aussi facile que l’acceptation. Un devis de mesure doit donc
-            préciser les traceurs, les finalités, les responsabilités, le
-            mécanisme de refus et les tests réalisés ; le simple mot « tracking
-            » ne prouve ni conformité ni exhaustivité des signaux.
-          </p>
-
-          <h3>
-            Contrôlez une décision, pas un volume artificiel de modifications
-          </h3>
-          <p>
-            Un grand nombre de changements ne prouve pas un meilleur pilotage.
-            Demandez plutôt quelle hypothèse motivait la modification, quelle
-            période est comparable, quel risque était surveillé et ce qui
-            déclenche la suite. Google conserve un{" "}
-            <a
-              href="https://support.google.com/google-ads/answer/2454137?hl=fr"
-              target="_blank"
-              rel="noreferrer"
-            >
-              historique des modifications sur les deux dernières années
-            </a>
-            , utile pour rapprocher les décisions du compte et les rapports.
-          </p>
-        </GuidePremiumSection>
-
-        <GuidePremiumSection
-          id="propriete"
-          number="08"
-          label="Réversibilité"
-          title="Le compte, l’historique et la mesure doivent survivre au prestataire"
-        >
-          <p>
-            Un faible prix devient très coûteux si l’annonceur perd ses accès,
-            son historique, ses factures ou sa mesure au changement de
-            prestataire. Avant le lancement, connectez-vous vous-même comme
-            administrateur et vérifiez le compte de paiement, les comptes de
-            mesure, la page, les actifs créatifs et le domaine.
-          </p>
-
-          <p>
-            Google indique que{" "}
+            Reperdre le compte a coûté 1&nbsp;950&nbsp;€ dans l’incident
+            précédent, et l’historique en plus. L’aide Google Ads publie deux
+            règles opposées&nbsp;:{" "}
             <a
               href="https://support.google.com/google-ads/answer/7456530?hl=fr"
               target="_blank"
               rel="noreferrer"
             >
-              l’association d’un compte existant à un compte administrateur
+              associer un compte existant à un compte administrateur
             </a>{" "}
-            ne change pas son historique et ne donne pas automatiquement la
-            propriété au compte administrateur. En revanche, lorsqu’un compte
-            est créé depuis un compte administrateur, ce dernier peut devenir
-            propriétaire par défaut. Les{" "}
+            ne transfère pas la propriété&nbsp;; un compte <em>créé</em> depuis
+            ce compte administrateur peut lui appartenir par défaut, selon les{" "}
             <a
               href="https://support.google.com/google-ads/answer/7456532?hl=fr"
               target="_blank"
               rel="noreferrer"
             >
               règles de propriété et de dissociation
-            </a>{" "}
-            justifient un contrôle concret des rôles, pas une simple phrase
-            contractuelle.
+            </a>
+            . Connectez-vous vous-même et regardez les rôles attribués.
           </p>
 
-          <h3>Qui reçoit la facture Google, et qui paie ?</h3>
-          <p>
-            Avant de signer, identifiez l’entité facturée par Google, le compte
-            qui règle le média et la personne qui transmet les justificatifs à
-            la comptabilité. Ces rôles peuvent être différents. Le profil de
-            paiement, le devis et le circuit comptable doivent les nommer sans
-            ambiguïté.
-          </p>
-
-          <h3>Ce que dit la règle de facturation de Google en France</h3>
+          <h3>Qui achète l’espace, et qui reçoit la facture&nbsp;?</h3>
           <p>
             Google indique que la{" "}
             <a
@@ -1243,90 +1043,50 @@ Coût économique connu
               facturation consolidée n’est pas disponible pour les agences
               médias en France
             </a>{" "}
-            qui achètent des espaces au nom d’annonceurs, en renvoyant au cadre
-            français de la loi Sapin. Cette page décrit une règle du produit
-            Google ; elle ne tranche pas votre montage comptable ou contractuel.
-            Elle impose néanmoins de clarifier les rôles avant le premier euro
-            dépensé.
-          </p>
-
-          <h3>Ce que prévoit l’article 20 de la loi Sapin</h3>
-          <p>
-            Indépendamment de cette règle produit,{" "}
+            qui achètent au nom d’annonceurs, en renvoyant au cadre de la loi
+            Sapin. Indépendamment de cette règle de produit,{" "}
             <a
               href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031011011"
               target="_blank"
               rel="noreferrer"
             >
-              l’article 20 de la loi n° 93-122 du 29 janvier 1993
+              l’article 20 de la loi n°&nbsp;93-122 du 29&nbsp;janvier 1993
             </a>{" "}
-            prévoit que l’achat d’espace publicitaire par un intermédiaire
-            s’effectue pour le compte de l’annonceur dans le cadre d’un mandat
-            écrit. Le texte demande aussi de détailler la rémunération, de faire
-            apparaître les rabais ou avantages sur la facture remise à
-            l’annonceur et de lui communiquer la facture du vendeur, même s’il
-            ne paie pas directement.
+            impose un mandat écrit pour l’achat d’espace par un intermédiaire,
+            une rémunération détaillée, les rabais et avantages portés sur la
+            facture remise à l’annonceur, et la communication à celui-ci de la
+            facture du vendeur.
           </p>
 
-          <GuidePremiumMemo title="Trois niveaux à ne pas confondre">
+          <GuidePremiumMemo title="Ce qu’un devis peut confondre">
             <ul>
               <li>
-                <strong>La règle produit Google</strong> décrit les possibilités
-                de facturation de la plateforme.
+                <strong>La règle de produit Google</strong> dit ce que la
+                plateforme permet de facturer.
               </li>
               <li>
-                <strong>La loi</strong> encadre le mandat, la rémunération et la
-                transparence lorsque l’intermédiaire achète l’espace.
+                L’<strong>article 20</strong> impose, lui, mandat écrit et
+                rémunération détaillée.
               </li>
               <li>
-                <strong>Votre organisation</strong> détermine qui est facturé,
-                qui paie, qui conserve les pièces et comment elles sont
-                traitées.
+                Reste <strong>votre organisation</strong>&nbsp;: qui paie, qui
+                garde les pièces.
               </li>
             </ul>
           </GuidePremiumMemo>
 
           <p>
-            Aucun de ces trois niveaux ne suffit à définir votre montage. Si un
-            intermédiaire achète, avance ou refacture le média, faites valider
-            l’organisation retenue.
-          </p>
-
-          <ul>
-            <li>
-              Quelle entité et quelle adresse apparaissent sur le profil de
-              paiement Google ?
-            </li>
-            <li>
-              Quel moyen de paiement débite le média et les coûts ajoutés par
-              Google ?
-            </li>
-            <li>
-              Qui télécharge la facture Google originale et la transmet à la
-              comptabilité ?
-            </li>
-            <li>
-              Quelle facture séparée couvre les honoraires, le lancement et les
-              autres fournisseurs ?
-            </li>
-            <li>
-              Que se passe-t-il en cas de rejet de paiement, d’avoir ou de fin
-              de mandat ?
-            </li>
-          </ul>
-
-          <p>
-            Au minimum, le devis doit nommer l’annonceur facturé, le payeur, le
-            destinataire des justificatifs et le responsable de leur
-            rapprochement. Si un prestataire avance des fonds ou refacture une
-            ligne, demandez un avis adapté : ce guide ne donne pas de conseil
-            juridique ou fiscal sur ce montage.
+            Aucun de ces niveaux ne suffit seul&nbsp;; si une agence avance ou
+            refacture le média, faites relire le montage. Et faites écrire la
+            clause de sortie avant d’en avoir besoin&nbsp;— préavis, sommes
+            dues, sort des campagnes actives, restitution des accès, remise des
+            visuels et des textes, nom de la personne qui fait la passation.
           </p>
 
           <div className="not-prose my-8 grid gap-5 overflow-hidden rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950 sm:p-6 md:grid-cols-[220px_1fr]">
             <Image
               src="/guides/prix-gestion-google-ads/article-prix-ads-1x1.webp"
-              alt="Chemins de coûts, actifs et contrôles rassemblés autour d’un registre commun"
+              alt="Accès, factures et actifs publicitaires rassemblés autour d’un registre commun"
               width={1200}
               height={1200}
               sizes="(max-width: 768px) 100vw, 220px"
@@ -1334,170 +1094,112 @@ Coût économique connu
             />
             <div>
               <p className="m-0 text-[10px] font-bold uppercase tracking-[0.16em] text-indigo-700 dark:text-indigo-300">
-                Contrôle de sortie
-              </p>
-              <p className="mb-0 mt-2 text-lg font-bold text-zinc-950 dark:text-white">
-                Testez la réversibilité avant d’en avoir besoin
+                Contrôle de dix minutes, avant signature
               </p>
               <ul className="mb-0 mt-4 grid gap-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300 sm:grid-cols-2">
-                <li>Accès administrateur direct vérifié</li>
-                <li>Factures et paiements retrouvables</li>
+                <li>Connexion en administrateur</li>
+                <li>Profil de paiement à votre nom</li>
+                <li>Facture Google d’origine retrouvée</li>
                 <li>Comptes de mesure identifiés</li>
-                <li>Actifs et droits d’usage inventoriés</li>
-                <li>Historique et rapports conservés</li>
+                <li>Visuels et textes acquis</li>
                 <li>Délai et frais de sortie écrits</li>
               </ul>
             </div>
           </div>
-
-          <h3>La clause de sortie minimale</h3>
-          <p>
-            La clause doit préciser le délai, la date d’effet, les sommes encore
-            dues, le traitement des campagnes actives, la restitution des accès,
-            la remise des actifs, la conservation des rapports et le contact qui
-            réalise la passation. Elle doit aussi signaler ce qui n’est pas
-            transférable et pourquoi. Faites relire le contrat si l’enjeu le
-            justifie ; ce guide ne remplace pas un conseil juridique.
-          </p>
-
-          <GuidePremiumMemo title="Contrôle rapide avant signature">
-            <ul>
-              <li>Un dirigeant se connecte au compte annonceur.</li>
-              <li>
-                Il voit le profil de paiement et sait retrouver la facture.
-              </li>
-              <li>
-                Il identifie qui possède la mesure, la page et chaque actif.
-              </li>
-              <li>
-                Il sait dissocier le prestataire sans supprimer l’historique.
-              </li>
-            </ul>
-          </GuidePremiumMemo>
         </GuidePremiumSection>
 
         <GuidePremiumSection
           id="decision"
-          number="09"
-          label="Choix"
-          title="Choisissez le niveau d’aide après avoir contrôlé la base de pilotage"
+          number="08"
+          label="Décider"
+          title="Choisir le niveau d’aide, ou ne pas lancer"
         >
           <p>
-            L’offre la plus complète n’est pas forcément la bonne. Vous pouvez
-            piloter en interne, demander une aide ponctuelle, confier le compte
-            à un indépendant ou à une agence — ou reporter le projet. Avant de
-            choisir, vérifiez que vous savez mesurer les demandes reçues et que
-            votre équipe peut les traiter.
+            Le bon niveau d’aide dépend d’abord du montant du média, parce qu’il
+            fixe le poids des honoraires, puis de l’état de la mesure, parce que
+            sans elle aucune décision ne se prend.
           </p>
 
           <GuideTable
-            caption="Orientation selon la situation réelle de l’annonceur"
-            headers={["Situation", "Option à examiner", "Condition minimale"]}
+            caption="Ce que le budget média change à la question, et la condition à tenir avant de signer"
+            headers={[
+              "Situation",
+              "Ce qu’il faut examiner",
+              "La condition à écrire avant de signer",
+            ]}
             rows={[
               [
-                "Périmètre simple et compétence interne disponible",
-                "Gestion interne avec revue ponctuelle",
-                "Mesure testée, temps réservé et perte maximale écrite",
+                "Média sous 3\u00a0000\u00a0€ HT par mois",
+                "Gestion interne, ou mission bornée en heures",
+                "Un forfait de 900\u00a0€ y pèse 30\u00a0%\u00a0: fixez la perte maximale",
               ],
               [
-                "Compte existant mais doute sur la structure",
-                "Audit ou reprise bornée",
-                "Livrables, corrections et accès définis",
+                "Média de 3\u00a0000 à 8\u00a0000\u00a0€ HT",
+                "Forfait, ou pourcentage plafonné",
+                "Le plafond mensuel s’écrit en euros, pas en pourcentage",
               ],
               [
-                "Besoin récurrent, plusieurs campagnes et retour commercial disponible",
-                "Indépendant ou agence selon charge et continuité",
-                "Responsabilités, fréquence et réversibilité comparables",
+                "Média au-dessus de 8\u00a0000\u00a0€ HT, deux canaux",
+                "Forfait avec clause de révision datée",
+                "À 15\u00a0%, le pourcentage dépasse déjà 1\u00a0200\u00a0€ par mois",
               ],
               [
-                "Page lente, mesure cassée ou demandes jamais qualifiées",
-                "Réparer avant d’augmenter le média",
-                "Recette de mesure et propriétaire de chaque correction",
+                "Page lente, mesure absente, demandes jamais rappelées",
+                "Réparer avant d’acheter du clic",
+                "Une correction à 2\u00a0000\u00a0€ coûte moins qu’un mois à 5\u00a0000\u00a0€",
               ],
               [
-                "Perte maximale inconnue ou trésorerie incompatible",
-                "Reporter",
-                "Décision financière explicite avant diffusion",
+                "Perte maximale non écrite",
+                "Reporter la diffusion",
+                "Une décision financière datée, signée avant la première annonce",
               ],
             ]}
           />
 
           <h3>Quand Hagnéré Code n’est pas le bon choix</h3>
           <p>
-            Notre{" "}
-            <Link href="/services/publicite-en-ligne">
-              page publique, consultée le 30 juillet 2026, situe le forfait
-              Starter à partir de 8 000 € de budget média mensuel
+            Notre forfait d’entrée vise des budgets média d’au moins
+            8&nbsp;000&nbsp;€ par mois. En dessous, il est
+            disproportionné&nbsp;: sur le cas d’Hélène, il pèserait
+            36&nbsp;% de la dépense, et une gestion interne, un indépendant ou
+            un audit ponctuel serviront mieux. Nous ne convenons pas non plus si
+            vous attendez un chiffre d’affaires garanti, si l’annonceur ne garde
+            pas ses accès, ou si rien ne dit{" "}
+            <Link href="/guides/signes-besoin-logiciel-metier">
+              quelles demandes sont devenues des clients
             </Link>
-            . Si votre budget est inférieur, que vous cherchez seulement une
-            exécution légère ou que vous ne pouvez pas encore fournir de retour
-            sur les prospects et les ventes, ce forfait publié peut être
-            disproportionné. Une gestion interne, un indépendant, un audit
-            ponctuel ou la correction préalable de la mesure peuvent être plus
-            adaptés.
+            . Nos honoraires sont fixes&nbsp;: à
+            60&nbsp;000&nbsp;€ de média mensuel, le haut de la tranche de notre
+            forfait Scale, un taux de 15&nbsp;% vaudrait 9&nbsp;000&nbsp;€ par
+            mois contre 3&nbsp;500&nbsp;€ pour ce forfait. Le fixe nous
+            coûterait donc de l’argent sur les gros budgets.
           </p>
-
           <p>
-            Nous ne sommes pas non plus adaptés à une demande de chiffre
-            d’affaires garanti, à un dispositif où l’annonceur ne conserve pas
-            ses accès, ou à une hausse de média sans définition d’un prospect
-            qualifié. Notre offre publique repose sur des honoraires fixes, pas
-            sur un pourcentage du budget. Mieux vaut le savoir avant de nous
-            contacter.
-          </p>
-
-          <p>
-            La méthode de comparaison décrite ici — exiger des preuves plutôt
-            que des promesses, vérifier qui garde les accès, borner la perte
-            maximale — vaut au-delà de la publicité. Elle est développée pour
-            les prestations logicielles dans le guide{" "}
+            Si vos annonces envoient vers un site que Google trouve mal, le
+            guide{" "}
+            <Link href="/guides/pourquoi-site-pas-visible-google">
+              pourquoi un site n’apparaît pas dans Google
+            </Link>{" "}
+            traite la moitié organique&nbsp;; la{" "}
             <Link href="/guides/cahier-des-charges-saas">
-              choisir un prestataire sur preuves
-            </Link>
-            , dont la grille d’évaluation des devis s’applique presque
-            telle quelle à une offre média.
-          </p>
-
-          <p>
-            Deux prolongements utiles si la publicité sert un produit et non un
-            catalogue existant. Le{" "}
-            <Link href="/services/outils-internes-sur-mesure">
-              calcul du retour sur investissement
+              rédaction d’un cahier des charges
             </Link>{" "}
-            explique comment séparer un gain de trésorerie d’un gain de capacité
-            — la même rigueur évite de confondre un prospect et une vente. Et
-            avant d’acheter du trafic vers une offre encore incertaine, le guide{" "}
-            <Link href="/guides/mvp-saas-quoi-inclure">
-              valider une idée de SaaS avant de développer
-            </Link>{" "}
-            décrit les tests d’acquisition qui coûtent moins cher qu’une
-            campagne lancée trop tôt.
+            donne, elle, une grille de lecture de devis applicable à une offre
+            média.
           </p>
-
-          <InfoBox
-            variant="emerald"
-            title="Préparez une fiche d’une page pour comparer les offres"
-          >
-            <p>
-              Notez l’offre, la zone, le budget média hors surcoût, la perte
-              maximale, les quatre coûts unitaires, les responsabilités, les
-              accès, les points de revue et trois décisions : continuer,
-              corriger ou arrêter.
-            </p>
-          </InfoBox>
 
           <div className="not-prose my-8 rounded-2xl border border-zinc-200 bg-zinc-950 p-6 text-white dark:border-zinc-800 sm:p-8">
             <p className="m-0 text-[10px] font-bold uppercase tracking-[0.16em] text-indigo-300">
-              Besoin d’un périmètre comparable
+              Deux devis, une seule base
             </p>
             <p className="mb-0 mt-2 max-w-2xl text-xl font-bold">
-              Partagez les lignes du devis, pas seulement le budget mensuel
+              Envoyez les lignes des offres, pas seulement le prix mensuel
             </p>
             <p className="mb-0 mt-3 max-w-3xl text-sm leading-relaxed text-zinc-300">
-              Indiquez la dépense média hors coût réglementaire, les zones, les
-              actifs existants, la qualité de la mesure et ce que votre équipe
-              peut prendre en charge. Nous pouvons alors expliquer le périmètre
-              proposé — ou vous dire qu’une solution plus légère est préférable.
+              Indiquez la dépense média hors coût réglementaire, l’état de votre
+              mesure et ce que votre équipe peut prendre en charge. Nous
+              expliquons ce que couvre notre proposition&nbsp;— ou nous vous
+              disons qu’une solution plus légère suffit.
             </p>
             <div className="mt-5 flex flex-col gap-3 sm:flex-row">
               <TrackedGuideCtaLink
@@ -1505,7 +1207,7 @@ Coût économique connu
                 placement="article_end_inline"
                 className="inline-flex min-h-11 items-center justify-center rounded-lg bg-white px-4 py-2 text-sm font-bold text-zinc-950 no-underline transition hover:bg-zinc-100"
               >
-                Voir notre périmètre publicitaire
+                Voir notre offre publicitaire
               </TrackedGuideCtaLink>
               <TrackedGuideCtaLink
                 href="/demarrer-un-projet"
@@ -1516,6 +1218,18 @@ Coût économique connu
               </TrackedGuideCtaLink>
             </div>
           </div>
+
+          <p className="text-sm">
+            <strong>Transparence.</strong> Hagnéré Code vend une gestion
+            publicitaire et perçoit des honoraires si vous nous la confiez. Rien
+            ici n’exige de passer par nous&nbsp;: les six lignes de coût, les
+            quatre seuils de bascule, la division qui chiffre le temps interne
+            et le décompte à 3, 6 et 12&nbsp;mois se refont avec vos nombres.
+            Les prix vendeurs datent du 30&nbsp;juillet 2026, notre grille du
+            28&nbsp;août 2026&nbsp;; les deux sont à revérifier tous les douze
+            mois. Aucun coût, aucun délai et aucun résultat ne sont garantis par
+            cette page&nbsp;: seul un devis signé engage.
+          </p>
         </GuidePremiumSection>
       </GuidePremiumLayout>
     </GuidesShell>

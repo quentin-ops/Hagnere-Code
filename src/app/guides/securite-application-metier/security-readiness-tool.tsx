@@ -52,7 +52,7 @@ const statusOptions: {
   {
     value: "tested",
     label: "Exercé avec preuve",
-    help: "Le contrôle a été observé ; le résultat et ses limites sont conservés.",
+    help: "Le contrôle a été observé\u00a0; le résultat et ses limites sont conservés.",
   },
   {
     value: "blocker",
@@ -127,17 +127,21 @@ export function SecurityReadinessTool() {
   );
 
   return (
-    <div className="not-prose my-8 overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+    <div
+      data-read-time-exclude="true"
+      className="not-prose my-8 overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-950"
+    >
       <div className="border-b border-zinc-200 bg-zinc-950 px-5 py-6 text-white dark:border-zinc-800 sm:px-7">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">
           Revue avant mise en service · outil local
         </p>
         <h3 className="mt-2 text-2xl font-semibold tracking-tight">
-          Quel point devez-vous établir maintenant ?
+          Quel point devez-vous établir maintenant&nbsp;?
         </h3>
         <p className="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-300">
           Choisissez uniquement des états génériques. Ne saisissez ni nom,
-          détail d’incident, information métier, secret ou donnée personnelle :
+          détail d’incident, information métier, secret ou donnée
+          personnelle&nbsp;:
           aucune réponse ne quitte la page ni n’est enregistrée durablement par
           cet outil.
         </p>
@@ -186,15 +190,16 @@ export function SecurityReadinessTool() {
                 {
                   id: "personalData",
                   label:
-                    "L’application traite-t-elle des données personnelles ?",
+                    "L’application traite-t-elle des données personnelles\u00a0?",
                 },
                 {
                   id: "internetExposure",
-                  label: "Une interface est-elle accessible depuis Internet ?",
+                  label:
+                    "Une interface est-elle accessible depuis Internet\u00a0?",
                 },
                 {
                   id: "activeIncident",
-                  label: "Un incident est-il actif ou soupçonné ?",
+                  label: "Un incident est-il actif ou soupçonné\u00a0?",
                 },
               ] as const
             ).map((field) => (
@@ -229,7 +234,7 @@ export function SecurityReadinessTool() {
 
         <fieldset>
           <legend className="text-lg font-semibold text-zinc-950 dark:text-white">
-            2. Où en êtes-vous sur les huit contrôles ?
+            2. Où en êtes-vous sur les huit contrôles&nbsp;?
           </legend>
           <p className="mt-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
             Même exercé, un contrôle peut garder des limites. Son résultat, sa
@@ -262,7 +267,8 @@ export function SecurityReadinessTool() {
                     {control.question}
                   </p>
                   <p className="mt-2 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
-                    <strong>Trace attendue :</strong> {control.expectedEvidence}
+                    <strong>Trace attendue&nbsp;:</strong>{" "}
+                    {control.expectedEvidence}
                     .
                   </p>
                   <select
@@ -323,7 +329,7 @@ export function SecurityReadinessTool() {
           )}
 
           <p className="mt-4 text-sm leading-relaxed">
-            <strong>Action :</strong> {assessment.nextAction}
+            <strong>Action&nbsp;:</strong> {assessment.nextAction}
           </p>
         </section>
 

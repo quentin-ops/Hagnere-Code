@@ -27,7 +27,7 @@ const breadcrumbName = "Sécurité d’une application métier";
 
 export const metadata = buildGuideMetadata(
   guide,
-  "Menaces, restauration, détection et responsables avant la mise en service",
+  "Restauration chronométrée, alerte suivie, compte témoin et dépendances triées avant la mise en service",
 );
 
 const structuredData = buildGuideStructuredData(guide, breadcrumbName);
@@ -36,125 +36,127 @@ const toc = [
   {
     id: "reponse",
     number: "01",
-    label: "La réponse courte",
+    label: "Réponse directe",
     shortLabel: "Répondre",
   },
   {
     id: "consequences",
     number: "02",
-    label: "Partir des conséquences",
-    shortLabel: "Qualifier",
+    label: "Le prix d’une heure",
+    shortLabel: "Chiffrer",
   },
   {
     id: "capacites",
     number: "03",
-    label: "Construire quatre capacités",
-    shortLabel: "Construire",
+    label: "Le protocole",
+    shortLabel: "Protocole",
   },
   {
     id: "restauration",
     number: "04",
-    label: "Prouver la restauration",
+    label: "Mesure 1 · restauration",
     shortLabel: "Restaurer",
   },
   {
     id: "detection",
     number: "05",
-    label: "Détecter et alerter",
-    shortLabel: "Détecter",
+    label: "Mesure 2 · alerte",
+    shortLabel: "Alerter",
   },
   {
     id: "responsabilites",
     number: "06",
-    label: "Attribuer les responsabilités",
-    shortLabel: "Attribuer",
+    label: "Mesure 3 · compte témoin",
+    shortLabel: "Droits",
   },
   {
     id: "outil",
     number: "07",
-    label: "Préparer la revue",
-    shortLabel: "Relire",
+    label: "Mesure 4 · dépendances",
+    shortLabel: "Dépendances",
   },
   {
     id: "decision",
     number: "08",
-    label: "Décider ou reporter",
+    label: "Décider",
     shortLabel: "Décider",
   },
   {
     id: "cas-fictif",
     number: "09",
-    label: "Cas fictif",
-    shortLabel: "Appliquer",
+    label: "Ce qui rate",
+    shortLabel: "Incidents",
   },
 ];
 
 const faqCategories: GuidePremiumFaqCategory[] = [
   {
-    key: "socle",
+    key: "mesures",
     num: "01",
-    label: "Socle",
+    label: "Exécuter les mesures",
     items: [
       {
         question:
-          "Existe-t-il une liste minimale valable pour toute application métier ?",
+          "Combien de temps prennent les quatre mesures\u00a0?",
         answer:
-          "Non. Les conséquences, les données, l’exposition, les utilisateurs, les dépendances et les obligations sectorielles changent le besoin. La méthode rassemble huit sujets pour organiser la vérification ; ils ne forment pas une checklist universelle.",
+          "La restauration est la seule qui coûte une demi-journée, parce qu’il faut monter un environnement séparé avant de chronométrer. Le test d’alerte demande dix minutes d’exécution, puis l’attente. Les dix rejeux du compte témoin tiennent en une heure une fois les deux sessions ouvertes. La liste des dépendances vulnérables sort en une minute et se relance chaque semaine. Comptez une journée pour la première série complète, deux heures pour les suivantes.",
       },
       {
-        question: "Le Top 10 OWASP suffit-il pour valider l’application ?",
+        question:
+          "Peut-on faire ces mesures sans toucher à la production\u00a0?",
         answer:
-          "Non. Le Top 10 sensibilise à des catégories de risques fréquentes. Le référentiel ASVS 5.0.0 de l’OWASP aide à sélectionner et tester des exigences techniques plus précises, mais aucun des deux ne certifie l’application ou ne couvre seul son exploitation, ses sauvegardes, ses personnes et ses obligations.",
+          "Trois des quatre l’exigent même. La restauration se fait dans un environnement séparé, qui ne partage ni base, ni stockage, ni compte avec la production. Les dix rejeux du compte témoin se font sur ce même environnement restauré, avec des données de test. La liste des dépendances lit le dépôt de code, pas le serveur. Seul le test d’alerte se joue en conditions réelles, avec un événement autorisé, une heure notée et l’accord écrit du propriétaire de l’application.",
       },
       {
-        question: "Faut-il une authentification multifacteur partout ?",
+        question:
+          "Nous n’avons pas d’environnement séparé\u00a0: que faire\u00a0?",
         answer:
-          "La force d’authentification doit être adaptée au risque, aux comptes, à l’exposition et aux conséquences. Les accès externes, administrateurs ou à fort impact demandent une attention particulière. La solution exacte doit être qualifiée et testée ; aucune technologie n’est imposée par défaut.",
+          "C’est déjà un résultat. Sans environnement séparé, vous ne pourrez pas non plus restaurer le jour de l’incident sans écraser ce qui reste. Chiffrez son coût avant d’arbitrer\u00a0: une copie de l’hébergement pendant deux jours, plus le temps de la monter. Comparez ce montant à celui d’une heure ouvrée d’arrêt calculé en section\u00a002. La décision devient alors une addition que deux personnes peuvent refaire.",
       },
     ],
   },
   {
-    key: "preuves",
+    key: "referentiels",
     num: "02",
-    label: "Preuves",
+    label: "Référentiels et obligations",
     items: [
       {
-        question: "Une sauvegarde quotidienne est-elle suffisante ?",
+        question: "Le Top\u00a010 OWASP suffit-il à valider l’application\u00a0?",
         answer:
-          "Impossible à conclure sans connaître la perte de données et l’interruption acceptables. Vérifiez le périmètre, l’isolement, les dépendances et l’ordre de reprise, puis restaurez réellement dans un environnement isolé. La fréquence seule ne démontre pas le redémarrage utile au métier.",
+          "Il sensibilise à des familles de risques fréquentes, ce qui est utile en début de projet et insuffisant ensuite. Le référentiel ASVS 5.0.0, publié le 30\u00a0mai 2025 par la même organisation, sert à sélectionner des exigences techniques précises et à les tester une par une. Ni l’un ni l’autre ne certifie une application, et aucun des deux ne couvre la sauvegarde, l’alerte, les personnes ou les obligations qui s’appliquent à votre traitement de données.",
       },
       {
-        question: "Combien de temps conserver les journaux ?",
+        question: "Un test d’intrusion remplace-t-il ces quatre mesures\u00a0?",
         answer:
-          "Il n’existe pas de durée universelle. Pour les données de journalisation destinées à sécuriser un traitement de données personnelles, la CNIL recommande en général six mois à un an, avec des adaptations possibles ou nécessaires selon la finalité, le contrôle interne, une obligation ou un besoin documenté. Les autres journaux techniques, métier ou de sécurité ont chacun une finalité, un accès, une protection et une durée à justifier.",
+          "Il cherche des vulnérabilités sur un ensemble d’éléments et à un instant donnés, ce que les quatre mesures ne font pas. Il ne dit rien de la personne qui reçoit une alerte, du temps de restauration, ni du délai entre la publication d’un correctif et son installation. Les deux se complètent\u00a0: commencez par les quatre mesures, qui coûtent une journée, et commandez le test quand elles passent — sinon il trouvera d’abord ce que vous saviez déjà.",
       },
       {
-        question: "Un test d’intrusion remplace-t-il cette revue ?",
+        question: "La directive NIS\u00a02 nous concerne-t-elle\u00a0?",
         answer:
-          "Non. Il peut révéler des vulnérabilités sur un périmètre et à un instant donnés. Son résultat ne dit rien, à lui seul, sur la personne qui reçoit une alerte, la restauration, la maintenance des dépendances ou l’acceptation des risques qui restent. Il entre dans un dossier plus large.",
+          "La directive (UE) 2022/2555 élargit le champ des entreprises soumises à des obligations de cybersécurité, mais son application dépend de votre secteur d’activité et de votre taille, et les modalités relèvent du texte français de transposition. Cette qualification appartient à un juriste, pas à un article de blog ni à un développeur. Faites-la faire avant d’en déduire quoi que ce soit\u00a0: se croire concerné à tort coûte cher, ne pas l’être à tort coûte davantage.",
       },
     ],
   },
   {
-    key: "decision",
+    key: "apres",
     num: "03",
-    label: "Décision",
+    label: "Après la mise en service",
     items: [
       {
-        question: "Qui décide de la mise en service ?",
+        question: "Combien de temps conserver les journaux\u00a0?",
         answer:
-          "Une personne autorisée par l’organisation décide à partir des conséquences métier, des preuves, des écarts et des avis compétents. Le développeur ou l’hébergeur peut documenter et conseiller, mais l’outil de cette page ne donne aucune autorisation de production.",
+          "Aucune durée universelle n’existe. Pour les données de journalisation destinées à sécuriser un traitement de données personnelles, la CNIL recommande en général six mois à un an, avec des adaptations à justifier. La valeur par défaut d’une offre d’hébergement — sept jours dans le cas construit de ce guide — est un réglage commercial que personne n’a choisi. Confrontez-la aux 72\u00a0heures de l’article\u00a033 du RGPD\u00a0: une violation découverte trois semaines après les faits se notifie sans les traces qui la décriraient.",
+      },
+      {
+        question: "Qui signe la mise en service\u00a0?",
+        answer:
+          "Une personne autorisée par l’entreprise, à partir des montants et des écarts que ces mesures produisent. Le développeur explique, l’hébergeur documente, mais aucun des deux ne décide combien d’heures d’arrêt l’activité supporte. Dans le cas construit de ce guide, ce nombre appartient à la directrice administrative et financière\u00a0: c’est elle qui accepte quatre heures ouvrées d’arrêt, donc 3\u00a0972\u00a0€. L’outil local de cette page n’autorise aucune mise en production.",
       },
       {
         question:
-          "Que faire si l’application est déjà en production et qu’un incident est soupçonné ?",
+          "Faut-il refaire ces mesures, et à quel rythme\u00a0?",
         answer:
-          "Arrêtez la revue générique et appliquez la procédure d’incident : alertez les responsables, limitez l’aggravation sans détruire les éléments utiles et sollicitez une expertise adaptée. Ne saisissez aucun détail sensible dans l’outil local de cette page.",
-      },
-      {
-        question: "Peut-on continuer un pilote malgré des preuves manquantes ?",
-        answer:
-          "Seulement si son périmètre est réellement limité, que les conséquences sont acceptables et qu’il n’utilise pas implicitement la production. Des données fictives, des accès restreints et une sortie simple peuvent permettre d’apprendre. Dès que de vraies données ou l’activité en dépendent, le mot pilote ne réduit plus le risque.",
+          "La liste des dépendances vulnérables se relance chaque semaine, parce qu’elle change chaque semaine. Les trois autres se refont après chaque changement d’hébergement, après chaque montée de version majeure, après le départ de quelqu’un qui détenait un accès, et au moins une fois par an. Notez la date de la dernière exécution à côté de chaque nombre\u00a0: une mesure sans date ne prouve rien six mois plus tard.",
       },
     ],
   },
@@ -179,24 +181,23 @@ export default function Page() {
           { label: breadcrumbName },
         ]}
         badges={[
-          { label: "Guide pratique 2026", variant: "dark" },
-          { label: "Mise en service d’une application", variant: "neutral" },
-          { label: "Aucun score de sécurité", variant: "success" },
+          { label: "Guide de méthode 2026", variant: "dark" },
+          { label: "Avant la mise en service", variant: "neutral" },
+          { label: "Outil local · aucun envoi", variant: "success" },
           {
             label: `Mis à jour le ${formatGuideDate(guide.dateModified)}`,
             variant: "muted",
           },
         ]}
-        heroTitle="Quel socle de sécurité exiger"
-        heroTitleEm="pour une application métier"
-        heroTitleSuffix="?"
-        heroDescription="L’application va accueillir de vraies données ? Partez des conséquences métier, exigez des preuves sur la prévention, la détection, la restauration et la réponse, puis nommez les responsables. Une inconnue critique conduit à limiter ou reporter, jamais à déclarer l’application « sûre »."
+        heroTitle={"Sécurité d’une application métier\u00a0:"}
+        heroTitleEm={"que\u00a0mesurer avant les vraies données\u00a0?"}
+        heroDescription={"«\u00a0Est-elle sécurisée\u00a0?\u00a0» n’appelle aucune réponse vérifiable. Quatre choses, en revanche, se mesurent en une journée\u00a0: le temps réel d’une restauration complète, les minutes entre un événement sensible et l’alerte reçue, les codes de réponse rendus au compte le moins privilégié, et le délai entre la publication d’un correctif et son installation. Ce guide donne le protocole de chacune, le seuil qui tranche et ce que l’écart coûte. Les euros et les durées cités viennent d’un cas construit pour ce guide, entreprise et volumes compris\u00a0: rien n’a été relevé chez un client."}
         stats={[
-          { label: "Contrôles à documenter", value: "8" },
-          { label: "Capacités à relier", value: "4" },
-          { label: "Score global", value: "Aucun" },
+          { label: "Mesures à exécuter", value: "4" },
+          { label: "Heure ouvrée · cas construit", value: "993\u00a0€" },
+          { label: "Écart mesuré · cas construit", value: "2\u00a0h\u00a040" },
+          { label: "Score de sécurité", value: "Aucun" },
           { label: "Réponses de l’outil", value: "Non envoyées" },
-          { label: "Lecture", value: `${guide.readTimeMin} min` },
         ]}
         author={{
           initials: TEAM.quentin.initials,
@@ -206,30 +207,30 @@ export default function Page() {
         }}
         sidebarHeroCta={{
           eyebrow: "Audit technique",
-          titleStart: "Faire examiner",
-          titleEm: "les preuves réelles",
+          titleStart: "Faire relire",
+          titleEm: "vos quatre nombres",
           description:
-            "Apportez l’architecture, les contrôles, les résultats d’exercice et les inconnues. L’audit documente une décision ; il ne promet pas le risque zéro.",
+            "Apportez les résultats des quatre mesures, les écarts et ce qui n’a pas pu être exécuté. Un audit documente une décision\u00a0; il ne rend aucune application sûre.",
           benefits: [
-            "Périmètre et hypothèses explicités",
-            "Écarts reliés à des preuves",
-            "Priorités et responsabilités documentées",
+            "Les mesures impossibles séparées des mesures ratées",
+            "Vos hypothèses de coût relues avec vos propres chiffres",
+            "La suite discutée avant d’engager une reconstruction",
           ],
           primaryCtaLabel: "Découvrir l’audit technique",
           primaryCtaHref: "/services/audit-technique",
         }}
         toc={toc}
-        tocLabel="Revue avant mise en service"
-        mobileCtaLabel="Faire auditer le socle"
+        tocLabel="Les quatre mesures avant mise en service"
+        mobileCtaLabel="Faire relire mes mesures"
         sidebarContextCta={{
           eyebrow: "Avant les vraies données",
-          title: "Documenter les contrôles, les exercices et leurs limites",
+          title: "Vos quatre mesures ne passent pas toutes\u00a0?",
           description:
-            "Préparez les conséquences métier, l’architecture, le dernier exercice de restauration et un exemple d’alerte autorisé.",
+            "Décrivez ce que vous avez mesuré et ce qui a échoué, sans secret, sans donnée personnelle et sans détail d’incident en cours.",
           benefits: [
-            "Sauvegarde séparée de la restauration",
-            "Journal séparé de la détection",
-            "Responsable et suppléant identifiés",
+            "Restauration chronométrée dans un environnement séparé",
+            "Alerte suivie jusqu’à une personne nommée",
+            "Dépendances triées par exploitation constatée",
           ],
           ctaLabel: "Voir l’audit technique",
           ctaHref: "/services/audit-technique",
@@ -237,15 +238,15 @@ export default function Page() {
         faqCategories={faqCategories}
         faqMeta={{
           eyebrow: "Questions fréquentes",
-          titleStart: "Vos questions avant",
-          titleEm: "la mise en service",
-          titleEnd: "de l’application.",
+          titleStart: "Ce qu’on demande avant",
+          titleEm: "d’ouvrir les données",
+          titleEnd: "réelles.",
           subtitle:
-            "Des réponses bornées sur OWASP, les sauvegardes, les journaux, les pilotes et la personne qui décide.",
-          ctaTitle: "Faire examiner un socle concret",
+            "Durée des mesures, environnement séparé, place du test d’intrusion, conservation des journaux, personne qui signe et rythme de réexécution.",
+          ctaTitle: "Une mesure impossible à exécuter chez vous\u00a0?",
           ctaDescription:
-            "Décrivez le périmètre et les preuves disponibles sans transmettre de secret, de donnée personnelle ou de détail d’incident.",
-          ctaLabel: "Découvrir l’audit",
+            "Décrivez ce qui bloque — pas d’environnement séparé, pas d’accès aux journaux, pas de compte de test — sans transmettre de secret.",
+          ctaLabel: "Décrire le blocage",
           ctaHref: "/services/audit-technique",
         }}
         legalSources={[
@@ -253,68 +254,110 @@ export default function Page() {
             source: "Règlement (UE) 2016/679 · article 32",
             href: "https://eur-lex.europa.eu/eli/reg/2016/679/art_32/oj/fra",
             description:
-              "Texte officiel : pour les traitements de données personnelles, mesures techniques et organisationnelles appropriées au risque pour les droits et libertés des personnes, avec notamment selon le cas confidentialité, intégrité, disponibilité, résilience, restauration et évaluation régulière.",
+              "Texte officiel\u00a0: pour un traitement de données personnelles, mesures techniques et organisationnelles appropriées afin de garantir un niveau de sécurité adapté au risque, avec selon le cas confidentialité, intégrité, disponibilité, résilience, restauration et évaluation régulière. Aucune fréquence de sauvegarde ni architecture n’y figure.",
+          },
+          {
+            source: "Règlement (UE) 2016/679 · articles 33 et 34",
+            href: "https://eur-lex.europa.eu/eli/reg/2016/679/art_33/oj/fra",
+            description:
+              "Notification d’une violation de données personnelles à l’autorité de contrôle dans les meilleurs délais et, si possible, 72\u00a0heures au plus tard après en avoir pris connaissance. L’article 34 impose d’informer les personnes concernées lorsque le risque pour elles est élevé.",
+          },
+          {
+            source: "Règlement (UE) 2016/679 · article 83, paragraphe 4",
+            href: "https://eur-lex.europa.eu/eli/reg/2016/679/art_83/oj/fra",
+            description:
+              "Les manquements aux articles 25 à 39, dont l’article 32, relèvent d’amendes pouvant atteindre 10\u00a0000\u00a0000\u00a0€ ou, pour une entreprise, 2\u00a0% du chiffre d’affaires annuel mondial total de l’exercice précédent, le montant le plus élevé étant retenu.",
           },
           {
             source: "CNIL · Guide de la sécurité, mise à jour 2026",
             href: "https://www.cnil.fr/sites/default/files/2026-05/cnil_guide_securite_personnelle.pdf",
             description:
-              "Le PDF courant porte « Version 2024 — mise à jour 2026 » : gouvernance, accès, développement, traçabilité, sauvegarde, continuité, incidents et analyse de risques dans le périmètre des données personnelles.",
+              "Le PDF courant porte «\u00a0Version 2024 — mise à jour 2026\u00a0»\u00a0: accès, développement, traçabilité, sauvegarde, continuité, incidents et analyse de risques, dans le champ des données personnelles.",
           },
           {
             source: "CNIL · Règles essentielles de sécurité, 19 juin 2026",
             href: "https://www.cnil.fr/fr/securite-des-donnees-les-regles-essentielles",
             description:
-              "Fiche générale mise à jour le 19 juin 2026 pour les entreprises : les risques numériques concernent aussi bien les données personnelles que les informations financières ou industrielles. Elle reste une sensibilisation, pas un audit du contexte.",
+              "Fiche générale mise à jour le 19 juin 2026\u00a0: les risques numériques touchent aussi bien les données personnelles que les informations financières ou industrielles. Sensibilisation, pas audit de votre contexte.",
           },
           {
             source: "CNIL · Encadrer les développements",
             href: "https://www.cnil.fr/fr/securite-encadrer-les-developpements-informatiques",
             description:
-              "Fiche du 14 mars 2024 : intégrer la sécurité dès la conception, séparer les environnements, utiliser autant que possible des données fictives ou anonymisées, tester et éviter les secrets dans le dépôt de code.",
+              "Fiche du 14 mars 2024\u00a0: sécurité dès la conception, séparation des environnements, données fictives ou anonymisées autant que possible, tests, et aucun secret dans le dépôt de code.",
           },
           {
             source: "CNIL · Sauvegarder",
             href: "https://www.cnil.fr/fr/securite-sauvegarder",
             description:
-              "Fiche du 14 mars 2024 : copies fréquentes, protection comparable à la production, séparation géographique, copie hors ligne et tests d’intégrité et de restauration. Le repère 3-2-1 n’est pas présenté ici comme une loi universelle.",
+              "Fiche du 14 mars 2024\u00a0: copies fréquentes, protection comparable à la production, séparation géographique, copie hors ligne, et tests d’intégrité et de restauration.",
           },
           {
             source: "CNIL · Tracer les opérations",
             href: "https://www.cnil.fr/fr/securite-tracer-les-operations",
             description:
-              "Fiche du 14 mars 2024 : événements utiles, journaux protégés et analysés. La recommandation de six mois à un an porte ici sur les données de journalisation qui sécurisent un traitement de données personnelles, avec exceptions à justifier.",
+              "Fiche du 14 mars 2024\u00a0: événements utiles, traces protégées et analysées, aucun mot de passe ni empreinte enregistré. La recommandation de six mois à un an porte sur les données de journalisation qui sécurisent un traitement de données personnelles, avec exceptions à justifier.",
           },
           {
             source: "ANSSI · Fondamentaux de la sauvegarde v1.1",
             href: "https://messervices.cyber.gouv.fr/documents-guides/anssi_fondamentaux_sauvegarde_systemes_dinformation_v1.1.pdf",
             description:
-              "ANSSI-BP-100, version 1.1 du 27 novembre 2025 : stratégie issue des besoins métier, règle 3-2-1 avec copie hors ligne, exercices de restauration, ordre de reprise et isolation. Le document précise que ses recommandations ne sont pas normatives sauf texte contraire et doivent être adaptées.",
+              "ANSSI-BP-100, version 1.1 du 27 novembre 2025\u00a0: stratégie issue des besoins métier, règle 3-2-1 avec copie hors ligne, exercices de restauration, ordre de reprise et isolation. Le document précise que ses recommandations ne sont pas normatives sauf texte contraire et doivent être adaptées.",
           },
           {
             source: "ANSSI · Architecture de journalisation v2.0",
             href: "https://messervices.cyber.gouv.fr/guides/recommandations-de-securite-pour-larchitecture-dun-systeme-de-journalisation",
             description:
-              "Guide version 2.0 du 28 janvier 2022 : journalisation prévue dès les spécifications, événements exploitables, protection des traces et usages de détection ou d’analyse après incident. Le document qualifie ses recommandations de non normatives sauf texte contraire et exige leur adaptation au contexte.",
+              "Guide version 2.0 du 28 janvier 2022\u00a0: journalisation prévue dès les spécifications, événements exploitables, protection des traces, détection et analyse après incident. Le document qualifie ses recommandations de non normatives sauf texte contraire et exige leur adaptation au contexte.",
           },
           {
             source: "OWASP · ASVS 5.0.0",
             href: "https://owasp.org/www-project-application-security-verification-standard/",
             description:
-              "Version stable publiée le 30 mai 2025 : base volontaire pour sélectionner et référencer des exigences techniques vérifiables. Ce n’est ni une certification, ni une preuve globale de sécurité.",
+              "Version stable publiée le 30 mai 2025\u00a0: base volontaire pour sélectionner et référencer des exigences techniques vérifiables. Ce n’est ni une certification, ni une preuve globale de sécurité.",
+          },
+          {
+            source: "OWASP · API Security Project",
+            href: "https://owasp.org/www-project-api-security/",
+            description:
+              "Le Top\u00a010 des risques d’interface de programmation, édition 2023, place en première position le contrôle d’accès rompu au niveau de l’objet\u00a0: un compte authentifié obtient un objet qui ne lui appartient pas en changeant un identifiant.",
           },
           {
             source: "NIST · Cybersecurity Framework 2.0",
             href: "https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20",
             description:
-              "CSWP 29 publié le 26 février 2024 : cadre flexible et non prescriptif autour de Govern, Identify, Protect, Detect, Respond et Recover. Les fonctions n’imposent ni ordre, ni checklist universelle.",
+              "CSWP 29 publié le 26 février 2024\u00a0: cadre flexible et non prescriptif autour de Govern, Identify, Protect, Detect, Respond et Recover. Les fonctions n’imposent ni ordre, ni liste de contrôles universelle.",
+          },
+          {
+            source: "FIRST · CVSS v4.0 et EPSS",
+            href: "https://www.first.org/cvss/v4-0/specification-document",
+            description:
+              "L’échelle CVSS classe la gravité potentielle\u00a0: 9,0 à 10,0 critique, 7,0 à 8,9 élevée, 4,0 à 6,9 moyenne, 0,1 à 3,9 faible. Le score EPSS, publié par le même organisme, estime la probabilité qu’une faille soit exploitée dans les trente jours à venir. Les deux ne mesurent pas la même chose.",
+          },
+          {
+            source: "CISA · catalogue des vulnérabilités exploitées",
+            href: "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+            description:
+              "Catalogue public tenu par l’agence américaine de cybersécurité\u00a0: il recense les failles dont l’exploitation est constatée. Il sert ici de critère de tri, et n’impose aucune obligation à une entreprise française.",
+          },
+          {
+            source: "npm · commande audit",
+            href: "https://docs.npmjs.com/cli/v10/commands/npm-audit",
+            description:
+              "Documentation officielle de la commande citée dans la section\u00a007, y compris l’option qui écarte les dépendances de développement. Les équivalents existent dans les autres écosystèmes.",
+          },
+          {
+            source: "Hagnéré Code · tarifs publics",
+            href: "/tarifs",
+            description:
+              "Grille relevée le 28 août 2026\u00a0: audit flash 2\u00a0000\u00a0€ HT, cadrage initial sécurité et RGPD 5\u00a0000\u00a0€ HT, audit technique 8\u00a0000\u00a0€ HT en Express et 18\u00a0000\u00a0€ HT en Standard. Repères publics et indicatifs\u00a0: le devis signé fixe le prix ferme.",
           },
         ]}
         disclaimer={{
-          eyebrow: "Limites",
-          title: "Votre application reste à tester dans son propre contexte",
+          eyebrow: "Limite du guide",
+          title: "Un protocole de mesure, pas un audit de votre installation",
           description:
-            "Les exemples, tableaux et l’outil local ne voient ni votre architecture, ni vos données, ni vos obligations. Une analyse de risques, un audit, un test de sécurité, une qualification RGPD ou sectorielle et une décision humaine restent nécessaires selon le contexte.",
+            "Ces quatre mesures ne voient ni votre architecture, ni vos données, ni vos obligations, et aucune ne rend une application sûre. Une analyse de risques, un audit, un test de sécurité encadré et une qualification juridique restent nécessaires selon le contexte. En cas d’incident en cours, traitez l’incident d’abord.",
         }}
         relatedGuides={[
           {
@@ -322,76 +365,97 @@ export default function Page() {
             href: "/guides/plan-recette-application-metier",
           },
           {
-            label: "Comment rédiger un cahier des charges SaaS ?",
+            label: "Comment rédiger un cahier des charges SaaS\u00a0?",
             href: "/guides/cahier-des-charges-saas",
           },
           {
-            label: "MVP SaaS : quoi inclure avant un premier client ?",
+            label: "MVP SaaS\u00a0: quoi inclure avant un premier client\u00a0?",
             href: "/guides/mvp-saas-quoi-inclure",
           },
         ]}
-        relatedGuidesLabel="Compléter la décision"
+        relatedGuidesLabel="3 guides complémentaires"
       >
         <GuidePremiumSection
           id="reponse"
           number="01"
-          label="Réponse courte"
-          title="Les faits observables valent mieux qu’une promesse de sécurité"
+          label="Réponse directe"
+          title={"Quatre mesures, un chronomètre, et le coût de l’écart"}
         >
           <p>
-            Avant de charger de vraies données, posez une question plus utile
-            que « l’application est-elle sécurisée ? » : qui pourrait voir,
-            modifier, bloquer ou perdre quoi, et quel serait l’effet sur
-            l’activité ?
+            Votre développeur annonce que l’application métier est prête.
+            Lundi, vous
+            allez y charger le fichier clients, les prix négociés et les
+            tournées de la semaine. «&nbsp;Est-elle sécurisée&nbsp;?&nbsp;»
+            n’appelle aucune réponse vérifiable&nbsp;: personne ne peut le
+            prouver, et vous ne pouvez pas le réfuter.
           </p>
-
           <p>
-            Attribuez un responsable à chaque mesure et demandez des traces
-            observables sur quatre capacités : <strong>prévenir</strong>,
-            <strong> détecter</strong>, <strong>reprendre</strong> et{" "}
-            <strong>répondre</strong>. Une procédure écrite compte, mais un
-            contrôle critique doit aussi être exercé.
+            Quatre choses se mesurent, elles. <strong>Restaurez</strong>{" "}
+            l’application entière dans un environnement séparé et notez la
+            durée. <strong>Déclenchez</strong> un événement sensible et comptez
+            les minutes avant qu’une personne nommée reçoive l’alerte.{" "}
+            <strong>Rejouez</strong> dix requêtes avec le compte le moins
+            privilégié et lisez les codes de réponse.{" "}
+            <strong>Listez</strong> les dépendances vulnérables, puis triez-les
+            par exploitation constatée plutôt que par score.
           </p>
-
           <p>
-            Restaurez l’application dans un environnement isolé. Déclenchez un
-            événement autorisé et vérifiez que l’alerte arrive à la bonne
-            personne. Rejouez la première heure d’un incident.
+            Chacune sort un nombre, que vous comparez à un seuil fixé par votre
+            direction et non par un référentiel. Dans le cas construit
+            ci-dessous, une heure ouvrée sans l’application coûte
+            993&nbsp;€&nbsp;; la direction accepte quatre heures d’arrêt, soit
+            3&nbsp;972&nbsp;€. L’exercice de restauration a duré six heures
+            quarante sur une copie&nbsp;: subie un jour ouvré, cette durée
+            vaudrait 6&nbsp;620&nbsp;€, dont 2&nbsp;648&nbsp;€ au-dessus du
+            seuil. «&nbsp;Sécurisé&nbsp;» ne se discute pas.
           </p>
-
           <p>
-            Si l’impact, la preuve ou le responsable d’un point décisif reste
-            inconnu, limitez le pilote ou reportez la mise en service avec de
-            vraies données.
+            Ces 2&nbsp;648&nbsp;€, eux, se discutent en comité de direction. Et
+            si l’une des quatre mesures ne peut pas être exécutée, notez-le tel
+            quel&nbsp;: vous ne saurez pas davantage la faire le jour de
+            l’incident.
           </p>
 
-          <div className="not-prose my-8 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 dark:border-zinc-800">
-            <Image
-              src="/guides/securite-application-metier/socle-securite-16x9.webp"
-              alt="Chaîne de preuves autour d’une application métier reliant prévenir, détecter, reprendre et répondre"
-              width={1600}
-              height={900}
-              className="h-auto w-full"
-            />
-          </div>
-
-          <GuidePremiumMemo title="Une inconnue reste une question ouverte">
+          <GuidePremiumCase
+            initial="46"
+            eyebrow="Fil rouge du guide · exemple construit"
+            title={"Trente-quatre utilisateurs, 3\u00a0100\u00a0clients, une mise en service prévue lundi"}
+          >
             <p>
-              Notez-la telle quelle, puis identifiez la personne ou le document
-              capable de répondre. Un bon point ne compense pas une condition
-              bloquante sur la restauration, la détection ou la responsabilité.
+              <em>
+                Exemple construit&nbsp;: l’entreprise, ses volumes, ses
+                horaires et ses coûts internes sont choisis pour l’exemple et ne
+                viennent d’aucune source&nbsp;; seuls les montants de prestation
+                sont repris de notre grille publiée. Ce n’est pas un dossier
+                client.
+              </em>{" "}
+              Une société de négoce et d’installation de matériel médical,
+              46&nbsp;salariés, 12&nbsp;millions d’euros de chiffre d’affaires.
+              Elle remplace un classeur partagé par une application de prise de
+              commande et de tournées, écrite en huit mois par un développeur
+              indépendant.
             </p>
-          </GuidePremiumMemo>
+            <p>
+              Trente-quatre personnes s’en serviront&nbsp;: douze commerciaux,
+              six préparateurs de commandes, neuf chauffeurs-livreurs sur
+              téléphone, quatre à l’administration des ventes, deux au contrôle
+              de gestion et le responsable applicatif. La base porte
+              3&nbsp;100&nbsp;clients professionnels, dont 480&nbsp;praticiens
+              libéraux&nbsp;— des personnes physiques, donc des données
+              personnelles.
+            </p>
+          </GuidePremiumCase>
 
           <InfoBox
             variant="amber"
-            title="Incident actif : quittez la revue générique"
+            title={"Incident en cours\u00a0: arrêtez cette revue"}
           >
             <p>
-              Si une compromission, une fuite, une altération ou une
-              indisponibilité est en cours ou soupçonnée, appliquez la procédure
-              d’incident et contactez les responsables compétents. Ne documentez
-              aucun secret ni détail opérationnel dans l’outil de cette page.
+              Si une compromission, une fuite ou une indisponibilité est en
+              cours ou soupçonnée, appliquez la procédure d’incident et appelez
+              les personnes compétentes. Ces quatre mesures préparent une mise en
+              service&nbsp;; elles ne remplacent ni un isolement, ni une
+              restauration d’urgence.
             </p>
           </InfoBox>
         </GuidePremiumSection>
@@ -399,196 +463,224 @@ export default function Page() {
         <GuidePremiumSection
           id="consequences"
           number="02"
-          label="Menaces utiles"
-          title="Une menace prend sens par ses conséquences sur l’activité"
+          label="Le prix d’une heure"
+          title={"Combien vous coûte une heure sans l’application\u00a0?"}
         >
           <p>
-            « Cyberattaque » est trop large pour décider. Décrivez plutôt ce
-            qu’une personne, une erreur, un composant ou une panne pourrait
-            provoquer. Cette formulation aide le métier à fixer les priorités et
-            l’équipe technique à proposer des contrôles vérifiables.
+            Tout le reste dépend de ce nombre. Sans lui, «&nbsp;sauvegarde
+            quotidienne&nbsp;» et «&nbsp;reprise en quatre heures&nbsp;» sont
+            des mots&nbsp;: rien ne dit ce qu’ils achètent, ni à quel prix.
           </p>
 
-          <GuideTable
-            caption="Passer d’une menace vague à une question vérifiable"
-            headers={["Conséquence", "Question métier", "Élément à rechercher"]}
-            rows={[
-              [
-                "Divulgation",
-                "Quelles informations seraient exposées et à qui ne doivent-elles jamais l’être ?",
-                "Données minimisées, accès testé, traces et procédure d’incident",
-              ],
-              [
-                "Modification",
-                "Quelle règle, décision ou valeur pourrait être changée sans autorisation ?",
-                "Contrôle d’accès, validation, journal et alerte sur action sensible",
-              ],
-              [
-                "Indisponibilité",
-                "Quel travail s’arrête et comment continuer sans l’application (mode dégradé) ?",
-                "Dépendances inventoriées, objectif métier et exercice de reprise",
-              ],
-              [
-                "Perte ou corruption",
-                "Quelle perte de données est acceptable et comment la détecter ?",
-                "Sauvegarde isolée, contrôle d’intégrité et restauration observée",
-              ],
-              [
-                "Action non attribuable",
-                "Quelle opération doit pouvoir être reliée à un compte et un instant ?",
-                "Événement journalisé sans secret, horodatage, protection et accès borné",
-              ],
-              [
-                "Composant vulnérable",
-                "Qui surveille, qualifie, teste puis installe la correction ?",
-                "Inventaire, alerte de vulnérabilité, décision et preuve de mise à jour",
-              ],
-            ]}
-          />
-
+          <h3>Deux lignes suffisent, et vous les avez déjà</h3>
           <p>
-            Pour rendre la ligne « contrôle d’accès » testable,{" "}
-            <Link href="/guides/securite-application-metier">
-              définissez qui peut voir et modifier quoi
-            </Link>{" "}
-            objet par objet, puis associez à chaque autorisation critique un cas
-            autorisé et un cas refusé.
+            La première&nbsp;: le temps payé qui ne produit rien. Comptez les
+            personnes réellement bloquées&nbsp;— pas tous les utilisateurs&nbsp;—
+            puis multipliez par leur coût employeur horaire. La seconde&nbsp;: la
+            marge qui ne revient pas. Prenez les opérations que l’application
+            enregistre par jour ouvré, multipliez par leur marge brute moyenne,
+            divisez par la durée d’une journée de travail&nbsp;— huit heures
+            ici, de 9&nbsp;h à 17&nbsp;h&nbsp;— et gardez la part que vous ne
+            rattraperez pas le lendemain.
+          </p>
+          <p>
+            Le cas construit donne ceci. Vingt et une personnes sur
+            trente-quatre sont arrêtées, les treize autres reprennent le carnet
+            papier. À
+            38&nbsp;€ l’heure chargée, cela fait{" "}
+            <strong>798&nbsp;€ l’heure</strong>. L’application enregistre
+            62&nbsp;commandes par jour ouvré à 84&nbsp;€ de marge brute, soit
+            5&nbsp;208&nbsp;€ par jour et 651&nbsp;€ l’heure sur huit heures&nbsp;;
+            la directrice administrative et financière estime que trois
+            commandes sur dix ne reviennent jamais, soit{" "}
+            <strong>195,30&nbsp;€ l’heure</strong>. Total&nbsp;:
+            993,30&nbsp;€ l’heure, arrondi à <strong>993&nbsp;€</strong> pour la
+            suite de ce guide.
           </p>
 
           <p>
-            Pour un traitement de données personnelles, l’
-            <a
-              href="https://eur-lex.europa.eu/eli/reg/2016/679/art_32/oj/fra"
-              target="_blank"
-              rel="noreferrer"
-            >
-              article 32 du règlement général sur la protection des données
-              (RGPD)
-            </a>{" "}
-            demande au responsable du traitement et au sous-traitant des mesures
-            techniques et organisationnelles appropriées au risque pour les
-            droits et libertés des personnes. Il cite, selon le cas,
-            confidentialité, intégrité, disponibilité, résilience, restauration
-            et évaluation régulière. Il ne fournit pas une fréquence de
-            sauvegarde ou une architecture universelle.
+            Ce montant vaut par heure ouvrée. La nuit et le week-end, personne
+            n’est payé à attendre et aucune commande ne se prend&nbsp;: un arrêt
+            de vingt-deux heures un samedi ne coûte pas 21&nbsp;846&nbsp;€, mais
+            le temps qu’il consomme le lundi matin. Comptez les heures d’arrêt
+            tombées entre 9&nbsp;h et 17&nbsp;h, pas celles de l’horloge.
+          </p>
+
+          <h3>Les huit hypothèses que nous posons à découvert</h3>
+          <p>
+            Huit quantités de ce guide ne sortent d’aucune source, en plus des
+            volumes et des coûts internes du cas construit, annoncés en
+            section&nbsp;01. Deux produisent des euros directement&nbsp;: <strong>38&nbsp;€ l’heure
+            chargée</strong> pour le temps interne, que votre expert-comptable ou
+            votre contrôleur de gestion calcule à partir du salaire brut et des
+            charges patronales, et{" "}
+            <strong>500&nbsp;€ la journée de développement</strong> pour les
+            corrections chiffrées plus bas, que votre contrat porte.
+          </p>
+          <p>
+            Les six autres sont des durées d’effort, et elles coûtent au même
+            titre&nbsp;: six minutes par commande ressaisie, deux jours et demi
+            pour corriger trois routes, une heure à cinq personnes pour
+            l’exercice sur table, une demi-journée pour l’exercice de
+            restauration, deux heures d’attente sur un ticket d’hébergement, une
+            journée pour la première série des quatre mesures contre deux heures
+            ensuite. Remplacez-les par les vôtres, comme les volumes du cas.
+          </p>
+          <p>
+            Ce montant donne un sens à deux seuils qui, sans lui, restent des
+            sigles. La durée maximale d’interruption admissible&nbsp;— DMIA, ou
+            RTO en anglais&nbsp;— est le temps d’arrêt que votre direction
+            accepte de payer&nbsp;: quatre heures ouvrées ici, donc
+            3&nbsp;972&nbsp;€. La perte de données maximale admissible&nbsp;—
+            PDMA, ou RPO&nbsp;— est la saisie que vous acceptez de
+            perdre&nbsp;: une heure ici. L’hébergeur n’en décide aucun.
           </p>
 
           <InfoBox
             variant="blue"
-            title="Le périmètre juridique vient après les faits"
+            title={"Le plafond de l’article 83 ne se calcule pas à l’envers"}
           >
             <p>
-              « Pas de données sensibles » ne signifie pas « pas de données
-              personnelles ». Faites qualifier les finalités, les catégories,
-              les rôles et les obligations réelles. Pour une application sans
-              données personnelles, les pratiques CNIL peuvent éclairer la
-              démarche, mais l’article 32 du RGPD n’est pas présenté comme la
-              base de toute la sécurité du logiciel.
+              L’article 32 du{" "}
+              <a
+                href="https://eur-lex.europa.eu/eli/reg/2016/679/art_32/oj/fra"
+                target="_blank"
+                rel="noreferrer"
+              >
+                règlement général sur la protection des données (RGPD)
+              </a>{" "}
+              demande des mesures techniques et organisationnelles
+              «&nbsp;appropriées afin de garantir un niveau de sécurité adapté
+              au risque&nbsp;». Un manquement relève de l’article 83,
+              paragraphe 4&nbsp;: jusqu’à 10&nbsp;millions d’euros ou
+              2&nbsp;% du chiffre d’affaires annuel mondial,{" "}
+              <strong>le montant le plus élevé étant retenu</strong>. Sur
+              12&nbsp;millions d’euros de chiffre d’affaires, 2&nbsp;% font
+              240&nbsp;000&nbsp;€&nbsp;: c’est donc le plafond de
+              10&nbsp;millions qui s’applique. Un plafond n’est pas une
+              sanction, et la CNIL module&nbsp;; l’idée reçue «&nbsp;une PME
+              risque 2&nbsp;%&nbsp;» est fausse dans les deux sens.
             </p>
           </InfoBox>
-
-          <p>
-            Une fois ces conséquences décrites, reliez chaque mesure à ce
-            qu’elle doit empêcher, révéler ou permettre de reprendre. Vous
-            pourrez alors demander l’élément précis qui l’étaye.
-          </p>
         </GuidePremiumSection>
 
         <GuidePremiumSection
           id="capacites"
           number="03"
-          label="Architecture de décision"
-          title="Prévention, détection, reprise et réponse se tiennent ensemble"
+          label="Le protocole"
+          title="Les quatre mesures, et les quatre sujets qui restent à écrire"
         >
           <p>
-            Une mesure isolée déplace parfois le problème. Un accès bloqué aide
-            peu si les secrets fuient ailleurs. Des journaux sans alerte
-            laissent l’événement dormir. Et restaurer uniquement la base échoue
-            dès que l’identité, les fichiers ou la configuration manquent. Les
-            quatre capacités doivent donc fonctionner ensemble.
+            Une mesure isolée déplace le problème. Prises une par une, elles
+            laissent passer ce qui fait tomber une application métier&nbsp;: un
+            accès verrouillé sert peu si les secrets se lisent dans le dépôt de
+            code, et un journal que personne ne relève n’a jamais alerté
+            personne. Le schéma ci-dessous
+            récapitule les quatre mesures, le nombre que chacune rend et le seuil
+            qui la tranche.
           </p>
 
+          <div className="not-prose my-8 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 dark:border-zinc-800">
+            <Image
+              src="/guides/securite-application-metier/socle-securite-16x9.webp"
+              alt="Les quatre mesures avant la mise en service d’une application métier : restauration chronométrée, alerte suivie, compte témoin rejoué et dépendances triées, chacune avec le nombre qu’elle rend et le seuil qui la tranche"
+              width={1600}
+              height={900}
+              className="h-auto w-full"
+            />
+          </div>
+
           <GuideTable
-            caption="Quatre capacités à relier sans produire de score"
+            caption="Ce que chaque mesure lance, lit et tranche"
             headers={[
-              "Capacité",
-              "Question de revue",
-              "Trace possible",
-              "Limite",
+              "La mesure",
+              "Ce qu’on lance",
+              "Le nombre qu’on lit",
+              "Le seuil qui tranche",
             ]}
             rows={[
               [
-                "Prévenir",
-                "Qu’est-ce qui réduit la probabilité ou l’impact d’un accès, d’une erreur ou d’une vulnérabilité ?",
-                "Exigence, revue, test et responsable de correction",
-                "Aucun contrôle ne supprime toutes les causes",
+                "Restauration",
+                "Remonter les 5\u00a0objets de l’application dans un environnement séparé, chronomètre en main",
+                "Minutes de remise en service, et écart avec le dernier enregistrement restauré",
+                "Au-delà des 4\u00a0h ouvrées de DMIA acceptées, chaque heure coûte 993\u00a0€",
               ],
               [
-                "Détecter",
-                "Quel événement produit quelle alerte, pour qui ?",
-                "Scénario déclenché et alerte effectivement reçue",
-                "Un journal jamais analysé n’est pas une alerte",
+                "Alerte",
+                "Un événement sensible autorisé, à une heure notée\u00a0: compte d’administration créé, export massif",
+                "Minutes entre l’action et l’alerte, nom de qui l’a reçue, durée de conservation des traces",
+                "Aucune alerte reçue par une personne nommée en 15\u00a0minutes\u00a0: il n’y a pas de détection, seulement un journal",
               ],
               [
-                "Reprendre",
-                "Que restaure-t-on, dans quel ordre et avec quelle perte constatée ?",
-                "Exercice isolé et limites consignées",
-                "Une copie n’est pas une restauration",
+                "Compte témoin",
+                "10 requêtes rejouées avec le compte le moins privilégié, identifiants changés",
+                "Les 10 codes de réponse renvoyés par le serveur\u00a0: 200, 403 ou 404",
+                "Une seule réponse 200 est bloquante\u00a0; les refus obtenus à côté ne compensent pas",
               ],
               [
-                "Répondre",
-                "Qui décide, isole, corrige, conserve les éléments utiles et informe ?",
-                "Exercice sur table et contacts confirmés",
-                "Le prestataire ne porte pas seul la décision métier",
+                "Dépendances",
+                "npm audit, pip-audit ou osv-scanner sur le dépôt livré",
+                "Nombre d’alertes par gravité, et jours écoulés depuis la publication du correctif",
+                "L’exploitation constatée passe avant le score de gravité",
               ],
             ]}
           />
 
           <p>
-            Le{" "}
-            <a
-              href="https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20"
-              target="_blank"
-              rel="noreferrer"
-            >
-              NIST Cybersecurity Framework 2.0
-            </a>{" "}
-            présente six fonctions — Govern (gouverner), Identify (identifier),
-            Protect (protéger), Detect (détecter), Respond (répondre) et Recover
-            (rétablir) — comme un cadre flexible et non prescriptif. Pour la
-            revue de mise en service, ces questions sont regroupées en quatre
-            capacités. Ce raccourci n’attribue aucun niveau et ne reproduit pas
-            le cadre.
+            Rien là-dedans ne demande d’outil payant&nbsp;; le seul poste
+            coûteux est l’environnement séparé, sans lequel la première mesure se
+            ferait sur la production. Quatre autres sujets s’écrivent au lieu de
+            s’exécuter&nbsp;: conséquences métier, conduite d’un incident,
+            maintenance, responsabilités.
           </p>
 
-          <h3>Une exigence technique doit citer sa version et son test</h3>
+          <h3>Une exigence se cite avec sa version et son résultat de test</h3>
           <p>
-            Pour une application web,{" "}
+            «&nbsp;Nous suivons OWASP&nbsp;» ne désigne rien de vérifiable. Le
+            référentiel{" "}
             <a
               href="https://owasp.org/www-project-application-security-verification-standard/"
               target="_blank"
               rel="noreferrer"
             >
-              le référentiel ASVS 5.0.0 de l’OWASP
+              ASVS 5.0.0
+            </a>
+            , publié le 30&nbsp;mai 2025, se cite exigence par exigence, avec ce
+            qui a été testé et avec quel résultat. Le{" "}
+            <a
+              href="https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20"
+              target="_blank"
+              rel="noreferrer"
+            >
+              cadre NIST CSF 2.0
             </a>{" "}
-            — <em>Application Security Verification Standard</em> — peut servir
-            de base versionnée pour sélectionner des exigences et des tests.
-            Référencez la version et les exigences retenues, leur périmètre,
-            leur résultat et leurs exceptions. « Nous suivons OWASP » ou « le
-            Top 10 est couvert » ne constitue pas une certification.
+            (CSWP 29, 26&nbsp;février 2024) précise lui-même qu’il n’impose ni
+            ordre, ni liste de contrôles universelle. Aucun des deux ne certifie
+            quoi que ce soit. La façon
+            d’écrire une exigence dont on sait décrire l’échec est détaillée
+            dans le{" "}
+            <Link href="/guides/cahier-des-charges-saas">
+              cahier des charges SaaS
+            </Link>
+            .
+          </p>
+
+          <p>
+            Chaque exécution se consigne sur la même fiche. Neuf lignes, et la
+            neuvième est celle qu’on oublie.
           </p>
 
           <FormulaBox>
             {[
-              "Contrôle :",
-              "Conséquence métier réduite :",
-              "Exigence versionnée :",
-              "Périmètre et environnement :",
-              "Responsable :",
-              "Test autorisé :",
-              "Résultat observé :",
-              "Écart, limite ou exception :",
-              "Action et date de prochaine revue :",
+              "Mesure\u00a0:",
+              "Date et heure d’exécution\u00a0:",
+              "Environnement (jamais la production)\u00a0:",
+              "Qui l’a exécutée\u00a0:",
+              "Le nombre lu\u00a0:",
+              "Le seuil comparé, et qui l’a fixé\u00a0:",
+              "Tenu / non tenu\u00a0:",
+              "Ce qui manquait\u00a0:",
+              "Date de la prochaine exécution\u00a0:",
             ].join("\n")}
           </FormulaBox>
         </GuidePremiumSection>
@@ -596,520 +688,633 @@ export default function Page() {
         <GuidePremiumSection
           id="restauration"
           number="04"
-          label="Sauvegarde et reprise"
-          title="La restauration révèle ce que la sauvegarde permet vraiment"
+          label="Mesure 1"
+          title={"Votre sauvegarde restaure-t-elle l’application entière\u00a0?"}
         >
           <p>
-            Le métier doit d’abord préciser la perte de données et
-            l’interruption qu’il peut accepter.
+            «&nbsp;Nous avons des sauvegardes quotidiennes&nbsp;» répond à
+            côté de la question. Elle porte sur ce qui remonte, dans quel ordre
+            et en combien de temps.
           </p>
 
-          <p>
-            L’
-            <a
-              href="https://messervices.cyber.gouv.fr/documents-guides/anssi_fondamentaux_sauvegarde_systemes_dinformation_v1.1.pdf"
-              target="_blank"
-              rel="noreferrer"
-            >
-              ANSSI-BP-100 version 1.1 du 27 novembre 2025
-            </a>{" "}
-            relie la stratégie de sauvegarde à ces besoins. La perte de données
-            maximale admissible est appelée PDMA, ou RPO en anglais. La durée
-            maximale d’interruption admissible est appelée DMIA, ou RTO en
-            anglais. Aucune valeur par défaut ne convient automatiquement à
-            votre activité.
-          </p>
+          <h3>Le protocole, en une demi-journée</h3>
+          <ol>
+            <li>
+              <strong>Choisissez un environnement séparé.</strong> Jamais la
+              production, jamais un environnement qui partage une base, un
+              stockage ou un compte avec elle.
+            </li>
+            <li>
+              <strong>Notez l’heure de départ, puis restaurez sans appeler le
+              développeur.</strong>{" "}
+              S’il faut l’appeler, c’est un résultat&nbsp;: votre reprise dépend
+              de sa disponibilité.
+            </li>
+            <li>
+              <strong>Remontez les cinq objets.</strong> La base de données,
+              les fichiers déposés par les utilisateurs, la configuration, les
+              secrets et les comptes. C’est là que ça casse.
+            </li>
+            <li>
+              <strong>Rejouez les parcours métier complets</strong> retenus dans
+              le{" "}
+              <Link href="/guides/plan-recette-application-metier">
+                plan de recette de l’application
+              </Link>
+              , ceux dont l’échec coûte de l’argent. Un écran d’accueil qui
+              s’affiche ne prouve rien.
+            </li>
+            <li>
+              <strong>Notez trois nombres&nbsp;:</strong> la durée totale,
+              l’écart entre la dernière écriture et le dernier enregistrement
+              restauré, et le nombre de parcours qui repassent.
+            </li>
+          </ol>
 
           <GuideTable
-            caption="Ce qu’un exercice de restauration doit rendre visible"
-            headers={["Étape", "Question", "Résultat à conserver"]}
+            caption="Ce que l’exercice a rendu visible sur le cas construit"
+            headers={[
+              "Ce qu’on remonte",
+              "Ce que l’exercice a donné",
+              "Ce que ça change",
+            ]}
             rows={[
               [
-                "Périmètre",
-                "Données, fichiers, configuration, secrets et dépendances sont-ils couverts ?",
-                "Inventaire sauvegardé et exclusions",
+                "Base de données",
+                "Restaurée en 40\u00a0minutes, au point du jour à 2\u00a0h",
+                "Quinze heures entre la sauvegarde et une panne de 17\u00a0h\u00a0: la journée de saisie entière, 62\u00a0commandes",
               ],
               [
-                "Isolement",
-                "La copie reste-t-elle disponible si la production ou les comptes sont compromis ?",
-                "Architecture, accès et copie hors ligne ou séparation justifiée",
+                "Fichiers déposés par les utilisateurs",
+                "Absents\u00a0: 9\u00a0300\u00a0bons signés vivent dans un stockage non couvert",
+                "Deux heures d’attente d’un ticket, puis remontée",
               ],
               [
-                "Déclenchement",
-                "Qui décide et obtient les accès nécessaires ?",
-                "Responsable, suppléant et procédure",
+                "Configuration et secrets",
+                "Non sauvegardés, reconstitués depuis un ancien courriel",
+                "Une clé d’envoi d’e-mails reste invalide trois jours",
               ],
               [
-                "Ordre",
-                "Quelles dépendances doivent revenir avant l’application ?",
-                "Séquence testée et point de contrôle",
+                "Comptes et rôles",
+                "Restaurés, mais tous avec le rôle par défaut",
+                "Les 9 chauffeurs-livreurs héritent des droits de l’administration des ventes",
               ],
               [
-                "Intégrité",
-                "Les données restaurées sont-elles complètes et cohérentes ?",
-                "Contrôles observés et écarts",
-              ],
-              [
-                "Métier",
-                "Un utilisateur autorisé peut-il reprendre le parcours critique ?",
-                "Cas métier exécuté après restauration",
+                "Total mesuré",
+                "6\u00a0h\u00a040 au lieu des 4\u00a0h acceptées",
+                "2\u00a0h\u00a040 de trop, soit 2\u00a0648\u00a0€ si la même durée était subie en heures ouvrées",
               ],
             ]}
           />
 
+          <p>
+            L’écart ne vient pas de la base, qui revient en quarante minutes,
+            mais des quatre autres objets que personne n’avait listés&nbsp;: il
+            faut les ajouter à ce que la sauvegarde couvre, puis recommencer.
+          </p>
+          <p>
+            L’exercice lui-même ne coûte que la demi-journée qu’il mobilise, sur
+            une copie&nbsp;: aucune commande n’est perdue, personne n’est bloqué.
+            Les 2&nbsp;648&nbsp;€ sont ce que la même durée coûterait le jour
+            d’une panne réelle, entre 9&nbsp;h et 17&nbsp;h.
+          </p>
+          <p>
+            La perte de données se lit à part, et une panne de fin de journée
+            le montre bien. La sauvegarde tourne à 2&nbsp;h&nbsp;; une panne à
+            17&nbsp;h n’interrompt presque rien, la journée est finie, mais elle
+            efface les quinze heures qui la séparent de la sauvegarde,
+            c’est-à-dire toute la saisie du jour. Soit 62&nbsp;commandes à
+            ressaisir, six minutes chacune à l’administration des
+            ventes&nbsp;: 372&nbsp;minutes, donc 6&nbsp;h&nbsp;12 pour une
+            personne et 235,60&nbsp;€ de temps chargé, sans compter les bons
+            signés que personne ne peut reconstituer. La direction avait annoncé
+            une perte acceptable d’une heure&nbsp;; entre une heure et quinze, il
+            ne s’agit plus d’un réglage mais d’un autre contrat d’hébergement.
+          </p>
+
           <InfoBox
             variant="emerald"
-            title="Le repère 3-2-1 ne démontre pas la reprise"
+            title={"3-2-1 est un repère, pas une preuve de reprise"}
           >
             <p>
-              Trois copies sur deux supports, dont une hors ligne, forment le
-              repère 3-2-1 recommandé par l’ANSSI et conseillé par la CNIL. La
-              règle doit être adaptée : elle ne décrit ni les données incluses,
-              ni la protection, ni l’ordre de reprise, ni le résultat d’un
-              exercice.
+              La règle des trois copies, sur deux supports dont une hors ligne,
+              figure dans{" "}
+              <a
+                href="https://messervices.cyber.gouv.fr/documents-guides/anssi_fondamentaux_sauvegarde_systemes_dinformation_v1.1.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                ANSSI-BP-100, version 1.1 du 27 novembre 2025
+              </a>
+              , qui précise que ses recommandations ne sont pas normatives sauf
+              texte contraire et doivent être adaptées. Trois copies d’une
+              sauvegarde incomplète restent incomplètes.
             </p>
           </InfoBox>
 
-          <GuidePremiumMemo title="Réplication et sauvegarde ne jouent pas le même rôle">
+          <GuidePremiumMemo title="Une réplication n’est pas une sauvegarde">
             <p>
-              Une suppression, une corruption ou un chiffrement malveillant peut
-              être répliqué. La réplication peut réduire l’interruption lorsque
-              le métier ne tolère presque aucune perte, mais la sauvegarde
-              isolée, les versions et l’exercice gardent une fonction distincte.
+              Une suppression, une corruption ou un chiffrement malveillant se
+              réplique en quelques secondes. La réplication réduit
+              l’interruption&nbsp;; seule une copie isolée et versionnée ramène
+              un état antérieur.
             </p>
           </GuidePremiumMemo>
-
-          <p>
-            La reprise répond à la perte ou à l’arrêt. Il faut encore savoir
-            assez tôt qu’un événement anormal se produit : c’est le rôle de la
-            chaîne de détection.
-          </p>
         </GuidePremiumSection>
 
         <GuidePremiumSection
           id="detection"
           number="05"
-          label="Journaux et alertes"
-          title="Un journal utile mène d’un événement à une action"
+          label="Mesure 2"
+          title={"Combien de minutes s’écoulent entre l’action et l’alerte\u00a0?"}
         >
           <p>
-            L’
+            Un journal n’est pas une détection. La différence se mesure en
+            minutes.
+          </p>
+          <p>
+            Un mardi à 14&nbsp;h&nbsp;05, le responsable applicatif crée un
+            compte d’administration de test, exporte les 3&nbsp;100&nbsp;fiches
+            clients, puis supprime le compte à 14&nbsp;h&nbsp;12. Il note l’heure
+            de chaque geste et ne prévient que le propriétaire de l’application,
+            qui l’a autorisé par écrit&nbsp;: prévenir l’équipe reviendrait à
+            mesurer l’attention d’un collègue.
+          </p>
+          <p>
+            L’exercice rend trois nombres. L’événement figure-t-il dans un
+            journal, et à quelle heure exactement&nbsp;? Combien de minutes
+            avant qu’une alerte parvienne à une personne nommée&nbsp;? Combien
+            de temps ces traces restent-elles consultables&nbsp;?
+          </p>
+
+          <h3>Les trois réponses tombent mal</h3>
+          <p>
+            L’export figure bien dans le journal applicatif, horodaté
+            12&nbsp;h&nbsp;05&nbsp;: le serveur écrit en temps universel
+            coordonné (UTC) pendant que le journal du serveur web écrit en heure de
+            Paris, deux heures plus loin en été&nbsp;; une conversion ratée fait
+            accuser la mauvaise personne. Aucune alerte n’est partie&nbsp;: la
+            règle existait, elle envoyait un courriel à une boîte générique que
+            personne ne relève. Et les journaux de l’offre d’hébergement
+            souscrite sont conservés sept jours.
+          </p>
+          <p>
+            Ce troisième nombre est le plus coûteux. L’
             <a
-              href="https://messervices.cyber.gouv.fr/guides/recommandations-de-securite-pour-larchitecture-dun-systeme-de-journalisation"
+              href="https://eur-lex.europa.eu/eli/reg/2016/679/art_33/oj/fra"
               target="_blank"
               rel="noreferrer"
             >
-              ANSSI, dans son guide de journalisation version 2.0 du 28 janvier
-              2022
-            </a>
-            , recommande de prévoir la journalisation des applications métier
-            dès les spécifications. Les événements servent à détecter pendant
-            l’activité ou à reconstituer le chemin et l’impact après un
-            incident. Cela suppose des formats exploitables, une protection, une
-            horloge cohérente et une analyse.
-          </p>
-
-          <GuideTable
-            caption="Transformer une trace en capacité de détection"
-            headers={["Maillon", "Question", "STOP fréquent"]}
-            rows={[
-              [
-                "Événement",
-                "Quelle action sensible, erreur ou anomalie doit être visible ?",
-                "Tout collecter sans finalité",
-              ],
-              [
-                "Contenu",
-                "L’auteur, l’instant, la nature et la cible sont-ils identifiables sans copier inutilement les données ?",
-                "Mot de passe, secret ou donnée complète dans le journal",
-              ],
-              [
-                "Protection",
-                "Qui peut lire, modifier ou supprimer la trace ?",
-                "Même compte d’administration sans séparation",
-              ],
-              [
-                "Alerte",
-                "Quelle condition déclenche un signal exploitable ?",
-                "Tableau de bord jamais consulté",
-              ],
-              [
-                "Destinataire",
-                "Qui reçoit, qualifie puis alerte le niveau responsable, y compris en cas d’absence ?",
-                "Boîte générique sans propriétaire",
-              ],
-              [
-                "Exercice",
-                "Un scénario autorisé a-t-il parcouru la chaîne complète ?",
-                "Présumer que l’outil alerte",
-              ],
-            ]}
-          />
-
-          <p>
-            La{" "}
+              article 33 du RGPD
+            </a>{" "}
+            demande de notifier une violation de données personnelles à
+            l’autorité de contrôle dans les meilleurs délais et, si possible,
+            sous 72&nbsp;heures après en avoir pris connaissance&nbsp;; l’article
+            34 impose d’informer les personnes concernées lorsque le risque pour
+            elles est élevé. La{" "}
             <a
               href="https://www.cnil.fr/fr/securite-tracer-les-operations"
               target="_blank"
               rel="noreferrer"
             >
-              fiche CNIL « Tracer les opérations » du 14 mars 2024
+              fiche CNIL du 14 mars 2024
             </a>{" "}
-            demande notamment de ne pas enregistrer les mots de passe ou leurs
-            empreintes et de protéger les traces. Sa recommandation usuelle de
-            six mois à un an concerne les données de journalisation destinées à
-            sécuriser un traitement de données personnelles, avec des
-            adaptations à justifier. Elle ne crée pas une durée universelle pour
-            tous les journaux.
+            recommande en général six mois à un an pour les données de
+            journalisation destinées à sécuriser un traitement de données
+            personnelles, avec des adaptations à justifier. Sept jours est la
+            valeur livrée avec l’offre d’hébergement&nbsp;; personne ne l’a
+            choisie.
+          </p>
+          <p>
+            Le seuil&nbsp;: si aucune personne nommée n’a reçu l’alerte dans les
+            quinze minutes, écrivez «&nbsp;pas de détection&nbsp;». La correction
+            tient en trois réglages&nbsp;: une règle qui écrit dans un canal
+            relevé par une personne nommée, un suppléant qui a les mêmes accès,
+            une horloge synchronisée. L’
+            <a
+              href="https://messervices.cyber.gouv.fr/guides/recommandations-de-securite-pour-larchitecture-dun-systeme-de-journalisation"
+              target="_blank"
+              rel="noreferrer"
+            >
+              ANSSI recommande d’ailleurs, dans son guide de journalisation
+              version 2.0 du 28 janvier 2022
+            </a>
+            , de prévoir la journalisation dès les spécifications&nbsp;: ajoutée
+            après coup, elle enregistre ce que le code sait déjà dire, quand
+            l’enquête demandera autre chose.
           </p>
 
           <InfoBox
             variant="amber"
-            title="Journaliser plus peut aussi créer un risque"
+            title={"Journaliser davantage crée aussi un risque"}
           >
             <p>
-              Les traces peuvent contenir des données personnelles, des
-              identifiants, des erreurs détaillées ou des secrets. Minimisez,
-              contrôlez les accès, fixez une durée par finalité et vérifiez la
-              suppression. La détection ne justifie pas une collecte sans
-              limite.
+              Les traces contiennent vite des identifiants, des messages
+              d’erreur détaillés, des données personnelles ou des secrets. La
+              CNIL demande de ne pas enregistrer les mots de passe ni leurs
+              empreintes. Journalisez ce qu’une enquête utiliserait, bornez qui
+              peut lire, fixez une durée.
             </p>
           </InfoBox>
-
-          <p>
-            Une alerte n’a de valeur que si quelqu’un peut la qualifier et agir.
-            La section suivante attribue cette décision, son remplacement en cas
-            d’absence et les autres responsabilités de reprise.
-          </p>
         </GuidePremiumSection>
 
         <GuidePremiumSection
           id="responsabilites"
           number="06"
-          label="Gouvernance opérationnelle"
-          title="Les responsabilités doivent tenir même en cas d’absence"
+          label="Mesure 3"
+          title="Le compte témoin lit ce que l’écran lui cache"
         >
           <p>
-            « Le prestataire gère » ne suffit pas. Un contrat peut confier
-            l’hébergement, les alertes ou la maintenance ; l’organisation doit
-            encore fixer les conséquences acceptables, autoriser les actions,
-            qualifier les obligations et vérifier les preuves.
+            L’interface montre à chacun ce qu’il a le droit de voir. Le bouton
+            disparaît de l’écran&nbsp;; la requête, elle, part quand même et le
+            serveur y répond. Posez-lui donc la question directement.
           </p>
+
+          <h3>Le protocole du compte témoin</h3>
+          <ol>
+            <li>
+              <strong>Ouvrez deux sessions</strong> sur l’environnement restauré
+              à la mesure&nbsp;1&nbsp;: un compte à droits complets, ici
+              l’administration des ventes, et le moins privilégié, ici un
+              chauffeur-livreur.
+            </li>
+            <li>
+              <strong>Dans la session privilégiée, ouvrez dix pages
+              sensibles&nbsp;:</strong>{" "}
+              une fiche client, un tarif négocié, la liste des commandes du
+              jour, un bon de livraison signé, un export de la base clients, une
+              fiche article avec son prix d’achat, l’historique de commandes
+              d’un client, la tournée du lendemain, la liste des utilisateurs et
+              le journal d’activité.
+            </li>
+            <li>
+              <strong>Récupérez chaque requête.</strong> Outils de développement
+              du navigateur, onglet Réseau, clic droit sur la requête,
+              «&nbsp;Copier comme cURL&nbsp;».
+            </li>
+            <li>
+              <strong>Remplacez le jeton par celui du chauffeur-livreur</strong>{" "}
+              et rejouez les dix requêtes telles quelles, sans repasser par
+              l’interface.
+            </li>
+            <li>
+              <strong>Lisez les dix codes de réponse.</strong> 403 ou 404, le
+              contrôle vit côté serveur. 200, il n’existait que dans l’écran.
+            </li>
+          </ol>
 
           <p>
-            Une même personne peut cumuler plusieurs rôles. Chacun doit
-            néanmoins être accepté, compris et confié à un remplaçant en cas
-            d’absence. Selon le contexte, associez le délégué à la protection
-            des données (DPD, aussi appelé DPO), le responsable de la sécurité
-            des systèmes d’information (RSSI), un juriste ou un autre
-            spécialiste.
+            Sur le cas construit, trois réponses sur dix reviennent en 200. Un
+            chauffeur-livreur lit la fiche de n’importe lequel des
+            3&nbsp;100&nbsp;clients en changeant un nombre dans l’adresse, prix
+            négociés compris. L’
+            <a
+              href="https://owasp.org/www-project-api-security/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              OWASP place ce défaut en tête de son Top&nbsp;10 des risques
+              d’interface de programmation
+            </a>{" "}
+            sous le nom de contrôle d’accès rompu au niveau de l’objet.
           </p>
-
-          <GuideTable
-            caption="Responsabilités à attribuer avant la mise en service"
-            headers={["Rôle", "Décision ou action", "Preuve"]}
-            rows={[
-              [
-                "Propriétaire métier",
-                "Fixe les conséquences, le mode dégradé et soumet la décision",
-                "Hypothèses et décision datées",
-              ],
-              [
-                "Responsable applicatif",
-                "Tient les dépendances, changements, contacts et documents",
-                "Registre à jour et accès vérifié",
-              ],
-              [
-                "Responsable technique",
-                "Met en œuvre, teste, corrige et explique les limites",
-                "Résultats, écarts et plan de traitement",
-              ],
-              [
-                "Responsable des alertes",
-                "Reçoit, qualifie puis alerte le niveau responsable",
-                "Alerte testée et suppléance",
-              ],
-              [
-                "Responsable de restauration",
-                "Déclenche et dirige l’exercice",
-                "Compte rendu et ordre de reprise",
-              ],
-              [
-                "DPD/DPO, RSSI, juriste ou spécialiste",
-                "Qualifie les enjeux selon données, exposition, secteur et criticité",
-                "Avis contextualisé, sans validation fictive",
-              ],
-            ]}
-          />
-
-          <h3>
-            L’absence d’une personne clé met déjà l’organisation à l’épreuve
-          </h3>
           <p>
-            Un exercice sur table — une simulation discutée sans provoquer
-            d’incident réel — peut rester court : une alerte arrive, la personne
-            principale est absente, un compte doit être suspendu, une sauvegarde
-            doit rester isolée et un décideur doit accepter le mode dégradé.
-            Observez les appels, les accès manquants, les ambiguïtés et les
-            décisions. Conservez les limites ; ne transformez pas l’exercice en
-            attestation.
+            Le seuil est binaire&nbsp;: une seule réponse 200 bloque la mise en
+            service, et les sept refus obtenus à côté ne compensent rien.
+            Vérifier côté serveur, sur chacune des trois routes, que l’objet
+            demandé appartient bien au client connecté a été chiffré à deux jours
+            et demi, soit 1&nbsp;250&nbsp;€ à l’hypothèse de 500&nbsp;€ la
+            journée.
+          </p>
+          <p>
+            Le prix de l’inaction se compte autrement. Sur les
+            3&nbsp;100&nbsp;clients, 480 sont des praticiens libéraux, donc des
+            personnes physiques&nbsp;: une lecture non autorisée avérée est une
+            violation de données personnelles et, si elle est susceptible
+            d’engendrer un risque pour ces personnes, elle se notifie à
+            l’autorité de contrôle sous 72&nbsp;heures après en avoir pris
+            connaissance. Cette qualification relève de la{" "}
+            <Link href="/services/securite-rgpd">
+              sécurité et de la protection des données
+            </Link>
+            , en coordination avec vos conseils juridiques.
           </p>
 
-          <FormulaBox>
-            {[
-              "Événement fictif autorisé :",
-              "Personne alertée :",
-              "Suppléant :",
-              "Première décision :",
-              "Action d’isolement :",
-              "Responsable de la restauration :",
-              "Éléments utiles à conserver :",
-              "Information métier / données / juridique :",
-              "Écart observé et action :",
-            ].join("\n")}
-          </FormulaBox>
+          <h3>Un droit sans propriétaire, une alerte sans destinataire</h3>
+          <p>
+            Les mêmes dix requêtes posent une question que l’informatique ne
+            tranche pas&nbsp;: qui décide que le chauffeur-livreur ne doit pas
+            voir les prix&nbsp;? La directrice administrative et financière
+            tranche&nbsp;; le développeur applique.
+          </p>
+          <p>
+            Il faut cinq rôles, qu’une même personne peut cumuler&nbsp;: qui
+            signe la mise en service, qui qualifie les
+            alertes, qui déclenche une restauration et détient les accès pour le
+            faire, qui suit les corrections, qui prévient le délégué à la
+            protection des données (DPD, aussi appelé DPO) et, s’il le faut, un
+            juriste. Chacun a un suppléant, et le suppléant a les accès.
+          </p>
+          <p>
+            L’exercice sur table&nbsp;— une simulation discutée, sans incident
+            réel&nbsp;— dure une heure et mobilise cinq personnes, soit
+            190&nbsp;€ de temps chargé au tarif du cas. Une alerte arrive un
+            vendredi à 18&nbsp;h, la personne principale est en congés&nbsp;: qui
+            décide de couper, qui détient le mot de passe
+            d’administration&nbsp;? Chaque question sans réponse est un accès à
+            confier à un suppléant avant lundi.
+          </p>
+
+          <GuidePremiumMemo title="Une mesure provisoire porte un nom et une date de fin">
+            <p>
+              Écrivez ce qu’elle empêche, qui la surveille, quand elle expire et
+              ce qui déclenche son arrêt. Couper l’accès des chauffeurs-livreurs
+              aux tarifs pendant deux semaines est une mesure&nbsp;;
+              «&nbsp;nous ferons attention&nbsp;» n’en est pas une.
+            </p>
+          </GuidePremiumMemo>
         </GuidePremiumSection>
 
         <GuidePremiumSection
           id="outil"
           number="07"
-          label="Outil local"
-          title="L’outil fait remonter le premier point à traiter"
+          label="Mesure 4"
+          title={"Quelle dépendance faut-il corriger cette semaine\u00a0?"}
         >
           <p>
-            L’outil ci-dessous relit huit contrôles en traitant d’abord le plus
-            urgent. Il garde les inconnues, donne la priorité aux incidents et
-            aux blocages, puis demande les écrits, les responsables, la
-            restauration, la détection et les autres exercices. Il ne mesure ni
-            probabilité, ni impact, ni conformité.
+            La quatrième mesure se relance chaque semaine, et produit trop
+            d’informations. Le tri compte davantage que l’analyse.
+          </p>
+          <p>
+            Sur le dépôt livré, lancez la commande de votre
+            technologie&nbsp;: <code>npm audit</code> pour du JavaScript,{" "}
+            <code>pip-audit</code> pour du Python, <code>osv-scanner</code> pour
+            un dépôt mixte. Chacune sort les paquets vulnérables, leur gravité et
+            la version qui corrige. Sur le cas construit&nbsp;:
+            1&nbsp;043&nbsp;paquets installés pour 68&nbsp;dépendances directes,
+            et 31&nbsp;alertes&nbsp;— une critique, cinq hautes, quatorze
+            moyennes, onze basses.
+          </p>
+          <p>
+            Le tri commence par ce qu’on écarte. Les
+            quatorze moyennes et les onze basses rejoignent le lot du mois, où
+            elles partent en une montée de version groupée. Restent les six
+            alertes critiques ou hautes, que trois questions ramènent à une.
+          </p>
+
+          <GuideTable
+            caption={"Ramener 6\u00a0alertes critiques ou hautes à celle qu’on corrige cette semaine"}
+            headers={["La question posée", "Ce qu’elle écarte", "Ce qui reste"]}
+            rows={[
+              [
+                "Le code vulnérable part-il en production\u00a0?",
+                "2 des 6 ne servent qu’à construire le projet\u00a0; l’option --omit=dev de npm audit les écarte d’office",
+                "4",
+              ],
+              [
+                "L’application appelle-t-elle la fonction concernée\u00a0?",
+                "1 alerte porte sur une fonction que le code n’appelle jamais",
+                "3",
+              ],
+              [
+                "La faille figure-t-elle au catalogue des vulnérabilités dont l’exploitation est constatée\u00a0?",
+                "2 des 3 restantes n’y figurent pas et rejoignent le lot du mois",
+                "1",
+              ],
+            ]}
+          />
+
+          <p>
+            Reste une alerte sur trente et une qui justifie de déranger le
+            développeur cette semaine. Le nombre qui décrit vraiment votre
+            maintenance est ailleurs&nbsp;: le délai entre la publication du
+            correctif et son installation chez vous. Sur le cas construit, la
+            version corrigée est publiée depuis le 14&nbsp;janvier&nbsp;; au
+            26&nbsp;août 2026, cela fait 224&nbsp;jours. Inscrivez ce délai au{" "}
+            <Link href="/services/maintenance-evolution">
+              contrat de maintenance
+            </Link>
+            , avec celui que vous acceptez.
+          </p>
+          <p>
+            Sous le mot «&nbsp;score&nbsp;», deux échelles circulent. Le{" "}
+            <a
+              href="https://www.first.org/cvss/v4-0/specification-document"
+              target="_blank"
+              rel="noreferrer"
+            >
+              CVSS, dans sa version 4.0
+            </a>
+            , mesure la gravité potentielle sur dix&nbsp;: 9,0 à 10,0 critique,
+            7,0 à 8,9 élevée, 4,0 à 6,9 moyenne, 0,1 à 3,9 faible. Le score EPSS,
+            publié par le même organisme, estime la probabilité qu’une faille
+            soit exploitée dans les trente jours à venir. Une faille notée 9,8
+            que personne n’exploite passe après une 6,5 activement utilisée, et
+            le{" "}
+            <a
+              href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+              target="_blank"
+              rel="noreferrer"
+            >
+              catalogue public des vulnérabilités exploitées
+            </a>{" "}
+            tranche gratuitement.
+          </p>
+
+          <h3>Les quatre sujets que rien ne mesure</h3>
+          <p>
+            Restent les conséquences métier, la conduite d’un incident, la
+            maintenance après la mise en service et les responsabilités. L’outil
+            ci-dessous les remonte dans l’ordre du plus urgent, garde les
+            inconnues visibles et ne calcule aucun score.
           </p>
 
           <SecurityReadinessTool />
 
           <p>
-            Une fois les exigences minimales documentées ou exercées, le
-            contexte reste décisionnel. Un impact matériel ou critique, des
-            données personnelles ou une exposition Internet conduisent à une
-            revue qui tient compte du contexte. Elle mobilise, selon les raisons
-            signalées, les compétences en métier et continuité, en protection
-            des données ou en sécurité applicative et exploitation. Ces
-            compétences peuvent être internes ; aucun intervenant extérieur
-            n’est imposé par défaut. Seul le contexte déclaré limité, sans
-            données personnelles et sans exposition Internet, aboutit à la revue
-            métier limitée.
-          </p>
-
-          <p>
-            Utilisez-le une première fois avec le propriétaire métier, puis avec
-            le responsable technique. Un désaccord est une information utile :
-            recherchez la preuve au lieu de choisir la réponse la plus
-            rassurante. Quand l’outil affiche « dossier présentable », il
-            indique seulement qu’une revue humaine peut commencer.
+            Remplissez-le une fois avec la directrice administrative et
+            financière, une fois avec le développeur&nbsp;: un désaccord entre
+            les deux vaut mieux qu’un accord de façade.
           </p>
         </GuidePremiumSection>
 
         <GuidePremiumSection
           id="decision"
           number="08"
-          label="Arbitrage"
-          title="Une décision écrite garde ses limites visibles"
+          label="Décider"
+          title={"Que décider quand une mesure dit non\u00a0?"}
         >
           <p>
-            La décision dépend des conséquences, du résultat des contrôles, des
-            écarts et des personnes autorisées. Aucun seuil de réussite ne se
-            déduit de cette revue. Écrivez la décision, les limites, les mesures
-            temporaires, les risques qui restent, le propriétaire et la
-            prochaine échéance.
+            Une mesure qui échoue n’interdit pas la mise en service. Elle déplace
+            la décision vers quelqu’un qui a le droit de la prendre, et elle lui
+            donne un montant à comparer.
           </p>
 
           <GuideTable
-            caption="Décisions possibles après la revue"
-            headers={["Décision", "Quand l’envisager", "Condition honnête"]}
+            caption="Cinq suites possibles, et ce que chacune vous engage à écrire"
+            headers={[
+              "La décision",
+              "Quand elle se défend",
+              "Ce qu’elle oblige à écrire",
+            ]}
             rows={[
               [
-                "Soumettre à mise en service",
-                "Contexte qualifié, contrôles essentiels exercés, écarts acceptés par les responsables",
-                "Ne pas écrire « sécurisé » ; conserver les risques qui restent et les avis",
+                "Mettre en service",
+                "Les quatre mesures passent, et les écarts restants sont chiffrés puis acceptés par la direction",
+                "Les risques conservés, leur montant, la date de la prochaine série",
               ],
               [
-                "Pilote limité",
-                "Apprentissage encore utile avec données fictives, accès bornés et sortie simple",
-                "Empêcher que le pilote devienne la production par inertie",
+                "Corriger, puis remesurer",
+                "La correction se paie une fois, l’écart se paie à chaque incident\u00a0: 1\u00a0250\u00a0€ pour les trois routes qui répondent 200",
+                "Qui corrige, sous quel délai, et la date de la nouvelle exécution",
               ],
               [
-                "Simplifier",
-                "L’organisation ne peut pas porter les responsabilités du périmètre prévu",
-                "Réduire données, exposition, fonctions ou dépendances",
+                "Réduire ce qu’on ouvre",
+                "L’organisation ne tient pas les rôles\u00a0: pas de suppléant, pas de journaux conservés",
+                "Ce que l’application ne contiendra pas encore\u00a0: données personnelles, accès depuis Internet, montants",
+              ],
+              [
+                "Pilote sur données fictives",
+                "L’apprentissage reste utile et l’activité ne dépend pas de l’application",
+                "La date de fin du pilote, sinon il devient la production par inertie",
               ],
               [
                 "Reporter",
-                "Restauration, détection, responsable ou conséquence critique inconnus",
-                "Nommer l’action qui permettra une nouvelle revue",
-              ],
-              [
-                "Faire intervenir",
-                "Incident, donnée sensible, forte exposition, contrainte sectorielle ou vulnérabilité critique",
-                "Mobiliser la compétence adaptée en données, sécurité, droit ou réponse à incident",
-              ],
-              [
-                "Choisir un outil existant",
-                "Une solution standard couvre le besoin et réduit les responsabilités spécifiques",
-                "Vérifier tout de même données, accès, sortie et preuves du fournisseur",
+                "Une mesure n’a pas pu être exécutée du tout\u00a0: pas d’environnement séparé, pas d’accès aux journaux",
+                "L’action précise qui rendra la mesure possible, et qui la mène",
               ],
             ]}
           />
 
-          <GuidePremiumMemo title="Une mesure temporaire a un propriétaire et une fin">
-            <p>
-              Si une limitation compense provisoirement un écart, écrivez ce
-              qu’elle empêche, qui la surveille, quand elle expire et ce qui
-              déclenche l’arrêt. « Nous ferons attention » n’est pas une mesure
-              vérifiable.
-            </p>
-          </GuidePremiumMemo>
-
           <p>
-            Pour faire examiner l’architecture, les preuves et les inconnues,
-            consultez le{" "}
-            <Link href="/services/audit-technique">
-              service d’audit technique
-            </Link>
-            . Lorsque la question porte sur les données personnelles plutôt que
-            sur l’architecture, la page{" "}
-            <Link href="/services/securite-rgpd">sécurité et RGPD</Link> décrit
-            le périmètre technique que nous prenons en charge, en coordination
-            avec les responsables juridiques du client — la qualification
-            juridique, elle, ne relève pas de ce guide. Si vous avez déjà réuni
-            le contexte et souhaitez le transmettre
-            sans secret ni détail d’incident, vous pouvez ensuite{" "}
-            <TrackedGuideCtaLink
-              href="/demarrer-un-projet"
-              placement="article_end_inline"
-            >
-              décrire le projet
-            </TrackedGuideCtaLink>
-            .
+            Sur les cinq issues, trois mettent quelque chose en service, et
+            c’est voulu. Reporter est la plus rare&nbsp;: un écart mesuré a une
+            correction et un prix, quand une mesure jamais exécutée n’a ni l’un
+            ni l’autre. Borner la première
+            version coûte d’ailleurs moins cher que repousser la date&nbsp;— le
+            guide{" "}
+            <Link href="/guides/mvp-saas-quoi-inclure">
+              quoi inclure dans un MVP
+            </Link>{" "}
+            sert à cela.
+          </p>
+
+          <h3>Et dans six mois&nbsp;?</h3>
+          <p>
+            Ces quatre nombres périment, chacun à son rythme. Vérifiez au
+            passage ce que vous récupérez si vous changez d’équipe&nbsp;: une
+            sauvegarde exportable hors de la plateforme, les journaux, la liste
+            des comptes, les secrets et le code source. Ces clauses s’écrivent
+            avant de signer et se testent une fois, en récupérant réellement une
+            copie. Un droit de récupération jamais exercé reste une hypothèse.
+          </p>
+          <p>
+            Aucune de ces quatre mesures ne demande de prestation
+            extérieure&nbsp;: un environnement séparé, une règle d’alerte, un
+            compte de test et une ligne de commande suffisent. Si la restauration
+            passe sous votre DMIA, si l’alerte arrive à une personne nommée en
+            moins de quinze minutes, si les dix rejeux sont refusés et si la
+            seule alerte retenue au tri est corrigée, vous n’avez besoin d’aucun
+            audit. Nos repères publics, relevés sur notre page{" "}
+            <Link href="/tarifs">tarifs</Link> le 28&nbsp;août 2026, commencent à
+            2&nbsp;000&nbsp;€ HT pour un audit flash, 5&nbsp;000&nbsp;€ HT pour
+            un cadrage sécurité et RGPD et 8&nbsp;000&nbsp;€ HT pour un audit
+            technique en version Express, 18&nbsp;000&nbsp;€ HT en version
+            Standard. Ce sont des repères indicatifs&nbsp;; le devis signé fixe
+            le prix ferme.
           </p>
         </GuidePremiumSection>
 
         <GuidePremiumSection
           id="cas-fictif"
           number="09"
-          label="Mise en situation"
-          title="Les vraies données attendront la restauration et l’alerte"
+          label="Ce qui rate"
+          title="Ce qui rate sur le cas construit, et ce que ça coûte"
         >
-          <GuidePremiumCase
-            initial="FI"
-            eyebrow="Scénario entièrement fictif"
-            title="Application de planification pour une équipe de douze personnes"
-          >
-            <p>
-              Aucun client, système, incident ou résultat réel n’est représenté.
-              L’application doit importer les coordonnées des clients, planifier
-              les interventions et conserver les comptes rendus terrain.
-            </p>
-          </GuidePremiumCase>
-
           <p>
-            L’hébergement annonce des sauvegardes quotidiennes, sans exercice de
-            restauration. Les modifications administrateur produisent des
-            journaux, mais aucune alerte n’est adressée et personne n’est
-            responsable de leur lecture. En cas d’incident, la consigne est
-            seulement « appeler le développeur », sans suppléant ni accès
-            vérifié.
+            Ces trois incidents reprennent le même cas construit et des
+            mécanismes documentés par la CNIL, l’ANSSI et l’OWASP&nbsp;— ce ne
+            sont pas des dossiers clients. Ils suivent les huit hypothèses de la
+            section&nbsp;02 et comptent l’arrêt en heures ouvrées.
           </p>
 
-          <GuideTable
-            caption="Décision du cas fictif sans score"
-            headers={["Point", "État", "Action avant vraies données"]}
-            rows={[
-              [
-                "Conséquences",
-                "Interruption et modification de planning matérielles",
-                "Fixer comment continuer sans l’application et les objectifs métier",
-              ],
-              [
-                "Restauration",
-                "Affirmée, non exercée",
-                "Restaurer données, configuration et accès dans un environnement isolé",
-              ],
-              [
-                "Détection",
-                "Traces présentes, chaîne d’alerte absente",
-                "Déclencher une modification autorisée et suivre l’alerte",
-              ],
-              [
-                "Responsabilité",
-                "Développeur cité, aucun propriétaire ni suppléant",
-                "Attribuer la décision, l’alerte, la restauration et la transmission au niveau responsable",
-              ],
-              [
-                "Décision",
-                "Preuves critiques manquantes",
-                "Reporter la mise en service avec de vraies données",
-              ],
-            ]}
-          />
-
+          <h3>
+            La base revient, les bons de livraison non&nbsp;: 2&nbsp;648&nbsp;€
+            au-dessus du seuil
+          </h3>
           <p>
-            Un pilote peut continuer avec des données fictives, des accès
-            limités et une sortie simple si cet environnement ne devient pas
-            implicitement la production. Après la restauration, l’alerte et
-            l’exercice de responsabilité, les résultats reviennent devant une
-            personne autorisée. Ils ne produisent toujours pas une déclaration
-            automatique de sécurité.
+            Un mardi à 9&nbsp;h&nbsp;20, l’hébergement perd le disque de la base.
+            La restauration démarre à 9&nbsp;h&nbsp;40, la base revient en
+            quarante minutes. Les 9&nbsp;300&nbsp;bons de livraison signés, eux,
+            vivent dans un stockage que la sauvegarde ne couvrait pas&nbsp;:
+            ticket, deux heures d’attente, puis remontée. Service rétabli à
+            16&nbsp;h, six heures quarante après l’arrêt contre quatre acceptées,
+            et entièrement dans la journée de travail&nbsp;: à 993&nbsp;€ l’heure
+            ouvrée, 6&nbsp;620&nbsp;€, dont 2&nbsp;648&nbsp;€ au-dessus du seuil.
+            Personne n’a été attaqué&nbsp;: la sauvegarde était incomplète, et
+            nul ne l’avait vérifié.
+          </p>
+
+          <h3>Un export de 3&nbsp;100&nbsp;fiches, vu 41&nbsp;jours plus tard</h3>
+          <p>
+            Un compte ouvert pour un développeur extérieur n’est jamais révoqué.
+            Six semaines plus tard, il exporte les 3&nbsp;100&nbsp;fiches
+            clients. Aucune alerte ne part&nbsp;: la règle envoyait un courriel à
+            une boîte générique. Le geste est découvert 41&nbsp;jours après, en
+            relisant des journaux conservés sept jours, où il ne reste rien. Il
+            faut alors décider,
+            sous 72&nbsp;heures, s’il y a lieu de notifier un incident dont on ne
+            sait décrire ni l’étendue, ni lesquels des 480&nbsp;praticiens
+            libéraux sont concernés. La
+            difficulté n’est pas l’amende&nbsp;: c’est de devoir écrire
+            «&nbsp;nous ne savons pas&nbsp;».
+          </p>
+
+          <h3>Trois réponses 200 sur dix&nbsp;: 1&nbsp;250&nbsp;€ de correction</h3>
+          <p>
+            Un commercial change d’entreprise et emporte une capture des tarifs
+            négociés de 3&nbsp;100&nbsp;clients. Il lui a suffi de modifier un
+            nombre dans l’adresse depuis son téléphone&nbsp;: l’application
+            répondait 200. Corriger les trois routes vaut 1&nbsp;250&nbsp;€,
+            exactement ce que cela aurait coûté avant la mise en service.
           </p>
 
           <p>
-            Ces contrôles ne vivent pas isolément. Ils commencent par les{" "}
-            <Link href="/guides/securite-application-metier">
-              droits d’accès
-            </Link>
-            , se rédigent comme exigences dans le{" "}
-            <Link href="/guides/cahier-des-charges-saas">
-              cahier des charges
-            </Link>{" "}
-            et se prouvent par le{" "}
-            <Link href="/guides/plan-recette-application-metier">
-              plan de recette
-            </Link>
-            , restauration et journalisation comprises. Un prestataire se juge
-            aussi là-dessus, comme le détaille{" "}
-            <Link href="/guides/cahier-des-charges-saas">
-              le choix d’un prestataire sur preuves
-            </Link>
-            .
-          </p>
-
-          <p>
-            Deux situations imposent une vigilance supplémentaire. Reprendre un{" "}
-            <Link href="/services/outils-internes-sur-mesure">
-              logiciel métier existant
-            </Link>{" "}
-            oblige à inventorier des accès dont plus personne ne connaît le
-            périmètre, et une{" "}
-            <Link href="/services/outils-internes-sur-mesure">
-              migration sans interruption de service
-            </Link>{" "}
-            multiplie temporairement les copies de données. Sur une plateforme
-            partagée, enfin, les guides{" "}
+            Si l’application repose sur une plateforme du marché plutôt que sur
+            du code à vous, le guide{" "}
             <Link href="/guides/power-apps-ou-application-sur-mesure">
-              Airtable ou Notion face à une application métier
+              Power Apps ou application sur mesure
             </Link>{" "}
-            et{" "}
-            <Link href="/guides/power-apps-ou-application-sur-mesure">
-              Power Apps face à une application sur mesure
-            </Link>{" "}
-            précisent ce que le plan souscrit couvre réellement.
+            montre ce que l’abonnement couvre. Vous pouvez aussi{" "}
+            <TrackedGuideCtaLink
+              href="/demarrer-un-projet"
+              placement="article_end_inline"
+            >
+              décrire le projet
+            </TrackedGuideCtaLink>{" "}
+            en indiquant simplement lesquelles des quatre mesures n’ont pas pu
+            être exécutées.
           </p>
 
-          <InfoBox variant="emerald" title="Terminez par une action datée">
+          <InfoBox variant="emerald" title="Terminez par une date, pas par un badge">
             <p>
-              Inscrivez l’action qui manque, la personne qui la mène et la date
-              à laquelle le point sera réexaminé. Si la seule sortie est un
-              badge ou un score, la décision n’est pas assez documentée.
+              Écrivez l’action qui manque, la personne qui la mène et le jour où
+              le point sera repris. Si la sortie de cette revue est un badge ou
+              le mot «&nbsp;conforme&nbsp;», rien n’a été documenté.
             </p>
           </InfoBox>
+
+          <p className="text-sm">
+            <strong>Transparence.</strong> Hagnéré Code vend des audits
+            techniques et un accompagnement sécurité et RGPD, et perçoit des
+            honoraires si vous nous les confiez. Les quatre mesures se font sans
+            nous. Les huit hypothèses de coût et de durée listées en
+            section&nbsp;02 sont annoncées comme telles&nbsp;: aucune n’a été
+            relevée chez un client. Nos prix publics ont été
+            relevés le 28&nbsp;août 2026 et sont à revérifier tous les douze
+            mois. Aucune de ces mesures ne rend une application sûre, et seul un
+            devis signé engage.
+          </p>
         </GuidePremiumSection>
       </GuidePremiumLayout>
     </GuidesShell>
