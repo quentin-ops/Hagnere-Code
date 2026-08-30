@@ -105,7 +105,16 @@ describe("search visibility diagnostic", () => {
     const impressionsRule = SEARCH_VISIBILITY_RULES.find(
       (rule) => rule.id === "impressions",
     );
-    expect(impressionsRule?.action).toContain("adresse canonique Google");
+    // « adresse canonique Google » n'est le nom d'aucun champ de la Search
+    // Console. Le champ réel est « URL canonique sélectionnée par Google »
+    // (relevé le 30/08/2026 sur
+    // support.google.com/webmasters/answer/9012289?hl=fr : « consultez le champ
+    // Indexation des pages > URL canonique sélectionnée par Google »). Le test
+    // vérifie la même chose qu'avant — que la règle des impressions renvoie
+    // bien à la canonique retenue par Google — mais sous le libellé exact.
+    expect(impressionsRule?.action).toContain(
+      "URL canonique sélectionnée par Google",
+    );
     expect(impressionsRule?.action).toContain(
       "Ajoutez la recherche exacte en dernier",
     );

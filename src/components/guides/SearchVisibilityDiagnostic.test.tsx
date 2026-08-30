@@ -75,8 +75,15 @@ describe("SearchVisibilityDiagnostic", () => {
     expect(container.textContent).toContain("Le constat manque encore");
     expect(container.textContent).not.toContain("demandes attribuables");
     expect(container.textContent).toContain("vue Index Google");
+    // Ce test verrouillait « l'adresse canonique choisie par Google », une
+    // formule qui n'existe sur aucun écran : le champ de l'inspection d'URL
+    // s'appelle « URL canonique sélectionnée par Google » (relevé le
+    // 30/08/2026 sur support.google.com/webmasters/answer/9012289?hl=fr). Le
+    // guide qui embarque cet outil interdit d'ailleurs l'ancienne formule dans
+    // son corps mesuré ; l'outil y échappait faute d'être couvert. Le test est
+    // corrigé, pas affaibli : il vérifie toujours la même phrase.
     expect(container.textContent).toContain(
-      "filtrez l’adresse canonique choisie par Google",
+      "filtrez l’URL canonique sélectionnée par Google",
     );
     expect(container.textContent).toContain(
       "Ajoutez la recherche exacte en dernier",

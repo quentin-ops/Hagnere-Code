@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000" role="img" aria-labelledby="title desc">
-  <title id="title">Chaîne de preuves de sécurité</title>
-  <desc id="desc">Composition carrée montrant l’application métier au centre, les quatre capacités prévenir, détecter, reprendre et répondre, et une branche STOP.</desc>
+  <title id="title">Les quatre mesures avant la mise en service</title>
+  <desc id="desc">Schéma pédagogique présentant les quatre mesures à exécuter avant la mise en service — restauration, alerte, compte témoin et dépendances — avec le nombre que chacune rend et le seuil qui la tranche.</desc>
   <defs>
     <linearGradient id="bg" x1="60" y1="30" x2="940" y2="970" gradientUnits="userSpaceOnUse">
       <stop stop-color="#07162F"/>
@@ -15,8 +15,8 @@
   <rect width="1000" height="1000" rx="44" fill="url(#bg)"/>
   <circle cx="500" cy="513" r="430" fill="url(#halo)"/>
   <text x="64" y="78" fill="#67E8F9" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="3">AVANT LA MISE EN SERVICE</text>
-  <text x="64" y="125" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Une chaîne de preuves</text>
-  <text x="64" y="160" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="19">Pas de score · pas de promesse absolue</text>
+  <text x="64" y="125" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Quatre mesures</text>
+  <text x="64" y="160" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="19">Un nombre, un seuil, un écart chiffré</text>
 
   <path d="M350 354L416 424" stroke="#38BDF8" stroke-width="4" stroke-linecap="round"/>
   <path d="M650 354L584 424" stroke="#2DD4BF" stroke-width="4" stroke-linecap="round"/>
@@ -26,42 +26,42 @@
   <rect x="52" y="234" width="298" height="168" rx="25" fill="#0E2549" stroke="#38BDF8" stroke-opacity=".74"/>
   <circle cx="98" cy="279" r="19" fill="#38BDF8" fill-opacity=".16" stroke="#38BDF8"/>
   <path d="M88 279L96 287L110 269" fill="none" stroke="#7DD3FC" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="132" y="277" fill="#7DD3FC" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="2">PRÉVENIR</text>
-  <text x="80" y="330" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Exigence + test</text>
-  <text x="80" y="364" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="16">Accès · secrets</text>
+  <text x="132" y="277" fill="#7DD3FC" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="2">MESURE 1</text>
+  <text x="80" y="330" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Restauration</text>
+  <text x="80" y="364" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="16">Durée · seuil DMIA</text>
 
   <rect x="650" y="234" width="298" height="168" rx="25" fill="#0A3038" stroke="#2DD4BF" stroke-opacity=".74"/>
   <circle cx="696" cy="279" r="19" fill="#2DD4BF" fill-opacity=".16" stroke="#2DD4BF"/>
   <path d="M685 283C690 272 702 272 707 283C702 294 690 294 685 283Z" fill="none" stroke="#5EEAD4" stroke-width="3"/>
   <circle cx="696" cy="283" r="3.5" fill="#5EEAD4"/>
-  <text x="730" y="277" fill="#5EEAD4" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="2">DÉTECTER</text>
-  <text x="678" y="330" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Événement → alerte</text>
-  <text x="678" y="364" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="16">Trace · destinataire</text>
+  <text x="730" y="277" fill="#5EEAD4" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="2">MESURE 2</text>
+  <text x="678" y="330" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Alerte</text>
+  <text x="678" y="364" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="16">Minutes jusqu’à une personne</text>
 
   <rect x="52" y="650" width="298" height="168" rx="25" fill="#221B47" stroke="#A78BFA" stroke-opacity=".74"/>
   <circle cx="98" cy="695" r="19" fill="#A78BFA" fill-opacity=".16" stroke="#A78BFA"/>
   <path d="M108 686A13 13 0 1 0 110 701M108 686V697H97" fill="none" stroke="#C4B5FD" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="132" y="693" fill="#C4B5FD" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="2">REPRENDRE</text>
-  <text x="80" y="746" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Restauration exercée</text>
-  <text x="80" y="780" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="16">Ordre · intégrité</text>
+  <text x="132" y="693" fill="#C4B5FD" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="2">MESURE 3</text>
+  <text x="80" y="746" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Compte témoin</text>
+  <text x="80" y="780" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="16">Dix codes · aucun 200</text>
 
   <rect x="650" y="650" width="298" height="168" rx="25" fill="#392A10" stroke="#FBBF24" stroke-opacity=".74"/>
   <circle cx="696" cy="695" r="19" fill="#FBBF24" fill-opacity=".16" stroke="#FBBF24"/>
   <path d="M687 695L694 702L707 686" fill="none" stroke="#FDE68A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="730" y="693" fill="#FDE68A" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="2">RÉPONDRE</text>
-  <text x="678" y="746" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Responsable nommé</text>
-  <text x="678" y="780" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="16">Isoler · informer</text>
+  <text x="730" y="693" fill="#FDE68A" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="2">MESURE 4</text>
+  <text x="678" y="746" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Dépendances</text>
+  <text x="678" y="780" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="16">Jours depuis le correctif</text>
 
   <rect x="376" y="375" width="248" height="288" rx="54" fill="#F8FAFC" fill-opacity=".08" stroke="#E2E8F0" stroke-opacity=".27"/>
   <circle cx="500" cy="480" r="58" fill="#07152F" stroke="#67E8F9" stroke-width="3"/>
   <path d="M472 468H528M472 487H519M472 506H511" stroke="#E0F2FE" stroke-width="6" stroke-linecap="round"/>
   <circle cx="535" cy="506" r="9" fill="#2DD4BF"/>
-  <text x="500" y="577" text-anchor="middle" fill="#67E8F9" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="2">APPLICATION MÉTIER</text>
-  <text x="500" y="612" text-anchor="middle" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700">Preuves localisées</text>
-  <text x="500" y="639" text-anchor="middle" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="14">résultats · limites · propriétaires</text>
+  <text x="500" y="577" text-anchor="middle" fill="#67E8F9" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="2">AVANT LES VRAIES DONNÉES</text>
+  <text x="500" y="612" text-anchor="middle" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700">Quatre nombres</text>
+  <text x="500" y="639" text-anchor="middle" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="14">un seuil · un écart · un montant</text>
 
   <rect x="110" y="866" width="780" height="67" rx="33.5" fill="#020617" fill-opacity=".52" stroke="#94A3B8" stroke-opacity=".25"/>
-  <circle cx="152" cy="899" r="7" fill="#F87171"/>
-  <text x="174" y="906" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">STOP si incident actif ou blocage critique</text>
+  <circle cx="152" cy="899" r="7" fill="#67E8F9"/>
+  <text x="174" y="906" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Aucun score : un nombre et un seuil</text>
   <text x="850" y="906" text-anchor="end" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" letter-spacing="1.5">SCHÉMA</text>
 </svg>

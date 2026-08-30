@@ -48,14 +48,14 @@ const stepCopy: Record<
   },
   index: {
     question: "Google a-t-il retenu cette version\u00a0?",
-    help: "Dans la vue Index Google, relevez l’état d’indexation, l’instruction noindex éventuelle, puis l’adresse principale déclarée par le site et celle choisie par Google. Le test en direct ne prouve pas l’indexation.",
+    help: "Dans la vue Index Google, relevez l’état d’indexation, l’instruction noindex éventuelle, puis l’URL canonique déclarée par l’utilisateur et l’URL canonique sélectionnée par Google. Le test en ligne ne prouve pas l’indexation.",
     placeholder:
       "Exemple de saisie\u00a0: URL non indexée\u00a0; autre adresse principale choisie par Google",
     options: ["unknown", "indexed", "not-indexed"],
   },
   impressions: {
     question: "La page est-elle proposée pour cette recherche\u00a0?",
-    help: "Dans Performances, fixez le contexte, filtrez l’adresse canonique choisie par Google et relevez le total de la page. Ajoutez la recherche exacte en dernier. Si aucune ligne n’apparaît, choisissez « aucune donnée visible » plutôt que zéro.",
+    help: "Dans Performances, fixez le contexte, filtrez l’URL canonique sélectionnée par Google et relevez le total de la page. Ajoutez la recherche exacte en dernier. Si aucune ligne n’apparaît, choisissez « aucune donnée visible » plutôt que zéro.",
     placeholder:
       "Exemple de saisie\u00a0: total de la page relevé\u00a0; ligne présente après le filtre · France · mobile",
     options: ["unknown", "visible-impressions", "no-visible-data"],

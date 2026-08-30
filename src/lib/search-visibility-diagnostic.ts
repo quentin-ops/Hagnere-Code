@@ -81,7 +81,7 @@ export const SEARCH_VISIBILITY_RULES: StepRule[] = [
     title: "2. Version retenue dans l’index",
     completeStatus: "indexed",
     action:
-      "Dans la vue Index Google, relevez le motif de non-indexation, l’instruction noindex éventuelle et l’adresse canonique choisie par Google. Une nouvelle exploration n’a de sens qu’après la correction observée.",
+      "Dans la vue Index Google, relevez le motif de non-indexation, l’instruction noindex éventuelle et l’URL canonique sélectionnée par Google. Une nouvelle exploration n’a de sens qu’après la correction observée.",
     limit:
       "Une demande d’indexation ne corrige ni un blocage, ni un doublon, ni le choix d’une autre adresse principale.",
   },
@@ -90,7 +90,7 @@ export const SEARCH_VISIBILITY_RULES: StepRule[] = [
     title: "3. Impressions pour cette recherche",
     completeStatus: "visible-impressions",
     action:
-      "Dans Performances, fixez le contexte, filtrez l’adresse canonique Google et relevez le total de la page. Ajoutez la recherche exacte en dernier. Si aucune ligne n’apparaît, indiquez « aucune donnée visible ».",
+      "Dans Performances, fixez le contexte, filtrez l’URL canonique sélectionnée par Google et relevez le total de la page. Ajoutez la recherche exacte en dernier. Si aucune ligne n’apparaît, indiquez « aucune donnée visible ».",
     limit:
       "Une requête absente du tableau ne prouve pas zéro impression : certaines lignes sont anonymisées, omises ou tronquées, et le filtre de requête retire les requêtes anonymisées du total.",
   },
