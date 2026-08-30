@@ -87,7 +87,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Outils internes et automatisation",
     editorialStatus: "published",
     datePublished: "2026-08-01T11:59:46+02:00",
-    dateModified: "2026-08-01T11:59:46+02:00",
+    dateModified: "2026-08-30T23:20:00+02:00",
     readTimeMin: 34,
     articleImagePaths: [
       "/guides/signes-besoin-logiciel-metier/article-diagnostic-16x9.svg",
@@ -131,7 +131,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Outils internes et automatisation",
     editorialStatus: "published",
     datePublished: "2026-07-23T21:31:02+02:00",
-    dateModified: "2026-08-03T07:58:56+02:00",
+    dateModified: "2026-08-30T23:20:00+02:00",
     readTimeMin: 19,
     articleImagePaths: [
       "/guides/power-apps-ou-application-sur-mesure/article-power-apps-16x9.svg",

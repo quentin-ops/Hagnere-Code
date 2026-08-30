@@ -123,5 +123,5 @@ b1be798338ff1a4a8db883752f23b1c48ac98af4f8b5f61d8010ba041be49d26  src/components
 4a7587e3b21cb7d44696df3f1844fc02bdb46ea96a33db827b5c984e4230ca8f  src/components/guides/tracked-guide-cta-link.test.tsx
 75675deff3d2b9eb6ee14ad9d9cd96a4c256a8b1860a642ca6f44ba31a7b3ff0  src/components/guides/tracked-guide-cta-link.tsx
 3a35a78ab19c2319b9e873c92fd2f1d4c3400338d70baf5285b6a5331bd7012b  src/lib/guide-page-seo.ts
-643af843dea6d72b089802ace6e268fdaf55c238e5d9e43c838cf907c4f5737b  src/lib/guides.ts
+26290addbcd38ee842c55b339c12cc064b53fb15e68176048b10db3ce74752b4  src/lib/guides.ts
 1b0001c4777fc565d86947c922ae0d827717bbe1d6e521036a606bcdab7b3d8e  src/lib/search-indexing.ts
