@@ -1485,8 +1485,8 @@ changer la décision.
 - dans la sidebar contextuelle, le CTA principal
   « Voir le service outils internes » pointe vers
   `/services/outils-internes-sur-mesure` ;
-- l’action secondaire affiche le vrai numéro `03 74 47 20 18` et utilise
-  `tel:+33374472018`, ce qui rétablit la sémantique téléphone sur ordinateur
+- l’action secondaire affiche le vrai numéro `06 60 08 83 51` et utilise
+  `tel:+33660088351`, ce qui rétablit la sémantique téléphone sur ordinateur
   et mobile ;
 - les CTA du héros, de la FAQ et de la conclusion conservent
   `/demarrer-un-projet` ;
@@ -1767,7 +1767,7 @@ Les trois défauts qui avaient provoqué le premier `NO_GO` sont corrigés :
    exécutées ; les états non applicable, négatif, nul et positif ne sont plus
    confondus ;
 3. le CTA contextuel pointe vers le service réel, le numéro reste une vraie
-   action téléphone et son nom vocal est « Appeler 03 74 47 20 18 ».
+   action téléphone et son nom vocal est « Appeler 06 60 08 83 51 ».
 
 À 200 % de texte, le CTA et le téléphone restent disponibles à 320 et
 390 pixels. Le rôle de l’auteur passe sur une ligne dédiée en mobile.

@@ -1,1880 +1,1038 @@
 # Dossier de recherche — prix-gestion-google-ads
 
-> État au 31 juillet 2026 — **P1 à P4, G4 et contrôle transversal terminés**
-> Statut de la page : candidat local `GO_PUBLICATION` à 94/100, indexable dans
-> le build de production validé, mais encore non committé et non publié.
-> Ce dossier remplace le contenu antérieur pour repartir d’un contrat de réponse
-> vérifiable. Les quatre passes, les gates orchestrateur et le contrôle
-> transversal sont documentés ci-dessous ; aucune publication n’est déduite de
-> leur exécution locale.
+> **Reconstitué le 30 août 2026** pour décrire l'article tel qu'il existe
+> aujourd'hui dans le dépôt. Le dossier précédent datait du 31 juillet 2026 et
+> décrivait une version qui n'existe plus : 22 minutes de lecture annoncées,
+> douze questions de FAQ, sept familles de coût, un écart d'honoraires de 300 €,
+> un incident chiffré à 2 419,20 €. Aucun de ces éléments n'est encore dans la
+> page. Le contenu périmé n'a pas été conservé ; seule la **structure** de
+> l'ancien dossier (sections A à H, façon de citer) est reprise, comme le
+> demande la charte §3.2.
+>
+> **Source de vérité de ce dossier :** `src/app/guides/prix-gestion-google-ads/page.tsx`
+> et les modules qu'il importe, lus le 30 août 2026 à 22 h 47, **puis relus
+> intégralement à 23 h 03** après une écriture concurrente (voir l'encadré sous
+> le tableau). Empreintes des fichiers décrits, au moment de la relecture :
+>
+> | Fichier | SHA-256 | Dernière écriture |
+> | --- | --- | --- |
+> | `src/app/guides/prix-gestion-google-ads/page.tsx` | `d0224c64339ccc4afb1bb8f7b73d995dc5c5cafa283b404094aedb530d3aa5be` | 2026-08-30 22:57:49 |
+> | `src/app/guides/prix-gestion-google-ads/content-quality.test.ts` | `2e7eb9aadc7d7942c83f1a41c41875443843572445e7c92b6e9dbc718f7badc5` | 2026-08-30 22:19:51 |
+> | `src/app/guides/prix-gestion-google-ads/opengraph-image.tsx` | `e7d63c79689f41fb99942c3442cb2f2b1bcb807d125d536c4070faabfde9034c` | 2026-08-18 11:17 |
+> | `src/components/guides/GoogleAdsQuoteComparator.tsx` | `67937ae088b53c857a17872686c452ef02464cc3c8819bff1303db2872ac9c85` | 2026-08-30 22:30:40 |
+> | `src/lib/google-ads-quote-comparison.ts` | `13b8c4f4345e9ab5fdc83489fedd350dc26bd455fcd8cd3bbe1dc6fc93e8b15a` | 2026-08-18 11:17 |
+> | `src/components/publicite-en-ligne/sections/pricing.ts` | `fd64fb1169004637e525cac6b39b6f3cddad8a5600d6eb9aaa9afa894594a3bb` | 2026-08-28 10:23 |
+> | `src/app/guides/guides-price-consistency.test.ts` | `5f3a9931325005b12f924087bdf6601c588a315087c6c42006129ad411aba12d` | — |
+>
+> Si l'une de ces empreintes a changé, ce dossier doit être revérifié avant
+> d'être invoqué comme socle de preuves.
+>
+> **Écriture concurrente pendant la reconstitution.** `page.tsx` a été réécrit
+> par un autre intervenant à 22 h 57 : 152 octets, une seule modification de
+> fond. Les trois entrées vendeurs de `legalSources` portent désormais
+> « relevé le 30 juillet 2026 **et revérifié le 30 août 2026** », et la clause
+> « Limites de ce guide » « relevés le 30 juillet 2026 **et revérifiés un par un
+> le 30 août 2026** ». La page entière a été relue ligne à ligne après cette
+> écriture : aucun montant, aucune formule, aucune section, aucune source et
+> aucune phrase du corps n'ont bougé. Les deux propriétés touchées sont rendues
+> **hors** de l'élément `<article>` (`guide-premium-layout.tsx`, lignes 660 et
+> 664, après la fermeture de l'article à la ligne 648) : le corps mesuré au §H1
+> est donc inchangé.
+>
+> **Territoire de la reconstitution.** L'agent qui a écrit ce dossier n'a
+> modifié aucun autre fichier : ni la page, ni les tests, ni le registre, ni les
+> manifestes. Les écarts trouvés dans la page sont signalés au §0, pas corrigés.
 
-## A — Identité, intention et frontière du guide
+---
 
-### A1. Identité éditoriale
+## 0 — Écarts trouvés dans l'article, signalés et non corrigés
 
-| Champ                    | Valeur P1                                                                                                         |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------- |
-| Slug                     | `prix-gestion-google-ads`                                                                                         |
-| Requête centrale         | prix gestion Google Ads                                                                                           |
-| Intention                | comprendre un devis, reconstituer le coût complet et choisir un mode d’accompagnement                             |
-| Public                   | dirigeante ou dirigeant de PME française, non spécialiste de Google Ads                                           |
-| Titre SEO                | Prix gestion Google Ads : comparer 4 modèles en 2026                                                              |
-| H1                       | Combien coûte vraiment la gestion de Google Ads ?                                                                 |
-| Catégorie canonique      | Google Ads & acquisition                                                                                          |
-| Temps de lecture déclaré | 22 minutes                                                                                                        |
-| Niveau de risque         | moyen à élevé : décisions budgétaires, fiscalité de facture, interprétation de performance et propriété du compte |
-| État d’indexation P1     | fermé par `editorialStatus: "ready-for-human-review"`                                                             |
+Sept écarts, du plus au moins matériel. Aucun ne remet en cause les vingt-huit
+totaux du fil rouge, qui ont tous été refaits à la main au §G et tombent juste.
+
+### É-01 — Une source citée ne porte pas l'affirmation qu'elle ancre
+
+L'article écrit deux fois, au §02 (encart ambre) et en FAQ n° 2, que
+« l'aide Google distingue les comptes servis par Google France SARL de ceux
+servis depuis l'Irlande », et ancre cette phrase sur
+`https://support.google.com/google-ads/answer/2375370?hl=fr`. La même
+formulation est reprise dans la liste `legalSources`.
+
+Cette page a été rouverte trois fois le 30 août 2026 : avec `?hl=fr`, sans
+paramètre de langue, puis avec une question ciblée sur la France. Elle
+s'intitule « Taxes dans votre pays », énumère une trentaine de pays (Irlande,
+Espagne, Italie, Pologne, Canada, Singapour, Inde…) — **et ne comporte aucune
+section France ; l'expression « Google France SARL » n'y figure pas.**
+
+La distinction existe bien dans la documentation Google : une recherche l'a
+localisée sur une page de l'**aide Administrateur Google Workspace**
+(`https://support.google.com/a/answer/1231286?hl=fr`), qui indique que lorsque
+l'entité de facturation est Google France SARL, Google facture la TVA et
+réclame numéro de TVA, SIRET ou SIREN. Cette page n'a pas été rouverte
+directement (elle n'est pas citée par l'article) : elle est signalée ici comme
+piste, pas comme preuve.
+
+**Conséquence :** l'affirmation n'est pas fausse, elle est mal localisée. Le
+lecteur qui suit le lien ne trouve pas ce que la phrase annonce. C'est le seul
+défaut de traçabilité de niveau P1 du dossier.
+
+### É-02 — Le §06 change l'assiette du cas sans le dire
+
+Le fil rouge tient sur **5 000 € HT de média par mois** du §01 au §05. Le
+premier incident du §06 ouvre par : « Hélène règle un budget quotidien moyen de
+200 € et compte trente jours : 6 000 € pour le mois. » Le cas passe donc à
+**6 000 € HT par mois**, soit +20 %, sans transition ni mention.
+
+Tous les montants de l'incident (120 €, 1 440 €, 6 080 €, 6 120 €, 6 201,60 €,
+81,60 €, 979,20 €) sont arithmétiquement exacts **sur cette nouvelle base** —
+vérification au §G8. Ce ne sont simplement plus les nombres du fil rouge.
+
+### É-03 — Un renvoi interne qui ne dit pas vrai
+
+Même paragraphe : « Le coût réglementaire n'en est pas un : il vaut 120 € sur
+6 000 € de média, 1 440 € sur douze mois, **et le §02 l'annonçait déjà.** »
+
+Le §02 annonce le taux de 2 % et, sur son propre tableau, **100 € par mois et
+1 200 € sur douze mois**. Il n'annonce ni 120 € ni 1 440 €. Le renvoi est vrai
+de la règle, faux des montants.
+
+### É-04 — Un arrondi présenté avec un signe d'égalité
+
+Bloc de formules du §03 :
+
+```text
+Hybride contre pourcentage
+500 + 0,08 × M = 0,15 × M   →   M = 7 143 € HT par mois
+```
+
+La racine exacte est `500 ÷ 0,07 = 7 142,857142…`. Les trois autres seuils du
+même bloc (6 000 €, 5 000 €, 9 heures) sont exacts au centime. Seul celui-ci
+est un arrondi, et rien ne le signale — ni « environ », ni « ≈ ».
+
+### É-05 — Les quatre seuils croisent les honoraires, pas le coût du tableau
+
+Le §03 publie un tableau de **coût connu** à 3, 6 et 12 mois, puis, sous le
+titre « Les quatre points où le classement s'inverse », quatre équations qui ne
+comparent que les **honoraires mensuels**. Le lecteur qui lit le tableau puis
+l'équation croit lire deux fois la même grandeur.
+
+Les frais de lancement diffèrent d'une offre à l'autre (750, 900, 800, 800 €).
+Sur douze mois, lancement compris, les croisements réels tombent ailleurs :
+
+| Croisement | Seuil publié (honoraires) | Croisement réel à 12 mois |
+| --- | ---: | ---: |
+| Pourcentage contre forfait | 6 000 € | **5 916,67 €** |
+| Hybride contre forfait | 5 000 € | **4 947,92 €** |
+| Hybride contre pourcentage | 7 143 € | **7 023,81 €** |
+| Temps passé contre forfait | 9 h | **8,96 h** |
+
+Le tableau du §03 le montre d'ailleurs sans le dire : à 5 000 € de média, le
+forfait et l'hybride facturent tous deux 900 € par mois — le seuil « hybride
+contre forfait » est atteint — et pourtant l'hybride coûte 80 000 € contre
+79 950 € au forfait sur douze mois, à cause des 50 € d'écart de lancement.
+Dérivation au §G4.
+
+### É-06 — Le §05 mélange deux fenêtres sans le dire
+
+« Hélène retient 2 500 € de marge par client **sur douze mois**. Douze clients
+valent 30 000 € ; rapportés aux 60 prospects qualifiés de la période, ils fixent
+un plafond de 500 € de coût connu par prospect. Le coût réel vaut 22 350 € ÷ 60
+= 372,50 € : il reste 127,50 € par prospect. »
+
+Le numérateur (30 000 €) court sur **douze mois par client**. Le dénominateur
+(22 350 €, 60 prospects) porte sur **trois mois**. Les 127,50 € ne sont donc pas
+un solde de trésorerie à trois mois. Le calculateur, lui, avertit de ce décalage
+dans son texte d'aide : « Cette marge peut être encaissée après la comparaison à
+6 mois. » La section qui publie le chiffre ne le dit pas ; l'encart ambre voisin
+ne traite que la confusion avec un retour sur investissement.
+
+### É-07 — L'état publié ne correspond pas à ce que sert la production
+
+Le registre `src/lib/guides.ts` déclare `editorialStatus: "published"` et
+`dateModified: "2026-08-30T22:18:08+02:00"`. Ces deux valeurs alimentent
+`openGraph.modifiedTime` et le JSON-LD `Article` de la page.
+
+`https://hagnere-code.ai/guides/prix-gestion-google-ads`, consultée le
+30 août 2026, sert encore la version antérieure : mention « Mis à jour le
+31 juillet 2026 », 32 minutes de lecture annoncées, douze questions de FAQ, et
+aucune des chaînes introduites par les reprises des 28 et 30 août
+(« 1 760,50 », « 979,20 », « 6 201,60 », « 587,50 », « 36 heures par an »,
+« chargé d'affaires », « Les quatre points où le classement s'inverse »). Seul
+« 1 862,50 » y figure, dans une phrase différente (« un CAC connu de
+1 862,50 € »).
+
+La version décrite par ce dossier est donc **écrite et testée, pas déployée**.
+Un guide qui affiche une date de modification postérieure à ce qu'il sert est
+exactement le défaut que le test « ne publie aucune date de modification
+postérieure à l'écriture » cherche à empêcher côté dépôt ; il ne surveille pas
+la production.
+
+### Observations mineures, hors liste
+
+- `dateModified` vaut `2026-08-30T22:18:08+02:00` et son commentaire annonce
+  « l'heure réelle de la dernière écriture de `page.tsx` ». Au moment de cette
+  lecture, `page.tsx` avait été écrit à **22:23:42**, cinq minutes plus tard.
+  L'écart est mineur et le fichier appartient à un autre périmètre ; il est
+  signalé sans être compté.
+- FAQ n° 1 : « 5 000 € HT de média par mois côtoient 750 à 1 000 € HT
+  d'honoraires : confondre les deux fait passer la facture mensuelle de 900 € à
+  5 900 € ». Le calcul est juste (5 000 + 900), mais 900 € n'est pas une borne
+  de la fourchette qui vient d'être annoncée : c'est l'honoraire du forfait.
+
+---
+
+## A — Identité, intention et frontière de l'article publié
+
+### A1. Identité éditoriale, relevée dans le registre le 30 août 2026
+
+| Champ | Valeur lue dans `src/lib/guides.ts` |
+| --- | --- |
+| Slug | `prix-gestion-google-ads` |
+| Requête centrale | prix gestion Google Ads |
+| Titre SEO | Prix de la gestion Google Ads en 2026 : 4 modèles comparés |
+| Titre de carte | Prix d'une gestion Google Ads |
+| H1 | Combien coûte vraiment la gestion de Google Ads ? |
+| Meta description | Gestion Google Ads : forfait, pourcentage, hybride ou temps passé, le coût complet à 3, 6 et 12 mois et le budget média où l'ordre s'inverse. |
+| Catégorie | Google Ads & acquisition |
+| `editorialStatus` | `published` |
+| `datePublished` | `2026-07-31T00:24:23+02:00` |
+| `dateModified` | `2026-08-30T22:18:08+02:00` |
+| `readTimeMin` | 15 |
+| Images d'article | trois `.webp`, ratios 16:9, 4:3 et 1:1 |
+| Indexation | `guideRobots()` : indexable **seulement** si `isGuidePublished` **et** `isSearchIndexingEnabled(NEXT_PUBLIC_ENV, VERCEL_ENV)`. En build local ou de préproduction, `index: false, follow: false`. |
 
 ### A2. Décision que le lecteur doit pouvoir prendre
 
-À la fin du guide, le lecteur doit pouvoir :
+L'article publié vise huit capacités, dans cet ordre :
 
-1. distinguer le budget média des honoraires et des autres coûts ;
-2. normaliser forfait, pourcentage, hybride et temps passé avec des hypothèses
-   identiques ;
-3. lire séparément le HT externe, le TTC décaissé, la TVA récupérable supposée
-   et le coût économique connu ;
-4. comparer 3, 6 et 12 mois ;
-5. ne pas confondre CPC, CPA, CPL qualifié et CAC complet ;
-6. contrôler le périmètre, les accès, la propriété et la sortie ;
-7. choisir entre gestion interne, audit, indépendant, agence ou report ;
-8. reconnaître les cas où l’offre publique Hagnéré Code est disproportionnée ou
-   incompatible.
+1. séparer sur un devis le budget média, le coût réglementaire, les honoraires,
+   le lancement, la mesure et le temps interne — les **six lignes** du §02 ;
+2. lire trois totaux différents : décaissement externe HT, décaissement TTC,
+   coût connu ;
+3. comparer forfait, pourcentage, hybride et temps passé à 3, 6 et 12 mois, à
+   contenu supposé identique ;
+4. trouver le budget média où le classement des honoraires s'inverse ;
+5. chiffrer, en heures et en euros, le travail que l'offre la moins chère laisse
+   à l'équipe ;
+6. ne pas confondre CPC, CPA, CPL qualifié et coût connu par client ;
+7. borner un contrat : assiette, plafond, propriété du compte, sortie ;
+8. reconnaître les cas où l'offre Hagnéré Code est disproportionnée.
 
-### A3. Réponse courte obligatoire
+### A3. Réponse courte réellement publiée
 
-La réponse ne doit pas inventer une moyenne nationale. Elle part d’un constat
-vérifiable : des pages vendeurs affichent des montants mensuels très différents,
-mais leurs périmètres ne sont pas comparables. Le bon objet de comparaison est :
+Les trois premiers paragraphes du §01 (contrôlés entre 120 et 180 mots par le
+test) affirment, dans l'ordre : trois prix vendeurs relevés (90, 450, 450 € HT
+par mois), le nôtre (1 800 € HT), un facteur vingt entre les extrêmes, puis le
+déplacement de la question vers le coût connu sur douze mois — 78 300 à
+81 200 €, 2 900 € d'écart, 61 200 € de média chargé.
 
-```text
-coût complet à horizon identique
-= média hors surcoût
-+ coût réglementaire applicable
-+ gestion
-+ lancement
-+ mesure
-+ page, créations et outils
-+ TVA non récupérable
-+ temps interne valorisé
-```
+### A4. Ce que l'article ne promet pas
 
-Le décaissement TTC reste une lecture séparée, car une TVA récupérable peut être
-décaissée avant sa récupération.
+Repris de la clause « Limites de ce guide » et du bloc « Transparence »
+réellement publiés :
 
-### A4. Ce que le guide ne promet pas
+- aucune moyenne de marché — la statistique de tête l'écrit : « Moyenne de
+  marché : Aucune » ;
+- aucune représentativité : « Quatre pages publiques ne forment pas une
+  statistique du marché français » ;
+- aucune prévision de clics, de prospects, de clients ou de chiffre d'affaires ;
+- aucun avis fiscal : « le calculateur applique un taux de TVA unique par
+  simplification » ;
+- aucune fraîcheur implicite : « Les prix vendeurs cités ont été relevés le
+  30 juillet 2026 et revérifiés un par un le 30 août 2026, notre grille le
+  28 août 2026 ; ils changent » ;
+- aucun engagement : « seul un devis signé engage » ;
+- aucune revendication de résultat client : l'article ne cite aucun dossier
+  réel et le dit trois fois (badge, hero, encart du fil rouge).
 
-- aucun prix moyen du marché français ;
-- aucune représentativité statistique des pages tarifaires consultées ;
-- aucune prévision de clics, prospects, clients ou chiffre d’affaires ;
-- aucun retour sur investissement garanti ;
-- aucun avis fiscal, comptable, contractuel ou juridique individualisé ;
-- aucune recommandation universelle de rémunération ;
-- aucune qualification commerciale inventée au bénéfice de Hagnéré Code.
+### A5. Contrat de langage tenu par la page
 
-### A5. Contrat de langage
+- « média » = la dépense de diffusion ; « honoraires » = la rémunération du
+  prestataire ; **« coût connu »** = décaissement externe HT + TVA non
+  récupérable + heures internes valorisées. Le test interdit explicitement
+  « total payé » pour désigner cette grandeur.
+- « conversion » n'est jamais synonyme de prospect ni de client : le §05 le pose
+  comme thèse et l'appuie sur la documentation Google.
+- Les mots de cabinet sont bannis par test : « périmètre », « livrable »,
+  « gouvernance », « dispositif » ne figurent pas dans le corps.
+- Les personnes sont nommées par leur métier : dirigeante, chargé d'affaires,
+  comptable, expert-comptable, commercial. « Le prestataire » et
+  « l'intervenant » sont interdits par test.
 
-- Définir un terme avant de l’abréger.
-- Écrire « média » pour la dépense de diffusion, « gestion » pour les
-  honoraires et « coût complet connu » pour leur combinaison documentée.
-- Ne jamais utiliser « conversion » comme synonyme automatique de prospect ou
-  de client.
-- Écrire les hypothèses à côté des nombres.
-- Utiliser « cas fictif », « compatibilité arithmétique » et « seuil » plutôt
-  que « résultat attendu » ou « rentabilité assurée ».
-- Dire « page vendeur publique » ou « prix propre du vendeur », jamais
-  « marché » lorsque la méthode ne le permet pas.
-- Distinguer « vérifié localement », « publié » et « indexable ».
+---
 
-## B — Contrat de réponse et architecture
+## B — Contrat de réponse et architecture réellement publiée
 
-### B1. Questions prioritaires
+### B1. Les huit sections, telles qu'elles sont rendues
 
-| Priorité | Question du lecteur                    | Réponse attendue                                                                           |
-| -------: | -------------------------------------- | ------------------------------------------------------------------------------------------ |
-|        1 | Combien coûte une gestion Google Ads ? | Prix publics hétérogènes, non comparables ; calcul complet obligatoire                     |
-|        2 | Le média est-il inclus ?               | Pas implicitement ; deux lignes distinctes et compte facturé à contrôler                   |
-|        3 | Quel modèle est le moins cher ?        | Cela dépend de l’assiette, du taux, du minimum, du plafond, de la charge et de la durée    |
-|        4 | Quels coûts sont oubliés ?             | Lancement, mesure, page, créations, outils, fiscalité de trésorerie et temps interne       |
-|        5 | Comment comparer des devis ?           | Même objectif, mêmes coûts communs, rémunération isolée, mêmes horizons                    |
-|        6 | Quel indicateur suivre ?               | CPC, CPA, CPL et CAC répondent à quatre questions différentes                              |
-|        7 | Qui doit posséder le compte ?          | L’annonceur conserve un accès administrateur direct et contrôle les actifs                 |
-|        8 | Quand ne pas déléguer ?                | Base de mesure cassée, traitement commercial absent, trésorerie ou perte maximale inconnue |
+| N° | `id` | Titre publié | Fonction |
+| --- | --- | --- | --- |
+| 01 | `reponse` | Ce que les pages publiques affichent, et ce qu'elles ne comparent pas | Réponse directe, échantillon daté, ouverture du fil rouge |
+| 02 | `cout-complet` | Que payez-vous vraiment quand vous payez « la gestion » ? | Les six lignes, les trois totalisations, coût réglementaire et consentement |
+| 03 | `modeles` | Forfait, pourcentage ou hybride : à partir de quel budget l'ordre s'inverse-t-il ? | Tableau des quatre offres, décompte à la main, quatre seuils |
+| 04 | `temps-interne` | Le devis le moins cher laisse-t-il du travail à votre équipe ? | Division heures/écart d'honoraires, puis calculateur |
+| 05 | `indicateurs` | Du CPA à 102 € au coût réel d'un client | Quatre coûts unitaires, seuil de marge, hypothèse basse |
+| 06 | `incidents` | Ce qui rate, et ce que ça coûte | Trois incidents déduits, jamais observés |
+| 07 | `sortie` | Que gardez-vous si vous changez d'agence ? | Propriété du compte, loi Sapin, contrôle de dix minutes |
+| 08 | `decision` | Choisir le niveau d'aide, ou ne pas lancer | Grille par tranche de budget, mauvais cas d'usage, transparence |
 
-### B2. Plan P1
+Le sommaire annonce ces huit entrées avec des libellés courts distincts
+(« Réponse », « Le coût », « Bascule », « Temps interne », « Mesurer »,
+« Incidents », « Sortie », « Décider »).
 
-1. réponse prix immédiate sans fausse moyenne ;
-2. coût complet en sept familles ;
-3. quatre modèles de rémunération ;
-4. horizons 3, 6 et 12 mois ;
-5. calculateur local ;
-6. séparation CPC / CPA / CPL / CAC et scénario défavorable ;
-7. périmètre vérifiable du devis ;
-8. propriété du compte et réversibilité ;
-9. décision proportionnée et mauvais cas d’usage Hagnéré Code.
+### B2. FAQ réellement publiée
 
-### B3. Empreinte éditoriale propre
+**Neuf** questions, en trois catégories de trois :
 
-Le guide conserve le système visuel premium commun mais utilise une progression
-spécifique au sujet :
+1. *Facture et budget* — budget compris dans les honoraires ; HT ou TTC ; le
+   coût réglementaire de 2 % s'ajoute-t-il ?
+2. *Contrat et rémunération* — assiette d'un pourcentage ; frais de lancement ;
+   durée d'engagement.
+3. *Compte, mesure et autonomie* — propriété du compte ; valeur d'un audit
+   gratuit ; gestion en interne.
 
-- bandeau « normaliser avant de classer » en quatre contrôles ;
-- tableaux de lignes de coût et de responsabilités ;
-- calculateur de devis sur trois horizons ;
-- cas de temps interne caché ;
-- test de résistance à trois événements ;
-- contrôle de sortie illustré ;
-- CTA fondé sur un périmètre comparable, pas sur une promesse de résultat.
+Le sous-titre de la FAQ annonce bien « Neuf réponses courtes ». Chaque réponse
+tient entre 40 et 120 mots (test), chaque question se termine par un point
+d'interrogation précédé d'un insécable, et la symétrie « Non./Oui, mais » est
+plafonnée à 34 % des réponses.
 
-### B4. Conventions de publication P1
+### B3. Empreinte propre à ce sujet
 
-- entrée registre en brouillon ;
-- route dédiée et métadonnées centralisées ;
-- données structurées produites uniquement par
-  `buildGuideStructuredData` : `Article` et `BreadcrumbList` ;
-- FAQ visible rendue par le layout, sans balisage FAQ ajouté par la page ;
-- image sociale produite en code, 1200 × 630 ;
-- trois images Article visibles aux ratios 16:9, 4:3 et 1:1 ;
-- aucun artefact à télécharger ;
-- CTA principaux vers `/services/publicite-en-ligne` et
-  `/demarrer-un-projet`.
+- un fil rouge nommé, annoncé comme construit **avant** son premier chiffre ;
+- quatre offres suivies bout en bout, sur trois horizons ;
+- un bloc de formules qui résout quatre seuils au lieu de les asséner ;
+- une division unique — écart d'honoraires ÷ coût horaire — qui devient la
+  statistique de tête « Seuil de charge interne : 3 h/mois » ;
+- un comparateur client à contenu supposé identique, ouvert sur les mêmes
+  valeurs que le tableau du §03 ;
+- trois incidents chiffrés dont chaque titre porte un montant ;
+- un aveu commercial au conditionnel (§08) qui chiffre ce que le forfait fixe
+  coûterait à l'agence sur un gros budget.
 
-## C — Inventaire interne, concurrence éditoriale et cannibalisation
+### B4. Conventions de publication constatées
 
-### C1. Corpus interne consulté
+- données structurées : `Article` et `BreadcrumbList` **seulement** ; le test
+  interdit `FAQPage`, `HowTo`, `Offer`, `Review`, `AggregateRating`, `Product`
+  et `wordCount` ;
+- FAQ rendue par le layout, sans balisage FAQ ajouté par la page ;
+- deux CTA suivis, tous deux `placement="article_end_inline"` ;
+- trois liens sortants concurrents, tous en `rel="nofollow noreferrer"` ;
+- aucun artefact téléchargeable ;
+- trois liens internes vers des guides publiés
+  (`automatiser-processus-metier`, `signes-besoin-logiciel-metier`,
+  `pourquoi-site-pas-visible-google`, `cahier-des-charges-saas`), aucun vers
+  lui-même.
 
-| Élément                                      | Usage P1                                                   | Limite                                                            |
-| -------------------------------------------- | ---------------------------------------------------------- | ----------------------------------------------------------------- |
-| `docs/workflow-maitre-guides-4-passes.md`    | ordre des passes et interdiction de sauter un contrôle     | P1 n’autorise aucune conclusion P2 à P4                           |
-| `docs/charte-qualite-guides.md`              | contrat reader-first, preuve, calcul et outil              | une conformité locale ne vaut pas publication                     |
-| `docs/instructions-guide-de-qualite.md`      | portes SEO, rendu, images et données structurées           | le contrôle transversal reste à venir                             |
-| `docs/regle-or-vigilance-seo-publication.md` | statut brouillon/noindex et registre                       | date réelle à réconcilier lors d’une éventuelle publication       |
-| guide `valider-idee-saas-avant-developper`   | architecture visuelle premium et conventions de composants | aucun contenu éditorial repris                                    |
-| service `publicite-en-ligne`                 | offre et prix propres Hagnéré Code                         | ne pas présenter comme marché ou preuve d’efficacité              |
-| ancien dossier du même slug                  | inventaire adversarial seulement                           | contenu remplacé ; aucune affirmation héritée sans reverification |
+---
 
-### C2. Frontières avec les guides voisins
+## C — Frontières internes et cannibalisation
 
-| Guide voisin                        | Question qu’il doit garder                           | Frontière du présent guide                             |
-| ----------------------------------- | ---------------------------------------------------- | ------------------------------------------------------ |
-| `budget-google-ads-pme`             | quel budget média une PME peut risquer et tester     | ici : coût de gestion et comparaison de devis          |
-| `calculer-cout-par-lead-google-ads` | comment calculer et interpréter un coût par prospect | ici : CPL n’est qu’une ligne parmi quatre indicateurs  |
-| `choisir-agence-google-ads`         | méthode de sélection d’une agence                    | ici : normalisation financière et contractuelle        |
-| `audit-google-ads-que-verifier`     | contrôles techniques d’un compte                     | ici : prix, inclusions, accès et sortie                |
-| `suivi-conversions-google-ads`      | implémentation et qualité de la mesure               | ici : coût de cette mesure et rôle dans la comparaison |
-| `budget-google-ads-pme`             | perte maximale et dimensionnement d’un test          | ici : assiette commune et horizons de devis            |
+### C1. Guides voisins et frontière tenue par la version publiée
 
-### C3. Règles anti-cannibalisation appliquées
+| Guide voisin | Ce qu'il garde | Frontière tenue ici |
+| --- | --- | --- |
+| `budget-google-ads-pme` | quel budget média risquer | ici : le coût de la **gestion**, budget média posé en hypothèse |
+| `calculer-cout-par-lead-google-ads` | calculer et interpréter un CPL | ici : le CPL n'est qu'un des quatre dénominateurs du §05 |
+| `choisir-agence-google-ads` | méthode de sélection | ici : normalisation financière et contractuelle |
+| `audit-google-ads-que-verifier` | contrôles techniques du compte | ici : ce que coûte un audit et ce qu'il remet |
+| `suivi-conversions-google-ads` | implémenter la mesure | ici : le coût de la mesure, ligne 5 du §02 |
+| `pourquoi-site-pas-visible-google` | la moitié organique | cité explicitement au §08 comme complément |
+| `cahier-des-charges-saas` | lecture d'un devis | cité au §08 comme grille applicable à une offre média |
 
-- Le titre et le H1 portent explicitement sur le prix de la **gestion**, pas sur
+### C2. Règles anti-cannibalisation constatées dans la page
+
+- Le titre, le H1 et la meta portent sur le **prix de la gestion**, jamais sur
   le budget média optimal.
-- Le calculateur compare des structures d’honoraires ; il ne recommande aucun
+- Le calculateur compare des structures d'honoraires ; il ne recommande aucun
   budget publicitaire.
-- La mesure et le CPL sont expliqués seulement pour éviter une décision de prix
-  faussée.
-- L’audit technique complet n’est pas reproduit.
-- Le choix d’agence est ramené au périmètre et à la réversibilité, sans catalogue
-  général de critères commerciaux.
+- Le §05 explique les quatre dénominateurs pour éviter une décision de prix
+  faussée, sans reprendre la méthode d'implémentation de la mesure.
+- Le §07 borne la question du choix d'agence à la propriété, la facturation et
+  la sortie.
 
-## D — Recherche externe actuelle
+---
 
-Date de vérification des pages : **30 juillet 2026**.
+## D — Fiche de preuves : les faits sourcés
 
-### D1. Sources primaires Google, légales et CNIL
+**Méthode de cette reconstitution.** Les quinze adresses citées par l'article
+ont été **rouvertes une par une le 30 août 2026**. Pour chacune : le titre réel
+de la page, la phrase utile telle qu'elle s'y trouve, et la comparaison avec ce
+que l'article en dit. Aucune vérification n'est simulée. Aucune date de
+consultation n'est reprise de l'ancien dossier.
 
-| ID   | Source                                                                                                               | Fait utilisable                                                                                                                                                              | Frontière                                                                                                                      |
-| ---- | -------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| G-01 | [Budgets quotidiens](https://support.google.com/google-ads/answer/10486536?hl=fr)                                    | pour la plupart des campagnes, limite quotidienne jusqu’à 2 × le budget quotidien moyen et limite mensuelle généralement 30,4 ×                                              | exceptions et types de campagnes à vérifier                                                                                    |
-| G-02 | [Budget total](https://support.google.com/google-ads/answer/10486938?hl=fr)                                          | budget total distinct sur une période fixée                                                                                                                                  | ne pas appliquer les règles du budget quotidien sans vérifier                                                                  |
-| G-03 | [Coûts réglementaires](https://support.google.com/google-ads/answer/9750227?hl=fr)                                   | coût actuellement indiqué de 2 % pour les annonces diffusées en France                                                                                                       | vérifier date, zone et facture ; ne pas doubler                                                                                |
-| G-04 | [TVA et facturation](https://support.google.com/google-ads/answer/2375370?hl=fr)                                     | traitement décrit selon l’entité Google qui sert le compte, notamment Google France SARL ou Google Ireland                                                                   | situation propre à vérifier ; aucune conclusion fiscale universelle                                                            |
-| G-05 | [Associer un compte existant](https://support.google.com/google-ads/answer/7456530?hl=fr)                            | association sans perte d’historique ; le compte administrateur ne devient pas propriétaire par défaut d’un compte existant                                                   | contrôler les rôles réellement attribués                                                                                       |
-| G-06 | [Propriété du compte](https://support.google.com/google-ads/answer/7456532?hl=fr)                                    | règles de propriété, dissociation et propriété lors de la création depuis un compte administrateur                                                                           | la propriété peut être transitive ; vérifier chaque niveau                                                                     |
-| G-07 | [Actions de conversion](https://support.google.com/google-ads/answer/11461796?hl=fr)                                 | distinction principales/secondaires et usage dans les objectifs/enchères                                                                                                     | une action Google n’est pas automatiquement un prospect ou un client                                                           |
-| G-08 | [Historique des modifications](https://support.google.com/google-ads/answer/2454137?hl=fr)                           | historique sur les deux dernières années                                                                                                                                     | ne prouve pas la pertinence des modifications                                                                                  |
-| G-09 | [Facturation consolidée en France](https://support.google.com/google-ads/answer/2375371?hl=fr)                       | Google indique l’indisponibilité de la facturation consolidée pour les agences médias achetant au nom d’annonceurs en France et renvoie à la loi Sapin                       | ne tranche pas seul un montage comptable ou juridique particulier                                                              |
-| J-01 | [Loi n° 93-122 du 29 janvier 1993, article 20](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031011011) | achat d’espace par un intermédiaire dans le cadre d’un mandat écrit ; rémunérations détaillées ; avantages portés sur facture ; facture du vendeur communiquée à l’annonceur | texte légal, règle produit Google et montage contractuel restent trois niveaux distincts ; conseil professionnel si nécessaire |
-| P-01 | [CNIL, FAQ cookies et traceurs, 29 avril 2026](https://www.cnil.fr/fr/cookies-et-autres-traceurs/regles/cookies/FAQ) | des traceurs de mesure publicitaire nécessitent généralement le consentement ; le refus doit être aussi facile que l’acceptation                                             | certaines exemptions de mesure d’audience existent sous conditions ; ne pas conclure à une conformité automatique              |
+**Ce que cette relecture ne prouve pas :** l'article date ses relevés vendeurs
+du **30 juillet 2026**, avec une revérification annoncée au **30 août 2026**
+depuis l'écriture de 22 h 57, et sa propre grille du **28 août 2026**. Je n'ai
+pas pu vérifier l'état de ces pages au 30 juillet ni au 28 août — seulement leur
+état au 30 août 2026. Le fait que les montants concordent aujourd'hui rend le
+relevé d'origine plausible ; il ne le prouve pas.
 
-### D2. Échantillon de pages tarifaires publiques
+### D1. Sources primaires Google, CNIL et Légifrance
 
-Méthode : pages vendeurs accessibles publiquement, consultées à une date unique.
-Cet échantillon sert uniquement à démontrer l’hétérogénéité et les risques de
-périmètre. Il n’est ni aléatoire, ni exhaustif, ni pondéré ; il ne peut pas
-produire une moyenne de marché.
+| ID | Localisateur | Ce que la source dit, relevé le 30/08/2026 | État |
+| --- | --- | --- | --- |
+| G-01 | `https://support.google.com/google-ads/answer/10486536?hl=fr` — « Présentation des budgets » | « Budget quotidien moyen multiplié par 2 (pour la plupart des campagnes) » ; « Budget quotidien moyen multiplié par 30,4 (pour la plupart des campagnes) » ; « 30,4 correspond au nombre moyen de jours dans un mois ». Aucune date de mise à jour affichée. | **Rouverte, concordante** |
+| G-02 | `https://support.google.com/google-ads/answer/10486938?hl=fr` — « Présentation des budgets totaux de campagne » | Période minimale de trois jours, jusqu'à 90 jours pour la plupart des campagnes ; « le montant que vous aurez à payer ne dépassera jamais votre budget total » ; « Il n'y a pas de limite de dépense quotidienne ». | **Rouverte, concordante** |
+| G-03 | `https://support.google.com/google-ads/answer/9750227?hl=fr` — « Suppléments dans certaines juridictions » | « Depuis le 1er mai 2021, des Coûts d'exploitation liés à la réglementation de 2 % sont ajoutés à votre facture », section « Coûts d'exploitation liés à la réglementation en France ». | **Rouverte, concordante** |
+| G-04 | `https://support.google.com/google-ads/answer/2375370?hl=fr` — « Taxes dans votre pays » | Trois lectures : **aucune section France**, aucune mention de « Google France SARL ». La page cite Google Ireland Ltd. pour d'autres pays. | **Rouverte — ne porte pas l'affirmation (É-01)** |
+| G-05 | `https://support.google.com/google-ads/answer/2375371?hl=fr` | « La facturation consolidée n'est pas disponible pour les agences média et ne sera plus proposée aux annonceurs en France (Loi Sapin). » Aucune explication supplémentaire du cadre Sapin sur cette page. | **Rouverte, concordante** |
+| G-06 | `https://support.google.com/google-ads/answer/7456530?hl=fr` | « le compte client d'origine et son historique restent intacts » ; « Le compte administrateur ne dispose pas par défaut du statut d'administrateur propriétaire du compte client lorsque vous l'associez à un compte Google Ads existant. » | **Rouverte, concordante** |
+| G-07 | `https://support.google.com/google-ads/answer/7456532?hl=fr` — « Comptes administrateur : à propos de la propriété des comptes client » | « Si un administrateur crée un compte, il en devient automatiquement propriétaire. » ; « En revanche, s'il associe un compte existant, il ne sera pas propriétaire par défaut » ; dissociation possible par le client. | **Rouverte, concordante** |
+| G-08 | `https://support.google.com/google-ads/answer/11461796?hl=fr` | Principales : « comptabilisées dans la colonne "Conversions" de vos rapports et utilisées pour les enchères ». Secondaires : « utilisées qu'à des fins d'observation […] mais pas pour les enchères ». | **Rouverte, concordante** |
+| G-09 | `https://support.google.com/google-ads/answer/2454137?hl=fr` — « Consulter l'historique de votre compte » | « L'historique des modifications vous permet d'examiner les modifications que vous avez apportées à votre campagne au cours des **deux dernières années**. » | **Rouverte, concordante** |
+| J-01 | `https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031011011` — art. 20, loi n° 93-122 du 29 janvier 1993 | Version **en vigueur depuis le 8 août 2015**. « Tout achat d'espace publicitaire, sur quelque support que ce soit, ou de prestation ayant pour objet l'édition ou la distribution d'imprimés publicitaires ne peut être réalisé par un intermédiaire que pour le compte d'un annonceur et dans le cadre d'un contrat écrit de mandat. » L'article poursuit sur la rémunération détaillée, les rabais et avantages portés sur la facture, et la communication de la facture du vendeur à l'annonceur. | **Rouverte, concordante** |
+| P-01 | `https://www.cnil.fr/fr/cookies-et-autres-traceurs/regles/cookies/FAQ` | Date de mise à jour affichée : **29 avril 2026** — exactement celle que l'article annonce. « les traceurs utilisés à des fins de reciblage publicitaire nécessitent le consentement des utilisateurs préalablement à leur utilisation » ; le refus doit se manifester « par une action aussi simple que celle permettant d'accepter », avec un bouton « tout refuser » « au même niveau et avec le même aspect que le bouton "tout accepter" ». | **Rouverte, concordante** |
 
-| Vendeur                                                                     | Prix visible au 30/07/2026                                           | Éléments de périmètre visibles                                                                    | Usage dans le guide                                                                           |
-| --------------------------------------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| [MS Web](https://www.ms-web.fr/creation-et-gestion-de-campagne-google-ads/) | création 149 € HT ; gestion à partir de 90 € HT/mois                 | optimisation annoncée deux fois par mois et rapport mensuel                                       | montrer une entrée de gamme publiée, sans généraliser                                         |
-| [AdWorks](https://www.ad-works.fr/tarifs)                                   | lancement à partir de 750 € HT ; gestion à partir de 450 € HT/mois   | offre propre, page indiquant une absence d’engagement de durée                                    | montrer la séparation lancement/récurrent                                                     |
-| [DP Medias](https://www.dpmedias.com/google-ads)                            | audit 500 € HT, création 250 € HT, gestion à partir de 450 € HT/mois | la page distingue aussi un audit gratuit « dans un format synthétique » d’un audit complet payant | montrer trois lignes distinctes et l’ambiguïté d’un même nom pour des profondeurs différentes |
-| [Hagnéré Code](https://hagnere-code.ai/services/publicite-en-ligne)         | audit 1 500 € HT ; forfaits 1 800 €, 3 500 € et 4 500 € HT/mois      | seuils de budgets média et périmètres croissants ; honoraires fixes                               | transparence sur l’offre propre et détection du mauvais cas d’usage                           |
+### D2. Échantillon de pages vendeurs — relevé de l'article vs relevé du 30/08/2026
 
-Une autre page publique consultée présentait deux montants mensuels divergents
-dans des zones différentes. Elle n’a pas été utilisée dans le corps du guide :
-ce conflit confirme l’obligation d’obtenir un devis écrit et daté, mais ne
-permet pas de retenir un prix fiable.
+Trois pages commerciales, citées en `nofollow`. L'échantillon n'est ni
+aléatoire, ni exhaustif, ni pondéré : il sert à montrer l'hétérogénéité, jamais
+à produire une moyenne. L'article l'écrit deux fois.
 
-### D3. Conclusions de recherche autorisées
+| ID | Localisateur | Ce que l'article annonce (relevé du 30/07/2026) | Ce que la page affichait le 30/08/2026 | État |
+| --- | --- | --- | --- | --- |
+| V-01 | `https://www.ms-web.fr/creation-et-gestion-de-campagne-google-ads/` | création 149 € HT ; gestion à partir de 90 € HT/mois | « € HT149 » pour la création ; « A partir de € HT90/mois » pour la gestion, avec optimisation deux fois par mois et reporting mensuel | **Rouverte, montants identiques** |
+| V-02 | `https://www.ad-works.fr/tarifs` | lancement à partir de 750 € HT ; gestion à partir de 450 € HT/mois | « A partir de 750€ HT » pour le paramétrage ; « Dès 450€ HT/mois » pour la gestion ; un audit « Gratuit* » y figure aussi | **Rouverte, montants identiques** |
+| V-03 | `https://www.dpmedias.com/google-ads` | audit 500 € HT ; création de compte 250 € HT ; gestion à partir de 450 € HT/mois ; et sur la même page un audit gratuit « synthétique » | Audit Google Ads 500 € ; création compte 250 € ; suivi mensuel « À partir de 450 €/mois » ; audit gratuit décrit comme « audit Google Ads gratuit dans un format synthétique » | **Rouverte, montants identiques** |
 
-1. Les pages publiques montrent une forte hétérogénéité de prix propres.
-2. Les périmètres publiés diffèrent ; aucun classement direct n’est défendable.
-3. Le lancement doit être isolé du récurrent.
-4. Une assiette variable doit être définie contractuellement.
-5. Le coût réglementaire France est une ligne séparée si la base média ne
-   l’inclut pas.
-6. TVA décaissée et TVA récupérable ne doivent pas être confondues.
-7. Les accès et l’historique sont des actifs économiques du dispositif.
-8. Un indicateur Google n’est pas un CAC complet sans données commerciales.
-9. Deux offres ne sont comparables qu’après correction de leurs omissions de
-   périmètre, de leur charge interne et de leurs coûts de sortie propres.
-10. Le mot « audit » ne permet pas de comparer un diagnostic synthétique à un
-    audit payant sans examiner livrables et profondeur.
-11. La mesure publicitaire et l’achat d’espace ont des frontières juridiques
-    propres qui ne se déduisent ni d’un devis commercial ni d’une règle
-    d’interface Google.
+L'affirmation du §01 « un facteur vingt entre les deux extrêmes » est donc
+adossée à deux relevés concordants : 1 800 ÷ 90 = 20 exactement.
 
-### D4. Conclusions interdites
+**Sur la mention « revérifié le 30 août 2026 » ajoutée à 22 h 57.** Les trois
+pages ont bien été rouvertes le 30 août 2026 dans le cadre de cette
+reconstitution, et les montants y étaient identiques à ceux que l'article
+annonce. Ce dossier atteste de **sa propre** relecture, à cette date, avec le
+détail colonne par colonne du tableau ci-dessus. Il n'atteste pas de la
+relecture qu'un autre intervenant aurait faite ; il constate seulement que la
+mention ajoutée à la page est conforme à ce que ces pages affichaient ce
+jour-là.
+
+Deux détails relevés en passant, qui ne changent aucun chiffre publié :
+
+- AdWorks propose aussi, aujourd'hui, un audit « Gratuit* » avec astérisque non
+  explicité sur la page. L'article n'attribue l'audit gratuit qu'à DP Medias,
+  ce qui reste exact, mais la pratique n'est pas isolée.
+- Le bloc « Transparence » du §08 date toujours les prix vendeurs du seul
+  30 juillet 2026, alors que la clause « Limites de ce guide » annonce
+  désormais une revérification au 30 août 2026. Les deux mentions ne disent plus
+  tout à fait la même chose.
+
+### D3. Prix maison — double localisateur
+
+| ID | Localisateur | Relevé | État |
+| --- | --- | --- | --- |
+| H-PRIX-1 | `https://hagnere-code.ai/services/publicite-en-ligne` | Audit Ads 1 500 € HT one-shot (rapport 25-40 pages + roadmap 90 jours, restitution 90 min) ; Starter 1 800 € HT/mois, budget média 8-20 k€/mois ; Scale 3 500 € HT/mois, 20-60 k€/mois ; Premium 4 500 € HT/mois, 60-150 k€/mois | **Rouverte le 30/08/2026, concordante** |
+| H-PRIX-2 | `src/components/publicite-en-ligne/sections/pricing.ts` | mêmes quatre montants dans `<span class="amount">`, même seuil « budget media 8 à 20 k€/mois » | **Lue le 30/08/2026, concordante** |
+
+La page publiée et le fichier source disent la même chose. Deux tests
+verrouillent ce fil :
+
+- `content-quality.test.ts` extrait les quatre `amount` du fichier de grille et
+  exige `["1 500 €", "1 800 €", "3 500 €", "4 500 €"]`, puis retrouve les mêmes
+  montants dans la prose rendue ;
+- `src/app/guides/guides-price-consistency.test.ts` compare le source du guide à
+  celui de la grille et échoue si l'un des cinq montants diverge.
+
+La page porte ces trois phrases dans une constante `PRIX_MAISON_PUBLIES`
+réellement rendue au lecteur — et non dans un commentaire, comme c'était le cas
+dans une version antérieure où le contrôle croisé vérifiait un commentaire.
+
+### D4. Sources citées que je n'ai pas pu rouvrir
+
+**Aucune.** Les quinze adresses citées par l'article ont toutes répondu le
+30 août 2026. G-04 fait exception d'une autre nature : la page s'ouvre, mais ne
+contient pas l'affirmation qu'elle ancre (É-01).
+
+Deux limites doivent rester écrites :
+
+1. Je n'ai pas pu vérifier l'état des pages vendeurs **au 30 juillet 2026** ni
+   celui de notre grille **au 28 août 2026** : seulement leur état au
+   30 août 2026.
+2. `https://support.google.com/a/answer/1231286?hl=fr`, repérée par recherche
+   comme portant réellement la distinction Google France SARL / Irlande, **n'a
+   pas été ouverte directement**. Elle est signalée comme piste, jamais comme
+   preuve.
+
+### D5. Conclusions que cette recherche n'autorise pas
 
 - « le marché facture X » ;
 - « la plupart des agences facturent au pourcentage » ;
-- « une agence coûte normalement entre X et Y » ;
+- « une gestion coûte normalement entre X et Y » ;
 - « un budget de X produit Y prospects » ;
 - « le forfait est toujours mieux aligné » ;
 - « un CPA inférieur à X est bon » ;
 - « la TVA sera récupérée » ;
-- « l’annonceur est toujours propriétaire » sans contrôle des rôles.
+- « l'annonceur est propriétaire » sans avoir regardé les rôles attribués ;
+- toute déduction fiscale française tirée de G-04, qui ne traite pas la France.
 
-## E — Matrice d’information utile
+---
 
-### E1. Couverture par section
+## E — Registre des affirmations vérifiables de l'article
 
-| Axe lecteur                         | Section | Preuve ou outil                               |
-| ----------------------------------- | ------- | --------------------------------------------- |
-| réponse directe au prix             | 01      | échantillon daté et limites de méthode        |
-| média vs gestion                    | 01–02   | décomposition en sept familles                |
-| coût réglementaire                  | 02      | source Google G-03 + champ séparé             |
-| TVA et trésorerie                   | 02–05   | source G-04 + trois lectures du calculateur   |
-| quatre rémunérations                | 03      | formules et clauses                           |
-| horizons                            | 04–05   | résultats 3, 6 et 12 mois                     |
-| budget quotidien                    | 04      | sources G-01/G-02                             |
-| reproductibilité                    | 03–06   | entrées, formules, cas central et défavorable |
-| CPC / CPA / CPL / CAC               | 06      | dénominateurs explicites + G-07               |
-| périmètre de gestion                | 07      | matrice responsabilité/livrable               |
-| historique                          | 07      | G-08                                          |
-| consentement et mesure publicitaire | 07      | P-01 + responsabilités à écrire               |
-| propriété, facturation et sortie    | 08      | G-05/G-06/G-09/J-01 + checklist               |
-| mauvais cas d’usage                 | 09      | critères explicites, offre propre datée       |
+Trois natures d'énoncé, jamais mélangées.
+**F** = fait sourcé, avec son localisateur. **H** = hypothèse du cas construit,
+sans source, posée à découvert (détail au §F). **C** = calcul, dérivé des deux
+premiers (démonstration au §G).
 
-### E2. Objections humaines anticipées
+| ID | Affirmation telle qu'elle est publiée | Nature | Localisateur ou dérivation | Emplacement |
+| --- | --- | --- | --- | --- |
+| A-01 | gestion mensuelle affichée à partir de 90 €, 450 € et 450 € HT | **F** | V-01, V-02, V-03 | §01, `legalSources` |
+| A-02 | création 149 € HT chez MS Web | **F** | V-01 | §01 |
+| A-03 | lancement dès 750 € HT chez AdWorks | **F** | V-02 | §01 |
+| A-04 | audit 500 € HT, création de compte 250 € HT chez DP Medias | **F** | V-03 | §01 |
+| A-05 | une même page vend un audit payant et propose à côté un audit gratuit « synthétique » | **F** | V-03 | §01, FAQ 8 |
+| A-06 | notre grille : audit 1 500 € HT, forfaits 1 800 / 3 500 / 4 500 € HT par mois | **F** | H-PRIX-1, H-PRIX-2 | §01, FAQ 8 |
+| A-07 | notre Starter démarre à 8 000 € de budget média mensuel | **F** | H-PRIX-1, H-PRIX-2 | §01, §08 |
+| A-08 | notre Scale couvre 20 à 60 k€/mois — « le haut de la tranche » = 60 000 € | **F** | H-PRIX-1 | §08 |
+| A-09 | « un facteur vingt entre les deux extrêmes » | **C** | 1 800 ÷ 90 = 20 → §G9 | §01 |
+| A-10 | coût réglementaire de 2 % pour les annonces diffusées en France | **F** | G-03 | §02, §06, FAQ 3 |
+| A-11 | les traceurs de mesure publicitaire relèvent le plus souvent du consentement ; le refus doit être aussi facile que l'acceptation | **F** | P-01 | §02 |
+| A-12 | l'aide Google distingue Google France SARL et l'Irlande | **F contesté** | G-04 : **la page ne le dit pas** → É-01 | §02, FAQ 2 |
+| A-13 | six lignes de coût, valorisées sur le cas | **H + C** | H-04 à H-17 → §G1 | §02 |
+| A-14 | trois totalisations : décaissement externe HT, décaissement TTC, coût connu | **C** | définitions du §02, appliquées au §G2 | §02 |
+| A-15 | totaux des quatre offres à 3, 6 et 12 mois (12 montants) | **C** | §G2 | §03 |
+| A-16 | décompte du forfait à trois mois : 21 500 € HT, 25 800 € TTC, 850 €, 22 350 € | **C** | §G3 | §03 |
+| A-17 | quatre seuils : 6 000 €, 5 000 €, 7 143 €, 9 h | **C** | §G4 — **cadrage à préciser, É-04 et É-05** | §03 |
+| A-18 | à 12 000 € : forfait 900 €, temps passé 1 000 €, hybride 1 460 €, pourcentage 1 800 €, 10 800 € d'écart annuel | **C** | §G4 | §03 |
+| A-19 | à 10 %, le seuil se déplace à 9 000 € | **C** | 900 ÷ 0,10 → §G4 | §03 |
+| A-20 | 3 heures par mois annulent l'avance du pourcentage ; 5 heures face au temps passé | **C** | §G5 | §04, FAQ 9 |
+| A-21 | 36 heures par an = 1 800 €, « exactement l'écart annuel d'honoraires » | **C** | §G5 | §04 |
+| A-22 | « Ces 50 € de l'heure sont une hypothèse, pas une source » | **H déclarée** | H-07 | §04 |
+| A-23 | actions de conversion principales et secondaires : usages distincts | **F** | G-08 | §05 |
+| A-24 | CPC 5,10 €, CPA 102 €, CPL 255 €, coût connu par client 1 862,50 € | **C** | §G6 | §05 |
+| A-25 | 1 275 € de média chargé par client, « douze fois et demie le CPA » ; 587,50 € restants ; 1 760,50 € ignorés | **C** | §G6 | §05 |
+| A-26 | plafond de 500 € par prospect, coût réel 372,50 €, reste 127,50 € | **C** | §G7 — **fenêtres mélangées, É-06** | §05 |
+| A-27 | hypothèse basse : 3 000 € de marge, manque de 19 350 €, client à 7 450 € | **C** | §G7 | §05 |
+| A-28 | limite quotidienne jusqu'à 2 × et limite mensuelle 30,4 × le budget quotidien moyen | **F** | G-01 | §06, `legalSources` |
+| A-29 | un budget total de campagne obéit à d'autres règles | **F** | G-02 | §06 |
+| A-30 | 6 080 € de plafond, 400 € de pic, 6 201,60 € contre 6 120 €, 81,60 €/mois, 979,20 €/an, 1 440 € de coût réglementaire | **C** | §G8 — **base 6 000 €, É-02 et É-03** | §06 |
+| A-31 | assiette sans plafond : +1 050 €/mois × 9 = 9 450 € ; plafond à 1 200 € : 4 050 € ; clause manquante 5 400 € | **C** | §G8 | §06 |
+| A-32 | compte recréé : 750 + 300 + 900 = 1 950 € | **C** | §G8 | §06, §07 |
+| A-33 | l'historique des modifications est conservé deux ans | **F** | G-09 | §06 |
+| A-34 | associer un compte existant ne transfère pas la propriété ; un compte créé depuis le compte administrateur peut lui appartenir par défaut | **F** | G-06, G-07 | §07, FAQ 7 |
+| A-35 | la facturation consolidée n'est pas disponible pour les agences médias en France, avec renvoi à la loi Sapin | **F** | G-05 | §07 |
+| A-36 | l'article 20 de la loi n° 93-122 impose mandat écrit, rémunération détaillée, rabais portés sur la facture, facture du vendeur communiquée | **F** | J-01 | §07 |
+| A-37 | sous 3 000 € HT de média, un forfait de 900 € pèse 30 % | **C** | 900 ÷ 3 000 → §G10 | §08, FAQ 9 |
+| A-38 | au-dessus de 8 000 € HT, un taux de 15 % dépasse déjà 1 200 €/mois | **C** | 0,15 × 8 000 → §G10 | §08 |
+| A-39 | notre forfait d'entrée pèserait 36 % de la dépense sur le cas d'Hélène | **C** | 1 800 ÷ 5 000 → §G10 | §08 |
+| A-40 | à 60 000 € de média, 15 % vaudraient 9 000 €/mois contre 3 500 € pour le forfait Scale | **F + C** | A-08 ; 0,15 × 60 000 → §G10 | §08 |
+| A-41 | 61 200 € de média chargé, 76,5 % du total ; 11 550 € de lancement et d'honoraires ; 2 900 € d'écart, 3,6 % | **C** | §G9 | §01 |
+| A-42 | 20 prospects par mois donnent 60 prospects et 12 clients en trois mois | **H + C** | H-20, H-21 × 3 | FAQ 6 |
+| A-43 | Hagnéré Code vend une gestion publicitaire et perçoit des honoraires | **F interne** | déclaration de conflit d'intérêts, bloc « Transparence » | §08 |
 
-| Objection                                               | Réponse intégrée                                             |
-| ------------------------------------------------------- | ------------------------------------------------------------ |
-| « Je veux seulement un nombre »                         | nombre public immédiat puis explication de non-comparabilité |
-| « Je récupère la TVA, donc elle ne compte pas »         | décaissement séparé du coût économique                       |
-| « Le prestataire à 15 % est forcément plus cher »       | assiette, minimum, plafond et horizon recalculés             |
-| « Mon CPA Google est bon »                              | l’action peut ne pas être un prospect qualifié ni un client  |
-| « L’agence possède le compte parce qu’elle l’a créé »   | contrôle des rôles et des règles Google                      |
-| « Beaucoup de changements = beaucoup de travail utile » | journal de décision et historique, pas volume artificiel     |
-| « Hagnéré Code conviendra forcément »                   | seuil public, honoraires fixes et cas de refus explicités    |
+### E1. Affirmations commerciales volontairement absentes
 
-### E3. Critères d’acceptation humaine P1
+Vérifié par relecture de la page **et** par test (`ne laisse passer aucun
+connecteur robotique ni promesse inventée`) :
 
-- La réponse arrive avant tout développement méthodologique.
-- Le lecteur peut refaire chaque calcul avec une calculatrice.
-- Les prix concurrents ne sont jamais utilisés comme statistique.
-- Les hypothèses fiscales sont visibles et modifiables.
-- Le média de base est explicitement hors surcoût pour éviter le double
-  comptage.
-- La base commune ne contient que les coûts réellement identiques ; les
-  omissions, le temps interne et la sortie se normalisent offre par offre.
-- Le cas défavorable est plus visible qu’une promesse commerciale.
-- L’annonceur conserve un chemin de sortie.
-- Le CTA indique aussi les cas de mauvais alignement.
+- aucun nombre de clients gérés, aucun montant de média historiquement piloté ;
+- aucun délai moyen de résultat, aucun taux d'amélioration ;
+- aucune certification, aucun partenariat, aucune note d'avis ;
+- aucun témoignage, aucun logo, aucun nom de client ;
+- aucun « ROI », aucune garantie de résultat — les motifs `/\bROI\b/`,
+  `/nous garantissons/i`, `/résultat garanti/i`, `/notre client/i`,
+  `/nous avons livré/i`, `/cas client réel/i` sont interdits par test ;
+- aucun constat de terrain sur une population non mesurée : les motifs
+  « l'écart courant entre deux devis », « la plupart des dossiers »,
+  « l'erreur la plus fréquente » sont interdits par test.
 
-## F — Registre des affirmations
+L'article se conforme donc à la règle d'or du `CLAUDE.md` : les seules
+références du groupe ne sont pas citées ici, et Hagnéré Code n'est mentionnée
+que par ses prix publics et son propre conflit d'intérêts.
 
-| ID   | Affirmation P1                                                                                              | Source         | Portée / formulation                                                     | Emplacement        |
-| ---- | ----------------------------------------------------------------------------------------------------------- | -------------- | ------------------------------------------------------------------------ | ------------------ |
-| C-01 | les prix publics observés vont d’une gestion à partir de 90 € HT/mois jusqu’à plusieurs milliers d’euros    | pages D2       | échantillon daté, pas marché                                             | section 01         |
-| C-02 | coût France actuellement indiqué à 2 %                                                                      | G-03           | annonces diffusées en France, date à vérifier                            | sections 02 et FAQ |
-| C-03 | limite quotidienne pouvant atteindre 2 × et mensuelle 30,4 × pour la plupart des campagnes                  | G-01           | exceptions explicites                                                    | section 04 et FAQ  |
-| C-04 | budget total de campagne distinct                                                                           | G-02           | période et règles propres                                                | section 04         |
-| C-05 | facturation TVA différente selon l’entité Google                                                            | G-04           | renvoi au comptable, aucun avis fiscal                                   | section 02         |
-| C-06 | association d’un compte existant sans perte d’historique                                                    | G-05           | rôle réel à contrôler                                                    | section 08         |
-| C-07 | compte administrateur non propriétaire par défaut lors de l’association d’un compte existant                | G-05           | ne couvre pas les comptes créés depuis le manager                        | section 08         |
-| C-08 | propriété possible lors de la création depuis un compte administrateur                                      | G-06           | contrôle de la hiérarchie requis                                         | section 08         |
-| C-09 | actions principales et secondaires ont des usages distincts                                                 | G-07           | configuration et exceptions à vérifier                                   | section 06         |
-| C-10 | historique des modifications sur deux ans                                                                   | G-08           | ne prouve pas la qualité                                                 | section 07         |
-| C-11 | offre Hagnéré actuelle : audit 1 500 €, forfaits 1 800 / 3 500 / 4 500 €                                    | page Hagnéré   | prix propres, susceptibles d’évoluer                                     | sections 01 et 09  |
-| C-12 | Starter Hagnéré publié à partir de 8 000 € de média mensuel                                                 | page Hagnéré   | critère de mauvais cas d’usage, pas seuil universel                      | section 09         |
-| C-13 | résultats du cas central                                                                                    | calcul G       | scénario fictif reproductible                                            | sections 03–06     |
-| C-14 | scénario défavorable à -19 350 € de couverture                                                              | calcul G       | hypothèses explicites, aucune prévision                                  | section 06         |
-| C-15 | facturation consolidée indisponible pour les agences médias visées par l’aide Google en France              | G-09           | rôles de facturé, payeur et destinataire à écrire ; aucun avis universel | section 08         |
-| C-16 | achat d’espace via intermédiaire encadré par un mandat écrit et des obligations de transparence             | J-01           | citation du droit positif sans déduire un montage universel              | section 08         |
-| C-17 | traceurs de mesure publicitaire généralement soumis au consentement et refus aussi facile que l’acceptation | P-01           | exemptions éventuelles à vérifier ; aucune conformité automatique        | section 07         |
-| C-18 | DP Medias distingue audit payant complet et audit gratuit synthétique                                       | page DP Medias | comparaison de profondeur, pas jugement de qualité                       | section 01         |
+---
 
-### F1. Affirmations commerciales volontairement absentes
+## F — Les hypothèses du cas construit, posées à découvert
 
-- nombre de clients gérés ;
-- montant de média historiquement piloté ;
-- délai moyen d’obtention de résultats ;
-- taux d’amélioration des conversions ;
-- certification ou partenariat non vérifié ;
-- score d’avis ou note de satisfaction ;
-- disponibilité ou délai de réponse non contractualisé.
+**Aucune de ces trente valeurs n'a de source.** Elles sont choisies pour
+l'exemple. L'article le dit trois fois : dans le badge « Exemple construit »,
+dans la première phrase du hero, et dans l'encart du fil rouge — « les quatre
+offres, les volumes, l'effectif et le coût horaire interne sont choisis pour
+l'exemple et ne viennent d'aucun devis reçu. Ce n'est pas un dossier client. »
+Le test vérifie que cette étiquette précède la première mesure.
 
-## G — Calculs, scénarios et tests
+### F1. Personnage et contexte
 
-### G1. Entrées du cas central
+| ID | Hypothèse | Où elle sert |
+| --- | --- | --- |
+| H-01 | Hélène, dirigeante d'une entreprise de 24 personnes qui installe des pompes à chaleur en Loire-Atlantique | §01 |
+| H-02 | un chargé d'affaires rappelle les demandes ; une comptable suit ce qui sort de la banque | §01 |
+| H-03 | 100 % des annonces diffusées en France | §02, calculateur |
 
-#### Base commune mensuelle
+### F2. Base commune aux quatre offres
 
-| Entrée                         |     Valeur |
-| ------------------------------ | ---------: |
-| Média hors coût réglementaire  | 5 000 € HT |
-| Part diffusée en France        |      100 % |
-| Coût réglementaire saisi       |        2 % |
-| Coût réglementaire calculé     |   100 € HT |
-| Autres coûts externes mensuels |   250 € HT |
-| Coût interne horaire           |     50 €/h |
+| ID | Hypothèse | Valeur |
+| --- | --- | --- |
+| H-04 | budget média mensuel, **hors** coût réglementaire | 5 000 € HT |
+| H-05 | mesure, page et créations au lancement | 2 000 € HT |
+| H-06 | mesure, page et créations, par mois | 250 € HT |
+| H-07 | coût horaire interne chargé | 50 € |
+| H-08 | temps interne : 8 h au lancement puis 3 h par mois, **identiques pour les quatre offres** | 8 h + 3 h/mois |
 
-#### Base commune initiale
+### F3. Trésorerie
 
-| Entrée                    |     Valeur |
-| ------------------------- | ---------: |
-| Mesure, page et créations | 2 000 € HT |
+| ID | Hypothèse | Valeur |
+| --- | --- | --- |
+| H-09 | taux de TVA unique appliqué à tous les coûts externes | 20 % |
+| H-10 | TVA supposée entièrement récupérable | 100 % |
 
-#### Volumes mensuels fictifs
+La clause « Limites de ce guide » assume explicitement H-09 : « le calculateur
+applique un taux de TVA unique par simplification ». H-10 est dite en toutes
+lettres au §03 : « TVA supposée entièrement récupérable ».
 
-| Entrée                                 |  Valeur |
-| -------------------------------------- | ------: |
-| Clics                                  |   1 000 |
-| Actions principales                    |      50 |
-| Prospects qualifiés                    |      20 |
-| Nouveaux clients attribués             |       4 |
-| Marge contributive par client attribué | 2 500 € |
-| Fenêtre fixe de marge par client       | 12 mois |
+### F4. Les quatre offres
 
-#### Modèles
+| ID | Hypothèse | Lancement | Mensuel |
+| --- | --- | ---: | ---: |
+| H-11 | Forfait | 750 € HT | 900 € HT |
+| H-12 | Pourcentage | 900 € HT | 15 % de l'assiette |
+| H-13 | Hybride | 800 € HT | 500 € + 8 % de l'assiette |
+| H-14 | Temps passé | 8 h × 100 € = 800 € HT | 10 h × 100 € = 1 000 € HT |
+| H-15 | assiette du pourcentage **et** de l'hybride = le média, soit 5 000 € | — | — |
+| H-16 | ni minimum ni plafond mensuel dans les quatre devis | — | — |
+| H-17 | aucune somme due à la sortie à 3, 6 ou 12 mois, aucun ajustement de contenu : les quatre offres sont supposées couvrir la même chose | — | — |
 
-| Modèle      |                Lancement |                              Récurrent |
-| ----------- | -----------------------: | -------------------------------------: |
-| Forfait     |                 750 € HT |                          900 € HT/mois |
-| Pourcentage |                 900 € HT |        15 % de 5 000 € = 750 € HT/mois |
-| Hybride     |                 800 € HT | 500 € + 8 % de 5 000 € = 900 € HT/mois |
-| Temps passé | 8 h × 100 €/h = 800 € HT |       10 h × 100 €/h = 1 000 € HT/mois |
+H-17 est l'hypothèse la plus lourde du guide, et l'article la désigne lui-même
+comme telle dans un encart bleu : « Aucun devis réel ne s'aligne ainsi, et la
+section suivante chiffre l'écart. »
 
-Dans le cas central, les ajustements de périmètre et les trois sommes de sortie
-à 3, 6 et 12 mois sont nuls pour les quatre offres. Le temps interne propre à
-chacune est fixé à 8 heures au lancement puis 3 heures par mois. Les modèles au
-pourcentage et hybride utilisent ici chacun une assiette de 5 000 €, sans
-minimum ni plafond ; ces champs restent indépendants dans le moteur. `0`
-signifie « aucun plafond ».
+### F5. Volumes et marge
 
-Hypothèse de trésorerie du cas : TVA uniforme 20 %, récupération saisie 100 %.
-Cette hypothèse simplifie le scénario et ne décrit pas nécessairement les
-factures réelles.
+| ID | Hypothèse | Valeur |
+| --- | --- | ---: |
+| H-18 | clics par mois | 1 000 |
+| H-19 | actions de conversion principales par mois | 50 |
+| H-20 | prospects reconnus qualifiés par le commercial, par mois | 20 |
+| H-21 | nouveaux clients attribués par mois | 4 |
+| H-22 | volumes constants dès le premier mois : ni montée en charge, ni saisonnalité | — |
+| H-23 | marge contributive par client attribué, sur une fenêtre de 12 mois | 2 500 € |
 
-### G2. Formules du moteur
+H-22 n'est écrite que dans le texte d'aide du calculateur, pas dans le corps de
+l'article.
 
-Pour un horizon `m` :
+### F6. Scénarios et incidents
 
-```text
-surcoût_mensuel
-= média_mensuel × part_France × taux_surcoût
+| ID | Hypothèse | Valeur |
+| --- | --- | --- |
+| H-24 | saison : le média passe à 12 000 € HT/mois au quatrième mois, pour les neuf mois restants | §03, §06 |
+| H-25 | plafond mensuel contrefactuel qui aurait pu être écrit au contrat | 1 200 € |
+| H-26 | taux alternatif utilisé pour montrer la sensibilité du seuil | 10 % |
+| H-27 | incident n° 1 : budget quotidien moyen de 200 €, mois compté sur 30 jours — **soit 6 000 €/mois, et non 5 000 € (É-02)** | §06 |
+| H-28 | incident n° 3 : le compte a été créé depuis le compte administrateur de l'agence et n'est pas récupéré | §06 |
+| H-29 | incident n° 3 : 750 € de lancement chez l'agence suivante, 6 heures internes, un mois de préavis facturé 900 € | §06 |
+| H-30 | hypothèse basse : un client par mois, 1 000 € de marge par client | §05 |
 
-gestion_variable
-= borner(
-    assiette_propre_au_devis × taux
-    [+ socle si hybride],
-    minimum,
-    plafond si plafond > 0
-  )
+---
 
-externe_HT
-= autres_externes_initiaux
-+ lancement_du_modèle
-+ mise_à_niveau_initiale_du_périmètre
-+ sommes_dues_à_la_sortie_pour_m
-+ m × (
-     média_mensuel
-     + surcoût_mensuel
-     + autres_externes_mensuels
-     + gestion_mensuelle_du_modèle
-     + mise_à_niveau_mensuelle_du_périmètre
-   )
+## G — Les calculs de l'article, refaits à la main
 
-TVA_décaissée
-= externe_HT × taux_TVA
+Tout ce qui suit a été **recalculé indépendamment**, sans exécuter le moteur du
+dépôt : empilement mois par mois plutôt que multiplication, résolution des
+seuils par dichotomie plutôt que par la formule imprimée. Les vingt-huit totaux
+publiés tombent juste. Les seuls écarts sont ceux du §0, qui portent sur le
+cadrage, jamais sur l'arithmétique.
 
-TVA_récupérable
-= TVA_décaissée × taux_de_récupération
-
-temps_interne
-= (heures_initiales_de_l_offre
-   + m × heures_mensuelles_de_l_offre)
-  × coût_horaire
-
-coût_économique_connu
-= externe_HT + TVA_décaissée − TVA_récupérable + temps_interne
-```
-
-### G3. Résultats vérifiables
-
-| Modèle      | 3 mois HT externe | 3 mois TTC | 3 mois coût connu | 6 mois coût connu | 12 mois coût connu |
-| ----------- | ----------------: | ---------: | ----------------: | ----------------: | -----------------: |
-| Forfait     |          21 500 € |   25 800 € |          22 350 € |          41 550 € |           79 950 € |
-| Pourcentage |          21 200 € |   25 440 € |          22 050 € |          40 800 € |           78 300 € |
-| Hybride     |          21 550 € |   25 860 € |          22 400 € |          41 600 € |           80 000 € |
-| Temps passé |          21 850 € |   26 220 € |          22 700 € |          42 200 € |           81 200 € |
-
-Contrôle manuel du forfait à trois mois :
+### G1. La brique de base
 
 ```text
-surcoût mensuel = 5 000 × 100 % × 2 % = 100
-externe HT = 2 000 + 750 + 3 × (5 000 + 100 + 250 + 900)
-            = 21 500
-TVA = 21 500 × 20 % = 4 300
-TTC = 25 800
-temps interne = (8 + 3 × 3) × 50 = 850
-coût connu = 21 500 + 4 300 − 4 300 + 850 = 22 350
+coût réglementaire mensuel
+= média × part France × taux
+= 5 000 × 100 % × 2 %
+= 100 €
+
+socle commun mensuel, hors honoraires
+= média + coût réglementaire + mesure
+= 5 000 + 100 + 250
+= 5 350 €
+
+socle commun initial, hors lancement du modèle
+= 2 000 €
 ```
 
-### G4. Indicateurs du cas central
-
-Sur trois mois, média et surcoût chargé = `3 × 5 100 = 15 300 € HT`.
+Honoraires mensuels des quatre offres, à 5 000 € de média :
 
 ```text
-CPC média chargé = 15 300 ÷ 3 000 = 5,10 € HT
-CPA média chargé = 15 300 ÷ 150 = 102 € HT
-CPL qualifié média chargé = 15 300 ÷ 60 = 255 € HT
-CAC complet connu = 22 350 ÷ 12 = 1 862,50 €
-
-marge complète des cohortes sur une fenêtre fixe de 12 mois
-= 12 × 2 500 = 30 000 €
-couverture de cohorte = 30 000 − 22 350 = 7 650 €
-
-seuil de coût complet par prospect qualifié
-= 30 000 ÷ 60 = 500 €
-
-coût complet connu par prospect qualifié
-= 22 350 ÷ 60 = 372,50 €
-
-écart au seuil = 500 − 372,50 = 127,50 €
+forfait      = 900 €
+pourcentage  = 0,15 × 5 000            = 750 €
+hybride      = 500 + 0,08 × 5 000      = 500 + 400 = 900 €
+temps passé  = 10 × 100                = 1 000 €
 ```
 
-Le mot « couverture de cohorte » est retenu : la marge complète de chaque
-client acquis est rapprochée des coûts, même si elle se réalise après l’horizon
-de 3, 6 ou 12 mois. Ce n’est ni un retour sur investissement complet, ni une
-prévision de trésorerie, et le calcul ne couvre pas les coûts non saisis. Les
-volumes sont des moyennes mensuelles constantes dès le premier mois ; aucune
-montée en charge ni saisonnalité n’est modélisée.
+### G2. Les douze totaux du tableau du §03
 
-### G5. Scénario défavorable
-
-Modification :
-
-- un nouveau client mensuel au lieu de quatre ;
-- marge contributive de 1 000 € sur la même fenêtre fixe de douze mois au lieu
-  de 2 500 € ;
-- tous les coûts inchangés.
-
-Résultat à trois mois sur le forfait :
+Formule appliquée, `m` = nombre de mois :
 
 ```text
-marge contributive = 3 × 1 000 = 3 000 €
-couverture = 3 000 − 22 350 = −19 350 €
-CAC complet connu = 22 350 ÷ 3 = 7 450 €
-seuil par prospect qualifié = 3 000 ÷ 60 = 50 €
-coût connu par prospect qualifié = 372,50 €
-écart au seuil = 50 − 372,50 = −322,50 €
+décaissement externe HT
+= 2 000 + lancement + m × (5 350 + honoraires)
+
+décaissement TTC
+= externe HT × 1,20
+
+heures internes
+= 8 + 3 m
+
+coût connu
+= externe HT + TVA décaissée − TVA récupérée + heures × 50
+= externe HT + (8 + 3 m) × 50        [car TVA récupérable à 100 %]
 ```
 
-### G6. Contrats de test du moteur
-
-Les tests unitaires doivent vérifier :
-
-1. quatre modèles et trois horizons ;
-2. scénario forfaitaire exact à trois mois ;
-3. séparation CPC / CPA / CPL / CAC ;
-4. seuil et couverture reproductibles ;
-5. assiettes contractuelles du pourcentage et de l’hybride distinctes entre
-   elles et du média ;
-6. TTC distinct du coût économique si TVA récupérable ;
-7. TVA non récupérable intégrée au coût ;
-8. dénominateur nul rendu indisponible, jamais infini affiché ;
-9. état `unavailable` distinct d’un seuil négatif ;
-10. minimum et plafond contractuels, avec `0 = aucun plafond` ;
-11. ajustements de périmètre et temps interne propres à chaque offre ;
-12. acceptation d’un taux d’honoraires supérieur à 100 %, qui n’est pas une
-    part intrinsèquement bornée ;
-13. rejet des nombres négatifs, infinis, parts intrinsèques supérieures à
-    100 % et valeurs finies extrêmes ;
-14. fenêtre de marge comprise entre 1 et 120 mois ;
-15. visibilité du scénario défavorable ;
-16. cas central P1 inchangé lorsque les nouveaux ajustements valent zéro ;
-17. trois coûts de sortie propres à chaque offre, associés respectivement aux
-    horizons 3, 6 et 12 mois, sans contamination d’un autre horizon ou modèle.
-
-Le test de rendu doit également vérifier :
-
-- les quatre modèles ;
-- les trois horizons ;
-- l’absence de formulaire envoyé ;
-- l’information bornée « calculateur : aucun envoi » ;
-- la limite fiscale ;
-- la phrase de non-prédiction ;
-- une légende de tableau accessible ;
-- des labels explicitement associés ;
-- une lecture mobile complète en cartes ;
-- une région de tableau focusable au grand écran ;
-- l’absence d’annonce `aria-live` générique et répétitive.
-
-## H — Journal des quatre passes et état de contrôle
-
-### H0. Gel de la mission
-
-| Élément                               | Valeur                                                            |
-| ------------------------------------- | ----------------------------------------------------------------- |
-| Worktree                              | `/Users/quentinhagnere/Developpement/Hagnere-Code-wt-guide-reset` |
-| Branche observée au départ            | `codex/three-guide-quality-loop`                                  |
-| Commit de base                        | `760dda103000d564f103cf1d6ac21609c46e1c0b`                        |
-| Slug réservé                          | `prix-gestion-google-ads`                                         |
-| Passe autorisée                       | P1 uniquement                                                     |
-| Commit / push autorisé pour cet agent | non                                                               |
-
-### H1. P1 — Création
-
-Agent : `/root/g2_p1_creation`.
-
-#### Fichiers produits ou modifiés
-
-- `src/app/guides/prix-gestion-google-ads/page.tsx`
-- `src/app/guides/prix-gestion-google-ads/opengraph-image.tsx`
-- `src/components/guides/GoogleAdsQuoteComparator.tsx`
-- `src/components/guides/GoogleAdsQuoteComparator.test.tsx`
-- `src/lib/google-ads-quote-comparison.ts`
-- `src/lib/google-ads-quote-comparison.test.ts`
-- entrée brouillon dans `src/lib/guides.ts`
-- attente du registre dans `src/lib/guides.test.ts`
-- icône réservée dans `src/components/guides/GuidesHubPage.tsx` ; le guide
-  demeure absent car le hub lit `PUBLISHED_GUIDES`
-- retrait du seul slug reconstruit dans
-  `src/lib/legacy-guide-redirects.ts` et ajustement précis de son test
-- trois images dans `public/guides/prix-gestion-google-ads/`
-- présent dossier
-- manifeste `docs/research/manifests/prix-gestion-google-ads-p1.sha256`
-
-#### Visuels ImageGen
-
-Le skill ImageGen a été utilisé avec trois appels distincts. Les originaux sont
-conservés dans :
-
-`/Users/quentinhagnere/.codex/generated_images/019fb174-8eeb-7580-9466-51b9481c6308/`
-
-| Article | Original                            | Sortie WebP                              | Contrôle                                             |
-| ------- | ----------------------------------- | ---------------------------------------- | ---------------------------------------------------- |
-| 16:9    | `call_Ivm0L06hFNR35PYDnTcod0Fw.png` | `article-prix-ads-16x9.webp`, 1600 × 900 | quatre colonnes abstraites, aucun texte ni logo      |
-| 4:3     | `call_DmfZGsAfMq6vLL6bO2GcV9c9.png` | `article-prix-ads-4x3.webp`, 1200 × 900  | quatre chemins et coût commun, aucun texte ni logo   |
-| 1:1     | `call_jWGNrwFT1Oslu4QDcl3si74U.png` | `article-prix-ads-1x1.webp`, 1200 × 1200 | actifs, temps et seuil adverse, aucun logo ni marque |
-
-Intentions des prompts :
-
-1. décideur comparant quatre offres sur une table commune ;
-2. flux séparant média, gestion, lancement, mesure, création et temps ;
-3. registre central, actifs, calcul et risque de dépassement.
-
-Palette : bleu nuit, indigo, papier ivoire, vert discret et accent ambre.
-Les trois sorties ont été inspectées après conversion : cadrage, lisibilité,
-absence de texte généré et cohérence éditoriale jugés acceptables pour P1.
-
-#### Corrections de contrôle intégrées pendant P1
-
-- Le champ média a été renommé « budget média mensuel hors coût
-  réglementaire » : le moteur ajoute ensuite le surcoût France, ce qui évite
-  d’interpréter la base comme une facture déjà chargée.
-- La TVA uniforme est qualifiée comme hypothèse commune simplificatrice ; le
-  guide demande un contrôle facture par facture.
-- La catégorie a été alignée sur `Google Ads & acquisition`.
-- L’échantillon tarifaire est présenté comme daté, non statistique et à
-  périmètres non comparables.
-- La facturation France a été rendue opérationnelle : annonceur facturé, payeur,
-  justificatifs et factures prestataires sont séparés sans déduire un montage
-  juridique universel.
-- La zone dynamique massive du calculateur a été remplacée par une annonce
-  courte ; chaque champ invalide affiche désormais une explication liée et une
-  bordure perceptible.
-- Les quatre barres décoratives de l’image sociale ont la même longueur afin de
-  ne pas simuler un classement chiffré.
-
-#### Validation P1 exécutée
-
-| Contrôle                               | Commande ou méthode                                                                                   | Résultat final                                                                            |
-| -------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| moteur, interface, registre et schémas | `npx vitest run --maxWorkers=2 …`                                                                     | 4 fichiers, 23 tests, 23 réussites                                                        |
-| suite globale                          | `npm test`                                                                                            | 75 fichiers, 430 tests, 430 réussites                                                     |
-| SEO environnement courant              | `npm run check:seo`                                                                                   | 33 fichiers, 172 tests, 172 réussites                                                     |
-| SEO production                         | `NODE_ENV=production NEXT_PUBLIC_ENV=production npm run check:seo`                                    | 33 fichiers, 172 tests, 172 réussites                                                     |
-| TypeScript                             | `npx tsc --noEmit`                                                                                    | aucune erreur                                                                             |
-| lint global                            | `npm run lint`                                                                                        | aucune erreur                                                                             |
-| build de production                    | `NODE_OPTIONS=--max-old-space-size=8192 NEXT_PUBLIC_ENV=production NODE_ENV=production npm run build` | compilation, prérendu, TypeScript et postbuild réussis                                    |
-| artefacts SEO                          | `scripts/verify-search-indexing-artifact.mjs` via postbuild                                           | 44 URL sitemap, 27 liens llms, 44 pages, 3 temps de lecture et 76 blocs JSON-LD contrôlés |
-| HTML servi                             | `next start -p 3102`, requête locale et script de mesure                                              | HTTP 200 ; 4 398 mots visibles ; 22 minutes                                               |
-| indexation du brouillon                | inspection du HTML, du sitemap et du hub servis                                                       | `noindex`; canonical propre ; absent du sitemap et du hub                                 |
-| données structurées                    | inspection du HTML servi                                                                              | un `Article`, un `BreadcrumbList`, aucun `FAQPage`                                        |
-| contenu essentiel                      | inspection du HTML servi                                                                              | H1, FAQ visible, confidentialité locale, deux CTA et images présents                      |
-| images                                 | `identify`, poids et inspection visuelle                                                              | 1600 × 900, 1200 × 900, 1200 × 1200 ; 76 à 92 Kio                                         |
-| garde-fous lexicaux                    | recherche ciblée dans les fichiers P1                                                                 | aucun artefact téléchargeable, schéma interdit ou faux cas client                         |
-
-Le premier build a correctement bloqué un temps de lecture déclaré à
-24 minutes pour 4 398 mots visibles, estimés à 22 minutes. Le registre a été
-corrigé à 22, puis le build complet et le postbuild ont été relancés avec
-succès.
-
-Le contrôle visuel dans le navigateur intégré a été tenté selon le skill dédié,
-mais le backend `iab` n’était pas disponible dans cette session. Le diagnostic
-autorisait uniquement un Chrome utilisateur et le skill interdisait de changer
-de backend comme contournement. Aucun BAT navigateur n’est donc revendiqué en
-P1 ; le contrôle HTML servi et l’inspection séparée des trois images sont les
-preuves disponibles.
-
-**État agent P1 : prêt pour revue de l’orchestrateur.** Cela n’est ni une
-validation orchestrateur, ni une autorisation de lancer P2.
-
-#### G1 — Validation orchestrateur du 30 juillet 2026
-
-Verdict : **GO_PASSE_2**.
-
-- P0 : 0 ;
-- P1 : 0 ;
-- P2 transmis aux passes suivantes : titre SEO à naturaliser sans perdre
-  l’intention, annonce dynamique du calculateur à rendre réellement utile ou à
-  retirer, et contrôle final du sommaire horizontal après redimensionnement.
-
-Contrôles indépendants rejoués par l’orchestrateur sur le manifeste P1 :
-
-- manifeste P1 : 15/15 fichiers vérifiés avant l’ajout du présent verdict ;
-- suite globale : 430/430 ;
-- SEO courant : 172/172 ;
-- SEO avec `NEXT_PUBLIC_ENV=production` : 172/172 ;
-- ESLint : réussi ;
-- TypeScript avec `npx tsc --noEmit` : réussi ;
-- `git diff --check` : réussi ;
-- build production : 61 routes, postbuild réussi avec 44 URL de sitemap,
-  27 liens `llms.txt`, 44 pages, 3 temps de lecture et 76 blocs JSON-LD ;
-- rendu réel : H1 unique, clair/sombre, petit paysage et dix largeurs de
-  320 à 1 600 px sans débordement du document ;
-- trois visuels Article ouverts et contrôlés ;
-- calculs centraux et défavorables refaits manuellement ;
-- prix vendeurs et prix Hagnéré cités recontrôlés sur les pages publiques
-  datées.
-
-Ce GO autorise uniquement la passe contradictoire P2. Il ne vaut ni
-publication, ni indexation, ni validation P3/P4 ou transversale.
-
-### H2. P2 — Enrichissement et vérification
-
-Agent distinct : `/root/g1_p4_antipasse`, réaffecté explicitement par
-l’orchestrateur à la passe 2 de ce seul guide.
-
-#### H2.1. Entrées et méthode
-
-- reprise du dossier P1 et du verdict `GO_PASSE_2` avant toute correction ;
-- lecture complète du moteur, de ses tests, du composant, de sa page, de
-  l’image sociale et des affirmations de la page service ;
-- lecture du prompt n° 2 « Enrichissement et vérification » : le loader de
-  dépendances documentaires est resté bloqué, puis a été abandonné ; le DOCX a
-  été extrait en lecture seule avec `textutil` (798 lignes). Les consignes
-  compatibles ont été appliquées : chirurgie plutôt que réécriture, sources
-  actuelles, contradictions, recalcul, pédagogie, anti-hallucination et rapport
-  de modifications. Les quotas, promesses de classement, schémas interdits et
-  artifices SEO contraires à la gouvernance du dépôt ont été écartés ;
-- contre-vérification des aides Google, de Légifrance, de la CNIL et des pages
-  vendeurs au 30 juillet 2026 ;
-- recalcul indépendant des cas central et défavorable, puis ajout de contrats
-  de test adversariaux.
-
-Le manifeste P1 avait été vérifié 15/15 par l’orchestrateur avant son verdict
-G1. Il est normalement invalidé par la présente passe et par les intégrations
-partagées intervenues depuis. Il demeure une preuve historique du gel P1 ; le
-manifeste P2 fige le nouveau candidat sans réécrire cette histoire.
-
-#### H2.2. Contradictions trouvées et corrections
-
-| Gravité avant correction | Contradiction                                                                           | Correction P2                                                                                                            |
-| ------------------------ | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| P1                       | un dénominateur nul produisait le badge « Seuil non couvert »                           | état ternaire `covered` / `not-covered` / `unavailable`, avec libellé et test dédiés                                     |
-| P1                       | des entrées finies extrêmes pouvaient produire `Infinity` tout en gardant `valid: true` | bornes raisonnables, garde récursive des résultats dérivés et tests d’entrée extrême et de division non finie            |
-| P1                       | une même assiette alimentait pourcentage et hybride                                     | deux assiettes contractuelles indépendantes                                                                              |
-| P1                       | le texte demandait minimum et plafond sans les calculer                                 | minimum et plafond effectifs pour les deux modèles variables ; `0 = aucun plafond` ; plage inversée rejetée              |
-| P1                       | des coûts de mesure, page ou création supposés communs pouvaient inverser le classement | base strictement commune et ajustements externes initiaux/mensuels par offre                                             |
-| P1                       | le temps interne était artificiellement identique                                       | heures initiales et mensuelles propres à chaque offre, avec coût horaire commun                                          |
-| P1                       | l’arrêt à un horizon ignorait préavis et frais                                          | somme de sortie HT propre à chaque offre incluse dans chacun des horizons                                                |
-| P1                       | la marge par client paraissait se réaliser dans l’horizon lu                            | fenêtre fixe de cohorte de 1 à 120 mois, indépendante de l’horizon, et frontière explicite avec la trésorerie            |
-| P1                       | les volumes étaient multipliés par 3/6/12 sans annoncer l’absence de rampe              | hypothèse de moyenne mensuelle constante, sans montée en charge ni saisonnalité, et renvoi à un scénario mois par mois   |
-| P1                       | CPC/CPA/CPL incluaient le surcoût France sans le signaler                               | vocabulaire « média chargé » dans l’outil, le tableau, les exemples et l’explication de l’écart possible avec Google Ads |
-| P1                       | les labels et aides vivaient dans un unique `<label>`                                   | `label[for]`, `input[id]`, aide et erreur externes reliées par `aria-describedby`                                        |
-| P1                       | l’annonce `aria-live` générique ne portait aucune information nouvelle                  | suppression                                                                                                              |
-| P1                       | les résultats décisifs restaient hors écran sur mobile                                  | cartes complètes par modèle et par horizon sous `xl`, tableau compact focusable au grand écran                           |
-| P1                       | environ quarante champs formaient un mur de formulaire                                  | divulgation progressive par offre, premier forfait ouvert et ajustements secondaires à zéro par défaut                   |
-| P1                       | H1 visible et `Article.headline` divergeaient                                           | H1 aligné exactement sur `guide.heroTitle`                                                                               |
-| P1                       | le bénéfice CTA promettait un rattachement automatique des actifs                       | formulation bornée : propriété, accès et actifs inventoriés au devis                                                     |
-| P1                       | « audit » mélangeait chez DP Medias un audit payant et un format gratuit synthétique    | distinction explicite par profondeur et livrables                                                                        |
-| P1                       | la loi Sapin et le consentement des traceurs restaient indirects                        | article 20 Légifrance et FAQ CNIL ajoutés, avec frontières entre droit, règle Google et conseil individualisé            |
-
-Le cas central conserve exactement ses résultats P1 lorsque les nouveaux
-ajustements valent zéro. Le taux d’honoraires variable n’est plus arbitrairement
-borné à 100 % : une part France ou récupérable reste bornée à 100 %, tandis
-qu’un taux contractuel peut dépasser 100 % d’une petite assiette dans la limite
-technique documentée de l’outil.
-
-#### H2.3. Fichiers P2
-
-- `docs/research/prix-gestion-google-ads.md`
-- `src/app/guides/prix-gestion-google-ads/page.tsx`
-- `src/app/guides/prix-gestion-google-ads/content-quality.test.ts`
-- `src/components/guides/GoogleAdsQuoteComparator.tsx`
-- `src/components/guides/GoogleAdsQuoteComparator.test.tsx`
-- `src/lib/google-ads-quote-comparison.ts`
-- `src/lib/google-ads-quote-comparison.test.ts`
-- manifeste `docs/research/manifests/prix-gestion-google-ads-p2.sha256`
-
-L’image sociale et les trois WebP P1 sont inchangés, mais sont inclus dans le
-manifeste P2 afin de figer la totalité du candidat guide autorisé. Aucun fichier
-partagé, registre, redirection, hub, configuration Git ou artefact de build n’a
-été modifié par cet agent.
-
-#### H2.4. Contrôles P2
-
-| Contrôle                                  | Résultat                                                             |
-| ----------------------------------------- | -------------------------------------------------------------------- |
-| moteur + rendu + contrat éditorial ciblés | 3 fichiers, 27 tests, 27 réussites                                   |
-| TypeScript                                | `npx tsc --noEmit`, réussi                                           |
-| ESLint ciblé sur 7 fichiers TS/TSX        | réussi                                                               |
-| Prettier ciblé sur les 7 fichiers édités  | réussi                                                               |
-| `git diff --check` ciblé                  | réussi                                                               |
-| calcul central                            | résultats P1 inchangés                                               |
-| scénario défavorable                      | couverture de cohorte −19 350 €, statut non couvert                  |
-| dénominateur nul                          | statut non calculable, jamais non couvert                            |
-| extrêmes                                  | entrée `Number.MAX_VALUE` et résultat unitaire non fini rejetés      |
-| sources                                   | Google, Légifrance, CNIL et pages vendeurs recontrôlés au 30/07/2026 |
-| schémas et téléchargements interdits      | absents du périmètre public P2                                       |
-
-Le build global, la publication, l’indexation, le commit, le push et le BAT
-navigateur final étaient hors périmètre de cet agent et ne sont pas revendiqués.
-Le sommaire a été raccourci et le calculateur dispose d’une lecture mobile
-complète ; leur contrôle visuel réel reste le travail du gate orchestrateur.
-
-#### H2.5. Résidu transmis à l’orchestrateur
-
-- P0 : 0 ;
-- P1 : 0 ;
-- P2 : 1 — le titre SEO du registre partagé reste
-  `Prix gestion Google Ads : comparer 4 modèles en 2026`. Sa naturalisation
-  doit être réconciliée sous verrou d’intégration, sans override local ni
-  modification hors périmètre. Proposition non contraignante pour P3 :
-  `Prix de gestion Google Ads : comparez 4 modèles en 2026`.
-
-#### H2.6. Reprise après contrôle G2 provisoire
-
-Le contrôle orchestrateur a confirmé le fond P2 — manifeste 11/11, 27 tests,
-ESLint, TypeScript, sources et calculs — mais a demandé une reprise pour un
-défaut de formatage sur sept fichiers. Prettier a été appliqué uniquement à ces
-sept fichiers autorisés. Deux assertions qui lisaient littéralement les retours
-à la ligne du code source ont alors été rendues stables au formatage par
-normalisation des espaces ; le contenu public et le comportement du
-calculateur n’ont pas été modifiés par cette reprise.
-
-Les 27 tests, ESLint ciblé, TypeScript, Prettier ciblé et
-`git diff --check` ciblé ont ensuite été relancés avec succès. Le manifeste P2
-a été régénéré après ces ultimes changements et revérifié 11/11.
-
-**État agent P2 : `READY_FOR_ORCHESTRATOR_G2_RECHECK`.** Ce statut demande un
-nouveau contrôle indépendant de l’orchestrateur. Il n’autorise ni P3, ni
-publication.
-
-#### G2 — Validation orchestrateur du 30 juillet 2026
-
-Verdict : **GO_PASSE_3**.
-
-- P0 : 0 ;
-- P1 : 0 ;
-- P2 transmis à P3 : naturaliser le titre SEO partagé sans perdre l’intention
-  de recherche.
-
-L’orchestrateur a relu le guide jusqu’à sa décision finale, contrôlé les
-frontières entre coût média, honoraires, coût réglementaire, TVA, coût interne,
-marge de cohorte et trésorerie, puis vérifié que les exemples restent
-explicitement fictifs et reproductibles. Les limites juridiques, fiscales,
-contractuelles et relatives au consentement ne sont pas transformées en conseil
-individualisé. Le calculateur compare bien quatre offres sur une base commune
-et autorise des ajustements propres à chaque devis sans changer les résultats
-du cas central lorsque ces ajustements valent zéro.
-
-Contrôles indépendants rejoués sur le candidat P2 immobile :
-
-- manifeste P2 : 11/11 fichiers vérifiés ;
-- moteur, composant et contrat éditorial : 27/27 tests ;
-- ESLint ciblé : réussi ;
-- TypeScript avec `npx tsc --noEmit` : réussi ;
-- Prettier ciblé : réussi ;
-- `git diff --check` ciblé : réussi ;
-- absence de modification des fichiers partagés par l’agent P2 confirmée ;
-- aucun téléchargement tableur, schéma FAQ ou promesse de performance ajouté.
-
-Le premier gel P2 annoncé après la reprise de formatage était prématuré :
-l’orchestrateur a constaté sept empreintes invalides et a maintenu le NO GO.
-L’agent P2 a ensuite régénéré le manifeste en toute dernière écriture ; le
-second contrôle a confirmé les 11 empreintes. Ce GO autorise uniquement le
-polish rédactionnel P3 par un agent distinct. Il ne vaut ni validation P4, ni
-BAT, ni publication, ni indexation.
-
-### H3. P3 — Polish rédactionnel
-
-**Autorisation annulée avant toute édition.** Deux audits P3 en lecture seule
-ont été lancés sur le candidat G2. Le contrôle « chiffres et CTR » a découvert
-un défaut de modèle hérité de P2 : chaque offre ne dispose que d’un seul coût de
-sortie, ensuite ajouté sans distinction aux comparaisons à 3, 6 et 12 mois.
-Pourtant, un préavis, un engagement ou des frais de rupture peuvent produire
-trois montants différents selon la date d’arrêt.
-
-L’orchestrateur a relu directement le moteur et confirmé que
-`exitCostAtHorizonHT` était ajouté dans la boucle des trois horizons. Il a donc
-interrompu P3 avant la moindre modification. Le manifeste G2 vérifiait bien
-11/11 fichiers au moment de cette décision ; il devient une preuve historique
-du défaut, pas un candidat autorisé pour P3.
-
-Verdict : **RETOUR_PASSE_2**.
-
-La reprise P2 doit :
-
-- remplacer le coût de sortie unique par un montant distinct à 3, 6 et 12 mois
-  pour chaque offre ;
-- prouver par les tests qu’un coût saisi à un horizon n’affecte pas les deux
-  autres ;
-- adapter les champs, les résultats et l’explication sans modifier les autres
-  calculs validés ;
-- borner la statistique de confidentialité au calculateur, et non à tous les
-  scripts éventuels de la page ;
-- intégrer dans son rapport les autres ambiguïtés chiffrées signalées par
-  l’audit P3, sans entreprendre le polish rédactionnel.
-
-Un nouveau manifeste P2 et un nouveau verdict G2 sont obligatoires avant de
-relancer P3 avec un agent distinct.
-
-### H2R. Reprise P2 après `RETOUR_PASSE_2`
-
-Agent : `/root/g1_p4_antipasse`, réaffecté par l’orchestrateur à la correction
-du candidat P2. Le manifeste G2 qui vérifiait 11/11 avant l’inscription du
-retour reste une preuve historique ; il n’est pas présenté comme le gel de
-cette reprise.
-
-#### H2R.1. Correction du modèle
-
-Le champ unique `exitCostAtHorizonHT` a été supprimé des entrées et des
-résultats. Chaque offre possède désormais trois entrées explicites :
-
-- somme due si l’offre est arrêtée à 3 mois ;
-- somme due si l’offre est arrêtée à 6 mois ;
-- somme due si l’offre est arrêtée à 12 mois.
-
-Dans la boucle du moteur, le résultat de l’horizon `m` lit uniquement la somme
-de sortie associée à `m`. Le résultat de chaque horizon expose ce montant sous
-`exitCostHT`, à côté du décaissement externe, de la TVA, du coût interne et du
-coût connu. Les douze valeurs initiales restent à zéro : le cas central ne
-change donc pas.
-
-Le composant n’affiche pas douze champs sans hiérarchie. Chaque offre conserve
-sa divulgation progressive et contient une matrice accessible « arrêt à 3 / 6 /
-12 mois » avec :
-
-- un `fieldset` et une légende propres à l’offre ;
-- un label explicitement associé à chaque champ ;
-- une aide commune expliquant préavis, engagement restant et frais ;
-- une erreur liée au champ pour une valeur non finie, négative ou hors limite ;
-- le coût de sortie correspondant dans chaque carte mobile et chaque colonne
-  du tableau de résultats.
-
-#### H2R.2. Ambiguïtés chiffrées corrigées
-
-- la statistique de confidentialité est bornée au calculateur :
-  `Saisies du calculateur / Non transmises` ;
-- les statistiques affichent `3 · 6 · 12 mois` et
-  `Moyenne de marché / Non utilisée` ;
-- la fourchette publique observée commence à 90 € HT/mois et va jusqu’à
-  plusieurs milliers d’euros, sans extrapolation à « quelques dizaines » ;
-- les trois prix DP Medias cités et la gestion à 450 €/mois portent la mention
-  HT ; l’échantillon reste explicitement non représentatif ;
-- le lancement est décrit comme un coût ponctuel inclus une fois dans chaque
-  comparaison, sans notion d’amortissement ;
-- le coût interne est écrit `50 €/h`, tous les honoraires fictifs sont
-  explicitement HT, le tableau porte `Gestion mensuelle HT` et le test de
-  budget indique `budget média mensuel HT de 5 000 à 10 000 €` ;
-- l’exemple de charge interne rend visibles les cinq données du calcul :
-  300 € HT/mois, 18 h/mois, 55 €/h, 990 €/mois et une différence de
-  690 €/mois ;
-- CPC, CPA et CPL média chargé sont affichés HT. Le CAC complet connu ne reçoit
-  pas ce suffixe, car il peut inclure TVA non récupérable et temps interne ;
-- l’aide de la fenêtre de marge explique qu’une modification de la fenêtre ne
-  recalcule pas la marge par client : les deux entrées doivent être adaptées ;
-- les deux citations commerciales internes utilisent
-  `/services/publicite-en-ligne` sans nouvel onglet ; le seuil Starter de
-  8 000 € est cliquable et daté du 30 juillet 2026 ;
-- la promesse de durée non mesurée est retirée au profit de
-  `Contrôle rapide avant signature` ;
-- le CTA mobile décrit son action réelle : `Décrire mon périmètre`.
-
-Aucun schéma `FAQPage` ou `HowTo`, aucun téléchargement et aucune promesse de
-performance n’ont été ajoutés. Le polish P3 général, le titre SEO partagé, la
-méta-description et les dates de publication restent hors de cette reprise.
-
-#### H2R.3. Recalculs et contrats adversariaux
-
-Le cas central a été refait séparément du moteur avec les formules de la section
-G. Les coûts connus restent strictement :
-
-| Modèle      |   3 mois |   6 mois |  12 mois |
-| ----------- | -------: | -------: | -------: |
-| Forfait     | 22 350 € | 41 550 € | 79 950 € |
-| Pourcentage | 22 050 € | 40 800 € | 78 300 € |
-| Hybride     | 22 400 € | 41 600 € | 80 000 € |
-| Temps passé | 22 700 € | 42 200 € | 81 200 € |
-
-Le scénario défavorable conserve une couverture de cohorte de −19 350 € à
-trois mois. Les recalculs d’isolation donnent :
-
-- sortie forfait de 450 € à 3 mois : écarts `+450 / 0 / 0` ;
-- sortie pourcentage de 800 € à 6 mois : écarts `0 / +800 / 0` ;
-- sortie hybride de 720 € à 12 mois : écarts `0 / 0 / +720`.
-
-Les tests vérifient en plus que ces écarts ne contaminent aucun autre modèle et
-que les valeurs négatives, infinies ou supérieures à la limite monétaire sont
-rejetées.
-
-#### H2R.4. Fichiers et contrôles
-
-Fichiers édités :
-
-- `docs/research/prix-gestion-google-ads.md` ;
-- `src/app/guides/prix-gestion-google-ads/page.tsx` ;
-- `src/app/guides/prix-gestion-google-ads/content-quality.test.ts` ;
-- `src/components/guides/GoogleAdsQuoteComparator.tsx` ;
-- `src/components/guides/GoogleAdsQuoteComparator.test.tsx` ;
-- `src/lib/google-ads-quote-comparison.ts` ;
-- `src/lib/google-ads-quote-comparison.test.ts`.
-
-L’image sociale et les trois WebP sont inchangés. Ils sont néanmoins inclus
-dans le manifeste de reprise afin de geler le candidat public complet.
-
-| Contrôle                                       | Résultat                           |
-| ---------------------------------------------- | ---------------------------------- |
-| moteur, composant et contrat éditorial ciblés  | 3 fichiers, 33 tests, 33 réussites |
-| isolation 3 / 6 / 12 mois et entre offres      | réussie                            |
-| recalcul central et défavorable indépendant    | identique aux valeurs documentées  |
-| TypeScript avec `npx tsc --noEmit`             | réussi                             |
-| ESLint ciblé                                   | réussi                             |
-| Prettier ciblé                                 | réussi                             |
-| `git diff --check` ciblé                       | réussi                             |
-| manifeste `prix-gestion-google-ads-p2-reprise` | 11/11                              |
-
-Le build global, le BAT navigateur, Git, le push, P3 et la publication restent
-hors périmètre et ne sont pas revendiqués.
-
-**État agent de reprise P2 :
-`READY_FOR_ORCHESTRATOR_G2_REPRISE`.** L’orchestrateur doit refaire G2 avant
-toute relance de P3.
-
-#### G2R — Nouvelle validation orchestrateur du 30 juillet 2026
-
-Verdict : **GO_PASSE_3_APRES_REPRISE**.
-
-- P0 : 0 ;
-- P1 : 0 ;
-- P2 transmis à P3 : simplification du vocabulaire de résultat, aération du
-  passage juridique, naturel des CTA et choix final du title/meta.
-
-L’orchestrateur a vérifié le manifeste de reprise 11/11, relu les nouvelles
-entrées, la matrice accessible, la boucle du moteur et les résultats mobiles et
-desktop. L’ancien champ unique n’existe plus dans le candidat. Chaque horizon
-lit sa propre valeur `fees.exitCostsHT[months]` et l’expose sous `exitCostHT`.
-
-Les calculs centraux ont été refaits sans appeler le moteur :
-
-- forfait à 3 mois : 2 750 € de coûts externes initiaux + 3 × 6 250 €
-  mensuels + 850 € de temps interne = 22 350 € ;
-- pourcentage à 3 mois : 2 900 € initiaux + 3 × 6 100 € mensuels + 850 €
-  internes = 22 050 € ;
-- hybride à 3 mois : 2 800 € initiaux + 3 × 6 250 € mensuels + 850 €
-  internes = 22 400 € ;
-- temps passé à 3 mois : 2 800 € initiaux + 3 × 6 350 € mensuels + 850 €
-  internes = 22 700 €.
-
-Les horizons 6 et 12 mois concordent avec le tableau documenté. Les contrats
-adversariaux prouvent les écarts `+450 / 0 / 0`, `0 / +800 / 0` et
-`0 / 0 / +720`, y compris l’isolation entre offres. Les entrées négatives,
-infinies et hors borne sont rejetées.
-
-Rejeu indépendant du gate :
-
-- manifeste P2 reprise : 11/11 ;
-- moteur, composant et contenu : 33/33 tests ;
-- ESLint ciblé : réussi ;
-- TypeScript avec `npx tsc --noEmit` : réussi ;
-- Prettier ciblé : réussi ;
-- `git diff --check` ciblé : réussi ;
-- limites de confidentialité, unités HT, prix vendeurs et absence de schémas
-  abusifs relus dans la page et les contrats éditoriaux.
-
-La date de publication reste volontairement hors de P2 : elle doit devenir
-l’instant réel de première mise en production sous verrou d’intégration. Ce GO
-autorise une nouvelle P3 depuis ce candidat corrigé. Il ne vaut ni P4, ni BAT,
-ni publication ou indexation.
-
-### H3R. P3 — Polish rédactionnel relancé après G2R
-
-Agent distinct : `/root/g1_transversal_counteraudit`, réaffecté par
-l’orchestrateur à la passe 3. Le manifeste d’entrée
-`prix-gestion-google-ads-g2-reprise.sha256` a été vérifié avant toute édition :
-11 fichiers sur 11 concordaient.
-
-Le document `Prompt #3 - Polish Rédactionnel.docx` a été lu intégralement en
-lecture seule. Ses six contrôles ont été adaptés au contexte Hagnéré Code :
-
-- **A — accroche et promesse** : réponse directe, H1 conservé, hero moins
-  énumératif et séparation immédiate entre média et honoraires ;
-- **B — corps et rythme** : paragraphes denses scindés, transitions
-  explicites, vocabulaire de calcul traduit en mots courants ;
-- **C — title et meta** : variantes évaluées pour le taux de clic, consignées
-  ci-dessous sans modifier le registre partagé ;
-- **D — contexte et maillage** : liens limités aux services réellement
-  disponibles et aux sources déjà vérifiées, sans lien vers un autre brouillon
-  de guide ;
-- **E — éléments d’aide** : tableaux conservés lorsqu’ils répondent à des
-  décisions différentes, introduction du calculateur ramenée à trois gestes et
-  FAQ rendue plus directe ;
-- **F — contrôle final** : préservation des frontières factuelles, financières,
-  juridiques et fiscales, puis validation automatisée ciblée.
-
-Les quotas patrimoniaux du prompt n’ont pas été importés mécaniquement :
-`FAQPage`, `HowTo`, téléchargements et répétitions artificielles de marque
-restent interdits par la gouvernance de ce corpus.
-
-#### H3R.1. Corrections rédactionnelles appliquées
-
-**Accroche et lecture initiale**
-
-- le hero oppose désormais la mensualité au coût complet en une séquence
-  courte : quatre modèles, même durée, séparation média/honoraires, puis coûts
-  oubliés ;
-- le bandeau de méthode dit « rendre les offres comparables » plutôt que
-  « normaliser » ;
-- la statistique visible parle de « durées comparées » plutôt que
-  d’« horizons » ;
-- la réponse FAQ sur le prix commence par la limite utile — aucun montant
-  fiable sans périmètre — avant de donner l’échantillon public borné.
-
-**Prix publics et modèles**
-
-- le passage sur les vendeurs a été réorganisé en trois mouvements : exemples
-  MS Web et AdWorks, exemple DP Medias, puis limite de l’échantillon ;
-- les quatre rémunérations sont introduites par la question « que payez-vous
-  vraiment ? » et non par une taxonomie abstraite ;
-- le cas fictif distingue désormais les trois modèles forfaitaire,
-  proportionnel et hybride du modèle au temps passé, sans changer une hypothèse
-  ni un montant.
-
-**Durée, calculateur et cas chiffré**
-
-- les occurrences visibles d’« horizon » ont été remplacées par « durée »,
-  « date de comparaison » ou « date d’arrêt » ; les identifiants internes du
-  code restent inchangés ;
-- l’introduction du calculateur suit trois gestes : recopier la base commune,
-  compléter chaque offre, puis comparer les trois dates ;
-- « cohorte », « fenêtre fixe », « coût normalisé » et « seuil non calculable »
-  ont disparu de l’interface au profit de « période retenue pour la marge par
-  client », « coût comparable » et « couverture non calculable » ;
-- le texte précise toujours que la marge complète par client peut être encaissée
-  après la date comparée et qu’elle ne constitue pas un échéancier de
-  trésorerie ;
-- l’analyse du cas central a été divisée entre hypothèses, indicateurs média et
-  coût d’acquisition complet, sans altérer les résultats ;
-- le scénario défavorable se termine par trois décisions concrètes : seuil
-  d’arrêt, durée du test et donnée qui déclenche la suite.
-
-**Facturation, loi Sapin et réversibilité**
-
-- la section 08 sépare maintenant l’entité facturée, le payeur et le
-  destinataire des justificatifs ;
-- la règle de facturation de Google est présentée comme une règle produit, pas
-  comme une conclusion comptable ou contractuelle ;
-- l’article 20 conserve les quatre points vérifiés : mandat écrit,
-  rémunération détaillée, rabais ou avantages visibles et facture du vendeur
-  communiquée à l’annonceur, y compris lorsqu’il ne paie pas directement ;
-- un mémo distingue explicitement trois niveaux : produit Google, loi et
-  organisation propre de l’annonceur ;
-- la synthèse renvoie vers un avis adapté en cas d’achat, d’avance ou de
-  refacturation du média et rappelle que le guide ne fournit pas de conseil
-  juridique ou fiscal individualisé ;
-- la clause de sortie est formulée comme une exigence documentaire, avec délai,
-  date d’effet, sommes dues, actifs, accès, rapports et passation.
-
-**Décision et CTA**
-
-- le choix final conserve les cinq situations — gestion interne, audit, agence
-  ou indépendant, réparation préalable, report — et la frontière commerciale
-  explicite d’Hagnéré Code ;
-- le CTA final demande les lignes du devis plutôt qu’un simple budget et mène
-  directement au service publicitaire ou au cadrage de projet ;
-- les formulations impératives répétitives ont été variées lorsque cela
-  améliorait le rythme, sans affaiblir les contrôles demandés au lecteur.
-
-#### H3R.2. Proposition title et meta
-
-Le registre partagé n’a pas été modifié par l’agent P3. La proposition à
-appliquer sous verrou d’intégration est :
-
-- **title, 58 caractères** :
-  `Prix de la gestion Google Ads en 2026 : 4 modèles comparés` ;
-- **meta, 154 caractères** :
-  `Comparez quatre modèles de rémunération Google Ads et calculez le coût complet à 3, 6 et 12 mois : média, honoraires, TVA, frais annexes et temps interne.`
-
-La meta décrit bien quatre **modèles de rémunération**, et non quatre canaux ou
-une promesse de retour sur investissement. Elle annonce les trois dates et les
-composants du coût complet réellement traités.
-
-#### H3R.3. Scoring avant/après
-
-Chaque axe est noté sur 20. Le score global après passe est de
-**182/200, soit 91/100** ; aucun axe n’est inférieur à 17/20.
-
-| Axe                                | Avant | Après | Preuve principale                                     |
-| ---------------------------------- | ----: | ----: | ----------------------------------------------------- |
-| Accroche et promesse               |    18 |    19 | hero plus court, coût complet immédiatement posé      |
-| Corps et profondeur utile          |    16 |    18 | modèles, cas et droit scindés sans perte de substance |
-| FAQ                                |    18 |    19 | réponses directes et limites placées en tête          |
-| Transitions et progression         |    17 |    18 | prix → coût → modèles → durée → calcul → décision     |
-| Lisibilité et naturel              |    14 |    18 | jargon retiré, phrases et paragraphes aérés           |
-| Potentiel CTR du title proposé     |    16 |    18 | année, intention prix et quatre modèles               |
-| Potentiel CTR de la meta proposée  |    16 |    18 | coût complet et trois durées, sans promesse de ROI    |
-| Contextualisation                  |    17 |    18 | exemples fictifs et sources publiques toujours bornés |
-| Maillage interne                   |    17 |    17 | deux services cohérents, aucun lien vers un brouillon |
-| Cohérence juridique et commerciale |    18 |    19 | trois niveaux distincts et frontière de conseil       |
-
-Total avant : **167/200, soit 83,5/100**. Total après :
-**182/200, soit 91/100**.
-
-Verdict éditorial de P3 :
-
-- P0 : 0 ;
-- P1 : 0 ;
-- nouveau P1 découvert pendant la passe : aucun ;
-- P2 éditorial bloquant dans les fichiers du guide : aucun ;
-- P2 d’intégration transmis : appliquer le title et la meta sous verrou partagé,
-  puis contrôler le rendu réel, les données structurées et le maillage pendant
-  P4 et la revue transversale.
-
-#### H3R.4. Invariants chiffrés et techniques
-
-Ni le moteur ni ses tests n’ont été modifiés en P3. Leurs empreintes restent
-strictement celles du candidat G2R :
-
-- moteur : `13b8c4f4345e9ab5fdc83489fedd350dc26bd455fcd8cd3bbe1dc6fc93e8b15a` ;
-- tests moteur :
-  `8d58cf43a0e3ce0a6e7ea817514626e2df91b65f677b1e01295a9918e4809437`.
-
-L’image sociale et les trois WebP sont également inchangés. Les 12 champs de
-sortie distincts restent présents et chaque montant ne touche que sa date et
-son offre. Les résultats centraux restent :
-
-| Modèle      |   3 mois |   6 mois |  12 mois |
-| ----------- | -------: | -------: | -------: |
-| Forfait     | 22 350 € | 41 550 € | 79 950 € |
-| Pourcentage | 22 050 € | 40 800 € | 78 300 € |
-| Hybride     | 22 400 € | 41 600 € | 80 000 € |
-| Temps passé | 22 700 € | 42 200 € | 81 200 € |
-
-Le scénario défavorable reste à −19 350 €. Les contrats d’isolation restent
-`+450 / 0 / 0`, `0 / +800 / 0` et `0 / 0 / +720`. Les différences de
-multiensemble numérique liées au polish se limitent aux répétitions
-éditoriales de 3, 6, 12 et 20 dans les nouveaux libellés et sous-titres ; aucun
-montant, taux, champ, résultat ou formule de décision n’a changé.
-
-#### H3R.5. Fichiers et contrôles de sortie
-
-Fichiers édités en P3 :
-
-- `docs/research/prix-gestion-google-ads.md` ;
-- `src/app/guides/prix-gestion-google-ads/page.tsx` ;
-- `src/app/guides/prix-gestion-google-ads/content-quality.test.ts` ;
-- `src/components/guides/GoogleAdsQuoteComparator.tsx` ;
-- `src/components/guides/GoogleAdsQuoteComparator.test.tsx`.
-
-Fichiers volontairement inchangés :
-
-- `src/lib/google-ads-quote-comparison.ts` ;
-- `src/lib/google-ads-quote-comparison.test.ts` ;
-- `src/app/guides/prix-gestion-google-ads/opengraph-image.tsx` ;
-- les trois WebP du guide ;
-- le registre et tous les autres fichiers partagés.
-
-| Contrôle                                                         | Résultat              |
-| ---------------------------------------------------------------- | --------------------- |
-| manifeste d’entrée G2R                                           | 11/11                 |
-| moteur, composant et contrat éditorial ciblés                    | 33/33 tests           |
-| ESLint ciblé sur les sept fichiers code du candidat              | réussi                |
-| TypeScript avec `npx tsc --noEmit`                               | réussi                |
-| Prettier ciblé                                                   | réussi                |
-| contrôle des espaces et fins de ligne ciblé                      | réussi                |
-| moteur, tests moteur, image sociale et trois WebP comparés à G2R | strictement inchangés |
-
-Le build global, le BAT navigateur, P4, la revue transversale, le commit, le
-push, la publication et l’indexation restent hors de cette passe et ne sont pas
-revendiqués.
-
-**État historique agent P3 : `READY_FOR_ORCHESTRATOR_G3`, invalidé par la
-reprise H3R.6 ci-dessous.**
-
-#### H3R.6. Reprise ciblée demandée au contrôle G3
-
-Le premier manifeste P3 a été vérifié 11/11 avant cette reprise, puis déclaré
-invalide pour la suite du workflow. Aucun défaut de fond, de calcul ou de
-structure juridique n’a été découvert. Cinq formulations ont néanmoins été
-reprises avant un nouveau gel :
-
-- la statistique affiche désormais `Saisies du calculateur / Non transmises` et
-  le bandeau `Calcul local · saisies non transmises` ; le pied du calculateur
-  conserve l’explication complète sur l’absence de compte, d’envoi et de
-  conservation ;
-- le hero parle de `TVA à décaisser` et le sous-titre de
-  `TVA décaissée`, tout en conservant la distinction entre décaissement,
-  récupération et coût final selon le fournisseur et la situation ;
-- le libellé de formule devient
-  `marge contributive par client sur la période retenue`, sans toucher à
-  l’opération ni aux variables du moteur ;
-- la meta proposée est ramenée à 154 caractères et nomme désormais
-  explicitement média, honoraires, TVA, frais annexes et temps interne ;
-- le bouton final `Décrire mon projet` décrit exactement l’ouverture du
-  formulaire de cadrage, sans promettre une comparaison avant qualification.
-
-Le scoring reste **182/200, soit 91/100** : ces corrections renforcent la
-lisibilité et l’honnêteté du CTA, sans modifier les axes de fond.
-
-| Contrôle de reprise ciblée                                   | Résultat              |
-| ------------------------------------------------------------ | --------------------- |
-| composant, moteur et contrat éditorial                       | 33/33 tests           |
-| ESLint ciblé                                                 | réussi                |
-| TypeScript avec `npx tsc --noEmit`                           | réussi                |
-| Prettier ciblé                                               | réussi                |
-| meta proposée comptée par points de code                     | 154 caractères        |
-| moteur, tests moteur, image sociale et trois WebP contre G2R | strictement inchangés |
-| nouveau manifeste `prix-gestion-google-ads-p3.sha256`        | 11/11                 |
-
-Aucun nombre, champ, résultat ou formule n’a changé hors du seul libellé
-visible de la période de marge. Aucun fichier partagé, aucune action Git et
-aucune passe 4 n’ont été engagés.
-
-**État agent P3 après reprise :
-`READY_FOR_ORCHESTRATOR_G3_RECHECK`.** Toute nouvelle correction invalide ce
-gel et exige un nouveau manifeste.
-
-#### G3 — Validation orchestrateur du 30 juillet 2026
-
-Verdict : **GO_PASSE_4**.
-
-- P0 : 0 ;
-- P1 : 0 ;
-- P2 transmis à P4 et à l’intégration : espaces typographiques du H1/headline,
-  application du title/meta sous verrou partagé et contrôle réel du rendu.
-
-L’orchestrateur a d’abord refusé le candidat P3 initial pour quatre formulations
-encore trop internes ou abstraites : `envoi / Aucun`, `TVA de trésorerie`,
-`fenêtre fixe` dans la formule et une meta exactement au plafond de
-160 caractères. Le bouton final promettait aussi une comparaison avant
-qualification. Le même agent P3 a corrigé ces points, rejoué ses contrôles et
-régénéré le manifeste en dernière écriture.
-
-Le contrôle G3 a ensuite confirmé :
-
-- manifeste P3 : 11/11 fichiers ;
-- moteur, composant et contrat éditorial : 33/33 tests ;
-- ESLint ciblé : réussi ;
-- TypeScript avec `npx tsc --noEmit` : réussi ;
-- Prettier ciblé : réussi ;
-- `git diff --check` ciblé : réussi ;
-- moteur, tests moteur, image sociale et trois WebP strictement identiques au
-  snapshot G2R ;
-- douze coûts de sortie, montants, taux, cas central, cas défavorable et
-  formules de décision inchangés ;
-- réponse au prix dans les 150 premiers mots, calculateur introduit en trois
-  gestes et résultats compréhensibles sans vocabulaire de cohorte ;
-- passage Google/loi Sapin/organisation contractuelle scindé sans perte des
-  quatre obligations vérifiées ;
-- title proposé à 58 caractères et meta proposée à 154 caractères, sans
-  promesse de performance ;
-- aucun lien vers un brouillon, aucun schéma abusif et aucune répétition
-  artificielle de marque.
-
-La relecture de l’orchestrateur retient le score P3 de **91/100**, chaque axe
-étant au moins à 17/20. Ce GO autorise uniquement la passe anti-IA P4 par un
-agent distinct. Il ne vaut ni validation transversale, ni BAT, ni publication
-ou indexation.
-
-### H4. P4 — Antipasse IA
-
-Agent distinct : `/root/g2_p4_antipasse`.
-
-État d’entrée : le manifeste
-`docs/research/manifests/prix-gestion-google-ads-g3.sha256` a été vérifié avant
-toute modification. Les onze fichiers concordaient avec le snapshot G3.
-
-Le document `Prompt 4 - Antipasse IA.docx` a été lu intégralement en lecture
-seule. Ses quinze motifs ont été appliqués comme une revue de plume, et non
-comme une tentative de tromper un détecteur. L’adaptation à Hagnéré Code
-écarte donc le ton « café-CGP », le slang, les anecdotes inventées et les
-quotas de reformulations. Les listes réellement procédurales, les distinctions
-juridiques et les libellés répétitifs nécessaires à l’accessibilité d’un
-formulaire ne sont pas cassés artificiellement.
-
-#### H4.1. Cartographie contrôlée
-
-Treize zones ont été relues séparément, puis dans le fil complet de la page :
-
-| Zone                     | Emplacement du snapshot P4                                  | Question de contrôle                                                              | Verdict après correction                                               |
-| ------------------------ | ----------------------------------------------------------- | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| Hero et réponse initiale | `page.tsx`, hero puis H2 01 à partir de la ligne 423        | prix, média, honoraires et décision sont-ils compris sans cadre à mémoriser ?     | humain, réponse directe conservée                                      |
-| H2 01 — réponse prix     | `page.tsx`, lignes 423–519                                  | la limite de l’échantillon découle-t-elle clairement de sa méthode ?              | une formulation administrative corrigée                                |
-| H2 02 — coût complet     | `page.tsx`, lignes 520–655                                  | les sept lignes et la TVA mènent-elles à une action concrète ?                    | une métaphore de trésorerie corrigée                                   |
-| H2 03 — modèles          | `page.tsx`, lignes 656–756                                  | les quatre rémunérations restent-elles comparables sans survente ?                | aucun tic bloquant                                                     |
-| H2 04 — durées           | `page.tsx`, lignes 757–872                                  | les trois dates et le cas fictif ont-ils une cause et une conséquence visibles ?  | humain ; test de résistance conservé                                   |
-| H2 05 — calculateur      | `page.tsx`, lignes 873–945, puis composant interactif       | l’ordre de saisie et les hypothèses se lisent-ils sans jargon abstrait ?          | deux passages de corps et six microcopies corrigés                     |
-| H2 06 — indicateurs      | `page.tsx`, lignes 946–1070                                 | CPC, CPA, CPL, CAC et scénario défavorable restent-ils distincts ?                | une métaphore vide retirée                                             |
-| H2 07 — périmètre        | `page.tsx`, lignes 1071–1179                                | les responsabilités et preuves remplacent-elles les mots commerciaux ?            | humain, aucune correction forcée                                       |
-| H2 08 — propriété        | `page.tsx`, lignes 1180–1370                                | produit Google, loi et organisation sont-ils reliés sans conclusion universelle ? | une transition administrative corrigée                                 |
-| H2 09 — décision         | `page.tsx`, lignes 1371–fin                                 | le lecteur voit-il les alternatives, le mauvais fit et la prochaine action ?      | trois formulations abstraites corrigées                                |
-| Calculateur              | `GoogleAdsQuoteComparator.tsx`, sections 1 à 4 et résultats | les hypothèses, champs, erreurs, sorties et badges parlent-ils comme le lecteur ? | cinq microcopies corrigées, calcul gelé                                |
-| FAQ visible              | `page.tsx`, lignes 91–174                                   | chaque réponse commence-t-elle par la réponse et garde-t-elle ses limites ?       | 12 réponses jugées humaines, aucune modification                       |
-| CTA                      | hero, sidebar, mobile, FAQ et CTA final                     | le clic et le mauvais fit sont-ils explicites, sans promesse de résultat ?        | CTA final et libellés G3 conservés ; une phrase de transition corrigée |
-
-Le hero, les neuf H2, les douze réponses de FAQ et tous les CTA ont donc été
-lus, même lorsqu’aucun changement n’était justifié.
-
-#### H4.2. Quatorze tics réels et corrections exactes
-
-Les quatorze passages suivants relevaient tous d’un défaut rédactionnel P2.
-Aucun ne constituait un P0 ou un P1 de fond.
-
-1. **H2 01 — motifs 11 et 15, formulation administrative et causalité trop
-   implicite**
-
-   - Avant : « Ces pages décrivent leur propre offre. Elles ne constituent pas
-     une enquête représentative et ne permettent pas de classer les vendeurs
-     sans remettre leur périmètre sur une base commune. »
-   - Après : « Ces pages décrivent seulement leur propre offre. Avec un
-     échantillon aussi limité, impossible d’en déduire un classement : il faut
-     d’abord comparer le même périmètre. »
-   - Raison : la taille et la nature de l’échantillon produisent maintenant
-     explicitement la limite du classement.
-
-2. **H2 02 — motif 5, image fabriquée**
-
-   - Avant : « Ne transformez pas “TVA récupérable” en “trésorerie inutile”. »
-   - Après : « Une TVA récupérable peut peser sur votre trésorerie. »
-   - Raison : la conséquence de trésorerie remplace une opposition imagée qui
-     demandait au lecteur de l’interpréter.
-
-3. **H2 05 — motif 2, annonce de triplette inutile**
-
-   - Avant : « Trois gestes suffisent pour comparer les devis sans chercher un
-     “meilleur modèle” abstrait : »
-   - Après : « La comparaison suit un ordre simple. Commencez par ce que les
-     devis ont réellement en commun, puis complétez chaque offre avant de lire
-     les résultats : »
-   - Raison : la phrase annonce la logique de la procédure plutôt que son
-     nombre. La liste ordonnée reste justifiée, car les étapes dépendent les
-     unes des autres.
-
-4. **H2 05 — motifs 9, 10 et 15, rythme régulier et verbes abstraits**
-
-   - Avant : « Les clics, actions, prospects et clients sont prolongés comme
-     une moyenne mensuelle constante dès le premier mois. Cette simplification
-     ne représente ni une montée en charge ni la saisonnalité : pour un
-     lancement, complétez-la par un scénario mois par mois. »
-   - Après : « Le calcul suppose que le nombre mensuel de clics, d’actions, de
-     prospects et de clients reste constant dès le départ. Il ne simule ni
-     montée en charge ni saisonnalité. Pour un lancement, ajoutez donc un
-     scénario mois par mois. »
-   - Raison : le sujet qui agit est nommé, la phrase technique est coupée et la
-     conséquence pratique suit immédiatement l’hypothèse.
-
-5. **H2 06 — motifs 5 et 14, métaphore et dramatisation sans information**
-
-   - Avant : « Le modèle ne devient pas “mauvais” par magie : ce sont les
-     hypothèses commerciales qui ne couvrent plus le dispositif. »
-   - Après : « Le résultat ne condamne pas le modèle : avec ces hypothèses
-     commerciales, la marge ne couvre plus le dispositif. »
-   - Raison : le texte nomme la cause financière au lieu de mettre en scène un
-     modèle qui changerait « par magie ».
-
-6. **H2 08 — motifs 11 et 15, conclusion administrative**
-
-   - Avant : « Ces trois niveaux distincts ne permettent pas de déduire un
-     montage universel. Faites valider le vôtre si un intermédiaire achète,
-     avance ou refacture le média. »
-   - Après : « Aucun de ces trois niveaux ne suffit à définir votre montage. Si
-     un intermédiaire achète, avance ou refacture le média, faites valider
-     l’organisation retenue. »
-   - Raison : la limite juridique est formulée directement et la condition
-     précède l’action.
-
-7. **H2 09 — motifs 3, 10 et 11, vocabulaire de consultant et série trop
-   symétrique**
-
-   - Avant : « Le prestataire le plus complet n’est pas toujours proportionné.
-     Le libre-service, une assistance ponctuelle, un indépendant, une agence ou
-     le report répondent à des situations différentes. Commencez par la
-     capacité à mesurer et traiter les demandes, puis choisissez le niveau
-     d’accompagnement. »
-   - Après : « L’offre la plus complète n’est pas forcément la bonne. Vous
-     pouvez piloter en interne, demander une aide ponctuelle, confier le compte
-     à un indépendant ou à une agence — ou reporter le projet. Avant de
-     choisir, vérifiez que vous savez mesurer les demandes reçues et que votre
-     équipe peut les traiter. »
-   - Raison : des actions observables remplacent « proportionné », « capacité »
-     et « niveau d’accompagnement ».
-
-8. **H2 09 — motifs 10 et 11, passif commercial**
-
-   - Avant : « Ces limites doivent être comprises avant l’échange commercial. »
-   - Après : « Mieux vaut le savoir avant de nous contacter. »
-   - Raison : le lecteur et l’action sont nommés sans ajouter de pression
-     commerciale.
-
-9. **H2 09 — motifs 10 et 14, titre de sortie vague**
-
-   - Avant : « Le bon prochain document tient sur une page. »
-   - Après : « Préparez une fiche d’une page pour comparer les offres. »
-   - Raison : le titre indique le document à produire et son usage, sans
-     adjectif auto-validant.
-
-10. **Calculateur, offre au forfait — motif 10, pronom ambigu**
-
-    - Avant : « Saisissez le prix, puis les coûts nécessaires pour rendre son
-      périmètre comparable aux autres offres. »
-    - Après : « Saisissez le prix de l’offre, puis ajoutez ce qui manque pour
-      comparer le même périmètre. »
-    - Raison : l’objet du pronom disparaît et l’action attendue devient
-      immédiate.
-
-11. **Calculateur, offre au pourcentage — motifs 10 et 11, formulation
-    abstraite**
-
-    - Avant : « Le taux, son assiette, le minimum et le plafond appartiennent à
-      cette offre. »
-    - Après : « Recopiez le taux, son assiette, le minimum et le plafond prévus
-      dans cette offre. »
-    - Raison : la phrase devient une instruction vérifiable dans le devis.
-
-12. **Calculateur, offre hybride — motifs 10 et 11, voix administrative**
-
-    - Avant : « Le socle et la part variable sont bornés par les conditions
-      propres à ce devis. »
-    - Après : « Recopiez le socle et la part variable du devis, avec son
-      minimum et son plafond éventuels. »
-    - Raison : la borne abstraite devient les deux champs concrets à contrôler.
-
-13. **Calculateur, hypothèses commerciales — motifs 9, 10 et 15**
-
-    - Avant : « Le calcul prolonge des moyennes mensuelles constantes dès le
-      premier mois : il ne modélise ni montée en charge, ni saisonnalité. Pour
-      un lancement, faites en plus un scénario mois par mois. »
-    - Après : « Le calcul reprend le même nombre de clics, d’actions, de
-      prospects et de clients chaque mois, dès le départ. Il ne simule ni
-      montée en charge ni saisonnalité. Pour un lancement, ajoutez un scénario
-      mois par mois. »
-    - Raison : le lecteur voit les quatre volumes réellement répétés et la
-      limite conduit directement au scénario complémentaire.
-
-14. **Calculateur, badge de couverture — motifs 9 et 10, définition
-    mécanique**
-
-    - Avant : « Le badge compare la marge saisie aux coûts connus du scénario.
-      Les coûts sont couverts si l’écart par prospect qualifié est positif ou
-      nul. Il indique “Couverture non calculable” si un volume nécessaire
-      manque. »
-    - Après : « Le badge répond à une question : la marge saisie couvre-t-elle
-      les coûts connus du scénario ? La réponse est positive lorsque l’écart
-      par prospect qualifié est supérieur ou égal à zéro. Si un volume
-      indispensable manque, le calcul affiche “Couverture non calculable”. »
-    - Raison : la question précède la règle de décision, sans changer le seuil
-      mathématique.
-
-#### H4.3. Structures conservées volontairement
-
-- Les quatre contrôles numérotés de lecture d’un devis restent en place : leur
-  ordre évite de comparer la rémunération avant l’objectif et la base commune.
-- La liste ordonnée du calculateur reste une procédure réelle, pas une
-  triplette rhétorique : base commune, conditions propres, lecture des trois
-  dates.
-- Les trois événements du test de résistance restent trois entrées chiffrables
-  distinctes : hausse du média, baisse des ventes et arrêt contractuel.
-- Le mémo « Trois niveaux à ne pas confondre » reste nécessaire pour séparer
-  une règle produit Google, une règle légale et l’organisation de l’annonceur.
-  Les trois éléments n’ont ni le même auteur ni la même portée.
-- Les listes de contrôle de facturation et de sortie gardent une forme
-  parallèle afin que le lecteur puisse les cocher. Casser leur syntaxe
-  dégraderait l’usage.
-- Les labels des douze coûts de sortie répètent « arrêt à 3, 6 ou 12 mois »
-  pour rendre chaque champ compréhensible isolément par son label accessible.
-- Les tableaux conservent des colonnes et des libellés réguliers : cette
-  symétrie sert la comparaison, elle n’est pas transposée à la prose.
-- Le hero, les FAQ et les CTA ne contenaient ni auto-félicitation, ni
-  superlatif non prouvé, ni promesse de performance. Ils n’ont pas été réécrits
-  pour fabriquer un diff.
-
-#### H4.4. Gel du fond et des calculs
-
-La passe ne modifie aucun nombre, taux, unité, source, lien, formule,
-interprétation juridique ou structure de données. Les douze coûts de sortie
-restent présents pour les quatre offres et les trois dates. Le moteur continue
-de lire uniquement `fees.exitCostsHT[months]`, puis expose `exitCostHT` dans le
-résultat correspondant.
-
-Les résultats du cas central restent :
-
-| Modèle      |   3 mois |   6 mois |  12 mois |
-| ----------- | -------: | -------: | -------: |
-| Forfait     | 22 350 € | 41 550 € | 79 950 € |
-| Pourcentage | 22 050 € | 40 800 € | 78 300 € |
-| Hybride     | 22 400 € | 41 600 € | 80 000 € |
-| Temps passé | 22 700 € | 42 200 € | 81 200 € |
-
-Le scénario défavorable reste à −19 350 €. Les contrats d’isolation restent
-`+450 / 0 / 0`, `0 / +800 / 0` et `0 / 0 / +720`.
-
-Comparaison explicite au manifeste G3 :
-
-- moteur : hash inchangé ;
-- tests moteur : hash inchangé ;
-- image Open Graph : hash inchangé ;
-- trois WebP Article : hashes inchangés ;
-- page, test de contenu, composant, test de composant et présent dossier :
-  seuls fichiers du manifeste G3 dont le hash change pendant P4.
-
-#### H4.5. Détecteur final sévère
-
-| Zone        | Verdict | Motif résiduel éventuel                                     |
-| ----------- | ------- | ----------------------------------------------------------- |
-| Hero        | humain  | énumération courte des postes, nécessaire à la réponse prix |
-| H2 01       | humain  | aucun                                                       |
-| H2 02       | humain  | tableau régulier, fonction de comparaison                   |
-| H2 03       | humain  | tableau régulier, fonction de comparaison                   |
-| H2 04       | humain  | liste de test conservée pour l’action                       |
-| H2 05       | humain  | procédure numérotée conservée car séquentielle              |
-| Calculateur | humain  | répétitions de labels conservées pour l’accessibilité       |
-| H2 06       | humain  | aucun                                                       |
-| H2 07       | humain  | checklist volontaire                                        |
-| H2 08       | humain  | trois niveaux juridiques volontairement distincts           |
-| H2 09       | humain  | aucun                                                       |
-| FAQ         | humain  | réponses volontairement courtes et directes                 |
-| CTA         | humain  | vocabulaire commercial borné au résultat du clic            |
-
-Verdict : **OUI**, le texte tient une relecture anti-IA crédible sans
-familiarité fabriquée. Note d’authenticité avant P4 : **17,4/20**. Note après
-P4 : **18,8/20**. Les trois résidus assumés sont les listes procédurales
-numérotées, la symétrie des tableaux et la répétition des labels accessibles ;
-ils servent l’usage et ne signalent pas une voix artificielle.
-
-#### H4.6. Fichiers et contrôles de sortie
-
-Fichiers modifiés par P4 :
-
-- `src/app/guides/prix-gestion-google-ads/page.tsx` ;
-- `src/app/guides/prix-gestion-google-ads/content-quality.test.ts` ;
-- `src/components/guides/GoogleAdsQuoteComparator.tsx` ;
-- `src/components/guides/GoogleAdsQuoteComparator.test.tsx` ;
-- `docs/research/prix-gestion-google-ads.md`.
-
-Manifeste de sortie, créé en dernière écriture :
-
-- `docs/research/manifests/prix-gestion-google-ads-p4.sha256`.
-
-Contrôles exécutés sur le candidat final avant création du manifeste :
-
-| Contrôle                                               | Résultat                                                                               |
-| ------------------------------------------------------ | -------------------------------------------------------------------------------------- |
-| manifeste d’entrée G3                                  | 11/11                                                                                  |
-| premier test ciblé après reformulation                 | 32/33 ; une assertion de copie G3 attendait encore « trois niveaux distincts »         |
-| correction du test de contenu, sans correction du fond | assertion alignée sur « Aucun de ces trois niveaux ne suffit à définir votre montage » |
-| moteur, composant et contrat éditorial, rejeu final    | 33/33                                                                                  |
-| ESLint ciblé sur les sept fichiers code du candidat    | réussi                                                                                 |
-| TypeScript avec `npx tsc --noEmit`                     | réussi                                                                                 |
-| Prettier ciblé sur les quatre fichiers code touchés    | réussi                                                                                 |
-| `git diff --check`                                     | recherche suivie et quatre fichiers code non suivis contrôlés, réussi                  |
-| périmètre P4 contre le manifeste G3                    | seuls page, tests de copie, composant et dossier de recherche ont changé               |
-| comparaison des fichiers gelés au manifeste G3         | moteur, test moteur, OG et trois WebP inchangés                                        |
-| douze coûts de sortie et lecture par date              | 12 champs uniques ; `exitCostsHT[months]` inchangé                                     |
-
-Gravité finale :
-
-- P0 : 0 ;
-- P1 : 0 ;
-- P2 rédactionnel bloquant : 0 ;
-- P2 résiduel assumé : structures régulières uniquement lorsqu’elles servent
-  une procédure, une comparaison ou un label accessible.
-
-Le build, le BAT navigateur, l’intégration du title/meta, Git, le push, la
-publication, l’indexation et le contrôle transversal restent hors du périmètre
-de cette passe.
-
-**État agent P4 : `READY_FOR_ORCHESTRATOR_G4`.** Toute nouvelle correction
-invalide le manifeste P4 et exige un nouveau contrôle.
-
-#### H4.7. Gate orchestrateur G4 — `GO_CONTROLE_TRANSVERSAL`
-
-Validation indépendante de l’orchestrateur le
-`2026-07-31T00:02:59+02:00`.
-
-Le manifeste P4 a été rejoué intégralement : **11/11 fichiers conformes**. La
-comparaison avec G3 confirme que seuls la page, les deux tests de copie, la
-microcopie du composant et le présent dossier ont changé. Le moteur, son test,
-l’image Open Graph et les trois WebP restent identiques au snapshot G3.
-
-L’orchestrateur a relu les quatorze avant/après, les treize zones, les douze
-réponses de FAQ et les formulations finales dans leur contexte. Les corrections
-retirent bien les abstractions et métaphores visées sans introduire de
-familiarité fabriquée, de superlatif, de promesse de performance ou de
-conclusion commerciale forcée. Les répétitions restantes servent une procédure,
-un tableau comparatif ou un label accessible. La note de **18,8/20** est
-acceptée.
-
-Contrôles rejoués par l’orchestrateur sur le snapshot P4 :
-
-- 33/33 tests ciblés ;
-- ESLint ciblé réussi ;
-- TypeScript `--noEmit` réussi ;
-- Prettier 3.9.6 ciblé réussi ;
-- `git diff --check` réussi ;
-- aucun `FAQPage`, `HowTo`, `Review`, `AggregateRating` ou `wordCount` dans le
-  candidat ;
-- douze coûts de sortie toujours isolés par offre et par horizon.
-
-Le premier rejeu a invoqué par erreur `pnpm` dans ce dépôt npm. Il s’est arrêté
-avant les tests sur sa politique de scripts ; le fichier `pnpm-lock.yaml`
-temporaire a été supprimé et `node_modules` restauré par `npm ci`, sans
-modification de `package.json` ou `package-lock.json`. Les contrôles ci-dessus
-ont ensuite été rejoués avec l’environnement npm restauré.
-
-Verdict orchestrateur : **`GO_CONTROLE_TRANSVERSAL`**. Ce GO autorise uniquement
-le contrôle transversal indépendant, l’intégration propre et la BAT. Il ne vaut
-ni publication, ni déploiement, ni indexation.
-
-### H5. Contrôle transversal post-guide
-
-#### H5.1. Intégration propre et BAT du brouillon
-
-Après G4, l’orchestrateur a isolé le guide dans le worktree propre
-`Hagnere-Code-wt-google-ads-final`, sur la branche
-`codex/google-ads-guide-final`, créée depuis `origin/main` au commit
-`760dda103000d564f103cf1d6ac21609c46e1c0b`. Aucun guide concurrent ni fichier
-partagé étranger à ce lot n’a été importé.
-
-Le manifeste G4 a été rejoué après la copie : **11/11 fichiers conformes**. Les
-changements d’intégration sont bornés au guide, à son inscription dans le
-catalogue, à son icône de hub, à la suppression de son ancienne redirection et
-à un lien entrant depuis le service Publicité en ligne.
-
-Paramètres éditoriaux intégrés :
-
-- title : `Prix de la gestion Google Ads en 2026 : 4 modèles comparés`
-  (**58 caractères**) ;
-- meta description : `Comparez quatre modèles de rémunération Google Ads et
-calculez le coût complet à 3, 6 et 12 mois : média, honoraires, TVA, frais
-annexes et temps interne.` (**154 caractères**) ;
-- un seul H1 : `Combien coûte vraiment la gestion de Google Ads ?` ;
-- temps de lecture : **32 minutes**, calculé sur **6 482 mots visibles** ;
-- trois images Article aux ratios 16:9, 4:3 et 1:1 ;
-- données structurées limitées à `Article` et `BreadcrumbList` ;
-- aucune donnée `FAQPage`, `HowTo`, `Review`, `AggregateRating` ou
-  `wordCount`.
-
-Le premier build d’intégration a fait remonter deux défauts réels, corrigés
-avant BAT :
-
-1. le slug existait encore dans la table des anciennes redirections alors
-   qu’une route statique et un lien interne le rendaient de nouveau
-   publiable ; l’entrée a été retirée et le contrat de test ramené à
-   **98 redirections historiques** ;
-2. le temps de lecture déclaré était de 22 minutes alors que le contrôle
-   post-build mesurait environ 32 minutes ; le catalogue a été corrigé à 32.
-
-Le build du brouillon après ces corrections a réussi :
-
-- **173/173 tests SEO** ;
-- compilation Next.js et TypeScript réussie ;
-- génération statique de **61 pages** ;
-- sitemap de **44 URL**, `llms.txt` de **27 liens**, **44 pages** contrôlées,
-  **3 temps de lecture** et **76 blocs JSON-LD**.
-
-Le BAT a été effectué dans le navigateur intégré sur le serveur de production
-local, avec `NEXT_PUBLIC_ENV=production`, avant ouverture de l’indexation :
-
-| Contrôle                                 | Résultat                                                                     |
-| ---------------------------------------- | ---------------------------------------------------------------------------- |
-| desktop 1 440 px                         | aucun débordement horizontal ; hero, contenu, CTA et tableaux lisibles       |
-| mobile 320 px                            | aucun débordement ; hero, CTA, FAQ et résultats du calculateur lisibles      |
-| paysage 844 × 390                        | aucun débordement                                                            |
-| reflow 720 px, équivalent bureau à 200 % | aucun texte visible tronqué                                                  |
-| thèmes sombre et clair                   | contraste et hiérarchie visuelle cohérents                                   |
-| image éditoriale différée                | chargée, dimensions naturelles non nulles                                    |
-| FAQ                                      | onglets, flèche droite, accordéon, clic et activation Espace fonctionnels    |
-| lien d’évitement                         | cible `main#main-content` et y place le focus                                |
-| ancre directe `#calculateur`             | cible atteinte sur une nouvelle navigation                                   |
-| formulaire                               | 58 champs numériques, tous étiquetés ; 12 coûts de sortie uniques            |
-| coût de sortie fixe à 3 mois             | `+450 €` uniquement sur forfait/3 mois ; autres horizons et offres inchangés |
-| valeur négative                          | `aria-invalid=true` et message borné visible                                 |
-| maillage service → guide                 | un lien, libellé explicite, navigation réussie                               |
-| brouillon dans le hub                    | absent tant que `ready-for-human-review` est actif                           |
-| console                                  | aucune erreur ni alerte observée pendant les parcours                        |
-
-Deux défauts de rendu décelés pendant le BAT ont été corrigés puis rejoués :
-
-1. trois valeurs du hero étaient ellipsées à 1 440 px ; elles ont été
-   raccourcies sans changer leur sens (`3 · 6 · 12`, `Aucune`, `Aucun`) ;
-2. les suffixes superposés `€ HT` masquaient la valeur des coûts de sortie dans
-   la grille desktop ; l’unité a été déplacée dans le label accessible
-   `Arrêt à N mois (€ HT)`, et les zéros sont désormais visibles.
-
-Après ces corrections, le test d’isolation `+450 €`, le maillage entrant, le
-reflow et l’absence de troncature du hero ont été rejoués dans le navigateur.
-
-#### H5.2. Ouverture locale du candidat à la publication
-
-Le `2026-07-31T00:24:23+02:00`, après BAT du brouillon :
-
-- `datePublished` et `dateModified` ont été fixés à cet instant de gel ;
-- `editorialStatus: "ready-for-human-review"` a été retiré ;
-- le guide a été ajouté au contrat `PUBLISHED_GUIDES`.
-
-Cette transition ouvre le hub, le sitemap, `llms.txt` et la directive
-d’indexation **uniquement dans le prochain build local de production**. Elle ne
-vaut encore ni commit, ni push, ni déploiement, ni preuve publique. Toute
-correction ultérieure invalide le futur verdict transversal et exige son rejeu.
-
-#### H5.3. Build et BAT du candidat publiable gelé
-
-Contrôles exécutés après la transition vers `PUBLISHED_GUIDES` :
-
-| Contrôle                | Résultat                                                                                                |
-| ----------------------- | ------------------------------------------------------------------------------------------------------- |
-| suite Vitest complète   | **76 fichiers et 451 tests réussis**                                                                    |
-| ESLint complet          | réussi                                                                                                  |
-| TypeScript `--noEmit`   | réussi                                                                                                  |
-| Prettier ciblé          | réussi                                                                                                  |
-| suite SEO du prebuild   | **33 fichiers et 173 tests réussis**                                                                    |
-| build Next.js 16.2.12   | compilation, TypeScript et **61 pages** réussis                                                         |
-| artefact SEO post-build | **45 URL** sitemap, **28 liens** `llms.txt`, **45 pages**, **3 temps de lecture**, **78 blocs JSON-LD** |
-
-Le serveur de production local a ensuite confirmé :
-
-- route guide accessible sans redirection ;
-- robots `index, follow` ;
-- canonical
-  `https://hagnere-code.ai/guides/prix-gestion-google-ads` ;
-- title de 58 caractères et meta description de 154 caractères ;
-- un seul H1, identique au `headline` de l’Article ;
-- `datePublished` et `dateModified` égaux au timestamp de gel ;
-- JSON-LD limité à `Article` et `BreadcrumbList` ;
-- trois images Article et `mainEntityOfPage` cohérents ;
-- aucune largeur de page excédentaire à 1 440 px ;
-- une seule carte du guide dans le hub, aux côtés des deux guides déjà
-  publiés ;
-- une occurrence dans le sitemap et une dans `llms.txt` ;
-- image Open Graph en HTTP 200 ;
-- un lien entrant depuis le service Publicité en ligne.
-
-#### H5.4. Audit de dépendances — passif du socle, non introduit
-
-`npm audit --omit=dev` remonte **10 alertes high, 0 critical** dans l’arbre
-existant. Le lot du guide ne modifie ni `package.json`, ni
-`package-lock.json`, ni aucune dépendance.
-
-Les deux familles sont :
-
-- `next@16.2.12` → `sharp@0.34.5`, concerné par
-  `GHSA-f88m-g3jw-g9cj` ;
-- `@opennextjs/cloudflare@1.20.1` et sa chaîne
-  OpenNext/Wrangler/Miniflare/Glob.
-
-La version stable la plus récente de Next au moment du contrôle est toujours
-`16.2.12` et déclare `sharp: ^0.34.5` en dépendance optionnelle. L’avis Sharp
-vise le traitement d’entrées image non fiables ; ce site n’autorise aucun
-domaine distant dans `next.config.ts` et les images du guide sont des fichiers
-WebP locaux versionnés. La dépendance directe de développement
-`sharp@0.35.3` est corrigée, mais elle ne remplace pas automatiquement la copie
-imbriquée de Next.
-
-Une mise à jour ou un `override` global toucherait tout le socle et ne peut pas
-être maquillé en correction éditoriale. Ce risque préexistant est donc déclaré
-au contre-audit transversal, avec ouverture d’un lot de maintenance séparé
-requise dès qu’une combinaison officiellement supportée de Next, Sharp et
-OpenNext permet de le fermer. Aucun `npm audit fix` n’a été lancé.
-
-#### H5.5. Contre-audit transversal indépendant
-
-Le contre-audit final, réalisé en lecture seule par un agent distinct des quatre
-passes, conclut :
-
-- verdict : **`GO_PUBLICATION`** ;
-- score global : **94/100** ;
-- P0 : **0** ;
-- P1 : **0** ;
-- chaque axe : **au moins 80/100**.
-
-| Axe                       |   Note |
-| ------------------------- | -----: |
-| Intention et SEO          | 96/100 |
-| Valeur lecteur            | 96/100 |
-| Faits et temporalité      | 94/100 |
-| Calculateur               | 98/100 |
-| Juridique et commercial   | 95/100 |
-| Anti-IA                   | 94/100 |
-| UX et accessibilité       | 88/100 |
-| Données structurées       | 98/100 |
-| Intégration et régression | 94/100 |
-| Sécurité et gouvernance   | 84/100 |
-
-L’auditeur a notamment rejoué les **451 tests**, ESLint, TypeScript,
-`git diff --check`, la vérification de l’artefact SEO de production, les calculs
-du cas central et du scénario défavorable, les trois tests d’isolation des
-sorties, l’inventaire DOM des 58 champs, les sources instables, les routes
-publiables et `npm audit --omit=dev`.
-
-Deux P2 restent acceptés et tracés :
-
-1. la preuve BAT ne comprend pas un relevé final des dix largeurs ni un rapport
-   Core Web Vitals de laboratoire ; les contrôles réels 320, 720/reflow,
-   844 × 390 et 1 440 px n’ont toutefois révélé aucun défaut ;
-2. les dix alertes high de dépendances sont un passif préexistant du socle,
-   sans dépendance ni nouvelle frontière de confiance ajoutée par ce guide.
-
-La troisième réserve P2 de l’auditeur concernait l’en-tête périmé du présent
-dossier. Cet en-tête a été corrigé sans toucher au code, aux contenus publics,
-aux données, aux calculs, aux métadonnées ou aux assets. Un recontrôle borné de
-ce seul changement documentaire a confirmé **`GO_PUBLICATION`**, la note de
-**94/100**, P0 à 0, P1 à 0 et la fermeture de cette réserve.
-
-### H6. Vérité de livraison après contrôle transversal final
-
-- passes P1, P2 reprise, P3 et P4 terminées et validées par leurs gates ;
-- G4 : `GO_CONTROLE_TRANSVERSAL` ;
-- intégration propre, build final et BAT du candidat publiable terminés ;
-- candidat local marqué publiable le `2026-07-31T00:24:23+02:00` ;
-- 451/451 tests, lint, TypeScript et build de production réussis ;
-- passif de 10 alertes high du socle déclaré, aucune dépendance modifiée ;
-- contre-audit indépendant : `GO_PUBLICATION`, 94/100, P0 0, P1 0 ;
-- recontrôle borné après correction documentaire :
-  `GO_PUBLICATION_CONFIRMED` ;
-- aucun commit, aucun push et aucune publication publique à ce stade ;
-- manifeste final, intégration Git et preuve publique encore requis.
+| Modèle | Bundle mensuel | 3 mois HT | 3 mois TTC | 3 mois connu | 6 mois connu | 12 mois connu |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Forfait | 6 250 | 21 500 | 25 800 | **22 350** | **41 550** | **79 950** |
+| Pourcentage | 6 100 | 21 200 | 25 440 | **22 050** | **40 800** | **78 300** |
+| Hybride | 6 250 | 21 550 | 25 860 | **22 400** | **41 600** | **80 000** |
+| Temps passé | 6 350 | 21 850 | 26 220 | **22 700** | **42 200** | **81 200** |
+
+Les douze valeurs en gras sont **exactement** celles publiées par le tableau du
+§03. Détail de la première ligne :
+
+```text
+forfait,  3 mois : 2 000 + 750 + 3 × 6 250 = 21 500 ; heures 17 → 850 ; 22 350
+forfait,  6 mois : 2 000 + 750 + 6 × 6 250 = 40 250 ; heures 26 → 1 300 ; 41 550
+forfait, 12 mois : 2 000 + 750 + 12 × 6 250 = 77 750 ; heures 44 → 2 200 ; 79 950
+```
+
+### G3. Le décompte poste par poste du forfait à trois mois
+
+L'article invite le lecteur à refaire cette case à la main. Elle se refait :
+
+```text
+mesure et page                     2 000
+lancement                            750
+3 × (5 000 + 100 + 250 + 900)     18 750
+                                  ------
+décaissement externe HT           21 500     ← publié « 21 500 € HT »
+TVA 20 %                           4 300
+décaissement TTC                  25 800     ← publié « 25 800 € »
+heures internes 8 + 3×3 = 17 h, à 50 €   850 ← publié « 17 heures internes à 50 € » et « 850 € »
+coût connu (TVA récupérée)        22 350     ← publié « 22 350 € de coût connu »
+```
+
+### G4. Les quatre seuils, et ce qu'ils croisent vraiment
+
+Seuils publiés, recalculés par dichotomie sur les **honoraires mensuels** :
+
+```text
+0,15 × M = 900              → M = 6 000,00 €        publié 6 000 €   ✔
+500 + 0,08 × M = 900        → M = 5 000,00 €        publié 5 000 €   ✔
+500 + 0,08 × M = 0,15 × M   → M = 7 142,857142… €   publié 7 143 €   arrondi (É-04)
+h × 100 = 900               → h = 9,00 heures       publié 9 h       ✔
+0,10 × M = 900              → M = 9 000,00 €        publié 9 000 €   ✔
+```
+
+Mêmes croisements sur le **coût connu à douze mois**, lancement compris — ce
+que mesure le tableau situé juste au-dessus du bloc de formules :
+
+```text
+pourcentage vs forfait :  (900 − 750) + 12 × (0,15 M − 900) = 0 → M = 5 916,67 €
+hybride     vs forfait :  (800 − 750) + 12 × (500 + 0,08 M − 900) = 0 → M = 4 947,92 €
+hybride     vs pourcentage : (800 − 900) + 12 × (500 + 0,08 M − 0,15 M) = 0 → M = 7 023,81 €
+temps passé vs forfait :  (800 − 750) + 12 × (100 h − 900) = 0 → h = 8,958 heures
+```
+
+Écart de 1,0 % à 1,7 % selon le croisement. Voir É-05.
+
+Saison à 12 000 € de média :
+
+```text
+forfait      = 900 €                              publié 900 €     ✔
+temps passé  = 1 000 €                            publié 1 000 €   ✔
+hybride      = 500 + 0,08 × 12 000 = 1 460 €      publié 1 460 €   ✔
+pourcentage  = 0,15 × 12 000 = 1 800 €            publié 1 800 €   ✔
+écart annuel = (1 800 − 900) × 12 = 10 800 €      publié 10 800 €  ✔
+```
+
+### G5. Le seuil de charge interne
+
+```text
+honoraires mensuels à 5 000 € : {900 ; 750 ; 900 ; 1 000}
+la moins chère est le pourcentage, 750 €
+écart au voisin immédiat  = 900 − 750   = 150 €
+écart à la plus chère     = 1 000 − 750 = 250 €
+
+150 ÷ 50 €/h = 3 heures par mois       publié « (900 − 750) ÷ 50 €/h = 3 heures par mois »   ✔
+250 ÷ 50 €/h = 5 heures par mois       publié « (1 000 − 750) ÷ 50 €/h = 5 heures par mois » ✔
+
+3 h × 12 = 36 heures par an            publié « 36 heures par an »                          ✔
+36 h × 50 € = 1 800 €
+150 € × 12  = 1 800 €                  publié « exactement l'écart annuel d'honoraires »     ✔
+```
+
+Les deux nombres coïncident par construction : diviser un écart par un coût
+horaire puis remultiplier par ce coût horaire redonne l'écart. La phrase de
+l'article est donc vraie mais tautologique ; elle n'apporte pas de preuve
+supplémentaire.
+
+### G6. Les quatre coûts unitaires du §05
+
+Sur trois mois : média chargé = `3 × 5 000 × 1,02 = 15 300 €`.
+
+```text
+CPC média chargé  = 15 300 ÷ (3 × 1 000) = 15 300 ÷ 3 000 = 5,10 €    ✔
+CPA média chargé  = 15 300 ÷ (3 × 50)    = 15 300 ÷ 150   = 102,00 €  ✔
+CPL qualifié      = 15 300 ÷ (3 × 20)    = 15 300 ÷ 60    = 255,00 €  ✔
+coût connu/client = 22 350 ÷ (3 × 4)     = 22 350 ÷ 12    = 1 862,50 € ✔
+```
+
+Le passage qui compare les deux dernières lignes :
+
+```text
+média chargé par client     = 15 300 ÷ 12   = 1 275,00 €          ✔
+1 275 ÷ 102                 = 12,5          « douze fois et demie » ✔
+1 862,50 − 1 275            = 587,50 €      « les 587,50 € restants » ✔
+1 862,50 − 102              = 1 760,50 €    « ignorer 1 760,50 € par client » ✔
+```
+
+### G7. Le seuil que la marge fixe
+
+```text
+marge de la cohorte  = 12 clients × 2 500 € = 30 000 €      ✔
+plafond par prospect = 30 000 ÷ 60          = 500,00 €      ✔
+coût connu/prospect  = 22 350 ÷ 60          = 372,50 €      ✔
+écart                = 500 − 372,50         = 127,50 €      ✔
+```
+
+Hypothèse basse (H-30) :
+
+```text
+marge          = 3 clients × 1 000 € = 3 000 €              ✔
+manque         = 22 350 − 3 000      = 19 350 €             ✔
+coût par client = 22 350 ÷ 3         = 7 450 €              ✔
+```
+
+Arithmétique exacte. Réserve de cadrage : É-06.
+
+### G8. Les trois incidents du §06
+
+**Incident n° 1** — base 6 000 €/mois (H-27, et É-02) :
+
+```text
+mois attendu       = 30 j × 200 €        = 6 000,00 €       ✔
+plafond publié     = 30,4 × 200 €        = 6 080,00 €       ✔
+pic quotidien      = 2 × 200 €           =   400,00 €       ✔
+coût réglementaire = 2 % × 6 000         =   120,00 €/mois  ✔
+                   × 12                  = 1 440,00 €/an    ✔
+facture attendue   = 6 000 × 1,02        = 6 120,00 €       ✔
+facture plafond    = 6 080 × 1,02        = 6 201,60 €       ✔
+
+ce que la règle des 30,4 jours ajoute vraiment :
+  média            = 6 080 − 6 000       =    80,00 €
+  réglementaire    = 2 % × 80            =     1,60 €       ✔
+  total mensuel    = 6 201,60 − 6 120    =    81,60 €       ✔
+  sur douze mois   = 81,60 × 12          =   979,20 €       ✔
+```
+
+La séparation est correcte et importante : imputer les 1 440 € de coût
+réglementaire à la règle des 30,4 jours donnerait 2 419,20 €, un facteur 2,5.
+L'article ne le fait plus, et le test l'interdit désormais explicitement.
+
+**Incident n° 2** — assiette sans plafond :
+
+```text
+honoraires à 5 000 €  = 0,15 × 5 000  =   750 €
+honoraires à 12 000 € = 0,15 × 12 000 = 1 800 €
+hausse mensuelle      = 1 800 − 750   = 1 050 €            ✔
+sur neuf mois         = 1 050 × 9     = 9 450 €            ✔
+avec plafond 1 200 €  = (1 200 − 750) × 9 = 450 × 9 = 4 050 € ✔
+clause manquante      = 9 450 − 4 050 = 5 400 €            ✔
+```
+
+**Incident n° 3** — compte recréé :
+
+```text
+lancement chez la suivante        750 €
+6 heures internes × 50 €          300 €                    ✔
+mois de préavis                   900 €
+                                -------
+                                1 950 €                    ✔
+```
+
+### G9. Les agrégats du §01
+
+```text
+média chargé sur douze mois = 12 × 5 000 × 1,02 = 61 200 €              ✔
+part dans le total du forfait = 61 200 ÷ 79 950 = 76,5478 % → 76,5 %    ✔
+lancement + honoraires        = 750 + 12 × 900  = 11 550 €              ✔
+écart des quatre modèles      = 81 200 − 78 300 = 2 900 €               ✔
+part de cet écart             = 2 900 ÷ 79 950  = 3,6273 % → 3,6 %      ✔
+facteur entre les extrêmes    = 1 800 ÷ 90      = 20                    ✔
+```
+
+Contrôle de bouclage — ce que les 79 950 € contiennent :
+
+```text
+61 200 (média chargé) + 11 550 (lancement et honoraires) = 72 750
+reste : 2 000 (mesure initiale) + 12 × 250 (mesure) + 44 h × 50 (internes)
+      = 2 000 + 3 000 + 2 200 = 7 200
+72 750 + 7 200 = 79 950                                                 ✔
+```
+
+Le total se referme au centime : aucune ligne du §02 n'est oubliée, aucune n'est
+comptée deux fois.
+
+### G10. Les ratios du §08
+
+```text
+900 ÷ 3 000     = 30 %      « un forfait de 900 € y pèse 30 % »            ✔
+0,15 × 8 000    = 1 200 €   « le pourcentage dépasse déjà 1 200 € par mois » ✔
+1 800 ÷ 5 000   = 36 %      « il pèserait 36 % de la dépense »             ✔
+0,15 × 60 000   = 9 000 €   « un taux de 15 % vaudrait 9 000 € par mois »  ✔
+```
+
+La dernière ligne est l'aveu commercial du guide : sur un budget de 60 000 € par
+mois — le haut de la tranche publiée du forfait Scale (A-08) — un pourcentage de
+15 % rapporterait 9 000 € là où notre forfait fixe rapporte 3 500 €. Le
+conditionnel est verrouillé par test : « Le fixe nous **coûterait** donc de
+l'argent », jamais « nous coûte », parce qu'aucun compte à ce niveau de dépense
+n'est géré aujourd'hui.
+
+### G11. Concordance avec le moteur du calculateur
+
+Le comparateur ouvre sur exactement les hypothèses H-03 à H-23
+(`INITIAL_VALUES` de `GoogleAdsQuoteComparator.tsx`), et sa formule
+(`compareGoogleAdsQuotes`) est celle du §G2, à une différence près : elle porte
+en plus les ajustements de contenu, les minimums, les plafonds et les frais de
+sortie, tous à zéro dans le cas publié. Le calculateur ne peut donc pas afficher
+un classement contraire au tableau du §03 tant que le lecteur n'a rien modifié —
+ce que le test vérifie par la phrase « Le calculateur ci-dessous ouvre sur ces
+quatre offres, à contenu supposé identique ».
+
+Note de vocabulaire : le calculateur nomme « CAC complet connu » ce que le §05
+appelle « coût connu par client ». Même grandeur, deux étiquettes.
+
+---
+
+## H — Ce que les tests verrouillent réellement
+
+`src/app/guides/prix-gestion-google-ads/content-quality.test.ts` n'est pas un
+test de présence de chaînes : il **recalcule** avant de comparer. Deux règles y
+sont posées en commentaire et tenues dans le code :
+
+1. le vérificateur empile mois par mois là où le guide multiplie, et cherche les
+   seuils par dichotomie là où le guide résout une équation ;
+2. chaque résultat est confronté à une constante calculée à la main, dont les
+   étapes sont écrites au-dessus — jamais reprise d'une formule de la page.
+
+Contrôles notables pour un lecteur extérieur :
+
+| Contrôle | Ce qu'il empêche |
+| --- | --- |
+| Empilement mois par mois des 12 totaux | qu'un total du §03 dérive sans être recalculé |
+| Dichotomie sur les quatre seuils | qu'une équation fausse soit « vérifiée » par elle-même |
+| Écart d'honoraires **dérivé** de `OFFRES` | le retour du 300 € inventé d'une version antérieure, et de ses 6 h, 600 €/mois et 7 200 €/an |
+| Balayage inverse de tous les montants en euros | qu'un montant orphelin, ni calculé ni relevé, survive dans le corps |
+| Liste `releves` séparée de la liste `calcules` | qu'un prix relevé et un résultat de calcul soient confondus |
+| Concordance `PRIX_MAISON_PUBLIES` ↔ prose ↔ grille | qu'un prix maison change sans que le guide suive |
+| Zéro source orpheline | qu'une source soit listée sans être citée dans le corps |
+| `nofollow` sur les trois concurrents | qu'un signal de classement parte vers un concurrent sur la requête cible |
+| Bande de 2 500 à 3 500 mots + `readTimeMin` = mesure canonique | qu'un temps de lecture soit déclaré au doigt mouillé |
+| Interdiction des insécables littéraux dans le source | une typographie qui se perd en silence à la réécriture |
+| Interdiction de `FAQPage`, `HowTo`, `Offer`, `Review`, `AggregateRating` | un balisage qui promettrait plus que la page ne tient |
+
+Le test porte aussi un **désaccord ouvert non tranché**, que ce dossier reprend
+sans le résoudre : le contre-audit du 28 août 2026 soutient que le H1 relève de
+la bande « transactionnelle directe », dont le plafond majoré s'arrête à
+2 875 mots, ce qui rendrait le guide hors bande. Descendre à 2 875 mots imposait
+de retirer le §06 ou le §07 — les deux sections sur lesquelles reposent les
+attaques les mieux tenues. Le blocage est documenté dans le test, pas arbitré.
+
+### H1. Mesures faites le 30 août 2026
+
+| Mesure | Valeur | Méthode |
+| --- | ---: | --- |
+| Mots du corps, mesure canonique du dépôt | **3 081** | `GUIDE_BASE_URL=… node scripts/measure-guide-readtime.mjs prix-gestion-google-ads`, contre le serveur de développement |
+| Temps de lecture déduit | **15 min** | 3 081 ÷ 200, arrondi — égal au `readTimeMin` du registre |
+| Tests, avant l'écriture concurrente | **67 passés, 0 échec** | `npx vitest run` sur `content-quality.test.ts`, `google-ads-quote-comparison.test.ts`, `GoogleAdsQuoteComparator.test.tsx` |
+| Tests, après l'écriture concurrente | **71 passés, 0 échec** | mêmes fichiers + `src/app/guides/guides-price-consistency.test.ts` |
+
+Précision sur la première ligne : la mesure canonique a été prise sur la version
+de 22 h 23. Elle n'a pas pu être refaite après l'écriture de 22 h 57, le serveur
+de développement du dépôt ayant été arrêté entre-temps. Elle reste valable pour
+le fichier actuel, parce que la seule modification porte sur deux propriétés
+rendues hors de l'élément `<article>` que ce script mesure. Le contrôle
+équivalent porté par le test, lui, a bien été rejoué après l'écriture : il
+recompte le corps et exige `readTimeMin` = mots ÷ 200 arrondi, et il passe.
+
+Le test embarqué mesure 3 069 mots sur `renderToStaticMarkup(Page())` là où le
+script en mesure 3 081 sur la route servie : l'algorithme est le même, l'entrée
+diffère (le comparateur client est monté côté serveur). Les deux tombent dans la
+bande et donnent 15 min à l'arrondi.
+
+---
+
+## I — Statut éditorial et relecture humaine
+
+### I1. Aucune relecture humaine extérieure
+
+**Aucun lecteur humain extérieur n'a relu cet article.** Ni l'ancien dossier, ni
+le dépôt ne contiennent la trace d'un test lecteur. Le mot « humain » qui revient
+dans le journal de l'ancien dossier qualifie le **jugement d'un agent sur le
+style** d'un passage (« lu comme humain »), jamais la lecture par une personne
+réelle. La charte §13 est explicite : une contre-relecture par un agent
+indépendant « ne doit jamais être présentée comme l'avis d'une personne
+réelle ».
+
+En conséquence, au sens de la table des statuts de la charte §13, l'état
+défendable de cet article est **« prêt pour revue humaine »** — sauf si le
+commanditaire a explicitement délégué la décision de publication à un
+contre-audit indépendant, délégation dont ce dépôt ne porte aucune trace écrite.
+Le registre déclare pourtant `editorialStatus: "published"`. L'écart est signalé,
+pas corrigé : le registre n'est pas dans le périmètre de ce dossier.
+
+### I2. Ce que la production sert aujourd'hui
+
+Voir É-07. `https://hagnere-code.ai/guides/prix-gestion-google-ads` sert encore
+la version du 31 juillet 2026. La version décrite ici est écrite et testée dans
+le dépôt, non déployée. Aucune conclusion sur l'indexation ne peut en être tirée.
+
+### I3. Conflit d'intérêts, déclaré par la page elle-même
+
+L'article vend indirectement une prestation qu'il analyse. Il le déclare dans
+son dernier paragraphe : « Hagnéré Code vend une gestion publicitaire et perçoit
+des honoraires si vous nous la confiez. Rien ici n'exige de passer par nous. »
+Trois garde-fous accompagnent cette déclaration :
+
+1. la grille maison est citée comme **prix maison**, jamais comme référence de
+   marché — la description de la source le répète ;
+2. le §08 nomme les cas où l'offre ne convient pas, et chiffre ce que le forfait
+   fixe coûterait à l'agence sur un gros budget ;
+3. aucun score composite ne conclut à la place du lecteur — le test interdit les
+   motifs « score sur 100 » et « algorithme propriétaire ».
+
+---
+
+## J — Ce que ce dossier ne couvre pas
+
+- **Le rendu visuel.** Aucune ouverture dans un navigateur réel, aucune mesure
+  de performance, aucun contrôle d'accessibilité au clavier n'a été refait ici.
+  La charte §14.2 les exige séparément.
+- **Les images.** Les trois `.webp` de l'article n'ont pas été inspectées ; leurs
+  empreintes figurent au manifeste de juillet, qui décrit une autre version de la
+  page.
+- **Le maillage entrant.** Les pages qui pointent vers ce guide (dont la grille
+  du service publicité en ligne, qui le cite) n'ont pas été inventoriées.
+- **Le contre-audit.** Ce dossier reconstitue un socle de preuves ; il ne remplace
+  ni la passe 3 du workflow maître, ni la scorecard du §13.
+- **La véracité des relevés à leur date d'origine.** Voir §D4.
+
+## K — À revérifier avant toute mise en campagne payante
+
+1. **É-01** — réancrer ou retirer l'affirmation « Google France SARL / Irlande » :
+   la page citée ne la porte pas.
+2. **É-07** — déployer, ou aligner `editorialStatus` et `dateModified` sur ce que
+   la production sert réellement.
+3. **É-02 et É-03** — dire au §06 que le cas passe à 6 000 €/mois, ou ramener
+   l'incident sur la base de 5 000 €.
+4. **É-05** — préciser que les quatre seuils croisent les honoraires mensuels, et
+   non le coût connu du tableau qui les précède.
+5. **É-04** — écrire « ≈ 7 143 € » ou donner 7 142,86 €.
+6. **É-06** — rappeler au §05 que la marge court sur douze mois quand les coûts
+   comparés en couvrent trois.
+7. Faire relire l'article par un lecteur extérieur non technique (charte §13),
+   ou obtenir du commanditaire une délégation écrite.
+8. Revérifier les quatre pages tarifaires et la grille maison **tous les douze
+   mois**, comme la page s'y engage — prochaine échéance : juillet 2027 pour les
+   pages vendeurs, août 2027 pour la grille maison.
+9. Revérifier G-01 et G-03 à la même fréquence : le taux réglementaire et la
+   règle des 30,4 jours sont des règles de plateforme, modifiables sans préavis.

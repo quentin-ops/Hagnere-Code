@@ -1,1284 +1,641 @@
 # Dossier de recherche — cahier des charges SaaS
 
-Date de travail : **1er août 2026**
-État : **passe 4 antipasse IA terminée — candidat local à G4, aucune autorisation de publication**
+Date de travail : **30 août 2026**
+Objet : **socle de preuves de l'article réellement publié**, reconstitué après la
+réécriture, le contre-audit et la relecture du guide.
+Portée : ce fichier décrit `src/app/guides/cahier-des-charges-saas/page.tsx` dans
+l'état où il se trouve le 30 août 2026 (`dateModified` au registre :
+`2026-08-28T19:40:00+02:00`).
 
-Ce dossier repart du gel d’entrée créé par l’orchestrateur. L’ancienne page et
-les anciens manifestes ne sont ni une source, ni une validation, ni une base de
-score. Les faits publiables ci-dessous viennent de sources primaires ou
-officielles rouvertes le 1er août 2026. Les pages concurrentes servent seulement
-à comprendre la demande actuelle.
+Ce dossier n'est pas une préparation de rédaction : la page existe déjà et fait
+foi. Il remonte de la page vers ses sources, source par source et calcul par
+calcul, pour qu'un lecteur extérieur puisse refaire seul la vérification. Toutes
+les URL listées en section D ont été **rouvertes le 30 août 2026** ; celles qui
+n'ont pas pu l'être sont nommées comme telles, sans substitut.
+
+Aucune correction n'a été apportée à la page, aux tests, au registre ni aux
+manifestes : ils sont hors du territoire de ce dossier. Les écarts constatés sont
+signalés en section 0 et rien de plus.
 
 ---
 
-## A. Identité et contrat de réponse
+## 0. Écarts constatés dans la page publiée — signalés, non corrigés
+
+Sept points relevés en refaisant les calculs et en rouvrant les sources. Aucun
+n'est une erreur d'arithmétique : les vingt calculs de l'article tombent juste
+(section G). Les écarts portent sur la **traçabilité** et sur la **portée** de
+certaines affirmations.
+
+| #   | Écart                                                                                                                                                                                                                                                                                                                                                                                              | Où                                            | Gravité |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------- |
+| É1  | Deux des dix sources citées ne portent **aucune date de consultation** : OWASP ASVS et le guide sécurité de la CNIL. Les huit autres portent « Consulté le 28 août 2026 ». La charte §4.1 demande publication **et** consultation.                                                                                                                                                                | `legalSources`, entrées 7 et 8                | moyenne |
+| É2  | Le délai CNIL de 72 h est écrit avec la formulation de l'**article 33(1) du RGPD** (« après en avoir pris connaissance », « n'est pas susceptible d'engendrer un risque »), mais le seul localisateur donné est la page CNIL, qui écrit « à la suite de la constatation de la violation » et « ne présente pas de risque ». Le fait est exact ; l'article 33 n'est pas cité.                        | §06 et `legalSources`, entrée 9               | moyenne |
+| É3  | Data Act, article 25 : l'article publie « période transitoire maximale de 30 jours calendaires » sans dire que cette période **ne commence qu'au terme du délai de préavis** de l'art. 25(2)(d), plafonné à deux mois. Un lecteur peut en déduire 30 jours de bout en bout là où le règlement autorise jusqu'à deux mois + 30 jours.                                                               | §05, FAQ « Data Act », tableau de sortie      | moyenne |
+| É4  | « environ 350 exigences réparties en dix-sept chapitres » (ASVS 5.0.0) : la page projet OWASP citée ne porte **ni ce nombre d'exigences, ni ce nombre de chapitres**. Le décompte est exact — 346 exigences, 17 chapitres — mais il se vérifie sur un autre document, le CSV officiel de la branche `v5.0.0`, que l'article ne cite pas.                                                            | §03 et `legalSources`, entrée 7               | moyenne |
+| É5  | État `incomplete` : le tableau réduit la cause à « le premier paiement n'a pas abouti ». La documentation citée en donne **trois** : paiement non effectué dans les 23 h, action requise (authentification), ou PaymentIntent en `processing`.                                                                                                                                                     | §04, tableau des huit états                   | faible  |
+| É6  | État `paused` : le tableau écrit « Essai terminé sans moyen de paiement ». La documentation citée conditionne cet état au réglage `trial_settings.end_behavior.missing_payment_method` sur `pause` ; sans ce réglage, la fin d'essai sans moyen de paiement ne produit pas `paused`.                                                                                                              | §04, tableau des huit états                   | faible  |
+| É7  | Deux affirmations sans localisateur, l'une et l'autre non vérifiables en l'état : « Aucun seuil publié n'existe pour cette densité » (négation universelle, non démontrable) et « La portée exacte de ce formalisme sur un logiciel se plaide encore » (aucune décision citée ; **je n'ai rouvert aucune jurisprudence**). Les deux sont prudentes — elles retiennent un chiffre plutôt qu'elles n'en ajoutent. | §03 (commande `grep`) et §05 (droits d'auteur) | faible  |
+
+Rien ici ne remet en cause un montant, un ratio ou un total de l'article. É1 à É4
+touchent la chaîne de preuve, qui est précisément ce que ce dossier doit rendre
+refaisable ; É5 à É7 touchent la précision d'un résumé.
+
+---
+
+## A. Identité de l'article publié
 
 ```text
 Slug : cahier-des-charges-saas
-Sujet roadmap : 26 — cadrer un produit multi-organisation, ses rôles et sa facturation
-Requête principale : cahier des charges SaaS
-Lecteur : fondatrice, fondateur ou dirigeant B2B non technique
-Prérequis : problème, acheteur et premier parcours déjà validés
-Situation : plusieurs prestataires doivent chiffrer le même produit sans inventer le périmètre
-Décision : rendre le dossier comparable, ou prononcer STOP tant qu’une inconnue structurante subsiste
-Action autonome : remplir puis copier un cahier des charges en Markdown dans le navigateur
+URL canonique : https://hagnere-code.ai/guides/cahier-des-charges-saas
+Fichier : src/app/guides/cahier-des-charges-saas/page.tsx
+Modules importés : ./saas-specification-engine.ts, ./saas-specification-tool.tsx
+Tests colocalisés : content-quality.test.ts, saas-specification-engine.test.ts,
+                    saas-specification-tool.test.tsx
+Registre : src/lib/guides.ts, entrée « cahier-des-charges-saas »
+Section : Préparer son projet
+editorialStatus : published
+datePublished : 2026-07-22T07:29:32+02:00
+dateModified : 2026-08-28T19:40:00+02:00
+readTimeMin : 21
+Requête cible : cahier des charges SaaS
 Route de service : /services/saas-applications-metier
 CTA final : /demarrer-un-projet
-Date de recherche : 1er août 2026
-Responsable P1 : /root/cahier_saas_p1_creation
+Images : cahier-saas-16x9.webp, cahier-saas-4x3.webp, cahier-saas-1x1.webp
+         (les trois SVG sources sont présents dans public/guides/<slug>/)
 ```
 
-### Réponse courte attendue
+### Ce que l'article promet, dans ses propres termes
 
-Un cahier des charges SaaS utile ne commence ni par une architecture, ni par un
-prestataire de paiement, ni par une liste d’écrans. Il décrit les décisions
-observables qui rendent le service vendable et exploitable : création d’une
-organisation cliente, rôles et révocation, parcours métier, offres et droits
-d’usage, cycle d’abonnement, échecs, support, données, sauvegarde, sortie et
-preuves de réception. Chaque exigence doit nommer une personne responsable, une
-preuve attendue, les exclusions et les inconnues qui imposent un STOP.
+Le H1 publié : « Cahier des charges SaaS : écrire les exigences avant de comparer
+les prix ». La promesse tient en trois livrables annoncés dès la section 01 : la
+relecture à faire sur son propre document, la façon d'écrire une exigence qu'on
+ne peut pas lire de deux façons, et la grille de dépouillement à joindre aux
+candidats.
 
-### Phrase que le lecteur pourrait prononcer
+### Les huit sections, et ce que chacune engage comme preuve
 
-> « Mon idée est validée. Comment écrire un document assez précis pour que trois
-> agences chiffrent le même SaaS sans que je leur impose déjà la solution ? »
+| Section              | Titre publié                                                        | Temps annoncé | Nature de ce qu'elle avance                                    |
+| -------------------- | ------------------------------------------------------------------- | ------------- | -------------------------------------------------------------- |
+| 01 `reponse-courte`  | Deux devis ne se comparent que s'ils portent la même liste de postes | 2 min         | Hypothèses du cas construit, aucune source externe             |
+| 02 `ecart`           | Combien votre cahier des charges coûte-t-il en écart de devis ?      | 4 min         | Hypothèses + calculs + une source interne (`/tarifs`)          |
+| 03 `exigence`        | Comment écrire une exigence qu'on ne peut pas lire de deux façons ?  | 3 min         | WCAG 2.2, OWASP ASVS 5.0.0, une commande reproductible         |
+| 04 `abonnement`      | Les huit situations qu'un abonnement traverse                        | 3 min         | Deux pages de documentation Stripe                             |
+| 05 `sortie`          | Que récupérez-vous exactement si vous partez ?                       | 3 min         | Data Act art. 25 et 29, CPI art. L131-3 et L113-9              |
+| 06 `incidents`       | Ce qui rate, et ce que ça coûte                                      | 2 min         | Hypothèses + calculs + délai CNIL                              |
+| 07 `depouillement`   | Comment comparer trois réponses sans se faire piéger par le prix ?   | 2 min         | Méthode, aucune donnée chiffrée externe                        |
+| 08 `trame`           | La trame à remplir, et ce qu'elle refuse de faire                    | 2 min         | Le moteur local, vérifiable dans le dépôt                      |
 
-### Promesse éditoriale
-
-Le lecteur repart avec :
-
-1. une structure de consultation propre au SaaS B2B ;
-2. un test de comparabilité des réponses ;
-3. un exemple DossierClair entièrement fictif et entièrement renseigné ;
-4. un générateur local qui produit un document Markdown lisible et copiable ;
-5. une liste de STOP qui ne peut pas être compensée par une note globale.
-
-### Hors-sujet explicites
-
-- validation du problème, du segment ou de l’acheteur ;
-- choix d’une architecture, d’un langage, d’un hébergeur ou d’une base ;
-- choix de Stripe ou d’un autre prestataire de paiement ;
-- fixation d’un prix, d’un budget, d’un délai, d’un niveau de service
-  contractuel (SLA) ou d’un volume réel ;
-- déclaration de conformité RGPD, WCAG, OWASP ou autre ;
-- audit juridique, sécurité, accessibilité ou comptable individualisé ;
-- contrat prêt à signer ;
-- plan de recette complet, traité par le guide dédié.
+Somme des huit badges : 2 + 4 + 3 + 3 + 3 + 2 + 2 + 2 = **21 min**, égal au
+`readTimeMin` du registre. Vérifié à la main le 30 août 2026 ; le test
+« fait tomber la somme des temps de section sur le temps annoncé » impose la même
+égalité.
 
 ---
 
-## B. Gel d’entrée et frontières internes
+## B. Ce que ce dossier remplace
 
-Le fichier `docs/research/cahier-des-charges-saas-input-freeze.md` est l’entrée
-immuable de P1. Il consigne notamment :
+L'ancien dossier était daté du **1er août 2026** et décrivait un état antérieur du
+guide : plan en dix sections (`01. Réponse immédiate` … `10. Consultation`),
+journaux de passes P1 à P4, BAT et « GO Q 94/100 » sur un instantané qui n'est
+plus celui de la page. La page publiée compte **huit** sections aux `id`
+suivants : `reponse-courte`, `ecart`, `exigence`, `abonnement`, `sortie`,
+`incidents`, `depouillement`, `trame`. Aucune correspondance simple n'existe
+entre les deux plans.
 
-- le lecteur et le résultat attendu ;
-- l’absence de réemploi automatique de l’ancien guide ;
-- les routes internes autorisées ;
-- l’interdiction de modifier les fichiers partagés pendant cette passe ;
-- l’obligation de distinguer faits, hypothèses, décisions et exclusions.
+Ce qui a été **repris** de l'ancien dossier : sa structure de sections lettrées,
+sa fiche de preuves en tableau, sa distinction fait / hypothèse / décision, son
+registre d'affirmations, et sa manière de nommer les raccourcis interdits.
 
-### Pages internes relues
-
-| Page ou dossier                              | Rôle actuel                                              | Frontière avec le nouveau guide                                                         | Lien public retenu         |
-| -------------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------------------------- | -------------------------- |
-| `/guides/valider-idee-saas-avant-developper` | Décider si l’idée mérite un prochain test                | Le présent guide suppose problème, acheteur et premier parcours déjà validés            | Oui, au début              |
-| `/guides/droits-acces-application-metier`    | Construire et tester une matrice détaillée de droits     | Le présent guide ne garde que les rôles, portées et refus nécessaires à la consultation | Oui, dans la section rôles |
-| `/guides/plan-recette-application-metier`    | Préparer la chaîne de preuve et la décision de réception | Aucun lien : cette route n’est pas autorisée par le gel d’entrée de P1                  | Non                        |
-| `/services/saas-applications-metier`         | Présenter l’accompagnement commercial                    | Le guide produit d’abord un livrable autonome et peut conclure STOP                     | Oui, tardivement           |
-| `/guides`                                    | Répertoire éditorial                                     | Navigation, pas réponse au cahier des charges                                           | Oui, en fin                |
-| `/demarrer-un-projet`                        | Décrire une demande                                      | CTA seulement après le livrable et les limites                                          | Oui, en fin                |
-
-### Frontière avec le guide des droits d’accès
-
-Le cahier des charges doit dire :
-
-- quels rôles existent ;
-- sur quelle organisation ou quel objet ils agissent ;
-- comment une invitation, un changement et une révocation se comportent ;
-- quels cas autorisés et refusés seront observés.
-
-Il ne doit pas reconstruire la matrice complète ni choisir RBAC, ABAC, ReBAC ou
-une technique d’implémentation. Un renvoi contextualisé vers le guide dédié
-évite la cannibalisation.
-
-### État d’intégration au début de P1
-
-- le slug n’a pas encore d’entrée dans `src/lib/guides.ts` ;
-- il figure encore dans `src/lib/legacy-guide-redirects.ts` ;
-- ces deux fichiers sont hors du périmètre de l’agent P1 ;
-- une route locale peut être créée, mais son intégration éditoriale appartient à
-  l’orchestrateur après la porte G1.
+Ce qui a été **écarté** : tout son contenu factuel. Les identifiants F01 à F11 et
+A01 à A10 de l'ancienne fiche ne sont pas repris ; les faits de la page publiée
+ont été retracés depuis la page, puis vérifiés à la source, sans passer par
+l'ancien dossier. Le gel d'entrée
+`docs/research/cahier-des-charges-saas-input-freeze.md` n'a pas été rouvert comme
+source : il décrit une intention de rédaction, pas un article publié.
 
 ---
 
-## C. Analyse de la demande actuelle
+## C. Méthode de reconstitution, et ce qu'elle ne prouve pas
 
-### Requêtes observées le 1er août 2026
+1. Lecture intégrale de `page.tsx` (1 263 lignes), de
+   `saas-specification-engine.ts` (589 lignes) et du tableau des huit états.
+2. Lecture des trois fichiers de tests colocalisés, pour savoir quels chiffres
+   sont verrouillés et par quel contrôle.
+3. Recensement de chaque énoncé vérifiable de la page, classé en trois natures
+   qui ne sont jamais mélangées : **fait sourcé**, **hypothèse du cas construit**,
+   **calcul**.
+4. Réouverture de chaque source citée, avec relevé du passage exact qui porte
+   l'affirmation (section D).
+5. Refonte à la main de tous les calculs de l'article, étapes écrites
+   (section G).
+6. Exécution des tests : `npx vitest run src/app/guides/cahier-des-charges-saas`
+   → **3 fichiers, 87 tests, tous passants**, le 30 août 2026 à 22 h 52.
 
-- `cahier des charges SaaS` ;
-- `modèle cahier des charges SaaS` ;
-- `cahier des charges logiciel SaaS exemple` ;
-- `spécifications SaaS multi tenant rôles abonnement` ;
-- `cahier des charges SaaS facturation récurrente`.
+### Ce que cette méthode ne prouve pas
 
-Search Console et Keyword Planner n’ont pas été ouverts. Aucun volume, aucune
-difficulté et aucun taux de clic ne sont affirmés.
-
-### Carte concurrentielle
-
-| Page observée                                    | Angle visible                                                    | Bon point                       | Manque ou risque                                                                                                                    |
-| ------------------------------------------------ | ---------------------------------------------------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| CahierPro                                        | Générateur rapide pour plusieurs types de projets                | Rend le livrable concret        | Promet un résultat en quelques minutes et mélange choix fonctionnels, architecture, budget et planning                              |
-| ARDN Tech, modèle SaaS 2026                      | Hébergement, isolation, disponibilité, montée en charge          | Reconnaît les spécificités SaaS | Fixe ou suggère des engagements techniques et commerciaux avant d’avoir exposé propriétaires et preuves ; propose un téléchargement |
-| Aktislab, cahier des charges logiciel métier     | Contexte, utilisateurs, données, intégrations, critères de devis | Part du problème métier         | Moins centré sur organisation cliente, abonnement et remédiation d’échec                                                            |
-| Captain Submit, cahier des charges d’application | Structure générique, périmètre, contraintes                      | Accessible au décideur          | Le SaaS peut rester une simple liste de modules, sans cycle client vendu                                                            |
-| Journal du Freenaute                             | Entreprise, cible, fonctions, budget, délais                     | Panorama simple                 | Peu de séparation entre décision produit, hypothèse, exclusion et preuve de réception                                               |
-
-### Angle mort retenu
-
-Les modèles observés parlent facilement de « multi-tenant », « facturation » et
-« scalabilité ». Ils décrivent moins souvent la chaîne complète qui relie une
-organisation cliente à ses droits d’usage : qui crée le compte, qui invite,
-quel droit est ouvert par quelle offre, que se passe-t-il après un échec de
-paiement, qui peut accéder aux données en support, comment restaurer, exporter,
-annuler et supprimer. Le nouveau guide prend cette chaîne comme signature.
-
-### Différenciation éditoriale
-
-```text
-Entrée : trois devis peuvent décrire trois produits différents malgré le même titre.
-Progression : frontières → organisation → parcours → droits d’usage → échecs → opérations → sortie → preuve.
-Artefact : générateur Markdown local, sans score ni téléchargement.
-Exemple : DossierClair, entièrement fictif, avec client séparé et cas de refus.
-Conclusion : consultation comparable ou STOP, jamais une architecture choisie par le guide.
-```
+- Elle ne prouve pas que les sources ont été consultées le **28 août 2026**,
+  comme la page l'affirme. Elle prouve qu'elles disaient bien cela le
+  **30 août 2026**. La date du 28 août est une déclaration de la page, que ce
+  dossier ne peut ni confirmer ni infirmer.
+- Elle ne prouve pas la justesse éditoriale du cas construit : un cas construit
+  n'est ni vrai ni faux, il est **posé**. Section F.
+- Elle n'inclut aucune recherche de jurisprudence, aucun avis juridique, aucune
+  mesure de marché. Les affirmations de la page qui en dépendraient sont
+  signalées en section 0 (É7).
+- Elle ne remplace pas une relecture humaine. Section I.
 
 ---
 
 ## D. Corpus officiel et fiche de preuves
 
-Sources rouvertes le 1er août 2026.
+Dix sources sont citées par l'article dans son bloc `legalSources`. Les dix ont
+été rouvertes le **30 août 2026**. Une réserve de méthode, écrite noir sur blanc :
+l'URL ELI exacte du Data Act citée par l'article n'a rendu que ses considérants à
+travers l'outil de récupération ; le texte des articles a été relu sur la version
+CELEX du même règlement, dont la référence est donnée ci-dessous. Section D.3.
 
-| ID   | Fait utilisable                                                                                                                                                                                                                                                                | Source officielle ou primaire                                                                                         | Portée et limite                                                                                                                  | Conséquence pour le cahier des charges                                                                            |
-| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| F01  | Les profils d’habilitation doivent limiter l’accès aux données nécessaires ; une demande est validée et les permissions obsolètes sont supprimées                                                                                                                              | CNIL, _Guide pratique RGPD — Sécurité des données personnelles_, version 2024 mise à jour 2026, fiche 5, p. 15        | Données personnelles ; recommandation de sécurité, pas modèle produit universel                                                   | Écrire rôle, portée, validation, révocation et preuve de refus                                                    |
-| F02  | Les opérations de support doivent être encadrées ; l’accès de télémaintenance est ouvert à la demande, limité à l’intervention puis refermé                                                                                                                                    | CNIL, même guide, fiche 15, p. 36                                                                                     | Accès d’un prestataire aux données ; le guide ne fixe pas une durée universelle                                                   | Nommer approbateur, périmètre, trace, fermeture et test d’accès après fermeture                                   |
-| F03  | Les sauvegardes doivent être réalisées et testées ; l’intégrité et la capacité de restauration sont vérifiées                                                                                                                                                                  | CNIL, même guide, fiche 17, p. 41                                                                                     | Mesures pour des données personnelles ; fréquence et objectifs dépendent du risque                                                | Exiger un scénario de restauration observable plutôt que « sauvegardes incluses »                                 |
-| F04  | Le contrat de sous-traitance précise notamment responsabilités, sécurité, restitution, destruction, incidents et assistance                                                                                                                                                    | CNIL, même guide, fiche 14, p. 34–35                                                                                  | Article 28 du RGPD lorsque le prestataire est sous-traitant ; qualification à confirmer                                           | Séparer exigences produit, responsabilités contractuelles et décision juridique                                   |
-| F05  | ASVS fournit une base de vérification et de spécification contractuelle ; la version stable est 5.0.0, publiée en mai 2025                                                                                                                                                     | OWASP ASVS, page projet officielle et branche `v5.0.0`                                                                | Standard de vérification, ni certification automatique ni conformité juridique                                                    | Référencer la version et transformer les contrôles retenus en tests                                               |
-| F06  | ASVS 5.0.0 demande de documenter les restrictions fonctionnelles et sur les données, de contrôler l’accès côté service, d’appliquer immédiatement les changements d’autorisation ou des mesures compensatoires et d’empêcher les opérations inter-organisations non autorisées | OWASP ASVS `v5.0.0-8.1.1`, `v5.0.0-8.2.2`, `v5.0.0-8.3.1`, `v5.0.0-8.3.2`, `v5.0.0-8.4.1`                             | Les identifiants sont versionnés comme le recommande OWASP ; la solution dépend notamment du type de session                      | Tester les requêtes déjà ouvertes après changement de portée et un refus entre deux organisations fictives        |
-| F07  | ASVS 5.0.0 prévoit que la désactivation ou suppression d’un compte termine ses sessions actives                                                                                                                                                                                | OWASP ASVS `v5.0.0-7.4.2`                                                                                             | L’exigence vise le compte désactivé ou supprimé ; elle n’impose pas de fermer toute session après le retrait d’une seule adhésion | Distinguer retrait d’une portée, qui doit être refusée, et désactivation du compte, qui termine les sessions      |
-| F08  | WCAG 2.2 exige notamment l’usage au clavier, un focus visible, des erreurs décrites en texte, des labels/instructions et des messages de statut perceptibles par les technologies d’assistance                                                                                 | W3C, WCAG 2.2, critères 2.1.1, 2.4.7, 3.3.1, 3.3.2 et 4.1.3                                                           | Critères de contenu Web ; aucune conformité n’est déduite d’une checklist                                                         | Écrire des cas de réception accessibles et observables                                                            |
-| F09  | Une intégration d’abonnement peut comporter plusieurs états et événements ; le produit doit coordonner ces états avec ses propres droits d’accès                                                                                                                               | Stripe Docs, _Using webhooks with subscriptions_                                                                      | Illustration d’un fournisseur, pas recommandation de choisir Stripe ni modèle universel                                           | Exiger une table produit « événement → état interne → droit → message → remédiation » indépendante du fournisseur |
-| F09b | Stripe indique que les événements peuvent être livrés dans un ordre différent de leur génération et qu’un endpoint peut recevoir un même événement plusieurs fois                                                                                                              | Stripe Docs, _Receive Stripe events in your webhook endpoint_, sections _Event ordering_ et _Handle duplicate events_ | Contre-cas propre à cette documentation fournisseur ; il ne prouve pas le comportement de tous les prestataires                   | Tester ordre différent et doublon, sans copier l’architecture ni le vocabulaire Stripe                            |
-| F10  | Le chapitre VI du Data Act traite du changement de fournisseurs de services de traitement de données et définit les données exportables ; les articles 23 à 25 ne créent pas un droit universel pour tout abonnement nommé SaaS                                                | Règlement (UE) 2023/2854, art. 2, 23–25 ; Commission européenne, _Data Act explained_                                 | Qualification juridique nécessaire ; le règlement vise les services entrant dans sa définition et prévoit aussi des exclusions    | Écrire contractuellement export et sortie sans prétendre que le Data Act s’applique automatiquement               |
-| F11  | Une cession de droits d’auteur doit mentionner distinctement les droits cédés et délimiter leur exploitation                                                                                                                                                                   | Code de la propriété intellectuelle, art. L131-3, Légifrance                                                          | Droit français ; ne dit pas qui détient automatiquement chaque livrable logiciel dans tous les montages                           | Distinguer export des données clientes, remise des livrables et droits sur le code ; faire valider le contrat     |
+### D.1 Ce que chaque source dit exactement
 
-### Sources canoniques retenues
+| ID  | Fait tel que l'article le publie                                                                                                 | Localisateur exact                                                                                                                                                             | Passage relevé le 30 août 2026                                                                                                                                                                                                                                                          | Portée et limite                                                                                                             |
+| --- | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| F01 | Le Data Act encadre le changement de fournisseur au chapitre VI, articles 23 à 31                                                | Règlement (UE) 2023/2854, chapitre VI. `https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32023R2854`                                                              | Intitulé : « CHAPITRE VI — CHANGEMENT DE SERVICES DE TRAITEMENT DE DONNÉES ». Le chapitre s'ouvre à l'article 23 et se ferme à l'article 31 ; l'article 32 ouvre le chapitre VII.                                                                                                        | Le chapitre ne vise que les *services de traitement de données*                                                              |
+| F02 | Période transitoire maximale de 30 jours calendaires (article 25)                                                                | Art. 25, § 2, point a)                                                                                                                                                          | « […] pas après la période transitoire maximale obligatoire de trente jours calendaires **prenant effet au terme du délai de préavis maximal visé au point d)** […] »                                                                                                                    | Le point d) plafonne ce préavis à deux mois. L'article publié ne le mentionne pas → É3                                       |
+| F03 | Période alternative « qui ne peut excéder sept mois » si l'impossibilité technique est justifiée dans les 14 jours ouvrables     | Art. 25, § 4                                                                                                                                                                    | « Lorsqu'il est techniquement impossible de respecter la période transitoire maximale obligatoire prévue au paragraphe 2, point a), le fournisseur […] en informe le client dans un délai de quatorze jours ouvrables […], motive dûment l'impossibilité technique et indique une autre période transitoire, qui ne peut excéder sept mois. » | Citation reprise mot pour mot par l'article, y compris les guillemets                                                        |
+| F04 | Les frais de changement sont supprimés à partir du 12 janvier 2027 (article 29)                                                  | Art. 29, § 1                                                                                                                                                                    | « À compter du 12 janvier 2027, les fournisseurs de services de traitement de données ne peuvent imposer aucun frais de changement de fournisseur au client pour le processus de changement de fournisseur. »                                                                            | Le § 2 autorise des frais **réduits** du 11 janvier 2024 au 12 janvier 2027 ; l'article ne le dit pas, sans le contredire    |
+| F05 | Le règlement est applicable depuis le 12 septembre 2025                                                                          | Art. 50, dispositions finales                                                                                                                                                   | « Il est applicable à partir du 12 septembre 2025. »                                                                                                                                                                                                                                     | Le chapitre IV connaît un régime différé pour les contrats antérieurs (12 septembre 2027)                                    |
+| F06 | Le règlement vise les « services de traitement de données », et non tout abonnement appelé SaaS                                  | Art. 2, définition n° 8                                                                                                                                                         | « “service de traitement de données” : un service numérique […] qui permet un accès par réseau en tout lieu et à la demande à un ensemble partagé de ressources informatiques configurables, modulables et variables […] »                                                              | La qualification d'un produit donné reste à faire ; l'article le dit                                                         |
+| F07 | Le Data Act ne dit rien du code source ni des droits d'exploitation                                                             | Même texte, recherche plein texte + considérant sur la propriété intellectuelle                                                                                                 | Zéro occurrence de « code source » dans le texte français intégral. Et : « Le présent règlement n'a pas d'incidence sur les actes juridiques de l'Union et nationaux prévoyant la protection des droits de propriété intellectuelle […] »                                                | Négation vérifiable par recherche exhaustive, donc rare : elle est ici démontrable                                           |
+| F08 | Chaque droit cédé fait l'objet d'une mention distincte ; étendue, destination, lieu et durée délimités                          | Code de la propriété intellectuelle, art. L131-3, al. 1er. `https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278958`                                               | « La transmission des droits de l'auteur est subordonnée à la condition que chacun des droits cédés fasse l'objet d'une mention distincte dans l'acte de cession et que le domaine d'exploitation des droits cédés soit délimité quant à son étendue et à sa destination, quant au lieu et quant à la durée. » | Version en vigueur depuis le 3 juillet 1992 (loi 92-597). La citation de l'article est exacte, guillemets compris            |
+| F09 | L'article L113-9 vise le salarié, pas une société extérieure                                                                    | CPI, art. L113-9, al. 1er. `https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039279818`                                                                               | « Sauf dispositions statutaires ou stipulations contraires, les droits patrimoniaux sur les logiciels et leur documentation créés par un ou plusieurs **employés** dans l'exercice de leurs fonctions ou d'après les instructions de leur employeur sont dévolus à l'employeur […] »      | Version en vigueur au 1er janvier 2020. Le 3e alinéa étend aux agents publics — l'article publié ne le mentionne pas         |
+| F10 | L'ordre de remise des événements n'est pas garanti                                                                              | Stripe Docs, `https://docs.stripe.com/webhooks`, section « Ordre des événements »                                                                                              | « Stripe ne garantit pas la remise des événements dans l'ordre dans lequel ils ont été générés. »                                                                                                                                                                                        | Comportement d'un fournisseur donné ; l'article le présente comme tel                                                        |
+| F11 | Un doublon se reconnaît à l'identifiant de l'objet et au type d'événement                                                       | Même page, section sur les événements en double                                                                                                                                | « Dans certains cas, deux objets Event distincts sont générés et envoyés. Pour identifier ces doublons, utilisez l'ID de l'objet dans `data.object` ainsi que le type d'événement (`event.type`). »                                                                                     | Idem                                                                                                                          |
+| F12 | Nouvelles tentatives pendant trois jours au maximum en production, trois tentatives en quelques heures en test                  | Même page, section « Retentatives automatiques »                                                                                                                                | « Stripe tente de livrer des événements à votre destination pendant un maximum de trois jours avec un recul exponentiel en mode production. […] Les livraisons d'événements créées dans un environnement de test sont relancées trois fois en l'espace de quelques heures. »            | Idem                                                                                                                          |
+| F13 | Huit états d'abonnement : `trialing`, `active`, `incomplete`, `incomplete_expired`, `past_due`, `canceled`, `unpaid`, `paused`  | Stripe Docs, `https://docs.stripe.com/billing/subscriptions/webhooks`, tableau « Capturer les changements d'état des abonnements »                                             | Le tableau porte exactement ces huit lignes, dans cet ordre : `trialing`, `active`, `incomplete`, `incomplete_expired`, `past_due`, `canceled`, `unpaid`, `paused`.                                                                                                                     | Repère de dénombrement chez un fournisseur, pas modèle universel ; l'article l'écrit deux fois                               |
+| F14 | Le client dispose de 23 heures à l'état `incomplete`                                                                            | Même tableau, ligne `incomplete`                                                                                                                                                | « Le client doit effectuer un paiement dans les 23 heures suivant la création de l'abonnement pour l'activer. **Ou** une action est requise pour le paiement, telle que l'authentification du client. Les abonnements peuvent également être à l'état `incomplete` si un paiement est en attente […] » | Trois causes documentées ; l'article n'en retient qu'une → É5                                                                |
+| F15 | `incomplete_expired` : les 23 heures sont passées sans paiement abouti                                                          | Même tableau, ligne `incomplete_expired`                                                                                                                                        | « Le paiement initial de l'abonnement a échoué et le client n'a pas effectué de paiement dans les 23 heures suivant la création de l'abonnement. Ces abonnements ne facturent pas les clients. »                                                                                        | —                                                                                                                             |
+| F16 | `active` ne signifie pas que toutes les factures ont été réglées                                                                | Même tableau, ligne `active`                                                                                                                                                    | « L'état `active` ne signifie pas que toutes les factures impayées associées à l'abonnement ont été réglées. Vous pouvez laisser les autres factures impayées ouvertes en attente de paiement […] »                                                                                     | Soutient l'encadré « Actif ne veut pas dire payé »                                                                           |
+| F17 | `past_due` : les factures continuent d'être émises                                                                              | Même tableau, ligne `past_due`                                                                                                                                                  | « Le paiement de la dernière facture finalisée a échoué ou n'a pas été tenté. L'abonnement continue de générer des factures. »                                                                                                                                                          | —                                                                                                                             |
+| F18 | `unpaid` : la documentation recommande de retirer l'accès                                                                       | Même tableau, ligne `unpaid`                                                                                                                                                    | « Révoquez l'accès à votre produit lorsque l'abonnement passe à l'état `unpaid`, car des tentatives de paiement ont déjà été effectuées à plusieurs reprises lorsqu'il était à l'état `past_due`. »                                                                                     | —                                                                                                                             |
+| F19 | `canceled` : état définitif qui ne bouge plus                                                                                   | Même tableau, ligne `canceled`                                                                                                                                                  | « L'abonnement a été annulé. […] Cet état est définitif et ne peut pas être mis à jour. »                                                                                                                                                                                               | —                                                                                                                             |
+| F20 | `paused` : plus aucune facture n'est créée                                                                                      | Même tableau, ligne `paused`                                                                                                                                                    | « L'abonnement a terminé sa période d'essai sans moyen de paiement par défaut **et le paramètre `trial_settings.end_behavior.missing_payment_method` est défini sur `pause`**. Les factures ne sont plus créées pour l'abonnement. »                                                     | La condition en gras manque au tableau publié → É6                                                                           |
+| F21 | Un avertissement part trois jours avant la fin de l'essai                                                                       | Même page, tableau des événements d'abonnement, ligne `customer.subscription.trial_will_end`                                                                                    | « Envoyé 3 jours avant la fin de la période d'essai. »                                                                                                                                                                                                                                   | C'est un événement adressé à l'intégrateur, pas un message envoyé au client : l'article demande justement de trancher lequel |
+| F22 | WCAG 2.2 est une recommandation du W3C datée du 12 décembre 2024                                                                | `https://www.w3.org/TR/WCAG22/`, en-tête                                                                                                                                        | « W3C Recommendation 12 December 2024 »                                                                                                                                                                                                                                                  | —                                                                                                                             |
+| F23 | Neuf critères ajoutés à la version précédente, dont six aux niveaux A et AA                                                     | Même page, section « New Features in WCAG 2.2 »                                                                                                                                | Liste publiée : 2.4.11 (AA), 2.4.12 (AAA), 2.4.13 (AAA), 2.5.7 (AA), 2.5.8 (AA), 3.2.6 (A), 3.3.7 (A), 3.3.8 (AA), 3.3.9 (AAA). Soit 9 critères ; 2 de niveau A + 4 de niveau AA = **6**, et 3 de niveau AAA.                                                                          | Décompte refait à la main sur la liste normative                                                                             |
+| F24 | Le critère 4.1.1 est déclaré obsolète                                                                                          | Même page, table des matières et section « Comparison with WCAG 2.1 »                                                                                                          | Sommaire : « 4.1.1 Parsing (Obsolete and removed) ». Corps : « WCAG 2.2 has removed one success criterion, 4.1.1 Parsing. »                                                                                                                                                              | —                                                                                                                             |
+| F25 | Le critère 2.5.8 fixe la taille minimale d'une cible à 24 × 24 pixels CSS                                                       | Même page, « Success Criterion 2.5.8 Target Size (Minimum) », niveau AA                                                                                                        | « The size of the target for pointer inputs is at least 24 by 24 CSS pixels, except when: […] »                                                                                                                                                                                         | Le critère porte cinq exceptions que l'article ne détaille pas — il ne prétend pas le faire                                  |
+| F26 | ASVS 5.0.0 a été publiée le 30 mai 2025                                                                                        | `https://owasp.org/www-project-application-security-verification-standard/`, fil des annonces                                                                                   | « [30 May 2025] ASVS Version 5.0.0 is released LIVE at Global AppSec EU Barcelona 2025! » ; plus loin : « Stable Release 5.0.0 »                                                                                                                                                        | —                                                                                                                             |
+| F27 | ASVS 5.0.0 compte environ 350 exigences réparties en dix-sept chapitres                                                        | **Non porté par la page citée.** Décompte fait sur le CSV officiel de la branche figée : `https://raw.githubusercontent.com/OWASP/ASVS/v5.0.0/5.0/docs_en/OWASP_Application_Security_Verification_Standard_5.0.0_en.csv` | 346 lignes d'exigences hors en-tête ; 17 valeurs distinctes de `chapter_id` (V1 à V17).                                                                                                                                                                                                  | « environ 350 » est fidèle à 346 ; « dix-sept chapitres » est exact. Le localisateur publié est insuffisant → É4              |
+| F28 | Habilitations reliées aux besoins d'accès                                                                                       | CNIL, *Guide pratique RGPD — Sécurité des données personnelles*, version 2024 mise à jour 2026, fiche n° 5 « Gérer les habilitations », p. 14. `https://www.cnil.fr/sites/default/files/2026-05/cnil_guide_securite_personnelle.pdf` | « Limiter les accès aux seules données dont un utilisateur a besoin. » ; « Faire valider toute demande d'habilitation par un responsable » ; « Réaliser une revue régulière, au moins annuelle, des habilitations […] »                                                                | Recommandation de sécurité pour données personnelles, pas modèle produit                                                     |
+| F29 | Encadrement des interventions de maintenance                                                                                    | Même guide, fiche n° 15 « Encadrer la maintenance et la fin de vie », p. 35                                                                                                     | « Ouvrir les accès nécessaires à la télémaintenance à la demande du prestataire, pour une durée adaptée à l'intervention et définie à l'avance. Ces accès doivent être refermés à l'issue de cette durée. »                                                                             | Idem                                                                                                                          |
+| F30 | Sauvegardes et tests de restauration                                                                                            | Même guide, fiche n° 17 « Sauvegarder », p. 40                                                                                                                                 | « Tester régulièrement l'intégrité des sauvegardes et la capacité de les restaurer. »                                                                                                                                                                                                   | Le guide ne fixe aucune fréquence universelle ; l'article n'en publie aucune                                                 |
+| F31 | Délai de 72 heures pour notifier une violation à la CNIL, sauf absence de risque                                               | CNIL, `https://www.cnil.fr/fr/notifier-une-violation-de-donnees-personnelles` (page datée du 24 mai 2018)                                                                       | « Une notification initiale dans un délai de 72 heures si possible à la suite de la constatation de la violation » ; la procédure peut être close si « la violation ne porte pas atteinte aux données personnelles ou ne présente pas de risque pour les droits et libertés des personnes ». | La page écrit « constatation », l'article écrit « prise de connaissance » : formulation de l'art. 33(1) RGPD, non citée → É2 |
+| F32 | Grille Hagnéré Code : 15 000 € HT pour 3–5 écrans ; 30 000 à 60 000 € HT pour 10–15 écrans, bande libellée « 10–15 écrans + IA » | Page publique `/tarifs`, et sa source de vérité `src/components/tarifs/body.ts`, lignes 623-624                                                                                | Dans le dépôt : `<b>15 k€ HT</b><span>Essentiel — MVP 3–5 écrans</span>` et `<b>30–60 k€ HT</b><span>Standard — 10–15 écrans + IA</span>`. Sur la page en ligne, rouverte le 30 août 2026 : mêmes libellés.                                                                             | Repère de l'agence qui vend la prestation. L'article le dit explicitement                                                     |
+| F33 | Discovery Sprint à 1 500 € HT sur deux jours ; cadrage payé systématique au-delà de 8 000 € HT de projet                       | Même page, `body.ts` lignes 214 et 447                                                                                                                                          | « 2 jours, 1 500 € HT, livrables réutilisables selon les droits prévus au devis. » ; « Au-delà de **8 k€ HT** de projet, un cadrage payé est systématique […] Jamais les deux. »                                                                                                        | Idem                                                                                                                          |
 
-- CNIL, guide sécurité mis à jour en mai 2026 :
-  `https://www.cnil.fr/sites/default/files/2026-05/cnil_guide_securite_personnelle.pdf`
-- OWASP ASVS :
-  `https://owasp.org/www-project-application-security-verification-standard/`
-- OWASP ASVS 5.0.0, branche figée :
-  `https://github.com/OWASP/ASVS/tree/v5.0.0`
-- W3C WCAG 2.2 : `https://www.w3.org/TR/WCAG22/`
-- Stripe, illustration abonnement :
-  `https://docs.stripe.com/billing/subscriptions/webhooks`
-- Stripe, contre-cas de livraison des événements :
-  `https://docs.stripe.com/webhooks`
-- Règlement (UE) 2023/2854 :
+### D.2 Sources canoniques, sous une forme réutilisable
+
+- Règlement (UE) 2023/2854 (Data Act), URL citée par l'article :
   `https://eur-lex.europa.eu/eli/reg/2023/2854/oj?locale=fr`
-- Commission européenne, explication du Data Act :
-  `https://digital-strategy.ec.europa.eu/en/factpages/data-act-explained`
-- Légifrance, article L131-3 :
+- Même règlement, version dont les articles ont été relus :
+  `https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32023R2854`
+- CPI art. L131-3 :
   `https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278958`
+- CPI art. L113-9 :
+  `https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039279818`
+- Stripe, réception des événements : `https://docs.stripe.com/webhooks`
+- Stripe, webhooks et abonnements :
+  `https://docs.stripe.com/billing/subscriptions/webhooks`
+- W3C, WCAG 2.2 : `https://www.w3.org/TR/WCAG22/`
+- OWASP ASVS, page projet :
+  `https://owasp.org/www-project-application-security-verification-standard/`
+- OWASP ASVS 5.0.0, branche figée, pour le décompte de F27 :
+  `https://github.com/OWASP/ASVS/tree/v5.0.0`
+- CNIL, guide sécurité :
+  `https://www.cnil.fr/sites/default/files/2026-05/cnil_guide_securite_personnelle.pdf`
+- CNIL, notifier une violation :
+  `https://www.cnil.fr/fr/notifier-une-violation-de-donnees-personnelles`
+- Hagnéré Code, grille publique : `https://hagnere-code.ai/tarifs`, source
+  `src/components/tarifs/body.ts`
 
-### Registre des affirmations publiques prévues
+### D.3 Ce qui n'a pas pu être rouvert, dit sans détour
 
-| ID  | Affirmation                                                                                                                                                      | Type                       | Appui              | Statut P1                                            |
-| --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ------------------ | ---------------------------------------------------- |
-| A01 | Plusieurs devis ne sont comparables que s’ils répondent aux mêmes décisions, hypothèses et exclusions                                                            | Déduction de méthode       | Contrat de réponse | Retenue, sans statistique                            |
-| A02 | Un rôle sans portée et sans cas refusé est insuffisant                                                                                                           | Recommandation de sécurité | F01, F05–F07       | Retenue                                              |
-| A03 | Un retrait de portée doit être testé sur les requêtes issues d’une session déjà ouverte ; la désactivation ou suppression du compte termine ses sessions actives | Recommandation vérifiable  | F06, F07           | Corrigée en P2 pour distinguer adhésion et compte    |
-| A04 | « Sauvegardé » ne prouve pas « restaurable »                                                                                                                     | Déduction opérationnelle   | F03                | Retenue                                              |
-| A05 | Un accès support permanent par défaut est à éviter pour les données personnelles                                                                                 | Recommandation bornée      | F02                | Retenue, formulation conditionnelle                  |
-| A06 | Le fournisseur de paiement ne doit pas dicter seul les droits du produit                                                                                         | Déduction d’intégration    | F09                | Retenue, Stripe seulement illustratif                |
-| A07 | Toute sortie SaaS est légalement couverte par les articles 23 à 25 du Data Act                                                                                   | Fait supposé               | —                  | Rejetée comme trop large                             |
-| A08 | Le document peut demander un export et une suppression contractuels même si la qualification Data Act reste inconnue                                             | Recommandation prudente    | F04, F10           | Retenue                                              |
-| A09 | Citer WCAG ou OWASP vaut conformité                                                                                                                              | Fait supposé               | —                  | Rejetée                                              |
-| A10 | Le scénario DossierClair représente un client réel                                                                                                               | Fait supposé               | —                  | Rejetée ; exemple fictif étiqueté avant toute donnée |
+**Une seule réserve, et elle porte sur une URL, pas sur un texte.**
 
-### Raccourcis interdits
+L'URL ELI citée par l'article pour le Data Act,
+`https://eur-lex.europa.eu/eli/reg/2023/2854/oj?locale=fr`, a été appelée deux
+fois le 30 août 2026. Elle répond, mais l'outil de récupération n'en a extrait
+que le préambule : les considérants s'arrêtent avant les articles. Une première
+tentative a produit une réponse qui semblait citer les articles 25 et 29 ; en la
+recontrôlant par une question neutre, la même page a répondu « ARTICLES ABSENTS
+DE LA PAGE ». Cette première réponse n'a donc **pas** été retenue comme preuve :
+elle reformulait les chiffres de la question posée.
 
-- « conforme RGPD », « conforme WCAG » ou « certifié OWASP » sans audit et
-  périmètre appropriés ;
-- « architecture multi-tenant obligatoire » : le besoin est une séparation
-  observable entre organisations, pas une technique imposée ;
-- « Stripe est le standard » ou reprise de ses statuts comme modèle produit ;
-- « disponibilité 99,9 % », « réponse en deux secondes », délai de support,
-  budget, prix ou planning inventé ;
-- « sauvegarde quotidienne » comme fréquence universelle ;
-- « export de toutes les données imposé par le Data Act » sans qualification ;
-- « le client est propriétaire de tout le code » sans lecture contractuelle ;
-- faux bouton de téléchargement, XLS, XLSX ou CSV ;
-- score global qui compense une inconnue bloquante.
+Le texte des articles 23 à 31 et 50 a ensuite été téléchargé et lu en entier
+depuis la version CELEX du même règlement (657 ko de HTML, convertis en 345 614
+caractères de texte), d'où proviennent toutes les citations F01 à F07. Il s'agit
+du même acte officiel, mais **pas de l'URL exacte que l'article donne au
+lecteur** : un lecteur qui suit le lien publié tombera sur la page ELI et devra
+naviguer jusqu'au texte consolidé.
 
----
+Aucune autre source citée n'a résisté. Aucune jurisprudence n'a été recherchée
+(É7). Aucune source n'a été remplacée par une source approchante pour combler un
+trou.
 
-## E. Architecture d’information du guide
+### D.4 Raccourcis interdits, tenus par la page
 
-| Section                          | Question du lecteur                                  | Décision ou livrable                                                         | Preuve ou source      |
-| -------------------------------- | ---------------------------------------------------- | ---------------------------------------------------------------------------- | --------------------- |
-| 01. Réponse immédiate            | Qu’est-ce qu’un cahier des charges SaaS comparable ? | Règle décision–responsable–preuve–exclusion–inconnue                         | A01                   |
-| 02. Entrées et frontières        | Que faut-il savoir avant d’écrire ?                  | Prérequis validés, inclusions et STOP                                        | Gel d’entrée          |
-| 03. Organisation cliente         | Qui crée, administre, invite et révoque ?            | Cycle de vie organisation et adhésion                                        | F01, F07              |
-| 04. Parcours et droits           | Que vend le produit et qui peut agir ?               | Parcours principal, objets, rôles, portées et refus                          | F05–F07               |
-| 05. Offre et abonnement          | Quel droit naît d’une offre et comment évolue-t-il ? | Catalogue, droits d’usage, états, échecs et remédiation                      | F09                   |
-| 06. Exploitation et données      | Comment administrer, soutenir, restaurer et sortir ? | Administration, support, données, rétention, sauvegarde, export, suppression | F02–F04, F10          |
-| 07. Exigences non fonctionnelles | Comment remplacer « rapide, sécurisé, accessible » ? | Conditions, méthode, seuil à décider, preuve, propriétaire                   | F03, F05–F08          |
-| 08. Générateur local             | Le dossier est-il consultable ou en STOP ?           | Markdown copiable, aucun score                                               | Moteur testé          |
-| 09. DossierClair                 | À quoi ressemble un exemple complet ?                | Exemple fictif, fournisseurs comparables, limites                            | Hypothèses ci-dessous |
-| 10. Consultation                 | Que remettre et que demander ensuite ?               | Pack de consultation et prochaine action                                     | Synthèse              |
+Contrôlés un par un dans le rendu HTML le 30 août 2026, et par les tests
+correspondants :
 
-### Vocabulaire à traduire
-
-| Terme          | Traduction choisie                                                                   |
-| -------------- | ------------------------------------------------------------------------------------ |
-| tenant         | organisation cliente ; « locataire » seulement dans une note technique si nécessaire |
-| entitlement    | droit d’usage ouvert par une offre ou une décision commerciale                       |
-| dunning        | relance et remédiation après un paiement non abouti                                  |
-| provisioning   | ouverture effective des droits d’usage                                               |
-| deprovisioning | retrait ou réduction effective des droits                                            |
-| back-office    | espace d’administration et d’exploitation                                            |
-| NFR            | exigence non fonctionnelle, observable et testable                                   |
-
----
-
-## F. Modèle de décision du générateur
-
-### Principe
-
-Le générateur ne calcule aucune note. Chaque bloc produit cinq lignes :
-
-```text
-Décision : ce que le produit doit faire ou refuser
-Responsable : personne qui peut trancher ou accepter
-Preuve de réception : scénario, mesure ou pièce observable
-Exclusion : ce qui n’est pas demandé dans ce lot
-Inconnue bloquante : décrire le STOP ou écrire « Aucune identifiée »
-```
-
-La cinquième ligne est un champ éditable distinct. Sa sémantique est
-conservatrice et ne dépend d’aucun score :
-
-- champ vide : `STOP`, car la déclaration manque ;
-- déclaration normalisée exactement égale à `Aucune identifiée` : aucun
-  blocage déclaré pour ce bloc ;
-- toute autre valeur non vide : elle décrit une inconnue et force `STOP`.
-
-Un responsable, une preuve, une exclusion ou un autre bloc complet ne peut
-jamais compenser cette cinquième ligne.
-
-### Blocs du document
-
-1. produit vendu et premier parcours ;
-2. cycle de vie de l’organisation cliente ;
-3. invitations, rôles, portées et révocation ;
-4. offres et droits d’usage ;
-5. cycle de l’abonnement ;
-6. échecs, correction et exploitation ;
-7. données, conservation et accès support ;
-8. sauvegarde, restauration, résiliation et sortie ;
-9. exigences non fonctionnelles et réception.
-
-### États du moteur
-
-| État                              | Condition                                                                                                                             | Signification                                                                                                     |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `STOP_REQUIRED_INPUTS_UNKNOWN`    | Le nom ou une décision structurante manque, une déclaration d’inconnue bloquante est vide, ou sa valeur n’est pas `Aucune identifiée` | La consultation n’est pas comparable ; la liste exacte des STOP et leur détail sont affichés                      |
-| `CLARIFY_BEFORE_COMPARISON`       | Les décisions existent, chaque bloc déclare `Aucune identifiée`, mais un responsable, une preuve ou une exclusion manque              | Le produit est décrit, mais les réponses des prestataires resteront interprétables                                |
-| `CANDIDATE_FOR_VENDOR_COMPARISON` | Les cinq champs des neuf blocs sont renseignés et chacun déclare explicitement `Aucune identifiée`                                    | Le document peut être relu pour consultation ; le moteur ne valide ni sa vérité, ni son contrat, ni sa conformité |
-
-### Marqueurs conservateurs
-
-Les chaînes vides, `à décider`, `inconnu`, `TBD`, `à confirmer` et `STOP` sont
-traitées comme des inconnues, même si le champ contient d’autres mots. Une
-phrase telle que « à décider après le devis » ne devient donc pas favorable.
-Ce traitement concerne le nom, la décision, le responsable, la preuve et
-l’exclusion. La cinquième ligne suit la règle plus stricte décrite ci-dessus :
-seule la déclaration normalisée `Aucune identifiée` ne bloque pas.
-
-### Absence de persistance
-
-- état React de la page uniquement ;
-- aucun `fetch`, `XMLHttpRequest`, cookie, stockage local ou session ;
-- aucune API et aucun envoi ;
-- copie par l’API du presse-papiers avec texte toujours sélectionnable ;
-- bouton de réinitialisation ;
-- exemple fictif chargeable ;
-- aucun téléchargement.
+- « conforme RGPD », « conforme WCAG », « certifié OWASP », « nous garantissons »,
+  « zéro risque » : aucune occurrence.
+- « Stripe est le standard » : aucune occurrence ; la page écrit deux fois que la
+  documentation est citée « comme repère de dénombrement ».
+- « droit universel d'export », « tout SaaS est couvert » : aucune occurrence.
+- Score global sur le document produit par la trame : aucun. Le bandeau publie
+  `{ label: "Score global", value: "Aucun" }`.
+- Témoignage, logo, nom de client, métrique client, historique d'exploitation :
+  aucun. Le mot « client » n'apparaît que pour désigner *les clients du lecteur*
+  ou l'organisation cliente du produit décrit.
+- Durée d'effort inventée : aucune. Les seules durées publiées sont celles des
+  sources (23 h, 72 h, 30 jours calendaires, 14 jours ouvrables, sept mois,
+  trois jours de relance).
 
 ---
 
-## G. Exemple complet — DossierClair, entièrement fictif
+## E. Registre des affirmations de l'article publié
 
-**Étiquette obligatoire avant toute donnée :** DossierClair, Atelier Nord,
-Studio Rivage, Claire et Léa sont inventés. Ils ne représentent aucun client,
-logiciel, contrat, tarif ou résultat réel de Hagnéré Code.
+Trois natures, jamais mélangées : **F** = fait sourcé (localisateur en section D),
+**H** = hypothèse du cas construit (aucune source, posée à découvert, section F),
+**C** = calcul (étapes en section G).
 
-### Produit et premier parcours
-
-- Problème déjà validé : de petits cabinets de conseil perdent la trace des
-  pièces attendues avant l’ouverture d’une mission.
-- Acheteuse : dirigeante du cabinet, autorisée à engager l’abonnement.
-- Utilisatrice principale : responsable de mission.
-- Premier parcours vendu : Claire crée Atelier Nord, invite Léa, ouvre un
-  dossier, demande une pièce à un contact externe, Léa qualifie la pièce et
-  Claire clôture la demande.
-- Résultat : un dossier montre qui attend quoi, le statut de chaque pièce et la
-  prochaine action ; le guide ne promet aucun gain chiffré.
-- Contre-cas fictif : le même jeu est rejoué avec une fonction déjà payée et un
-  processus manuel. L’annexe de consultation conserve les écarts décisifs ; si
-  une option plus simple couvrait le résultat et les refus attendus, la décision
-  correcte serait de ne pas développer.
-
-### Organisation, rôles et révocation
-
-- Atelier Nord est une organisation cliente distincte de Studio Rivage.
-- Une acheteuse crée l’organisation initiale et devient propriétaire ; le
-  transfert de propriété exige une décision explicite d’une seconde personne
-  habilitée.
-- Rôles : propriétaire, administratrice, contributrice et contact externe.
-- Portées : les rôles internes agissent seulement dans leur organisation ; le
-  contact externe voit seulement les demandes qui lui sont adressées.
-- Invitation : adresse, rôle, organisation, expiration et personne invitante
-  sont visibles avant confirmation.
-- Révocation : après retrait de l’adhésion de Léa à Atelier Nord, les requêtes
-  vers Atelier Nord sont refusées, y compris depuis une session déjà ouverte,
-  sans modifier un éventuel accès à une autre organisation. Si le compte entier
-  est désactivé ou supprimé, toutes ses sessions actives prennent fin. Une trace
-  permet de relire auteur, date, action et organisation sans enregistrer le
-  contenu des pièces dans le journal.
-- Test négatif : Claire, connectée à Atelier Nord, ne peut ni voir ni modifier
-  un dossier de Studio Rivage, même en utilisant directement son identifiant.
-
-### Offre, droits d’usage et abonnement
-
-- L’offre `Équipe` fictive ouvre la création de dossiers, les invitations
-  internes, les contacts externes et l’export des dossiers de l’organisation.
-- Le prix, le nombre de sièges et les quotas sont volontairement hors de
-  l’exemple : chaque prestataire doit les traiter comme paramètres fournis par
-  le commanditaire, jamais comme choix technique implicite.
-- États produit : `à_activer`, `active`, `régularisation`, `résiliée` et
-  `sortie_terminée`. Ces noms appartiennent au produit fictif, pas à Stripe.
-- Un paiement confirmé ouvre les droits prévus par l’offre une seule fois, même
-  si le même événement est reçu plusieurs fois.
-- Un paiement non abouti place l’organisation en `régularisation`, affiche une
-  action de correction à la propriétaire et conserve les données. Le contrat
-  commercial décide séparément quand et comment les droits sont réduits ; le
-  prestataire ne doit ni supprimer les dossiers ni inventer ce délai.
-- Une régularisation confirmée rétablit les droits sans recréer l’organisation.
-- Si le service de paiement ou de notification fictif est indisponible, la
-  transition reste en attente et visible. La supervision détecte l’écart,
-  l’exploitation applique la reprise prévue et aucun droit n’est ouvert,
-  retiré ou dupliqué silencieusement.
-- Une résiliation empêche un nouveau renouvellement, conserve l’accès prévu
-  pour la sortie contractuelle puis mène à `sortie_terminée` après export et
-  validation de la suppression.
-
-### Administration, support, données et restauration
-
-- L’administration interne recherche une organisation par identifiant non
-  sensible, voit son état produit et peut déclencher seulement les actions
-  autorisées et tracées.
-- Le support n’accède pas par défaut aux pièces. Claire demande une intervention,
-  approuve le périmètre et l’accès est refermé après l’intervention ; une
-  requête de contrôle confirme ensuite le refus.
-- Données : organisation, adhésions, demandes de pièces, métadonnées de fichier,
-  états, journal d’actions et données de facturation strictement nécessaires.
-- Les finalités, bases juridiques et durées de conservation sont attribuées à la
-  responsable du traitement fictive et restent à confirmer juridiquement hors
-  du cahier des charges produit.
-- Sauvegarde : le fournisseur décrit la copie, la protection et le scénario de
-  restauration. La preuve attendue est une restauration en environnement de
-  test d’un jeu fictif, avec contrôle d’intégrité, écarts et responsable.
-- Aucun objectif de perte de données, de reprise ou de disponibilité n’est
-  inventé par ce guide ; le commanditaire doit les décider après analyse de
-  risque avant toute promesse contractuelle.
-
-### Accessibilité, performance, sécurité et sortie
-
-- Clavier : Claire accomplit le parcours principal, corrige une erreur et copie
-  un export sans souris ; le focus reste visible.
-- Mobile et thèmes : le parcours reste lisible à 320 px, en mode clair et sombre,
-  sans perte de contenu ni défilement horizontal du document.
-- Erreurs et statuts : une erreur identifie le champ et la correction en texte ;
-  une confirmation est annoncée sans déplacement forcé du focus.
-- Performance : le prestataire fournit un protocole, l’environnement, le jeu de
-  données et les mesures. Le seuil contractuel est une décision du commanditaire,
-  pas une valeur inventée par le guide.
-- Capacité : l’hypothèse de consultation entièrement fictive contient 20
-  organisations, 100 personnes internes et 2 000 dossiers. Un second passage
-  utilise 40 organisations, 200 personnes et 4 000 dossiers. Les mesures,
-  limites et variations de coût restent séparées ; ces nombres ne sont ni une
-  norme ni une cible réelle.
-- Sécurité : tests autorisé/refusé entre Atelier Nord et Studio Rivage, refus
-  des requêtes Atelier Nord après retrait de l’adhésion, fin de toutes les
-  sessions seulement si le compte entier est désactivé ou supprimé, et contrôle
-  côté service ; ASVS 5.0.0 est un référentiel de sélection, pas une
-  certification.
-- Sortie : Claire peut obtenir un export documenté des données de son
-  organisation, vérifier sa lisibilité, demander la résiliation et recevoir une
-  preuve de l’effacement prévu. Les secrets internes du fournisseur et les
-  droits sur le code sont traités séparément dans le contrat.
-
-### Responsabilités et exclusions
-
-- Sponsor produit fictif : tranche les rôles, offres, seuils et critères de
-  réception.
-- Responsable métier : valide le premier parcours et les règles de dossier.
-- Responsable données : confirme catégories, finalités, conservation, support,
-  export et suppression.
-- Prestataire : explicite hypothèses, dépendances, preuves, responsabilités et
-  variantes sans choisir silencieusement à la place du sponsor.
-- Autorité de réception : personne nommée dans les documents applicables ; le
-  moteur n’accepte jamais le produit automatiquement.
-- Inconnues bloquantes : les neuf blocs déclarent une absence explicite. La
-  valeur saisie est « Aucune identifiée » afin que l’exemple reste seulement
-  candidat à une relecture.
-- Exclus : architecture, fournisseur de paiement, prix, budget, planning,
-  niveau de service contractuel (SLA), conformité déclarative et conseil
-  juridique personnalisé.
-
-### Coût complet à rendre comparable, sans montant inventé
-
-Chaque réponse prestataire doit isoler, sur la même version du périmètre :
-
-- cadrage, conception et reprise d’un existant ;
-- intégrations, licences et consommation de tiers ;
-- migration, contrôles d’import, formation et adoption ;
-- supervision, support, maintenance corrective et évolutive, mises à jour et
-  nouveaux tests après correction ;
-- export, documentation, assistance au changement, récupération, suppression
-  et preuve de sortie.
-
-Une catégorie absente reste inconnue ou exclue ; elle ne devient jamais zéro.
-Cette grille ne fixe aucun prix. Elle empêche seulement de comparer un devis
-initial à une offre qui inclut aussi l’exploitation et la sortie.
+| Réf     | Affirmation telle qu'elle est lue                                                             | Nature | Appui                    | Verrouillée par un test ?                              |
+| ------- | --------------------------------------------------------------------------------------------- | ------ | ------------------------ | ------------------------------------------------------ |
+| A01     | Deux devis ne se comparent que s'ils portent la même liste de postes                          | Méthode | Raisonnement, aucune donnée | Non — c'est la thèse, pas un chiffre                   |
+| A02     | Trois devis à 34 000, 58 000 et 129 000 € HT sur le même document                              | H      | H-13 à H-15              | Oui : totaux reconstruits poste par poste depuis le rendu |
+| A03     | Le total de chaque colonne est la somme de ses postes                                         | C      | C-01 à C-03              | Oui                                                    |
+| A04     | Quatre postes sur sept ne portent aucun montant chez la société A                             | C      | C-04                     | Oui, et les quatre sont nommés                         |
+| A05     | Trois d'entre eux devront être payés ; le quatrième attend un arbitrage                       | Méthode | Déduction du tableau     | Oui, à la phrase près                                  |
+| A06     | Amplitude des trois totaux : 3,8 pour 1, calculée sur trois listes différentes                | C      | C-05                     | Oui, et la disqualification est exigée par le test     |
+| A07     | Couple B–C : 2,2 pour 1 avant décompte, 1,5 pour 1 après                                      | C      | C-06 à C-08              | Oui                                                    |
+| A08     | Il subsiste 27 000 € entre B et C ; la phrase pèse 1,6 fois cette somme                       | C      | C-09, C-10               | Oui                                                    |
+| A09     | La saisie sans réseau vaut 34 % du devis le plus élevé                                        | C      | C-11                     | Oui                                                    |
+| A10     | La phrase de la page 6 compte dix mots                                                        | C      | C-12                     | Oui : le test recompte la citation                     |
+| A11     | Le total C dépasse la borne haute de la grille maison ; ramené à 85 000 € il reste 25 000 € au-dessus | C   | C-13, C-14               | Oui                                                    |
+| A12     | La bande 30–60 k€ HT est libellée « 10–15 écrans + IA », le portail n'a pas d'IA              | F      | F32                      | Oui : le test relit `body.ts`                          |
+| A13     | Une exigence est testable quand on sait écrire son échec                                      | Méthode | Raisonnement             | Non                                                    |
+| A14     | La commande `grep -onEi` liste les mots qui repoussent une décision                           | F      | Commande reproductible   | Oui : présence de la commande et du nom de fichier     |
+| A15     | Aucun seuil publié n'existe pour cette densité                                                | —      | **Aucun localisateur**   | Oui, en négatif : le test interdit d'en publier un → É7 |
+| A16     | WCAG 2.2 : 12 décembre 2024, neuf critères dont six A et AA, 4.1.1 obsolète, 2.5.8 à 24 × 24 px CSS | F | F22 à F25                | Oui, fait par fait                                     |
+| A17     | ASVS 5.0.0 : 30 mai 2025, environ 350 exigences, dix-sept chapitres                           | F      | F26, F27                 | Oui, mais le localisateur publié est incomplet → É4    |
+| A18     | La documentation publique décrit huit états d'abonnement                                      | F      | F13                      | Oui : huit lignes comptées dans le tableau rendu       |
+| A19     | Trois de ces états décrivent un paiement non abouti sans fermeture d'accès                    | F      | F14, F17, F18            | Oui, et les trois sont nommés                          |
+| A20     | Trois décisions par état font vingt-quatre lignes à écrire                                    | C      | C-15                     | Oui                                                    |
+| A21     | Ordre non garanti, doublons possibles, relances jusqu'à trois jours                           | F      | F10 à F12                | Oui                                                    |
+| A22     | `active` ne veut pas dire payé                                                                | F      | F16                      | Oui                                                    |
+| A23     | Quatre objets à récupérer à la sortie, dont deux adossés à un texte                           | C + F  | C-16, F01-F09            | Oui : les cellules du tableau sont recomptées          |
+| A24     | Data Act : applicable au 12 septembre 2025, 30 jours à l'art. 25, sept mois au plus, frais supprimés au 12 janvier 2027 à l'art. 29 | F | F02 à F05 | Oui, fait par fait                                     |
+| A25     | Le Data Act ne dit rien du code source                                                        | F      | F07                      | Oui                                                    |
+| A26     | L131-3 : mention distincte, étendue, destination, lieu, durée                                 | F      | F08                      | Oui, et l'identifiant Légifrance est contrôlé          |
+| A27     | L113-9 vise le salarié, pas une société extérieure                                            | F      | F09                      | Oui, idem                                              |
+| A28     | La portée du formalisme de L131-3 sur un logiciel se plaide encore                            | —      | **Aucun localisateur**   | Oui, en positif : le test exige la phrase → É7         |
+| A29     | Onze accès ouverts, 16 390 € HT non facturés sur quarante-trois organisations                 | C sur H | C-17, C-18, H-07, H-20, H-21 | Oui                                                |
+| A30     | La CNIL doit être notifiée dans les 72 heures suivant la prise de connaissance, sauf absence de risque | F | F31, avec la réserve É2 | Oui : le test exige les deux réserves dans la phrase   |
+| A31     | La trame compte neuf blocs, cinq champs, quarante-cinq zones                                  | C      | C-19                     | Oui : le test importe `specificationBlocks`            |
+| A32     | La trame n'envoie rien, n'enregistre rien, ne produit aucun fichier                           | F      | Code du dépôt            | Oui : le test interdit `fetch`, `localStorage`, `Blob`, `download` |
+| A33     | L'exemple DossierClair est entièrement fictif                                                 | H      | H-23 à H-31              | Oui : l'étiquette doit précéder l'affichage            |
+| A34     | Hagnéré Code fait partie des sociétés qu'un tel document met en concurrence                   | Aveu   | Fait interne             | Oui : un seul bloc de transparence, un seul CTA en ligne |
 
 ---
 
-## H. Tests et contrôles P1 prévus
+## F. Les hypothèses du cas construit, posées à découvert
 
-### Moteur pur
+**Trente et une hypothèses.** Aucune ne vient d'une source, d'un relevé de marché
+ni d'un dossier client. Elles sont choisies pour la démonstration. C'est ce que
+l'article écrit lui-même, en quatre endroits distincts : le badge du hero
+(« Exemple construit · aucun dossier client »), la première phrase du
+`heroDescription`, l'italique qui ouvre l'encadré du fil rouge, et le
+`disclaimer` de bas de page.
 
-- état vide = `STOP_REQUIRED_INPUTS_UNKNOWN` ;
-- chaque décision structurante retirée de l’exemple = STOP correspondant ;
-- déclaration d’inconnue bloquante vide = STOP correspondant ;
-- `Aucune identifiée`, avec normalisation des accents, espaces, casse et
-  ponctuation = absence explicite de blocage ;
-- toute autre déclaration non vide d’inconnue bloquante = STOP avec le détail ;
-- propriétaire, preuve ou exclusion absent = `CLARIFY_BEFORE_COMPARISON` ;
-- exemple complet = `CANDIDATE_FOR_VENDOR_COMPARISON` avec avertissement ;
-- marqueurs `à décider`, `TBD`, `inconnu`, `à confirmer` et `STOP` restent
-  bloquants ;
-- variantes accentuées ou non, en casse et ponctuation différentes, ainsi que
-  `inconnue`, `inconnus`, `inconnues` et `non renseigne`, restent bloquantes ;
-- valeurs de type inattendu normalisées en inconnues ;
-- conteneurs et zéro numérique reçus hors interface normalisés en inconnues ;
-- sortie déterministe et toutes les rubriques présentes ;
-- aucun score, aucune compensation, aucun zéro implicite.
+### F.1 Fil rouge « Sonia » — un bureau de contrôle technique
 
-### Composant
+| Réf  | Hypothèse                                                                                                    | Où elle apparaît |
+| ---- | ------------------------------------------------------------------------------------------------------------ | ---------------- |
+| H-01 | Le métier : un bureau de contrôle technique de bâtiments                                                     | §01              |
+| H-02 | L'effectif : 46 salariés                                                                                     | §01              |
+| H-03 | L'implantation : Nantes                                                                                      | §01              |
+| H-04 | Sonia, directrice générale — personne fictive                                                                | §01, §02, §03, §06, §07 |
+| H-05 | Karim, qui gère l'informatique — personne fictive                                                             | §01              |
+| H-06 | Les clients visés sont des bailleurs                                                                          | §01, §06         |
+| H-07 | L'abonnement annuel par organisation cliente vaut 1 490 € HT                                                 | §01, §06         |
+| H-08 | Le document envoyé fait quatorze pages                                                                        | §01, FAQ         |
+| H-09 | Onze écrans                                                                                                   | §01, §02         |
+| H-10 | Six rôles                                                                                                     | §01, §07         |
+| H-11 | 12 000 dossiers à reprendre                                                                                   | §01, §02, §06    |
+| H-12 | Trois sociétés consultées, A, B et C, saisies le même jour                                                   | §01              |
+| H-13 | Ventilation du devis A : 26 000 + 5 000 + 3 000, quatre postes non chiffrés                                  | §02, tableau     |
+| H-14 | Ventilation du devis B : 27 500 + 9 000 + 6 000 + 7 500 + 5 000 + 3 000, un poste non chiffré                | §02, tableau     |
+| H-15 | Ventilation du devis C : 33 000 + 12 000 + 9 000 + 11 000 + 44 000 + 12 000 + 8 000, aucun poste non chiffré | §02, tableau     |
+| H-16 | La phrase ambiguë se trouve page 6                                                                            | §02, §03, §06    |
+| H-17 | A et B ont lu « un écran responsive » ; C a lu « une application hors ligne avec synchronisation »           | §02              |
+| H-18 | Exigence R-14 : dossier 2 481, organisation « Bailleur Nord », douze champs, trois photos, synchronisation en quatre heures au plus | §03 |
+| H-19 | La décision ouverte sur le conflit d'écriture est tranchée par Sonia avant le 15 septembre                    | §03              |
+| H-20 | Dix-huit mois plus tard, quarante-trois organisations sont abonnées                                          | §06              |
+| H-21 | Onze d'entre elles ont vu leur prélèvement annuel échouer sans fermeture d'accès                             | §06              |
+| H-22 | Jeu de données fictives de consultation : deux organisations, six rôles, une centaine de dossiers            | §07              |
 
-- aucun envoi ou stockage ;
-- labels explicites, focus visible, zones tactiles, navigation clavier ;
-- sous-région concise `role="status"` limitée au verdict et à son explication ;
-- listes de STOP, clarifications et prochaine action hors de cette région ;
-- rendu mobile, clair et sombre ;
-- chargement de l’exemple, réinitialisation et copie ;
-- texte de repli sélectionnable si le presse-papiers échoue.
+### F.2 Exemple DossierClair — un second cas, entièrement fictif
 
-### Page et SEO
+Produit par `createDossierClairExample()` dans
+`saas-specification-engine.ts`, dont le `projectName` porte l'étiquette dans son
+propre libellé : `"DossierClair — exemple entièrement fictif"`.
 
-- `GuidePremiumLayout` ;
-- H1 unique et intention alignée avec le titre social ;
-- trois WebP dédiés et visibles : 16:9, 4:3 et 1:1 ;
-- `Article` et `BreadcrumbList` seulement ;
-- aucun `FAQPage`, `HowTo`, `Offer`, `Review`, `AggregateRating` ou `wordCount` ;
-- liens internes limités aux routes du gel d’entrée ;
-- aucun téléchargement, XLS, XLSX ou CSV ;
-- canonical via les helpers actuels ;
-- date de modification réelle ;
-- intégration registre et redirection laissée explicitement à l’orchestrateur.
+| Réf  | Hypothèse                                                                                   |
+| ---- | ------------------------------------------------------------------------------------------- |
+| H-23 | DossierClair, un suivi de pièces pour de petits cabinets de conseil                          |
+| H-24 | Deux organisations : Atelier Nord et Studio Rivage                                           |
+| H-25 | Deux personnes : Claire, responsable de mission, et Léa                                      |
+| H-26 | Quatre rôles : propriétaire, administratrice, contributrice, contact externe                 |
+| H-27 | Une offre nommée « Équipe »                                                                  |
+| H-28 | Cinq états produit : `à_activer`, `active`, `régularisation`, `résiliée`, `sortie_terminée`  |
+| H-29 | Volume de référence : 20 organisations, 100 personnes internes, 2 000 dossiers               |
+| H-30 | Volume doublé pour le second passage : 40 organisations, 200 personnes, 4 000 dossiers       |
+| H-31 | Lisibilité retenue à 320 px, en thèmes clair et sombre                                       |
 
-### Commandes prévues
+### F.3 Ce que les hypothèses n'autorisent pas
 
-```text
-npx vitest run <tests du slug>
-npx eslint <fichiers TypeScript/TSX du slug>
-npx tsc --noEmit
-npx prettier --check <fichiers du slug et dossier de recherche>
-git diff --check
-file + dimensions des SVG/WebP
-contrôles source H1, structured data, liens et formats interdits
-build si l’intégration partagée permet le prérendu
-```
+Aucune de ces trente et une hypothèses ne peut être citée hors de l'article
+comme une observation. En particulier : **les trois devis ne mesurent pas un
+marché**, l'abonnement de 1 490 € HT n'est le prix de rien, et les 46 salariés ne
+décrivent aucune société. L'article le dit dans son propre corps —
+« Refaites la colonne avec vos devis réels — la méthode ne dépend pas des
+nombres. » — et son `disclaimer` le répète.
 
----
-
-## I. Rapport d’exécution P1
-
-### Reprise demandée par G1
-
-G1 a prononcé `P1_A_REPRENDRE` après avoir constaté que le gel d’entrée et la
-page décrivaient cinq natures par bloc alors que la première version du moteur
-et de l’outil n’en exposait que quatre. La reprise corrige ce défaut sans
-modifier de fichier partagé :
-
-- ajout d’un champ `blockingUnknown` éditable séparément dans chacun des neuf
-  blocs, le moteur, la sortie Markdown et les 45 zones de texte ;
-- sémantique conservatrice testée : vide = STOP, `Aucune identifiée` normalisé =
-  absence déclarée, toute autre valeur = STOP détaillé ;
-- ajout de la déclaration explicite d’absence dans les neuf blocs de
-  DossierClair ;
-- déplacement de l’annonce dynamique vers une sous-région concise
-  `role="status"`, avec listes et prochaine action hors de cette région ;
-- nouveaux tests du moteur, du DOM interactif et du contrat de contenu.
-
-### Livrables réalisés
-
-- page premium complète avec dix sections, réponse directe, tableaux, limites,
-  neuf FAQ et CTA tardifs ;
-- moteur pur de neuf blocs non compensables ;
-- générateur local avec saisie, statut, sortie Markdown sélectionnable, copie,
-  exemple fictif et réinitialisation ;
-- exemple DossierClair entièrement renseigné dans le moteur et affiché dans la
-  page ;
-- image Open Graph dédiée ;
-- trois schémas éditoriaux originaux aux formats SVG et WebP, visibles dans la
-  page ;
-- tests du moteur, du composant et du contrat de contenu public ;
-- dossier de recherche recréé à partir des sources rouvertes ;
-- manifeste SHA-256 P1 couvrant le gel d’entrée et tous les fichiers propres au
-  slug, hors manifeste lui-même.
-
-### Contrôles exécutés le 1er août 2026
-
-| Contrôle                                                           | Résultat                                          | Limite ou précision                                                                                                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Vitest ciblé : moteur, composant interactif et contrat de contenu  | **PASS — 3 fichiers, 43 tests**                   | Cinq champs, sémantique de l’inconnue bloquante, région de statut concise, états, exemple, copie, sources, liens, schémas et formats                       |
-| ESLint ciblé sur le dossier du slug, avec zéro avertissement admis | **PASS — 0 erreur, 0 avertissement**              | Configuration officielle chargée depuis le checkout principal qui possède les dépendances                                                                  |
-| TypeScript complet, sans émission ni incrément                     | **PASS — 0 erreur**                               | node_modules a été relié temporairement au magasin du checkout principal puis le lien a été retiré ; aucun fichier de dépendance ne reste dans le worktree |
-| Prettier 3.6.2 sur les fichiers TS/TSX et le dossier de recherche  | **PASS**                                          | Tous les fichiers textuels propres au slug et le dossier de recherche ont été contrôlés                                                                    |
-| Contrôle des espaces finaux Git                                    | **PASS après retrait de l’unique espace signalé** | Les fichiers non suivis sont couverts par Prettier, xmllint et les tests de contenu                                                                        |
-| XML des trois SVG                                                  | **PASS**                                          | xmllint sans erreur                                                                                                                                        |
-| WebP                                                               | **PASS**                                          | 1600 × 900, 1200 × 900 et 900 × 900 ; en-têtes RIFF/WEBP vérifiés                                                                                          |
-| Inspection visuelle des trois WebP                                 | **PASS**                                          | Texte lisible, ratios cohérents, aucun contenu trompeur ou tronqué constaté                                                                                |
-| Données structurées                                                | **PASS**                                          | Helpers actuels limités à Article et BreadcrumbList                                                                                                        |
-| Liens internes                                                     | **PASS**                                          | Seulement validation SaaS, droits d’accès, hub, service SaaS et /demarrer-un-projet                                                                        |
-| Outil local                                                        | **PASS**                                          | Aucun fetch, stockage navigateur, cookie, Blob, téléchargement ou export tableur                                                                           |
-| Construction complète                                              | **NON EXÉCUTÉE — frontière d’intégration connue** | Le slug est volontairement absent de src/lib/guides.ts et encore présent dans les redirections ; ces fichiers partagés sont hors périmètre P1              |
-
-La non-exécution du build n’est pas présentée comme un succès. Appeler la page
-avant l’intégration partagée ferait échouer
-getGuide("cahier-des-charges-saas"). L’orchestrateur doit ajouter l’entrée
-éditoriale, traiter la redirection puis exécuter type-check, build, rendu et
-contrôles de route sur l’état intégré.
-
-### Contrôle des frontières
-
-- aucun fichier partagé modifié ;
-- aucun lien vers un ancien guide redirigé ;
-- aucun choix d’architecture, fournisseur de paiement, prix, délai ou SLA ;
-- aucune promesse de conformité ou de portabilité universelle ;
-- aucun score global et aucune branche bloquante compensée ;
-- aucun fichier XLS, XLSX ou CSV créé ou proposé ;
-- aucun commit, push, déploiement, publication ou contrôle public effectué.
-
-### Défauts ouverts dans le périmètre P1
-
-> P0 ouverts : 0
-> P1 ouverts : 0
-> P2 ouverts : 0
-> P3 ouverts : 0
-
-### Passages de relais obligatoires
-
-1. ajouter le guide au registre central avec son statut éditorial et ses trois
-   images ;
-2. traiter la redirection historique sans créer de route concurrente ;
-3. relancer les contrôles globaux, le build et la preuve de HTML servi après
-   intégration ;
-4. soumettre le contenu à une passe 2 indépendante, sans réutiliser ce verdict
-   comme preuve de qualité finale.
-
-> Verdict P1 : **GO_PASSE_2**
-> Portée : candidat local complet dans les fichiers propres au slug
-> Autorisation de publication : **NON**
-> Commit : **NON EFFECTUE**
-> Push : **NON EFFECTUE**
-> Déploiement : **NON EFFECTUE**
-> Publication : **NON EFFECTUEE**
-> URL publique : **NON VERIFIEE**
-> Indexation : **NON VERIFIEE**
-
-Ce verdict autorise seulement la passe 2 indépendante. Il ne vaut ni
-GO_QUALITE_GUIDE, ni validation G1 de l’orchestrateur, ni autorisation de
-commit, de push ou de publication.
+Ces hypothèses sont d'autant plus à surveiller que la page est destinée à des
+campagnes payantes : c'est exactement la configuration où un chiffre construit se
+met à circuler comme un chiffre relevé. Les tests colocalisés en tiennent compte :
+ils imposent que l'étiquette « Exemple construit » précède les montants dans le
+hero, et interdisent les montants 34 000 / 58 000 / 129 000 / 44 000 et les
+ratios 3,8 / 2,2 / 1,5 dans le H1, la description SERP, la description de carte et
+l'image OpenGraph — c'est-à-dire sur toutes les surfaces qui se lisent sans le
+corps de l'article.
 
 ---
 
-## J. Journal de passe 2 — vérification contradictoire
+## G. Les calculs de l'article, refaits à la main
 
-- Date : **1er août 2026**
-- Agent : **`/root/cahier_saas_p2_contradiction`**
-- Portée : **fichiers propres au slug, lecture seule du gel d’entrée et du
-  manifeste P1, sans intégration partagée**
+Aucune formule de la page n'est rejouée ici : les opérandes sont relevés dans le
+tableau et les étapes sont posées à la main, comme un lecteur les poserait.
 
-### Gel contrôlé avant toute correction
+### G.1 Le tableau des trois devis, tel qu'il est publié
 
-- le manifeste P1 a été relu avant les modifications P2 : **15 entrées sur 15
-  conformes** ;
-- son empreinte externe initiale et toujours actuelle est
-  `716780da7cb13437b35118ea598418ad0b697cf689518c86a62ac3381bf1d845` ;
-- le manifeste P1 n’a pas été modifié pendant la passe 2. Ses empreintes
-  décrivent donc volontairement l’instantané P1 et ne doivent pas être
-  présentées comme conformes aux fichiers corrigés en P2 ;
-- le gel d’entrée, la page, l’outil, le moteur, les trois fichiers de tests
-  (moteur, outil et `content-quality`), l’image Open Graph, les trois paires
-  SVG/WebP, le dossier de recherche et le manifeste P1 ont été lus
-  intégralement.
+| Poste                                       | Société A | Société B | Société C |
+| ------------------------------------------- | --------- | --------- | --------- |
+| Onze écrans du parcours principal           | 26 000 €  | 27 500 €  | 33 000 €  |
+| Portail multi-organisation                  | 5 000 €   | 9 000 €   | 12 000 €  |
+| Reprise des 12 000 dossiers existants       | —         | 6 000 €   | 9 000 €   |
+| Abonnement et facturation récurrente        | —         | 7 500 €   | 11 000 €  |
+| Saisie sur le terrain sans réseau           | —         | —         | 44 000 €  |
+| Recette et corrections                      | 3 000 €   | 5 000 €   | 12 000 €  |
+| Hébergement et maintenance, douze mois      | —         | 3 000 €   | 8 000 €   |
+| **Total annoncé**                           | 34 000 €  | 58 000 €  | 129 000 € |
 
-### Sources officielles rouvertes et limites conservées
+### G.2 Les dix-neuf calculs
 
-| Source                                                                | Contrôle contradictoire                                                                                            | Limite retenue                                                                                                                         |
-| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
-| CNIL, guide de la sécurité des données personnelles, édition mai 2026 | Habilitations p. 15, sous-traitance p. 34-35, maintenance et support p. 36-37, sauvegarde et restauration p. 41-42 | Le guide fournit des mesures de cadrage et de preuve ; il ne certifie pas un produit                                                   |
-| OWASP ASVS 5.0.0                                                      | Exigences 8.1.1, 8.2.2, 8.3.1, 8.3.2, 8.4.1 et 7.4.2 vérifiées dans la version officielle                          | Le retrait d’une adhésion est distingué de la désactivation ou suppression du compte entier                                            |
-| W3C, WCAG 2.2                                                         | Critères 2.1.1, 2.4.7, 3.3.1, 3.3.2 et 4.1.3 rouverts                                                              | Les critères deviennent des preuves à demander, jamais une promesse globale de conformité                                              |
-| Stripe Docs, abonnements et réception des webhooks                    | États d’abonnement, absence de garantie d’ordre et possibilité de doublons confirmés                               | Illustration d’un fournisseur et contre-cas de test uniquement ; aucune recommandation de Stripe ni généralisation                     |
-| Règlement (UE) 2023/2854 et présentation de la Commission             | Chapitre VI, articles 23 à 25 et 31, application depuis le 12 septembre 2025                                       | Le passage reste borné aux services de traitement de données et à leurs conditions ; aucune portabilité SaaS universelle n’est promise |
-| Code de la propriété intellectuelle, article L. 131-3                 | Mention distincte des droits cédés et délimitation du domaine d’exploitation confirmées                            | Le passage demeure conditionnel à une cession et ne remplace pas une revue contractuelle                                               |
+**C-01 — Total A.** 26 000 + 5 000 = 31 000 ; 31 000 + 3 000 = **34 000**.
+Égal au total annoncé. ✔
 
-### Affirmations corrigées ou resserrées
+**C-02 — Total B.** 27 500 + 9 000 = 36 500 ; + 6 000 = 42 500 ; + 7 500 =
+50 000 ; + 5 000 = 55 000 ; + 3 000 = **58 000**. Égal au total annoncé. ✔
 
-1. **Marqueurs d’inconnue.** Le texte public annonçait que `inconnue` et les
-   variantes d’accent, de casse et de ponctuation restaient bloquantes, alors
-   que le moteur ne reconnaissait qu’une partie de ces formes. La
-   normalisation couvre désormais `TBD`, `unknown`, les flexions de
-   `inconnu/inconnue`, `STOP`, `à/a décider`, `à/a confirmer` et
-   `non renseigné/non renseigne` sans relâcher la règle.
-2. **Révocation de droits.** Une adhésion retirée à Atelier Nord doit rendre
-   les requêtes Atelier Nord interdites, y compris depuis une session déjà
-   ouverte, sans retirer les autres organisations. La terminaison de toutes
-   les sessions est réservée à la désactivation ou suppression du compte
-   entier, conformément au périmètre de l’ASVS 7.4.2 ; l’ASVS 8.3.2 documente
-   le changement immédiat des autorisations ou ses contrôles compensatoires.
-3. **Webhooks.** L’ordre différent et le doublon ont été ajoutés comme
-   contre-cas officiels propres à la documentation Stripe, sans en déduire
-   une architecture ni un comportement universel des prestataires.
+**C-03 — Total C.** 33 000 + 12 000 = 45 000 ; + 9 000 = 54 000 ; + 11 000 =
+65 000 ; + 44 000 = 109 000 ; + 12 000 = 121 000 ; + 8 000 = **129 000**.
+Égal au total annoncé. ✔
 
-Aucune affirmation soutenable n’a dû être retirée entièrement. Les formulations
-sur la portabilité, la propriété intellectuelle et l’accessibilité restent
-conditionnelles et bornées.
+**C-04 — Postes non chiffrés.** Colonne A : reprise, abonnement, saisie sans
+réseau, hébergement → **4** sur 7. Colonne B : saisie sans réseau seule → **1**.
+Colonne C : **0**. L'article écrit « Quatre postes sur sept ». ✔
 
-### Reproduction indépendante du moteur et cas limites
+**C-05 — Amplitude A → C.** 129 000 ÷ 34 000. 34 000 × 3 = 102 000, reste
+27 000. 27 000 ÷ 34 000 = 0,794. Soit 3,794 → **3,8 pour 1**. ✔
+L'article ajoute aussitôt que ce rapport est « calculé sur trois listes de postes
+différentes » — ce qui est vrai : A nomme 3 postes, B en nomme 6, C en nomme 7.
 
-| Entrée reproduite                                                                                           | Résultat attendu et observé                                                                                                                                                                      |
-| ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Projet entièrement vide                                                                                     | `STOP_REQUIRED_INPUTS_UNKNOWN`, 19 blocages : un nom de projet, neuf décisions et neuf déclarations d’inconnue ; 27 clarifications : responsable, preuve et exclusion dans chacun des neuf blocs |
-| Exemple fictif DossierClair complet                                                                         | `CANDIDATE_FOR_VENDOR_COMPARISON`, aucun blocage et aucune clarification                                                                                                                         |
-| Une décision vide ou contenant un marqueur                                                                  | STOP, sans compensation possible par les huit autres blocs                                                                                                                                       |
-| Un responsable, une preuve ou une exclusion vide                                                            | `CLARIFY_BEFORE_COMPARISON`, jamais candidat                                                                                                                                                     |
-| Déclaration exactement « Aucune identifiée » après normalisation des espaces, accents, casse et ponctuation | Le STOP propre à cette déclaration est levé                                                                                                                                                      |
-| Déclaration vide ou tout autre texte, y compris « Aucune identifiée sauf… »                                 | STOP conservateur et détaillé                                                                                                                                                                    |
-| Valeur non textuelle injectée à l’exécution, dont zéro                                                      | Valeur traitée comme vide, donc STOP ; aucune exception ni validation accidentelle                                                                                                               |
-| Volumes fictifs de l’exemple soumis au stress ×2                                                            | 20 × 2 = 40 organisations ; 100 × 2 = 200 personnes ; 2 000 × 2 = 4 000 dossiers                                                                                                                 |
+**C-06 — Couple B–C, avant décompte.** 129 000 ÷ 58 000. 58 000 × 2 = 116 000,
+reste 13 000. 13 000 ÷ 58 000 = 0,224. Soit 2,224 → **2,2 pour 1**. ✔
 
-Le moteur ne calcule aucun score global : une ligne bloquante ne peut donc pas
-être compensée. Sa sortie qualifie seulement la complétude formelle des
-réponses, jamais leur véracité, leur faisabilité, leur conformité ni leur
-valeur contractuelle.
+**C-07 — Total C rendu comparable.** 129 000 − 44 000 = **85 000**. ✔
 
-### Enrichissements décisifs G2
+**C-08 — Couple B–C, après décompte.** 85 000 ÷ 58 000. 58 000 × 1 = 58 000,
+reste 27 000. 27 000 ÷ 58 000 = 0,4655. Soit 1,4655 → **1,5 pour 1** à une
+décimale. ✔ (Un lecteur qui arrondit à deux décimales lira 1,47 ; l'article
+publie une décimale partout, ce qui est cohérent avec les 3,8 et 2,2.)
 
-- comparaison obligatoire entre développement neuf, fonctionnalité déjà
-  payée, option manuelle ou allégée et décision de ne pas développer ;
-- inventaire comparable des familles de coûts sans montant inventé : cadrage
-  et reprise, intégrations et licences, migration et adoption, exploitation et
-  maintenance, sortie ;
-- scénario d’indisponibilité d’un tiers avec détection, attente ou mode dégradé,
-  réconciliation ou retour arrière, absence de perte silencieuse de droits ou
-  de données et responsable nommé ;
-- test au volume déclaré puis à son double, en séparant mesures et variation de
-  coût ;
-- volumes DossierClair explicitement fictifs : 20 organisations, 100 personnes
-  et 2 000 dossiers, puis 40, 200 et 4 000 dans le scénario doublé.
+**C-09 — Écart résiduel.** 85 000 − 58 000 = **27 000 €**. ✔
 
-### Contrôles P2 et risques résiduels
+**C-10 — Poids de la phrase non tranchée.** 44 000 ÷ 27 000. 27 000 × 1 = 27 000,
+reste 17 000. 17 000 ÷ 27 000 = 0,6296. Soit 1,6296 → **1,6 fois**. ✔
 
-| Contrôle                                             | Résultat P2                                                      |
-| ---------------------------------------------------- | ---------------------------------------------------------------- |
-| Vitest ciblé moteur, composant et contrat de contenu | **PASS — 3 fichiers, 55 tests**                                  |
-| ESLint ciblé, zéro avertissement admis               | **PASS — 0 erreur, 0 avertissement**                             |
-| TypeScript complet sans émission ni incrément        | **PASS — 0 erreur**                                              |
-| Prettier                                             | **PASS**                                                         |
-| XML des trois SVG                                    | **PASS**                                                         |
-| Dimensions et en-têtes des trois WebP                | **PASS — 1600 × 900, 1200 × 900 et 900 × 900**                   |
-| `git diff --check`                                   | **PASS**                                                         |
-| Build, rendu navigateur, route servie                | **NON EXÉCUTÉS — réservés à l’état intégré par l’orchestrateur** |
+**C-11 — Part du poste dans le devis le plus élevé.** 44 000 ÷ 129 000 = 0,34108
+→ 34,1 % → **34 %**. ✔
 
-Risques résiduels : la qualification d’un service et des obligations précises
-du Data Act dépend du cas ; les volumes DossierClair sont pédagogiques et non
-des objectifs ; la complétude déclarative de l’outil ne prouve pas la vérité
-produit ; le build, le BAT navigateur et la preuve de route attendent
-l’intégration des fichiers partagés.
+**C-12 — Longueur de la phrase citée.** « Les inspecteurs doivent pouvoir saisir
+leur rapport depuis le terrain. » → Les (1), inspecteurs (2), doivent (3),
+pouvoir (4), saisir (5), leur (6), rapport (7), depuis (8), le (9), terrain (10).
+**Dix mots.** ✔ L'article annonce « Dix mots page 6 » en section 06.
 
-Fichiers corrigés ou enrichis en P2 :
+**C-13 — « Plus du double de sa borne haute ».** Borne haute de la grille
+maison : 60 000 (F32). 60 000 × 2 = 120 000. 129 000 > 120 000. ✔
 
-- `src/app/guides/cahier-des-charges-saas/saas-specification-engine.ts` ;
-- `src/app/guides/cahier-des-charges-saas/saas-specification-engine.test.ts` ;
-- `src/app/guides/cahier-des-charges-saas/page.tsx` ;
-- `src/app/guides/cahier-des-charges-saas/content-quality.test.ts` ;
-- `docs/research/cahier-des-charges-saas.md`.
+**C-14 — Dépassement une fois le poste retiré.** 85 000 − 60 000 = **25 000 €**
+au-dessus. ✔
 
-Manifeste P2 :
-`docs/research/manifests/cahier-des-charges-saas-p2.sha256`, couvrant exactement
-le gel d’entrée, le dossier de recherche et les treize fichiers propres au slug,
-hors manifestes P1 et P2. Son empreinte externe est fournie dans le passage de
-relais afin d’éviter toute boucle de hachage.
+**C-15 — Décisions imposées par les états d'abonnement.** 8 états × 3 décisions
+(ce que l'utilisateur peut faire, le message qu'il voit, l'action qui remet en
+ordre) = **24**. L'article écrit « vingt-quatre lignes à écrire » et
+« vingt-quatre décisions écrites » dans la FAQ. ✔
 
-> P0 ouverts après P2 : 0
->
-> P1 ouverts après P2 : 0
->
-> Décision proposée à l’orchestrateur : **GO_PASSE_3**
->
-> Publication : **NON AUTORISÉE**
+**C-16 — Objets de la sortie.** Le tableau de la section 05 porte quatre lignes.
+Deux d'entre elles nomment un texte : le règlement européen pour les données, les
+articles L131-3 et L113-9 pour le code source. Deux portent la mention « Aucun
+texte général » : les accès et secrets, la documentation d'exploitation.
+2 + 2 = **4**. L'article ouvre la section sur « quatre objets […] Deux d'entre eux
+sont adossés à un texte ». ✔
 
-Ce journal produit un **candidat G2 local**. Le verdict G2, l’intégration, le
-build, le BAT, le commit et le push appartiennent exclusivement à
-l’orchestrateur.
+**C-17 — Manque à facturer de l'incident d'abonnement.** 11 × 1 490 :
+1 490 × 10 = 14 900 ; + 1 490 = **16 390 €** HT. ✔
+
+**C-18 — Part des organisations concernées.** 11 ÷ 43 = 0,25581 → 25,58 % →
+**26 %**. ✔
+
+**C-19 — Taille de la trame locale.** `specificationBlocks` contient **9** blocs
+(`productBoundary`, `organizationLifecycle`, `accessLifecycle`,
+`offerAndEntitlements`, `subscriptionLifecycle`, `failureAndOperations`,
+`dataAndSupport`, `resilienceAndExit`, `nonFunctionalAndAcceptance`) ;
+`specificationEntryFields` contient **5** champs (`decision`, `owner`,
+`evidence`, `exclusion`, `blockingUnknown`). 9 × 5 = **45 zones de texte**.
+L'article écrit « Neuf blocs, cinq champs par bloc, quarante-cinq zones de
+texte ». ✔ Vérifié dans le code, pas seulement dans la prose.
+
+**C-20 — Temps de lecture.** 2 + 4 + 3 + 3 + 3 + 2 + 2 + 2 = **21 min**, égal au
+`readTimeMin` du registre. ✔
+
+### G.3 Verdict arithmétique
+
+**Vingt calculs vérifiés, vingt justes.** Aucun écart d'arrondi, aucun opérande
+introuvable, aucun dénominateur qui change en silence. Le point qui avait été
+signalé lors d'un audit antérieur — un rapport « 3,8 » comparé à un rapport
+« 1,5 » sans dire que le premier divisait par A et le second par B — ne subsiste
+pas : l'article nomme désormais le couple comparé (« Sur ce couple B et C ») et
+disqualifie explicitement le 3,8 comme mesure.
 
 ---
 
-## K. Journal de passe 3 — polish rédactionnel
+## H. Ce que la trame locale garantit, et ce qu'elle refuse
 
-- Date : **1er août 2026**
-- Agent : **`/root/cahier_saas_p3_polish`**
-- Portée : **fichiers propres au slug uniquement, sans modification du fond,
-  du gel d’entrée, des manifestes P1/P2 ni de la logique de décision**
+Le moteur `saas-specification-engine.ts` est vérifiable dans le dépôt ; ce sont
+des faits de code, pas des affirmations éditoriales.
 
-### Instantané P2 figé avant toute correction
+- **Aucun réseau, aucune persistance.** Le composant ne contient ni `fetch`, ni
+  `XMLHttpRequest`, ni `localStorage`, ni `sessionStorage`, ni `indexedDB`, ni
+  `document.cookie`. Aucun `Blob`, aucun `URL.createObjectURL`, aucun attribut
+  `download` : la sortie se copie par `navigator.clipboard.writeText`, elle ne se
+  télécharge pas. L'article annonce exactement cela.
+- **Trois états, aucun score.** `STOP_REQUIRED_INPUTS_UNKNOWN`,
+  `CLARIFY_BEFORE_COMPARISON`, `CANDIDATE_FOR_VENDOR_COMPARISON`. Aucune note,
+  aucune pondération, aucun total sur 100 : un STOP n'est compensé par rien.
+- **Le marqueur d'inconnue est conservateur.** Une déclaration d'inconnue
+  bloquante vide, ou différente de la chaîne exacte « Aucune identifiée » après
+  normalisation, force un STOP. Le champ `decision` laissé vide ou contenant
+  `tbd`, `unknown`, `inconnu`, `stop`, `à décider`, `à confirmer` ou
+  `non renseigné` force un STOP ; les autres champs produisent une simple
+  demande de complément.
+- **Le texte de sortie déclare sa propre portée.** Le Markdown généré porte, en
+  tête : « Document de travail généré localement. Il ne choisit ni architecture,
+  ni prestataire de paiement, ni prix, ni délai, ni niveau de service contractuel
+  (SLA), et ne vaut pas validation juridique, sécurité ou conformité. »
+- **Ce que l'outil ne fait pas**, et que l'article écrit : « l'outil ne vérifie
+  jamais si ce que vous écrivez est vrai — seulement si une réponse manque à un
+  endroit qui empêcherait deux sociétés de chiffrer la même chose ».
 
-- le manifeste P2 a été vérifié avant la première modification P3 : **15
-  entrées sur 15 conformes** ;
-- son empreinte externe vérifiée est
-  `0623b6b98b6cd8384553011ef8343c6d499852acd98b4464af28b25abdd1273f` ;
-- le manifeste P2 n’a pas été modifié pendant P3. Il reste la preuve de
-  l’instantané remis à cette passe, pas celle des fichiers polis ensuite ;
-- le prompt P3/G3, le gel d’entrée, la page, le moteur, l’outil, les trois
-  fichiers de tests, tout le présent dossier de recherche et le manifeste P2
-  ont été lus intégralement avant le verdict de passe.
+### Ce que les tests colocalisés verrouillent
 
-### Reprise demandée par G3
+`content-quality.test.ts` compte 1 404 lignes et une soixantaine de contrôles.
+Trois familles méritent d'être connues d'un vérificateur extérieur :
 
-G3 a renvoyé `P3_A_REPRENDRE` pour quatre écarts de surface, sans contester le
-fond ni la logique du moteur :
+1. **Les contrôles arithmétiques reconstruisent** les totaux depuis le HTML rendu
+   et posent les constantes à la main, avec leurs étapes en commentaire. Ils ne
+   rejouent aucune formule de la page : si la page se trompait, le test ne se
+   tromperait pas avec elle.
+2. **Les contrôles d'étiquetage** vérifient que « Exemple construit » précède le
+   premier montant du hero, que la mention « non un dossier client » précède
+   « 34 000 », et que ni le H1, ni la description SERP, ni la carte, ni l'image
+   OpenGraph ne portent un montant ou un ratio du cas construit.
+3. **Les contrôles de style** portent la mémoire des tics nommés par un
+   contre-audit antérieur — antithèses « pas X, c'est Y », chutes aphoristiques,
+   triplettes en « trois » — et les interdisent dans les termes exacts où ils
+   avaient été relevés.
 
-- l’accord est corrigé en « Anciennes et nouvelles responsabilités visibles » ;
-- la dernière occurrence publique de `retest` devient « nouveau test après
-  correction » ;
-- le visuel 16:9 affiche désormais « message · correction » ;
-- la description et le titre du visuel 4:3 utilisent « action de correction »
-  et « CORRECTION ».
-
-Les WebP 16:9 et 4:3 ont été régénérés depuis leurs SVG à leurs dimensions
-initiales, 1600 × 900 et 1200 × 900. Leur inspection visuelle confirme que les
-nouveaux libellés sont lisibles, non tronqués et cohérents avec les autres
-cartes. Le WebP 1:1, non concerné, n’a pas été régénéré.
-
-Le contrat de contenu interdit maintenant explicitement, dans la page, le
-moteur, l’outil et les SVG publics, les formes `back-office`, `remédiation`,
-`réconcilier`, `scalable`, `retest` et `retests`. Le dossier de recherche reste
-hors de ce contrôle afin de conserver honnêtement le vocabulaire des sources et
-le journal des corrections.
-
-### Trois lectures effectuées
-
-**Dirigeant pressé.** Le titre éditorial, le héros, la promesse sociale et la
-metadata disent désormais la même chose : faire chiffrer le même produit. La
-description du héros tient en deux phrases. Les 150 premiers mots conservent la
-réponse avant le premier visuel : produit vendu, organisation, droits,
-abonnement, échec, sortie, responsable, preuve, exclusion et STOP.
-
-**Lecteur méfiant.** Aucune limite factuelle de P2 n’a été retirée. Les passages
-denses ASVS et WCAG ont été découpés en listes lisibles, mais chaque version,
-identifiant, portée et avertissement reste présent. La réponse FAQ sur le Data
-Act commence directement par « Non, pas automatiquement », puis conserve le
-champ, les catégories et la qualification nécessaires.
-
-**Lecteur sur téléphone.** La table d’abonnement à cinq colonnes utilise
-désormais le composant `GuideTable`, qui présente les lignes sous forme de
-cartes sur petit écran et garde la table défilable sur écran plus large. Les
-paragraphes les plus denses de l’introduction, du Data Act et du mode d’emploi
-de l’outil ont été scindés sans retirer d’information.
-
-### Problèmes de lisibilité corrigés
-
-- promesse de metadata réalignée sur le H1 et l’image sociale ;
-- héros raccourci et première réponse fractionnée sans retarder la conclusion ;
-- tableau d’abonnement rendu lisible sur mobile, sans supprimer aucun état ni
-  contre-cas ;
-- listes ASVS et WCAG aérées pour que chaque identifiant puisse être contrôlé
-  séparément ;
-- transitions causales ajoutées seulement aux ruptures utiles : organisation
-  vers droits, droits vers offre, exploitation vers sortie, sortie vers
-  exigences et exigences vers trame ;
-- mode d’emploi des 45 champs séparé en trois idées : décision, déclaration de
-  STOP et absence de score ;
-- libellé de l’outil corrigé : le document est commun aux prestataires, ce ne
-  sont pas les prestataires qui le comparent entre eux.
-
-### Jargon retiré ou défini
-
-- `back-office` devient « espace d’administration » ;
-- `remédiation` devient « action de correction » ;
-- `réconcilier` devient « remettre l’état en cohérence » ;
-- `scalable` devient « tenir la charge » ;
-- `retest` devient « nouveau test après correction » ;
-- la première occurrence publique de `SLA` est développée en « niveau de
-  service contractuel » ;
-- le fonctionnement réduit définit le « mode dégradé » et le plan de recette
-  est présenté comme le document détaillant les tests de réception ;
-- la portée d’un droit est reliée concrètement à l’organisation, au dossier ou
-  à la donnée concernée.
-
-### FAQ et duplication
-
-Les neuf réponses commencent par la décision ou l’action attendue. Elles
-restent des réponses courtes de décision, sans recopier les tableaux ni les cas
-DossierClair du corps. La FAQ ne transforme ni une source illustrative en
-recommandation, ni un contrôle en promesse de conformité.
-
-### Faits et nuances laissés inchangés
-
-- CNIL 2026, OWASP ASVS 5.0.0 et ses six identifiants, WCAG 2.2 et ses cinq
-  critères, Stripe comme illustration bornée, Data Act à qualifier et article
-  L131-3 restent sourcés et limités comme en P2 ;
-- le retrait d’une adhésion reste distinct de la désactivation ou suppression
-  du compte entier ;
-- les alternatives au développement, les familles de coût complet, le tiers
-  indisponible et le passage fictif au volume doublé restent visibles ;
-- DossierClair reste explicitement fictif avant toute donnée ;
-- les neuf blocs et leurs cinq champs restent indépendants, avec la même règle
-  STOP conservatrice et sans score ;
-- aucune promesse de prix, délai, SLA, conformité, certification, résultat ou
-  acceptation automatique n’a été ajoutée ;
-- aucune donnée n’est envoyée ou stockée et aucun XLS, XLSX ou CSV n’est créé
-  ou proposé ;
-- aucun fichier partagé, dépendance, lockfile, registre ou verrou n’a été
-  modifié ; aucun serveur, build, BAT, commit, push ou déploiement n’a été
-  exécuté pendant P3.
-
-### Contrôles P3
-
-| Contrôle                                             | Résultat P3                                                       |
-| ---------------------------------------------------- | ----------------------------------------------------------------- |
-| Manifeste P2 avant correction                        | **PASS — 15/15, empreinte externe conforme**                      |
-| Vitest ciblé moteur, composant et contrat de contenu | **PASS — 3 fichiers, 56 tests**                                   |
-| ESLint ciblé, zéro avertissement admis               | **PASS — 0 erreur, 0 avertissement**                              |
-| TypeScript complet sans émission ni incrément        | **PASS — 0 erreur**                                               |
-| Prettier sur tous les textes propres au slug         | **PASS**                                                          |
-| XML des trois SVG                                    | **PASS**                                                          |
-| WebP                                                 | **PASS — 1600 × 900, 1200 × 900 et 900 × 900**                    |
-| Inspection visuelle des WebP 16:9 et 4:3 repris      | **PASS — textes lisibles, non tronqués et sens préservé**         |
-| `git diff --check`                                   | **PASS**                                                          |
-| Build, serveur et BAT navigateur                     | **NON EXÉCUTÉS — hors périmètre P3 et réservés à l’état intégré** |
-
-Manifeste P3 :
-`docs/research/manifests/cahier-des-charges-saas-p3.sha256`, couvrant le gel
-d’entrée, le dossier de recherche et les treize fichiers propres au slug, hors
-manifestes P1, P2 et P3. Son empreinte externe est fournie dans le passage de
-relais.
-
-> P0 ouverts après P3 : 0
->
-> P1 ouverts après P3 : 0
->
-> Décision proposée à l’orchestrateur : **GO_PASSE_4**
->
-> Publication : **NON AUTORISÉE**
-
-Ce journal produit un **candidat G3 local**. Le verdict G3, la passe 4,
-l’intégration, le build, le BAT, le commit et le push appartiennent
-exclusivement à l’orchestrateur.
+Une **requalification de calibre** est écrite et motivée dans le test lui-même :
+la page rend environ 8 500 mots visibles, dont environ 4 200 seulement sont
+comptés, parce que deux sous-arbres portent `data-read-time-exclude` — le
+formulaire de 45 zones de texte, et le dump Markdown de DossierClair (près de
+4 500 mots). Le commentaire du test qualifie cette exclusion de « décision
+éditoriale à confirmer par le propriétaire du site », et non de règle acquise.
+Ce dossier la reprend telle quelle, sans la trancher : **le temps de lecture
+publié décrit la prose, pas la page entière.**
 
 ---
 
-## L. Journal de passe 4 — antipasse IA
+## I. Relecture humaine — déclaration explicite (charte §13)
 
-- Date : **1er août 2026**
-- Agent : **`/root/cahier_saas_p4_antiai`**
-- Portée : **voix, rythme et enchaînement des fichiers propres au slug,
-  sans modification du fond, du gel d’entrée, des manifestes P1/P2/P3 ni de
-  la logique du moteur**
+**Aucun lecteur humain extérieur n'a relu cet article, à ma connaissance.**
 
-### Instantané P3 figé avant toute correction
+Ce que j'ai cherché, le 30 août 2026, et ce que j'ai trouvé :
 
-- le manifeste P3 a été vérifié avant la première modification P4 : **15
-  entrées sur 15 conformes** ;
-- son empreinte externe vérifiée est
-  `1d63297e922357c42f034c6ec64b66299af7051c9c6d00f8c9c3e4244b5beea8` ;
-- le manifeste P3 n’a pas été modifié pendant P4. Il reste la preuve de
-  l’instantané remis à cette passe, pas celle des fichiers corrigés ensuite ;
-- le prompt P4/G4, le gel d’entrée, la page, le moteur, l’outil, les trois
-  fichiers de tests, l’image Open Graph, les trois SVG, tout le présent dossier
-  de recherche et le manifeste P3 ont été lus intégralement avant correction ;
-- les titres et structures des guides voisins
-  `valider-idee-saas-avant-developper` et
-  `droits-acces-application-metier` ont été comparés pour éviter de reprendre
-  leur cadence par défaut.
+- aucune trace de test lecteur dans l'ancien dossier de recherche : les termes
+  « lecteur test », « lecteur humain », « test lecteur » et « revue humaine » n'y
+  apparaissent pas ;
+- les journaux de passes de l'ancien dossier (sections J, K, L) décrivent des
+  passes d'agents — vérification contradictoire, polish rédactionnel, antipasse
+  IA — et non une lecture par une personne extérieure ;
+- l'ancien dossier se clôt sur « contre-audit du snapshot stagé : à réaliser ».
 
-### Lecture des quinze motifs
+En conséquence, et conformément à la charte §13 : les passes de relecture menées
+sur ce guide sont des contre-relectures par agents. Elles **ne doivent jamais
+être présentées comme l'avis d'un dirigeant, d'un lecteur test ou d'un panel**.
+Le statut maximal que ce dossier peut soutenir de lui-même est **« prêt pour
+revue humaine »** — la validation éditoriale reste à acquérir, soit par un test
+lecteur suivi de ses corrections, soit par une instruction explicite du
+commanditaire déléguant la décision de publication. Le registre affiche
+`editorialStatus: "published"` ; ce dossier constate cet état sans le valider,
+la publication n'étant pas de son ressort.
 
-| Motif                              | Constat P4                                                                                               | Décision                                                                                      |
-| ---------------------------------- | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| 1. Autosatisfaction                | Aucun score éditorial, éloge de la page, rang ou promesse de supériorité dans le contenu public          | Aucun ajout                                                                                   |
-| 2. Triptyques réflexes             | Des séries existent, mais décrivent des champs, contrôles ou responsabilités réellement distincts        | Conserver les séries utiles ; ne pas ajouter de rythme ternaire décoratif                     |
-| 3. Symétrie binaire excessive      | Le titre DossierClair reposait sur « structure, pas norme » et répétait un contraste déjà fréquent       | Le remplacer par une fonction directe : l’exemple sert uniquement à montrer la structure      |
-| 4. Adjectifs vendeurs sans chiffre | Aucun superlatif ni adjectif commercial non prouvé                                                       | Conserver cette sobriété                                                                      |
-| 5. Métaphores forcées              | Aucune métaphore décorative ; « fil rouge » est la seule image courante et décrit la continuité du cas   | La conserver, car elle relie concrètement les sections                                        |
-| 6. Parenthèses en cascade          | Les parenthèses servent à développer SLA et mode dégradé ou à porter une référence                       | Les conserver ; aucune cascade                                                                |
-| 7. Connecteurs robotiques          | « ainsi », « ensuite », « c’est le rôle » et « peuvent maintenant » masquaient plusieurs liens causaux   | Nommer l’effet : cycle → portée, droits → offre, incident → restauration, preuves → trame     |
-| 8. Conclusion qui répète           | Le dernier mémo ne résume pas les dix sections ; il ajoute les contrôles restant avant signature         | Le conserver                                                                                  |
-| 9. Longueur et rythme uniformes    | Six H2 et la majorité des H3 démarraient à l’impératif, comme une suite de commandes                     | Varier les titres en constats, règles, conséquences et actions                                |
-| 10. Verbes neutres                 | Plusieurs titres disaient seulement « décrire », « relier », « prévoir » ou « générer »                  | Exposer l’effet observable : fixe, possède, ouvre, appelle, exige, se construit               |
-| 11. Formulations administratives   | « Construisez un inventaire » et « définir la réception » nommaient une tâche sans expliquer sa fonction | Dire que l’inventaire sert une décision et que la réception se prépare avant le développement |
-| 12. Inversions artificielles       | Aucune inversion sujet-verbe littéraire ou forcée                                                        | Aucun changement                                                                              |
-| 13. Puces parallèles pauvres       | Les listes parallèles sont des cas de test, des champs de comparaison ou des responsabilités distinctes  | Les conserver : retirer leur parallélisme réduirait la contrôlabilité                         |
-| 14. Dramatisation creuse           | Aucun vocabulaire de catastrophe, d’urgence ou de transformation garantie                                | Aucun changement                                                                              |
-| 15. Logique implicite              | Cinq fins de section annonçaient la suivante sans dire ce que la décision précédente permettait          | Rendre la cause et l’action suivantes explicites                                              |
+Ce que demanderait un test lecteur utile, si quelqu'un le mène : donner l'article
+à une personne non technique et lui demander ce qu'elle a compris de la
+différence entre « 3,8 pour 1 » et « 1,5 pour 1 », si elle a vu que les trois
+devis sont inventés, et à quel moment elle a commencé à survoler.
 
-### Recherche complémentaire des automatismes
+---
 
-- aucune conclusion « ce qu’il faut retenir » ;
-- aucune multiplication de « concret », « clé », « essentiel » ou
-  « stratégique » ;
-- les questions restent cantonnées aux FAQ, aux neuf entrées de cadrage et aux
-  cellules qui transforment une situation en décision. Elles attendent une
-  réponse et ne servent pas à créer un effet rhétorique ;
-- les faux contrastes n’ont pas été multipliés. Le titre DossierClair a été
-  neutralisé ; « Comparable ne veut pas dire prêt à signer » reste une limite
-  décisive et non un slogan ;
-- trois formulations qui parlaient de « ce guide » plutôt que de la décision
-  ont été rendues directes : portée des identifiants ASVS, absence de prix ou
-  délai universel et durée de conservation inconnue ;
-- l’expression « guide sécurité de la CNIL » est conservée, car elle nomme la
-  source officielle et non la page elle-même ;
-- la série d’impératifs H2/H3, proche du rythme du guide de validation SaaS, a
-  été remplacée par des titres causaux propres au cycle organisation → droit →
-  abonnement → exploitation → sortie.
+## J. Fraîcheur : quand chaque fait devra être revérifié
 
-### Contrôle de chaque H2 isolément
+L'article annonce lui-même « à revérifier tous les douze mois ». Les échéances
+réelles ne sont pas toutes annuelles.
 
-| H2  | Réponse autonome au titre                                                                      | Conséquence ou action visible                                                            |
-| --- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| 01  | La comparabilité vient des mêmes situations, résultats, responsables, preuves et exclusions    | Conserver chaque inconnue en STOP                                                        |
-| 02  | Le résultat vendu détermine la frontière fonctionnelle                                         | Tester d’abord les options déjà payées, plus simples ou sans développement               |
-| 03  | L’organisation cliente traverse création, administration, transfert, suspension et fermeture   | Rejouer ces états avec deux organisations fictives                                       |
-| 04  | Un droit relie objet, action, portée et refus                                                  | Tester autorisation, refus inter-organisation et révocation                              |
-| 05  | Une offre ouvre des droits et l’abonnement les fait évoluer                                    | Écrire la table événement → état → droit → message → action                              |
-| 06  | Un échec devient réceptionnable lorsqu’une action, une personne et une trace sont prévues      | Simuler échec, tiers indisponible, support et correction                                 |
-| 07  | Une sauvegarde seule ne prouve pas la restauration ni la sortie                                | Restaurer un jeu fictif, relire l’export et tester le refus après suppression prévue     |
-| 08  | Les adjectifs non fonctionnels ne deviennent comparables qu’avec conditions, seuils et preuves | Préparer les cas de réception avant le développement                                     |
-| 09  | La trame est locale et copiable en Markdown                                                    | Remplir les 45 champs sans donnée sensible, traiter les STOP puis copier le document     |
-| 10  | DossierClair montre uniquement la structure d’un exemple fictif                                | Remplacer ses décisions, comparer le coût complet et remettre une version figée à chacun |
+| Fait                                                  | Échéance de revérification                                                          | Pourquoi                                                                                       |
+| ----------------------------------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Data Act, frais supprimés au 12 janvier 2027          | **Avant le 12 janvier 2027**, puis au passage de la date                            | Le verbe change de temps : « supprime à partir du » deviendra « supprime depuis le »           |
+| Data Act, régime différé du chapitre IV               | 12 septembre 2027                                                                    | Les contrats conclus avant le 12 septembre 2025 basculent                                      |
+| Huit états d'abonnement, 23 h, trois jours de relance | À chaque révision majeure de la documentation éditeur, au moins une fois par an     | Documentation éditeur : elle change sans préavis et sans numéro de version                     |
+| ASVS 5.0.0, 346 exigences, 17 chapitres               | À la sortie d'une version 5.1 ou 6.0                                                | Le décompte est attaché à une branche figée                                                    |
+| WCAG 2.2                                              | À la publication de WCAG 3.0 ou d'un errata                                          | Recommandation stable, faible volatilité                                                       |
+| CPI L131-3 et L113-9                                  | Annuelle, et à toute décision notable sur le formalisme appliqué au logiciel        | La page publiée dit elle-même que la portée « se plaide encore »                                |
+| Délai CNIL de 72 h                                    | Annuelle                                                                             | Fondé sur l'art. 33 RGPD, stable                                                               |
+| Grille `/tarifs`                                      | **À chaque modification de `src/components/tarifs/body.ts`**                         | Le guide cite quatre montants maison ; un changement de grille rend le guide faux le jour même |
+| Les trente et une hypothèses                          | Jamais — elles ne périment pas, elles ne sont pas des faits                          | Elles doivent seulement rester étiquetées comme telles                                         |
 
-### Corrections de voix et d’enchaînement
+---
 
-- les H2 02, 03, 04, 05, 06, 08, 09 et 10 ne reprennent plus le même impératif ;
-- les H3 sur l’option simple, les états de l’organisation, les événements
-  imparfaits, l’inventaire, la réception, le coût complet et la version figée
-  annoncent désormais le résultat de l’action ;
-- les transitions entre organisation et droits, droits et offre, exploitation
-  et sortie, sortie et exigences, puis exigences et générateur explicitent la
-  dépendance ;
-- le moteur parle d’un choix « imposé dans le document » au lieu de parler du
-  guide lui-même ; la règle d’exclusion reste identique ;
-- le visuel 1:1 disait « Quatre réponses distinctes » alors que le bloc possède
-  quatre réponses et une cinquième déclaration d’inconnue bloquante. Son titre
-  et sa description disent maintenant « Cinq champs distincts », sans toucher
-  aux cinq éléments ni à la règle STOP. Le WebP 900 × 900 a été régénéré et
-  inspecté : le nouveau libellé est lisible et non tronqué ;
-- les deux assertions textuelles affectées ont été réalignées sur la nouvelle
-  voix sans réduire la couverture ni le nombre de tests.
+## K. Ce que ce dossier ne couvre pas
 
-### Passages conservés et raison
+- **La page, les tests, le registre et les manifestes n'ont pas été modifiés.**
+  Les écarts de la section 0 sont signalés, pas corrigés.
+- **Aucune jurisprudence n'a été consultée** : l'affirmation « se plaide encore »
+  reste sans localisateur dans l'article comme dans ce dossier.
+- **Aucun relevé de marché n'a été fait** : ni sur les prix de développement SaaS,
+  ni sur la longueur usuelle d'un cahier des charges, ni sur la fréquence des
+  écarts entre devis. L'article n'en publie aucun ; ce dossier n'en fournit
+  aucun.
+- **La date de consultation du 28 août 2026 affichée par l'article n'a pas pu
+  être vérifiée**, et ne le sera jamais depuis l'extérieur. Ce dossier atteste
+  seulement de l'état des sources au 30 août 2026.
+- **Le rendu en navigateur n'a pas été observé** ; seuls le rendu HTML statique
+  produit par les tests et le code source ont été lus.
+- **Les trois illustrations n'ont pas été relues sur le fond.** Leur présence en
+  SVG et en WebP est vérifiée par test ; ce qu'elles montrent ne l'est pas.
 
-- les énumérations décision, responsable, preuve, exclusion et inconnue sont
-  le modèle du livrable, pas un triptyque décoratif ;
-- les listes ASVS et WCAG restent séparées par identifiant pour permettre une
-  vérification versionnée ;
-- les séries de questions des tableaux sont conservées parce qu’elles imposent
-  une réponse observable au lecteur ;
-- les FAQ commencent par une décision courte et ne rejouent pas le scénario
-  complet ;
-- le dernier mémo conserve la comparaison conditionnelle : il ajoute les
-  contrôles de faisabilité, contrat, prix, calendrier, compétences, risques et
-  preuves avant signature ;
-- les aspérités `STOP`, `À décider`, `Aucune identifiée`, les états fictifs et
-  les noms techniques versionnés ne sont pas lissés.
+---
 
-### Faits, règles et exemples laissés inchangés
+## L. Comment refaire cette vérification en une heure
 
-- les neuf blocs, leurs cinq champs, les 45 zones de texte et les trois états
-  du moteur restent identiques ;
-- aucune règle de normalisation, de STOP, de clarification ou de candidature
-  n’a changé ;
-- DossierClair, Atelier Nord, Studio Rivage, Claire, Léa, l’offre Équipe et les
-  états restent entièrement fictifs et inchangés ;
-- les volumes restent 20 puis 40 organisations, 100 puis 200 personnes et
-  2 000 puis 4 000 dossiers ;
-- le retrait d’une adhésion reste distinct de la désactivation ou suppression
-  du compte entier ;
-- alternatives au développement, familles de coût, tiers indisponible,
-  sauvegarde, restauration, export, résiliation, suppression et volume doublé
-  restent présents ;
-- CNIL 2026, OWASP ASVS 5.0.0 et ses six identifiants, WCAG 2.2 et ses cinq
-  critères, Stripe illustratif, Data Act borné et article L131-3 gardent leurs
-  formulations et limites ;
-- aucun prix, délai, niveau de service contractuel, conformité, certification,
-  résultat ou acceptation automatique n’a été ajouté ;
-- aucun envoi, stockage, téléchargement, XLS, XLSX ou CSV n’a été introduit.
+Pour un lecteur extérieur qui voudrait tout recontrôler seul, dans l'ordre :
 
-### Contradictions finales et risques résiduels
+1. `npx vitest run src/app/guides/cahier-des-charges-saas` — 87 tests doivent
+   passer. Un échec désigne exactement le chiffre qui a bougé.
+2. Ouvrir la page, relever les huit lignes du premier tableau, refaire les trois
+   additions de G.2 (C-01 à C-03).
+3. Refaire les quatre divisions qui portent les ratios : 129 000 ÷ 34 000,
+   129 000 ÷ 58 000, 85 000 ÷ 58 000, 44 000 ÷ 27 000.
+4. Ouvrir les onze URL de la section D.2 et retrouver les passages relevés en
+   D.1. Le seul qui demande une manœuvre : le Data Act, dont l'URL publiée mène
+   au préambule ; suivre la version consolidée jusqu'à l'article 25, § 2, a) et
+   § 4, puis l'article 29, § 1.
+5. Ouvrir `src/components/tarifs/body.ts` et vérifier que les quatre montants
+   maison cités par le guide y figurent encore.
+6. Lire la section F et se demander, pour chacune des trente et une hypothèses,
+   si l'article la présente bien comme choisie et non comme observée.
 
-- la contradiction de surface « quatre réponses » / cinq champs du visuel 1:1
-  est levée ;
-- aucune contradiction n’a été trouvée entre l’ouverture, les dix H2, l’exemple
-  complet, la FAQ et la décision finale ;
-- aucune section n’est dépourvue de conséquence ou d’action ;
-- aucune voix de témoignage, familiarité fabriquée, promesse, superlatif ou
-  urgence n’a été ajoutée ;
-- les risques de qualification Data Act, de volumes purement pédagogiques et de
-  complétude déclarative du générateur restent ceux de P2/P3 ;
-- build, serveur, BAT navigateur et intégration partagée restent hors du
-  périmètre de cette passe.
-
-### Contrôles P4
-
-| Contrôle                                             | Résultat P4                                                          |
-| ---------------------------------------------------- | -------------------------------------------------------------------- |
-| Manifeste P3 avant correction                        | **PASS — 15/15, empreinte externe conforme**                         |
-| Vitest ciblé moteur, composant et contrat de contenu | **PASS — 3 fichiers, 56 tests**                                      |
-| ESLint ciblé, zéro avertissement admis               | **PASS — 0 erreur, 0 avertissement**                                 |
-| TypeScript complet sans émission ni incrément        | **PASS — 0 erreur**                                                  |
-| Prettier sur les textes propres au slug              | **PASS**                                                             |
-| XML des trois SVG                                    | **PASS — 3/3 avec `xmllint`**                                        |
-| En-têtes et dimensions des trois WebP                | **PASS — 1600 × 900, 1200 × 900 et 900 × 900**                       |
-| Inspection du WebP 1:1 repris                        | **PASS — 900 × 900, texte lisible et non tronqué**                   |
-| Inspection des WebP 16:9 et 4:3 conservés            | **PASS — textes lisibles, sens et limites inchangés**                |
-| `git diff --check`                                   | **PASS**                                                             |
-| Manifeste P4                                         | **15 fichiers exacts, hors manifestes ; SHA dans le passage P4**     |
-| Premier appel Vitest                                 | **ENVIRONNEMENT — Vitest absent du cache local, aucun test exécuté** |
-| Reproduction Vitest avec dépendances canoniques      | **PASS — cache local restauré après le contrôle**                    |
-| Serveur, build et BAT navigateur                     | **NON EXÉCUTÉS — hors périmètre P4 et réservés à l’état intégré**    |
-
-Le manifeste P4 couvre le gel d’entrée, le présent dossier de recherche, les
-six fichiers SVG/WebP et les sept fichiers TypeScript/TSX du slug. Les
-manifestes P1, P2, P3 et P4 sont exclus de son propre périmètre pour éviter
-toute boucle de hachage.
-
-> P0 ouverts après P4 : 0
->
-> P1 ouverts après P4 : 0
->
-> Décision proposée à l’orchestrateur : **PRET_POUR_G4**
->
-> Publication : **NON AUTORISÉE**
-
-Ce journal produit un **candidat G4 local**. Le verdict G4, le contrôle
-transversal, l’intégration, le build, le BAT, le commit et le push appartiennent
-exclusivement à l’orchestrateur.
-
-## M — Intégration locale et BAT de production
-
-### Autorisation d’intégrer
-
-Le contrôle transversal indépendant Q a relu la charte, le gel, le guide, le
-moteur, l’outil, les tests, les sources et les trois visuels sur le snapshot P4.
-Son verdict est `GO_QUALITE_GUIDE` :
-
-- score : **94/100** ;
-- scorecard : **19/20** ;
-- P0 : **0** ;
-- P1 : **0** ;
-- tests ciblés : **56/56** ;
-- manifeste P4 : **15/15**, empreinte externe
-  `b9e3863cf297b0dfaa9c42fd764634be7e4a6f6a224934206bff6e460b0a1475`.
-
-Q n’a modifié aucun fichier. Le registre partagé est passé à
-`PRET_A_INTEGRER`, puis à `INTEGRATION_EN_COURS` après acquisition atomique du
-verrou d’intégration.
-
-### Métadonnées et frontières de publication
-
-L’entrée ajoutée à `src/lib/guides.ts` porte :
-
-- `title` : `Comment rédiger un cahier des charges SaaS ?` — 44 caractères ;
-- `heroTitle` :
-  `Cahier des charges SaaS : faire chiffrer le même produit`, identique au H1
-  servi et au titre `Article` ;
-- `metaDescription` : 137 caractères ;
-- section : `Préparer son projet` ;
-- statut : `ready-for-human-review` ;
-- images : les trois WebP 16:9, 4:3 et 1:1 propres au slug.
-
-Le premier historique Git contenant la route et son entrée centrale est le
-commit `7847b2ba2bbb85da72782d75511201c97428073b`, daté du
-`2026-07-22T07:29:32+02:00`. Son registre indiquait déjà
-`datePublished: "2026-07-22"`. L’instant Git reproductible est donc conservé
-comme `datePublished`. Il atteste l’apparition dans le dépôt, pas l’heure d’un
-ancien déploiement. `dateModified: "2026-08-01T13:03:24+02:00"` décrit cette
-refonte substantielle locale sous verrou ; il ne prouve pas une modification du
-site public.
-
-La mesure rejouée sur l’article HTML servi donne **8 413 mots visibles** et
-**42 minutes** à 200 mots par minute. Cette valeur mesurée remplace
-l’estimation provisoire.
-
-Le slug est retiré de `LEGACY_GUIDE_SLUGS` ; l’inventaire passe de 96 à 95. La
-route reconstruite reste `ready-for-human-review` : elle répond localement en
-200 et porte `noindex, nofollow`, mais demeure absente du hub publié, du
-sitemap et de `llms.txt`.
-
-### Maillage entrant et intégration partagée
-
-Deux liens contextuels entrants ont été ajoutés :
-
-1. depuis `valider-idee-saas-avant-developper`, après la décision de construire
-   uniquement ce que le prochain test exige ;
-2. depuis `droits-acces-application-metier`, pour replacer la matrice des droits
-   dans l’organisation, l’offre, les échecs de paiement, le support et la
-   sortie du SaaS.
-
-`src/lib/guides.test.ts` vérifie ces deux sources, l’entrée centrale, les trois
-images et l’icône `ClipboardList`. Le hub possède l’icône sans exposer le guide
-tant que son statut reste fermé.
-
-### Batterie globale
-
-Sur le snapshot intégré :
-
-| Contrôle | Résultat |
-| --- | --- |
-| `npm ci` | **PASS — 758 paquets installés** |
-| `git diff --check` | **PASS** |
-| Prettier ciblé | **PASS** |
-| ESLint global | **PASS — zéro avertissement** |
-| TypeScript sans émission | **PASS** |
-| Tests d’intégration ciblés | **PASS — 5 fichiers, 72/72** |
-| `npm run check:seo` | **PASS — 33 fichiers, 178/178** |
-| `NODE_ENV=production npm run check:seo` | **PASS — 178/178** |
-| `npm test` | **PASS — 88 fichiers, 711/711** |
-| `NEXT_PUBLIC_ENV=production npm run build` | **PASS — 67 pages générées** |
-| Post-build SEO | **PASS — 44 URL, 27 liens `llms.txt`, 44 pages, 9 temps de lecture et 76 blocs JSON-LD** |
-
-`npm audit --omit=dev` signale **7 vulnérabilités hautes et 0 critique** dans
-la chaîne existante : `next`, `sharp`, `@opennextjs/cloudflare`,
-`@opennextjs/aws`, `miniflare`, `wrangler` et `brace-expansion`. Aucun fichier
-de dépendances n’est modifié par ce lot. Les correctifs proposés impliquent des
-changements de versions à traiter séparément ; aucun `audit fix --force` n’a
-été exécuté.
-
-Le staging a révélé trois fins de ligne Markdown à deux espaces dans l’en-tête
-du gel d’entrée. Elles ont été remplacées par des paragraphes séparés pour que
-`git diff --cached --check` reste strictement vert. Aucun mot, contrainte,
-source, fichier autorisé ou interdit du gel n’a changé. Les manifestes P1 à P4
-restent les preuves historiques de leurs snapshots ; le manifeste d’intégration
-couvre la normalisation finale.
-
-### HTML, OG et données structurées servis
-
-Le serveur de l’artefact de production a été contrôlé sur
-`/guides/cahier-des-charges-saas` :
-
-- HTTP **200**, sans redirection ;
-- un seul H1, texte exact :
-  `Cahier des charges SaaS : faire chiffrer le même produit` ;
-- `<title>` et description identiques au registre ;
-- canonical :
-  `https://hagnere-code.ai/guides/cahier-des-charges-saas` ;
-- robots : `noindex, nofollow` ;
-- Open Graph et Twitter présents ;
-- OG locale : HTTP **200**, `image/png`, **1200 × 630**, 166 806 octets ;
-- données structurées : `Article` et `BreadcrumbList` uniquement ;
-- FAQ visible, liens internes autorisés et deux liens entrants servis ;
-- aucune mention ou implémentation XLS, XLSX ou CSV ;
-- aucune présence du slug dans le hub, le sitemap ou `llms.txt`.
-
-L’URL OG absolue pointe vers le domaine canonique. Seule sa route locale de
-l’artefact est ici prouvée ; l’état du domaine public n’est pas assimilé à ce
-contrôle local.
-
-### BAT Chrome
-
-Le BAT a été exécuté avec Google Chrome 150 sur l’artefact de production. Les
-20 couples largeur × thème ont été rejoués après stabilisation :
-
-- largeurs : 320, 360, 390, 430, 640, 768, 1024, 1280, 1440 et 1600 px ;
-- thèmes : clair et sombre par la vraie bascule du site ;
-- **aucun débordement horizontal**, aucune image cassée et aucun élément fixe
-  plus large que la fenêtre ;
-- 200 % : largeur CSS effective 640 px, sans débordement ;
-- police agrandie de 16 à 20 px : sans débordement ; boutons de l’outil
-  conservés au-dessus de 44 px ;
-- paysage mobile 844 × 390 : sans débordement ;
-- focus clavier : contour visible de 2 px ; la barre espace charge réellement
-  l’exemple fictif ;
-- arbre d’accessibilité : H1 exact, un statut, aucun bouton, lien ou champ sans
-  nom accessible.
-
-Le premier arbre d’accessibilité concaténait les fragments visuels du H1 en
-`chiffrerle`. Le composant partagé `GuidePremiumLayout` possède désormais un
-`aria-label` composé des trois fragments. Après reconstruction, le nom
-accessible est exactement
-`Cahier des charges SaaS : faire chiffrer le même produit`.
-
-Les états de l’outil ont été rejoués dans le navigateur :
-
-- vide : `STOP — une décision ou une inconnue bloquante reste à traiter`,
-  19 blocages et 27 clarifications ;
-- exemple DossierClair :
-  `Document candidat à une relecture de consultation` ;
-- responsable retiré :
-  `Le produit est décrit, mais la comparaison reste fragile` ;
-- réinitialisation : retour au STOP et annonce dans la zone vive.
-
-La page charge sans erreur console, exception JavaScript, requête échouée ni
-réponse réseau 4xx/5xx. Mesures indicatives de l’artefact local :
-
-- HTML : 703 259 octets bruts, 93 285 octets gzip ;
-- DOM : 2 931 nœuds ;
-- ressources encodées observées : 257 265 octets de scripts,
-  221 401 octets de styles, 16 921 octets d’images ;
-- chargement observé en environnement local : environ 400 ms.
-
-Les captures 320 px clair, outil 390 px sombre, outil 768 px clair et héros
-1440 px sombre ont été inspectées : texte lisible, hiérarchie intacte, champs
-utilisables, CTA non tronqués et aucun chevauchement bloquant.
-
-### État exact après BAT
-
-- qualité du guide local : **GO Q 94/100** ;
-- intégration locale, tests, build, HTML et BAT : **PASS** ;
-- contre-audit du snapshot stagé : **à réaliser** ;
-- commit : **non effectué** ;
-- push : **non effectué** ;
-- déploiement : **non effectué** ;
-- publication : **non effectuée** ;
-- indexation : **non vérifiée**.
+Le point le plus fragile n'est ni un calcul ni une source : c'est la frontière
+entre les deux. Un lecteur pressé peut repartir avec « les devis SaaS varient de
+1 à 3,8 » comme s'il s'agissait d'une mesure. Ce n'en est pas une, et la page le
+dit six fois.

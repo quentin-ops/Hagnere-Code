@@ -1,1267 +1,833 @@
 # Dossier de recherche — Automatiser un processus métier
 
-> Remise à zéro éditoriale du 29 juillet 2026. L’ancien dossier et l’ancien
-> article ne sont ni une source ni un modèle de fond. Cette fiche accompagne
-> exclusivement la nouvelle version créée selon
-> `docs/workflow-maitre-guides-4-passes.md`.
+> **Reconstitution du socle de preuves, 30 août 2026.** Ce fichier décrit
+> l'article tel qu'il existe aujourd'hui dans le dépôt, et lui seul. La version
+> précédente de ce dossier datait du 29 juillet 2026 et décrivait un article qui
+> n'existe plus : cinq portes non compensatoires, un scénario à 120 cas par mois,
+> un coût horaire de 38 €, un ROI de −41,2 %. Rien de tout cela n'est publié.
+> L'ancien dossier n'a été rouvert que pour reprendre sa structure de sections et
+> sa façon de citer ; aucun de ses chiffres, aucune de ses sources et aucun de ses
+> constats n'a été recopié.
+>
+> **Source de vérité de ce dossier :**
+> `src/app/guides/automatiser-processus-metier/page.tsx`,
+> `process-priority-tool.tsx` et l'entrée du slug dans `src/lib/guides.ts`, lus
+> intégralement le 30 août 2026, plus les deux fichiers de tests colocalisés.
+>
+> **Territoire :** ce dossier est le seul fichier écrit. La page, les tests, le
+> registre et les manifestes n'ont pas été touchés. Les écarts trouvés dans la
+> page sont signalés ci-dessous, pas corrigés.
 
-## A. Identité
+---
+
+## 0. Écarts trouvés dans la page publiée
+
+Sept points relevés en refaisant les calculs et en rouvrant les sources. **Aucun
+n'est une erreur d'arithmétique** : les grandeurs chiffrées des huit sections ont
+été recalculées à la main, ligne à ligne (section G, cinquante-quatre lignes de
+calcul), et tombent toutes juste, au centime et à l'arrondi publié près. Les écarts portent sur les unités, sur ce qui est
+sourçable et sur ce qui est daté.
+
+| # | Nature | Où | Constat |
+|---|---|---|---|
+| É1 | Unité non réconciliée | §06 vs §07 | Deux volumes journaliers différents circulent pour le même flux, sans que l'écart soit dit : **5 474 €** en section 06 (`1 998 000 ÷ 365`, mois calendaire) et **5 550 €** en section 07 (`3 relances × 1 850 €`, mois de trente jours). L'écart vaut 76 €, soit 1,4 %. Les deux sont justes dans leur cadre ; la section 07 s'ouvre pourtant sur un bloc « UNITÉS TENUES DANS TOUTE CETTE SECTION » qui ne mentionne pas ce changement de cadence. Trois relances par jour supposent un mois de 30 jours (90 ÷ 30) et 1 095 relances par an, quand la chaîne de trésorerie en compte 1 080 (90 × 12). |
+| É2 | Comparaison hors période | §04 | « 810 requêtes par mois, très loin des 6 000 que donne une licence Microsoft 365 » compare un total mensuel à un quota **par 24 heures**. La conclusion est vraie a fortiori — 810 par mois valent ~27 par jour, soit 0,45 % du quota — mais les deux nombres comparés dans la phrase ne portent pas sur la même période, et le tableau qui précède est la seule chose qui le rappelle. |
+| É3 | Mécanisme non documenté par les sources citées | §07, troisième incident | « son compte est désactivé, et le flux s'arrête sans alerte — la surveillance ne regardait que les exécutions en erreur, or il n'y en a plus aucune ». L'introduction de la section annonce des incidents construits « à partir de mécanismes documentés par les éditeurs ». Aucune des dix sources citées ne documente cet arrêt silencieux. La page Microsoft citée établit seulement qu'un flux automatisé consomme le quota de son propriétaire. La page de l'éditeur qui traite le cas — *Manage orphaned flows when owner leaves organization*, non citée par l'article — décrit l'inverse : « These flows **can fail** if they use connections tied to that user account », donc des exécutions en erreur, précisément ce que la surveillance décrite aurait vu. |
+| É4 | Comptage partiellement sourçable | §04 | Les 810 requêtes viennent de « comptez les neuf étapes », déclencheur compris. La page Microsoft citée énumère ce qui compte comme requête (appels de connecteurs, actions HTTP, actions intégrées) sans y ranger explicitement le déclencheur d'un flux cloud. Le sur-comptage va dans le sens prudent et ne change pas le verdict, mais le « neuf » n'est pas entièrement adossé à la source. |
+| É5 | Durées affirmées sans source ni protocole | §02, §05, §06, FAQ | Cinq affirmations de durée sont posées comme des faits : « un tableau croisé qui compte les lignes par mois donne la courbe **en dix minutes** », « votre expert-comptable sort le vôtre de la déclaration sociale nominative **en quelques minutes** », « le comptable sort les deux extractions **en une heure** », « il **se démonte en une heure** » (flux sans code), « un flux monté sur l'abonnement déjà payé se démonte **en une heure** ». Aucune n'est sourcée, aucune n'est présentée comme une hypothèse, et aucune n'est mesurable par le lecteur avant d'avoir agi. |
+| É6 | Méthode statistique affirmée sans source | FAQ, question 1 | « Vingt dossiers consécutifs suffisent à sortir un temps moyen et un **neuvième décile exploitables** ». Sur vingt observations, le neuvième décile est la dix-huitième valeur : un seul dossier atypique le déplace entièrement. L'affirmation « exploitable » est une règle éditoriale, non une propriété démontrée, et elle n'est pas annoncée comme telle. |
+| É7 | Date affichée et état réel | En-tête, bloc Transparence | La page imprime « Mis à jour le 28 août 2026 » et « relevés le 28 août 2026 ». Deux faits observables aujourd'hui : `page.tsx` porte une date de modification au **30 août 2026, 22 h 16** (mtime), postérieure de deux jours ; et la production `https://hagnere-code.ai/guides/automatiser-processus-metier`, ouverte le 30 août 2026, sert encore la version du 29 juillet 2026 (`"dateModified":"2026-07-29T19:07:13Z"` dans son JSON-LD), sans aucun des chiffres actuels. Le lot n'est donc pas déployé. Le dépôt n'étant pas sous Git ici, il est impossible de qualifier les modifications du 30 août de mineures ou substantielles au sens du §15 de la charte. **Constat, pas correction : ni la page ni le registre ne sont dans le territoire de ce dossier.** |
+
+Aucun de ces sept points n'a été corrigé. Les cinq premiers sont des choix de
+rédaction que la page peut assumer en les explicitant ; É3 est le seul qui
+demande soit une source, soit une reformulation du mécanisme ; É7 se règle au
+déploiement.
+
+---
+
+## A. Identité de l'article publié
 
 ```text
 Slug : automatiser-processus-metier
-Numéro dans la roadmap : 1
-Thème : Automatiser un processus métier : par où commencer ?
-Sortie éditoriale : OUTILS
-Intention principale : choisir le premier processus à automatiser
-Lecteur visé : dirigeant de TPE/PME ou responsable opérationnel non technique
-Situation déclenchante : ressaisies, dossiers copiés entre outils, relances ou
-rapports récurrents ; le lecteur pressent un gain mais ne sait ni par quel cas
-commencer ni quelle solution acheter
-Décision attendue : sélectionner un processus contrôlable, choisir la réponse
-la moins complexe qui satisfait le besoin, préparer un pilote ou décider de
-ne pas automatiser
-Route de service : /services/outils-internes-sur-mesure
-Différenciateur demandé par la roadmap : carte des processus, matrice
-gain/risque et exemple chiffré
-Différenciateur réalisé en P1 puis vérifié en P2 : cinq portes non
-compensatoires, comparaison de sept réponses distinctes, calcul séparant temps
-retirable, adoption, réaffectation, capacité et dépense réellement évitée,
-outil interactif local et protocole d’erreur/reprise
-Date du travail P1 : 2026-07-29
-Date du travail P2 : 2026-07-29
-Date du travail P3 : 2026-07-29
-Date du travail P4 : 2026-07-29
-Statut : PASSE_4_TERMINEE_EN_ATTENTE_GATE_G4
+URL canonique : https://hagnere-code.ai/guides/automatiser-processus-metier
+Titre registre : Quel processus métier automatiser en premier ?
+Titre carte : Quel processus automatiser en premier ?
+Section : Outils internes et automatisation
+Statut éditorial dans le registre : published
+Guide « featured » du hub : oui (drapeau explicite, invariant testé)
+datePublished : 2026-07-29T17:01:33+02:00
+dateModified : 2026-08-28T18:00:00+02:00
+readTimeMin : 21
+Auteur affiché : Quentin Hagnéré, président fondateur codeur (src/lib/team.ts)
+Images : /guides/automatiser-processus-metier/article-processus-{16x9,4x3,1x1}.webp
+         (les trois fichiers existent dans public/)
+Outil embarqué : ProcessPriorityTool, calcul local, aucun envoi réseau
+Sortie éditoriale : décision — mesurer, écarter, chiffrer, puis lancer,
+         réduire, reporter ou renoncer
 ```
 
-### Empreinte éditoriale retenue
+### Sommaire réellement publié (huit sections, ancres stables)
 
-```text
-Tension motrice : la tâche la plus visible ou la plus chère n’est pas
-nécessairement le meilleur premier essai
-Ouverture : situation concrète de ressaisie, puis réponse conditionnelle
-Architecture : travail réel → portes bloquantes → options → calcul
-contradictoire → exemple de refus économique → pilote → responsabilités →
-sécurité → fiche de décision
-Traitement des exemples : un seul scénario numérique fictif, arrondi,
-reproductible et volontairement défavorable
-Rythme et formats : prose courte, carte copiable, tableaux mobiles, calculateur
-local et tests d’erreur
-Action autonome : remplir la carte, passer les cinq portes, refaire le calcul
-et produire une fiche de décision sans contacter Hagnéré Code
-CTA : sidebar du gabarit vers /demarrer-un-projet, avec une promesse précise
-et sans délai ni résultat garanti
-Mécanismes volontairement non repris : classement universel de métiers,
-seuils de volume inventés, liste de marques, gains moyens, prix de marché,
-« quick win » automatique, témoignage client et téléchargement de tableur
-```
+| # | Ancre | Titre visible | Durée annoncée |
+|---|---|---|---:|
+| 01 | `reponse` | Commencez par le processus dont vous prouverez le résultat en un mois | 2 min |
+| 02 | `mesurer` | Comment mesurer un processus en une semaine, sans consultant ? | 2 min |
+| 03 | `eliminer` | Quelles conditions éliminent un candidat avant tout calcul ? | 2 min |
+| 04 | `facture` | Ce que votre plateforme facture derrière chaque dossier | 3 min |
+| 05 | `decompte` | Le décompte sur douze mois, poste par poste | 4 min |
+| 06 | `tresorerie` | Quand le temps ne paie pas, que reste-t-il à mesurer ? | 2 min |
+| 07 | `incidents` | Ce qui rate, et ce que ça coûte | 4 min |
+| 08 | `decision` | Faut-il lancer, reporter ou renoncer ? | 2 min |
 
-## B. Contrat de réponse
+Somme des durées de section : 21 minutes, égale au `readTimeMin` du registre.
+Cette égalité est verrouillée par un test (§H). La répartition des huit minutes
+entières est documentée dans un commentaire de `page.tsx` et repose sur une
+mesure à 4 191 mots produite par `scripts/measure-guide-readtime.mjs` :
+**cette mesure n'a pas été refaite** (voir §D.12).
 
-### Réponse courte
+### Chiffres mis en avant hors corps de texte
 
-Le premier processus à automatiser doit être fréquent, mesuré, régi par des
-règles assez stables, alimenté par des données fiables et facile à reprendre
-si l’outil échoue. Le gain potentiel ne compense pas une erreur impossible à
-détecter, l’absence de responsable ou une décision sensible sans contrôle
-humain. Avant un développement, il faut comparer la simplification, une
-fonction existante, un connecteur, le no-code ou la RPA, un logiciel sur mesure
-et une assistance par IA. Le calcul sépare le temps techniquement retirable,
-l’adoption moyenne et les heures réellement réaffectées. Leur valorisation au
-coût horaire mesure une capacité ; elle ne devient une dépense évitée que si
-un paiement disparaît réellement.
+| Emplacement | Valeur | Recalculée en |
+|---|---|---|
+| Bandeau, statistique 1 | 4 processus | §G.2 |
+| Bandeau, statistique 2 | 44,70 € de coût horaire (INSEE) | §D.1 |
+| Bandeau, statistique 3 | −546 € d'écart à douze mois | §G.3 |
+| Bandeau, statistique 4 | 21,3 mois d'équilibre | §G.5 |
+| Bandeau, statistique 5 | 118 relances de seuil mensuel | §G.4 |
+| Chapô | 32 h à écarter, 12 h à retenir, −546 €, 21,3 mois | §G.2, §G.3, §G.5 |
 
-### Phrase réelle du lecteur
+---
 
-> « On recopie les mêmes dossiers entre trois outils : par quoi commencer sans
-> acheter une usine à gaz ni déplacer le problème ? »
+## B. Contrat de réponse tel qu'il est publié
 
-### Questions indispensables
+### Réponse courte, telle que la section 01 la formule
 
-1. Comment décrire un processus sans méthode de consultant ?
-2. Quelles conditions éliminent un mauvais candidat avant le calcul ?
-3. Comment distinguer tâche pénible, tâche coûteuse et bon premier pilote ?
-4. Peut-on supprimer ou simplifier l’étape ?
-5. Le logiciel déjà payé contient-il la fonction ?
-6. Quand un connecteur suffit-il ?
-7. Quand choisir une plateforme no-code ?
-8. Quand une automatisation d’interface RPA reste-t-elle raisonnable ?
-9. Quand le sur-mesure se justifie-t-il ?
-10. Quand l’IA aide-t-elle et quand faut-il garder une validation humaine ?
-11. Comment calculer le volume et le temps actuels ?
-12. Comment séparer temps retirable, adoption, réaffectation, valeur de
-    capacité et dépense réellement évitée ?
-13. Quels coûts additionner sur une même durée ?
-14. Comment préparer le cas normal, les doublons, les pannes et la reprise ?
-15. Qui tient la règle, reçoit l’alerte et décide d’arrêter ?
-16. Quelles questions poser sur sécurité, RGPD, sous-traitance, AIPD et sortie ?
+Prendre en premier le processus dont le résultat se prouvera en un mois : une
+règle qui n'a pas bougé depuis un an, une source qui fait foi, une erreur qui se
+répare pour rien, deux noms écrits en face du flux. Le nombre d'heures arbitre en
+dernier. Sur les quatre processus du cas construit — 32, 25, 21 et 12 heures par
+mois — celui qui passe les cinq questions est le dernier au classement des
+heures. Son décompte à douze mois sort à −546 € ; il s'équilibre à 21,3 mois et
+peut se payer plus tôt, ou jamais, sur l'encaissement.
 
-### Questions secondaires
+### Décision attendue du lecteur
 
-- Combien de cas faut-il observer avant de décider ?
-- Un processus rare mais risqué doit-il être automatisé ?
-- Comment traiter les exceptions sans bloquer le chemin normal ?
-- Comment comparer deux propositions qui n’utilisent pas la même technologie ?
-- Que devient le flux lorsque son propriétaire quitte l’entreprise ?
-- Quels éléments conserver pour comprendre un échec ?
-- Comment savoir si les utilisateurs ont réellement adopté le nouveau chemin ?
-- Quel indicateur comparer avant et après le pilote ?
+Quatre sorties sont présentées comme également légitimes, et une seule est un
+projet : lancer un essai borné, réduire avant d'automatiser, reporter et
+continuer de mesurer, renoncer. La section 08 écrit explicitement que renoncer
+« est une décision, pas un échec », et le dernier paragraphe précise que « ne
+rien automatiser cette année » reste une conclusion acceptable. Deux tests
+verrouillent ces deux phrases.
 
-### Hors-sujet
+### Ce que l'article refuse de faire
 
-- classement exhaustif ou tarifaire de Make, Zapier, n8n, Power Automate,
-  UiPath ou d’autres éditeurs ;
-- promesse de gain moyen ou de retour sur investissement pour une PME type ;
-- prix de marché d’un projet d’automatisation sans corpus vérifiable ;
-- tutoriel de configuration d’un outil particulier ;
-- avis juridique, DPO ou cybersécurité individualisé ;
-- remplacement d’un audit technique pour un système sensible ;
-- guide complet du ROI d’une application métier ;
-- téléchargement XLS, XLSX ou CSV.
+- aucun prix de marché d'un projet d'automatisation ;
+- aucun gain moyen, aucun ROI moyen, aucun délai type ;
+- aucun classement d'éditeurs : Zapier et Power Automate sont cités comme
+  **deux règles de comptage** opposées, avec l'étiquette « échantillon daté d'un
+  seul éditeur » ;
+- aucun avis juridique : l'AIPD est renvoyée au responsable de traitement et au
+  DPO, la sécurité au responsable sécurité, le coût horaire à l'expert-comptable ;
+- aucun téléchargement de tableur ; la fiche de décision est un bloc de texte
+  copiable ;
+- aucun témoignage, aucun logo, aucun dossier client.
 
-### Cas de refus, report ou validation professionnelle
+### Position commerciale, telle qu'elle est écrite
 
-- **Refuser ou reporter** si le résultat correct ne peut pas être observé, si
-  les règles changent fréquemment, si la source de données ne fait pas foi, si
-  une erreur ne peut pas être repérée et reprise, ou si aucun responsable
-  n’accepte les alertes.
-- **Simplifier** si une validation ou une ressaisie ne produit aucun contrôle
-  utile.
-- **Activer une fonction existante** lorsqu’elle couvre le résultat avec des
-  droits, exports et coûts acceptables.
-- **Garder la décision humaine** lorsque le jugement porte sur une négociation,
-  une personne, un prix ou une action difficile à annuler.
-- **Demander l’avis du DPO ou d’un conseil juridique** si une décision
-  individuelle fondée sur des données personnelles est exclusivement
-  automatisée dans les faits et produit un effet juridique ou similaire
-  significatif, ou si le traitement est susceptible de présenter un risque
-  élevé pour les droits et libertés.
-- **Faire intervenir le responsable sécurité** pour des données ou systèmes
-  sensibles, des accès à privilèges, des exigences sectorielles ou une reprise
-  d’activité critique.
-- **Demander au comptable/contrôle de gestion** le coût horaire et la réalité
-  d’une dépense évitée avant de monétiser le temps.
+Le bloc « Transparence » de la section 08 déclare que Hagnéré Code construit des
+outils internes sur mesure et perçoit des honoraires si le lecteur retient cette
+option — « la sixième des sept réponses comparées ici, et celle que le décompte
+écarte sur son propre cas, à douze mois comme à trente-six ». L'encadré
+« Ce que notre propre grille dit contre nous » de la section 05 fait le même
+travail sur le premier palier à 8 000 € HT. Ces deux passages sont protégés par
+un test.
 
-## C. Corpus interne
+---
 
-Après la remise à zéro, aucun ancien guide ne peut devenir un lien éditorial.
-Le guide doit rester utile avec les seules routes actives ci-dessous.
+## C. Corpus interne et maillage réellement présents
 
-| Route ou artefact actif | Intention | Utilité pour ce guide | Décision de lien |
-|---|---|---|---|
-| `/services/outils-internes-sur-mesure` | Transactionnelle : comprendre l’offre d’outils internes | Suite logique si plusieurs règles, rôles ou intégrations justifient un projet propre | Un lien contextuel dans la dernière section |
-| `/demarrer-un-projet` | Décrire un besoin à l’équipe | Destination réelle du CTA premium | CTA sidebar et FAQ, libellé « Faire cadrer mon premier processus » |
-| `/guides` | Répertoire des guides actifs | Retour vers le corpus réécrit | Un lien contextuel final |
-| `ProcessPriorityTool` | Outil local du guide | Passer les cinq portes puis tester temps retirable, adoption moyenne, réaffectation, coûts renseignés et sensibilité | Intégré dans la section économie ; aucun envoi réseau |
+Vérifié le 30 août 2026 en listant les routes du dépôt : **toutes existent**.
+
+| Destination | Emplacement dans la page | Route présente ? |
+|---|---|---|
+| `/services/outils-internes-sur-mesure` | CTA principal de la sidebar | `src/app/services/outils-internes-sur-mesure/page.tsx` ✔ |
+| `/demarrer-un-projet` | CTA contextuel, CTA de FAQ, lien tracké en fin d'article | ✔ |
+| `/tarifs` | encadré « Ce que notre propre grille dit contre nous » | ✔ |
+| `/guides` | fil d'Ariane | ✔ |
+| `/equipe#fondateur` | signature de l'auteur | ✔ |
+| `/guides/signes-besoin-logiciel-metier` | §08 + guides liés | ✔ publié |
+| `/guides/power-apps-ou-application-sur-mesure` | §08 + guides liés | ✔ publié |
+| `/guides/plan-recette-application-metier` | §08 + guides liés | ✔ publié |
+| `/guides/cahier-des-charges-saas` | §08 | ✔ publié |
+| `/guides/securite-application-metier` | §08 | ✔ publié |
+
+Un seul `TrackedGuideCtaLink` dans toute la page (test). Aucun lien vers
+lui-même (test). Le guide ne promet le service qu'après la fiche de décision.
 
 ### Cannibalisation
 
-| Page | Intention dominante | Différence maintenue |
+| Page | Intention dominante | Différence tenue |
 |---|---|---|
-| Guide courant | Informationnelle/décisionnelle : choisir le premier processus et décider aussi de ne pas automatiser | Carte, portes, options, formule, pilote, contrôles |
-| Service outils internes | Transactionnelle : faire étudier ou construire un outil interne | Ne reprend pas le classement ni le guide complet ; le guide ne promet pas le service |
+| Ce guide | Décider quel processus essayer en premier, et décider aussi de ne rien faire | Mesure, cinq questions, règles de comptage des plateformes, décompte à trois horizons, trésorerie, incidents chiffrés |
+| `/services/outils-internes-sur-mesure` | Faire étudier ou construire un outil interne | Le guide ne vend pas le service et le décompte écarte le sur-mesure sur son propre cas |
+| `/guides/signes-besoin-logiciel-metier` | Savoir s'il faut un logiciel métier | Amont : le blocage existe-t-il ? Ce guide part d'un blocage déjà identifié |
+| `/guides/power-apps-ou-application-sur-mesure` | Comparer deux façons de construire | Aval : ce guide s'arrête avant le choix d'architecture |
 
-### Liens internes retenus
+---
 
-- `/services/outils-internes-sur-mesure` : uniquement après la fiche de
-  décision, avec l’ancre descriptive « outils internes sur mesure » ;
-- `/guides` : retour vers le répertoire, sans faire croire que les anciens
-  guides supprimés restent disponibles ;
-- `/demarrer-un-projet` : destination réelle des CTA du gabarit.
+## D. Fiche de preuves — sources externes
 
-### Liens internes refusés
+**Méthode.** Chaque URL citée par la page a été ouverte le 30 août 2026, dans
+le document original. Quand `WebFetch` a échoué, la page a été téléchargée par
+`curl` et lue localement ; les deux PDF ont été extraits page par page. Aucun
+résumé de moteur n'a été retenu comme preuve. Les dix sources citées par
+l'article ont toutes été rouvertes.
 
-Tous les slugs de l’ancien corpus, même lorsqu’ils paraissent sémantiquement
-proches. Ils sont en cours de redirection et ne doivent pas redevenir un
-maillage éditorial.
+### D.1 INSEE — coût horaire de la main-d'œuvre
 
-## D. Analyse externe
-
-Consultation : **29 juillet 2026**. Les extraits de moteur ont servi à repérer
-des pages ; toute affirmation conservée a été contrôlée sur la page originale.
-
-### Sources primaires ou officielles
-
-| URL | Éditeur | Date | Type | Affirmation utilisable | Limite ou contradiction | Consultation |
-|---|---|---:|---|---|---|---:|
-| `https://www.francenum.gouv.fr/guides-et-conseils/pilotage-de-lentreprise/numerisation-des-processus/lautomatisation-une-solution` | France Num | Publié 2025-11-14, mis à jour 2026-07-09 | Plateforme publique, dossier rédigé par deux professionnels externes | Inventorier les tâches répétitives ; mesurer fréquence × durée ; prendre en compte complexité, impact d’une erreur, tests et maintenance | Ce n’est pas une étude primaire. Les affirmations de souveraineté, conformité générale, prix, facilité et marques sont trop larges ou volatiles : non reprises | 2026-07-29 |
-| `https://www.cnil.fr/sites/cnil/files/2024-03/cnil_guide_securite_personnelle_2024.pdf` | CNIL | 2024-03-26 | Guide officiel | Protection dès la conception, tests avec données fictives/anonymisées, habilitations, journalisation, sauvegardes testées, continuité, API, responsabilités | Guide horizontal ; les mesures doivent être adaptées au risque et ne certifient pas un système | 2026-07-29 |
-| `https://www.cnil.fr/fr/securite-gerer-la-sous-traitance` | CNIL | 2024-03-14 | Fiche officielle | Le contrat doit encadrer objet, durée, finalité, sécurité, responsabilités, incidents, restitution et destruction ; les garanties doivent être vérifiables | S’applique à la sous-traitance de données personnelles au sens du RGPD, pas à tout achat de logiciel | 2026-07-29 |
-| `https://www.cnil.fr/fr/profilage-et-decision-entierement-automatisee` | CNIL | Page d’origine 2018, reconsultée 2026-07-29 | Fiche officielle | L’article 22 encadre les décisions fondées exclusivement sur un traitement automatisé produisant un effet juridique ou un effet similaire significatif ; la page détaille exceptions, information, contestation et intervention humaine | Ne permet pas d’affirmer que toute automatisation, tout classement ou toute IA tombe sous l’article 22 | 2026-07-29 |
-| `https://www.cnil.fr/fr/ce-quil-faut-savoir-sur-lanalyse-dimpact-relative-la-protection-des-donnees-aipd` | CNIL | Page d’origine 2017, reconsultée 2026-07-29 | Fiche officielle | Une AIPD est requise lorsqu’un traitement de données personnelles est susceptible d’engendrer un risque élevé ; la décision se prend avant la mise en œuvre selon le contexte et les critères applicables | Une technologie ou l’IA seule ne suffit pas à conclure ; le responsable de traitement doit qualifier son cas | 2026-07-29 |
-| `https://eur-lex.europa.eu/eli/reg/2016/679/oj?locale=fr` | Union européenne | Règlement 2016/679 ; applicable depuis 2018-05-25 | Texte juridique primaire | Articles 22, 28, 32 et 35 : décision automatisée, sous-traitance, sécurité et AIPD | L’application à un cas exige de qualifier les données, rôles, finalités et risques | 2026-07-29 |
-| `https://www.anact.fr/sites/default/files/2024-10/boite-a-outils-qvct-numerique.pdf` | Anact | Boîte à outils QVCT numérique, publiée en octobre 2024 | Repères de cadrage d’un projet de transformation numérique | Partir du travail réel, articuler les dialogues technique, professionnel et social, associer activement les utilisateurs finaux | Repères organisationnels, pas mesure causale universelle de productivité | 2026-07-29 |
-| `https://learn.microsoft.com/en-gb/power-automate/overview-cloud` | Microsoft Learn | Mis à jour 2025-11-27 | Documentation officielle éditeur | Les flux cloud peuvent être événementiels, instantanés ou planifiés et relier des services par connecteurs | Exemple d’un produit ; ne définit pas tout le marché ni les licences actuelles | 2026-07-29 |
-| `https://learn.microsoft.com/en-us/power-automate/limits-and-config` | Microsoft Learn | Page mise à jour en continu, état consulté 2026-07-29 | Documentation officielle éditeur | Les limites, la rétention, les arrêts après erreurs, la propriété et les requêtes varient avec le produit et la licence | Valeurs volatiles ; le guide n’en publie aucun seuil et demande une revalidation au choix | 2026-07-29 |
-| `https://learn.microsoft.com/en-us/power-automate/desktop-flows/ui-elements` | Microsoft Learn | Mis à jour 2026-05-14 | Documentation officielle éditeur | Les flux de bureau pilotent des éléments d’interface au moyen de sélecteurs ; plusieurs sélecteurs et des tests peuvent être nécessaires, et certains éléments web sont moins fiables que les éléments web natifs | Exemple Power Automate ; ne définit pas tous les produits RPA et n’autorise pas à généraliser leurs fonctions ou licences | 2026-07-29 |
-| `https://www.nist.gov/itl/ai-risk-management-framework` | NIST | AI RMF 1.0 publié 2023-01-26 ; révision en cours, note 2026-04-07 | Cadre public volontaire | Tester, évaluer, surveiller et prévoir une intervention humaine selon les risques d’un système d’IA | Volontaire, américain et en révision ; ne remplace ni l’AI Act ni le RGPD | 2026-07-29 |
-
-### Résultats de SERP et angles morts observés
-
-| URL | Éditeur/date | Réponse donnée | Valeur observée | Manque ou risque à ne pas reproduire |
-|---|---|---|---|---|
-| `https://invaist.com/processus-a-automatiser-pme` | Invaist, 2026-04-23 | Six processus à automatiser « en premier » ; trois critères | Définit règles stables et jugement humain | Seuil hebdomadaire et priorité par catégorie non démontrés ; pas de TCO, réaffectation, reprise, responsable ou porte RGPD |
-| `https://www.mekso.fr/blog/automatiser-process-tpe-pme` | Mekso, mis à jour 2026-05-06 | Flux le plus coûteux, no-code puis sur-mesure | Carte simple et rappel de commencer par un flux | Chiffres d’heures, erreurs, prix, délais et ROI universalisés ; « sans risque d’erreur » ; calcul hebdomadaire incohérent avec 40 × 3 min × 35 €/h ; intérêts commerciaux non séparés |
-| `https://www.smart-ops.fr/automatisation-processus-metiers-pme` | SmartOps, 2026 | No-code en quelques semaines, seuils d’heures et exemples par fonction | Déclencheur, étapes, outils et personnes | 30 %, 80 %, temps nul, seuils absolus et cas « clients » sans preuve visible ; addition de points qui laisse le gain masquer l’irréversibilité ; peu de reprise |
-| `https://www.techtarget.com/searchcio/definition/business-process-automation` | TechTarget, 2023-12-14 | Définition large, bon candidat récurrent et à règles stables | Distingue BPA, BPM, RPA, low-code et nécessité d’impliquer les parties | Source secondaire anglophone ; peu de calcul, de droit français ou de fiche immédiatement réutilisable |
-
-### Demande et vocabulaire observés
-
-Requêtes examinées le 29 juillet 2026 :
-
-- `automatiser processus métier par où commencer choisir processus premier France PME` ;
-- `prioriser processus à automatiser matrice gain risque erreurs reprise manuel` ;
-- `automatisation processus métier calcul ROI coût total heures réaffectées France` ;
-- `business process automation which process automate first governance rollback human intervention`.
-
-Questions et formulations récurrentes : « par où commencer », « quel processus
-en premier », « combien ça coûte », « combien de temps », « no-code ou sur
-mesure », « l’IA est-elle nécessaire », « faut-il des compétences techniques »,
-« l’automatisation remplace-t-elle les employés ». Aucun volume de recherche
-n’est inventé. Aucune donnée Search Console n’a été fournie à l’agent P1.
-
-## E. Matrice d’information utile
-
-| Question lecteur | Déjà traité ailleurs | Manque observé | Réponse ou outil à apporter | Preuve |
-|---|---|---|---|---|
-| Que faut-il cartographier ? | Déclencheur, étapes, outils, personnes | Source de vérité, exceptions, erreur, reprise et mesure après | Carte copiable en onze lignes | France Num + déduction opérationnelle explicitée |
-| Le gain suffit-il à prioriser ? | Matrices impact/effort fréquentes | Un risque grave peut être compensé par une note moyenne | Cinq portes non compensatoires avant le calcul | Recommandation Hagnéré Code ; cohérente avec CNIL sécurité |
-| Quelle solution choisir ? | Listes d’outils ou opposition no-code/sur-mesure | Fonction existante, simplification, connecteur/API, no-code, RPA et IA rarement distingués ensemble | Sept réponses jugées sur le même résultat et les mêmes erreurs | Microsoft Learn pour flux, limites et sélecteurs ; recommandations qualifiées |
-| Comment valoriser le temps ? | Fréquence × durée × coût horaire | Part retirable, adoption moyenne, travail résiduel, réaffectation et trésorerie souvent confondus | Quatre étages, puis séparation capacité/dépense réellement évitée | Calcul éditorial transparent et contre-cas recalculés |
-| Quel coût comparer ? | Prix initial ou abonnement | Temps interne, coûts ponctuels, suivi, maintenance, volume et sortie | Coût renseigné sur un horizon commun ; inconnues explicitement à confirmer | Calcul éditorial ; charte qualité |
-| Peut-on décider de ne pas investir ? | Rarement mis en avant | Les scénarios sont presque toujours positifs | Exemple fictif volontairement négatif, ROI −41,2 % | Recalcul manuel en G |
-| Comment tester un échec ? | Cas normal et parfois champ manquant | Doublon, accès expiré, panne tiers, action partielle, reprise | Tableau de huit situations avec résultat et preuve | CNIL sécurité + raisonnement technique |
-| Qui reste responsable ? | « Impliquer les équipes » | Qui tient la règle, reçoit l’alerte et arrête le pilote | Tableau de six rôles et preuves attendues | Anact + CNIL sécurité |
-| Quelles protections RGPD ? | Mentions générales de conformité | Portée exacte article 22, exceptions, droits, AIPD, chaîne de sous-traitance, sauvegarde et sortie | Quatre conditions cumulatives pour l’article 22, garanties, qualification AIPD et renvoi vers DPO/sécurité | CNIL + EUR-Lex |
-| L’IA est-elle nécessaire ? | IA souvent présentée comme point de départ | Mesure des erreurs et contrôle humain insuffisants | IA seulement pour entrée variable, avec jeu de test et contrôle adapté | NIST AI RMF + CNIL article 22 pour le cas juridique |
-| Puis-je refaire le calcul ? | Calculateurs opaques ou formulaires commerciaux | Formules, portes, adoption moyenne, coûts additionnels et limites non visibles | Composant local sans envoi ; formules affichées, contre-cas et tests unitaires | Code et tests P1/P2 |
-
-## F. Registre des affirmations
-
-| ID | Affirmation | Type | Source primaire | Périmètre/date | Statut |
-|---|---|---|---|---|---|
-| F01 | Un processus est présenté ici comme une suite d’étapes entre un déclencheur et un résultat utile | RECOMMANDATION | France Num décrit déclencheur puis actions ; définition éditoriale simplifiée | Guide non normatif, 2026 | VERIFIE |
-| F02 | Fréquence × durée permet d’estimer le temps actuel | CALCUL | France Num | Cas et période définis | VERIFIE |
-| F03 | Complexité et impact d’une erreur doivent compléter le gain | FAIT | France Num | Dossier TPE/PME, maj 2026-07-09 | VERIFIE |
-| F04 | Le gain financier ne compense pas une porte de risque fermée | RECOMMANDATION | Raisonnement éditorial ; CNIL sécurité pour le caractère proportionné au risque | Méthode Hagnéré Code, 2026 | VERIFIE |
-| F05 | Les cinq portes sont résultat, règles, données, reprise et responsable | RECOMMANDATION | Synthèse éditoriale | Outil de présélection, pas norme | VERIFIE |
-| F06 | Simplifier ou supprimer une étape doit être comparé à l’automatisation | RECOMMANDATION | France Num évoque l’analyse du processus ; déduction éditoriale | Tous projets | VERIFIE |
-| F07 | Un flux no-code peut relier des services au moyen de connecteurs | FAIT | Microsoft Learn, aperçu des flux cloud | Power Automate, maj 2025-11-27 | VERIFIE |
-| F08 | Les limites de volume, rétention, exécution et propriété dépendent du produit/licence | FAIT | Microsoft Learn, limits-and-config | Power Automate, état 2026-07-29 | VERIFIE |
-| F09 | Les valeurs de limites doivent être revérifiées au choix | RECOMMANDATION | Documentation éditeur évolutive | Produit/licence/date | VERIFIE |
-| F10 | L’IA doit être testée et surveillée dans la durée | FAIT | NIST AI RMF 1.0 | Cadre volontaire US en révision | VERIFIE |
-| F11 | Une validation humaine doit être proportionnée à la conséquence | RECOMMANDATION | NIST AI RMF + CNIL article 22 pour certains effets | Ne signifie pas que toute IA relève de l’art. 22 | VERIFIE |
-| F12 | L’article 22 vise certaines décisions exclusivement automatisées avec effet juridique ou similaire significatif | FAIT | RGPD art. 22 ; CNIL | UE, données personnelles | VERIFIE |
-| F13 | Toutes les automatisations ne relèvent pas de l’article 22 | FAIT | Périmètre explicite CNIL/RGPD | UE | VERIFIE |
-| F14 | Le contrat de sous-traitance RGPD encadre notamment responsabilités, incidents, restitution/destruction | FAIT | CNIL ; RGPD art. 28 | Sous-traitance de données personnelles | VERIFIE |
-| F15 | La CNIL recommande des tests avec des données fictives ou anonymisées pendant le développement | FAIT | Guide sécurité CNIL 2024, fiche développements | Données personnelles | VERIFIE |
-| F16 | La CNIL recommande sauvegardes régulières, protection et tests de restauration | FAIT | Guide sécurité CNIL 2024, fiche 17 | Données personnelles ; à adapter | VERIFIE |
-| F17 | L’Anact conseille d’observer le travail réel et d’associer les utilisateurs | FAIT | Guide Anact projet numérique | PME ; repères organisationnels | VERIFIE |
-| F18 | Le temps techniquement retirable, le temps réellement retiré après adoption et le temps réaffecté sont trois quantités distinctes | RECOMMANDATION | Charte qualité + modèle P2 | Modèle économique, pas règle comptable | VERIFIE |
-| F19 | Valeur de capacité = heures actuelles × part retirable × adoption moyenne × réaffectation × coût horaire chargé | CALCUL | Modèle transparent P2 | Hypothèses visibles ; ne prouve pas une économie de trésorerie | VERIFIE |
-| F20 | Coût renseigné = conception + temps interne + autres coûts ponctuels déjà chiffrés + coût mensuel × horizon | CALCUL | Modèle transparent P2 | Un poste inconnu reste à confirmer et n’est pas réputé nul | VERIFIE |
-| F21 | Le scénario 120 cas produit 432 h actuelles sur 24 mois | CALCUL | `120 × 9 ÷ 60 × 24` | Exemple fictif | VERIFIE |
-| F22 | Le même scénario produit 302,4 h retirables, 241,92 h réellement retirées après adoption et 145,152 h réaffectées | CALCUL | `432 × 70 %`, puis `× 80 %`, puis `× 60 %` | Exemple fictif | VERIFIE |
-| F23 | La valeur de capacité du scénario est 5 515,78 € | CALCUL | `145,152 × 38` | Exemple fictif ; pas une économie de trésorerie | VERIFIE |
-| F24 | Le coût renseigné du scénario est 9 376 € | CALCUL | `4 800 + 32 × 38 + 0 + 140 × 24` | Exemple fictif ; zéro signifie seulement aucun autre coût saisi | VERIFIE |
-| F25 | L’écart est −3 860,22 € et le ROI du scénario de capacité environ −41,2 % | CALCUL | `(5 515,776 − 9 376) / 9 376` | Exemple fictif, arrondi ; pas un ROI de trésorerie | VERIFIE |
-| F26 | L’outil interactif n’envoie aucune donnée | FAIT | Inspection du composant : état React local, aucun fetch/form/action | Version P2 | VERIFIE |
-| F27 | Une erreur partielle doit être testée pour éviter un doublon lors de la reprise | RECOMMANDATION | Raisonnement technique ; CNIL continuité/journalisation | Dépend du processus | VERIFIE |
-| F28 | Aucun prix, délai ou ROI moyen de marché n’est publié | FAIT | Inspection page P2 | Version P2 | VERIFIE |
-| F29 | Les bénéfices d’erreurs évitées ou de ventes restent non chiffrés sans mesure | RECOMMANDATION | Charte qualité | Modèle P2 | VERIFIE |
-| F30 | La bonne réponse peut être simplifier, reporter ou ne pas automatiser | RECOMMANDATION | Contrat de réponse | Décision éditoriale | VERIFIE |
-| F31 | Huit cas simples sur dix peuvent ne représenter que 28,6 % du temps si les deux exceptions durent dix fois plus longtemps | CALCUL | `(8 × 3) ÷ (8 × 3 + 2 × 30)` | Contre-cas fictif | VERIFIE |
-| F32 | Une capacité valorisée au coût horaire n’est pas une dépense évitée ; une économie de trésorerie exige la disparition réelle d’un paiement | RECOMMANDATION | Charte qualité + logique de non-double-compte | Modèle décisionnel, pas règle comptable individualisée | VERIFIE |
-| F33 | À 220 cas/mois, 80 % d’adoption produit +736,26 €, mais une adoption moyenne de 70 % produit −527,78 € | CALCUL | Recalcul P2, autres entrées du scénario G2 inchangées | Contre-cas fictif sur 24 mois | VERIFIE |
-| F34 | À 600 cas/mois, le scénario positif à 140 €/mois redevient négatif à partir d’environ 899 €/mois | CALCUL | Seuil `(27 578,88 − 6 016) ÷ 24 = 898,4533` | Contre-cas fictif ; coût susceptible d’évoluer avec le volume | VERIFIE |
-| F35 | Une automatisation d’interface utilise des éléments et sélecteurs qui doivent être retestés lorsque l’interface change | FAIT | Microsoft Learn, UI elements et test selectors | Exemple Power Automate Desktop ; portée éditeur | VERIFIE |
-| F36 | L’article 22 suppose une décision individuelle fondée exclusivement sur un traitement automatisé avec effet juridique ou similaire significatif ; des exceptions et garanties existent | FAIT | RGPD art. 22 ; CNIL | Données personnelles, UE ; qualification au cas par cas | VERIFIE |
-| F37 | Une AIPD est requise lorsqu’un traitement de données personnelles est susceptible d’engendrer un risque élevé pour les droits et libertés | FAIT | RGPD art. 35 ; CNIL | Ne signifie pas que toute IA ou automatisation exige une AIPD | VERIFIE |
-| F38 | Un résultat économique positif du calculateur ne vaut jamais autorisation de déployer | RECOMMANDATION | Portes, tests et limites P2 | Outil de présélection uniquement | VERIFIE |
-
-### Affirmations observées puis retirées
-
-| Affirmation externe | Motif du retrait |
+| Champ | Contenu |
 |---|---|
-| « Une PME perd 10 à 25 heures par semaine » | Source et population non établies dans la page observée |
-| « 76 % des employés transfèrent 1 à 3 h de données par jour » | Étude éditeur secondaire et extrapolation au lecteur non vérifiées |
-| « 1 à 4 % d’erreurs de saisie » | Périmètres hétérogènes, dont recherche clinique, non transposables |
-| « Sans intervention humaine, sans risque d’erreur » | Absolu faux et contradictoire avec la nécessité de tests/reprise |
-| Prix de 2 000 à 8 000 € et délais de 1 à 8 semaines | Offre d’un prestataire, pas marché comparable |
-| « ROI moyen 10x » ou remboursement en 3 à 6 mois | Méthode et échantillon non publiés |
-| « 30 % du temps perdu » et « 80 % des tâches automatisables » | Sources absentes sur la page observée |
-| « Données personnelles non sensibles = outil conforme au RGPD » | Conformité dépend de la finalité, des rôles, transferts, contrat et mesures |
+| URL | `https://www.insee.fr/fr/statistiques/2381340` |
+| Ouverte le | 30 août 2026, HTTP 200 |
+| Date de la page | mise à jour le 2 juillet 2026 |
+| Localisateur | tableau « Coût horaire de la main-d'œuvre », colonne 2025 |
+| Valeurs relevées | ensemble marchand **44,7 €** ; industrie 47,7 € ; construction 39,9 € ; services marchands 44,2 € |
+| Champ exact, cité mot pour mot | « France, ensemble des secteurs marchands (secteurs B à N de la Nace), entreprises de 10 salariés ou plus, apprentis inclus » |
+| Origine | Eurostat, extraction du 12 juin 2026, enquête européenne sur le coût de la main-d'œuvre |
+| Ce que l'article en fait | coût horaire chargé du décompte (§05, calculateur, FAQ, bandeau) et de toutes les valorisations horaires des incidents |
+| Limite non reprise par l'article | la note de la page précise que « les coûts horaires entre deux années d'enquête […] sont estimés par les États membres puis révisés jusqu'à ce que les résultats de l'enquête suivante soient disponibles ». Le 44,70 € de 2025 est donc une **estimation révisable**, pas un résultat d'enquête définitif. L'article dit « L'INSEE publie », ce qui est exact, mais ne signale pas ce caractère provisoire. |
+| Portée pour le lecteur | l'article demande explicitement de le remplacer par le sien si l'entreprise a moins de dix salariés, et rappelle que le taux ne change jamais le signe d'un décompte dont tous les postes sont du temps interne |
+| Fraîcheur | à revérifier à chaque publication annuelle INSEE, et à la prochaine enquête quadriennale |
 
-## G. Calculs et scénarios
+### D.2 Banque de France — Observatoire des délais de paiement, rapport 2024
 
-### G1. Modèle de calcul interactif
+| Champ | Contenu |
+|---|---|
+| URL | `https://www.banque-france.fr/system/files/2025-07/ODP-2024.pdf` |
+| Ouverte le | 30 août 2026. `WebFetch` a renvoyé **HTTP 403** ; le PDF a été récupéré par `curl` (HTTP 200, 829 908 octets, 70 pages) et lu localement |
+| Publication | *Rapport annuel de l'Observatoire des délais de paiement 2024*, **juillet 2025**. Présidente Virginie Beaumeunier ; rapporteur Thomas Allen, Banque de France, direction des Entreprises |
+| Localisateur 1 | « Chiffres-clés 2024 », page 8 du PDF : « **13,6** jours (+ 1 jour en un an) — nombre moyen de jours de retards en France (**13,4** jours en Europe) » |
+| Localisateur 2 | section 1.2, page 14 du PDF : « Les entreprises françaises paient désormais leurs fournisseurs avec un retard moyen au quatrième trimestre 2024 légèrement supérieur (13,6 jours) à celui de leurs voisins européens (13,4 jours). […] en France il augmentait régulièrement et fortement, dérapant d'une journée entre le quatrième trimestre 2023 (12,6 jours) et le dernier trimestre 2024 (13,6 jours, cf. graphique 6) » |
+| Localisateur 3 | graphique 6, page 15 du PDF, « Évolution comparée des retards de paiement en France et en Europe », **source Altares, quatrième trimestre 2024** |
+| Ce que l'article en fait | §06 : « Une relance partie le jour de l'échéance agit exactement sur ce retard » |
+| Précision de périmètre à tenir | l'indicateur mesure le retard avec lequel **les entreprises françaises paient leurs fournisseurs**. L'article l'utilise du point de vue du créancier qui relance ses clients. Au niveau agrégé, les deux faces sont les mêmes retards vus des deux côtés de la facture ; à l'échelle d'une entreprise, ce n'est pas une prévision du retard de *ses* clients. L'article ne fait aucune promesse chiffrée sur ce point : il ne tire du rapport aucune des valeurs de son calcul, et demande de lire les quatre jours dans sa propre balance âgée. |
+| Fraîcheur | rapport annuel : à revérifier à la parution du rapport 2025 |
 
-```text
-Nom : calcul de priorité économique après portes non compensatoires
-Unité : heures et euros sur un horizon en mois
+### D.3 Microsoft Learn — limites et allocations de requêtes Power Platform
 
-Heures actuelles =
-  cas par mois × minutes par cas ÷ 60 × horizon en mois
+| Champ | Contenu |
+|---|---|
+| URL | `https://learn.microsoft.com/fr-fr/power-platform/admin/api-request-limits-allocations` |
+| Ouverte le | 30 août 2026, HTTP 200 |
+| Date de la page | `ms.date` 2026-08-14 ; `updated_at` 2026-08-25 |
+| Localisateur, quotas | table « Limites de requêtes des utilisateurs avec licence » : **6 000** par 24 h pour « les applications Microsoft 365 avec accès à Power Platform » ; table « Power Automate limites de demande par licence » : Office 365 **6k par utilisateur** (officiel) / 10k par flux (transition) ; Power Automate Premium **40k par utilisateur** / 200k (transition) ; Processus Power Automate **250k par licence** / 500k (transition) |
+| Localisateur, module de capacité | « Chaque module complémentaire de capacité ajoute une limite de **50 000** requêtes par 24 heures » |
+| Localisateur, comptage | « Les actions réussies et ayant échoué sont comptabilisées dans ces limites. **Les nouvelles tentatives et les requêtes supplémentaires de la pagination comptent également** comme des exécutions d'actions » |
+| Localisateur, report | FAQ « Les limites de requêtes […] sont-elles reportées d'un jour à l'autre ou d'un mois à l'autre ? — **Non**. […] Si vous ne les consommez pas, ils ne passent pas au jour suivant » |
+| Localisateur, propriétaire | FAQ « Les flux de travail ou les flux **automatisés et planifiés** qui s'exécutent en arrière-plan **utilisent toujours les limites du propriétaire** du processus, quelle que soit la raison pour laquelle le processus a démarré ou quels comptes sont utilisés pour les connexions » |
+| Localisateur, transition | « Actuellement, toutes les organisations sont dans une période de transition au cours de laquelle des limites de période de transition plus élevées s'appliquent. Une fois la période de transition terminée, les limites officielles sont applicables. **Créez vos flux de cloud en fonction des limites officielles** » |
+| Ce que l'article en fait | tableau des deux façons de facturer (§04), chiffrage de la boucle, incident du quota (§07), FAQ sur le propriétaire du flux, et la mise en garde explicite « Dimensionnez sur les officielles, comme l'éditeur le recommande » |
+| Nuance de formulation | la page appelle « 250k **par licence** » ce que la prose de l'article appelle « une licence Process à 250 000 requêtes **par flux** ». Le corps du texte Microsoft justifie les deux lectures — « Si un flux cloud dispose d'une licence processus, le flux, ses flux enfants et ses flux associés peuvent effectuer 250 000 requêtes […] sur tous les utilisateurs du flux » — puisque la licence est rattachée à un flux. Les sources légales de la page, elles, écrivent bien « par licence Process ». |
+| Fraîcheur | page à `ms.date` mouvante et régime de transition en cours : à revérifier à chaque décision d'architecture, et impérativement à la fin de la période de transition |
 
-Heures techniquement retirables =
-  heures actuelles × taux d’automatisation
+### D.4 Zapier — comment l'usage des tâches est mesuré
 
-Heures réellement retirées =
-  heures techniquement retirables × adoption moyenne sur l’horizon
+| Champ | Contenu |
+|---|---|
+| URL | `https://help.zapier.com/hc/en-us/articles/8496196837261-How-is-task-usage-measured-in-Zapier` |
+| Ouverte le | 30 août 2026, HTTP 200 |
+| Date de la page | mise à jour le **21 août 2026** |
+| Localisateurs, cités mot pour mot | « Zap triggers never use tasks » ; ne comptent pas non plus « Any Filter or Paths step » ni « All action steps that error or halt » ; comptent en revanche « Any previously successful steps that run again when you **replay an entire Zap run** » |
+| Ce que l'article en fait | ligne « L'unité comptée » et ligne « Le piège » du tableau §04 ; le rejeu en masse de l'incident 2 (§07) ; les 540 actions réussies du flux de relance |
+| Confiance | élevée — documentation de l'éditeur sur son propre compteur de facturation |
+| Fraîcheur | page mise à jour huit jours avant le relevé initial de l'article : contrôle annuel minimum, et avant tout engagement de volume |
 
-Heures réaffectées à un travail utile identifié =
-  heures réellement retirées × taux de réaffectation
+### D.5 Zapier — grille tarifaire
 
-Valeur de capacité =
-  heures réaffectées × coût horaire chargé retenu
+| Champ | Contenu |
+|---|---|
+| URL | `https://zapier.com/pricing` |
+| Ouverte le | 30 août 2026, HTTP 200 |
+| Localisateur | plan **Professional**, facturation annuelle |
+| Valeurs relevées | 750 tâches/mois → **19,99 $** ; 1 500 → 39 $ ; 2 000 → **49 $** ; 5 000 → **89 $** ; 100 000 → **489 $**. « Tous les prix de base de ce document sont en USD » ; la facturation annuelle est annoncée −33 % par rapport au mensuel |
+| Concordance avec l'article | les quatre paliers cités par l'article (750/2 000/5 000/100 000) sont exacts au 30 août 2026 |
+| Détail à connaître | la grille comporte un cinquième palier intermédiaire (1 500 tâches à 39 $) que l'article ne cite pas. Ce n'est pas une erreur : l'article ne prétend pas énumérer la grille, il montre « la mécanique des paliers ». Un lecteur qui rouvre la page verra cependant cinq paliers là où l'article en cite quatre. |
+| Périmètre | montants en dollars, hors taxes locales, un seul éditeur. L'article le dit deux fois, dans le tableau et dans l'encadré « Prix affiché, prix contractuel et coût complet sont trois choses » |
+| Fraîcheur | tarif éditeur : le plus volatil de tout le dossier. Revérification obligatoire à la date de décision |
 
-Coût initial renseigné =
-  coût de conception/intégration/tests
-  + heures internes de préparation/test × coût horaire interne réel
-  + autres coûts ponctuels déjà chiffrés
+### D.6 France Num — l'automatisation, une solution
 
-Coût renseigné =
-  coût initial renseigné + coût mensuel d’exploitation × horizon
+| Champ | Contenu |
+|---|---|
+| URL | `https://www.francenum.gouv.fr/guides-et-conseils/pilotage-de-lentreprise/numerisation-des-processus/lautomatisation-une-solution` |
+| Ouverte le | 30 août 2026. `WebFetch` a renvoyé une page vide ; récupérée par `curl` (HTTP 200, 117 385 octets) et lue localement |
+| Dates affichées | **publié le 14 novembre 2025, mis à jour le 9 juillet 2026** |
+| Nature | dossier d'une plateforme publique, rédigé par deux professionnels externes nommés sur la page (Erwan Kezzar, Contournement ; Marc-Olivier Sercki, Pathta). Ce n'est ni un texte normatif ni une étude primaire |
+| Localisateur | section « Quelles tâches ou processus automatiser dans votre entreprise ? », sous-titres « Identifiez les processus répétitifs », « Priorisez selon le gain potentiel », puis « 3. Testez avant de déployer » et « 4. Prévoyez la maintenance » |
+| Citations utiles | « Calculez pour chaque processus : le temps actuellement consacré : **fréquence × durée unitaire × nb de personnes concernées** ; la **complexité** estimée de l'automatisation : simple, moyenne, complexe ; l'**impact en cas d'erreur** : faible, moyen, critique » ; « Commencez toujours par **tester vos automatisations sur quelques cas réels** » ; « il faut néanmoins **prévoir un peu de temps** pour s'assurer qu'elle fonctionne bien » |
+| Renfort disponible et non utilisé | la même page écrit : « parfois on peut avoir tendance à prioriser un processus dont les **frictions sont plus visibles au quotidien**, même si au final le temps perdu est moins important lorsqu'on fait l'effort de le quantifier ». C'est exactement la thèse d'ouverture de l'article, et elle n'est pas attribuée à cette source publique. Rien de faux : simplement un appui disponible que la page n'utilise pas. |
+| Ce que l'article n'en reprend pas | l'article le dit lui-même : « Les recommandations d'outils et de prix qu'il contient ne sont pas reprises ici. » Vérifié : aucune marque ni aucun prix de cette page ne se retrouve dans l'article |
+| Fraîcheur | dossier public mis à jour environ tous les huit mois |
 
-Écart =
-  valeur de capacité − coût renseigné
+### D.7 CNIL — guide de la sécurité des données personnelles, édition 2024
 
-ROI =
-  écart ÷ coût renseigné × 100, uniquement si coût renseigné > 0
+| Champ | Contenu |
+|---|---|
+| URL | `https://www.cnil.fr/sites/cnil/files/2024-03/cnil_guide_securite_personnelle_2024.pdf` |
+| Ouverte le | 30 août 2026, par `curl` (HTTP 200, 1 744 610 octets, **64 pages**), extraite et lue localement |
+| Édition | mention « Version 2024 » en page de garde |
+| Localisateur, tests | **fiche 11 « Encadrer les développements informatiques »**, page 28 du PDF : « Effectuer les développements informatiques et les tests dans un environnement informatique distinct de celui de la production […] et **sur des données fictives ou anonymisées** » ; et, en regard, « Ce qu'il ne faut pas faire : utiliser des données personnelles réelles pour les phases de développement et de test » |
+| Localisateur, habilitations | **fiche 5 « Gérer les habilitations »**, page 16 du PDF : profils d'habilitation, séparation des tâches, validation par un responsable, « revue régulière, au moins annuelle, des habilitations » |
+| Localisateur, journalisation | **fiche 16 « Tracer les opérations »**, page 40 du PDF : « Prévoir un système de journalisation », protection des équipements et des informations journalisées, obligation contractuelle des sous-traitants |
+| Localisateur, sauvegardes | **fiche 17 « Sauvegarder »**, page 42 du PDF : « Effectuer des sauvegardes et **vérifier régulièrement leur intégrité et la capacité de les restaurer** » |
+| Localisateur, continuité | **fiche 18 « Prévoir la continuité et la reprise d'activité »**, page 43 du PDF |
+| Ce que l'article en fait | la source appuie le mémo des six situations à provoquer avant la mise en service (§07) et la position générale sur les tests et la reprise. Aucun chiffre n'en est tiré |
+| Limite, que l'article écrit | « Guide horizontal, à adapter au risque réel du traitement » — exact : le guide ne certifie aucun système et ne remplace aucune analyse de risque |
 
-Retour du coût initial =
-  coût initial renseigné ÷ (valeur mensuelle de capacité − coût mensuel),
-  uniquement si le dénominateur est positif
-```
+### D.8 CNIL — ce qu'il faut savoir sur l'AIPD
 
-Limites :
+| Champ | Contenu |
+|---|---|
+| URL | `https://www.cnil.fr/fr/ce-quil-faut-savoir-sur-lanalyse-dimpact-relative-la-protection-des-donnees-aipd` |
+| Ouverte le | 30 août 2026, par `curl` (HTTP 200) après un `WebFetch` partiel |
+| Date affichée sur la page | 18 octobre 2017 |
+| Localisateur, critère | « Une AIPD doit obligatoirement être menée quand le traitement est **« susceptible d'engendrer un risque élevé pour les droits et libertés des personnes concernées »** » |
+| Localisateur, moment | « **L'AIPD doit être menée avant la mise en œuvre du traitement.** Il doit être démarré le plus en amont possible et sera mise à jour tout au long du cycle de vie du traitement » |
+| Localisateur, méthode | neuf critères, dont « décision automatique avec effet légal ou similaire » et « **usage innovant (utilisation d'une nouvelle technologie)** » ; « Si au moins **deux** critères sont remplis, ou un critère mais je considère que mon traitement présente un risque élevé : l'AIPD est requise » |
+| Ce que l'article en fait | FAQ « Quand faut-il une analyse d'impact avant de lancer le flux ? » et encadré de la §07 |
+| Comment se justifie « ni conclure, ni écarter » | l'article écrit : « L'usage d'une automatisation ou d'une intelligence artificielle ne suffit ni à conclure qu'elle est requise, ni à l'écarter. » La déduction est directe et vérifiable sur la page : l'usage innovant n'est **qu'un** des neuf critères, et il en faut **deux** — donc l'automatisation seule ne suffit pas à conclure ; et comme les huit autres critères restent possibles, elle ne suffit pas non plus à écarter. La formule de l'article est une reformulation fidèle, pas une citation |
+| Limite | la page a près de neuf ans d'affichage. Le critère (risque élevé) et le moment (avant la mise en œuvre) sont ceux du RGPD lui-même, donc stables ; la liste des traitements de la CNIL, elle, évolue par délibération |
 
-- aucun revenu, coût d’erreur, gain de qualité ou délai n’est ajouté sans
-  mesure ;
-- une valeur de capacité n’est pas une économie de trésorerie : une dépense
-  n’est évitée que si un paiement disparaît effectivement et sans double
-  comptage ;
-- le coût de sortie, la fiscalité, l’inflation, le financement,
-  l’indisponibilité, la formation ou l’hébergement sont à ajouter s’ils
-  s’appliquent ;
-- l’adoption saisie est une moyenne sur tout l’horizon et le délai de retour
-  suppose une contribution mensuelle constante dès le premier mois ;
-- zéro dans « autres coûts ponctuels » signifie seulement qu’aucun montant
-  supplémentaire n’a été saisi, pas qu’aucun coût n’existe ;
-- le calcul ne vaut ni devis, ni prévision, ni règle comptable ;
-- une porte fermée force `blocked`, même si l’écart économique est positif ;
-- un résultat `pilot` autorise seulement une vérification sur périmètre
-  limité, jamais un déploiement.
+### D.9 Microsoft Learn — éléments d'interface des flux de bureau
 
-### G2. Exemple fictif affiché
+| Champ | Contenu |
+|---|---|
+| URL | `https://learn.microsoft.com/fr-fr/power-automate/desktop-flows/ui-elements` |
+| Ouverte le | 30 août 2026, HTTP 200 |
+| Date de la page | `ms.date` 2026-05-14 ; `updated_at` 2026-08-14 |
+| Localisateurs | « Tous les éléments de l'interface utilisateur consistent en **un ou plusieurs sélecteurs** qui identifient l'interface utilisateur ou le composant Web avec lequel interagit Power Automate » ; « Chaque sélecteur se compose de plusieurs éléments représentant la **structure hiérarchique** de l'élément d'IU dans l'application ou la page web » ; « Chaque fois qu'un sélecteur échoue, Power Automate utilise le sélecteur suivant dans l'ordre défini » ; sur les sélecteurs de texte : « plus fiables et **résilients aux éventuelles modifications futures de la structure** de l'application ou de la page web » ; « les éléments de l'interface utilisateur de bureau dans les pages Web ne sont pas aussi fiables que leurs homologues Web et sont **soumis aux détails de l'application du navigateur, comme la version du navigateur** » |
+| Ce que l'article en fait | FAQ « Quand un robot d'interface reste-t-il une réponse raisonnable ? » et ligne « robot d'interface » du mémo des sept réponses |
+| Ce qui est établi | la dépendance des sélecteurs à la structure de l'application, et le fait qu'un changement de structure les met en défaut : la page le dit en creux, en présentant les sélecteurs de texte comme *plus* résilients aux modifications de structure, et en signalant la dépendance à la version du navigateur |
+| Ce qui est une déduction éditoriale | l'obligation de **retester après chaque évolution** et le fait de « compter le retest à chaque version du logiciel piloté dans le coût annuel ». La page ne pose aucune obligation de ce genre. C'est une conséquence opérationnelle raisonnable, mais elle relève de la recommandation Hagnéré Code, pas du texte de l'éditeur |
 
-```text
-Étiquette : exemple fictif — hypothèses arrondies
-Période : 24 mois
-Cas par mois : 120
-Minutes par cas : 9
-Coût horaire interne : 38 €
-Part du temps retirée : 70 %
-Adoption : 80 %
-Réaffectation réelle : 60 %
-Conception/intégration/tests : 4 800 €
-Temps interne : 32 h
-Autres coûts ponctuels déjà chiffrés : 0 € dans cet exemple fictif
-Exploitation mensuelle : 140 €
+### D.10 Hagnéré Code — grille tarifaire publique
 
-Heures actuelles :
-120 × 9 ÷ 60 × 24 = 432 h
+| Champ | Contenu |
+|---|---|
+| URL | `https://hagnere-code.ai/tarifs` |
+| Ouverte le | 30 août 2026, HTTP 200 (314 826 octets) |
+| Source de vérité dans le dépôt | `src/components/tarifs/body.ts`, relue le même jour |
+| Valeurs relevées, page servie et dépôt concordants | « Audit processus / Outils internes sur mesure — **990 € HT** — 1 jour, sur site ou en visio » ; « Discovery Sprint — **1 500 € HT** — 2 jours — Déduit si la phase 2 est lancée avec nous : conditions au devis » ; outils internes **8 k€ HT** (Starter), **25 k€ HT** (Pro), **80 k€ HT** (Enterprise) ; maintenance « Repère indicatif : ≈ **2 500 € HT / mois** » ; « Au-delà de 8 k€ HT, on ne signe rien sans cadrage payé » |
+| Concordance avec l'article | l'article écrit « 8 000 € HT » là où la grille écrit « 8 k€ HT » (même montant), et reprend exactement les 1 500 € HT, les deux jours et la déduction conditionnelle. Les mentions « repères publics et indicatifs » et « le devis signé fixe le prix ferme » sont présentes des deux côtés |
+| Test | un contrôle colocalisé relit `body.ts` et échoue si l'un des trois montants disparaît de la grille |
 
-Heures techniquement retirables :
-432 × 0,70 = 302,40 h
+### D.11 Sources citées et non rouvertes
 
-Heures réellement retirées après adoption :
-302,40 × 0,80 = 241,92 h
+**Aucune.** Les dix sources listées dans le bloc « Sources » de la page ont été
+ouvertes le 30 août 2026 et lues dans le document original. Deux ont demandé un
+détour, consigné ci-dessus : la Banque de France (403 sur `WebFetch`, obtenue par
+`curl`) et France Num (réponse vide sur `WebFetch`, obtenue par `curl`).
 
-Heures réaffectées à un travail utile identifié :
-241,92 × 0,60 = 145,152 h
+### D.12 Ce qui n'a pas pu être revérifié
 
-Valeur de capacité :
-145,152 × 38 = 5 515,776 €, affiché 5 515,78 €
-
-Coût initial renseigné :
-4 800 + 32 × 38 + 0 = 6 016 €
-
-Coût renseigné :
-6 016 + 140 × 24 = 9 376 €
-
-Écart :
-5 515,776 − 9 376 = −3 860,224 €, affiché −3 860,22 €
-
-ROI :
-−3 860,224 ÷ 9 376 × 100 = −41,17 %, affiché −41,2 %
-
-Décision :
-Avec ces seules hypothèses, ne pas acheter cette version. Tester une fonction
-existante, réduire le coût, élargir prudemment le processus et recalculer, ou
-ne pas investir.
-
-Contre-calcul sur la composition des cas :
-8 cas simples à 3 min + 2 exceptions à 30 min = 84 min. Automatiser les seuls
-cas simples retire 24 min, soit 24 ÷ 84 = 28,5714 % du temps, et non 80 %.
-
-Contre-calcul sur l’adoption :
-à 220 cas/mois, une adoption moyenne de 80 % donne une valeur de capacité de
-10 112,256 € et un écart de +736,256 €. Si l’adoption vaut 40 % pendant
-6 mois puis 80 % pendant 18 mois, sa moyenne pondérée sur 24 mois est 70 % ;
-la valeur de capacité tombe à 8 848,224 € et l’écart à −527,776 €.
-
-Contre-calcul sur le coût variable :
-à 600 cas/mois, la valeur de capacité vaut 27 578,88 €. Le coût mensuel seuil
-est `(27 578,88 − 6 016) ÷ 24 = 898,4533 €`. À 899 €/mois, l’écart devient
-légèrement négatif ; le test automatisé retient 900 €/mois.
-```
-
-### G3. Tests manuels indépendants et cas limites
-
-| Cas | Entrée ou variation | Résultat attendu |
+| Élément | Pourquoi | Conséquence |
 |---|---|---|
-| Porte fermée | résultat non mesurable + forte valeur économique | `blocked`, car une porte ne se compense pas |
-| Scénario défavorable | valeurs G2, cinq portes ouvertes | `unfavorable`, écart négatif |
-| Scénario positif | 600 cas/mois, autres valeurs G2, portes ouvertes | `pilot`, écart positif ; cette sensibilité ne promet pas que le coût reste fixe au volume |
-| Adoption progressive | 220 cas/mois ; comparer 80 % cible et 70 % moyenne pondérée | `pilot` à 80 %, `unfavorable` à 70 % |
-| Coût ponctuel omis | scénario 220 cas/mois + 1 000 € | l’écart positif devient négatif |
-| Coût variable au volume | 600 cas/mois et 900 €/mois | `unfavorable`, malgré le scénario positif à 140 €/mois |
-| Pourcentage > 100 | automatisation 300 % | borné à 100 % |
-| Valeur négative | cas ou coût négatif | neutralisé à zéro |
-| Coût nul | tous coûts nuls | ROI `null`, retour 0 si la contribution mensuelle est positive, pas de division par zéro |
-| Gain mensuel ≤ exploitation | très faible volume, coût mensuel élevé | retour `null` |
-| Horizon 0 | 0 mois | borné à 1 mois |
+| La mesure « 4 191 mots, 20,955 minutes » du commentaire de `page.tsx`, et la répartition des huit minutes entières entre les sections | `scripts/measure-guide-readtime.mjs` lit la page **servie** sur `http://localhost:3000`. Aucun serveur de développement n'était disponible au moment du contrôle (connexion refusée sur 3000, 3001, 3003 ; 404 sur 3002), et la production sert encore l'ancienne version | Le nombre de 4 191 mots est **repris de la page, non re-mesuré**. Il reste borné indirectement : le test colocalisé, qui porte la même logique de dépouillement, exige entre 3 000 et 4 200 mots et une cohérence à ±1 minute avec le registre ; il passe (§H) |
 
-### G4. Tests métier du pilote
+### D.13 Source ouverte hors de l'article
 
-Cas normal, champ absent, doublon, accès expiré, outil tiers indisponible,
-échec après action partielle, valeur inhabituelle et retour manuel. Pour chaque
-cas : résultat attendu, alerte, état du dossier et preuve à conserver.
+Ouverte pour instruire l'écart É3, **elle n'est pas citée par l'article** :
+`https://learn.microsoft.com/en-us/troubleshoot/power-platform/power-automate/flow-management/manage-orphan-flow-when-owner-leaves-org`
+(`ms.date` 2026-06-11, ouverte le 30 août 2026, HTTP 200). Elle décrit le sort
+d'un flux dont le propriétaire quitte l'organisation : « An orphaned flow is a
+flow that no longer has a valid owner. These flows **can fail** if they use
+connections tied to that user account. […] These steps help maintain business
+continuity and **reduce failures** caused by lost or invalid connections. »
+L'éditeur documente donc des **échecs**, et la remédiation consiste à assigner un
+co-propriétaire. Il ne documente pas l'arrêt silencieux sans exécution en erreur
+décrit par le troisième incident de la section 07.
 
-## H. Journal des passes
+---
 
-### Passe 1 — création
+## E. Registre des affirmations vérifiables
 
-```text
-Agent : /root/passe_1_creation
-État : VALIDEE_GATE_G1
-Fichiers lus intégralement :
-- CLAUDE.md
-- docs/regle-or-vigilance-seo-publication.md
-- docs/charte-qualite-guides.md
-- docs/roadmap-guides-seo.md
-- docs/workflow-maitre-guides-4-passes.md
-- docs/research/automatiser-processus-metier.md dans son état remis à zéro
-- src/components/guides/guide-premium-layout.tsx
-- src/components/guides/guide-premium-faq-categorized.tsx
-- src/components/guides/guide-content-blocks.tsx
-- src/app/guides/automatiser-processus-metier/page.tsx, uniquement pour les API
-  techniques ; aucun texte, chiffre, plan ou exemple réutilisé comme source
+Trois natures, jamais mélangées : **FAIT** (avec localisateur), **HYPOTHÈSE**
+(du cas construit, sans source, posée à découvert), **CALCUL** (dérivé des deux
+premières, refait en §G).
 
-Fichiers modifiés :
-- src/app/guides/automatiser-processus-metier/page.tsx
-- src/app/guides/automatiser-processus-metier/opengraph-image.tsx
-- src/app/guides/automatiser-processus-metier/process-priority-tool.tsx
-- src/app/guides/automatiser-processus-metier/process-priority-tool.test.ts
-- src/lib/guides.ts, unique entrée du slug
-- docs/research/automatiser-processus-metier.md
-- docs/research/manifests/automatiser-processus-metier-p1.sha256
+| ID | Affirmation telle qu'elle est publiée | Nature | Localisateur | Statut |
+|---|---|---|---|---|
+| F01 | Le coût horaire du travail 2025 est de 44,70 € pour l'ensemble des secteurs marchands | FAIT | D.1, tableau INSEE colonne 2025 | Vérifié le 30/08/2026 |
+| F02 | Ce champ ne couvre que les entreprises de dix salariés ou plus, apprentis inclus | FAIT | D.1, libellé du champ | Vérifié |
+| F03 | Le retard de paiement moyen des entreprises françaises est de 13,6 jours au T4 2024, contre 13,4 jours en Europe, en hausse d'environ un jour sur un an | FAIT | D.2, chiffres-clés p. 8 et §1.2 p. 14 du PDF | Vérifié |
+| F04 | Chez Zapier, seules les actions qui réussissent comptent ; déclencheurs, filtres et chemins ne comptent pas, actions en erreur non plus | FAIT | D.4, trois citations | Vérifié |
+| F05 | Rejouer une exécution entière refait tourner les étapes déjà réussies et les recompte | FAIT | D.4, « Any previously successful steps… » | Vérifié |
+| F06 | Plan Professional annuel : 750 tâches pour 19,99 $, 2 000 pour 49 $, 5 000 pour 89 $, 100 000 pour 489 $ | FAIT | D.5, grille du 30/08/2026 | Vérifié ; palier 1 500 → 39 $ non cité |
+| F07 | Une licence Microsoft 365 donne 6 000 requêtes par utilisateur et par 24 heures | FAIT | D.3, deux tables concordantes | Vérifié |
+| F08 | Côté Power Platform, les actions en échec, les nouvelles tentatives et la pagination sont comptabilisées | FAIT | D.3, définition d'une requête | Vérifié |
+| F09 | Le quota ne se reporte pas d'un jour sur l'autre | FAIT | D.3, FAQ report | Vérifié |
+| F10 | Un flux automatisé ou planifié utilise toujours les limites de son propriétaire | FAIT | D.3, FAQ limites de compte | Vérifié |
+| F11 | Power Automate Premium monte à 40 000 requêtes par utilisateur et par jour ; une licence Process à 250 000 ; un module de capacité ajoute 50 000 | FAIT | D.3, table des licences et module complémentaire | Vérifié ; « par flux » / « par licence », voir D.3 |
+| F12 | Toutes les organisations sont dans une période de transition où les limites appliquées sont plus larges que les limites officielles, et l'éditeur recommande de dimensionner sur les officielles | FAIT | D.3, section période de transition | Vérifié |
+| F13 | Les sélecteurs d'un robot d'interface dépendent de la structure de l'application | FAIT | D.9, « structure hiérarchique » | Vérifié |
+| F14 | Il faut compter le retest à chaque version du logiciel piloté | RECOMMANDATION | Déduction éditoriale à partir de D.9 ; aucune obligation dans la source | Signalée comme telle ici, non signalée dans la page |
+| F15 | Une AIPD est requise lorsqu'un traitement est susceptible d'engendrer un risque élevé pour les droits et libertés, et la question se tranche avant la mise en œuvre | FAIT | D.8, deux citations | Vérifié |
+| F16 | L'automatisation ne suffit ni à conclure qu'une AIPD est requise, ni à l'écarter | FAIT reformulé | D.8, mécanique « deux critères sur neuf » | Vérifié, voir la démonstration en D.8 |
+| F17 | La CNIL recommande des tests sur données fictives ou anonymisées, des habilitations, une journalisation, des sauvegardes testées et un plan de continuité | FAIT | D.7, fiches 11, 5, 16, 17, 18 | Vérifié |
+| F18 | Inventorier les tâches répétitives, mesurer fréquence et durée, tenir compte de la complexité, de l'impact d'une erreur, des tests et de la maintenance | FAIT | D.6, « Priorisez selon le gain potentiel » | Vérifié |
+| F19 | Le premier palier d'outil interne de la grille Hagnéré Code s'affiche à 8 000 € HT ; au-delà, un cadrage payé à 1 500 € HT sur deux jours est systématique, déduit si la phase suivante est lancée | FAIT | D.10, page servie + `body.ts` | Vérifié |
+| F20 | L'audit de processus internes est à 990 € HT pour un jour ; la maintenance a un repère indicatif de 2 500 € HT par mois | FAIT | D.10 | Vérifié |
+| F21 | Le calculateur ne fait aucun envoi réseau | FAIT | Lecture de `process-priority-tool.tsx` : état React local, aucun `fetch`, aucun `<form>`, aucun `localStorage`. Test dédié | Vérifié le 30/08/2026 |
+| F22 | La médiane décrit le cas courant, la moyenne est la seule des trois valeurs qui s'additionne | FAIT arithmétique | Propriété de la moyenne : `Σ(xᵢ) = n × moyenne`. Ne vaut pour aucune médiane ni aucun décile | Vérifié |
+| F23 | « 80 % des dossiers » ne veut pas dire « 80 % du temps » | CALCUL | §G.2, contre-exemple des dix dossiers | Vérifié |
+| F24 | Le coût horaire ne change jamais le signe d'un décompte dont tous les postes sont du temps interne | FAIT arithmétique | L'écart s'écrit `(heures rendues − heures dépensées) × taux` ; le taux est un facteur positif commun. Vérifié aussi par balayage dans le test à 22, 32, 44,7, 65 et 120 €/h | Vérifié, et la condition « tous les postes sont du temps interne » est écrite dans la page |
+| F25 | Un flux qui rend 39,78 heures sur douze mois ne justifie pas le premier palier à 8 000 € HT, et allonger l'horizon n'y change rien puisqu'il dégage 864 € sur trois ans | CALCUL + FAIT | §G.5 pour les 864 €, D.10 pour les 8 000 € | Vérifié |
+| F26 | Le flux de relance s'arrête sans alerte quand le compte de son propriétaire est désactivé, et aucune exécution en erreur n'est produite | **NON SOURCÉ** | Aucune des dix sources citées. La source éditeur non citée (D.13) documente au contraire des échecs | **Écart É3** |
+| F27 | Un tableau croisé donne la courbe en dix minutes ; l'expert-comptable sort le coût horaire en quelques minutes ; le comptable sort deux extractions de balance âgée en une heure ; un flux sans code se démonte en une heure | **NON SOURCÉ** | Aucune source, aucun protocole | **Écart É5** |
+| F28 | Vingt dossiers consécutifs suffisent à sortir un neuvième décile exploitable | **NON SOURCÉ** | Règle éditoriale ; sur 20 valeurs, le neuvième décile est la 18ᵉ | **Écart É6** |
 
-Recherches :
-- sources France Num, CNIL, EUR-Lex, Anact, Microsoft Learn et NIST
-- quatre résultats représentatifs de la SERP FR/EN
-- vérification contradictoire des chiffres, prix, délais et promesses observés
+### Affirmations que l'article ne fait pas, et qu'il serait facile de lui prêter
 
-Affirmations :
-- F01 à F30 consignées
-- huit affirmations externes fortes écartées faute de périmètre ou de preuve
+- il ne dit jamais que les relances de factures sont le bon premier processus
+  **en général** : elles le sont dans le cas construit, parce qu'elles seules
+  passent les cinq questions ;
+- il ne promet aucun gain : son propre décompte sort négatif à douze mois ;
+- il ne dit pas que l'incident du quota se produit aujourd'hui : il écrit
+  explicitement que c'est « un incident à préparer, pas un incident
+  d'aujourd'hui », la période de transition étant en cours ;
+- il ne présente aucun des montants décalés (5 550 €, 83 250 €, 88 800 €) comme
+  une perte : seuls 0,91 €, 109,48 € et 124,08 € de coût de financement, plus
+  des heures, sont comptés.
 
-Calculs :
-- modèle heures actuelles → temps retiré → adoption → réaffectation → valeur
-- coût initial et coût connu sur le même horizon
-- écart, ROI et retour du coût initial
-- scénario fictif G2 recalculé
-- cas limites G3 couverts par test unitaire
+---
 
-Contrôles :
-- `npx vitest run src/app/guides/automatiser-processus-metier/process-priority-tool.test.ts`
-  → premier passage : 4/5, écart d’arrondi dans l’attente du test de retour ;
-  attente corrigée de 66,94 à 66,98 mois après recalcul ; second passage : 5/5
-- `npx eslint src/app/guides/automatiser-processus-metier/page.tsx
-  src/app/guides/automatiser-processus-metier/opengraph-image.tsx
-  src/app/guides/automatiser-processus-metier/process-priority-tool.tsx
-  src/app/guides/automatiser-processus-metier/process-priority-tool.test.ts
-  src/lib/guides.ts` → succès
-- `npx tsc --noEmit` → succès
-- `npm run measure:guide-readtime -- automatiser-processus-metier`
-  → 2 889 mots visibles, 14 min ; registre réconcilié
-- rendu local Next.js → HTTP 200 ; 475 193 octets dans l’HTML initial ;
-  un H1, un `Article`, un `BreadcrumbList`, zéro `FAQPage`, zéro `HowTo`,
-  CTA et calculateur présents
-- recherche ciblée → aucun lien vers un guide supprimé, aucun téléchargement
-  XLS/XLSX/CSV, aucun prix ou délai de marché
-- `git diff --check` global → échec limité à deux espaces finaux dans
-  `docs/workflow-maitre-guides-4-passes.md:3-4`, fichier partagé hors
-  périmètre P1 ; signalé à l’orchestrateur
-- `git diff --check -- <artefacts P1>` → succès
+## F. Registre des hypothèses du cas construit
 
-Risques résiduels :
-- aucune donnée Search Console ou Keyword Planner fournie en P1
-- les limites et licences des éditeurs restent volatiles ; aucun seuil n’est
-  publié, la revalidation au moment du choix est demandée
-- la portée juridique et sécurité dépend du cas ; le guide route vers DPO,
-  responsable sécurité ou conseil adapté
-- le contrôle whitespace global reste à corriger par l’orchestrateur dans
-  `docs/workflow-maitre-guides-4-passes.md:3-4`, hors périmètre autorisé P1
-- P2 doit vérifier de nouveau chaque source, refaire les calculs sans reprendre
-  le résultat et chercher un contre-cas supplémentaire
-- la validation P1 n’est ni P2, ni P3, ni P4, ni publication
+Vingt-deux hypothèses, aucune sourcée, toutes posées à découvert. L'article
+étiquette son cas dès le chapô, dans le bandeau, dans le premier paragraphe et
+dans l'encadré du fil rouge : « les volumes, les durées, l'effectif, la ville et
+la facture moyenne sont choisis pour la démonstration et ne viennent d'aucune
+source » ; « Ce n'est pas un dossier client ». Quatre tests vérifient que ces
+étiquettes précèdent la première mesure.
 
-Décision orchestrateur : GO_PASSE_2
-Manifeste : docs/research/manifests/automatiser-processus-metier-p1.sha256
-SHA-256 : validé par l’orchestrateur, puis régénéré après inscription du gate.
-```
+| ID | Hypothèse | Valeur posée | Déclarée dans la page ? |
+|---|---|---|---|
+| H01 | Secteur, taille et ville de l'entreprise | négoce de matériel électrique, 26 salariés, Nancy | Oui, étiquette explicite |
+| H02 | Équipe du cas | Nadia (ADV), un comptable, deux chargés d'affaires, un magasinier | Oui |
+| H03 | Volume et durées, commandes clients | 320/mois, 6 min de moyenne, 22 min au neuvième décile | Oui |
+| H04 | Volume et durées, devis de dépannage | 60/mois, 25 min, 70 min | Oui |
+| H05 | Volume et durées, fiches d'intervention | 140/mois, 9 min, 26 min | Oui |
+| H06 | Volume et durées, relances de factures échues | 90/mois, 8 min, 15 min | Oui |
+| H07 | Contre-exemple des dix dossiers | 8 dossiers à 3 min, 2 à 30 min | Oui, présenté comme une démonstration |
+| H08 | Résultat des cinq questions sur les commandes | trois références divergentes sur dix dossiers rejoués, quarante clients et quarante mises en page | Oui |
+| H09 | Résultat sur les devis | la règle de remise a bougé deux fois dans l'année | Oui |
+| H10 | Résultat sur les fiches d'intervention | l'ERP n'expose aucune interface documentée | Oui |
+| H11 | Forme du flux de relance | 1 déclencheur, 2 filtres, 6 actions | Non déclarée comme hypothèse |
+| H12 | Boucle mal écrite du second flux | 320 commandes parcourues, 4 actions à l'intérieur, 4 passages par jour | Non déclarée comme hypothèse |
+| H13 | Abonnement de plateforme à 0 € de plus | l'entreprise paie déjà des licences Microsoft 365 avec accès à Power Platform, et le flux tient sous le quota | Partiellement : « Compris dans Microsoft 365, sous le quota » et « sur l'abonnement déjà payé » |
+| H14 | Part du temps techniquement retirable | 65 % | **Oui, nommément** : « ne sortent d'aucune source » |
+| H15 | Adoption moyenne sur douze mois | 85 % | Oui, nommément |
+| H16 | Part des heures libérées réaffectée à un travail identifié | 50 % | Oui, nommément |
+| H17 | Construction du flux, en interne | 4 jours de 7 heures, soit 28 h | Oui, nommément |
+| H18 | Suivi et corrections | 2 h par mois, soit 89,40 €/mois | Oui, nommément |
+| H19 | Facture moyenne relancée | 1 850 € TTC | **Oui, nommément** : « Quatre nombres entrent ici sans venir d'une source » |
+| H20 | Jours gagnés sur le retard de paiement | 4 jours | Oui, nommément |
+| H21 | Taux de financement du besoin de trésorerie | 6 % et 3 % essayés ; 6 % retenu pour les incidents | Oui, nommément, avec le cas « trésorerie non rémunérée : elle ne vaut rien » |
+| H22 | Paramètres des trois incidents | 1 h pour comprendre le quota ; 23 exécutions en erreur puis 15 jours de suspension et 2 h de comptable ; 16 jours d'arrêt et 6 h pour republier sous un compte de service | Oui, « ce ne sont pas des dossiers clients » |
 
-#### GATE_P1
+**Cohérence des décomptes internes de la page.** La section 05 annonce « une
+seule des six hypothèses vient d'une source publique » puis en nomme cinq non
+sourcées : 1 + 5 = 6 ✔. La section 06 annonce « quatre nombres […] sans venir
+d'une source » puis en nomme la facture moyenne, les quatre jours et deux taux :
+1 + 1 + 2 = 4 ✔. La section 05 renvoie explicitement à ces quatre-là (« La
+section 06 en ajoutera quatre autres, aussi peu sourcées, et ce sont elles qui
+renversent le verdict »). Les deux décomptes sont exacts **pour le périmètre
+qu'ils annoncent** — le tableau à douze mois et le calcul de trésorerie. Ils ne
+couvrent pas H01 à H13 ni H22, qui relèvent de l'étiquette générale du cas
+construit.
 
-```text
-Décision : GO_PASSE_2
-Contrôles :
-- intention : réponse directe à « quel processus automatiser en premier » ;
-  choix, refus, simplification et pilote sont tous actionnables
-- sources : France Num, CNIL, RGPD, Anact, Microsoft Learn et NIST relus ;
-  limites et nature volontaire/éditoriale correctement signalées
-- calculs : 432 h, 241,92 h, 145,152 h, 5 515,776 €, 9 376 €,
-  −3 860,224 €, −41,1713 % et 66,9754 mois recalculés indépendamment
-- structure : dix sections complètes, cinq portes, six réponses, exemple
-  fictif, outil local, protocole de test, responsabilités, sécurité et FAQ
-- technique : manifeste initial 6/6 OK ; Vitest 5/5 ; ESLint et TypeScript
-  verts ; HTTP 200 ; 2 894 mots visibles et 14 min ; un H1, Article et
-  BreadcrumbList ; aucun FAQPage/HowTo ; rendu desktop comparé au gabarit ;
-  scénario interactif positif vérifié sur localhost
-Corrections exigées : aucune en P1
-SHA-256 validé : oui ; manifeste P1 régénéré après cette décision
-```
+---
 
-### Passe 2 — enrichissement et vérification
+## G. Recalculs à la main
 
-```text
-Agent : /root/passe_2_verification
-État : TERMINEE_EN_ATTENTE_GATE_G2
+Tous les calculs ci-dessous ont été refaits **indépendamment du composant**, en
+arithmétique décimale exacte, le 30 août 2026. Chaque étape est écrite pour
+qu'un lecteur extérieur puisse la refaire avec une calculatrice.
 
-Précondition :
-- `shasum -a 256 -c
-  docs/research/manifests/automatiser-processus-metier-p1.sha256`
-  exécuté avant toute modification P2 : 6/6 artefacts P1 conformes
-
-Fichiers lus intégralement :
-- CLAUDE.md
-- docs/regle-or-vigilance-seo-publication.md
-- docs/charte-qualite-guides.md
-- docs/roadmap-guides-seo.md
-- docs/workflow-maitre-guides-4-passes.md
-- docs/research/automatiser-processus-metier.md et les six artefacts P1
-- src/components/guides/guide-premium-layout.tsx
-- src/components/guides/guide-premium-faq.tsx
-- src/components/guides/guide-premium-faq-categorized.tsx
-- src/components/guides/guide-premium-toc-pills.tsx
-- src/components/guides/guide-premium-mobile-cta.tsx
-- src/components/guides/guide-premium-types.ts
-- src/components/guides/guide-content-blocks.tsx
-- src/components/guides/GuidesShell.tsx
-
-Fichiers modifiés :
-- src/app/guides/automatiser-processus-metier/page.tsx
-- src/app/guides/automatiser-processus-metier/opengraph-image.tsx
-- src/app/guides/automatiser-processus-metier/process-priority-tool.tsx
-- src/app/guides/automatiser-processus-metier/process-priority-tool.test.ts
-- src/lib/guides.ts, unique entrée du slug
-- docs/research/automatiser-processus-metier.md
-- docs/research/manifests/automatiser-processus-metier-p2.sha256
-
-Sources relues contradictoirement :
-- France Num : publication 2025-11-14, mise à jour 2026-07-09 ; méthode
-  fréquence × durée, complexité, impact d’une erreur, test et maintenance
-- CNIL sécurité 2024 : conception, données fictives, habilitations, journaux,
-  sauvegardes testées, continuité et responsabilités
-- CNIL sous-traitance : contrat, incidents, contrôles, chaîne de
-  sous-traitants, localisation, restitution et destruction
-- RGPD article 22 sur EUR-Lex et fiche CNIL : conditions cumulatives,
-  exceptions, information, contestation et intervention humaine réelle
-- CNIL AIPD : exigence liée au risque élevé, à qualifier avant mise en œuvre ;
-  aucune automaticité fondée sur la seule présence d’IA
-- Anact : boîte à outils QVCT numérique 2024 ; cadrage depuis le travail réel,
-  articulation des dialogues et participation active des utilisateurs finaux,
-  sans généraliser un effet causal de productivité
-- Microsoft Learn : limites de flux par produit/licence et dépendance des
-  automatisations d’interface aux éléments et sélecteurs
-- NIST AI RMF : cadre volontaire en révision, utilisé seulement pour les tests
-  et la surveillance dans la durée
-- contrôle réseau du 2026-07-29 : France Num, quatre ressources CNIL, Anact, deux
-  pages Microsoft et NIST répondent HTTP 200 ; EUR-Lex répond HTTP 202
-
-Corrections factuelles et contradictoires :
-- séparation de sept réponses : simplification, fonction existante,
-  connecteur/API, flux no-code, RPA d’interface, sur-mesure, IA contrôlée
-- ajout de la fragilité propre aux sélecteurs, sessions et changements
-  d’interface d’un robot RPA
-- exemple des huit cas simples et deux exceptions explicitement fictif et
-  recalculé : 80 % des dossiers ne retirent ici que 28,6 % du temps
-- séparation des heures techniquement retirables, retirées après adoption,
-  réaffectées, puis de leur valeur de capacité
-- distinction visible entre valeur de capacité et dépense réellement évitée ;
-  aucun double comptage autorisé
-- adoption libellée comme moyenne sur tout l’horizon ; ajout d’un contre-cas
-  où une montée en charge progressive inverse la décision
-- ajout d’une entrée pour les autres coûts ponctuels déjà chiffrés ; zéro ne
-  vaut pas preuve d’absence et les coûts omis restent à confirmer
-- le résultat économique positif devient un candidat à un pilote limité et
-  précise qu’il n’autorise aucun déploiement
-- article 22 limité aux décisions individuelles exclusivement automatisées
-  avec effet juridique ou similaire significatif ; exceptions, garanties et
-  réexamen humain réel ajoutés
-- AIPD qualifiée séparément selon le risque élevé ; chaîne de sous-traitance,
-  pays, garanties et fin de contrat ajoutés
-- retrait des durées arbitraires par section ; temps global recalculé sur
-  l’HTML visible et registre porté de 14 à 18 minutes
-
-Calculs refaits sans reprendre les résultats P1 :
-- scénario principal : 432 h actuelles ; 302,4 h techniquement retirables ;
-  241,92 h retirées après adoption ; 145,152 h réaffectées ;
-  5 515,776 € de valeur de capacité ; 6 016 € de coût initial renseigné ;
-  9 376 € de coût total ; écart −3 860,224 € ; ROI −41,171331 % ;
-  retour théorique du coût initial 66,975419 mois
-- composition des cas : `(8 × 3) ÷ (8 × 3 + 2 × 30) = 28,5714 %`
-- 220 cas/mois : adoption moyenne 80 % → +736,256 € ; moyenne pondérée
-  70 % → −527,776 €
-- ajout de 1 000 € de coût ponctuel au cas 220 → −263,744 €
-- 600 cas/mois : +18 202,88 € à 140 €/mois ; seuil mensuel
-  `(27 578,88 − 6 016) ÷ 24 = 898,4533 €` ; résultat négatif à 900 €/mois
-
-Contrôles :
-- `npx vitest run
-  src/app/guides/automatiser-processus-metier/process-priority-tool.test.ts`
-  → 1 fichier, 9/9 tests réussis
-- ESLint ciblé sur page, image OG, outil, test et registre → succès
-- `npx tsc --noEmit` → succès
-- `npm run measure:guide-readtime -- automatiser-processus-metier`
-  avec `GUIDE_BASE_URL=http://127.0.0.1:3000` → 3 523 mots visibles,
-  18 minutes ; second passage identique après réconciliation du registre
-- HTML servi sur localhost:3000 → HTTP 200, 499 890 octets, un H1,
-  JSON-LD `Article` et `BreadcrumbList` seulement, FAQ et calculateur visibles,
-  zéro `FAQPage`, zéro `HowTo`, zéro attribut de téléchargement et zéro
-  référence XLS/XLSX/CSV
-- liens contenant `/guides` dans l’HTML servi → canonique du guide, `/guides`
-  et URL France Num ; le source ne contient aucun ancien slug local et ajoute
-  seulement la route de service active et les CTA `/demarrer-un-projet`
-- aucun lien local vers un ancien slug de guide ; aucun ancien libellé à six
-  réponses ; aucun ancien champ économique confondant temps et adoption
-- garde-fou « aucun déploiement » retrouvé dans le bundle client servi ;
-  scénario positif et portes non compensatoires couverts par Vitest
-- `git diff --check -- <six artefacts P2>` → succès avant manifeste
-
-Risques résiduels :
-- aucune donnée Search Console ou Keyword Planner n’a été fournie ; aucune
-  demande mensuelle ni difficulté de classement n’est affirmée
-- les limites, licences et interfaces des éditeurs sont volatiles et doivent
-  être revalidées lors d’un choix réel
-- le calcul valorise une capacité selon des hypothèses saisies ; il ne prouve
-  ni économie de trésorerie, ni revenu, ni coût d’erreur évité
-- la portée de l’article 22, l’AIPD, les transferts et les mesures de sécurité
-  dépend du traitement réel ; la page route vers DPO, sécurité ou conseil
-- pas de navigation interactive automatisée en P2 : contrôle proportionné par
-  HTML et bundles servis, calcul pur testé 9/9 ; le BAT navigateur final reste
-  à la batterie d’orchestration
-- P3 et P4 ne sont pas lancées ; aucun build de publication, commit, push,
-  déploiement ou contrôle d’indexation n’est revendiqué
-
-Décision orchestrateur : GO_PASSE_3
-```
-
-#### GATE_P2
+### G.1 Le modèle publié
 
 ```text
-Décision : GO_PASSE_3
-Contrôles indépendants de l’orchestrateur :
-- périmètre : agent P2 distinct de P1, six artefacts autorisés seulement ;
-  manifeste P2 vérifié 6/6 avant inscription du présent gate
-- sources : neuf ressources officielles ou primaires répondent HTTP 200 le
-  29 juillet 2026 ; portée de l’article 22, AIPD, sous-traitance, sécurité,
-  limites éditeur et caractère volontaire du NIST relus sur les sources
-- calculs : scénario principal, cas d’adoption, coût ponctuel omis, coût
-  mensuel au volume, seuil de 898,4533 € et contre-cas 28,5714 % recalculés
-  sans reprendre les résultats de l’agent
-- contenu : 3 523 mots visibles, réponse directe, sept solutions réellement
-  distinctes, refus/report possibles, hypothèses et inconnues explicites,
-  aucune promesse commerciale ou donnée SEO inventée
-- outil : scénario positif vérifié dans le navigateur à 600 cas/mois ;
-  résultat limité au pilote, puis immédiatement bloqué lorsqu’une porte est
-  fermée ; FAQ catégorisée testée par interaction
-- technique : Vitest 9/9, ESLint ciblé et TypeScript verts, HTTP 200, un H1,
-  JSON-LD Article + BreadcrumbList seulement, aucun FAQPage/HowTo,
-  téléchargement XLS/XLSX/CSV ou ancien lien de guide
-Corrections exigées : aucune
-SHA-256 validé : oui ; manifeste P2 régénéré après cette décision
+Heures actuelles   = cas par mois × minutes par cas ÷ 60 × mois
+Heures retirables  = heures actuelles × part techniquement retirable
+Heures retirées    = heures retirables × adoption moyenne
+Heures réaffectées = heures retirées × part réellement réemployée
+
+Valeur de capacité = heures réaffectées × coût horaire chargé
+Coût renseigné     = temps interne × coût horaire + abonnements × mois
+Écart              = valeur de capacité − coût renseigné
 ```
 
-### Passe 3 — polish rédactionnel
+Entrées du scénario publié : 90 cas/mois, 8 min/cas, 44,70 €/h, 65 %, 85 %,
+50 %, 28 h de construction, 89,40 €/mois de suivi, 0 € d'abonnement, 0 € d'autre
+coût, 12 mois, cinq questions au vert.
+
+### G.2 Les quatre lignes chronométrées
+
+| Processus | Cas/mois | Moyenne | `cas × min ÷ 60` | Heures publiées |
+|---|---:|---:|---|---:|
+| Commandes clients | 320 | 6 min | `320 × 6 ÷ 60 = 32` | 32 h ✔ |
+| Devis de dépannage | 60 | 25 min | `60 × 25 ÷ 60 = 25` | 25 h ✔ |
+| Fiches d'intervention | 140 | 9 min | `140 × 9 ÷ 60 = 21` | 21 h ✔ |
+| Relances de factures | 90 | 8 min | `90 × 8 ÷ 60 = 12` | 12 h ✔ |
+| **Total** | | | `32 + 25 + 21 + 12 = 90` | **90 h ✔** |
+
+Contre-exemple des dix dossiers : `8 × 3 + 2 × 30 = 24 + 60 = 84` minutes ;
+moyenne `84 ÷ 10 = 8,4` min ✔ ; médiane = 3 min ✔ ; part de temps retirée en
+automatisant parfaitement les huit cas simples : `24 ÷ 84 = 0,285714…` soit
+**28,6 %** ✔.
+
+Neuvième décile des commandes rapporté à la moyenne : `22 ÷ 6 = 3,67`, ce que
+l'article appelle « près de quatre fois plus » ✔.
+
+### G.3 Le décompte à douze mois, poste par poste
+
+| Poste | Calcul refait | Résultat exact | Publié |
+|---|---|---:|---:|
+| Temps consommé aujourd'hui | `90 × 8 × 12 ÷ 60` | 144 h | 144 h ✔ |
+| Part techniquement retirable | `144 × 0,65` | 93,60 h | 93,60 h ✔ |
+| Après adoption moyenne | `93,60 × 0,85` | 79,56 h | 79,56 h ✔ |
+| Réaffecté à un travail identifié | `79,56 × 0,50` | 39,78 h | 39,78 h ✔ |
+| Valeur de capacité | `39,78 × 44,70` | 1 778,166 € | 1 778,17 € ✔ (arrondi correct) |
+| Construction du flux | `28 × 44,70` | 1 251,60 € | 1 251,60 € ✔ |
+| Suivi et corrections | `2 × 12 × 44,70` = `24 × 44,70` | 1 072,80 € | 1 072,80 € ✔ |
+| Abonnement | `0` | 0 € | 0 € ✔ |
+| Coût renseigné total | `1 251,60 + 1 072,80` | 2 324,40 € | — |
+| **Écart à douze mois** | `1 778,166 − 2 324,40` | **−546,234 €** | **−546,23 €** ✔ |
+
+**Contrôle par une seconde route, en heures.** Heures dépensées :
+`28 + 24 = 52`. Heures rendues : 39,78. Différence : `39,78 − 52 = −12,22` h ✔,
+et `−12,22 × 44,70 = −546,234 €` — identique au centime. L'article publie les
+deux formulations ; elles concordent.
+
+### G.4 Le seuil de bascule à 118 relances
+
+Valeur rendue par une relance mensuelle sur douze mois :
 
 ```text
-Agent : /root/passe_3_polish
-État : TERMINEE_EN_ATTENTE_GATE_G3
-
-Précondition :
-- `shasum -a 256 -c
-  docs/research/manifests/automatiser-processus-metier-p2.sha256`
-  exécuté avant toute modification P3 : 6/6 artefacts P2 conformes
-
-Documents et artefacts relus intégralement :
-- Prompt #3 - Polish Rédactionnel.docx, texte extrait intégralement
-- CLAUDE.md
-- docs/regle-or-vigilance-seo-publication.md
-- docs/charte-qualite-guides.md
-- docs/workflow-maitre-guides-4-passes.md
-- docs/roadmap-guides-seo.md
-- docs/research/_modele-guide.md
-- docs/research/automatiser-processus-metier.md
-- les six artefacts du manifeste P2
-
-Fichiers modifiés :
-- src/app/guides/automatiser-processus-metier/page.tsx
-- src/app/guides/automatiser-processus-metier/process-priority-tool.tsx,
-  microcopie seulement
-- src/lib/guides.ts, unique entrée du slug
-- docs/research/automatiser-processus-metier.md
-- docs/research/manifests/automatiser-processus-metier-p3.sha256
-
-Fichiers P2 relus mais inchangés :
-- src/app/guides/automatiser-processus-metier/opengraph-image.tsx
-- src/app/guides/automatiser-processus-metier/process-priority-tool.test.ts
-
-Polish réalisé :
-- métatitre déclaratif de 51 caractères remplacé par la question décisionnelle
-  « Quel processus métier automatiser en premier ? », 46 caractères
-- métadescription recentrée sur les cinq portes, les sept réponses et le
-  calcul transparent, 146 caractères
-- ouverture et hero raccourcis : réponse et résultat attendu apparaissent
-  avant la méthode
-- titres des sections 1, 3, 5 et 9 rendus plus directs et orientés vers
-  l’action ; sommaire aligné sur ces formulations
-- transitions explicites ajoutées entre les dix sections sans créer de
-  résumé artificiel
-- no-code, interface d’échange/API, robot d’interface, ROI, CNIL, Anact, DPO,
-  RGPD et AIPD définis à leur première utilité ou reformulés en français
-  courant
-- CTA rendu concret avec « Décrire mon premier processus » sans modifier sa
-  destination, sa promesse ni le gabarit premium
-- FAQ clarifiée sur le no-code, le robot d’interface et le calcul économique
-- microcopie de l’outil clarifiée sur les portes, les coûts inconnus, le petit
-  volume du pilote, les heures réaffectées et la contribution mensuelle
-- relecture intégrale du résultat final après modification ; aucun nouvel
-  argument, chiffre, seuil, prix, délai, exemple ou source ajouté
-
-Invariant de fond :
-- les cinq portes, les sept réponses, les contre-cas P2, les limites
-  juridiques, les sources et tous les nombres sont conservés
-- le calculateur n’a reçu aucun changement de formule, d’état, d’API ou de
-  valeur initiale ; les 9 tests P2 restent inchangés
-- la valeur de capacité reste distincte d’une économie de trésorerie et un
-  résultat positif reste limité à un candidat pour un pilote
-- JSON-LD maintenu à Article + BreadcrumbList ; aucun FAQPage ou HowTo
-- aucun ancien slug de guide et aucun téléchargement XLS/XLSX/CSV
-- editorialStatus reste `ready-for-human-review`
-
-Mesure avant/après :
-- P2 : 3 523 mots visibles, 18 minutes
-- P3 : 3 811 mots visibles, 19 minutes, deux mesures identiques
-- évolution : +288 mots visibles, soit +8,2 %, principalement due aux
-  définitions utiles et aux transitions ; aucune section de remplissage
-
-Contrôles :
-- manifeste P2 vérifié avant édition : 6/6
-- `npx vitest run
-  src/app/guides/automatiser-processus-metier/process-priority-tool.test.ts`
-  → 1 fichier, 9/9 tests réussis
-- ESLint ciblé sur page, image OG, outil, test et registre → succès
-- `npx tsc --noEmit` → succès
-- recherche ciblée des formules éditoriales convenues, automatismes de
-  transition et superlatifs creux → aucune occurrence
-- HTML servi sur localhost:3000 → HTTP 200, 505 720 octets, un H1, dix
-  sections, JSON-LD Article et BreadcrumbList seulement, CTA, FAQ, tableaux
-  et calculateur présents
-- HTML servi → `noindex, nofollow` attendu pour la revue humaine, zéro
-  FAQPage/HowTo, téléchargement XLS/XLSX/CSV ou ancien lien de guide
-- `git diff --check -- <six artefacts P3>` → succès avant manifeste
-
-Risques résiduels :
-- aucun lecteur humain non technique indépendant n’a été recruté pendant P3 ;
-  le statut de revue humaine est donc conservé
-- les sources et interfaces d’éditeur restent volatiles ; aucune actualisation
-  factuelle n’a été nécessaire ni autorisée en polish
-- la batterie responsive complète, le build de publication, le commit, le
-  push, le déploiement et l’indexation relèvent des passes/gates suivantes
-- P4 n’est pas lancée ; l’absence de défaut rédactionnel relevé en P3 ne vaut
-  pas contre-audit antipasse IA
-
-Décision orchestrateur : GO_PASSE_4
-Manifeste : docs/research/manifests/automatiser-processus-metier-p3.sha256
+1 relance/mois → 1 × 8 × 12 ÷ 60           = 1,6 h de travail actuel
+                 1,6 × 0,65 × 0,85 × 0,50  = 0,442 h réaffectée
+                 0,442 × 44,70             = 19,7574 € de valeur de capacité
 ```
 
-#### GATE_P3
+Coût renseigné, indépendant du volume : 2 324,40 €.
 
 ```text
-Décision : GO_PASSE_4
-Contrôles indépendants de l’orchestrateur :
-- lecture pressée : le héros et le premier H2 répondent immédiatement ; les
-  cinq portes, sept options et la sortie pilote/refus sont repérables sans
-  connaître le vocabulaire d’un prestataire
-- lecture méfiante : les hypothèses, limites, contre-cas, coûts omis, reprise,
-  validation humaine, article 22 et AIPD restent visibles et qualifiés
-- clarté des chiffres : toutes les valeurs P2 sont inchangées ; Vitest 9/9 et
-  scénario navigateur à 600 cas/mois reproduit, puis bloqué par une porte
-- cohérence héros/corps/FAQ : même décision, même nombre d’options, même
-  distinction capacité/trésorerie et CTA vers /demarrer-un-projet
-- technique : manifeste P3 6/6, 3 811 mots visibles et 19 minutes, ESLint,
-  TypeScript et diff-check verts, HTTP 200, un H1, Article +
-  BreadcrumbList seulement, aucun ancien lien ou téléchargement tableur
-Point confié explicitement à P4 : éprouver les phrases de transition ajoutées
-par P3 afin de conserver seulement celles qui font réellement avancer la
-lecture.
-Corrections exigées avant P4 : aucune
-SHA-256 validé : oui ; manifeste P3 régénéré après cette décision
+Seuil exact = 2 324,40 ÷ 19,7574 = 117,647058…
 ```
 
-### Passe 4 — antipasse IA
+Premier entier strictement au-dessus : **118** ✔. Écart au volume actuel :
+`118 − 90 = 28` ✔ (« 28 de plus qu'aujourd'hui »). Contrôle inverse : à 117
+relances, `117 × 19,7574 = 2 311,62 €` < 2 324,40 €, l'écart reste négatif ✔.
+
+### G.5 Sensibilité au suivi, horizons et équilibre
+
+**Suivi ramené à une heure par mois.** Coût renseigné :
+`1 251,60 + 12 × 44,70 = 1 251,60 + 536,40 = 1 788,00 €`.
+Écart : `1 778,166 − 1 788,00 = −9,834 €` → **−9,83 €** ✔. Le flux « arrête
+simplement de coûter », il ne se paie toujours pas ✔.
+
+**Trois horizons, le modèle étant linéaire en mois.**
+
+| Horizon | Heures réaffectées | Heures dépensées | Écart en heures | Écart en euros | Publié |
+|---:|---:|---:|---:|---:|---:|
+| 12 mois | `3,315 × 12 = 39,78` | `28 + 24 = 52` | −12,22 | −546,234 € | −546 € ✔ |
+| 24 mois | `3,315 × 24 = 79,56` | `28 + 48 = 76` | +3,56 | +159,132 € | **+159 €** ✔ |
+| 36 mois | `3,315 × 36 = 119,34` | `28 + 72 = 100` | +19,34 | +864,498 € | **+864 €** ✔ |
+
+(3,315 h réaffectées par mois = `90 × 8 ÷ 60 × 0,65 × 0,85 × 0,50`.)
+
+**Équilibre.** Contribution mensuelle nette :
+`1 778,166 ÷ 12 − 89,40 = 148,1805 − 89,40 = 58,7805 €`.
+Délai : `1 251,60 ÷ 58,7805 = 21,29277…` → **21,3 mois** ✔. C'est la valeur que
+le calculateur affiche et celle que la prose annonce ; les deux viennent du même
+calcul.
+
+### G.6 La chaîne de trésorerie
+
+| Maillon | Calcul | Résultat exact | Publié |
+|---|---|---:|---:|
+| Encours mensuel relancé | `90 × 1 850` | 166 500 € | 166 500 € ✔ |
+| Encours annuel | `166 500 × 12` | 1 998 000 € | 1 998 000 € ✔ |
+| Immobilisé par jour de décalage | `1 998 000 ÷ 365` | 5 473,9726 € | 5 474 € ✔ |
+| Quatre jours gagnés | `5 473,9726 × 4` | 21 895,8904 € | 21 896 € ✔ |
+| Valeur annuelle à 6 % | `21 895,8904 × 0,06` | 1 313,7534 € | 1 314 € ✔ |
+| Écart corrigé à 6 % | `1 313,7534 − 546,234` | 767,5194 € | **+768 €** ✔ |
+| Valeur annuelle à 3 % | `21 895,8904 × 0,03` | 656,8767 € | 657 € ✔ |
+| Écart corrigé à 3 % | `656,8767 − 546,234` | 110,6427 € | **+111 €** ✔ |
+| Trésorerie non rémunérée | valeur nulle | — | l'écart reste à −546 € ✔ |
+
+### G.7 Les trois incidents
+
+Unités tenues par la page : une relance = une facture de 1 850 € TTC, trois par
+jour ; coût de financement = `montant × taux × jours ÷ 365`, à 6 % ; un envoi
+suspendu N jours sort avec `(N + 1) ÷ 2` jours de retard en moyenne.
+
+**Incident 1 — quota épuisé un mardi.**
 
 ```text
-Agent : /root/passe_4_contre_audit
-État : TERMINEE_EN_ATTENTE_GATE_G4
-
-Précondition :
-- `shasum -a 256 -c
-  docs/research/manifests/automatiser-processus-metier-p3.sha256`
-  exécuté avant toute modification P4 : 6/6 artefacts P3 conformes
-
-Documents et artefacts relus intégralement :
-- Prompt 4 - Antipasse IA.docx, texte extrait intégralement et rendu de neuf
-  pages inspecté
-- CLAUDE.md
-- docs/regle-or-vigilance-seo-publication.md
-- docs/charte-qualite-guides.md
-- docs/roadmap-guides-seo.md
-- docs/workflow-maitre-guides-4-passes.md
-- docs/research/automatiser-processus-metier.md
-- les six artefacts du manifeste P3
-
-Fichiers modifiés :
-- src/app/guides/automatiser-processus-metier/page.tsx
-- docs/research/automatiser-processus-metier.md
-- docs/research/manifests/automatiser-processus-metier-p4.sha256
-
-Fichiers P3 relus mais inchangés :
-- src/app/guides/automatiser-processus-metier/opengraph-image.tsx
-- src/app/guides/automatiser-processus-metier/process-priority-tool.tsx
-- src/app/guides/automatiser-processus-metier/process-priority-tool.test.ts
-- src/lib/guides.ts, y compris
-  `editorialStatus: "ready-for-human-review"`
-
-Audit des quinze motifs :
-1. Autosatisfaction : aucune promesse d’exclusivité, de supériorité ou de
-   guide « ultime ». « Calcul transparent » est conservé, car les formules et
-   limites sont réellement visibles.
-2. Séries artificielles : aucun « un, deux, trois » décoratif. Les dix
-   sections, cinq portes, sept réponses, quatre étapes du calcul et huit tests
-   sont conservés parce qu’ils correspondent à des objets fonctionnels,
-   vérifiables et exigés par le guide.
-3. Symétrie : « Ces portes ne disent pas… Elles disent… » est devenu
-   « Passer les cinq portes ne prouve pas… Cela indique seulement… ». Les
-   tableaux comparatifs restent parallèles par nécessité.
-4. Adjectifs commerciaux : aucune occurrence creuse relevée. Les termes
-   « significatif » et « risque élevé » sont conservés dans leur portée
-   juridique précise.
-5. Métaphores : les cinq portes non compensatoires sont conservées, car elles
-   structurent l’outil et empêchent un gain de masquer un risque. « Écrire
-   l’échec » reste dans le mémo final, immédiatement traduit par alerte,
-   dossier en attente, reprise et condition d’arrêt.
-6. Parenthèses : aucune cascade. Les parenthèses restantes définissent au
-   premier emploi ROI, API, no-code, CNIL, Anact, DPO, RGPD ou AIPD.
-7. Connecteurs robotiques : quatre transitions de pur balisage supprimées ;
-   « Indépendamment de l’article 22 » simplifié en « Même lorsque l’article 22
-   ne s’applique pas ». Les « notamment » juridiques sont conservés pour ne pas
-   transformer une liste non exhaustive en liste fermée.
-8. Conclusion répétitive : aucune répétition de l’ouverture. Le mémo final
-   conduit à une action observable : obtenir l’alerte, la reprise et la
-   condition d’arrêt avant de comparer les outils.
-9. Longueur uniforme : la phrase aphoristique sur « l’automatisation sans
-   responsable » est remplacée par deux questions directes de longueurs
-   différentes. Sur le HTML final : 34 phrases de 3 à 8 mots, 69 de 9 à 15,
-   63 de 16 à 22, 44 de 23 à 30 et 34 de 31 mots ou plus.
-10. Verbes neutres : le passage sur la notation nomme désormais le mécanisme
-    exact — un gain financier compense une erreur dans la note — et le passage
-    sur les rôles demande qui décide et qui traite l’alerte. Les verbes
-    fonctionnels des définitions sont conservés.
-11. Langage administratif : la transition juridique « Indépendamment de » a
-    été simplifiée. Les formulations de l’article 22 et de l’AIPD restent
-    précises pour ne pas altérer leur portée.
-12. Inversions artificielles : aucune occurrence relevée.
-13. Puces parallèles pauvres : aucune. Les listes de sécurité, les tableaux de
-    choix et les cas de test sont parallèles parce qu’ils servent une
-    comparaison ou une vérification ; chaque ligne apporte une décision,
-    conséquence ou preuve différente.
-14. Dramatisation : « un gros gain masquer un danger » est remplacé par le
-    mécanisme concret d’une note où le gain financier peut compenser une erreur
-    impossible à reprendre.
-15. Saut logique : le H2 « Un calcul positif en apparence… » ne correspondait
-    pas au scénario final négatif ; il devient « Les heures retirées ne
-    suffisent pas à justifier l’investissement ». Les transitions sans relation
-    causale ont été retirées.
-
-Transitions P3 examinées une par une :
-- « Pour vérifier ces conditions… » : conservée ; elle transforme les
-  conditions de sélection en prochaine action observable.
-- « Une fois le travail décrit… » : supprimée ; le H2 suivant porte déjà
-  l’action et la phrase n’ajoutait aucun lien causal.
-- « Quand une option paraît adaptée… » : conservée ; elle explique pourquoi le
-  calcul vient après la comparaison des solutions.
-- « Pour voir pourquoi ces précautions… » : supprimée ; annonce de
-  démonstration redondante avec le H2 suivant.
-- « Ces tests n’ont de valeur que si… » : conservée ; elle énonce la condition
-  de validité opérationnelle du pilote.
-- « Les rôles sont maintenant nommés… » : supprimée ; résumé du plan sans
-  information nouvelle.
-- « Rassemblez maintenant… » : supprimée ; le H2 et la fiche de décision
-  donnent déjà l’action.
-
-Invariants P2/P3 contrôlés :
-- cinq portes, sept options, neuf FAQ et dix sections conservées
-- formules, valeurs initiales, bornes, états et API du calculateur inchangés
-- scénario principal inchangé : 432 h, 302,4 h, 241,92 h, 145,152 h,
-  5 515,776 €, 6 016 €, 9 376 €, −3 860,224 €, −41,171331 % et
-  66,975419 mois
-- contre-cas inchangés : 28,5714 %, +736,256 €, −527,776 €, coût ponctuel de
-  1 000 €, seuil mensuel 898,4533 € et scénario à 900 €/mois
-- distinction capacité/dépense de trésorerie, coûts inconnus et absence de
-  double compte conservées
-- portée de l’article 22, exceptions, garanties, AIPD et renvois DPO/sécurité
-  conservés
-- un résultat positif reste seulement un candidat à vérifier par un pilote
-  limité et n’autorise aucun déploiement
-- CTA, destinations, gabarit premium, image OG et statut draft inchangés
-- JSON-LD limité à Article + BreadcrumbList ; aucun FAQPage/HowTo, ancien lien
-  de guide ou téléchargement XLS/XLSX/CSV
-
-Mesure finale :
-- 3 743 mots visibles
-- 19 minutes selon la convention du dépôt, deux mesures identiques
-- évolution P3 → P4 : −68 mots visibles, uniquement par retrait de
-  transitions ou reformulations de ton ; aucune section de fond supprimée
-
-Contrôles :
-- manifeste P3 vérifié avant édition : 6/6
-- `npx vitest run
-  src/app/guides/automatiser-processus-metier/process-priority-tool.test.ts`
-  → 1 fichier, 9/9 tests réussis
-- ESLint ciblé sur page, image OG, outil, test et registre → succès
-- `npx tsc --noEmit` → succès
-- `npm run measure:guide-readtime -- automatiser-processus-metier`
-  avec `GUIDE_BASE_URL=http://127.0.0.1:3000` → deux fois
-  3 743 mots visibles et 19 minutes
-- HTML servi sur 127.0.0.1:3000 → HTTP 200, 504 452 octets, un H1,
-  dix sections, neuf questions de FAQ, cinq tableaux, CTA et calculateur
-  visibles
-- HTML servi → JSON-LD Article et BreadcrumbList seulement ; zéro
-  FAQPage/HowTo, ancien lien de guide ou téléchargement XLS/XLSX/CSV ;
-  canonical exact et noindex,nofollow attendu pendant la revue humaine
-- recherche des automatismes, superlatifs et transitions convenus → seules
-  les trois transitions conservées et justifiées subsistent
-- `git diff --check -- <six artefacts P4>` → succès avant manifeste
-
-Notation finale argumentée :
-- 10/10 — réponse à l’intention : héros et première section répondent
-  immédiatement au choix du premier processus et autorisent le refus
-- 10/10 — exactitude et fraîcheur : aucune donnée P2 n’a été modifiée ; dates,
-  périmètres et limites officielles restent visibles
-- 10/10 — qualité des sources : France Num, CNIL, EUR-Lex, Anact, Microsoft
-  Learn et NIST sont attribués avec leur portée
-- 9/10 — valeur nouvelle : carte copiable, cinq portes, sept réponses,
-  calculateur local, cas négatif et protocole d’échec sont actionnables
-- 10/10 — décisions et contre-cas : simplifier, activer l’existant, reporter,
-  garder une décision humaine ou tester un pilote restent des sorties réelles
-- 10/10 — calculs et exemples : formules visibles, scénario fictif
-  reproductible et neuf tests couvrant aussi adoption et coûts omis
-- 9/10 — clarté non technique : termes définis au premier emploi et transitions
-  purement mécaniques retirées sans simplifier le droit à tort
-- 9/10 — fluidité et voix humaine : rythme varié, questions directes,
-  contre-exemples et refus conservés ; aucune familiarité fabriquée
-- 9/10 — cohérence SEO, métadonnées et maillage : intention, H1, title,
-  description, canonique, sources et liens actifs concordent
-- 9/10 — technique, accessibilité et rendu : HTTP, structure, tableaux, FAQ,
-  calculateur, JSON-LD, tests, ESLint et TypeScript sont verts ; le BAT
-  responsive final reste la responsabilité de l’orchestrateur
-- Total : 95/100
-- Axes sous 8 : aucun
-- Axes critiques sous 9 : aucun
-- P0 : aucun
-- P1 : aucun
-
-Risques résiduels :
-- aucun lecteur humain non technique indépendant n’a été recruté en P4 ;
-  `editorialStatus: "ready-for-human-review"` reste donc en place
-- les limites et interfaces des éditeurs restent volatiles ; aucune nouvelle
-  donnée factuelle n’a été ajoutée pendant cette passe
-- le BAT responsive aux dix largeurs, la batterie globale, le build, le commit,
-  le push, le déploiement et la vérification de production appartiennent à
-  l’orchestrateur
-- cette passe ne rend ni GATE_G4, ni GO_PUBLICATION, ni statut d’indexation
-
-Décision agent : PASSE_4_TERMINEE
-Décision orchestrateur : GO_PUBLICATION
-Manifeste : docs/research/manifests/automatiser-processus-metier-p4.sha256
+volume d'une journée      3 × 1 850          =  5 550 €      ✔ publié
+coût de financement       5 550 × 0,06       =    333
+                          333 ÷ 365          =      0,912328… → 0,91 €  ✔
+heure passée à comprendre 1 × 44,70          =     44,70 €   ✔
 ```
 
-#### GATE_P4
+**Incident 2 — rejeu puis suspension de quinze jours.**
 
 ```text
-Décision : GO_PUBLICATION
-Contrôles indépendants de l’orchestrateur :
-- manifeste P4 vérifié avant toute décision : 6/6 artefacts conformes
-- lecture intégrale de la page et du calculateur : intention résolue dès le
-  héros, cinq portes réellement bloquantes, sept réponses distinctes, cas de
-  refus, limites, coûts omis, responsabilités et reprise conservés
-- calculs refaits indépendamment : scénario principal 432 h, 302,4 h,
-  241,92 h, 145,152 h, 5 515,776 €, 9 376 €, −3 860,224 €, −41,171331 %
-  et 66,975419 mois ; contre-cas adoption, coût omis et seuil mensuel
-  reproduits
-- navigateur réel : scénario à 600 cas/mois positif à 18 203 €, 194,1 % et
-  6 mois ; le retrait d’une seule porte rebloque immédiatement la décision
-  malgré ce gain ; ouverture de FAQ et changement de catégorie fonctionnels
-- HTML servi : HTTP 200, un H1, dix sections attendues, canonical exact,
-  Article + BreadcrumbList seulement, aucun FAQPage/HowTo, ancien lien de
-  guide ou téléchargement XLS/XLSX/CSV
-- technique ciblée : Vitest 9/9, ESLint, TypeScript, temps de lecture stable
-  à 3 743 mots / 19 minutes et diff-check verts
-- contre-audit rédactionnel : les quatre transitions supprimées étaient bien
-  redondantes ; les trois transitions conservées apportent une action ou une
-  causalité ; aucun fait ni calcul n’a été dégradé
-Notation orchestrateur : 95/100 ; aucun axe sous 8, aucun axe critique sous 9
-P0 : aucun
-P1 : aucun
-Corrections exigées : aucune
-Réserve : GO_PUBLICATION autorise le retrait du statut de revue et l’ouverture
-à l’indexation dans un vrai artefact de production. Il ne prouve pas encore le
-build, le déploiement, le service de la route ni l’indexation effective.
+relances accumulées       15 × 3             =     45        ✔
+montant décalé            45 × 1 850         = 83 250 €      ✔
+retard moyen              (15 + 1) ÷ 2       =      8 jours  ✔ « huit jours »
+coût de financement       83 250 × 0,06      =  4 995
+                          4 995 × 8          = 39 960
+                          39 960 ÷ 365       =    109,479452… → 109,48 € ✔
+deux heures de comptable  2 × 44,70          =     89,40 €   ✔
+total mesurable           89,40 + 109,48     =    198,88 €   ✔
 ```
 
-## I. Clôture
+**Incident 3 — propriétaire du flux désactivé pendant seize jours.**
 
 ```text
-Guide : automatiser-processus-metier
-Version P4 : VALIDEE_PAR_GATE_G4
-Agents distincts P1/P2/P3/P4 : quatre agents distincts documentés
-Gates G1/G2/G3/G4 : G1 GO_PASSE_2 ; G2 GO_PASSE_3 ;
-  G3 GO_PASSE_4 ; G4 GO_PUBLICATION
-Score final : 95/100
-P0 : AUCUN
-P1 : AUCUN
-Tests locaux P4 : Vitest 9/9, ESLint, TypeScript, diff-check, HTTP 200,
-  HTML/JSON-LD, calculs indépendants, interactions et temps de lecture verts
-Batterie d’intégration orchestrateur : 401/401 tests globaux, 167/167
-  contrôles SEO, lint complet, TypeScript, diff-check et build Next.js de
-  production verts ; postbuild SEO indexable, 43 pages et 74 blocs JSON-LD
-BAT responsive orchestrateur : 320, 360, 390, 430, 640, 768, 1024, 1280,
-  1440 et 1600 px sans débordement horizontal ; contrôles visuels à 320, 768
-  et 1440 px, cartes mobiles, calculateur, FAQ et CTA mobile contrôlés
-Commit : AUCUN
-Déploiement : AUCUN
-URL servie : localhost:3000 vérifiée par l’orchestrateur ; production non
-  vérifiée
-Redirections testées : 100/100 anciennes routes en 308 exact ; neuf
-  destinations en 200 ; route inconnue en 404
-Indexation : NON_VERIFIEE
-Décision finale : GO_DEPLOIEMENT — en attente de commit, déploiement et
-contrôle de la production servie
+relances non parties      16 × 3             =     48        ✔
+montant décalé            48 × 1 850         = 88 800 €      ✔
+retard moyen              (16 + 1) ÷ 2       =      8,5 jours ✔
+coût de financement       88 800 × 0,06      =  5 328
+                          5 328 × 8,5        = 45 288
+                          45 288 ÷ 365       =    124,076712… → 124,08 € ✔
+six heures de republication 6 × 44,70        =    268,20 €   ✔
 ```
 
-## J. Durcissement qualité transversal du 29 juillet 2026
+Les trois montants décalés sont bien des multiples entiers de la facture
+moyenne : 3, 45 et 48 relances. Aucun flux fractionnaire ne s'y glisse — c'est
+précisément ce qui produit l'écart É1 avec les 5 474 € de la section 06.
 
-Cette section complète les quatre passes historiques. Elle ne les remplace pas
-et ne transforme pas leur ancien `GO_PUBLICATION` en preuve de production.
+### G.8 Les quotas de plateforme appliqués au flux
 
-### J.1 Objectif
+| Grandeur | Calcul | Résultat | Publié |
+|---|---|---:|---:|
+| Actions réussies Zapier | `6 actions × 90 relances` | 540 / mois | 540 ✔, sous le palier de 750 ✔ |
+| Requêtes Power Platform | `9 étapes × 90 relances` | 810 / mois | 810 ✔ (voir É2 et É4) |
+| Boucle mal écrite, par exécution | `320 commandes × 4 actions` | 1 280 | 1 280 ✔ |
+| Boucle, par jour | `1 280 × 4 passages` | 5 120 | 5 120 ✔, contre 6 000 par 24 h ✔ (même période, ici) |
 
-Une relecture sous tous les prismes a montré que le fond était déjà solide,
-mais que la sortie devait encore mieux réconcilier :
+### G.9 Synthèse arithmétique
 
-- la première décision du lecteur et la longueur du guide ;
-- l’identité visible de l’auteur et les entités du site ;
-- le rendu mobile, le CTA fixe et la FAQ ;
-- les images éditoriales et les recommandations Article ;
-- les metadata, robots, dates, sitemap et JSON-LD ;
-- le contrôle après la passe 4.
+**Cinquante-quatre lignes de calcul refaites en G.2 à G.8, cinquante-quatre
+concordances** — chacune porte sa marque `✔` en regard de la valeur publiée, et
+couvre l'intégralité des grandeurs chiffrées des sections 01 à 08. Aucun arrondi
+n'est faux : `1 778,166 → 1 778,17`, `−546,234 → −546,23`, `5 473,9726 → 5 474`,
+`21 895,8904 → 21 896`, `1 313,7534 → 1 314`, `656,8767 → 657`,
+`0,912328 → 0,91`, `109,479452 → 109,48`, `124,076712 → 124,08`,
+`21,29277 → 21,3`. Les arrondis affichés au titre des incidents (« 199 € » dans
+la formulation courte, 198,88 € dans le texte) sont cohérents.
 
-Le protocole obligatoire correspondant est
-`docs/instructions-guide-de-qualite.md`.
+---
 
-### J.2 Corrections et enrichissements
+## H. Ce que les tests colocalisés verrouillent
 
-- ajout d’un parcours express à cinq étapes et de quatre sorties qui ne
-  supposent pas un développement ;
-- ajout d’une illustration éditoriale visible, représentative du processus,
-  de l’exception et de la reprise humaine, déclinée en 16:9, 4:3 et 1:1 ;
-- reformulation du cas fictif en demandes d’intervention et mention explicite
-  qu’aucune donnée client n’est utilisée ;
-- définition de « processus métier » replacée avant le parcours express afin
-  que la méthode ne précède plus son objet ;
-- remplacement de l’ancien PDF Anact protégé par une page anti-robot par la
-  boîte à outils QVCT et numérique 2024, servie directement en PDF par
-  `anact.fr` (réponse HTTP 200 et type `application/pdf` contrôlés) ;
-- H1 équilibré, ponctuation non orpheline et statistique de confidentialité
-  limitée au calculateur ;
-- auteur visible, metadata et JSON-LD issus de `src/lib/team.ts` ;
-- CTA de formulaire représentés par une icône de message, pas par un
-  calendrier, avec déclenchement après le héros et masquage devant FAQ/contact ;
-- catégories de FAQ converties en vrais onglets ARIA avec navigation par
-  flèches, Home et End ; questions reliées à leurs réponses et activation
-  Entrée/Espace garantie ;
-- directives robots publiques/privées centralisées ;
-- dates réelles avec fuseau, sans heure fabriquée ;
-- `Article`, auteur, organisation, collection et site reliés par des `@id`
-  uniques et réutilisés ;
-- contrôle de l’artefact étendu aux trois images Article ;
-- vocabulaire du hub corrigé de « valeur réaffectable » vers « capacité
-  réaffectée ».
-- déclaration explicite de `happy-dom` dans les dépendances de développement
-  et le lockfile : la première construction Vercel du commit `4ce31ed` a révélé
-  que le test de FAQ dépendait d’un paquet seulement présent dans le cache
-  local ; une installation propre doit désormais réussir avant publication.
-- remplacement de l’aide React `act` par `flushSync` dans le test de FAQ :
-  la seconde construction Vercel du commit `cbe168b`, correctement installée,
-  a révélé que `act` n’est pas disponible dans le bundle React chargé avec
-  `NODE_ENV=production`. Le gate SEO est désormais rejoué explicitement avec
-  cet environnement avant publication.
-- montée de patch ciblée de Next.js `16.2.10` vers `16.2.12`, alignement de
-  `eslint-config-next` et mise à jour du Sharp direct vers `0.35.3` après
-  l’avis de sécurité officiel de juillet 2026 ; aucun `npm audit fix --force`
-  n’a été appliqué aux alertes transitives d’OpenNext, Wrangler ou aux
-  versions de Sharp encore imposées par leurs paquets parents.
+`npx vitest run src/app/guides/automatiser-processus-metier/` exécuté le
+**30 août 2026 à 22 h 53** : **2 fichiers, 57 tests, 57 passés, 0 échec**, durée
+1,19 s. Ce résultat est une observation datée, pas une garantie de non-régression
+future.
 
-### J.3 Batterie locale sur l’état final
+### `process-priority-tool.test.ts` (13 tests)
+
+- l'outil s'ouvre sur le dossier du guide **déjà résolu** : cinq cases cochées,
+  90 cas, 8 min, 44,70 €/h, 12 mois, suivi = `2 × 44,70`, construction = `4 × 7`,
+  aucun euro sortant ;
+- il reproduit ligne à ligne le tableau de la section 05 : 144 / 93,6 / 79,56 /
+  39,78 h, 1 778,166 €, 1 251,60 €, 2 324,40 €, −546,234 €, ROI −23,5 %,
+  décision `unfavorable` ;
+- l'identité en heures est vérifiée par une route différente de celle du
+  composant : `52 h` investies, `−12,22 h`, puis `× 44,70` ;
+- le seuil de 118 relances est retrouvé **par balayage** (volume par volume,
+  de 1 à 5 000), pas par la formule publiée ;
+- la sensibilité au suivi (`−9,834 €`) et l'invariance du signe au coût horaire
+  (22, 32, 44,7, 65, 120 €/h) sont vérifiées ;
+- les garde-fous : une seule réponse négative bloque quel que soit le gain,
+  pourcentages bornés à 100, entrées négatives neutralisées, ROI `null` si le
+  coût est nul, délai `null` si la contribution mensuelle ne couvre pas
+  l'exploitation.
+
+### `content-quality.test.ts` (44 tests) — ce qu'ils rendent non modifiable sans échec
+
+| Famille | Ce qui est verrouillé |
+|---|---|
+| Identité | H1 = titre du registre = `headline` structuré ; canonique ; seulement `Article` + `BreadcrumbList`, sans `FAQPage`, `HowTo`, `Offer`, `Review`, `AggregateRating`, `Product` ni `wordCount` |
+| Calibre | 3 000 à 4 200 mots ; `readTimeMin` à ±1 minute des mots ÷ 200 ; somme des huit durées de section = `readTimeMin` |
+| Typographie | aucun insécable littéral dans le code source ; insécable avant chaque ponctuation double ; nombres collés à leur unité ; apostrophes courbes et guillemets français |
+| Étiquette du cas construit | la phrase « les volumes, les durées, l'effectif, la ville et la facture moyenne sont choisis pour la démonstration et ne viennent d'aucune source », « Ce n'est pas un dossier client », « ce ne sont pas des dossiers clients », et le fait que l'étiquette **précède** les 320 commandes |
+| Hypothèses annoncées | les cinq de la §05 et les quatre de la §06 doivent être nommées comme non sourcées |
+| Arithmétique | les huit lignes du tableau §05 recalculées par le modèle **et** présentes en toutes lettres dans le rendu ; les trois horizons ; l'équilibre 21,3 mois ; la chaîne de trésorerie maillon par maillon ; les trois incidents avec leurs onze montants |
+| Prix maison | `990 € HT`, `1 500 € HT` et `8 k€ HT` doivent exister dans `src/components/tarifs/body.ts`, et `8 000 € HT` / `1 500 € HT` dans l'article |
+| Honnêteté commerciale | un seul bloc « Transparence » ; un seul CTA en ligne ; « Ce que notre propre grille dit contre nous » ; « C'est une décision, pas un échec » ; « ne rien automatiser cette année » |
+| Interdits | aucune fréquence sur une population jamais mesurée (« la plupart des… », « l'erreur la plus fréquente… ») ; aucun connecteur robotique ; aucune métaphore des « portes » ; aucun vocabulaire de production visible |
+| Outil | pas de `localStorage`, pas de `fetch`, pas de `<form>`, exclu du temps de lecture, et premier écran = calcul résolu, jamais « décision bloquée » |
+
+**Ce que les tests ne verrouillent pas** : la véracité des sources externes. Ils
+relisent la page et le modèle ; aucun n'ouvre une URL. C'est exactement le rôle
+de la section D de ce dossier.
+
+---
+
+## I. Points de vigilance et limites
+
+### I.1 Les écarts, en détail
+
+**É1 — deux cadences journalières.** La section 06 construit sa journée sur
+l'année civile (`1 998 000 ÷ 365 = 5 474 €`) ; la section 07 la construit sur des
+relances entières (`3 × 1 850 = 5 550 €`). Le choix de la section 07 est
+défendable et même documenté dans les commentaires de test : il évite un « flux
+calendaire fractionnaire », c'est-à-dire 2,96 relances par jour. Mais un lecteur
+qui suit le fil rouge d'une section à l'autre voit deux journées différentes pour
+le même flux, dans un guide dont l'argument central est que les décalages
+d'unités font déraper les budgets. Une phrase suffirait à le dire.
+
+**É2 — mois contre 24 heures.** Rien de faux, mais la phrase à retenir
+(« 810 requêtes par mois, très loin des 6 000 ») met côte à côte deux périodes
+différentes. À l'inverse, la ligne de la boucle (5 120 requêtes par jour contre
+6 000 par 24 heures) compare bien deux grandeurs journalières : la rigueur est
+là, elle n'est simplement pas tenue partout.
+
+**É3 — l'arrêt silencieux.** C'est le seul écart qui touche à la charge de
+preuve. La section 07 annonce des mécanismes « documentés par les éditeurs ».
+Pour l'incident 1 (quota, report, nouvelles tentatives) et l'incident 2 (rejeu
+recompté), c'est vrai et vérifié en D.3 et D.4. Pour l'incident 3, la source
+citée n'établit que la propriété du quota ; le mécanisme raconté — arrêt sans
+aucune exécution en erreur, invisible d'une surveillance qui ne regarde que les
+échecs — n'est documenté nulle part dans les sources de la page, et la page de
+support de l'éditeur qui traite exactement ce cas (D.13) décrit des **échecs**.
+Deux issues honnêtes : citer une source qui documente l'arrêt silencieux, ou
+présenter le mécanisme comme une hypothèse du cas construit au même titre que
+H22. La leçon opérationnelle de l'incident — surveiller **l'absence d'exécution**
+et pas seulement les exécutions en erreur — reste juste dans les deux cas, et
+elle est excellente ; c'est son adossement documentaire qui manque.
+
+**É4 — le neuvième pas.** Compter le déclencheur parmi les requêtes Power
+Platform est prudent : si le déclencheur ne compte pas, le flux consomme 720 et
+non 810 requêtes par mois, et la conclusion se renforce. Le mot « neuf » mérite
+néanmoins une note, parce que l'article demande au lecteur de refaire ce comptage
+sur son propre flux.
+
+**É5 — les durées d'exécution.** Dix minutes de tableau croisé, une heure
+d'extraction, une heure pour démonter un flux : ces durées gouvernent la
+faisabilité de toute la méthode. Elles sont plausibles et elles ne sont pas
+sourcées. Le guide, qui exige ailleurs qu'on chronomètre au lieu de déclarer,
+déclare ici.
+
+**É6 — le neuvième décile sur vingt dossiers.** Sur vingt valeurs triées, le
+neuvième décile est la dix-huitième : deux dossiers atypiques suffisent à le
+déplacer. Le guide s'en sert pour « dimensionner l'exception », usage qui
+supporte l'imprécision. Le mot « exploitable », lui, mériterait d'être qualifié.
+
+**É7 — dates et déploiement.** Constat brut, sans jugement : la page affiche le
+28 août 2026 ; `page.tsx` a été modifié le 30 août 2026 à 22 h 16 ; la production
+sert encore la version du 29 juillet 2026. Le dépôt n'étant pas versionné ici,
+la nature des modifications du 30 août n'est pas qualifiable. Le §15 de la charte
+demande une nouvelle `dateModified` après publication pour tout changement
+substantiel.
+
+### I.2 Limites que l'article énonce lui-même, et qui tiennent
+
+- « Ce guide ne valide ni licence, ni conformité, ni sécurité, ni faisabilité » ;
+- « Les prix des éditeurs, les quotas de plateforme et les données publiques
+  citées évoluent : revérifiez-les à votre date de lecture » — au 30 août 2026,
+  aucune des dix sources n'a bougé sur les valeurs citées ;
+- le calculateur « ne compte que des heures », et la page le dit **sous** le
+  calculateur, avec le renvoi vers la section 06 qui remonte le même flux à
+  +768 € ;
+- l'encadré « Deux gains qui s'additionnent, un qui fait doublon » interdit
+  explicitement de compter à la fois les heures et une dépense évitée.
+
+### I.3 Ce que ce dossier n'établit pas
+
+- **La réalité du cas.** Il n'y a aucun client derrière ces quatre processus, et
+  ce dossier ne prétend pas le contraire. L'entreprise, l'effectif, la ville, les
+  volumes, les durées et la facture moyenne sont choisis pour la démonstration.
+- **La transposabilité.** 65 %, 85 % et 50 % ne sont ni des moyennes de marché
+  ni des ordres de grandeur documentés : ce sont des curseurs à contester un par
+  un, ce que l'article demande explicitement de faire.
+- **Le rendu.** Aucun contrôle visuel, aucun test de responsive et aucune mesure
+  Lighthouse n'ont été refaits pour ce dossier : le serveur local n'était pas
+  disponible et la production sert une autre version.
+- **L'indexation.** Non vérifiée, et distincte de la présence au sitemap.
+
+---
+
+## J. Statut éditorial, relecture et maintenance
+
+### J.1 Relecture humaine — charte §13
+
+**Aucun lecteur humain extérieur n'a relu cet article, et ce dossier n'en
+invente aucun.** Aucun test lecteur, aucun panel, aucun dirigeant de PME n'a été
+sollicité. Les vérifications consignées ici ont été faites par un agent : lecture
+intégrale de la page et des tests, réouverture des dix sources, recalcul manuel,
+exécution de la batterie colocalisée. Une contre-relecture par agent n'est pas
+l'avis d'une personne réelle.
+
+Conséquence directe, au sens du §13 : tant qu'aucun lecteur humain extérieur n'a
+relu le guide et qu'aucune instruction explicite du commanditaire ne délègue la
+décision de publication, le statut maximal atteignable est **« prêt pour revue
+humaine »**.
+
+### J.2 Statut de ce dossier
 
 ```text
-Vitest global : 405/405
-Contrôles SEO : 171/171
-ESLint ciblé : 0 erreur
-TypeScript : PASS
-git diff --check : PASS
-Build Next.js production : PASS
-Postbuild SEO : 43 URL de sitemap, 26 liens llms.txt, 43 pages,
-  1 temps de lecture et 74 blocs JSON-LD contrôlés
-Temps de lecture servi : 3 919 mots / 20 minutes
+Dossier : docs/research/automatiser-processus-metier.md
+Nature : reconstitution du socle de preuves d'un article déjà écrit
+Date du travail : 2026-08-30
+Périmètre écrit : ce fichier, et lui seul
+Page, tests, registre, manifestes : NON MODIFIÉS
+Sources citées par l'article : 10
+Sources rouvertes et datées ce jour : 10
+Sources citées non rouvertes : 0
+Élément cité non revérifié : 1 (mesure de temps de lecture, voir D.12)
+Source ouverte hors article : 1 (D.13, pour instruire l'écart É3)
+Lignes de calcul refaites à la main (G.2 à G.8) : 54
+Écarts arithmétiques trouvés : 0
+Écarts d'unité, de sourçage ou de date signalés : 7 (section 0)
+Hypothèses du cas construit recensées : 22
+Batterie colocalisée : 57/57 le 2026-08-30 à 22:53
+Relecture humaine extérieure : AUCUNE
+Statut proposé : PRÊT POUR REVUE HUMAINE
+Production : NON À JOUR (sert la version du 29/07/2026 au 30/08/2026)
+Indexation : NON VÉRIFIÉE
 ```
 
-Le navigateur réel a confirmé :
+### J.3 Fraîcheur — quand rouvrir quoi
 
-- un H1 et aucun identifiant dupliqué ;
-- aucun débordement horizontal à 320, 360, 390, 430, 640, 768, 1024, 1280,
-  1440 et 1600 px ;
-- le héros, le parcours express, l’illustration, le calculateur, la FAQ et les
-  CTA en thème clair et sombre ;
-- un paysage 640 × 360 sans débordement et avec CTA masqué dans le héros ;
-- une navigation FAQ aux flèches avec focus et panneau réconciliés ;
-- l’ouverture et la fermeture des réponses par Entrée et Espace ;
-- le CTA mobile masqué dans le héros, visible pendant la lecture et masqué
-  devant `#faq` et `#contact` ;
-- le zoom natif Chrome à 200 % : héros, section de calcul et FAQ sans coupure
-  horizontale ni chevauchement bloquant ; CTA masqué devant la FAQ ;
-- la taille de police Chrome réglée temporairement sur « Très grande » :
-  héros, CTA latéral, formulaire et contenu restent lisibles et utilisables ;
-- VoiceOver réellement activé dans macOS : l’arbre expose le H1, les titres,
-  le fil d’Ariane, les liens d’auteur et de CTA, le groupe d’onglets, les
-  onglets et les panneaux de FAQ ; le parcours Tab annonce notamment
-  « Accueil », « Guides », « Quentin Hagnéré » et
-  « Décrire mon premier processus » dans un ordre cohérent ;
-- le scénario à 600 cas par mois : 18 203 € d’écart, 194,1 % de ROI de
-  capacité et 6 mois théoriques ; le retrait d’une porte rebloque la décision
-  malgré le résultat positif ;
-- aucune erreur console.
+| Source | Prochaine vérification déclenchée par |
+|---|---|
+| Zapier, grille tarifaire | La plus volatile : à rouvrir avant toute décision, et au minimum tous les six mois |
+| Microsoft, limites de requêtes | À rouvrir à la **fin de la période de transition** — l'article y adosse deux passages — et à chaque `ms.date` nouveau |
+| Zapier, mesure des tâches | Annuel, ou au premier changement de facturation annoncé |
+| INSEE, coût horaire | À la prochaine publication annuelle, et à la prochaine enquête quadriennale ; le 44,70 € de 2025 est une estimation révisable |
+| Banque de France, ODP | À la parution du rapport 2025 |
+| France Num | Dossier remis à jour environ tous les huit mois |
+| CNIL, guide sécurité | À la prochaine édition du guide |
+| CNIL, AIPD | À toute nouvelle délibération modifiant les listes de traitements |
+| Microsoft, éléments d'interface | À chaque `ms.date` nouveau |
+| `/tarifs` Hagnéré Code | À chaque modification de la grille : trois montants de l'article en dépendent, et un test échoue si la grille change |
 
-Après ces BAT, Chrome a été rétabli à 100 %, sa taille de police à
-« Moyenne (recommandé) » et VoiceOver a été désactivé. Le contrôle à 320 px et
-le zoom natif à 200 % restent deux preuves distinctes : aucun ne sert de
-substitut à l’autre.
+### J.4 Ce qu'il faudrait pour lever le blocage « traçabilité »
 
-### J.4 Données structurées servies localement
+1. Trancher É3 : citer une source qui documente l'arrêt silencieux d'un flux dont
+   le propriétaire est désactivé, ou requalifier ce mécanisme en hypothèse.
+2. Réconcilier É1 en une phrase, et É2 en rappelant la période.
+3. Qualifier É5 et É6 comme des repères éditoriaux plutôt que comme des faits.
+4. Faire relire par un lecteur humain extérieur non technique et consigner ses
+   réponses, ou obtenir du commanditaire une délégation explicite.
+5. Déployer, puis vérifier l'URL de production et remettre la `dateModified` en
+   accord avec la dernière modification substantielle.
 
-```text
-Canonical :
-https://hagnere-code.ai/guides/automatiser-processus-metier
-
-Robots :
-index, follow
-
-Googlebot :
-index, follow, max-video-preview:-1,
-max-image-preview:large, max-snippet:-1
-
-Types sur le guide :
-Article + BreadcrumbList
-
-Article @id :
-https://hagnere-code.ai/guides/automatiser-processus-metier#article
-
-Auteur :
-https://hagnere-code.ai/equipe#fondateur
-
-Organisation :
-https://hagnere-code.ai/#organization
-
-Collection :
-https://hagnere-code.ai/guides#collection
-
-Site :
-https://hagnere-code.ai/#website
-```
-
-Le `headline`, le H1 et le title donnent la même question. Les trois images
-Article sont publiques dans l’artefact, le fil d’Ariane suit Accueil → Guides →
-guide courant et aucun `FAQPage` ou `HowTo` n’est publié.
-
-### J.5 Mesures de poids et de laboratoire
-
-```text
-HTML brut servi par le build de production : 491 876 octets
-HTML transféré avec compression : 73 302 octets
-DOM mesuré par Lighthouse : 2 126 éléments
-Images éditoriales sources :
-  16:9 1600 × 900 — 69 600 octets
-  4:3 1200 × 900 — 74 552 octets
-  1:1 1200 × 1200 — 95 472 octets
-
-Lighthouse local mobile :
-  Performance 90
-  Accessibilité 100
-  Bonnes pratiques 100
-  SEO 100
-  FCP 1,8 s
-  LCP 3,5 s
-  TBT 20 ms
-  CLS 0
-```
-
-Le DOM long, 53 Kio de JavaScript inutilisé estimé et un LCP de laboratoire à
-3,5 s restent des P2 de performance acceptables pour cette livraison, pas des
-preuves de performance terrain. Les Core Web Vitals réels restent inconnus
-tant que la route publiée ne dispose pas d’un échantillon suffisant.
-
-### J.6 État avant publication de ce durcissement
-
-```text
-P0 : aucun
-P1 : aucun
-P2 acceptés :
-- performance laboratoire à surveiller en production
-Production de ce durcissement : NON ENCORE VERIFIEE
-Indexation : NON VERIFIEE
-Décision locale : en attente du contre-audit indépendant final
-```
+Les points 1 à 3 et 5 sortent du territoire de ce dossier : ils sont signalés
+ici, ils ne sont pas appliqués.

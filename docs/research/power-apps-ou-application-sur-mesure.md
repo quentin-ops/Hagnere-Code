@@ -2104,8 +2104,8 @@ appel avec icône Phone et nom accessible « Appeler Voir le service ».
 
 La reprise P3-v2 modifie uniquement la configuration propre à cette page :
 
-- `secondaryLabel: "03 74 47 20 18"` ;
-- `secondaryHref: "tel:+33374472018"` ;
+- `secondaryLabel: "06 60 08 83 51"` ;
+- `secondaryHref: "tel:+33660088351"` ;
 - `dateModified: "2026-08-03T07:45:24+02:00"`.
 
 Le CTA héros conserve « Voir le service outils internes » vers
@@ -2118,7 +2118,7 @@ n'a été modifié.
 Le test de contenu exige désormais la paire téléphone exacte dans la
 configuration et le HTML rendu. Il interdit à la fois
 `secondaryLabel: "Voir le service"` et `aria-label="Appeler Voir le service"`,
-tout en exigeant `aria-label="Appeler 03 74 47 20 18"`.
+tout en exigeant `aria-label="Appeler 06 60 08 83 51"`.
 
 ### 43.2 Contrôle navigateur hydraté
 
@@ -2130,8 +2130,8 @@ l'orchestrateur.
 À **320 et 390 px** :
 
 - `documentElement.scrollWidth === innerWidth` ;
-- la barre mobile contient `href="tel:+33374472018"`, le nom accessible
-  « Appeler 03 74 47 20 18 », une icône `lucide-phone` et une cible 48 × 48 px ;
+- la barre mobile contient `href="tel:+33660088351"`, le nom accessible
+  « Appeler 06 60 08 83 51 », une icône `lucide-phone` et une cible 48 × 48 px ;
 - le CTA principal reste « Cadrer mon cas » vers `/demarrer-un-projet` ;
 - après le héros, les deux actions sont visibles et dans l'ordre de tabulation ;
 - sur le footer, la barre repasse à `aria-hidden=true`, ses deux liens à
@@ -2140,7 +2140,7 @@ l'orchestrateur.
 - le H1 reste contenu, le groupe « comment choisir ? » reste sur un seul
   rectangle et le deux-points partage la ligne de « mesure ».
 
-À **1 440 px**, le CTA de contexte visible affiche « 03 74 47 20 18 », pointe
+À **1 440 px**, le CTA de contexte visible affiche « 06 60 08 83 51 », pointe
 vers le même `tel:`, contient l'icône Phone et accompagne le CTA primaire
 « Étudier mon outil interne » inchangé. Le CTA héros « Voir le service outils
 internes » reste visible vers la page service. La barre mobile est masquée par
@@ -2212,8 +2212,8 @@ n'a été modifié.
 
 Le CTA de contexte final expose :
 
-- texte et nom accessible « 03 74 47 20 18 » ;
-- `href="tel:+33374472018"` ;
+- texte et nom accessible « 06 60 08 83 51 » ;
+- `href="tel:+33660088351"` ;
 - icône `lucide-phone` décorative avec `aria-hidden="true"` ;
 - cible pleine largeur de 42 px de haut, donc supérieure au minimum WCAG 2.5.8
   de 24 px ;
@@ -2364,7 +2364,7 @@ contiennent le slug. L'image Open Graph répond en PNG et mesure
 Le rendu hydraté a été inspecté à **320, 390, 640 et 1 440 px**, en clair et
 en sombre selon les largeurs : aucun débordement horizontal, aucun overlay
 Next.js et aucun contenu vide. À 320 px, la barre mobile expose
-`/demarrer-un-projet` et `tel:+33374472018` avec deux liens tabulables dans
+`/demarrer-un-projet` et `tel:+33660088351` avec deux liens tabulables dans
 l'article ; devant le footer, elle repasse à `aria-hidden=true` et ses liens à
 `tabindex=-1`. Le CTA de contexte et le CTA héros conservent leurs destinations
 distinctes.
