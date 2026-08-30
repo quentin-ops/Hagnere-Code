@@ -190,7 +190,7 @@ function NumberField({
   return (
     <label
       htmlFor={id}
-      className="block rounded-xl border border-zinc-200 bg-white p-3.5 dark:border-zinc-700 dark:bg-zinc-950"
+      className="block min-w-0 rounded-xl border border-zinc-200 bg-white p-3.5 dark:border-zinc-700 dark:bg-zinc-950"
     >
       <span className="block text-xs font-semibold leading-snug text-zinc-700 dark:text-zinc-200">
         {label}
@@ -273,8 +273,8 @@ export function ProcessPriorityTool() {
       </div>
 
       <div className="grid gap-7 p-5 sm:p-6 lg:grid-cols-[1.12fr_0.88fr]">
-        <div>
-          <fieldset>
+        <div className="min-w-0">
+          <fieldset className="min-w-0">
             <legend className="text-sm font-bold text-zinc-950 dark:text-white">
               1. Les cinq questions dont la réponse doit être oui
             </legend>
@@ -307,7 +307,7 @@ export function ProcessPriorityTool() {
             </div>
           </fieldset>
 
-          <fieldset className="mt-7">
+          <fieldset className="mt-7 min-w-0">
             <legend className="text-sm font-bold text-zinc-950 dark:text-white">
               2. Le travail actuel et les heures qui pourront être réaffectées
             </legend>
@@ -360,7 +360,7 @@ export function ProcessPriorityTool() {
             </div>
           </fieldset>
 
-          <fieldset className="mt-7">
+          <fieldset className="mt-7 min-w-0">
             <legend className="text-sm font-bold text-zinc-950 dark:text-white">
               3. Le coût renseigné sur une même période
             </legend>
