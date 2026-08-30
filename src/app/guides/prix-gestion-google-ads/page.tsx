@@ -348,28 +348,28 @@ export default function Page() {
             href: "https://www.ms-web.fr/creation-et-gestion-de-campagne-google-ads/",
             nofollow: true,
             description:
-              "Prix vendeur public relevé le 30\u00a0juillet 2026\u00a0: création 149\u00a0€ HT, gestion à partir de 90\u00a0€ HT par mois.",
+              "Prix vendeur public relevé le 30\u00a0juillet 2026 et revérifié le 30\u00a0août 2026\u00a0: création 149\u00a0€ HT, gestion à partir de 90\u00a0€ HT par mois.",
           },
           {
             source: "AdWorks · tarifs",
             href: "https://www.ad-works.fr/tarifs",
             nofollow: true,
             description:
-              "Prix vendeur public relevé le 30\u00a0juillet 2026\u00a0: lancement à partir de 750\u00a0€ HT, gestion à partir de 450\u00a0€ HT par mois.",
+              "Prix vendeur public relevé le 30\u00a0juillet 2026 et revérifié le 30\u00a0août 2026\u00a0: lancement à partir de 750\u00a0€ HT, gestion à partir de 450\u00a0€ HT par mois.",
           },
           {
             source: "DP Medias · tarifs",
             href: "https://www.dpmedias.com/google-ads",
             nofollow: true,
             description:
-              "Prix vendeur public relevé le 30\u00a0juillet 2026\u00a0: audit 500\u00a0€ HT, création de compte 250\u00a0€ HT, gestion à partir de 450\u00a0€ HT par mois.",
+              "Prix vendeur public relevé le 30\u00a0juillet 2026 et revérifié le 30\u00a0août 2026\u00a0: audit 500\u00a0€ HT, création de compte 250\u00a0€ HT, gestion à partir de 450\u00a0€ HT par mois.",
           },
         ]}
         disclaimer={{
           eyebrow: "Limites de ce guide",
           title: "Une comparaison de coûts, pas une promesse de résultat",
           description:
-            "Les prix vendeurs cités ont été relevés le 30 juillet 2026 et notre grille le 28 août 2026\u00a0; ils changent. Quatre pages publiques ne forment pas une statistique du marché français. Les quatre offres suivies, les volumes, les marges et les heures internes du cas sont choisis pour l’exemple, et le calculateur applique un taux de TVA unique par simplification. Vérifiez chaque facture, votre droit à récupération et les règles en vigueur avec votre expert-comptable. Fourchettes et règles de plateforme à revérifier tous les douze mois.",
+            "Les prix vendeurs cités ont été relevés le 30 juillet 2026 et revérifiés un par un le 30 août 2026, notre grille le 28 août 2026\u00a0; ils changent. Quatre pages publiques ne forment pas une statistique du marché français. Les quatre offres suivies, les volumes, les marges et les heures internes du cas sont choisis pour l’exemple, et le calculateur applique un taux de TVA unique par simplification. Vérifiez chaque facture, votre droit à récupération et les règles en vigueur avec votre expert-comptable. Fourchettes et règles de plateforme à revérifier tous les douze mois.",
         }}
         relatedGuides={[
           {
