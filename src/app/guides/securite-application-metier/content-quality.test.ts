@@ -242,10 +242,17 @@ describe("qualité de contenu du guide sécurité d’une application métier", 
       publishedTime: guide.datePublished,
       modifiedTime: guide.dateModified,
     });
-    // La réécriture du 28/08/2026 est substantielle : la date visible, le
-    // JSON-LD et le registre doivent la porter ensemble (§5.2 de la règle d'or).
-    expect(guide.dateModified.startsWith("2026-08-28")).toBe(true);
-    expect(readerVisibleText(renderedPage)).toContain("28 août 2026");
+    // La passe du 30/08/2026 est substantielle : elle a rattaché à leur source
+    // l'EPSS, NIS 2, le Top 10 applicatif, les articles 4 et 83 §§1-2 du RGPD,
+    // décomposé la chronologie de l'incident n° 1 et retiré deux scores CVSS
+    // posés. La date visible, le JSON-LD et le registre doivent la porter
+    // ensemble (§5.2 de la règle d'or).
+    expect(guide.dateModified.startsWith("2026-08-30")).toBe(true);
+    // Assertion sur le libellé complet : « 28 août 2026 » passait aussi par la
+    // date de relevé des tarifs, donc sans rien vérifier du bandeau.
+    expect(readerVisibleText(renderedPage)).toContain(
+      "Mis à jour le 30 août 2026",
+    );
     expect(ogSource).toContain(
       'subtitle: "Quatre mesures avant d’ouvrir les vraies données"',
     );
@@ -274,10 +281,13 @@ describe("qualité de contenu du guide sécurité d’une application métier", 
     // protocoles exécutables, quatre tableaux, une couche juridique, une grille
     // de décision et une section d'incidents : c'est un pilier structurant.
     // Il est désormais dans la bande 4 200-6 000 mots par les trois lectures
-    // possibles, et sous le plafond dur de 6 000 :
-    //   prose seule                       ≈ 4 360
-    //   prose + outil local               ≈ 5 090
-    //   prose + outil local + FAQ         ≈ 5 820
+    // possibles, et sous le plafond dur de 6 000. Mesure refaite le 30/08/2026
+    // avec les fonctions de comptage ci-dessus, après la passe de sourçage —
+    // la bande précédemment documentée (4 360 / 5 090 / 5 820) datait du
+    // 28/08/2026 et ne décrivait plus le fichier :
+    //   prose seule                       = 4 476
+    //   prose + outil local               = 5 158
+    //   prose + outil local + FAQ         = 5 898
     const prose = articleWordCount();
     const withTool = countWords(fullArticleHtml());
     const everything = withTool + faqWordCount();
@@ -292,9 +302,11 @@ describe("qualité de contenu du guide sécurité d’une application métier", 
 
   it("aligne readTimeMin du registre sur la mesure du dépôt", () => {
     // Convention interne (docs/charte-qualite-guides.md §14.1) : mots visibles
-    // du corps ÷ 200, arrondis à la minute. Mesuré le 28/08/2026 avec
-    // `node scripts/measure-guide-readtime.mjs securite-application-metier`,
-    // qui applique la même exclusion : 4 364 mots → 22 min.
+    // du corps ÷ 200, arrondis à la minute. Mesuré le 30/08/2026 avec
+    // `npx tsx scripts/measure-guide-readtime.mjs securite-application-metier`,
+    // qui applique la même exclusion : 4 435 mots → 22 min. Le script retire en
+    // plus les blocs `sr-only`, d'où l'écart avec les 4 476 mots comptés ici ;
+    // les deux lectures arrondissent à la même minute, ce que `--check` vérifie.
     // Le hub (`GuidesHubPage`) affiche cette valeur : elle ne peut pas dériver.
     const measured = Math.max(1, Math.round(articleWordCount() / 200));
     expect(guide.readTimeMin, `mesure ${measured} min`).toBe(measured);
@@ -834,6 +846,97 @@ describe("qualité de contenu du guide sécurité d’une application métier", 
       "les modalités relèvent du texte français de transposition",
     );
     expect(text).not.toMatch(/conforme RGPD|certifié/i);
+  });
+
+  it("rattache chaque affirmation à une source qui la porte réellement", () => {
+    // Passe du 30/08/2026 : la reconstitution du dossier de recherche a montré
+    // que cinq affirmations étaient soit orphelines, soit rattachées à un
+    // document qui ne les contient pas. Ce test verrouille les localisateurs.
+    const text = prose(articleHtml());
+    const sources = pageSource.slice(
+      pageSource.indexOf("legalSources={["),
+      pageSource.indexOf("disclaimer={{"),
+    );
+
+    // 1. L'EPSS n'est pas défini par la spécification CVSS v4.0 : il a sa page.
+    expect(sources).toContain('href: "https://www.first.org/epss/"');
+    expect(sources).not.toContain("CVSS v4.0 et EPSS");
+    expect(pageSource).toContain('href="https://www.first.org/epss/"');
+
+    // 2. Le Top 10 applicatif visé par la FAQ est un autre document que l'API
+    //    Security Top 10, la seule entrée OWASP « Top 10 » de la version
+    //    précédente.
+    expect(sources).toContain(
+      'href: "https://owasp.org/www-project-top-ten/"',
+    );
+    expect(sources).toContain("www-project-api-security");
+    // …et la réponse de FAQ décrit ce document avec les mots de sa page :
+    // « a standard awareness document » / « broad consensus about the most
+    // critical security risks ». « des familles de risques fréquentes »
+    // attribuait une fréquence que la source n'énonce pas.
+    expect(pageSource).toContain(
+      "un consensus large sur les risques les plus critiques",
+    );
+    expect(pageSource).not.toContain("des familles de risques fréquentes");
+
+    // 3. NIS 2 était nommée dans la FAQ sans qu'aucun lien ne soit proposé.
+    expect(sources).toContain(
+      'href: "https://messervices.cyber.gouv.fr/nis2"',
+    );
+
+    // 4. « Personne physique donc donnée personnelle » et « lecture non
+    //    autorisée donc violation » sont les points 1 et 12 de l'article 4.
+    expect(sources).toContain(
+      "article 4, points 1 et 12 (reproduction CNIL)",
+    );
+    expect(pageSource).toContain(
+      'href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre1"',
+    );
+
+    // 5. Le plafond du 83 §4 ne module rien : la modulation est aux §§1 et 2.
+    expect(text).toContain(
+      "les paragraphes 1 et 2 du même article veulent des amendes",
+    );
+    expect(text).toContain("effectives, proportionnées et dissuasives");
+    expect(text).not.toContain("la CNIL module");
+  });
+
+  it("laisse refaire la chronologie et l’arrondi sans deviner", () => {
+    const text = prose(articleHtml());
+
+    // Incident n° 1, minute par minute, contre des constantes tenues à la main :
+    //   9 h 20 → 9 h 40 avant le démarrage        =  20 min
+    //   base de données restaurée                 =  40 min
+    //   attente du ticket d'hébergement           = 120 min
+    //   remontée des fichiers et vérification     = 220 min
+    //   total                                     = 400 min = 6 h 40
+    expect(20 + 40 + 120 + 220).toBe(400);
+    expect(400).toBe(6 * 60 + 40);
+    expect(text).toContain(
+      "puis trois heures quarante de remontée et de vérification des parcours",
+    );
+
+    // L'arrondi 993,30 € → 993 € vaut pour TOUS les montants dérivés : sans ce
+    // rappel, un lecteur qui garde les centimes trouve 3 973,20 €, 6 622 €,
+    // 2 648,80 € et 21 852,60 € et croit à une erreur.
+    expect(text).toContain(
+      "tous les montants de ce guide partent de là et non des centimes",
+    );
+
+    // Les scores 9,8 et 6,5 ne renvoyaient à aucune vulnérabilité et ne
+    // figuraient pas parmi les huit hypothèses annoncées : le texte raisonne
+    // désormais sur les bandes de gravité, qui, elles, sont sourcées.
+    expect(text).not.toContain("notée 9,8");
+    expect(text).not.toContain("une 6,5");
+    expect(text).toContain(
+      "Une faille critique que personne n’exploite passe après une moyenne activement utilisée",
+    );
+
+    // Les trois durées que la FAQ ajoute se rattachent à la huitième hypothèse,
+    // et la section 02 le dit maintenant.
+    expect(text).toContain(
+      "dont les dix minutes, l’heure et la minute détaillées en questions fréquentes",
+    );
   });
 
   it("garde les référentiels dans leur portée annoncée", () => {

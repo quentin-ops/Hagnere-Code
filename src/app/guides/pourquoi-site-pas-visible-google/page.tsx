@@ -103,7 +103,7 @@ const faqCategories: GuidePremiumFaqCategory[] = [
         question:
           "Un sitemap est-il utile quand on a moins de cent pages\u00a0?",
         answer:
-          "Il aide Google à découvrir des URL, sans garantir ni exploration ni indexation. Sa limite officielle est de 50\u00a0000\u00a0URL et 50\u00a0Mo par fichier, très loin d’un site de cent pages\u00a0: le sitemap n’est donc jamais le facteur limitant à cette taille. Ce qui compte davantage, c’est qu’il ne déclare que les adresses que vous voulez voir retenues, et qu’il ne contredise ni vos redirections ni vos balises canoniques.",
+          "Il aide Google à découvrir des URL, sans garantir ni exploration ni indexation. Sa limite officielle plafonne un fichier à 50\u00a0Mo sans compression ou 50\u00a0000\u00a0URL, très loin d’un site de cent pages\u00a0: le sitemap n’est donc jamais le facteur limitant à cette taille. Ce qui compte davantage, c’est qu’il ne déclare que les adresses que vous voulez voir retenues, et qu’il ne contredise ni vos redirections ni vos balises canoniques.",
       },
     ],
   },
@@ -145,7 +145,7 @@ const faqCategories: GuidePremiumFaqCategory[] = [
         question:
           "Dois-je donner mon mot de passe Search Console à mon agence\u00a0?",
         answer:
-          "Non. Ajoutez la personne comme utilisateur, avec le niveau d’autorisation nécessaire, puis retirez cet accès à la fin de l’intervention. Google documente séparément le rôle de propriétaire et celui d’utilisateur, et la demande d’indexation exige d’être propriétaire ou utilisateur avec accès complet. Ne transmettez ni mot de passe ni code de connexion\u00a0: une agence qui l’exige vous demande aussi de perdre la trace de qui a fait quoi.",
+          "Non. Ajoutez la personne comme utilisateur, avec le niveau d’autorisation nécessaire, puis retirez cet accès à la fin de l’intervention. La page «\u00a0utilisateurs et autorisations\u00a0» décrit quatre niveaux et n’accorde l’inspection d’URL qu’aux deux premiers\u00a0; celle sur la demande d’exploration ajoute qu’une indexation ne peut être demandée que par un propriétaire ou un utilisateur avec accès complet. Ne transmettez ni mot de passe ni code de connexion\u00a0: c’est notre recommandation, pas une consigne de Google, et une agence qui l’exige vous demande aussi de perdre la trace de qui a fait quoi.",
       },
       {
         question:
@@ -198,7 +198,7 @@ export default function Page() {
         stats={[
           { label: "Pannes distinctes", value: "5" },
           { label: "Écrans à ouvrir", value: "3" },
-          { label: "HTML lu par Googlebot", value: "2\u00a0Mo" },
+          { label: "Lu par Googlebot", value: "2\u00a0Mo" },
           { label: "Fiche · envoi", value: "Aucun" },
           { label: "Lecture", value: `${guide.readTimeMin} min` },
         ]}
@@ -244,7 +244,7 @@ export default function Page() {
             source: "Google Search Central · fonctionnement de la recherche",
             href: "https://developers.google.com/search/docs/fundamentals/how-search-works?hl=fr",
             description:
-              "Exploration, indexation et diffusion des résultats, avec la mention explicite qu’aucune de ces étapes n’est garantie pour une page donnée. Consultée le 28 août 2026.",
+              "Exploration, indexation et diffusion des résultats, avec la mention explicite qu’aucune de ces étapes n’est garantie pour une page donnée. Consultée le 30 août 2026.",
           },
           {
             source: "Google Search Central · Googlebot",
@@ -295,13 +295,13 @@ export default function Page() {
             source: "Google Search Central · sitemaps",
             href: "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap?hl=fr",
             description:
-              "Limites de 50\u00a0000\u00a0URL et 50\u00a0Mo non compressés par fichier, encodage UTF-8, URL absolues et canoniques. Le sitemap aide la découverte, il ne garantit ni exploration ni indexation.",
+              "Un seul sitemap est plafonné à 50\u00a0Mo sans compression ou 50\u00a0000\u00a0URL, doit être encodé en UTF-8 et ne contenir que des URL absolues et complètes. Il aide la découverte, il ne garantit ni exploration ni indexation.",
           },
           {
             source: "Google Search Central · demander une nouvelle exploration",
             href: "https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl?hl=fr",
             description:
-              "L’exploration peut prendre plusieurs jours, voire plusieurs semaines, l’inclusion n’est pas garantie et peut ne jamais avoir lieu. Un quota limite l’envoi d’URL individuelles, et répéter la demande pour la même URL n’accélère rien.",
+              "L’exploration peut prendre plusieurs jours, voire plusieurs semaines, l’inclusion n’est pas garantie et peut ne jamais avoir lieu. Un quota limite l’envoi d’URL individuelles, et répéter la demande pour la même URL n’accélère rien. C’est aussi cette page qui porte la règle d’accès\u00a0: demander une indexation dans l’outil d’inspection d’URL exige d’être propriétaire ou utilisateur avec accès complet sur la propriété.",
           },
           {
             source:
@@ -333,7 +333,7 @@ export default function Page() {
             source: "Google Search Console · inspection d’URL",
             href: "https://support.google.com/webmasters/answer/9012289?hl=fr",
             description:
-              "Différence entre la version indexée et le test en direct, «\u00a0URL canonique déclarée par l’utilisateur\u00a0» et «\u00a0URL canonique sélectionnée par Google\u00a0», et limites du message «\u00a0Cette URL est sur Google\u00a0».",
+              "Différence entre la version indexée et le test en ligne, ouvert par le bouton «\u00a0Tester l’URL active\u00a0». Champs «\u00a0URL canonique déclarée par l’utilisateur\u00a0» et «\u00a0URL canonique sélectionnée par Google\u00a0», et limites du message «\u00a0Cette URL est sur Google\u00a0». Consultée le 30 août 2026.",
           },
           {
             source: "Google Search Console · rapport Performances",
@@ -351,13 +351,13 @@ export default function Page() {
             source: "Google Search Console · utilisateurs et autorisations",
             href: "https://support.google.com/webmasters/answer/7687615?hl=fr",
             description:
-              "Ajout d’utilisateurs et niveaux d’autorisation, sans partage d’un compte personnel. La demande d’indexation exige d’être propriétaire ou utilisateur avec accès complet.",
+              "Quatre niveaux d’autorisation — propriétaire, utilisateur avec accès complet, utilisateur avec accès limité, associé — et un tableau qui accorde l’inspection d’URL aux deux premiers, en «\u00a0Exploration uniquement\u00a0» pour l’accès limité. Un utilisateur s’ajoute par son adresse de compte Google. Consultée le 30 août 2026.",
           },
           {
             source: "Google Search Console API · quotas d’utilisation",
             href: "https://developers.google.com/webmaster-tools/limits",
             description:
-              "Inspection d’URL\u00a0: 2\u00a0000\u00a0requêtes par jour et 600 par minute et par site. Search Analytics\u00a0: 1\u00a0200\u00a0requêtes par minute et par site. Consultée le 28 août 2026.",
+              "Inspection d’URL\u00a0: 2\u00a0000\u00a0requêtes par jour et 600 par minute et par site. Search Analytics\u00a0: 1\u00a0200\u00a0requêtes par minute et par site. Consultée le 30 août 2026.",
           },
           {
             source: "Google Search Console API · searchAnalytics.query",
@@ -375,7 +375,7 @@ export default function Page() {
             source: "Hagnéré Code · tarifs publics",
             href: "/tarifs",
             description:
-              "Grille relevée le 28 août 2026\u00a0: audit flash 2\u00a0000\u00a0€ HT, audit Express 8\u00a0000\u00a0€ HT, Discovery Sprint 1\u00a0500\u00a0€ HT sur deux jours. L’offre de référencement ne publie aucun montant\u00a0; le prix est fixé au devis.",
+              "Grille relevée le 30 août 2026\u00a0: audit flash 2\u00a0000\u00a0€ HT, audit Express 8\u00a0000\u00a0€ HT, Discovery Sprint 1\u00a0500\u00a0€ HT sur deux jours. L’offre de référencement ne publie aucun montant\u00a0; le prix est fixé au devis.",
           },
         ]}
         disclaimer={{
@@ -383,7 +383,7 @@ export default function Page() {
           title:
             "Ce guide localise un blocage\u00a0; il ne promet aucun classement",
           description:
-            "Les interfaces et libellés de la Search Console évoluent, et les sources officielles citées ici ont été relues le 28 août 2026\u00a0: revérifiez-les avant de vous engager sur un chiffre. Les durées et les coûts internes de ce guide sont des hypothèses éditoriales choisies pour l’exemple, jamais des relevés faits chez un client. Le protocole ne mesure ni la demande, ni la concurrence, ni l’intention derrière une recherche, et il ne prédit aucun délai de retour. Il s’arrête dès que l’URL est indexée et reçoit des impressions.",
+            "Les interfaces et libellés de la Search Console évoluent, et les sources officielles citées ici ont été relues le 30 août 2026\u00a0: revérifiez-les avant de vous engager sur un chiffre. Les durées et les coûts internes de ce guide sont des hypothèses éditoriales choisies pour l’exemple, jamais des relevés faits chez un client. Le protocole ne mesure ni la demande, ni la concurrence, ni l’intention derrière une recherche, et il ne prédit aucun délai de retour. Il s’arrête dès que l’URL est indexée et reçoit des impressions.",
         }}
         relatedGuides={[
           {
@@ -425,7 +425,7 @@ export default function Page() {
 
           <p>
             Le tri initial demande une vingtaine de minutes par adresse&nbsp;:
-            trois commandes à taper sur votre serveur, puis trois écrans de la
+            trois commandes à taper depuis votre poste, puis trois écrans de la
             Search Console — l’inspection d’URL, le rapport sur l’indexation des
             pages et le rapport Performances. Cette durée est une{" "}
             <strong>estimation éditoriale Hagnéré Code</strong>, pas un
@@ -570,10 +570,11 @@ grep -io '<meta[^>]*name=.robots.[^>]*>' page.html`}
             <code>noindex</code> servi au seul Googlebot passerait à travers un
             contrôle joué sous le nom d’agent de votre navigateur. Le HTML
             récupéré est le HTML initial&nbsp;: des balises posées par du
-            JavaScript n’y figurent pas, et seul le test en direct montre la
-            version rendue. Enfin, les outils d’inspection de Google ne suivent
-            pas les redirections&nbsp;: inspectez la cible finale, jamais
-            l’adresse de départ.
+            JavaScript n’y figurent pas, et seul le test en ligne, ouvert par
+            «&nbsp;Tester l’URL active&nbsp;», montre la version rendue. Enfin,
+            les outils d’inspection de Google ne suivent pas les
+            redirections&nbsp;: inspectez la cible finale, jamais l’adresse de
+            départ.
           </p>
 
           <GuideTable
@@ -720,8 +721,8 @@ grep -io '<meta[^>]*name=.robots.[^>]*>' page.html`}
               [
                 '«\u00a0URL marquée "noindex"\u00a0»',
                 "Une balise meta ou un en-tête X-Robots-Tag a été lu pendant l’exploration",
-                "En-tête HTTP et HTML initial, puis version rendue par le test en direct",
-                "Retirer la règle, rejouer le test en direct, puis dater la demande",
+                "En-tête HTTP et HTML initial, puis version rendue par le test en ligne",
+                "Retirer la règle, rejouer le test en ligne, puis dater la demande",
               ],
               [
                 "«\u00a0URL bloquée par le fichier robots.txt\u00a0»",
@@ -795,7 +796,7 @@ grep -io '<meta[^>]*name=.robots.[^>]*>' page.html`}
                 correction ne fait que consommer le quota.
               </li>
               <li>
-                <strong>Rejouer le test en direct.</strong> Il prouve que la
+                <strong>Rejouer le test en ligne.</strong> Il prouve que la
                 version servie maintenant est récupérable, rien de plus.
               </li>
               <li>
@@ -949,7 +950,7 @@ startRow   : 0         # puis 25000, 50000… tant que des lignes reviennent`}
             tout avant d’ouvrir au public — porte une règle <code>noindex</code>{" "}
             sur le gabarit des pages produit, et que la mise en ligne reprenne
             ce gabarit sans la retirer. Au fil des explorations, 34&nbsp;pages
-            sur 68 basculeraient en «&nbsp;URL marquée "noindex"&nbsp;», et le
+            sur 68 basculeraient en «&nbsp;URL marquée &quot;noindex&quot;&nbsp;», et le
             défaut vivrait cinq semaines faute d’un regard sur le rapport. La
             correction demanderait une heure, soit 50&nbsp;€&nbsp;; la reprise,
             deux jours — relever les 34&nbsp;URL, demander l’indexation dans la
@@ -1002,15 +1003,17 @@ startRow   : 0         # puis 25000, 50000… tant que des lignes reviennent`}
           </p>
 
           <p>
-            Additionnés, les trois scénarios pèsent 3&nbsp;425&nbsp;€&nbsp;:
-            50&nbsp;€ et 700&nbsp;€ pour le premier, 1&nbsp;400&nbsp;€ et
-            50&nbsp;€ pour le deuxième, 1&nbsp;050&nbsp;€ et 175&nbsp;€ pour le
-            troisième. Ce total se lit de deux manières. Par nature de
-            dépense&nbsp;: 275&nbsp;€ de corrections utiles, 2&nbsp;450&nbsp;€
-            engagés sur la mauvaise cause, 700&nbsp;€ de reprise qu’un contrôle
-            le jour de la mise en ligne aurait évités. Par payeur&nbsp;:
-            2&nbsp;375&nbsp;€ de temps interne et 1&nbsp;050&nbsp;€ facturés par
-            une agence extérieure — ce total ne s’appelle donc pas «&nbsp;temps
+            Ces trois scénarios s’excluent&nbsp;: leur somme ne décrit aucune
+            facture réelle, elle compare trois façons de se tromper. Ainsi lus,
+            les trois scénarios pèsent 3&nbsp;425&nbsp;€&nbsp;: 50&nbsp;€ et
+            700&nbsp;€ pour le premier, 1&nbsp;400&nbsp;€ et 50&nbsp;€ pour le
+            deuxième, 1&nbsp;050&nbsp;€ et 175&nbsp;€ pour le troisième. Ce
+            comparateur se lit de deux manières. Par nature de dépense&nbsp;:
+            275&nbsp;€ de corrections utiles, 2&nbsp;450&nbsp;€ engagés sur la
+            mauvaise cause, 700&nbsp;€ de reprise qu’un contrôle le jour de la
+            mise en ligne aurait évités. Par payeur&nbsp;: 2&nbsp;375&nbsp;€ de
+            temps interne et 1&nbsp;050&nbsp;€ facturés par une agence
+            extérieure — ce total ne s’appelle donc pas «&nbsp;temps
             interne&nbsp;». Aucun de ces montants ne dépend d’un outil payant.
           </p>
         </GuidePremiumSection>
@@ -1036,8 +1039,8 @@ startRow   : 0         # puis 25000, 50000… tant que des lignes reviennent`}
           >
             <ul>
               <li>
-                <strong>Jour 0.</strong> Correction posée, test en direct
-                rejoué, demande envoyée une fois. Notez le motif affiché avant
+                <strong>Jour 0.</strong> Correction posée, test en ligne rejoué,
+                demande envoyée une fois. Notez le motif affiché avant
                 correction.
               </li>
               <li>
@@ -1158,7 +1161,7 @@ startRow   : 0         # puis 25000, 50000… tant que des lignes reviennent`}
               ],
               [
                 "Exclue par noindex ou robots.txt",
-                "Retirer la règle, rejouer le test en direct, dater la demande",
+                "Retirer la règle, rejouer le test en ligne, dater la demande",
                 "1\u00a0h, soit 50\u00a0€",
                 "Chaque semaine d’exclusion est une semaine de diffusion perdue",
               ],
@@ -1225,7 +1228,7 @@ startRow   : 0         # puis 25000, 50000… tant que des lignes reviennent`}
             cinq autres non. Rien ici n’exige de passer par nous&nbsp;: les
             commandes, les libellés, les quotas d’API et le calendrier de
             recontrôle se rejouent avec vos propres relevés. Les sources
-            officielles ont été relues le 28&nbsp;août 2026 et les libellés de
+            officielles ont été relues le 30&nbsp;août 2026 et les libellés de
             la Search Console changent&nbsp;: revérifiez-les avant de vous
             engager. Aucune position, aucune date d’indexation et aucun volume
             de trafic ne sont garantis par cette page.

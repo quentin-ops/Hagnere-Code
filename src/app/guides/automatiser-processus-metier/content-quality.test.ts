@@ -504,6 +504,99 @@ describe("qualité de contenu du guide « quel processus automatiser »", () => 
     expect(incidents).toContain("pas un incident d’aujourd’hui");
   });
 
+  it("annonce le changement d’assiette entre la section 06 et la section 07", () => {
+    /*
+     * Le fil rouge porte deux journées différentes pour le même flux :
+     *   section 06 : 1 998 000 ÷ 365          = 5 473,97… € → 5 474 €
+     *   section 07 : 3 relances × 1 850 €     = 5 550 €
+     * Écart : 5 550 − 5 474 = 76 €, soit 76 ÷ 5 474 = 1,39 % — 1,4 %.
+     * Les deux sont justes dans leur cadre, mais un guide dont la thèse est
+     * qu'un décalage d'unité fait déraper un budget ne peut pas changer de
+     * cadence sans le dire. Le bloc d'unités de la section 07 le dit
+     * maintenant, et ce contrôle interdit de le retirer.
+     */
+    expect(Math.round((1_998_000 / 365) * 100) / 100).toBeCloseTo(5_473.97, 2);
+    expect(3 * 1_850).toBe(5_550);
+    expect(5_550 - Math.round(1_998_000 / 365)).toBe(76);
+
+    const incidents = prose(
+      articleHtml().match(/<section id="incidents"[\s\S]*?<\/section>/)?.[0] ??
+        "",
+    );
+    expect(incidents).toContain("Deux journées coexistent dans ce guide");
+    expect(incidents).toContain("5 550 €");
+    expect(incidents).toContain("5 474 €");
+    expect(incidents).toContain("76 €");
+    expect(incidents).toContain("mois de trente jours");
+  });
+
+  it("sépare le mécanisme documenté de l’hypothèse dans le troisième incident", () => {
+    // La page de support de l'éditeur — « Gérer les flux orphelins lorsque le
+    // propriétaire quitte l'organisation », citée dans le bloc Sources —
+    // documente des ÉCHECS (« Ces flux peuvent échouer s'ils utilisent des
+    // connexions liées à ce compte d'utilisateur »), pas l'arrêt silencieux.
+    // L'incident 3 garde donc son enseignement, mais dit où il quitte la
+    // documentation. L'introduction de la section ne peut plus adosser les
+    // trois incidents en bloc à des « mécanismes documentés par les éditeurs ».
+    const incidents = prose(
+      articleHtml().match(/<section id="incidents"[\s\S]*?<\/section>/)?.[0] ??
+        "",
+    );
+    expect(incidents).not.toContain(
+      "à partir de mécanismes documentés par les éditeurs",
+    );
+    expect(incidents).toContain("peut échouer");
+    expect(incidents).toContain("co-propriétaire");
+    expect(incidents).toContain("La suite est une hypothèse");
+    expect(pageSource).toContain(
+      "manage-orphan-flow-when-owner-leaves-org",
+    );
+    expect(pageSource).toContain("power-automate-licensing/faqs");
+  });
+
+  it("ne pose aucune durée d’exécution comme un fait mesuré", () => {
+    // §6.2 : le guide exige qu'on chronomètre au lieu de déclarer. Cinq durées
+    // — dix minutes de tableau croisé, quelques minutes d'expert-comptable,
+    // une heure d'extraction, une heure pour démonter un flux — étaient
+    // pourtant posées sans source ni protocole, dans le corps comme en FAQ.
+    const faqBlock =
+      pageSource.match(
+        /const faqCategories: GuidePremiumFaqCategory\[\] = \[([\s\S]*?)\n\];/,
+      )?.[1] ?? "";
+    const everything = `${prose(articleHtml())} ${faqBlock}`;
+
+    for (const claim of [
+      "donne la courbe en dix minutes",
+      "déclaration sociale nominative en quelques minutes",
+      "se démonte en une heure",
+      "se tranche en moins d’une demi-journée",
+    ]) {
+      expect(everything, claim).not.toContain(claim);
+    }
+    // La double extraction de balance âgée reste demandée ; c'est sa durée,
+    // que personne ne peut vérifier avant d'avoir agi, qui disparaît.
+    expect(everything).toContain("extractions");
+    expect(everything).not.toMatch(/extractions[\s\S]{0,80}en une heure/);
+  });
+
+  it("qualifie le neuvième décile tiré de vingt dossiers", () => {
+    // Sur vingt valeurs triées, le neuvième décile est la dix-huitième : deux
+    // dossiers atypiques le déplacent entièrement. La FAQ le présentait comme
+    // « exploitable », ce qui est une règle éditoriale, pas une propriété
+    // démontrée. L'usage — dimensionner l'exception — supporte l'imprécision ;
+    // la promesse, non.
+    expect(Math.ceil(0.9 * 20)).toBe(18);
+    const faqBlock =
+      pageSource.match(
+        /const faqCategories: GuidePremiumFaqCategory\[\] = \[([\s\S]*?)\n\];/,
+      )?.[1] ?? "";
+
+    expect(faqBlock).not.toContain("neuvième décile exploitables");
+    expect(faqBlock).toContain("est un ordre de grandeur, pas une statistique");
+    expect(faqBlock).toContain("c’est la dix-huitième");
+    expect(faqBlock).toContain("dimensionner l’exception, pas à promettre");
+  });
+
   it("annonce son cas comme construit et nomme des métiers, pas des cases", () => {
     const text = prose(articleHtml());
     // L'étiquette dit littéralement ce qui vient d'une source et ce qui est
@@ -561,7 +654,12 @@ describe("qualité de contenu du guide « quel processus automatiser »", () => 
     expect(text).toContain(
       "Hagnéré Code construit des outils internes sur mesure et perçoit des honoraires",
     );
-    expect(text).toContain("relevés le 28 août 2026");
+    // Date de relevé portée au 30 août 2026 : les dix sources citées ont été
+    // rouvertes ce jour-là, une par une, avant la correction des écarts de
+    // sourçage. La page ne doit pas annoncer un relevé plus ancien que le
+    // dernier réellement fait, ni plus récent — ce contrôle fige la date, il
+    // ne la vérifie pas : seul le dossier de recherche en porte la preuve.
+    expect(text).toContain("relevés le 30 août 2026");
     expect(text).toContain("à revérifier tous les douze mois");
     expect((pageSource.match(/<TrackedGuideCtaLink/g) ?? []).length).toBe(1);
   });
@@ -644,7 +742,18 @@ describe("qualité de contenu du guide « quel processus automatiser »", () => 
     }
     // Les montants sont un échantillon daté, jamais un prix de marché.
     expect(text).toContain("échantillon daté d’un seul éditeur");
-    expect(text).toContain("28 août 2026");
+    // Même date que le bloc « Transparence » : la grille Zapier et la page des
+    // quotas Microsoft ont été rouvertes le 30 août 2026.
+    expect(text).toContain("30 août 2026");
+    // La comparaison de quotas se fait sur la même période des deux côtés :
+    // 810 requêtes par mois valent 27 par jour, en face de 6 000 par 24 h.
+    // Le total mensuel opposé au quota journalier était une comparaison hors
+    // période, vraie seulement a fortiori.
+    expect(text).toContain("27 par jour");
+    expect(text).toContain("6 000 par utilisateur et par 24 heures");
+    // Le déclencheur est compté parce que l'éditeur le compte, et la page le
+    // dit à l'endroit où elle avance les neuf étapes.
+    expect(text).toContain("l’éditeur compte le déclencheur comme une action");
   });
 
   it("source le coût horaire et son champ, au lieu de le poser", () => {

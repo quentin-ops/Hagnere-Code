@@ -67,7 +67,7 @@ export const GUIDES: GuideEntry[] = [
     // le porter (invariant verrouillé par src/lib/guides.test.ts).
     featured: true,
     datePublished: "2026-07-29T17:01:33+02:00",
-    dateModified: "2026-08-28T18:00:00+02:00",
+    dateModified: "2026-08-30T23:20:00+02:00",
     readTimeMin: 21,
     articleImagePaths: [
       "/guides/automatiser-processus-metier/article-processus-16x9.webp",
@@ -102,8 +102,8 @@ export const GUIDES: GuideEntry[] = [
     metaDescription:
       "Gestion Google Ads : forfait, pourcentage, hybride ou temps passé, le coût complet à 3, 6 et 12 mois et le budget média où l’ordre s’inverse.",
     cardDescription:
-      "Le décompte ligne à ligne d’un cas construit à 5 000 € HT de média par mois, les quatre seuils où le classement des modèles s’inverse, et le prix d’une sortie.",
-    heroTitle: "Combien coûte vraiment la gestion de Google Ads ?",
+      "Le décompte ligne à ligne d’un cas construit à 5\u00a0000\u00a0€ HT de média par mois, les quatre seuils où le classement des modèles s’inverse, et le prix d’une sortie.",
+    heroTitle: "Combien coûte vraiment la gestion de Google Ads\u00a0?",
     section: "Google Ads & acquisition",
     editorialStatus: "published",
     datePublished: "2026-07-31T00:24:23+02:00",
@@ -111,8 +111,8 @@ export const GUIDES: GuideEntry[] = [
     // 18 h 00 pile le 28/08/2026, était dans le futur au moment de la
     // livraison — et elle alimente `openGraph.modifiedTime` et le JSON-LD
     // Article. À réaligner sur l'horloge à chaque reprise du fichier.
-    dateModified: "2026-08-30T22:18:08+02:00",
-    readTimeMin: 15,
+    dateModified: "2026-08-30T23:22:01+02:00",
+    readTimeMin: 17,
     articleImagePaths: [
       "/guides/prix-gestion-google-ads/article-prix-ads-16x9.webp",
       "/guides/prix-gestion-google-ads/article-prix-ads-4x3.webp",
@@ -152,7 +152,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     editorialStatus: "published",
     datePublished: "2026-07-30T16:30:59+02:00",
-    dateModified: "2026-08-30T22:40:00+02:00",
+    dateModified: "2026-08-30T23:30:00+02:00",
     readTimeMin: 21,
     articleImagePaths: [
       "/guides/plan-recette-application-metier/recette-preuve-16x9.webp",
@@ -173,7 +173,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     editorialStatus: "published",
     datePublished: "2026-07-30T22:03:29+02:00",
-    dateModified: "2026-08-28T18:20:00+02:00",
+    dateModified: "2026-08-30T23:30:00+02:00",
     readTimeMin: 22,
     articleImagePaths: [
       "/guides/securite-application-metier/socle-securite-16x9.webp",
@@ -194,7 +194,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     editorialStatus: "published",
     datePublished: "2026-07-22T07:29:32+02:00",
-    dateModified: "2026-08-28T19:40:00+02:00",
+    dateModified: "2026-08-30T23:35:00+02:00",
     readTimeMin: 21,
     articleImagePaths: [
       "/guides/cahier-des-charges-saas/cahier-saas-16x9.webp",
@@ -214,8 +214,8 @@ export const GUIDES: GuideEntry[] = [
     section: "SaaS et MVP",
     editorialStatus: "published",
     datePublished: "2026-07-20T15:19:41+02:00",
-    dateModified: "2026-08-28T18:00:00+02:00",
-    readTimeMin: 20,
+    dateModified: "2026-08-30T22:30:00+02:00",
+    readTimeMin: 21,
     articleImagePaths: [
       "/guides/mvp-saas-quoi-inclure/contrat-test-mvp-16x9.webp",
       "/guides/mvp-saas-quoi-inclure/charge-manuelle-mvp-4x3.webp",
@@ -234,7 +234,11 @@ export const GUIDES: GuideEntry[] = [
     section: "Référencement naturel",
     editorialStatus: "published",
     datePublished: "2026-08-18T12:42:00Z",
-    dateModified: "2026-08-28T09:00:00Z",
+    // Réécriture substantielle du 30/08/2026 : libellés d'interface remis sur
+    // ceux de l'aide française, localisateur de la règle d'accès corrigé, dates
+    // de relecture réalignées sur la journée où les vingt-deux sources ont
+    // réellement été rouvertes. Le §15 de la charte impose une nouvelle date.
+    dateModified: "2026-08-30T17:30:00Z",
     readTimeMin: 21,
     articleImagePaths: [
       "/guides/pourquoi-site-pas-visible-google/diagnostic-google-16x9.svg",

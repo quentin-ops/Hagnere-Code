@@ -3,11 +3,12 @@
 > Slug : `plan-recette-application-metier`
 > Objet : **socle de preuves de l'article réellement publié le 30 août 2026**
 > Date de reconstitution du dossier : **30 août 2026**
+> Date de la passe de correction : **30 août 2026, 23 h 30**
 > Source de vérité : `src/app/guides/plan-recette-application-metier/page.tsx`
 > et les modules qu'il importe — **pas** la version antérieure de ce dossier
-> Auteur de la reconstitution : agent de traçabilité, passe unique
-> Territoire d'écriture : ce fichier seul. La page, les tests, le registre et
-> les manifestes n'ont pas été touchés.
+> Territoire d'écriture de la passe de correction : `page.tsx`,
+> `content-quality.test.ts`, ce fichier, et la seule entrée du guide dans
+> `src/lib/guides.ts`. Les manifestes du dépôt n'ont pas été touchés.
 
 Ce dossier remplace intégralement la version datée du 18 août 2026, qui
 décrivait un article qui n'existe plus : la page a été réécrite les 28 et
@@ -23,13 +24,28 @@ ce qui est établi de ce qui est posé.
 
 ---
 
-## 0. En tête — écarts trouvés dans l'article publié
+## 0. En tête — les huit écarts, et ce qui a été fait de chacun
 
-**La page n'a pas été corrigée : elle est hors du territoire de cette passe.**
-Les huit points ci-dessous sont signalés, datés et argumentés pour que la
-personne compétente tranche. Ils sont classés du plus concret au plus ténu.
+**Les huit écarts ont été traités le 30 août 2026 dans la page.** Le tableau
+ci-dessous garde le constat d'origine, parce qu'un socle de preuves qui efface
+ce qu'il a corrigé ne prouve plus rien, et lui ajoute l'issue retenue. Aucun
+écart n'a été rejeté : les huit relevés étaient exacts, et chacun a été
+revérifié à sa source avant d'être corrigé.
 
-| #   | Nature                | Où                                                | Constat                                                                                                                                                                                                                                                             |
+| #   | Issue retenue                     | Ce qui a changé dans la page                                                                                                                                                          |
+| --- | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| É1  | CORRIGER l'article                | L'encadré vert transpose désormais **2 170 €** (6,2 × 350, la ligne « Total » du tableau) et non 2 100 €. Le titre voisin annonce la même assiette : « Les 6,2 jours de travail ne tiennent pas dans six jours de calendrier ». Un test recalcule la transposition et interdit le retour de « 2 100 ». |
+| É2  | CORRIGER l'article                | « soit un quart du développement » devient « soit 2 170 ÷ 8 000 = 27,1 % du développement — plus du quart ». Le test ne gèle plus le mot : il recalcule le rapport.                        |
+| É3  | CHANGER LE LOCALISATEUR           | L'entrée `legalSources` pointe vers `https://www.squashtm.com/en/source-code`, rouverte le 30/08/2026, et cite la phrase mot pour mot. L'origine « Développé en France depuis 2011 par Henix » est attribuée à `henix.com/squashtm`, nommée dans la description. Un test interdit le retour de l'ancien `href`. |
+| É4  | CORRIGER l'article                | Le §06 et l'entrée `legalSources` disent maintenant que les trente jours **ne suivent pas** la vérification d'aptitude mais la couvrent, et donnent le point de départ de l'article 33.2.1. Article 33 rouvert sur Légifrance, `JORFARTI000043310747`. |
+| É5  | CORRIGER l'article                | Le « facteur douze et demi », « une douzaine » et « plus de cent cinquante » sont retirés. Les deux volumes publiés se **dérivent** de la règle de la même section : 4 cas pour 4 règles sans seuil, 60 à 120 cas pour 60 règles. Un test refait la dérivation. |
+| É6  | CORRIGER l'article                | Le §04 et l'entrée `legalSources` énumèrent les **quatre** catégories du I de l'article 47, le 3° compris.                                                                                 |
+| É7  | CORRIGER l'article                | Les douze entrées de `legalSources` portent une date au 30/08/2026 — ou disent pourquoi elles n'en ont pas. Le bloc Transparence annonce « rouvertes une à une le 30 août 2026 » et non une relecture du 28. Un test le vérifie entrée par entrée. |
+| É8  | CORRIGER l'article                | Les deux entrées ISO déclarent le **HTTP 403 du 30/08/2026**, par le lien publié comme par la plateforme de consultation en ligne. Le mot « publiquement » du §08, que ce 403 dément, est retiré. Un test exige la mention dans les deux entrées. |
+
+Constat d'origine, conservé pour que la correction soit vérifiable :
+
+| #   | Nature                | Où                                                | Constat                                                                                                                                                                                                                                                             |                                                                                                                                                                                                                                                           |
 | --- | --------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | É1  | Calcul incohérent     | `page.tsx` L644-646, encadré vert de la section 03 | « Transposés **tels quels** sur un projet à 8 000 € HT, ils coûteraient **2 100 €** de temps interne. » Transposés tels quels, les 6,2 jours du tableau valent 6,2 × 350 = **2 170 €**. 2 100 € correspond à 6,0 × 350, c'est-à-dire au « six jours » arrondi du titre voisin, pas à la ligne « Total » du tableau. Aucun test ne verrouille ce nombre. |
 | É2  | Arrondi qui minore    | `page.tsx` L646-647, même encadré                  | « soit **un quart** du développement ». 2 100 ÷ 8 000 = 26,25 % ; 2 170 ÷ 8 000 = 27,1 %. Dans les deux lectures la charge est **supérieure** au quart. Le test `garde intact le passage qui ne sert pas le commerce` verrouille la formule « un quart du développement » sans vérifier le rapport.                                                     |
@@ -42,7 +58,10 @@ personne compétente tranche. Ils sont classés du plus concret au plus ténu.
 
 **Aucun autre écart de calcul n'a été trouvé.** Les vingt-trois autres
 opérations chiffrées de l'article ont été refaites à la main et retombent
-toutes sur la valeur publiée : voir §7, où chaque étape est écrite.
+toutes sur la valeur publiée : voir §7, où chaque étape est écrite. Après
+correction, les vingt-cinq opérations de l'article — les vingt-trois d'origine,
+la transposition à 8 000 € et la dérivation des deux volumes de la section 02 —
+retombent toutes sur leur valeur publiée.
 
 ---
 
@@ -63,21 +82,30 @@ l'auteur, de :
 
 ### 1.2 Les fichiers relevés
 
-Relevé du 30 août 2026, 22 h 55 (heure locale). Empreintes SHA-256 tronquées à
-16 caractères pour la lisibilité ; la commande complète est au §13.
+Relevé du 30 août 2026, **après la passe de correction de 23 h 30**. Empreintes
+SHA-256 tronquées à 16 caractères pour la lisibilité ; la commande complète est
+au §13.
 
 | Fichier                                                                    | Dernière écriture | SHA-256 (16) |
 | -------------------------------------------------------------------------- | ----------------- | ------------ |
-| `src/app/guides/plan-recette-application-metier/page.tsx`                   | 30/08/2026 22:33  | `fe9842be64f91f4d` |
-| `src/app/guides/plan-recette-application-metier/content-quality.test.ts`    | 30/08/2026 22:44  | `97cfe018fb11ce36` |
+| `src/app/guides/plan-recette-application-metier/page.tsx`                   | 30/08/2026 23:24  | `9f0c07c9d683351d` |
+| `src/app/guides/plan-recette-application-metier/content-quality.test.ts`    | 30/08/2026 23:26  | `536b250856e79508` |
 | `src/app/guides/plan-recette-application-metier/acceptance-readiness.ts`    | 28/08/2026 17:01  | `e46fa418e39fb460` |
 | `src/app/guides/plan-recette-application-metier/acceptance-readiness.test.ts` | 18/08/2026 11:17 | `d87ea3939275d51a` |
 | `src/app/guides/plan-recette-application-metier/acceptance-readiness-tool.tsx` | 30/08/2026 22:24 | `b3fe00c9ecb2dc51` |
 | `src/app/guides/plan-recette-application-metier/opengraph-image.tsx`        | 30/08/2026 22:34  | `5d80546ec72a7e31` |
-| `docs/research/plan-recette-application-metier.md` (version remplacée)      | 18/08/2026 12:46  | `d19e346823c8c163` |
 
-C'est cet écart de douze jours entre la page (30 août) et l'ancien dossier
-(18 août) qui rendait le socle de preuves inutilisable.
+Les deux empreintes de `page.tsx` et de `content-quality.test.ts` sont
+postérieures à la reconstitution de 22 h 55 : ce sont celles de la version
+corrigée, la seule que ce dossier décrit. L'atelier
+(`acceptance-readiness*.ts`), l'image OG et les trois SVG n'ont pas été touchés
+par la passe de correction, et leurs empreintes sont inchangées.
+
+`src/lib/guides.ts` a été touché sur la seule entrée de ce guide :
+`dateModified` passe de `2026-08-30T22:40:00+02:00` à
+`2026-08-30T23:30:00+02:00`. Le fichier étant partagé avec six autres guides en
+cours d'écriture, son empreinte globale n'est pas relevée ici : elle ne dirait
+rien de cette passe.
 
 ### 1.3 Ordre de lecture suivi
 
@@ -96,13 +124,21 @@ C'est cet écart de douze jours entre la page (30 août) et l'ancien dossier
 
 ### 1.4 Ce qui a été exécuté
 
-| Commande                                                                | Sortie observée le 30/08/2026                            |
+| Commande                                                                | Sortie observée le 30/08/2026, après correction          |
 | ----------------------------------------------------------------------- | -------------------------------------------------------- |
-| `npx vitest run src/app/guides/plan-recette-application-metier`          | 2 fichiers, **80 tests réussis**, 0 échec                 |
+| `npx tsc --noEmit`                                                      | aucune sortie, code de retour 0                           |
+| `npx vitest run src/app/guides/plan-recette-application-metier`          | 2 fichiers, **81 tests réussis**, 0 échec                 |
+| `npx tsx scripts/measure-guide-readtime.mjs plan-recette-application-metier` | `4 154 mots · 21 min`                                |
 | `npx tsx scripts/measure-guide-readtime.mjs --check plan-recette-application-metier` | `OK … mesuré 21 min · publié 21 min`         |
 | script Python de recalcul (§13)                                         | voir §7, résultats reproduits ligne à ligne              |
 
-Aucune commande d'écriture, aucune commande Git n'a été lancée.
+Aucune commande Git n'a été lancée. Deux tests du dépôt échouent **hors de ce
+territoire** et échouaient déjà avant cette passe : `guides.test.ts` sur le
+guide `cahier-des-charges-saas`, et `editorial-governance.test.ts` sur le
+manifeste `published-guides-current.sha256`, qui couvre les neuf guides publiés
+et que six autres passes en cours désynchronisent en même temps. Réécrire ce
+manifeste depuis ici reviendrait à tamponner le travail en vol des autres : il
+est laissé à la passe qui clôt le corpus.
 
 ---
 
@@ -117,7 +153,7 @@ H1 / heroTitle      : Plan de recette d'une application métier : prouver avant 
 Section du hub      : Préparer son projet
 Statut éditorial    : published
 datePublished       : 2026-07-30T16:30:59+02:00
-dateModified        : 2026-08-30T22:40:00+02:00
+dateModified        : 2026-08-30T23:30:00+02:00
 readTimeMin publié  : 21
 Longueur mesurée    : 21 min (script du dépôt, atelier exclu du comptage)
 Auteur affiché      : TEAM.quentin (président fondateur), profil /equipe#fondateur
@@ -148,6 +184,18 @@ Somme des huit compteurs : 2 + 2 + 3 + 4 + 2 + 3 + 2 + 3 = **21 minutes**,
 section dans le temps publié` l'exige, et exige en plus qu'aucune section ne
 s'écarte de plus d'une minute de sa propre longueur mesurée à 200 mots/minute.
 La mesure indépendante du script du dépôt donne également 21 min (§1.4).
+
+Effet de la passe de correction sur le calibre : les corrections des huit
+écarts ont ajouté 106 mots (4 140 → 4 246), ce qui faisait sortir l'article de
+la bande « méthode / parcours » du protocole (3 000 à 4 200 mots). Les mots ont
+été repris sur cinq redites réelles, jamais sur une correction — la phrase de
+la section 01 sur les seuils, qui reprenait mot pour mot le hero ; le
+paragraphe de renvoi final de la section 07, dont la cible est déjà atteinte
+depuis la section 04 ; la liste d'exemples de la section 05, reprise dans la
+FAQ ; « en une journée » en section 05, qui entrait en tension avec la ligne
+« Préparer le jeu de données — 1,5 jour » du tableau de la section 03 ; et une
+formulation plus courte du point de départ des trente jours en section 06.
+Mesure finale : **4 154 mots, 21 min**.
 
 ### 2.2 FAQ publiée
 
@@ -187,12 +235,22 @@ rend le dossier possible :
 
 ### 4.1 Sources citées par l'article et **rouvertes le 30 août 2026**
 
-Dix des douze entrées de `legalSources`. Pour chacune : le localisateur le plus
-fin obtenu, et ce que la source établit **exactement**.
+Dix des douze entrées de `legalSources`, plus deux localisateurs d'articles
+obtenus dans la passe de correction (S1a, S1b) et la page qui porte réellement
+la licence de Squash TM (S11). Pour chacune : le localisateur le plus fin
+obtenu, et ce que la source établit **exactement**.
+
+Toutes ont été **rouvertes une seconde fois** pendant la passe de correction du
+30 août 2026, à 23 h, pour que chaque date écrite dans l'article soit une date
+réellement faite. Le PDF de l'ISTQB a été téléchargé et lu localement — 78
+pages, version v4.0.1 datée du 15 septembre 2024 en pied de chaque page —
+plutôt que résumé.
 
 | ID  | Source et URL                                                                                                                                                  | Localisateur atteint le 30/08/2026                                                                                      | Ce qu'elle établit, mot pour mot ou paraphrasé au plus près                                                                                                                                                                                                                          |
 | --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| S1  | Légifrance — arrêté du 30 mars 2021 approuvant le CCAG-TIC<br>`https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000043310689`                                     | Page rouverte. Titre et référence de publication confirmés : **JORF n° 0078 du 1er avril 2021, texte n° 22**. Table des matières de l'annexe visible jusqu'à l'article 31 environ. | Le titre exact : « Arrêté du 30 mars 2021 portant approbation du cahier des clauses administratives générales des marchés publics de techniques de l'information et de la communication ». **Le corps des articles 32 et 33 n'a pas été servi par la récupération** (voir §4.4). |
+| S1  | Légifrance — arrêté du 30 mars 2021 approuvant le CCAG-TIC<br>`https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000043310689`                                     | Page rouverte. Titre et référence de publication confirmés : **JORF n° 0078 du 1er avril 2021, texte n° 22**. Table des matières de l'annexe visible jusqu'à l'article 31 environ. | Le titre exact : « Arrêté du 30 mars 2021 portant approbation du cahier des clauses administratives générales des marchés publics de techniques de l'information et de la communication ». **Le corps des articles 32 et 33 n'est pas servi par cette page** — il l'est par S1a et S1b. |
+| S1a | Légifrance — **article 32 de l'annexe** (CCAG-TIC)<br>`https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000043310746`                                     | Article rouvert le 30/08/2026 sur la **source primaire**. Ce localisateur manquait au dossier du matin, qui s'appuyait sur deux recueils tiers (§4.4). | 32.3 vérification d'aptitude après mise en ordre de marche ; 32.4 vérification de service régulier : « trente jours, à partir du jour de la décision positive », « la durée cumulée, sur le mois, des indisponibilités **imputables à chaque élément de matériel** ne dépasse pas **2 %** », durée d'utilisation effective « de **8 heures à 18 heures, du lundi au vendredi, jours fériés exclus** ». |
+| S1b | Légifrance — **article 33 de l'annexe** (CCAG-TIC)<br>`https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000043310747`                                     | Article rouvert le 30/08/2026 sur la **source primaire**. C'est lui qui tranche É4. | 33.2.1, mot pour mot : « le délai imparti à l'acheteur pour procéder à la vérification d'aptitude et notifier sa décision est de trente jours à compter de la date de notification de l'écrit par lequel le titulaire informe l'acheteur que les prestations sont prêtes à être vérifiées ou, à défaut, de la date de notification par le titulaire du procès-verbal de mise en ordre de marche. » Décisions ouvertes à l'acheteur : décision positive de vérification d'aptitude, ajournement, rejet. **Aucune admission tacite à 33.2.1.** 33.2.2 : sept jours, et à défaut « les prestations sont réputées admises ». |
 | S2  | ISTQB — CTFL Syllabus v4.0.1 (PDF)<br>`https://istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf`                                             | PDF téléchargé et lu, 78 pages. Table des révisions p. 3 : **« CTFL v4.0.1 — 15.09.2024 — Errata »**. Pied de page de chaque page : `v4.0.1 … 2024-09-15`. | §2.2.1 *Test Levels*, p. 28 : « Acceptance testing focuses on validation and on demonstrating readiness for deployment, which means that the system fulfills the user's business needs. Ideally, acceptance testing should be performed by the intended users. » <br>§5.1.3 *Entry Criteria and Exit Criteria*, p. 49 : « Entry criteria define the preconditions for undertaking a given activity. […] Exit criteria define what must be achieved to declare an activity completed. » <br>§5.1.5 *Test Case Prioritization*, p. 50 : priorisation par risque, par couverture ou par priorité des exigences. <br>§5.5 *Defect Management*, p. 56-57 : le rapport d'anomalie porte deux champs distincts — « **Severity** of the defect (degree of impact) on the interests of stakeholders or requirements » et « **Priority to fix** ». |
 | S3  | CNIL — Tester vos applications<br>`https://www.cnil.fr/fr/tester-vos-applications`                                                                              | Page rouverte. Date affichée : **27 janvier 2020**.                                                                       | « Les métriques acceptables doivent être définies conjointement par toutes les parties avant le développement ». Les données réelles de production « ne doivent pas être utilisées pendant la phase de développement et de test ». « Construisez donc un jeu de données fictives ». Lors de l'import de configurations existantes, « pensez à anonymiser les données personnelles » qu'elles contiennent. |
 | S4  | CNIL — Encadrer les développements informatiques<br>`https://www.cnil.fr/fr/securite-encadrer-les-developpements-informatiques`                                 | Page rouverte. Date affichée : **14 mars 2024**.                                                                          | « Effectuer les développements informatiques et les tests dans un environnement informatique distinct de celui de la production », sur données fictives ou anonymisées. À ne pas faire : « Utiliser des données personnelles réelles pour les phases de développement et de test. Des jeux fictifs doivent être utilisés autant que possible. » Et : « Effectuer un test de non-régression et/ou une revue de code avant tout passage en production d'une mise à jour ». |
@@ -201,7 +259,8 @@ fin obtenu, et ce que la source établit **exactement**.
 | S7  | Légifrance — décret n° 2019-768 du 24 juillet 2019<br>`https://www.legifrance.gouv.fr/loda/id/JORFTEXT000038811937/`                                            | Décret rouvert, **en vigueur au 30 août 2026**.                                                                           | Article 2 : le seuil du 4° du I de l'article 47 est fixé à **250 millions d'euros**, calculés sur « la moyenne du chiffre d'affaires annuel réalisé en France au titre des trois derniers exercices comptables clos antérieurs à l'année considérée ». **Aucun critère d'effectif** ne figure dans le texte. Le régime de sanction a bougé : l'**article 8 a été abrogé par le décret n° 2026-816 du 24 août 2026**, qui a également modifié les articles 1, 5, 9 et 10. |
 | S8  | EUR-Lex — directive (UE) 2019/882<br>`https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32019L0882`                                                   | Directive rouverte. Adoptée le **17 avril 2019**, publiée au JOUE le 7 juin 2019.                                          | Application des exigences aux produits et services mis sur le marché **à partir du 28 juin 2025**. Champ de l'article 2 : matériel informatique généraliste et systèmes d'exploitation, terminaux en libre-service, équipements terminaux grand public, liseuses ; services de communications électroniques, services d'accès aux médias audiovisuels, information et billetterie du transport de voyageurs, services bancaires aux consommateurs, commerce électronique, livres numériques. Le champ est celui des produits et services **destinés aux consommateurs** : les outils internes d'entreprise n'y figurent pas. |
 | S9  | OWASP — ASVS<br>`https://owasp.org/www-project-application-security-verification-standard/`                                                                     | Page rouverte. Version stable : **5.0.0, publiée le 30 mai 2025** (Global AppSec EU Barcelona).                            | L'ASVS fournit une base pour tester les contrôles techniques de sécurité d'une application web, sert de métrique, guide la construction des contrôles et sert de base contractuelle. La page recommande le format versionné `v<version>-<chapitre>.<section>.<exigence>` — par exemple `v5.0.0-1.2.5` — « car les identifiants peuvent changer entre les versions ». |
-| S10 | Henix — Squash TM<br>`https://www.henix.com/squashtm`                                                                                                          | Page rouverte.                                                                                                            | « Développé en France depuis 2011 par Henix ». Henix y est décrite comme une entreprise française spécialisée en qualité logicielle, éditrice de Squash TM. La page décrit un modèle **« open core »**. Elle **ne mentionne aucune licence** — voir É3. |
+| S10 | Henix — Squash TM<br>`https://www.henix.com/squashtm`                                                                                                          | Page rouverte le 30/08/2026. **N'est plus le `href` de l'entrée** : elle est nommée dans la description comme source de la seule origine du produit. | « Développé en France depuis 2011 par Henix ». Henix y est décrite comme une entreprise française spécialisée en qualité logicielle, éditrice de Squash TM. La page décrit un modèle « basé sur un modèle **open core** ». Elle **ne mentionne aucune licence** — c'est ce qui fondait É3. |
+| S11 | Squash TM — page « Source code »<br>`https://www.squashtm.com/en/source-code`                                                                                   | Page rouverte le 30/08/2026. **Nouveau `href` de l'entrée `legalSources`**, en remplacement de S10 (É3). | Mot pour mot, dans la langue de la page : « SquashTM is open source software, distributed under the LGPL v3 license. » Lien de licence donné : `gnu.org/licenses/lgpl-3.0.en.html`. Dépôt : `gitlab.com/henixdevelopment/open-source/squash`. |
 
 ### 4.2 Sources citées par l'article que je **n'ai pas pu rouvrir**
 
@@ -210,26 +269,35 @@ Déclaré noir sur blanc, comme l'exige la charte : ces deux sources n'ont pas
 
 | ID  | Source                                                                                          | Ce qui s'est passé                                                                                                                                          |
 | --- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| N1  | ISO/IEC/IEEE 29119-3:2021 — `https://www.iso.org/standard/79429.html`                            | **HTTP 403 Forbidden.** Réessai sur l'Online Browsing Platform (`iso.org/obp/ui/en/#iso:std:iso-iec-ieee:29119:-3:ed-2:v1:en`) : **HTTP 403** également.       |
-| N2  | ISO/IEC 25010:2023 — `https://www.iso.org/standard/78176.html`                                   | **HTTP 403 Forbidden.** Réessai sur `https://www.iso.org/fr/standard/78176.html` : **HTTP 403** également.                                                    |
+| N1  | ISO/IEC/IEEE 29119-3:2021 — `https://www.iso.org/standard/79429.html`                            | **HTTP 403 Forbidden.** Réessai sur l'Online Browsing Platform (`iso.org/obp/ui/en/#iso:std:iso-iec-ieee:29119:-3:ed-2:v1:en`) : **HTTP 403** également. Réessai à 23 h avec `curl` et un `User-Agent` de navigateur : **403** de nouveau. |
+| N2  | ISO/IEC 25010:2023 — `https://www.iso.org/standard/78176.html`                                   | **HTTP 403 Forbidden.** Réessai sur `https://www.iso.org/fr/standard/78176.html` : **HTTP 403** également. Réessai à 23 h par `curl` et par la plateforme de consultation en ligne : **403** de nouveau. |
 
-Conséquence pratique : les deux phrases de l'article qui s'appuient sur ces
-normes — « ISO/IEC/IEEE 29119-3:2021 propose publiquement des modèles de
-documentation, ISO/IEC 25010:2023 aide à ouvrir la liste des critères au-delà
-des seules fonctions » (`page.tsx` L1084-1087) et les deux descriptions de
-`legalSources` (L262-273) — **ne sont pas vérifiables depuis leur source citée
-à la date de ce dossier**. Elles restent prudentes (l'article prend soin
-d'écrire « Aucun champ détaillé non public n'est attribué à la norme »), mais
-un contradicteur qui cliquerait le lien aujourd'hui obtiendrait un 403. À
-traiter au prochain passage : soit citer un catalogue accessible, soit
-documenter le blocage dans l'entrée elle-même.
+Le blocage a donc été constaté **deux fois, par trois voies distinctes** — le
+récupérateur du dossier, `curl` avec un agent de navigateur, la plateforme de
+consultation en ligne — et n'a jamais produit autre chose qu'un 403. Aucune
+consultation n'a été simulée.
 
-Cas particulier, **partiel** : S1 (Légifrance, CCAG-TIC) a bien été rouverte,
-titre et référence JO confirmés, mais la récupération n'a pas servi le corps
-des articles 32 et 33 de l'annexe. **Ces deux articles n'ont donc pas été relus
-sur la source primaire** ; ils l'ont été sur deux recueils tiers concordants
-(§4.4). Un lecteur exigeant doit ouvrir le PDF officiel du CCAG-TIC depuis
-Légifrance pour clore ce point.
+Ce qui a changé le 30 août 2026 à 23 h 30 : **le blocage est maintenant écrit
+dans la page**, dans les deux entrées `legalSources` concernées, avec sa date
+et les voies essayées. Un contradicteur qui clique et tombe sur un 403 trouve
+le 403 déjà annoncé à côté du lien, au lieu de le découvrir. Et le mot
+« publiquement » de la phrase du §08 — « propose publiquement des modèles de
+documentation » — a été retiré : c'est le seul mot que ce 403 dément.
+L'article dit désormais « propose des modèles de documentation de test ».
+
+Une référence de remplacement a été cherchée et n'a pas été trouvée :
+`iso25000.com` répond 404 sur la page ISO 25010, et la plateforme de
+consultation de l'ISO répond 403. Faute de source accessible, aucun
+localisateur n'a été déplacé : déplacer un lien vers un site tiers non
+normatif pour maquiller un 403 serait pire que le déclarer.
+
+Cas particulier **clos** : le dossier du matin notait que le corps des
+articles 32 et 33 n'avait pas été relu sur Légifrance, et s'appuyait sur deux
+recueils tiers. Les deux articles ont été **rouverts sur la source primaire**
+pendant la passe de correction, à leurs localisateurs propres — S1a
+(`JORFARTI000043310746`) et S1b (`JORFARTI000043310747`). Ils confirment les
+recueils sur tous les points repris par l'article, et c'est S1b qui établit
+É4.
 
 ### 4.3 Sources internes au site — le seul chiffre du cas qui n'est pas une hypothèse
 
@@ -251,17 +319,25 @@ qu'aucun marqueur d'attribution ne partage son littéral de chaîne.
 ### 4.4 Sources de corroboration — pourquoi elles ont été ouvertes
 
 Ces pages **ne sont pas citées par l'article** et ne fondent aucune affirmation
-publiée. Elles ont servi à obtenir le texte d'articles que la source primaire
-n'a pas rendus, et à trancher É3. Elles sont listées pour que la vérification
-soit reproductible, pas pour tenir lieu de source primaire.
+publiée. Elles sont listées pour que la vérification soit reproductible, pas
+pour tenir lieu de source primaire.
+
+Leur statut a changé le 30 août 2026 à 23 h : les articles 32 et 33 ayant été
+rouverts sur Légifrance (S1a, S1b), **C1 à C4 ne portent plus rien seules** —
+elles servent désormais de contrôle croisé d'une source primaire lue, et non
+de substitut à une source primaire manquante. Elles concordent avec Légifrance
+sur tous les points repris par l'article, point de départ des trente jours
+compris. C5 a été **promue en source citée** (S11) : c'est elle qui porte la
+licence, et c'est elle que l'entrée `legalSources` pointe maintenant.
 
 | ID  | Page                                                                                     | Sert à                                                                                                            |
 | --- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | C1  | `https://www.marche-public.fr/CCAG-TIC2021/32-verifications-qualitatives.htm`             | Texte de l'article 32 : 32.3 vérification d'aptitude, 32.4 vérification de service régulier, trente jours, 2 %, « imputables à chaque élément de matériel », 8 h – 18 h du lundi au vendredi jours fériés exclus. |
 | C2  | `https://www.marche-public.info/verification-service-regulier-ccag-tic-2021/`              | Second recueil, concordant avec C1 sur l'article 32.4. Deux recueils indépendants ont été exigés avant de tenir le contenu pour établi. |
 | C3  | `https://www.marche-public.fr/CCAG-TIC2021/33-decisions-apres-verification.htm`            | Texte de l'article 33 : 33.2.1 (trente jours), 33.2.2 (sept jours et admission tacite).                            |
-| C4  | `https://www.code-commande-publique.com/ccag-tic-2021-article-33/`                         | Second recueil, concordant avec C3, y compris sur le point de départ des trente jours de 33.2.1 — c'est lui qui établit É4. |
-| C5  | `https://www.squashtm.com/en/source-code` (redirection 301 depuis `squashtest.com/source-code`) | « SquashTM is open source software, distributed under the LGPL v3 license. » Dépôt : `gitlab.com/henixdevelopment/open-source/squash`. Établit que le fait de l'article est vrai et que seul son localisateur est faux. |
+| C4  | `https://www.code-commande-publique.com/ccag-tic-2021-article-33/`                         | Second recueil sur l'article 33, concordant avec C3 sur les délais. Rouvert le 30/08/2026 à 23 h : il refuse de reproduire le texte intégral et n'a servi qu'au contrôle des délais. |
+| C6  | `https://www.marche-public.info/article-33-decision-apres-verifications-ccag-tic-2021/`     | Troisième recueil sur l'article 33, ouvert pendant la passe de correction. Concordant avec S1b sur le point de départ des trente jours, sur les trois décisions ouvertes à l'acheteur (décision positive, ajournement, rejet) et sur l'absence d'admission tacite à 33.2.1. |
+| C5  | `https://www.squashtm.com/en/source-code`                                                   | **Promue en S11** : elle n'est plus une corroboration mais la source citée par l'article. Voir §4.1.                     |
 
 Texte de l'article 33.2.2 obtenu à l'identique par C3 et C4 : « Si l'acheteur
 ne notifie pas sa décision dans le délai de sept jours mentionné au premier
@@ -278,14 +354,14 @@ revérification du 30 août 2026.
 | ID  | Affirmation telle que publiée                                                                                                       | Emplacement             | Source / localisateur                     | Verdict                                                                                 |
 | --- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------- |
 | F1  | Le CCAG-TIC est approuvé par l'**arrêté du 30 mars 2021**                                                                            | L251, L678-680          | S1 — titre de l'arrêté, JORF 01/04/2021   | **Confirmé** sur la source primaire.                                                      |
-| F2  | Son **article 32** sépare la vérification en deux temps : vérification d'aptitude, puis vérification de service régulier             | L680-683                | C1, C2 (art. 32.3 et 32.4)                | **Confirmé** sur deux recueils concordants ; non lu sur Légifrance (§4.2).                |
+| F2  | Son **article 32** sépare la vérification en deux temps : vérification d'aptitude, puis vérification de service régulier             | L680-683                | **S1a** (Légifrance, art. 32.3 et 32.4), corroboré par C1 et C2 | **Confirmé sur la source primaire** depuis la passe de correction du 30/08/2026.        |
 | F3  | La vérification d'aptitude « contrôle que le logiciel livré peut remplir les fonctions demandées »                                   | L681-682                | C1, art. 32.3                             | **Confirmé** en substance : constater que les prestations « présentent les caractéristiques techniques » attendues, après mise en ordre de marche. |
 | F4  | La régularité s'observe **trente jours** à partir de la **décision positive de vérification d'aptitude**                             | L686-689                | C1, C2, art. 32.4 : « la régularité du service s'observe pendant trente jours, à partir du jour de la décision positive de vérification d'aptitude » | **Confirmé, littéral.**                                                                   |
 | F5  | Service réputé régulier si l'indisponibilité cumulée sur le mois ne dépasse pas **2 %** de la durée d'utilisation effective          | L689-691                | C1, C2, art. 32.4                         | **Confirmé, littéral.**                                                                   |
 | F6  | La durée d'utilisation effective s'étend **de 8 h à 18 h, du lundi au vendredi, jours fériés exclus**                                | L691-694, L743-744      | C1, C2, art. 32.4                         | **Confirmé, littéral.**                                                                   |
 | F7  | Le CCAG-TIC parle d'indisponibilités « **imputables à chaque élément de matériel** »                                                 | L720-722                | C1, C2, art. 32.4                         | **Confirmé, littéral.** La remarque de l'article — sur une application hébergée, aucun élément de matériel n'est au client — est une déduction éditoriale explicite, pas une citation. |
-| F8  | Article 33 : **sept jours** après vérification de service régulier ; à défaut de notification, **les prestations sont réputées admises** | L254, L922-930          | C3, C4, art. 33.2.2 (texte cité au §4.4)  | **Confirmé, littéral.**                                                                   |
-| F9  | Article 33 : **trente jours** liés à la vérification d'aptitude, **sans admission tacite** — approbation, ajournement ou rejet       | L254, L926-930          | C3, C4, art. 33.2.1                       | **Confirmé sur le fond** : aucune admission tacite à 33.2.1. **Réserve É4** sur le point de départ du délai. |
+| F8  | Article 33 : **sept jours** après vérification de service régulier ; à défaut de notification, **les prestations sont réputées admises** | L254, L925-930          | **S1b** (Légifrance, art. 33.2.2), corroboré par C3, C4, C6 | **Confirmé, littéral**, désormais sur la source primaire.                                |
+| F9  | Article 33.2.1 : les **trente jours couvrent** la vérification d'aptitude et courent depuis l'écrit du titulaire ou le procès-verbal de mise en ordre de marche, **sans admission tacite** — décision positive, ajournement ou rejet | L254, L931-937          | **S1b** (Légifrance, art. 33.2.1), corroboré par C3, C4, C6 | **Confirmé, littéral.** É4 est **corrigé** : la page n'écrit plus « le délai de trente jours qui suit la vérification d'aptitude ». |
 | F10 | Le CCAG-TIC « ne s'applique qu'aux marchés qui s'y réfèrent »                                                                        | L1127-1128, L330        | Nature même d'un CCAG (document type auquel les documents particuliers renvoient) | **Confirmé** : réserve conforme et verrouillée par test.                                  |
 | F11 | Le syllabus ISTQB distingue **gravité** (effet) et **priorité** (ordre de traitement)                                                | L1059-1063, L260        | S2, §5.5, p. 56-57 : champs « Severity … (degree of impact) » et « Priority to fix » | **Confirmé.**                                                                             |
 | F12 | Le syllabus traite des **niveaux de test** et d'une acceptation centrée sur les besoins des utilisateurs                             | L259-260                | S2, §2.2.1, p. 28 (citation au §4.1)      | **Confirmé.**                                                                             |
@@ -301,16 +377,16 @@ revérification du 30 août 2026.
 | F22 | L'obligation française d'accessibilité vient de l'**article 47 de la loi du 11 février 2005**, le décret de 2019 n'en fixe que le seuil | L761-765, L293-305     | S6 + S7                                   | **Confirmé.**                                                                             |
 | F23 | Le seuil est de **250 millions d'euros** de chiffre d'affaires **moyen annuel en France sur les trois derniers exercices clos**       | L766-769, L303-305      | S7, décret n° 2019-768, article 2         | **Confirmé, littéral.**                                                                   |
 | F24 | « Le critère est un chiffre d'affaires, **jamais un effectif** »                                                                     | L768-769, L304          | S7 — aucun critère d'effectif dans le texte | **Confirmé.**                                                                            |
-| F25 | Les catégories visées par le I de l'article 47                                                                                       | L763-769                | S6                                        | **Confirmé mais incomplet** — voir É6 : le 3° manque.                                     |
+| F25 | Les **quatre** catégories visées par le I de l'article 47, le 3° compris                                                             | L297, L767-775          | S6                                        | **Confirmé et complet.** É6 est **corrigé** : « Elle vise quatre catégories : … celles que les précédentes constituent pour le même objet ; … ». |
 | F26 | Le régime de sanction du décret « a été modifié depuis : vérifier le texte en vigueur »                                              | L304-305                | S7                                        | **Confirmé et à jour** : article 8 abrogé par le décret n° 2026-816 du 24 août 2026. L'article ne cite aucun montant d'amende, et un test l'interdit. |
 | F27 | Le second régime est **applicable depuis le 28 juin 2025** et vise des produits et services **destinés aux consommateurs**           | L772-776, L307-311      | S8, directive (UE) 2019/882               | **Confirmé.**                                                                             |
 | F28 | « Un outil interne utilisé par vos salariés n'y figure pas »                                                                         | L775-776, L310          | S8, champ de l'article 2                  | **Confirmé** : le champ est celui des produits et services destinés aux consommateurs.    |
-| F29 | Squash TM est **développé depuis 2011 par Henix**, société française de qualité logicielle                                           | L313-317                | S10                                       | **Confirmé, littéral** (« Développé en France depuis 2011 par Henix »).                   |
-| F30 | Squash TM est publié **en open source sous licence LGPL v3**                                                                         | L313-317, L525-528      | **C5**, pas S10                           | **Fait exact, localisateur faux** — voir É3.                                              |
+| F29 | Squash TM est **développé depuis 2011 par Henix**, société française de qualité logicielle                                           | L313-317                | S10, nommée dans la description de l'entrée | **Confirmé, littéral** (« Développé en France depuis 2011 par Henix »).                 |
+| F30 | Squash TM est publié **en open source sous licence LGPL v3**                                                                         | L313-317, L524-528      | **S11** (`squashtm.com/en/source-code`)   | **Confirmé, littéral.** É3 est **corrigé** : le `href` de l'entrée pointe désormais la page qui porte la phrase, citée mot pour mot. |
 | F31 | Squash TM est cité « **sans recommandation exclusive** », comme exemple d'outil disponible                                           | L316-317, L525-528      | Réserve éditoriale                        | **Conforme.**                                                                             |
 | F32 | OWASP **ASVS 5.0.0** est une base versionnée de contrôles techniques de sécurité web, « pas une obligation générale »                | L319-323                | S9                                        | **Confirmé** : 5.0.0 publiée le 30/05/2025 ; la page elle-même recommande de citer la version. |
-| F33 | ISO/IEC/IEEE 29119-3:2021 propose publiquement des modèles de documentation de test ; aucun champ non public ne lui est attribué      | L262-267, L1084-1086    | N1                                        | **Non revérifié le 30/08/2026** — HTTP 403 (§4.2).                                        |
-| F34 | ISO/IEC 25010:2023 : modèle de qualité produit à **neuf caractéristiques**                                                           | L269-273, L1085-1087    | N2                                        | **Non revérifié le 30/08/2026** — HTTP 403 (§4.2).                                        |
+| F33 | ISO/IEC/IEEE 29119-3:2021 propose des modèles de documentation de test ; aucun champ non public ne lui est attribué                   | L262-267, L1083-1086    | N1                                        | **Non revérifié le 30/08/2026** — HTTP 403 (§4.2). É8 est **corrigé** : le 403 et sa date sont écrits dans l'entrée, et le mot « publiquement » est retiré du §08. |
+| F34 | ISO/IEC 25010:2023 : modèle de qualité produit à **neuf caractéristiques**                                                           | L269-273, L1084-1087    | N2                                        | **Non revérifié le 30/08/2026** — HTTP 403 (§4.2). É8 est **corrigé** de la même façon : l'entrée déclare le 403, sa date et les deux langues essayées. |
 | F35 | Le projet du cas construit, **25 000 € HT**, vient de la grille publiée du site                                                      | L376, L392-394, L398    | §4.3 (`tarifs/body.ts` L642, `agence-react/page.tsx` L62 et L295) | **Confirmé** dans le dépôt : palier « 25 k€ HT — Pro — CRM/ERP léger + intégrations ». |
 
 ---
@@ -325,6 +401,11 @@ siennes et voir ce qui bouge.
 chiffrée (H1-H4) et **44 valeurs posées sans aucune source**. Le décompte se
 refait en additionnant les lignes des tableaux 6.1 à 6.7 :
 4 + 9 + 5 + 12 + 4 + 2 + 12 = 48.
+
+Le total ne bouge pas après la passe de correction du 30 août 2026, mais deux
+lignes ont changé de contenu : H17 et H18 ne posent plus des *volumes de cas*
+mais des *nombres de règles* (§6.3). Ce qui était posé sans source est devenu
+une entrée, et ce qui était affirmé est devenu un calcul (§7.13).
 
 ### 6.1 Le décor (aucun effet sur un calcul)
 
@@ -360,11 +441,18 @@ les deux verrouillés par test.
 | --- | --------------------------------------------------------------------- | ----------- |
 | H14 | Un tableur suffit **jusqu'à environ 150 cas** et deux campagnes        | L515-516, L522-527 |
 | H15 | Feuille de **huit colonnes** (identifiant, règle, version, rôle, données, attendu, obtenu, preuve) | L518-522 |
-| H16 | Référentiel contre-exemple de **400 cas**                              | L528-534    |
-| H17 | Une saisie de congés à **4 règles** produit « une douzaine » de cas     | L488-492    |
-| H18 | Un calcul de commissions à **60 règles** produit « plus de cent cinquante » cas | L488-492 |
+| H16 | Référentiel contre-exemple de **400 cas**                              | L529-534    |
+| H17 | Une saisie de congés illustrative tient en **4 règles**, aucune à seuil | L486-491    |
+| H18 | Un calcul de commissions illustratif tient en **60 règles**            | L486-491    |
 
-H17 et H18 fondent le « facteur douze et demi » — voir É5.
+**Ces deux lignes ont changé de nature le 30 août 2026.** Elles posaient
+auparavant deux *volumes de cas* sans source — « une douzaine », « plus de cent
+cinquante » — qui fondaient un « facteur douze et demi » que rien ne
+soutenait et que la méthode de comptage de la section 02 ne produisait pas
+(É5). Ne restent posés que les deux **nombres de règles**, 4 et 60, qui sont
+des entrées d'illustration au même titre que les 19 règles du fil rouge ; les
+volumes de cas publiés, eux, sont désormais **dérivés** par la règle écrite
+deux lignes plus haut dans la même section. Le calcul est au §7.13.
 
 ### 6.4 Les durées et le coût unitaire (section 03) — le cœur du budget
 
@@ -381,7 +469,7 @@ H17 et H18 fondent le « facteur douze et demi » — voir É5.
 | H27 | Relecture croisée des cas : **0,5 jour**                  | L592-596    |
 | H28 | Réunion de décision : **0,5 jour**                        | L597-601    |
 | H29 | Fourchette de chronométrage du lecteur : **8 à 25 minutes** d'écriture | L558-564 |
-| H30 | Projet de contre-exemple à **8 000 € HT**                 | L642-646    |
+| H30 | Projet de contre-exemple à **8 000 € HT**                 | L644-650    |
 
 ### 6.5 Les seuils réécrits (section 04) — exemples de rédaction, pas de normes
 
@@ -692,27 +780,85 @@ Référentiel de 400 cas             : 400 × 5 min = 2 000 min = 33 h 20
 (L530-534), « la version suivante se vérifie en 4 h 40 de rejeu au lieu de
 26 h 10 » (L1099-1102).
 
-### 7.12 Le contre-exemple à 8 000 € HT — **le calcul en écart**
+### 7.12 Le contre-exemple à 8 000 € HT — **corrigé le 30 août 2026**
 
-C'est le seul calcul de l'article qui ne retombe pas sur ses propres nombres.
+C'était le seul calcul de l'article qui ne retombait pas sur ses propres
+nombres. Il retombe désormais.
+
+Ce que l'article publiait, et pourquoi c'était faux :
 
 ```
-Ce que l'article publie : « Transposés tels quels […] ils coûteraient 2 100 €
-                            de temps interne, soit un quart du développement. »
-Recalcul à partir du tableau de la section 03 :
-  6,2 jours × 350 € = 2 170 €
-  2 170 ÷ 8 000 × 100 = 27,1 %
+Publié avant : « Transposés tels quels […] ils coûteraient 2 100 €
+                 de temps interne, soit un quart du développement. »
 
-Origine probable du 2 100 € : 6,0 jours × 350 € = 2 100 €, c'est-à-dire le
-« six jours » du titre voisin (« Six jours de travail ne tiennent pas dans six
-jours de calendrier », L623) et non la ligne « Total » du tableau.
-  2 100 ÷ 8 000 × 100 = 26,25 %
+  2 100 = 6,0 j × 350 €  →  le « six jours » arrondi du titre voisin
+                             (« Six jours de travail ne tiennent pas dans
+                             six jours de calendrier »), pas la ligne
+                             « Total » du tableau de la section 03.
+  2 100 ÷ 8 000 × 100 = 26,25 %   →  déjà supérieur au quart (É2)
 ```
 
-Dans les deux lectures, la charge dépasse le quart. Voir É1 et É2. **La page
-n'a pas été corrigée** : hors territoire.
+Ce que l'article publie maintenant, refait à la main :
 
-### 7.13 Contrôles de bouclage
+```
+Ligne « Total » de la section 03 : 6,2 jours
+  6,2 × 350 €              = 2 170,00 €
+  2 170 ÷ 8 000            = 0,27125
+  × 100                    = 27,125 %
+  arrondi au dixième       → 27,1 %
+```
+
+**Conforme** à la phrase publiée : « Transposés tels quels sur un projet à
+8 000 € HT, ils coûteraient les mêmes 2 170 € de temps interne, soit
+2 170 ÷ 8 000 = 27,1 % du développement — plus du quart. »
+
+Deux effets de bord traités dans le même geste, parce que c'est l'assiette qui
+produisait l'erreur :
+
+1. le titre voisin annonce maintenant **la même assiette que le tableau** :
+   « Les 6,2 jours de travail ne tiennent pas dans six jours de calendrier ».
+   L'arrondi à « six jours » ne circule plus comme un montant ;
+2. la première phrase de l'encadré dit « Les **6,2** jours ci-dessus » et non
+   « Les six jours ci-dessus ». Le renvoi interne porte donc sur le montant, et
+   pas seulement sur la règle.
+
+Le test `garde intact le passage qui ne sert pas le commerce` **recalcule**
+désormais `6,2 × 350` et `2 170 ÷ 8 000`, exige les deux formulations publiées,
+et interdit le retour du littéral « 2 100 » et de « soit un quart du
+développement ». Ce chiffre n'est plus dans la liste du §8.3.
+
+### 7.13 Les deux volumes d'illustration de la section 02, désormais dérivés
+
+Ce calcul n'existait pas : l'article posait ses deux volumes sans les dériver
+(É5). Il applique maintenant, aux deux exemples, la règle écrite deux lignes
+plus haut dans la même section — « un cas courant par règle, plus un cas à la
+limite pour chaque règle qui porte un seuil, une date ou un arrondi » :
+
+```
+Règle du tableau, ligne « Règles de gestion et de calcul » :
+  cas = nombre de règles + nombre de règles à seuil
+Contrôle sur le fil rouge : 19 + 11 = 30   → la ligne publiée du tableau
+
+Saisie de congés, 4 règles, aucune à seuil :
+  4 + 0  =   4 cas
+Calcul de commissions, 60 règles :
+  borne basse, aucune à seuil : 60 +  0 =  60 cas
+  borne haute, toutes à seuil : 60 + 60 = 120 cas
+```
+
+**Conforme** à la phrase publiée : « La même méthode donne 4 cas pour une
+saisie de congés qui tient en quatre règles sans seuil, et de 60 à 120 cas pour
+un calcul de commissions à soixante règles, selon celles qui portent un seuil. »
+
+Ce que la correction change pour le lecteur : les deux bornes ne se lisent plus
+comme une observation empirique — elles se refont avec ses propres nombres de
+règles, ce qui est exactement ce que la phrase suivante lui demande
+(« Ce qui se transporte d'un projet à l'autre, c'est la méthode de comptage »).
+Le test `recalcule le décompte des 56 cas ligne à ligne` refait les quatre
+opérations et interdit le retour de « facteur douze et demi » et de « plus de
+cent cinquante ».
+
+### 7.14 Contrôles de bouclage
 
 | Contrôle                                                            | Résultat |
 | ------------------------------------------------------------------- | -------- |
@@ -740,16 +886,19 @@ correcteur doit regarder**, et surtout **ce qui n'est protégé par rien**.
 | `recalcule le budget de la campagne cas par cas`            | 17 cas/cycle, 1 570 min, « 26 h 10 », 3,7 j, 6,2 j, « 2 170 », 8,7 %, « 2 183 », « treize euros » |
 | `recalcule la sensibilité annoncée sur le temps d'écriture` | 5,3 / 6,2 / 7,6 jours                                                                            |
 | `recalcule le rejeu de la campagne suivante`                | 280 min, « 4 h 40 contre 26 h 10 »                                                               |
-| `recalcule le décompte des 56 cas ligne à ligne`            | 6, 30, 7, 9, 4, 56, et la phrase en toutes lettres                                               |
+| `recalcule le décompte des 56 cas ligne à ligne`            | 6, 30, 7, 9, 4, 56, la phrase en toutes lettres, et **depuis le 30/08/2026** la dérivation des deux volumes d'illustration (19 + 11 = 30 ; 4 + 0 = 4 ; 60 + 0 = 60 ; 60 + 60 = 120), avec **interdiction** de « facteur douze et demi » et de « plus de cent cinquante » |
 | `recalcule le seuil de 2 % du CCAG-TIC minute par minute`   | 13 200 min, 264 min, 4 h 24, 216 min, 3 h 36, « 12 minutes par jour ouvré », « Au maximum, donc » |
 | `recalcule les deux mesures de fin de campagne`             | 19 ÷ 26 = 73 %, 8 ÷ (37 + 8) = 17,8 %, absence de seuil de référence                              |
 | `recalcule le volume du jeu d'essai contre un mois réel`    | 7 × 4 = 28, 8,2 %, et **interdiction** du littéral « 40 dossiers »                                |
 | `raconte trois incidents portant chacun un montant`         | 41, 4 182 €, 123, 700 €, 23/56, 525 €, 7 500 €                                                   |
-| `cite le CCAG-TIC avec ses délais réels et son périmètre`   | arrêté du 30 mars 2021, art. 32 et 33, trente jours, 8 h – 18 h, « réputées admises », « imputables à chaque élément de matériel », URL Légifrance |
-| `cadre l'accessibilité sans vendre un audit inutile`        | 250 M€, 28 juin 2025, absence de tout montant d'amende                                           |
+| `cite le CCAG-TIC avec ses délais réels et son périmètre`   | arrêté du 30 mars 2021, art. 32 et 33, trente jours, 8 h – 18 h, « réputées admises », « imputables à chaque élément de matériel », URL Légifrance, et **depuis le 30/08/2026** « ne suit pas la vérification d'aptitude », « procès-verbal de mise en ordre de marche », « n'emporte aucune admission tacite », avec **interdiction** de « trente jours qui suit la vérification » |
+| `cadre l'accessibilité sans vendre un audit inutile`        | 250 M€, 28 juin 2025, absence de tout montant d'amende, et **depuis le 30/08/2026** « Elle vise quatre catégories », « celles que les précédentes constituent pour le même objet », « jamais un effectif » |
 | `porte une réponse directe courte et chiffrée`              | 56 cas, 6,2 jours, 2 170 €, 25 000 € HT, et 120-180 mots                                         |
-| `ne porte qu'un bloc de transparence…`                      | « relus le 28 août 2026 », « à revérifier tous les douze mois », un seul CTA en ligne             |
+| `ne porte qu'un bloc de transparence…`                      | **depuis le 30/08/2026** « rouvertes une à une le 30 août 2026 », l'égalité avec `guide.dateModified`, l'**interdiction** de « relus le 28 août 2026 », « à revérifier tous les douze mois », un seul CTA en ligne |
 | `garde l'atelier local, bloquant et sans persistance`       | 8 points, 10 compteurs, 7 issues, absence de `fetch`/`localStorage`/champ libre                   |
+| `garde intact le passage qui ne sert pas le commerce` **(réécrit le 30/08/2026)** | 6,2 × 350 = 2 170, 2 170 ÷ 8 000 = 27,1 %, « les mêmes 2 170 € de temps interne », « 2 170 ÷ 8 000 = 27,1 % du développement », « plus du quart », « Les 6,2 jours de travail ne tiennent pas », et **interdiction** de « 2 100 » et de « soit un quart du développement » |
+| `garde les références primaires et leur portée` **(étendu le 30/08/2026)** | l'URL `squashtm.com/en/source-code`, la phrase « SquashTM is open source software, distributed under the LGPL v3 license. », et l'**interdiction** de l'ancien `href` vers `henix.com/squashtm` |
+| `date les douze sources citées…` **(ajouté le 30/08/2026)** | 12 entrées `legalSources`, chacune portant « 30 août 2026 », `https://` pour chaque `href`, « HTTP 403 » dans les deux entrées ISO, et l'**interdiction** de « Consulté le 28 » |
 
 ### 8.2 Ce que `acceptance-readiness.test.ts` verrouille
 
@@ -782,10 +931,11 @@ donnée ne sort de la page : ni `fetch`, ni `localStorage`, ni champ texte, ni
 Point d'attention pour la prochaine passe : ces valeurs peuvent dériver sans
 qu'aucun test ne s'en aperçoive.
 
-- **2 100 €** et « un quart du développement » (encadré vert, section 03) —
-  et c'est précisément là qu'est É1 ;
-- « **facteur douze et demi** », « une douzaine », « plus de cent cinquante »
-  (section 02) — É5 ;
+Les deux premières familles de cette liste ont été **retirées le 30 août 2026**
+parce qu'elles portaient É1, É2 et É5 : la transposition à 8 000 € et les deux
+volumes d'illustration de la section 02 sont maintenant recalculés par test.
+Restent :
+
 - « **environ 150 cas** » et « **400 cas** » du mémo (le 33 h 20 est vérifié,
   mais pas le seuil de bascule à 150) ;
 - « **62 écritures** », « **quatre jours de retard** », « **trois quarts de
@@ -861,6 +1011,13 @@ Ce qui existe :
   des agents n'est jamais présentée comme un test réalisé par de vrais
   dirigeants. »
 
+- **la passe de correction du 30 août 2026 à 23 h 30 a également été conduite
+  par un agent.** Elle a rouvert les sources, refait les calculs et corrigé la
+  page ; elle n'est pas une relecture humaine et n'est présentée nulle part
+  comme telle. La page ne revendique d'ailleurs aucune relecture humaine : le
+  bloc Transparence dit ce qu'il peut dire — que les **sources citées** ont été
+  rouvertes le 30 août 2026 — et rien de plus.
+
 Ce qui n'existe pas, et qui n'est donc pas revendiqué : aucun test lecteur,
 aucun panel, aucune validation éditoriale humaine sur cette version. **Le
 statut maximal atteignable sans cette relecture est « prêt pour revue
@@ -875,41 +1032,46 @@ n'est pas un audit éditorial.
 
 ## 12. Risques résiduels et ce qu'il reste à faire
 
+### 12.1 Ce qui est clos
+
+Les huit écarts (É1 à É8) et le point 8 de l'ancienne liste — le CCAG-TIC non
+lu sur la source primaire — ont été traités le 30 août 2026. Le détail issue
+par issue est au §0 ; les preuves sont aux §4.1 (S1a, S1b, S11), §4.2 (le 403
+constaté deux fois par trois voies), §7.12 et §7.13 (les deux calculs refaits),
+et §8.1 (ce que chaque test verrouille désormais).
+
+**Aucun écart n'a été rejeté.** Les huit relevés ont été revérifiés à leur
+source avant correction, et les huit étaient exacts.
+
+### 12.2 Ce qui reste ouvert
+
 Par ordre de gravité pour une mise en campagne payante.
 
-1. **É1 — le 2 100 € de l'encadré vert.** C'est le seul écart arithmétique de
-   la page, et il est dans un passage à forte visibilité, celui qui déconseille
-   la prestation. Un contradicteur qui refait 6,2 × 350 le trouve en dix
-   secondes. À corriger par la personne compétente : soit 2 170 €, soit
-   « environ 2 200 € », en réaccordant « un quart » (27,1 %). Aucun test ne le
-   protège aujourd'hui ; en ajouter un serait le bon geste.
-2. **É3 — le localisateur de la licence LGPL v3.** Le fait est vrai ; l'URL
-   citée ne le porte pas. Remplacer ou compléter par
-   `https://www.squashtm.com/en/source-code`.
-3. **É4 — le point de départ des trente jours du CCAG-TIC.** Reformuler « après
-   vérification d'aptitude » en « pour procéder à la vérification d'aptitude et
-   notifier sa décision, à compter de la notification que les prestations sont
-   prêtes ou du procès-verbal de mise en ordre de marche ».
-4. **É8 / N1-N2 — les deux liens ISO en 403.** Sur un guide de traçabilité, un
-   lien mort vers une norme payante affaiblit tout le reste. Documenter le
-   blocage dans l'entrée, ou basculer sur une référence accessible.
-5. **É6 — l'énumération de l'article 47.** Ajouter le 3°, ou remplacer « Elle
-   vise » par « Elle vise notamment ».
-6. **É5 — le facteur douze et demi.** Marquer les deux bornes comme des
-   illustrations, comme le fait déjà la section 03 pour ses durées.
-7. **É7 — la date de relecture des sources.** Soit dater les douze entrées de
-   `legalSources` une à une, soit ramener la phrase de transparence au
-   sous-ensemble réellement daté. En l'état, la phrase promet plus que les
-   entrées ne portent.
-8. **Le CCAG-TIC non lu sur Légifrance.** Deux recueils tiers concordants, ce
-   n'est pas la source primaire. Ouvrir le PDF officiel et remplacer C1-C4 par
-   un localisateur Légifrance dans une prochaine passe.
-9. **Les chiffres non verrouillés (§8.3).** Six familles de valeurs peuvent
-   dériver sans qu'aucun test ne s'en aperçoive.
-10. **La relecture humaine (§11).** Bloquant pour tout statut supérieur à
-    « prêt pour revue humaine ».
+1. **Les deux normes ISO restent inaccessibles.** Le 403 est déclaré dans les
+   deux entrées, avec sa date et les voies essayées, et le mot « publiquement »
+   a été retiré du §08 — mais un lecteur qui veut lire la norme devra l'acheter.
+   Aucune source de remplacement accessible n'a été trouvée le 30/08/2026
+   (`iso25000.com` en 404, plateforme de consultation de l'ISO en 403). À
+   reprendre si l'ISO rouvre son catalogue ou si un miroir normatif apparaît.
+2. **Les chiffres non verrouillés (§8.3).** Quatre familles de valeurs
+   subsistent — le seuil de bascule à 150 cas, les nombres de l'incident 3, les
+   seuils réécrits de la section 04, les valeurs du tableau de la section 05.
+   Elles peuvent dériver sans qu'aucun test ne s'en aperçoive. Deux familles ont
+   quitté cette liste ce soir, celles qui portaient É1, É2 et É5.
+3. **La phrase de L893-897 sur les incidents.** Elle annonce deux valeurs
+   posées, alors que dix le sont (§6.7, H39 à H48). Rien de faux n'est publié
+   et le paragraphe qui précède range l'ensemble sous « exemple construit » :
+   c'est pourquoi ce point n'a jamais été compté comme un écart. Il reste
+   perfectible.
+4. **La relecture humaine (§11).** Aucun lecteur humain extérieur n'a relu la
+   version publiée, y compris celle de ce soir. Bloquant pour tout statut
+   supérieur à « prêt pour revue humaine ».
+5. **Le manifeste `published-guides-current.sha256`.** Désynchronisé pour les
+   neuf guides publiés, et pas seulement pour celui-ci : six autres passes
+   écrivent en parallèle. À régénérer par la passe qui clôt le corpus, pas
+   depuis ici.
 
-Rien, dans ces dix points, ne touche à la thèse de l'article ni à ses
+Rien, dans ces cinq points, ne touche à la thèse de l'article ni à ses
 conclusions. Le décompte des cas, le budget en jours, la réécriture des seuils
 et les deux mesures tiennent, et se refont avec les nombres du lecteur.
 
@@ -936,12 +1098,21 @@ done
 ### 13.2 Tests et temps de lecture
 
 ```sh
+npx tsc --noEmit
+# → aucune sortie, code de retour 0
+
 npx vitest run src/app/guides/plan-recette-application-metier
-# → Test Files 2 passed (2) · Tests 80 passed (80)
+# → Test Files 2 passed (2) · Tests 81 passed (81)
+
+npx tsx scripts/measure-guide-readtime.mjs plan-recette-application-metier
+# → plan-recette-application-metier   4154 mots   21 min
 
 npx tsx scripts/measure-guide-readtime.mjs --check plan-recette-application-metier
 # → OK  plan-recette-application-metier   mesuré 21 min   publié 21 min
 ```
+
+Le 81e test est `date les douze sources citées et n'efface pas celles qui n'ont
+pas répondu`, ajouté par la passe de correction.
 
 ### 13.3 Recalcul indépendant
 
@@ -1021,19 +1192,43 @@ assert 2 * 7 * 60 // 25 == 33 and 56 - 33 == 23
 assert 1.5 * 350 == 525
 assert 25000 * 0.30 == 7500
 
-# Le calcul en écart (É1)
-assert 6.2 * 350 == 2170                    # et non 2 100
-assert round(2170 / 8000 * 100, 1) == 27.1  # et non « un quart »
+# La transposition à 8 000 € — É1 et É2, corrigés
+assert 6.2 * 350 == 2170                    # publié ; l'ancienne page disait 2 100
+assert round(2170 / 8000 * 100, 1) == 27.1  # publié ; l'ancienne page disait « un quart »
+assert 27.1 > 25.0                          # « plus du quart », écrit tel quel
+
+# Les deux volumes d'illustration de la section 02 — É5, corrigé
+cas = lambda regles, a_seuil: regles + a_seuil
+assert cas(19, 11) == 30                    # la ligne publiée du tableau
+assert cas(4, 0) == 4                       # saisie de congés
+assert (cas(60, 0), cas(60, 60)) == (60, 120)  # commissions, les deux bornes
 ```
 
-Toutes ces assertions passent. Aucune ne contredit la page, **sauf les deux
-dernières**, qui constituent É1 et É2.
+Toutes ces assertions passent, **et aucune ne contredit plus la page** : les
+deux dernières familles décrivaient les écarts É1, É2 et É5, qui ont été
+corrigés le 30 août 2026 à 23 h 30.
 
 ### 13.4 Sources ouvertes ce jour
 
-Dix des douze sources citées (§4.1), cinq pages de corroboration (§4.4), deux
-emplacements internes du dépôt (§4.3). Deux sources citées n'ont pas pu être
-rouvertes, et c'est écrit au §4.2 plutôt que simulé.
+Reconstitution du matin : dix des douze sources citées (§4.1), cinq pages de
+corroboration (§4.4), deux emplacements internes du dépôt (§4.3).
+
+Passe de correction de 23 h, **toutes rouvertes une seconde fois** :
+
+- les dix sources citées accessibles, une par une ;
+- **trois localisateurs nouveaux** : Légifrance `JORFARTI000043310746`
+  (article 32), `JORFARTI000043310747` (article 33), et
+  `squashtm.com/en/source-code` ;
+- **un recueil supplémentaire** sur l'article 33 (C6), pour ne pas tenir É4 sur
+  un seul contradicteur du texte primaire ;
+- le PDF de l'ISTQB **téléchargé et lu localement**, 78 pages, plutôt que résumé
+  par un intermédiaire ;
+- les deux pages de l'ISO réessayées par `curl` avec un `User-Agent` de
+  navigateur : **403** de nouveau.
+
+Aucune date de consultation n'a été écrite sans avoir été faite. Les deux
+sources qui n'ont pas répondu le disent, dans ce dossier au §4.2 **et
+maintenant dans la page elle-même**.
 
 ---
 
@@ -1053,5 +1248,8 @@ Par symétrie avec ce que l'article s'interdit :
 - il ne dit rien de la **portée contractuelle** des textes cités, ce qui est
   exactement la position que tient l'article lui-même.
 
-**Statut de ce dossier : socle de preuves reconstitué et daté du 30 août 2026,
-huit écarts signalés, aucune correction appliquée à la page.**
+**Statut de ce dossier : socle de preuves reconstitué le 30 août 2026 à
+22 h 55, puis mis d'accord avec la page corrigée le même jour à 23 h 30. Huit
+écarts relevés, huit traités, aucun rejeté. Deux sources restent
+inaccessibles, et la page le dit. Statut éditorial maximal atteignable en
+l'état : « prêt pour revue humaine » (§11).**

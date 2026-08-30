@@ -501,7 +501,9 @@ export function ProcessPriorityTool() {
           </div>
 
           <details className="mt-4 rounded-xl border border-zinc-200 bg-white p-4 text-xs leading-relaxed text-zinc-600 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-300">
-            <summary className="cursor-pointer font-semibold text-zinc-900 dark:text-white">
+            {/* min-h-11 : ce résumé mesurait 20 px de haut au mobile, sous la cible
+                tactile de 44 px appliquée partout ailleurs sur le site. */}
+            <summary className="flex min-h-11 items-center cursor-pointer font-semibold text-zinc-900 dark:text-white">
               Voir les formules et les limites
             </summary>
             <div className="mt-3 space-y-2">

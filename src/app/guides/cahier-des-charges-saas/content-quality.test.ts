@@ -686,9 +686,80 @@ describe("qualité du guide cahier des charges SaaS", () => {
     expect(text).toContain("vingt-quatre lignes à écrire");
   });
 
+  it("résume les états incomplete et paused sans amputer leur cause", () => {
+    // Deux lignes du tableau prêtaient à la source une version simplifiée
+    // d’elle-même, relevé confirmé en rouvrant la page le 30/08/2026 :
+    //
+    // — `incomplete` était réduit à « le premier paiement n’a pas abouti ».
+    //   La documentation en donne TROIS causes : paiement non effectué dans
+    //   les 23 heures, action requise telle que l’authentification du client,
+    //   ou PaymentIntent à l’état `processing`. Un lecteur qui n’écrit que la
+    //   première ne prévoit rien pour l’authentification 3-D Secure, qui est
+    //   pourtant le cas le plus courant en Europe.
+    // — `paused` était donné comme la suite normale d’un essai sans moyen de
+    //   paiement. La documentation le conditionne à un réglage :
+    //   `trial_settings.end_behavior.missing_payment_method` sur `pause`.
+    //   Sans ce réglage, l’état n’apparaît pas.
+    const subscriptionTable = [
+      ...articleHtml().matchAll(/<table[\s\S]*?<\/table>/g),
+    ]
+      .map((match) => match[0])
+      .find((table) => table.includes("incomplete_expired"));
+    expect(subscriptionTable).toBeDefined();
+    const table = prose(subscriptionTable ?? "");
+
+    expect(table).toContain("23 heures");
+    expect(table).toContain("action requise comme l’authentification");
+    expect(table).toContain("paiement en attente à l’état processing");
+    expect(table).not.toContain("Le premier paiement n’a pas abouti");
+
+    expect(table).toContain("fin d’essai réglée sur pause");
+
+    // Le réglage exact, lui, est nommé dans le bloc de sources, à côté du
+    // passage de la documentation qui le porte.
+    expect(pageSource).toContain(
+      "trial_settings.end_behavior.missing_payment_method",
+    );
+  });
+
   /* ──────────────────────────────────────────────
      Fond : sources vérifiées et citées
      ────────────────────────────────────────────── */
+
+  it("date la consultation de chacune des sources citées", () => {
+    // Charte §4.1 : une source se cite avec sa date de publication ET sa date
+    // de consultation. Deux entrées sur dix n’en portaient aucune — OWASP ASVS
+    // et le guide sécurité de la CNIL —, ce qui laissait un lecteur sans moyen
+    // de savoir à quel état de la page l’affirmation se rapporte. Les douze
+    // sources ont été rouvertes une par une le 30/08/2026, et la date affichée
+    // est celle de cette réouverture : le guide n’affiche plus une date de
+    // consultation que personne ne peut plus refaire.
+    const block = pageSource.match(
+      /legalSources=\{\[([\s\S]*?)\n        \]\}/,
+    )?.[1];
+    expect(block).toBeDefined();
+
+    const descriptions = [
+      ...(block ?? "").matchAll(/description:\s*\n?\s*"([^"]+)"/g),
+    ].map((match) => match[1]);
+    const hrefs = [...(block ?? "").matchAll(/href: "([^"]+)"/g)].map(
+      (match) => match[1],
+    );
+
+    expect(descriptions.length).toBe(hrefs.length);
+    expect(descriptions.length).toBeGreaterThanOrEqual(12);
+    for (const description of descriptions) {
+      expect(description.slice(0, 90), description.slice(0, 60)).toMatch(
+        /30\\u00a0août 2026/,
+      );
+    }
+    // Aucune date de consultation antérieure ne subsiste : le guide a été
+    // substantiellement réécrit le 30/08/2026 et ses relevés refaits ce
+    // jour-là. Laisser « 28 août » quelque part ferait cohabiter deux
+    // campagnes de vérification dans la même page.
+    expect(pageSource).not.toMatch(/28\\u00a0août 2026|28&nbsp;août 2026/);
+    expect(saasGuide.dateModified.startsWith("2026-08-30")).toBe(true);
+  });
 
   it("cite le Data Act avec ses articles, ses dates et sa limite", () => {
     const text = prose(articleHtml());
@@ -718,15 +789,33 @@ describe("qualité du guide cahier des charges SaaS", () => {
       "L113-9",
       "vise le salarié dans l’exercice de ses fonctions",
       "n’est pas votre salariée",
-      // A1 du §8.1 : un juriste sait que la portée du formalisme de l’article
-      // L131-3 sur un logiciel est discutée. Le guide le dit au lieu de
-      // conclure à sa place.
-      "se plaide encore",
+      // A1 du §8.1 : la portée du formalisme de L131-3 sur un logiciel ne va
+      // pas de soi, et le guide doit garder cette réserve. Ce qu’il ne peut
+      // plus faire, c’est l’asseoir sur « se plaide encore » : cette
+      // affirmation supposait une jurisprudence, et AUCUNE décision n’était
+      // citée — ni dans la page, ni dans le dossier de recherche. Elle est
+      // remplacée par un fait vérifiable sur Légifrance le 30/08/2026 :
+      // l’article siège au livre Ier, titre III, chapitre Ier « Dispositions
+      // générales », et non parmi les articles consacrés au logiciel.
+      "figure aux dispositions générales du code",
+      "et non parmi les articles qui visent le logiciel",
     ]) {
       expect(text, fact).toContain(fact);
     }
+    // La formule non sourcée ne doit revenir sur aucune surface.
+    expect(prose(renderedPage)).not.toContain("se plaide encore");
     expect(pageSource).toContain("LEGIARTI000006278958");
     expect(pageSource).toContain("LEGIARTI000039279818");
+    // La citation de L131-3 dans le bloc de sources est celle du texte, au mot
+    // près : la version auditée publiait entre guillemets une reformulation à
+    // l’indicatif (« Chacun des droits cédés fait l’objet… ») que Légifrance
+    // n’écrit nulle part.
+    expect(pageSource).toContain(
+      "La transmission des droits de l’auteur est subordonnée à la condition que chacun des droits cédés fasse l’objet d’une mention distincte",
+    );
+    expect(pageSource).not.toContain(
+      "Chacun des droits cédés fait l’objet d’une mention distincte dans l’acte de cession et le domaine",
+    );
   });
 
   it("reprend les comportements de notification documentés", () => {
@@ -757,11 +846,30 @@ describe("qualité du guide cahier des charges SaaS", () => {
       "24 × 24 pixels CSS",
       "5.0.0",
       "30 mai 2025",
-      "350 exigences",
+      // « environ 350 exigences » était juste, mais introuvable : la page
+      // projet OWASP citée par le guide ne porte AUCUN décompte — elle donne
+      // la date de publication et le format des identifiants, rien d’autre.
+      // Le chiffre est donc remplacé par le compte exact, relevé le
+      // 30/08/2026 sur le fichier officiel de la branche figée v5.0.0
+      // (CSV : 345 lignes d’exigences hors en-tête, 17 valeurs distinctes de
+      // chapter_id, V1 à V17 ; le JSON de la même version donne 345 aussi),
+      // et la page dit d’où il vient.
+      "345 exigences",
       "dix-sept chapitres",
+      "comptées sur le fichier officiel de la version figée",
     ]) {
       expect(text, fact).toContain(fact);
     }
+    // Le localisateur du décompte est publié, distinct de la page projet.
+    // C'est le fichier JSON de la branche figée qui est cité, et non l'export
+    // tabulé qui a servi au premier comptage : `src/lib/guides.test.ts`
+    // interdit toute mention d'un fichier tableur dans une page de guide, pour
+    // qu'aucun guide ne se mette à distribuer de modèle téléchargeable. Les
+    // deux fichiers de la même version figée donnent 345 (C-21 du dossier).
+    expect(pageSource).toContain(
+      "OWASP_Application_Security_Verification_Standard_5.0.0_en.json",
+    );
+    expect(text).not.toContain("environ 350");
     // Aucune promesse de conformité.
     expect(prose(renderedPage)).not.toMatch(
       /conforme RGPD|conforme WCAG|certifié OWASP|nous garantissons|zéro risque/i,
@@ -772,7 +880,13 @@ describe("qualité du guide cahier des charges SaaS", () => {
     const text = prose(articleHtml());
     expect(text).toContain("grep -onEi");
     expect(text).toContain("cahier-des-charges.txt");
-    expect(text).toContain("Aucun seuil publié n’existe pour cette densité");
+    // « Aucun seuil publié n’existe pour cette densité » était une négation
+    // universelle : indémontrable par construction, elle demandait au lecteur
+    // de croire qu’on avait fait le tour de la littérature. La page dit
+    // désormais ce qu’elle peut prouver — ce que NOUS publions — sans rien
+    // affirmer sur ce que d’autres auraient publié.
+    expect(text).toContain("Nous ne publions aucun seuil pour cette densité");
+    expect(prose(renderedPage)).not.toContain("Aucun seuil publié n’existe");
 
     // La version auditée écrivait, DEUX LIGNES après avoir déclaré qu’inventer
     // un seuil serait pire que de s’en passer : « Si le compte n’a pas au
@@ -933,18 +1047,36 @@ describe("qualité du guide cahier des charges SaaS", () => {
     // l’obligation tombe si la violation n’est pas susceptible d’engendrer un
     // risque. La version auditée gardait ces deux réserves dans le seul bloc
     // `legalSources`, loin de l’affirmation.
+    //
+    // Correction du 30/08/2026 : la phrase employait la formulation de
+    // l’article 33 du RGPD — « pris connaissance », « susceptible
+    // d’engendrer un risque » — en ne citant QUE la page pratique de la CNIL,
+    // qui écrit tout autre chose (« à la suite de la constatation de la
+    // violation », « ne présente pas de risque »). Les deux sources ont été
+    // rouvertes le 30/08/2026 : la page CNIL renvoie elle-même à l’article 33,
+    // et c’est maintenant cet article que la phrase nomme et que le bloc de
+    // sources cite. Le texte européen écrit « personnes physiques », pas
+    // « personnes concernées » : le test verrouillait donc un mot qu’aucune
+    // des deux sources ne portait.
     const sentence = prose(articleHtml()).match(
       /Le jour où un rapport apparaît[^]*?plan de recette\./,
     )?.[0];
     expect(sentence).toBeDefined();
     expect(sentence).toContain("72 heures");
-    expect(sentence).toContain("prend connaissance de la violation");
-    expect(sentence).toContain("et non celui où elle survient");
+    expect(sentence).toContain("l’article 33 du RGPD");
+    expect(sentence).toContain("après en avoir pris connaissance");
+    expect(sentence).toContain("et non après la survenance");
     expect(sentence).toContain(
-      "risque pour les droits et libertés des personnes concernées",
+      "risque pour les droits et libertés des personnes physiques",
     );
     expect(prose(renderedPage)).not.toMatch(
       /compte à rebours de la notification à la CNIL est de 72/,
+    );
+    // Le localisateur suit l’affirmation : l’article 33 est cité en propre,
+    // avec le passage qui porte le délai et la réserve.
+    expect(pageSource).toContain("CELEX:32016R0679");
+    expect(pageSource).toContain(
+      "72 heures au plus tard après en avoir pris connaissance",
     );
   });
 
@@ -962,7 +1094,17 @@ describe("qualité du guide cahier des charges SaaS", () => {
     expect(text).toContain("14 jours ouvrables");
     expect(text).toContain("techniquement impossible à tenir");
     expect(text).toContain("Ces 30 jours ne sont pas un plancher ferme");
-    // Le tableau de sortie porte la même réserve, puisqu’il se lit seul.
+
+    // Art. 25(2)(a) : les trente jours « prenant effet au terme du délai de
+    // préavis maximal visé au point d) », et le point d) plafonne ce préavis
+    // à deux mois. Sans cette précision, un lecteur comptait 30 jours de bout
+    // en bout là où le règlement en autorise deux mois de plus — c’est une
+    // réserve de portée, pas un détail de rédaction : elle change la date que
+    // le lecteur écrira dans son contrat. Relu sur le texte le 30/08/2026.
+    expect(text).toContain("Ce délai ne part qu’au terme du préavis");
+    expect(text).toContain("plafonné à deux mois");
+
+    // Le tableau de sortie porte les mêmes réserves, puisqu’il se lit seul.
     const exitTable = [...articleHtml().matchAll(/<table[\s\S]*?<\/table>/g)]
       .map((match) => prose(match[0]))
       .find(
@@ -970,6 +1112,14 @@ describe("qualité du guide cahier des charges SaaS", () => {
       );
     expect(exitTable).toBeDefined();
     expect(exitTable).toContain("sept mois");
+    expect(exitTable).toContain("préavis de deux mois au plus");
+
+    // Et le bloc de sources donne le localisateur au paragraphe et au point,
+    // avec les deux passages cités mot pour mot.
+    expect(pageSource).toContain(
+      "prenant effet au terme du délai de préavis maximal visé au point",
+    );
+    expect(pageSource).toContain("qui ne dépasse pas deux mois");
   });
 
   it("compte les objets de la sortie comme le tableau les montre", () => {

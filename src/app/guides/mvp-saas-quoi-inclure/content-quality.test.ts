@@ -347,12 +347,19 @@ describe("qualité de contenu du guide MVP SaaS", () => {
     expect(pageSource).toContain('data-read-time-exclude="true"');
 
     // Avertissement au prochain rédacteur : l'article est près d'une frontière
-    // d'arrondi. 20 min tient de 3 900 à 4 099 mots ; au-delà, `readTimeMin`
-    // passe à 21 ET un compteur de section doit suivre, faute de quoi le test
-    // « somme des compteurs » tombe. Vérifié à la main : 4 099 ÷ 200 = 20,495
-    // → 20 ; 4 100 ÷ 200 = 20,5 → 21 (Math.round arrondit .5 vers le haut).
+    // d'arrondi, et la passe du 30 août l'a fait franchir. Les précisions
+    // exigées par le dossier de preuves (portée de l'hypothèse au §06, bornes
+    // du calculateur au §08, ancrage du troisième incident au §07, étiquette du
+    // « 2 à 5 clients » au §02) ont porté le corps de 4 096 à 4 180 mots :
+    // `readTimeMin` est passé de 20 à 21 ET le compteur du §06 de 2 à 3 min,
+    // faute de quoi le test « somme des compteurs » serait tombé.
+    // 21 min tient désormais de 4 100 à 4 299 mots, mais la bande de calibre
+    // plafonne à 4 200 : la marge réelle est de 20 mots.
+    // Vérifié à la main : 4 099 ÷ 200 = 20,495 → 20 ; 4 100 ÷ 200 = 20,5 → 21
+    // (Math.round arrondit .5 vers le haut).
     expect(Math.round(4099 / 200)).toBe(20);
     expect(Math.round(4100 / 200)).toBe(21);
+    expect(Math.round(4299 / 200)).toBe(21);
     const plafond = 200 * registeredGuide.readTimeMin + 99;
     expect(words, `${plafond - words} mots de marge avant 21 min`).toBeLessThanOrEqual(
       plafond,
@@ -362,6 +369,7 @@ describe("qualité de contenu du guide MVP SaaS", () => {
   it("fait tomber juste la somme des compteurs de section", () => {
     // La version auditée affichait 2+2+2+3+2+3+3+1+2+2 = 22 min par section
     // pour 19 min au registre : un lecteur qui additionne trouvait 22.
+    // Depuis le 30 août : 2+2+1+3+3+3+3+1+1+2 = 21, égal au registre.
     // Chaque compteur vaut maintenant l'arrondi de sa propre longueur, et leur
     // somme vaut le readTimeMin publié.
     const counters = [...pageSource.matchAll(/readingTime="(\d+) min"/g)].map(
@@ -474,7 +482,11 @@ describe("qualité de contenu du guide MVP SaaS", () => {
     expect(words).toBeLessThanOrEqual(200);
     expect(prose(answer)).toContain("15 000 €");
     expect(prose(answer)).toContain("30 000 à 60 000 € HT");
-    expect(prose(answer)).toContain("28 août 2026");
+    // Date de relevé portée du 28 au 30 août 2026 : la grille publique a été
+    // rouverte le 30/08/2026 (page servie et `body.ts`), les huit montants
+    // cités par le guide sont inchangés. L'article date donc son relevé du jour
+    // où il a réellement été refait, pas du jour de la passe précédente.
+    expect(prose(answer)).toContain("30 août 2026");
   });
 
   it("garde 40 à 60 % de H2 en question", () => {
@@ -543,6 +555,13 @@ describe("qualité de contenu du guide MVP SaaS", () => {
     // La ligne d'arrivée est un gabarit reproductible, pas une formule creuse.
     expect(text).toContain("Pendant [période exacte]");
     expect(text).toContain("7 septembre au 18 octobre 2026");
+
+    // Charte §4.1 : « 2 à 5 clients réels » ne sort d'aucune des sources
+    // listées — c'est une convention du guide. Elle porte donc la même
+    // étiquette que la colonne « ce que ça pèse » du §05, et le tableau dit
+    // lui-même qu'aucune source ne borne un pilote.
+    expect(text).toContain("2 à 5 clients réels (estimation éditoriale");
+    expect(text).toContain("aucune source ne borne un pilote");
   });
 
   it("rend la mesure reproductible et dit quoi faire quand elle dit non", () => {
@@ -588,6 +607,25 @@ describe("qualité de contenu du guide MVP SaaS", () => {
     expect(text).toContain(
       "la page encaisse les cas nominaux et laisse les autres ouverts",
     );
+  });
+
+  it("ne fait pas passer trois référentiels pour trois obligations", () => {
+    // Charte §5.5 : obligation, recommandation et pratique de marché restent
+    // séparées. Le §04 ouvrait sur « Trois de ces lignes portent une obligation
+    // extérieure », puis citait l'ANSSI, OWASP ASVS et WCAG 2.2 — dont aucune
+    // n'oblige un pilote SaaS B2B privé. Le PDF ANSSI l'écrit lui-même page 1
+    // (« Sauf disposition réglementaire contraire, les recommandations n'ont
+    // pas de caractère normatif ») ; ASVS est un référentiel communautaire et
+    // WCAG 2.2 une Recommandation du W3C. La seule obligation extérieure citée
+    // par ce guide est le règlement européen, au §02 et au §05.
+    const text = prose(sectionHtml("familles"));
+    expect(text).not.toContain("portent une obligation extérieure");
+    expect(text).not.toMatch(/trois .{0,30}obligations? extérieures?/i);
+    expect(text).toContain("s’appuient sur un référentiel extérieur qui");
+    expect(text).toContain("recommande");
+
+    // Le mot « oblige » reste réservé au texte qui oblige vraiment.
+    expect(prose(sectionHtml("format"))).toContain("articles 5, 25 et 32");
   });
 
   it("chiffre ce qu’on ajoute à tort et refuse d’en faire un prix unitaire", () => {
@@ -746,6 +784,32 @@ describe("qualité de contenu du guide MVP SaaS", () => {
     expect(incident).toContain("servaient à consulter et à corriger");
   });
 
+  it("ancre l’incident 3 hors du pilote qu’il dépasse", () => {
+    // Le pilote court du 7 septembre au 18 octobre 2026, six semaines. Le
+    // troisième incident ouvre l'achat par carte « au troisième mois » et
+    // laisse trois abonnements ouverts « quatre mois » : cinq à sept mois, donc
+    // très au-delà du 18 octobre. L'arithmétique était juste (3 × 240 × 4 =
+    // 2 880), mais aucune phrase ne disait que le pilote s'était prolongé en
+    // produit vendu. La transition est maintenant écrite deux fois : dans le
+    // chapeau de la section et dans l'incident lui-même.
+    const incidents = prose(sectionHtml("exemple"));
+    expect(incidents).toContain(
+      "les deux premiers pendant le pilote, le troisième après",
+    );
+    expect(incidents).toContain("le pilote a conclu");
+    expect(incidents).toContain("au-delà du 18 octobre");
+    expect(incidents).toContain("au troisième mois d’exploitation");
+    // La formulation sans ancrage ne doit pas revenir.
+    expect(incidents).not.toContain(
+      "Accordia ouvre l’achat par carte au troisième mois sans écrire",
+    );
+
+    // Le calendrier posé au §01 reste celui-là, et il n'a pas bougé.
+    expect(prose(sectionHtml("minimum"))).toContain(
+      "du 7 septembre au 18 octobre 2026, soit six semaines",
+    );
+  });
+
   it("annonce son cas comme construit et nomme des métiers, pas des cases", () => {
     const text = prose(articleHtml());
     // L'étiquette doit être LITTÉRALEMENT vraie : ni la période, ni les
@@ -780,8 +844,21 @@ describe("qualité de contenu du guide MVP SaaS", () => {
     expect(text).not.toMatch(/\b(?:le|un|les|des) intervenants?\b/i);
   });
 
-  it("rend visible l’unique hypothèse non sourcée", () => {
+  it("pose le coût du temps interne sans prétendre qu’il est seul non sourcé", () => {
+    // Le test s'appelait « rend visible l'unique hypothèse non sourcée » et ne
+    // vérifiait que la présence de la chaîne « 350 € le jour chargé ». Il
+    // laissait donc passer la phrase « Une hypothèse, et une seule, ne sort
+    // d'aucune source », que l'article contredit trois fois : le bloc de portée
+    // annonce que la période, les durées, l'abonnement ET le coût du temps
+    // interne ne viennent d'aucune source ; le §05 nomme une estimation
+    // éditoriale ; le §02 publie « 2 à 5 clients réels ». La phrase est
+    // désormais interdite nommément, et le §06 doit dire que TOUS ses nombres
+    // sont posés.
     const text = prose(sectionHtml("manuel"));
+    expect(text).not.toContain("Une hypothèse, et une seule");
+    expect(text).not.toMatch(/une seule,? ne sort d’aucune source/);
+    expect(text).toContain("Aucun nombre de cette section ne sort d’une source");
+    expect(text).toContain("appartiennent au cas construit");
     expect(text).toContain("350 € le jour chargé");
     expect(text).toContain("50 € l’heure sur sept heures");
     expect(text).toContain("écrite ici pour que vous puissiez la contester");
@@ -1297,6 +1374,40 @@ describe("qualité de contenu du guide MVP SaaS", () => {
     }
   });
 
+  it("fait porter à chaque localisateur l’affirmation qu’il soutient", () => {
+    // É7 — le guide écrivait « OWASP ASVS · version stable 5.0.0 […] publié
+    // comme version stable le 30 mai 2025 » en pointant la page de version du
+    // dépôt. Rouverte le 30/08/2026, celle-ci affiche « 30 May 09:35 » sans
+    // année et présente la version comme « the initial release of the 5.x
+    // version of ASVS », sans le mot « stable ». Le fait est vrai, mais c'est
+    // la page projet qui le porte : elle date la sortie du 30 mai 2025 et
+    // renvoie vers « the latest stable version of the ASVS (5.0.0) ».
+    expect(pageSource).not.toContain("github.com/OWASP/ASVS/releases");
+    expect(pageSource).toContain(
+      "https://owasp.org/www-project-application-security-verification-standard/",
+    );
+    const rendered = prose(renderedPage);
+    expect(rendered).toContain(
+      "[30 May 2025] ASVS Version 5.0.0 is released LIVE",
+    );
+    expect(rendered).toContain("the latest stable version of the ASVS (5.0.0)");
+    expect(prose(sectionHtml("familles"))).toContain(
+      "5.0.0 publiée le 30 mai 2025",
+    );
+
+    // É8 — charte §4.1 : « une bibliographie générale en fin de page ne suffit
+    // pas ». Le guide RGPD du développeur de la CNIL et la Logging Cheat Sheet
+    // d'OWASP ne soutenaient aucune phrase du corps ni de la FAQ — le corps
+    // cite le Guide de la sécurité, et le journal du §04 n'était rattaché à
+    // rien. Les deux entrées sont retirées plutôt que d'ajouter du volume de
+    // preuve apparent.
+    expect(pageSource).not.toContain("guide-rgpd-du-developpeur");
+    expect(pageSource).not.toContain("Logging_Cheat_Sheet");
+    // Ce qui reste cité, lui, doit rester adossé à une phrase visible.
+    expect(rendered).toContain("Guide de la sécurité");
+    expect(rendered).toContain("guide de la sécurité de la CNIL");
+  });
+
   it("ne pointe que vers des guides publiés, jamais vers lui-même", () => {
     const published = new Set(PUBLISHED_GUIDES.map((guide) => guide.slug));
     const targets = [
@@ -1330,7 +1441,8 @@ describe("qualité de contenu du guide MVP SaaS", () => {
     expect(text).toContain(
       "Hagnéré Code développe des applications SaaS sur mesure et perçoit des honoraires",
     );
-    expect(text).toContain("relevés le 28 août 2026");
+    // Même relevé que la réponse directe : grille rouverte le 30/08/2026.
+    expect(text).toContain("relevés le 30 août 2026");
     expect(text).toContain("à revérifier tous les douze mois");
     expect(text).toContain("seul un devis signé engage");
     expect((pageSource.match(/<TrackedGuideCtaLink/g) ?? []).length).toBe(1);
@@ -1399,6 +1511,44 @@ describe("qualité de contenu du guide MVP SaaS", () => {
   /* ──────────────────────────────────────────────
      Outil local et actifs
      ────────────────────────────────────────────── */
+
+  it("décrit les bornes du calculateur telles que le moteur les applique", () => {
+    // Le §08 annonçait « bornées à un million pour les clients, les minutes et
+    // les occurrences, avec trois décimales au plus ». La seconde moitié était
+    // fausse pour les clients : `parseDecimal(..., MAX_PILOT_CLIENTS, true)`
+    // passe `integerOnly`, et toute décimale y est refusée. L'outil, lui, le
+    // disait déjà correctement (« clients entiers de 1 à 1 000 000 ») : c'est
+    // la prose du guide qui contredisait son propre calculateur.
+    expect(engineSource).toContain(
+      "parseDecimal(input.pilotClientCount, MAX_PILOT_CLIENTS, true)",
+    );
+    expect(toolSource).toContain("clients entiers de 1 à 1 000 000");
+
+    const example = createAccordiaExample();
+    const decimalClients = assessMvpContract({
+      ...example,
+      pilotClientCount: "3.5",
+    });
+    expect(decimalClients.missingDecisions).toContain(
+      "Nombre de clients du test invalide : un nombre entier est requis",
+    );
+
+    // …tandis que la capacité, elle, accepte bien trois décimales.
+    const decimalCapacity = assessMvpContract({
+      ...example,
+      manualCapacityMinutes: "300.125",
+    });
+    expect(decimalCapacity.manualCapacityMinutes).toBe("300.125");
+
+    const text = prose(sectionHtml("outil"));
+    expect(text).toContain("le nombre de clients se saisit en entier");
+    expect(text).toContain(
+      "les minutes, les occurrences et la capacité acceptent trois décimales au plus",
+    );
+    expect(text).not.toMatch(
+      /clients, les minutes et les occurrences, avec trois décimales/,
+    );
+  });
 
   it("garde l’outil local, déterministe et sans transmission", () => {
     for (const forbidden of [

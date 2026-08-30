@@ -117,7 +117,7 @@ const faqCategories: GuidePremiumFaqCategory[] = [
       {
         question: "Faut-il comparer les devis en HT ou en TTC\u00a0?",
         answer:
-          "Comparez les offres en HT, puis calculez à part ce que vous sortez réellement de trésorerie. Le HT met les propositions sur la même base\u00a0; le TTC dit ce que votre banque voit passer. La TVA facturée dépend de l’entité Google qui sert votre compte et de votre situation\u00a0: l’aide Google distingue les comptes servis par Google France SARL de ceux servis depuis l’Irlande. Faites trancher votre expert-comptable plutôt qu’un tableau de comparaison.",
+          "Comparez les offres en HT, puis calculez à part ce que vous sortez réellement de trésorerie. Le HT met les propositions sur la même base\u00a0; le TTC dit ce que votre banque voit passer. La TVA facturée dépend de l’entité Google qui gère votre compte et de votre situation. L’aide Google range ses taxes pays par pays et nomme l’entité concernée\u00a0— «\u00a0Votre compte est géré par Google Ireland Ltd.\u00a0» —, mais sa page «\u00a0Taxes dans votre pays\u00a0» n’ouvre aucune section France. Faites trancher votre expert-comptable plutôt qu’un tableau de comparaison.",
       },
       {
         question:
@@ -285,10 +285,10 @@ export default function Page() {
               "Coût réglementaire actuellement indiqué à 2\u00a0% pour les annonces diffusées en France. Vérifier la zone et la facture à la date du calcul.",
           },
           {
-            source: "Google Ads · TVA et facturation",
+            source: "Google Ads · taxes dans votre pays",
             href: "https://support.google.com/google-ads/answer/2375370?hl=fr",
             description:
-              "Traitement décrit selon l’entité Google qui sert le compte, notamment Google France SARL ou Google Ireland. Cité au §02. Aucune conclusion fiscale universelle n’en découle.",
+              "Taxes présentées pays par pays, chacun avec l’entité qui gère le compte\u00a0: «\u00a0Votre compte est géré par Google Ireland Ltd.\u00a0» Page rouverte le 30\u00a0août 2026\u00a0: sa liste de pays n’ouvre aucune section France. Citée au §02. Aucune conclusion fiscale française n’en découle.",
           },
           {
             source: "Google Ads · facturation en France",
@@ -592,18 +592,22 @@ Coût connu
             title="Une TVA récupérable sort quand même de la banque"
           >
             <p>
-              L’
+              La page{" "}
               <a
                 href="https://support.google.com/google-ads/answer/2375370?hl=fr"
                 target="_blank"
                 rel="noreferrer"
               >
-                aide Google distingue les comptes servis par Google France SARL
-                de ceux servis depuis l’Irlande
-              </a>
-              . Gardez trois colonnes&nbsp;: HT externe, TTC décaissé, coût
-              connu après récupération estimée. La troisième revient à votre
-              expert-comptable, pas à ce guide.
+                «&nbsp;Taxes dans votre pays&nbsp;»
+              </a>{" "}
+              de l’aide Google Ads range le traitement de la TVA pays par pays
+              et nomme, pour chacun, l’entité qui gère le compte&nbsp;—
+              «&nbsp;Votre compte est géré par Google Ireland Ltd.&nbsp;»
+              Rouverte le 30&nbsp;août 2026, sa liste de pays n’ouvre aucune
+              section France&nbsp;: elle ne tranche donc rien pour un compte
+              français. Gardez trois colonnes&nbsp;: HT externe, TTC décaissé,
+              coût connu après récupération estimée. La troisième revient à
+              votre expert-comptable, pas à ce guide.
             </p>
           </InfoBox>
         </GuidePremiumSection>
@@ -684,7 +688,10 @@ Coût connu
           <p>
             À 5&nbsp;000&nbsp;€ de média, le pourcentage gagne&nbsp;; il cesse
             de gagner au-dessus d’un certain budget, et chaque seuil se résout
-            en une ligne. Appelez M le média mensuel&nbsp;:
+            en une ligne. Ces quatre seuils comparent les{" "}
+            <strong>honoraires mensuels</strong>, et non le coût connu du
+            tableau ci-dessus&nbsp;: le lancement, lui, va de 750 à
+            900&nbsp;€ selon l’offre. Appelez M le média mensuel&nbsp;:
           </p>
 
           <FormulaBox>
@@ -695,11 +702,25 @@ Hybride contre forfait
 500 + 0,08 × M = 900   →   M = 5\u00a0000\u00a0€ HT par mois
 
 Hybride contre pourcentage
-500 + 0,08 × M = 0,15 × M   →   M = 7\u00a0143\u00a0€ HT par mois
+500 + 0,08 × M = 0,15 × M   →   M = 500 ÷ 0,07 ≈ 7\u00a0143\u00a0€ HT par mois
 
 Temps passé contre forfait
 h × 100 = 900   →   h = 9\u00a0heures par mois`}
           </FormulaBox>
+
+          <p>
+            Lancement compris, sur douze mois, ces croisements se déplacent de
+            moins de 2&nbsp;% chacun&nbsp;: le pourcentage ne dépasse le
+            forfait qu’à 5&nbsp;916,67&nbsp;€, l’hybride dépasse le forfait dès
+            4&nbsp;947,92&nbsp;€, il repasse sous le pourcentage à
+            7&nbsp;023,81&nbsp;€, et le temps passé rejoint le forfait à
+            8,96&nbsp;heures. Le tableau
+            ci-dessus le montre déjà&nbsp;: à 5&nbsp;000&nbsp;€, forfait et
+            hybride facturent tous deux 900&nbsp;€ par mois, et pourtant
+            l’hybride coûte 80&nbsp;000&nbsp;€ sur douze mois contre
+            79&nbsp;950&nbsp;€ au forfait, à cause des 50&nbsp;€ qui séparent
+            leurs lancements.
+          </p>
 
           <p>
             Hélène monte son budget de saison à 12&nbsp;000&nbsp;€ HT par
@@ -874,7 +895,12 @@ Face au temps passé, à 1\u00a0000\u00a0€ par mois
             60&nbsp;prospects qualifiés de la période, ils fixent un plafond de
             500&nbsp;€ de coût connu par prospect. Le coût réel vaut
             22&nbsp;350&nbsp;€&nbsp;÷&nbsp;60 = 372,50&nbsp;€&nbsp;: il reste
-            127,50&nbsp;€ par prospect, avant les coûts non saisis.
+            127,50&nbsp;€ par prospect, avant les coûts non saisis. Les deux
+            nombres ne portent pas sur la même durée&nbsp;: la marge court sur
+            douze mois par client, quand les coûts comparés en couvrent trois.
+            Ces 127,50&nbsp;€ ne sont donc pas un solde de trésorerie à la fin
+            du trimestre, mais l’écart entre une marge encore à encaisser et
+            une dépense déjà faite.
           </p>
           <p>
             Rejouez l’hypothèse basse, celle qu’aucune proposition commerciale
@@ -915,8 +941,11 @@ Face au temps passé, à 1\u00a0000\u00a0€ par mois
             Le plafond de facturation autorise 979,20&nbsp;€ de plus par an
           </h3>
           <p>
-            Hélène règle un budget quotidien moyen de 200&nbsp;€ et compte
-            trente jours&nbsp;: 6&nbsp;000&nbsp;€ pour le mois. Google Ads
+            Cet incident quitte la base du fil rouge&nbsp;: Hélène règle un
+            budget quotidien moyen de 200&nbsp;€ et compte trente jours, soit
+            6&nbsp;000&nbsp;€ pour le mois&nbsp;— un cinquième au-dessus des
+            5&nbsp;000&nbsp;€ des sections précédentes. Tous les montants qui
+            suivent portent sur cette base. Google Ads
             indique que, pour la plupart des campagnes, la{" "}
             <a
               href="https://support.google.com/google-ads/answer/10486536?hl=fr"
@@ -930,9 +959,11 @@ Face au temps passé, à 1\u00a0000\u00a0€ par mois
             double, 400&nbsp;€. C’est un plafond de facturation, pas une
             dépense certaine&nbsp;: un pic à 400&nbsp;€ un mardi ne dit rien du
             mois. Séparez ensuite les deux dépassements. Le coût réglementaire
-            n’en est pas un&nbsp;: il vaut 120&nbsp;€ sur 6&nbsp;000&nbsp;€ de
-            média, 1&nbsp;440&nbsp;€ sur douze mois, et le §02 l’annonçait
-            déjà. La règle des 30,4&nbsp;jours, elle, n’ajoute que les
+            n’en est pas un&nbsp;: le §02 en pose le taux de 2&nbsp;% et le
+            chiffre à 100&nbsp;€ par mois sur les 5&nbsp;000&nbsp;€ du fil
+            rouge, soit 1&nbsp;200&nbsp;€ sur douze mois&nbsp;; sur les
+            6&nbsp;000&nbsp;€ d’ici, il vaut 120&nbsp;€ par mois et
+            1&nbsp;440&nbsp;€ sur l’année. La règle des 30,4&nbsp;jours, elle, n’ajoute que les
             80&nbsp;€ de média qui séparent 6&nbsp;080&nbsp;€ de
             6&nbsp;000&nbsp;€, plus 1,60&nbsp;€ de coût réglementaire&nbsp;:
             81,60&nbsp;€ par mois, 979,20&nbsp;€ sur douze, et une facture
@@ -1225,7 +1256,8 @@ Face au temps passé, à 1\u00a0000\u00a0€ par mois
             ici n’exige de passer par nous&nbsp;: les six lignes de coût, les
             quatre seuils de bascule, la division qui chiffre le temps interne
             et le décompte à 3, 6 et 12&nbsp;mois se refont avec vos nombres.
-            Les prix vendeurs datent du 30&nbsp;juillet 2026, notre grille du
+            Les prix vendeurs ont été relevés le 30&nbsp;juillet 2026 et
+            revérifiés le 30&nbsp;août 2026, notre grille date du
             28&nbsp;août 2026&nbsp;; les deux sont à revérifier tous les douze
             mois. Aucun coût, aucun délai et aucun résultat ne sont garantis par
             cette page&nbsp;: seul un devis signé engage.

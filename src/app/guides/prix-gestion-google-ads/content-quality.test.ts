@@ -276,6 +276,66 @@ function honorairesMensuels(media = MEDIA_MENSUEL_HT) {
   return Object.values(OFFRES).map((offre) => offre.mensuel(media));
 }
 
+/**
+ * Coût connu à douze mois, empilé mois par mois et SANS arrondi au centime.
+ *
+ * `empiler` arrondit son total, ce qui transforme la différence entre deux
+ * offres en fonction en escalier : une dichotomie y converge vers un point
+ * situé n'importe où dans la marche, et le croisement recalculé pouvait
+ * tomber à 5 916,66 € au lieu de 5 916,67 €. La recherche de racine se fait
+ * donc sur la grandeur brute ; l'arrondi n'intervient qu'à l'affichage.
+ */
+function connuDouzeMoisBrut(offre: Offre, media: number) {
+  let externe = LANCEMENT_COMMUN_HT + offre.setup;
+  let heures = HEURES_INTERNES_INITIALES;
+
+  for (let mois = 0; mois < 12; mois += 1) {
+    externe += media;
+    externe += media * TAUX_REGLEMENTAIRE;
+    externe += AUTRES_COUTS_MENSUELS_HT;
+    externe += offre.mensuel(media);
+    heures += HEURES_INTERNES_MENSUELLES;
+  }
+
+  return externe + heures * COUT_HORAIRE_INTERNE;
+}
+
+/**
+ * Les quatre croisements sur la grandeur du TABLEAU du §03 — le coût connu à
+ * douze mois, lancement compris — et non sur les honoraires mensuels que
+ * résout le bloc de formules.
+ *
+ * C'est l'écart É-05 du dossier de recherche : les frais de lancement
+ * diffèrent (750, 900, 800, 800 €), donc les seuils publiés en honoraires ne
+ * sont pas ceux du tableau qui les précède. Le guide dit maintenant les deux.
+ */
+function croisementsDouzeMois() {
+  const ecart = (a: Offre, b: Offre) => (media: number) =>
+    connuDouzeMoisBrut(a, media) - connuDouzeMoisBrut(b, media);
+
+  return {
+    pourcentageForfait: centimes(
+      racine(ecart(OFFRES.pourcentage, OFFRES.forfait), 0, 100_000),
+    ),
+    hybrideForfait: centimes(
+      racine(ecart(OFFRES.hybride, OFFRES.forfait), 0, 100_000),
+    ),
+    hybridePourcentage: centimes(
+      racine(ecart(OFFRES.hybride, OFFRES.pourcentage), 0, 100_000),
+    ),
+    tempsPasseForfait: centimes(
+      racine(
+        (heures) =>
+          OFFRES.tempsPasse.setup +
+          12 * heures * 100 -
+          (OFFRES.forfait.setup + 12 * OFFRES.forfait.mensuel(0)),
+        0,
+        100,
+      ),
+    ),
+  };
+}
+
 /** Écriture française d'un montant : milliers insécables, virgule décimale. */
 function fr(valeur: number) {
   const decimales = Number.isInteger(valeur) ? 0 : 2;
@@ -384,14 +444,22 @@ describe("qualité éditoriale du guide prix d’une gestion Google Ads", () => 
     // Ce qui a été fait plutôt que de trancher seul : la réécriture du
     // 28/08/2026 a coupé partout où la coupe ne retirait pas de fait.
     //
-    // Mesure du 30/08/2026, refaite après la reprise : 3 069 mots par la
-    // fonction ci-dessus, 3 081 par `scripts/measure-guide-readtime.mjs`.
-    // L'algorithme est le même ; l'entrée diffère, et c'est la seule raison de
-    // l'écart de douze mots. Le script mesure la route servie par le serveur,
-    // dont le comparateur client est monté ; ce fichier mesure
-    // `renderToStaticMarkup(Page())`. Les deux tombent dans la bande, et les
-    // deux donnent 15 min à l'arrondi — c'est le script qui fait autorité pour
-    // `readTimeMin`, comme l'assertion suivante le vérifie.
+    // Mesure du 30/08/2026, refaite après la correction des écarts É-01 à
+    // É-06 : 3 358 mots par `scripts/measure-guide-readtime.mjs`, une douzaine
+    // de moins par la fonction ci-dessus. L'algorithme est le même ; l'entrée
+    // diffère, et c'est la seule raison de l'écart. Le script mesure la route
+    // servie par le serveur, dont le comparateur client est monté ; ce fichier
+    // mesure `renderToStaticMarkup(Page())`. Les deux tombent dans la bande, et
+    // les deux donnent 17 min à l'arrondi — c'est le script qui fait autorité
+    // pour `readTimeMin`, comme l'assertion suivante le vérifie.
+    //
+    // Les six corrections ont ajouté 277 mots, tous du cadrage : nommer la
+    // grandeur que croisent les quatre seuils, annoncer le changement
+    // d'assiette du §06, dire quelle fenêtre porte quel nombre au §05, citer
+    // mot pour mot la page de taxes de l'aide Google. Aucun fait n'a été
+    // retiré pour compenser. Il reste 142 mots de marge sous le plafond de la
+    // bande : plus aucune section ne s'allonge sans arbitrer d'abord le
+    // désaccord ci-dessus.
     // Descendre à 2 875 imposait de retirer la section 06 « ce qui rate » ou la
     // section 07 sur la propriété du compte et l'article 20 de la loi Sapin :
     // ce sont les deux sections sur lesquelles reposent les attaques A4 et A6
@@ -784,8 +852,54 @@ describe("qualité éditoriale du guide prix d’une gestion Google Ads", () => 
     const texte = prose(articleHtml());
     expect(texte).toContain("M = 6 000 € HT par mois");
     expect(texte).toContain("M = 5 000 € HT par mois");
-    expect(texte).toContain("M = 7 143 € HT par mois");
+    // É-04 : 500 / 0,07 = 7 142,857142… ; 7 143 est un arrondi, et c'est le
+    // seul des quatre seuils qui en soit un. Il était publié derrière un signe
+    // d'égalité, comme les trois autres qui tombent juste au centime. Le guide
+    // écrit maintenant la racine exacte puis « ≈ ».
+    expect(basculeCroisee).not.toBe(Math.round(basculeCroisee));
+    expect(texte).toContain("M = 500 ÷ 0,07 ≈ 7 143 € HT par mois");
+    expect(texte).not.toContain("M = 7 143 € HT");
     expect(texte).toContain("h = 9 heures par mois");
+
+    // É-05 : les quatre équations croisent les HONORAIRES MENSUELS, pas le
+    // coût connu du tableau qui les précède. Le guide le dit, puis publie les
+    // croisements réels à douze mois, lancement compris.
+    expect(texte).toContain(
+      "Ces quatre seuils comparent les honoraires mensuels, et non le coût connu du tableau ci-dessus",
+    );
+    const croisements = croisementsDouzeMois();
+    // À la main, en annulant les termes communs aux deux offres comparées :
+    //   pourcentage/forfait : (900 − 750) + 12 × (0,15 M − 900) = 0
+    //                         → 1,8 M = 10 650 → M = 5 916,666…
+    //   hybride/forfait     : (800 − 750) + 12 × (500 + 0,08 M − 900) = 0
+    //                         → 0,96 M = 4 750 → M = 4 947,916…
+    //   hybride/pourcentage : (800 − 900) + 12 × (500 − 0,07 M) = 0
+    //                         → 0,84 M = 5 900 → M = 7 023,809…
+    //   temps passé/forfait : (800 − 750) + 12 × (100 h − 900) = 0
+    //                         → 1 200 h = 10 750 → h = 8,958…
+    expect(croisements.pourcentageForfait).toBeCloseTo(5_916.67, 2);
+    expect(croisements.hybrideForfait).toBeCloseTo(4_947.92, 2);
+    expect(croisements.hybridePourcentage).toBeCloseTo(7_023.81, 2);
+    expect(croisements.tempsPasseForfait).toBeCloseTo(8.96, 2);
+    for (const croisement of [
+      `${frPlain(croisements.pourcentageForfait)} €`,
+      `${frPlain(croisements.hybrideForfait)} €`,
+      `${frPlain(croisements.hybridePourcentage)} €`,
+      `${frPlain(croisements.tempsPasseForfait)} heures`,
+    ]) {
+      expect(texte, croisement).toContain(croisement);
+    }
+    // Chaque croisement réel s'écarte de moins de 2 % du seuil en honoraires,
+    // comme le guide l'annonce : le lecteur doit pouvoir vérifier la borne.
+    const ecarts = [
+      Math.abs(croisements.pourcentageForfait - basculePourcentage) /
+        basculePourcentage,
+      Math.abs(croisements.hybrideForfait - basculeHybride) / basculeHybride,
+      Math.abs(croisements.hybridePourcentage - basculeCroisee) / basculeCroisee,
+      Math.abs(croisements.tempsPasseForfait - basculeHeures) / basculeHeures,
+    ];
+    for (const ecart of ecarts) expect(ecart).toBeLessThan(0.02);
+    expect(texte).toContain("ces croisements se déplacent de moins de 2 %");
 
     // Le bloc publie quatre équations : le guide doit les annoncer comme
     // quatre. La version auditée écrivait « trois » à trois endroits.
@@ -965,6 +1079,19 @@ describe("qualité éditoriale du guide prix d’une gestion Google Ads", () => 
     ]) {
       expect(texte, fait).toContain(fait);
     }
+
+    // É-06 : le numérateur (30 000 € de marge) court sur douze mois par
+    // client, le dénominateur (22 350 €, 60 prospects) sur trois. Les
+    // 127,50 € ne sont donc pas un solde de trésorerie de fin de trimestre,
+    // et la section doit le dire — le texte d'aide du calculateur le disait
+    // déjà, la prose non.
+    expect(texte).toContain("Les deux nombres ne portent pas sur la même durée");
+    expect(texte).toContain(
+      "la marge court sur douze mois par client, quand les coûts comparés en couvrent trois",
+    );
+    expect(texte).toContain(
+      `Ces ${frPlain(plafondParProspect - coutParProspect)} € ne sont donc pas un solde de trésorerie`,
+    );
   });
 
   it("impute à la règle des 30,4 jours ce qu’elle coûte, et rien de plus", () => {
@@ -1028,6 +1155,38 @@ describe("qualité éditoriale du guide prix d’une gestion Google Ads", () => 
       expect(texte, fait).toContain(fait);
     }
     expect(texte).toContain("un pic à 400 € un mardi ne dit rien du mois");
+
+    // É-02 : cet incident quitte les 5 000 € du fil rouge pour 6 000 €, soit
+    // +20 %. Le changement d'assiette doit être annoncé AVANT le premier
+    // nombre de l'incident, faute de quoi le lecteur croit lire la suite du
+    // même cas. 6 000 / 5 000 = 1,2.
+    expect(moisAttendu / MEDIA_MENSUEL_HT).toBeCloseTo(1.2, 6);
+    const annonce = "Cet incident quitte la base du fil rouge";
+    expect(texte).toContain(annonce);
+    expect(texte).toContain(
+      `un cinquième au-dessus des ${frPlain(MEDIA_MENSUEL_HT)} € des sections précédentes`,
+    );
+    expect(texte.indexOf(annonce)).toBeGreaterThanOrEqual(0);
+    expect(texte.indexOf(annonce)).toBeLessThan(
+      texte.indexOf(`${frPlain(plafondMedia)} €`),
+    );
+
+    // É-03 : « le §02 l'annonçait déjà » était vrai de la règle et faux des
+    // montants. Le §02 chiffre le coût réglementaire sur 5 000 € — 100 € par
+    // mois, 1 200 € sur douze — jamais sur 6 000 €.
+    let reglementaireFilRouge = 0;
+    for (let mois = 0; mois < 12; mois += 1) {
+      reglementaireFilRouge += MEDIA_MENSUEL_HT * TAUX_REGLEMENTAIRE;
+    }
+    expect(MEDIA_MENSUEL_HT * TAUX_REGLEMENTAIRE).toBe(100);
+    expect(reglementaireFilRouge).toBe(1_200);
+    expect(texte).toContain(
+      `le §02 en pose le taux de 2 % et le chiffre à ${
+        MEDIA_MENSUEL_HT * TAUX_REGLEMENTAIRE
+      } € par mois sur les ${frPlain(MEDIA_MENSUEL_HT)} € du fil rouge`,
+    );
+    expect(texte).toContain(`${frPlain(reglementaireFilRouge)} € sur douze mois`);
+    expect(texte).not.toContain("et le §02 l’annonçait déjà");
   });
 
   it("chiffre l’assiette sans plafond et la clause qui l’aurait bornée", () => {
@@ -1177,6 +1336,14 @@ describe("qualité éditoriale du guide prix d’une gestion Google Ads", () => 
       7_143,
       1_460,
       12_000,
+      // Croisements réels sur le coût connu à douze mois (É-05), dérivés du
+      // modèle et jamais posés en dur : si un lancement changeait, ces trois
+      // montants bougeraient et le texte redeviendrait orphelin.
+      croisementsDouzeMois().pourcentageForfait,
+      croisementsDouzeMois().hybrideForfait,
+      croisementsDouzeMois().hybridePourcentage,
+      // Écart de lancement entre le forfait et l'hybride, cité au §03.
+      OFFRES.hybride.setup - OFFRES.forfait.setup,
       // Charge interne : écarts d'honoraires dérivés des offres.
       voisin - moinsCher,
       plusCher - moinsCher,
@@ -1326,6 +1493,33 @@ describe("qualité éditoriale du guide prix d’une gestion Google Ads", () => 
     expect(texte).toContain(
       "CNIL rappelle que les traceurs de mesure publicitaire relèvent le plus souvent du consentement",
     );
+  });
+
+  it("n’attribue à l’aide Google que ce que sa page porte vraiment", () => {
+    // É-01. Le §02, la FAQ n° 2 et la liste des sources ancraient sur
+    // support.google.com/google-ads/answer/2375370 la phrase « l'aide Google
+    // distingue les comptes servis par Google France SARL de ceux servis
+    // depuis l'Irlande ». Page rouverte le 30/08/2026 : elle s'intitule
+    // « Taxes dans votre pays », range les taxes pays par pays, nomme pour
+    // chacun l'entité qui gère le compte — « Votre compte est géré par Google
+    // Ireland Ltd. » — et sa liste de pays n'ouvre aucune section France.
+    // L'expression « Google France SARL » n'y figure pas. L'affirmation
+    // n'était pas fausse : elle était mal localisée, et le lecteur qui suivait
+    // le lien ne trouvait pas ce que la phrase annonçait.
+    const texte = prose(articleHtml());
+
+    expect(texte).toContain("« Taxes dans votre pays »");
+    expect(texte).toContain("« Votre compte est géré par Google Ireland Ltd. »");
+    expect(texte).toContain("n’ouvre aucune section France");
+    // Nulle part : ni dans le corps, ni en FAQ, ni dans la liste des sources.
+    expect(pageSource).not.toContain("Google France SARL");
+    expect(pageSource).not.toContain("servis depuis l’Irlande");
+    // La citation reste ancrée sur la page qui la porte.
+    const encart =
+      renderedPage.match(
+        /<a[^>]*href="https:\/\/support\.google\.com\/google-ads\/answer\/2375370\?hl=fr"[^>]*>([\s\S]*?)<\/a>/,
+      )?.[1] ?? "";
+    expect(prose(encart)).toBe("« Taxes dans votre pays »");
   });
 
   it("marque en nofollow chacun des trois concurrents cités", () => {

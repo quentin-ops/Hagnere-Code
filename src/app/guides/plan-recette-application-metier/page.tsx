@@ -251,75 +251,75 @@ export default function Page() {
             source: "Légifrance · arrêté du 30\u00a0mars 2021 approuvant le CCAG-TIC",
             href: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000043310689",
             description:
-              "Cahier des clauses administratives générales des marchés publics de techniques de l’information et de la communication. Article\u00a032\u00a0: vérification d’aptitude puis vérification de service régulier, régularité observée trente jours, indisponibilité cumulée limitée à 2\u00a0% de la durée d’utilisation effective, de 8\u00a0h à 18\u00a0h du lundi au vendredi, jours fériés exclus. Article\u00a033\u00a0: trente jours pour notifier la décision après vérification d’aptitude, sept jours après vérification de service régulier. L’admission tacite ne vaut que dans ce second cas, à l’article\u00a033.2.2\u00a0; le silence de trente jours de l’article\u00a033.2.1 n’emporte aucune admission. Consulté le 28\u00a0août 2026.",
+              "Cahier des clauses administratives générales des marchés publics de techniques de l’information et de la communication. Article\u00a032\u00a0: vérification d’aptitude puis vérification de service régulier, régularité observée trente jours, indisponibilité cumulée limitée à 2\u00a0% de la durée d’utilisation effective, de 8\u00a0h à 18\u00a0h du lundi au vendredi, jours fériés exclus. Article\u00a033.2.1\u00a0: le délai imparti à l’acheteur pour procéder à la vérification d’aptitude et notifier sa décision est de trente jours, à compter de la notification de l’écrit par lequel le titulaire l’informe que les prestations sont prêtes à être vérifiées ou, à défaut, du procès-verbal de mise en ordre de marche\u00a0; décision positive, ajournement ou rejet, sans admission tacite. Article\u00a033.2.2\u00a0: sept jours pour notifier la décision de vérification de service régulier, et à défaut les prestations sont réputées admises. Corps des articles\u00a032 et\u00a033 de l’annexe rouvert sur Légifrance le 30\u00a0août 2026, aux identifiants JORFARTI000043310746 et JORFARTI000043310747.",
           },
           {
             source: "ISTQB · CTFL v4.0.1",
             href: "https://istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf",
             description:
-              "Syllabus du 15\u00a0septembre 2024\u00a0: niveaux de test, acceptation centrée sur les besoins des utilisateurs, critères d’entrée et de sortie, priorisation, distinction entre gravité et priorité d’une anomalie. Référence pédagogique, pas certification du projet.",
+              "Syllabus du 15\u00a0septembre 2024\u00a0: niveaux de test, acceptation centrée sur les besoins des utilisateurs, critères d’entrée et de sortie, priorisation, distinction entre gravité et priorité d’une anomalie. Référence pédagogique, pas certification du projet. PDF de 78\u00a0pages téléchargé et relu le 30\u00a0août 2026.",
           },
           {
             source: "ISO/IEC/IEEE 29119-3:2021",
             href: "https://www.iso.org/standard/79429.html",
             description:
-              "Présentation publique de modèles de documentation de test utilisables dans différents projets et organisations. Aucun champ détaillé non public n’est attribué à la norme.",
+              "Norme consacrée à la documentation de test\u00a0: modèles utilisables dans différents projets et organisations. Aucun champ détaillé non public n’est attribué à la norme. La page du catalogue a répondu HTTP 403 le 30\u00a0août 2026, par ce lien comme par la plateforme de consultation en ligne de l’ISO\u00a0: cette description n’a pas pu y être revérifiée à cette date.",
           },
           {
             source: "ISO/IEC 25010:2023",
             href: "https://www.iso.org/standard/78176.html",
             description:
-              "Modèle de qualité produit à neuf caractéristiques, utilisable pour identifier des objectifs de test et des critères d’acceptation au-delà des seules fonctions.",
+              "Modèle de qualité produit à neuf caractéristiques, utilisable pour identifier des objectifs de test et des critères d’acceptation au-delà des seules fonctions. La page du catalogue a répondu HTTP 403 le 30\u00a0août 2026, en français comme en anglais\u00a0: cette description n’a pas pu y être revérifiée à cette date.",
           },
           {
             source: "CNIL · Tester vos applications",
             href: "https://www.cnil.fr/fr/tester-vos-applications",
             description:
-              "Fiche du 27\u00a0janvier 2020\u00a0: métriques définies avec les parties prenantes\u00a0; données personnelles de production à ne pas utiliser en développement ou en test\u00a0; jeu fictif représentatif et anonymisation des configurations importées.",
+              "Fiche du 27\u00a0janvier 2020\u00a0: métriques définies avec les parties prenantes\u00a0; données personnelles de production à ne pas utiliser en développement ou en test\u00a0; jeu fictif représentatif et anonymisation des configurations importées. Consultée le 30\u00a0août 2026.",
           },
           {
             source: "CNIL · Encadrer les développements informatiques",
             href: "https://www.cnil.fr/fr/securite-encadrer-les-developpements-informatiques",
             description:
-              "Fiche du 14\u00a0mars 2024\u00a0: environnements de développement, de test et de production distincts, données fictives ou anonymisées, non-régression ou revue avant la mise en production d’une mise à jour.",
+              "Fiche du 14\u00a0mars 2024\u00a0: environnements de développement, de test et de production distincts, données fictives ou anonymisées, non-régression ou revue avant la mise en production d’une mise à jour. Consultée le 30\u00a0août 2026.",
           },
           {
             source: "W3C WAI · Évaluer l’accessibilité",
             href: "https://www.w3.org/WAI/test-evaluate/",
             description:
-              "Évaluer tôt, combiner outils et évaluation humaine compétente\u00a0; aucun outil automatique ne détermine seul la conformité d’accessibilité.",
+              "Évaluer tôt, combiner outils et évaluation humaine compétente\u00a0; aucun outil automatique ne détermine seul la conformité d’accessibilité. Page datée du 12\u00a0août 2026, consultée le 30\u00a0août 2026.",
           },
           {
             source:
               "Légifrance · loi n°\u00a02005-102 du 11\u00a0février 2005, article\u00a047",
             href: "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000037388867/",
             description:
-              "Source de l’obligation française d’accessibilité des services de communication au public en ligne. Le\u00a0I vise les personnes morales de droit public, les délégataires d’un service public, les personnes morales de droit privé créées pour un besoin d’intérêt général autre qu’industriel ou commercial, et les entreprises au-delà d’un seuil de chiffre d’affaires fixé par décret. Consulté le 28\u00a0août 2026.",
+              "Source de l’obligation française d’accessibilité des services de communication au public en ligne. Le\u00a0I énumère quatre catégories\u00a0: 1°\u00a0les personnes morales de droit public\u00a0; 2°\u00a0les personnes morales de droit privé délégataires d’une mission de service public ou créées pour satisfaire spécifiquement des besoins d’intérêt général autres qu’industriels ou commerciaux\u00a0; 3°\u00a0les personnes morales de droit privé constituées par les précédentes pour le même objet\u00a0; 4°\u00a0les entreprises dont le chiffre d’affaires excède un seuil fixé par décret. Version en vigueur au 8\u00a0septembre 2023, consultée le 30\u00a0août 2026.",
           },
           {
             source:
               "Légifrance · décret n°\u00a02019-768 du 24\u00a0juillet 2019",
             href: "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000038811937/",
             description:
-              "Ce décret ne crée pas l’obligation\u00a0: il en fixe le seuil pour les entreprises visées au 4°\u00a0du\u00a0I de l’article\u00a047, à 250\u00a0millions d’euros de chiffre d’affaires annuel moyen en France sur les trois derniers exercices clos. Aucun critère d’effectif n’y figure. Le régime de sanction a été modifié depuis\u00a0: vérifier le texte en vigueur à votre date de lecture. Consulté le 28\u00a0août 2026.",
+              "Ce décret ne crée pas l’obligation\u00a0: il en fixe le seuil pour les entreprises visées au 4°\u00a0du\u00a0I de l’article\u00a047, à 250\u00a0millions d’euros de chiffre d’affaires annuel moyen en France sur les trois derniers exercices clos. Aucun critère d’effectif n’y figure. Le régime de sanction a été modifié depuis\u00a0: l’article 8 est abrogé par le décret n°\u00a02026-816 du 24\u00a0août 2026, donc vérifier le texte en vigueur à votre date de lecture. Version en vigueur au 30\u00a0août 2026, consultée à cette date.",
           },
           {
             source: "EUR-Lex · directive (UE) 2019/882",
             href: "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32019L0882",
             description:
-              "Exigences d’accessibilité des produits et des services destinés aux consommateurs\u00a0— commerce en ligne, services bancaires, transport de voyageurs, livres numériques, communications électroniques\u00a0—, applicables à partir du 28\u00a0juin 2025. Les outils internes d’une entreprise n’y figurent pas. Consulté le 28\u00a0août 2026.",
+              "Exigences d’accessibilité des produits et des services destinés aux consommateurs\u00a0— commerce en ligne, services bancaires, transport de voyageurs, livres numériques, communications électroniques\u00a0—, applicables à partir du 28\u00a0juin 2025. Les outils internes d’une entreprise n’y figurent pas. Consultée le 30\u00a0août 2026.",
           },
           {
-            source: "Henix · Squash\u00a0TM",
-            href: "https://www.henix.com/squashtm",
+            source: "Squash\u00a0TM · page «\u00a0Source code\u00a0»",
+            href: "https://www.squashtm.com/en/source-code",
             description:
-              "Outil de gestion de tests publié en open source sous licence LGPL\u00a0v3 par Henix, société française d’ingénierie de la qualité logicielle, développé depuis 2011. Cité comme exemple d’outil disponible, sans recommandation exclusive.",
+              "Page de l’éditeur qui porte la licence, mot pour mot\u00a0: «\u00a0SquashTM is open source software, distributed under the LGPL v3 license.\u00a0» L’origine du produit — «\u00a0Développé en France depuis 2011 par Henix\u00a0», société française d’ingénierie de la qualité logicielle — est écrite sur henix.com/squashtm, qui décrit un modèle open core sans nommer de licence\u00a0: c’est pourquoi la licence est citée ici depuis squashtm.com et non depuis henix.com. Outil cité comme exemple disponible, sans recommandation exclusive. Les deux pages ont été consultées le 30\u00a0août 2026.",
           },
           {
             source: "OWASP · ASVS 5.0.0",
             href: "https://owasp.org/www-project-application-security-verification-standard/",
             description:
-              "Base versionnée pour vérifier les contrôles techniques de sécurité d’une application web. À sélectionner avec des spécialistes\u00a0; ce n’est pas une obligation générale.",
+              "Base versionnée pour vérifier les contrôles techniques de sécurité d’une application web. Version stable 5.0.0 publiée le 30\u00a0mai 2025. À sélectionner avec des spécialistes\u00a0; ce n’est pas une obligation générale. Consultée le 30\u00a0août 2026.",
           },
         ]}
         disclaimer={{
@@ -369,8 +369,7 @@ export default function Page() {
             se comptent à partir de vos parcours, de vos règles, de vos droits
             et de vos échanges avec vos autres logiciels. Les jours que votre
             équipe doit y passer s’en déduisent, écriture, exécution et rejeu
-            compris. Les seuils s’écrivent en dernier, chacun avec ce qu’on
-            mesure, sur quoi et pendant combien de temps. Sur le cas construit
+            compris. Les seuils s’écrivent en dernier. Sur le cas construit
             de ce guide, dont les volumes sont choisis pour
             l’exemple&nbsp;: 56&nbsp;cas, 6,2&nbsp;jours et 2&nbsp;170&nbsp;€ de
             temps interne, sur un projet à 25&nbsp;000&nbsp;€ hors taxes (HT).
@@ -484,12 +483,12 @@ export default function Page() {
 
           <p>
             Six plus trente, plus sept, plus neuf, plus quatre&nbsp;:
-            56&nbsp;cas. Ce total n’est pas une norme à recopier. Il varie d’un
-            facteur douze et demi selon la densité de règles&nbsp;: une saisie
-            de congés qui tient en quatre règles produit une douzaine de cas, un
-            calcul de commissions à soixante règles en produit plus de cent
-            cinquante. Ce qui se transporte d’un projet à l’autre, c’est la
-            méthode de comptage.
+            56&nbsp;cas. Ce total n’est pas une norme à recopier&nbsp;: il suit
+            le nombre de règles. La même méthode donne 4&nbsp;cas pour une
+            saisie de congés qui tient en quatre règles sans seuil, et de 60 à
+            120&nbsp;cas pour un calcul de commissions à soixante règles, selon
+            celles qui portent un seuil. Ce qui se transporte d’un projet à
+            l’autre, c’est la méthode de comptage.
           </p>
 
           <h3>D’où sortent les 19&nbsp;règles du cas construit</h3>
@@ -620,7 +619,10 @@ export default function Page() {
             pour cause&nbsp;: ils ne sont pas vendus, ils sont à vous.
           </p>
 
-          <h3>Six jours de travail ne tiennent pas dans six jours de calendrier</h3>
+          <h3>
+            Les 6,2&nbsp;jours de travail ne tiennent pas dans six jours de
+            calendrier
+          </h3>
           <p>
             Entre deux cycles, le correctif doit être développé puis redéployé
             chez vous. Ce délai-là appartient à l’équipe qui développe&nbsp;:
@@ -639,11 +641,13 @@ export default function Page() {
             title="En dessous d’un certain budget, cette campagne est une erreur"
           >
             <p>
-              Les six jours ci-dessus sont dimensionnés sur 19&nbsp;règles et
-              56&nbsp;cas, c’est-à-dire sur le projet à 25&nbsp;000&nbsp;€&nbsp;HT
-              du fil rouge. Transposés tels quels sur un projet à
-              8&nbsp;000&nbsp;€&nbsp;HT, ils coûteraient 2&nbsp;100&nbsp;€ de
-              temps interne, soit un quart du développement. Ce serait une
+              Les 6,2&nbsp;jours ci-dessus sont dimensionnés sur 19&nbsp;règles
+              et 56&nbsp;cas, c’est-à-dire sur le projet à
+              25&nbsp;000&nbsp;€&nbsp;HT du fil rouge. Transposés tels quels sur
+              un projet à 8&nbsp;000&nbsp;€&nbsp;HT, ils coûteraient les mêmes
+              2&nbsp;170&nbsp;€ de temps interne, soit
+              2&nbsp;170&nbsp;÷&nbsp;8&nbsp;000&nbsp;=&nbsp;27,1&nbsp;% du
+              développement&nbsp;— plus du quart. Ce serait une
               erreur de lecture&nbsp;: un projet plus petit porte moins de
               règles, donc moins de cas, donc moins de jours. Refaites le
               décompte de la section&nbsp;02 sur vos propres règles. Si le total
@@ -760,13 +764,15 @@ export default function Page() {
             La ligne d’accessibilité demande une mise au point juridique.
             L’obligation française d’accessibilité numérique vient de
             l’article&nbsp;47 de la loi du 11&nbsp;février 2005&nbsp;; le décret
-            du 24&nbsp;juillet 2019 n’en fixe que le seuil. Elle vise les
-            personnes morales de droit public, les délégataires d’un service
-            public, les personnes morales de droit privé créées pour un besoin
-            d’intérêt général autre qu’industriel ou commercial, et les
-            entreprises dont le chiffre d’affaires moyen annuel en France des
-            trois derniers exercices clos dépasse 250&nbsp;millions d’euros. Le
-            critère est un chiffre d’affaires, jamais un effectif.
+            du 24&nbsp;juillet 2019 n’en fixe que le seuil. Elle vise quatre
+            catégories&nbsp;: les personnes morales de droit public&nbsp;; celles
+            de droit privé délégataires d’une mission de service public ou
+            créées pour un besoin d’intérêt général autre qu’industriel ou
+            commercial&nbsp;; celles que les précédentes constituent pour le même
+            objet&nbsp;; et les entreprises dont le chiffre d’affaires moyen
+            annuel en France des trois derniers exercices clos dépasse
+            250&nbsp;millions d’euros. Le critère est un chiffre d’affaires,
+            jamais un effectif.
           </p>
           <p>
             Le second régime, applicable depuis le 28&nbsp;juin 2025, vise des
@@ -793,8 +799,7 @@ export default function Page() {
             chose&nbsp;: que le logiciel fonctionne sur vingt-huit dossiers bien
             formés. Ce qui casse en production, ce sont les situations que
             personne ne regarde&nbsp;— un client sans numéro SIRET, une commune
-            fusionnée en 2019, une facture qui porte un taux de taxe retiré
-            depuis.
+            fusionnée en 2019, un taux de taxe retiré depuis.
           </p>
           <p>
             Les trouver ne demande pas de copier la production. Pour chaque
@@ -873,10 +878,9 @@ export default function Page() {
             numéros de compte et les commentaires libres portent autant
             d’information, et un croisement peut suffire à réidentifier une
             personne dans un fichier de 340&nbsp;lignes. Une bibliothèque de
-            génération de données factices produit un jeu propre en une
-            journée&nbsp;— c’est la ligne «&nbsp;préparer le jeu de
-            données&nbsp;» du tableau, et elle se sous-traite au développeur qui
-            connaît le schéma de la base.
+            génération de données factices fait ce travail&nbsp;— c’est la ligne
+            «&nbsp;préparer le jeu de données&nbsp;» du tableau, et elle se
+            sous-traite au développeur qui connaît le schéma de la base.
           </p>
         </GuidePremiumSection>
 
@@ -925,9 +929,12 @@ export default function Page() {
             article&nbsp;33, et une seule fois&nbsp;: si l’acheteur ne notifie
             pas sa décision dans les sept jours qui suivent la vérification de
             service régulier, les prestations sont réputées admises. Le délai de
-            trente jours qui suit la vérification d’aptitude ne produit rien de
-            tel&nbsp;: l’acheteur doit y prononcer une approbation, un
-            ajournement ou un rejet. Un contrat privé ne reprend cette
+            trente jours, lui, ne suit pas la vérification d’aptitude&nbsp;: il
+            la couvre, court à compter de l’écrit du titulaire annonçant les
+            prestations prêtes à être vérifiées ou du procès-verbal de mise en
+            ordre de marche, et n’emporte aucune admission
+            tacite&nbsp;— décision positive, ajournement ou rejet. Un contrat
+            privé ne reprend cette
             mécanique que s’il l’écrit&nbsp;; à défaut, seuls vos documents
             signés disent ce que produit le silence. Ce qui est perdu est
             concret&nbsp;: la tranche de 7&nbsp;500&nbsp;€ cesse d’être un
@@ -1017,13 +1024,6 @@ export default function Page() {
             publiable&nbsp;: la seule comparaison honnête est celle de votre
             campagne suivante, sur le même produit.
           </p>
-          <p>
-            Quand ce taux remonte d’une campagne à l’autre, la liste des
-            anomalies échappées dit où regarder&nbsp;: si elles portent sur des
-            situations absentes du jeu d’essai, le correctif est en
-            section&nbsp;05.
-          </p>
-
           <h3>Relire un cas avant de le compter dans la campagne</h3>
           <p>
             L’atelier ci-dessous ne calcule aucune moyenne et ne stocke
@@ -1081,8 +1081,8 @@ export default function Page() {
 
           <p>
             Ce relevé se juge à sa relisibilité dans six mois, quand une facture
-            fausse remontera. ISO/IEC/IEEE 29119-3:2021 propose publiquement des
-            modèles de documentation, ISO/IEC 25010:2023 aide à ouvrir la liste
+            fausse remontera. ISO/IEC/IEEE 29119-3:2021 propose des modèles de
+            documentation de test, ISO/IEC 25010:2023 aide à ouvrir la liste
             des critères au-delà des seules fonctions&nbsp;; ni l’une ni l’autre
             ne fixe de seuil à la place de votre contrat.
           </p>
@@ -1139,8 +1139,10 @@ export default function Page() {
             décompte des cas, le budget en jours, la réécriture des seuils et
             les deux mesures se refont avec vos propres nombres, et la section
             03 conclut qu’en dessous d’un certain budget cette campagne est une
-            erreur. Les textes cités ont été relus le 28&nbsp;août 2026 et sont
-            à revérifier tous les douze mois. Aucun délai, aucun coût et aucun
+            erreur. Les sources citées ont été rouvertes une à une le
+            30&nbsp;août 2026 et portent chacune sa date&nbsp;; deux n’ont pas
+            répondu et le disent. Elles sont à revérifier tous les douze
+            mois. Aucun délai, aucun coût et aucun
             résultat ne sont garantis par cette page&nbsp;: seul un devis signé
             engage.
           </p>

@@ -188,7 +188,7 @@ const faqCategories: GuidePremiumFaqCategory[] = [
       {
         question: "Combien de fonctions faut-il dans un MVP SaaS\u00a0?",
         answer:
-          "Aucun nombre ne tient, et notre grille publique le montre. Relevée le 28\u00a0août 2026, elle affiche 15\u00a0000\u00a0€ HT pour un MVP de trois à cinq écrans, puis 30\u00a0000 à 60\u00a0000\u00a0€ HT pour un produit de dix à quinze écrans qui ajoute un back-office riche, des workflows métier complexes et des intégrations tierces. Entre six et neuf écrans, elle n’affiche aucun montant\u00a0: ce lot-là se chiffre au devis. Comptez donc vos écrans plutôt que vos fonctions, et sachez que sortir de la bande trois à cinq vous fait sortir du prix affiché.",
+          "Aucun nombre ne tient, et notre grille publique le montre. Relevée le 30\u00a0août 2026, elle affiche 15\u00a0000\u00a0€ HT pour un MVP de trois à cinq écrans, puis 30\u00a0000 à 60\u00a0000\u00a0€ HT pour un produit de dix à quinze écrans qui ajoute un back-office riche, des workflows métier complexes et des intégrations tierces. Entre six et neuf écrans, elle n’affiche aucun montant\u00a0: ce lot-là se chiffre au devis. Comptez donc vos écrans plutôt que vos fonctions, et sachez que sortir de la bande trois à cinq vous fait sortir du prix affiché.",
       },
       {
         question: "Peut-on lancer sans paiement en ligne\u00a0?",
@@ -343,7 +343,7 @@ export default function Page() {
             source: "Hagnéré Code · tarifs publics",
             href: "/tarifs",
             description:
-              "Grille relevée le 28\u00a0août 2026\u00a0: SaaS et applications métier à 15\u00a0000\u00a0€ HT pour un MVP de 3 à 5 écrans\u00a0— le ticket d’entrée de 6\u00a0900\u00a0€ HT de la même page est annoncé pour un site vitrine, et la grille écrit elle-même qu’un MVP «\u00a0Essentiel\u00a0» démarre à 15\u00a0000\u00a0€ HT, pas à 6\u00a0900\u00a0€ HT —, 30\u00a0000 à 60\u00a0000\u00a0€ HT pour 10 à 15 écrans avec back-office riche, workflows complexes, intégrations tierces et fonctions d’IA, aucun montant publié entre 6 et 9 écrans, Discovery Sprint 1\u00a0500\u00a0€ HT sur 2 jours dont le devis précise la déduction applicable si la phase suivante est lancée avec nous, cadrage payé systématique au-delà de 8\u00a0000\u00a0€ HT de projet, repère indicatif de maintenance à environ 2\u00a0500\u00a0€ HT par mois. Repères publics et indicatifs\u00a0: le devis signé fixe le prix ferme.",
+              "Grille relevée le 30\u00a0août 2026\u00a0: SaaS et applications métier à 15\u00a0000\u00a0€ HT pour un MVP de 3 à 5 écrans\u00a0— le ticket d’entrée de 6\u00a0900\u00a0€ HT de la même page est annoncé pour un site vitrine, et la grille écrit elle-même qu’un MVP «\u00a0Essentiel\u00a0» démarre à 15\u00a0000\u00a0€ HT, pas à 6\u00a0900\u00a0€ HT —, 30\u00a0000 à 60\u00a0000\u00a0€ HT pour 10 à 15 écrans avec back-office riche, workflows complexes, intégrations tierces et fonctions d’IA, aucun montant publié entre 6 et 9 écrans, Discovery Sprint 1\u00a0500\u00a0€ HT sur 2 jours dont le devis précise la déduction applicable si la phase suivante est lancée avec nous, cadrage payé systématique au-delà de 8\u00a0000\u00a0€ HT de projet, repère indicatif de maintenance à environ 2\u00a0500\u00a0€ HT par mois. Repères publics et indicatifs\u00a0: le devis signé fixe le prix ferme.",
           },
           {
             source:
@@ -378,12 +378,6 @@ export default function Page() {
               "Minimisation, protection dès la conception et sécurité adaptée au risque dès qu’un traitement de données personnelles existe. Bases légales, rôles et mesures restent à qualifier au cas par cas.",
           },
           {
-            source: "CNIL · Guide RGPD du développeur · page vivante",
-            href: "https://www.cnil.fr/fr/guide-rgpd-du-developpeur",
-            description:
-              "Pratiques de développement pour intégrer la protection des données. Ce guide pédagogique ne remplace pas l’analyse juridique du traitement réel.",
-          },
-          {
             source: "CNIL · Guide de la sécurité · édition 2024",
             href: "https://www.cnil.fr/fr/guide-de-la-securite-des-donnees-personnelles-nouvelle-edition-2024",
             description:
@@ -396,16 +390,11 @@ export default function Page() {
               "Recommande des tests réguliers et une procédure de restauration écrite. Le guide ne fixe pas un objectif unique de reprise pour tous les projets.",
           },
           {
-            source: "OWASP ASVS · version stable 5.0.0",
-            href: "https://github.com/OWASP/ASVS/releases/tag/v5.0.0_release",
+            source:
+              "OWASP ASVS · page projet · version stable 5.0.0 · consultée le 30\u00a0août 2026",
+            href: "https://owasp.org/www-project-application-security-verification-standard/",
             description:
-              "Catalogue vérifiable d’exigences de sécurité applicative, publié comme version stable le 30 mai 2025. Le niveau et le sous-ensemble pertinents dépendent du risque du produit.",
-          },
-          {
-            source: "OWASP · Logging Cheat Sheet · page vivante",
-            href: "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html",
-            description:
-              "Événements utiles, test des défaillances du journal et données à exclure. Elle ne prescrit pas le même volume de journaux pour tous les produits.",
+              "Catalogue vérifiable d’exigences de sécurité applicative. La page projet date la sortie\u00a0— «\u00a0[30 May 2025] ASVS Version 5.0.0 is released LIVE at Global AppSec EU Barcelona 2025!\u00a0»\u00a0— et renvoie vers «\u00a0the latest stable version of the ASVS (5.0.0)\u00a0». La page de version du dépôt, elle, n’affiche ni l’année ni le mot «\u00a0stable\u00a0». Le niveau et le sous-ensemble pertinents dépendent du risque du produit.",
           },
           {
             source: "W3C · WCAG 2.2 · Recommendation du 12 décembre 2024",
@@ -424,7 +413,7 @@ export default function Page() {
           eyebrow: "Portée du guide",
           title: "Une méthode de cadrage, pas un audit de votre produit",
           description:
-            "Ce guide ne valide ni la conformité, ni la sécurité, ni l’accessibilité, ni la viabilité commerciale d’un produit. Accordia, ses clients, ses durées, son abonnement et le coût de son temps interne sont choisis pour l’exemple et ne viennent d’aucune source\u00a0; seuls les montants de prestation sont repris de notre grille publiée, et ce n’est pas un dossier client. Les prix de notre grille ont été relevés le 28\u00a0août 2026 et sont à revérifier tous les douze mois. Seul un devis signé fixe un prix, un périmètre et un délai.",
+            "Ce guide ne valide ni la conformité, ni la sécurité, ni l’accessibilité, ni la viabilité commerciale d’un produit. Accordia, ses clients, ses durées, son abonnement et le coût de son temps interne sont choisis pour l’exemple et ne viennent d’aucune source\u00a0; seuls les montants de prestation sont repris de notre grille publiée, et ce n’est pas un dossier client. Les prix de notre grille ont été relevés le 30\u00a0août 2026 et sont à revérifier tous les douze mois. Seul un devis signé fixe un prix, un périmètre et un délai.",
         }}
         relatedGuides={[
           {
@@ -467,7 +456,7 @@ export default function Page() {
             Le reste peut sortir, rester tenu à la main, ou passer par un
             service existant. Sur notre{" "}
             <Link href="/tarifs">grille publiée</Link>, relevée le
-            28&nbsp;août 2026, un MVP de trois à cinq écrans est affiché
+            30&nbsp;août 2026, un MVP de trois à cinq écrans est affiché
             15&nbsp;000&nbsp;€ hors taxes (HT)&nbsp;; un produit de dix à quinze
             écrans, avec back-office riche, workflows métier complexes et
             intégrations tierces, 30&nbsp;000 à 60&nbsp;000&nbsp;€ HT. Entre les
@@ -572,7 +561,7 @@ export default function Page() {
               ],
               [
                 "Pilote accompagné",
-                "2 à 5 clients réels, limites annoncées, équipe présente",
+                "2 à 5 clients réels (estimation éditoriale Hagnéré Code, aucune source ne borne un pilote), limites annoncées, équipe présente",
                 "Que le résultat s’obtient dans des conditions accompagnées",
                 "Accès nominatifs, reprise des données, canal d’aide nommé",
               ],
@@ -703,8 +692,9 @@ export default function Page() {
           />
 
           <p>
-            Trois de ces lignes portent une obligation extérieure. Pour les
-            données, les
+            Trois de ces lignes s’appuient sur un référentiel extérieur qui
+            recommande, là où le règlement européen cité à la section 02 oblige.
+            Pour les données, les
             fondamentaux de la sauvegarde publiés par l’ANSSI en version 1.1 du
             27&nbsp;novembre 2025 recommandent des tests réguliers et une
             procédure de restauration&nbsp;: une copie jamais restaurée ne prouve
@@ -892,7 +882,7 @@ export default function Page() {
           id="manuel"
           number="06"
           label="Capacité humaine"
-          readingTime="2 min"
+          readingTime="3 min"
           title={"Combien de temps humain votre MVP coûte-t-il chaque semaine\u00a0?"}
         >
           <p>
@@ -969,10 +959,13 @@ export default function Page() {
           </InfoBox>
 
           <p>
-            Une hypothèse, et une seule, ne sort d’aucune source&nbsp;:{" "}
-            <strong>350&nbsp;€ le jour chargé</strong> pour le temps interne,
-            soit 50&nbsp;€ l’heure sur sept heures. Elle est écrite ici pour que
-            vous puissiez la contester&nbsp;; votre expert-comptable ou votre
+            Aucun nombre de cette section ne sort d’une source&nbsp;: les
+            minutes, les occurrences et la capacité appartiennent au cas
+            construit, et le coût du temps interne est posé de la même
+            façon&nbsp;— <strong>350&nbsp;€ le jour chargé</strong>, soit
+            50&nbsp;€ l’heure sur sept heures. Cette dernière hypothèse est
+            écrite ici pour que vous puissiez la contester&nbsp;; votre
+            expert-comptable ou votre
             contrôleur de gestion sort la vôtre à partir du salaire brut, des
             charges patronales et des jours réellement travaillés. Le calcul dit
             que la charge décrite tient dans la capacité saisie, sous les
@@ -990,8 +983,9 @@ export default function Page() {
           title="Ce qui rate quand on coupe la mauvaise chose"
         >
           <p>
-            Les trois incidents ci-dessous sont construits sur le pilote
-            Accordia. Les durées, les
+            Les trois incidents ci-dessous sont construits sur le cas Accordia,
+            les deux premiers pendant le pilote, le troisième après. Les durées,
+            les
             volumes, l’abonnement et le coût du temps interne sont choisis pour
             l’exemple et ne viennent d’aucune source&nbsp;; ce ne sont pas des
             dossiers clients. Chacun correspond à une coupe qui paraissait sans
@@ -1047,8 +1041,10 @@ export default function Page() {
             2&nbsp;880&nbsp;€ HT non encaissés
           </h3>
           <p>
-            Accordia ouvre l’achat par carte au troisième mois sans écrire ce
-            qui se passe quand un paiement échoue. Trois cartes expirent,
+            Cette fois le pilote a conclu&nbsp;: Accordia vend son produit
+            au-delà du 18&nbsp;octobre, et ouvre l’achat par carte au troisième
+            mois d’exploitation sans écrire ce qui se passe quand un paiement
+            échoue. Trois cartes expirent,
             l’événement d’échec de facture part bien, personne ne l’écoute, et
             les accès restent ouverts. À 240&nbsp;€ HT par mois et par
             entreprise, trois abonnements ouverts quatre mois sans paiement font{" "}
@@ -1110,9 +1106,10 @@ export default function Page() {
             les sept décisions, les équations manuelles, les inconnues restées
             ouvertes et un texte que vous copiez tel quel pour l’envoyer à votre
             développeur. Les entrées sont bornées à un million pour les clients,
-            les minutes et les occurrences, avec trois décimales au
-            plus&nbsp;— ce sont des limites techniques, pas des repères
-            commerciaux.
+            les minutes et les occurrences&nbsp;; le nombre de clients se
+            saisit en entier, les minutes, les occurrences et la capacité
+            acceptent trois décimales au plus&nbsp;— ce sont des limites
+            techniques, pas des repères commerciaux.
           </p>
 
           <div className="not-prose my-8" data-read-time-exclude="true">
@@ -1270,7 +1267,7 @@ export default function Page() {
             Rien ici n’exige de passer par nous&nbsp;: les sept familles, le
             calcul de charge et le décompte des écrans se refont avec vos
             nombres, et le calculateur ne transmet rien. Les montants de
-            notre grille ont été relevés le 28&nbsp;août 2026 et sont à
+            notre grille ont été relevés le 30&nbsp;août 2026 et sont à
             revérifier tous les douze mois. Aucun prix, aucun délai et aucun
             résultat ne sont garantis par cette page&nbsp;: seul un devis signé
             engage.

@@ -498,6 +498,26 @@ describe("qualité éditoriale du guide plan de recette", () => {
     expect(text).toContain(
       "Six plus trente, plus sept, plus neuf, plus quatre : 56 cas",
     );
+
+    // Ajout du 30/08/2026. La page annonçait que le total « varie d'un facteur
+    // douze et demi » entre une saisie de congés « à une douzaine de cas » et un
+    // calcul de commissions « à plus de cent cinquante ». Deux bornes posées
+    // sans source, que la méthode de comptage de cette même section ne produit
+    // pas, et un facteur qui n'est exact que sur les valeurs rondes
+    // (150 ÷ 12 = 12,5) : lu avec les mots employés, il dépasse 12,5. Les deux
+    // volumes publiés se dérivent maintenant de la règle écrite deux lignes plus
+    // haut — un cas courant par règle, plus un cas à la limite par règle qui
+    // porte un seuil, une date ou un arrondi.
+    const casesFromRules = (rules: number, rulesWithThreshold: number) =>
+      rules + rulesWithThreshold;
+    expect(casesFromRules(19, 11)).toBe(30);
+    expect(casesFromRules(4, 0)).toBe(4);
+    expect(casesFromRules(60, 0)).toBe(60);
+    expect(casesFromRules(60, 60)).toBe(120);
+    expect(text).toContain("La même méthode donne 4 cas");
+    expect(text).toContain("de 60 à 120 cas");
+    expect(text).not.toContain("facteur douze et demi");
+    expect(text).not.toContain("plus de cent cinquante");
   });
 
   it("recalcule le seuil de 2 % du CCAG-TIC minute par minute", () => {
@@ -644,6 +664,21 @@ describe("qualité éditoriale du guide plan de recette", () => {
     expect(pageSource).toContain(
       "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000043310689",
     );
+
+    // Ajout du 30/08/2026. La page écrivait « le délai de trente jours qui suit
+    // la vérification d'aptitude ». L'article 33.2.1, rouvert sur Légifrance à
+    // l'identifiant JORFARTI000043310747, dit l'inverse : ces trente jours sont
+    // le délai imparti à l'acheteur « pour procéder à la vérification d'aptitude
+    // et notifier sa décision », et ils courent « à compter de la date de
+    // notification de l'écrit par lequel le titulaire informe l'acheteur que les
+    // prestations sont prêtes à être vérifiées ou, à défaut, de la date de
+    // notification par le titulaire du procès-verbal de mise en ordre de
+    // marche ». Le délai englobe la vérification d'aptitude, il ne la suit pas.
+    expect(text).toContain("ne suit pas la vérification d’aptitude");
+    expect(text).toContain("procès-verbal de mise en ordre de marche");
+    expect(text).not.toContain("trente jours qui suit la vérification");
+    // La conclusion, elle, ne bouge pas : pas d'admission tacite à 33.2.1.
+    expect(text).toContain("n’emporte aucune admission tacite");
   });
 
   it("garde les références primaires et leur portée", () => {
@@ -665,6 +700,18 @@ describe("qualité éditoriale du guide plan de recette", () => {
     expect(pageSource).toContain(
       "Aucun champ détaillé non public n’est attribué à la norme",
     );
+
+    // Ajout du 30/08/2026. La licence LGPL v3 de Squash TM était attribuée à
+    // henix.com/squashtm. Cette page, rouverte ce jour-là, écrit « Développé en
+    // France depuis 2011 par Henix » et décrit un modèle « open core », mais ne
+    // nomme aucune licence : le fait était exact, le localisateur faux. La phrase
+    // qui le porte est sur squashtm.com/en/source-code, et c'est elle qui est
+    // citée mot pour mot.
+    expect(pageSource).toContain("https://www.squashtm.com/en/source-code");
+    expect(pageSource).toContain(
+      "SquashTM is open source software, distributed under the LGPL v3 license.",
+    );
+    expect(pageSource).not.toContain('href: "https://www.henix.com/squashtm"');
   });
 
   it("cadre l’accessibilité sans vendre un audit inutile", () => {
@@ -677,6 +724,19 @@ describe("qualité éditoriale du guide plan de recette", () => {
     );
     // Le régime de sanction a changé : la page ne cite aucun montant d'amende.
     expect(text).not.toMatch(/amende/i);
+
+    // Ajout du 30/08/2026. La page énumérait trois des quatre catégories du I de
+    // l'article 47 de la loi n° 2005-102, rouvert ce jour-là dans sa version en
+    // vigueur au 8 septembre 2023 : le 3°, « les personnes morales de droit privé
+    // constituées par une ou plusieurs des personnes mentionnées aux 1° et 2°
+    // pour satisfaire spécifiquement des besoins d'intérêt général », manquait,
+    // alors que la phrase se lisait comme une énumération fermée. Rien de faux
+    // n'était écrit ; l'énumération était partielle.
+    expect(text).toContain("Elle vise quatre catégories");
+    expect(text).toContain(
+      "celles que les précédentes constituent pour le même objet",
+    );
+    expect(text).toContain("jamais un effectif");
   });
 
   it("annonce son cas comme construit et nomme des métiers", () => {
@@ -769,7 +829,16 @@ describe("qualité éditoriale du guide plan de recette", () => {
     expect(text).toContain(
       "Hagnéré Code développe des applications métier sur mesure et perçoit des honoraires",
     );
-    expect(text).toContain("relus le 28 août 2026");
+    // Correction du 30/08/2026. Ce test gelait « relus le 28 août 2026 », une
+    // relecture que rien dans le dépôt ne permettait de confirmer, et que huit
+    // des douze entrées de `legalSources` contredisaient en creux : elles ne
+    // portaient aucune date de consultation alors que la phrase de transparence
+    // les couvrait toutes. Les douze sources ont été rouvertes une à une le
+    // 30/08/2026 — deux n'ont pas répondu, et leur entrée le dit. L'exigence est
+    // relevée, pas abaissée : la date annoncée doit être celle du registre.
+    expect(text).toContain("rouvertes une à une le 30 août 2026");
+    expect(guide.dateModified.slice(0, 10)).toBe("2026-08-30");
+    expect(text).not.toContain("relus le 28 août 2026");
     expect(text).toContain("à revérifier tous les douze mois");
     expect(text).toContain("seul un devis signé engage");
     expect((pageSource.match(/<TrackedGuideCtaLink/g) ?? []).length).toBe(1);
@@ -780,9 +849,63 @@ describe("qualité éditoriale du guide plan de recette", () => {
     expect(text).toContain(
       "En dessous d’un certain budget, cette campagne est une erreur",
     );
-    expect(text).toContain("un quart du développement");
+    // Correction du 30/08/2026. Ce test gelait le mot « un quart du
+    // développement » et laissait passer le seul écart arithmétique de la page.
+    // L'encadré transposait les jours du tableau sur un projet à 8 000 € HT et
+    // annonçait 2 100 € : c'est 6,0 × 350, c'est-à-dire le « six jours » arrondi
+    // du titre voisin, et non la ligne « Total » du tableau, qui vaut
+    // 6,2 × 350 = 2 170 €. Et « un quart » minorait dans les deux lectures :
+    // 2 100 ÷ 8 000 = 26,25 %, 2 170 ÷ 8 000 = 27,125 %. Le contrôle recalcule
+    // désormais la transposition au lieu de figer le mot qui la minorait.
+    const transposedCost = 6.2 * 350;
+    expect(transposedCost).toBe(2170);
+    expect(oneDecimal((transposedCost / 8000) * 100)).toBe(27.1);
+    expect(text).toContain("ils coûteraient les mêmes 2 170 € de temps interne");
+    expect(text).toContain("2 170 ÷ 8 000 = 27,1 % du développement");
+    expect(text).toContain("plus du quart");
+    // Le titre voisin annonce désormais la même assiette que le tableau.
+    expect(text).toContain("Les 6,2 jours de travail ne tiennent pas");
+    // Ni le montant faux ni la formulation qui minorait ne doivent revenir.
+    expect(text).not.toContain("2 100");
+    expect(text).not.toContain("soit un quart du développement");
     expect(text).toContain("ils ne sont pas vendus, ils sont à vous");
     expect(pageSource).not.toMatch(/score sur 100|algorithme propriétaire/i);
+  });
+
+  it("date les douze sources citées et n’efface pas celles qui n’ont pas répondu", () => {
+    // Ajout du 30/08/2026. Une page qui apprend à ne pas croire « les chiffres
+    // publiés par celui qui vend la solution » doit pouvoir dire, entrée par
+    // entrée, quand elle a ouvert sa source — et le dire aussi quand la source
+    // n'a pas répondu. Les deux liens vers iso.org renvoyaient HTTP 403 le
+    // 30/08/2026, par le lien publié comme par la plateforme de consultation en
+    // ligne et en français comme en anglais ; l'entrée le porte désormais, au
+    // lieu de laisser un contradicteur le découvrir en cliquant.
+    const entries = [
+      ...pageSource.matchAll(
+        /\{\s*source:\s*\n?\s*"((?:[^"\\]|\\.)*)",\s*href:\s*"([^"]+)",\s*description:\s*\n?\s*"((?:[^"\\]|\\.)*)",\s*\},/g,
+      ),
+    ].map((match) => ({
+      source: match[1],
+      href: match[2],
+      description: match[3],
+    }));
+
+    expect(entries).toHaveLength(12);
+    for (const entry of entries) {
+      // `\u00a0` est la convention d'insécable du dépôt : la date est comparée
+      // telle qu'elle est écrite dans la source, échappement compris.
+      expect(entry.description, entry.source).toContain("30\\u00a0août 2026");
+      expect(entry.href, entry.source).toMatch(/^https:\/\//);
+    }
+    const isoEntries = entries.filter((entry) =>
+      entry.href.includes("iso.org"),
+    );
+    expect(isoEntries).toHaveLength(2);
+    for (const entry of isoEntries) {
+      expect(entry.description, entry.source).toContain("HTTP 403");
+    }
+    // Aucune date de consultation antérieure à la réécriture ne subsiste.
+    expect(pageSource).not.toContain("Consulté le 28");
   });
 
   it("ne pointe que vers des guides publiés et une page de service", () => {

@@ -123,7 +123,7 @@ const faqCategories: GuidePremiumFaqCategory[] = [
       {
         question: "Le Top\u00a010 OWASP suffit-il à valider l’application\u00a0?",
         answer:
-          "Il sensibilise à des familles de risques fréquentes, ce qui est utile en début de projet et insuffisant ensuite. Le référentiel ASVS 5.0.0, publié le 30\u00a0mai 2025 par la même organisation, sert à sélectionner des exigences techniques précises et à les tester une par une. Ni l’un ni l’autre ne certifie une application, et aucun des deux ne couvre la sauvegarde, l’alerte, les personnes ou les obligations qui s’appliquent à votre traitement de données.",
+          "C’est un document de sensibilisation, qui donne un consensus large sur les risques les plus critiques\u00a0: utile en début de projet, insuffisant ensuite. Le référentiel ASVS 5.0.0, publié le 30\u00a0mai 2025 par la même organisation, sert à sélectionner des exigences techniques précises et à les tester une par une. Ni l’un ni l’autre ne certifie une application, et aucun des deux ne couvre la sauvegarde, l’alerte, les personnes ou les obligations qui s’appliquent à votre traitement de données.",
       },
       {
         question: "Un test d’intrusion remplace-t-il ces quatre mesures\u00a0?",
@@ -263,10 +263,17 @@ export default function Page() {
               "Notification d’une violation de données personnelles à l’autorité de contrôle dans les meilleurs délais et, si possible, 72\u00a0heures au plus tard après en avoir pris connaissance. L’article 34 impose d’informer les personnes concernées lorsque le risque pour elles est élevé.",
           },
           {
-            source: "Règlement (UE) 2016/679 · article 83, paragraphe 4",
+            source: "Règlement (UE) 2016/679 · article 83",
             href: "https://eur-lex.europa.eu/eli/reg/2016/679/art_83/oj/fra",
             description:
-              "Les manquements aux articles 25 à 39, dont l’article 32, relèvent d’amendes pouvant atteindre 10\u00a0000\u00a0000\u00a0€ ou, pour une entreprise, 2\u00a0% du chiffre d’affaires annuel mondial total de l’exercice précédent, le montant le plus élevé étant retenu.",
+              "Le paragraphe 4 couvre les manquements aux articles 25 à 39, dont l’article 32\u00a0: amendes pouvant atteindre 10\u00a0000\u00a0000\u00a0€ ou, pour une entreprise, 2\u00a0% du chiffre d’affaires annuel mondial total de l’exercice précédent, le montant le plus élevé étant retenu. La modulation ne relève pas de ce plafond, mais des paragraphes 1 et 2 du même article, qui veulent des amendes «\u00a0effectives, proportionnées et dissuasives\u00a0» et énumèrent ce dont il est tenu compte dans chaque cas d’espèce.",
+          },
+          {
+            source:
+              "Règlement (UE) 2016/679 · article 4, points 1 et 12 (reproduction CNIL)",
+            href: "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre1",
+            description:
+              "Reproduction officielle du texte par la CNIL, qui sert directement les définitions\u00a0: une donnée à caractère personnel est «\u00a0toute information se rapportant à une personne physique identifiée ou identifiable\u00a0» (point 1), et une violation de données personnelles est une atteinte à la sécurité incluant «\u00a0l’accès non autorisé\u00a0» à de telles données (point 12). Ces deux points qualifient les 480 praticiens libéraux du cas construit et la lecture non autorisée de la mesure\u00a03.",
           },
           {
             source: "CNIL · Guide de la sécurité, mise à jour 2026",
@@ -329,10 +336,28 @@ export default function Page() {
               "CSWP 29 publié le 26 février 2024\u00a0: cadre flexible et non prescriptif autour de Govern, Identify, Protect, Detect, Respond et Recover. Les fonctions n’imposent ni ordre, ni liste de contrôles universelle.",
           },
           {
-            source: "FIRST · CVSS v4.0 et EPSS",
+            source: "FIRST · CVSS v4.0",
             href: "https://www.first.org/cvss/v4-0/specification-document",
             description:
-              "L’échelle CVSS classe la gravité potentielle\u00a0: 9,0 à 10,0 critique, 7,0 à 8,9 élevée, 4,0 à 6,9 moyenne, 0,1 à 3,9 faible. Le score EPSS, publié par le même organisme, estime la probabilité qu’une faille soit exploitée dans les trente jours à venir. Les deux ne mesurent pas la même chose.",
+              "L’échelle CVSS classe la gravité potentielle\u00a0: 9,0 à 10,0 critique, 7,0 à 8,9 élevée, 4,0 à 6,9 moyenne, 0,1 à 3,9 faible. La spécification énonce qu’un score dit la gravité d’une vulnérabilité par rapport aux autres\u00a0: une gravité, jamais une probabilité. Elle ne documente pas l’EPSS.",
+          },
+          {
+            source: "FIRST · EPSS",
+            href: "https://www.first.org/epss/",
+            description:
+              "Page officielle du modèle, publiée par le même organisme que le CVSS\u00a0: l’EPSS «\u00a0estimates the probability that a published CVE will be exploited in the wild in the next 30 days\u00a0». Il donne une probabilité d’exploitation, pas une gravité\u00a0; les deux ne mesurent pas la même chose.",
+          },
+          {
+            source: "OWASP · Top 10 des risques applicatifs",
+            href: "https://owasp.org/www-project-top-ten/",
+            description:
+              "Le projet se décrit lui-même comme «\u00a0a standard awareness document for developers and web application security\u00a0» et annonce le Top Ten 2025 comme version courante. Document de sensibilisation, distinct de l’API Security Top 10 et de l’ASVS, et sans valeur de certification.",
+          },
+          {
+            source: "ANSSI · NIS 2, directive (UE) 2022/2555",
+            href: "https://messervices.cyber.gouv.fr/nis2",
+            description:
+              "Portail officiel de l’ANSSI\u00a0: «\u00a0plusieurs milliers d’entités réparties sur 18 secteurs d’activité seront concernés\u00a0», avec des seuils de taille distincts pour les entités essentielles et les entités importantes. La page indique que «\u00a0la transposition de la directive NIS 2 en France est en cours\u00a0».",
           },
           {
             source: "CISA · catalogue des vulnérabilités exploitées",
@@ -350,7 +375,7 @@ export default function Page() {
             source: "Hagnéré Code · tarifs publics",
             href: "/tarifs",
             description:
-              "Grille relevée le 28 août 2026\u00a0: audit flash 2\u00a0000\u00a0€ HT, cadrage initial sécurité et RGPD 5\u00a0000\u00a0€ HT, audit technique 8\u00a0000\u00a0€ HT en Express et 18\u00a0000\u00a0€ HT en Standard. Repères publics et indicatifs\u00a0: le devis signé fixe le prix ferme.",
+              "Grille relevée le 30 août 2026\u00a0: audit flash 2\u00a0000\u00a0€ HT, cadrage initial sécurité et RGPD 5\u00a0000\u00a0€ HT, audit technique 8\u00a0000\u00a0€ HT en Express et 18\u00a0000\u00a0€ HT en Standard. Repères publics et indicatifs\u00a0: le devis signé fixe le prix ferme.",
           },
         ]}
         disclaimer={{
@@ -494,8 +519,8 @@ export default function Page() {
             la directrice administrative et financière estime que trois
             commandes sur dix ne reviennent jamais, soit{" "}
             <strong>195,30&nbsp;€ l’heure</strong>. Total&nbsp;:
-            993,30&nbsp;€ l’heure, arrondi à <strong>993&nbsp;€</strong> pour la
-            suite de ce guide.
+            993,30&nbsp;€ l’heure, arrondi à <strong>993&nbsp;€</strong>&nbsp;:
+            tous les montants de ce guide partent de là et non des centimes.
           </p>
 
           <p>
@@ -524,7 +549,9 @@ export default function Page() {
             l’exercice sur table, une demi-journée pour l’exercice de
             restauration, deux heures d’attente sur un ticket d’hébergement, une
             journée pour la première série des quatre mesures contre deux heures
-            ensuite. Remplacez-les par les vôtres, comme les volumes du cas.
+            ensuite, dont les dix minutes, l’heure et la minute détaillées en
+            questions fréquentes. Remplacez-les par les vôtres, comme les
+            volumes du cas.
           </p>
           <p>
             Ce montant donne un sens à deux seuils qui, sans lui, restent des
@@ -558,8 +585,10 @@ export default function Page() {
               12&nbsp;millions d’euros de chiffre d’affaires, 2&nbsp;% font
               240&nbsp;000&nbsp;€&nbsp;: c’est donc le plafond de
               10&nbsp;millions qui s’applique. Un plafond n’est pas une
-              sanction, et la CNIL module&nbsp;; l’idée reçue «&nbsp;une PME
-              risque 2&nbsp;%&nbsp;» est fausse dans les deux sens.
+              sanction&nbsp;: les paragraphes 1 et 2 du même article veulent des
+              amendes «&nbsp;effectives, proportionnées et dissuasives&nbsp;»,
+              modulées cas par cas. L’idée reçue «&nbsp;une PME risque
+              2&nbsp;%&nbsp;» est fausse dans les deux sens.
             </p>
           </InfoBox>
         </GuidePremiumSection>
@@ -989,8 +1018,15 @@ export default function Page() {
           <p>
             Le prix de l’inaction se compte autrement. Sur les
             3&nbsp;100&nbsp;clients, 480 sont des praticiens libéraux, donc des
-            personnes physiques&nbsp;: une lecture non autorisée avérée est une
-            violation de données personnelles et, si elle est susceptible
+            personnes physiques&nbsp;: une lecture non autorisée avérée est une{" "}
+            <a
+              href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre1"
+              target="_blank"
+              rel="noreferrer"
+            >
+              violation de données personnelles
+            </a>{" "}
+            et, si elle est susceptible
             d’engendrer un risque pour ces personnes, elle se notifie à
             l’autorité de contrôle sous 72&nbsp;heures après en avoir pris
             connaissance. Cette qualification relève de la{" "}
@@ -1106,10 +1142,17 @@ export default function Page() {
               CVSS, dans sa version 4.0
             </a>
             , mesure la gravité potentielle sur dix&nbsp;: 9,0 à 10,0 critique,
-            7,0 à 8,9 élevée, 4,0 à 6,9 moyenne, 0,1 à 3,9 faible. Le score EPSS,
-            publié par le même organisme, estime la probabilité qu’une faille
-            soit exploitée dans les trente jours à venir. Une faille notée 9,8
-            que personne n’exploite passe après une 6,5 activement utilisée, et
+            7,0 à 8,9 élevée, 4,0 à 6,9 moyenne, 0,1 à 3,9 faible. Le{" "}
+            <a
+              href="https://www.first.org/epss/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              score EPSS
+            </a>
+            , publié par le même organisme, estime la probabilité qu’une faille
+            soit exploitée dans les trente jours à venir. Une faille critique que
+            personne n’exploite passe après une moyenne activement utilisée, et
             le{" "}
             <a
               href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
@@ -1216,7 +1259,7 @@ export default function Page() {
             moins de quinze minutes, si les dix rejeux sont refusés et si la
             seule alerte retenue au tri est corrigée, vous n’avez besoin d’aucun
             audit. Nos repères publics, relevés sur notre page{" "}
-            <Link href="/tarifs">tarifs</Link> le 28&nbsp;août 2026, commencent à
+            <Link href="/tarifs">tarifs</Link> le 30&nbsp;août 2026, commencent à
             2&nbsp;000&nbsp;€ HT pour un audit flash, 5&nbsp;000&nbsp;€ HT pour
             un cadrage sécurité et RGPD et 8&nbsp;000&nbsp;€ HT pour un audit
             technique en version Express, 18&nbsp;000&nbsp;€ HT en version
@@ -1247,7 +1290,8 @@ export default function Page() {
             La restauration démarre à 9&nbsp;h&nbsp;40, la base revient en
             quarante minutes. Les 9&nbsp;300&nbsp;bons de livraison signés, eux,
             vivent dans un stockage que la sauvegarde ne couvrait pas&nbsp;:
-            ticket, deux heures d’attente, puis remontée. Service rétabli à
+            ticket, deux heures d’attente, puis trois heures quarante de
+            remontée et de vérification des parcours. Service rétabli à
             16&nbsp;h, six heures quarante après l’arrêt contre quatre acceptées,
             et entièrement dans la journée de travail&nbsp;: à 993&nbsp;€ l’heure
             ouvrée, 6&nbsp;620&nbsp;€, dont 2&nbsp;648&nbsp;€ au-dessus du seuil.
@@ -1311,7 +1355,7 @@ export default function Page() {
             nous. Les huit hypothèses de coût et de durée listées en
             section&nbsp;02 sont annoncées comme telles&nbsp;: aucune n’a été
             relevée chez un client. Nos prix publics ont été
-            relevés le 28&nbsp;août 2026 et sont à revérifier tous les douze
+            relevés le 30&nbsp;août 2026 et sont à revérifier tous les douze
             mois. Aucune de ces mesures ne rend une application sûre, et seul un
             devis signé engage.
           </p>

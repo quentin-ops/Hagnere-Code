@@ -93,7 +93,7 @@ const faqCategories: GuidePremiumFaqCategory[] = [
         question:
           "Combien de dossiers faut-il chronométrer pour obtenir une mesure utilisable\u00a0?",
         answer:
-          "Vingt dossiers consécutifs suffisent à sortir un temps moyen et un neuvième décile exploitables, à condition qu’ils se suivent vraiment\u00a0: choisir les vingt dossiers les plus propres fausse tout. Le volume, lui, se compte sur douze mois glissants dans un export, pas sur la semaine du chronométrage. Un processus saisonnier mesuré en juillet dimensionne un flux qui cassera en octobre.",
+          "Vingt dossiers consécutifs donnent une moyenne solide, à condition qu’ils se suivent vraiment\u00a0: choisir les vingt dossiers les plus propres fausse tout. Le neuvième décile qu’on en tire est un ordre de grandeur, pas une statistique\u00a0: sur vingt valeurs triées, c’est la dix-huitième, et deux dossiers atypiques la déplacent. Cela suffit à dimensionner l’exception, pas à promettre un délai. Le volume, lui, se compte sur douze mois glissants dans un export, pas sur la semaine du chronométrage\u00a0: un processus saisonnier mesuré en juillet dimensionne un flux qui cassera en octobre.",
       },
       {
         question:
@@ -118,7 +118,7 @@ const faqCategories: GuidePremiumFaqCategory[] = [
         question:
           "Faut-il un outil sans code ou un développement pour un premier flux\u00a0?",
         answer:
-          "Prenez le moyen le moins cher à défaire. Un flux monté sur l’abonnement déjà payé se démonte en une heure\u00a0; un développement se démonte au prix d’un projet. Sur notre propre grille publique, le premier palier d’un outil interne s’affiche à 8\u00a0000\u00a0€ HT\u00a0: un processus qui rend 39,78\u00a0heures sur douze mois ne le justifie pas. Le développement se défend quand le besoin engage durablement plusieurs services et survit au changement de logiciel.",
+          "Prenez le moyen le moins cher à défaire. Un flux monté sur l’abonnement déjà payé se démonte sans projet\u00a0; un développement se démonte au prix d’un projet. Sur notre propre grille publique, le premier palier d’un outil interne s’affiche à 8\u00a0000\u00a0€ HT\u00a0: un processus qui rend 39,78\u00a0heures sur douze mois ne le justifie pas. Le développement se défend quand le besoin engage durablement plusieurs services et survit au changement de logiciel.",
       },
       {
         question:
@@ -143,13 +143,13 @@ const faqCategories: GuidePremiumFaqCategory[] = [
         question:
           "Quel coût horaire chargé faut-il retenir dans le calcul\u00a0?",
         answer:
-          "Le vôtre, pas une moyenne. L’INSEE publie 44,70\u00a0€ pour l’ensemble des secteurs marchands en 2025, mais son champ ne couvre que les entreprises de dix salariés ou plus, apprentis inclus. Votre expert-comptable sort le vôtre de la déclaration sociale nominative en quelques minutes. Retenez qu’il ne change jamais le signe d’un calcul dont tous les postes sont du temps interne\u00a0: il ne fait qu’en changer l’échelle.",
+          "Le vôtre, pas une moyenne. L’INSEE publie 44,70\u00a0€ pour l’ensemble des secteurs marchands en 2025, mais son champ ne couvre que les entreprises de dix salariés ou plus, apprentis inclus. Votre expert-comptable sort le vôtre de la déclaration sociale nominative. Retenez qu’il ne change jamais le signe d’un calcul dont tous les postes sont du temps interne\u00a0: il ne fait qu’en changer l’échelle.",
       },
       {
         question:
           "Que devient le flux quand la personne qui l’a créé quitte l’entreprise\u00a0?",
         answer:
-          "Un flux automatisé ou planifié utilise toujours les limites de son propriétaire, quel que soit l’événement qui le déclenche. Quand ce compte est désactivé, le flux s’arrête, et souvent sans alerte puisque rien n’a échoué. Nommez un suppléant, transférez les connexions vers un compte de service et surveillez l’absence d’exécution, pas seulement les exécutions en erreur.",
+          "Un flux automatisé ou planifié utilise toujours les limites de son propriétaire, quel que soit l’événement qui le déclenche. L’éditeur décrit ensuite un flux devenu «\u00a0orphelin\u00a0», qui peut échouer si ses connexions tiennent au compte parti, et demande de lui assigner un co-propriétaire. L’arrêt discret, sans exécution donc sans erreur, est le cas que sa documentation ne couvre pas. Nommez un suppléant, transférez les connexions vers un compte de service et surveillez l’absence d’exécution, pas seulement les exécutions en erreur.",
       },
       {
         question:
@@ -259,33 +259,39 @@ export default function Page() {
             source: "INSEE · coût horaire du travail selon l’activité",
             href: "https://www.insee.fr/fr/statistiques/2381340",
             description:
-              "Page mise à jour le 2 juillet 2026, consultée le 28 août 2026\u00a0: 44,70\u00a0€ en 2025 pour l’ensemble des secteurs marchands (secteurs B à N de la Nace), entreprises de 10\u00a0salariés ou plus, apprentis inclus\u00a0; 47,70\u00a0€ dans l’industrie, 39,90\u00a0€ dans la construction, 44,20\u00a0€ dans les services marchands. Source Eurostat, enquête quadriennale sur le coût de la main-d’œuvre.",
+              "Chiffres-clés parus le 2 juillet 2026, consultés le 30 août 2026\u00a0: 44,70\u00a0€ en 2025 pour l’ensemble des secteurs marchands (secteurs B à N de la Nace), entreprises de 10\u00a0salariés ou plus, apprentis inclus\u00a0; 47,70\u00a0€ dans l’industrie, 39,90\u00a0€ dans la construction, 44,20\u00a0€ dans les services marchands. Source\u00a0: Eurostat (extraction du 12 juin 2026), coûts annuels de la main-d’œuvre. La note de la page précise que les coûts horaires «\u00a0entre deux années d’enquête européenne sur le coût de la main-d’œuvre sont estimés par les États membres puis révisés\u00a0»\u00a0: le chiffre de 2025 est une estimation révisable, pas un résultat d’enquête définitif.",
           },
           {
             source:
               "Banque de France · Observatoire des délais de paiement, rapport 2024",
             href: "https://www.banque-france.fr/system/files/2025-07/ODP-2024.pdf",
             description:
-              "Publié en juillet 2025, consulté le 28 août 2026\u00a0: retard de paiement moyen de 13,6\u00a0jours au quatrième trimestre 2024 pour les entreprises françaises, contre 13,4\u00a0jours en moyenne européenne, en hausse d’environ un jour sur un an.",
+              "Publié en juillet 2025, consulté le 30 août 2026\u00a0: retard de paiement moyen de 13,6\u00a0jours au quatrième trimestre 2024 pour les entreprises françaises, contre 13,4\u00a0jours en moyenne européenne, en hausse d’environ un jour sur un an.",
           },
           {
             source:
               "Microsoft Learn · limites et allocations de requêtes Power Platform",
             href: "https://learn.microsoft.com/fr-fr/power-platform/admin/api-request-limits-allocations",
             description:
-              "Page du 14 août 2026, consultée le 28 août 2026\u00a0: 6\u00a0000\u00a0requêtes par utilisateur et par 24\u00a0heures sous licence Microsoft\u00a0365, 40\u00a0000 avec Power Automate Premium, 250\u00a0000 par licence Process, +50\u00a0000 par module complémentaire de capacité. Les actions en échec, les nouvelles tentatives et la pagination sont comptabilisées\u00a0; les quotas ne se reportent pas d’un jour sur l’autre\u00a0; un flux automatisé utilise les limites de son propriétaire.",
+              "Page du 14 août 2026, consultée le 30 août 2026\u00a0: 6\u00a0000\u00a0requêtes par utilisateur et par 24\u00a0heures sous licence Microsoft\u00a0365, 40\u00a0000 avec Power Automate Premium, 250\u00a0000 pour la licence «\u00a0Processus Power Automate\u00a0» (250k par licence), +50\u00a0000 par module complémentaire de capacité. Les actions en échec, les nouvelles tentatives et la pagination sont comptabilisées\u00a0; les quotas ne se reportent pas d’un jour sur l’autre\u00a0; un flux automatisé utilise les limites de son propriétaire.",
+          },
+          {
+            source: "Microsoft Learn · FAQ sur les licences Power Automate",
+            href: "https://learn.microsoft.com/fr-fr/power-platform/admin/power-automate-licensing/faqs",
+            description:
+              "Page du 14 août 2026, consultée le 30 août 2026\u00a0: «\u00a0Dans Power Automate, chaque exécution de déclencheur et d’action compte comme une seule action\u00a0»\u00a0; «\u00a0Un flux simple avec un déclencheur et une action entraîne deux actions chaque fois que le flux s’exécute\u00a0»\u00a0; «\u00a0Chaque action compte comme un, y compris l’action de boucle elle-même\u00a0». C’est cette page, et non celle des limites, qui range le déclencheur parmi les requêtes comptées\u00a0: elle fonde les neuf étapes du flux de relance.",
           },
           {
             source: "Zapier · comment l’usage des tâches est mesuré",
             href: "https://help.zapier.com/hc/en-us/articles/8496196837261-How-is-task-usage-measured-in-Zapier",
             description:
-              "Page mise à jour le 21 août 2026, consultée le 28 août 2026\u00a0: seules les actions réussies comptent, les déclencheurs, filtres et chemins ne comptent pas, les actions en erreur non plus\u00a0; rejouer une exécution entière refait tourner les étapes déjà réussies et les recompte.",
+              "Page mise à jour le 21 août 2026, consultée le 30 août 2026\u00a0: seules les actions réussies comptent, les déclencheurs, filtres et chemins ne comptent pas, les actions en erreur non plus\u00a0; rejouer une exécution entière refait tourner les étapes déjà réussies et les recompte.",
           },
           {
             source: "Zapier · grille tarifaire",
             href: "https://zapier.com/pricing",
             description:
-              "Relevée le 28 août 2026, plan Professional en facturation annuelle\u00a0: 19,99\u00a0$ pour 750\u00a0tâches par mois, 49\u00a0$ pour 2\u00a0000, 89\u00a0$ pour 5\u00a0000, 489\u00a0$ pour 100\u00a0000. Montants en dollars, hors conversion et hors taxes locales\u00a0; un seul éditeur, cité comme échantillon daté et non comme prix de marché.",
+              "Relevée le 30 août 2026, plan Professional en facturation annuelle\u00a0: 19,99\u00a0$ pour 750\u00a0tâches par mois, 49\u00a0$ pour 2\u00a0000, 89\u00a0$ pour 5\u00a0000, 489\u00a0$ pour 100\u00a0000. Montants en dollars, hors conversion et hors taxes locales\u00a0; un seul éditeur, cité comme échantillon daté et non comme prix de marché.",
           },
           {
             source: "France Num · l’automatisation, une solution",
@@ -312,10 +318,17 @@ export default function Page() {
               "Documentation éditeur sur les sélecteurs qui repèrent les champs d’un écran piloté par un robot d’interface\u00a0: ils dépendent de la structure de l’application et doivent être retestés après chaque évolution.",
           },
           {
+            source:
+              "Microsoft Learn · gérer les flux orphelins lorsque le propriétaire quitte l’organisation",
+            href: "https://learn.microsoft.com/fr-fr/troubleshoot/power-platform/power-automate/flow-management/manage-orphan-flow-when-owner-leaves-org",
+            description:
+              "Page du 11 juin 2026, consultée le 30 août 2026\u00a0: «\u00a0Un flux orphelin est un flux qui n’a plus de propriétaire valide. Ces flux peuvent échouer s’ils utilisent des connexions liées à ce compte d’utilisateur.\u00a0» La remédiation décrite est d’attribuer un nouveau co-propriétaire. L’éditeur documente donc des échecs\u00a0: l’arrêt sans aucune exécution en erreur du troisième incident de la section\u00a007 est une hypothèse du cas construit, et la section le dit.",
+          },
+          {
             source: "Hagnéré Code · tarifs publics",
             href: "/tarifs",
             description:
-              "Grille relevée le 28 août 2026\u00a0: audit des processus internes 990\u00a0€ HT (1\u00a0jour), Discovery Sprint 1\u00a0500\u00a0€ HT (2\u00a0jours, déduit si la phase suivante est lancée), outils internes 8\u00a0000 / 25\u00a0000 / 80\u00a0000\u00a0€ HT, maintenance avec un repère indicatif de 2\u00a0500\u00a0€ HT par mois. Repères publics et indicatifs\u00a0: le devis signé fixe le prix ferme.",
+              "Grille relevée le 30 août 2026\u00a0: audit des processus internes 990\u00a0€ HT (1\u00a0jour), Discovery Sprint 1\u00a0500\u00a0€ HT (2\u00a0jours, déduit si la phase suivante est lancée), outils internes 8\u00a0000 / 25\u00a0000 / 80\u00a0000\u00a0€ HT, maintenance avec un repère indicatif de 2\u00a0500\u00a0€ HT par mois. Repères publics et indicatifs\u00a0: le devis signé fixe le prix ferme.",
           },
         ]}
         disclaimer={{
@@ -348,24 +361,27 @@ export default function Page() {
 
           Mesure de référence : `npx tsx scripts/measure-guide-readtime.mjs
           automatiser-processus-metier` sur l'article rendu, blocs exclus et
-          `sr-only` retirés — 4 191 mots, soit 20,955 minutes à 200 mots par
-          minute, donc 21. Décompte par section, au même débit :
-            01 réponse      397 mots  1,99
-            02 mesurer      356 mots  1,78
-            03 écarter      504 mots  2,52
-            04 facture      526 mots  2,63
-            05 décompte     798 mots  3,99
-            06 trésorerie   453 mots  2,27
-            07 incidents    739 mots  3,69
-            08 décision     418 mots  2,09
-                          4 191 mots 20,96
-          Les huit minutes entières sont réparties au plus fort reste : parties
-          entières 1+1+2+2+3+2+3+2 = 16, puis les cinq minutes restantes vont
-          aux cinq plus fortes décimales (0,99 · 0,99 · 0,78 · 0,69 · 0,63),
-          soit réponse, décompte, mesurer, incidents et facture. Résultat
-          2+2+2+3+4+2+4+2 = 21. Toute réécriture qui déplace des paragraphes
-          d'une section à l'autre demande de relancer le script et de refaire
-          cette répartition, pas d'ajuster un chiffre au jugé.
+          `sr-only` retirés — mesure refaite le 30/08/2026 à 23 h 33, après la
+          correction des écarts de sourçage : 4 195 mots, soit 20,975 minutes à
+          200 mots par minute, donc 21. Décompte par section, au même débit :
+            01 réponse      373 mots  1,865
+            02 mesurer      353 mots  1,765
+            03 écarter      495 mots  2,475
+            04 facture      523 mots  2,615
+            05 décompte     783 mots  3,915
+            06 trésorerie   449 mots  2,245
+            07 incidents    801 mots  4,005
+            08 décision     418 mots  2,090
+                          4 195 mots 20,975
+          Les 21 minutes sont réparties au plus fort reste : parties entières
+          1+1+2+2+3+2+4+2 = 17, puis les quatre minutes restantes vont aux
+          quatre plus fortes décimales (0,915 · 0,865 · 0,765 · 0,615), soit
+          décompte, réponse, mesurer et facture. Résultat 2+2+2+3+4+2+4+2 = 21,
+          la même répartition qu'avant correction : la section 07 a franchi les
+          quatre minutes pleines, et ce qu'elle ne prend plus au reste, elle le
+          prenait déjà par sa décimale. Toute réécriture qui déplace des
+          paragraphes d'une section à l'autre demande de relancer le script et
+          de refaire cette répartition, pas d'ajuster un chiffre au jugé.
         */}
         <GuidePremiumSection
           id="reponse"
@@ -393,14 +409,13 @@ export default function Page() {
             Le nombre d’heures arbitre en dernier.
           </p>
           <p>
-            Sur les quatre processus chronométrés dans cet exemple, le
-            classement par heures donne 32, 25, 21 et 12&nbsp;heures par mois.
-            Celui qui passe les cinq questions de la section&nbsp;03 est le
-            dernier. Son décompte sur douze mois sort à{" "}
-            <strong>−546&nbsp;€</strong>&nbsp;: à cette échéance, il ne se paie
-            pas en temps gagné. Il s’équilibre à 21,3&nbsp;mois, et se paie plus
-            tôt&nbsp;— ou jamais&nbsp;— sur l’encaissement, que la
-            section&nbsp;06 apprend à vérifier.
+            Sur les quatre processus chronométrés ici, le classement par heures
+            donne 32, 25, 21 et 12&nbsp;heures par mois. Celui qui passe les
+            cinq questions de la section&nbsp;03 est le dernier. Son décompte
+            sur douze mois sort à <strong>−546&nbsp;€</strong>&nbsp;: il ne se
+            paie pas en temps gagné dans l’année. Il s’équilibre à
+            21,3&nbsp;mois, et se paie plus tôt&nbsp;— ou jamais&nbsp;— sur
+            l’encaissement, que la section&nbsp;06 apprend à mesurer.
           </p>
 
           <GuidePremiumCase
@@ -428,9 +443,7 @@ export default function Page() {
             <p>
               Ensemble, ces quatre lignes consomment 90&nbsp;heures par mois.
               Nous les suivrons jusqu’au décompte à douze mois, puis jusqu’aux
-              trois incidents que ce choix rend bon marché. Un processus dont
-              l’ERP ou la procédure viennent de changer ne se mesure pas
-              utilement avant six semaines de fonctionnement continu.
+              trois incidents que ce choix rend bon marché.
             </p>
           </GuidePremiumCase>
 
@@ -470,7 +483,7 @@ export default function Page() {
             comptable, une ligne par facture avec sa date d’échéance et sa date
             de règlement&nbsp;; l’export CSV de la boîte partagée&nbsp;; la
             table des commandes de l’ERP. Un tableau croisé qui compte les
-            lignes par mois donne la courbe en dix minutes. Prenez douze mois
+            lignes par mois donne la courbe. Prenez douze mois
             glissants&nbsp;: une mesure faite en juillet dimensionne un flux qui
             cassera en octobre.
           </p>
@@ -558,8 +571,7 @@ export default function Page() {
             Une grille de notation additionne gain, fréquence et complexité, et
             laisse un gain élevé racheter une erreur irrattrapable. Les cinq
             questions ci-dessous ne s’additionnent pas&nbsp;: une seule réponse
-            négative écarte le candidat, et chacune se tranche en moins d’une
-            demi-journée.
+            négative écarte le candidat.
           </p>
 
           <GuideTable
@@ -642,7 +654,7 @@ export default function Page() {
               </li>
               <li>
                 <strong>Monter un flux sans code.</strong> Le bon choix pour un
-                premier essai&nbsp;: il se démonte en une heure.
+                premier essai&nbsp;: il se démonte sans projet.
               </li>
               <li>
                 <strong>Piloter un écran par un robot d’interface.</strong>{" "}
@@ -670,13 +682,12 @@ export default function Page() {
           <p>
             Le budget dérape sur un décalage d’unité&nbsp;: vous comptez des
             dossiers, la plateforme compte des actions. Un dossier qui traverse
-            six étapes consomme six unités. Les deux familles d’outils ne
-            comptent pas la même chose, ce qui rend deux devis incomparables
+            six étapes consomme six unités. Deux devis restent incomparables
             tant qu’on n’a pas lu leur règle de comptage.
           </p>
 
           <GuideTable
-            caption="Deux façons de facturer le même flux, relevées le 28 août 2026"
+            caption="Deux façons de facturer le même flux, relevées le 30 août 2026"
             headers={[
               "Ce qui est compté",
               "Zapier, plan Professional",
@@ -711,36 +722,37 @@ export default function Page() {
             deux filtres et six actions. Sur 90&nbsp;relances, cela fait
             540&nbsp;actions réussies par mois chez Zapier, sous le premier
             palier de 750&nbsp;tâches affiché 19,99&nbsp;$ en facturation
-            annuelle. Côté Microsoft, comptez les neuf étapes&nbsp;:
-            810&nbsp;requêtes par mois, très loin des 6&nbsp;000 que donne une
-            licence Microsoft&nbsp;365. Ici l’abonnement du flux retenu vaut
-            0&nbsp;€ de plus.
+            annuelle. Côté Microsoft, l’éditeur compte le déclencheur comme une
+            action&nbsp;: les neuf étapes valent 810&nbsp;requêtes par mois,
+            soit 27 par jour au rythme de trois relances quotidiennes, contre
+            6&nbsp;000 par utilisateur et par 24&nbsp;heures. Ici l’abonnement
+            du flux retenu vaut 0&nbsp;€ de plus.
           </p>
 
           <p>
             Ce n’est pas toujours le cas, et le franchissement est brutal. Une
             boucle qui parcourt les 320&nbsp;commandes du mois avec quatre
-            actions à l’intérieur consomme 1&nbsp;280&nbsp;requêtes à chaque
-            exécution&nbsp;; quatre passages par jour font
+            actions à l’intérieur consomme 1&nbsp;280&nbsp;requêtes pour ces
+            seules actions&nbsp;; quatre passages par jour font
             5&nbsp;120&nbsp;requêtes, et les nouvelles tentatives d’un
             connecteur en défaut finissent le quota. Une boucle écrite ainsi
             est d’abord un défaut à corriger&nbsp;: la filtrer sur les commandes
             du jour ramène le compteur à quelques dizaines de requêtes. Si le
             volume est réellement là, il faut une licence Power Automate
             Premium, qui monte à 40&nbsp;000&nbsp;requêtes par utilisateur et
-            par jour, une licence Process à 250&nbsp;000&nbsp;requêtes par flux,
-            ou un module de capacité à 50&nbsp;000&nbsp;requêtes.
+            par jour, une licence Processus à 250&nbsp;000&nbsp;requêtes par
+            flux, ou un module de capacité à 50&nbsp;000&nbsp;requêtes.
           </p>
 
           <p>
             Une précision que donne la page Microsoft&nbsp;: toutes les
             organisations sont encore dans une période de transition, où les
-            limites appliquées sont plus larges que les limites officielles
-            ci-dessus. Dimensionnez sur les officielles, comme l’éditeur le
+            limites appliquées sont plus larges que les officielles ci-dessus.
+            Dimensionnez sur les officielles, comme l’éditeur le
             recommande&nbsp;: un flux calibré sur la tolérance du moment tombera
-            le jour où elle disparaîtra. Cette section, et l’incident du quota
-            en section&nbsp;07, décrivent donc le régime officiel, pas ce qui se
-            produit dans un abonnement aujourd’hui.
+            le jour où elle disparaîtra. Cette section et l’incident du quota en
+            section&nbsp;07 décrivent le régime officiel, pas un abonnement
+            d’aujourd’hui.
           </p>
 
           <InfoBox
@@ -791,7 +803,7 @@ export default function Page() {
             l’ensemble des secteurs marchands, dans les entreprises de dix
             salariés ou plus, apprentis inclus. Si vous êtes plus petit,
             remplacez-le par le vôtre, que votre expert-comptable sort de la
-            déclaration sociale nominative en quelques minutes.
+            déclaration sociale nominative.
           </p>
           <p>
             Les cinq autres hypothèses ne sortent d’aucune source&nbsp;:
@@ -799,14 +811,14 @@ export default function Page() {
             moyenne sur douze mois, 50&nbsp;% des heures libérées confiées à un
             travail identifié, quatre jours de sept heures pour construire le
             flux, deux heures de suivi par mois. Contestez-les une par une.
-            L’adoption se saisit en moyenne sur toute la période, jamais en
-            cible de fin&nbsp;: en cible de fin, elle gonfle le résultat sans
-            que rien ne le signale.
+            L’adoption se saisit en moyenne sur toute la période&nbsp;: en
+            cible de fin, elle gonfle le résultat sans que rien ne le
+            signale.
           </p>
           <p>
-            Cette liste couvre le décompte à douze mois, pas le guide entier. La
-            section&nbsp;06 en ajoutera quatre autres, aussi peu sourcées, et ce
-            sont elles qui renversent le verdict.
+            Cette liste couvre le décompte à douze mois. La section&nbsp;06 en
+            ajoutera quatre autres, aussi peu sourcées, et ce sont elles qui
+            renversent le verdict.
           </p>
 
           <GuideTable
@@ -926,8 +938,8 @@ export default function Page() {
             Une limite avant de vous fier à son verdict&nbsp;: cet outil ne
             compte que des heures. L’argent encaissé plus tôt, objet de la
             section suivante, n’y entre pas&nbsp;— d’où le «&nbsp;à simplifier,
-            reporter ou traiter autrement&nbsp;» qu’il affiche à douze mois,
-            quand la section&nbsp;06 remonte le même flux à +768&nbsp;€.
+            reporter ou traiter autrement&nbsp;» qu’il affiche, quand la
+            section&nbsp;06 remonte le même flux à +768&nbsp;€.
           </p>
         </GuidePremiumSection>
 
@@ -947,7 +959,7 @@ export default function Page() {
           <p>
             Quatre nombres entrent ici sans venir d’une source&nbsp;: la facture
             moyenne de 1&nbsp;850&nbsp;€ TTC, les quatre jours gagnés sur le
-            retard et les deux taux essayés plus bas. Ils sont choisis pour
+            retard et les deux taux essayés plus bas, tous choisis pour
             l’exemple. Seul le retard de paiement moyen est publié.
           </p>
           <p>
@@ -983,11 +995,11 @@ export default function Page() {
           <p>
             Le retard moyen se lit dans la balance âgée&nbsp;: pour chaque
             facture encaissée, le nombre de jours entre l’échéance et le
-            règlement, pondéré par les montants. Le comptable sort les deux
-            extractions&nbsp;— douze mois avant le flux, six mois après&nbsp;—
-            en une heure. Si l’écart n’apparaît pas, le flux ne vaut que ses
-            heures, et la décision honnête est de le réduire à la préparation de
-            la liste, ou de l’arrêter.
+            règlement, pondéré par les montants. Le comptable en sort deux
+            extractions&nbsp;: douze mois avant le flux, six mois après. Si
+            l’écart n’apparaît pas, le flux ne vaut que ses heures, et la
+            décision honnête est de le réduire à la préparation de la liste, ou
+            de l’arrêter.
           </p>
 
           <InfoBox
@@ -1013,11 +1025,12 @@ export default function Page() {
           title="Ce qui rate, et ce que ça coûte"
         >
           <p>
-            Les trois incidents ci-dessous sont construits sur le même dossier,
-            à partir de mécanismes documentés par les éditeurs&nbsp;— ce ne sont
-            pas des dossiers clients. Leur point commun n’est pas un
-            hasard&nbsp;: ils coûtent peu, conséquence directe du choix fait en
-            section&nbsp;03.
+            Les trois incidents ci-dessous sont construits sur le même
+            dossier&nbsp;— ce ne sont pas des dossiers clients. Les deux
+            premiers appliquent une règle écrite par l’éditeur&nbsp;; le
+            troisième la prolonge par une hypothèse, signalée sur place. Leur
+            point commun n’est pas un hasard&nbsp;: ils coûtent peu, conséquence
+            directe du choix fait en section&nbsp;03.
           </p>
 
           <FormulaBox>
@@ -1025,6 +1038,9 @@ export default function Page() {
               "UNITÉS TENUES DANS TOUTE CETTE SECTION",
               "",
               "Une relance = une facture de 1\u00a0850\u00a0€ TTC, trois par jour.",
+              "Deux journées coexistent dans ce guide\u00a0: ici, trois relances",
+              "entières font 5\u00a0550\u00a0€\u00a0; en section\u00a006, 1\u00a0998\u00a0000 ÷ 365",
+              "fait 5\u00a0474\u00a0€. Les 76\u00a0€ d’écart tiennent au mois de trente jours.",
               "Coût de financement = montant décalé × taux × jours ÷ 365, à 6\u00a0%.",
               "",
               "Un envoi suspendu N jours ne sort pas avec N jours de retard\u00a0:",
@@ -1051,11 +1067,10 @@ export default function Page() {
             planté.
           </p>
           <p>
-            Il décrit le régime officiel des quotas, celui de l’après-période de
-            transition rappelée en section&nbsp;04&nbsp;: tant qu’elle dure, les
-            limites appliquées sont plus larges et les deux flux ne se disputent
-            pas ce quota. C’est un incident à préparer, pas un incident
-            d’aujourd’hui.
+            Il décrit le régime officiel&nbsp;: tant que dure la période de
+            transition rappelée en section&nbsp;04, les limites appliquées sont
+            plus larges et les deux flux ne se disputent pas ce quota. C’est un
+            incident à préparer, pas un incident d’aujourd’hui.
           </p>
 
           <h3>
@@ -1084,10 +1099,15 @@ export default function Page() {
           <p>
             Un flux automatisé ou planifié utilise toujours les limites de son
             propriétaire&nbsp;: il est adossé à un compte, pas à un service.
-            Nadia change de poste, son compte est désactivé, et le flux s’arrête
-            sans alerte&nbsp;— la surveillance ne regardait que les exécutions
-            en erreur, or il n’y en a plus aucune. Seize jours passent avant
-            qu’un client s’étonne&nbsp;: 48&nbsp;relances non parties, soit
+            L’éditeur ne va pas plus loin&nbsp;: il décrit un flux devenu
+            orphelin qui «&nbsp;peut échouer&nbsp;» si ses connexions tiennent
+            au compte parti, et demande de lui assigner un
+            co-propriétaire&nbsp;— un échec se voit. La suite est une hypothèse,
+            et c’est elle qui coûte cher.
+            Nadia change de poste, le flux ne s’exécute plus du tout, donc rien
+            n’échoue&nbsp;— et la surveillance ne regardait que les exécutions
+            en erreur. Seize jours passent avant qu’un client s’étonne&nbsp;:
+            48&nbsp;relances non parties, soit
             88&nbsp;800&nbsp;€ qui repartent ensemble avec 8,5&nbsp;jours de
             retard en moyenne, ce qui vaut 124,08&nbsp;€ de financement. Six
             heures pour republier le flux sous un compte de service, soit
@@ -1096,11 +1116,11 @@ export default function Page() {
           </p>
 
           <p>
-            Comparez avec les 320&nbsp;commandes écartées en section&nbsp;03.
-            Là, une erreur se lit en marchandise livrée deux fois, en avoir et
-            en stock à reprendre. Un premier essai bien choisi est un essai dont
-            les incidents sont bon marché&nbsp;: c’est la vraie raison de
-            commencer par les relances.
+            Comparez avec les 320&nbsp;commandes écartées en
+            section&nbsp;03&nbsp;: là, une erreur se lit en marchandise livrée
+            deux fois, en avoir et en stock à reprendre. Un premier essai bien
+            choisi est un essai dont les incidents sont bon marché&nbsp;— la
+            vraie raison de commencer par les relances.
           </p>
 
           <InfoBox
@@ -1110,10 +1130,8 @@ export default function Page() {
             <p>
               Si le flux traite des données personnelles, posez la question au
               responsable du traitement et au délégué à la protection des
-              données la semaine du chronométrage&nbsp;: automatiser ne permet
-              ni de conclure qu’une analyse est requise, ni de l’écarter, et la
-              question ne se rattrape pas après la mise en œuvre. La FAQ en
-              donne le critère exact.
+              données la semaine du chronométrage&nbsp;: elle ne se rattrape pas
+              après la mise en œuvre. La FAQ en donne le critère exact.
             </p>
           </InfoBox>
 
@@ -1245,7 +1263,7 @@ export default function Page() {
             trente-six. Rien n’exige de passer par nous&nbsp;: tout le décompte
             se refait avec vos nombres. Les données publiques, les quotas de
             plateforme et les grilles tarifaires citées ont été relevés le
-            28&nbsp;août 2026 et sont à revérifier tous les douze mois. Aucun
+            30&nbsp;août 2026 et sont à revérifier tous les douze mois. Aucun
             coût, aucun délai et aucun résultat ne sont garantis par cette
             page&nbsp;: seul un devis signé engage.
           </p>

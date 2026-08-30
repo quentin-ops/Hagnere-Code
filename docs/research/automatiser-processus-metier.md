@@ -9,41 +9,45 @@
 > sa façon de citer ; aucun de ses chiffres, aucune de ses sources et aucun de ses
 > constats n'a été recopié.
 >
+> **Mise à jour du 30 août 2026, seconde passe (23 h).** Les sept écarts
+> recensés plus bas ont été **traités** : la page, l'entrée du registre et les
+> tests colocalisés ont été corrigés dans la foulée, et ce dossier réécrit pour
+> rester d'accord avec eux. La section 0 donne, écart par écart, l'issue
+> retenue.
+>
 > **Source de vérité de ce dossier :**
 > `src/app/guides/automatiser-processus-metier/page.tsx`,
 > `process-priority-tool.tsx` et l'entrée du slug dans `src/lib/guides.ts`, lus
 > intégralement le 30 août 2026, plus les deux fichiers de tests colocalisés.
 >
-> **Territoire :** ce dossier est le seul fichier écrit. La page, les tests, le
-> registre et les manifestes n'ont pas été touchés. Les écarts trouvés dans la
-> page sont signalés ci-dessous, pas corrigés.
+> **Territoire :** `docs/research/automatiser-processus-metier.md`,
+> `src/app/guides/automatiser-processus-metier/` et la seule entrée du slug dans
+> `src/lib/guides.ts`. Les manifestes, le sitemap et les autres guides n'ont pas
+> été touchés.
 
 ---
 
-## 0. Écarts trouvés dans la page publiée
+## 0. Écarts trouvés, et ce qui en a été fait
 
-Sept points relevés en refaisant les calculs et en rouvrant les sources. **Aucun
-n'est une erreur d'arithmétique** : les grandeurs chiffrées des huit sections ont
-été recalculées à la main, ligne à ligne (section G, cinquante-quatre lignes de
-calcul), et tombent toutes juste, au centime et à l'arrondi publié près. Les écarts portent sur les unités, sur ce qui est
-sourçable et sur ce qui est daté.
+Sept points relevés en refaisant les calculs et en rouvrant les sources, puis
+traités le 30 août 2026. **Aucun n'était une erreur d'arithmétique** : les
+grandeurs chiffrées des huit sections ont été recalculées à la main, ligne à
+ligne (section G), et tombaient toutes juste, au centime et à l'arrondi publié
+près. Les écarts portaient sur les unités, sur ce qui est sourçable et sur ce
+qui est daté — la catégorie qu'un concurrent vérifie en ouvrant le lien.
 
-| # | Nature | Où | Constat |
-|---|---|---|---|
-| É1 | Unité non réconciliée | §06 vs §07 | Deux volumes journaliers différents circulent pour le même flux, sans que l'écart soit dit : **5 474 €** en section 06 (`1 998 000 ÷ 365`, mois calendaire) et **5 550 €** en section 07 (`3 relances × 1 850 €`, mois de trente jours). L'écart vaut 76 €, soit 1,4 %. Les deux sont justes dans leur cadre ; la section 07 s'ouvre pourtant sur un bloc « UNITÉS TENUES DANS TOUTE CETTE SECTION » qui ne mentionne pas ce changement de cadence. Trois relances par jour supposent un mois de 30 jours (90 ÷ 30) et 1 095 relances par an, quand la chaîne de trésorerie en compte 1 080 (90 × 12). |
-| É2 | Comparaison hors période | §04 | « 810 requêtes par mois, très loin des 6 000 que donne une licence Microsoft 365 » compare un total mensuel à un quota **par 24 heures**. La conclusion est vraie a fortiori — 810 par mois valent ~27 par jour, soit 0,45 % du quota — mais les deux nombres comparés dans la phrase ne portent pas sur la même période, et le tableau qui précède est la seule chose qui le rappelle. |
-| É3 | Mécanisme non documenté par les sources citées | §07, troisième incident | « son compte est désactivé, et le flux s'arrête sans alerte — la surveillance ne regardait que les exécutions en erreur, or il n'y en a plus aucune ». L'introduction de la section annonce des incidents construits « à partir de mécanismes documentés par les éditeurs ». Aucune des dix sources citées ne documente cet arrêt silencieux. La page Microsoft citée établit seulement qu'un flux automatisé consomme le quota de son propriétaire. La page de l'éditeur qui traite le cas — *Manage orphaned flows when owner leaves organization*, non citée par l'article — décrit l'inverse : « These flows **can fail** if they use connections tied to that user account », donc des exécutions en erreur, précisément ce que la surveillance décrite aurait vu. |
-| É4 | Comptage partiellement sourçable | §04 | Les 810 requêtes viennent de « comptez les neuf étapes », déclencheur compris. La page Microsoft citée énumère ce qui compte comme requête (appels de connecteurs, actions HTTP, actions intégrées) sans y ranger explicitement le déclencheur d'un flux cloud. Le sur-comptage va dans le sens prudent et ne change pas le verdict, mais le « neuf » n'est pas entièrement adossé à la source. |
-| É5 | Durées affirmées sans source ni protocole | §02, §05, §06, FAQ | Cinq affirmations de durée sont posées comme des faits : « un tableau croisé qui compte les lignes par mois donne la courbe **en dix minutes** », « votre expert-comptable sort le vôtre de la déclaration sociale nominative **en quelques minutes** », « le comptable sort les deux extractions **en une heure** », « il **se démonte en une heure** » (flux sans code), « un flux monté sur l'abonnement déjà payé se démonte **en une heure** ». Aucune n'est sourcée, aucune n'est présentée comme une hypothèse, et aucune n'est mesurable par le lecteur avant d'avoir agi. |
-| É6 | Méthode statistique affirmée sans source | FAQ, question 1 | « Vingt dossiers consécutifs suffisent à sortir un temps moyen et un **neuvième décile exploitables** ». Sur vingt observations, le neuvième décile est la dix-huitième valeur : un seul dossier atypique le déplace entièrement. L'affirmation « exploitable » est une règle éditoriale, non une propriété démontrée, et elle n'est pas annoncée comme telle. |
-| É7 | Date affichée et état réel | En-tête, bloc Transparence | La page imprime « Mis à jour le 28 août 2026 » et « relevés le 28 août 2026 ». Deux faits observables aujourd'hui : `page.tsx` porte une date de modification au **30 août 2026, 22 h 16** (mtime), postérieure de deux jours ; et la production `https://hagnere-code.ai/guides/automatiser-processus-metier`, ouverte le 30 août 2026, sert encore la version du 29 juillet 2026 (`"dateModified":"2026-07-29T19:07:13Z"` dans son JSON-LD), sans aucun des chiffres actuels. Le lot n'est donc pas déployé. Le dépôt n'étant pas sous Git ici, il est impossible de qualifier les modifications du 30 août de mineures ou substantielles au sens du §15 de la charte. **Constat, pas correction : ni la page ni le registre ne sont dans le territoire de ce dossier.** |
+| # | Nature | Où | Constat | Issue retenue |
+|---|---|---|---|---|
+| É1 | Unité non réconciliée | §06 vs §07 | Deux volumes journaliers pour le même flux, sans que l'écart soit dit : **5 474 €** en section 06 (`1 998 000 ÷ 365`, mois calendaire) et **5 550 €** en section 07 (`3 relances × 1 850 €`, mois de trente jours), soit 76 € et 1,4 % d'écart. Le bloc « UNITÉS TENUES DANS TOUTE CETTE SECTION » ne mentionnait pas ce changement de cadence. | **Corrigé.** Le bloc d'unités de la §07 pose désormais les deux journées côte à côte et nomme leur écart : « Deux journées coexistent dans ce guide : ici, trois relances entières font 5 550 € ; en section 06, 1 998 000 ÷ 365 fait 5 474 €. Les 76 € d'écart tiennent au mois de trente jours. » Un test colocalisé refait la soustraction et exige les quatre valeurs (§H). |
+| É2 | Comparaison hors période | §04 | « 810 requêtes par mois, très loin des 6 000 que donne une licence Microsoft 365 » comparait un total mensuel à un quota **par 24 heures**. Vrai a fortiori, faux comme comparaison. | **Corrigé.** La phrase convertit avant de comparer : « 810 requêtes par mois, soit 27 par jour au rythme de trois relances quotidiennes, contre 6 000 par utilisateur et par 24 heures ». La cadence employée est celle que la §07 annonce désormais (É1), et `810 ÷ 30 = 27` exactement (§G.10). |
+| É3 | Mécanisme non documenté par les sources citées | §07, troisième incident | La section annonçait des incidents construits « à partir de mécanismes documentés par les éditeurs », mais l'arrêt silencieux du flux orphelin n'était adossé à aucune des dix sources. La page de support de l'éditeur qui traite ce cas, non citée, décrit l'inverse : des **échecs**. | **Corrigé, et localisateur ajouté.** L'introduction ne couvre plus les trois incidents en bloc (« Les deux premiers appliquent une règle écrite par l'éditeur ; le troisième la prolonge par une hypothèse, signalée sur place »). L'incident 3 cite ce que l'éditeur documente — un flux orphelin qui « peut échouer », la remédiation par co-propriétaire — puis marque la frontière : « La suite est une hypothèse ». La page *Gérer les flux orphelins…* rejoint le bloc Sources (§D.13). |
+| É4 | Comptage partiellement sourçable | §04 | Les 810 requêtes venaient de « comptez les neuf étapes », déclencheur compris ; la page Microsoft citée énumère les requêtes sans y ranger explicitement le déclencheur d'un flux cloud. | **Localisateur changé.** La page qui porte l'affirmation a été ouverte le 30 août 2026 : la *FAQ sur les licences Power Automate* écrit « chaque exécution de déclencheur et d'action compte comme une seule action » et « Le déclencheur compte comme 1 action ». Le neuf est donc **documenté**, pas prudent. L'article l'attribue en clair (« l'éditeur compte le déclencheur comme une action ») et la FAQ entre au bloc Sources (§D.14). |
+| É5 | Durées affirmées sans source ni protocole | §02, §03, §05, §06, FAQ | Quatre affirmations de durée, en six occurrences, posées comme des faits : dix minutes de tableau croisé, quelques minutes d'expert-comptable (deux fois), une heure d'extraction, une heure pour démonter un flux sans code (deux fois). Une cinquième, du même défaut, a été trouvée en §03 : « chacune se tranche en moins d'une demi-journée ». | **Retirées.** Les phrases restent, les durées partent : le guide demande de chronométrer, il ne déclare plus à la place du lecteur. Un test interdit leur retour, corps et FAQ compris. |
+| É6 | Méthode statistique affirmée sans source | FAQ, question 1 | « Vingt dossiers consécutifs suffisent à sortir un temps moyen et un neuvième décile **exploitables** » : sur vingt valeurs triées, le neuvième décile est la dix-huitième. | **Corrigé.** La réponse distingue la moyenne (solide) du neuvième décile (« un ordre de grandeur, pas une statistique : sur vingt valeurs triées, c'est la dix-huitième, et deux dossiers atypiques la déplacent »), et borne son usage : « dimensionner l'exception, pas promettre un délai ». |
+| É7 | Date affichée et état réel | En-tête, bloc Transparence, registre | La page imprimait « Mis à jour le 28 août 2026 » et « relevés le 28 août 2026 » alors que `page.tsx` avait été réécrit après. | **Corrigé pour ce qui dépend du dépôt.** `dateModified` passe à `2026-08-30T23:20:00+02:00` ; la date visible en découle. Les dix sources ayant été rouvertes une par une le 30 août 2026 avant correction, toutes les mentions « consultée le », la légende du tableau §04 et le bloc Transparence portent cette date. **Reste au déploiement** : la production servait encore la version du 29 juillet 2026 au moment de ce travail. |
 
-Aucun de ces sept points n'a été corrigé. Les cinq premiers sont des choix de
-rédaction que la page peut assumer en les explicitant ; É3 est le seul qui
-demande soit une source, soit une reformulation du mécanisme ; É7 se règle au
-déploiement.
-
----
+Six des sept écarts sont clos dans le dépôt. Le septième, É7, l'est pour sa
+partie éditoriale ; sa partie « production à jour » ne se règle qu'en déployant.
 
 ## A. Identité de l'article publié
 
@@ -56,7 +60,7 @@ Section : Outils internes et automatisation
 Statut éditorial dans le registre : published
 Guide « featured » du hub : oui (drapeau explicite, invariant testé)
 datePublished : 2026-07-29T17:01:33+02:00
-dateModified : 2026-08-28T18:00:00+02:00
+dateModified : 2026-08-30T23:20:00+02:00
 readTimeMin : 21
 Auteur affiché : Quentin Hagnéré, président fondateur codeur (src/lib/team.ts)
 Images : /guides/automatiser-processus-metier/article-processus-{16x9,4x3,1x1}.webp
@@ -80,10 +84,12 @@ Sortie éditoriale : décision — mesurer, écarter, chiffrer, puis lancer,
 | 08 | `decision` | Faut-il lancer, reporter ou renoncer ? | 2 min |
 
 Somme des durées de section : 21 minutes, égale au `readTimeMin` du registre.
-Cette égalité est verrouillée par un test (§H). La répartition des huit minutes
-entières est documentée dans un commentaire de `page.tsx` et repose sur une
-mesure à 4 191 mots produite par `scripts/measure-guide-readtime.mjs` :
-**cette mesure n'a pas été refaite** (voir §D.12).
+Cette égalité est verrouillée par un test (§H). La répartition est documentée
+dans un commentaire de `page.tsx` et repose sur une mesure produite par
+`scripts/measure-guide-readtime.mjs`, **refaite le 30 août 2026 à 23 h 25 après
+correction des écarts**, serveur local disponible : 4 195 mots, 20,975 minutes,
+donc 21. `--check` répond `OK  mesuré 21 min  publié 21 min`. Détail par
+section et répartition au plus fort reste en §D.12.
 
 ### Chiffres mis en avant hors corps de texte
 
@@ -180,22 +186,23 @@ lui-même (test). Le guide ne promet le service qu'après la fiche de décision.
 **Méthode.** Chaque URL citée par la page a été ouverte le 30 août 2026, dans
 le document original. Quand `WebFetch` a échoué, la page a été téléchargée par
 `curl` et lue localement ; les deux PDF ont été extraits page par page. Aucun
-résumé de moteur n'a été retenu comme preuve. Les dix sources citées par
-l'article ont toutes été rouvertes.
+résumé de moteur n'a été retenu comme preuve. Les dix sources d'origine ont
+toutes été rouvertes, puis relues une seconde fois avant correction ; les deux
+sources ajoutées le même jour (§D.13, §D.14) portent le total cité à douze.
 
 ### D.1 INSEE — coût horaire de la main-d'œuvre
 
 | Champ | Contenu |
 |---|---|
 | URL | `https://www.insee.fr/fr/statistiques/2381340` |
-| Ouverte le | 30 août 2026, HTTP 200 |
-| Date de la page | mise à jour le 2 juillet 2026 |
+| Ouverte le | 30 août 2026, HTTP 200, deux fois : au relevé initial, puis à la correction des écarts |
+| Date de la page | « Paru le : 02/07/2026 » — la page ne porte pas de mention « mise à jour », que l'article lui prêtait ; il écrit désormais « Chiffres-clés parus le 2 juillet 2026 » |
 | Localisateur | tableau « Coût horaire de la main-d'œuvre », colonne 2025 |
 | Valeurs relevées | ensemble marchand **44,7 €** ; industrie 47,7 € ; construction 39,9 € ; services marchands 44,2 € |
 | Champ exact, cité mot pour mot | « France, ensemble des secteurs marchands (secteurs B à N de la Nace), entreprises de 10 salariés ou plus, apprentis inclus » |
 | Origine | Eurostat, extraction du 12 juin 2026, enquête européenne sur le coût de la main-d'œuvre |
 | Ce que l'article en fait | coût horaire chargé du décompte (§05, calculateur, FAQ, bandeau) et de toutes les valorisations horaires des incidents |
-| Limite non reprise par l'article | la note de la page précise que « les coûts horaires entre deux années d'enquête […] sont estimés par les États membres puis révisés jusqu'à ce que les résultats de l'enquête suivante soient disponibles ». Le 44,70 € de 2025 est donc une **estimation révisable**, pas un résultat d'enquête définitif. L'article dit « L'INSEE publie », ce qui est exact, mais ne signale pas ce caractère provisoire. |
+| Limite, désormais reprise par l'article | la note de la page précise que les coûts horaires « entre deux années d'enquête européenne sur le coût de la main-d'œuvre sont estimés par les États membres puis révisés jusqu'à ce que les résultats de l'enquête suivante soient disponibles ». Le 44,70 € de 2025 est donc une **estimation révisable**. Le bloc Sources le dit maintenant mot pour mot ; le corps garde « L'INSEE publie », qui reste exact. |
 | Portée pour le lecteur | l'article demande explicitement de le remplacer par le sien si l'entreprise a moins de dix salariés, et rappelle que le taux ne change jamais le signe d'un décompte dont tous les postes sont du temps interne |
 | Fraîcheur | à revérifier à chaque publication annuelle INSEE, et à la prochaine enquête quadriennale |
 
@@ -227,7 +234,8 @@ l'article ont toutes été rouvertes.
 | Localisateur, propriétaire | FAQ « Les flux de travail ou les flux **automatisés et planifiés** qui s'exécutent en arrière-plan **utilisent toujours les limites du propriétaire** du processus, quelle que soit la raison pour laquelle le processus a démarré ou quels comptes sont utilisés pour les connexions » |
 | Localisateur, transition | « Actuellement, toutes les organisations sont dans une période de transition au cours de laquelle des limites de période de transition plus élevées s'appliquent. Une fois la période de transition terminée, les limites officielles sont applicables. **Créez vos flux de cloud en fonction des limites officielles** » |
 | Ce que l'article en fait | tableau des deux façons de facturer (§04), chiffrage de la boucle, incident du quota (§07), FAQ sur le propriétaire du flux, et la mise en garde explicite « Dimensionnez sur les officielles, comme l'éditeur le recommande » |
-| Nuance de formulation | la page appelle « 250k **par licence** » ce que la prose de l'article appelle « une licence Process à 250 000 requêtes **par flux** ». Le corps du texte Microsoft justifie les deux lectures — « Si un flux cloud dispose d'une licence processus, le flux, ses flux enfants et ses flux associés peuvent effectuer 250 000 requêtes […] sur tous les utilisateurs du flux » — puisque la licence est rattachée à un flux. Les sources légales de la page, elles, écrivent bien « par licence Process ». |
+| Libellé de licence, corrigé | la table fr-fr écrit « **Processus Power Automate** — 250k par licence ». L'article écrivait « une licence **Process** », un nom que cette page n'emploie pas ; il écrit désormais « une licence Processus à 250 000 requêtes par flux », lecture que le corps du texte Microsoft soutient : « Si un flux cloud dispose d'une licence processus, le flux, ses flux enfants et ses flux associés peuvent effectuer 250 000 requêtes […] sur tous les utilisateurs du flux ». Le bloc Sources cite le libellé de la table entre guillemets. |
+| Ce que cette page ne porte PAS | l'énumération de ce qui compte comme requête (« toutes les requêtes d'API adressées aux connecteurs, l'analyse du conseiller de processus, les actions HTTP et les actions intégrées ») **ne range pas le déclencheur d'un flux cloud**. C'était l'écart É4 : les neuf étapes du flux de relance s'appuient sur une autre page de l'éditeur, désormais citée (§D.14). |
 | Fraîcheur | page à `ms.date` mouvante et régime de transition en cours : à revérifier à chaque décision d'architecture, et impérativement à la fin de la période de transition |
 
 ### D.4 Zapier — comment l'usage des tâches est mesuré
@@ -247,11 +255,11 @@ l'article ont toutes été rouvertes.
 | Champ | Contenu |
 |---|---|
 | URL | `https://zapier.com/pricing` |
-| Ouverte le | 30 août 2026, HTTP 200 |
+| Ouverte le | 30 août 2026, HTTP 200 (2 283 259 octets). Le HTML statique ne porte que « Professional — Starting from $19.99 /month » : les paliers sont rendus côté client et ont été lus sur la page rendue |
 | Localisateur | plan **Professional**, facturation annuelle |
-| Valeurs relevées | 750 tâches/mois → **19,99 $** ; 1 500 → 39 $ ; 2 000 → **49 $** ; 5 000 → **89 $** ; 100 000 → **489 $**. « Tous les prix de base de ce document sont en USD » ; la facturation annuelle est annoncée −33 % par rapport au mensuel |
+| Valeurs relevées | 750 tâches/mois → **19,99 $** ; 1 500 → 39 $ ; 2 000 → **49 $** ; 5 000 → **89 $** ; 10 000 → 129 $ ; 100 000 → **489 $**. « All prices in this document are in USD » ; « Annual subscriptions are billed yearly at 33% off the monthly rate » |
 | Concordance avec l'article | les quatre paliers cités par l'article (750/2 000/5 000/100 000) sont exacts au 30 août 2026 |
-| Détail à connaître | la grille comporte un cinquième palier intermédiaire (1 500 tâches à 39 $) que l'article ne cite pas. Ce n'est pas une erreur : l'article ne prétend pas énumérer la grille, il montre « la mécanique des paliers ». Un lecteur qui rouvre la page verra cependant cinq paliers là où l'article en cite quatre. |
+| Détail à connaître | la grille comporte deux paliers intermédiaires que l'article ne cite pas : 1 500 tâches à 39 $ et 10 000 à 129 $. Ce n'est pas une erreur : l'article ne prétend pas énumérer la grille, il montre « la mécanique des paliers », et il le dit deux fois. Un lecteur qui rouvre la page verra cependant six paliers là où l'article en cite quatre. |
 | Périmètre | montants en dollars, hors taxes locales, un seul éditeur. L'article le dit deux fois, dans le tableau et dans l'encadré « Prix affiché, prix contractuel et coût complet sont trois choses » |
 | Fraîcheur | tarif éditeur : le plus volatil de tout le dossier. Revérification obligatoire à la date de décision |
 
@@ -323,31 +331,72 @@ l'article ont toutes été rouvertes.
 
 ### D.11 Sources citées et non rouvertes
 
-**Aucune.** Les dix sources listées dans le bloc « Sources » de la page ont été
-ouvertes le 30 août 2026 et lues dans le document original. Deux ont demandé un
-détour, consigné ci-dessus : la Banque de France (403 sur `WebFetch`, obtenue par
-`curl`) et France Num (réponse vide sur `WebFetch`, obtenue par `curl`).
+**Aucune.** Les douze sources listées dans le bloc « Sources » de la page ont
+été ouvertes le 30 août 2026 et lues dans le document original — les dix
+d'origine au relevé, puis une seconde fois avant correction, et les deux
+ajoutées ce jour-là (§D.13, §D.14). Deux ont demandé un détour, consigné
+ci-dessus : la Banque de France (403 sur `WebFetch` puis sur un `curl` nu ;
+obtenue en 829 908 octets avec un en-tête `User-Agent`, `Accept` et `Referer`)
+et France Num (réponse vide sur `WebFetch`, obtenue par `curl`, 117 386
+octets). La grille Zapier est rendue côté client : le HTML statique ne porte que
+« Professional — Starting from $19.99 /month », et les cinq paliers ont été lus
+sur la page rendue.
 
-### D.12 Ce qui n'a pas pu être revérifié
+### D.12 La mesure du temps de lecture, refaite
 
-| Élément | Pourquoi | Conséquence |
-|---|---|---|
-| La mesure « 4 191 mots, 20,955 minutes » du commentaire de `page.tsx`, et la répartition des huit minutes entières entre les sections | `scripts/measure-guide-readtime.mjs` lit la page **servie** sur `http://localhost:3000`. Aucun serveur de développement n'était disponible au moment du contrôle (connexion refusée sur 3000, 3001, 3003 ; 404 sur 3002), et la production sert encore l'ancienne version | Le nombre de 4 191 mots est **repris de la page, non re-mesuré**. Il reste borné indirectement : le test colocalisé, qui porte la même logique de dépouillement, exige entre 3 000 et 4 200 mots et une cohérence à ±1 minute avec le registre ; il passe (§H) |
+Le contrôle précédent n'avait pas pu relancer `scripts/measure-guide-readtime.mjs`,
+faute de serveur local. Il l'a été le 30 août 2026, sur `http://localhost:3000`,
+et une dernière fois à 23 h 33 après la dernière retouche de prose :
 
-### D.13 Source ouverte hors de l'article
+| Section | Mots | Minutes à 200 mots/min | Minutes publiées |
+|---|---:|---:|---:|
+| 01 réponse | 373 | 1,865 | 2 |
+| 02 mesurer | 353 | 1,765 | 2 |
+| 03 écarter | 495 | 2,475 | 2 |
+| 04 facture | 523 | 2,615 | 3 |
+| 05 décompte | 783 | 3,915 | 4 |
+| 06 trésorerie | 449 | 2,245 | 2 |
+| 07 incidents | 801 | 4,005 | 4 |
+| 08 décision | 418 | 2,090 | 2 |
+| **Total** | **4 195** | **20,975 → 21** | **21** |
 
-Ouverte pour instruire l'écart É3, **elle n'est pas citée par l'article** :
-`https://learn.microsoft.com/en-us/troubleshoot/power-platform/power-automate/flow-management/manage-orphan-flow-when-owner-leaves-org`
-(`ms.date` 2026-06-11, ouverte le 30 août 2026, HTTP 200). Elle décrit le sort
-d'un flux dont le propriétaire quitte l'organisation : « An orphaned flow is a
-flow that no longer has a valid owner. These flows **can fail** if they use
-connections tied to that user account. […] These steps help maintain business
-continuity and **reduce failures** caused by lost or invalid connections. »
-L'éditeur documente donc des **échecs**, et la remédiation consiste à assigner un
-co-propriétaire. Il ne documente pas l'arrêt silencieux sans exécution en erreur
-décrit par le troisième incident de la section 07.
+Parties entières `1+1+2+2+3+2+4+2 = 17` ; les quatre minutes restantes vont aux
+quatre plus fortes décimales (0,915 · 0,865 · 0,765 · 0,615), soit décompte,
+réponse, mesurer et facture — **la même répartition qu'avant correction**
+(2+2+2+3+4+2+4+2), la section 07 ayant franchi les quatre minutes pleines.
+`npx tsx scripts/measure-guide-readtime.mjs --check automatiser-processus-metier`
+répond `OK   mesuré 21 min   publié 21 min`, et le test colocalisé (3 000 à
+4 200 mots) passe à 4 195 — 5 mots de marge sous le plafond, ce qui a gouverné
+la réécriture : chaque phrase ajoutée pour sourcer a été payée par une coupe
+ailleurs.
 
----
+### D.13 Microsoft Learn — gérer les flux orphelins lorsque le propriétaire quitte l'organisation
+
+| Champ | Contenu |
+|---|---|
+| URL | `https://learn.microsoft.com/fr-fr/troubleshoot/power-platform/power-automate/flow-management/manage-orphan-flow-when-owner-leaves-org` |
+| Ouverte le | 30 août 2026, HTTP 200, versions anglaise (54 492 octets) et française (54 999 octets) |
+| Date de la page | `ms.date` 2026-06-11 ; base de connaissances d'origine 4556130 |
+| Titre exact, langue de la page citée | « Gérer les flux orphelins lorsque le propriétaire quitte l'organisation » |
+| Localisateur, résumé | « Un flux orphelin est un flux qui n'a plus de propriétaire valide. **Ces flux peuvent échouer** s'ils utilisent des connexions liées à ce compte d'utilisateur. » (anglais : « These flows **can fail** if they use connections tied to that user account. ») |
+| Localisateur, remédiation | « attribuer de nouveaux co-propriétaires dans le Centre d'administration Power Platform » ; cmdlets `Get-AdminFlowOwnerRole` et `Set-AdminFlowOwnerRole` ; « Ces étapes permettent de maintenir la continuité de l'activité et de **réduire les défaillances** causées par des connexions perdues ou non valides. » |
+| Ce que l'article en fait | incident 3 de la §07 et FAQ « Que devient le flux quand la personne qui l'a créé quitte l'entreprise ? ». L'article cite l'échec documenté, la remédiation par co-propriétaire, puis **marque la frontière** : l'arrêt sans aucune exécution en erreur est une hypothèse du cas construit |
+| Ce que la page n'établit pas | l'arrêt silencieux lui-même. Elle documente des échecs, c'est-à-dire ce qu'une surveillance des exécutions en erreur verrait. C'est exactement la raison pour laquelle l'article ne l'invoque plus comme mécanisme d'éditeur |
+| Fraîcheur | à rouvrir à chaque `ms.date` nouveau |
+
+### D.14 Microsoft Learn — FAQ sur les licences Power Automate
+
+| Champ | Contenu |
+|---|---|
+| URL | `https://learn.microsoft.com/fr-fr/power-platform/admin/power-automate-licensing/faqs` |
+| Ouverte le | 30 août 2026, HTTP 200 (134 942 octets) |
+| Date de la page | `ms.date` 2026-08-14 |
+| Localisateur, déclencheur | section « Limites d'action et questions de capacité » : « Dans Power Automate, **chaque exécution de déclencheur et d'action compte comme une seule action** (illustrée en tant que demandes Power Platform dans les rapports du centre d'administration). » |
+| Localisateur, exemple chiffré | « Un flux simple avec un déclencheur et une action entraîne **deux** actions chaque fois que le flux s'exécute. Chaque déclencheur et action dans le flux compte. » ; « Le déclencheur compte comme 1 action. » |
+| Localisateur, boucles | « **Chaque action compte comme un, y compris l'action de boucle elle-même.** Les actions à l'intérieur d'une boucle (Apply to Each, Do Until) s'exécutent une fois par itération : une boucle avec 2 actions et 10 itérations utilise 21 actions (1 boucle + 2 × 10). » |
+| Ce que l'article en fait | les neuf étapes du flux de relance (déclencheur + 2 filtres + 6 actions), soit 810 requêtes par mois, et la formulation « l'éditeur compte le déclencheur comme une action » |
+| Conséquence sur la boucle des 320 commandes | l'article écrivait « 1 280 requêtes à chaque exécution », ce qui omettait l'action de boucle et le déclencheur. Il écrit désormais « 1 280 requêtes **pour ces seules actions** » : 320 × 4, sans rien lui faire dire de plus |
+| Fraîcheur | même régime que §D.3 : à rouvrir à chaque `ms.date` nouveau et à la fin de la période de transition |
 
 ## E. Registre des affirmations vérifiables
 
@@ -367,10 +416,10 @@ premières, refait en §G).
 | F08 | Côté Power Platform, les actions en échec, les nouvelles tentatives et la pagination sont comptabilisées | FAIT | D.3, définition d'une requête | Vérifié |
 | F09 | Le quota ne se reporte pas d'un jour sur l'autre | FAIT | D.3, FAQ report | Vérifié |
 | F10 | Un flux automatisé ou planifié utilise toujours les limites de son propriétaire | FAIT | D.3, FAQ limites de compte | Vérifié |
-| F11 | Power Automate Premium monte à 40 000 requêtes par utilisateur et par jour ; une licence Process à 250 000 ; un module de capacité ajoute 50 000 | FAIT | D.3, table des licences et module complémentaire | Vérifié ; « par flux » / « par licence », voir D.3 |
+| F11 | Power Automate Premium monte à 40 000 requêtes par utilisateur et par jour ; une licence Processus à 250 000 par flux ; un module de capacité ajoute 50 000 | FAIT | D.3, table « Power Automate limites de demande par licence » et paragraphe du module complémentaire | Vérifié le 30/08/2026 ; libellé « Process » corrigé en « Processus », voir D.3 |
 | F12 | Toutes les organisations sont dans une période de transition où les limites appliquées sont plus larges que les limites officielles, et l'éditeur recommande de dimensionner sur les officielles | FAIT | D.3, section période de transition | Vérifié |
 | F13 | Les sélecteurs d'un robot d'interface dépendent de la structure de l'application | FAIT | D.9, « structure hiérarchique » | Vérifié |
-| F14 | Il faut compter le retest à chaque version du logiciel piloté | RECOMMANDATION | Déduction éditoriale à partir de D.9 ; aucune obligation dans la source | Signalée comme telle ici, non signalée dans la page |
+| F14 | Il faut compter le retest à chaque version du logiciel piloté | RECOMMANDATION | Déduction éditoriale à partir de D.9 ; aucune obligation dans la source | Signalée comme telle ici, non signalée dans la page. Hors des sept écarts traités : la phrase vit en FAQ et n'attribue rien à l'éditeur |
 | F15 | Une AIPD est requise lorsqu'un traitement est susceptible d'engendrer un risque élevé pour les droits et libertés, et la question se tranche avant la mise en œuvre | FAIT | D.8, deux citations | Vérifié |
 | F16 | L'automatisation ne suffit ni à conclure qu'une AIPD est requise, ni à l'écarter | FAIT reformulé | D.8, mécanique « deux critères sur neuf » | Vérifié, voir la démonstration en D.8 |
 | F17 | La CNIL recommande des tests sur données fictives ou anonymisées, des habilitations, une journalisation, des sauvegardes testées et un plan de continuité | FAIT | D.7, fiches 11, 5, 16, 17, 18 | Vérifié |
@@ -382,9 +431,13 @@ premières, refait en §G).
 | F23 | « 80 % des dossiers » ne veut pas dire « 80 % du temps » | CALCUL | §G.2, contre-exemple des dix dossiers | Vérifié |
 | F24 | Le coût horaire ne change jamais le signe d'un décompte dont tous les postes sont du temps interne | FAIT arithmétique | L'écart s'écrit `(heures rendues − heures dépensées) × taux` ; le taux est un facteur positif commun. Vérifié aussi par balayage dans le test à 22, 32, 44,7, 65 et 120 €/h | Vérifié, et la condition « tous les postes sont du temps interne » est écrite dans la page |
 | F25 | Un flux qui rend 39,78 heures sur douze mois ne justifie pas le premier palier à 8 000 € HT, et allonger l'horizon n'y change rien puisqu'il dégage 864 € sur trois ans | CALCUL + FAIT | §G.5 pour les 864 €, D.10 pour les 8 000 € | Vérifié |
-| F26 | Le flux de relance s'arrête sans alerte quand le compte de son propriétaire est désactivé, et aucune exécution en erreur n'est produite | **NON SOURCÉ** | Aucune des dix sources citées. La source éditeur non citée (D.13) documente au contraire des échecs | **Écart É3** |
-| F27 | Un tableau croisé donne la courbe en dix minutes ; l'expert-comptable sort le coût horaire en quelques minutes ; le comptable sort deux extractions de balance âgée en une heure ; un flux sans code se démonte en une heure | **NON SOURCÉ** | Aucune source, aucun protocole | **Écart É5** |
-| F28 | Vingt dossiers consécutifs suffisent à sortir un neuvième décile exploitable | **NON SOURCÉ** | Règle éditoriale ; sur 20 valeurs, le neuvième décile est la 18ᵉ | **Écart É6** |
+| F26 | Un flux devenu orphelin « peut échouer » s'il utilise des connexions liées au compte parti, et la remédiation est d'assigner un co-propriétaire | FAIT | D.13, résumé de la page et section « Attribuer de nouveaux co-propriétaires » | Vérifié le 30/08/2026 |
+| F26b | L'arrêt sans aucune exécution en erreur, invisible d'une surveillance qui ne regarde que les échecs | **HYPOTHÈSE DU CAS** | Aucune source ne le documente ; la page éditeur documente l'inverse (D.13) | **É3 traité** : la §07 l'annonce comme hypothèse (« La suite est une hypothèse ») et l'introduction ne l'adosse plus à l'éditeur. Un test l'interdit de revenir en fait |
+| F29 | Chaque exécution de déclencheur et d'action compte comme une seule action ; un flux à un déclencheur et une action consomme deux actions | FAIT | D.14, section « Limites d'action et questions de capacité » | Vérifié le 30/08/2026 — c'est ce qui fonde les neuf étapes et les 810 requêtes |
+| F30 | Une boucle compte pour une action, en plus de celles qu'elle contient | FAIT | D.14, « Chaque action compte comme un, y compris l'action de boucle elle-même » | Vérifié ; l'article s'en tient donc aux 1 280 requêtes « pour ces seules actions » |
+| F31 | Le coût horaire 2025 est une estimation révisable entre deux enquêtes européennes | FAIT | D.1, note sous le tableau | Vérifié ; désormais écrit dans le bloc Sources |
+| F27 | ~~Un tableau croisé donne la courbe en dix minutes ; l'expert-comptable sort le coût horaire en quelques minutes ; le comptable sort deux extractions en une heure ; un flux sans code se démonte en une heure ; une question se tranche en une demi-journée~~ | **RETIRÉ** | Aucune source, aucun protocole | **É5 traité** : cinq affirmations, sept occurrences, supprimées de la page et de la FAQ ; un test interdit leur retour |
+| F28 | Vingt dossiers consécutifs donnent une moyenne solide ; le neuvième décile qu'on en tire est un ordre de grandeur, la dix-huitième valeur, qui sert à dimensionner l'exception et non à promettre un délai | FAIT arithmétique + règle éditoriale annoncée | `⌈0,9 × 20⌉ = 18` ; la FAQ dit désormais laquelle des deux natures s'applique | **É6 traité** ; un test fige la qualification |
 
 ### Affirmations que l'article ne fait pas, et qu'il serait facile de lui prêter
 
@@ -608,22 +661,53 @@ six heures de republication 6 × 44,70        =    268,20 €   ✔
 
 Les trois montants décalés sont bien des multiples entiers de la facture
 moyenne : 3, 45 et 48 relances. Aucun flux fractionnaire ne s'y glisse — c'est
-précisément ce qui produit l'écart É1 avec les 5 474 € de la section 06.
+précisément ce qui produisait l'écart É1 avec les 5 474 € de la section 06.
+Cette cadence est désormais annoncée dans le bloc d'unités de la section, avec
+son écart chiffré (§G.10).
 
 ### G.8 Les quotas de plateforme appliqués au flux
 
 | Grandeur | Calcul | Résultat | Publié |
 |---|---|---:|---:|
 | Actions réussies Zapier | `6 actions × 90 relances` | 540 / mois | 540 ✔, sous le palier de 750 ✔ |
-| Requêtes Power Platform | `9 étapes × 90 relances` | 810 / mois | 810 ✔ (voir É2 et É4) |
+| Requêtes Power Platform | `9 étapes × 90 relances` | 810 / mois | 810 ✔ (le neuf est documenté, §D.14) |
+| Requêtes par jour, même cadence que la §07 | `810 ÷ 30` | 27 | 27 ✔, contre 6 000 par 24 h ✔ (même période, depuis É2) |
+| Variante sans déclencheur, pour mémoire | `8 étapes × 90` | 720 | non publiée : l'éditeur compte le déclencheur |
 | Boucle mal écrite, par exécution | `320 commandes × 4 actions` | 1 280 | 1 280 ✔ |
 | Boucle, par jour | `1 280 × 4 passages` | 5 120 | 5 120 ✔, contre 6 000 par 24 h ✔ (même période, ici) |
 
+### G.10 Les deux journées, réconciliées
+
+Écart É1, refait à la main le 30 août 2026 :
+
+```text
+journée calendaire (§06)   1 998 000 ÷ 365    = 5 473,9726…  → 5 474 €
+journée en relances (§07)  3 × 1 850          = 5 550 €
+écart                      5 550 − 5 474      =    76 €
+écart relatif              76 ÷ 5 474         = 0,013884…    → 1,4 %
+relances impliquées        3 × 365            = 1 095 par an
+relances de la chaîne §06  90 × 12            = 1 080 par an
+journée fractionnaire évitée  90 × 12 ÷ 365   = 2,9589… relance
+```
+
+Les deux cadences restent justes dans leur cadre, et le guide garde les deux :
+la chaîne de trésorerie a besoin d'une année civile, les incidents ont besoin de
+relances entières — on ne décale pas 2,96 relance. Ce qui manquait était
+l'annonce. Elle tient en trois lignes dans le bloc d'unités de la §07, chiffre
+compris, et un test refait la soustraction. Le guide publie 76 € mais pas
+« 1,4 % » : le pourcentage sert ici au contrôle, il n'est pas une valeur
+affichée au lecteur.
+
+**Contrôle de la conversion de la §04.** `810 ÷ 30 = 27` exactement, et
+`9 étapes × 3 relances = 27` : la phrase corrigée reste vraie par les deux
+routes, et elle emploie la cadence que la §07 annonce.
+
 ### G.9 Synthèse arithmétique
 
-**Cinquante-quatre lignes de calcul refaites en G.2 à G.8, cinquante-quatre
-concordances** — chacune porte sa marque `✔` en regard de la valeur publiée, et
-couvre l'intégralité des grandeurs chiffrées des sections 01 à 08. Aucun arrondi
+**Cinquante-six lignes de calcul refaites en G.2 à G.8, cinquante-six
+concordances**, plus les huit lignes de réconciliation de G.10 — chacune porte
+sa marque `✔` en regard de la valeur publiée, et l'ensemble couvre les grandeurs
+chiffrées des sections 01 à 08. Aucun arrondi
 n'est faux : `1 778,166 → 1 778,17`, `−546,234 → −546,23`, `5 473,9726 → 5 474`,
 `21 895,8904 → 21 896`, `1 313,7534 → 1 314`, `656,8767 → 657`,
 `0,912328 → 0,91`, `109,479452 → 109,48`, `124,076712 → 124,08`,
@@ -635,9 +719,17 @@ la formulation courte, 198,88 € dans le texte) sont cohérents.
 ## H. Ce que les tests colocalisés verrouillent
 
 `npx vitest run src/app/guides/automatiser-processus-metier/` exécuté le
-**30 août 2026 à 22 h 53** : **2 fichiers, 57 tests, 57 passés, 0 échec**, durée
-1,19 s. Ce résultat est une observation datée, pas une garantie de non-régression
-future.
+**30 août 2026 à 23 h 26**, après correction des écarts : **2 fichiers,
+61 tests, 61 passés, 0 échec**, durée 0,51 s. `npx tsc --noEmit` est propre au
+même moment. Ce résultat est une observation datée, pas une garantie de
+non-régression future.
+
+Quatre tests ont été **ajoutés** dans cette passe, un par écart susceptible de
+revenir par inadvertance ; aucun test n'a été supprimé ni assoupli. Deux
+assertions de date ont été portées du 28 au 30 août 2026, avec en commentaire la
+raison : les sources ont été rouvertes ce jour-là, et la page ne doit annoncer
+ni un relevé plus ancien, ni un relevé plus récent que le dernier réellement
+fait.
 
 ### `process-priority-tool.test.ts` (13 tests)
 
@@ -658,7 +750,7 @@ future.
   coût est nul, délai `null` si la contribution mensuelle ne couvre pas
   l'exploitation.
 
-### `content-quality.test.ts` (44 tests) — ce qu'ils rendent non modifiable sans échec
+### `content-quality.test.ts` (48 tests) — ce qu'ils rendent non modifiable sans échec
 
 | Famille | Ce qui est verrouillé |
 |---|---|
@@ -672,6 +764,12 @@ future.
 | Honnêteté commerciale | un seul bloc « Transparence » ; un seul CTA en ligne ; « Ce que notre propre grille dit contre nous » ; « C'est une décision, pas un échec » ; « ne rien automatiser cette année » |
 | Interdits | aucune fréquence sur une population jamais mesurée (« la plupart des… », « l'erreur la plus fréquente… ») ; aucun connecteur robotique ; aucune métaphore des « portes » ; aucun vocabulaire de production visible |
 | Outil | pas de `localStorage`, pas de `fetch`, pas de `<form>`, exclu du temps de lecture, et premier écran = calcul résolu, jamais « décision bloquée » |
+| **Assiette (É1, nouveau)** | la §07 doit poser ses deux journées côte à côte — 5 550 €, 5 474 €, 76 €, « mois de trente jours » —, et le test refait `1 998 000 ÷ 365` et `3 × 1 850` avant de les chercher dans le rendu |
+| **Période (É2, nouveau)** | « 27 par jour » et « 6 000 par utilisateur et par 24 heures » doivent coexister : un total mensuel ne peut plus être opposé seul à un quota journalier |
+| **Charge de preuve (É3, nouveau)** | « à partir de mécanismes documentés par les éditeurs » est interdit dans la §07 ; « peut échouer », « co-propriétaire » et « La suite est une hypothèse » sont exigés, et les deux URL Microsoft ajoutées doivent être présentes dans la page |
+| **Durées déclarées (É5, nouveau)** | les quatre formulations retirées ne peuvent pas revenir, corps et FAQ compris — dont « se tranche en moins d'une demi-journée » ; la double extraction de balance âgée reste demandée, sans durée |
+| **Décile (É6, nouveau)** | la FAQ ne peut plus écrire « neuvième décile exploitables » ; elle doit porter « un ordre de grandeur, pas une statistique », « c'est la dix-huitième » et la borne d'usage. Le test recalcule `⌈0,9 × 20⌉ = 18` |
+| **Déclencheur (É4, nouveau)** | « l'éditeur compte le déclencheur comme une action » doit rester dans le corps, à l'endroit où les neuf étapes sont avancées |
 
 **Ce que les tests ne verrouillent pas** : la véracité des sources externes. Ils
 relisent la page et le modèle ; aucun n'ouvre une URL. C'est exactement le rôle
@@ -681,67 +779,79 @@ de la section D de ce dossier.
 
 ## I. Points de vigilance et limites
 
-### I.1 Les écarts, en détail
+### I.1 Les écarts, et le traitement retenu
 
-**É1 — deux cadences journalières.** La section 06 construit sa journée sur
-l'année civile (`1 998 000 ÷ 365 = 5 474 €`) ; la section 07 la construit sur des
-relances entières (`3 × 1 850 = 5 550 €`). Le choix de la section 07 est
-défendable et même documenté dans les commentaires de test : il évite un « flux
-calendaire fractionnaire », c'est-à-dire 2,96 relances par jour. Mais un lecteur
-qui suit le fil rouge d'une section à l'autre voit deux journées différentes pour
-le même flux, dans un guide dont l'argument central est que les décalages
-d'unités font déraper les budgets. Une phrase suffirait à le dire.
+**É1 — deux cadences journalières. Corrigé.** La section 06 construit sa journée
+sur l'année civile (`1 998 000 ÷ 365 = 5 474 €`) ; la section 07 la construit sur
+des relances entières (`3 × 1 850 = 5 550 €`). Les deux se justifient : la
+chaîne de trésorerie est annuelle, les incidents ne peuvent pas décaler
+2,96 relance. Ce qui manquait, dans un guide dont l'argument central est que les
+décalages d'unités font déraper les budgets, c'était de le dire. Le bloc
+« UNITÉS TENUES DANS TOUTE CETTE SECTION » porte maintenant les deux journées et
+leur écart de 76 €, et un test les exige (§G.10, §H).
 
-**É2 — mois contre 24 heures.** Rien de faux, mais la phrase à retenir
-(« 810 requêtes par mois, très loin des 6 000 ») met côte à côte deux périodes
-différentes. À l'inverse, la ligne de la boucle (5 120 requêtes par jour contre
-6 000 par 24 heures) compare bien deux grandeurs journalières : la rigueur est
-là, elle n'est simplement pas tenue partout.
+**É2 — mois contre 24 heures. Corrigé.** La phrase convertit avant de comparer :
+810 requêtes par mois valent 27 par jour, en face de 6 000 par utilisateur et
+par 24 heures. La ligne de la boucle (5 120 par jour contre 6 000 par 24 heures)
+était déjà correctement appariée ; la rigueur est désormais tenue des deux
+côtés, et sur la cadence que la §07 annonce.
 
-**É3 — l'arrêt silencieux.** C'est le seul écart qui touche à la charge de
-preuve. La section 07 annonce des mécanismes « documentés par les éditeurs ».
-Pour l'incident 1 (quota, report, nouvelles tentatives) et l'incident 2 (rejeu
-recompté), c'est vrai et vérifié en D.3 et D.4. Pour l'incident 3, la source
-citée n'établit que la propriété du quota ; le mécanisme raconté — arrêt sans
-aucune exécution en erreur, invisible d'une surveillance qui ne regarde que les
-échecs — n'est documenté nulle part dans les sources de la page, et la page de
-support de l'éditeur qui traite exactement ce cas (D.13) décrit des **échecs**.
-Deux issues honnêtes : citer une source qui documente l'arrêt silencieux, ou
-présenter le mécanisme comme une hypothèse du cas construit au même titre que
-H22. La leçon opérationnelle de l'incident — surveiller **l'absence d'exécution**
-et pas seulement les exécutions en erreur — reste juste dans les deux cas, et
-elle est excellente ; c'est son adossement documentaire qui manque.
+**É3 — l'arrêt silencieux. Corrigé, et localisateur ajouté.** C'était le seul
+écart qui touchait à la charge de preuve. Pour l'incident 1 (quota, report,
+nouvelles tentatives) et l'incident 2 (rejeu recompté), l'adossement était vrai
+et vérifié en D.3 et D.4. Pour l'incident 3, la source citée n'établissait que la
+propriété du quota. La page de support de l'éditeur qui traite exactement ce cas
+a été ouverte (D.13) : elle documente des **échecs** — « Ces flux peuvent
+échouer s'ils utilisent des connexions liées à ce compte d'utilisateur » — et la
+remédiation par co-propriétaire. Des deux issues honnêtes possibles, les deux
+ont été prises : la source est citée pour ce qu'elle dit, et le mécanisme qui
+n'en relève pas est requalifié en hypothèse du cas construit, à l'endroit exact
+où le texte quitte la documentation. L'introduction de la section ne couvre plus
+les trois incidents en bloc. La leçon opérationnelle — surveiller **l'absence
+d'exécution** et pas seulement les exécutions en erreur — est inchangée, et elle
+est maintenant la conclusion d'un raisonnement dont chaque marche est nommée.
 
-**É4 — le neuvième pas.** Compter le déclencheur parmi les requêtes Power
-Platform est prudent : si le déclencheur ne compte pas, le flux consomme 720 et
-non 810 requêtes par mois, et la conclusion se renforce. Le mot « neuf » mérite
-néanmoins une note, parce que l'article demande au lecteur de refaire ce comptage
-sur son propre flux.
+**É4 — le neuvième pas. Localisateur changé.** Le relevé supposait un
+sur-comptage prudent : sans le déclencheur, le flux consommerait 720 requêtes et
+la conclusion se renforcerait. La réouverture des sources montre mieux que cela.
+La *FAQ sur les licences Power Automate* (D.14) écrit « chaque exécution de
+déclencheur et d'action compte comme une seule action » et « Le déclencheur
+compte comme 1 action » : les neuf étapes sont **documentées**. C'est la page
+citée qui était la mauvaise, pas le chiffre. L'article attribue désormais la
+règle à l'éditeur et cite la page qui la porte. Le même document a servi à
+resserrer la boucle des 320 commandes : 1 280 requêtes valent « pour ces seules
+actions », l'action de boucle et le déclencheur s'ajoutant par-dessus.
 
-**É5 — les durées d'exécution.** Dix minutes de tableau croisé, une heure
-d'extraction, une heure pour démonter un flux : ces durées gouvernent la
-faisabilité de toute la méthode. Elles sont plausibles et elles ne sont pas
-sourcées. Le guide, qui exige ailleurs qu'on chronomètre au lieu de déclarer,
-déclare ici.
+**É5 — les durées d'exécution. Retirées.** Dix minutes de tableau croisé, une
+heure d'extraction, une heure pour démonter un flux, quelques minutes
+d'expert-comptable — et, trouvée au passage, une demi-journée par question :
+cinq affirmations, sept occurrences, qui gouvernaient la faisabilité de toute la
+méthode sans source ni protocole, dans un guide qui exige ailleurs qu'on
+chronomètre au lieu de déclarer. Les phrases restent, les durées partent. Aucune
+n'a été remplacée par une autre estimation.
 
-**É6 — le neuvième décile sur vingt dossiers.** Sur vingt valeurs triées, le
-neuvième décile est la dix-huitième : deux dossiers atypiques suffisent à le
-déplacer. Le guide s'en sert pour « dimensionner l'exception », usage qui
-supporte l'imprécision. Le mot « exploitable », lui, mériterait d'être qualifié.
+**É6 — le neuvième décile sur vingt dossiers. Corrigé.** Sur vingt valeurs
+triées, le neuvième décile est la dix-huitième : deux dossiers atypiques
+suffisent à le déplacer. La FAQ sépare maintenant ce qui est solide (la moyenne)
+de ce qui ne l'est pas (le décile), dit pourquoi, et borne l'usage à ce que
+l'imprécision supporte : dimensionner l'exception, jamais promettre un délai.
 
-**É7 — dates et déploiement.** Constat brut, sans jugement : la page affiche le
-28 août 2026 ; `page.tsx` a été modifié le 30 août 2026 à 22 h 16 ; la production
-sert encore la version du 29 juillet 2026. Le dépôt n'étant pas versionné ici,
-la nature des modifications du 30 août n'est pas qualifiable. Le §15 de la charte
-demande une nouvelle `dateModified` après publication pour tout changement
-substantiel.
+**É7 — dates et déploiement. Corrigé côté dépôt.** `dateModified` porte
+`2026-08-30T23:20:00+02:00`, l'heure réelle de la dernière écriture ; la date
+visible en découle, comme `openGraph.modifiedTime` et le JSON-LD. Les dix
+sources ayant été rouvertes le 30 août 2026 avant correction, toutes les
+mentions de consultation portent cette date — aucune date de lecture non faite
+n'est écrite, et aucune relecture humaine n'est revendiquée nulle part. **Ce qui
+reste** : la production servait encore la version du 29 juillet 2026
+(`"dateModified":"2026-07-29T19:07:13Z"`) pendant ce travail. Tant que le lot
+n'est pas déployé, la page publiée ne porte aucune de ces corrections.
 
 ### I.2 Limites que l'article énonce lui-même, et qui tiennent
 
 - « Ce guide ne valide ni licence, ni conformité, ni sécurité, ni faisabilité » ;
 - « Les prix des éditeurs, les quotas de plateforme et les données publiques
   citées évoluent : revérifiez-les à votre date de lecture » — au 30 août 2026,
-  aucune des dix sources n'a bougé sur les valeurs citées ;
+  aucune des douze sources n'a bougé sur les valeurs citées ;
 - le calculateur « ne compte que des heures », et la page le dit **sous** le
   calculateur, avec le renvoi vers la section 06 qui remonte le même flux à
   +768 € ;
@@ -757,8 +867,9 @@ substantiel.
   ni des ordres de grandeur documentés : ce sont des curseurs à contester un par
   un, ce que l'article demande explicitement de faire.
 - **Le rendu.** Aucun contrôle visuel, aucun test de responsive et aucune mesure
-  Lighthouse n'ont été refaits pour ce dossier : le serveur local n'était pas
-  disponible et la production sert une autre version.
+  Lighthouse n'ont été refaits : seul le HTML servi par `localhost:3000` a été
+  lu, pour compter les mots section par section. La production sert une autre
+  version.
 - **L'indexation.** Non vérifiée, et distincte de la présence au sitemap.
 
 ---
@@ -770,9 +881,10 @@ substantiel.
 **Aucun lecteur humain extérieur n'a relu cet article, et ce dossier n'en
 invente aucun.** Aucun test lecteur, aucun panel, aucun dirigeant de PME n'a été
 sollicité. Les vérifications consignées ici ont été faites par un agent : lecture
-intégrale de la page et des tests, réouverture des dix sources, recalcul manuel,
-exécution de la batterie colocalisée. Une contre-relecture par agent n'est pas
-l'avis d'une personne réelle.
+intégrale de la page et des tests, réouverture des douze sources, recalcul
+manuel, correction des sept écarts, exécution de la batterie colocalisée. Une
+contre-relecture par agent n'est pas l'avis d'une personne réelle, et corriger
+un écart de sourçage ne remplace pas une relecture.
 
 Conséquence directe, au sens du §13 : tant qu'aucun lecteur humain extérieur n'a
 relu le guide et qu'aucune instruction explicite du commanditaire ne délègue la
@@ -783,20 +895,22 @@ humaine »**.
 
 ```text
 Dossier : docs/research/automatiser-processus-metier.md
-Nature : reconstitution du socle de preuves d'un article déjà écrit
-Date du travail : 2026-08-30
-Périmètre écrit : ce fichier, et lui seul
-Page, tests, registre, manifestes : NON MODIFIÉS
-Sources citées par l'article : 10
-Sources rouvertes et datées ce jour : 10
+Nature : socle de preuves, puis correction des écarts qu'il avait trouvés
+Date du travail : 2026-08-30 (relevé, puis correction à partir de 23:00)
+Périmètre écrit : ce fichier, src/app/guides/automatiser-processus-metier/,
+                  et la seule entrée du slug dans src/lib/guides.ts
+Sources citées par l'article : 12 (10 + 2 ajoutées pour É3 et É4)
+Sources rouvertes et datées ce jour : 12
 Sources citées non rouvertes : 0
-Élément cité non revérifié : 1 (mesure de temps de lecture, voir D.12)
-Source ouverte hors article : 1 (D.13, pour instruire l'écart É3)
-Lignes de calcul refaites à la main (G.2 à G.8) : 54
+Élément cité non revérifié : 0 (le temps de lecture a été remesuré, D.12)
+Lignes de calcul refaites à la main (G.2 à G.8, G.10) : 56 + 8
 Écarts arithmétiques trouvés : 0
-Écarts d'unité, de sourçage ou de date signalés : 7 (section 0)
-Hypothèses du cas construit recensées : 22
-Batterie colocalisée : 57/57 le 2026-08-30 à 22:53
+Écarts d'unité, de sourçage ou de date : 7 relevés, 7 traités (section 0)
+Tests ajoutés : 4 · tests supprimés ou assouplis : 0
+Hypothèses du cas construit recensées : 22 (H11 et H12 restent non déclarées
+                  comme telles dans la page ; voir §F)
+Batterie colocalisée : 61/61 le 2026-08-30 à 23:26 · tsc --noEmit propre
+Temps de lecture : 4 195 mots, --check OK (21 min publiées, 21 mesurées)
 Relecture humaine extérieure : AUCUNE
 Statut proposé : PRÊT POUR REVUE HUMAINE
 Production : NON À JOUR (sert la version du 29/07/2026 au 30/08/2026)
@@ -816,18 +930,28 @@ Indexation : NON VÉRIFIÉE
 | CNIL, guide sécurité | À la prochaine édition du guide |
 | CNIL, AIPD | À toute nouvelle délibération modifiant les listes de traitements |
 | Microsoft, éléments d'interface | À chaque `ms.date` nouveau |
+| Microsoft, flux orphelins (D.13) | À chaque `ms.date` nouveau : c'est la source de l'incident 3 |
+| Microsoft, FAQ licences (D.14) | À chaque `ms.date` nouveau : c'est elle qui fonde les neuf étapes et les 810 requêtes |
 | `/tarifs` Hagnéré Code | À chaque modification de la grille : trois montants de l'article en dépendent, et un test échoue si la grille change |
 
-### J.4 Ce qu'il faudrait pour lever le blocage « traçabilité »
+### J.4 Ce qu'il reste après la correction
 
-1. Trancher É3 : citer une source qui documente l'arrêt silencieux d'un flux dont
-   le propriétaire est désactivé, ou requalifier ce mécanisme en hypothèse.
-2. Réconcilier É1 en une phrase, et É2 en rappelant la période.
-3. Qualifier É5 et É6 comme des repères éditoriaux plutôt que comme des faits.
-4. Faire relire par un lecteur humain extérieur non technique et consigner ses
-   réponses, ou obtenir du commanditaire une délégation explicite.
-5. Déployer, puis vérifier l'URL de production et remettre la `dateModified` en
-   accord avec la dernière modification substantielle.
-
-Les points 1 à 3 et 5 sortent du territoire de ce dossier : ils sont signalés
-ici, ils ne sont pas appliqués.
+1. ~~Trancher É3~~ — fait : la source qui traite le cas est citée pour ce
+   qu'elle documente, et le mécanisme qu'elle ne documente pas est requalifié en
+   hypothèse, à l'endroit où il est employé.
+2. ~~Réconcilier É1, rappeler la période pour É2~~ — fait, avec les deux
+   journées écrites côte à côte et la conversion en requêtes par jour.
+3. ~~Qualifier É5 et É6~~ — fait : les durées non mesurables sont retirées, le
+   neuvième décile est qualifié et son usage borné.
+4. **Faire relire par un lecteur humain extérieur non technique** et consigner
+   ses réponses, ou obtenir du commanditaire une délégation explicite. Rien de
+   ce qui précède ne remplace ce point : le statut reste « prêt pour revue
+   humaine ».
+5. **Déployer**, puis vérifier l'URL de production. `dateModified` est déjà
+   alignée sur la dernière écriture réelle (`2026-08-30T23:20:00+02:00`) ; c'est
+   la production qui est en retard, pas le registre.
+6. Deux hypothèses du cas construit restent non déclarées comme telles dans la
+   page : la forme du flux de relance (H11 : un déclencheur, deux filtres, six
+   actions) et la boucle mal écrite du second flux (H12). Elles ne sont
+   attribuées à aucune source et ne trompent personne, mais elles sont le seul
+   endroit du guide où un chiffre du cas circule sans étiquette locale.

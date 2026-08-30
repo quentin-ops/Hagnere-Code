@@ -303,15 +303,16 @@ const HAND = {
 
 /**
  * Mesure du 30/08/2026 par `npx tsx scripts/measure-guide-readtime.mjs
- * pourquoi-site-pas-visible-google`, jouée sur l'article RENDU : « 4175 mots
- * 21 min ». La constante a baissé d'une unité — et d'une seule — parce que
- * l'incident 2 a perdu le mot « soit » en passant au conditionnel exigé par le
- * §5.5 (« La vraie correction serait […], soit une heure et 50 € » est devenu
- * « La vraie correction coûterait une heure et 50 € : […] »). L'exigence du
- * test est inchangée : égalité stricte avec le script, temps de lecture
- * recalculé depuis le nombre de mots.
+ * pourquoi-site-pas-visible-google`, jouée sur l'article RENDU : « 4199 mots
+ * 21 min ». La constante monte de vingt-quatre mots, tous portés par deux
+ * corrections de fond du 30/08/2026 : le nom du bouton « Tester l'URL active »
+ * ajouté au §02, et la phrase du §06 qui dit enfin que les trois scénarios
+ * s'excluent avant de les additionner. Le calibre reste dans la bande 3 000 à
+ * 4 200 mots, et 4 199 ÷ 200 = 20,995 s'arrondit toujours à 21 minutes :
+ * `readTimeMin` ne bouge pas. L'exigence du test est inchangée : égalité
+ * stricte avec le script, temps de lecture recalculé depuis le nombre de mots.
  */
-const MEASURED_WORDS = 4175;
+const MEASURED_WORDS = 4199;
 const MEASURED_READ_TIME = 21;
 
 afterEach(() => {
@@ -354,9 +355,17 @@ describe("qualité de contenu — pourquoi mon site n’est pas visible sur Goog
       datePublished: "2026-08-18T12:42:00Z",
       dateModified: guide.dateModified,
     });
-    // La réécriture du 28/08/2026 est substantielle : la date de modification
-    // bouge, la date de première publication ne bouge jamais.
-    expect(guide.dateModified).toBe("2026-08-28T09:00:00Z");
+    // La valeur verrouillée ici était en retard d'une réécriture : le
+    // 30/08/2026, la page a changé de libellés d'interface, de localisateur de
+    // source et de dates de relecture, ce que le §15 de la charte range parmi
+    // les changements substantiels. Le test n'est pas affaibli — il continue
+    // d'exiger une valeur exacte — il est réaligné sur l'intervention réelle.
+    // La date de première publication, elle, ne bouge jamais.
+    expect(guide.dateModified).toBe("2026-08-30T17:30:00Z");
+    // Et la date lue par le lecteur dans le bandeau doit être celle-là.
+    expect(readerVisibleText(renderedPage)).toContain(
+      "Mis à jour le 30 août 2026",
+    );
     // Repères d'affichage de la SERP, pas des seuils de conformité.
     expect(guide.title.length).toBeLessThanOrEqual(60);
     expect(guide.metaDescription.length).toBeLessThanOrEqual(155);
@@ -697,6 +706,92 @@ describe("qualité de contenu — pourquoi mon site n’est pas visible sur Goog
     );
   });
 
+  it("n’emploie que des libellés que le lecteur retrouve dans son écran", () => {
+    // « test en direct » n'existe nulle part dans l'aide française. Relevé du
+    // 30/08/2026 sur le HTML brut de
+    // support.google.com/webmasters/answer/9012289?hl=fr : la chaîne « en
+    // direct » y compte 0 occurrence, « test en ligne » 45, et le bouton porte
+    // le nom « Tester l'URL active » (« Cliquez sur Tester l'URL active »).
+    // Un lecteur qui cherchait « test en direct » dans son écran ne trouvait
+    // rien — exactement le reproche que ce guide adresse aux autres.
+    const text = body();
+    expect(text).not.toContain("test en direct");
+    expect(pageSource).not.toContain("test en direct");
+    expect(text).toContain("test en ligne");
+    expect(text).toContain("« Tester l’URL active »");
+
+    // Le garde-fou sur « canonique choisie par Google » ne voyait pas l'outil
+    // de la section 07 : son bloc porte data-read-time-exclude="true" et
+    // `stripReadTimeExcludedElements` le retire avant tout contrôle du corps.
+    // Il est donc vérifié ici sur ses deux fichiers sources.
+    const toolLogic = readFileSync(
+      resolve(repositoryRoot, "src/lib/search-visibility-diagnostic.ts"),
+      "utf8",
+    );
+    for (const source of [toolSource, toolLogic]) {
+      expect(source).not.toContain("canonique choisie par Google");
+      expect(source).not.toContain("adresse canonique Google");
+      expect(source).not.toContain("test en direct");
+      expect(source).toContain("URL canonique sélectionnée par Google");
+    }
+  });
+
+  it("rattache la règle d’accès à la page qui la porte vraiment", () => {
+    // Relevé du 30/08/2026 sur support.google.com/webmasters/answer/7687615?hl=fr :
+    // la page liste quatre autorisations et donne une ligne « Inspection de
+    // l'URL » (« Exploration uniquement » pour l'accès limité), mais elle
+    // n'emploie pas une seule fois le mot « indexation » et ne déconseille
+    // nulle part de partager son compte. La règle d'accès est sur
+    // « Demander l'exploration de vos URL » : « Vous devez être un propriétaire
+    // ou un utilisateur avec accès complet à la propriété Search Console pour
+    // pouvoir demander une indexation dans l'outil d'inspection d'URL. »
+    const sources =
+      pageSource.match(/legalSources=\{\[([\s\S]*?)\n {8}\]\}/)?.[1] ?? "";
+    const entries = sources.split(/\n {10}\{/).slice(1);
+    expect(entries.length).toBeGreaterThanOrEqual(20);
+    const entryFor = (needle: string) =>
+      entries.find((entry) => entry.includes(needle)) ?? "";
+
+    const permissions = entryFor("webmasters/answer/7687615");
+    expect(permissions).not.toBe("");
+    expect(permissions).not.toContain("indexation");
+    expect(permissions).not.toContain("compte personnel");
+    expect(permissions).toContain("Exploration uniquement");
+
+    const recrawl = entryFor("ask-google-to-recrawl");
+    expect(recrawl).toContain(
+      "propriétaire ou utilisateur avec accès complet sur la propriété",
+    );
+
+    // Et la FAQ dit au lecteur laquelle des deux pages porte quoi.
+    const faq = outOfArticleLiterals();
+    expect(faq).toContain("celle sur la demande d’exploration ajoute");
+    expect(faq).not.toContain(
+      "Google documente séparément le rôle de propriétaire",
+    );
+    // La consigne de ne pas partager son compte est une recommandation maison :
+    // elle est signée, pas prêtée à Google.
+    expect(faq).toContain(
+      "c’est notre recommandation, pas une consigne de Google",
+    );
+  });
+
+  it("dit la limite de sitemap comme la source l’écrit", () => {
+    // « Tous les formats limitent la taille d'un seul sitemap à 50 Mo (sans
+    // compression) ou 50 000 URL » (build-sitemap, relevé le 30/08/2026). La
+    // FAQ écrivait « 50 000 URL et 50 Mo par fichier » : elle perdait la
+    // compression, qui est ce qui rend le chiffre utilisable.
+    // `outOfArticleLiterals` rend en U+00A0 les insécables de la source : les
+    // chaînes cherchées ici les portent donc, écrites en séquence
+    // d'échappement pour rester visibles en relecture.
+    const text = outOfArticleLiterals();
+    expect(text).toContain(
+      "50\u00a0Mo sans compression ou 50\u00a0000\u00a0URL",
+    );
+    expect(text).not.toContain("50\u00a0000\u00a0URL et 50\u00a0Mo");
+    expect(text).toContain("URL absolues et complètes");
+  });
+
   it("donne les quotas d’API et dit qui exécute l’appel", () => {
     const text = body();
     for (const fact of [
@@ -739,6 +834,18 @@ describe("qualité de contenu — pourquoi mon site n’est pas visible sur Goog
     const text = body();
     expect(text).toContain("trois écrans de la Search Console");
     expect(text).not.toContain("deux écrans de la Search Console");
+    // Ces trois commandes se jouent depuis un poste client contre le serveur.
+    // « à taper sur votre serveur » envoyait le lecteur chercher un accès SSH
+    // dont il n'a pas besoin, et contredisait la §02 (« depuis votre poste »)
+    // comme la FAQ (« se jouent depuis n'importe quel poste »).
+    expect(text).toContain("trois commandes à taper depuis votre poste");
+    expect(text).not.toContain("commandes à taper sur votre serveur");
+    expect(text).toContain("mesure un seul chargement depuis votre poste");
+    // La limite de 2 Mo porte sur « un type de fichier compatible », pas sur le
+    // HTML : le bandeau ne doit pas resserrer ce que la source dit.
+    const banner = readerVisibleText(renderedPage);
+    expect(banner).not.toContain("HTML lu par Googlebot");
+    expect(banner).toContain("Lu par Googlebot");
     const commands = [...pageSource.matchAll(/^curl [\s\S]*?$/gm)].map(
       (match) => match[0],
     );
@@ -967,6 +1074,12 @@ describe("qualité de contenu — pourquoi mon site n’est pas visible sur Goog
     // Trois pannes indépendantes sur un site de 68 pages en quatre mois, ce
     // n'est pas vraisemblable : le guide dit qu'elles ne se cumulent pas.
     expect(incidents).toContain("ils ne se cumulent pas");
+    // Et puisqu'ils ne se cumulent pas, leur somme n'est le budget de
+    // personne : la page l'écrit à l'endroit exact où elle additionne, au lieu
+    // de laisser croire à une facture de 3 425 € pour l'imprimeur.
+    expect(incidents).toContain("Ces trois scénarios s’excluent");
+    expect(incidents).toContain("leur somme ne décrit aucune facture réelle");
+    expect(incidents).toContain("Ainsi lus, les trois scénarios pèsent");
     // La réserve sur le lien 503 → « Détectée » vit dans le scénario qu'elle
     // concerne, pas deux écrans plus haut.
     expect(incidents).toContain("La réserve appartient à ce scénario");
@@ -997,7 +1110,17 @@ describe("qualité de contenu — pourquoi mon site n’est pas visible sur Goog
     expect(text).toContain(
       "la dernière ligne du tableau ci-dessus peut donc nous rapporter, les cinq autres non",
     );
-    expect(text).toContain("Les sources officielles ont été relues le 28 août");
+    // Treize des vingt-deux sources sont entrées dans la page le 30/08/2026 :
+    // une date de relecture au 28 août ne pouvait pas les couvrir. Les
+    // vingt-deux ont été rouvertes le 30/08/2026, et les deux endroits qui
+    // annoncent cette relecture — la réserve de périmètre et ce bloc — doivent
+    // dire la même date.
+    expect(text).toContain("Les sources officielles ont été relues le 30 août");
+    expect(outOfArticleLiterals()).toContain(
+      "les sources officielles citées ici ont été relues le 30 août 2026",
+    );
+    // Aucune date de consultation ne doit précéder l'entrée de sa source.
+    expect(outOfArticleLiterals()).not.toContain("le 28 août 2026");
     expect(text).toContain(
       "Aucune position, aucune date d’indexation et aucun volume de trafic ne sont garantis",
     );

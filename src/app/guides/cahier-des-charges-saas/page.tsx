@@ -122,7 +122,7 @@ const faqCategories: GuidePremiumFaqCategory[] = [
       {
         question: "Le Data Act me garantit-il de récupérer mes données\u00a0?",
         answer:
-          "Partiellement, et pour les seuls services qui entrent dans la définition des services de traitement de données. Le règlement européen applicable depuis le 12\u00a0septembre 2025 encadre le changement de fournisseur\u00a0: son article\u00a025 fixe une période transitoire maximale de 30\u00a0jours calendaires, portée à sept mois au plus si le fournisseur justifie une impossibilité technique dans les 14\u00a0jours ouvrables\u00a0; son article\u00a029 supprime totalement les frais de changement à partir du 12\u00a0janvier 2027. Le texte ne dit rien du code source ni des droits d’exploitation. Faites qualifier votre cas, puis écrivez la clause quand même.",
+          "Partiellement, et pour les seuls services qui entrent dans la définition des services de traitement de données. Le règlement européen applicable depuis le 12\u00a0septembre 2025 encadre le changement de fournisseur\u00a0: son article\u00a025 fixe une période transitoire maximale de 30\u00a0jours calendaires, qui ne part qu’au terme d’un préavis plafonné à deux mois, portée à sept mois au plus si le fournisseur justifie une impossibilité technique dans les 14\u00a0jours ouvrables\u00a0; son article\u00a029 supprime totalement les frais de changement à partir du 12\u00a0janvier 2027. Le texte ne dit rien du code source ni des droits d’exploitation. Faites qualifier votre cas, puis écrivez la clause quand même.",
       },
       {
         question:
@@ -228,7 +228,7 @@ const subscriptionRows = [
   ],
   [
     "incomplete",
-    "Le premier paiement n’a pas abouti\u00a0; le client dispose de 23\u00a0heures",
+    "Paiement non effectué dans les 23\u00a0heures, action requise comme l’authentification, ou paiement en attente à l’état processing",
     "Ce que le client voit et peut faire pendant ces 23\u00a0heures",
   ],
   [
@@ -253,7 +253,7 @@ const subscriptionRows = [
   ],
   [
     "paused",
-    "Essai terminé sans moyen de paiement\u00a0; plus aucune facture n’est créée",
+    "Essai terminé sans moyen de paiement, et fin d’essai réglée sur pause\u00a0; plus aucune facture n’est créée",
     "Si cet état existe chez vous, ce qu’il autorise et comment on en sort",
   ],
 ];
@@ -261,7 +261,7 @@ const subscriptionRows = [
 const exitRows = [
   [
     "Les données de vos clients",
-    "Le règlement européen sur les données, applicable depuis le 12\u00a0septembre 2025, pour les seuls services de traitement de données\u00a0: période transitoire de 30\u00a0jours calendaires à l’article\u00a025, portée à sept mois au plus en cas d’impossibilité technique, frais de changement supprimés au 12\u00a0janvier 2027 à l’article\u00a029",
+    "Le règlement européen sur les données, applicable depuis le 12\u00a0septembre 2025, pour les seuls services de traitement de données\u00a0: période transitoire de 30\u00a0jours calendaires à l’article\u00a025, ouverte au terme d’un préavis de deux mois au plus, portée à sept mois au plus en cas d’impossibilité technique, frais de changement supprimés au 12\u00a0janvier 2027 à l’article\u00a029",
     "Le format, les données incluses, la fréquence, la personne qui vérifie l’export et le jeu fictif sur lequel il est rejoué avant la mise en service",
   ],
   [
@@ -414,68 +414,83 @@ export default function Page() {
             source: "EUR-Lex · règlement (UE) 2023/2854, dit Data Act",
             href: "https://eur-lex.europa.eu/eli/reg/2023/2854/oj?locale=fr",
             description:
-              "Consulté le 28\u00a0août 2026. Chapitre\u00a0VI, articles\u00a023 à 31\u00a0: changement de fournisseur de services de traitement de données. L’article\u00a025 fixe une période transitoire maximale de 30\u00a0jours calendaires et prévoit, lorsque ce délai est techniquement impossible à tenir, une période alternative «\u00a0qui ne peut excéder sept mois\u00a0», le fournisseur devant en informer le client dans les 14\u00a0jours ouvrables et justifier cette impossibilité. L’article\u00a029 supprime les frais de changement à partir du 12\u00a0janvier 2027. Le règlement est applicable depuis le 12\u00a0septembre 2025 et ne couvre pas le code source.",
+              "Consulté le 30\u00a0août 2026, texte des articles compris\u00a0: l’adresse ci-dessus sert bien le règlement en entier. Chapitre\u00a0VI, articles\u00a023 à 31\u00a0: changement de fournisseur de services de traitement de données. L’article\u00a025, paragraphe\u00a02, point\u00a0a), fixe une «\u00a0période transitoire maximale obligatoire de trente jours calendaires prenant effet au terme du délai de préavis maximal visé au point\u00a0d)\u00a0», et ce point\u00a0d) impose «\u00a0un délai de préavis maximal pour le lancement du processus de changement de fournisseur, qui ne dépasse pas deux mois\u00a0»\u00a0: deux mois de préavis au plus, puis trente jours. Le paragraphe\u00a04 prévoit, lorsque cette période est techniquement impossible à respecter, une autre période «\u00a0qui ne peut excéder sept mois\u00a0», le fournisseur devant en informer le client dans les quatorze jours ouvrables et motiver l’impossibilité. L’article\u00a029 interdit tout frais de changement «\u00a0à compter du 12\u00a0janvier 2027\u00a0», après des frais réduits du 11\u00a0janvier 2024 à cette date. L’article\u00a050\u00a0: «\u00a0Il est applicable à partir du 12\u00a0septembre 2025.\u00a0» Recherche plein texte sur cette même page le 30\u00a0août 2026\u00a0: zéro occurrence de «\u00a0code source\u00a0».",
+          },
+          {
+            source:
+              "EUR-Lex · règlement (UE) 2016/679, dit RGPD, article\u00a033",
+            href: "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32016R0679",
+            description:
+              "Consulté le 30\u00a0août 2026. Article\u00a033, paragraphe\u00a01\u00a0: le responsable du traitement «\u00a0en notifie la violation en question à l’autorité de contrôle compétente conformément à l’article 55, dans les meilleurs délais et, si possible, 72 heures au plus tard après en avoir pris connaissance, à moins que la violation en question ne soit pas susceptible d’engendrer un risque pour les droits et libertés des personnes physiques\u00a0». Au-delà de 72\u00a0heures, la notification est accompagnée des motifs du retard. C’est cet article, et non la page pratique de la CNIL, qui porte la formulation reprise en section\u00a006.",
           },
           {
             source:
               "Légifrance · code de la propriété intellectuelle, article L131-3",
             href: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278958",
             description:
-              "Consulté le 28\u00a0août 2026. «\u00a0Chacun des droits cédés fait l’objet d’une mention distincte dans l’acte de cession et le domaine d’exploitation des droits cédés est délimité quant à son étendue et à sa destination, quant au lieu et quant à la durée.\u00a0»",
+              "Consulté le 30\u00a0août 2026, version en vigueur depuis le 3\u00a0juillet 1992, au livre\u00a0Ier, titre\u00a0III «\u00a0Exploitation des droits\u00a0», chapitre\u00a0Ier «\u00a0Dispositions générales\u00a0»\u00a0— et non parmi les articles qui visent le logiciel. Premier alinéa\u00a0: «\u00a0La transmission des droits de l’auteur est subordonnée à la condition que chacun des droits cédés fasse l’objet d’une mention distincte dans l’acte de cession et que le domaine d’exploitation des droits cédés soit délimité quant à son étendue et à sa destination, quant au lieu et quant à la durée.\u00a0»",
           },
           {
             source:
               "Légifrance · code de la propriété intellectuelle, article L113-9",
             href: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039279818",
             description:
-              "Consulté le 28\u00a0août 2026. Les droits patrimoniaux sur un logiciel créé par un ou plusieurs employés dans l’exercice de leurs fonctions sont dévolus à l’employeur. Le texte vise le salarié\u00a0; il ne s’applique pas à une société extérieure.",
+              "Consulté le 30\u00a0août 2026, version en vigueur depuis le 1er\u00a0janvier 2020. Premier alinéa\u00a0: les droits patrimoniaux sur les logiciels et leur documentation créés «\u00a0par un ou plusieurs employés dans l’exercice de leurs fonctions ou d’après les instructions de leur employeur\u00a0» sont dévolus à l’employeur. Le texte vise le salarié, et le troisième alinéa l’étend aux agents publics\u00a0; il ne s’applique pas à une société extérieure.",
           },
           {
             source: "Stripe Docs · réception des événements",
             href: "https://docs.stripe.com/webhooks",
             description:
-              "Consulté le 28\u00a0août 2026. Ordre de remise non garanti, doublons possibles à reconnaître par l’identifiant de l’objet et le type d’événement, nouvelles tentatives pendant trois jours au maximum en production et trois tentatives en quelques heures en environnement de test.",
+              "Page en français consultée le 30\u00a0août 2026. Ordre de remise non garanti, doublons possibles à reconnaître par l’identifiant de l’objet et le type d’événement, nouvelles tentatives pendant trois jours au maximum en production et trois tentatives en quelques heures en environnement de test.",
           },
           {
             source: "Stripe Docs · webhooks et abonnements",
             href: "https://docs.stripe.com/billing/subscriptions/webhooks",
             description:
-              "Consulté le 28\u00a0août 2026. Source des huit états d’abonnement cités, du délai de 23\u00a0heures de l’état incomplete, de l’avertissement trois jours avant la fin d’essai, et de la précision selon laquelle l’état active ne signifie pas que toutes les factures ont été réglées. Citée comme repère de dénombrement, pas comme choix de fournisseur.",
+              "Page en français consultée le 30\u00a0août 2026. Source des huit états d’abonnement cités, de l’avertissement trois jours avant la fin d’essai, et de la précision selon laquelle l’état active ne signifie pas que toutes les factures ont été réglées. Elle donne trois causes à l’état incomplete, pas une\u00a0: «\u00a0Le client doit effectuer un paiement dans les 23 heures suivant la création de l’abonnement pour l’activer. Ou une action est requise pour le paiement, telle que l’authentification du client. Les abonnements peuvent également être à l’état incomplete si un paiement est en attente et que l’état du PaymentIntent est défini sur processing.\u00a0» Et elle conditionne l’état paused à un réglage\u00a0: l’abonnement «\u00a0a terminé sa période d’essai sans moyen de paiement par défaut et le paramètre trial_settings.end_behavior.missing_payment_method est défini sur pause\u00a0». Citée comme repère de dénombrement, pas comme choix de fournisseur.",
           },
           {
             source: "W3C · Web Content Accessibility Guidelines 2.2",
             href: "https://www.w3.org/TR/WCAG22/",
             description:
-              "Recommandation du W3C datée du 12\u00a0décembre 2024, consultée le 28\u00a0août 2026. Neuf critères ajoutés par rapport à la version\u00a02.1, dont six aux niveaux A et AA\u00a0; le critère 4.1.1 est déclaré obsolète. Le critère 2.5.8 fixe la taille minimale d’une cible à 24\u00a0×\u00a024\u00a0pixels CSS.",
+              "Recommandation du W3C datée du 12\u00a0décembre 2024, consultée le 30\u00a0août 2026. Neuf critères ajoutés par rapport à la version\u00a02.1, dont six aux niveaux A et AA\u00a0; le critère 4.1.1 est déclaré obsolète. Le critère 2.5.8 fixe la taille minimale d’une cible à 24\u00a0×\u00a024\u00a0pixels CSS.",
           },
           {
             source: "OWASP · Application Security Verification Standard 5.0.0",
             href: "https://owasp.org/www-project-application-security-verification-standard/",
             description:
-              "Version 5.0.0 publiée le 30\u00a0mai 2025, environ 350\u00a0exigences réparties en dix-sept chapitres. Référentiel de spécification et de vérification\u00a0: en citer un sous-ensemble versionné ne vaut ni audit, ni certification.",
+              "Page projet consultée le 30\u00a0août 2026. Elle date la version\u00a0— «\u00a0[30 May 2025] ASVS Version 5.0.0 is released LIVE at Global AppSec EU Barcelona 2025!\u00a0»\u00a0— et donne le format des identifiants, mais elle ne porte aucun décompte\u00a0: le nombre d’exigences et de chapitres cité par ce guide vient du fichier officiel de la version figée, référencé à la ligne suivante. Référentiel de spécification et de vérification\u00a0: en citer un sous-ensemble versionné ne vaut ni audit, ni certification.",
+          },
+          {
+            source:
+              "OWASP · ASVS 5.0.0, fichier officiel de la version figée v5.0.0",
+            href: "https://github.com/OWASP/ASVS/blob/v5.0.0/5.0/docs_en/OWASP_Application_Security_Verification_Standard_5.0.0_en.json",
+            description:
+              "Téléchargé et compté le 30\u00a0août 2026 depuis la branche figée v5.0.0\u00a0: 17 chapitres, de V1 à V17, et 345 exigences au total. L’export tabulé de la même version, dans le même dossier du dépôt, donne le même décompte. C’est le seul localisateur qui porte le chiffre publié en section\u00a003.",
           },
           {
             source: "CNIL · guide de la sécurité des données personnelles",
             href: "https://www.cnil.fr/sites/default/files/2026-05/cnil_guide_securite_personnelle.pdf",
             description:
-              "Habilitations reliées aux besoins d’accès, encadrement des interventions de maintenance, sauvegardes et tests de restauration. Utile pour rédiger des exigences\u00a0; ne vaut pas qualification juridique d’un traitement.",
+              "Version 2024, mise à jour 2026, consultée le 30\u00a0août 2026. Fiche\u00a0n°\u00a05 «\u00a0Gérer les habilitations\u00a0», page\u00a014\u00a0: «\u00a0Limiter les accès aux seules données dont un utilisateur a besoin\u00a0» et revue des habilitations «\u00a0au moins annuelle\u00a0». Fiche\u00a0n°\u00a015 «\u00a0Encadrer la maintenance et la fin de vie des matériels et logiciels\u00a0», page\u00a035\u00a0: accès de télémaintenance ouverts «\u00a0pour une durée adaptée à l’intervention et définie à l’avance\u00a0», refermés à l’issue. Fiche\u00a0n°\u00a017 «\u00a0Sauvegarder\u00a0», page\u00a040\u00a0: «\u00a0Tester régulièrement l’intégrité des sauvegardes et la capacité de les restaurer.\u00a0» Utile pour rédiger des exigences\u00a0; ne vaut pas qualification juridique d’un traitement.",
           },
           {
             source: "CNIL · notifier une violation de données personnelles",
             href: "https://www.cnil.fr/fr/notifier-une-violation-de-donnees-personnelles",
             description:
-              "Consulté le 28\u00a0août 2026. Délai de 72\u00a0heures après en avoir pris connaissance pour notifier la CNIL, sauf lorsque la violation n’est pas susceptible d’engendrer un risque pour les droits et libertés des personnes concernées.",
+              "Consulté le 30\u00a0août 2026, page datée du 24\u00a0mai 2018. Elle écrit «\u00a0Une notification initiale dans un délai de 72 heures si possible à la suite de la constatation de la violation\u00a0» et renvoie elle-même à son fondement\u00a0: «\u00a0L’obligation de notifier à la CNIL les violations de données à caractère personnel est prévue à l’article 33 du règlement général sur la protection des données (RGPD).\u00a0» Le point de départ et la réserve de risque publiés en section\u00a006 sont ceux de cet article\u00a033, cité à part.",
           },
           {
             source: "Hagnéré Code · tarifs publics",
             href: "/tarifs",
             description:
-              "Grille relevée le 28\u00a0août 2026\u00a0: SaaS et applications métier à 15\u00a0000\u00a0€ HT pour un premier produit de trois à cinq écrans, 30\u00a0000 à 60\u00a0000\u00a0€ HT pour dix à quinze écrans, Discovery Sprint à 1\u00a0500\u00a0€ HT sur deux jours, cadrage payé systématique au-delà de 8\u00a0000\u00a0€ HT de projet. La seconde bande y est libellée «\u00a010–15 écrans + IA\u00a0»\u00a0: elle ne se compare pas telle quelle à un portail sans intelligence artificielle. Repères publics et indicatifs\u00a0: le devis signé fixe le prix ferme.",
+              "Grille relevée le 30\u00a0août 2026\u00a0: SaaS et applications métier à 15\u00a0000\u00a0€ HT pour un premier produit de trois à cinq écrans, 30\u00a0000 à 60\u00a0000\u00a0€ HT pour dix à quinze écrans, Discovery Sprint à 1\u00a0500\u00a0€ HT sur deux jours, cadrage payé systématique au-delà de 8\u00a0000\u00a0€ HT de projet. La seconde bande y est libellée «\u00a010–15 écrans + IA\u00a0»\u00a0: elle ne se compare pas telle quelle à un portail sans intelligence artificielle. Repères publics et indicatifs\u00a0: le devis signé fixe le prix ferme.",
           },
         ]}
         disclaimer={{
           eyebrow: "Portée du guide",
-          title: "Une méthode de consultation, sans valeur de conseil juridique",
+          title:
+            "Une méthode de consultation, sans valeur de conseil juridique",
           description:
             "Les décisions, seuils, durées et clauses dépendent de votre produit, de vos contrats, de vos données et de vos risques. Le cas suivi est construit pour ce guide\u00a0: ses montants, ses volumes et son effectif sont choisis pour la démonstration et ne viennent d’aucune source. Les références Data Act, propriété intellectuelle, CNIL, OWASP, W3C et paiement aident à écrire des questions et des preuves\u00a0; elles ne remplacent ni un avocat, ni un délégué à la protection des données, ni un expert-comptable.",
         }}
@@ -531,9 +546,8 @@ export default function Page() {
           <p>
             Vous y trouverez la relecture à faire sur votre propre document, la
             façon d’écrire une exigence qu’on ne peut pas lire de deux façons,
-            les huit états d’abonnement à trancher, ce que la réglementation
-            européenne vous doit à la sortie, puis la grille de dépouillement à
-            joindre aux candidats.
+            les huit états d’abonnement à trancher et la grille de dépouillement
+            à joindre aux candidats.
           </p>
 
           <GuidePremiumCase
@@ -632,10 +646,9 @@ export default function Page() {
             réseau et l’hébergement. La reprise, l’abonnement et l’hébergement
             devront être payés à quelqu’un, tôt ou tard&nbsp;; la saisie sans
             réseau, elle, attend un arbitrage que personne n’a encore rendu. On
-            ne devine pas le prix de ce qu’un devis
-            n’a pas chiffré&nbsp;: on lui renvoie les quatre lignes, et on range
-            ses montants à leur retour. Avant cela, son total de
-            34&nbsp;000&nbsp;€ HT n’a aucun équivalent en face.
+            ne devine pas le prix de ce qu’un devis n’a pas chiffré&nbsp;: on
+            lui renvoie les quatre lignes, et on range ses montants à leur
+            retour.
           </p>
 
           <h3>Un seul poste porte l’essentiel de l’écart</h3>
@@ -670,7 +683,7 @@ export default function Page() {
           </h3>
           <p>
             Le repère qui suit est le nôtre, relevé sur notre{" "}
-            <Link href="/tarifs">grille publique</Link> le 28&nbsp;août 2026, et
+            <Link href="/tarifs">grille publique</Link> le 30&nbsp;août 2026, et
             non une observation du marché&nbsp;: nous vendons ce type de projet.
             Elle situe un premier SaaS de trois à cinq écrans à
             15&nbsp;000&nbsp;€ HT, et un produit standard de dix à quinze écrans
@@ -706,8 +719,8 @@ export default function Page() {
                 candidats chiffreront différemment.
               </li>
               <li>
-                Sur le dossier de Sonia, la quatrième question aurait suffi à
-                faire remonter la saisie sans réseau.
+                Sur le dossier de Sonia, il manquait une sixième question&nbsp;:
+                où l’inspecteur saisit-il son rapport&nbsp;?
               </li>
             </ul>
           </GuidePremiumMemo>
@@ -786,12 +799,12 @@ Chiffrer les deux branches séparément.`}
             Chaque ligne renvoyée porte son numéro et devient une entrée de
             votre liste de travail&nbsp;: soit une exigence écrite comme
             ci-dessus, soit une décision déclarée ouverte, avec son nom et sa
-            date. Aucun seuil publié n’existe pour cette densité, et en inventer
-            un serait pire que de s’en passer. Le repère utile reste interne à
-            votre texte&nbsp;: relancez la commande après réécriture, puis
-            reprenez une par une les occurrences qui subsistent. Chacune est
-            soit une décision que personne n’a voulu prendre, soit un mot que
-            vous gardez sciemment&nbsp;: écrivez lequel.
+            date. Nous ne publions aucun seuil pour cette densité, et en
+            inventer un serait pire que de s’en passer. Le repère utile reste
+            interne à votre texte&nbsp;: relancez la commande après réécriture,
+            puis reprenez une par une les occurrences qui subsistent. Chacune
+            est soit une décision que personne n’a voulu prendre, soit un mot
+            que vous gardez sciemment&nbsp;: écrivez lequel.
           </p>
 
           <h3>Les deux exigences qu’un adjectif ne remplace jamais</h3>
@@ -808,9 +821,10 @@ Chiffrer les deux branches séparément.`}
           <p>
             <strong>«&nbsp;Application sécurisée&nbsp;»</strong> non plus. Le
             référentiel OWASP ASVS, version 5.0.0 publiée le 30&nbsp;mai 2025,
-            compte environ 350&nbsp;exigences réparties en dix-sept chapitres.
-            Vous en choisissez quelques-unes, vous les citez avec leur numéro de
-            version, et vous dites lesquelles seront testées et par qui. Le{" "}
+            compte 345&nbsp;exigences réparties en dix-sept chapitres, comptées
+            sur le fichier officiel de la version figée. Vous en choisissez
+            quelques-unes, vous les citez avec leur numéro de version, et vous
+            dites lesquelles seront testées et par qui. Le{" "}
             <Link href="/guides/securite-application-metier">
               socle de sécurité à exiger avant la mise en service
             </Link>{" "}
@@ -851,7 +865,7 @@ Chiffrer les deux branches séparément.`}
 
           <p>
             Ces huit lignes viennent de la documentation Stripe, consultée le
-            28&nbsp;août 2026 et citée ici comme repère de dénombrement&nbsp;:
+            30&nbsp;août 2026 et citée ici comme repère de dénombrement&nbsp;:
             que vous reteniez Stripe, un prélèvement SEPA ou une facturation
             manuelle, les mêmes huit situations existeront, sous d’autres noms.
             Trois décisions par état, cela fait vingt-quatre&nbsp;lignes à
@@ -946,14 +960,16 @@ Chiffrer les deux branches séparément.`}
             appelle SaaS. Sur ce champ, il est net&nbsp;: applicable depuis le
             12&nbsp;septembre 2025, période transitoire maximale de
             30&nbsp;jours calendaires à l’article&nbsp;25, frais de changement
-            supprimés au 12&nbsp;janvier 2027 à l’article&nbsp;29. Ces
-            30&nbsp;jours ne sont pas un plancher ferme&nbsp;: le même article
-            prévoit que, si ce délai est techniquement impossible à tenir, le
-            fournisseur informe le client dans les 14&nbsp;jours ouvrables,
-            justifie l’impossibilité et propose une période alternative
-            «&nbsp;qui ne peut excéder sept mois&nbsp;». Écrivez donc dans le
-            contrat la date que vous visez. Il ne dit rien du code source, rien
-            des droits d’exploitation, rien de la documentation de déploiement.
+            supprimés au 12&nbsp;janvier 2027 à l’article&nbsp;29. Ce délai ne
+            part qu’au terme du préavis de changement, plafonné à deux mois par
+            le même article. Ces 30&nbsp;jours ne sont pas un plancher
+            ferme&nbsp;: l’article prévoit aussi que, si ce délai est
+            techniquement impossible à tenir, le fournisseur informe le client
+            dans les 14&nbsp;jours ouvrables, justifie l’impossibilité et
+            propose une période alternative «&nbsp;qui ne peut excéder sept
+            mois&nbsp;». Écrivez donc dans le contrat la date que vous visez. Il
+            ne dit rien du code source, rien des droits d’exploitation, rien de
+            la documentation de déploiement.
           </p>
 
           <h3>Payer un développement ne vous en rend pas propriétaire</h3>
@@ -964,8 +980,9 @@ Chiffrer les deux branches séparément.`}
             droits cédés fasse l’objet d’une mention distincte, et que
             l’étendue, la destination, le lieu et la durée de l’exploitation
             soient délimités. Une facture acquittée n’énumère aucun de ces
-            éléments. La portée exacte de ce formalisme sur un logiciel se
-            plaide encore, raison de plus d’écrire la clause.
+            éléments. Ce formalisme figure aux dispositions générales du code,
+            et non parmi les articles qui visent le logiciel&nbsp;: raison de
+            plus d’écrire la clause.
           </p>
           <p>
             L’article L113-9, celui qui attribue à l’employeur les droits sur un
@@ -982,9 +999,7 @@ Chiffrer les deux branches séparément.`}
             <ul>
               <li>
                 Le code est poussé sur un dépôt{" "}
-                <strong>que vous possédez</strong> à chaque livraison. Une
-                livraison dont le dépôt n’a pas bougé laisse le code hors de
-                votre portée.
+                <strong>que vous possédez</strong> à chaque livraison.
               </li>
               <li>
                 Les comptes d’hébergement, de paiement et d’envoi d’e-mails sont
@@ -1023,8 +1038,8 @@ Chiffrer les deux branches séparément.`}
             sociétés sur trois n’ont pas chiffré. Si Sonia retient la société B
             sans avoir tranché, la saisie sans réseau reviendra en avenant, le
             jour où les inspecteurs se plaindront&nbsp;— et un avenant se
-            négocie sans concurrent en face. La relecture croisée de la
-            section&nbsp;02 aurait sorti le sujet dès sa quatrième question.
+            négocie sans concurrent en face. Une sixième question, en
+            section&nbsp;02, aurait sorti le sujet.
           </p>
 
           <h3>
@@ -1053,18 +1068,19 @@ Chiffrer les deux branches séparément.`}
             Il ne demandait pas de le prouver. La recette a montré qu’une
             utilisatrice autorisée voyait bien ses rapports&nbsp;; personne n’a
             vérifié qu’une autre se voyait refuser l’accès. Le jour où un
-            rapport apparaît chez le mauvais bailleur, la CNIL doit être
-            notifiée dans les 72&nbsp;heures suivant le moment où l’entreprise
-            prend connaissance de la violation&nbsp;— et non celui où elle
-            survient&nbsp;— sauf si cette violation n’est pas susceptible
-            d’engendrer un risque pour les droits et libertés des personnes
-            concernées. Ces 72&nbsp;heures partent d’abord à établir qui a vu
-            quoi parmi 12&nbsp;000&nbsp;dossiers et quarante-trois
-            organisations&nbsp;— une reconstitution qui mobilise la responsable
-            informatique et le délégué à la protection des données, et que rien
-            n’a préparée. Le test qui l’aurait évitée s’écrit avant la mise en
-            service&nbsp;: deux organisations fictives, une requête qui doit
-            être refusée, le résultat attendu au plan de recette.
+            rapport apparaît chez le mauvais bailleur, l’article&nbsp;33 du RGPD
+            impose une notification à la CNIL dans les meilleurs délais et, si
+            possible, 72&nbsp;heures au plus tard après en avoir pris
+            connaissance&nbsp;— et non après la survenance&nbsp;— sauf si cette
+            violation n’est pas susceptible d’engendrer un risque pour les
+            droits et libertés des personnes physiques. Ces 72&nbsp;heures
+            partent d’abord à établir qui a vu quoi parmi
+            12&nbsp;000&nbsp;dossiers et quarante-trois organisations&nbsp;— une
+            reconstitution qui mobilise la responsable informatique et le
+            délégué à la protection des données, et que rien n’a préparée. Le
+            test qui l’aurait évitée s’écrit avant la mise en service&nbsp;:
+            deux organisations fictives, une requête qui doit être refusée, le
+            résultat attendu au plan de recette.
           </p>
 
           <InfoBox
@@ -1136,8 +1152,7 @@ Chiffrer les deux branches séparément.`}
             Sur le dossier de Sonia, ce dépouillement fait apparaître trois
             décisions, dont une seule est financière&nbsp;: trancher la saisie
             sans réseau, obtenir de la société A ses quatre postes manquants,
-            demander à la société C ce qu’elle a vu de plus. Les deux dernières
-            partent par écrit, le même jour, aux trois candidats.
+            demander à la société C ce qu’elle a vu de plus.
           </p>
         </GuidePremiumSection>
 
@@ -1252,7 +1267,7 @@ Chiffrer les deux branches séparément.`}
             mesure des mots flous, les huit états d’abonnement et la grille de
             dépouillement se refont avec vos propres documents, y compris pour
             nous écarter. Nos prix et les références citées ont été relevés le
-            28&nbsp;août 2026, à revérifier tous les douze mois. Aucun coût,
+            30&nbsp;août 2026, à revérifier tous les douze mois. Aucun coût,
             aucun délai et aucun résultat ne sont garantis par cette page&nbsp;:
             seul un devis signé engage.
           </p>

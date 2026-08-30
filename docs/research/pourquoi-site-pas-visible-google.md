@@ -5,11 +5,12 @@
 se trouve le **30 août 2026**.
 
 **Rédigé le :** 30 août 2026.
+**Révisé le :** 30 août 2026, après correction des onze écarts du §0.
 **Empreinte de l'article décrit :**
-`e1ad29c1596563de044808f9b25eec0a1a614f45c3f38e0a0be12ed61ecc9f56`
+`81a4f978e409fedb6148bf9d5da392c57353126d952993a8c6f8cc4a71b9ddf1`
 (`shasum -a 256 src/app/guides/pourquoi-site-pas-visible-google/page.tsx`).
 **Empreinte des tests colocalisés :**
-`88038f848295d8e6360cf6318a5d20540330087b4ab91c707ababc2de11442ce`.
+`fb3eba6c8b5fc01fad739269e5d0360588eb6503f4c3032ef57ae90f546da810`.
 
 > **Ce dossier remplace intégralement la version du 18 août 2026.** L'ancien
 > dossier décrivait une page qui n'existe plus : quatre sections, dix sources,
@@ -22,230 +23,216 @@ se trouve le **30 août 2026**.
 
 ---
 
-## 0. Écarts relevés dans la page publiée — signalés, non corrigés
+## 0. Écarts relevés dans la page publiée — traités le 30 août 2026
 
-Ce dossier n'a pas le droit de modifier la page, les tests, le registre ni les
-manifestes. Les écarts ci-dessous sont donc rapportés tels quels, avec leur
-preuve, pour que celui qui a la main tranche.
+Une première passe de traçabilité, le 30 août 2026, avait relevé onze écarts
+sans avoir le droit de toucher à la page. Une seconde passe, le même jour, a la
+main sur `src/app/guides/pourquoi-site-pas-visible-google/`, sur ce dossier et
+sur la seule entrée `pourquoi-site-pas-visible-google` de `src/lib/guides.ts`.
+Les onze sont traités ci-dessous. **Aucun n'était une erreur de calcul :** les
+vingt-quatre opérations de l'article ont été refaites à la main (§F) une
+première fois avant correction, une seconde après, et tombent juste au centime
+dans les deux relevés.
 
-Ils sont classés par gravité décroissante. Aucun n'est une erreur de calcul :
-les vingt-quatre opérations de l'article ont été refaites à la main (§F) et
-tombent juste, au centime.
+Les vingt-et-une URL externes du bloc `legalSources` ont été **rouvertes une
+seconde fois le 30 août 2026** par la passe de correction elle-même, `curl` +
+débalisage, avec recherche littérale des chaînes citées (§B.3). La
+vingt-deuxième, `/tarifs`, a été relue dans `src/components/tarifs/body.ts`.
+C'est ce second relevé, et lui seul, qui autorise la page à écrire « relues le
+30 août 2026 ».
 
-### E1 — La date de dernière modification publiée précède de deux jours la dernière réécriture
+### E1 — Date de dernière modification en retard d'une réécriture — **CORRIGÉ**
 
-`src/lib/guides.ts` déclare `dateModified: "2026-08-28T09:00:00Z"`, valeur
-verrouillée par le test `expect(guide.dateModified).toBe("2026-08-28T09:00:00Z")`.
+`src/lib/guides.ts` déclarait `dateModified: "2026-08-28T09:00:00Z"`, valeur
+verrouillée par test, alors que le dernier commit touchant la page était
+`7c3926a` du 2026-08-30 (898 lignes ajoutées, 579 supprimées : table des
+matières renommée, sections 06 et 08 créées, FAQ introduite, treize sources
+ajoutées). Le §15 de la charte range ce type d'intervention parmi les
+changements substantiels.
 
-Or `git log --format='%h %ad' --date=short -- src/app/guides/pourquoi-site-pas-visible-google/page.tsx`
-donne comme dernier commit touchant la page **`7c3926a`, daté du 2026-08-30**.
-`git show --numstat 7c3926a` chiffre l'intervention à **898 lignes ajoutées et
-579 supprimées**, sur un fichier qui en compte 1 237 : table des matières
-renommée de bout en bout, sections 06 « Ce qui rate » et 08 « Corriger,
-attendre ou auditer » créées, bloc FAQ introduit, treize sources ajoutées.
+**Issue retenue :** corriger. `dateModified` vaut désormais
+`"2026-08-30T17:30:00Z"`, et le test qui la verrouille est réaligné sur cette
+valeur, avec la raison écrite au-dessus. Un second contrôle a été ajouté : la
+date **visible** dans le bandeau doit dire la même chose que le registre —
+`expect(readerVisibleText(renderedPage)).toContain("Mis à jour le 30 août 2026")`.
+`datePublished` n'a pas bougé et ne bougera pas.
 
-Le §15 de la charte qualité écrit : « Une nouvelle source, un changement de
-verdict, de prix, de tableau, de structure, de ressource ou de périmètre est
-substantiel et justifie une nouvelle `dateModified` après publication. » Les
-six critères sont réunis. La date publiée sur la page — « Mis à jour le
-28 août 2026 » dans le bandeau, `dateModified` dans le JSON-LD Article — est
-donc en retard d'une réécriture.
+### E2 — Treize sources entrées après la date de relecture revendiquée — **CORRIGÉ**
 
-### E2 — Treize des vingt-deux sources sont entrées dans la page après la date de relecture qu'elle revendique
+La réserve de périmètre et le bloc « Transparence » écrivaient « relues le
+28 août 2026 » quand treize des vingt-deux sources n'étaient entrées dans la
+page que le 30/08 (`git show f6ac78a:…/page.tsx` n'en compte que dix).
 
-La réserve de périmètre écrit : « les sources officielles citées ici ont été
-relues le 28 août 2026 ». Le bloc « Transparence » de la section 08 le répète :
-« Les sources officielles ont été relues le 28 août 2026 ».
+**Issue retenue :** corriger, après avoir rendu la phrase vraie. Les
+vingt-et-une sources externes ont été rouvertes le 30 août 2026 par la passe de
+correction, et les deux mentions disent maintenant « relues le 30 août 2026 ».
+Un test vérifie que les deux endroits portent la même date et qu'aucune date de
+consultation ne reste au 28 août.
 
-`git show f6ac78a:src/app/guides/pourquoi-site-pas-visible-google/page.tsx`
-(état du 28 août 2026) ne contient que **dix** entrées `legalSources` :
-`how-search-works`, `9012289`, `7576553`, `17011259`, `all-search-site`,
-`ask-google-to-recrawl`, `sitemaps/overview`, `block-indexing`,
-`consolidate-duplicate-urls`, `7687615`.
+### E3 — Deux dates de consultation individuelles antérieures à leur source — **CORRIGÉ**
 
-La page actuelle en compte vingt-deux. Neuf sont communes. **Treize sont
-nouvelles** — et l'une d'elles change de localisateur, ce qui en fait bien une
-source neuve :
+« Google Search Console API · quotas d'utilisation […] Consultée le 28 août
+2026 » et « Hagnéré Code · tarifs publics […] Grille relevée le 28 août 2026 »
+dataient toutes deux d'avant l'entrée de leur source dans la page.
 
-| Entrée ajoutée le 30/08 | Localisateur |
-| --- | --- |
-| Googlebot | `crawling-indexing/googlebot` |
-| Présentation des robots d'exploration | `crawling-indexing/overview-google-crawlers` |
-| Codes d'état HTTP et erreurs réseau | `crawling-indexing/http-network-errors` |
-| Réduire la vitesse d'exploration | `crawling-indexing/reduce-crawl-rate` |
-| Spécifications robots.txt | `crawling-indexing/robots/robots_txt` |
-| Sitemaps (construction) | `sitemaps/build-sitemap` — remplace `sitemaps/overview` |
-| Changement d'adresse avec modification des URL | `crawling-indexing/site-move-with-url-changes` |
-| Optimiser le budget d'exploration | `crawling-indexing/large-site-managing-crawl-budget` |
-| Rapport sur l'indexation des pages | `support.google.com/webmasters/answer/7440203` |
-| Quotas d'utilisation de l'API | `developers.google.com/webmaster-tools/limits` |
-| `searchAnalytics.query` | `webmaster-tools/v1/searchanalytics/query` |
-| web.dev · Time to First Byte | `web.dev/articles/ttfb` |
-| Hagnéré Code · tarifs publics | `/tarifs` |
+**Issue retenue :** corriger. Les deux portent désormais le 30 août 2026, date
+à laquelle `developers.google.com/webmaster-tools/limits` a effectivement été
+rouverte (les trois quotas y ont été relus, §D.7) et à laquelle la grille a été
+relue dans `src/components/tarifs/body.ts` (§D.10). La troisième mention datée,
+sur « fonctionnement de la recherche », est passée au 30 août pour la même
+raison : la page a été rouverte ce jour-là.
 
-Une date de relecture ne peut pas précéder l'entrée de la source qu'elle
-couvre. La phrase est vraie pour neuf sources sur vingt-deux, fausse pour
-treize.
+Le piège qui explique probablement la confusion initiale reste vrai et mérite
+d'être consigné : `developers.google.com/webmaster-tools/limits` affiche
+elle-même « Last updated **2025-08-28** UTC ». Un 28 août y figure, mais c'est
+la date de mise à jour de Google, et pas la bonne année.
 
-### E3 — Deux dates de consultation individuelles sont dans le même cas
+### E4 — « test en direct » n'est pas le libellé français de la Search Console — **CORRIGÉ**
 
-Deux entrées portent leur propre date :
+L'article employait « test en direct » **sept fois** — §02, tableau §03 deux
+fois, mémo §03, mémo §07, tableau §08, et la description de la source 9012289.
+Le relevé initial en comptait cinq dans le corps ; le décompte exact est de six
+dans le corps plus une dans le bloc de sources. L'outil de la section 07 en
+portait une huitième, dans `SearchVisibilityDiagnostic.tsx`.
 
-- « Google Search Console API · quotas d'utilisation […] **Consultée le
-  28 août 2026.** » — entrée ajoutée le 30/08 ;
-- « Hagnéré Code · tarifs publics […] **Grille relevée le 28 août 2026** » —
-  entrée ajoutée le 30/08.
+Relevé du 30 août 2026 sur le HTML brut de
+`https://support.google.com/webmasters/answer/9012289?hl=fr`, refait par la
+passe de correction : occurrences de `en direct` = **0**, de `test en ligne` =
+**45**, de `Tester l'URL active` = **3**, de `Test en ligne` (capitale) = **3**.
 
-La troisième mention datée, sur « fonctionnement de la recherche », porte au
-contraire sur une source déjà présente le 28/08 : elle n'est pas concernée.
+**Issue retenue :** corriger. Les huit occurrences disent « test en ligne », et
+le §02 nomme désormais le bouton mot pour mot : « seul le test en ligne, ouvert
+par « Tester l'URL active », montre la version rendue ». Un test interdit la
+chaîne fautive dans le corps mesuré **et** dans les deux fichiers de l'outil.
 
-Détail susceptible d'expliquer la confusion sur la première : la page
-`developers.google.com/webmaster-tools/limits` affiche elle-même
-« Last updated **2025-08-28** UTC ». Un 28 août y figure bien, mais c'est la
-date de mise à jour de Google, pas une date de consultation, et l'année n'est
-pas la bonne.
+### E5 — L'outil publiait une formule que le corps s'interdit — **CORRIGÉ**
 
-### E4 — « test en direct » n'est pas le libellé français de la Search Console
+`src/lib/search-visibility-diagnostic.ts` écrivait « l'adresse canonique choisie
+par Google » et « l'adresse canonique Google » ; `SearchVisibilityDiagnostic.tsx`
+écrivait « celle choisie par Google » et « filtrez l'adresse canonique choisie
+par Google ». Le champ s'appelle « URL canonique sélectionnée par Google »
+(relevé le 30/08/2026 sur 9012289 : « consultez le champ Indexation des pages >
+URL canonique sélectionnée par Google »). Le test du guide interdisait déjà la
+chaîne fautive, mais ne voyait pas l'outil : son bloc porte
+`data-read-time-exclude="true"` et `stripReadTimeExcludedElements` le retire de
+`articleHtml()` avant tout contrôle.
 
-L'article emploie **« test en direct » cinq fois** (§02, §03 deux fois, §07
-mémo, tableau §08) et le bloc de sources le reprend : « Différence entre la
-version indexée et le test en direct ».
+**Issue retenue :** corriger, et fermer l'angle mort. Les quatre chaînes portent
+le libellé exact. Deux tests verrouillaient l'ancienne formule
+(`SearchVisibilityDiagnostic.test.tsx` et `search-visibility-diagnostic.test.ts`) :
+ils ont été **corrigés, pas retirés ni affaiblis** — ils vérifient la même
+phrase sous le bon libellé, avec la raison écrite au-dessus. Et le test du guide
+lit désormais les deux fichiers de l'outil pour y interdire « canonique choisie
+par Google », « adresse canonique Google » et « test en direct », donc le
+garde-fou couvre enfin l'endroit où la formule est publiée.
 
-Relevé du 30 août 2026 sur `https://support.google.com/webmasters/answer/9012289?hl=fr`,
-HTML brut récupéré par `curl` puis débalisé :
+**Note de territoire.** Ces deux fichiers et leurs tests sortent du répertoire
+du guide, mais ils ne servent qu'à lui : `grep` ne les référence nulle part
+ailleurs que dans `page.tsx`, son test colocalisé et leurs propres tests.
 
-- occurrences de la chaîne `en direct` : **0** ;
-- occurrences de `test en ligne` : **45** ;
-- le bouton porte le nom **« Tester l'URL active »** : « Si vous avez modifié
-  la page depuis la dernière date d'exploration indiquée, vous pouvez tester
-  votre version actuelle en cliquant sur **Tester l'URL active**. » ;
-- l'onglet porte le nom **« Test en ligne »** : « Pour passer des résultats du
-  test en ligne aux résultats de l'URL indexée (ou vice versa), cliquez sur
-  **Index Google** ou sur **Test en ligne** sur la page. »
+### E6 — La règle d'accès était rattachée à la mauvaise page — **LOCALISATEUR CHANGÉ**
 
-L'article se donne partout ailleurs pour règle de reproduire les libellés mot
-pour mot — un test verrouille les cinq motifs du rapport d'indexation et
-interdit deux libellés retirés de l'interface. La règle n'est pas appliquée
-ici. Un lecteur qui cherche « test en direct » dans son écran ne le trouvera
-pas.
+La FAQ rattachait « la demande d'indexation exige d'être propriétaire ou
+utilisateur avec accès complet » à « utilisateurs et autorisations »
+(support 7687615). Relevé du 30/08/2026 sur cette page, refait par la passe de
+correction : elle ne contient **aucune occurrence du mot « indexation »**, ni
+ligne « Demander l'indexation ». Elle porte bien une ligne « Inspection de
+l'URL » avec « Exploration uniquement » pour l'accès limité.
 
-### E5 — L'outil publié en section 07 écrit une formule que le corps de l'article s'interdit
-
-`src/lib/search-visibility-diagnostic.ts`, dont les chaînes sont rendues par
-`SearchVisibilityDiagnostic` dans la section 07, écrit :
-
-- « relevez le motif de non-indexation, l'instruction noindex éventuelle et
-  **l'adresse canonique choisie par Google** » ;
-- « filtrez **l'adresse canonique Google** et relevez le total de la page ».
-
-Le champ s'appelle **« URL canonique sélectionnée par Google »** (relevé le
-30/08/2026 sur 9012289 : « consultez le champ Indexation des pages > URL
-canonique sélectionnée par Google »). Le test du guide interdit d'ailleurs
-explicitement la chaîne fautive :
-`expect(text).not.toContain("canonique choisie par Google")`.
-
-Ce garde-fou ne voit pas l'outil. Le bloc qui le contient porte
-`data-read-time-exclude="true"`, et `stripReadTimeExcludedElements` le retire
-de `articleHtml()` avant tout contrôle. Le contrôle existe, il ne couvre pas
-l'endroit où la formule est publiée.
-
-Note en sens inverse, pour ne pas charger l'outil de ce qu'il ne mérite pas :
-son autre libellé, **« Vue Index Google »**, est correct. « Index Google » est
-bien le nom de l'onglet dans l'inspection d'URL (même citation que ci-dessus).
-
-### E6 — La règle d'accès à la demande d'indexation est rattachée à la mauvaise page
-
-La FAQ écrit : « Google documente séparément le rôle de propriétaire et celui
-d'utilisateur, et **la demande d'indexation exige d'être propriétaire ou
-utilisateur avec accès complet** ». Le bloc de sources rattache cette phrase à
-« Google Search Console · utilisateurs et autorisations »,
-`https://support.google.com/webmasters/answer/7687615?hl=fr`, dont la
-description reprend la même formule.
-
-Relevé du 30/08/2026 sur cette page : elle liste quatre autorisations
-(Propriétaire, Utilisateur avec accès complet, Utilisateur avec accès limité,
-Associé) et son tableau porte une ligne **« Inspection de l'URL »** cochée pour
-les deux premiers, « Exploration uniquement » pour le troisième. Il n'existe
-**aucune ligne « Demander l'indexation »**, et aucune phrase de cette page ne
-formule la règle.
-
-La phrase existe — mais ailleurs, sur « Demander l'exploration de vos URL »
-(`crawling-indexing/ask-google-to-recrawl?hl=fr`, relevé le 30/08/2026) :
+La phrase existe sur « Demander l'exploration de vos URL »
+(`crawling-indexing/ask-google-to-recrawl?hl=fr`, rouverte le 30/08/2026) :
 « Vous devez être un propriétaire ou un utilisateur avec accès complet à la
 propriété Search Console pour pouvoir demander une indexation dans l'outil
 d'inspection d'URL. »
 
-Le fond est donc exact ; le localisateur annoncé au lecteur est faux. Le §4.1
-de la charte demande précisément que « le lecteur doit pouvoir identifier la
-source exacte depuis la phrase ».
+**Issue retenue :** changer le localisateur, après réouverture des deux pages.
+La règle est portée par la description de la source `ask-google-to-recrawl`, et
+la FAQ dit maintenant laquelle des deux pages porte quoi : « La page
+"utilisateurs et autorisations" décrit quatre niveaux et n'accorde l'inspection
+d'URL qu'aux deux premiers ; celle sur la demande d'exploration ajoute qu'une
+indexation ne peut être demandée que par un propriétaire ou un utilisateur avec
+accès complet. » Un test vérifie l'entrée 7687615 (aucune mention d'indexation)
+et l'entrée `ask-google-to-recrawl` (la règle d'accès).
 
-### E7 — « sans partage d'un compte personnel » est prêté à une source qui ne l'écrit pas
+### E7 — « sans partage d'un compte personnel » prêté à une source qui ne l'écrit pas — **RETIRÉ**
 
-Description de la source 7687615 dans la page : « Ajout d'utilisateurs et
-niveaux d'autorisation, **sans partage d'un compte personnel**. »
+La description de la source 7687615 attribuait cette consigne à Google. Relevé
+du 30/08/2026 : la page décrit l'ajout d'un utilisateur par son adresse de
+compte Google et les quatre niveaux d'autorisation, et ne contient ni « compte
+personnel », ni « mot de passe », ni aucune phrase déconseillant le partage.
 
-La page décrit l'ajout d'un utilisateur par son adresse Google et les quatre
-niveaux d'autorisation. Aucune phrase n'y déconseille de partager son compte.
-C'est une recommandation Hagnéré Code — bonne, et défendue à raison dans la
-FAQ — présentée comme un contenu de la page officielle.
+**Issue retenue :** retirer l'attribution. La description ne dit plus que ce que
+la page dit. La recommandation, elle, reste — c'est une bonne recommandation —
+mais elle est signée dans la FAQ : « c'est notre recommandation, pas une
+consigne de Google ». Un test verrouille les deux faces.
 
-### E8 — Trois scénarios déclarés non cumulatifs, puis additionnés
+### E8 — Trois scénarios déclarés non cumulatifs, puis additionnés — **CORRIGÉ**
 
-La section 06 pose : « ils ne se cumulent pas : ce sont trois façons distinctes
-dont une même refonte peut mal tourner. » Le dernier paragraphe additionne
-pourtant : « Additionnés, les trois scénarios pèsent 3 425 € », puis en tire
-deux lectures (« par nature de dépense », « par payeur »).
+L'arithmétique était juste (§F, C13 à C15 : 50 + 700 + 1 400 + 50 + 1 050 + 175
+= 3 425, et les deux lectures recoupent), mais le total additionnait trois
+mondes mutuellement exclusifs sans le dire, alors que la section pose deux
+paragraphes plus haut « ils ne se cumulent pas ». Ce n'était pas un faux calcul,
+c'était une assiette non annoncée.
 
-L'arithmétique est juste — six montants, trois recoupements, tout tombe rond
-(§F, calculs C05 à C12). Mais le total est la somme de trois mondes
-mutuellement exclusifs : il ne décrit aucune situation possible pour
-l'imprimeur. Les deux lectures qui en dérivent héritent de la même limite.
+**Issue retenue :** corriger l'assiette, garder l'arithmétique. Le paragraphe
+s'ouvre maintenant par « Ces trois scénarios s'excluent : leur somme ne décrit
+aucune facture réelle, elle compare trois façons de se tromper. Ainsi lus, les
+trois scénarios pèsent 3 425 € […] », et la phrase qui suit parle du
+« comparateur », plus du « total ». Aucun montant n'a bougé. Trois assertions
+nouvelles verrouillent la déclaration d'assiette là où elle est lue.
 
-Ce n'est pas un faux calcul, c'est une assiette. Le §7.2 de la charte, invoqué
-par le test qui interdit d'appeler « temps interne » une facture d'agence,
-vise exactement ce type de glissement.
+### E9 (mineur) — Deux formulations de la même limite de sitemap — **CORRIGÉ**
 
-### E9 (mineur) — Deux formulations de la même limite de sitemap dans la même page
+La FAQ écrivait « 50 000 URL et 50 Mo par fichier », le bloc de sources
+« 50 000 URL et 50 Mo non compressés par fichier ». La source écrit : « Tous les
+formats limitent la taille d'un seul sitemap à 50 Mo (sans compression) ou
+50 000 URL » (relevé le 30/08/2026).
 
-La FAQ écrit « Sa limite officielle est de **50 000 URL et 50 Mo par fichier** ».
-Le bloc de sources écrit « Limites de 50 000 URL et 50 Mo **non compressés** par
-fichier ». La source écrit : « Tous les formats limitent la taille d'un seul
-sitemap à 50 Mo (sans compression) ou 50 000 URL. » La FAQ perd la précision
-qui rend le chiffre utilisable.
+**Issue retenue :** corriger les deux, dans les termes de la source. La FAQ dit
+« plafonne un fichier à 50 Mo sans compression ou 50 000 URL » ; le bloc de
+sources dit « Un seul sitemap est plafonné à 50 Mo sans compression ou
+50 000 URL […] et ne contenir que des URL absolues et complètes » — « complètes »
+et non « canoniques », qui était l'autre mot de trop de cette description
+(« utilisez des URL absolues et complètes dans vos sitemaps »).
 
-### E10 (mineur) — La statistique de bandeau resserre la source
+### E10 (mineur) — La statistique de bandeau resserrait la source — **CORRIGÉ**
 
-Le bandeau publie « HTML lu par Googlebot · **2 Mo** ». La source écrit
-« Googlebot explore les 2 premiers Mo **d'un type de fichier compatible** ». Le
-HTML en fait partie, mais la limite n'est pas propre au HTML. Le corps de
-l'article, lui, reprend la formule exacte : l'écart est cantonné à l'étiquette
-du bandeau.
+Le bandeau publiait « HTML lu par Googlebot · 2 Mo » quand la source écrit
+« les 2 premiers Mo d'un type de fichier compatible ».
 
-### E11 (mineur) — Une contradiction de lieu entre §01 et §02
+**Issue retenue :** corriger l'étiquette, qui dit maintenant « Lu par
+Googlebot · 2 Mo » — sans restreindre la limite au HTML. Le corps de l'article
+reprenait déjà la formule exacte et n'a pas bougé.
 
-La section 01 annonce « trois commandes à taper **sur votre serveur** ». La
-section 02 précise que « la commande ci-dessus mesure un seul chargement
-**depuis votre poste** ». Les trois commandes se jouent depuis un poste client
-contre le serveur ; la première formulation peut envoyer un lecteur chercher un
-accès SSH dont il n'a pas besoin.
+### E11 (mineur) — Contradiction de lieu entre §01 et §02 — **CORRIGÉ**
+
+La §01 annonçait « trois commandes à taper sur votre serveur », la §02 précise
+« la commande ci-dessus mesure un seul chargement depuis votre poste », et la
+FAQ « les commandes de la section 02 se jouent depuis n'importe quel poste ».
+
+**Issue retenue :** corriger la §01, qui dit maintenant « trois commandes à
+taper depuis votre poste ». Un test vérifie les deux formulations ensemble, pour
+que la contradiction ne puisse pas se reformer d'un seul côté.
 
 ### Ce qui n'est pas un écart
 
 Pour éviter qu'un relecteur pressé ne les rouvre :
 
-- **Les vingt-quatre calculs sont exacts.** Refaits à la main en §F, sans
-  rejouer les formules de la page.
+- **Les vingt-quatre calculs sont exacts**, avant comme après correction.
+  Refaits à la main en §F, sans rejouer les formules de la page.
 - **Le temps de lecture est mesuré.** `npx tsx scripts/measure-guide-readtime.mjs
-  pourquoi-site-pas-visible-google` répond, le 30/08/2026 :
-  `pourquoi-site-pas-visible-google  4175 mots  21 min`. Le registre publie
-  `readTimeMin: 21`. `round(4175 / 200) = round(20,875) = 21`.
+  pourquoi-site-pas-visible-google` répond, le 30/08/2026 après correction :
+  `pourquoi-site-pas-visible-google  4199 mots  21 min`, et `--check` répond
+  `OK … mesuré 21 min · publié 21 min`. `round(4199 / 200) = round(20,995) = 21`.
+  Le calibre reste dans la bande 3 000 à 4 200 mots du §5.3.
 - **Les cinq motifs du rapport d'indexation sont reproduits mot pour mot.**
-  Vérifiés un par un sur le HTML brut de 7440203 (§D.4).
-- **Les trois prix Hagnéré Code cités existent sur `/tarifs`.** Vérifiés dans
+  Revérifiés un par un sur le HTML brut de 7440203 le 30/08/2026 (§D.4).
+- **Les trois prix Hagnéré Code cités existent sur `/tarifs`.** Revérifiés dans
   `src/components/tarifs/body.ts` (§D.10).
 - **La suite de tests colocalisée passe.**
-  `npx vitest run src/app/guides/pourquoi-site-pas-visible-google/content-quality.test.ts`
-  → `Test Files 1 passed (1) · Tests 44 passed (44)`, le 30/08/2026.
+  `npx vitest run src/app/guides/pourquoi-site-pas-visible-google`
+  → `Test Files 1 passed (1) · Tests 47 passed (47)`, le 30/08/2026 après
+  correction. `npx tsc --noEmit` est propre.
 
 ---
 
@@ -255,7 +242,7 @@ Pour éviter qu'un relecteur pressé ne les rouvre :
 Slug                : pourquoi-site-pas-visible-google
 URL de production   : https://hagnere-code.ai/guides/pourquoi-site-pas-visible-google
 Fichier             : src/app/guides/pourquoi-site-pas-visible-google/page.tsx
-Tests colocalisés   : src/app/guides/pourquoi-site-pas-visible-google/content-quality.test.ts (44 tests)
+Tests colocalisés   : src/app/guides/pourquoi-site-pas-visible-google/content-quality.test.ts (47 tests)
 Outil embarqué      : src/components/guides/SearchVisibilityDiagnostic.tsx
                       + src/lib/search-visibility-diagnostic.ts (logique pure)
                       + src/lib/search-visibility-diagnostic.test.ts
@@ -265,10 +252,10 @@ Registre            : src/lib/guides.ts, entrée « pourquoi-site-pas-visible-go
 Section             : Référencement naturel
 Statut éditorial    : published
 datePublished       : 2026-08-18T12:42:00Z
-dateModified publié : 2026-08-28T09:00:00Z  ← voir E1
+dateModified publié : 2026-08-30T17:30:00Z  ← corrigé, voir E1
 readTimeMin         : 21 (mesuré, cf. §0)
 Auteur affiché      : TEAM.quentin (président fondateur), profil /equipe#fondateur
-Calibre mesuré      : 4 175 mots dans l'article rendu
+Calibre mesuré      : 4 199 mots dans l'article rendu (après correction)
 Bande visée         : 3 000 à 4 200 mots (§5.3 de la charte, « méthode / parcours »)
 ```
 
@@ -328,11 +315,14 @@ grep -n -A 20 'slug: "pourquoi-site-pas-visible-google"' src/lib/guides.ts
 
 ```bash
 npx tsx scripts/measure-guide-readtime.mjs pourquoi-site-pas-visible-google
-# → pourquoi-site-pas-visible-google · 4175 mots · 21 min   (30/08/2026)
+# → pourquoi-site-pas-visible-google · 4199 mots · 21 min   (30/08/2026, après correction)
 #   (le script sépare réellement ces trois champs par des tabulations)
 
-npx vitest run src/app/guides/pourquoi-site-pas-visible-google/content-quality.test.ts
-# → Test Files 1 passed (1) · Tests 44 passed (44)          (30/08/2026)
+npx tsx scripts/measure-guide-readtime.mjs --check pourquoi-site-pas-visible-google
+# → OK  pourquoi-site-pas-visible-google · mesuré 21 min · publié 21 min
+
+npx vitest run src/app/guides/pourquoi-site-pas-visible-google
+# → Test Files 1 passed (1) · Tests 47 passed (47)          (30/08/2026)
 ```
 
 ### B.3 Comment les sources ont été rouvertes
@@ -385,10 +375,12 @@ rouvertes le 30 août 2026, et la vingt-deuxième — `/tarifs` — a été vér
 dans le code source qui la produit, `src/components/tarifs/body.ts`, ce qui est
 plus fort qu'une lecture de page rendue.
 
-Une seule valeur reste sous réserve : la date de dernière mise à jour de
-`web.dev/articles/ttfb`, relevée à **18 novembre 2025** par l'extraction
-assistée, n'a pas été reconfirmée sur le HTML brut. Les deux seuils TTFB et le
-rattachement du 75ᵉ centile, eux, l'ont été.
+**Réserve levée le 30/08/2026 par la passe de correction.** La date de dernière
+mise à jour de `web.dev/articles/ttfb` était donnée sous réserve par la passe
+précédente. Le HTML brut en porte deux, et les deux sont désormais confirmées :
+la signature de l'article écrit « Published: October 26, 2021, Last updated:
+November 18, 2025 », le pied de page « Last updated 2025-11-28 UTC ». Les deux
+seuils TTFB et le rattachement du 75ᵉ centile au FCP l'étaient déjà.
 
 ---
 
@@ -466,7 +458,9 @@ diffusion — et écrit qu'aucun n'est garanti pour une page donnée. »
 Citation : « Lors de l'exploration pour la recherche Google, Googlebot explore
 les 2 premiers Mo d'un type de fichier compatible et les 64 premiers Mo d'un
 fichier PDF. »
-Utilisé : §02, sous-titre « La taille lue » ; bandeau de statistiques (voir E10).
+Utilisé : §02, sous-titre « La taille lue » ; bandeau de statistiques, dont
+l'étiquette dit « Lu par Googlebot » depuis la correction d'E10 et ne
+restreint donc plus la limite au HTML.
 
 **F03 — La limite porte sur les données non compressées.**
 Même page, même relevé.
@@ -600,8 +594,10 @@ Utilisé : §03, paragraphe qui suit le tableau des cinq motifs.
 Citations : « Tous les formats limitent la taille d'un seul sitemap à 50 Mo
 (sans compression) ou 50 000 URL. » / « le fichier sitemap doit être encodé en
 UTF-8. » / « utilisez des URL absolues et complètes dans vos sitemaps. »
-Utilisé : FAQ « Un sitemap est-il utile quand on a moins de cent pages ? »
-(voir E9).
+Utilisé : FAQ « Un sitemap est-il utile quand on a moins de cent pages ? » et
+description de la source. Depuis la correction d'E9, les deux endroits disent
+« 50 Mo sans compression ou 50 000 URL » et « URL absolues et complètes », dans
+les termes de la source.
 
 ### D.4 Rapport sur l'indexation des pages
 
@@ -668,8 +664,9 @@ Citations : « URL canonique déclarée par l'utilisateur — Si votre page déc
 explicitement une URL canonique, elle s'affiche ici. » / « consultez le champ
 Indexation des pages > URL canonique sélectionnée par Google. »
 Utilisé : tableau §01 ligne 4 ; tableau §03 ligne 3 ; §03 cas de l'imprimeur ;
-§04. Un test interdit la variante « canonique choisie par Google » — mais
-seulement dans le corps mesuré (voir E5).
+§04, et les quatre chaînes de l'outil de la §07. Un test interdit la variante
+« canonique choisie par Google » dans le corps mesuré **et** dans les deux
+fichiers de l'outil, depuis la correction d'E5.
 
 **F25 — « Cette URL est sur Google » ne garantit pas l'affichage.**
 Citation : « La mention "Cette URL est sur Google" ne garantit pas que votre
@@ -682,9 +679,13 @@ Citations : « Pour tester la version actuelle de la page telle que Google
 devrait la voir, sélectionnez le bouton Test en ligne sur la page. » / « Cliquez
 sur Tester l'URL active. » / « Le test en ligne ne peut pas prédire si la
 version testée sera considérée comme canonique ou non. »
-Utilisé : §02 (« seul le test en direct montre la version rendue »), §03, §07.
-**C'est le fait F26 qui fonde l'écart E4 :** le mécanisme décrit par l'article
-est exact, le nom qu'il lui donne n'existe pas dans l'aide française.
+Utilisé : §02 (« seul le test en ligne, ouvert par « Tester l'URL active »,
+montre la version rendue »), §03 deux fois, mémos §03 et §07, tableau §08, et la
+description de la source 9012289.
+**C'est le fait F26 qui fondait l'écart E4 :** le mécanisme décrit par l'article
+était exact, le nom qu'il lui donnait — « test en direct » — n'existe pas dans
+l'aide française. Corrigé le 30/08/2026 : l'article emploie « test en ligne » et
+nomme le bouton « Tester l'URL active ».
 
 **F27 — « Index Google » est bien le nom de l'onglet.**
 Citation : « Pour passer des résultats du test en ligne aux résultats de l'URL
@@ -779,7 +780,9 @@ l'exploration. »
 Utilisé : §07, premier paragraphe ; §03, mémo « Ordre des gestes ».
 
 **F37 — Demander l'indexation exige d'être propriétaire ou utilisateur avec accès complet.**
-Même page — **et non la page « utilisateurs et autorisations », voir E6.**
+Même page — **et non la page « utilisateurs et autorisations » : c'était l'écart
+E6, corrigé le 30/08/2026.** Le bloc de sources porte désormais cette phrase
+sous `ask-google-to-recrawl`, et la FAQ dit laquelle des deux pages porte quoi.
 Citation : « Vous devez être un propriétaire ou un utilisateur avec accès
 complet à la propriété Search Console pour pouvoir demander une indexation dans
 l'outil d'inspection d'URL. »
@@ -795,7 +798,11 @@ peut consulter toutes les données et réaliser certaines actions. » /
 données. » ; ligne du tableau : « Inspection de l'URL […] Exploration
 uniquement » pour l'accès limité.
 Utilisé : FAQ « Dois-je donner mon mot de passe » ; §07, dernier paragraphe
-avant l'illustration. Voir E7 pour ce que cette page **n'écrit pas**.
+avant l'illustration. **Ce que cette page n'écrit pas** (relevé du 30/08/2026,
+recherche littérale sur le HTML débalisé) : ni « indexation », ni « mot de
+passe », ni « compte personnel ». C'était l'écart E7 ; depuis sa correction, la
+description de la source ne lui prête plus la consigne de ne pas partager son
+compte, et la FAQ signe cette consigne comme une recommandation Hagnéré Code.
 
 **F39 — Migration terminée quand Googlebot a accédé au moins une fois à toutes les URL ; redirections conservées au moins un an.**
 `https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes?hl=fr`
@@ -835,9 +842,9 @@ Utilisé : FAQ « La commande `site:` prouve-t-elle que ma page est indexée ? �
 traduit ; la traduction est fidèle.
 
 **F42 — TTFB : 0,8 s ou moins est bon, au-delà de 1,8 s est mauvais, et le 75ᵉ centile porte sur le FCP.**
-`https://web.dev/articles/ttfb` · date de dernière mise à jour relevée à
-18 novembre 2025 par extraction assistée, non reconfirmée sur le HTML brut ·
-consultée 30/08/2026.
+`https://web.dev/articles/ttfb` · signature de l'article : « Last updated:
+November 18, 2025 » · pied de page : « Last updated 2025-11-28 UTC » · les deux
+relevées sur le HTML brut le 30/08/2026 · consultée 30/08/2026.
 Citations, relevées sur le HTML brut : « it's recommended that your server
 responds to navigation requests quickly enough so that the 75th percentile of
 users experience an FCP within the "good" threshold. » / « Good TTFB values are
@@ -1090,8 +1097,14 @@ juste, et elle corrige un transfert d'assiette que le §7.2 de la charte
 interdit : trois jours facturés par un tiers ne sont pas des heures de
 l'entreprise.
 
-**Limite de C13, C14 et C15 :** voir E8. L'arithmétique est exacte, l'objet
-qu'elle décrit est la somme de trois mondes exclusifs.
+**Assiette de C13, C14 et C15 :** l'arithmétique est exacte, et l'objet qu'elle
+décrit est la somme de trois mondes mutuellement exclusifs. C'était l'écart E8,
+non parce que la somme était fausse, mais parce que la page ne le disait pas.
+Depuis sa correction, elle l'annonce à l'endroit même où elle additionne — « Ces
+trois scénarios s'excluent : leur somme ne décrit aucune facture réelle, elle
+compare trois façons de se tromper » — et parle ensuite d'un « comparateur »,
+plus d'un « total ». Aucun des six montants n'a bougé, et les deux recoupements
+restent vrais.
 
 ### F.8 Le tableau de décision (§08)
 
@@ -1115,9 +1128,13 @@ verrouille cette précision et interdit la formule antérieure « sous la barre 
 
 ### F.9 Le temps de lecture
 
-**C17.** 4 175 mots ÷ 200 mots/minute = 20,875 → arrondi = **21 minutes**.
-Mesure du 30/08/2026 : `4175 mots  21 min`. Registre : `readTimeMin: 21`.
+**C17.** 4 199 mots ÷ 200 mots/minute = 20,995 → arrondi = **21 minutes**.
+Mesure du 30/08/2026 après correction : `4199 mots  21 min`, et `--check`
+répond `OK … mesuré 21 min · publié 21 min`. Registre : `readTimeMin: 21`.
 **Concorde.**
+Avant correction, la mesure valait 4 175 mots, soit 20,875 → 21 minutes. Les
+vingt-quatre mots ajoutés par les corrections d'E4 et d'E8 ne déplacent donc pas
+la valeur publiée, et le calibre reste dans la bande 3 000 à 4 200 mots (§5.3).
 
 ### F.10 Récapitulatif
 
@@ -1181,8 +1198,11 @@ plutôt que de combler :
 5. **Aucun test de rendu navigateur.** Le §14.2 de la charte en demande un ;
    il n'a pas été refait ici, et le manifeste qui en gardait la trace décrit un
    état de la page qui n'existe plus (voir §J).
-6. **La date de dernière mise à jour de `web.dev/articles/ttfb`** n'a pas été
-   reconfirmée sur le HTML brut (voir B.4).
+6. **La date de dernière mise à jour de `web.dev/articles/ttfb`** a été
+   reconfirmée le 30/08/2026 sur le HTML brut, et la page en porte deux : la
+   signature de l'article dit « Last updated: November 18, 2025 », le pied de
+   page « Last updated 2025-11-28 UTC » (voir B.4 et F42). Cette réserve est
+   levée ; les cinq autres tiennent.
 
 ---
 
@@ -1213,17 +1233,18 @@ personne réelle. Elle ne l'est pas ici.
 
 | Contrôle | Fait ? | Preuve |
 | --- | --- | --- |
-| Lecture intégrale de l'article publié | oui | 1 237 lignes lues |
-| Lecture des tests colocalisés | oui | 1 213 lignes, 44 tests |
+| Lecture intégrale de l'article publié | oui | 1 240 lignes lues |
+| Lecture des tests colocalisés | oui | 1 336 lignes, 47 tests |
 | Lecture de l'outil et de sa logique | oui | 332 + 175 lignes |
-| Réouverture des sources externes | oui, 21/21 | §D, citations littérales |
+| Réouverture des sources externes | oui, 21/21, deux fois | §D, citations littérales |
 | Vérification de la grille tarifaire | oui | `src/components/tarifs/body.ts` |
-| Calculs refaits à la main | oui, 24/24 | §F |
+| Calculs refaits à la main | oui, 24/24, avant et après correction | §F |
 | Mesure du temps de lecture | oui | script du dépôt |
-| Exécution de la suite de tests | oui | 44/44 verts |
+| Exécution de la suite de tests | oui | 47/47 verts, `tsc --noEmit` propre |
 | Relecture par un humain extérieur | **non** | aucune trace |
 | BAT navigateur, clavier, impression | **non** | hors de ce passage |
 | Relevé de SERP concurrente | **non** | voir §H.3 |
+| Correction des onze écarts du §0 | oui, 11/11 | §0, une issue explicite par écart |
 
 ---
 
@@ -1236,20 +1257,21 @@ propre socle.
 | Élément | Signal qui impose une nouvelle vérification |
 | --- | --- |
 | Les cinq motifs du rapport (F17 à F21) | Toute refonte de l'écran « Indexation des pages » ; ce sont les seules chaînes que le lecteur recopie |
-| Nom du test en ligne (F26) | À revoir **immédiatement** : l'article emploie un nom qui n'existe pas (E4) |
+| Nom du test en ligne (F26) | Corrigé le 30/08/2026 (E4) : l'article dit « test en ligne » et nomme le bouton « Tester l'URL active ». À rouvrir dès que l'aide 9012289 renomme l'un des deux |
 | Plafonds 2 Mo / 15 Mo (F02, F05) | Mise à jour de l'une des deux pages ; la distinction entre les deux est fragile et c'est elle qui porte l'apport de la §02 |
 | Quotas d'API (F33, F34, F35) | `webmaster-tools/limits` n'a pas bougé depuis 2025-08-28 : à revérifier avant toute réécriture de la §03 ou de la §05 |
 | Seuils du budget d'exploration (F40) | Page mise à jour le 2026/08/04, soit vingt-six jours avant ce dossier : c'est la source la plus récente du lot, donc la plus susceptible d'être touchée à nouveau |
 | Prix Hagnéré Code (F44, F45) | Toute modification de `src/components/tarifs/body.ts` ; un test échoue si le guide cite un montant absent de la grille |
-| Seuils TTFB (F42) | Changement de web.dev ; date de mise à jour non reconfirmée (B.4) |
-| `dateModified` et date de relecture | À traiter à la prochaine intervention (E1, E2, E3) |
+| Seuils TTFB (F42) | Changement de web.dev ; page datée du 18/11/2025 en signature et du 28/11/2025 en pied de page, les deux confirmées le 30/08/2026 |
+| `dateModified` et date de relecture | Portées au 30/08/2026 (E1, E2, E3). Toute réécriture ultérieure doit les rebouger, et une date de relecture ne doit jamais précéder l'entrée de la source qu'elle couvre |
+| Libellés de l'outil de la §07 (E5) | Ils vivent hors du corps mesuré : un test du guide lit désormais `SearchVisibilityDiagnostic.tsx` et `search-visibility-diagnostic.ts` pour les couvrir. Ne pas retirer ce contrôle |
 
 **Manifestes du guide.** Sept fichiers existent sous
 `docs/research/manifests/pourquoi-site-pas-visible-google-*.sha256`. Le plus
 récent, `-q-public.sha256`, scelle
 `src/app/guides/pourquoi-site-pas-visible-google/page.tsx` à
 `1b15f4cbd960e49f045dd6064d486d6e033e02d9060ac2e762e75dc3413ea921`. Le fichier
-actuel vaut `e1ad29c1596563de044808f9b25eec0a1a614f45c3f38e0a0be12ed61ecc9f56`.
+actuel vaut `81a4f978e409fedb6148bf9d5da392c57353126d952993a8c6f8cc4a71b9ddf1`.
 Les manifestes décrivent donc l'état du 18 août 2026, pas la page publiée.
 Ce dossier n'y touche pas — ce n'est pas son territoire — mais un lecteur qui
 s'y fierait pour retrouver l'article se tromperait de version.
@@ -1281,15 +1303,27 @@ Table de renvoi pour qui veut vérifier une section sans lire tout le dossier.
 | --- | --- | --- |
 | 2026-08-18 | orchestrateur du lot du 18 août | Dossier de la version à quatre sections, dix sources, sans cas chiffré. **Archivé et remplacé** : il décrivait une page qui n'existe plus. |
 | 2026-08-30 | passe de traçabilité, agent unique | Reconstitution complète contre l'article publié : 46 faits localisés et rouverts, 35 hypothèses recensées, 24 calculs refaits, 11 écarts signalés sans correction de la page. |
+| 2026-08-30 | passe de correction, agent unique | Traitement des onze écarts, une issue explicite par écart (§0) : neuf corrections, un changement de localisateur (E6), un retrait d'attribution (E7), aucun rejet. Les vingt-et-une sources externes ont été rouvertes une seconde fois avant d'écrire la nouvelle date de relecture. Vingt-quatre calculs refaits, aucun montant modifié. |
 
-**Territoire de cette passe.** Seul `docs/research/pourquoi-site-pas-visible-google.md`
-a été écrit. La page, les tests, le registre, les manifestes, l'outil et les
-autres dossiers ont été lus et n'ont pas été modifiés. Aucune commande `git`
-d'écriture n'a été exécutée.
+**Territoire de la passe de correction.** Ont été écrits :
+`src/app/guides/pourquoi-site-pas-visible-google/page.tsx` et son test
+colocalisé, ce dossier, et la seule entrée `pourquoi-site-pas-visible-google` de
+`src/lib/guides.ts`. Deux fichiers hors de ce périmètre ont été touchés pour
+l'écart E5, parce que l'écart y vit et nulle part ailleurs :
+`src/lib/search-visibility-diagnostic.ts` et
+`src/components/guides/SearchVisibilityDiagnostic.tsx`, plus leurs deux tests,
+qui verrouillaient un libellé inexistant. Aucun de ces quatre fichiers n'est
+utilisé par un autre guide. Les manifestes et les autres dossiers n'ont pas été
+touchés. Aucune commande `git` d'écriture n'a été exécutée.
 
-**Ce qui reste à faire, par quelqu'un qui a la main sur la page :** traiter
-E1 à E11, dans cet ordre de gravité. Deux d'entre eux se corrigent en une
-phrase — E4 remplace « test en direct » par « Test en ligne », E7 retire une
-attribution — et deux demandent une décision éditoriale : E1, parce que bouger
-`dateModified` casse un test qui la verrouille, et E8, parce qu'il faut choisir
-entre retirer le total ou expliciter qu'il additionne trois mondes exclusifs.
+**Ce qui reste à faire.**
+
+1. **Les manifestes.** Les sept `.sha256` scellent la page du 18 août 2026 et
+   décrivent une version qui n'existe plus. Ils ne sont pas dans le territoire
+   de cette passe.
+2. **La relecture humaine.** Toujours aucune trace dans le dépôt (§I). Le §13 de
+   la charte interdit de la revendiquer, et la page ne la revendique pas : elle
+   n'écrit une date que pour la relecture des sources, qui a bien eu lieu.
+3. **Le BAT navigateur, clavier et impression** du §14.2 (§H.5).
+4. **Le relevé de SERP concurrente** (§H.3), qui n'existe toujours pas — et que
+   le guide ne prétend nulle part avoir fait.

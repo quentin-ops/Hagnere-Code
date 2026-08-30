@@ -1,6 +1,7 @@
 # Dossier de preuves — MVP SaaS : quoi inclure ?
 
-> **Ce dossier décrit l'article tel qu'il existe dans le dépôt le 30 août 2026.**
+> **Ce dossier décrit l'article tel qu'il existe dans le dépôt le 30 août 2026,
+> après la passe de correction des écarts de traçabilité menée ce soir-là.**
 > Il remplace intégralement le dossier précédent, dont les sections A à H
 > décrivaient l'état du 2–3 août 2026 (page à 3 740 puis 4 546 mots, H2 en
 > impératif, « sept variantes du même contrat fictif ») et dont la section I,
@@ -8,6 +9,13 @@
 > verdict, aucune scorecard et aucune date de consultation de l'ancien dossier
 > n'est repris : tout ce qui est écrit ici a été rouvert, recalculé ou exécuté
 > le 30 août 2026.
+>
+> **Deux états successifs du 30 août sont distingués dans ce fichier.** La
+> reconstitution du matin a relevé huit écarts entre ce que l'article affirmait
+> et ce que ses sources portent réellement (section 0). La passe du soir les a
+> traités dans `page.tsx`, `content-quality.test.ts` et l'entrée du registre :
+> la section 0 dit désormais, pour chaque écart, l'issue retenue et ce qui a
+> changé.
 >
 > Objectif de rédaction : un lecteur extérieur doit pouvoir, seul, retrouver
 > chaque source, refaire chaque calcul et distinguer ce qui est établi de ce qui
@@ -22,34 +30,44 @@
 | Fichier de page | `src/app/guides/mvp-saas-quoi-inclure/page.tsx` |
 | Modules importés par la page | `./mvp-contract-engine`, `./mvp-contract-tool`, `@/components/guides/*`, `@/lib/guides`, `@/lib/guide-page-seo`, `@/lib/team` |
 | Tests colocalisés | `content-quality.test.ts`, `mvp-contract-engine.test.ts`, `mvp-contract-tool.test.tsx` |
-| Date de reconstitution du dossier | **30 août 2026**, Europe/Paris |
-| Auteur du dossier | agent de traçabilité, sans droit d'écriture sur la page, les tests, le registre ou les manifestes |
+| Date de reconstitution du dossier | **30 août 2026** (matin), Europe/Paris |
+| Date de la passe de correction | **30 août 2026** (soir), Europe/Paris |
+| Auteur de la reconstitution | agent de traçabilité, sans droit d'écriture sur la page, les tests, le registre ou les manifestes |
+| Auteur de la passe de correction | agent de correction, périmètre d'écriture limité à `src/app/guides/mvp-saas-quoi-inclure/`, à ce fichier et à la seule entrée `mvp-saas-quoi-inclure` de `src/lib/guides.ts` |
 | Statut éditorial atteignable | **prêt pour revue humaine** (charte §13 — voir section K) |
 
 ---
 
-## 0. Écarts trouvés dans l'article — signalés, non corrigés
+## 0. Les huit écarts — relevés le matin, traités le soir du 30 août 2026
 
-Le périmètre d'écriture de cet agent se limite à ce fichier. Les points
-ci-dessous sont **constatés et documentés**, pas corrigés. Chacun est
-reproductible avec la commande ou le fichier indiqué.
+La reconstitution du dossier a comparé, une par une, ce que l'article affirme
+et ce que la source citée porte réellement. Huit écarts sont sortis. Chacun a
+reçu ici l'une des issues prévues par le protocole : **CORRIGER** l'article,
+**CHANGER LE LOCALISATEUR** après avoir rouvert la source qui porte
+l'affirmation, ou **RETIRER** l'affirmation. Aucun écart n'a été rejeté.
 
-### É1 — La version en production n'est pas celle du dépôt (bloquant pour la traçabilité)
+| # | Objet | Issue retenue | Où c'est vérifiable |
+| --- | --- | --- | --- |
+| É1 | Production antérieure au dépôt | **hors périmètre d'écriture — déploiement dû** | `curl` ci-dessous |
+| É2 | « Une hypothèse, et une seule » | **CORRIGER** | §06 |
+| É3 | « Trois obligations extérieures » | **CORRIGER** | §04 |
+| É4 | Bornes du calculateur | **CORRIGER** | §08 |
+| É5 | « 2 à 5 clients réels » | **CORRIGER** (étiqueté) | §02, tableau |
+| É6 | Chronologie de l'incident 3 | **CORRIGER** | §07 |
+| É7 | Localisateur d'ASVS | **CHANGER LE LOCALISATEUR** | bloc sources |
+| É8 | Deux sources orphelines | **RETIRER** | bloc sources |
+
+### É1 — La version en production n'est pas celle du dépôt (toujours ouvert)
 
 `https://hagnere-code.ai/guides/mvp-saas-quoi-inclure` répond `200` le
-30 août 2026, mais sert **la version du 3 août**, pas celle décrite par ce
-dossier.
+30 août 2026 à 23 h, mais sert toujours **la version du 3 août**. Contrôle
+refait ce soir par l'agent de correction, pas recopié du relevé du matin :
 
-Preuves relevées ce jour sur le HTML servi :
-
-| Contrôle | Production (30/08/2026) | Dépôt (`src/lib/guides.ts`) |
+| Contrôle | Production (30/08/2026, 23 h) | Dépôt après correction |
 | --- | --- | --- |
-| `dateModified` du JSON-LD `Article` | `2026-08-03T04:14:58+02:00` | `2026-08-28T18:00:00+02:00` |
-| H2 n° 1 | « Délimitez le minimum par la preuve à obtenir » | « Ce que votre premier client rend obligatoire » |
-| H2 n° 4 | « Attribuez une décision et un responsable à chacune des sept familles » | « Sept responsabilités, et le propriétaire de chacune » |
+| `dateModified` du JSON-LD `Article` | `2026-08-03T04:14:58+02:00` | `2026-08-30T22:30:00+02:00` |
+| H2 n° 1 | « Délimitez le minimum par la preuve à obtenir » (2 occurrences) | « Ce que votre premier client rend obligatoire » |
 | Occurrences de « Sept variantes du même contrat fictif » | 2 | 0 |
-| Occurrences de « 15 000 € » | 0 | présent au §01, §05 et §10 |
-| Occurrences de « 2 880 € HT », « 840 minutes », « 350 € le jour chargé », « 6 900 € HT », « 28 août 2026 » | 0 | présentes |
 
 Commande de reproduction :
 
@@ -58,46 +76,44 @@ curl -s -L https://hagnere-code.ai/guides/mvp-saas-quoi-inclure \
   | grep -o '"dateModified":"[^"]*"'
 ```
 
-Conséquence : **tant que le déploiement n'a pas eu lieu, ce dossier décrit un
-article « prêt », pas un article « publié »** au sens du tableau de statuts de
-la charte §13. Toute campagne payante pointant cette URL enverrait le trafic
-sur la version qui contient précisément les défauts que la passe du 28 août a
-corrigés (« franchir la barre des cinq écrans », « six à huit écrans », neuf
-jours de retard sans mécanisme). Les trois phrases fautives ne sont plus dans
-le HTML servi non plus — la production est antérieure à ces deux états — mais
-les H2 en impératif et le vocabulaire « sept variantes » y sont.
+**Cet écart ne se corrige pas depuis les fichiers du guide : il demande un
+déploiement.** Tant qu'il n'a pas eu lieu, ce dossier décrit un article
+« prêt », pas un article « publié » au sens du tableau de statuts de la
+charte §13, et une campagne payante pointant cette URL enverrait le trafic sur
+une version qui ne contient aucune des corrections décrites ci-dessous.
 
-### É2 — « Une hypothèse, et une seule, ne sort d'aucune source » est faux dans le périmètre de l'article
+### É2 — CORRIGÉ : la portée de l'hypothèse non sourcée
 
-Le §06 écrit :
+Le §06 écrivait :
 
 > Une hypothèse, et une seule, ne sort d'aucune source : **350 € le jour
 > chargé** pour le temps interne, soit 50 € l'heure sur sept heures.
 
-Le même article en nomme d'autres, ailleurs :
+L'article se contredisait trois fois : le bloc de portée annonce que la
+période, les durées, l'abonnement **et le coût du temps interne** ne viennent
+d'aucune source ; le §05 nomme une « estimation éditoriale Hagnéré Code » ; le
+§02 publiait « 2 à 5 clients réels » sans étiquette (É5).
 
-- l'avertissement de portée (bloc `disclaimer`) : « Accordia, ses clients, ses
-  durées, son abonnement et le coût de son temps interne sont choisis pour
-  l'exemple et **ne viennent d'aucune source** » ;
-- le §05 : la colonne « ce que ça pèse » est « une **estimation éditoriale
-  Hagnéré Code** » (2 à 3 écrans pour l'administration, 1 pour les rôles, 1 à 2
-  pour le tableau de bord) ;
-- le §02 : « Pilote accompagné — **2 à 5 clients réels** » (voir É5).
+Le §06 écrit désormais :
 
-La phrase est probablement destinée à ne porter que sur le §06 (où les durées
-manuelles sont déjà couvertes par l'étiquette du cas construit, et où 350 €
-est le seul facteur nouveau). Telle qu'elle est écrite, sans restriction de
-portée, elle affirme quelque chose que l'article contredit lui-même deux
-sections plus haut. Aucun test ne la surveille : `content-quality.test.ts`
-l. 785 vérifie seulement que la chaîne « 350 € le jour chargé » est présente.
+> Aucun nombre de cette section ne sort d'une source : les minutes, les
+> occurrences et la capacité appartiennent au cas construit, et le coût du
+> temps interne est posé de la même façon — **350 € le jour chargé**, soit
+> 50 € l'heure sur sept heures. Cette dernière hypothèse est écrite ici pour
+> que vous puissiez la contester ; […]
 
-### É3 — « Trois de ces lignes portent une obligation extérieure » qualifie mal deux des trois références
+Le test qui s'appelait « rend visible l'unique hypothèse non sourcée » et ne
+vérifiait qu'une présence de chaîne s'appelle maintenant « pose le coût du
+temps interne sans prétendre qu'il est seul non sourcé » : il **interdit
+nommément** la formule « Une hypothèse, et une seule » et exige la nouvelle
+phrase.
 
-Le §04 ouvre par « Trois de ces lignes portent une obligation extérieure »,
-puis cite l'ANSSI, OWASP ASVS et WCAG 2.2. Aucune des trois n'est une
-obligation pour un pilote SaaS B2B privé, et les trois phrases qui suivent le
-disent d'ailleurs correctement (« recommandent », « permet de choisir », « se
-testent »).
+### É3 — CORRIGÉ : trois référentiels ne sont pas trois obligations
+
+Le §04 ouvrait par « Trois de ces lignes portent une obligation extérieure »,
+puis citait l'ANSSI, OWASP ASVS et WCAG 2.2. Aucune des trois n'oblige un
+pilote SaaS B2B privé, et les trois phrases suivantes le disaient d'ailleurs
+correctement (« recommandent », « permet de choisir », « se testent »).
 
 Le document ANSSI lui-même, page 1 (« Informations »), écrit :
 
@@ -108,14 +124,20 @@ Le document ANSSI lui-même, page 1 (« Informations »), écrit :
 OWASP ASVS est un référentiel communautaire ; WCAG 2.2 est une Recommandation
 W3C, et la note de sources de l'article écrit elle-même que « la conformité à
 WCAG ne suffit pas seule à conclure sur toutes les obligations applicables ».
-La seule obligation extérieure réellement citée par le guide est le RGPD
-(articles 5, 25 et 32), traitée au §02 et au §05. La charte §5.5 impose de
-séparer obligation, recommandation et pratique de marché : le mot
-« obligation » couvre ici trois lignes dont une seule le mérite.
 
-### É4 — Le §08 décrit mal les bornes du calculateur
+Le §04 ouvre désormais par :
 
-Le §08 écrit :
+> Trois de ces lignes s'appuient sur un référentiel extérieur qui recommande,
+> là où le règlement européen cité à la section 02 oblige.
+
+La charte §5.5 est ainsi tenue : obligation (RGPD, §02 et §05), recommandation
+(les trois référentiels, §04) et pratique de marché restent séparées. Un test
+interdit la formule « portent une obligation extérieure » et toute variante
+« trois … obligations extérieures ».
+
+### É4 — CORRIGÉ : les bornes du calculateur, telles que le moteur les applique
+
+Le §08 écrivait :
 
 > Les entrées sont bornées à un million pour les clients, les minutes et les
 > occurrences, **avec trois décimales au plus**.
@@ -125,49 +147,91 @@ Le moteur refuse toute décimale sur le nombre de clients :
 `parseDecimal(input.pilotClientCount, MAX_PILOT_CLIENTS, true)`, et le
 troisième argument `integerOnly` fait échouer toute saisie décimale
 (l. 244-246) avec le message « Nombre de clients du test invalide : un nombre
-entier est requis » (l. 296-298). La borne de trois décimales vaut pour les
-minutes, les occurrences et la capacité — pas pour les clients.
+entier est requis » (l. 296-298). **L'outil, lui, le disait déjà
+correctement** : son bloc « Règles de saisie » (`mvp-contract-tool.tsx`
+l. 479) écrit « clients entiers de 1 à 1 000 000 ». C'est la prose du guide qui
+contredisait son propre calculateur.
 
-### É5 — « 2 à 5 clients réels » est un chiffre sans source et sans étiquette
+Le §08 écrit désormais :
 
-Le tableau du §02 publie, pour la ligne « Pilote accompagné », la colonne
-« 2 à 5 clients réels, limites annoncées, équipe présente ». C'est une
-convention propre au guide : aucune des douze sources listées ne borne un
-pilote à cette fourchette, et l'article ne l'annonce ni comme estimation
-éditoriale (comme il le fait au §05) ni comme hypothèse du cas construit
-(comme il le fait pour Accordia). Un lecteur ne peut pas savoir d'où sort ce
-« 2 à 5 ». La charte §4.1 impose qu'un ordre de grandeur sans corpus publiable
-soit nommé « estimation éditoriale » et expose ses hypothèses.
+> Les entrées sont bornées à un million pour les clients, les minutes et les
+> occurrences ; le nombre de clients se saisit en entier, les minutes, les
+> occurrences et la capacité acceptent trois décimales au plus […]
 
-### É6 — La chronologie du troisième incident sort du calendrier posé
+Un test exécute le moteur pour le prouver : `pilotClientCount: "3.5"` produit
+la décision manquante « Nombre de clients du test invalide : un nombre entier
+est requis », tandis que `manualCapacityMinutes: "300.125"` est accepté et
+ressort tel quel.
 
-Le §07 pose le pilote du 7 septembre au 18 octobre 2026, soit six semaines,
-avec vente par contrat et facture manuels. Le troisième incident écrit ensuite
+### É5 — CORRIGÉ : « 2 à 5 clients réels » porte son étiquette
+
+Le tableau du §02 publiait, pour la ligne « Pilote accompagné », la colonne
+« 2 à 5 clients réels, limites annoncées, équipe présente ». Aucune des sources
+listées ne borne un pilote à cette fourchette, et l'article ne l'annonçait ni
+comme estimation éditoriale (comme il le fait au §05) ni comme hypothèse du cas
+construit (comme il le fait pour Accordia).
+
+La cellule écrit désormais :
+
+> 2 à 5 clients réels (estimation éditoriale Hagnéré Code, aucune source ne
+> borne un pilote), limites annoncées, équipe présente
+
+La charte §4.1 est tenue : l'ordre de grandeur est nommé, et la cellule dit
+elle-même qu'aucun corpus ne le soutient. Un test verrouille les deux membres.
+
+### É6 — CORRIGÉ : l'incident 3 est ancré hors du pilote
+
+Le §07 pose le pilote du 7 septembre au 18 octobre 2026, six semaines, avec
+vente par contrat et facture manuels. Le troisième incident écrivait
 qu'« Accordia ouvre l'achat par carte **au troisième mois** » et que « trois
-abonnements ouverts **quatre mois** sans paiement font 2 880 € HT ». Le
-troisième mois et les quatre mois suivants tombent après la fin du pilote, et
-aucune phrase de l'article ne dit que le pilote s'est prolongé en produit
-vendu. L'arithmétique est juste (3 × 240 × 4 = 2 880) ; c'est l'ancrage
-temporel qui manque. L'avertissement de portée couvre les durées « choisies
-pour l'exemple », mais il ne comble pas l'absence de transition narrative.
+abonnements ouverts **quatre mois** sans paiement font 2 880 € HT » : cinq à
+sept mois, donc bien après la fin du pilote, sans qu'aucune phrase ne dise que
+le pilote s'était prolongé en produit vendu. L'arithmétique était juste
+(3 × 240 × 4 = 2 880) ; c'est l'ancrage temporel qui manquait.
 
-### É7 — Le localisateur d'ASVS ne porte ni le mot « stable » ni l'année
+La transition est maintenant écrite deux fois. Chapeau de la section :
 
-L'article écrit « OWASP ASVS · version stable 5.0.0 […] publié comme version
-stable le 30 mai 2025 » et pointe la page
-`https://github.com/OWASP/ASVS/releases/tag/v5.0.0_release`. Ouverte le
-30 août 2026, cette page affiche « 30 May 09:35 » sans l'année et présente la
-version comme « the initial release of the 5.x version of ASVS », sans le mot
-« stable ». Le fait est vrai, mais son support est ailleurs : la page projet
-`https://owasp.org/www-project-application-security-verification-standard/`
-écrit « [30 May 2025] ASVS Version 5.0.0 is released LIVE at Global AppSec EU
-Barcelona 2025! » et « Get the latest **stable** version of the ASVS (5.0.0)
-from the Downloads page ». Le localisateur publié ne soutient donc pas
-littéralement l'affirmation publiée.
+> Les trois incidents ci-dessous sont construits sur le cas Accordia, les deux
+> premiers pendant le pilote, le troisième après.
 
-### É8 — Deux sources listées ne soutiennent aucune phrase visible
+Et l'incident lui-même :
 
-Sur les douze entrées de `legalSources`, deux ne sont reliées à aucune
+> Cette fois le pilote a conclu : Accordia vend son produit au-delà du
+> 18 octobre, et ouvre l'achat par carte au troisième mois d'exploitation sans
+> écrire ce qui se passe quand un paiement échoue.
+
+Aucun montant ne change : 3 × 240 × 4 = 2 880 € HT. Un test exige les trois
+formulations et interdit le retour de l'ancienne phrase sans ancrage.
+
+### É7 — LOCALISATEUR CHANGÉ : ASVS pointe désormais la page qui porte le fait
+
+L'article écrivait « OWASP ASVS · version stable 5.0.0 […] publié comme version
+stable le 30 mai 2025 » en pointant
+`https://github.com/OWASP/ASVS/releases/tag/v5.0.0_release`. **Cette page a été
+rouverte le 30 août 2026** : elle affiche « 30 May 09:35 » sans l'année et
+décrit la version comme « the initial release of the 5.x version of ASVS »,
+sans le mot « stable ».
+
+**La page projet a été rouverte le même jour** et porte, elle, les deux
+éléments de l'affirmation, verbatim :
+
+- « [30 May 2025] ASVS Version 5.0.0 is released LIVE at Global AppSec EU
+  Barcelona 2025! » ;
+- « Get the latest stable version of the ASVS (5.0.0) from the Downloads
+  page. »
+
+L'entrée de sources pointe donc maintenant
+`https://owasp.org/www-project-application-security-verification-standard/`,
+cite ces deux passages mot pour mot dans la langue de la page, et **dit
+explicitement que la page de version du dépôt, elle, n'affiche ni l'année ni le
+mot « stable »** — un lecteur qui ouvre l'un ou l'autre lien trouve ce que le
+guide annonce. Le fait publié au §04 (« version stable 5.0.0 publiée le
+30 mai 2025 ») est inchangé : il était exact, seul son support était mal
+choisi. Un test interdit le retour de l'URL `github.com/OWASP/ASVS/releases`.
+
+### É8 — RETIRÉ : deux sources qui ne soutenaient aucune phrase
+
+Sur les douze entrées de `legalSources`, deux n'étaient reliées à aucune
 affirmation du corps ni de la FAQ :
 
 - **CNIL, Guide RGPD du développeur** — le corps cite le *Guide de la
@@ -175,18 +239,21 @@ affirmation du corps ni de la FAQ :
 - **OWASP, Logging Cheat Sheet** — le §04 parle de journal (« le journal la
   garde ») sans rattacher cette exigence à OWASP.
 
-Ce ne sont pas des erreurs de fait, mais la charte §4.1 écrit qu'« une
-bibliographie générale en fin de page ne suffit pas » : une source listée sans
-phrase qui s'y adosse ajoute du volume de preuve apparent sans preuve.
+La charte §4.1 écrit qu'« une bibliographie générale en fin de page ne suffit
+pas » : une source listée sans phrase qui s'y adosse ajoute du volume de preuve
+apparent sans preuve. **Les deux entrées sont retirées** plutôt que d'écrire
+deux phrases dans le seul but de les justifier. Le bloc de sources compte
+désormais **dix entrées, toutes adossées à une phrase visible**. Un test
+interdit le retour des deux URL.
 
 ### Ce qui a été vérifié et s'est révélé exact
 
 Pour éviter qu'un lecteur pressé lise la liste ci-dessus comme un verdict
 global : **tous les calculs publiés par l'article ont été refaits à la main et
-tombent juste** (section H), **les douze sources externes ont été rouvertes ce
-jour et disent ce que l'article leur fait dire** (section D), et **les huit
-montants repris de la grille tarifaire sont sur la page publique aujourd'hui**
-(section E).
+tombent juste** (section H) — aucun n'a été modifié par cette passe —, **les
+sources rouvertes disent ce que l'article leur fait dire** (section D), et
+**les huit montants repris de la grille tarifaire ont été recomptés sur la page
+publique le 30 août 2026 au soir** (section E).
 
 ---
 
@@ -200,9 +267,9 @@ montants repris de la grille tarifaire sont sur la page publique aujourd'hui**
 | Section | SaaS et MVP |
 | `editorialStatus` | `published` |
 | `datePublished` | `2026-07-20T15:19:41+02:00` |
-| `dateModified` | `2026-08-28T18:00:00+02:00` |
-| `readTimeMin` | 20 |
-| Mots visibles du corps, formulaire exclu | **4 096** (mesure du 30/08/2026, voir §J) |
+| `dateModified` | `2026-08-30T22:30:00+02:00` (porté ce soir ; valait `2026-08-28T18:00:00+02:00`) |
+| `readTimeMin` | 21 (porté ce soir ; valait 20) |
+| Mots visibles du corps, formulaire exclu | **4 180** (mesure du 30/08/2026 au soir, voir §J ; 4 096 avant la passe) |
 | Illustrations | 3 (`contrat-test-mvp-16x9.webp`, `charge-manuelle-mvp-4x3.webp`, `decision-mvp-1x1.webp`), toutes présentes dans `public/guides/mvp-saas-quoi-inclure/` avec leur source SVG |
 | Auteur affiché | `TEAM.quentin`, profil `/equipe#fondateur` |
 | Dispositif commercial | `hero`, `sidebar`, `mobile`, `faq` (rendus par le layout partagé) + **un seul** encart en ligne `article_end_inline` au §10 ; pas de `strategyCta` |
@@ -245,19 +312,28 @@ l'exige la charte §15 ; `trop-inclus` est la seule ajoutée.
 | 03 | `parcours` | Une journée du client montre ce que la liste d'écrans oublie | Méthode en six étapes + seuil de preuve | 1 min |
 | 04 | `familles` | Sept responsabilités, et le propriétaire de chacune | Le tableau des sept familles + cinq traitements | 3 min |
 | 05 | `trop-inclus` | Qu'est-ce qu'on ajoute à tort dans le premier lot ? | Six ajouts, leur poids, l'angle prix | 3 min |
-| 06 | `manuel` | Combien de temps humain votre MVP coûte-t-il chaque semaine ? | La formule de charge et son application | 2 min |
+| 06 | `manuel` | Combien de temps humain votre MVP coûte-t-il chaque semaine ? | La formule de charge et son application | 3 min |
 | 07 | `exemple` | Ce qui rate quand on coupe la mauvaise chose | Trois incidents chiffrés | 3 min |
 | 08 | `outil` | Remplir le contrat sur votre propre dossier | Le calculateur local | 1 min |
 | 09 | `alternatives` | Faut-il vraiment écrire du code pour apprendre ça ? | Quatre chemins moins chers que le code | 1 min |
 | 10 | `decision` | Qui tranche, et sur quelle preuve ? | Revue humaine, coût d'exploitation, sortie | 2 min |
 
-Somme des compteurs : 2+2+1+3+3+2+3+1+1+2 = **20**, égale au `readTimeMin` du
-registre. Le test l. 362 vérifie à la fois cette somme et le fait que chaque
-compteur soit l'arrondi de sa propre section.
+Somme des compteurs : 2+2+1+3+3+3+3+1+1+2 = **21**, égale au `readTimeMin` du
+registre. Le test vérifie à la fois cette somme et le fait que chaque compteur
+soit l'arrondi de sa propre section.
+
+**Pourquoi 21 et non 20.** Les précisions exigées par les écarts É2 à É6 ont
+porté le corps de 4 096 à 4 180 mots visibles. `Math.round(4180 / 200)` vaut 21,
+et le seul compteur qui bascule est celui du §06 (492 → 513 mots, donc 2 → 3
+min) : la somme des dix compteurs suit mécaniquement. Décompte par section, tel
+que mesuré ce soir sur le rendu : 403, 364, 294, 607, 607, 513, 548, 118, 248,
+478. La bande de calibre de la charte plafonne à 4 200 mots : il reste **20 mots
+de marge**, à connaître avant toute réécriture.
 
 **FAQ.** Neuf questions en trois catégories (`perimetre`, `obligations`,
 `apres`). Aucun JSON-LD `FAQPage` — Google a retiré ce résultat enrichi ; le
-test l. 309 refuse le schéma.
+le test « publie le guide par le registre central, sans schéma retiré » refuse
+le schéma.
 
 **Maillage sortant vérifié le 30/08/2026** (tous `200` en production) :
 `/tarifs`, `/guides/signes-besoin-logiciel-metier`,
@@ -273,7 +349,8 @@ ni conditions contractuelles ») ; les critères de réception à
 `/guides/plan-recette-application-metier` ; l'arbitrage plateforme contre
 sur-mesure à `/guides/power-apps-ou-application-sur-mesure` ; le diagnostic
 amont à `/guides/signes-besoin-logiciel-metier`. Aucun lien ne pointe vers
-l'article lui-même (test l. 1300).
+l'article lui-même (test « ne pointe que vers des guides publiés, jamais vers
+lui-même »).
 
 ---
 
@@ -292,9 +369,15 @@ seule.
 
 ## D. Sources externes — chacune rouverte le 30 août 2026
 
-Douze sources sont listées par `legalSources` dans `page.tsx` (l. 341-422).
-**Les douze ont été rouvertes le 30 août 2026** et le contenu qui soutient
-l'affirmation a été lu, pas seulement le titre de la page.
+**Dix** sources sont listées par `legalSources` dans `page.tsx` depuis la
+passe du soir — deux entrées ont été retirées (É8). Les douze entrées de la
+liste d'origine ont toutes été rouvertes le 30 août 2026 et le contenu qui
+soutient l'affirmation a été lu, pas seulement le titre de la page ; les deux
+retirées gardent leur fiche ci-dessous, marquée comme telle, pour que le
+prochain agent sache pourquoi elles ne sont plus citées.
+
+Les identifiants S01 à S12 ne sont pas renumérotés : ils servent de clé dans le
+reste du dossier.
 
 Réserve de méthode, écrite noir sur blanc : `leanstartup.co` refuse une
 requête HTTP directe (`403` avec un `User-Agent` de navigateur, testé ce
@@ -389,7 +472,7 @@ confirmer dans un vrai navigateur lors du prochain contrôle.
   concrètes d'un cas inconnu. L'article le dit dans sa note de source.
 - **Confiance** : élevée, texte primaire.
 
-### S06 — CNIL, « Guide RGPD du développeur »
+### S06 — CNIL, « Guide RGPD du développeur » — RETIRÉE de la liste (É8)
 
 - **URL** : https://www.cnil.fr/fr/guide-rgpd-du-developpeur
 - **Relevé le** : 30 août 2026. **Date** : page vivante ; aucune date de mise à
@@ -401,8 +484,14 @@ confirmer dans un vrai navigateur lors du prochain contrôle.
   conception, sécurisation des environnements et du code source, minimisation,
   gestion des utilisateurs, qualité du code, tests, information des personnes,
   durées de conservation.
-- **Usage dans l'article** : **aucun** — voir É8. Entrée de bibliographie.
+- **Usage dans l'article** : **aucun**. Aucune phrase du corps ni de la FAQ ne
+  s'y adossait — la FAQ 02-01 cite le *Guide de la sécurité* (S07), pas celui
+  du développeur. **L'entrée a donc été retirée de `legalSources` le
+  30 août 2026** (É8) : source réelle et utile, mais décorative dans ce guide.
 - **Confiance** : élevée sur le contenu, mais sans date d'édition stable.
+- **Ce qui la ferait revenir** : une phrase du corps qui s'adosse réellement à
+  l'une de ses fiches — par exemple sur la minimisation en base ou sur la durée
+  de conservation, deux sujets que ce guide n'aborde pas.
 
 ### S07 — CNIL, « Guide de la sécurité des données personnelles — édition 2024 »
 
@@ -446,9 +535,10 @@ confirmer dans un vrai navigateur lors du prochain contrôle.
 
 ### S09 — OWASP, Application Security Verification Standard 5.0.0
 
-- **URL citée par l'article** : https://github.com/OWASP/ASVS/releases/tag/v5.0.0_release
-- **URL qui soutient réellement l'affirmation** : https://owasp.org/www-project-application-security-verification-standard/
-- **Relevé le** : 30 août 2026 (les deux).
+- **URL citée par l'article depuis le 30 août 2026** : https://owasp.org/www-project-application-security-verification-standard/
+- **URL citée avant cette date, et abandonnée (É7)** : https://github.com/OWASP/ASVS/releases/tag/v5.0.0_release
+- **Relevé le** : 30 août 2026, les deux pages ouvertes le matin puis rouvertes
+  le soir avant le changement de localisateur.
 - **Ce que la page GitHub affiche** : le nom « OWASP Application Security
   Verification Standard 5.0.0 », le tag `v5.0.0_release`, la mention
   « the initial release of the 5.x version of ASVS », et la date « 30 May
@@ -458,11 +548,15 @@ confirmer dans un vrai navigateur lors du prochain contrôle.
   stable version of the ASVS (5.0.0) from the Downloads page ».
 - **Usage** : §04, « le catalogue OWASP ASVS, version stable 5.0.0 publiée le
   30 mai 2025, permet de choisir un sous-ensemble proportionné ».
-- **Écart de localisateur** : voir É7.
+- **Écart de localisateur** : traité (É7). L'entrée de sources pointe désormais
+  la page projet, cite les deux passages ci-dessus mot pour mot en anglais — la
+  langue de la page — et signale que la page de version du dépôt n'affiche ni
+  l'année ni le mot « stable ». Un test interdit le retour de l'URL
+  `github.com/OWASP/ASVS/releases`.
 - **Limite reprise par l'article** : « Le niveau et le sous-ensemble pertinents
   dépendent du risque du produit. »
 
-### S10 — OWASP, Logging Cheat Sheet
+### S10 — OWASP, Logging Cheat Sheet — RETIRÉE de la liste (É8)
 
 - **URL** : https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html
 - **Relevé le** : 30 août 2026. **Date/version** : aucune version ni date de
@@ -475,7 +569,13 @@ confirmer dans un vrai navigateur lors du prochain contrôle.
   module itself » ; « Never log data unless it is legally sanctioned »
   (exclusions nommées : identifiants de session, jetons d'accès, mots de passe,
   chaînes de connexion, clés de chiffrement, données de carte bancaire).
-- **Usage dans l'article** : **aucun** — voir É8.
+- **Usage dans l'article** : **aucun**. Le §04 parle de journal (« Une
+  correction est faite sans accès improvisé, et le journal la garde ») sans
+  rattacher cette exigence à OWASP. **L'entrée a été retirée de `legalSources`
+  le 30 août 2026** (É8).
+- **Ce qui la ferait revenir** : une phrase du §04 qui reprenne l'un des
+  verbatim ci-dessus — par exemple la liste des données à ne jamais journaliser
+  — au lieu de laisser la ligne « journal » sans support.
 
 ### S11 — W3C, WCAG 2.2
 
@@ -525,10 +625,24 @@ confirmer dans un vrai navigateur lors du prochain contrôle.
 
 ## E. Prix maison — la grille `/tarifs`, relevée le 30 août 2026
 
-L'article date son relevé du **28 août 2026** (§01, bloc `disclaimer`, note de
-transparence du §10, note de source). **Ce dossier a rouvert la grille le
-30 août 2026, dans le dépôt et sur la page publique : les huit montants cités
-sont inchangés.** La date de relevé publiée reste donc exacte.
+L'article datait son relevé du **28 août 2026**. La grille a été rouverte le
+30 août 2026, dans le dépôt et sur la page publique servie : **les huit
+montants cités sont inchangés**. L'article porte donc désormais la date du
+**30 août 2026** aux cinq endroits qui la mentionnent (§01, FAQ 01-01, bloc
+`disclaimer`, note de transparence du §10, entrée de sources), c'est-à-dire le
+jour où le relevé a réellement été refait — et non le jour de la passe
+précédente. Les deux tests qui verrouillaient « 28 août 2026 » ont été portés à
+« 30 août 2026 », avec la raison écrite au-dessus. Conséquence mécanique :
+l'échéance de revérification annoncée par l'article (« tous les douze mois »)
+tombe désormais au 30 août 2027.
+
+Comptage refait sur le HTML servi ce soir (les montants sont écrits en k€ sur
+`/tarifs`, en euros pleins dans le guide — la correspondance est explicitée
+dans la colonne « périmètre ») : `15 k€ HT` / « Essentiel — MVP 3–5 écrans » ×2,
+`30–60 k€ HT` / « Standard — 10–15 écrans + IA » ×2, `6,9 k€ HT` ×6 dont
+« (site vitrine) », « démarre par exemple à 15 k€ HT, pas à 6,9 k€ HT » ×2,
+« 2 jours, 1 500 € HT » ×2, « le devis précise la déduction applicable » ×8,
+« Au-delà de 8 k€ HT » ×2, « ≈ 2 500 € HT / mois » ×2.
 
 Deux localisateurs pour chaque montant : la source du dépôt
 (`src/components/tarifs/body.ts`) et le HTML servi par
@@ -574,7 +688,8 @@ EOF
    l. 214 écrit « le devis précise la déduction applicable » ; le tableau
    comparatif l. 1051 écrit « **Déduit si phase 2** · conditions au devis ».
    Les deux formulations sont servies aujourd'hui. Le guide reprend la
-   première, la plus prudente, et un test le verrouille (l. 1091). Ce n'est pas
+   première, la plus prudente, et le test « n'annonce pas le Discovery Sprint
+comme une remise acquise » le verrouille. Ce n'est pas
    un défaut du guide, mais un risque : un prospect qui lit `/tarifs` verra la
    formulation forte. **Arbitrage à porter sur la page tarifs, pas ici.**
 3. **Le dépôt est en avance sur la production.** `body.ts` l. 559 ajoute « et un
@@ -608,11 +723,12 @@ de l'article.
 | A11 | La phase live suppose des responsables, une disponibilité et une mesure | §02, §04 | S04, page datée du 8 mai 2019 | élevée |
 | A12 | Dès qu'une donnée personnelle réelle est traitée, les articles 5, 25 et 32 du RGPD s'appliquent : minimisation, protection dès la conception, sécurité proportionnée au risque | §02, §05, FAQ 02-01 | S05, intitulés vérifiés | élevée |
 | A13 | L'ANSSI recommande des tests réguliers de sauvegarde et une procédure de restauration écrite | §04, FAQ 02-02 | S08, **R22, §3.2, page 6**, ANSSI-BP-100 v1.1 du 27/11/2025 | élevée |
-| A14 | OWASP ASVS 5.0.0 est la version stable, publiée le 30 mai 2025 | §04, note de source | S09 — fait exact, **localisateur publié insuffisant**, voir É7 | moyenne (fait établi, lien à corriger) |
+| A14 | OWASP ASVS 5.0.0 est la version stable, publiée le 30 mai 2025 | §04, note de source | S09, **page projet** — « [30 May 2025] ASVS Version 5.0.0 is released LIVE… » et « the latest stable version of the ASVS (5.0.0) » (É7 traité) | élevée |
 | A15 | WCAG 2.2 est une Recommandation W3C du 12 décembre 2024 | §04, note de source | S11, en-tête de la Recommandation | élevée |
 | A16 | La documentation Stripe liste les événements d'abonnement à traiter, dont l'échec de paiement d'une facture et les changements d'état qui ouvrent ou referment un accès | §04, note de source | S12, tableau « Événements d'abonnement » et section « Capturer les changements d'état » | élevée |
 | A17 | Le guide de la sécurité de la CNIL, édition 2024, fournit des fiches pratiques | FAQ 02-01, note de source | S07, page publiée le 26 mars 2024, 25 fiches | élevée |
-| A18 | Le calculateur ne transmet rien, ne stocke rien et ne télécharge rien | §08, hero (`Calcul local · aucun envoi`) | `mvp-contract-engine.ts` et `mvp-contract-tool.tsx` : aucune occurrence de `fetch(`, `XMLHttpRequest`, `WebSocket`, `localStorage`, `sessionStorage`, `document.cookie`, `sendBeacon` ; test l. 1403 | élevée |
+| A23 | Le calculateur exige un nombre de clients entier et accepte trois décimales sur les minutes, les occurrences et la capacité | §08 | `mvp-contract-engine.ts` l. 762 (`integerOnly`), l. 244-246, l. 296-298 ; `mvp-contract-tool.tsx` l. 479 « clients entiers de 1 à 1 000 000 » ; test qui exécute le moteur sur `"3.5"` et `"300.125"` | élevée |
+| A18 | Le calculateur ne transmet rien, ne stocke rien et ne télécharge rien | §08, hero (`Calcul local · aucun envoi`) | `mvp-contract-engine.ts` et `mvp-contract-tool.tsx` : aucune occurrence de `fetch(`, `XMLHttpRequest`, `WebSocket`, `localStorage`, `sessionStorage`, `document.cookie`, `sendBeacon` ; test « garde l'outil local, déterministe et sans transmission » | élevée |
 | A19 | Le calculateur ne produit aucun score | hero (`Score global : Aucun`), §08, §10, FAQ 03-02 | `mvp-contract-tool.tsx` l. 453 « L'outil n'attribue aucun score » ; le type `MvpContractAssessment` ne porte aucun champ de score | élevée |
 | A20 | Le calculateur refuse de conclure tant qu'une opération n'est pas bornée, garde les autres totaux visibles et les marque « partiel/inexploitable » | FAQ 02-03 | `mvp-contract-engine.ts` l. 1026-1046 (`manualLoadState`) et l. 654 ; `mvp-contract-tool.tsx` l. 835, 854 | élevée |
 | A21 | Le premier blocage applicable fixe le verdict, dans cet ordre : décision inconnue, report critique, opération non bornée, capacité dépassée, format non productif | §07 | `mvp-contract-engine.ts` l. 1048-1073, cascade `if / else if` | élevée |
@@ -625,10 +741,10 @@ de l'article.
 | B01 | Les sept familles de responsabilités et leurs libellés | §04 | Construction propre au guide, non présentée comme une norme. Le §04 dit « Elles ne décrivent aucun module logiciel : ce sont des responsabilités ». |
 | B02 | Les cinq traitements possibles (construire, opérer manuellement, intégrer, reporter, à vérifier) | §04 | Construction propre au guide |
 | B03 | Un écran d'administration complet pèse 2 à 3 écrans ; une matrice de rôles 1 ; un tableau de bord 1 à 2 | §05, FAQ 01-03 | **Oui** — « estimation éditoriale Hagnéré Code, à confronter à votre devis, pas un tarif » |
-| B04 | Un pilote accompagné compte 2 à 5 clients réels | §02 | **Non** — voir É5 |
+| B04 | Un pilote accompagné compte 2 à 5 clients réels | §02 | **Oui depuis le 30/08/2026** — « (estimation éditoriale Hagnéré Code, aucune source ne borne un pilote) » (É5 traité) |
 | B05 | Le devis d'ouverture porte quatorze écrans et trois lots | §01 | Scène d'ouverture, non chiffrante |
 | B06 | Le seuil de bascule du back-office : « plus d'une heure par semaine à corriger des données à la main » | FAQ 01-03 | Non étiqueté, mais formulé comme un déclencheur à écrire soi-même |
-| B07 | 350 € le jour chargé, sur sept heures, soit 50 € l'heure | §06 | **Oui**, explicitement — « écrite ici pour que vous puissiez la contester » |
+| B07 | 350 € le jour chargé, sur sept heures, soit 50 € l'heure | §06 | **Oui**, explicitement — « écrite ici pour que vous puissiez la contester ». Depuis le 30/08/2026, le §06 dit aussi que les minutes, les occurrences et la capacité viennent du même cas construit, au lieu de présenter les 350 € comme la seule valeur non sourcée (É2 traité) |
 
 ### F3. Ce que l'article refuse de dire, et qui compte
 
@@ -641,7 +757,8 @@ de l'article.
 - **Aucun client cité.** Conformément à la règle d'or du dépôt, l'article ne
   nomme aucun client, aucun témoignage, aucune métrique d'exploitation. Accordia
   est étiqueté « exemple construit » avant sa première valeur chiffrée, et le
-  test l. 763 vérifie que l'étiquette précède l'abonnement de 240 € HT.
+  test « annonce son cas comme construit et nomme des métiers, pas des cases »
+  vérifie que l'étiquette précède l'abonnement de 240 € HT.
 - **Le conflit d'intérêts est déclaré.** §10 : « Hagnéré Code développe des
   applications SaaS sur mesure et perçoit des honoraires si vous retenez cette
   option — l'une de celles que ce guide arbitre. »
@@ -685,7 +802,7 @@ ses quatre variantes.
 | H19 | Incident 1 — déclencheur | au 24ᵉ jour, le 30 septembre, la deuxième entreprise demande à récupérer ses décisions | §07 |
 | H20 | Incident 1 — volume et durée | 312 décisions, reprises une par une pendant deux jours ; restitution repoussée de deux jours | §07 |
 | H21 | Incident 2 — durée mesurée | 35 minutes par intervention d'accès, motif : inscription sur liste blanche exigée par chaque service informatique client | §07 |
-| H22 | Incident 3 — chronologie et volume | achat par carte ouvert « au troisième mois » ; trois cartes expirent ; trois abonnements ouverts quatre mois sans paiement | §07 — **ancrage temporel manquant, voir É6** |
+| H22 | Incident 3 — chronologie et volume | le pilote a conclu, le produit est vendu au-delà du 18 octobre ; achat par carte ouvert au troisième mois d'exploitation ; trois cartes expirent ; trois abonnements ouverts quatre mois sans paiement | §07 — **ancrage écrit depuis le 30/08/2026** (É6 traité) |
 
 ### Ce que l'exemple n'est pas
 
@@ -704,6 +821,7 @@ sont des entités du groupe, pas des clients indépendants.
 | « la restitution finale, prévue le 18 octobre, arrive deux jours plus tard » | 20 octobre. Cohérent. |
 | Le seuil du §03 (« au moins deux des trois ») et le nombre d'entreprises du §01 | cohérents |
 | L'abonnement de 240 € HT (§01) et l'incident 3 (§07) | même valeur |
+| L'incident 3 et la fin du pilote | l'achat par carte s'ouvre au troisième mois **d'exploitation**, après la conclusion du pilote et le 18 octobre : les quatre mois d'abonnements impayés tombent donc hors de la fenêtre du test, et l'article l'écrit (É6 traité) |
 
 ---
 
@@ -813,7 +931,8 @@ sur ces mêmes 165 minutes ». **Les cinq nombres tombent juste.**
 Note de lecture : les 165 minutes sont bien la somme **des trois autres**
 opérations dans cette variante, pas la charge de base amputée d'une valeur
 supposée. C'était l'erreur de la version précédente (« au lieu des 12
-supposées »), que le test l. 731 refuse désormais nommément.
+supposées »), que le test « raconte trois incidents portant chacun un montant
+ou une durée » refuse désormais nommément.
 
 ### H8. Incident 1 — l'export reporté
 
@@ -834,7 +953,10 @@ décision — l'article ne fait pas cette division et n'a pas à la faire.
 ### H9. Incident 3 — le paiement autonome sans procédure d'échec
 
 3 abonnements × 240 € HT (H07) × 4 mois = **2 880 € HT**. L'article publie
-« 2 880 € HT ». **Exact.** L'ancrage temporel, lui, manque : voir É6.
+« 2 880 € HT ». **Exact, et inchangé par la passe du 30 août** : É6 ne portait
+pas sur l'arithmétique mais sur l'ancrage temporel, désormais écrit — le pilote
+a conclu, le produit se vend au-delà du 18 octobre, et le troisième mois compté
+est un mois d'exploitation.
 
 ### H10. L'addition des écrans, §05
 
@@ -859,7 +981,8 @@ Sur un MVP de 3 à 5 écrans qui les absorberait toutes :
 - 5 + 6 = **11**
 
 L'article publie « soit 4 au minimum et 6 au maximum » puis « en compte sept à
-onze ». **Exact.** Le test l. 609 relit les bornes dans le rendu HTML au lieu
+onze ». **Exact.** Le test « additionne la colonne “ce que ça pèse” sans
+inventer d'écrans » relit les bornes dans le rendu HTML au lieu
 de les réécrire, ce qui l'empêche d'hériter d'une erreur de la page.
 
 ### H11. Le rapport prix par écran
@@ -881,7 +1004,8 @@ et la mise en ligne, le douzième ne les porte plus. »
 6,9 k€ sous « site vitrine » et écrit qu'« un MVP SaaS “Essentiel” démarre par
 exemple à 15 k€ HT, pas à 6,9 k€ HT ». Diviser 6 900 € par un nombre d'écrans
 appliquerait à un MVP un prix que la source réserve à autre chose. Les deux
-phrases sont verrouillées par le test l. 1040-1044 : le jour où l'une disparaît
+phrases sont verrouillées par le test « cite les prix Hagnéré Code réellement
+publiés sur /tarifs » : le jour où l'une disparaît
 de `/tarifs`, la division perd son fondement et le guide échoue au test.
 
 ### H12. La marche entre les deux forfaits
@@ -893,7 +1017,8 @@ tierces et fonctions d'IA — et la grille ne tarife rien entre 6 et 9 écrans.
 L'article écrit donc : « Cet écart mesure une marche entre deux périmètres
 différents, pas le prix de cinq écrans. » **C'est la correction centrale de la
 passe du 28 août**, et cinq formulations de l'ancienne version sont refusées
-nommément par le test l. 675-683.
+nommément par le test « ne vend plus la marche de 15 000 € comme un prix de
+cinq écrans ».
 
 ### H13. Le coût d'exploitation de la première année
 
@@ -901,7 +1026,8 @@ nommément par le test l. 675-683.
 le résultat est donc approché, et l'article conserve le mot — « font environ
 30 000 € HT ». 30 000 € est la **borne basse** du forfait Standard (30 000 à
 60 000), pas son équivalent : l'article écrit « soit la borne basse du forfait
-de développement suivant », et le test l. 1160 refuse la formulation « autant
+de développement suivant », et le test « garde le “environ” de la maintenance
+jusque dans le total annuel » refuse la formulation « autant
 que le lot 2 » de la version précédente. **Exact et correctement borné.**
 
 ### H14. La FAQ 01-02 et la limite du contrat manuel
@@ -915,67 +1041,85 @@ comparaison tient.**
 
 ## I. Ce que les tests verrouillent — et ce qu'ils ne voient pas
 
-`content-quality.test.ts` compte **49 tests** ; les trois fichiers colocalisés
-en comptent **91**. Ce que le contrat de contenu garantit, et qui dispense de
-le revérifier à la main à chaque passe :
+`content-quality.test.ts` compte **53 tests** depuis la passe du soir (49 avant,
+plus quatre écrits pour empêcher le retour des écarts É2 à É8) ; les trois
+fichiers colocalisés en comptent **95**. Ce que le contrat de contenu garantit,
+et qui dispense de le revérifier à la main à chaque passe :
 
 | Famille de contrôle | Ce qui est verrouillé |
 | --- | --- |
 | Registre et metadata | titre, H1 et `headline` identiques ; canonical absolu ; `datePublished` ≤ `dateModified` ≤ maintenant ; JSON-LD limité à `Article` + `BreadcrumbList` ; aucun `FAQPage`, `HowTo`, `Offer`, `Review`, `wordCount` |
-| Calibre | 3 000 à 4 200 mots visibles ; `readTimeMin` = arrondi(mots ÷ 200) ; somme des dix compteurs de section = `readTimeMin` ; chaque compteur = arrondi de sa propre section |
+| Calibre | 3 000 à 4 200 mots visibles ; `readTimeMin` = arrondi(mots ÷ 200) ; somme des dix compteurs de section = `readTimeMin` ; chaque compteur = arrondi de sa propre section. Le commentaire du test dit maintenant que 21 min tient de 4 100 à 4 299 mots et que la marge réelle contre le plafond de calibre est de 20 mots |
 | Typographie | aucun insécable littéral dans le code source ; insécable avant chaque ponctuation double, y compris dans les attributs `alt`/`title` de la page ; apostrophes courbes ; pas de nombre à quatre chiffres non séparé |
 | Structure | les neuf ancres publiées conservées ; réponse directe de 120 à 200 mots ; 40 à 60 % de H2 en question ; au plus quatre tableaux, à légendes distinctes ; ≥ 10 valeurs chiffrées pour mille mots |
 | Arithmétique | les totaux 237/300/63, 395, 474, 177, 165, 210, 375, 75, 79 × 4 = 316, 700 €, 840 min, 2,8, 2 880 €, 4/6, 7/11, 3 000–5 000, 2 000–6 000, 2 500 × 12 = 30 000 — chacun contre une **constante calculée à la main** et non contre la formule de la page |
 | Prix maison | les huit chaînes de `body.ts` (dont « 6,9 k€ HT (site vitrine) » et « démarre par exemple à 15 k€ HT, pas à 6,9 k€ HT ») ; la formulation exacte de la déduction du Discovery |
-| Sources | dates ANSSI, ASVS et WCAG présentes dans le §04 ; articles 5, 25 et 32 dans le §02 |
+| Sources | dates ANSSI, ASVS et WCAG présentes dans le §04 ; articles 5, 25 et 32 dans le §02 ; **le localisateur d'ASVS est la page projet et l'URL de version du dépôt est interdite** ; **les deux entrées retirées (CNIL développeur, Logging Cheat Sheet) ne peuvent pas revenir sans phrase qui s'y adosse** |
 | Style | onze énoncés de fréquence interdits nommément ; onze connecteurs robotiques interdits ; le moule « n'est pas X, c'est Y » réduit à zéro occurrence |
 | Commerce | un seul `TrackedGuideCtaLink` ; pas de `strategyCta` ; un seul bloc « Transparence. » ; aucun lien vers un guide non publié ni vers lui-même |
 | Outil | aucun `fetch`, `XMLHttpRequest`, `WebSocket`, `localStorage`, `sessionStorage`, `document.cookie`, `sendBeacon` dans le moteur et l'outil ; pas d'attribut `download=` dans le rendu |
 | Mobile | le tableau à quatre colonnes du §02 : quatre en-têtes, douze cellules, chacune portant son `data-label`, et la règle `.guide-table [data-label]::before` sous `@media (max-width: 767px)` dans `globals.css` |
 | Actifs | les trois SVG et les trois WebP existent ; les WebP portent bien l'en-tête `RIFF…WEBP` ; le visuel de charge affiche les mêmes facteurs que le moteur |
 
-**Angles morts du contrat de contenu — à traiter par une personne :**
+**Les quatre tests ajoutés le 30 août au soir**, qui ferment six des sept
+angles morts de la version précédente :
+
+| Test | Ce qu'il empêche |
+| --- | --- |
+| « pose le coût du temps interne sans prétendre qu'il est seul non sourcé » (É2) | le retour de « Une hypothèse, et une seule » et de toute variante « une seule … ne sort d'aucune source » |
+| « ne fait pas passer trois référentiels pour trois obligations » (É3) | « portent une obligation extérieure » et toute formule « trois … obligations extérieures » |
+| « décrit les bornes du calculateur telles que le moteur les applique » (É4) | une prose qui contredit le moteur — le test **exécute** `assessMvpContract` sur `3.5` clients et sur une capacité à trois décimales |
+| « fait porter à chaque localisateur l'affirmation qu'il soutient » (É7, É8) | le retour de l'URL de version d'ASVS et des deux sources orphelines |
+
+Deux tests existants ont par ailleurs été étendus : celui du §02 exige
+maintenant l'étiquette du « 2 à 5 clients réels » (É5), et celui de l'incident 1
+a un voisin, « ancre l'incident 3 hors du pilote qu'il dépasse » (É6).
+
+**Angles morts restants — à traiter par une personne :**
 
 1. le rendu réel dans un navigateur (le test prouve le mécanisme de mise en
    cartes, pas ce qu'un œil voit) ;
-2. la portée de la phrase É2 (« une hypothèse, et une seule ») : le test
-   vérifie sa présence, pas sa véracité ;
-3. la qualification « obligation extérieure » de É3 ;
-4. la description des bornes du calculateur de É4 ;
-5. le chiffre « 2 à 5 clients réels » de É5, qu'aucun test n'interroge ;
-6. la cohérence chronologique de l'incident 3 (É6) ;
-7. l'écart entre le dépôt et la production (É1), qu'aucun test local ne peut
+2. l'écart entre le dépôt et la production (É1), qu'aucun test local ne peut
    voir par construction.
 
 ---
 
 ## J. Contrôles exécutés le 30 août 2026
 
+Deux séries. Les lignes marquées **(soir)** ont été refaites après la
+correction des écarts ; les autres datent de la reconstitution du matin et
+n'ont pas été invalidées.
+
 | Contrôle | Commande | Résultat |
 | --- | --- | --- |
-| Tests colocalisés | `npx vitest run src/app/guides/mvp-saas-quoi-inclure` | **3 fichiers, 91 tests, tous verts** |
-| Contrat de contenu seul | `npx vitest run src/app/guides/mvp-saas-quoi-inclure/content-quality.test.ts` | **49 tests verts** |
-| Registre, corpus, attribution de prix | `npx vitest run src/lib/guides.test.ts src/app/guides/guides-corpus-contract.test.ts src/lib/guide-price-attribution.test.ts` | **3 fichiers, 28 tests verts** |
-| Temps de lecture | serveur local `npm run dev`, puis `npm run measure:guide-readtime -- mvp-saas-quoi-inclure` | **4 096 mots, 20 min** — égal au `readTimeMin` du registre |
-| Rendu local de la page | `curl -o /dev/null -w '%{http_code}' http://localhost:3000/guides/mvp-saas-quoi-inclure` | **200** |
-| Liens internes en production | `curl -L -o /dev/null -w '%{http_code}'` sur les 9 destinations | **9 × 200** |
-| Liens externes | idem sur les 12 URL de `legalSources` | **11 × 200**, `leanstartup.co` → **403** (anti-robot ; contenu bien lu ce jour par un autre moyen) |
-| Grille tarifaire servie | téléchargement de `https://hagnere-code.ai/tarifs` et comptage des huit chaînes | **toutes présentes** |
-| Version servie du guide | téléchargement de `https://hagnere-code.ai/guides/mvp-saas-quoi-inclure` | **version du 3 août — voir É1** |
+| Tests colocalisés **(soir)** | `npx vitest run src/app/guides/mvp-saas-quoi-inclure` | **3 fichiers, 95 tests, tous verts** |
+| Contrat de contenu seul **(soir)** | `npx vitest run src/app/guides/mvp-saas-quoi-inclure/content-quality.test.ts` | **53 tests verts** |
+| Types **(soir)** | `npx tsc --noEmit` | **aucune erreur** |
+| Corpus et attribution de prix **(soir)** | `npx vitest run src/app/guides/guides-corpus-contract.test.ts src/lib/guide-price-attribution.test.ts` | **verts** |
+| Registre **(soir)** | `npx vitest run src/lib/guides.test.ts` | **1 échec, étranger à ce guide** : `cahier-des-charges-saas` déclenche le motif interdit `/\.csv\b/i` dans son `page.tsx`. Aucun rapport avec ce slug ; à traiter par l'agent de ce guide |
+| Temps de lecture **(soir)** | serveur local, puis `npx tsx scripts/measure-guide-readtime.mjs --check mvp-saas-quoi-inclure` | **`OK mvp-saas-quoi-inclure mesuré 21 min publié 21 min`** |
+| Rendu local de la page **(soir)** | `curl -o /dev/null -w '%{http_code}' http://localhost:3000/guides/mvp-saas-quoi-inclure` | **200** ; badge « Mis à jour le 30 août 2026 » et `dateModified` du JSON-LD à `2026-08-30T22:30:00+02:00` |
+| Liens internes en production **(soir)** | `curl -L -o /dev/null -w '%{http_code}'` sur les 9 destinations | **9 × 200** |
+| Liens externes **(soir)** | idem sur les **10** URL de `legalSources` après retrait des deux orphelines | **9 × 200**, `leanstartup.co` → **403** (anti-robot ; contenu bien lu ce jour par un autre moyen) |
+| Page projet ASVS **(soir)** | ouverture de `https://owasp.org/www-project-application-security-verification-standard/` | les deux verbatim retenus sont présents ; la page de version du dépôt, rouverte elle aussi, n'affiche ni l'année ni « stable » |
+| Grille tarifaire servie **(soir)** | téléchargement de `https://hagnere-code.ai/tarifs` et comptage des huit chaînes | **toutes présentes**, décompte reporté en section E |
+| Version servie du guide **(soir)** | téléchargement de `https://hagnere-code.ai/guides/mvp-saas-quoi-inclure` | **toujours la version du 3 août — voir É1** |
 | Actifs | `ls public/guides/mvp-saas-quoi-inclure/` | 3 SVG + 3 WebP présents |
 
-**Non exécuté, et déclaré comme tel :** `npx tsc --noEmit`, `npx eslint`,
-`npm test` complet et `NEXT_PUBLIC_ENV=production npm run build` n'ont pas été
-lancés par cet agent — sept agents écrivaient en parallèle sur des fichiers
-voisins, et un échec de ces commandes n'aurait pas été imputable à ce guide.
-Ces quatre commandes restent dues avant livraison, par l'agent qui gèle le lot.
+**Non exécuté, et déclaré comme tel :** `npx eslint`, `npm test` complet et
+`NEXT_PUBLIC_ENV=production npm run build` n'ont pas été lancés — sept agents
+écrivaient en parallèle sur des fichiers voisins, et un échec de ces commandes
+n'aurait pas été imputable à ce guide. Elles restent dues avant livraison, par
+l'agent qui gèle le lot. `npx tsc --noEmit`, lui, a bien été lancé et passe.
 
 **Non exécuté également :** aucun contrôle visuel à 320, 390, 768, 1024 et
 1440 px n'a été fait. La condition bloquante de la charte §13.4 — le tableau à
 quatre colonnes du §02, dont la troisième porte la réponse — est traitée par
 construction (les cellules passent en blocs pleine largeur sous 768 px et
 réinjectent leur en-tête depuis `data-label`) et verrouillée par un test, mais
-**pas observée**.
+**pas observée**. La cellule « Pilote accompagné » s'est allongée avec
+l'étiquette d'É5 : c'est la première chose à regarder au prochain contrôle
+visuel.
 
 ---
 
@@ -983,9 +1127,12 @@ réinjectent leur en-tête depuis `data-label`) et verrouillée par un test, mai
 
 **Aucun lecteur humain extérieur n'a relu cet article.** Aucun test lecteur,
 aucun panel, aucun dirigeant non technique n'a été sollicité, ni pour la
-version publiée ni pour la passe du 28 août. Les revues qui ont eu lieu sont
-des contre-audits menés par des agents : la charte §13 interdit de les
-présenter comme l'avis d'une personne réelle.
+version publiée, ni pour la passe du 28 août, ni pour celle du 30 août. Les
+revues qui ont eu lieu sont des contre-audits menés par des agents : la charte
+§13 interdit de les présenter comme l'avis d'une personne réelle. **La page ne
+revendique nulle part une relecture humaine**, et le badge qu'elle affiche dit
+« Mis à jour le 30 août 2026 » — une date de modification, pas une date de
+relecture.
 
 En conséquence, et conformément au tableau de statuts de la charte §13 :
 
@@ -1008,12 +1155,12 @@ commercial ? »
 
 | Élément | Événement qui impose une nouvelle vérification | Échéance conseillée |
 | --- | --- | --- |
-| Les huit montants de `/tarifs` | toute modification de `src/components/tarifs/body.ts` ; l'article annonce lui-même une revérification « tous les douze mois » | **28 août 2027**, ou à la première modification de la grille |
-| Les deux phrases de `/tarifs` qui fondent la division par écran | leur disparition casse le test l. 1040-1044 **et** le raisonnement du §05 | surveillance par test, déjà en place |
-| Stripe, webhooks d'abonnement | documentation vivante, sans version — la plus volatile des douze | à chaque révision substantielle |
+| Les huit montants de `/tarifs` | toute modification de `src/components/tarifs/body.ts` ; l'article annonce lui-même une revérification « tous les douze mois » | **30 août 2027**, ou à la première modification de la grille |
+| Les deux phrases de `/tarifs` qui fondent la division par écran | leur disparition casse le test « cite les prix Hagnéré Code réellement publiés sur /tarifs » **et** le raisonnement du §05 | surveillance par test, déjà en place |
+| Stripe, webhooks d'abonnement | documentation vivante, sans version — la plus volatile des dix | à chaque révision substantielle |
 | CNIL, guide de la sécurité | parution d'une édition postérieure à 2024 | annuel |
 | ANSSI, sauvegardes | parution d'une version 1.2 ou d'un ANSSI-BP-100 révisé | annuel |
-| OWASP ASVS | parution d'une 5.1 ou d'une 6.0 | annuel |
+| OWASP ASVS | parution d'une 5.1 ou d'une 6.0 ; **ou** disparition, sur la page projet, du bloc « latest stable version » ou de l'annonce datée du 30 mai 2025 — c'est lui qui porte le fait publié | annuel |
 | WCAG | passage à WCAG 3.0 ou errata sur 2.2 | annuel |
 | GOV.UK Service Manual | changement de la date « Last updated » des trois pages | annuel |
 | Eric Ries / Lean Startup | page sans date : rien ne signale un changement | à chaque révision substantielle |
@@ -1022,28 +1169,41 @@ commercial ? »
 
 ---
 
-## M. Ce qui reste ouvert, hors périmètre de cet agent
+## M. Ce qui reste ouvert
 
-1. **Le déploiement (É1).** La version décrite ici n'est pas en ligne. Rien
-   dans ce dossier ne peut le corriger.
-2. **Les sept écarts É2 à É8.** Ils appellent des modifications de `page.tsx`,
-   hors territoire de cet agent. É2, É3 et É4 touchent des phrases que le
-   lecteur peut vérifier lui-même — ce sont les plus coûteuses en confiance
-   pour un guide dont l'argument central est précisément que « les chiffres
-   publiés par celui qui vend la solution » se vérifient.
+Les écarts É2 à É8 sont traités : ils ne figurent plus ici. Restent :
+
+1. **Le déploiement (É1).** La version décrite par ce dossier n'est toujours
+   pas en ligne le 30 août 2026 à 23 h ; la production sert la version du
+   3 août. Aucune écriture dans `src/` ne peut le corriger, et **aucune
+   campagne payante ne doit pointer cette URL avant le déploiement** : elle
+   enverrait le trafic sur une page qui contient précisément les défauts que
+   les passes des 28 et 30 août ont corrigés.
+2. **Un échec de test étranger à ce guide.** `src/lib/guides.test.ts` échoue
+   sur `cahier-des-charges-saas` (motif interdit `/\.csv\b/i` dans son
+   `page.tsx`). Rien à voir avec ce slug, mais le lot ne peut pas être gelé
+   tant qu'il n'est pas traité par l'agent de ce guide.
 3. **La double formulation de la déduction du Discovery sur `/tarifs`**
    (« le devis précise la déduction applicable » contre « Déduit si phase 2 »).
-   Arbitrage à porter sur la page tarifs.
-4. **Le contrôle visuel** aux cinq largeurs, jamais fait.
-5. **`npx tsc --noEmit`, `eslint`, `npm test` complet et le build de
-   production**, à lancer par l'agent qui gèle le lot.
+   Arbitrage à porter sur la page tarifs, pas ici — le guide reprend la
+   formulation prudente et un test la verrouille.
+4. **Le contrôle visuel** aux cinq largeurs, jamais fait. Point d'attention
+   nouveau : la cellule « Pilote accompagné » du §02 s'est allongée.
+5. **`eslint`, `npm test` complet et le build de production**, à lancer par
+   l'agent qui gèle le lot. `npx tsc --noEmit` passe.
 6. **La relecture humaine** (section K).
+7. **La marge de calibre.** Le corps pèse 4 180 mots pour un plafond de 4 200 :
+   toute addition de plus de 20 mots impose de trimer ailleurs, ou de refaire
+   le calcul complet `readTimeMin` + compteurs de section.
 
 ---
 
-*Dossier reconstitué le 30 août 2026. Toutes les sources citées ci-dessus ont
+*Dossier reconstitué le 30 août 2026 au matin, puis mis à jour le 30 août 2026
+au soir après la correction des écarts. Toutes les sources citées ci-dessus ont
 été rouvertes ce jour ; aucune date de consultation n'a été recopiée d'un
-dossier antérieur. Les calculs ont été refaits sans réutiliser la formule de la
-page. Les écarts de la section 0 sont signalés, pas corrigés : la page, les
-tests, le registre et les manifestes sont hors du périmètre d'écriture de cet
-agent.*
+dossier antérieur, et la page projet d'OWASP ASVS comme la page `/tarifs` ont
+été rouvertes une seconde fois avant d'être citées différemment. Les calculs
+ont été refaits sans réutiliser la formule de la page, et aucun n'a changé de
+valeur. Les écarts de la section 0 portent désormais leur issue : sept
+corrigés dans `page.tsx`, `content-quality.test.ts` et l'entrée du registre,
+un — le déploiement — hors de portée d'une écriture de fichier.*
