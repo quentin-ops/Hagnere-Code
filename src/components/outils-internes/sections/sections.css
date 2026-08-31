@@ -377,6 +377,135 @@
 }
 .oi-arch-caption b { color: #fff; }
 
+/* -------- Équivalent mobile du schéma d'architecture --------------------
+   Le SVG est dessiné dans un viewBox de 1200×640. Sur un téléphone il tombait
+   à ~316 px de large : facteur 0,263, donc des libellés déclarés à 9-11 px
+   rendus à 2,4-2,9 px. Un schéma illisible n'est pas un schéma dégradé, c'est
+   un bloc mort — et c'est le principal support pédagogique de la page.
+   `.oi-arch-stack` rejoue EXACTEMENT le même contenu (mêmes couches, mêmes
+   blocs, mêmes libellés, même ordre) en couches empilées, à la typographie du
+   site. Les deux sont dans le DOM, un seul est affiché à la fois (bascule à
+   768 px plus bas), donc rien n'est dupliqué pour un lecteur d'écran.
+
+   Couleurs : cette section est sombre dans les DEUX thèmes (`.oi-arch` pose
+   `background:#0A0A0A` en dur), il n'y a donc pas de surcharge `html.dark` à
+   écrire ici — comme pour `.oi-security`. Le violet #6D28D9 du SVG ne tient
+   que 2,4:1 sur ce fond ; on garde #6D28D9 en APLAT (carte cœur métier, où le
+   texte blanc dessus tient 7,4:1) et on passe à #A78BFA pour le violet posé en
+   TEXTE sur le fond sombre (11,0:1), même arbitrage que `.sf-card-kind`.
+   -------------------------------------------------------------------- */
+.oi-arch-stack {
+  display: none;
+  margin-top: 40px;
+}
+.oi-arch-layer + .oi-arch-layer { margin-top: 28px; }
+.oi-arch-layer-k {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  color: #A78BFA;
+  margin-bottom: 12px;
+}
+.oi-arch-layer-k-si { color: #a3e47f; }
+.oi-arch-cards {
+  display: grid;
+  gap: 10px;
+}
+.oi-arch-card {
+  background: #171717;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.oi-arch-card-k {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  color: #A78BFA;
+}
+.oi-arch-card-t {
+  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: #fff;
+  margin-top: 6px;
+}
+.oi-arch-card-t-mono {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.oi-arch-card-d {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.62);
+  margin-top: 5px;
+}
+/* Cœur métier : l'aplat violet du SVG, qui le distingue des composants
+   standards et le raccorde à la pastille #6D28D9 de la légende. */
+.oi-arch-card-core {
+  background: #6D28D9;
+  border-color: rgba(255,255,255,0.18);
+}
+.oi-arch-card-core .oi-arch-card-k { color: rgba(255,255,255,0.85); }
+.oi-arch-card-core .oi-arch-card-t { font-size: 18px; }
+.oi-arch-card-core .oi-arch-card-d { color: rgba(255,255,255,0.85); }
+/* SSO : encadré en pointillés dans le SVG, hors de la rangée des utilisateurs. */
+.oi-arch-card-sso {
+  background: rgba(255,255,255,0.05);
+  border: 1px dashed rgba(255,255,255,0.22);
+}
+.oi-arch-card-sso .oi-arch-card-k { color: #a3e47f; }
+/* Flux descendant utilisateurs → cœur métier → données, sans contenu textuel :
+   les flèches du SVG ne portent pas de libellé, elles ne portent qu'un sens. */
+.oi-arch-flow {
+  position: relative;
+  height: 26px;
+}
+.oi-arch-flow::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 4px;
+  bottom: 8px;
+  border-left: 1px dashed rgba(255,255,255,0.25);
+}
+.oi-arch-flow::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 7px;
+  height: 7px;
+  border-right: 1px solid rgba(255,255,255,0.35);
+  border-bottom: 1px solid rgba(255,255,255,0.35);
+  transform: translateX(-50%) rotate(45deg);
+}
+.oi-arch-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.oi-arch-chips span {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 13px;
+  line-height: 1.3;
+  padding: 9px 12px;
+  border-radius: 8px;
+  background: rgba(163,228,127,0.08);
+  border: 1px solid rgba(163,228,127,0.25);
+  color: rgba(255,255,255,0.78);
+}
+.oi-arch-chips .oi-arch-chip-more {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.1);
+}
+
 /* ==================== SCÉNARIOS INTERACTIFS ==================== */
 .oi-scenarios {
   padding:80px 0;
@@ -1269,18 +1398,23 @@
   .shero-proof { grid-template-columns: repeat(4, 1fr); gap: 14px; }
   .shero-proof-num { font-size: 22px; }
 }
+/* Bascule du schéma d'architecture : SVG au-dessus de 768 px, pile HTML en
+   dessous. Un seul des deux est dans l'arbre d'accessibilité à la fois.
+   Le palier précédent gardait le SVG et le laissait rétrécir
+   (`min-width: 0; width: 100%`) : c'est exactement ce qui écrasait ses
+   libellés à 2,4 px. Le SVG ne rétrécit plus, il cède la place. */
+/* 1024 et non 768 : entre 769 et 1024px le SVG restait affiché a l'echelle
+   0,56-0,77, soit des libelles de 5,6 a 7,7px effectifs — pire que le cas
+   mobile qu'on vient de corriger. La bascule couvre donc toute la tablette. */
+@media (max-width: 1024px) {
+  .oi-arch-diagram { display: none; }
+  .oi-arch-stack { display: block; }
+}
 @media (max-width: 720px) {
   .oi-sec-grid,
   .oi-trust-grid { grid-template-columns: 1fr; }
   .oi-scen-tabs { grid-template-columns: 1fr; }
   .oi-scen-panel { padding: 24px; }
-  .oi-arch-diagram {
-    overflow: hidden;
-  }
-  .oi-arch-diagram svg {
-    min-width: 0;
-    width: 100%;
-  }
   .oi-compare-table {
     display: grid;
     gap: 12px;

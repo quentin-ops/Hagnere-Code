@@ -697,6 +697,143 @@
   max-width: 640px;
 }
 
+/* ---- Equivalent HTML du schema d'architecture (mobile) ------------------
+   Le SVG porte viewBox="0 0 1200 640". Sous 768 px il est rendu a ~0,26 :
+   ses libelles declares a 9-11 px tombent a 2,4-2,9 px effectifs, et le
+   schema — principal outil pedagogique de la page — devient illisible.
+   Le grossir n'est pas une option : `design-shared/responsive.css` lui
+   impose `min-width: 0 !important` des 1024 px pour empecher un
+   debordement horizontal de la page.
+   On sert donc, sous 768 px, la meme information en HTML, a la
+   typographie du site. Les deux versions vivent dans le DOM mais une
+   seule est affichee a la fois (`display: none` sur l'autre) : rien n'est
+   expose deux fois aux lecteurs d'ecran, le SVG garde son role="img" et
+   son aria-label, et aucun `aria-hidden` n'est a poser.
+   Ce bloc est sombre en permanence (`.sv-arch` force #0A0A0A / #fff),
+   comme `.sv-perf` : les couleurs sont donc ecrites en dur et il n'y a
+   pas de variante `html.dark` a prevoir. L'accent y est #A78BFA — le
+   violet retenu ailleurs dans ce fichier pour du texte accent sur fond
+   sombre (`.sv-refuse-intro .eyebrow`) — car le #6D28D9 du SVG ne tient
+   que 2,5:1 sur #171717. */
+.sv-arch-stack { display: none; }
+
+.sv-arch-layer {
+  background: #0d0d0d;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 18px 16px;
+}
+.sv-arch-layer-k {
+  font-family: var(--font-geist-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: #A78BFA;
+  margin-bottom: 14px;
+}
+.sv-arch-cards {
+  display: grid;
+  gap: 10px;
+}
+.sv-arch-card {
+  background: #171717;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  padding: 14px;
+  min-width: 0;
+}
+.sv-arch-card-k {
+  font-family: var(--font-geist-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: #A78BFA;
+  overflow-wrap: anywhere;
+}
+.sv-arch-card-t {
+  font-family: var(--font-geist);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #fff;
+  margin-top: 6px;
+  overflow-wrap: anywhere;
+}
+.sv-arch-card-d {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.6);
+  margin-top: 5px;
+  overflow-wrap: anywhere;
+}
+/* Meme code couleur que la legende sous le schema : violet plein pour le
+   coeur de la stack, gris pour les composants maitrises, fond discret
+   pour les services externes. */
+.sv-arch-card-core {
+  background: #6D28D9;
+  border-color: rgba(255,255,255,0.18);
+}
+.sv-arch-card-core .sv-arch-card-k,
+.sv-arch-card-core .sv-arch-card-d { color: rgba(255,255,255,0.85); }
+
+/* Les fleches du SVG : FRONT -> COEUR DU SITE -> CONTENUS & MESURE.
+   Purement decoratif (aria-hidden dans le HTML), aucun texte ajoute. */
+.sv-arch-flow {
+  position: relative;
+  height: 22px;
+}
+.sv-arch-flow::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 14px;
+  transform: translateX(-50%);
+  background: rgba(109,40,217,0.7);
+}
+.sv-arch-flow::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 12px;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid rgba(109,40,217,0.7);
+}
+
+.sv-arch-chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.sv-arch-chips li {
+  font-family: var(--font-geist-mono);
+  font-size: 13px;
+  line-height: 1.2;
+  color: rgba(255,255,255,0.78);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+/* 1024 et non 768 : entre 769 et 1024px le SVG restait affiché a l'echelle
+   0,56-0,77, soit des libelles de 5,6 a 7,7px effectifs — pire que le cas
+   mobile qu'on vient de corriger. La bascule couvre donc toute la tablette. */
+@media (max-width: 1024px) {
+  .sv-arch-diagram { display: none; }
+  .sv-arch-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 40px;
+  }
+}
+
+
 /* ==================== INTEGRATIONS WALL (segmenté) ==================== */
 .sv-integ {
   padding:80px 0;

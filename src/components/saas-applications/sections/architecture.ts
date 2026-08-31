@@ -29,32 +29,32 @@ export const architectureHtml = `
         <rect width="1200" height="640" fill="url(#archgrid)"/>
 
         <!-- CLIENT LAYER -->
-        <text x="60" y="60" font-family="Geist Mono" font-size="11" fill="#6D28D9" letter-spacing="0.08em">— CLIENTS</text>
+        <text x="60" y="60" font-family="Geist Mono" font-size="12" fill="#6D28D9" letter-spacing="0.08em">— CLIENTS</text>
         <!-- Web client -->
         <g transform="translate(60 80)">
           <rect width="260" height="88" rx="10" fill="#171717" stroke="rgba(255,255,255,0.12)"/>
-          <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">WEB CLIENT</text>
+          <text x="20" y="28" font-family="Geist Mono" font-size="12" fill="#6D28D9" letter-spacing="0.06em">WEB CLIENT</text>
           <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Next.js 16 + React 19</text>
           <text x="20" y="72" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">Dashboard, marketing, onboarding</text>
         </g>
         <!-- Mobile client -->
         <g transform="translate(340 80)">
           <rect width="260" height="88" rx="10" fill="#171717" stroke="rgba(255,255,255,0.12)"/>
-          <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">MOBILE CLIENT</text>
+          <text x="20" y="28" font-family="Geist Mono" font-size="12" fill="#6D28D9" letter-spacing="0.06em">MOBILE CLIENT</text>
           <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">React Native + Expo</text>
           <text x="20" y="72" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">iOS &amp; Android · 1 codebase</text>
         </g>
         <!-- Back-office -->
         <g transform="translate(620 80)">
           <rect width="260" height="88" rx="10" fill="#171717" stroke="rgba(255,255,255,0.12)"/>
-          <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">BACK-OFFICE ADMIN</text>
+          <text x="20" y="28" font-family="Geist Mono" font-size="12" fill="#6D28D9" letter-spacing="0.06em">BACK-OFFICE ADMIN</text>
           <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Back-office React</text>
           <text x="20" y="72" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">Support, stats, impersonation</text>
         </g>
         <!-- Public API -->
         <g transform="translate(900 80)">
           <rect width="240" height="88" rx="10" fill="#171717" stroke="rgba(255,255,255,0.12)"/>
-          <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">API PUBLIQUE</text>
+          <text x="20" y="28" font-family="Geist Mono" font-size="12" fill="#6D28D9" letter-spacing="0.06em">API PUBLIQUE</text>
           <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">REST + OpenAPI</text>
           <text x="20" y="72" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">Clés, rate-limit, webhooks</text>
         </g>
@@ -68,10 +68,10 @@ export const architectureHtml = `
         </g>
 
         <!-- API CORE -->
-        <text x="60" y="220" font-family="Geist Mono" font-size="11" fill="#6D28D9" letter-spacing="0.08em">— CORE API</text>
+        <text x="60" y="220" font-family="Geist Mono" font-size="12" fill="#6D28D9" letter-spacing="0.08em">— CORE API</text>
         <g transform="translate(340 240)">
           <rect width="520" height="96" rx="12" fill="#6D28D9" stroke="rgba(255,255,255,0.18)"/>
-          <text x="24" y="34" font-family="Geist Mono" font-size="11" fill="rgba(255,255,255,0.8)" letter-spacing="0.06em">NEXT.JS 16 · TYPESCRIPT</text>
+          <text x="24" y="34" font-family="Geist Mono" font-size="12" fill="rgba(255,255,255,0.8)" letter-spacing="0.06em">NEXT.JS 16 · TYPESCRIPT</text>
           <text x="24" y="60" font-family="Geist" font-size="20" font-weight="600" fill="#fff">Hagnéré Core</text>
           <text x="24" y="82" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.8)">Auth · RBAC · Billing · Multi-tenant · API · Events · Jobs</text>
         </g>
@@ -79,13 +79,13 @@ export const architectureHtml = `
         <!-- Side boxes next to core -->
         <g transform="translate(60 240)">
           <rect width="240" height="96" rx="10" fill="#171717" stroke="rgba(255,255,255,0.1)"/>
-          <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">AGENTS IA</text>
+          <text x="20" y="28" font-family="Geist Mono" font-size="12" fill="#6D28D9" letter-spacing="0.06em">AGENTS IA</text>
           <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Modèle IA choisi au cadrage</text>
           <text x="20" y="72" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">Extraction, RAG, tool-calling</text>
         </g>
         <g transform="translate(900 240)">
           <rect width="240" height="96" rx="10" fill="#171717" stroke="rgba(255,255,255,0.1)"/>
-          <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">QUEUES &amp; CRON</text>
+          <text x="20" y="28" font-family="Geist Mono" font-size="12" fill="#6D28D9" letter-spacing="0.06em">QUEUES &amp; CRON</text>
           <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Files d'attente Redis</text>
           <text x="20" y="72" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">Jobs async, retries, observabilité</text>
         </g>
@@ -98,35 +98,35 @@ export const architectureHtml = `
         </g>
 
         <!-- DATA -->
-        <text x="60" y="388" font-family="Geist Mono" font-size="11" fill="#6D28D9" letter-spacing="0.08em">— DATA</text>
+        <text x="60" y="388" font-family="Geist Mono" font-size="12" fill="#6D28D9" letter-spacing="0.08em">— DATA</text>
         <g transform="translate(60 408)">
           <rect width="250" height="80" rx="10" fill="#171717" stroke="rgba(255,255,255,0.1)"/>
-          <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">POSTGRESQL</text>
+          <text x="20" y="28" font-family="Geist Mono" font-size="12" fill="#6D28D9" letter-spacing="0.06em">POSTGRESQL</text>
           <text x="20" y="50" font-family="Geist" font-size="14" font-weight="600" fill="#fff">Base principale</text>
-          <text x="20" y="68" font-family="Geist" font-size="11" fill="rgba(255,255,255,0.55)">Multi-tenant, migrations versionnées</text>
+          <text x="20" y="68" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">Multi-tenant, migrations versionnées</text>
         </g>
         <g transform="translate(330 408)">
           <rect width="250" height="80" rx="10" fill="#171717" stroke="rgba(255,255,255,0.1)"/>
-          <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">REDIS</text>
+          <text x="20" y="28" font-family="Geist Mono" font-size="12" fill="#6D28D9" letter-spacing="0.06em">REDIS</text>
           <text x="20" y="50" font-family="Geist" font-size="14" font-weight="600" fill="#fff">Cache + queues + rate-limit</text>
-          <text x="20" y="68" font-family="Geist" font-size="11" fill="rgba(255,255,255,0.55)">Sessions, cache applicatif, sockets</text>
+          <text x="20" y="68" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">Sessions, cache applicatif, sockets</text>
         </g>
         <g transform="translate(600 408)">
           <rect width="250" height="80" rx="10" fill="#171717" stroke="rgba(255,255,255,0.1)"/>
-          <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">S3 / OBJECT STORE</text>
+          <text x="20" y="28" font-family="Geist Mono" font-size="12" fill="#6D28D9" letter-spacing="0.06em">S3 / OBJECT STORE</text>
           <text x="20" y="50" font-family="Geist" font-size="14" font-weight="600" fill="#fff">Fichiers + backups</text>
-          <text x="20" y="68" font-family="Geist" font-size="11" fill="rgba(255,255,255,0.55)">Scaleway Object / AWS S3, chiffré</text>
+          <text x="20" y="68" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">Scaleway Object / AWS S3, chiffré</text>
         </g>
         <g transform="translate(870 408)">
           <rect width="270" height="80" rx="10" fill="#171717" stroke="rgba(255,255,255,0.1)"/>
-          <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">MEILISEARCH</text>
+          <text x="20" y="28" font-family="Geist Mono" font-size="12" fill="#6D28D9" letter-spacing="0.06em">MEILISEARCH</text>
           <text x="20" y="50" font-family="Geist" font-size="14" font-weight="600" fill="#fff">Recherche full-text</text>
-          <text x="20" y="68" font-family="Geist" font-size="11" fill="rgba(255,255,255,0.55)">Index tuné, facettes, typo-tolerant</text>
+          <text x="20" y="68" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">Index tuné, facettes, typo-tolerant</text>
         </g>
 
         <!-- EXTERNAL SERVICES -->
-        <text x="60" y="540" font-family="Geist Mono" font-size="11" fill="#6D28D9" letter-spacing="0.08em">— SERVICES EXTERNES</text>
-        <g font-family="Geist Mono" font-size="11" fill="rgba(255,255,255,0.75)">
+        <text x="60" y="540" font-family="Geist Mono" font-size="12" fill="#6D28D9" letter-spacing="0.08em">— SERVICES EXTERNES</text>
+        <g font-family="Geist Mono" font-size="12" fill="rgba(255,255,255,0.75)">
           <rect x="60" y="560" width="100" height="40" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
           <text x="110" y="584" text-anchor="middle">Stripe</text>
 
@@ -155,6 +155,105 @@ export const architectureHtml = `
           <text x="1070" y="584" text-anchor="middle">Pennylane / Axonaut</text>
         </g>
       </svg>
+    </div>
+
+    <!-- Equivalent HTML du schema ci-dessus, meme couches et memes blocs.
+         Sous 768 px le SVG est masque et c'est ce bloc qui s'affiche ;
+         au-dessus, l'inverse. Un seul des deux est dans l'arbre a la fois. -->
+    <div class="sa-arch-stack reveal">
+
+      <div class="sa-arch-layer">
+        <p class="sa-arch-layer-label">— CLIENTS</p>
+        <div class="sa-arch-cards">
+          <div class="sa-arch-card">
+            <p class="sa-arch-card-k">WEB CLIENT</p>
+            <p class="sa-arch-card-t">Next.js 16 + React 19</p>
+            <p class="sa-arch-card-d">Dashboard, marketing, onboarding</p>
+          </div>
+          <div class="sa-arch-card">
+            <p class="sa-arch-card-k">MOBILE CLIENT</p>
+            <p class="sa-arch-card-t">React Native + Expo</p>
+            <p class="sa-arch-card-d">iOS &amp; Android · 1 codebase</p>
+          </div>
+          <div class="sa-arch-card">
+            <p class="sa-arch-card-k">BACK-OFFICE ADMIN</p>
+            <p class="sa-arch-card-t">Back-office React</p>
+            <p class="sa-arch-card-d">Support, stats, impersonation</p>
+          </div>
+          <div class="sa-arch-card">
+            <p class="sa-arch-card-k">API PUBLIQUE</p>
+            <p class="sa-arch-card-t">REST + OpenAPI</p>
+            <p class="sa-arch-card-d">Clés, rate-limit, webhooks</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sa-arch-flow" aria-hidden="true"></div>
+
+      <div class="sa-arch-layer">
+        <p class="sa-arch-layer-label">— CORE API</p>
+        <div class="sa-arch-cards">
+          <div class="sa-arch-card sa-arch-card-core">
+            <p class="sa-arch-card-k">NEXT.JS 16 · TYPESCRIPT</p>
+            <p class="sa-arch-card-t">Hagnéré Core</p>
+            <p class="sa-arch-card-d">Auth · RBAC · Billing · Multi-tenant · API · Events · Jobs</p>
+          </div>
+          <div class="sa-arch-card">
+            <p class="sa-arch-card-k">AGENTS IA</p>
+            <p class="sa-arch-card-t">Modèle IA choisi au cadrage</p>
+            <p class="sa-arch-card-d">Extraction, RAG, tool-calling</p>
+          </div>
+          <div class="sa-arch-card">
+            <p class="sa-arch-card-k">QUEUES &amp; CRON</p>
+            <p class="sa-arch-card-t">Files d'attente Redis</p>
+            <p class="sa-arch-card-d">Jobs async, retries, observabilité</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sa-arch-flow sa-arch-flow-soft" aria-hidden="true"></div>
+
+      <div class="sa-arch-layer">
+        <p class="sa-arch-layer-label">— DATA</p>
+        <div class="sa-arch-cards">
+          <div class="sa-arch-card">
+            <p class="sa-arch-card-k">POSTGRESQL</p>
+            <p class="sa-arch-card-t">Base principale</p>
+            <p class="sa-arch-card-d">Multi-tenant, migrations versionnées</p>
+          </div>
+          <div class="sa-arch-card">
+            <p class="sa-arch-card-k">REDIS</p>
+            <p class="sa-arch-card-t">Cache + queues + rate-limit</p>
+            <p class="sa-arch-card-d">Sessions, cache applicatif, sockets</p>
+          </div>
+          <div class="sa-arch-card">
+            <p class="sa-arch-card-k">S3 / OBJECT STORE</p>
+            <p class="sa-arch-card-t">Fichiers + backups</p>
+            <p class="sa-arch-card-d">Scaleway Object / AWS S3, chiffré</p>
+          </div>
+          <div class="sa-arch-card">
+            <p class="sa-arch-card-k">MEILISEARCH</p>
+            <p class="sa-arch-card-t">Recherche full-text</p>
+            <p class="sa-arch-card-d">Index tuné, facettes, typo-tolerant</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sa-arch-layer">
+        <p class="sa-arch-layer-label">— SERVICES EXTERNES</p>
+        <ul class="sa-arch-chips">
+          <li>Stripe</li>
+          <li>GoCardless</li>
+          <li>Postmark</li>
+          <li>Resend</li>
+          <li>Sentry</li>
+          <li>PostHog</li>
+          <li>Twilio</li>
+          <li>HubSpot / CRM</li>
+          <li>Pennylane / Axonaut</li>
+        </ul>
+      </div>
+
     </div>
 
     <div class="sa-arch-caption reveal">
