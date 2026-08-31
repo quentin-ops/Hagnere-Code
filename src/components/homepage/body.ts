@@ -1227,8 +1227,8 @@ export const bodyHtml = `${navHtml}
         <h3>Essentiel</h3>
         <div class="plan-sub">Un site vitrine ou une landing qui convertit. Idéal pour une première collaboration.</div>
         <div class="plan-price">
-          <span class="amount">Sur devis</span>
-          <span class="per">≈ 6,9–15 k€ HT sur projet-type · forfait fixe</span>
+          <span class="amount">6,9–15 k€ HT</span>
+          <span class="per">ordre de grandeur sur projet-type · forfait fixe</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
@@ -1246,8 +1246,8 @@ export const bodyHtml = `${navHtml}
         <h3>Standard</h3>
         <div class="plan-sub">Un SaaS, un outil interne ou une marketplace. Le sweet spot des PME ambitieuses.</div>
         <div class="plan-price">
-          <span class="amount">Sur devis</span>
-          <span class="per">≈ 25–60 k€ HT sur projet-type · forfait fixe</span>
+          <span class="amount">25–60 k€ HT</span>
+          <span class="per">ordre de grandeur sur projet-type · forfait fixe</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
@@ -1266,8 +1266,8 @@ export const bodyHtml = `${navHtml}
         <h3>Partenariat</h3>
         <div class="plan-sub">On devient votre équipe tech externalisée. Plusieurs projets, forfait mensuel.</div>
         <div class="plan-price">
-          <span class="amount">Sur mesure</span>
-          <span class="per">≈ 8–20 k€ HT / mois selon équipe dédiée</span>
+          <span class="amount">8–20 k€ HT</span>
+          <span class="per">par mois · ordre de grandeur selon l'équipe dédiée</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">

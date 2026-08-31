@@ -303,9 +303,15 @@ describe("cohérence interne des montants cités", () => {
     // Cette garde ne couvrait que /tarifs, si bien que l'accueil a continué
     // d'afficher 6 k€ : c'est le tout premier prix que voit un visiteur, et
     // 900 € d'écart sur un plancher contredisent la promesse « le prix est écrit ».
+    // Regex et non littéral : la carte a depuis remis le chiffre en vedette
+    // (« 6,9–15 k€ HT » en 38px) et déplacé la mention d'ordre de grandeur en
+    // dessous. Ce qu'il faut tenir est la BORNE publiée, pas sa mise en forme.
     const accueil = read("src/components/homepage/body.ts");
-    expect(accueil).not.toMatch(/≈\s*6–15\s*k€/);
-    expect(accueil).toContain(`≈ ${vitrineEntry.replace(" k€ HT", "")}–15 k€ HT`);
+    expect(accueil).not.toMatch(/\b6–15\s*k€/);
+    const borne = vitrineEntry.replace(" k€ HT", "");
+    expect(accueil).toMatch(
+      new RegExp(`${borne.replace(",", "[.,]")}\\s*[–-]\\s*15\\s*k€\\s*HT`),
+    );
   });
 
   /**

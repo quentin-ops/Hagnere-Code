@@ -26,13 +26,24 @@ describe("base de taxation des prix de l'accueil", () => {
   const priceSectionEnd = bodyHtml.indexOf("<!-- FAQ -->", priceSectionStart);
 
   it("qualifie l'unité de chaque carte de forfait", () => {
-    const units = [
-      ...bodyHtml.matchAll(/<span class="per">([^<]+)<\/span>/g),
-    ].map((match) => match[1]);
+    /*
+     * La garde portait sur le seul <span class="per">. Elle a cessé de passer le
+     * jour où le montant a repris la vedette : trois cartes sur quatre criaient
+     * « Sur devis » en 38px et chuchotaient la fourchette en 11px, soit l'inverse
+     * de ce que la section promet, et « HT » a suivi le chiffre dans .amount.
+     *
+     * Ce qu'il faut tenir, c'est que CHAQUE CARTE déclare sa base de taxation —
+     * pas dans quel span elle le fait. On lit donc le bloc de prix entier.
+     */
+    const blocs = [
+      ...bodyHtml.matchAll(
+        /<div class="plan-price">([\s\S]*?)<\/div>/g,
+      ),
+    ].map((match) => match[1].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim());
 
-    expect(units.length).toBeGreaterThanOrEqual(4);
-    for (const unit of units) {
-      expect(unit, `unité de prix sans base de taxation : « ${unit} »`).toMatch(
+    expect(blocs.length).toBeGreaterThanOrEqual(4);
+    for (const bloc of blocs) {
+      expect(bloc, `carte de prix sans base de taxation : « ${bloc} »`).toMatch(
         /\bHT\b/,
       );
     }

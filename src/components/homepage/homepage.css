@@ -653,7 +653,13 @@
   .plan-sub{font-size:14px;color:var(--mute);min-height:42px}
   .plan.featured .plan-sub{color:rgba(255,255,255,0.6)}
   .plan-price{margin-top:28px;display:flex;flex-direction:column;align-items:flex-start;gap:4px}
-  .plan-price .amount{font-size:38px;font-weight:600;letter-spacing:-0.035em;line-height:1}
+  /* Le chiffre porte la taille, pas la mention. Trois cartes sur quatre
+     affichaient « Sur devis » en 38px et la fourchette réelle en 11px gris :
+     l'œil ne voyait donc que l'inverse de ce que la section promet. */
+  /* Fluide et insécable : à 38px fixes, « 25–60 k€ HT » se cassait en deux
+     lignes dans une carte de 250px utiles. La borne basse tient le plus long
+     des quatre montants sans coupure. */
+  .plan-price .amount{font-size:clamp(26px,2.05vw,36px);font-weight:600;letter-spacing:-0.035em;line-height:1.05;white-space:nowrap}
   .plan-price .per{font-family:var(--font-geist-mono);font-size:11px;color:var(--mute);letter-spacing:0.02em;line-height:1.4}
   .plan.featured .plan-price .per{color:rgba(255,255,255,0.5)}
   .plan-hr{height:1px;background:var(--line);margin:24px 0}

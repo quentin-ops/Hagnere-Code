@@ -51,11 +51,16 @@
   justify-content: center;
   min-height: 72px;
   padding: 8px 24px;
-  filter: grayscale(1) contrast(0.85);
-  opacity: 0.72;
-  transition: filter 0.25s, opacity 0.25s, transform 0.25s;
+  /* Pas de `grayscale`. Trois de ces quatre logos portent leur nom en blanc sur
+     une pastille de couleur — « Élite », « Investissement », « .ai ». Désaturées,
+     ces pastilles deviennent des rectangles gris opaques sur fond blanc : la
+     bande ne se lit plus comme quatre marques discrètes mais comme quatre images
+     à moitié chargées. La couleur ne revenait qu'au survol, donc jamais sur
+     téléphone, où le défaut est le plus visible. */
+  opacity: 0.9;
+  transition: opacity 0.25s, transform 0.25s;
 }
-.cw-logo:hover { filter: grayscale(0) contrast(1); opacity: 1; transform: translateY(-1px); }
+.cw-logo:hover { opacity: 1; transform: translateY(-1px); }
 .cw-logo img {
   max-height: 52px;
   max-width: 180px;

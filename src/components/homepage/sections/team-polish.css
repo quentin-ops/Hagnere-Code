@@ -79,20 +79,9 @@
   line-height: 1.4;
 }
 
-/* Photos-à-venir note for the dev grid */
-.eq-devs::after {
-  content: "Photos équipe ajoutées sous peu — en attendant, chaque badge LinkedIn pointe vers le profil.";
-  display: block;
-  grid-column: 1 / -1;
-  margin-top: 12px;
-  padding: 10px 14px;
-  background: var(--paper-3);
-  border: 1px dashed var(--line);
-  border-radius: 8px;
-  font-family: var(--font-geist-mono);
-  font-size: 11px;
-  color: var(--mute);
-  letter-spacing: 0.01em;
-  text-align: center;
-  line-height: 1.5;
-}
+/* La bande « Photos équipe ajoutées sous peu » a été retirée : les sept
+   photos sont en ligne et chargées (quentin, nicolas, killian, frederic,
+   arthur, ryan, peter). Codée en dur dans un `content:`, elle se serait
+   affichée indéfiniment — et elle annonçait un site inachevé dans la
+   section même qui doit prouver « pas de pool anonyme ». Un état de ce
+   genre doit venir de la donnée (`member.photoAvailable`), pas du CSS. */
