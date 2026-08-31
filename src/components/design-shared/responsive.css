@@ -1757,3 +1757,16 @@ body.nav-menu-lock { overflow: hidden; }
     align-self: start;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Saut vers une ancre : rendu forcé le temps du saut.
+
+   Posée par `useDesignInteractive` avant un `scrollIntoView`, retirée juste
+   après. Sans elle, `content-visibility: auto` fait qu'une section non peinte
+   compte pour son estimation et non pour sa taille réelle : chaque passe
+   révélait du contenu au-dessus de la cible, qui la repoussait d'autant.
+   --------------------------------------------------------------------------- */
+.hc-anchor-jump .hc-design main section,
+.hc-anchor-jump .hc-design main > section {
+  content-visibility: visible !important;
+}

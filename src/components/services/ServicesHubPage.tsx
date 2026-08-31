@@ -172,7 +172,10 @@ const services: Service[] = [
       "App React Native + Expo, paiement, push, mode hors-ligne et soumission aux stores selon le périmètre. Comptes, accès, livrables et droits sont écrits au devis.",
     proof: "Soumission App Store et Play Store cadrée au devis",
     idealFor: "Fidélité, RDV, e-com, terrain B2B",
-    duration: "Sur devis",
+    // « Sur devis » figurait dans les deux champs : la carte disait deux fois
+    // la même non-information. La durée reprend ce que la page publie déjà
+    // — « Planning indicatif confirmé au devis ».
+    duration: "Planning confirmé au devis",
     budget: "Sur devis",
     accent: "purple",
     icon: Smartphone,
@@ -187,7 +190,9 @@ const services: Service[] = [
       "Audit technique, contenus, cocons, maillage, schema.org, performance, Search Console et pages à intention business.",
     proof: "Constats reliés à des URL et priorisés",
     idealFor: "Trafic qualifié long terme",
-    duration: "Sur devis",
+    // Même motif. La page publie « Accompagnement mensuel » et
+    // « Accompagnement organique » : c'est ce que dure ce service.
+    duration: "Accompagnement mensuel",
     budget: "Sur devis",
     accent: "blue",
     icon: BarChart3,

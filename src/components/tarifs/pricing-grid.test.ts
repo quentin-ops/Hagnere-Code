@@ -136,10 +136,26 @@ describe("correspondance SEO entre la page service et la grille", () => {
     }
   });
 
-  it("explicite la correspondance sous le tableau", () => {
-    expect(bodyHtml).toMatch(
-      /les trois colonnes\s+correspondent aux trois formats publiés/i,
-    );
+  /**
+   * La correspondance était énoncée dans un paragraphe de onze lignes sous le
+   * tableau. Elle est désormais portée par la ligne elle-même : les trois
+   * cellules nomment les trois formats (test ci-dessus) et chacune est marquée
+   * « non publié ». Ce qui compte est que le lecteur sache, DANS la cellule,
+   * qu'aucun montant n'existe — pas qu'une phrase précise vive sous le tableau.
+   */
+  it("marque les trois cellules SEO comme non chiffrées", () => {
+    const cells = [
+      ...row.matchAll(
+        /<div class="ptcol"><b>([^<]+)<\/b><span>[^<]*<\/span>(?:<span class="ptcol-tag[^"]*">([^<]*)<\/span>)?/g,
+      ),
+    ];
+    expect(cells).toHaveLength(3);
+    for (const [, price, tag] of cells) {
+      expect(price).toMatch(/sur devis/i);
+      expect(tag, `cellule « ${price} » sans marque de lecture`).toBe(
+        "non publié",
+      );
+    }
   });
 
   /**
@@ -385,26 +401,27 @@ describe("ligne contenu & vidéo de /tarifs", () => {
     }
   });
 
-  it("renvoie les offres absentes du tableau vers la note de bas de tableau", () => {
-    // Deux blocs `.ptf-body` sur la page : celui qui commente le tableau par
-    // service est celui qui explique comment le lire.
-    const foot =
-      [...bodyHtml.matchAll(/<div class="ptf-body">([\s\S]*?)<\/div>/g)]
-        .map((match) => match[1])
-        .find((chunk) => chunk.includes("Comment lire ce tableau")) ?? "";
+  /**
+   * L'exception se lit sur la ligne qu'elle concerne, plus dans un paragraphe
+   * de bas de tableau qui énumérait celles de trois services à la fois. Le test
+   * suit : ce qui est verrouillé est qu'une offre publiée par la page service
+   * et absente des trois colonnes soit SIGNALÉE AU LECTEUR DE CETTE LIGNE, avec
+   * le montant de la page service — pas l'endroit où la mention est écrite.
+   */
+  it("signale sur sa propre ligne les offres absentes des trois colonnes", () => {
+    expect(row).toBeTruthy();
 
-    expect(foot).toBeTruthy();
     // Les deux offres publiées par la page service et absentes des colonnes.
     expect(VIDEO_SCENARIOS).toContain("Motion &amp; brand");
     expect(VIDEO_PRICING).toContain("Studio dédié");
-    expect(foot, "Motion & brand absent de la note").toMatch(/Motion &amp; brand/);
-    expect(foot, "Studio dédié absent de la note").toMatch(/Studio dédié/);
+    expect(row, "Motion & brand absent de la ligne").toMatch(/Motion &amp; brand/);
+    expect(row, "Studio dédié absent de la ligne").toMatch(/Studio dédié/);
 
     // Les montants repris doivent être ceux de la page service.
     expect(VIDEO_SCENARIOS).toMatch(/4 500 €\/mois/);
-    expect(foot).toMatch(/4 500 €\/m HT/);
+    expect(row).toMatch(/4 500 €\/m HT/);
     expect(VIDEO_PRICING).toMatch(/Dès 15 k€/);
-    expect(foot).toMatch(/15 k€ HT/);
+    expect(row).toMatch(/15 k€ HT/);
   });
 });
 

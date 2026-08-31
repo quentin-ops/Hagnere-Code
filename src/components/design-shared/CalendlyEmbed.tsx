@@ -201,7 +201,7 @@ export function CalendlyEmbed({ height = 700 }: { height?: number }) {
   if (!authorised) {
     return (
       <div className="calendly-consent" style={heightStyle(height)}>
-        <div className="calendly-consent-card">
+        <div className="calendly-consent-card calendly-consent-card--ask">
           <span className="calendly-consent-kicker">Service externe</span>
           <h3>Afficher le calendrier Calendly ?</h3>
           <p>
@@ -238,7 +238,11 @@ export function CalendlyEmbed({ height = 700 }: { height?: number }) {
         style={heightStyle(height)}
         role="alert"
       >
-        <div className="calendly-consent-card">
+        {/* Modificateur distinct : une page peut vouloir masquer le préambule de
+            consentement (elle l'explique déjà elle-même) sans masquer, du même
+            geste, le message d'échec — qui est la seule chose qui explique au
+            visiteur pourquoi le calendrier n'est pas là. */}
+        <div className="calendly-consent-card calendly-consent-card--failed">
           <h3>Le calendrier ne répond pas.</h3>
           <p>Vous pouvez ouvrir directement la page de réservation ou nous écrire.</p>
           <div className="calendly-consent-actions">

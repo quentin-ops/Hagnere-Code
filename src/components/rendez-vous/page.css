@@ -209,3 +209,83 @@ html.dark .rdv-side-card {
   .rdv-side-card { padding: 20px; gap: 14px; }
   .rdv-side-list { gap: 14px; }
 }
+
+/* --------- Promesse de l'appel, sous la tête de section ------------------ */
+/* Ce que la section dit désormais du rendez-vous lui-même, une fois
+   l'avertissement ramené à une phrase. */
+.rdv-calendly-promise {
+  margin: 14px auto 0;
+  max-width: 620px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line, #ededed);
+  color: var(--ink, #0a0a0a);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* --------- Carte de consentement : dédoublonnage, page /rendez-vous ------ */
+/* La carte vient du composant partagé `CalendlyEmbed`. Sur cette page — deux
+   sections en tout — elle répétait, à l'intérieur du cadre, l'intitulé et
+   l'avertissement que la tête de section vient de donner : le visiteur lisait
+   deux fois le même paragraphe sur les cookies et huit fois le nom du
+   prestataire avant d'apercevoir un calendrier.
+
+   Rien d'atteignable n'est retiré : le dépôt de cookies et son retrait sont
+   portés par `.rdv-calendly-sub`, juste au-dessus, dans le bloc que
+   `aria-labelledby` désigne. Ce qui disparaît est le doublon, et il disparaît
+   pour tout le monde (display: none) — pas seulement à l'œil.
+
+   Ces règles ne valent que dans `.rdv-calendly-section` : /contact embarque le
+   même composant sans reprendre l'avertissement dans sa tête de section, et y
+   garde donc la carte complète. Dépendance assumée au balisage de
+   design-shared/CalendlyEmbed.tsx : s'il change, la règle cesse simplement de
+   s'appliquer et la carte redevient complète. */
+.rdv-calendly-section .calendly-consent-kicker,
+/* Le sélecteur visait « la carte de consentement », mais CalendlyEmbed en rend
+   DEUX sous la même classe : celle qui demande l'accord, et celle qui annonce
+   « Le calendrier ne répond pas ». La règle vidait donc l'état d'échec de son
+   seul message, ne laissant qu'un bouton sans explication. Le modificateur
+   --ask restreint le masquage à la première. */
+.rdv-calendly-section .calendly-consent-card--ask > h3,
+.rdv-calendly-section .calendly-consent-card--ask > p:not(.calendly-consent-alt) {
+  display: none;
+}
+
+/* La réserve de hauteur du composant (jusqu'à 520 px) tenait un titre et cinq
+   lignes de texte. Il ne reste qu'un bouton et deux replis : la garder
+   laisserait un bouton seul au milieu du vide. */
+.rdv-calendly-section .calendly-consent {
+  min-height: 0;
+  padding: clamp(20px, 3vw, 28px) 16px;
+}
+
+/* Les replis passent SOUS le bouton au lieu d'être à sa droite : côte à côte,
+   ils se lisaient encore comme un choix entre deux chemins. Empilés, la
+   hiérarchie est sans ambiguïté — un geste, puis deux issues discrètes. */
+.rdv-calendly-section .calendly-consent-actions {
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin: 0 0 4px;
+}
+
+/* Trois actions de même poids se disputaient le geste : « Autoriser et
+   afficher », « Ouvrir Calendly dans un nouvel onglet » et les replis
+   e-mail / téléphone. Le bouton reste le seul bouton ; l'ouverture chez le
+   prestataire redevient un lien de texte — toujours là, toujours tapable
+   (44 px), mais plus en concurrence. */
+.rdv-calendly-section .calendly-consent-actions a {
+  padding: 11px 8px;
+  border-color: transparent;
+  background: none;
+  color: var(--mute, #525252);
+  font-size: 13.5px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.rdv-calendly-section .calendly-consent-actions a:hover {
+  color: var(--ink, #0a0a0a);
+}

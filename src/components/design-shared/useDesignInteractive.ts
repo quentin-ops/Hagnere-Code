@@ -94,25 +94,45 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       }
       if (!target) return;
 
-      let passes = 0;
-      let previousTop = Number.NaN;
-      const converge = () => {
-        if (!target || !target.isConnected) return;
-        // `instant` et non `auto` : selon la spécification, `auto` signifie
-        // « suivre la valeur CSS de scroll-behavior », et le site déclare
-        // `scroll-behavior: smooth`. Chaque passe lançait donc une animation
-        // asynchrone, et les huit passes se déclenchaient avant que la
-        // première n'ait bougé d'un pixel — mesuré : scrollY restait à 0.
-        target.scrollIntoView({ block: "start", behavior: "instant" });
-        const top = Math.round(target.getBoundingClientRect().top);
-        passes += 1;
-        // On s'arrête dès que la cible est stable à 2 px près, ou au bout de
-        // huit passes — au-delà, ce n'est plus le rendu qui bouge.
-        if (Math.abs(top - previousTop) <= 2 || passes >= 8) return;
-        previousTop = top;
-        window.setTimeout(converge, 90);
-      };
-      converge();
+      /*
+       * On supprime la cause au lieu de courir après elle.
+       *
+       * `content-visibility: auto` fait qu'une section non peinte compte pour
+       * son estimation (`contain-intrinsic-size`) et non pour sa taille réelle.
+       * Chaque passe de `scrollIntoView` révélait donc du contenu AU-DESSUS de
+       * la cible, qui la repoussait d'à peu près autant : la boucle poursuivait
+       * une cible mouvante. Mesuré sur /methode, page froide, ancre #stack :
+       * 1 630 px d'écart après vingt passes réparties sur cinq secondes — alors
+       * qu'une seule passe sur une page déjà peinte atteint la cible.
+       *
+       * Le temps d'un saut, on force donc le rendu de toutes les sections. Cela
+       * coûte une mise en page complète, mais sur un geste délibéré du visiteur
+       * et une seule fois — contre un atterrissage à 1 630 px de la cible.
+       *
+       * La classe est retirée après stabilisation, et une dernière passe corrige
+       * le repli éventuel des sections restées hors écran.
+       */
+      const racine = document.documentElement;
+      racine.classList.add("hc-anchor-jump");
+      const poser = () =>
+        target?.scrollIntoView({ block: "start", behavior: "instant" });
+
+      // `instant` et non `auto` : selon la spécification, `auto` signifie
+      // « suivre la valeur CSS de scroll-behavior », et le site déclare
+      // `scroll-behavior: smooth`. Chaque passe lançait sinon une animation
+      // asynchrone qui se terminait après les nôtres et les écrasait.
+      poser();
+      window.requestAnimationFrame(() => {
+        poser();
+        window.requestAnimationFrame(() => {
+          poser();
+          window.setTimeout(() => {
+            racine.classList.remove("hc-anchor-jump");
+            // Le repli des sections hors écran peut décaler de quelques pixels.
+            window.requestAnimationFrame(poser);
+          }, 120);
+        });
+      });
     };
 
     const onAnchorClick = (event: MouseEvent) => {
@@ -121,8 +141,34 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       if (!link) return;
       const hash = link.getAttribute("href") || "";
       if (hash.length < 2) return;
-      // On laisse le navigateur faire son saut natif, puis on le rattrape.
-      window.setTimeout(() => settleToAnchor(hash), 0);
+      /*
+       * On prend la main sur le défilement au lieu de courir après le saut natif.
+       *
+       * Le site déclare `scroll-behavior: smooth`. Un clic sur une ancre lance
+       * donc une animation ASYNCHRONE que le navigateur calcule sur la mise en
+       * page du moment — c'est-à-dire avant que `content-visibility: auto` ait
+       * révélé les vraies hauteurs. Cette animation se terminait APRÈS nos
+       * passes instantanées et écrasait la correction : mesuré sur /methode,
+       * #stack atterrissait à 1 630 px de sa cible au clic, alors que le même
+       * `scrollIntoView` piloté directement l'atteignait dès la première passe.
+       *
+       * `pushState` plutôt que l'assignation du hash : l'URL reflète l'ancre,
+       * le retour arrière fonctionne, et aucun `hashchange` n'est émis — donc
+       * pas de seconde correction concurrente.
+       */
+      const cible = document.querySelector(hash);
+      if (!cible) return;
+      event.preventDefault();
+      if (window.location.hash !== hash) {
+        window.history.pushState(null, "", hash);
+      }
+      // Le saut natif déplaçait aussi le focus : sans cela, un lecteur d'écran
+      // resterait sur le lien et lirait la page depuis le sommaire.
+      if (!cible.hasAttribute("tabindex")) {
+        cible.setAttribute("tabindex", "-1");
+      }
+      (cible as HTMLElement).focus?.({ preventScroll: true });
+      settleToAnchor(hash);
     };
     document.addEventListener("click", onAnchorClick);
     cleanups.push(() => document.removeEventListener("click", onAnchorClick));
@@ -1343,14 +1389,24 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
         document.documentElement.scrollHeight > window.innerHeight * 10;
 
       if (main && !dejaUnSommaire && assezLongue && titres.length >= 6) {
-        const slug = (t: string, i: number) =>
-          t
+        /**
+         * Le préfixe `s-` n'est pas cosmétique : un identifiant qui commence par
+         * un chiffre rend `document.querySelector("#21-...")` invalide — la
+         * méthode lève, et le lien du sommaire devient inerte. Plusieurs titres
+         * de pages service commencent par un nombre (« 21 vérifications
+         * concrètes réparties sur… »).
+         */
+        const slug = (t: string, i: number) => {
+          const base = t
             .toLowerCase()
             .normalize("NFD")
             .replace(/[\u0300-\u036f]/g, "")
             .replace(/[^a-z0-9]+/g, "-")
             .replace(/^-+|-+$/g, "")
-            .slice(0, 40) || `section-${i}`;
+            .slice(0, 40);
+          if (!base) return `section-${i}`;
+          return /^[0-9]/.test(base) ? `s-${base}` : base;
+        };
 
         const nav = document.createElement("nav");
         nav.className = "hc-page-toc";

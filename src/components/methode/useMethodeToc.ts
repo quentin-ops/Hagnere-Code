@@ -77,23 +77,22 @@ export function useMethodeToc(rootRef: RefObject<HTMLElement | null>) {
     // Initial state
     setActive(activeId);
 
-    // Smooth-scroll on click (browser default isn't always smooth on hash links inside SPA)
-    const onClick = (e: Event) => {
-      const a = e.currentTarget as HTMLAnchorElement;
-      const id = a.dataset.section;
-      if (!id) return;
-      const target = document.getElementById(id);
-      if (!target) return;
-      e.preventDefault();
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-      // update URL hash without jumping
-      history.replaceState(null, "", `#${id}`);
-    };
-    links.forEach((link) => link.addEventListener("click", onClick));
-
+    /*
+     * Le défilement au clic est laissé au gestionnaire partagé
+     * (`useDesignInteractive`), et ce hook ne garde que la mise en évidence de
+     * la section active.
+     *
+     * Il faisait auparavant son propre `scrollIntoView({behavior:"smooth"})`
+     * après un `preventDefault()`. Deux conséquences : le gestionnaire partagé,
+     * qui teste `event.defaultPrevented`, ne s'exécutait jamais sur cette page ;
+     * et le défilement fluide était calculé sur une mise en page que
+     * `content-visibility: auto` n'avait pas encore résolue. Mesuré sur une page
+     * froide : l'ancre #stack atterrissait à 1 630 px de sa cible, #claude à
+     * 1 807 px. /methode était la seule page du site à avoir son propre
+     * gestionnaire, et la seule dont les ancres rataient.
+     */
     return () => {
       io.disconnect();
-      links.forEach((link) => link.removeEventListener("click", onClick));
     };
   }, [rootRef]);
 }

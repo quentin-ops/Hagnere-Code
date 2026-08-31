@@ -204,49 +204,6 @@ html.dark {
 .prin-foot{margin-top:auto;padding-top:18px;border-top:1px solid var(--line-2)}
 .prin-tag{font-family:var(--font-geist-mono);font-size:10px;color:var(--accent-ink);letter-spacing:0.06em;font-weight:600;background:var(--accent-soft);padding:4px 9px;border-radius:5px}
 
-/* ============ DISCOVERY (premium card) ============ */
-.discovery{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper)}
-.disc-card{position:relative;background:linear-gradient(180deg,#0A0A0A 0%,#171717 100%);color:#fff;border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1.15fr 1fr;gap:0;border:1px solid #171717;box-shadow:0 40px 80px -40px rgba(76,29,149,0.5),0 10px 30px -15px rgba(0,0,0,0.4)}
-.disc-bg-grid{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:32px 32px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 85%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 85%);pointer-events:none}
-.disc-bg-radial{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 0% 100%,rgba(109,40,217,0.32),transparent 60%),radial-gradient(ellipse 50% 50% at 100% 0%,rgba(167,139,250,0.16),transparent 60%);pointer-events:none}
-
-.disc-left{position:relative;padding:56px 52px;display:flex;flex-direction:column;justify-content:center}
-.disc-tag{display:inline-flex;align-items:center;gap:10px;margin-bottom:24px;font-family:var(--font-geist-mono);font-size:11px;letter-spacing:0.12em;font-weight:600;color:var(--accent)}
-.disc-tag > span:first-child{background:var(--accent-btn);color:#fff;padding:3px 8px;border-radius:4px;font-weight:700;letter-spacing:0.04em}
-.disc-card h2{color:#fff;font-size:48px;line-height:1.05;letter-spacing:-0.04em}
-.disc-card h2 .accent{background:linear-gradient(90deg,#A78BFA,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
-.disc-lead{color:rgba(255,255,255,0.65);font-size:15.5px;line-height:1.6;margin-top:22px;max-width:540px}
-.disc-lead b{color:#fff;font-weight:500}
-
-.disc-list{list-style:none;padding:0;margin:32px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:14px 22px}
-.disc-list li{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;color:rgba(255,255,255,0.88);line-height:1.45}
-.disc-list li b{color:#fff;font-weight:600}
-.disc-list li span{color:rgba(255,255,255,0.55);font-size:11.5px;font-family:var(--font-geist-mono);letter-spacing:0.01em}
-.disc-li-ic{width:24px;height:24px;border-radius:7px;background:rgba(109,40,217,0.18);color:var(--accent);display:grid;place-items:center;flex-shrink:0;margin-top:1px}
-
-.disc-foot{margin-top:36px;padding-top:28px;display:flex;align-items:center;gap:24px;border-top:1px solid rgba(255,255,255,0.1);flex-wrap:wrap}
-.disc-foot-meta{display:flex;align-items:center;gap:10px;font-family:var(--font-geist-mono);font-size:11.5px;color:rgba(255,255,255,0.55);letter-spacing:0.04em}
-.disc-foot-pill{background:rgba(109,40,217,0.18);color:#fff;padding:4px 10px;border-radius:5px;font-weight:600;letter-spacing:0.04em}
-
-.disc-right{position:relative;background:#0F0F0F;padding:44px 44px;display:flex;flex-direction:column;gap:20px;justify-content:center;border-left:1px solid #1A1A1A}
-.disc-price-card{position:relative;background:linear-gradient(180deg,rgba(109,40,217,0.12),rgba(109,40,217,0.02) 100%),#171717;border:1px solid rgba(167,139,250,0.25);border-radius:14px;padding:24px;color:#fff;box-shadow:0 20px 40px -20px rgba(109,40,217,0.4)}
-.disc-price-tag{font-family:var(--font-geist-mono);font-size:10px;color:var(--accent);letter-spacing:0.12em;font-weight:700;margin-bottom:10px;display:inline-block}
-.disc-price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:18px}
-.disc-price-amount{font-family:var(--font-geist);font-size:54px;font-weight:700;letter-spacing:-0.045em;line-height:1;color:#fff}
-.disc-price-cur{font-family:var(--font-geist-mono);font-size:14px;color:rgba(255,255,255,0.55);letter-spacing:0.04em;font-weight:600}
-.disc-price-line{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.85);font-size:13px;padding:6px 0}
-.disc-price-line svg{color:var(--accent);flex-shrink:0}
-.disc-price-hr{height:1px;background:rgba(255,255,255,0.08);margin:14px 0 12px}
-.disc-price-foot{font-family:var(--font-geist-mono);font-size:10.5px;color:rgba(255,255,255,0.5);line-height:1.5;letter-spacing:0.02em}
-
-.disc-stack{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:6px 14px}
-.disc-stack-row{display:grid;grid-template-columns:80px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);align-items:center}
-.disc-stack-row.last{border-bottom:none}
-/* Bloc .disc-stack posé sur .disc-right (#0F0F0F) dans les deux thèmes :
-   --accent y donne 2,6:1 en clair et 4,36:1 en sombre → 10,0:1. */
-.disc-stack-k{font-family:var(--font-geist-mono);font-size:10px;color:var(--accent-on-dark);letter-spacing:0.08em;font-weight:600}
-.disc-stack-v{font-size:12.5px;color:rgba(255,255,255,0.78);letter-spacing:-0.005em}
-
 /* ============ PRICING (4 plans) — reuse global tokens ============ */
 .pricing{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
 .price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:0}
@@ -270,8 +227,24 @@ html.dark {
 .plan-price{margin-top:28px;display:flex;align-items:baseline;gap:8px}
 .plan-price .amount{font-size:36px;font-weight:600;letter-spacing:-0.035em;color:var(--ink)}
 .plan.featured .plan-price .amount{color:#fff}
+/* L'unité ne se sépare jamais du montant : « 6,9–15 k€ » renvoyait « k€ » à la
+   ligne suivante, ce qui décalait le trait de séparation d'une carte à l'autre. */
+.plan-price{flex-wrap:wrap}
+.plan-price .amount{white-space:nowrap}
+/* L'unité passe sous le montant dans les quatre cartes, jamais dans certaines
+   seulement : c'est ce qui alignait « 8–20 k€ HT / mois » sur une ligne et les
+   trois autres sur deux. */
+.plan-price .per{flex-basis:100%}
 .plan-price .per{font-family:var(--font-geist-mono);font-size:12px;color:var(--mute)}
 .plan.featured .plan-price .per{color:rgba(255,255,255,0.5)}
+/* Chaque borne dit à quel projet elle correspond, à l'endroit où le prix est
+   lu — la note sous la grille n'a plus à démentir la carte. */
+.plan-floors{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-direction:column;gap:5px;font-size:12.5px;line-height:1.45;color:var(--mute)}
+.plan-floors li{display:flex;flex-wrap:wrap;column-gap:6px}
+.plan-floors b{color:var(--ink);font-weight:600;white-space:nowrap}
+.plan.featured .plan-floors{color:rgba(255,255,255,0.6)}
+.plan.featured .plan-floors b{color:#fff}
+.plan.plan-discovery .plan-floors b{color:var(--accent-ink)}
 .plan-hr{height:1px;background:var(--line);margin:24px 0}
 .plan.featured .plan-hr{background:rgba(255,255,255,0.1)}
 .plan-features{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;font-size:14px;flex:1}
@@ -280,6 +253,15 @@ html.dark {
 .plan-features svg{color:var(--accent);flex-shrink:0;margin-top:3px}
 .plan-cta{margin-top:28px}
 .plan-cta .btn{width:100%;justify-content:center}
+/* Les quatre cartes partagent les mêmes rangées : prix, bornes, trait, puces et
+   bouton tombent à la même hauteur d'une carte à l'autre, quelle que soit la
+   longueur du descriptif. En flex étiré, seul le bouton s'alignait. Les huit
+   rangées sont les huit enfants dans le flux d'une carte (.plan-badge est en
+   position absolue et n'en occupe aucune). */
+@supports (grid-template-rows: subgrid){
+  .price-grid{grid-template-rows:repeat(8,auto)}
+  .plan{display:grid;grid-template-rows:subgrid;grid-row:span 8}
+}
 /* 70ch : la note s'etalait sur les 1200px du conteneur, soit 197 caracteres
    par ligne a 14px — l'oeil perd la ligne suivante au-dela de 90. Le bloc
    reste centre dans la page, le texte redevient aligne a gauche. */
@@ -310,6 +292,15 @@ html.dark {
 .ptcol-svc-ic{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;flex-shrink:0}
 .ptcol-svc-t{font-family:var(--font-geist);font-weight:600;color:var(--ink);font-size:14.5px;letter-spacing:-0.01em;line-height:1.25;transition:color 0.15s}
 .ptcol-svc-s{font-family:var(--font-geist) !important;font-size:11.5px !important;color:var(--mute) !important;margin-top:2px;letter-spacing:-0.005em !important}
+/* La réserve d'une cellule vit DANS la cellule : « mensuel », « ≈ repère »,
+   « non publié » remplacent les onze lignes de mode d'emploi qui, sous le
+   tableau, énuméraient les exceptions d'une ligne qu'on avait déjà quittée.
+   Sélecteur en trois classes pour battre `.ptable-row .ptcol span`. */
+.ptable-row .ptcol span.ptcol-tag{align-self:flex-start;margin-top:2px;padding:2px 7px;border-radius:5px;background:var(--paper-2);border:1px solid var(--line);color:var(--mute);font-family:var(--font-geist-mono);font-size:9.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;line-height:1.5;white-space:nowrap}
+.ptable-row .ptcol span.ptcol-tag.is-repere{background:var(--accent-soft);border-color:transparent;color:var(--accent-ink)}
+/* Offres publiées par la page service et absentes des trois colonnes. */
+.ptcol-svc-more{margin-top:10px;margin-left:46px;font-size:11.5px;line-height:1.5;color:var(--mute);letter-spacing:-0.005em}
+.ptcol-svc-more b{font-family:var(--font-geist);font-weight:600;font-size:11.5px;color:var(--ink-3);letter-spacing:-0.005em;white-space:normal}
 .ptcol-time{align-items:flex-end !important;text-align:right}
 .ptcol-time b{font-family:var(--font-geist-mono) !important;font-size:12.5px !important;color:var(--accent-ink) !important;letter-spacing:0.02em !important}
 
@@ -357,10 +348,12 @@ html.dark {
 .care-card.featured h3{color:#fff}
 .care-sub{font-size:14px;color:var(--mute);min-height:60px;line-height:1.5}
 .care-card.featured .care-sub{color:rgba(255,255,255,0.62)}
-.care-price{margin-top:24px;display:flex;align-items:baseline;gap:8px}
-.care-price .amount{font-size:42px;font-weight:600;letter-spacing:-0.04em;color:var(--ink)}
+.care-price{margin-top:24px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+/* Le repère mensuel est ce qui distingue les trois forfaits : c'est lui qui
+   occupe le corps de prix. La fixation au devis reste écrite, dans l'unité. */
+.care-price .amount{font-size:42px;font-weight:600;letter-spacing:-0.04em;color:var(--ink);white-space:nowrap}
 .care-card.featured .care-price .amount{color:#fff}
-.care-price .per{font-family:var(--font-geist-mono);font-size:12px;color:var(--mute)}
+.care-price .per{flex-basis:100%;font-family:var(--font-geist-mono);font-size:12px;color:var(--mute)}
 .care-card.featured .care-price .per{color:rgba(255,255,255,0.5)}
 .care-hint{margin:10px 0 0;font-size:12.5px;line-height:1.5;color:var(--mute)}
 .care-hint b{color:var(--ink-3);font-weight:600}
@@ -373,6 +366,13 @@ html.dark {
 .care-features{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;font-size:14px;flex:1}
 .care-features li{display:flex;gap:10px;align-items:flex-start;color:var(--ink-3);line-height:1.45}
 .care-card.featured .care-features li{color:rgba(255,255,255,0.85)}
+/* Mêmes rangées partagées que .price-grid : les trois repères, les trois
+   traits et les trois boutons tombent à la même hauteur. Huit rangées = les
+   huit enfants dans le flux (.care-badge est en position absolue). */
+@supports (grid-template-rows: subgrid){
+  .care-grid{grid-template-rows:repeat(8,auto)}
+  .care-card{display:grid;grid-template-rows:subgrid;grid-row:span 8}
+}
 .care-features svg{color:var(--accent);flex-shrink:0;margin-top:3px}
 .care-cta{margin-top:28px}
 .care-cta .btn{width:100%;justify-content:center}
@@ -494,8 +494,6 @@ html.dark {
 /* ============ Page-local responsive overrides ============ */
 @media (max-width: 1024px) {
   .thero-inner{grid-template-columns:1fr !important;gap:48px !important}
-  .disc-card{grid-template-columns:1fr !important}
-  .disc-right{border-left:none;border-top:1px solid #1A1A1A}
   .ct-card{grid-template-columns:1fr !important}
   .ct-right{border-left:none;border-top:1px solid #1A1A1A}
   .price-grid{grid-template-columns:repeat(2,1fr) !important}
@@ -524,12 +522,6 @@ html.dark {
 
   /* Discovery card */
   .discovery{padding:72px 0}
-  .disc-left{padding:32px 24px}
-  .disc-right{padding:32px 24px}
-  .disc-card h2{font-size:32px}
-  .disc-list{grid-template-columns:1fr}
-  .disc-foot{flex-direction:column;align-items:stretch}
-  .disc-foot .btn{justify-content:center}
 
   /* Sections padding */
   .principes,.pricing,.ptable,.entrypoints,.included,.care,.vsmarket,.refuse,.calc-teaser,.faq{padding:72px 0}
@@ -556,9 +548,12 @@ html.dark {
 
   /* Pricing card padding */
   .plan{padding:24px}
-  .plan-price .amount{font-size:30px}
-  .plan.plan-discovery .plan-price .amount,
-  .plan-price .amount{font-size:32px}
+  /* Un seul sélecteur, sans doublon. `.plan.plan-discovery .plan-price .amount`
+     était redondant avec la ligne suivante, mais sa spécificité (0,3,1) battait
+     la règle partagée de responsive.css (0,1,1) : la carte Discovery affichait
+     donc son montant en 32 px quand les trois autres passaient à 36, sous 1024 px
+     seulement. Une carte sur quatre criait moins fort que ses voisines. */
+  .plan-price .amount{font-size:36px}
   .care-card{padding:24px}
   .care-price .amount{font-size:32px}
 
@@ -599,6 +594,14 @@ html.dark {
   .ptable-row .ptcol:nth-child(4)::before{content:"Premium"}
   .ptable-row .ptcol:nth-child(5)::before{content:"Délai"}
   .ptable-row .ptcol-time{align-items:flex-end !important}
+  /* Empilé, la cellule tient sur deux lignes : « palier · prix · réserve »,
+     puis la précision sur toute la largeur. Sans cela la pastille rognait la
+     colonne de note et coupait « livrables/mois » au milieu d'un mot. */
+  .ptable-row .ptcol{flex-wrap:wrap;row-gap:4px}
+  .ptable-row .ptcol > b{order:1}
+  .ptable-row .ptcol > span{order:3;flex:1 1 100%;text-align:right}
+  .ptable-row .ptcol > span.ptcol-tag{order:2;flex:0 0 auto;margin:0 0 0 auto;text-align:left}
+  .ptcol-svc-more{margin-left:0}
   .ptable-foot{flex-direction:column;align-items:flex-start;gap:14px}
   .ptable-foot .ptf-cta{align-self:stretch;justify-content:center}
 
@@ -642,7 +645,6 @@ html.dark {
 
 @media (max-width: 480px) {
   .hc-design .wrap{padding:0 16px}
-  .disc-card h2{font-size:28px}
   .hc-design .ct-card h2{font-size:24px}
   /* Plus de grille horizontale ici : le comparatif est empilé depuis 768 px. */
   .qmock-head{padding:14px 16px}
@@ -677,7 +679,6 @@ html.dark .qmock-status.is-sample{background:rgba(139,92,246,0.18);color:#C4B5FD
 
 /* Insertion des blocs sombres : bordure lisible sur fond sombre */
 html.dark .qmock-total{border-top-color:rgba(255,255,255,0.10)}
-html.dark .disc-card{border-color:rgba(255,255,255,0.10)}
 html.dark .plan.featured{border-color:rgba(255,255,255,0.10)}
 html.dark .care-card.featured{border-color:rgba(255,255,255,0.10)}
 html.dark .ct-card{border-color:rgba(255,255,255,0.10)}
