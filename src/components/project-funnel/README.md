@@ -42,7 +42,7 @@ Erreur → message inline + retry (l'état du formulaire est conservé).
 
 ## Ne pas perdre un prospect — invariants
 
-- **Contact direct partout** : pastille `03 74 47 20 18` dans la barre du
+- **Contact direct partout** : pastille `06 60 08 83 51` dans la barre du
   tunnel (visible aussi en mobile), bloc « Préférez appeler ou écrire ? »
   dans la carte latérale, et voie de sortie permanente sous le contrôle
   anti-robot. Constantes `DIRECT_PHONE_HREF` / `DIRECT_EMAIL`.

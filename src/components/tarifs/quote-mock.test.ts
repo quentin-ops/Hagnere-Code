@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
 import { bodyHtml } from "./body";
@@ -56,5 +58,23 @@ describe("mock de devis de /tarifs", () => {
     expect(bodyHtml).toContain(
       "L'acompte, les jalons, le solde et le délai de paiement sont précisés dans le devis ou le contrat.",
     );
+  });
+
+  it("ne masque la mention du caractère fictif à aucun point de rupture", () => {
+    /* La mention vivait bien dans la source — et ce test passait au vert —
+       pendant que `page.css` la mettait à `display:none` sous 480 px, soit sur
+       la largeur d'écran la plus fréquente, à côté de quatre montants en euros.
+       Vérifier la source ne prouve rien sur ce qui est peint : on vérifie donc
+       aussi que la feuille ne l'efface pas. */
+    const css = readFileSync(
+      join(process.cwd(), "src/components/tarifs/page.css"),
+      "utf8",
+    );
+    const rules = css.match(/\.qmock-from-sub[^{]*\{[^}]*\}/g) ?? [];
+    for (const rule of rules) {
+      expect(rule, "la mention du caractère fictif ne doit jamais être masquée").not.toMatch(
+        /display:\s*none|visibility:\s*hidden/,
+      );
+    }
   });
 });

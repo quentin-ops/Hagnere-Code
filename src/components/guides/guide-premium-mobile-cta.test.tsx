@@ -43,8 +43,8 @@ describe("GuidePremiumMobileCta", () => {
       <GuidePremiumMobileCta
         ctaHref="/services/outils-internes-sur-mesure"
         ctaLabel="Voir le service outils internes"
-        phoneHref="tel:+33374472018"
-        phoneLabel="03 74 47 20 18"
+        phoneHref="tel:+33660088351"
+        phoneLabel="06 60 08 83 51"
       />,
     );
 
@@ -59,13 +59,13 @@ describe("GuidePremiumMobileCta", () => {
       <GuidePremiumMobileCta
         ctaHref="/services/outils-internes-sur-mesure"
         ctaLabel="Voir le service outils internes"
-        phoneHref="tel:+33374472018"
-        phoneLabel="03 74 47 20 18"
+        phoneHref="tel:+33660088351"
+        phoneLabel="06 60 08 83 51"
       />,
     );
 
-    expect(html).toContain('href="tel:+33374472018"');
-    expect(html).toContain('aria-label="Appeler 03 74 47 20 18"');
+    expect(html).toContain('href="tel:+33660088351"');
+    expect(html).toContain('aria-label="Appeler 06 60 08 83 51"');
   });
 
   it("removes the fixed actions from focus and view when the footer enters the viewport", () => {
@@ -100,8 +100,8 @@ describe("GuidePremiumMobileCta", () => {
         <GuidePremiumMobileCta
           ctaHref="/demarrer-un-projet"
           ctaLabel="Cadrer mon cas"
-          phoneHref="tel:+33374472018"
-          phoneLabel="03 74 47 20 18"
+          phoneHref="tel:+33660088351"
+          phoneLabel="06 60 08 83 51"
         />,
       );
     });

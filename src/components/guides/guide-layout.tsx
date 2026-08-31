@@ -131,7 +131,13 @@ export function GuideLayout({
           >
             {/* Left column: Title + Description + Key Points */}
             <div className="flex-1 min-w-0">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-3 sm:mb-4 max-w-3xl">
+              {/* Taille fluide plutôt que l'échelle Tailwind 24 → 30 → 36 px : le
+                  palier mobile descendait un TITRE DE PAGE à 24 px, et le
+                  plafond de 36 px laissait le H1 plus petit que les H2 du reste
+                  du site. Bornes alignées sur l'échelle globale, plafond à
+                  48 px parce que ces titres sont longs et posés sur un héros
+                  sombre. */}
+              <h1 className="text-[clamp(1.75rem,1rem+2.6vw,3rem)] leading-[1.06] font-bold tracking-tight text-white mb-3 sm:mb-4 max-w-3xl">
                 {heroTitle}
               </h1>
               <p className="text-sm sm:text-base md:text-lg text-zinc-400 leading-relaxed max-w-2xl mb-4 sm:mb-5">

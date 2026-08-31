@@ -176,7 +176,6 @@ const breadcrumbJsonLd = JSON.stringify({
   ],
 });
 
-
 const workflow = [
   {
     number: "01",
@@ -217,7 +216,10 @@ export default function Page() {
           __html: breadcrumbJsonLd.replace(/</g, "\\u003c"),
         }}
       />
-      <section className="relative overflow-hidden bg-zinc-950 py-12 sm:py-16 lg:py-20">
+      <section
+        aria-labelledby="kit-app-hero-titre"
+        className="relative overflow-hidden bg-zinc-950 py-12 sm:py-16 lg:py-20"
+      >
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(109,40,217,0.24),transparent_58%)]" />
         <div className="absolute -bottom-36 -left-20 size-96 rounded-full bg-blue-600/10 blur-3xl" />
         <div className="relative z-10 mx-auto max-w-7xl px-4">
@@ -257,7 +259,10 @@ export default function Page() {
                   Version {resource.version} · {resource.updatedLabel}
                 </span>
               </div>
-              <h1 className="mt-5 max-w-3xl text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-[3.35rem] lg:leading-[1.06]">
+              <h1
+                id="kit-app-hero-titre"
+                className="mt-5 max-w-3xl text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-[3.35rem] lg:leading-[1.06]"
+              >
                 Modèle Word de cahier des charges d&apos;application métier,
                 avec exemple PDF.
               </h1>
@@ -299,13 +304,13 @@ export default function Page() {
                     ZIP · {primary.sizeLabel}
                   </span>
                 </TrackedDownloadLink>
-                <Link
-                  href="/guides/automatiser-processus-metier"
+                <a
+                  href="#contenu-du-kit"
                   className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-300 sm:w-fit"
                 >
-                  Lire le premier guide décisionnel
+                  Examiner les fichiers
                   <ArrowRight className="size-4" aria-hidden="true" />
-                </Link>
+                </a>
               </div>
               <p className="mt-4 text-xs leading-relaxed text-zinc-400">
                 Téléchargement direct. Aucun compte créé, aucune adresse email
@@ -344,7 +349,10 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="border-b border-zinc-200 bg-white py-10 dark:border-zinc-800 dark:bg-zinc-950">
+      <section
+        aria-label="Ce que le kit change pour votre consultation"
+        className="border-b border-zinc-200 bg-white py-10 dark:border-zinc-800 dark:bg-zinc-950"
+      >
         <div className="mx-auto grid max-w-7xl gap-5 px-4 sm:grid-cols-3">
           {[
             {
@@ -388,6 +396,7 @@ export default function Page() {
 
       <section
         id="contenu-du-kit"
+        aria-labelledby="contenu-du-kit-titre"
         className="scroll-mt-24 bg-zinc-50 py-12 sm:py-16 dark:bg-zinc-900"
       >
         <div className="mx-auto max-w-5xl px-4">
@@ -395,7 +404,10 @@ export default function Page() {
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-violet-700 dark:text-violet-300">
               Les fichiers réels
             </p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white">
+            <h2
+              id="contenu-du-kit-titre"
+              className="mt-2 text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white"
+            >
               Un modèle à remplir, puis un exemple pour vérifier votre niveau de
               précision.
             </h2>
@@ -412,14 +424,20 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="bg-white py-12 sm:py-16 dark:bg-zinc-950">
+      <section
+        aria-labelledby="methode-kit-app-titre"
+        className="bg-white py-12 sm:py-16 dark:bg-zinc-950"
+      >
         <div className="mx-auto max-w-7xl px-4">
           <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:gap-14">
             <div>
               <div className="flex size-11 items-center justify-center rounded-xl bg-violet-100 text-violet-700 dark:bg-violet-950 dark:text-violet-300">
                 <Workflow className="size-5" aria-hidden="true" />
               </div>
-              <h2 className="mt-5 text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white">
+              <h2
+                id="methode-kit-app-titre"
+                className="mt-5 text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white"
+              >
                 Une méthode courte avant une consultation coûteuse.
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
@@ -467,7 +485,10 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="border-y border-zinc-200 bg-zinc-50 py-12 sm:py-16 dark:border-zinc-800 dark:bg-zinc-900">
+      <section
+        aria-label="Portée et limites du kit"
+        className="border-y border-zinc-200 bg-zinc-50 py-12 sm:py-16 dark:border-zinc-800 dark:bg-zinc-900"
+      >
         <div className="mx-auto grid max-w-7xl gap-8 px-4 lg:grid-cols-2 lg:gap-12">
           <div>
             <div className="flex size-11 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">
@@ -547,25 +568,38 @@ export default function Page() {
         items={faqItems}
       />
 
-      <section className="bg-white py-12 sm:py-16 dark:bg-zinc-950">
+      <section
+        aria-labelledby="cta-kit-app-titre"
+        className="bg-white py-12 sm:py-16 dark:bg-zinc-950"
+      >
         <div className="mx-auto grid max-w-7xl gap-8 px-4 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
-            <h2 className="max-w-3xl text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white">
+            <h2
+              id="cta-kit-app-titre"
+              className="max-w-3xl text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white"
+            >
               Votre besoin est décrit, mais le bon niveau de solution reste
               incertain ?
             </h2>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
-              Le guide vous aide à finaliser le document. Si vous voulez ensuite
-              confronter le périmètre à un développeur, nous pouvons identifier
-              les inconnues sans transformer l&apos;échange en rendez-vous
-              commercial générique.
+              Le guide{" "}
+              <Link
+                href="/guides/automatiser-processus-metier"
+                className="font-semibold text-violet-700 underline underline-offset-2 hover:text-violet-900 dark:text-violet-300 dark:hover:text-violet-200"
+              >
+                automatiser un processus métier
+              </Link>{" "}
+              aide à finaliser le document. Si vous voulez ensuite confronter le
+              périmètre à un développeur, nous pouvons identifier les inconnues
+              sans transformer l&apos;échange en rendez-vous commercial
+              générique.
             </p>
           </div>
           <Link
             href="/demarrer-un-projet"
             className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-zinc-950 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 sm:w-fit dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
           >
-            Décrire mon projet
+            Démarrer mon projet
             <ArrowRight className="size-4" aria-hidden="true" />
           </Link>
         </div>

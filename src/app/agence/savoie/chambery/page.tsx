@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PRIMARY_ACTION_HREF, PRIMARY_ACTION_LABEL } from "@/lib/cta-labels";
 import Link from "next/link";
 import { GuideLayout } from "@/components/guides/guide-layout";
 import {
@@ -82,7 +83,7 @@ const faqItems = [
   {
     question: "Où êtes-vous à Chambéry et peut-on venir vous voir ?",
     answer:
-      "Nous sommes au 82 impasse de Bellevue, à Bassens — commune limitrophe de Chambéry, dans la même agglomération —, et oui, vous pouvez venir — sur rendez-vous, pour que quelqu'un soit là. C'est une adresse de travail, pas une domiciliation destinée à afficher un code postal savoyard. Beaucoup de dirigeants préfèrent rencontrer physiquement la personne à qui ils confient un budget à cinq chiffres avant de signer : c'est légitime, et c'est plus simple quand on est à quelques minutes l'un de l'autre. Si vous préférez la visioconférence, cela nous va aussi.",
+      "Nous sommes au 82 impasse de Bellevue, 73000 Bassens — commune limitrophe de Chambéry, dans la même agglomération —, et oui, vous pouvez venir — sur rendez-vous, pour que quelqu'un soit là. C'est une adresse de travail, pas une domiciliation destinée à afficher un code postal savoyard. Beaucoup de dirigeants préfèrent rencontrer physiquement la personne à qui ils confient un budget à cinq chiffres avant de signer : c'est légitime, et c'est plus simple quand on est à quelques minutes l'un de l'autre. Si vous préférez la visioconférence, cela nous va aussi.",
   },
   {
     question: "Travaillez-vous avec les entreprises des zones de Bissy et des Landiers ?",
@@ -125,6 +126,7 @@ export default function Page() {
           { label: "Chambéry" },
         ]}
         heroTitle={page.heroTitle}
+        heroAction={{ href: PRIMARY_ACTION_HREF, label: PRIMARY_ACTION_LABEL }}
         heroDescription="Nous travaillons à Bassens, commune limitrophe de Chambéry, à quelques minutes du centre. Cette page décrit l'économie chambérienne telle qu'elle est — tertiaire à plus de 80 %, avec une industrie concentrée sur Bissy et les Landiers — et le type de projet numérique qui a réellement du sens pour ces entreprises."
         author={{
           name: "Quentin Hagnéré",
@@ -154,11 +156,12 @@ export default function Page() {
         <p className="lead">
           Nous ne sommes pas une agence qui « couvre Chambéry » depuis
           Paris ou Lyon : <strong>nous sommes à Bassens, commune limitrophe,
-          dans la même agglomération</strong> — à quelques minutes du centre.
+          dans la même agglomération</strong>{" "}
+          — à quelques minutes du centre.
           Cette page décrit l&apos;économie de la ville
           telle que les chiffres la montrent — très largement tertiaire —,
-          les zones où se concentrent les entreprises, et ce que ces
-          besoins numériques qu&apos;un cadrage peut faire apparaître.
+          les zones où se concentrent les entreprises, et les besoins
+          numériques qu&apos;un cadrage peut y faire apparaître.
         </p>
 
         <GuideToc
@@ -167,7 +170,7 @@ export default function Page() {
             { id: "employeurs", label: "2. Qui emploie à Chambéry" },
             { id: "zones", label: "3. Où sont les entreprises : Bissy, Landiers, Technolac" },
             { id: "besoins", label: "4. Ce dont les entreprises chambériennes ont besoin" },
-            { id: "constat", label: "5. Comment mesurer votre propre site" },
+            { id: "constat", label: "5. Comment mesurer votre site sans généraliser" },
             { id: "bassin", label: "6. Le bassin où nous pouvons intervenir" },
             { id: "ecosysteme", label: "7. L'écosystème numérique local" },
             { id: "concurrence", label: "8. Les autres agences du bassin" },
@@ -202,7 +205,8 @@ export default function Page() {
         <p>
           À l&apos;échelle de l&apos;agglomération,{" "}
           <strong>Grand Chambéry regroupe 38 communes et plus de 146 000
-          habitants</strong> sur 52 950 hectares. Le développement économique
+          habitants</strong>{" "}
+          sur 52 950 hectares. Le développement économique
           du territoire est porté par Chambéry-Grand Lac économie, syndicat
           mixte créé en 2017 avec l&apos;agglomération d&apos;Aix-les-Bains,
           qui met en avant cinq filières : énergies intelligentes,
@@ -217,7 +221,8 @@ export default function Page() {
           la fusion des hôpitaux de Chambéry et d&apos;Aix-les-Bains,
           rassemble environ 5 050 professionnels et 1 854 lits et places :
           c&apos;est le premier employeur du département. L&apos;
-          <strong>Université Savoie Mont Blanc</strong> accueille près de
+          <strong>Université Savoie Mont Blanc</strong>{" "}
+          accueille près de
           4 950 étudiants sur son seul campus de Jacob-Bellecombette,
           limitrophe de la ville, où se trouvent la faculté de droit et
           l&apos;IAE. S&apos;y ajoutent la commune elle-même et le
@@ -225,7 +230,8 @@ export default function Page() {
         </p>
         <p>
           Côté privé, quelques maisons industrielles de renom sont nées et
-          restent implantées ici. <strong>Opinel</strong> a son siège et son
+          restent implantées ici. <strong>Opinel</strong>{" "}
+          a son siège et son
           usine boulevard Henry Bordeaux, produit environ 6,5 millions de
           couteaux par an et a réalisé 34,9 millions d&apos;euros de chiffre
           d&apos;affaires en 2024, dont 45 % à l&apos;export.{" "}
@@ -284,7 +290,8 @@ export default function Page() {
         <ul>
           <li>
             <strong>Un site qui inspire confiance et fait venir des
-            clients.</strong> C&apos;est un besoin fréquent pour une ville de
+            clients.</strong>{" "}
+            C&apos;est un besoin fréquent pour une ville de
             services : cabinets, conseil, professions libérales, artisans du
             bâtiment. Le sujet n&apos;est pas technique, il est éditorial et
             structurel — quelles pages, pour quelles recherches, avec quelle
@@ -293,7 +300,8 @@ export default function Page() {
             détaille cette prestation, à partir de 6 900 €.
           </li>
           <li>
-            <strong>Un outil qui remplace des tableurs.</strong> Suivi de
+            <strong>Un outil qui remplace des tableurs.</strong>{" "}
+            Suivi de
             dossiers, gestion de commandes, portail client, planification :
             beaucoup d&apos;entreprises du bassin fonctionnent encore sur des
             fichiers partagés qui atteignent leurs limites. C&apos;est le
@@ -380,7 +388,7 @@ export default function Page() {
           Combe de Savoie sont également accessibles sur rendez-vous ; le reste
           du projet peut être conduit à distance.
         </p>
-        <InfoBox variant="blue" title="Une précision que beaucoup se trompent">
+        <InfoBox variant="blue" title="Une précision sur laquelle beaucoup se trompent">
           <strong>Aix-les-Bains et Le Bourget-du-Lac ne font pas partie de
           Grand Chambéry</strong> : ces deux communes relèvent de la
           communauté d&apos;agglomération Grand Lac. De même, Montmélian et
@@ -434,7 +442,8 @@ export default function Page() {
             premier endroit où frapper — avant de payer un développeur.
           </li>
           <li>
-            <strong>La French Tech Alpes-Chambéry</strong> fédère les
+            <strong>La French Tech Alpes-Chambéry</strong>{" "}
+            fédère les
             entreprises technologiques du bassin. C&apos;est aussi le réseau
             par lequel circulent les recommandations de prestataires : dans un
             écosystème de cette taille, la réputation se construit en réunion
@@ -468,9 +477,10 @@ export default function Page() {
           couvrent l&apos;identité visuelle, le print, les réseaux sociaux et
           la vidéo, avec le site web parmi le reste. Nous faisons du
           développement : c&apos;est un autre métier, plus étroit et plus
-          profond. La seconde : en consultant leurs sites en juillet 2026,
-          nous n&apos;avons trouvé{" "}
-          <strong>aucune agence savoyarde affichant une stack React, Next.js
+          profond. La seconde : en consultant en juillet 2026 les sites
+          des agences du bassin que nous avons pu identifier, nous
+          n&apos;avons trouvé{" "}
+          <strong>aucune d&apos;entre elles affichant une stack React, Next.js
           ou TypeScript</strong>, ni aucune publiant ses tarifs.
         </p>
         <p>
@@ -478,7 +488,8 @@ export default function Page() {
           partie du web et convient à beaucoup de projets. Notre page{" "}
           <Link href="/services/sites-vitrines">sites vitrines</Link> explique
           le type de besoin que nous traitons et les cas où une solution plus
-          simple suffit. Notre <Link href="/methode">méthode</Link> décrit les
+          simple suffit. Notre <Link href="/methode">méthode</Link>{" "}
+          décrit les
           contrôles que vous pouvez appliquer à nos propositions comme à celles
           de n&apos;importe quel prestataire.
         </p>
@@ -524,10 +535,6 @@ export default function Page() {
           <a href="https://www.opinel.com/fr-fr/societe/infos-corporate" target="_blank" rel="noopener noreferrer">informations corporate publiées par l&apos;entreprise</a>.
           Institut national de l&apos;énergie solaire :{" "}
           <a href="https://www.ines-solaire.org/decouvrir-ines/" target="_blank" rel="noopener noreferrer">INES</a>.
-          Mesures de performance : relevés Lighthouse en configuration mobile
-          réalisés le 18 juillet 2026 sur neuf sites d&apos;entreprises
-          indépendantes du bassin ; méthodologie et limites décrites en
-          section 5.
         </p>
       </GuideLayout>
     </GuidesShell>

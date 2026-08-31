@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PRIMARY_ACTION_HREF, PRIMARY_ACTION_LABEL } from "@/lib/cta-labels";
 import Link from "next/link";
 import { GuideLayout } from "@/components/guides/guide-layout";
 import {
@@ -13,7 +14,7 @@ import { OG_BASE, SITE_URL, SERVICES_OG_IMAGE } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Agence Next.js : développement sur mesure · Hagnéré Code",
   description:
-    "Agence Next.js et React à Bassens : sites, e-commerce et applications métier. Performance, périmètre, livrables, accès et droits sont cadrés au devis.",
+    "Agence Next.js à Bassens : sites, e-commerce et applications métier sur mesure. Performance, périmètre, livrables, accès et droits sont cadrés au devis.",
   authors: [{ name: "Quentin Hagnéré" }],
   creator: "Hagnéré Code",
   publisher: "Hagnéré Code",
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     type: "website",
     title: "Agence Next.js — Hagnéré Code",
     description:
-      "Développement Next.js et React sur mesure : sites, e-commerce, SaaS et applications métier. Objectifs de performance, prix, livrables et droits au devis.",
+      "Développement Next.js sur mesure : sites, e-commerce, SaaS et applications métier. Objectifs de performance, prix, livrables et droits au devis.",
     url: "/agence-next-js",
     images: [SERVICES_OG_IMAGE],
   },
@@ -33,10 +34,10 @@ export const metadata: Metadata = {
 const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Agence de développement Next.js et React",
+  name: "Agence de développement Next.js",
   url: `${SITE_URL}/agence-next-js`,
   serviceType:
-    "Développement Next.js et React sur mesure : sites, e-commerce, SaaS et applications métier",
+    "Développement Next.js sur mesure : sites, e-commerce, SaaS et applications métier",
   provider: { "@id": `${SITE_URL}/#organization` },
   areaServed: { "@type": "Country", name: "France" },
   // Le visible dit « Forfait fixe dès 6 900 € HT » : un plancher, pas un prix
@@ -67,7 +68,7 @@ const faqItems = [
   {
     question: "Pourquoi choisir Next.js plutôt que WordPress pour mon site ?",
     answer:
-      "Pour trois raisons possibles, selon le projet : des pages pré-générées rapides, une surface technique différente de celle d'un WordPress enrichi de nombreuses extensions, et une plus grande liberté de conception. Mais Next.js n'est pas automatiquement plus sûr ni plus performant : l'architecture, les dépendances, l'hébergement et la maintenance restent déterminants. Si votre WordPress est récent, rapide et bien maintenu par une équipe qui le maîtrise, changer peut ne rien vous apporter. Notre comparatif Next.js ou WordPress détaille aussi les cas où WordPress reste le meilleur choix.",
+      "Pour trois raisons possibles, selon le projet : des pages pré-générées rapides, une surface technique différente de celle d'un WordPress enrichi de nombreuses extensions, et une plus grande liberté de conception. Mais Next.js n'est pas automatiquement plus sûr ni plus performant : l'architecture, les dépendances, l'hébergement et la maintenance restent déterminants. Si votre WordPress est récent, rapide et bien maintenu par une équipe qui le maîtrise, changer peut ne rien vous apporter. La section « Quand Next.js n'est pas la bonne réponse », plus haut sur cette page, liste les situations où nous vous conseillons de garder votre WordPress.",
   },
   {
     question: "Combien coûte un projet Next.js chez vous ?",
@@ -77,7 +78,7 @@ const faqItems = [
   {
     question: "Next.js, c'est plus cher qu'un site WordPress ?",
     answer:
-      "À la construction, oui, généralement. Sur la durée, l'écart se resserre nettement : pas de licences d'extensions premium, pas de maintenance de sécurité hebdomadaire, un hébergement souvent sous 20 € par mois. Sur trois ans, un WordPress professionnel coûte couramment 5 400 à 13 600 € en récurrent, poste qui tombe presque à zéro sur un site statique. Notre guide du prix d'un site internet détaille ce calcul, et notre guide de la migration WordPress vers Next.js modélise le coût total sur trois ans dans les deux sens.",
+      "À la construction, oui, généralement. Sur la durée, l'écart se resserre nettement : pas de licences d'extensions premium, pas de maintenance de sécurité hebdomadaire, un hébergement souvent sous 20 € par mois. Sur trois ans, le récurrent d'un WordPress professionnel — licences d'extensions premium, maintenance de sécurité, hébergement adapté — se compte en milliers d'euros, poste qui tombe presque à zéro sur un site pré-généré. L'écart réel dépend de votre parc d'extensions et de votre contrat de maintenance : c'est précisément ce qu'un audit de l'existant chiffre, dans les deux sens, avant de recommander ou de déconseiller une migration.",
   },
   {
     question: "Est-ce que Next.js est bon pour le référencement ?",
@@ -116,12 +117,16 @@ export default function Page() {
         breadcrumbs={[{ label: "Agence Next.js" }]}
         heroTitle="Agence Next.js : développement sur mesure et performance mesurée"
         heroDescription="Nous développons en Next.js et React des sites, des boutiques en ligne et des applications métier. Le devis fixe prix, performance, livrables, accès et droits. Basés à Bassens, aux portes de Chambéry, nous travaillons partout en France."
+        heroAction={{
+          href: "/demarrer-un-projet",
+          label: `${PRIMARY_ACTION_LABEL} en 3 minutes`,
+        }}
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
           href: "/equipe",
         }}
-        updatedLabel="Mis à jour le 18 juillet 2026"
+        updatedLabel="Mis à jour le 30 août 2026"
         keyPoints={[
           { number: "01", title: "Budget de performance au devis", description: "", color: "violet" },
           { number: "02", title: "Forfait fixe dès 6 900 € HT", description: "", color: "blue" },
@@ -158,7 +163,7 @@ export default function Page() {
           items={[
             { id: "ce-que-nous-construisons", label: "1. Ce que nous construisons en Next.js" },
             { id: "pourquoi", label: "2. Pourquoi Next.js, en termes concrets" },
-            { id: "preuves", label: "3. Études de cas et limites de preuve" },
+            { id: "preuves", label: "3. Études de cas et éléments publics vérifiables" },
             { id: "garanties", label: "4. Ce que le devis doit préciser" },
             { id: "prix", label: "5. Nos prix, publics et hors taxes" },
             { id: "quand-non", label: "6. Quand Next.js n'est pas la bonne réponse" },
@@ -201,7 +206,7 @@ export default function Page() {
         </p>
         <ul>
           <li>
-            <strong>La vitesse, et ce qu&apos;elle rapporte.</strong> Les pages
+            <strong>La vitesse, et ce qu&apos;elle rapporte.</strong>{" "}Les pages
             sont préparées à l&apos;avance plutôt que fabriquées à chaque
             visite. L&apos;étude de référence menée par Deloitte pour Google
             sur 37 marques mesure qu&apos;un dixième de seconde gagné au
@@ -211,26 +216,29 @@ export default function Page() {
             d&apos;affaires.
           </li>
           <li>
-            <strong>Le référencement bien servi.</strong> Contrairement aux
+            <strong>Le référencement bien servi.</strong>{" "}Contrairement aux
             applications React classiques, Next.js envoie à Google des pages
             HTML complètes. Le contenu est lisible immédiatement, sans
             dépendre de l&apos;exécution d&apos;un script.
           </li>
           <li>
-            <strong>La sécurité par soustraction.</strong> Un site pré-généré
+            <strong>La sécurité par soustraction.</strong>{" "}Un site pré-généré
             n&apos;interroge aucune base de données et n&apos;exécute aucun
-            code sur le serveur au moment de la visite. Pour référence,
-            l&apos;écosystème WordPress a vu 11 334 nouvelles vulnérabilités
-            recensées en 2025, dont 91 % dans les extensions.
+            code sur le serveur au moment de la visite. Sur un WordPress, le
+            risque ne vient pas du cœur du logiciel mais des extensions
+            installées : chacune ajoute du code exécuté à chaque visite, donc
+            une surface à suivre et à mettre à jour. Les bases publiques de
+            vulnérabilités WordPress se consultent extension par extension,
+            avant comme après une migration.
           </li>
           <li>
-            <strong>La liberté de conception.</strong> Sur un thème, vous
+            <strong>La liberté de conception.</strong>{" "}Sur un thème, vous
             composez avec ce que le thème a prévu. En React, l&apos;interface
             est dessinée pour votre marque — animations, interactions, mise en
             page — sans demander la permission à un constructeur de pages.
           </li>
           <li>
-            <strong>Le coût récurrent.</strong> Ni licences d&apos;extensions,
+            <strong>Le coût récurrent.</strong>{" "}Ni licences d&apos;extensions,
             ni maintenance de sécurité hebdomadaire, et un hébergement souvent
             sous 20 € par mois.
           </li>
@@ -251,7 +259,7 @@ export default function Page() {
         />
         <InfoBox variant="amber" title="Une transparence qui nous dessert, mais qui est due">
           <strong>Ces deux produits appartiennent au même groupe que
-          nous&nbsp;: ce ne sont pas des clients externes.</strong> Nous préférons l&apos;écrire noir sur blanc plutôt que
+          nous&nbsp;: ce ne sont pas des clients externes.</strong>{" "}Nous préférons l&apos;écrire noir sur blanc plutôt que
           de laisser croire à des références décrochées en concurrence. Ce que
           cela ne change pas : les pages sont accessibles et leurs contenus et
           fonctions visibles peuvent être examinés. Cela ne suffit pas à documenter
@@ -261,16 +269,19 @@ export default function Page() {
           leur accorder moins de poids qu&apos;à une référence externe, et
           nous le comprenons. Vous pouvez en revanche tester nos réalisations
           vous-même avec les outils adaptés et appliquer les mêmes critères à
-          tout prestataire. Notre <Link href="/methode">méthode</Link> explique
+          tout prestataire. Notre <Link href="/methode">méthode</Link>{" "}explique
           comment nous transformons ces contrôles en critères d&apos;acceptation.
         </InfoBox>
         <p>
-          Le détail de ces projets — problème, solution, décisions techniques —
-          est sur notre page{" "}
-          <Link href="/realisations">réalisations</Link>. Nous développons
-          également deux études de cas consacrées à des offres de comptabilité
-          fiscale. Leurs pages publiques sont consultables ; la technologie Laravel
-          mentionnée dans ces études reste une information déclarée.
+          Notre page{" "}
+          <Link href="/realisations">réalisations</Link> inventorie les quatre
+          produits publics du groupe : elle recense ce qui est visible sur leur
+          page publique à une date donnée, et rien d&apos;autre — elle ne
+          revendique ni leur conception, ni leur technologie, ni leurs
+          résultats. Deux d&apos;entre eux relèvent de la comptabilité fiscale,
+          LMNP.AI et SCI-AI.app, édités par Comptabilité AI, société du même
+          groupe. Les choix techniques d&apos;un projet se discutent au cadrage
+          et figurent dans le devis.
         </p>
 
         <GuideInlineCTA
@@ -335,7 +346,7 @@ export default function Page() {
         </p>
         <ul>
           <li>
-            <strong>Votre budget total est inférieur à 3 000 €.</strong> Le
+            <strong>Votre budget total est inférieur à 3 000 €.</strong>{" "}Le
             sur-mesure n&apos;a pas de sens à ce niveau : une solution plus
             simple vous servira mieux, et nous le dirons au premier
             rendez-vous.
@@ -354,13 +365,13 @@ export default function Page() {
           </li>
           <li>
             <strong>Votre équipe éditoriale publie tous les jours avec un
-            constructeur visuel.</strong> Le confort perdu peut coûter plus que
+            constructeur visuel.</strong>{" "}Le confort perdu peut coûter plus que
             la vitesse gagnée. C&apos;est un arbitrage d&apos;organisation,
             pas de technique.
           </li>
           <li>
             <strong>Votre boutique WooCommerce est imbriquée avec des
-            extensions métier sans équivalent.</strong> La migration devient
+            extensions métier sans équivalent.</strong>{" "}La migration devient
             alors un projet de refonte du système d&apos;information, à
             chiffrer comme tel.
           </li>

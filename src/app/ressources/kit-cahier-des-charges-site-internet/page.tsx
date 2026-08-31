@@ -178,7 +178,6 @@ const breadcrumbJsonLd = JSON.stringify({
   ],
 });
 
-
 const deliverables = [
   {
     fileId: "modele_word",
@@ -264,7 +263,10 @@ export default function Page() {
           __html: breadcrumbJsonLd.replace(/</g, "\\u003c"),
         }}
       />
-      <section className="relative overflow-hidden bg-zinc-950 py-12 sm:py-16 lg:py-20">
+      <section
+        aria-labelledby="kit-site-hero-titre"
+        className="relative overflow-hidden bg-zinc-950 py-12 sm:py-16 lg:py-20"
+      >
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(109,40,217,0.24),transparent_58%)]" />
         <div className="absolute -bottom-32 -left-24 size-96 rounded-full bg-blue-600/10 blur-3xl" />
         <div className="relative z-10 mx-auto max-w-7xl px-4">
@@ -304,7 +306,10 @@ export default function Page() {
                   Version {resource.version} · {resource.updatedLabel}
                 </span>
               </div>
-              <h1 className="mt-5 max-w-3xl text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-[3.45rem] lg:leading-[1.05]">
+              <h1
+                id="kit-site-hero-titre"
+                className="mt-5 max-w-3xl text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-[3.45rem] lg:leading-[1.05]"
+              >
                 Un kit de cahier des charges pour cadrer votre site sans jargon.
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-relaxed text-zinc-300 sm:text-lg">
@@ -411,7 +416,10 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="border-b border-zinc-200 bg-white py-10 dark:border-zinc-800 dark:bg-zinc-950">
+      <section
+        aria-label="Ce que le kit change pour votre consultation"
+        className="border-b border-zinc-200 bg-white py-10 dark:border-zinc-800 dark:bg-zinc-950"
+      >
         <div className="mx-auto grid max-w-7xl gap-5 px-4 sm:grid-cols-3">
           {[
             {
@@ -455,6 +463,7 @@ export default function Page() {
 
       <section
         id="contenu-du-kit"
+        aria-labelledby="contenu-du-kit-titre"
         className="scroll-mt-24 bg-zinc-50 py-12 sm:py-16 dark:bg-zinc-900"
       >
         <div className="mx-auto max-w-7xl px-4">
@@ -462,7 +471,10 @@ export default function Page() {
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-violet-700 dark:text-violet-300">
               À l&apos;intérieur du kit
             </p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-zinc-950 sm:text-4xl dark:text-white">
+            <h2
+              id="contenu-du-kit-titre"
+              className="mt-2 text-2xl font-bold tracking-tight text-zinc-950 sm:text-4xl dark:text-white"
+            >
               Quatre fichiers, chacun avec un rôle précis.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
@@ -523,13 +535,19 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="bg-white py-12 sm:py-16 dark:bg-zinc-950">
+      <section
+        aria-labelledby="parcours-kit-titre"
+        className="bg-white py-12 sm:py-16 dark:bg-zinc-950"
+      >
         <div className="mx-auto max-w-5xl px-4">
           <div className="text-center">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-zinc-500">
               Mode d&apos;utilisation
             </p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-zinc-950 sm:text-4xl dark:text-white">
+            <h2
+              id="parcours-kit-titre"
+              className="mt-2 text-2xl font-bold tracking-tight text-zinc-950 sm:text-4xl dark:text-white"
+            >
               Un parcours court avant d&apos;envoyer votre consultation.
             </h2>
           </div>
@@ -556,7 +574,10 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="border-y border-zinc-200 bg-zinc-50 py-12 sm:py-16 dark:border-zinc-800 dark:bg-zinc-900">
+      <section
+        aria-label="Portée et limites du kit"
+        className="border-y border-zinc-200 bg-zinc-50 py-12 sm:py-16 dark:border-zinc-800 dark:bg-zinc-900"
+      >
         <div className="mx-auto grid max-w-7xl gap-6 px-4 lg:grid-cols-2">
           <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6 sm:p-8 dark:border-emerald-900 dark:bg-emerald-950/30">
             <CircleCheck
@@ -608,20 +629,26 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="bg-white py-10 sm:py-14 dark:bg-zinc-950">
+      <section
+        aria-labelledby="aller-plus-loin-titre"
+        className="bg-white py-10 sm:py-14 dark:bg-zinc-950"
+      >
         <div className="mx-auto max-w-5xl px-4">
           <div className="rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-50 via-white to-blue-50 p-6 sm:p-8 dark:border-violet-900 dark:from-violet-950/40 dark:via-zinc-950 dark:to-blue-950/30">
             <div className="flex size-11 items-center justify-center rounded-xl bg-violet-700 text-white">
               <FileText className="size-5" aria-hidden="true" />
             </div>
-            <h2 className="mt-5 text-xl font-bold tracking-tight text-zinc-950 sm:text-2xl dark:text-white">
+            <h2
+              id="aller-plus-loin-titre"
+              className="mt-5 text-xl font-bold tracking-tight text-zinc-950 sm:text-2xl dark:text-white"
+            >
               Besoin de comprendre pourquoi chaque rubrique compte ?
             </h2>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
               La page que vous lisez sert à examiner et télécharger les
-              fichiers. Le guide associé explique comment rédiger chaque partie,
-              éviter les formulations floues et adapter le cahier des charges à
-              une création ou une refonte.
+              fichiers. Le mode d&apos;emploi inclus dans le kit indique par
+              quelles rubriques commencer et lesquelles retirer ; notre page
+              méthode décrit comment nous instruisons un cadrage de notre côté.
             </p>
             <Link
               href="/methode"
@@ -676,7 +703,10 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="bg-white pb-4 dark:bg-zinc-950">
+      <section
+        aria-labelledby="controles-kit-titre"
+        className="bg-white pb-4 dark:bg-zinc-950"
+      >
         <div className="mx-auto max-w-5xl px-4">
           <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-6 sm:p-8 dark:border-zinc-800 dark:bg-zinc-900">
             <div className="flex items-center gap-3">
@@ -687,7 +717,10 @@ export default function Page() {
                 <p className="text-xs font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
                   Contrôles effectués
                 </p>
-                <h2 className="mt-1 text-xl font-bold tracking-tight text-zinc-950 dark:text-white">
+                <h2
+                  id="controles-kit-titre"
+                  className="mt-1 text-xl font-bold tracking-tight text-zinc-950 dark:text-white"
+                >
                   Des fichiers vérifiés, avec des limites documentées.
                 </h2>
               </div>
@@ -717,7 +750,10 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="bg-white pb-10 dark:bg-zinc-950">
+      <section
+        aria-label="Téléchargement des fichiers du kit"
+        className="bg-white pb-10 dark:bg-zinc-950"
+      >
         <div className="mx-auto max-w-5xl px-4">
           <ResourceDownloadCard
             resource={resource}
@@ -731,27 +767,34 @@ export default function Page() {
         items={faqItems}
       />
 
-      <section className="bg-zinc-950 py-12 text-white sm:py-16">
+      <section
+        aria-labelledby="cta-kit-site-titre"
+        className="bg-zinc-950 py-12 text-white sm:py-16"
+      >
         <div className="mx-auto grid max-w-7xl gap-8 px-4 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-violet-400">
               Après le cadrage
             </p>
-            <h2 className="mt-2 max-w-3xl text-2xl font-bold tracking-tight sm:text-3xl">
+            <h2
+              id="cta-kit-site-titre"
+              className="mt-2 max-w-3xl text-2xl font-bold tracking-tight sm:text-3xl"
+            >
               Vous avez rempli le kit et voulez confronter le périmètre à un
               développeur ?
             </h2>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-400 sm:text-base">
               Décrivez le contexte, les utilisateurs et les contraintes déjà
               identifiées. Nous visons une réponse personnelle le prochain jour
-              ouvré, sans délai garanti — pas une estimation automatique présentée comme un devis.
+              ouvré, sans délai garanti — pas une estimation automatique
+              présentée comme un devis.
             </p>
           </div>
           <Link
             href="/demarrer-un-projet"
             className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-zinc-950 transition-colors hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 sm:w-fit"
           >
-            Décrire mon projet
+            Démarrer mon projet
             <ArrowRight className="size-4" aria-hidden="true" />
           </Link>
         </div>

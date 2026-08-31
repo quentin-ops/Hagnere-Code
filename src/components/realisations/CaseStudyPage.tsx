@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PRIMARY_ACTION_LABEL } from "@/lib/cta-labels";
 import type { CSSProperties } from "react";
 import { InteractiveDesignRoot } from "@/components/design-shared/InteractiveDesignRoot";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
@@ -87,7 +88,10 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
       </section>
 
       {/* Info bar */}
-      <section className="cs-info">
+      {/* Nommées parce qu'elles n'ont pas de titre propre : une <section>
+          sans nom accessible n'est pas exposée comme repère de navigation,
+          et un lecteur d'écran qui parcourt les régions la saute. */}
+      <section className="cs-info" aria-label="Source et nature de cette fiche">
         <div className="wrap cs-info-grid">
           <div>
             <div className="cs-info-k">Source vérifiée</div>
@@ -221,26 +225,29 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
       </section>
 
       {/* Explicitly identified editorial note, never presented as a client review. */}
-      <section className="cs-section cs-section-dark">
-        <div className="wrap cs-testimonial">
+      <section className="cs-section cs-section-dark" aria-label="Note éditoriale de l'auteur">
+        <div className="wrap cs-editorialNote">
           <div className="eyebrow on-dark">— Note éditoriale · pas un avis client</div>
           <svg className="cs-quote-mark" width="48" height="40" viewBox="0 0 48 40" fill="currentColor">
             <path d="M14 0v12H8c0 4 2 6 6 6v10c-8-1-14-5-14-16V0h14zM34 0v12h-6c0 4 2 6 6 6v10c-8-1-14-5-14-16V0h14z" opacity="0.2" />
           </svg>
-          <blockquote>{c.testimonial.quote}</blockquote>
+          <blockquote>{c.editorialNote.quote}</blockquote>
           <div className="cs-tauthor">
-            <div className="cs-tav">{c.testimonial.initials}</div>
+            <div className="cs-tav">{c.editorialNote.initials}</div>
             <div>
-              <div className="cs-tname">{c.testimonial.author}</div>
-              <div className="cs-trole">{c.testimonial.role}</div>
+              <div className="cs-tname">{c.editorialNote.author}</div>
+              <div className="cs-trole">{c.editorialNote.role}</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* AMF / disclaimer pour les cas patrimoine et investissement */}
+      {/* AMF / disclaimer pour les cas patrimoine et investissement.
+          Nommée : c'est une réserve réglementaire sans titre propre, donc
+          invisible à qui parcourt les régions au lecteur d'écran — précisément
+          le bloc qu'il ne faut pas manquer. */}
       {(c.slug === "hagnere-investissement" || c.slug === "hagnere-patrimoine") && (
-        <section className="cs-section">
+        <section className="cs-section" aria-label="Mention réglementaire">
           <div className="wrap">
             <div
               style={{
@@ -336,7 +343,7 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
           </div>
           <div className="cs-svc-actions">
             <Link href="/demarrer-un-projet" className="btn btn-primary btn-lg">
-              Décrire votre projet
+              {PRIMARY_ACTION_LABEL}
               <svg className="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>

@@ -1,4 +1,8 @@
 import Link from "next/link";
+import {
+  CONTACT_PHONE_DISPLAY_NATIONAL,
+  CONTACT_PHONE_E164,
+} from "@/lib/contact-details";
 import { Send, Phone, ArrowRight, CheckCircle2 } from "lucide-react";
 
 /* ──────────────────────────────────────────────
@@ -245,7 +249,7 @@ export function GuideInlineCTA({
   title = "Parlons de ce que votre projet doit vraiment résoudre",
   description = "Décrivez votre activité, le problème rencontré et le résultat attendu. Nous vous répondons avec une première lecture concrète, y compris si une solution plus simple suffit.",
   tags = ["Sans engagement", "Réponse argumentée", "Solution simple possible"],
-  ctaLabel = "Décrire mon projet",
+  ctaLabel = "Démarrer mon projet",
   ctaHref = "/demarrer-un-projet",
   showPhone = true,
 }: GuideInlineCTAProps) {
@@ -293,11 +297,11 @@ export function GuideInlineCTA({
           </Link>
           {showPhone ? (
             <a
-              href="tel:+33374472018"
+              href={`tel:${CONTACT_PHONE_E164}`}
               className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-zinc-700 text-zinc-400 text-sm hover:bg-zinc-800/60 hover:border-zinc-600 transition-colors"
             >
               <Phone className="size-4 shrink-0" />
-              03 74 47 20 18
+              {CONTACT_PHONE_DISPLAY_NATIONAL}
             </a>
           ) : null}
         </div>

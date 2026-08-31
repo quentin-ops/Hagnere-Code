@@ -81,15 +81,26 @@ export default function Page() {
       <section className="relative overflow-hidden bg-zinc-950 py-14 sm:py-20">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(109,40,217,0.16),transparent_58%)]" />
         <div className="relative z-10 mx-auto max-w-7xl px-4">
+          {/* `text-zinc-500` sur le fond #09090b du héros ne mesure que
+              4,15:1 — sous le 4,5:1 exigé pour du texte de 14 px (1.4.3).
+              `text-zinc-400` monte à 7,8:1. Les liens sont par ailleurs
+              étendus verticalement à 44 px de cible tactile par `py-3 -my-3`,
+              qui n'ajoute rien à la hauteur du fil d'Ariane. */}
           <nav
             aria-label="Fil d'Ariane"
-            className="mb-8 flex items-center gap-2 text-sm text-zinc-500"
+            className="mb-8 flex items-center gap-2 text-sm text-zinc-400"
           >
-            <Link href="/" className="hover:text-zinc-300">
+            <Link
+              href="/"
+              className="-my-3 inline-flex items-center py-3 hover:text-white"
+            >
               Accueil
             </Link>
             <ChevronRight className="size-3" aria-hidden="true" />
-            <Link href="/ressources" className="hover:text-zinc-300">
+            <Link
+              href="/ressources"
+              className="-my-3 inline-flex items-center py-3 hover:text-white"
+            >
               Ressources
             </Link>
             <ChevronRight className="size-3" aria-hidden="true" />
@@ -122,11 +133,34 @@ export default function Page() {
                 </span>
               ))}
             </div>
+            {/* Le héros n'offrait aucune action : sur un écran de 900 px, le
+                premier lien cliquable de la page — le bouton de la fiche —
+                tombait à 1014 px, donc sous la ligne de flottaison. */}
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Link
+                href="#bibliotheque"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-zinc-950 transition-colors hover:bg-zinc-200"
+              >
+                {WHITE_PAPERS.length > 1
+                  ? `Voir les ${WHITE_PAPERS.length} ressources`
+                  : "Voir la ressource disponible"}
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
+              <Link
+                href="/guides"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-zinc-700 px-5 py-3 text-sm font-semibold text-zinc-100 transition-colors hover:border-zinc-500 hover:bg-zinc-900"
+              >
+                Parcourir les guides chiffrés
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-12 sm:py-16 dark:bg-zinc-950">
+      <section
+        id="bibliotheque"
+        className="scroll-mt-24 bg-white py-12 sm:py-16 dark:bg-zinc-950"
+      >
         <div className="mx-auto max-w-7xl px-4">
           <div className="mb-8 flex items-end justify-between gap-5">
             <div>
@@ -137,7 +171,9 @@ export default function Page() {
                 Les ressources disponibles
               </h2>
             </div>
-            <span className="text-sm text-zinc-500">
+            {/* `shrink-0 whitespace-nowrap` : à 390 px le compteur se coupait
+                en « 1 » / « ressource » sur deux lignes. */}
+            <span className="shrink-0 whitespace-nowrap text-sm text-zinc-500 dark:text-zinc-400">
               {WHITE_PAPERS.length} ressource
               {WHITE_PAPERS.length > 1 ? "s" : ""}
             </span>
@@ -158,9 +194,12 @@ export default function Page() {
                       {entry.readTimeMin} min · PDF gratuit
                     </span>
                   </div>
-                  <h2 className="mt-8 max-w-xl text-2xl font-bold tracking-tight text-zinc-950 dark:text-white">
+                  {/* h3 et non h2 : la fiche est un enfant de « Les ressources
+                      disponibles ». Au même niveau, un lecteur d'écran
+                      annonçait une nouvelle section de page. */}
+                  <h3 className="mt-8 max-w-xl text-2xl font-bold tracking-tight text-zinc-950 dark:text-white">
                     {entry.cardTitle}
-                  </h2>
+                  </h3>
                   <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                     {entry.description}
                   </p>
@@ -190,9 +229,9 @@ export default function Page() {
               <span className="flex size-11 items-center justify-center rounded-xl bg-white text-zinc-500 ring-1 ring-zinc-200 dark:bg-zinc-950 dark:ring-zinc-800">
                 <FileText className="size-5" aria-hidden="true" />
               </span>
-              <h2 className="mt-8 text-xl font-semibold text-zinc-950 dark:text-white">
+              <h3 className="mt-8 text-xl font-semibold text-zinc-950 dark:text-white">
                 Une ressource doit résoudre une décision complète.
-              </h2>
+              </h3>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                 Nous ajoutons un livre blanc lorsqu&apos;il peut fournir une
                 méthode, un modèle et un exemple honnête — pas pour afficher un
@@ -200,7 +239,7 @@ export default function Page() {
               </p>
               <Link
                 href="/guides"
-                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-violet-700 hover:text-violet-900 dark:text-violet-300 dark:hover:text-violet-200"
+                className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-violet-700 hover:text-violet-900 dark:text-violet-300 dark:hover:text-violet-200"
               >
                 Parcourir les guides chiffrés
                 <ArrowRight className="size-4" aria-hidden="true" />
@@ -259,13 +298,25 @@ export default function Page() {
               </li>
             ))}
           </ul>
-          <Link
-            href="/demarrer-un-projet"
-            className="mt-8 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-zinc-950 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-zinc-800 sm:w-fit dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
-          >
-            Décrire mon projet en 3 minutes
-            <ArrowRight className="size-4" aria-hidden="true" />
-          </Link>
+          {/* Le tunnel était la seule sortie de la page. Un lecteur qui vient
+              d'outiller une comparaison de devis n'est pas forcément prêt à
+              cadrer un projet : la porte courte — le formulaire de contact —
+              lui manquait. */}
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Link
+              href="/demarrer-un-projet"
+              className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-zinc-950 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-zinc-800 sm:w-fit dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
+            >
+              Démarrer mon projet en 3 minutes
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-zinc-300 bg-white px-5 py-3 text-sm font-semibold text-zinc-950 transition-colors hover:border-zinc-400 hover:bg-zinc-100 sm:w-fit dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:hover:border-zinc-500 dark:hover:bg-zinc-900"
+            >
+              Poser une question d&apos;abord
+            </Link>
+          </div>
         </div>
       </section>
     </GuidesShell>

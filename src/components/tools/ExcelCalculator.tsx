@@ -259,8 +259,12 @@ export function ExcelCalculator() {
         </div>
       </section>
 
-      {/* Calculator */}
-      <section className="calc-main">
+      {/* Calculator.
+          `aria-label` : une <section> sans nom accessible n'est pas exposée
+          comme repère de navigation par un lecteur d'écran — elle vaut alors
+          une <div>, mais en laissant croire le contraire à la relecture.
+          C'est le bloc central de l'outil : il mérite un nom. */}
+      <section className="calc-main" aria-label="Calculateur du coût de votre Excel">
         <div className="wrap calc-grid">
           {/* Inputs */}
           <div className="calc-inputs">
@@ -372,7 +376,12 @@ export function ExcelCalculator() {
               </div>
 
               <details className="calc-details">
-                <summary>Comment on calcule</summary>
+                {/* `minHeight` : ce resume mesurait 18 px de haut, la moitie de la
+                    cible tactile de 44 px, sur le seul controle qui explique le
+                    calcul affiche juste au-dessus. */}
+                <summary style={{ minHeight: 44, display: "flex", alignItems: "center" }}>
+                  Comment on calcule
+                </summary>
                 <ul>
                   <li>
                     <b>Temps perdu</b> = heures × 48 semaines × personnes ×

@@ -215,7 +215,10 @@ export default function Page() {
         }}
       />
 
-      <section className="relative overflow-hidden bg-zinc-950 py-14 sm:py-20">
+      <section
+        aria-labelledby="ressources-hero-titre"
+        className="relative overflow-hidden bg-zinc-950 py-14 sm:py-20"
+      >
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(109,40,217,0.2),transparent_58%)]" />
         <div className="relative z-10 mx-auto max-w-7xl px-4">
           <nav
@@ -232,7 +235,10 @@ export default function Page() {
             <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-violet-400">
               Bibliothèque pratique
             </p>
-            <h1 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
+            <h1
+              id="ressources-hero-titre"
+              className="text-3xl font-bold tracking-tight text-white sm:text-5xl"
+            >
               Des ressources web faites pour décider, pas pour remplir une boîte
               mail.
             </h1>
@@ -256,17 +262,42 @@ export default function Page() {
                 </span>
               ))}
             </div>
+            {/* Le hero n'exposait aucune action : le seul contrôle au-dessus de
+                la ligne de flottaison était le fil d'Ariane « Accueil ». */}
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <a
+                href="#kits-pratiques"
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-violet-600 px-5 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-violet-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-300 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 sm:w-fit"
+              >
+                Voir les kits à télécharger
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </a>
+              <Link
+                href="/guides"
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-300 sm:w-fit"
+              >
+                Parcourir les guides
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-12 sm:py-16 dark:bg-zinc-950">
+      <section
+        id="kits-pratiques"
+        aria-labelledby="kits-pratiques-titre"
+        className="scroll-mt-24 bg-white py-12 sm:py-16 dark:bg-zinc-950"
+      >
         <div className="mx-auto max-w-7xl px-4">
           <div className="mb-7">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-violet-700 dark:text-violet-300">
               Kits pratiques
             </p>
-            <h2 className="mt-2 max-w-3xl text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white">
+            <h2
+              id="kits-pratiques-titre"
+              className="mt-2 max-w-3xl text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white"
+            >
               Partez d&apos;un cahier des charges déjà structuré, selon le
               projet à cadrer.
             </h2>
@@ -316,9 +347,9 @@ export default function Page() {
                   <div className="mt-6 flex size-11 items-center justify-center rounded-xl bg-zinc-950 text-white dark:bg-white dark:text-zinc-950">
                     <PackageOpen className="size-5" aria-hidden="true" />
                   </div>
-                  <h2 className="mt-5 text-2xl font-bold tracking-tight text-zinc-950 dark:text-white">
+                  <h3 className="mt-5 text-2xl font-bold tracking-tight text-zinc-950 dark:text-white">
                     {kit.resource.cardTitle}
-                  </h2>
+                  </h3>
                   <p className="mt-3 text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
                     {kit.description} Vous pouvez examiner chaque fichier avant
                     de le télécharger.
@@ -346,13 +377,19 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="border-y border-zinc-200 bg-zinc-50 py-12 sm:py-16 dark:border-zinc-800 dark:bg-zinc-900">
+      <section
+        aria-labelledby="choisir-ressource-titre"
+        className="border-y border-zinc-200 bg-zinc-50 py-12 sm:py-16 dark:border-zinc-800 dark:bg-zinc-900"
+      >
         <div className="mx-auto max-w-7xl px-4">
           <div className="max-w-3xl">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-zinc-500">
               Choisir selon votre besoin
             </p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white">
+            <h2
+              id="choisir-ressource-titre"
+              className="mt-2 text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white"
+            >
               Lire, comparer ou calculer : commencez par la décision à prendre.
             </h2>
           </div>
@@ -391,13 +428,19 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="bg-white py-12 sm:py-16 dark:bg-zinc-950">
+      <section
+        aria-labelledby="apres-cadrage-titre"
+        className="bg-white py-12 sm:py-16 dark:bg-zinc-950"
+      >
         <div className="mx-auto max-w-7xl px-4">
           <div className="max-w-3xl">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-zinc-500">
               Et après le cadrage
             </p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white">
+            <h2
+              id="apres-cadrage-titre"
+              className="mt-2 text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white"
+            >
               À quel type de projet ces ressources mènent.
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
@@ -432,13 +475,19 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="border-t border-zinc-200 bg-white py-12 sm:py-16 dark:border-zinc-800 dark:bg-zinc-950">
+      <section
+        aria-labelledby="perimetre-titre"
+        className="border-t border-zinc-200 bg-white py-12 sm:py-16 dark:border-zinc-800 dark:bg-zinc-950"
+      >
         <div className="mx-auto grid max-w-7xl gap-8 px-4 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
             <div className="flex size-11 items-center justify-center rounded-xl bg-zinc-100 text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">
               <FileText className="size-5" aria-hidden="true" />
             </div>
-            <h2 className="mt-5 max-w-3xl text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white">
+            <h2
+              id="perimetre-titre"
+              className="mt-5 max-w-3xl text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white"
+            >
               Vous avez le besoin, mais pas encore le bon périmètre ?
             </h2>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
@@ -452,7 +501,7 @@ export default function Page() {
             href="/demarrer-un-projet"
             className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-zinc-950 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 sm:w-fit dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
           >
-            Décrire mon projet
+            Démarrer mon projet
             <ArrowRight className="size-4" aria-hidden="true" />
           </Link>
         </div>

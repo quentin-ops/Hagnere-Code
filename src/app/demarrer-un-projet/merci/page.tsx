@@ -39,7 +39,14 @@ export default function Page() {
         </div>
         <nav className="pf-topnav" aria-label="Navigation secondaire">
           <ThemeToggle />
-          <Link href="/" className="pf-site-return">
+          {/* Même règle que dans le tunnel : sous 1101 px le libellé cède la
+              place, le nom accessible reste porté par l'attribut. */}
+          <Link
+            href="/"
+            className="pf-site-return"
+            aria-label="Retour au site vitrine"
+            title="Retour au site vitrine"
+          >
             <ArrowLeft size={16} strokeWidth={2} />
             <span>Retour au site vitrine</span>
           </Link>
@@ -89,7 +96,7 @@ export default function Page() {
               les deux canaux directs sont offerts ici comme partout ailleurs. */}
           <p className="pf-success-direct">
             Besoin de nous joindre avant&nbsp;?{" "}
-            <a href="tel:+33374472018">+33 3 74 47 20 18</a> ou{" "}
+            <a href="tel:+33660088351">+33 6 60 08 83 51</a> ou{" "}
             <a href="mailto:quentin@hagnere-patrimoine.fr">
               quentin@hagnere-patrimoine.fr
             </a>

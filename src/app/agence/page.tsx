@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PRIMARY_ACTION_HREF, PRIMARY_ACTION_LABEL } from "@/lib/cta-labels";
 import Link from "next/link";
 import { GuideLayout } from "@/components/guides/guide-layout";
 import {
@@ -104,6 +105,7 @@ export default function Page() {
       <GuideLayout
         breadcrumbs={[{ label: "Notre agence" }]}
         heroTitle={page.heroTitle}
+        heroAction={{ href: PRIMARY_ACTION_HREF, label: PRIMARY_ACTION_LABEL }}
         heroDescription="Nous sommes installés au 82 impasse de Bellevue, à Bassens, aux portes de Chambéry. Cette page indique où nous travaillons, les besoins que nous savons traiter et comment nous intervenons — sur place en Savoie et Haute-Savoie, à distance ailleurs en France."
         author={{
           name: "Quentin Hagnéré",
@@ -127,7 +129,7 @@ export default function Page() {
           { href: "/services/referencement-google", label: "Référencement naturel" },
           { href: "/services/publicite-en-ligne", label: "Publicité en ligne" },
           { href: "/tarifs", label: "Nos tarifs" },
-          { href: "/methode", label: "Notre méthode Sprint Fixe™" },
+          { href: "/methode", label: "Notre méthode Sprint Fixe" },
         ]}
         faqTitle="Notre agence : vos questions"
         faqItems={faqItems}
@@ -148,7 +150,7 @@ export default function Page() {
             { id: "territoire", label: "2. Le territoire que nous couvrons" },
             { id: "economie-locale", label: "3. Le tissu économique savoyard" },
             { id: "constat", label: "4. Ce qu'il faut vérifier sur un site local" },
-            { id: "paysage", label: "5. Le paysage des agences locales, sans détour" },
+            { id: "paysage", label: "5. Comparer les prestataires locaux sur des critères vérifiables" },
             { id: "ce-que-nous-faisons", label: "6. Ce que nous faisons" },
             { id: "comment-on-travaille", label: "7. Comment nous travaillons" },
             { id: "au-dela", label: "8. Au-delà de la Savoie" },
@@ -192,11 +194,12 @@ export default function Page() {
           <Link href="/agence/savoie">page consacrée à la Savoie</Link>{" "}
           décrit les six bassins du département et ce qu&apos;ils achètent
           réellement en matière de numérique, et notre{" "}
-          <Link href="/agence/savoie/chambery">page Chambéry</Link> entre
+          <Link href="/agence/savoie/chambery">page Chambéry</Link>{" "}
+          entre
           dans le détail de l&apos;économie de la ville, de ses zones
           d&apos;activité et de ses employeurs.
         </p>
-        <InfoBox variant="blue" title="Une précision de géographie que beaucoup se trompent">
+        <InfoBox variant="blue" title="Une précision de géographie sur laquelle beaucoup se trompent">
           <strong>Aix-les-Bains et Le Bourget-du-Lac ne font pas partie de
           Grand Chambéry</strong> : ces deux communes relèvent de la
           communauté d&apos;agglomération Grand Lac. De même, Montmélian et
@@ -411,10 +414,6 @@ export default function Page() {
           <a href="https://www.grandchambery.fr/lagglomeration/services-et-missions/presentation-du-territoire" target="_blank" rel="noopener noreferrer">Grand Chambéry</a>.
           Institut national de l&apos;énergie solaire :{" "}
           <a href="https://www.ines-solaire.org/contact/" target="_blank" rel="noopener noreferrer">INES</a>.
-          Mesures de performance : relevés Lighthouse 12.8.2 en configuration
-          mobile réalisés le 18 juillet 2026 sur neuf sites d&apos;entreprises
-          indépendantes du bassin, méthodologie et limites décrites en
-          section 4.
         </p>
       </GuideLayout>
     </GuidesShell>

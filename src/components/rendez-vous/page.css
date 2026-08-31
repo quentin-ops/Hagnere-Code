@@ -123,6 +123,10 @@
 
 /* --------- Section Calendly --------------------------------------------- */
 .rdv-calendly-section {
+  /* La navigation est collante (79 px en desktop, 65 px en mobile) : sans
+     cette marge, l'ancre #creneaux du hero deposait le titre de la section
+     SOUS la barre. */
+  scroll-margin-top: 96px;
   padding: 56px 0 80px;
   background: var(--paper-2, #fafafa);
   border-top: 1px solid var(--line, #ededed);

@@ -26,9 +26,9 @@ ${navHtml}
       <h1>L'équipe Hagnéré Code :<br>les développeurs full-stack qui<br><span class="accent">vont coder votre projet.</span></h1>
       <p class="ehero-sub">
         Pas de pool de freelances anonymes. Pas de sous-traitance offshore. Pas de white-label déguisé.
-        <b>${TEAM_PUBLIC_COMPOSITION}</b>. Toute l'équipe partage les mêmes rituels —
-        c'est cette équipe stable qui prend en charge votre projet du brief à la production,
-        et qui reste vos interlocuteurs après.
+        <b>${TEAM_PUBLIC_COMPOSITION}</b>. Toute l'équipe partage les mêmes rituels, du brief
+        à la production ; les personnes affectées à votre projet, leur rôle et leurs relais
+        sont nommés dans le devis.
       </p>
       <div class="ehero-cta">
         <a href="#contact" class="btn btn-accent btn-lg">
@@ -57,8 +57,8 @@ ${navHtml}
           <div class="emos-header-r">ÉQUIPE NOMMÉE · BASSENS</div>
         </div>
         <div class="emos">
-          <a class="emos-card emos-founder" href="#fondateur" aria-label="Voir Quentin Hagnéré">
-            <div class="emos-avatar emos-avatar-founder">QH</div>
+          <a class="emos-card emos-founder" href="#fondateur" aria-label="Aller à la présentation de Quentin Hagnéré, plus bas sur cette page">
+            <div class="emos-avatar emos-avatar-founder"><img src="/team/quentin.webp" alt="Quentin Hagnéré" width="60" height="60" loading="lazy" decoding="async" /></div>
             <div class="emos-meta">
               <div class="emos-name">Quentin Hagnéré</div>
               <div class="emos-role">Fondateur</div>
@@ -66,8 +66,8 @@ ${navHtml}
             <div class="emos-tag emos-tag-founder">ASSOCIÉ</div>
           </a>
 
-          <a class="emos-card" href="#cto" aria-label="Voir Nicolas Wallerand">
-            <div class="emos-avatar emos-avatar-cto">NW</div>
+          <a class="emos-card" href="#cto" aria-label="Aller à la présentation de Nicolas Wallerand, plus bas sur cette page">
+            <div class="emos-avatar emos-avatar-cto"><img src="/team/nicolas.webp" alt="Nicolas Wallerand" width="54" height="54" loading="lazy" decoding="async" /></div>
             <div class="emos-meta">
               <div class="emos-name">Nicolas Wallerand</div>
               <div class="emos-role">CTO</div>
@@ -75,8 +75,8 @@ ${navHtml}
             <span class="emos-card-arrow" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </a>
 
-          <a class="emos-card" href="#tech" aria-label="Voir Arthur Monney">
-            <div class="emos-avatar emos-avatar-am">AM</div>
+          <a class="emos-card" href="#dev-arthur" aria-label="Aller à la fiche d'Arthur Monney, plus bas sur cette page">
+            <div class="emos-avatar emos-avatar-am"><img src="/team/arthur.webp" alt="Arthur Monney" width="54" height="54" loading="lazy" decoding="async" /></div>
             <div class="emos-meta">
               <div class="emos-name">Arthur Monney</div>
               <div class="emos-role">Senior · Paiements</div>
@@ -84,8 +84,8 @@ ${navHtml}
             <span class="emos-card-arrow" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </a>
 
-          <a class="emos-card" href="#tech" aria-label="Voir Frédéric Curinckx">
-            <div class="emos-avatar emos-avatar-fc">FC</div>
+          <a class="emos-card" href="#dev-frederic" aria-label="Aller à la fiche de Frédéric Curinckx, plus bas sur cette page">
+            <div class="emos-avatar emos-avatar-fc"><img src="/team/frederic.jpeg" alt="Frédéric Curinckx" width="54" height="54" loading="lazy" decoding="async" /></div>
             <div class="emos-meta">
               <div class="emos-name">Frédéric Curinckx</div>
               <div class="emos-role">Senior · Livewire</div>
@@ -93,8 +93,8 @@ ${navHtml}
             <span class="emos-card-arrow" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </a>
 
-          <a class="emos-card" href="#tech" aria-label="Voir Ryan Mazzitelli">
-            <div class="emos-avatar emos-avatar-rm">RM</div>
+          <a class="emos-card" href="#dev-ryan" aria-label="Aller à la fiche de Ryan Mazzitelli, plus bas sur cette page">
+            <div class="emos-avatar emos-avatar-rm"><img src="/team/ryan.jpeg" alt="Ryan Mazzitelli" width="54" height="54" loading="lazy" decoding="async" /></div>
             <div class="emos-meta">
               <div class="emos-name">Ryan Mazzitelli</div>
               <div class="emos-role">Senior · IA</div>
@@ -102,8 +102,8 @@ ${navHtml}
             <span class="emos-card-arrow" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </a>
 
-          <a class="emos-card" href="#tech" aria-label="Voir Killian Hoarau">
-            <div class="emos-avatar emos-avatar-kh">KH</div>
+          <a class="emos-card" href="#dev-killian" aria-label="Aller à la fiche de Killian Hoarau, plus bas sur cette page">
+            <div class="emos-avatar emos-avatar-kh"><img src="/team/killian.webp" alt="Killian Hoarau" width="54" height="54" loading="lazy" decoding="async" /></div>
             <div class="emos-meta">
               <div class="emos-name">Killian Hoarau</div>
               <div class="emos-role">Senior · DevOps</div>
@@ -111,8 +111,8 @@ ${navHtml}
             <span class="emos-card-arrow" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </a>
 
-          <a class="emos-card" href="#tech" aria-label="Voir Peter Sum Sie Kung">
-            <div class="emos-avatar emos-avatar-ps">PS</div>
+          <a class="emos-card" href="#dev-peter" aria-label="Aller à la fiche de Peter Sum Sie Kung, plus bas sur cette page">
+            <div class="emos-avatar emos-avatar-ps"><img src="/team/peter.webp" alt="Peter Sum Sie Kung" width="54" height="54" loading="lazy" decoding="async" /></div>
             <div class="emos-meta">
               <div class="emos-name">Peter Sum Sie Kung</div>
               <div class="emos-role">Full-stack · PHP/JS</div>
@@ -123,7 +123,7 @@ ${navHtml}
 
         <div class="emos-legend">
           <span class="emos-legend-dot" aria-hidden="true"></span>
-          <span class="emos-legend-text">Cliquez sur une carte pour ouvrir le profil détaillé de la personne — <b>LinkedIn</b> pour la plupart, <b>Codeur.com</b> pour Peter.</span>
+          <span class="emos-legend-text">Cliquez sur une carte pour rejoindre la présentation détaillée de la personne, plus bas sur cette page. Sa fiche porte le lien vers son profil public — <b>LinkedIn</b>, ou <b>Codeur.com</b> pour Peter.</span>
         </div>
       </div>
     </div>
@@ -131,7 +131,7 @@ ${navHtml}
 </section>
 
 <!-- KPI BAR -->
-<section class="kpi-bar">
+<section class="kpi-bar" aria-label="Repères chiffrés de l'équipe">
   <div class="wrap">
     <div class="kpi-grid">
       <div class="kpi reveal">
@@ -244,7 +244,6 @@ ${navHtml}
             <span class="founder-stack-tag">Patrimoine</span>
             <span class="founder-stack-tag">Immobilier</span>
             <span class="founder-stack-tag">SaaS B2B</span>
-            <span class="founder-stack-tag">Conseil RH</span>
           </div>
           <div class="founder-stack-row">
             <span class="founder-stack-tag mono">Figma</span>
@@ -280,24 +279,11 @@ ${navHtml}
 
       <div class="cto-photo-wrap">
         <div class="cto-photo">
-          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <rect width="400" height="500" fill="#0f0f0f"/>
-            <defs>
-              <radialGradient id="ctoGrad" cx="50%" cy="30%" r="65%">
-                <stop offset="0%" stop-color="#2a2a2a"/>
-                <stop offset="100%" stop-color="#080808"/>
-              </radialGradient>
-            </defs>
-            <rect width="400" height="500" fill="url(#ctoGrad)"/>
-            <circle cx="200" cy="200" r="88" fill="#1f1f1f"/>
-            <rect x="112" y="290" width="176" height="220" fill="#1f1f1f" rx="88"/>
-            <text x="200" y="478" text-anchor="middle" font-family="Geist Mono" font-size="10" fill="#525252" letter-spacing="1">// PROFIL LINKEDIN</text>
-          </svg>
+          <img src="/team/nicolas.webp" alt="Nicolas Wallerand, CTO de Hagnéré Code" width="600" height="600" loading="lazy" decoding="async" />
           <div class="cto-photo-tag">
             <span class="dot"></span>
             CTO · ASSOCIÉ
           </div>
-          <div class="cto-photo-name">NW</div>
         </div>
       </div>
 
@@ -365,15 +351,15 @@ ${navHtml}
         Paiements, temps-réel, IA, DevOps, renforts full-stack. <b>Frédéric</b>, <b>Killian</b>,
         <b>Arthur</b>, <b>Ryan</b> et <b>Peter</b> sont intégrés aux mêmes rituels (daily, démo,
         revue de code) et travaillent tous sous la direction technique du CTO.
-        Une équipe stable, sans pool externe.
+        Une équipe nommée, sans pool externe.
       </div>
     </div>
 
     <div class="dev-grid">
       <!-- Arthur Monney -->
-      <div class="dev-card reveal">
+      <div class="dev-card reveal" id="dev-arthur">
         <div class="dev-card-top">
-          <div class="dev-avatar dev-avatar-am">AM</div>
+          <div class="dev-avatar dev-avatar-am"><img src="/team/arthur.webp" alt="Arthur Monney" width="62" height="62" loading="lazy" decoding="async" /></div>
           <a class="dev-li" href="https://www.linkedin.com/in/arthurmonney/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Arthur Monney" title="LinkedIn">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
@@ -382,7 +368,8 @@ ${navHtml}
         <div class="dev-role">Senior Dev — Back-end Laravel · Paiements</div>
         <p class="dev-spec">
           Architecte des systèmes complexes : multi-tenant, facturation, paiements récurrents.
-          Le go-to de l'équipe quand un client dit « il nous faut Stripe + Pennylane + comptabilité ».
+          C'est le référent de l'équipe dès qu'un projet touche à l'encaissement,
+          aux abonnements ou au rapprochement comptable.
         </p>
         <div class="dev-section">
           <div class="dev-section-h">SUR VOS PROJETS</div>
@@ -404,9 +391,9 @@ ${navHtml}
       </div>
 
       <!-- Frédéric Curinckx -->
-      <div class="dev-card reveal reveal-d-1">
+      <div class="dev-card reveal reveal-d-1" id="dev-frederic">
         <div class="dev-card-top">
-          <div class="dev-avatar dev-avatar-fc">FC</div>
+          <div class="dev-avatar dev-avatar-fc"><img src="/team/frederic.jpeg" alt="Frédéric Curinckx" width="62" height="62" loading="lazy" decoding="async" /></div>
           <a class="dev-li" href="https://www.linkedin.com/in/frederic-curinckx/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Frédéric Curinckx" title="LinkedIn">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
@@ -414,9 +401,9 @@ ${navHtml}
         <h3 class="dev-name">Frédéric Curinckx</h3>
         <div class="dev-role">Senior Dev — Laravel + Livewire · Temps-réel</div>
         <p class="dev-spec">
-          Le maestro du Livewire / Flux UI. Construit des interfaces métier riches en quelques jours
-          là où d'autres mettent des semaines. Spécialiste des formulaires complexes
-          et des dashboards temps-réel.
+          Le maestro du Livewire / Flux UI. Construit des interfaces métier riches sans multiplier
+          les couches. Spécialiste des formulaires complexes, des écrans de saisie longue
+          et des tableaux de bord temps-réel.
         </p>
         <div class="dev-section">
           <div class="dev-section-h">SUR VOS PROJETS</div>
@@ -438,9 +425,9 @@ ${navHtml}
       </div>
 
       <!-- Ryan Mazzitelli -->
-      <div class="dev-card reveal reveal-d-2">
+      <div class="dev-card reveal reveal-d-2" id="dev-ryan">
         <div class="dev-card-top">
-          <div class="dev-avatar dev-avatar-rm">RM</div>
+          <div class="dev-avatar dev-avatar-rm"><img src="/team/ryan.jpeg" alt="Ryan Mazzitelli" width="62" height="62" loading="lazy" decoding="async" /></div>
           <a class="dev-li" href="https://www.linkedin.com/in/ryan-mazzitelli-907716262/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Ryan Mazzitelli" title="LinkedIn">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
@@ -472,9 +459,9 @@ ${navHtml}
       </div>
 
       <!-- Killian Hoarau -->
-      <div class="dev-card reveal reveal-d-3">
+      <div class="dev-card reveal reveal-d-3" id="dev-killian">
         <div class="dev-card-top">
-          <div class="dev-avatar dev-avatar-kh">KH</div>
+          <div class="dev-avatar dev-avatar-kh"><img src="/team/killian.webp" alt="Killian Hoarau" width="62" height="62" loading="lazy" decoding="async" /></div>
           <a class="dev-li" href="https://www.linkedin.com/in/killian-hoarau-960927138/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Killian Hoarau" title="LinkedIn">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
@@ -482,9 +469,9 @@ ${navHtml}
         <h3 class="dev-name">Killian Hoarau</h3>
         <div class="dev-role">Senior Dev — Laravel + DevOps · Infrastructure</div>
         <p class="dev-spec">
-          Le gardien de l'infra. Docker, CI/CD, monitoring, backups, sécurité.
-          C'est lui qui s'assure que vos serveurs tiennent un pic de charge à 3 h du matin
-          et que vos données sont restaurables en moins de 15 minutes.
+          Le gardien de l'infra. Docker, CI/CD, supervision, sauvegardes, sécurité.
+          C'est lui qui met en place la tenue de charge et la restauration des données.
+          Les objectifs chiffrés et leurs tests sont définis dans le contrat de votre projet.
         </p>
         <div class="dev-section">
           <div class="dev-section-h">SUR VOS PROJETS</div>
@@ -506,9 +493,9 @@ ${navHtml}
       </div>
 
       <!-- Peter Sum Sie Kung -->
-      <div class="dev-card reveal reveal-d-4">
+      <div class="dev-card reveal reveal-d-4" id="dev-peter">
         <div class="dev-card-top">
-          <div class="dev-avatar dev-avatar-ps">PS</div>
+          <div class="dev-avatar dev-avatar-ps"><img src="/team/peter.webp" alt="Peter Sum Sie Kung" width="62" height="62" loading="lazy" decoding="async" /></div>
           <a class="dev-li" href="https://www.codeur.com/-peterssk" target="_blank" rel="noopener noreferrer" aria-label="Profil Codeur Peter Sum Sie Kung" title="Profil Codeur">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
           </a>
@@ -545,8 +532,38 @@ ${navHtml}
 
     <p class="tech-note reveal">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-      <span>Chaque carte ouvre le profil de la personne (LinkedIn pour la plupart, Codeur pour Peter).</span>
+      <span>Sur chaque fiche, le bouton en haut à droite ouvre le profil public de la personne dans un nouvel onglet — LinkedIn, ou Codeur pour Peter.</span>
     </p>
+  </div>
+</section>
+
+<!-- RELAIS DE CONVERSION — mi-page.
+     Mesure du 30/08/2026 : entre le bouton du hero (855 px) et le bloc de
+     contact du pied de page (10 231 px), la page ne proposait plus aucune
+     action pendant plus de neuf ecrans, et la porte « Demarrer mon projet »
+     n'apparaissait nulle part dans le contenu. -->
+<section class="eq-relay">
+  <div class="wrap">
+    <div class="eq-relay-card reveal">
+      <div class="eq-relay-copy">
+        <div class="eyebrow">— La suite</div>
+        <h2>Vous savez qui code. Parlons de votre projet.</h2>
+        <p>
+          Deux façons d'entrer : un échange de 30 minutes pour poser le cadre et repartir
+          avec un avis franc, ou le formulaire de démarrage si votre besoin est déjà écrit.
+          Dans les deux cas, les intervenants affectés et leur rôle sont nommés dans le devis.
+        </p>
+      </div>
+      <div class="eq-relay-cta">
+        <a href="#contact" class="btn btn-accent btn-lg">
+          Parler à un développeur
+          <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/demarrer-un-projet" class="btn btn-ghost btn-lg">
+          Démarrer mon projet
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 

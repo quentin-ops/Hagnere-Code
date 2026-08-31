@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PRIMARY_ACTION_HREF, PRIMARY_ACTION_LABEL } from "@/lib/cta-labels";
 import Link from "next/link";
 import { GuideLayout } from "@/components/guides/guide-layout";
 import {
@@ -74,7 +75,7 @@ const faqItems = [
   {
     question: "Qui pourra reprendre le code après vous ?",
     answer:
-      "React s'appuie sur un écosystème largement diffusé, mais la reprise dépend surtout de la qualité du code, des versions, de la documentation et des accès. Le devis inventorie le dépôt, la documentation, la réversibilité, les droits transférés après paiement selon les CGV et les licences tierces. Notre guide pour choisir son agence web explique comment vérifier ces points.",
+      "React s'appuie sur un écosystème largement diffusé, mais la reprise dépend surtout de la qualité du code, des versions, de la documentation et des accès. Le devis inventorie le dépôt, la documentation, la réversibilité, les droits transférés après paiement selon les CGV et les licences tierces. Notre page méthode détaille comment ces points deviennent des lignes du devis, que vous pouvez exiger de tout prestataire.",
   },
   {
     question: "Faites-vous aussi le back-end, ou seulement l'interface ?",
@@ -98,16 +99,20 @@ export default function Page() {
         breadcrumbs={[{ label: "Agence React" }]}
         heroTitle="Agence React : applications web et interfaces métier sur mesure"
         heroDescription="Nous développons en React des applications d'entreprise, des espaces clients et des outils internes. Le devis fixe prix, livrables, dépôt, droits, recette et période de correction. Basés à Bassens, aux portes de Chambéry, nous travaillons partout en France."
+        heroAction={{
+          href: "/demarrer-un-projet",
+          label: `${PRIMARY_ACTION_LABEL} en 3 minutes`,
+        }}
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
           href: "/equipe",
         }}
-        updatedLabel="Mis à jour le 18 juillet 2026"
+        updatedLabel="Mis à jour le 30 août 2026"
         keyPoints={[
           { number: "01", title: "Applications sur mesure dès 15 000 € HT", description: "", color: "violet" },
           { number: "02", title: "Planning défini après cadrage", description: "", color: "blue" },
-          { number: "03", title: "Code et documentation à votre nom", description: "", color: "emerald" },
+          { number: "03", title: "Dépôt, documentation et droits cadrés au devis", description: "", color: "emerald" },
           { number: "04", title: "Reprise d'existant possible après audit", description: "", color: "amber" },
         ]}
         relatedLinks={[
@@ -116,6 +121,7 @@ export default function Page() {
           { href: "/services/saas-applications-metier", label: "SaaS et applications métier" },
           { href: "/services/outils-internes-sur-mesure", label: "Outils internes sur mesure" },
           { href: "/services/audit-technique", label: "Audit technique" },
+          { href: "/realisations", label: "Les produits publics du groupe" },
           { href: "/methode", label: "Notre méthode de cadrage" },
           { href: "/tarifs", label: "Nos tarifs" },
         ]}
@@ -123,9 +129,10 @@ export default function Page() {
         faqItems={faqItems}
       >
         <p className="lead">
-          React est la bibliothèque la plus répandue du développement web :{" "}
-          <strong>environ un développeur sur deux la pratique dans le
-          monde</strong>. Nous l&apos;utilisons pour construire des
+          React est <strong>l&apos;une des bibliothèques d&apos;interface les
+          plus répandues du développement web</strong>&nbsp;: son vivier de
+          développeurs est large, ce qui compte le jour où vous voulez changer
+          de prestataire. Nous l&apos;utilisons pour construire des
           applications d&apos;entreprise, des espaces clients et des outils
           internes — c&apos;est-à-dire tout ce qui vit derrière un
           identifiant, et que vos équipes ou vos clients manipulent au
@@ -199,11 +206,12 @@ export default function Page() {
         <h2 id="pourquoi">3. Pourquoi React, en termes concrets</h2>
         <ul>
           <li>
-            <strong>Un vivier de développeurs très large.</strong> Avec
-            environ un développeur sur deux qui pratique React dans le monde,
-            vous ne dépendez ni d&apos;une technologie rare, ni d&apos;un
-            prestataire unique. C&apos;est un argument de réversibilité, pas
-            de mode.
+            <strong>Un vivier de développeurs très large.</strong>{" "}React est
+            enseigné, documenté et pratiqué partout : vous ne dépendez ni
+            d&apos;une technologie rare, ni d&apos;un prestataire unique.
+            C&apos;est un argument de réversibilité, pas de mode. Ce que la
+            réversibilité recouvre exactement — dépôt, accès, droits, relecture
+            par un tiers — est écrit au contrat, pas ici.
           </li>
           <li>
             <strong>Des interfaces qui répondent immédiatement.</strong>{" "}
@@ -213,14 +221,14 @@ export default function Page() {
             utilisateur.
           </li>
           <li>
-            <strong>Un écosystème mature.</strong> Tableaux de données,
+            <strong>Un écosystème mature.</strong>{" "}Tableaux de données,
             graphiques, formulaires complexes, calendriers, éditeurs de
             texte : les briques existent, éprouvées et maintenues. Nous ne
             réinventons que ce qui vous est spécifique — le reste, nous
             l&apos;assemblons, ce qui réduit le coût et le risque.
           </li>
           <li>
-            <strong>Une évolutivité réelle.</strong> Une application bien
+            <strong>Une évolutivité réelle.</strong>{" "}Une application bien
             structurée en composants s&apos;étend sans tout casser. C&apos;est
             ce qui distingue un outil qu&apos;on fait grandir pendant cinq ans
             d&apos;un outil qu&apos;il faut refaire au bout de deux.
@@ -315,14 +323,14 @@ export default function Page() {
             construction sur la durée.
           </li>
           <li>
-            <strong>Votre besoin est un site public.</strong> Une application
+            <strong>Votre besoin est un site public.</strong>{" "}Une application
             React classique ne se référence pas correctement. Dans ce cas,
             c&apos;est Next.js qu&apos;il faut, et notre page{" "}
             <Link href="/agence-next-js">agence Next.js</Link> traite le
             sujet.
           </li>
           <li>
-            <strong>Le processus n&apos;est pas encore stabilisé.</strong> Si
+            <strong>Le processus n&apos;est pas encore stabilisé.</strong>{" "}Si
             votre façon de travailler change tous les mois, développer un
             outil revient à figer quelque chose de mouvant. Mieux vaut
             attendre, ou commencer par un périmètre très resserré — c&apos;est
@@ -344,9 +352,11 @@ export default function Page() {
         />
         <p>
           Laravel peut également être étudié lorsque le projet s&apos;y prête.
-          Deux études de cas déclarent cette technologie et renvoient vers des
-          pages publiques ; celles-ci ne prouvent pas à elles seules la stack interne.
-          Le choix se fait au cadrage et figure dans le devis.
+          Deux produits du groupe, LMNP.AI et SCI-AI.app, lui sont associés :
+          leurs pages publiques sont consultables depuis nos{" "}
+          <Link href="/realisations">réalisations</Link>, mais elles ne prouvent
+          pas à elles seules la stack interne. Le choix se fait au cadrage et
+          figure dans le devis.
         </p>
 
         <GuideInlineCTA

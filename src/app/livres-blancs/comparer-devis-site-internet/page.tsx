@@ -7,11 +7,15 @@ import {
   FormulaBox,
   GuideInlineCTA,
   GuideTable,
-  GuideToc,
   InfoBox,
 } from "@/components/guides/guide-content-blocks";
 import { TrackedDownloadLink } from "@/components/resources/TrackedDownloadLink";
 import { QuoteComparisonWorkbench } from "@/components/white-papers/QuoteComparisonWorkbench";
+import {
+  SectionProgressNav,
+  SectionSummaryCard,
+  WHITE_PAPER_SECTIONS,
+} from "./section-progress-nav";
 import {
   calculateQuoteTco,
   QUOTE_CRITERIA,
@@ -273,6 +277,10 @@ export default function Page() {
         ]}
         heroTitle="Comparer trois devis de site internet sur trois ans"
         heroDescription="Une grille qui rend les offres comparables avant de les noter : coût total sur 36 mois, 40 critères pondérés, critères éliminatoires et exemple fictif entièrement rempli."
+        heroAction={{
+          href: "#telecharger",
+          label: "Télécharger le livre blanc",
+        }}
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -405,42 +413,15 @@ export default function Page() {
           </ul>
         </section>
 
-        <GuideToc
-          items={[
-            { id: "reponse-rapide", label: "1. La méthode en une minute" },
-            {
-              id: "pourquoi-36-mois",
-              label: "2. Pourquoi raisonner sur 36 mois",
-            },
-            {
-              id: "normaliser",
-              label: "3. Normaliser les offres avant de calculer",
-            },
-            { id: "formule", label: "4. La formule du coût total" },
-            { id: "grille", label: "5. La grille interactive Excel / Sheets" },
-            {
-              id: "exemple",
-              label: "6. Exemple rempli : trois offres fictives",
-            },
-            { id: "noter", label: "7. Éliminer d'abord, noter ensuite" },
-            { id: "criteres", label: "8. Les 40 critères et leur pondération" },
-            {
-              id: "couts-oublies",
-              label: "9. Les coûts presque toujours oubliés",
-            },
-            {
-              id: "questions",
-              label: "10. Les 15 questions à renvoyer aux candidats",
-            },
-            {
-              id: "methode-90",
-              label: "11. Comparer trois devis en 90 minutes",
-            },
-            { id: "decision", label: "12. Rédiger une décision défendable" },
-          ]}
+        <SectionSummaryCard sections={WHITE_PAPER_SECTIONS} />
+
+        <SectionProgressNav
+          sections={WHITE_PAPER_SECTIONS}
+          ctaHref="/demarrer-un-projet?source=livre-blanc-comparaison-devis"
+          ctaLabel="Faire relire mes devis"
         />
 
-        <h2 id="reponse-rapide">1. La méthode en une minute</h2>
+        <h2 id="reponse-rapide" className="scroll-mt-16">1. La méthode en une minute</h2>
         <ol>
           <li>
             <strong>Écrivez votre socle commun.</strong> Même objectif, mêmes
@@ -448,8 +429,8 @@ export default function Page() {
             recette.
           </li>
           <li>
-            <strong>Ajoutez à chaque devis ce qu&apos;il exclut.</strong> Une
-            option indispensable n&apos;est pas une option dans votre
+            <strong>Ajoutez à chaque devis ce qu&apos;il exclut.</strong>{" "}
+            Une option indispensable n&apos;est pas une option dans votre
             comparaison.
           </li>
           <li>
@@ -467,9 +448,9 @@ export default function Page() {
             davantage.
           </li>
           <li>
-            <strong>Décidez par écart utile.</strong> Demandez ce que les 3 820
-            € supplémentaires achètent réellement, pas quelle offre semble la
-            plus rassurante.
+            <strong>Décidez par écart utile.</strong>{" "}
+            Demandez ce que l&apos;écart de coût entre deux offres recevables
+            achète réellement, pas quelle offre semble la plus rassurante.
           </li>
         </ol>
 
@@ -483,7 +464,7 @@ export default function Page() {
           la qualité des seules offres recevables.
         </InfoBox>
 
-        <h2 id="pourquoi-36-mois">2. Pourquoi raisonner sur 36 mois</h2>
+        <h2 id="pourquoi-36-mois" className="scroll-mt-16">2. Pourquoi raisonner sur 36 mois</h2>
         <p>
           Un horizon d&apos;un an favorise artificiellement les offres par
           abonnement : la mise de départ est faible, mais le socle récurrent
@@ -527,11 +508,12 @@ export default function Page() {
           ]}
         />
 
-        <h2 id="normaliser">3. Normaliser les offres avant de calculer</h2>
+        <h2 id="normaliser" className="scroll-mt-16">3. Normaliser les offres avant de calculer</h2>
         <p>
           Une comparaison est invalide si les colonnes ne décrivent pas le même
           produit. Construisez d&apos;abord un{" "}
-          <strong>périmètre de référence</strong> à partir du besoin, puis
+          <strong>périmètre de référence</strong>{" "}
+          à partir du besoin, puis
           marquez chaque poste comme inclus, exclu, optionnel ou indéterminé.
           Une exclusion nécessaire est ajoutée au coût de l&apos;offre ; un
           point indéterminé déclenche une question écrite au candidat.
@@ -591,7 +573,7 @@ export default function Page() {
           sert précisément à créer ce socle commun.
         </p>
 
-        <h2 id="formule">4. La formule du coût total</h2>
+        <h2 id="formule" className="scroll-mt-16">4. La formule du coût total</h2>
         <p>
           La formule doit rester assez simple pour être auditée en réunion.
           Chaque terme renvoie à une ligne visible ; aucun multiplicateur caché
@@ -613,7 +595,7 @@ export default function Page() {
           notez-la séparément.
         </p>
 
-        <h2 id="grille">5. La grille interactive Excel / Sheets</h2>
+        <h2 id="grille" className="scroll-mt-16">5. La grille interactive Excel / Sheets</h2>
         <p>
           L&apos;outil ci-dessous fonctionne sans compte et ne transmet aucun
           montant. Remplacez l&apos;exemple par vos chiffres, puis copiez la
@@ -623,7 +605,7 @@ export default function Page() {
         </p>
         <QuoteComparisonWorkbench />
 
-        <h2 id="exemple">6. Exemple rempli : trois offres fictives</h2>
+        <h2 id="exemple" className="scroll-mt-16">6. Exemple rempli : trois offres fictives</h2>
         <p>
           L&apos;exemple concerne une PME B2B qui remplace un site de 120 URL
           par un site de génération de demandes, avec migration SEO, CMS,
@@ -676,7 +658,7 @@ export default function Page() {
           ctaHref="/demarrer-un-projet?source=livre-blanc-comparaison-devis"
         />
 
-        <h2 id="noter">7. Éliminer d&apos;abord, noter ensuite</h2>
+        <h2 id="noter" className="scroll-mt-16">7. Éliminer d&apos;abord, noter ensuite</h2>
         <p>
           Une note moyenne peut masquer une défaillance critique. Une offre peut
           obtenir 92/100 grâce au design et à la méthode, tout en vous laissant
@@ -732,7 +714,7 @@ Seuil de travail conseillé :
 - offre à clarifier si score < 75 / 100 ;
 - comparaison finale uniquement entre les offres recevables.`}</FormulaBox>
 
-        <h2 id="criteres">8. Les 40 critères et leur pondération</h2>
+        <h2 id="criteres" className="scroll-mt-16">8. Les 40 critères et leur pondération</h2>
         <p>
           Les poids proposés totalisent 100 %. Ils correspondent à un site
           public de PME orienté acquisition ; adaptez-les avant d&apos;ouvrir
@@ -756,7 +738,7 @@ Seuil de travail conseillé :
           apparaît souvent seulement le jour où la relation se termine.
         </p>
 
-        <h2 id="couts-oublies">9. Les coûts presque toujours oubliés</h2>
+        <h2 id="couts-oublies" className="scroll-mt-16">9. Les coûts presque toujours oubliés</h2>
         <GuideTable
           headers={[
             "Coût",
@@ -817,7 +799,7 @@ Seuil de travail conseillé :
           . Ces repères ne remplacent pas le chiffrage de votre périmètre.
         </p>
 
-        <h2 id="questions">10. Les 15 questions à renvoyer aux candidats</h2>
+        <h2 id="questions" className="scroll-mt-16">10. Les 15 questions à renvoyer aux candidats</h2>
         <ol>
           <li>
             Quel document fait foi si le devis et l&apos;annexe se contredisent
@@ -870,7 +852,7 @@ Seuil de travail conseillé :
           comment l&apos;inconnu sera levé.
         </p>
 
-        <h2 id="methode-90">11. Comparer trois devis en 90 minutes</h2>
+        <h2 id="methode-90" className="scroll-mt-16">11. Comparer trois devis en 90 minutes</h2>
         <GuideTable
           headers={["Temps", "Action", "Sortie attendue"]}
           rows={[
@@ -916,7 +898,7 @@ Seuil de travail conseillé :
           de preuve.
         </InfoBox>
 
-        <h2 id="decision">12. Rédiger une décision défendable</h2>
+        <h2 id="decision" className="scroll-mt-16">12. Rédiger une décision défendable</h2>
         <p>
           La synthèse finale tient sur une page. Elle doit permettre à une
           personne absente de comprendre pourquoi une offre a été rejetée et ce
@@ -943,7 +925,8 @@ Seuil de travail conseillé :
             provision éventuelle ;
           </li>
           <li>
-            <strong>recommandation :</strong> offre choisie et valeur achetée
+            <strong>recommandation :</strong>{" "}
+            offre choisie et valeur achetée
             par rapport à l&apos;alternative.
           </li>
         </ol>

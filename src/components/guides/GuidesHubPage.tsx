@@ -285,7 +285,7 @@ export function GuidesHubPage() {
                   href={guidePath(featuredGuide)}
                   className="btn btn-accent btn-lg"
                 >
-                  Lire le premier guide <ArrowIcon />
+                  Lire le guide essentiel <ArrowIcon />
                 </Link>
                 <a href="#collections" className="btn btn-ghost btn-lg">
                   Parcourir les collections{" "}
@@ -307,8 +307,14 @@ export function GuidesHubPage() {
               </div>
             </div>
 
-            {/* Panneau bibliothèque — sommaire des collections */}
-            <div className="ghub-library" aria-label="Collections de guides">
+            {/*
+              Panneau bibliothèque — sommaire des collections.
+              `nav` et non `div` : l'`aria-label` posé sur une div sans rôle
+              n'était exposé par aucun lecteur d'écran, donc ce sommaire de
+              cinq liens n'avait aucun nom et ne comptait pas comme repère de
+              navigation.
+            */}
+            <nav className="ghub-library" aria-label="Sommaire des collections">
               <div className="ghub-library-head">
                 <div>
                   <span className="ghub-library-status" aria-hidden="true" />
@@ -324,8 +330,16 @@ export function GuidesHubPage() {
                     className="ghub-lane"
                     data-accent={c.accent}
                   >
+                    {/*
+                      Le compteur était rendu « 03 / 01 / 01 » : la graphie
+                      d'un numéro d'ordre, alors que c'est un nombre de
+                      guides — trois collections portaient donc « 01 ». Le
+                      nombre est désormais nu et suivi de son unité, en toutes
+                      lettres pour la lecture vocale comme pour l'oeil.
+                    */}
                     <span className="ghub-lane-count">
-                      {String(c.guides.length).padStart(2, "0")}
+                      {c.guides.length}
+                      <i>{c.guides.length > 1 ? "guides" : "guide"}</i>
                     </span>
                     <b>{c.section}</b>
                     <em>{c.laneText}</em>
@@ -343,7 +357,7 @@ export function GuidesHubPage() {
                   {monthAndYear(latestGuide.dateModified)}
                 </span>
               </div>
-            </div>
+            </nav>
           </div>
         </section>
 
@@ -504,7 +518,13 @@ export function GuidesHubPage() {
         <section className="ghub-final">
           <div className="wrap ghub-final-inner">
             <div>
-              <div className="eyebrow">Prochaine étape</div>
+              {/*
+                « Prochaine étape » : le bloc de contact du pied de page,
+                affiché immédiatement en dessous, porte déjà ce même surtitre.
+                Deux « Prochaine étape » qui se suivent laissaient croire à
+                deux étapes distinctes.
+              */}
+              <div className="eyebrow">Après la lecture</div>
               <h2>Vous voulez appliquer ces repères à votre entreprise ?</h2>
               <p>
                 Décrivez votre activité, le problème et le résultat attendu. Un
@@ -517,7 +537,7 @@ export function GuidesHubPage() {
                 href="/demarrer-un-projet"
                 className="btn btn-accent btn-lg"
               >
-                Décrire mon projet <ArrowIcon />
+                Démarrer mon projet <ArrowIcon />
               </Link>
               <Link href="/rendez-vous" className="btn btn-ghost btn-lg">
                 Prendre rendez-vous

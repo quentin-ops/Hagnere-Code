@@ -40,6 +40,20 @@ export function RendezVousPage() {
                 si c&apos;est pour nous. Si oui, vous repartez avec une <b>fourchette
                 de budget</b> et un calendrier réaliste.
               </p>
+              {/* Le hero d'une page de réservation n'offrait aucun geste : le
+                  premier contrôle — le bouton d'autorisation Calendly — est à
+                  plus d'un écran en mobile (hero mesuré à 913 px pour une
+                  fenêtre de 844 px). Deux voies, celles que la page tient
+                  vraiment : descendre au calendrier, ou décrire le projet par
+                  écrit pour qui ne veut pas d'appel. */}
+              <div className="c-hero-cta">
+                <a href="#creneaux" className="btn btn-accent btn-lg">
+                  Voir les créneaux
+                </a>
+                <Link href="/demarrer-un-projet" className="btn btn-ghost btn-lg">
+                  Plutôt décrire mon projet par écrit
+                </Link>
+              </div>
               <div className="c-hero-meta">
                 <span>
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -100,6 +114,7 @@ export function RendezVousPage() {
         </section>
 
         <section
+          id="creneaux"
           aria-labelledby="rdv-calendly-heading"
           className="rdv-calendly-section"
         >

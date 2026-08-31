@@ -32,9 +32,13 @@ html.dark {
 .hc-design a{color:inherit}
 .hc-design .wrap{max-width:1280px;margin:0 auto;padding:0 40px}
 .hc-design h1,.hc-design h2,.hc-design h3,.hc-design h4{font-family:var(--font-geist);letter-spacing:-0.035em;font-weight:600;margin:0}
-.hc-design h1{font-size:72px;line-height:1;letter-spacing:-0.045em}
-.hc-design h2{font-size:44px;line-height:1.08;letter-spacing:-0.035em}
-.hc-design h3{font-size:22px;letter-spacing:-0.02em;font-weight:600;line-height:1.25}
+/* Les TAILLES de h1, h2 et h3 ne sont plus déclarées ici : l'échelle fluide du
+   site vit dans `design-shared/responsive.css`, importée APRÈS cette feuille
+   par TarifsPage.tsx — à spécificité égale, c'est elle qui s'applique. Les
+   valeurs qui figuraient ici (h1 72/38/32 px, h2 44/28 px, h3 22 px) étaient
+   donc déjà mortes, et le commentaire précédent, qui ne parlait que de h1,
+   laissait croire que les autres vivaient encore.
+   h4 reste déclaré ici : l'échelle globale ne descend pas à ce niveau. */
 .hc-design h4{font-size:17px;letter-spacing:-0.02em;font-weight:600;line-height:1.3}
 
 /* NAV */
@@ -187,7 +191,7 @@ html.dark {
 .kpi-l{margin-top:12px;color:var(--ink-3);font-size:13px;line-height:1.4}
 
 /* ============ PRINCIPES ============ */
-.principes{padding:130px 0;border-bottom:1px solid var(--line)}
+.principes{padding:88px 0;border-bottom:1px solid var(--line)}
 .prin-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:0}
 .prin{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px 22px 20px;display:flex;flex-direction:column;min-height:280px;position:relative;transition:transform 0.25s ease,border-color 0.25s ease,box-shadow 0.25s ease;overflow:hidden}
 .prin:hover{transform:translateY(-3px);border-color:rgba(109,40,217,0.25);box-shadow:0 20px 40px -20px rgba(76,29,149,0.18),0 4px 12px -4px rgba(0,0,0,0.05)}
@@ -201,7 +205,7 @@ html.dark {
 .prin-tag{font-family:var(--font-geist-mono);font-size:10px;color:var(--accent-ink);letter-spacing:0.06em;font-weight:600;background:var(--accent-soft);padding:4px 9px;border-radius:5px}
 
 /* ============ DISCOVERY (premium card) ============ */
-.discovery{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper)}
+.discovery{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper)}
 .disc-card{position:relative;background:linear-gradient(180deg,#0A0A0A 0%,#171717 100%);color:#fff;border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1.15fr 1fr;gap:0;border:1px solid #171717;box-shadow:0 40px 80px -40px rgba(76,29,149,0.5),0 10px 30px -15px rgba(0,0,0,0.4)}
 .disc-bg-grid{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:32px 32px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 85%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 85%);pointer-events:none}
 .disc-bg-radial{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 0% 100%,rgba(109,40,217,0.32),transparent 60%),radial-gradient(ellipse 50% 50% at 100% 0%,rgba(167,139,250,0.16),transparent 60%);pointer-events:none}
@@ -244,7 +248,7 @@ html.dark {
 .disc-stack-v{font-size:12.5px;color:rgba(255,255,255,0.78);letter-spacing:-0.005em}
 
 /* ============ PRICING (4 plans) — reuse global tokens ============ */
-.pricing{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+.pricing{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
 .price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:0}
 .plan{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:32px 28px;display:flex;flex-direction:column;position:relative;transition:transform 0.25s ease, box-shadow 0.25s ease}
 .plan:hover{transform:translateY(-3px);box-shadow:0 24px 40px -22px rgba(0,0,0,0.1)}
@@ -280,9 +284,16 @@ html.dark {
 .pricing-note b{color:var(--ink)}
 
 /* ============ PRICE TABLE BY SERVICE ============ */
-.ptable{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper)}
-.ptable-wrap{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 1px 0 var(--line-2)}
-.ptable-head{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 0.8fr;background:var(--paper-2);border-bottom:1px solid var(--line);font-family:var(--font-geist-mono);font-size:10.5px;color:var(--mute);letter-spacing:0.08em;font-weight:600;text-transform:uppercase}
+.ptable{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper)}
+/* overflow:clip et non hidden : clippe a l'identique (rayon compris) sans creer
+   de conteneur de defilement, ce qui laisse fonctionner le position:sticky de
+   l'en-tete ci-dessous. Avec overflow:hidden, l'en-tete restait colle en haut
+   du tableau et disparaissait des la premiere ligne depassee. */
+.ptable-wrap{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:clip;box-shadow:0 1px 0 var(--line-2)}
+/* Le tableau fait 12 lignes et 2,2 ecrans : sans en-tete epingle sous la barre
+   de navigation (79 px au-dessus de 1024 px, 65 px en dessous), les colonnes
+   Entree / Standard / Premium ne sont plus nommees des la moitie du tableau. */
+.ptable-head{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 0.8fr;background:var(--paper-2);border-bottom:1px solid var(--line);font-family:var(--font-geist-mono);font-size:10.5px;color:var(--mute);letter-spacing:0.08em;font-weight:600;text-transform:uppercase;position:sticky;top:79px;z-index:2}
 .ptable-head .ptcol{padding:16px 20px}
 .ptable-row{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 0.8fr;border-bottom:1px solid var(--line-2);transition:background 0.15s}
 .ptable-row:last-child{border-bottom:none}
@@ -306,7 +317,7 @@ html.dark {
 .ptf-cta{flex-shrink:0}
 
 /* ============ ENTRY POINTS (cadrages payants) ============ */
-.entrypoints{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+.entrypoints{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
 .ep-table{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 1px 0 var(--line-2)}
 .ep-head{display:grid;grid-template-columns:1.5fr 0.8fr 1.2fr 1.6fr;background:var(--paper-2);border-bottom:1px solid var(--line);font-family:var(--font-geist-mono);font-size:10.5px;color:var(--mute);letter-spacing:0.08em;font-weight:600;text-transform:uppercase}
 .ep-head .ep-col{padding:16px 20px}
@@ -321,7 +332,7 @@ html.dark {
 .ep-col-name a:hover b{color:var(--accent-ink)}
 
 /* ============ INCLUDED ============ */
-.included{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+.included{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
 .incl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .incl{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s}
 .incl:hover{transform:translateY(-2px);border-color:#d4d4d4;box-shadow:0 14px 28px -16px rgba(0,0,0,0.08)}
@@ -330,7 +341,7 @@ html.dark {
 .incl p{margin:0;color:var(--mute);font-size:13px;line-height:1.5}
 
 /* ============ CARE (3 monthly retainers) ============ */
-.care{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper)}
+.care{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper)}
 .care-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .care-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:32px 28px;display:flex;flex-direction:column;position:relative;transition:transform 0.25s ease, box-shadow 0.25s ease}
 .care-card:hover{transform:translateY(-3px);box-shadow:0 24px 40px -22px rgba(0,0,0,0.1)}
@@ -366,9 +377,12 @@ html.dark {
 .care-note b{color:var(--ink-3)}
 
 /* ============ VS MARKET (comparison table) ============ */
-.vsmarket{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
-.vsm-table{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 1px 0 var(--line-2)}
-.vsm-head{display:grid;grid-template-columns:1.2fr 1.1fr 1.1fr 1.1fr;background:var(--paper-3);border-bottom:1px solid var(--line)}
+.vsmarket{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+/* Meme raison que .ptable-wrap : overflow:clip pour garder le sticky de
+   .vsm-head. La pastille NOUS, elle, n'est plus posee hors du cadre (voir
+   .vsm-head .vsm-cell-us::before). */
+.vsm-table{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:clip;box-shadow:0 1px 0 var(--line-2)}
+.vsm-head{display:grid;grid-template-columns:1.2fr 1.1fr 1.1fr 1.1fr;background:var(--paper-3);border-bottom:1px solid var(--line);position:sticky;top:79px;z-index:2}
 .vsm-row{display:grid;grid-template-columns:1.2fr 1.1fr 1.1fr 1.1fr;border-bottom:1px solid var(--line-2);transition:background 0.15s}
 .vsm-row:last-child{border-bottom:none}
 .vsm-row:hover{background:var(--paper-2)}
@@ -377,13 +391,16 @@ html.dark {
 .vsm-cell span{font-family:var(--font-geist-mono);font-size:11px;color:var(--mute);letter-spacing:0.02em}
 .vsm-cell .x{color:#B91C1C;font-family:var(--font-geist) !important;font-size:14.5px !important;font-weight:500;letter-spacing:-0.005em}
 .vsm-cell-label{font-family:var(--font-geist-mono);font-size:10.5px;color:var(--mute);letter-spacing:0.08em;font-weight:600;text-transform:uppercase;background:var(--paper-3);align-self:stretch;justify-content:center}
-.vsm-head .vsm-cell{font-family:var(--font-geist);font-size:14.5px;font-weight:600;color:var(--ink);letter-spacing:-0.01em;justify-content:center;padding:18px 22px}
+/* Reserve la bande haute a la pastille NOUS, qui debordait du cadre : posee a
+   top:-9px pour 17,8 px de haut alors que la cellule commence a 1 px du bord,
+   elle etait coupee de moitie par le clipping du tableau et illisible. */
+.vsm-head .vsm-cell{font-family:var(--font-geist);font-size:14.5px;font-weight:600;color:var(--ink);letter-spacing:-0.01em;justify-content:center;padding:32px 22px 18px}
 .vsm-head .vsm-cell-label{font-family:var(--font-geist-mono);font-size:10.5px;color:var(--mute);letter-spacing:0.08em;font-weight:600;text-transform:uppercase}
 .vsm-cell-us{position:relative;background:linear-gradient(180deg,rgba(109,40,217,0.04),transparent 60%)}
 .vsm-row .vsm-cell-us{background:linear-gradient(180deg,rgba(109,40,217,0.05),rgba(109,40,217,0.02))}
 .vsm-row .vsm-cell-us b{color:var(--accent-ink)}
 .vsm-head .vsm-cell-us{background:linear-gradient(180deg,rgba(109,40,217,0.12),rgba(109,40,217,0.04));position:relative}
-.vsm-head .vsm-cell-us::before{content:"NOUS";position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--accent-btn);color:#fff;font-family:var(--font-geist-mono);font-size:9.5px;padding:2px 9px;border-radius:999px;letter-spacing:0.1em;font-weight:700}
+.vsm-head .vsm-cell-us::before{content:"NOUS";position:absolute;top:9px;left:50%;transform:translateX(-50%);background:var(--accent-btn);color:#fff;font-family:var(--font-geist-mono);font-size:9.5px;padding:2px 9px;border-radius:999px;letter-spacing:0.1em;font-weight:700}
 .vsm-verdict{background:#0A0A0A !important;color:#fff} /* bloc volontairement sombre : identique dans les deux thèmes */
 .vsm-verdict .vsm-cell{color:rgba(255,255,255,0.7);font-size:13.5px}
 .vsm-verdict .vsm-cell-label{background:transparent;color:rgba(255,255,255,0.5);font-family:var(--font-geist-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.08em;font-weight:600}
@@ -397,7 +414,7 @@ html.dark {
 .vsm-dis-ic{width:30px;height:30px;border-radius:8px;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center;flex-shrink:0}
 
 /* ============ REFUSE (what we don't do) ============ */
-.refuse{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper)}
+.refuse{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper)}
 .refuse-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .ref-card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:24px 22px;display:flex;flex-direction:column;gap:10px;transition:transform 0.2s,border-color 0.2s}
 .ref-card:hover{transform:translateY(-2px);border-color:#d4d4d4}
@@ -407,7 +424,7 @@ html.dark {
 .ref-because{margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);font-family:var(--font-geist-mono);font-size:11px;color:var(--accent-ink);letter-spacing:0.02em;font-weight:500}
 
 /* ============ CALC TEASER ============ */
-.calc-teaser{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+.calc-teaser{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
 .ct-card{position:relative;background:linear-gradient(180deg,#0A0A0A 0%,#171717 100%);border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1.1fr 1fr;gap:0;border:1px solid #171717;color:#fff;box-shadow:0 40px 80px -40px rgba(76,29,149,0.4),0 10px 30px -15px rgba(0,0,0,0.4)}
 .ct-bg-grid{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:32px 32px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 85%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 85%);pointer-events:none}
 .ct-bg-radial{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 0% 100%,rgba(109,40,217,0.28),transparent 60%);pointer-events:none}
@@ -415,8 +432,10 @@ html.dark {
 .ct-left{position:relative;padding:52px 48px;display:flex;flex-direction:column;justify-content:center}
 .ct-tag{display:inline-flex;align-items:center;gap:10px;margin-bottom:24px;font-family:var(--font-geist-mono);font-size:11px;letter-spacing:0.12em;font-weight:600;color:var(--accent)}
 .ct-tag > span:first-child{background:var(--accent-btn);color:#fff;padding:3px 8px;border-radius:4px;font-weight:700;letter-spacing:0.04em}
-.ct-card h3{color:#fff;font-size:42px;line-height:1.05;letter-spacing:-0.04em}
-.ct-card h3 .accent{background:linear-gradient(90deg,#A78BFA,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+/* .hc-design en tete : le clamp de responsive.css cible .hc-design h2 et
+   l'emporterait sinon sur ce bloc (le titre tombait a 22,6 px sur mobile). */
+.hc-design .ct-card h2{color:#fff;font-size:42px;line-height:1.05;letter-spacing:-0.04em}
+.hc-design .ct-card h2 .accent{background:linear-gradient(90deg,#A78BFA,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
 .ct-lead{color:rgba(255,255,255,0.65);font-size:15.5px;line-height:1.6;margin-top:20px;max-width:480px}
 .ct-lead b{color:#fff;font-weight:500}
 .ct-bullets{margin-top:24px;display:flex;flex-wrap:wrap;gap:14px}
@@ -445,10 +464,14 @@ html.dark {
 .ct-mini-total{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#0A0A0A 0%,#171717 100%);color:#fff;gap:16px}
 .ct-mini-total-tag{font-family:var(--font-geist-mono);font-size:9.5px;color:var(--accent);letter-spacing:0.12em;font-weight:700}
 .ct-mini-total-sub{font-family:var(--font-geist-mono);font-size:10.5px;color:rgba(255,255,255,0.5);margin-top:4px;letter-spacing:0.02em}
-.ct-mini-total-r{font-family:var(--font-geist);font-size:30px;font-weight:700;letter-spacing:-0.04em;color:#fff;text-shadow:0 2px 12px rgba(109,40,217,0.5)}
+/* Cet emplacement etait dimensionne pour un montant (30 px gras, comme
+   .qmock-total-val et ses 42 000 EUR). Il porte desormais une phrase, qui
+   passait a la ligne trois fois, poussait la barre de total de 96 a 176 px et
+   ecrasait le bloc BRIEF ENVOYE a cote. Taille de legende, alignee a droite. */
+.ct-mini-total-r{font-family:var(--font-geist);font-size:13px;font-weight:600;letter-spacing:-0.01em;line-height:1.35;color:#fff;text-align:right;max-width:48%}
 
 /* ============ FAQ — same as service pages ============ */
-.faq{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper)}
+.faq{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper)}
 .faq-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:80px}
 .faq-intro h2{font-size:44px}
 .faq-intro p{color:var(--mute);font-size:16px;margin-top:16px;max-width:340px}
@@ -480,13 +503,14 @@ html.dark {
   .ptable-head, .ptable-row{grid-template-columns:1.4fr 1fr 1fr 1fr 0.8fr}
   .ep-head, .ep-row{grid-template-columns:1.3fr 0.8fr 1.1fr 1.5fr}
   .vsm-head, .vsm-row{grid-template-columns:1.1fr 1fr 1fr 1fr}
+  /* La barre de navigation passe de 79 px a 65 px sous 1024 px. */
+  .ptable-head, .vsm-head{top:65px}
   .kpi-grid{grid-template-columns:repeat(2,1fr);gap:24px 0}
   .kpi{padding:16px 24px;border-right:1px solid var(--line)}
   .kpi:nth-child(2n){border-right:none}
 }
 
 @media (max-width: 768px) {
-  .hc-design h1{font-size:38px;letter-spacing:-0.03em;line-height:1.05}
   .hc-design h2{font-size:28px;letter-spacing:-0.025em}
   .thero{padding:40px 0 64px}
   .thero-sub{font-size:16px;margin-top:20px}
@@ -538,7 +562,7 @@ html.dark {
   /* Calc teaser */
   .ct-left{padding:32px 24px}
   .ct-right{padding:24px 16px}
-  .ct-card h3{font-size:28px}
+  .hc-design .ct-card h2{font-size:28px}
   .ct-cta{flex-direction:column;align-items:stretch}
   .ct-cta .btn{justify-content:center}
 
@@ -575,18 +599,37 @@ html.dark {
   .ptable-foot{flex-direction:column;align-items:flex-start;gap:14px}
   .ptable-foot .ptf-cta{align-self:stretch;justify-content:center}
 
-  /* Vs market table → horizontal scroll */
-  .vsm-table{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:14px}
-  .vsm-head,.vsm-row{grid-template-columns:130px 200px 200px 200px;min-width:740px}
-  .vsm-cell{padding:14px 14px;font-size:12.5px}
-  .vsm-cell-label{position:sticky;left:0;background:var(--paper-3);z-index:1;font-size:10.5px}
-  /* La colonne de libellés devient sticky : il lui faut un fond opaque. Mais le
-     bandeau verdict est pinné noir avec un libellé blanc à 50 % — lui repeindre
-     --paper-3 (#F5F5F5) écrasait `.vsm-verdict .vsm-cell-label{transparent}` et
-     tombait à 1,04:1. On l'exclut et on lui redonne son propre noir (5,3:1). */
-  .vsm-row:not(.vsm-verdict) .vsm-cell-label{background:var(--paper-3)}
+  /* Comparatif → cartes empilées, comme le tableau par service et les points
+     d'entrée juste au-dessus.
+     Il défilait horizontalement : 660 px de contenu dans 356 px de fenêtre à
+     390 px de large, soit 304 px hors champ, sans ombre ni indice de défilement,
+     et sans tabindex ni role sur le conteneur — donc inatteignable au clavier
+     (WCAG 2.1.1). Les colonnes « Agence candidate » et « Freelance candidat »
+     étaient coupées en plein mot. Le libellé de chaque colonne est désormais
+     rendu par ::before, sur le modèle déjà employé par .ptable-row et .ep-row. */
+  .vsm-table{overflow:clip;border-radius:14px}
+  .vsm-head{display:none}
+  .vsm-head,.vsm-row{position:static}
+  .vsm-row{grid-template-columns:1fr;min-width:0;padding:0 0 6px;border-bottom:1px solid var(--line)}
+  .vsm-row:last-child{border-bottom:none}
+  .vsm-cell{padding:7px 16px;font-size:12.5px;gap:1px;line-height:1.4}
+  .vsm-row .vsm-cell::before{font-family:var(--font-geist-mono);font-size:10px;line-height:1.6;color:var(--mute);letter-spacing:0.08em;font-weight:600;text-transform:uppercase}
+  .vsm-row .vsm-cell:nth-child(2)::before{content:"Hagnéré Code";color:var(--accent-ink)}
+  .vsm-row .vsm-cell:nth-child(3)::before{content:"Agence candidate"}
+  .vsm-row .vsm-cell:nth-child(4)::before{content:"Freelance candidat"}
+  /* Le critère devient l'en-tête de la carte. Il lui faut un fond opaque, sauf
+     sur le bandeau verdict pinné noir : lui repeindre --paper-3 (#F5F5F5)
+     écrasait `.vsm-verdict .vsm-cell-label{transparent}` et tombait à 1,04:1.
+     On l'exclut et on lui redonne son propre noir (5,3:1). */
+  .vsm-cell-label{position:static;padding:11px 16px;font-size:10.5px}
+  .vsm-row:not(.vsm-verdict) .vsm-cell-label{background:var(--paper-3);border-bottom:1px solid var(--line-2)}
   .vsm-row.vsm-verdict .vsm-cell-label{background:#0A0A0A}
-  .vsm-head .vsm-cell-us::before{font-size:9px;padding:2px 8px;top:-9px}
+  /* var(--mute) sur le noir du verdict tombe sous 3:1 : blanc à 55 % → 6,3:1.
+     Et var(--accent-ink) du libellé « Hagnéré Code », posé sur la cellule
+     violette du bandeau noir, ne donne que 1,54:1 en clair : on lui remet le
+     jeton prévu pour les fonds sombres, comme le <b> juste en dessous. */
+  .vsm-verdict .vsm-cell::before{color:rgba(255,255,255,0.55)}
+  .vsm-row.vsm-verdict .vsm-cell-us::before{color:var(--accent-on-dark)}
 
   /* FAQ */
   .faq-grid{grid-template-columns:1fr;gap:32px}
@@ -596,12 +639,18 @@ html.dark {
 
 @media (max-width: 480px) {
   .hc-design .wrap{padding:0 16px}
-  .hc-design h1{font-size:32px}
   .disc-card h2{font-size:28px}
-  .ct-card h3{font-size:24px}
-  .vsm-head,.vsm-row{grid-template-columns:120px 180px 180px 180px;min-width:660px}
+  .hc-design .ct-card h2{font-size:24px}
+  /* Plus de grille horizontale ici : le comparatif est empile depuis 768 px. */
   .qmock-head{padding:14px 16px}
-  .qmock-from-sub{display:none}
+  /* NE PAS masquer : cette ligne porte « Scénario fictif composite · ni client
+     ni devis réel », juste à côté de montants en euros (1 500 / 34 000 / 6 500
+     / 42 000 €). La masquer sous 480 px retirait la mention du caractère fictif
+     sur le point de rupture le plus fréquenté, pendant que
+     `quote-mock.test.ts` continuait de la trouver dans la SOURCE et passait au
+     vert. Un test qui vérifie la source ne prouve rien sur ce qui est peint.
+     Cf. règle d'or de CLAUDE.md et art. L121-2 du code de la consommation. */
+  .qmock-from-sub{font-size:10.5px;line-height:1.35}
   .qmock-total{padding:18px 16px}
   .qmock-total-val{font-size:30px}
 }
@@ -648,3 +697,21 @@ html.dark .ptcol-svc-ic[style*="#FEF3C7"]{background:rgba(245,158,11,0.15) !impo
 html.dark .ptcol-svc-ic[style*="#FFE4E6"]{background:rgba(244,63,94,0.15) !important;color:#FDA4AF !important}
 html.dark .ptcol-svc-ic[style*="#E0E7FF"]{background:rgba(99,102,241,0.15) !important;color:#A5B4FC !important}
 html.dark .ptcol-svc-ic[style*="#F3E8FF"]{background:rgba(168,85,247,0.15) !important;color:#D8B4FE !important}
+
+/* Liens dans les cellules du comparatif.
+   -------------------------------------------------------------------------
+   Le renvoi vers /equipe, ajouté avec les lignes d'organisation rapatriées de
+   l'accueil, héritait exactement de la couleur du texte voisin — mesuré au
+   navigateur : 1,0:1 entre le lien et le texte qui l'entoure, sans
+   soulignement. Il n'existait donc pas comme lien, ni pour l'œil ni au regard
+   du critère WCAG 1.4.1 (« l'usage de la couleur »), qui interdit de
+   distinguer un lien du texte par la seule couleur — a fortiori par aucune. */
+.vsm-cell a {
+  color: var(--accent-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+.vsm-cell a:hover {
+  text-decoration-thickness: 2px;
+}

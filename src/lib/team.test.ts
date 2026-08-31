@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { comparisonHtml as homepageComparisonHtml } from "@/components/homepage/sections/comparison";
+import { bodyHtml as tarifsBodyHtml } from "@/components/tarifs/body";
 import { comparisonHtml as saasComparisonHtml } from "@/components/saas-applications/sections/comparison";
 import {
   CTO,
@@ -32,10 +32,14 @@ describe("public team source of truth", () => {
   });
 
   it("keeps public continuity claims aligned with the mixed team composition", () => {
-    expect(homepageComparisonHtml).toContain(
+    // Le comparatif à trois colonnes a quitté l'accueil pour /tarifs le
+    // 28/08/2026. La revendication de continuité l'a suivi : l'équipe publiée
+    // est mixte (CDI et indépendants), et c'est la SEULE formulation que ce
+    // test protège — pas l'emplacement de la grille.
+    expect(tarifsBodyHtml).toContain(
       `${TEAM_TOTAL_COUNT} profils présentés`,
     );
-    expect(homepageComparisonHtml).not.toMatch(/équipe en CDI/i);
+    expect(tarifsBodyHtml).not.toMatch(/équipe en CDI/i);
     expect(saasComparisonHtml).toContain(TEAM_PUBLIC_COMPOSITION);
     expect(saasComparisonHtml).not.toMatch(/seniors CDI/i);
   });

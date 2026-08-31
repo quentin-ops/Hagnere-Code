@@ -100,17 +100,14 @@ html.dark .rl-modern .btn-accent:hover { background: #7C3AED; }
 
 .rl-modern main { background: var(--paper); }
 
-/* Reveal animations (cohérent avec homepage) */
-.rl-modern .reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-  transition-delay: var(--reveal-delay, 0s);
-}
-.rl-modern .reveal.in {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* Pas de reveal au defilement sur cette page.
+   Le site a retire l'IntersectionObserver (useDesignInteractive) et neutralise
+   `.reveal` dans responsive.css par `.reveal { opacity: 1 }`. La regle qui se
+   trouvait ici, `.rl-modern .reveal { opacity: 0 }`, avait une specificite
+   superieure (0,2,0 contre 0,1,0) : elle gagnait sur la neutralisation et
+   laissait les 20 blocs `.reveal` de la page a opacity 0, donc la page
+   entiere invisible entre la barre de navigation et le pied de page.
+   Ne jamais requalifier `.reveal` par `.rl-modern` ici. */
 
 /* Section head shared style */
 .rl-modern .section-head {
@@ -462,7 +459,7 @@ html.dark .rlm-stat:hover .rlm-stat-ic {
  * 3. CASES GRID 2×2
  * ============================================================ */
 .rlm-cases {
-  padding: 130px 0 100px;
+  padding:88px 0 100px;
 }
 
 /* Note "même groupe" pour LMNP.AI + SCI-AI.app */

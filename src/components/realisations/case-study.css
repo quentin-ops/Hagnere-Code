@@ -271,7 +271,7 @@ html.dark {
 
 /* --- Sections --- */
 .cs-section {
-  padding: 110px 0;
+  padding:76px 0;
   border-bottom: 1px solid var(--line);
 }
 .cs-section-soft { background: var(--paper-2); }

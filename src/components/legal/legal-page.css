@@ -160,8 +160,13 @@
   margin: 0;
 }
 
+/* Anneau de focus : jeton global `--focus-ring` (#6D28D9 en clair, #C4B5FD en
+   sombre) et non un indigo a 28 % d'opacite. Mesure au navigateur sur
+   /legal/cookies : l'ancienne valeur donnait 1,55:1 sur le papier clair et
+   1,25:1 sur le fond sombre, sous le seuil de 3:1 de WCAG 1.4.11 / 2.4.11 que
+   le meme jeton fait respecter partout ailleurs sur le site. */
 .lp-root :where(a, button):focus-visible {
-  outline: 3px solid rgba(79, 70, 229, 0.28);
+  outline: 3px solid var(--focus-ring, #6d28d9);
   outline-offset: 3px;
 }
 
@@ -451,7 +456,7 @@
   scroll-margin-top: 88px;
 }
 .lp-section:focus-visible {
-  outline: 3px solid rgba(79, 70, 229, 0.28);
+  outline: 3px solid var(--focus-ring, #6d28d9);
   outline-offset: 8px;
 }
 .lp-section:first-child { padding-top: 0; }
@@ -917,6 +922,14 @@
     max-height: none;
     overflow: visible;
   }
+  /* Sous 1024 px le sommaire n'est plus une colonne collee : il est DANS le
+     flux, au-dessus de l'article. Passer le libelle actif en gras lui fait
+     alors gagner une ligne (mesure : sommaire 362 -> 380 px sur
+     /legal/accessibilite quand « Mesures integrees » devient actif), l'article
+     descend d'autant, et le defilement calcule avant ce reflux arrivait
+     18 px trop haut. L'entree active reste identifiee par sa pastille, sa
+     bordure, sa couleur et son numero. */
+  .lp-toc-item.is-active a { font-weight: inherit; }
   .lp-article {
     max-width: 760px;
     margin: 0 auto;
@@ -952,21 +965,30 @@
 
 @media (max-width: 640px) {
   .lp-toc { padding: 18px 16px 16px; }
-  .lp-toc-list {
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
-    max-height: none;
-    margin: 0 -4px;
-    padding: 0 4px 5px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x proximity;
+  /* Cible tactile du bouton du sommaire : 37 px mesures, sous les 44 px
+     attendus au doigt. */
+  .lp-toc-foot .btn { min-height: 44px; }
+  /* Le fil d'Ariane garde sa taille visuelle (28 px de haut) mais sa zone
+     cliquable est etendue a 44 px : mesure avant correction 64 x 28. */
+  .lp-breadcrumb a { position: relative; }
+  .lp-breadcrumb a::after {
+    content: "";
+    position: absolute;
+    inset: -8px -6px;
   }
-  .lp-toc-list::-webkit-scrollbar { width: auto; height: 4px; }
-  .lp-toc-item {
-    flex: 0 0 min(76vw, 260px);
-    scroll-snap-align: start;
+  /* Le sommaire reste une grille verticale a deux colonnes, comme au palier
+     tablette. En carrousel horizontal, seules 1,3 entree sur 15 etaient
+     visibles sur un ecran de 390 px (scrollWidth 4020 px pour 332 px
+     affiches) : le lecteur ne pouvait pas savoir combien d'articles compte le
+     document ni atteindre le dernier sans une douzaine de balayages. */
+  .lp-toc-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
   }
   .lp-toc-item a {
     height: 100%;
@@ -984,8 +1006,24 @@
   .lp-facts dt:first-child { padding-top: 0; }
   .lp-facts dd { padding-bottom: 8px; }
   .lp-facts dd:last-child { padding-bottom: 0; }
-  .lp-table { min-width: 560px; }
+  /* 560 px pour cinq colonnes forcaient `overflow-wrap: anywhere` a couper au
+     milieu des mots : l'inventaire cookies affichait « them / e »,
+     « local / Stora / ge » et l'en-tete « SUPPO / RT ». Le conteneur defile
+     deja horizontalement ; lui donner sa largeur utile supprime les coupures
+     et raccourcit le tableau de 2244 px a 1881 px sur un ecran de 390 px. */
+  .lp-table { min-width: 760px; }
+  .lp-table th:first-child,
+  .lp-table td:first-child { min-width: 118px; }
+  .lp-table th:nth-child(2),
+  .lp-table td:nth-child(2) { min-width: 104px; }
   .lp-section-body .lp-links-list { grid-template-columns: 1fr; }
+}
+
+/* Sous 340 px, deux colonnes laissent moins de 80 px de texte par entree et
+   « Confidentialite » ou « Responsabilite » se coupent au milieu du mot. Le
+   sommaire repasse alors sur une seule colonne. */
+@media (max-width: 340px) {
+  .lp-toc-list { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 480px) {

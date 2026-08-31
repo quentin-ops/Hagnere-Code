@@ -1,4 +1,8 @@
 import { isValidElement, type ReactNode } from "react";
+import {
+  CONTACT_PHONE_DISPLAY_NATIONAL,
+  CONTACT_PHONE_E164,
+} from "@/lib/contact-details";
 import Link from "next/link";
 import {
   ChevronRight,
@@ -72,8 +76,10 @@ export interface GuidePremiumSidebarHeroCta {
 }
 
 /** Numéro du cabinet, utilisé en repli d'affichage et de lien. */
-const TEL_CABINET_LABEL = "03 74 47 20 18";
-const TEL_CABINET_HREF = "tel:+33374472018";
+/* Ligne publiée : dérivée du module de coordonnées, jamais recopiée.
+   Le NAP du site vaut sur les pages de guides comme ailleurs. */
+const TEL_CABINET_LABEL = CONTACT_PHONE_DISPLAY_NATIONAL;
+const TEL_CABINET_HREF = `tel:${CONTACT_PHONE_E164}`;
 
 /**
  * Construit un href `tel:` à partir du libellé affiché.
@@ -142,7 +148,7 @@ export interface GuidePremiumStrategyCtaData {
 
 /** Repli de destination lorsqu'une page n'a pas fourni de lien d'action. */
 const CTA_HREF_DEFAUT = "/demarrer-un-projet";
-const CTA_LABEL_DEFAUT = "Décrire mon projet";
+const CTA_LABEL_DEFAUT = "Démarrer mon projet";
 
 export interface GuidePremiumLegalSource {
   source: string;
@@ -627,7 +633,14 @@ export function GuidePremiumLayout({
       <GuidePremiumTocPills toc={toc} label={tocLabel} />
 
       {/* Article + sticky sidebar */}
-      <section className="py-12 md:py-16 bg-[#fbfaf7] dark:bg-zinc-950">
+      {/* Nommée pour la même raison que le bloc d'avertissement : c'est la
+          région qui porte le corps du guide et sa colonne latérale, et elle
+          n'a pas de titre propre — les titres qu'elle contient appartiennent
+          aux chapitres. */}
+      <section
+        aria-label="Corps du guide"
+        className="py-12 md:py-16 bg-[#fbfaf7] dark:bg-zinc-950"
+      >
         <div className="container mx-auto px-4 max-w-[1180px]">
           <div className="flex flex-col gap-10 lg:flex-row lg:gap-14 xl:gap-16">
             <article className="flex-1 min-w-0 max-w-[760px]">
@@ -687,9 +700,9 @@ export function GuidePremiumLayout({
             sidebarContextCta.secondaryHref ??
             (sidebarContextCta.secondaryLabel
               ? `tel:${sidebarContextCta.secondaryLabel.replace(/\s/g, "")}`
-              : "tel:+33374472018")
+              : TEL_CABINET_HREF)
           }
-          phoneLabel={sidebarContextCta.secondaryLabel ?? "03 74 47 20 18"}
+          phoneLabel={sidebarContextCta.secondaryLabel ?? TEL_CABINET_LABEL}
         />
       )}
     </div>
@@ -1048,7 +1061,15 @@ function PremiumSources({ sources }: { sources: GuidePremiumLegalSource[] }) {
    ────────────────────────────────────────────── */
 function PremiumDisclaimer({ data }: { data: GuidePremiumDisclaimerData }) {
   return (
-    <section className="bg-[#fbfaf7] dark:bg-zinc-950 py-10 sm:py-12">
+    /* `aria-label` : le titre de ce bloc est un <p> stylé, pas un titre de
+       niveau. Sans nom accessible, la <section> n'est pas exposée comme repère
+       de navigation — un lecteur d'écran qui parcourt les régions saute
+       l'avertissement, qui est précisément le bloc qu'il ne faut pas manquer.
+       Le libellé suit l'eyebrow réellement affiché. */
+    <section
+      aria-label={data.eyebrow ?? "Avertissement"}
+      className="bg-[#fbfaf7] dark:bg-zinc-950 py-10 sm:py-12"
+    >
       <div className="container mx-auto px-4 max-w-[1180px]">
         <div className="relative rounded-2xl bg-amber-50/50 dark:bg-amber-950/20 border border-amber-100 dark:border-amber-900/60 p-5 sm:p-6 overflow-hidden">
           <div

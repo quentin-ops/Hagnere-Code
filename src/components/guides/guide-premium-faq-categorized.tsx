@@ -16,7 +16,7 @@ import { TrackedGuideCtaLink } from "./tracked-guide-cta-link";
  * ce composant est importé par le layout, un import inverse créerait un cycle.
  */
 const CTA_HREF_DEFAUT = "/demarrer-un-projet";
-const CTA_LABEL_DEFAUT = "Décrire mon projet";
+const CTA_LABEL_DEFAUT = "Démarrer mon projet";
 
 interface GuidePremiumFaqCategorizedProps {
   categories: GuidePremiumFaqCategory[];

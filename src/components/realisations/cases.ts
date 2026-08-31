@@ -79,7 +79,17 @@ export type CaseStudy = {
     caption: string;
     kind: "dashboard" | "form" | "report" | "editorial";
   }[];
-  testimonial: {
+  /**
+   * Note éditoriale de l'auteur — JAMAIS un avis client.
+   *
+   * Le champ s'appelait `testimonial`. Le contenu, lui, a toujours été
+   * conforme : il est rendu sous l'étiquette « Note éditoriale · pas un avis
+   * client » et signé de l'auteur du site. Mais un champ nommé `testimonial`
+   * sur une page de réalisations est une invitation à y mettre un jour un vrai
+   * témoignage — ce que la règle d'or du dépôt interdit absolument, faute de
+   * client externe à citer. Le nom porte désormais la contrainte.
+   */
+  editorialNote: {
     quote: string;
     author: string;
     role: string;
@@ -182,7 +192,7 @@ export const CASES: Record<string, CaseStudy> = {
         kind: "report",
       },
     ],
-    testimonial: {
+    editorialNote: {
       quote:
         "Cette fiche se limite volontairement à ce qu'un visiteur peut vérifier sur la page publique liée.",
       author: "Quentin Hagnéré",
@@ -282,7 +292,7 @@ export const CASES: Record<string, CaseStudy> = {
         kind: "report",
       },
     ],
-    testimonial: {
+    editorialNote: {
       quote:
         "Cette fiche sépare les éléments directement lisibles sur le site des informations techniques qui ne sont pas publiées.",
       author: "Quentin Hagnéré",
@@ -382,7 +392,7 @@ export const CASES: Record<string, CaseStudy> = {
         kind: "dashboard",
       },
     ],
-    testimonial: {
+    editorialNote: {
       quote:
         "Cette fiche n'attribue pas à Hagnéré Code les éléments internes que la page publique ne permet pas de vérifier.",
       author: "Quentin Hagnéré",
@@ -482,7 +492,7 @@ export const CASES: Record<string, CaseStudy> = {
         kind: "dashboard",
       },
     ],
-    testimonial: {
+    editorialNote: {
       quote:
         "Cette fiche exclut les technologies, canaux d'acquisition et mesures internes que le site public ne documente pas.",
       author: "Quentin Hagnéré",

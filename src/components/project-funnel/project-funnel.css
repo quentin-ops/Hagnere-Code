@@ -112,10 +112,15 @@ body {
   -webkit-backdrop-filter: blur(16px);
 }
 
+/* `min-height: 44px` : le logo est la sortie de secours du tunnel quand la
+   barre se resserre. Mesure a 140 x 28 px avant correction, il passait sous
+   la cible tactile recommandee. La hauteur visuelle du bloc ne bouge pas —
+   la barre fait deja 58 a 60 px de haut. */
 .pf-brand {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  min-height: 44px;
   color: var(--pf-ink);
   font-size: 15px;
   text-decoration: none;
@@ -687,6 +692,37 @@ body {
   gap: 14px;
 }
 
+/* Rappel des canaux directs a l'etape Contexte, en face du bouton
+   « Je prefere en parler ». */
+.pf-talk-instead {
+  margin: 0;
+  padding: 12px 14px;
+  color: var(--pf-soft);
+  background: var(--pf-bg-2);
+  border: 1px solid var(--pf-line);
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.pf-talk-instead a,
+.pf-root a.pf-talk-instead-link {
+  color: var(--pf-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  overflow-wrap: anywhere;
+}
+
+.pf-talk-instead a:hover {
+  color: var(--pf-accent);
+}
+
+.pf-talk-instead a:focus-visible {
+  outline: 2px solid var(--pf-accent);
+  outline-offset: 2px;
+}
+
 .pf-root textarea,
 .pf-root input {  /* 16px minimum : en dessous, iOS Safari zoome à la prise de focus. */
 
@@ -1064,8 +1100,25 @@ body {
 }
 
 @media (max-width: 1100px) {
-  .pf-breadcrumb,
+  .pf-breadcrumb {
+    display: none;
+  }
+
+  /* La sortie du tunnel ne disparait plus avec le fil d'Ariane. Sous 1101 px
+     — donc sur toutes les tablettes et tous les telephones — la barre ne
+     gardait que le logo : un visiteur qui voulait revenir au site n'avait
+     plus aucun lien nomme, et le pied de page du tunnel ne porte que les
+     mentions legales. Le libelle cede la place, pas le lien : la pastille
+     garde son nom accessible (aria-label) et une cible de 44 px. */
   .pf-topnav .pf-site-return {
+    gap: 0;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .pf-topnav .pf-site-return span {
     display: none;
   }
 
@@ -1117,8 +1170,15 @@ body {
     font-size: 13px;
   }
 
-  .pf-topnav {
+  /* La barre est dense : c'est le selecteur de theme qui cede la place, pas
+     la sortie du tunnel. `display: none` sur toute la barre secondaire
+     laissait le visiteur mobile sans aucun lien de retour nomme. */
+  .pf-topnav .hc-theme-toggle {
     display: none;
+  }
+
+  .pf-topnav {
+    gap: 8px;
   }
 
   .pf-breadcrumb {
@@ -2043,8 +2103,13 @@ body {
   cursor: pointer;
 }
 
+/* « Effacer » mesurait 37 x 17 px : sous les 24 x 24 px de la cible minimale
+   (WCAG 2.5.8). Le rembourrage porte la hauteur cliquable sans changer la
+   hauteur du texte ni celle de la pastille, deja en `align-items: center`. */
 .pf-saved-badge > button:not(.pf-draft-optin) {
   margin-left: auto;
+  padding: 4px 6px;
+  min-height: 24px;
 }
 
 .pf-saved-badge.is-optin {
@@ -2458,9 +2523,104 @@ html.dark .pf-captcha > em {
   line-height: 1.55;
 }
 
+/* `.pf-root a { color: inherit }` rendait le lien indiscernable du texte :
+   le souligne est ici le seul indice qu'il reste. */
+.pf-faq-item dd a {
+  color: var(--pf-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.pf-faq-item dd a:hover {
+  color: var(--pf-accent);
+}
+
+.pf-faq-item dd a:focus-visible {
+  outline: 2px solid var(--pf-accent);
+  outline-offset: 2px;
+}
+
+/* Rappel d'action en fin de FAQ. Il vit DANS la section existante : aucun
+   rembourrage de section n'est ajoute, seule une marge interne separe le
+   bloc du dernier item. */
+.pf-faq-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.pf-faq-cta-text {
+  max-width: 46ch;
+  margin: 0;
+  color: var(--pf-soft);
+  font-size: 14px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.pf-faq-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 18px;
+}
+
+.pf-faq-cta-alt,
+.pf-root a.pf-faq-cta-alt {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 0 6px;
+  color: var(--pf-soft);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.pf-faq-cta-alt svg {
+  flex-shrink: 0;
+  color: var(--pf-accent);
+}
+
+.pf-faq-cta-alt:hover {
+  color: var(--pf-ink);
+  text-decoration: underline;
+}
+
+.pf-faq-cta-alt:focus-visible {
+  outline: 2px solid var(--pf-accent);
+  outline-offset: 2px;
+}
+
 @media (max-width: 760px) {
   .pf-landing-faq dl {
     grid-template-columns: 1fr;
+  }
+
+  /* Les deux canaux directs passent sous le bouton, alignes a gauche : en
+     colonne centree, une adresse e-mail longue se coupait au milieu. */
+  .pf-faq-cta-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 4px;
+  }
+
+  .pf-faq-cta-actions .pf-primary {
+    justify-content: center;
+    margin-bottom: 6px;
+  }
+
+  .pf-faq-cta-alt,
+  .pf-root a.pf-faq-cta-alt {
+    justify-content: center;
+    overflow-wrap: anywhere;
   }
 }
 
@@ -2584,5 +2744,41 @@ html.dark .pf-radio.is-selected {
   .pf-top-link,
   .pf-root a.pf-top-link {
     display: none;
+  }
+}
+
+/* --------- Petits téléphones (≤ 400 px) ---------------------------------
+   À 320 px, la barre du tunnel demandait 207 px pour 166 px disponibles : le
+   numéro (151 px, insécable) ne cédait rien, et le bouton « Retour au site
+   vitrine » — le seul lien de sortie du tunnel — sortait de l'écran de 25 px,
+   dont 44 % seulement restait cliquable.
+
+   Le numéro passe donc en icône seule, comme le fait déjà l'en-tête principal
+   du site à ce point de rupture. Le lien garde son nom accessible par le
+   libellé masqué visuellement : une icône de téléphone sans nom n'annoncerait
+   rien à un lecteur d'écran.
+
+   Seuil à 400 px et non 360 : la largeur minimale où le numéro complet tient
+   est exactement 361 px (logo 112 + écart 10 + numéro 151 + écart 12 +
+   bouton 44 + rembourrage 32). À 361 px le bouton touchait le bord au pixel
+   près ; 400 px laisse la marge qui manquait.
+   ------------------------------------------------------------------------ */
+@media (max-width: 400px) {
+  .pf-top-phone {
+    min-width: 44px;
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+  }
+  .pf-top-phone span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
   }
 }

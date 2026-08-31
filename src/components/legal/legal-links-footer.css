@@ -55,7 +55,7 @@
 
 .legal-links-footer a:focus-visible,
 .legal-links-footer button:focus-visible {
-  outline: 3px solid rgba(79, 70, 229, 0.28);
+  outline: 3px solid var(--focus-ring, #6d28d9);
   outline-offset: 3px;
 }
 

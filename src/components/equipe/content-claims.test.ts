@@ -61,12 +61,66 @@ describe("team page public claims", () => {
    */
   it("ne met pas la gouvernance éditoriale du site dans le bandeau de repères", () => {
     const kpiBar =
-      /<section class="kpi-bar">[\s\S]*?<\/section>/.exec(bodyHtml)?.[0] ?? "";
+      // `[^>]*` : la section porte désormais un `aria-label` (elle n'avait aucun
+      // nom accessible, donc n'était pas exposée comme repère de navigation).
+      // Une regex qui exige `<section class="kpi-bar">` à l'identique casse à
+      // la première attribution — ce qui est arrivé le 28/08/2026.
+      /<section class="kpi-bar"[^>]*>[\s\S]*?<\/section>/.exec(bodyHtml)?.[0] ?? "";
     expect(kpiBar).not.toBe("");
     expect(kpiBar).not.toMatch(
       /source d'effectif|source canonique|source d'équipe publique|RÈGLE DE PUBLICATION/i,
     );
     expect(kpiBar).toContain("Profil public consultable");
+  });
+
+  /**
+   * Mesure du 30/08/2026 : la légende de la mosaïque et la note de bas de
+   * grille annonçaient toutes deux qu'un clic sur une carte « ouvre le profil »
+   * de la personne. Les fiches de la grille sont des `div` : cliquer dessus ne
+   * produisait ni changement d'URL ni défilement. Les cartes de la mosaïque
+   * mènent à une ancre de cette page, pas à LinkedIn.
+   */
+  it("n'annonce pas qu'une carte ouvre un profil externe", () => {
+    expect(bodyHtml).not.toMatch(
+      /Cliquez sur une carte pour ouvrir le profil|Chaque carte ouvre le profil/i,
+    );
+    // Chaque personne de la grille tech a son ancre nommée, pour que la carte
+    // de la mosaïque atterrisse sur la bonne fiche et pas en tête de section.
+    for (const anchor of ["dev-arthur", "dev-frederic", "dev-ryan", "dev-killian", "dev-peter"]) {
+      expect(bodyHtml, `ancre manquante : ${anchor}`).toContain(`id="${anchor}"`);
+      expect(bodyHtml, `lien manquant vers #${anchor}`).toContain(`href="#${anchor}"`);
+    }
+  });
+
+  /**
+   * Objectif de restauration et tenue de charge : `src/lib/team.ts` dit
+   * explicitement que capacité, restauration et tests sont définis au contrat.
+   * La fiche de Killian promettait « restaurables en moins de 15 minutes ».
+   */
+  it("ne chiffre pas un objectif de restauration ou de charge hors contrat", () => {
+    expect(bodyHtml).not.toMatch(
+      /restaurables en moins de \d+|pic de charge à \d+\s?h|RTO|RPO/i,
+    );
+  });
+
+  /** Comparaison de vitesse avec des tiers non nommés : invérifiable. */
+  it("ne compare pas la vitesse de l'équipe à celle des autres", () => {
+    expect(bodyHtml).not.toMatch(
+      /là où d'autres mettent|plus vite que|deux fois plus rapide/i,
+    );
+  });
+
+  /**
+   * Mesure du 30/08/2026 : entre le bouton du hero (855 px) et le bloc de
+   * contact du pied de page (10 231 px), la page ne proposait plus aucune
+   * action, et la porte « Démarrer mon projet » n'apparaissait nulle part
+   * dans le contenu.
+   */
+  it("propose les deux portes du site en milieu de page", () => {
+    const relay = /<section class="eq-relay">[\s\S]*?<\/section>/.exec(bodyHtml)?.[0] ?? "";
+    expect(relay).not.toBe("");
+    expect(relay).toContain('href="#contact"');
+    expect(relay).toContain('href="/demarrer-un-projet"');
   });
 
   it("tient la promesse de profil public pour chaque personne de l'équipe", () => {

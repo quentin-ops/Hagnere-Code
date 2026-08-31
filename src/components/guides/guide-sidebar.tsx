@@ -1,5 +1,9 @@
 import Link from "next/link";
 import {
+  CONTACT_PHONE_DISPLAY_NATIONAL,
+  CONTACT_PHONE_E164,
+} from "@/lib/contact-details";
+import {
   Phone,
   Send,
   CheckCircle2,
@@ -92,15 +96,15 @@ export function GuideSidebarCTA({
               className="flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-semibold rounded-xl bg-white text-zinc-900 hover:bg-zinc-100 transition-colors"
             >
               <Send className="size-4" />
-              Décrire mon projet
+              Démarrer mon projet
               <ArrowRight className="size-4" />
             </Link>
             <a
-              href="tel:+33374472018"
+              href={`tel:${CONTACT_PHONE_E164}`}
               className="flex items-center justify-center gap-2 w-full px-4 py-2.5 text-sm font-medium rounded-xl border border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:border-zinc-600 transition-colors"
             >
               <Phone className="size-4" />
-              03 74 47 20 18
+              {CONTACT_PHONE_DISPLAY_NATIONAL}
             </a>
           </div>
         </div>

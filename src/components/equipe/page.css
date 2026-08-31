@@ -29,7 +29,11 @@ html.dark {
 .hc-design a{color:inherit}
 .hc-design .wrap{max-width:1280px;margin:0 auto;padding:0 40px}
 .hc-design h1,.hc-design h2,.hc-design h3,.hc-design h4{font-family:var(--font-geist);letter-spacing:-0.035em;font-weight:600;margin:0}
-.hc-design h1{font-size:72px;line-height:1;letter-spacing:-0.045em}
+/* Les TAILLES de titres ne sont plus déclarées ici : l'échelle fluide du
+   site vit dans `design-shared/responsive.css`, chargée après cette feuille
+   par cette page. Les valeurs qui figuraient ici (72 px, puis 38 et 32 px
+   selon le point de rupture) étaient déjà mortes — écrasées par l'échelle
+   globale — et donnaient une fausse indication au lecteur. */
 .hc-design h2{font-size:44px;line-height:1.08;letter-spacing:-0.035em}
 .hc-design h3{font-size:22px;letter-spacing:-0.02em;font-weight:600;line-height:1.25}
 .hc-design h4{font-size:17px;letter-spacing:-0.02em;font-weight:600;line-height:1.3}
@@ -135,7 +139,7 @@ html.dark .hc-design .btn-accent:hover{background:#7C3AED}
 .emos-card.emos-founder{grid-column:1 / -1;flex-direction:row;justify-content:flex-start;padding:18px 20px;background:linear-gradient(135deg,rgba(109,40,217,0.06),var(--paper) 65%);border-color:rgba(109,40,217,0.22)}
 .emos-card.emos-founder .emos-avatar{width:60px;height:60px;font-size:18px}
 .emos-card.emos-founder .emos-meta{align-items:flex-start;text-align:left;flex:1 1 auto}
-.emos-avatar{position:relative;width:54px;height:54px;border-radius:50%;color:#fff;display:grid;place-items:center;font-family:var(--font-geist);font-weight:600;font-size:17px;letter-spacing:-0.01em;flex-shrink:0;box-shadow:0 8px 18px -6px rgba(0,0,0,0.22),inset 0 0 0 1px rgba(255,255,255,0.18)}
+.emos-avatar{position:relative;overflow:hidden;width:54px;height:54px;border-radius:50%;color:#fff;display:grid;place-items:center;font-family:var(--font-geist);font-weight:600;font-size:17px;letter-spacing:-0.01em;flex-shrink:0;box-shadow:0 8px 18px -6px rgba(0,0,0,0.22),inset 0 0 0 1px rgba(255,255,255,0.18)}
 .emos-meta{display:flex;flex-direction:column;gap:3px;text-align:center;min-width:0;position:relative;z-index:1}
 .emos-name{font-size:13.5px;font-weight:600;color:var(--ink);letter-spacing:-0.015em;line-height:1.2;white-space:nowrap}
 .emos-role{font-family:var(--font-geist-mono);font-size:10.5px;color:var(--mute);letter-spacing:0.04em}
@@ -172,7 +176,7 @@ html.dark .hc-design .btn-accent:hover{background:#7C3AED}
 .kpi-l{margin-top:12px;color:var(--ink-3);font-size:13px;line-height:1.4}
 
 /* ============ FONDATEUR ============ */
-.founder{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper)}
+.founder{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper)}
 .founder-card{display:grid;grid-template-columns:380px 1fr;gap:48px;align-items:start}
 
 .founder-photo-wrap{display:flex;flex-direction:column;gap:16px;position:sticky;top:88px}
@@ -221,7 +225,7 @@ html.dark .hc-design .btn-accent:hover{background:#7C3AED}
 .founder-stack-tag.mono{font-family:var(--font-geist-mono);font-size:11.5px;font-weight:500;letter-spacing:0.02em;color:var(--ink-3);background:var(--paper)}
 
 /* ============ CTO ============ */
-.cto{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+.cto{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
 .cto-card{position:relative;display:grid;grid-template-columns:340px 1fr;gap:0;background:linear-gradient(180deg,#0A0A0A 0%,#171717 100%);color:#fff;border-radius:24px;overflow:hidden;border:1px solid #171717;box-shadow:0 40px 80px -40px rgba(76,29,149,0.45),0 10px 30px -15px rgba(0,0,0,0.4)}
 .cto-bg-grid{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:32px 32px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 85%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 85%);pointer-events:none}
 .cto-bg-radial{position:absolute;inset:0;background:radial-gradient(ellipse 50% 50% at 100% 0%,rgba(109,40,217,0.32),transparent 60%);pointer-events:none}
@@ -229,6 +233,7 @@ html.dark .hc-design .btn-accent:hover{background:#7C3AED}
 .cto-photo-wrap{position:relative;background:#0F0F0F;border-right:1px solid #1A1A1A;display:flex;align-items:stretch;justify-content:center;padding:0;z-index:1}
 .cto-photo{position:relative;width:100%;background:#171717;overflow:hidden}
 .cto-photo svg{display:block;width:100%;height:100%}
+.cto-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}
 .cto-photo-tag{position:absolute;top:18px;left:18px;display:inline-flex;align-items:center;gap:8px;padding:6px 12px;background:rgba(10,10,10,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(167,139,250,0.25);border-radius:999px;font-family:var(--font-geist-mono);font-size:10px;letter-spacing:0.08em;color:#fff;font-weight:600;z-index:2}
 .cto-photo-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(109,40,217,0.3)}
 .cto-photo-name{position:absolute;bottom:18px;left:18px;font-family:var(--font-geist);font-size:38px;font-weight:700;color:rgba(255,255,255,0.15);letter-spacing:-0.04em;line-height:1;z-index:2}
@@ -253,13 +258,16 @@ html.dark .hc-design .btn-accent:hover{background:#7C3AED}
 .cto-stack-tag{display:inline-flex;align-items:center;padding:5px 10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:5px;font-family:var(--font-geist-mono);font-size:10px;color:rgba(255,255,255,0.75);font-weight:600;letter-spacing:0.04em}
 
 /* ============ TECH (4 devs) ============ */
-.tech{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper)}
+.tech{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper)}
 .dev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .dev-card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:14px;transition:transform 0.25s,border-color 0.25s,box-shadow 0.25s}
 .dev-card:hover{transform:translateY(-3px);border-color:rgba(109,40,217,0.25);box-shadow:0 24px 40px -22px rgba(76,29,149,0.18),0 4px 12px -4px rgba(0,0,0,0.05)}
 
 .dev-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.dev-avatar{width:62px;height:62px;border-radius:50%;color:#fff;display:grid;place-items:center;font-family:var(--font-geist);font-weight:600;font-size:20px;letter-spacing:-0.01em;flex-shrink:0;box-shadow:0 8px 18px -6px rgba(0,0,0,0.2)}
+.dev-avatar{position:relative;overflow:hidden;width:62px;height:62px;border-radius:50%;color:#fff;display:grid;place-items:center;font-family:var(--font-geist);font-weight:600;font-size:20px;letter-spacing:-0.01em;flex-shrink:0;box-shadow:0 8px 18px -6px rgba(0,0,0,0.2)}
+.emos-avatar img,
+.dev-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;border-radius:inherit}
+
 .dev-li{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:var(--linkedin);color:#fff;text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;box-shadow:0 4px 10px -3px rgba(10,102,194,0.4)}
 .dev-li:hover{transform:scale(1.06);box-shadow:0 6px 14px -4px rgba(10,102,194,0.55)}
 
@@ -282,8 +290,16 @@ html.dark .hc-design .btn-accent:hover{background:#7C3AED}
 .tech-note{margin-top:32px;display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;background:var(--paper-2);border:1px dashed var(--line);border-radius:10px;font-size:13px;color:var(--mute);line-height:1.5;text-align:left}
 .tech-note svg{color:var(--accent);flex-shrink:0}
 
+/* ============ RELAIS DE CONVERSION (mi-page) ============ */
+.eq-relay{padding:56px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+.eq-relay-card{display:grid;grid-template-columns:1.6fr auto;gap:32px;align-items:center;padding:28px 32px;background:var(--paper);border:1px solid var(--line);border-radius:18px}
+.eq-relay-copy h2{font-size:28px;letter-spacing:-0.03em;line-height:1.15;margin:10px 0 0}
+.eq-relay-copy p{margin:12px 0 0;font-size:15px;line-height:1.6;color:var(--ink-3);max-width:62ch}
+.eq-relay-cta{display:flex;flex-direction:column;gap:10px;flex-shrink:0}
+.eq-relay-cta .btn{justify-content:center;width:100%}
+
 /* ============ STACK COLLECTIVE ============ */
-.stack-collective{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+.stack-collective{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
 .stack-rows{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden}
 .stack-row{display:grid;grid-template-columns:220px 1fr;gap:32px;padding:22px 28px;border-bottom:1px solid var(--line-2);align-items:center}
 .stack-row:last-child{border-bottom:none}
@@ -295,7 +311,7 @@ html.dark .hc-design .btn-accent:hover{background:#7C3AED}
 .sk-chip.mono{font-family:var(--font-geist-mono);font-size:11px;letter-spacing:0.02em;color:var(--ink-3);background:var(--paper)}
 
 /* ============ RITUALS ============ */
-.rituals{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper);position:relative;overflow:hidden}
+.rituals{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper);position:relative;overflow:hidden}
 .rit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .rit-card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px 22px 20px;display:flex;flex-direction:column;min-height:260px;transition:transform 0.25s,border-color 0.25s,box-shadow 0.25s;overflow:hidden}
 .rit-card:hover{transform:translateY(-3px);border-color:rgba(109,40,217,0.25);box-shadow:0 20px 40px -20px rgba(76,29,149,0.18),0 4px 12px -4px rgba(0,0,0,0.05)}
@@ -309,7 +325,7 @@ html.dark .hc-design .btn-accent:hover{background:#7C3AED}
 .rit-tag{font-family:var(--font-geist-mono);font-size:10px;color:var(--accent-ink);letter-spacing:0.06em;font-weight:600;background:var(--accent-soft);padding:4px 9px;border-radius:5px}
 
 /* ============ CLAUDE CODE ============ */
-.claude{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+.claude{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
 .claude-card{position:relative;background:linear-gradient(180deg,#0A0A0A 0%,#171717 100%);color:#fff;border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1.4fr 1fr;gap:0;border:1px solid #171717;box-shadow:0 40px 80px -40px rgba(76,29,149,0.5),0 10px 30px -15px rgba(0,0,0,0.4)}
 .claude-bg-grid{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:32px 32px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 85%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 85%);pointer-events:none}
 .claude-bg-radial{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 0% 100%,rgba(109,40,217,0.32),transparent 60%),radial-gradient(ellipse 50% 50% at 100% 0%,rgba(217,119,87,0.12),transparent 60%);pointer-events:none}
@@ -337,7 +353,7 @@ html.dark .hc-design .btn-accent:hover{background:#7C3AED}
 .claude-stat-l{color:rgba(255,255,255,0.55);font-size:12.5px;line-height:1.45}
 
 /* ============ VALUES ============ */
-.values{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper)}
+.values{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper)}
 .val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .val-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s}
 .val-card:hover{transform:translateY(-2px);border-color:#d4d4d4;box-shadow:0 14px 28px -16px rgba(0,0,0,0.08)}
@@ -346,7 +362,7 @@ html.dark .hc-design .btn-accent:hover{background:#7C3AED}
 .val-card p{margin:0;color:var(--mute);font-size:13.5px;line-height:1.55}
 
 /* ============ FAQ — same as service pages ============ */
-.faq{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper)}
+.faq{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper)}
 .faq-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:80px}
 .faq-intro h2{font-size:44px}
 .faq-intro p{color:var(--mute);font-size:16px;margin-top:16px;max-width:340px}
@@ -390,7 +406,11 @@ html.dark .hc-design .btn-accent:hover{background:#7C3AED}
 }
 
 @media (max-width: 768px) {
-  .hc-design h1{font-size:38px;letter-spacing:-0.03em;line-height:1.05}
+  .eq-relay-card{grid-template-columns:1fr;gap:22px;padding:24px 20px}
+  .eq-relay-copy h2{font-size:24px}
+  /* Cible tactile : 36 x 36 mesures, sous le seuil de 44 px, alors que c'est
+     la seule commande de la fiche. */
+  .dev-li{width:44px;height:44px}
   .hc-design h2{font-size:28px;letter-spacing:-0.025em}
   .ehero{padding:40px 0 64px}
   .ehero-sub{font-size:16px;margin-top:20px}
@@ -454,7 +474,6 @@ html.dark .hc-design .btn-accent:hover{background:#7C3AED}
 
 @media (max-width: 480px) {
   .hc-design .wrap{padding:0 16px}
-  .hc-design h1{font-size:32px}
   .emos{grid-template-columns:1fr}
   .emos-card.emos-founder{grid-column:auto}
   .founder-cards{grid-template-columns:1fr;gap:6px}
@@ -462,6 +481,22 @@ html.dark .hc-design .btn-accent:hover{background:#7C3AED}
   .founder-mini-k{font-size:22px}
   .founder-mini-l{font-size:11px}
 }
+
+/* Le bloc d'estimations `contain-intrinsic-size` qui vivait ici — trente
+   valeurs en pixels sur trois paliers, une par section — a été retiré le
+   30/08/2026 : mesuré au navigateur, il ne changeait rien.
+
+   Avec ou sans lui, l'ancre #contact atterrit à +80 px en 390 × 844 comme en
+   1440 × 900, c'est-à-dire exactement la réserve de la barre collante
+   (`scroll-padding-top: 80px`). Le décalage d'ancre qu'il prétendait corriger
+   est traité à la source, pour tout le site : estimations calibrées par point
+   de rupture dans `design-shared/responsive.css`, et reprise du saut après
+   rendu dans `useDesignInteractive` (le navigateur ne peut pas connaître la
+   hauteur d'une section non peinte — on rejoue donc le saut pendant qu'elles
+   se peignent).
+
+   Trente valeurs à re-mesurer à chaque déplacement de contenu, pour aucun
+   gain : c'est une dette, pas un correctif. */
 
 /* ============ Dark mode overrides ============ */
 /* Cartes volontairement sombres : leur bordure quasi-noire disparaît sur fond

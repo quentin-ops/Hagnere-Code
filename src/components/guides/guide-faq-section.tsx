@@ -35,7 +35,7 @@ export function GuideFAQSection({ title, items }: GuideFAQSectionProps) {
               open={index === 0}
               className="group rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 px-4 sm:px-6"
             >
-              <summary className="flex items-center justify-between gap-3 cursor-pointer list-none [&::-webkit-details-marker]:hidden text-zinc-900 dark:text-zinc-100 font-semibold tracking-tight py-3 sm:py-4 text-sm sm:text-base text-left">
+              <summary className="flex min-h-11 items-center justify-between gap-3 cursor-pointer list-none [&::-webkit-details-marker]:hidden text-zinc-900 dark:text-zinc-100 font-semibold tracking-tight py-3 sm:py-4 text-sm sm:text-base text-left">
                 {item.question}
                 <ChevronDown
                   className="size-4 shrink-0 text-zinc-400 transition-transform duration-200 group-open:rotate-180"

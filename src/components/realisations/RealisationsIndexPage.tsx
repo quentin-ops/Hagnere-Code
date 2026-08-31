@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PRIMARY_ACTION_LABEL } from "@/lib/cta-labels";
 import type { CSSProperties } from "react";
 import { InteractiveDesignRoot } from "@/components/design-shared/InteractiveDesignRoot";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
@@ -61,7 +62,7 @@ export function RealisationsIndexPage() {
               </p>
               <div className="rlm-actions">
                 <Link href="#cas" className="btn btn-accent btn-lg">
-                  Découvrir les 4 cas
+                  Découvrir les 4 analyses
                   <svg className="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
                 </Link>
                 <Link href="/contact" className="btn btn-ghost btn-lg">
@@ -97,7 +98,7 @@ export function RealisationsIndexPage() {
         </section>
 
         {/* ─── STATS STRIP ─────────────────────────────────────────── */}
-        <section className="rlm-stats">
+        <section className="rlm-stats" aria-label="Repères sur les quatre produits du groupe">
           <div className="wrap">
             <div className="rlm-stats-grid">
               <div className="rlm-stat reveal">
@@ -164,6 +165,7 @@ export function RealisationsIndexPage() {
                 <Link
                   key={c.slug}
                   href={`/realisations/${c.slug}`}
+                  aria-label={`Lire l'analyse publique de ${c.brandName}`}
                   className="rlm-case reveal"
                   style={{
                     "--brand": c.brandColor,
@@ -259,11 +261,16 @@ export function RealisationsIndexPage() {
 
             <div className="rlm-svc-actions reveal">
               <Link href="/demarrer-un-projet" className="btn btn-accent btn-lg">
-                Décrire votre projet
+                {PRIMARY_ACTION_LABEL}
                 <svg className="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
               </Link>
               <Link href="/services" className="btn btn-ghost btn-lg">
                 Voir tous les services
+              </Link>
+              {/* La page n'ouvrait aucune porte vers le prix : un dirigeant qui
+                  arrive ici par la navigation n'avait pas de reponse a « combien ». */}
+              <Link href="/tarifs" className="btn btn-ghost btn-lg">
+                Voir les tarifs
               </Link>
             </div>
           </div>
@@ -294,7 +301,7 @@ export function RealisationsIndexPage() {
                 </p>
                 <div className="rlm-cta-actions">
                   <Link href="/contact" className="btn btn-accent btn-lg">
-                    Discuter du niveau de preuve
+                    Parler de votre projet
                     <svg className="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
                   </Link>
                   <Link href="/methode" className="btn btn-ghost-light btn-lg">

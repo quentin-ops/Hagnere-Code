@@ -2638,7 +2638,15 @@ export function ProjectFunnel() {
           </a>
           <nav className="pf-topnav" aria-label="Navigation secondaire">
             <ThemeToggle />
-            <Link href="/" className="pf-site-return">
+            {/* Le libellé est masqué sous 1101 px pour tenir dans la barre :
+                le nom accessible est donc porté par l'attribut, sinon le seul
+                lien de sortie du tunnel devenait une icône sans nom. */}
+            <Link
+              href="/"
+              className="pf-site-return"
+              aria-label="Retour au site vitrine"
+              title="Retour au site vitrine"
+            >
               <ArrowLeft size={16} strokeWidth={2} />
               <span>Retour au site vitrine</span>
             </Link>
@@ -2670,7 +2678,7 @@ export function ProjectFunnel() {
             className="pf-primary pf-landing-cta"
             onClick={() => trackFunnelEvent("pf:landing_cta_click", {})}
           >
-            Décrire mon projet
+            Démarrer mon projet
             <ArrowRight size={16} />
           </a>
           <div className="pf-landing-badges">
@@ -2752,6 +2760,10 @@ export function ProjectFunnel() {
                     key={step.id}
                     type="button"
                     className={`pf-stepper-item ${active ? "is-active" : ""} ${complete ? "is-complete" : ""}`}
+                    // L'étape en cours n'était signalée que par une classe :
+                    // au clavier, rien ne distinguait les six boutons de la
+                    // progression les uns des autres.
+                    aria-current={active ? "step" : undefined}
                     onClick={() => {
                       if (!unlocked) return;
                       setShowValidation(false);
@@ -2947,6 +2959,30 @@ export function ProjectFunnel() {
                     />
                   </div>
                 </div>
+                {/* Le bouton « Je préfère en parler » de cette étape ne fait
+                    que sauter la description : il promettait une conversation
+                    que rien, sur l'écran, ne permettait d'engager — la carte
+                    latérale qui porte les canaux est hors champ dès qu'on est
+                    au bas du formulaire. Les trois voies sont donc rappelées
+                    ici, à côté du bouton qui les évoque. */}
+                <p className="pf-talk-instead">
+                  Vous préférez en parler&nbsp;? Appelez le{" "}
+                  <a href={DIRECT_PHONE_HREF}>{DIRECT_PHONE_LABEL}</a>, écrivez
+                  à <a href={`mailto:${DIRECT_EMAIL}`}>{DIRECT_EMAIL}</a>, ou{" "}
+                  <a
+                    href={CALENDLY_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() =>
+                      trackFunnelEvent("pf:landing_cta_click", {
+                        cta: "calendly_contexte",
+                      })
+                    }
+                  >
+                    réservez 30 min (nouvel onglet)
+                  </a>
+                  . Le brief déjà rempli reste dans cet onglet.
+                </p>
               </div>
             )}
 
@@ -3324,9 +3360,15 @@ export function ProjectFunnel() {
                   type="button"
                   className="pf-skip"
                   onClick={skipCurrent}
+                  // WCAG 2.5.3 « Label in Name » : le nom accessible doit
+                  // contenir le libellé visible, sinon une commande vocale
+                  // « clique sur Je préfère en parler » ne trouve rien. Il
+                  // décrit ensuite l'effet réel du bouton — passer l'étape —
+                  // et non la conversation, qui s'engage par les liens
+                  // rappelés au-dessus.
                   aria-label={
                     current.id === "contexte"
-                      ? "Passer la description et en parler de vive voix"
+                      ? "Je préfère en parler : passer la description"
                       : "Passer cette étape sans répondre"
                   }
                 >
@@ -3384,7 +3426,15 @@ export function ProjectFunnel() {
               <dd>
                 Elles servent uniquement à qualifier votre demande et à vous répondre.
                 Pas de revente ni de newsletter forcée. Les droits, durées de conservation
-                et modalités de demande sont détaillés dans notre politique de confidentialité.
+                et modalités de demande sont détaillés dans notre{" "}
+                {/* La réponse renvoyait vers « notre politique de
+                    confidentialité » sans lien : la personne qui se pose
+                    justement la question devait aller la chercher au pied de
+                    page. */}
+                <Link href="/legal/confidentialite">
+                  politique de confidentialité
+                </Link>
+                .
               </dd>
             </div>
             <div className="pf-faq-item">
@@ -3395,6 +3445,41 @@ export function ProjectFunnel() {
               </dd>
             </div>
           </dl>
+
+          {/* Rappel d'action en fin de page. La FAQ était le dernier bloc
+              avant les mentions légales : sur mobile, la page fait près de six
+              écrans, la barre « Continuer » ne colle au bas de l'écran que
+              tant que la carte du formulaire est visible, et le visiteur qui
+              venait de lever sa dernière objection n'avait plus aucun geste
+              sous la main. Les deux voies réellement offertes par la page sont
+              rappelées ici : remonter au formulaire, ou nous joindre
+              directement. */}
+          <div className="pf-faq-cta">
+            <p className="pf-faq-cta-text">
+              Vos questions sont levées&nbsp;? Reprenez le brief là où vous en
+              étiez — il ne prend que 2 à 3&nbsp;minutes.
+            </p>
+            <div className="pf-faq-cta-actions">
+              <a
+                href="#brief-form"
+                className="pf-primary"
+                onClick={() =>
+                  trackFunnelEvent("pf:landing_cta_click", { cta: "faq_footer" })
+                }
+              >
+                Démarrer mon projet
+                <ArrowRight size={16} />
+              </a>
+              <a className="pf-faq-cta-alt" href={DIRECT_PHONE_HREF}>
+                <Phone size={14} strokeWidth={2} aria-hidden="true" />
+                {DIRECT_PHONE_LABEL}
+              </a>
+              <a className="pf-faq-cta-alt" href={`mailto:${DIRECT_EMAIL}`}>
+                <Mail size={14} strokeWidth={2} aria-hidden="true" />
+                {DIRECT_EMAIL}
+              </a>
+            </div>
+          </div>
         </div>
       </section>
       </main>

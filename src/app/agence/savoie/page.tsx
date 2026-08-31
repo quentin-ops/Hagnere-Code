@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PRIMARY_ACTION_HREF, PRIMARY_ACTION_LABEL } from "@/lib/cta-labels";
 import Link from "next/link";
 import { GuideLayout } from "@/components/guides/guide-layout";
 import {
@@ -105,7 +106,7 @@ const faqItems = [
   {
     question: "Pourquoi choisir une agence savoyarde plutôt qu'une agence parisienne ou lyonnaise ?",
     answer:
-      "Franchement, pas pour la qualité technique : le développement web se fait très bien à distance, et il existe d'excellentes agences partout. Ce que la proximité apporte concrètement, c'est la facilité du premier rendez-vous, la connaissance du tissu local, et le fait de pouvoir venir sur place quand un projet coince. Ce qu'elle n'apporte pas, c'est une garantie de compétence — c'est pourquoi nous publions nos tarifs, nos engagements de performance et notre méthode : jugez sur pièces, pas sur le code postal.",
+      "Franchement, pas pour la qualité technique : le développement web se fait très bien à distance, et il existe d'excellentes agences partout. Ce que la proximité apporte concrètement, c'est la facilité du premier rendez-vous, la connaissance du tissu local, et le fait de pouvoir venir sur place quand un projet coince. Ce qu'elle n'apporte pas, c'est une garantie de compétence — c'est pourquoi nous publions nos tarifs et notre méthode, et pourquoi les seuils de performance éventuels sont écrits au devis : jugez sur pièces, pas sur le code postal.",
   },
   {
     question: "Faites-vous du référencement pour des entreprises savoyardes déjà en ligne ?",
@@ -127,6 +128,7 @@ export default function Page() {
           { label: "Savoie" },
         ]}
         heroTitle={page.heroTitle}
+        heroAction={{ href: PRIMARY_ACTION_HREF, label: PRIMARY_ACTION_LABEL }}
         heroDescription="La Savoie n'est pas un marché homogène : le bassin chambérien, le lac du Bourget, la Tarentaise, la Maurienne et la Combe de Savoie n'ont ni les mêmes entreprises, ni les mêmes besoins numériques. Cette page décrit ces six territoires et ce qu'ils achètent réellement."
         author={{
           name: "Quentin Hagnéré",
@@ -233,7 +235,8 @@ export default function Page() {
           cela : il lui faut un espace où ses clients professionnels
           retrouvent des fiches techniques et passent commande.{" "}
           <strong>Le même budget donne deux projets qui n&apos;ont pas un
-          composant en commun.</strong> C&apos;est la raison pour laquelle
+          composant en commun.</strong>{" "}
+          C&apos;est la raison pour laquelle
           nous commençons toujours par un cadrage plutôt que par un devis
           type.
         </InfoBox>
@@ -266,7 +269,8 @@ export default function Page() {
           économique est constitué de petites structures. D&apos;autre part,
           l&apos;industrie qui existe est concentrée et spécialisée —{" "}
           <strong>Ugitech à Ugine</strong> pour les aciers inoxydables,{" "}
-          <strong>TRIMET à Saint-Jean-de-Maurienne</strong> pour
+          <strong>TRIMET à Saint-Jean-de-Maurienne</strong>{" "}
+          pour
           l&apos;aluminium primaire, avec environ 600 salariés et une
           production de l&apos;ordre de 145 000 tonnes par an. Ces
           entreprises-là ont des besoins logiciels sérieux, très loin du site
@@ -318,7 +322,8 @@ export default function Page() {
         </p>
         <ul>
           <li>
-            <strong>La saisonnalité.</strong> Une part importante de
+            <strong>La saisonnalité.</strong>{" "}
+            Une part importante de
             l&apos;économie travaille sur quatre à cinq mois. Cela impose des
             sites qui tiennent la charge sur des pics courts, des systèmes de
             réservation fiables, et souvent du multilingue — la clientèle
@@ -335,7 +340,8 @@ export default function Page() {
             applications métier</Link> décrit ce type de projet.
           </li>
           <li>
-            <strong>La visibilité locale.</strong> Pour les artisans,
+            <strong>La visibilité locale.</strong>{" "}
+            Pour les artisans,
             commerces et professions libérales — c&apos;est-à-dire la
             majorité des établissements savoyards, qui n&apos;ont aucun
             salarié —, l&apos;enjeu n&apos;est pas un grand site : c&apos;est
@@ -369,15 +375,17 @@ export default function Page() {
           ses visiteurs avant même qu&apos;ils aient vu l&apos;offre.
           Sur une activité étalée sur toute l&apos;année, c&apos;est une perte
           diffuse. <strong>Sur une activité concentrée sur quatre mois,
-          c&apos;est la saison</strong> — et vous ne pouvez pas rattraper en
+          c&apos;est la saison</strong>{" "}
+          — et vous ne pouvez pas rattraper en
           mai ce que vous avez perdu en février. C&apos;est la raison pour
-          laquelle nous contractualisons un score de performance minimal
-          plutôt que de promettre un site « rapide ».
+          laquelle nous préférons écrire au devis, quand le projet le justifie,
+          les pages, les conditions de mesure et les seuils de recette, plutôt
+          que de promettre un site « rapide ».
         </InfoBox>
 
         <h2 id="notre-place">7. Où nous nous situons</h2>
         <p>
-          Nous sommes installés à Bassens, aux portes de Chambéry, au 82 impasse de Bellevue, et nous
+          Nous sommes installés au 82 impasse de Bellevue, 73000 Bassens, aux portes de Chambéry, et nous
           développons en{" "}
           <Link href="/agence-react">React</Link> et{" "}
           <Link href="/agence-next-js">Next.js</Link>. Concrètement, cela nous place sur

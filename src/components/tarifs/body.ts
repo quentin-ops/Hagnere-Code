@@ -1,4 +1,6 @@
 import { navHtml } from "@/components/design-shared/nav-html";
+import { TEAM_TOTAL_COUNT } from "@/lib/team";
+import { PRIMARY_ACTION_LABEL } from "@/lib/cta-labels";
 
 export const bodyHtml = `
 ${navHtml}
@@ -31,7 +33,7 @@ ${navHtml}
         </a>
         <a href="/demarrer-un-projet" class="btn btn-ghost btn-lg">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 7h6M9 12h6M9 17h3"/></svg>
-          Décrire mon projet (3 min)
+          ${PRIMARY_ACTION_LABEL} (3 min)
         </a>
       </div>
       <div class="thero-meta">
@@ -151,7 +153,7 @@ ${navHtml}
 </section>
 
 <!-- KPI BAR -->
-<section class="kpi-bar">
+<section class="kpi-bar" aria-label="Repères chiffrés de la tarification">
   <div class="wrap">
     <div class="kpi-grid">
       <div class="kpi reveal">
@@ -526,7 +528,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Mesures techniques et documents RGPD au périmètre</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Planning et jalons précisés au devis</li>
         </ul>
-        <div class="plan-cta"><a href="#contact" class="btn btn-accent">Démarrer mon projet</a></div>
+        <div class="plan-cta"><a href="#contact" class="btn btn-accent">${PRIMARY_ACTION_LABEL}</a></div>
       </div>
 
       <div class="plan reveal reveal-d-3">
@@ -554,7 +556,8 @@ ${navHtml}
       <b>6,9 k€ HT</b> (site vitrine). <b>Ces quatre formats couvrent tous les services</b>&nbsp;: leur fourchette part
       du service le moins cher du format, pas du vôtre. La fourchette propre à votre besoin est celle du
       <a href="#tableau-services" style="color:var(--accent-ink);text-decoration:underline">tableau par service ci-dessous</a> et de la page
-      service correspondante — un MVP SaaS « Essentiel » démarre par exemple à 15 k€ HT, pas à 6,9 k€ HT.
+      service correspondante — un MVP SaaS « Essentiel » démarre par exemple à 15 k€ HT, pas à 6,9 k€ HT,
+      et un SaaS « Standard » de 10 à 15 écrans démarre à 30 k€ HT&nbsp;: la borne de 25 k€ HT est celle d'un outil interne.
       Chaque devis précise&nbsp;: <b>livrables et droits</b> · <b>dépôt et accès</b> ·
       <b>formation</b> · <b>recette et éventuelle garantie</b>
     </p>
@@ -811,7 +814,7 @@ ${navHtml}
         figé après le cadrage payant correspondant, dans un devis ferme contractuel.
       </div>
       <a href="/demarrer-un-projet" class="btn btn-ghost ptf-cta">
-        Décrire mon projet
+        ${PRIMARY_ACTION_LABEL}
         <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -990,6 +993,32 @@ ${navHtml}
         <div class="vsm-cell">Freelance candidat</div>
       </div>
 
+      <!-- Trois critères d'ORGANISATION, rapatriés du comparatif qui vivait sur
+           la page d'accueil. Ils manquaient à cette grille, qui ne comparait
+           que des prix et des engagements contractuels : or ce qui distingue
+           un freelance d'un studio ne se lit pas dans le prix, il se lit dans
+           ce qui se passe quand la personne est absente. -->
+      <div class="vsm-row">
+        <div class="vsm-cell vsm-cell-label">Équipe affectée</div>
+        <div class="vsm-cell vsm-cell-us"><b>Intervenants nommés au devis</b><span>Choisis parmi les ${TEAM_TOTAL_COUNT} profils présentés sur <a href="/equipe">la page équipe</a></span></div>
+        <div class="vsm-cell"><span>Composition à vérifier</span><span>Demander qui code réellement, et à quel taux</span></div>
+        <div class="vsm-cell"><span>1 personne</span><span>Demander ce qui se passe en cas d'indisponibilité</span></div>
+      </div>
+
+      <div class="vsm-row">
+        <div class="vsm-cell vsm-cell-label">Continuité (congés, maladie)</div>
+        <div class="vsm-cell vsm-cell-us"><b>Relais nommé avant signature</b><span>Modalités de remplacement écrites au devis</span></div>
+        <div class="vsm-cell"><span>Dépend de l'équipe et du contrat</span><span>Demander le nom du relais, pas le principe</span></div>
+        <div class="vsm-cell"><span>Dépend de l'organisation prévue</span><span>Demander le délai de reprise et par qui</span></div>
+      </div>
+
+      <div class="vsm-row">
+        <div class="vsm-cell vsm-cell-label">Interlocuteur</div>
+        <div class="vsm-cell vsm-cell-us"><b>Un développeur senior au premier appel</b><span>Puis un intervenant projet identifié</span></div>
+        <div class="vsm-cell"><span>Circuit à vérifier</span><span>Demander si le premier appel est commercial</span></div>
+        <div class="vsm-cell"><span>Le freelance lui-même</span><span>Vérifier sa disponibilité réelle sur la période</span></div>
+      </div>
+
       <div class="vsm-row">
         <div class="vsm-cell vsm-cell-label">Modèle de facturation</div>
         <div class="vsm-cell vsm-cell-us"><b>Forfait fixe</b><span>Total signé, pas de surprise</span></div>
@@ -1006,7 +1035,7 @@ ${navHtml}
 
       <div class="vsm-row">
         <div class="vsm-cell vsm-cell-label">Site vitrine 10 pages</div>
-        <div class="vsm-cell vsm-cell-us"><b>6,9–15 k€ HT</b><span>Délai, pages et cible de performance au devis</span></div>
+        <div class="vsm-cell vsm-cell-us"><b>14,9 k€ HT</b><span>Palier Performance — 10–20 pages, délai et cible de performance au devis</span></div>
         <div class="vsm-cell"><span>À comparer</span><span>Design, CMS, contenu et mesure inclus ?</span></div>
         <div class="vsm-cell"><span>À comparer</span><span>Mêmes livrables et mêmes conditions ?</span></div>
       </div>
@@ -1020,7 +1049,7 @@ ${navHtml}
 
       <div class="vsm-row">
         <div class="vsm-cell vsm-cell-label">Propriété du code</div>
-        <div class="vsm-cell vsm-cell-us"><b>Écrit au devis</b><span>Cession, dépôt, accès et exclusions</span></div>
+        <div class="vsm-cell vsm-cell-us"><b>Dépôt, accès et droits écrits</b><span>Transfert après paiement complet selon les CGV, hors composants préexistants et licences tierces</span></div>
         <div class="vsm-cell"><span>Variable</span><span>Lire cession, licences et accès</span></div>
         <div class="vsm-cell"><span>Variable</span><span>Lire le contrat</span></div>
       </div>
@@ -1037,6 +1066,13 @@ ${navHtml}
         <div class="vsm-cell vsm-cell-us"><b>Sur devis</b><span>3 niveaux Care · repères ≈ 2 500 à 14 000 €/m HT</span></div>
         <div class="vsm-cell"><span>À comparer</span><span>Capacité, SLA, outils et préavis</span></div>
         <div class="vsm-cell"><span>À comparer</span><span>Capacité, relais et préavis</span></div>
+      </div>
+
+      <div class="vsm-row">
+        <div class="vsm-cell vsm-cell-label">À choisir si…</div>
+        <div class="vsm-cell vsm-cell-us"><b>PME ou ETI sans équipe tech</b><span>Besoin d'un produit complet, au forfait, sans régie</span></div>
+        <div class="vsm-cell"><span>Gros volumes</span><span>Enjeux réglementaires lourds, besoin d'une marque</span></div>
+        <div class="vsm-cell"><span>Projet ponctuel et circonscrit</span><span>Compétence précise, vous pilotez vous-même</span></div>
       </div>
 
       <div class="vsm-row vsm-verdict">
@@ -1144,7 +1180,7 @@ ${navHtml}
           <span>DÉMARRER UN PROJET</span>
           <span>Brief en ligne</span>
         </div>
-        <h3>Décrivez votre projet <br><span class="accent">en 3 minutes.</span></h3>
+        <h2>Décrivez votre projet <br><span class="accent">en 3 minutes.</span></h2>
         <p class="ct-lead">
           Quelques questions guidées sur votre besoin, votre contexte et vos délais —
           puis notre équipe lit votre brief et vise une réponse personnelle le
@@ -1159,7 +1195,7 @@ ${navHtml}
 
         <div class="ct-cta">
           <a href="/demarrer-un-projet" class="btn btn-accent btn-lg">
-            Décrire mon projet
+            ${PRIMARY_ACTION_LABEL}
             <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
           <a href="#contact" class="btn btn-ghost btn-lg">Préférer un appel direct</a>

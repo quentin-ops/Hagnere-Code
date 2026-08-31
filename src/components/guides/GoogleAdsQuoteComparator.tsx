@@ -719,7 +719,7 @@ export function GoogleAdsQuoteComparator() {
           open
           className="rounded-xl border border-zinc-200 p-4 dark:border-zinc-800"
         >
-          <summary className="cursor-pointer text-base font-bold text-zinc-950 dark:text-white">
+          <summary className="flex min-h-11 items-center cursor-pointer text-base font-bold text-zinc-950 dark:text-white">
             1. Base strictement commune
           </summary>
           <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -735,7 +735,7 @@ export function GoogleAdsQuoteComparator() {
         </details>
 
         <details className="rounded-xl border border-zinc-200 p-4 dark:border-zinc-800">
-          <summary className="cursor-pointer text-base font-bold text-zinc-950 dark:text-white">
+          <summary className="flex min-h-11 items-center cursor-pointer text-base font-bold text-zinc-950 dark:text-white">
             2. Trésorerie, TVA et coût réglementaire
           </summary>
           <p className="mt-3 max-w-4xl text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
@@ -758,7 +758,7 @@ export function GoogleAdsQuoteComparator() {
         </details>
 
         <details className="rounded-xl border border-zinc-200 p-4 dark:border-zinc-800">
-          <summary className="cursor-pointer text-base font-bold text-zinc-950 dark:text-white">
+          <summary className="flex min-h-11 items-center cursor-pointer text-base font-bold text-zinc-950 dark:text-white">
             3. Résultats commerciaux et marge par client
           </summary>
           <p className="mt-3 max-w-4xl text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
@@ -807,7 +807,7 @@ export function GoogleAdsQuoteComparator() {
                 }}
                 className="rounded-xl border border-zinc-200 p-4 dark:border-zinc-800"
               >
-                <summary className="cursor-pointer text-sm font-bold text-indigo-700 dark:text-indigo-300">
+                <summary className="flex min-h-11 items-center cursor-pointer text-sm font-bold text-indigo-700 dark:text-indigo-300">
                   {group.legend}{" "}
                   <span className="font-normal text-zinc-500 dark:text-zinc-400">
                     —{" "}

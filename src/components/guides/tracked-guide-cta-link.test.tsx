@@ -35,7 +35,7 @@ describe("TrackedGuideCtaLink", () => {
           placement="hero"
           primary
         >
-          Décrire mon projet
+          Démarrer mon projet
         </TrackedGuideCtaLink>,
       );
     });
@@ -57,7 +57,7 @@ describe("TrackedGuideCtaLink", () => {
     act(() => {
       root.render(
         <TrackedGuideCtaLink
-          href="tel:+33374472018"
+          href="tel:+33660088351"
           placement="mobile"
           ariaLabel="Appeler Hagnéré Code"
         >
@@ -72,7 +72,7 @@ describe("TrackedGuideCtaLink", () => {
     expect(link).not.toBeNull();
     act(() => link?.dispatchEvent(new MouseEvent("click", { bubbles: true })));
 
-    expect(link?.getAttribute("href")).toBe("tel:+33374472018");
+    expect(link?.getAttribute("href")).toBe("tel:+33660088351");
     expect(trackFunnelEvent).toHaveBeenCalledWith(
       "guide_cta_click",
       expect.objectContaining({ channel: "phone", placement: "mobile" }),
