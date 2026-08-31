@@ -26,9 +26,22 @@
   /* Jeton de focus clavier, volontairement découplé de `--ring` (jeton shadcn
      réutilisé par des anneaux décoratifs). `--ring` en clair vaut ≈ #A1A1A1,
      soit 2,58:1 sur blanc — sous le seuil de 3:1 exigé par WCAG 1.4.11 pour un
-     composant d'interface. #6D28D9 (violet-700, déjà la couleur d'accent des
-     guides, ressources et images OG) donne 7,1:1 sur blanc. */
-  --focus-ring: #6d28d9;
+     composant d'interface.
+
+     #6D28D9 (violet-700) l'a d'abord remplacé : 7,1:1 sur blanc. Mais le jeton
+     est scopé par THÈME, pas par SURFACE — et le site alterne, en thème clair,
+     des sections blanches et des sections volontairement noires (#0A0A0A pour
+     les héros, la section « caps », les cartes noires). Sur ces dernières,
+     #6D28D9 retombait à 2,79:1, sous le seuil : mesuré sur les boutons des
+     sections sombres de /services, de l'accueil et de /contact.
+
+     #8B5CF6 (violet-500) tient des deux côtés : luminance relative 0,2015,
+     soit 4,17:1 contre le blanc et 4,75:1 contre le #0A0A0A. On échange
+     3 points de contraste sur fond clair — où l'on était très au-dessus du
+     seuil — contre le passage au-dessus du seuil sur fond sombre, où l'on
+     était en dessous. C'est déjà le violet `--accent` du thème sombre : la
+     palette ne gagne aucune couleur. */
+  --focus-ring: #8b5cf6;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -375,8 +388,25 @@
    2,58:1 sur fond blanc. Pas de `border-radius` ici — il écrasait le rayon
    propre des boutons pilules pendant le focus ; l'outline suit désormais la
    forme réelle de l'élément. */
+/* Couleur d'anneau de focus tenable sur les DEUX fonds du site.
+   -------------------------------------------------------------------------
+   Le site alterne surfaces claires et surfaces volontairement sombres (#0A0A0A
+   pour les héros, les sections « caps », les cartes noires). Un anneau
+   #6D28D9 tenait 8,3:1 sur blanc mais 2,79:1 sur ce noir — sous le seuil de
+   3:1 de WCAG 1.4.11, mesuré sur les boutons des sections sombres de /services
+   et de l'accueil.
+
+   Un second anneau clair en `box-shadow` a été essayé puis abandonné : les
+   boutons portent déjà leur propre ombre, déclarée avec une spécificité
+   supérieure (`.hc-design .btn-accent`), et la nôtre ne passait pas — sauf à
+   poser un `!important` qui aurait effacé l'ombre de design à chaque focus.
+
+   #8B5CF6 résout le problème sans rien écraser : luminance relative 0,2015,
+   soit 4,17:1 contre le blanc et 4,75:1 contre le #0A0A0A. Au-dessus du seuil
+   des deux côtés. C'est déjà le violet `--accent` du thème sombre du site :
+   aucune couleur nouvelle n'entre dans la palette. */
 :focus-visible {
-  outline: 2px solid var(--focus-ring, #6d28d9);
+  outline: 2px solid var(--focus-ring, #8b5cf6);
   outline-offset: 2px;
 }
 button:focus:not(:focus-visible),
@@ -454,6 +484,12 @@ html {
 button.hc-theme-toggle {
   --tgl-size: 40px;
   position: relative;
+  /* 40 px sur desktop. Sous 430 px, la taille passe à 44 px — la cible tactile
+     que ce dépôt s'est fixée partout ailleurs (déclencheur de menu, porte de
+     contact, CTA primaire). Les 4 px sont repris sur le rembourrage de la
+     barre dans `nav-dropdown.css` : une tentative de les gagner par un
+     pseudo-élément débordant a échoué, `overflow: hidden` le découpe — il est
+     nécessaire à l'animation soleil/lune. */
   display: inline-block;
   flex-shrink: 0;
   width: var(--tgl-size);

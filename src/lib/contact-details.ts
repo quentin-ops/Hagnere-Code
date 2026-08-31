@@ -34,11 +34,25 @@ export const CONTACT_EMAIL_IS_GROUP_DOMAIN =
  */
 export const DEFAULT_CONTACT_SENDER_EMAIL = "contact@hagnere-code.ai";
 
-/** Téléphone public, format E.164 pour les liens `tel:`. */
-export const CONTACT_PHONE_E164 = "+33374472018";
+/**
+ * Téléphone public, format E.164 pour les liens `tel:`.
+ *
+ * Ligne mobile directe du président fondateur depuis le 28/08/2026, en
+ * remplacement de la ligne fixe 06 60 08 83 51. Ce n'est pas un détail de
+ * confort : la fiche d'établissement Google publie ce numéro, et un NAP
+ * divergent entre la fiche et le site est précisément ce que le référencement
+ * local sanctionne. Le site et la fiche doivent porter la MÊME ligne.
+ *
+ * Conséquence secondaire assumée : `resolveWhatsAppUrl` dérive son lien de
+ * cette constante. Sur une ligne fixe, le lien `wa.me` ne pouvait pas résoudre
+ * sans inscription WhatsApp Business ; sur un mobile, il a une chance réelle
+ * d'aboutir — la réserve documentée plus bas reste valable tant que le test
+ * depuis un téléphone n'a pas été fait.
+ */
+export const CONTACT_PHONE_E164 = "+33660088351";
 
 /** Téléphone public, format lisible international. */
-export const CONTACT_PHONE_DISPLAY = "+33 3 74 47 20 18";
+export const CONTACT_PHONE_DISPLAY = "+33 6 60 08 83 51";
 
 /**
  * Même ligne, format national — celui qu'utilisent la pastille de navigation,
@@ -46,7 +60,7 @@ export const CONTACT_PHONE_DISPLAY = "+33 3 74 47 20 18";
  * un libellé déjà contraint. Deux écritures d'un seul et même numéro : les garder
  * dans le même module est ce qui empêche l'une de dériver de l'autre.
  */
-export const CONTACT_PHONE_DISPLAY_NATIONAL = "03 74 47 20 18";
+export const CONTACT_PHONE_DISPLAY_NATIONAL = "06 60 08 83 51";
 
 /** Siège social, aligné sur les mentions légales. */
 export const CONTACT_ADDRESS = {

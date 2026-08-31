@@ -6,6 +6,13 @@
    ========================================================================= */
 
 /* --------- Wrapper ------------------------------------------------------- */
+/* Hauteur réelle de la barre, exposée pour tout élément qui doit se coller
+   JUSTE EN DESSOUS (sommaire de guide, barre d'onglets d'une page longue).
+   Sans elle, chaque emplacement recopie « 79px » et la valeur diverge au
+   premier changement de rembourrage. Mesurée, pas estimée. */
+:root { --hc-nav-h: 79px; }
+@media (max-width: 1024px) { :root { --hc-nav-h: 65px; } }
+
 .hc-nav {
   position: sticky;
   top: 0;
@@ -47,10 +54,16 @@
   font-weight: 600;
   letter-spacing: 0.04em;
 }
+/* `white-space: nowrap` : entre 390 et 412 px — la bande où vivent la plupart
+   des téléphones — « Hagnéré Code » repassait à la ligne, et la barre entière
+   gagnait 3 px de haut par rapport à toutes les autres largeurs. Une barre
+   collante dont la hauteur dépend de la largeur d'écran empêche de caler quoi
+   que ce soit dessous. */
 .hc-nav-brand-name {
   font-size: 15px;
   letter-spacing: -0.01em;
   color: var(--ink);
+  white-space: nowrap;
 }
 .hc-nav-brand-name b { font-weight: 600; }
 .hc-nav-brand-name span { color: var(--mute); font-weight: 400; }
@@ -135,7 +148,14 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* --------- CTAs (right side: Rendez-vous + CTA primaire) ---------------- */
+/* --------- CTAs (droite : Contact + CTA primaire) ----------------------
+   Deux portes et deux seulement, à tous les points de rupture :
+   « Contact » (formulaire court) et « Démarrer mon projet » (tunnel de
+   qualification). La prise de rendez-vous, qui occupait cette place, était
+   déjà masquée sous 1520 px : elle n'était donc visible que sur les très
+   grands écrans, et reste atteignable par la carte du méga-menu, les liens
+   rapides mobiles, le pied de page et /rendez-vous.
+   ---------------------------------------------------------------------- */
 .hc-nav-actions {
   justify-self: end;
   display: inline-flex;
@@ -162,17 +182,17 @@
 .hc-nav .hc-nav-cta:hover {
   transform: translateY(-1px);
 }
-/* Secondary CTA — white pill with calendar icon, opens Calendly */
-.hc-nav .hc-nav-cta-rdv {
+/* Porte de contact — pastille blanche, enveloppe, vers /contact */
+.hc-nav .hc-nav-cta-contact {
   background: var(--paper);
   color: var(--ink);
   border-color: rgba(15, 15, 15, 0.12);
   box-shadow: 0 1px 2px rgba(15, 15, 15, 0.04);
 }
-.hc-nav .hc-nav-cta-rdv > svg {
+.hc-nav .hc-nav-cta-contact > svg {
   color: var(--accent-ink, #6d28d9);
 }
-.hc-nav .hc-nav-cta-rdv:hover {
+.hc-nav .hc-nav-cta-contact:hover {
   background: #f7f7f7;
   border-color: rgba(15, 15, 15, 0.18);
 }
@@ -478,7 +498,7 @@
 
 /* --------- Mobile-only "extra links" inside mega menu sidebar ----------- */
 .hc-mega-side-mobile {
-  display: none; /* shown only on mobile (≤ 720px) below */
+  display: none; /* affiché uniquement dans l'en-tête compact (≤ 1024 px), plus bas */
   flex-direction: column;
   gap: 4px;
   padding: 14px 0 4px;
@@ -520,41 +540,27 @@
   .hc-nav-actions {
     gap: 6px;
   }
-  .hc-nav .hc-nav-cta-rdv {
-    display: none;
-  }
+  /* La porte de contact ne se masque plus ici : c'est la bande où vivent la
+     plupart des portables, et masquer la porte la moins engageante y revenait
+     à ne laisser que la plus engageante. Elle se resserre. */
   .hc-nav .hc-nav-cta {
     padding-inline: 14px;
   }
+  .hc-nav .hc-nav-cta-contact {
+    padding-inline: 12px;
+  }
 }
 
-/* --------- Tablet (2-row, pill spans full width) ------------------------ */
+/* --------- Tablette : reste du panneau -----------------------------------
+   Le gabarit d'en-tête sur DEUX rangées qui vivait ici a été retiré le
+   28/08/2026. Il mesurait 127 px de haut, sur une barre `position: sticky` :
+   12 % de la fenêtre d'un iPad portrait confisqués en permanence, 17 % en
+   paysage (1024 × 768). La rangée du bas ne portait que trois liens et un
+   numéro — l'en-tête compact, à 68 px, les met tous dans la feuille du
+   méga-menu et rend 59 px à chaque page.
+   Les règles ci-dessous ne concernent plus que le PANNEAU, pas la barre.
+   -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
-  .hc-nav-inner {
-    padding: 12px 16px;
-    grid-template-columns: auto 1fr;
-    gap: 12px;
-  }
-  .hc-nav-brand {
-    grid-row: 1;
-    grid-column: 1;
-  }
-  .hc-nav-pill-wrap {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    justify-self: stretch;
-    width: 100%;
-  }
-  .hc-nav-pill {
-    width: 100%;
-    overflow-x: auto;
-  }
-  .hc-nav-pill::-webkit-scrollbar { display: none; }
-  .hc-nav-actions {
-    grid-row: 1;
-    grid-column: 2;
-    gap: 6px;
-  }
   .hc-nav .hc-nav-cta {
     padding: 9px 14px;
     font-size: 13px;
@@ -578,8 +584,13 @@
   }
 }
 
-/* --------- Mobile (single-row: brand left, menu + CTA right) ------------ */
-@media (max-width: 720px) {
+/* --------- En-tête compact — une seule rangée (≤ 1024 px) ---------------
+   Marque à gauche, déclencheur de menu + Contact + CTA primaire à droite.
+   Le seuil est passé de 720 à 1024 px : voir le bloc tablette ci-dessus.
+   `useDesignInteractive` interroge le MÊME seuil pour le verrou de défilement
+   de la feuille — les deux doivent bouger ensemble.
+   ------------------------------------------------------------------------ */
+@media (max-width: 1024px) {
   .hc-nav-inner {
     grid-template-columns: auto 1fr auto;
     padding: 10px 14px;
@@ -643,16 +654,39 @@
      liens de la pastille sont masqués. */
   .hc-nav-pill-link.hc-nav-pill-link-nojs { display: inline-flex; }
 
-  /* Actions : un seul CTA subsiste ici — le primaire. « Rendez-vous », le
-     téléphone et le lien Contact sont masqués à ce point de rupture ; ils
-     restent atteignables dans la feuille du méga-menu (`hc-mega-side-mobile`),
-     qui les reprend tous les trois. */
+  /* Actions : deux CTA subsistent ici — la porte de contact (icône seule) et
+     le primaire (libellé court). Le téléphone et la prise de rendez-vous sont
+     masqués à ce point de rupture ; ils restent atteignables dans la feuille
+     du méga-menu (`hc-mega-side-mobile`), qui les reprend tous les deux. */
   .hc-nav-actions {
     grid-row: auto;
     grid-column: auto;
     gap: 8px;
   }
-  .hc-nav .hc-nav-cta-rdv { display: none; }
+  /* La porte de contact survit au mobile — c'est la demande la plus fréquente
+     des visiteurs qui ne veulent pas d'un tunnel — mais en carré d'icône : la
+     ligne unique de l'en-tête ne tient pas deux libellés. Le mot « Contact »
+     reste dans le DOM, masqué visuellement, pour donner son nom accessible au
+     lien : une enveloppe seule n'en a aucun. */
+  .hc-nav .hc-nav-cta-contact {
+    width: 44px;
+    min-height: 44px;
+    padding: 0;
+    border-radius: 12px;
+    justify-content: center;
+    gap: 0;
+  }
+  .hc-nav .hc-nav-cta-contact-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
   /* Backoffice icon stays visible mobile — utile depuis n'importe quel device */
 
   /* Le CTA primaire était réduit à un carré d'icône : sur le seul bouton de
@@ -714,6 +748,82 @@
   .hc-mega-side-mobile { display: flex; }
 }
 
+/* --------- En-tête compact, écrans larges — deux paliers ----------------
+   L'en-tête compact a été étendu jusqu'à 1024 px pour rendre 59 px de hauteur
+   aux tablettes. Il apportait avec lui ses réductions de MOBILE : libellé
+   court « Mon projet », porte de contact en carré d'icône, ligne téléphonique
+   masquée. À 820 px la barre n'occupait que 369 px sur 820 : les mots avaient
+   la place, on les avait retirés pour rien.
+
+   Deux paliers, et non un seul : un premier essai à 601 px rendait TOUT d'un
+   coup et débordait de 21 px à cette largeur exacte (622 px de contenu pour
+   601 px de fenêtre, mesuré). Chaque palier est donc calé sur la largeur que
+   son contenu demande réellement, pas sur une borne ronde.
+   ------------------------------------------------------------------------ */
+
+/* Palier 1 (≥ 601 px) — le CTA primaire retrouve son libellé complet.
+   Contenu mesuré : marque 140 + déclencheur 44 + thème 34 + contact 44 +
+   CTA 187 ≈ 500 px avec les écarts. */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .hc-nav .hc-nav-cta-primary > svg { display: inline-flex; }
+  .hc-nav .hc-nav-cta-label { display: inline; }
+  .hc-nav .hc-nav-cta-label-mobile { display: none; }
+}
+
+/* Palier 2 (≥ 740 px) — la porte de contact reprend son mot, et la ligne
+   téléphonique réapparaît : c'est le canal que met en avant la fiche
+   d'établissement Google, il ne mérite pas un aller-retour par la feuille du
+   menu quand la barre a la place. Contenu mesuré ≈ 710 px. */
+@media (min-width: 740px) and (max-width: 1024px) {
+  .hc-nav .hc-nav-cta-contact {
+    width: auto;
+    padding: 0 14px;
+    gap: 8px;
+  }
+  .hc-nav .hc-nav-cta-contact-label {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    clip-path: none;
+  }
+  .hc-nav-pill-phone {
+    display: inline-flex;
+    min-height: 44px;
+    padding: 0 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(15, 15, 15, 0.1);
+    background: var(--paper);
+  }
+  html.dark .hc-nav-pill-phone { border-color: rgba(255, 255, 255, 0.14); }
+}
+
+/* --------- Téléphones courants (≤ 430 px) : resserrage des écarts -------
+   Empêcher la marque de passer à la ligne a uniformisé la hauteur de la barre
+   (65 px partout sous 1025 px) mais lui a rendu sa largeur d'une seule ligne :
+   à 390 px, le contenu demandait 403 px pour 390 disponibles, et 13 px étaient
+   rognés en silence.
+
+   On ne retire aucun élément — la marque, le menu, le thème, Contact et le CTA
+   restent tous les cinq. On reprend les 13 px sur les écarts, qui étaient
+   dimensionnés pour des écrans plus larges :
+     rembourrage interne 14 → 10 px (−8), écart de grille 10 → 8 px (−4),
+     écart de la marque 10 → 8 px (−2), écart des actions 8 → 6 px (−4).
+   Soit 18 px repris, donc 5 px de marge. Mesuré à 390 px, la largeur de
+   téléphone la plus répandue.
+   ------------------------------------------------------------------------ */
+@media (max-width: 430px) {
+  .hc-nav-inner { padding: 10px 8px; gap: 8px; }
+  .hc-nav-brand { gap: 8px; }
+  .hc-nav-actions { gap: 5px; }
+  /* La bascule de thème passe à la cible tactile du reste de l'en-tête.
+     Les 4 px qu'elle prend sont exactement ceux repris ci-dessus sur le
+     rembourrage horizontal de la barre : la largeur totale ne bouge pas. */
+  .hc-nav button.hc-theme-toggle { --tgl-size: 44px; }
+}
+
 /* --------- Très petits écrans (≤ 380 px) -------------------------------- */
 /* Sous 380 px, la ligne unique de l'en-tête ne tient plus quatre éléments :
    marque complète, déclencheur 44 px, bascule de thème et CTA libellé. Le
@@ -760,10 +870,10 @@ html.dark .hc-nav-pill-wrap[data-mega-open="true"] .hc-nav-pill-trigger:hover {
 html.dark .hc-nav-pill-sep {
   background: rgba(255, 255, 255, 0.12);
 }
-html.dark .hc-nav .hc-nav-cta-rdv {
+html.dark .hc-nav .hc-nav-cta-contact {
   border-color: rgba(255, 255, 255, 0.14);
 }
-html.dark .hc-nav .hc-nav-cta-rdv:hover {
+html.dark .hc-nav .hc-nav-cta-contact:hover {
   background: var(--paper-3);
   border-color: rgba(255, 255, 255, 0.22);
 }
@@ -788,7 +898,7 @@ html.dark .hc-mega-card:hover {
 html.dark .hc-mega-card-ic {
   border-color: rgba(255, 255, 255, 0.08);
 }
-@media (max-width: 720px) {
+@media (max-width: 1024px) {
   html.dark .hc-nav-pill-trigger {
     border-color: rgba(255, 255, 255, 0.14);
   }

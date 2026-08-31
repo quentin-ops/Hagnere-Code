@@ -942,8 +942,8 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
           </div>
 
           {/* ── Row 2 : Services (11 tuiles, plein largeur) ───────── */}
-          <div className="sf-foot-services">
-            <p className="sf-foot-title">Services</p>
+          <details className="sf-foot-services sf-foot-group" open>
+            <summary className="sf-foot-title"><span>Services</span><span className="sf-foot-chev" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
             <div className="sf-tile-grid sf-tile-grid-services">
               <Link
                 className="sf-tile"
@@ -1173,7 +1173,7 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                 <span className="sf-tile-label">Audit technique</span>
               </Link>
             </div>
-          </div>
+          </details>
 
           {/* ── Row 2 bis : ancrage local ─────────────────────────────
               Les pages /agence, /agence/savoie et /agence/savoie/chambery
@@ -1182,8 +1182,8 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
               registre `LOCAL_PAGES` pour qu'une page locale ouverte plus tard
               ne puisse plus rester orpheline (invariant verrouillé par
               shared-shell-contract.test.tsx). */}
-          <div className="sf-foot-services sf-foot-local">
-            <p className="sf-foot-title">Agence en Savoie</p>
+          <details className="sf-foot-services sf-foot-local sf-foot-group" open>
+            <summary className="sf-foot-title"><span>Agence en Savoie</span><span className="sf-foot-chev" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
             <div className="sf-tile-grid sf-tile-grid-local">
               {LOCAL_PAGES.map((page) => {
                 const href = localPagePath(page);
@@ -1212,12 +1212,12 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                 );
               })}
             </div>
-          </div>
+          </details>
 
           {/* ── Row 3 : Studio | Contact | Légal ─────────────────── */}
           <div className="sf-foot-cols">
-            <div className="sf-foot-col">
-              <p className="sf-foot-title">Studio</p>
+            <details className="sf-foot-col sf-foot-group" open>
+              <summary className="sf-foot-title"><span>Studio</span><span className="sf-foot-chev" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
               <Link className="sf-tile" href="/methode">
                 <span className="sf-tile-ic">
                   <svg
@@ -1366,7 +1366,7 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                     <path d="M12 7v5l3 2" />
                   </svg>
                 </span>
-                <span className="sf-tile-label">Décrire mon projet</span>
+                <span className="sf-tile-label">Démarrer mon projet</span>
               </Link>
               <Link className="sf-tile" href="/outils/calculateur-cout-excel">
                 <span className="sf-tile-ic">
@@ -1443,10 +1443,10 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                 </span>
                 <span className="sf-tile-label">Livres blancs</span>
               </Link>
-            </div>
+            </details>
 
-            <div className="sf-foot-col">
-              <p className="sf-foot-title">Contact</p>
+            <details className="sf-foot-col sf-foot-group" open>
+              <summary className="sf-foot-title"><span>Contact</span><span className="sf-foot-chev" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
               <a className="sf-tile" href={`mailto:${CONTACT_EMAIL}`}>
                 <span className="sf-tile-ic">
                   <svg
@@ -1592,10 +1592,10 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                   <span className="sf-tile-label">WhatsApp</span>
                 </a>
               )}
-            </div>
+            </details>
 
-            <div className="sf-foot-col">
-              <p className="sf-foot-title">Légal</p>
+            <details className="sf-foot-col sf-foot-group" open>
+              <summary className="sf-foot-title"><span>Légal</span><span className="sf-foot-chev" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
               <Link className="sf-tile" href="/legal/mentions">
                 <span className="sf-tile-ic">
                   <svg
@@ -1749,7 +1749,7 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                 </span>
                 <span className="sf-tile-label">Accessibilité</span>
               </Link>
-            </div>
+            </details>
           </div>
 
           <div className="sf-foot-bot">

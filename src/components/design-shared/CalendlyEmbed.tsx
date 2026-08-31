@@ -253,9 +253,33 @@ export function CalendlyEmbed({ height = 700 }: { height?: number }) {
   }
 
   return (
+    /*
+     * `data-url` N'EST PAS FACULTATIF, malgré l'appel explicite à
+     * `initInlineWidget` plus haut.
+     *
+     * `calendly-inline-widget` n'est pas une classe de style : c'est le point
+     * d'auto-initialisation du script tiers. Au chargement, `widget.js` balaie
+     * le document, trouve chaque élément portant cette classe et lit son
+     * `data-url`. Sans l'attribut, son `parseOptions` appelle `.split` sur
+     * `null` et le script LÈVE pendant sa propre initialisation — donc avant
+     * d'exposer `window.Calendly`.
+     *
+     * Conséquence mesurée avant correction, sur /rendez-vous et sur /contact :
+     * le visiteur cliquait « Autoriser et afficher le calendrier », le script
+     * se chargeait bien (HTTP 200), plantait, notre `initialise()` ne trouvait
+     * pas `window.Calendly` et affichait « Le calendrier ne répond pas. ».
+     * La prise de rendez-vous — la conversion la plus qualifiée du site —
+     * était donc impossible, et l'échec se présentait comme une panne du
+     * prestataire.
+     *
+     * Avec l'attribut, l'auto-initialisation aboutit ; l'appel explicite
+     * devient un filet (il sort tout de suite grâce au garde sur `iframe`).
+     * Le consentement reste respecté : le script n'est injecté qu'après accord.
+     */
     <div
       ref={containerRef}
       className="calendly-inline-widget"
+      data-url={CALENDLY_URL}
       style={heightStyle(height)}
       aria-label="Réserver un créneau de découverte avec Hagnéré Code"
     />

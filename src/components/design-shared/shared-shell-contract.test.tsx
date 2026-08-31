@@ -17,6 +17,18 @@ import { SERVICE_LINKS } from "@/lib/services";
 const read = (relative: string) =>
   readFileSync(join(process.cwd(), relative), "utf8");
 
+/**
+ * Seuil de l'en-tête compact — une seule rangée, menu derrière un
+ * déclencheur. Passé de 720 à 1024 px le 28/08/2026 : le gabarit tablette sur
+ * deux rangées mesurait 127 px de haut sur une barre collante, soit 17 % de la
+ * fenêtre d'un iPad en paysage.
+ *
+ * La même valeur est interrogée par `useDesignInteractive` pour le verrou de
+ * défilement de la feuille. Les deux doivent bouger ensemble — ce test est ce
+ * qui le rappelle.
+ */
+const COMPACT_HEADER_BREAKPOINT = "@media (max-width: 1024px)";
+
 const NAV_CSS = read("src/components/design-shared/nav-dropdown.css");
 const RESPONSIVE_CSS = read("src/components/design-shared/responsive.css");
 const INTERACTIVE = read(
@@ -70,7 +82,7 @@ describe("navigation partagée — vocabulaire et repli", () => {
   });
 
   it("expose « Menu » comme nom accessible sous 720 px au lieu de le masquer", () => {
-    const mobileBlock = NAV_CSS.slice(NAV_CSS.indexOf("@media (max-width: 720px)"));
+    const mobileBlock = NAV_CSS.slice(NAV_CSS.indexOf(COMPACT_HEADER_BREAKPOINT));
     expect(mobileBlock).toMatch(
       /\.hc-nav-pill-trigger-label-mobile\s*{[^}]*display:\s*block/,
     );
@@ -86,7 +98,7 @@ describe("navigation partagée — vocabulaire et repli", () => {
     expect(navHtml).toMatch(
       /<noscript><a class="hc-nav-pill-link hc-nav-pill-link-nojs" href="\/services">/,
     );
-    const mobileBlock = NAV_CSS.slice(NAV_CSS.indexOf("@media (max-width: 720px)"));
+    const mobileBlock = NAV_CSS.slice(NAV_CSS.indexOf(COMPACT_HEADER_BREAKPOINT));
     expect(mobileBlock).toContain(
       ".hc-nav-pill-link.hc-nav-pill-link-nojs { display: inline-flex; }",
     );
@@ -116,7 +128,7 @@ describe("méga-menu mobile — hauteur et verrou de défilement", () => {
   });
 
   it("verrouille le défilement du corps quand la feuille mobile est ouverte", () => {
-    expect(INTERACTIVE).toContain('window.matchMedia("(max-width: 720px)")');
+    expect(INTERACTIVE).toContain('window.matchMedia("(max-width: 1024px)")');
     expect(INTERACTIVE).toContain(
       'document.documentElement.classList.toggle("nav-menu-lock", locked)',
     );
@@ -132,6 +144,31 @@ describe("méga-menu mobile — hauteur et verrou de défilement", () => {
 describe("hydratation partagée — FAQ et reveal", () => {
   it("relie chaque question de FAQ à sa réponse", () => {
     expect(INTERACTIVE).toContain('q.setAttribute("aria-controls", a.id)');
+  });
+
+  it("pilote l'attribut `hidden`, et pas seulement les attributs d'accessibilité", () => {
+    /* Régression du 28/08/2026, restée invisible des mois : le basculement
+       posait `aria-hidden` et `inert` — les deux faces accessibles — sans
+       jamais toucher à `hidden`, qui est l'attribut qui MASQUE réellement.
+       Au clic, la question passait à l'état ouvert et la réponse restait à
+       `display: none`. La FAQ des dix pages service était morte à la souris
+       et au doigt ; seules l'accueil et /tarifs marchaient, parce que leurs
+       réponses ne portent pas `hidden` dans le HTML servi.
+
+       Le contrat d'accordéon (`publicite-en-ligne/faq-accordion-contract`)
+       ne pouvait pas le voir : il vérifie le HTML SERVI, où `hidden` est
+       correct, jamais ce que le script en fait ensuite. D'où ce test-ci, qui
+       garde l'invariant manquant : l'attribut doit suivre l'état.
+
+       Ne pas remplacer par une règle CSS `!important` : le preflight Tailwind
+       pose `[hidden]{display:none!important}` depuis `@layer base`, et pour
+       les déclarations importantes l'ordre des couches est inversé — une
+       règle hors couche ne peut pas gagner. */
+    expect(INTERACTIVE).toContain('answer?.setAttribute("hidden", "")');
+    expect(INTERACTIVE).toContain('a?.removeAttribute("hidden")');
+    // L'état initial doit lui aussi être cohérent, sinon une réponse servie
+    // ouverte reste invisible jusqu'à ce qu'on la ferme puis la rouvre.
+    expect(INTERACTIVE).toContain('a.toggleAttribute("hidden", !initiallyOpen)');
   });
 
   it("n'observe plus des centaines de nœuds pour une animation neutralisée", () => {
@@ -392,7 +429,7 @@ describe("garde-fous CSS de la coquille partagée", () => {
   });
 
   it("donne 44 px aux deux seuls contrôles de l'en-tête mobile", () => {
-    const mobile = NAV_CSS.slice(NAV_CSS.indexOf("@media (max-width: 720px)"));
+    const mobile = NAV_CSS.slice(NAV_CSS.indexOf(COMPACT_HEADER_BREAKPOINT));
     expect(mobile).toMatch(/\.hc-nav-pill-trigger\s*{[^}]*width:\s*44px/);
     expect(mobile).toMatch(/\.hc-nav-pill-trigger\s*{[^}]*height:\s*44px/);
     // Le CTA primaire n'est plus un carré de 44 px : il porte désormais un
@@ -407,7 +444,7 @@ describe("garde-fous CSS de la coquille partagée", () => {
   });
 
   it("laisse au CTA primaire un libellé lisible en mobile", () => {
-    const mobile = NAV_CSS.slice(NAV_CSS.indexOf("@media (max-width: 720px)"));
+    const mobile = NAV_CSS.slice(NAV_CSS.indexOf(COMPACT_HEADER_BREAKPOINT));
     // La paire de libellés doit s'inverser : le complet cède la place au court,
     // jamais au silence.
     expect(mobile).toMatch(/\.hc-nav-cta-label\s*{[^}]*display:\s*none/);

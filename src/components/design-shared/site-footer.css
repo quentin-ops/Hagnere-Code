@@ -20,7 +20,7 @@
      identique dans les deux thèmes — var(--ink) devient clair en dark. */
   background: #0a0a0a;
   color: #fff;
-  padding: 120px 0 110px;
+  padding:80px 0 110px;
   overflow: hidden;
   border-top: 1px solid var(--line);
 }
@@ -45,9 +45,15 @@
 .sf-contact-head h1,
 .sf-contact-head h2 {
   color: #fff;
-  font-size: 52px;
-  line-height: 1.05;
-  letter-spacing: 0;
+  /* Fluide, comme l'échelle du site (`design-shared/responsive.css`).
+     Cette feuille portait son propre escalier — 52 px, puis 48, 34 et 28 selon
+     le point de rupture, plus une variante à 60/40/30 px pour le titre de
+     /contact. Six paliers pour un bloc rendu sur les 54 pages du site, avec
+     les mêmes zones mortes entre paliers que l'échelle globale avant sa
+     correction. Le plafond s'aligne sur celui des H2 du site : 44 px. */
+  font-size: clamp(1.75rem, 1rem + 2.2vw, 2.75rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
   margin-top: 18px;
 }
 /* Le fragment accentué du titre est posé sur le #0a0a0a littéral de
@@ -408,8 +414,10 @@ a.sf-direct-v:hover { color: var(--accent); }
   margin: 0 0 42px;
   text-align: left;
 }
+/* Titre de page de /contact : c'est un H1, il suit donc le plafond des H1 du
+   site (56 px) et non celui des H2 ci-dessus. */
 .sf-contact--contact-hero .sf-contact-head h1 {
-  font-size: 60px;
+  font-size: clamp(1.875rem, 1.05rem + 3.05vw, 3.5rem);
   max-width: 780px;
 }
 .sf-contact--contact-hero .sf-contact-head p {
@@ -583,6 +591,42 @@ a.sf-direct-v:hover { color: var(--accent); }
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
+/* ──────────────────────────────────────────────────────────────
+   Groupes repliables du pied de page
+   ──────────────────────────────────────────────────────────────
+   Mesure du 28/08/2026 : sur un 390 × 844, le pied de page pesait
+   2 363 px — 2,8 hauteurs d'écran de liens, sur CHACUNE des 54 pages
+   du site. Le visiteur mobile qui arrive au bas d'une page traverse
+   donc trois écrans de sommaire avant la mention légale.
+
+   `<details>` plutôt qu'un accordéon maison : le repli et le nom
+   accessible sont natifs, et le contenu reste dans le DOM — donc
+   indexable et atteignable au clavier — même sans JavaScript.
+
+   L'attribut `open` est posé côté serveur, et RETIRÉ sous 768 px par
+   `useDesignInteractive`. Le sens de la dégradation est volontaire :
+   sans JavaScript, le pied de page mobile reste déplié, c'est-à-dire
+   exactement le comportement d'avant ce chantier. L'inverse — rendre
+   replié et déplier au script — aurait cassé le pied de page des
+   robots et des navigateurs sans JS.
+   ────────────────────────────────────────────────────────────── */
+.sf-foot-group > summary {
+  list-style: none;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.sf-foot-group > summary::-webkit-details-marker { display: none; }
+/* Le chevron n'a de sens que là où le bloc se replie réellement. */
+.sf-foot-chev {
+  display: none;
+  flex-shrink: 0;
+  color: var(--mute);
+  transition: transform 0.2s ease;
+}
+
 /* ---- Row 3 : 3 colonnes (Studio | Contact | Légal) ---- */
 .sf-foot-cols {
   display: grid;
@@ -698,7 +742,6 @@ button.sf-tile {
   .sf-footer > .wrap { padding-inline: 28px; }
   .sf-contact-grid { grid-template-columns: 1fr; gap: 20px; }
   .sf-contact--contact-hero .sf-contact-grid { grid-template-columns: 1fr; }
-  .sf-contact--contact-hero .sf-contact-head h1 { font-size: 48px; }
   .sf-foot-brand-row { grid-template-columns: 1fr; gap: 28px; }
   .sf-tile-grid-services { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .sf-foot-cols { grid-template-columns: repeat(2, 1fr); gap: 32px; }
@@ -706,20 +749,49 @@ button.sf-tile {
   .sf-foot-col:nth-child(2) { border-left: 1px solid var(--line); padding-left: 32px; }
 }
 @media (max-width: 768px) {
+
+  /* Sous 768 px, chaque groupe redevient une ligne tapable de 44 px.
+     `useDesignInteractive` a retiré `open` : les blocs arrivent repliés. */
+  .sf-foot-group > summary {
+    cursor: pointer;
+    min-height: 44px;
+    margin: 0;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line-2);
+  }
+  .sf-foot-group[open] > summary {
+    border-bottom-color: transparent;
+  }
+  .sf-foot-chev { display: inline-flex; }
+  .sf-foot-group[open] .sf-foot-chev { transform: rotate(180deg); }
+  /* Les marges basses des titres servaient à séparer le titre de sa liste ;
+     repliée, la liste n'est plus là et la marge devient un trou. */
+  .sf-foot-services .sf-foot-title,
+  .sf-foot-col .sf-foot-title { margin-bottom: 0; }
+  .sf-foot-group[open] > summary { margin-bottom: 12px; }
+  .sf-foot-services { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  /* La grille à 2 colonnes de la tablette laissait, une fois effondrée en
+     une colonne, un `gap: 32px` entre trois lignes de 44 px : les cinq
+     groupes n'avaient plus le même rythme selon qu'ils venaient de la
+     grille ou non. Une seule colonne, sans écart : les bordures de résumé
+     suffisent à séparer. */
+  .sf-foot-cols { grid-template-columns: 1fr; gap: 0; margin-bottom: 20px; }
+  .sf-foot-col,
+  .sf-foot-col:nth-child(2) { padding: 0; border-left: none; }
+
   .sf-contact > .wrap,
   .sf-footer > .wrap { padding-inline: 20px; }
   .sf-contact { padding: 80px 0 72px; }
   .sf-contact--contact-hero { padding: 40px 0 56px; }
   .sf-contact-head { margin-bottom: 40px; }
-  .sf-contact-head h1,
-  .sf-contact-head h2 { font-size: 34px; }
   .sf-contact--contact-hero .sf-contact-head {
     margin-bottom: 24px;
     text-align: left;
   }
   .sf-contact--contact-hero .sf-contact-head h1 {
     max-width: 100%;
-    font-size: 40px;
+    /* Le titre de /contact contient « sur mesure » et des mots longs : sur un
+       écran de 360 px, la coupure reste nécessaire même à taille fluide. */
     overflow-wrap: anywhere;
   }
   .sf-contact-head p { font-size: 15px; }
@@ -734,10 +806,15 @@ button.sf-tile {
 
   .sf-footer { padding: 48px 0 28px; }
   .sf-tile-grid-services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .sf-foot-cols { grid-template-columns: 1fr; gap: 28px; }
+  .sf-foot-cols { grid-template-columns: 1fr; gap: 0; }
   .sf-foot-col,
-  .sf-foot-col:nth-child(2) { padding: 0; border-left: none; border-top: 1px solid var(--line); padding-top: 24px; }
-  .sf-foot-col:first-child { border-top: none; padding-top: 0; }
+  /* La séparation entre colonnes est désormais portée par la bordure basse
+     de chaque <summary> : une bordure haute + 24 px de rembourrage en plus
+     donnaient à deux des cinq groupes une ligne de 69 px là où les trois
+     autres en font 44. */
+  .sf-foot-col,
+  .sf-foot-col:nth-child(2),
+  .sf-foot-col:first-child { padding: 0; border-left: none; border-top: none; }
   .sf-foot-cta { flex-direction: row; padding: 18px 20px; }
   .sf-foot-cta-title { font-size: 14px; }
   .sf-foot-bot { flex-direction: column; gap: 8px; font-size: 11.5px; }
@@ -746,12 +823,6 @@ button.sf-tile {
   .sf-contact > .wrap,
   .sf-footer > .wrap { padding-inline: 16px; }
   .sf-tile-grid-services { grid-template-columns: 1fr; }
-  .sf-contact-head h1,
-  .sf-contact-head h2 { font-size: 28px; }
-  .sf-contact--contact-hero .sf-contact-head h1 {
-    font-size: 30px;
-    line-height: 1.08;
-  }
   .sf-contact--contact-hero .sf-contact-head p { font-size: 14.5px; }
   .sf-contact--contact-hero .sf-card,
   .sf-contact--contact-hero .sf-form { padding: 18px; }
@@ -852,8 +923,13 @@ button.sf-tile {
 .vdb-btn:active:not(:disabled) {
   transform: translateY(0) scale(0.98);
 }
+/* L'anneau était un violet à 34 % d'opacité : composé sur le blanc du
+   formulaire, il tombait à 2,72:1 — sous le seuil de 3:1 de WCAG 1.4.11, sur le
+   bouton de dictée vocale, c'est-à-dire précisément le contrôle dont dépendent
+   les personnes qui n'écrivent pas au clavier. On reprend le jeton global, qui
+   tient 4,17:1 sur blanc et 4,75:1 sur les sections sombres du site. */
 .vdb-btn:focus-visible {
-  outline: 3px solid rgba(167, 139, 250, 0.34);
+  outline: 3px solid var(--focus-ring, #8b5cf6);
   outline-offset: 3px;
 }
 .vdb-btn:disabled {

@@ -4,11 +4,12 @@ import {
   CONTACT_PHONE_E164,
 } from "@/lib/contact-details";
 import {
+  CONTACT_ACTION_HREF,
+  CONTACT_ACTION_LABEL,
   PRIMARY_ACTION_HREF,
   PRIMARY_ACTION_LABEL,
   PRIMARY_ACTION_LABEL_SHORT,
   SECONDARY_ACTION_LABEL,
-  SECONDARY_ACTION_LABEL_SHORT,
 } from "@/lib/cta-labels";
 import { FIRST_CALL_CONTACT } from "@/components/homepage/first-call";
 
@@ -17,11 +18,17 @@ import { FIRST_CALL_CONTACT } from "@/components/homepage/first-call";
  * React layouts via <MainNav />). Inspired by Hagnéré Patrimoine's pill + mega
  * menu UX:
  *
- *   - Top pill (white, rounded full) with: Nos services ▾ | Tarifs | Contact | ☎ phone
+ *   - Top pill (white, rounded full) with: Nos services ▾ | Tarifs | Réalisations | ☎ phone
+ *     (« Contact » a quitté la pastille : c'est devenu un BOUTON à droite, et
+ *     deux cibles portant le même mot à 200 px d'écart ne sont pas une aide)
  *   - Mega menu opens from "Nos services" trigger:
  *       - Left dark sidebar with 5 categories + bottom CTA card
  *       - Right pane with eyebrow + H2 + 2-col grid of service cards
- *   - Right side: primary button (libellé unique du site, cf. `@/lib/cta-labels`)
+ *   - Right side: DEUX portes, cf. `@/lib/cta-labels` — « Contact » (formulaire
+ *     court, faible engagement) puis le bouton primaire (tunnel de
+ *     qualification). L'ordre va du moins au plus engageant, de gauche à
+ *     droite : le bouton le plus lourd reste le dernier atteint par l'œil et
+ *     le plus contrasté.
  *
  * Category switching is wired by useDesignInteractive (data-cat / data-pane).
  *
@@ -40,7 +47,7 @@ import { FIRST_CALL_CONTACT } from "@/components/homepage/first-call";
  * plus d'`aria-label` figé, mais DEUX libellés dont un seul est rendu au point
  * de rupture courant (`hc-nav-cta-label` au-dessus de 720 px,
  * `hc-nav-cta-label-mobile` en dessous). Un `aria-label` unique aurait annoncé
- * « Décrire mon projet » à un bouton n'affichant que « Mon projet », ce que le
+ * « Démarrer mon projet » à un bouton n'affichant que « Mon projet », ce que le
  * critère « Label in Name » (WCAG 2.5.3) sanctionne dans l'autre sens : la
  * commande vocale doit pouvoir prononcer ce qui est écrit.
  */
@@ -63,6 +70,7 @@ const ICON = {
     '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M9 16l2 2 4-4"/></svg>',
   rocket:
     '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>',
+  mail: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
   user: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
   // Sidebar category icons
   build:
@@ -363,7 +371,7 @@ export const navHtml = `<!-- NAV -->
         </button>
         <noscript><a class="hc-nav-pill-link hc-nav-pill-link-nojs" href="/services">Nos services</a></noscript>
         <a class="hc-nav-pill-link" href="/tarifs">Tarifs</a>
-        <a class="hc-nav-pill-link" href="/contact">Contact</a>
+        <a class="hc-nav-pill-link" href="/realisations">Réalisations</a>
         <span class="hc-nav-pill-sep" aria-hidden="true"></span>
         <a class="hc-nav-pill-phone" href="tel:${CONTACT_PHONE_E164}">${ICON.phone}<span>${CONTACT_PHONE_DISPLAY_NATIONAL}</span></a>
       </div>
@@ -417,8 +425,8 @@ export const navHtml = `<!-- NAV -->
         <svg data-icon-moon width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <svg data-icon-sun width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
       </button>
-      <a href="/rendez-vous" class="hc-nav-cta hc-nav-cta-rdv">
-        ${ICON.calendarCheck}<span>${SECONDARY_ACTION_LABEL_SHORT}</span>
+      <a href="${CONTACT_ACTION_HREF}" class="hc-nav-cta hc-nav-cta-contact">
+        ${ICON.mail}<span class="hc-nav-cta-contact-label">${CONTACT_ACTION_LABEL}</span>
       </a>
       <a href="${PRIMARY_ACTION_HREF}" class="hc-nav-cta hc-nav-cta-primary">
         ${ICON.rocket}<span class="hc-nav-cta-label">${PRIMARY_ACTION_LABEL}</span><span class="hc-nav-cta-label-mobile">${PRIMARY_ACTION_LABEL_SHORT}</span>

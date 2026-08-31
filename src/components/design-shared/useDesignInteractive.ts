@@ -67,6 +67,119 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
     // nœuds par page ne produisait donc plus aucune animation — seulement du
     // travail de thread principal juste après l'hydratation.
 
+    /* ── Saut vers une ancre : reprise après rendu ────────────────────────
+       `content-visibility: auto` fait qu'une section non peinte compte pour son
+       estimation (`contain-intrinsic-size`) et non pour sa taille réelle. Le
+       navigateur calcule donc la position d'une ancre sur des sections qui
+       n'existent pas encore à leur vraie hauteur, et le saut atterrit court.
+
+       Mesuré avant correction, au premier chargement (cache vide) :
+         /services/audit-technique #faq → 9 361 px d'écart sur mobile,
+         /methode #faq → 3 088 px. Le sommaire de /methode et toutes les ancres
+       du site étaient concernés. Le défaut est invisible en développement :
+       au second chargement, le mot-clé `auto` a mémorisé les vraies tailles.
+
+       On ne renonce pas au budget de peinture — il vaut plusieurs secondes sur
+       mobile. On corrige sa conséquence : on rejoue le saut pendant que les
+       sections traversées se peignent, jusqu'à ce que la cible ne bouge plus.
+       Chaque passe force le rendu des sections franchies, donc la suivante
+       part d'une mesure plus juste. */
+    const settleToAnchor = (hash: string) => {
+      if (!hash || hash === "#") return;
+      let target: Element | null = null;
+      try {
+        target = document.querySelector(hash);
+      } catch {
+        return; // sélecteur invalide (une ancre peut contenir n'importe quoi)
+      }
+      if (!target) return;
+
+      let passes = 0;
+      let previousTop = Number.NaN;
+      const converge = () => {
+        if (!target || !target.isConnected) return;
+        // `instant` et non `auto` : selon la spécification, `auto` signifie
+        // « suivre la valeur CSS de scroll-behavior », et le site déclare
+        // `scroll-behavior: smooth`. Chaque passe lançait donc une animation
+        // asynchrone, et les huit passes se déclenchaient avant que la
+        // première n'ait bougé d'un pixel — mesuré : scrollY restait à 0.
+        target.scrollIntoView({ block: "start", behavior: "instant" });
+        const top = Math.round(target.getBoundingClientRect().top);
+        passes += 1;
+        // On s'arrête dès que la cible est stable à 2 px près, ou au bout de
+        // huit passes — au-delà, ce n'est plus le rendu qui bouge.
+        if (Math.abs(top - previousTop) <= 2 || passes >= 8) return;
+        previousTop = top;
+        window.setTimeout(converge, 90);
+      };
+      converge();
+    };
+
+    const onAnchorClick = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey) return;
+      const link = (event.target as Element | null)?.closest?.('a[href^="#"]');
+      if (!link) return;
+      const hash = link.getAttribute("href") || "";
+      if (hash.length < 2) return;
+      // On laisse le navigateur faire son saut natif, puis on le rattrape.
+      window.setTimeout(() => settleToAnchor(hash), 0);
+    };
+    document.addEventListener("click", onAnchorClick);
+    cleanups.push(() => document.removeEventListener("click", onAnchorClick));
+
+    const onHashChange = () => settleToAnchor(window.location.hash);
+    window.addEventListener("hashchange", onHashChange);
+    cleanups.push(() => window.removeEventListener("hashchange", onHashChange));
+
+    // Arrivée directe sur une URL porteuse d'une ancre.
+    if (window.location.hash) {
+      window.setTimeout(() => settleToAnchor(window.location.hash), 60);
+    }
+
+    /* ── Pied de page : replier les groupes de liens sous 768 px ──────────
+       Le pied de page mesurait 2 363 px sur un 390 × 844 — 2,8 hauteurs
+       d'écran de liens, répétées sur les 54 pages du site.
+
+       Le serveur rend les `<details class="sf-foot-group">` AVEC `open` ;
+       c'est ici qu'on le retire, et seulement au mobile. Le sens compte :
+       sans JavaScript — robots d'indexation, navigateur dégradé, capture
+       pleine page — le pied de page reste déplié, donc identique à ce qu'il
+       était. Rendre replié et déplier au script aurait produit l'inverse.
+
+       On n'écrase jamais un choix de l'utilisateur : dès qu'il a touché un
+       groupe, ce groupe sort de la synchronisation. */
+    const footGroups = Array.from(
+      document.querySelectorAll<HTMLDetailsElement>("details.sf-foot-group"),
+    );
+    if (footGroups.length && typeof window.matchMedia === "function") {
+      const compact = window.matchMedia("(max-width: 768px)");
+      const touched = new WeakSet<HTMLDetailsElement>();
+
+      const syncFootGroups = () => {
+        for (const group of footGroups) {
+          if (touched.has(group)) continue;
+          group.open = !compact.matches;
+        }
+      };
+      syncFootGroups();
+
+      // On écoute le clic sur le <summary>, pas l'évènement `toggle` du
+      // <details> : `toggle` se déclenche AUSSI quand `syncFootGroups` écrit
+      // `open`, ce qui marquerait immédiatement les six groupes comme
+      // « touchés » et neutraliserait la synchronisation dès le premier appel.
+      // Un clic sur le résumé, lui, ne peut venir que de l'utilisateur — la
+      // touche Entrée et la barre d'espace en émettent un aussi.
+      for (const group of footGroups) {
+        const summary = group.querySelector("summary");
+        if (!summary) continue;
+        const onSummaryClick = () => touched.add(group);
+        summary.addEventListener("click", onSummaryClick);
+        cleanups.push(() => summary.removeEventListener("click", onSummaryClick));
+      }
+      compact.addEventListener("change", syncFootGroups);
+      cleanups.push(() => compact.removeEventListener("change", syncFootGroups));
+    }
+
     let faqSeq = 0;
     root.querySelectorAll(".faq-item").forEach((item) => {
       const q = item.querySelector<HTMLElement>(".faq-q");
@@ -91,8 +204,35 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
         q.setAttribute("aria-controls", a.id);
         a.setAttribute("aria-hidden", initiallyOpen ? "false" : "true");
         a.toggleAttribute("inert", !initiallyOpen);
+        // Même raison que dans `toggle` : `hidden` doit suivre l'état réel,
+        // y compris au premier rendu, sinon une réponse servie ouverte reste
+        // invisible tant que personne ne l'a cliquée puis rouverte.
+        a.toggleAttribute("hidden", !initiallyOpen);
       }
 
+      /* L'attribut `hidden` est ce qui masque RÉELLEMENT la réponse dans le
+         HTML servi. Ce basculement posait `aria-hidden` et `inert` — les deux
+         faces accessibles — sans jamais toucher à `hidden` : la question
+         passait bien à l'état ouvert, l'icône tournait, la classe `.open`
+         était posée… et la réponse restait à `display: none`.
+
+         La règle censée rattraper le coup, `.faq-item.open .faq-a {
+         display: block !important }`, ne pouvait pas gagner : la déclaration
+         concurrente `[hidden] { display: none !important }` du preflight vit
+         dans `@layer base`, et pour les déclarations `!important` l'ordre des
+         couches est INVERSÉ — une règle en couche bat une règle hors couche,
+         quelle que soit sa spécificité. Le commentaire qui affirmait le
+         contraire dans les page.css était faux.
+
+         Mesuré avant correction : sur /services/audit-technique,
+         /services/securite-rgpd, /services/ecommerce et
+         /services/maintenance-evolution, cliquer une question laissait la
+         réponse à `display: none`, hauteur 0. La FAQ de ces pages n'a jamais
+         fonctionné à la souris. L'accueil et /tarifs marchaient, parce que
+         leurs réponses n'ont pas d'attribut `hidden`.
+
+         On pilote donc `hidden` — la propriété qui décide — et le CSS n'a
+         plus rien à rattraper. */
       const toggle = () => {
         const wasOpen = item.classList.contains("open");
         root.querySelectorAll(".faq-item").forEach((x) => {
@@ -101,12 +241,14 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
           const answer = x.querySelector<HTMLElement>(".faq-a");
           answer?.setAttribute("aria-hidden", "true");
           answer?.setAttribute("inert", "");
+          answer?.setAttribute("hidden", "");
         });
         if (!wasOpen) {
           item.classList.add("open");
           q.setAttribute("aria-expanded", "true");
           a?.setAttribute("aria-hidden", "false");
           a?.removeAttribute("inert");
+          a?.removeAttribute("hidden");
         }
       };
       const onKey = (e: KeyboardEvent) => {
@@ -877,6 +1019,30 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       const section = container.closest<HTMLElement>(".faq");
       const list = section?.querySelector<HTMLElement>(".faq-list");
       if (!list) return;
+
+      /* Les compteurs des pastilles (« CTO 7 ») étaient écrits en dur dans le
+         HTML, alors que le filtrage, lui, se calcule sur `data-persona`. Les
+         deux divergeaient à la première question ajoutée ou déplacée — et une
+         pastille qui annonce 7 réponses pour en afficher 15 fait douter du
+         reste de la page. On les recalcule ici, à partir de la même source que
+         le filtre. Le HTML garde des valeurs justes pour le rendu sans
+         JavaScript ; ce bloc les corrige si elles ont dérivé. */
+      const personaItems = Array.from(
+        list.querySelectorAll<HTMLElement>(".faq-item"),
+      );
+      buttons.forEach((btn) => {
+        const badge = btn.querySelector(".at-faq-count, .me-faq-count");
+        if (!badge) return;
+        const key = btn.dataset.faqFilter || "all";
+        const count =
+          key === "all"
+            ? personaItems.length
+            : personaItems.filter((item) =>
+                (item.dataset.persona || "").split(/\s+/).includes(key),
+              ).length;
+        badge.textContent = String(count);
+      });
+
       buttons.forEach((btn) => {
         const onClick = () => {
           const key = btn.dataset.faqFilter || "all";
@@ -984,13 +1150,16 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       const cats = Array.from(megaRoot.querySelectorAll<HTMLElement>(".hc-mega-cat[data-cat]"));
       const panes = Array.from(megaRoot.querySelectorAll<HTMLElement>(".hc-mega-pane[data-pane]"));
 
-      // Sous 720 px la feuille est en position:fixed : sans verrou, la page
+      // Sous 1024 px la feuille est en position:fixed : sans verrou, la page
       // continue de défiler derrière elle dès qu'un geste démarre hors du
       // panneau. Le verrou est conditionné au tactile pour ne pas provoquer de
       // saut de barre de défilement sur desktop.
+      // Le seuil doit rester ÉGAL à celui de l'en-tête compact dans
+      // `nav-dropdown.css` : s'ils divergent, la feuille est en position fixe
+      // sans verrou de défilement dans la bande d'écart.
       const isMobileSheet = () =>
         typeof window.matchMedia === "function" &&
-        window.matchMedia("(max-width: 720px)").matches;
+        window.matchMedia("(max-width: 1024px)").matches;
       const setScrollLock = (locked: boolean) => {
         document.documentElement.classList.toggle("nav-menu-lock", locked);
         document.body.classList.toggle("nav-menu-lock", locked);
@@ -1067,7 +1236,7 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
         const onClick = (e: MouseEvent) => {
           e.preventDefault();
           cl();
-          if (window.matchMedia("(max-width: 720px)").matches) {
+          if (window.matchMedia("(max-width: 1024px)").matches) {
             const content = panel.querySelector<HTMLElement>(".hc-mega-content");
             if (content) {
               panel.scrollTo({

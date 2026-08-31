@@ -21,6 +21,98 @@
 }
 
 /* =========================================================================
+   Sous-titre de groupe dans une FAQ (`.faq-sub`)
+   -------------------------------------------------------------------------
+   La fusion des FAQ techniques dans les FAQ commerciales (28/08/2026) a fait
+   disparaître, sur sept pages, le titre qui annonçait « ces questions-là sont
+   pour les profils techniques ». Deux conséquences mesurées : le lecteur
+   technique n'avait plus de repère au milieu de vingt questions commerciales,
+   et le mot « RSSI » disparaissait complètement de /services/securite-rgpd.
+
+   Le repère revient sous forme de `h3.eyebrow` — un vrai niveau de titre, donc
+   présent dans la navigation par titres, avec l'apparence d'un sur-titre.
+   L'exclusion `h3:not(.eyebrow)` de l'échelle typographique, plus haut dans ce
+   fichier, est ce qui lui garde son petit capital espacé.
+   ========================================================================= */
+.hc-design .faq-sub {
+  padding: 26px 0 8px;
+}
+.hc-design .faq-sub .eyebrow {
+  display: block;
+  margin: 0;
+}
+
+/* =========================================================================
+   RYTHME VERTICAL — décision du 28/08/2026, appliquée dans 28 feuilles
+   -------------------------------------------------------------------------
+   Ce bloc ne déclare rien : il documente une passe faite AILLEURS, dans les
+   `page.css` et `sections/sections.css` de chaque page, pour que la prochaine
+   personne qui ajoute une section sache quelle échelle suivre.
+
+   Mesure d'entrée : /services/audit-technique demandait 82,8 hauteurs d'écran
+   de défilement sur un 390 × 844, /services/maintenance-evolution 78,1,
+   l'accueil 45,5. Une partie n'est pas du contenu : 265 règles déclaraient
+   entre 100 et 140 px de rembourrage vertical en HAUT ET EN BAS de section.
+   Sur une page de vingt sections, c'est six hauteurs d'écran de vide.
+
+   Barème appliqué — proportionnel, pour que la hiérarchie entre une section
+   majeure et une section mineure survive au resserrage :
+
+       100 px → 72 px      130 px → 88 px
+       110 px → 76 px      140 px → 88 px
+       120 px → 80 px
+
+   Toute nouvelle section se cale sur ces valeurs. Sous 768 px, elles sont
+   ramenées à 56 px par les blocs mobiles de cette feuille.
+   ========================================================================= */
+
+/* =========================================================================
+   ÉCHELLE TYPOGRAPHIQUE FLUIDE — source unique pour tout le site
+   -------------------------------------------------------------------------
+   Cette feuille est chargée APRÈS le CSS de chaque page : ces trois règles
+   supersèdent donc les tailles de base déclarées page par page (84 px sur
+   l'accueil, 72 px sur /tarifs et /equipe…) sans avoir besoin d'`!important`.
+
+   Ce qu'elles remplacent : un escalier de cinq paliers pour le seul h1
+   (84 → 56 → 40 → 26 !important → 24 !important), reproduit à l'identique
+   pour h2 et h3. Trois défauts mesurés :
+
+   1. à 1440 px, le h1 de l'accueil faisait 576 px de haut, soit 64 % de la
+      fenêtre ; le premier bouton du héros tombait à 1020 px, sous la ligne de
+      flottaison d'un écran de 900 px ;
+   2. entre deux paliers, la taille ne bougeait pas : un titre de 56 px sur un
+      écran de 1024 px comme sur un écran de 768 px ;
+   3. chaque palier devait battre le précédent, d'où les `!important` — qui
+      empêchaient ensuite toute exception locale légitime.
+
+   Les bornes hautes descendent volontairement (h1 84 → 56 px, h2 52 → 44 px) :
+   le site est un site de contenu long, pas une affiche. Les bornes basses
+   MONTENT (h1 24/26 → 30 px) : l'escalier rapetissait les titres mobiles pour
+   compenser des `<br>` codés en dur, ce que `overflow-wrap` traite déjà plus
+   bas sans sacrifier la lisibilité.
+   ========================================================================= */
+.hc-design h1 {
+  font-size: clamp(1.875rem, 1.05rem + 3.05vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+.hc-design h2 {
+  font-size: clamp(1.375rem, 0.9rem + 2.1vw, 2.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+/* `:not(.eyebrow)` : un sur-titre reste un sur-titre quelle que soit la balise
+   qui le porte. Certains sous-groupes sont des `h3.eyebrow` — le niveau de
+   titre est là pour la navigation au lecteur d'écran, pas pour la taille. Sans
+   cette exclusion, l'échelle globale les repassait à 21,68 px et cassait le
+   petit capital espacé de la classe. */
+.hc-design h3:not(.eyebrow) {
+  font-size: clamp(1.0625rem, 0.95rem + 0.45vw, 1.375rem);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+/* =========================================================================
    Filet anti-défilement horizontal — SANS condition de largeur.
    -------------------------------------------------------------------------
    Il vivait dans `@media (max-width: 480px)` : un débordement de quelques
@@ -71,7 +163,37 @@ body {
 @supports (content-visibility: auto) {
   .hc-design #main-content > section:not(:first-of-type) {
     content-visibility: auto;
-    contain-intrinsic-size: auto 900px;
+    contain-intrinsic-size: auto 1100px;
+  }
+
+  /* L'ESTIMATION DOIT SUIVRE LE POINT DE RUPTURE, sinon elle casse les ancres.
+     -------------------------------------------------------------------------
+     Une valeur unique de 900 px était posée pour tous les écrans. Or les
+     sections ne mesurent pas la même chose selon la largeur — hauteurs réelles
+     relevées sur 114 sections de neuf pages représentatives :
+
+         desktop 1440 px : médiane 1 089 px   (estimation 900 → −21 %)
+         tablette 820 px : médiane 1 528 px   (estimation 900 → −41 %)
+         mobile   390 px : médiane 2 142 px   (estimation 900 → −58 %)
+
+     Tant qu'une section n'a pas été peinte, le navigateur la compte pour
+     l'estimation. Sur un mobile, quinze sections sous-estimées de 1 200 px
+     chacune décalent une ancre de dix-huit mille pixels : le lien du sommaire
+     atterrissait à des écrans de sa cible, et le défaut était invisible en
+     développement — au deuxième chargement, le mot-clé `auto` a mémorisé les
+     vraies tailles et tout retombe juste.
+
+     Les valeurs ci-dessous sont les médianes mesurées, arrondies. Le budget de
+     peinture hors écran reste acquis ; seule l'estimation devient honnête. */
+  @media (max-width: 1024px) {
+    .hc-design #main-content > section:not(:first-of-type) {
+      contain-intrinsic-size: auto 1500px;
+    }
+  }
+  @media (max-width: 768px) {
+    .hc-design #main-content > section:not(:first-of-type) {
+      contain-intrinsic-size: auto 2100px;
+    }
   }
 }
 
@@ -582,9 +704,6 @@ body.nav-menu-lock { overflow: hidden; }
 @media (max-width: 1024px) {
   .wrap { padding: 0 28px; }
 
-  .hc-design h1 { font-size: 56px; line-height: 1.02; }
-  .hc-design h2 { font-size: 40px; }
-
   .hero-inner,
   .lb-inner,
   .descr-grid,
@@ -707,10 +826,6 @@ body.nav-menu-lock { overflow: hidden; }
 /* ============ < 768px : mobile ============ */
 @media (max-width: 768px) {
   .wrap { padding: 0 20px; }
-
-  .hc-design h1 { font-size: 40px; letter-spacing: -0.03em; }
-  .hc-design h2 { font-size: 30px; letter-spacing: -0.025em; }
-  .hc-design h3 { font-size: 18px; }
 
   /* Hero */
   .hero { padding: 40px 0 48px; }
@@ -905,8 +1020,11 @@ body.nav-menu-lock { overflow: hidden; }
   }
 
   /* Logo bar / studio / sections padding */
-  .logobar { padding: 64px 0; }
-  .studio, .describe, .methode, .real, .equipe, .pricing, .faq, .fcta, .stats { padding: 72px 0; }
+  /* Sous 480 px, 72 px de rembourrage haut ET bas sur onze sections faisaient
+     encore 1 580 px — presque deux hauteurs d'écran de vide sur un téléphone.
+     56 px suffisent à séparer deux blocs quand la colonne est unique. */
+  .logobar { padding: 56px 0; }
+  .studio, .describe, .methode, .real, .equipe, .pricing, .faq, .fcta, .stats { padding: 56px 0; }
   .studio-head h2 { font-size: 38px; }
   .fcta h2 { font-size: 40px; }
 
@@ -925,7 +1043,6 @@ body.nav-menu-lock { overflow: hidden; }
   .svc-row,
   .use-grid,
   .meth-grid,
-  .real-grid,
   .stats-grid,
   .price-grid,
   .prob-grid,
@@ -1140,7 +1257,7 @@ body.nav-menu-lock { overflow: hidden; }
   .cw-foot { margin-top: 20px; font-size: 12px; }
 
   /* Comparison — horizontal scroll with sticky label column */
-  .compare { padding: 72px 0; }
+  .compare { padding: 56px 0; }
   .cmp-table {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -1166,7 +1283,7 @@ body.nav-menu-lock { overflow: hidden; }
   .cmp-disclaimer { margin-top: 20px; padding: 14px 16px; font-size: 13px; flex-direction: column; align-items: flex-start; }
 
   /* Verticals */
-  .verticals { padding: 72px 0; }
+  .verticals { padding: 56px 0; }
   .vt-proof-panel { grid-template-columns: 1fr; padding: 16px; }
   .vt-proof-tags { justify-content: flex-start; }
   .vt-grid { grid-template-columns: 1fr; gap: 14px; }
@@ -1181,12 +1298,10 @@ body.nav-menu-lock { overflow: hidden; }
 
 @media (max-width: 480px) {
   .wrap { padding: 0 16px; }
-  /* Aggressively scale headings down — many pages have explicit <br> tags
-     that force long lines; we need the font small enough to fit on a 360-
-     375px viewport with 32px of horizontal padding (= 328-343px usable). */
-  .hc-design h1, .hero h1, .shero h1 { font-size: 26px !important; letter-spacing: -0.02em !important; line-height: 1.08 !important; }
-  .hc-design h2 { font-size: 22px !important; letter-spacing: -0.02em !important; line-height: 1.1 !important; }
-  .hc-design h3 { font-size: 17px !important; }
+  /* Les tailles de titres viennent de l'échelle fluide en tête de fichier.
+     Le `overflow-wrap` ci-dessous reste, lui, indispensable : plusieurs pages
+     portent des <br> codés en dur et des mots longs (noms de technologies,
+     URL) qui déborderaient un écran de 360 px. */
   /* Always allow long words to break instead of overflowing the viewport */
   .hc-design h1, .hc-design h2, .hc-design h3, .hc-design h4,
   .hc-design p, .hc-design li, .hc-design span, .hc-design a {
@@ -1273,8 +1388,6 @@ body.nav-menu-lock { overflow: hidden; }
 /* ============ < 380px : tiny phones (iPhone SE, Galaxy S8) ============ */
 @media (max-width: 380px) {
   .wrap { padding: 0 14px; }
-  .hc-design h1, .hero h1, .shero h1 { font-size: 24px !important; }
-  .hc-design h2 { font-size: 20px !important; }
   .hero-cta .btn, .hero-cta .btn-lg { font-size: 13.5px; padding: 12px 16px; }
 }
 
@@ -1389,3 +1502,55 @@ body.nav-menu-lock { overflow: hidden; }
    même façon plus haut dans ce fichier, mais son tri demande de séparer les
    sélecteurs encore partagés avec le pied de page — `.brand` en particulier —
    avant toute suppression. */
+
+/* =========================================================================
+   Galeries de cartes : rail horizontal au mobile plutôt qu'empilement
+   -------------------------------------------------------------------------
+   Mesure : sur un 390 × 844, les quatre cartes de `.real-grid` empilées en une
+   colonne pesaient 2 600 px — trois hauteurs d'écran pour QUATRE vignettes,
+   sur une page d'accueil qui en demandait déjà trente-cinq.
+
+   Un rail aimanté ramène le bloc à 650 px et rend le geste au pouce. Trois
+   précautions le rendent utilisable, sans lesquelles un carrousel est pire
+   que l'empilement :
+
+   1. la carte suivante DÉPASSE de 32 px (`calc(86% - ...)`) : sans ce bout de
+      carte visible, rien n'indique qu'on peut faire glisser ;
+   2. `scroll-snap-type: x mandatory` aligne chaque carte sur le bord — un
+      rail libre s'arrête entre deux cartes et donne l'impression d'un bug ;
+   3. `scroll-padding-inline` + pseudo-éléments de marge : la première et la
+      dernière carte s'alignent sur la gouttière de la page, pas sur 0.
+
+   Ce n'est PAS appliqué aux grilles de texte (situations, services) : on ne
+   cache pas derrière un geste ce que le visiteur doit lire pour se
+   reconnaître. Uniquement aux galeries de vignettes.
+   ========================================================================= */
+@media (max-width: 768px) {
+  .real-grid {
+    display: grid !important;
+    grid-auto-flow: column;
+    grid-auto-columns: calc(86% - 12px);
+    grid-template-columns: none !important;
+    gap: 12px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 20px;
+    padding-bottom: 8px;
+    /* La gouttière de `.wrap` est annulée puis rendue en marge interne, pour
+       que le rail défile d'un bord à l'autre de l'écran. */
+    margin-inline: -20px;
+    padding-inline: 20px;
+  }
+  .real-grid > * {
+    scroll-snap-align: start;
+  }
+  .real-grid::-webkit-scrollbar { height: 0; }
+}
+@media (max-width: 480px) {
+  .real-grid { scroll-padding-inline: 16px; margin-inline: -16px; padding-inline: 16px; }
+}
+@media (max-width: 380px) {
+  .real-grid { scroll-padding-inline: 14px; margin-inline: -14px; padding-inline: 14px; }
+}

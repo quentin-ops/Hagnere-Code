@@ -27,7 +27,7 @@ Trois types de violation :
 
 | Rôle | Personne | Contact |
 |---|---|---|
-| Référent RGPD | Quentin Hagnéré (président) | quentin@hagnere-patrimoine.fr · +33 3 74 47 20 18 |
+| Référent RGPD | Quentin Hagnéré (président) | quentin@hagnere-patrimoine.fr · +33 6 60 08 83 51 |
 | Référent sécurité technique | Nicolas Wallerand (désignation à confirmer) | canal interne à confirmer |
 | Backup référent | (à définir) | — |
 | Responsable de traitement client, si HAGNERE CODE agit comme sous-traitant | contact incident prévu au DPA de la mission | à compléter et tester avant traitement |
