@@ -632,8 +632,12 @@ export function ServicesHubPage() {
               </p>
             </div>
             <div className="final-actions">
+              {/* Même destination que le bouton du héros, donc même libellé :
+                  la page proposait « Nous contacter » en haut et « Parler du
+                  projet » en bas pour la même porte. Deux noms pour une porte,
+                  c'est le lecteur qui se demande ce qui les distingue. */}
               <Link href="/contact" className="btn btn-primary btn-lg">
-                Parler du projet <MessageSquare size={16} />
+                Nous contacter <MessageSquare size={16} />
               </Link>
               <Link href="/tarifs" className="btn btn-ghost btn-lg">
                 Voir les tarifs

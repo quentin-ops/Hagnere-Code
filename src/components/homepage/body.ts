@@ -614,7 +614,7 @@ export const bodyHtml = `${navHtml}
       </div>
       <div class="right">
         Pas de mystère, pas de « consulting » qui traîne. Quatre étapes claires,
-        des livrables précis, des démos selon le planning et aucun dépassement sans accord écrit.
+        des livrables précis et des démos selon le planning.
       </div>
     </div>
 
@@ -644,10 +644,11 @@ export const bodyHtml = `${navHtml}
       <div class="sf-manifesto-pillars">
         <div class="sf-pillar">
           <div class="sf-pillar-n">01</div>
-          <div class="sf-pillar-title">Périmètre verrouillé</div>
+          <div class="sf-pillar-title">Cadrage avant chiffrage</div>
           <div class="sf-pillar-body">
-            Le périmètre est figé au devis. Tout ajout passe par un avenant
-            écrit, chiffré, signé — jamais une mauvaise surprise en fin de projet.
+            Trente minutes pour comprendre le besoin, puis un Discovery payé si le
+            projet le mérite. Le devis ferme n'arrive qu'une fois le périmètre écrit,
+            jamais avant.
           </div>
         </div>
 
@@ -680,16 +681,11 @@ export const bodyHtml = `${navHtml}
         </div>
       </div>
 
-      <div class="sf-manifesto-guarantee">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-          <path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4z"/>
-          <path d="M9 12l2 2 4-4"/>
-        </svg>
-        <div>
-          <b>Sprint Fixe, concrètement</b> — devis clair, périmètre écrit,
-          démos à la cadence convenue, facturation au forfait et non à la journée.
-          Si le projet doit changer, l'avenant est chiffré et signé avant de coder.
-        </div>
+      <!-- Le bandeau « Sprint Fixe, concrètement » a été retiré : chacun de ses
+           membres était déjà dit au-dessus dans la même section — devis et
+           périmètre par le manifeste, démos par le pilier 02, forfait par la
+           bande de preuve, avenant chiffré par le manifeste encore. Trois
+           formulations de la même promesse en 800 px. -->
       </div>
     </div>
 
@@ -1059,78 +1055,16 @@ export const bodyHtml = `${navHtml}
           </p>
         </div>
 
-        <div class="eq-devs reveal reveal-d-1">
-          <div class="eq-dev">
-            <div class="eq-dev-head">
-              <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar eq-dev-avatar-cto">NW</div><a class="eq-li-link" href="https://www.linkedin.com/in/nicolas-wallerand-86b0a079/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Nicolas Wallerand" title="LinkedIn Nicolas Wallerand"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
-              <div class="eq-dev-meta">
-                <div class="eq-dev-name">Nicolas Wallerand<span class="eq-dev-tag">CTO</span></div>
-                <div class="eq-dev-years">CTO · Direction technique</div>
-              </div>
-            </div>
-            <div class="eq-dev-spec">Vision architecture, management transverse, cadrage des projets complexes et revue de code senior.</div>
-            <div class="eq-dev-stack"><span>ARCHITECTURE</span><span>TYPESCRIPT</span><span>MANAGEMENT</span></div>
-          </div>
-
-          <div class="eq-dev">
-            <div class="eq-dev-head">
-              <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar v2">AM</div><a class="eq-li-link" href="https://www.linkedin.com/in/arthurmonney/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Arthur Monney" title="LinkedIn Arthur Monney"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
-              <div class="eq-dev-meta">
-                <div class="eq-dev-name">Arthur Monney</div>
-                <div class="eq-dev-years">Senior Dev · Back-end</div>
-              </div>
-            </div>
-            <div class="eq-dev-spec">Architecture back-end, systèmes complexes, paiements et facturation. Reprises Laravel.</div>
-            <div class="eq-dev-stack"><span>TYPESCRIPT</span><span>STRIPE</span><span>LARAVEL</span></div>
-          </div>
-
-          <div class="eq-dev">
-            <div class="eq-dev-head">
-              <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar v3">FC</div><a class="eq-li-link" href="https://www.linkedin.com/in/frederic-curinckx/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Frédéric Curinckx" title="LinkedIn Frédéric Curinckx"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
-              <div class="eq-dev-meta">
-                <div class="eq-dev-name">Frédéric Curinckx</div>
-                <div class="eq-dev-years">Senior Dev · Full-stack</div>
-              </div>
-            </div>
-            <div class="eq-dev-spec">Formulaires métier, interfaces temps-réel et queues — React Server Components, reprises Laravel/Livewire.</div>
-            <div class="eq-dev-stack"><span>REACT</span><span>NEXT.JS</span><span>LARAVEL</span></div>
-          </div>
-
-          <div class="eq-dev">
-            <div class="eq-dev-head">
-              <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar v4">RM</div><a class="eq-li-link" href="https://www.linkedin.com/in/ryan-mazzitelli-907716262/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Ryan Mazzitelli" title="LinkedIn Ryan Mazzitelli"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
-              <div class="eq-dev-meta">
-                <div class="eq-dev-name">Ryan Mazzitelli</div>
-                <div class="eq-dev-years">Senior Dev · Back-end & IA</div>
-              </div>
-            </div>
-            <div class="eq-dev-spec">Intégrations IA, agents Claude, webhooks et APIs tierces. Reprises Laravel.</div>
-            <div class="eq-dev-stack"><span>TYPESCRIPT</span><span>CLAUDE</span><span>LARAVEL</span></div>
-          </div>
-
-          <div class="eq-dev">
-            <div class="eq-dev-head">
-              <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar v5">KH</div><a class="eq-li-link" href="https://www.linkedin.com/in/killian-hoarau-960927138/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Killian Hoarau" title="LinkedIn Killian Hoarau"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
-              <div class="eq-dev-meta">
-                <div class="eq-dev-name">Killian Hoarau</div>
-                <div class="eq-dev-years">Senior Dev · Back-end & DevOps</div>
-              </div>
-            </div>
-            <div class="eq-dev-spec">DevOps, sécurité, scalabilité, CI/CD et tests automatisés.</div>
-            <div class="eq-dev-stack"><span>TYPESCRIPT</span><span>DOCKER</span><span>AWS</span></div>
-          </div>
-
-          <div class="eq-dev">
-            <div class="eq-dev-head">
-              <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar v6">PS</div><a class="eq-li-link" href="https://www.codeur.com/-peterssk" target="_blank" rel="noopener noreferrer" aria-label="Profil Codeur Peter Sum Sie Kung" title="Profil Codeur Peter Sum Sie Kung"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a></div>
-              <div class="eq-dev-meta">
-                <div class="eq-dev-name">Peter Sum Sie Kung</div>
-                <div class="eq-dev-years">Dev confirmé · Full-stack</div>
-              </div>
-            </div>
-            <div class="eq-dev-spec">Full-stack React/Vue + PHP (Laravel, Symfony). Renforts API, modélisation BDD et intégrations.</div>
-            <div class="eq-dev-stack"><span>REACT</span><span>VUE.JS</span><span>LARAVEL</span></div>
-          </div>
+        <!-- Les six fiches développeurs vivaient ici ET sur /equipe, à l'identique :
+           1 460 px d'accueil pour un contenu qui a déjà sa page dédiée. Le nom des
+           sept personnes reste publié juste au-dessus — c'est lui qui porte la preuve
+           « pas de pool anonyme » — et le détail (rôle, spécialité, pile, profil
+           public) se lit sur /equipe, où on va quand on veut ce détail. -->
+        <div class="eq-devs-relay reveal reveal-d-1">
+          <a href="/equipe" class="btn btn-ghost">
+            Voir les 7 profils et leurs rôles
+            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
         </div>
 
         <!-- Claude Code highlight -->

@@ -58,8 +58,15 @@ describe("homepage public claims", () => {
     expect(composedBodyHtml).not.toMatch(
       /garantie Sprint Fixe|jamais de surprise|budget annoncé\s*=\s*budget facturé|prix annoncé\s*=\s*prix payé|0\s*(?:€\s*de\s*)?dépassement|le total ne bouge pas|aucun dépassement caché/i,
     );
-    // La formulation validée reste publiée.
-    expect(composedBodyHtml).toContain("aucun dépassement sans accord écrit");
+    // La formulation validée reste publiée. Insensible à la casse et au
+    // possessif : elle ouvre une phrase dans le manifeste (« Aucun dépassement
+    // sans accord écrit. ») et en porte un dans le héros (« sans VOTRE accord
+    // écrit »). Ce qu'il faut tenir est la formulation conditionnelle, pas la
+    // majuscule — épingler la casse a fait échouer la garde au premier
+    // dégraissage d'une redite, alors que la promesse était toujours là.
+    expect(composedBodyHtml).toMatch(
+      /aucun dépassement sans (?:votre )?accord écrit/i,
+    );
   });
 
   it("ne met pas la gouvernance éditoriale du site à la place d'un bénéfice client", () => {

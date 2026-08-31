@@ -85,3 +85,11 @@
    affichée indéfiniment — et elle annonçait un site inachevé dans la
    section même qui doit prouver « pas de pool anonyme ». Un état de ce
    genre doit venir de la donnée (`member.photoAvailable`), pas du CSS. */
+
+/* Renvoi vers /equipe, à la place des six fiches développeurs qui doublonnaient
+   la page dédiée. */
+.eq-devs-relay {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 18px;
+}
