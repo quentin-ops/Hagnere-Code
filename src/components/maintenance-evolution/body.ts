@@ -112,21 +112,27 @@ export const bodyHtml = `
 
           <!-- Engagements contractuels (aucune valeur mesurée) -->
           <g transform="translate(284 64)">
-            <rect x="0" y="0" width="232" height="32" rx="8" fill="#F5F5F5"/>
-            <text x="14" y="20" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">ASTREINTE · OPTION</text>
-            <text x="214" y="21" font-family="Geist" font-weight="700" font-size="15" fill="#10B981" text-anchor="end">À CADRER</text>
+            <!-- Quatre lignes pleine largeur, hauteur 28 au lieu de 32.
+                 Les deux dernières étaient sur une demi-largeur de 114 px pour des
+                 libellés qui en demandaient davantage : « PERTE DE DONNÉES MAX » et
+                 « CIBLE » s'imprimaient l'un sur l'autre sur 43 px, « INFRASTRUCTURE »
+                 et « Chez vous » sur 70 px. Élargir sans réduire la hauteur aurait fait
+                 mordre le groupe sur le bloc suivant, qui commence à y=190. -->
+            <rect x="0" y="0" width="232" height="28" rx="8" fill="#F5F5F5"/>
+            <text x="14" y="18" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">ASTREINTE · OPTION</text>
+            <text x="214" y="19" font-family="Geist" font-weight="700" font-size="14" fill="#10B981" text-anchor="end">À CADRER</text>
 
-            <rect x="0" y="38" width="232" height="32" rx="8" fill="#EDE9FE"/>
-            <text x="14" y="58" font-family="Geist Mono" font-size="8" fill="#4C1D95" letter-spacing="1">PRISE EN CHARGE · P1</text>
-            <text x="214" y="59" font-family="Geist" font-weight="700" font-size="15" fill="#6D28D9" text-anchor="end">AU DEVIS</text>
+            <rect x="0" y="32" width="232" height="28" rx="8" fill="#EDE9FE"/>
+            <text x="14" y="50" font-family="Geist Mono" font-size="8" fill="#4C1D95" letter-spacing="1">PRISE EN CHARGE · P1</text>
+            <text x="214" y="51" font-family="Geist" font-weight="700" font-size="14" fill="#6D28D9" text-anchor="end">AU DEVIS</text>
 
-            <rect x="0" y="76" width="114" height="32" rx="8" fill="#F5F5F5"/>
-            <text x="14" y="96" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">PERTE DE DONNÉES MAX</text>
-            <text x="100" y="97" font-family="Geist" font-weight="700" font-size="15" fill="#0A0A0A" text-anchor="end">CIBLE</text>
+            <rect x="0" y="64" width="232" height="28" rx="8" fill="#F5F5F5"/>
+            <text x="14" y="82" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">PERTE DE DONNÉES MAX</text>
+            <text x="214" y="83" font-family="Geist" font-weight="700" font-size="14" fill="#0A0A0A" text-anchor="end">CIBLE</text>
 
-            <rect x="118" y="76" width="114" height="32" rx="8" fill="#F5F5F5"/>
-            <text x="132" y="96" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">INFRASTRUCTURE</text>
-            <text x="218" y="97" font-family="Geist" font-weight="700" font-size="15" fill="#0A0A0A" text-anchor="end">Chez vous</text>
+            <rect x="0" y="96" width="232" height="28" rx="8" fill="#F5F5F5"/>
+            <text x="14" y="114" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">INFRASTRUCTURE</text>
+            <text x="214" y="115" font-family="Geist" font-weight="700" font-size="14" fill="#0A0A0A" text-anchor="end">Chez vous</text>
           </g>
 
           <!-- Services grid -->

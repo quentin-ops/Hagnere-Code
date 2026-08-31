@@ -250,12 +250,19 @@ export const bodyHtml = `
             </g>
 
             <!-- Floating "scan in progress" caption -->
-            <g transform="translate(260 50)">
-              <rect x="-60" y="-12" width="120" height="22" rx="11" fill="rgba(10,10,10,0.65)" stroke="rgba(255,255,255,0.08)" stroke-width="0.6"/>
+            <!-- Décalée à 205 : la pastille s'étend de -60 à +98 dans son repère,
+                 soit 200 à 358 une fois translatée à 260 — elle mordait donc sur
+                 le libellé « FRONTIÈRE UE » de la carte, qui commence à 312. -->
+            <g transform="translate(205 50)">
+              <!-- La pastille faisait 120 px pour un texte qui en demandait 142 :
+                   « EXEMPLE FICTIF · 47 FLUX » débordait de son rectangle et venait
+                   s'imprimer sur le libellé « FRONTIÈRE UE » de la carte, sur 58 px.
+                   Rectangle élargi et interlettrage resserré. -->
+              <rect x="-60" y="-12" width="158" height="22" rx="11" fill="rgba(10,10,10,0.65)" stroke="rgba(255,255,255,0.08)" stroke-width="0.6"/>
               <circle cx="-46" cy="-1" r="3" fill="#A78BFA">
                 <animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite"/>
               </circle>
-              <text x="-38" y="2.5" font-family="Geist Mono" font-size="8" fill="rgba(255,255,255,0.7)" letter-spacing="0.14em">EXEMPLE FICTIF · 47 FLUX</text>
+              <text x="-38" y="2.5" font-family="Geist Mono" font-size="7.5" fill="rgba(255,255,255,0.7)" letter-spacing="0.08em">EXEMPLE FICTIF · 47 FLUX</text>
             </g>
           </svg>
         </div>
