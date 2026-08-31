@@ -106,16 +106,8 @@ const DEV_VARIANT_BY_ID: Record<string, string> = {
   peter: "v6",
 };
 
-// Ordre d'affichage : CTO en premier, puis les développeurs par domaine.
-const DISPLAY_ORDER = ["nicolas", "killian", "frederic", "arthur", "ryan", "peter"] as const;
-
-const devCardsHtml = DISPLAY_ORDER
-  .map((id) => {
-    const member = TEAM[id];
-    const variant = DEV_VARIANT_BY_ID[id] || "";
-    return renderDevCard(member, `eq-dev-avatar-${variant} ${variant}`);
-  })
-  .join("\n");
+// Les fiches développeurs ne sont plus construites ici : elles vivaient à
+// l'identique sur /equipe. L'accueil renvoie désormais vers cette page.
 
 void CTO;
 void DEVS; // exposed for future iterations (filtered grids)
@@ -183,14 +175,25 @@ export const equipeHtml = `
           <h3>Un CTO et des développeurs<br>nommés,<br>assistés par <em>Claude Code</em>.</h3>
           <p>
             Nicolas au CTO, puis Killian, Frédéric, Arthur, Ryan et Peter sur l'exécution —
-            avec les rôles et spécialités déclarés sur chaque carte. La composition réellement
-            mobilisée et les responsabilités de chacun sont écrites avant la signature.
+            chacun avec son rôle, sa spécialité et son profil public sur la page équipe.
+            La composition réellement mobilisée et les responsabilités de chacun sont
+            écrites avant la signature.
             Claude Code peut assister la recherche, l'exploration technique et les plans d'implémentation&nbsp;:
             <b>ses sorties restent relues, testées et validées par un intervenant humain</b>.
           </p>
         </div>
 
-        <div class="eq-devs reveal reveal-d-1">${devCardsHtml}
+        <!-- Les six fiches développeurs vivaient à l'identique ici ET sur /equipe :
+             1 460 px d'accueil pour un contenu qui a déjà sa page dédiée. Le nom des
+             sept personnes reste publié juste au-dessus — c'est lui qui porte la
+             preuve « pas de pool anonyme, pas d'offshore » — et le détail (rôle,
+             spécialité, pile, profil public) se lit sur /equipe, où l'on va quand
+             on le cherche. -->
+        <div class="eq-devs-relay reveal reveal-d-1">
+          <a href="/equipe" class="btn btn-ghost">
+            Voir les ${TEAM_TOTAL_COUNT} profils et leurs rôles
+            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
         </div>
 
         <!-- Claude Code highlight -->

@@ -1242,6 +1242,12 @@ body.nav-menu-lock { overflow: hidden; }
   .cmp-row { grid-template-columns: 1.2fr 1fr 1.1fr 1fr; }
   .cmp-col { padding: 16px 14px; font-size: 12.5px; }
   .vt-grid { grid-template-columns: repeat(2, 1fr); }
+  /* Sur deux colonnes, les cartes larges redeviennent normales : sinon les
+     sept situations se répartissent en 1 + 2 + 2 + 1 + 1, avec une carte
+     isolée au MILIEU de la grille et un trou à côté d'elle. À égalité de
+     largeur, l'isolée se retrouve à la fin, où elle se lit comme une fin
+     de liste et non comme un défaut. */
+  .vt-card--wide { grid-column: auto; }
 }
 
 @media (max-width: 768px) {

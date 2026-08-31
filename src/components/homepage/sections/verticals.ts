@@ -1,3 +1,16 @@
+/*
+ * Les sept vignettes décoratives `.vt-mini` ont été retirées.
+ *
+ * Cinq d'entre elles n'étaient que des <span> vides colorés — douze carrés pour
+ * la carte 01, des barres pour les autres. À l'écran, elles ne se lisaient pas
+ * comme une illustration mais comme une interface qui n'a pas fini de charger,
+ * juste sous une description qui, elle, dit quelque chose. Les deux qui
+ * portaient des mots (« Doc → IA → Action », les notes A / B+ / A-) disaient
+ * moins que la rangée d'étiquettes placée immédiatement en dessous.
+ *
+ * Les sept cartes ont désormais la même anatomie : titre, description,
+ * étiquettes, objectif mesurable.
+ */
 export const verticalsHtml = `
 <!-- SITUATIONS -->
 <section class="verticals" id="metiers">
@@ -49,11 +62,6 @@ export const verticalsHtml = `
           historique, exports, validations, alertes, dashboards et intégrations avec
           vos logiciels existants.
         </p>
-        <div class="vt-mini vt-mini-grid" aria-hidden="true">
-          <span></span><span></span><span class="on"></span><span></span>
-          <span class="on"></span><span></span><span></span><span class="on"></span>
-          <span></span><span class="on"></span><span></span><span></span>
-        </div>
         <div class="vt-feats">
           <span>Back-office</span>
           <span>Workflows</span>
@@ -78,11 +86,6 @@ export const verticalsHtml = `
           Portail sécurisé, documents, suivi de dossiers, paiements, notifications,
           messagerie, signature électronique et espace admin pour vos équipes.
         </p>
-        <div class="vt-mini vt-mini-window" aria-hidden="true">
-          <i></i><i></i><i></i>
-          <strong></strong>
-          <span></span><span></span><span></span>
-        </div>
         <div class="vt-feats">
           <span>Espace client</span>
           <span>Documents</span>
@@ -107,9 +110,6 @@ export const verticalsHtml = `
           Agents IA, extraction documentaire, génération de réponses, relances,
           synthèses, contrôles, routage de demandes et synchronisation entre outils.
         </p>
-        <div class="vt-mini vt-mini-flow" aria-hidden="true">
-          <span>Doc</span><i></i><span>IA</span><i></i><span>Action</span>
-        </div>
         <div class="vt-feats">
           <span>Extraction IA</span>
           <span>RAG</span>
@@ -134,9 +134,6 @@ export const verticalsHtml = `
           MVP propre, authentification, abonnements, rôles, back-office, analytics,
           emails transactionnels et socle technique prêt à évoluer.
         </p>
-        <div class="vt-mini vt-mini-stack" aria-hidden="true">
-          <span></span><span></span><span></span>
-        </div>
         <div class="vt-feats">
           <span>MVP</span>
           <span>Stripe</span>
@@ -161,9 +158,6 @@ export const verticalsHtml = `
           Refonte orientée conversion, landing pages, SEO technique, tracking,
           prise de rendez-vous, contenus et campagnes branchées sur de vrais objectifs.
         </p>
-        <div class="vt-mini vt-mini-chart" aria-hidden="true">
-          <span style="height:34%"></span><span style="height:48%"></span><span style="height:42%"></span><span class="on" style="height:74%"></span><span class="on" style="height:92%"></span>
-        </div>
         <div class="vt-feats">
           <span>Conversion</span>
           <span>SEO</span>
@@ -188,11 +182,6 @@ export const verticalsHtml = `
           Audit, dette technique, sécurité, performance, refonte progressive,
           tests, CI/CD, monitoring et plan de reprise sans tout recoder.
         </p>
-        <div class="vt-mini vt-mini-health" aria-hidden="true">
-          <span><b>A</b> Perf</span>
-          <span><b>B+</b> Code</span>
-          <span><b>A-</b> Sécu</span>
-        </div>
         <div class="vt-feats">
           <span>Audit</span>
           <span>Sécurité</span>
@@ -201,7 +190,9 @@ export const verticalsHtml = `
         <div class="vt-outcome">Livrable attendu : une trajectoire priorisée, avec risques et dépendances explicités.</div>
       </a>
 
-      <a class="vt-card vt-card-situation reveal" data-accent="violet" href="/services/application-mobile">
+      <!-- Élargie comme la première : sept cartes dans une grille de trois laissaient
+           une case vide en bas à droite. La rangée du bas répond maintenant à celle du haut. -->
+      <a class="vt-card vt-card-situation vt-card--wide reveal" data-accent="violet" href="/services/application-mobile">
         <div class="vt-head">
           <div class="vt-ic">
             <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -218,9 +209,6 @@ export const verticalsHtml = `
           App Store + Google Play, paiement Apple Pay, push géolocalisée, fidélité,
           mode hors-ligne.
         </p>
-        <div class="vt-mini vt-mini-stack" aria-hidden="true">
-          <span></span><span></span><span></span>
-        </div>
         <div class="vt-feats">
           <span>iOS + Android</span>
           <span>App Store + Play Store</span>
