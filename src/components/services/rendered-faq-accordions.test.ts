@@ -55,7 +55,12 @@ const PAGES: ReadonlyArray<readonly [string, string]> = [
  * d'unicité des identifiants ci-dessous — le seul qui aurait attrapé la FAQ
  * e-commerce — mais pas encore au câblage question ↔ réponse.
  */
-const PENDING_MIGRATION = new Set(["homepage", "equipe", "methode", "tarifs"]);
+/* `homepage` et `methode` ont été migrées le 30/08/2026 : leurs questions
+   sont désormais de vrais <button> servis avec `aria-expanded` et
+   `aria-controls`, et elles entrent donc au contrôle de câblage ci-dessous.
+   C'est exactement ce que le test « garde la liste des pages non migrées à
+   jour » avait signalé — il a fait son travail. */
+const PENDING_MIGRATION = new Set(["equipe", "tarifs"]);
 
 const WIRED_PAGES = PAGES.filter(([name]) => !PENDING_MIGRATION.has(name));
 

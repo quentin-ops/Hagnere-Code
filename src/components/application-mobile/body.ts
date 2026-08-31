@@ -56,7 +56,7 @@ export const bodyHtml = `
         <a href="/rendez-vous" class="btn btn-accent btn-lg">
           Cadrer mon app en 30 min <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="/demarrer-un-projet" class="btn btn-ghost btn-lg">Décrire mon projet (3 min)</a>
+        <a href="/demarrer-un-projet" class="btn btn-ghost btn-lg">Démarrer mon projet (3 min)</a>
       </div>
       <div class="shero-meta">
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Planning indicatif confirmé au devis</span>
@@ -405,26 +405,64 @@ export const bodyHtml = `
       </div>
     </div>
 
-    <div class="caps-grid">
+    <div class="mob-caps-fams">
+      <details class="mob-caps-fam" open>
+        <summary><span class="mob-caps-fam-name">Notifications, liens et engagement</span><span class="mob-caps-fam-n">5 briques</span></summary>
+        <div class="caps-grid">
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 00-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5"/><path d="M9 17a3 3 0 006 0"/></svg></div>
         <h3>Push notifications natives</h3>
         <p>iOS APNs + Android FCM via Firebase ou Batch. Segmentation, planification et géofencing selon le besoin, avec un opt-in contextuel et des finalités documentées.</p>
       </div>
-      <div class="cap reveal reveal-d-1">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg></div>
-        <h3>Mode hors-ligne</h3>
-        <p>L'app fonctionne en 3G, dans le métro, en avion. Cache local, sync à la reconnexion, queue de mutations. Indispensable pour <b>terrain, livraison, coaching, formation</b>.</p>
+      <div class="cap reveal reveal-d-3">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M7 7l5 5 5-5M7 17l5-5 5 5"/></svg></div>
+        <h3>Deep links &amp; universal links</h3>
+        <p>Un lien email ouvre directement la bonne fiche dans l'app. Onboarding, parrainage, tracking attribution. Universal Links iOS + App Links Android natifs, ou Branch.io en option pour l'attribution multi-canal.</p>
       </div>
+      <div class="cap reveal reveal-d-2">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
+        <h3>Wallet Apple &amp; Google</h3>
+        <p>Carte fidélité, billet, ticket, abonnement transports — directement dans l'app Wallet, sans installer la nôtre. Mises à jour push (solde, expiration).</p>
+      </div>
+      <div class="cap reveal reveal-d-2">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg></div>
+        <h3>App Clip &amp; Instant App</h3>
+        <p>Une mini-version sans téléchargement (quelques Mo) déclenchée par QR ou NFC. Idéal pour <b>commande au resto, paiement parking, ouverture casier</b>.</p>
+      </div>
+      <div class="cap reveal reveal-d-1">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M5 5l14 14M19 5L5 19M1 12h22"/></svg></div>
+        <h3>Watch &amp; Wear OS</h3>
+        <p>Apple Watch + Wear OS pour les apps fitness, paiement contactless, notifications discrètes. Sur option, dans le forfait Sur-mesure.</p>
+      </div>
+        </div>
+      </details>
+      <details class="mob-caps-fam">
+        <summary><span class="mob-caps-fam-name">Paiement et identité</span><span class="mob-caps-fam-n">3 briques</span></summary>
+        <div class="caps-grid">
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78a5.5 5.5 0 000-7.78z"/></svg></div>
         <h3>Apple Pay + Google Pay</h3>
         <p>Checkout avec Face ID / Touch ID / empreinte lorsqu'il est compatible avec le produit. Le gain de conversion dépend du parcours et doit être mesuré ; Stripe ou l'achat intégré sont cadrés selon la nature de ce qui est vendu et les règles des stores.</p>
       </div>
-      <div class="cap reveal reveal-d-3">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg></div>
-        <h3>OTA updates via EAS</h3>
-        <p>Certains correctifs JavaScript, de contenu ou de configuration peuvent être diffusés sans nouvelle soumission au store, dans les limites des règles Apple et Google. Le délai, l'éligibilité de la mise à jour et le rollback sont vérifiés au cas par cas.</p>
+      <div class="cap reveal reveal-d-1">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20M6 14h4"/></svg></div>
+        <h3>Paiement web (Stripe / PayPlug)</h3>
+        <p>Stripe, PayPlug, l'achat intégré ou un autre parcours sont retenus selon le bien ou service vendu, le pays et les règles des stores applicables au moment de la soumission.</p>
+      </div>
+      <div class="cap reveal">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Biométrie Face ID / empreinte</h3>
+        <p>Connexion rapide et accès à une zone sensible avec Keychain iOS ou Keystore Android. Les exigences sectorielles comme PCI DSS ou l'hébergement de données de santé nécessitent un périmètre, des prestataires et des audits spécifiques ; elles ne sont pas incluses ni certifiées par défaut.</p>
+      </div>
+        </div>
+      </details>
+      <details class="mob-caps-fam">
+        <summary><span class="mob-caps-fam-name">Hors-ligne, capteurs et temps réel</span><span class="mob-caps-fam-n">6 briques</span></summary>
+        <div class="caps-grid">
+      <div class="cap reveal reveal-d-1">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg></div>
+        <h3>Mode hors-ligne</h3>
+        <p>L'app fonctionne en 3G, dans le métro, en avion. Cache local, sync à la reconnexion, queue de mutations. Indispensable pour <b>terrain, livraison, coaching, formation</b>.</p>
       </div>
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="11" r="3"/><path d="M21 11c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/></svg></div>
@@ -436,65 +474,30 @@ export const bodyHtml = `
         <h3>Scan QR &amp; code-barres</h3>
         <p>Scanner natif via caméra : QR fidélité en caisse, scan produit pour réassort, billet d'événement, Wi-Fi pairing. Lecture offline, ultra-rapide.</p>
       </div>
-      <div class="cap reveal reveal-d-2">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
-        <h3>Wallet Apple &amp; Google</h3>
-        <p>Carte fidélité, billet, ticket, abonnement transports — directement dans l'app Wallet, sans installer la nôtre. Mises à jour push (solde, expiration).</p>
-      </div>
-      <div class="cap reveal reveal-d-3">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M7 7l5 5 5-5M7 17l5-5 5 5"/></svg></div>
-        <h3>Deep links &amp; universal links</h3>
-        <p>Un lien email ouvre directement la bonne fiche dans l'app. Onboarding, parrainage, tracking attribution. Universal Links iOS + App Links Android natifs, ou Branch.io en option pour l'attribution multi-canal.</p>
-      </div>
-      <div class="cap reveal">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h3>Biométrie Face ID / empreinte</h3>
-        <p>Connexion rapide et accès à une zone sensible avec Keychain iOS ou Keystore Android. Les exigences sectorielles comme PCI DSS ou l'hébergement de données de santé nécessitent un périmètre, des prestataires et des audits spécifiques ; elles ne sont pas incluses ni certifiées par défaut.</p>
-      </div>
       <div class="cap reveal reveal-d-1">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20M6 14h4"/></svg></div>
-        <h3>Paiement web (Stripe / PayPlug)</h3>
-        <p>Stripe, PayPlug, l'achat intégré ou un autre parcours sont retenus selon le bien ou service vendu, le pays et les règles des stores applicables au moment de la soumission.</p>
-      </div>
-      <div class="cap reveal reveal-d-2">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg></div>
-        <h3>App Clip &amp; Instant App</h3>
-        <p>Une mini-version sans téléchargement (quelques Mo) déclenchée par QR ou NFC. Idéal pour <b>commande au resto, paiement parking, ouverture casier</b>.</p>
-      </div>
-      <div class="cap reveal reveal-d-3">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 6 8 10 8 10s8-4 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h3>Dossier vie privée préparé pour revue</h3>
-        <p>Selon le périmètre, nous préparons l'inventaire des permissions, les flux, les sous-traitants, les éléments de politique de confidentialité et un DPA à compléter si nécessaire. Les qualifications juridiques et la validation finale relèvent de votre DPO ou conseil ; aucune absence de contrôle ou de sanction n'est garantie.</p>
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
+        <h3>Caméra, photos, vidéo, micro</h3>
+        <p>Capture in-app, scan documents (avec OCR), enregistrement audio, upload progressif avec resume. Compression côté client, pas de surcoût bande passante.</p>
       </div>
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
         <h3>Background tasks &amp; sync</h3>
         <p>Synchronisation, rafraîchissement de contenu, géofencing et badges sont configurés selon les API et contraintes d'énergie prévues par Apple et Google, puis testés sur les versions d'OS inscrites au plan de recette.</p>
       </div>
-      <div class="cap reveal reveal-d-1">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M5 5l14 14M19 5L5 19M1 12h22"/></svg></div>
-        <h3>Watch &amp; Wear OS</h3>
-        <p>Apple Watch + Wear OS pour les apps fitness, paiement contactless, notifications discrètes. Sur option, dans le forfait Sur-mesure.</p>
-      </div>
-      <div class="cap reveal reveal-d-2">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8v18L3 13zM11 7v10"/></svg></div>
-        <h3>Tracking attribution opt-in</h3>
-        <p>Le tracking d'attribution reste désactivé avant l'autorisation ATT lorsqu'elle est requise. AppsFlyer, Adjust ou Branch sont optionnels ; leur configuration et les autres obligations de consentement sont documentées et recettées selon les finalités retenues.</p>
-      </div>
-      <div class="cap reveal reveal-d-3">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 4 4 5-5"/></svg></div>
-        <h3>Analytics produit &amp; dashboards</h3>
-        <p>DAU / MAU, rétention J1 / J7 / J30, funnel d'onboarding, churn, événements custom. Firebase, Amplitude, PostHog. Dashboard partagé en lecture.</p>
-      </div>
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div>
         <h3>Chat &amp; messagerie temps réel</h3>
         <p>WebSockets, Stream Chat, Pusher ou Firebase Realtime. Indicateurs typing, lus / non-lus, push si app fermée. Pour <b>coaching, support, communauté, marketplace</b>.</p>
       </div>
-      <div class="cap reveal reveal-d-1">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
-        <h3>Caméra, photos, vidéo, micro</h3>
-        <p>Capture in-app, scan documents (avec OCR), enregistrement audio, upload progressif avec resume. Compression côté client, pas de surcoût bande passante.</p>
+        </div>
+      </details>
+      <details class="mob-caps-fam">
+        <summary><span class="mob-caps-fam-name">Publication, mises à jour et mesure</span><span class="mob-caps-fam-n">4 briques</span></summary>
+        <div class="caps-grid">
+      <div class="cap reveal reveal-d-3">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg></div>
+        <h3>OTA updates via EAS</h3>
+        <p>Certains correctifs JavaScript, de contenu ou de configuration peuvent être diffusés sans nouvelle soumission au store, dans les limites des règles Apple et Google. Le délai, l'éligibilité de la mise à jour et le rollback sont vérifiés au cas par cas.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
@@ -502,10 +505,32 @@ export const bodyHtml = `
         <p>Sentry mobile, Firebase Crashlytics ou un outil équivalent peuvent être retenus. Stack trace, contexte de crash et éventuel replay sont configurés selon le besoin. <b>Le délai cible sur un blocage est écrit dans le forfait de maintenance</b>.</p>
       </div>
       <div class="cap reveal reveal-d-3">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 4 4 5-5"/></svg></div>
+        <h3>Analytics produit &amp; dashboards</h3>
+        <p>DAU / MAU, rétention J1 / J7 / J30, funnel d'onboarding, churn, événements custom. Firebase, Amplitude, PostHog. Dashboard partagé en lecture.</p>
+      </div>
+      <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg></div>
         <h3>Recette et suivi post-publication</h3>
         <p>Le devis précise la recette, la période éventuelle de correction des anomalies, les niveaux de sévérité et la maintenance après publication.</p>
       </div>
+        </div>
+      </details>
+      <details class="mob-caps-fam">
+        <summary><span class="mob-caps-fam-name">Conformité et vie privée</span><span class="mob-caps-fam-n">2 briques</span></summary>
+        <div class="caps-grid">
+      <div class="cap reveal reveal-d-3">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 6 8 10 8 10s8-4 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Dossier vie privée préparé pour revue</h3>
+        <p>Selon le périmètre, nous préparons l'inventaire des permissions, les flux, les sous-traitants, les éléments de politique de confidentialité et un DPA à compléter si nécessaire. Les qualifications juridiques et la validation finale relèvent de votre DPO ou conseil ; aucune absence de contrôle ou de sanction n'est garantie.</p>
+      </div>
+      <div class="cap reveal reveal-d-2">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8v18L3 13zM11 7v10"/></svg></div>
+        <h3>Tracking attribution opt-in</h3>
+        <p>Le tracking d'attribution reste désactivé avant l'autorisation ATT lorsqu'elle est requise. AppsFlyer, Adjust ou Branch sont optionnels ; leur configuration et les autres obligations de consentement sont documentées et recettées selon les finalités retenues.</p>
+      </div>
+        </div>
+      </details>
     </div>
   </div>
 </section>
@@ -749,7 +774,7 @@ export const bodyHtml = `
   <div class="wrap">
     <div class="faq-grid">
       <div class="faq-intro reveal">
-        <div class="eyebrow">— FAQ commerciale</div>
+        <div class="eyebrow">— FAQ</div>
         <h2 style="margin-top:14px">Les vraies questions<br>qu'on nous pose<br>avant de signer.</h2>
         <p>Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. Le canal et le délai de réponse annoncé au moment de la demande restent explicites.</p>
       </div>
@@ -872,6 +897,112 @@ export const bodyHtml = `
           </button>
           <div class="faq-a" id="faq-a-mobile-faq-12" hidden>
             Les permissions, finalités, bases légales, sous-traitants et durées sont cadrés avec votre DPO ou conseil. Des données de santé peuvent imposer des mesures renforcées et, selon l'activité et l'échelle du traitement, un hébergement certifié HDS ou la désignation d'un DPO. Pour les moins de 15 ans en France, l'accord conjoint du mineur et d'un titulaire de l'autorité parentale concerne certains services en ligne lorsque le traitement repose sur le consentement. Ces obligations se valident au cas par cas.
+          </div>
+        </div>
+
+        <div class="faq-sub">
+          <h3 class="eyebrow">— FAQ technique</h3>
+          <p>Réponses précises sur la stack, les choix d'archi, les permissions stores, l'observabilité.</p>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-mobile-tfaq-1">
+            Pourquoi Expo et pas React Native bare&nbsp;?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-mobile-tfaq-1" hidden>
+            La compatibilité d'Expo avec les modules requis (push, paiement, BLE, géolocalisation, biométrie, caméra ou fichiers) est vérifiée pendant le cadrage.
+            On gagne <b>EAS Build, EAS Submit et EAS Update (OTA)</b> sans bricoler de scripts Fastlane custom.
+            Si vous avez besoin d'un module natif tiers non couvert, on prebuild en mode "expo-dev-client" (vs ejecter).
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-mobile-tfaq-2">
+            Stratégie offline-first : optimistic UI, sync, conflits&nbsp;?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-mobile-tfaq-2" hidden>
+            Approche standard : <b>cache local SQLite (WatermelonDB ou Op-SQLite)</b>, queue de mutations,
+            optimistic UI sur les actions utilisateur, sync différentielle à la reconnexion. Conflits gérés
+            via <b>last-write-wins</b> par défaut, ou <b>CRDT (Y.js)</b> sur les cas collaboratifs de type éditeur partagé (notes, documents).
+            Pour le chat temps réel, on s'appuie plutôt sur Stream Chat ou Pusher avec ordering serveur.
+            On documente les invariants dans le runbook.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-mobile-tfaq-3">
+            Comment vous gérez ATT / IDFA / tracking iOS 14.5+&nbsp;?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-mobile-tfaq-3" hidden>
+            Par défaut, <b>aucun tracking activé</b>. Si vous avez un budget Ads à mesurer, on ajoute AppsFlyer ou Adjust avec
+            un opt-in ATT contextuel (jamais au cold start), configuré et recetté au regard des règles Apple. Pour le tracking
+            analytics produit (DAU, rétention), on utilise des SDK first-party (Amplitude, PostHog, Firebase Analytics)
+            qui ne déclenchent pas l'ATT.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-mobile-tfaq-4">
+            Apple IAP vs Stripe : où est la frontière exacte&nbsp;?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-mobile-tfaq-4" hidden>
+            Les règles de paiement varient selon le type de bien ou service, le pays, le programme applicable et les modalités autorisées au moment de la soumission.
+            Le cadrage vérifie les règles Apple et Google à jour avant de retenir achat intégré, paiement externe ou un autre parcours,
+            puis documente la justification nécessaire dans les consoles des stores.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-mobile-tfaq-5">
+            Releases : OTA via EAS Update vs nouvelle build sur les stores&nbsp;?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-mobile-tfaq-5" hidden>
+            <b>OTA EAS Update</b> peut convenir à certains changements JS/TS, contenus, configurations et correctifs visuels, sous réserve de leur éligibilité et des règles des stores.
+            Une <b>nouvelle build store</b> reste notamment nécessaire pour certaines modifications de code natif, permissions, SDK Expo ou version d'API cible.
+            Les channels EAS, les tests, le rollback et le délai cible sont définis au devis&nbsp;; aucune diffusion instantanée ni absence de revue n'est promise.
+            Le coût d'infrastructure EAS est cadré selon le volume et le plan Expo retenu.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-mobile-tfaq-6">
+            Observabilité, monitoring, alerting : la stack&nbsp;?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-mobile-tfaq-6" hidden>
+            <b>Sentry</b> pour le crash reporting cross-platform avec source maps + stack traces symbolisées (iOS dSYMs auto-uploadés).
+            <b>Firebase Crashlytics</b> en backup natif. <b>PostHog</b> ou <b>Amplitude</b> pour les funnels. <b>UptimeRobot</b> sur l'API back-end.
+            Alertes Slack / email sur seuils de crashs, ANR Android et latence API. Le délai cible sur les blocages dépend du forfait de maintenance signé.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-mobile-tfaq-7">
+            Tests : quel niveau de couverture, quels outils&nbsp;?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-mobile-tfaq-7" hidden>
+            <b>Jest</b> pour les tests unitaires de logique métier et <b>React Native Testing Library</b> pour les composants. Le niveau de couverture cible est défini selon les risques du produit.
+            <b>Maestro</b> peut couvrir les parcours end-to-end critiques (login, achat, push, paiement), avec <b>Detox</b> en complément si des modules natifs spécifiques le justifient.
+            Les outils, la fréquence CI, les appareils et les preuves visuelles sont définis dans le plan de test annexé au devis selon les risques du produit.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-mobile-tfaq-8">
+            Reprise d'app existante : audit, refactor, migration&nbsp;?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-mobile-tfaq-8" hidden>
+            On accepte les reprises Cordova / Ionic / Flutter / RN bare → migration React Native + Expo
+            via une <b>phase d'audit payante</b> (chiffrée selon la taille du repo et la complexité). Livrable : rapport sur la dette, les bugs critiques,
+            la stratégie de migration (rewrite vs refactor par modules), un chiffrage avec et sans préservation des données utilisateur.
+            Migration de la base utilisateurs sans interruption (Apple Transfer App possible si même nom).
           </div>
         </div>
       </div>

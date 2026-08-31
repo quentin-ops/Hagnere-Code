@@ -283,112 +283,137 @@ export const bodyHtml = `
       </div>
     </div>
 
-    <div class="caps-grid">
-      <div class="cap reveal">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div>
-        <h3>SEO technique natif</h3>
-        <p>Schema.org, sitemap dynamique, robots.txt, Open Graph et balises hreflang selon le périmètre. Pré-rendu HTML, canonicals et indexabilité vérifiés avant mise en ligne, puis suivi dans Search Console — sans délai d'indexation garanti.</p>
-      </div>
-      <div class="cap reveal reveal-d-1">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg></div>
-        <h3>Core Web Vitals mesurés</h3>
-        <p>Les objectifs LCP, CLS et INP, les pages testées, l'appareil, le réseau et les scripts tiers sont fixés au devis. Les résultats sont mesurés&nbsp;; aucun score universel n'est promis.</p>
-      </div>
-      <div class="cap reveal reveal-d-2">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg></div>
-        <h3>CMS headless éditeur-friendly</h3>
-        <p>Sanity ou Strapi selon votre équipe. Les rôles, le workflow éditorial et les opérations à rendre autonomes sont recettés sur des cas définis.</p>
-      </div>
-      <div class="cap reveal reveal-d-3">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg></div>
-        <h3>Formulaires branchés CRM</h3>
-        <p>HubSpot, Pipedrive, Brevo, Mailchimp ou Salesforce selon le devis. Webhook, confirmation et anti-spam sont configurés d'après le parcours, la base légale et les outils retenus.</p>
-      </div>
-      <div class="cap reveal">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 4 4 5-5"/></svg></div>
-        <h3>Analytics privacy-first</h3>
-        <p>Plausible, Fathom ou GA4 selon le besoin. Une exemption de consentement n'est retenue que si tous les critères CNIL sont réunis ; sinon, la mesure reste bloquée jusqu'au choix positif. Dashboard agrégé fourni.</p>
-      </div>
-      <div class="cap reveal reveal-d-1">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg></div>
-        <h3>Multilingue natif</h3>
-        <p>Routing i18n, traductions au CMS, hreflang automatique, devises et formats locaux. 2 à 10 langues selon besoin.</p>
-      </div>
-      <div class="cap reveal reveal-d-2">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h4M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/></svg></div>
-        <h3>A/B testing prêt à l'emploi</h3>
-        <p>GrowthBook ou Vercel Flags peuvent être proposés pour tester un hero, un CTA ou un tunnel. L'outil, le trafic requis et la règle de décision sont précisés au devis.</p>
-      </div>
-      <div class="cap reveal reveal-d-3">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3>RGPD &amp; confidentialité</h3>
-        <p>Bannière avec accepter, refuser et gérer les choix au même niveau, inventaire des traceurs et politique cookies. La configuration est recettée selon les traitements réels ; la validation juridique reste à votre DPO ou conseil.</p>
-      </div>
-      <div class="cap reveal">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
-        <h3>Prise de RDV intégrée</h3>
-        <p>Calendly, Cal.com ou HubSpot Meetings intégrés en natif. Rendez-vous pris sans sortir du site, pré-qualification facultative.</p>
-      </div>
-      <div class="cap reveal reveal-d-1">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zM2 6l10 7 10-7"/></svg></div>
-        <h3>Emails transactionnels</h3>
-        <p>Resend ou Postmark pour confirmation form, auto-responder, tunnel email. Templates versionnés, logs d'ouverture.</p>
-      </div>
-      <div class="cap reveal reveal-d-2">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
-        <h3>Blog &amp; architecture SEO</h3>
-        <p>Architecture éditoriale, fil d'Ariane, articles liés et données structurées fidèles. Pensé pour être exploré, compris et maillé — sans promesse de position.</p>
-      </div>
-      <div class="cap reveal reveal-d-3">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
-        <h3>Composants sur-mesure</h3>
-        <p>Bibliothèque Figma + React dédiée à votre projet. Pas de shadcn générique : votre charte, vos animations, votre style.</p>
-      </div>
-      <div class="cap reveal">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg></div>
-        <h3>Animations éditoriales</h3>
-        <p>Scroll-reveal, parallax léger, transitions de page et interactions peuvent être ajoutés. Leur poids, le mode mouvement réduit, le clavier et le contraste sont vérifiés selon la recette convenue.</p>
-      </div>
-      <div class="cap reveal reveal-d-1">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-        <h3>Images optimisées à la volée</h3>
-        <p>Next/Image + CDN. AVIF servi quand supporté, fallback WebP/JPEG. Lazy loading, placeholder blur, srcset auto.</p>
-      </div>
-      <div class="cap reveal reveal-d-2">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 6 4 10 8 10s8-4 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h3>Surface technique à maintenir</h3>
-        <p>Le pré-rendu statique peut réduire certains composants exposés, sans supprimer les mises à jour, les dépendances, les formulaires, le CMS, le domaine ni les services tiers. Le suivi nécessaire est chiffré selon l'architecture.</p>
-      </div>
-      <div class="cap reveal reveal-d-3">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="6" r="2"/><path d="M12 8v8m-4 0l4-4 4 4M6 13l6-3 6 3"/></svg></div>
-        <h3>Accessibilité à recetter</h3>
-        <p>Contrastes, navigation clavier, focus visible, libellés, liens d'évitement et tests d'assistance sont définis dans le périmètre. Une conformité WCAG ou RGAA n'est revendiquée qu'après un audit correspondant.</p>
-      </div>
-      <div class="cap reveal">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 22h20z"/></svg></div>
-        <h3>Déploiement sur Vercel ou OVH</h3>
-        <p>Preview par branche, stratégie de retour arrière, supervision et hébergement peuvent être configurés. Le fournisseur, les coûts, la durée et les responsabilités figurent au devis.</p>
-      </div>
-      <div class="cap reveal reveal-d-1">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6.5L3 11l9 4.5 9-4.5zM3 11v6.5l9 4.5 9-4.5V11M3 14l9 4.5"/></svg></div>
-        <h3>Formation &amp; doc</h3>
-        <p>La durée de formation, la documentation et les opérations à rendre autonomes sont précisées au devis puis vérifiées pendant la recette.</p>
-      </div>
-      <div class="cap reveal reveal-d-2">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <h3>SEO local &amp; pages villes</h3>
-        <p>Gabarits de pages locales uniquement lorsqu'une présence réelle, un contenu distinct et une utilité locale peuvent être démontrés. Exploration, indexation et classement restent mesurés séparément, sans délai garanti.</p>
-      </div>
-      <div class="cap reveal reveal-d-3">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8v18L3 13zM11 7v10"/></svg></div>
-        <h3>Intégrations Ads</h3>
-        <p>GA4, Meta Pixel, LinkedIn Insight, TikTok Pixel ou Microsoft Ads selon le besoin. Le suivi côté serveur reste soumis au consentement, aux données autorisées et aux règles des plateformes.</p>
-      </div>
-      <div class="cap reveal">
-        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h3>Période de correction cadrée</h3>
-        <p>Durée, anomalies couvertes, sévérités, exclusions et délais cibles sont ceux du devis. La maintenance ultérieure fait l'objet d'un périmètre distinct.</p>
-      </div>
+    <div class="caps-fams">
+      <details class="caps-fam" open>
+        <summary><span class="caps-fam-t">Visibilité &amp; SEO</span><span class="caps-fam-n">3 briques</span></summary>
+        <div class="caps-grid">
+          <div class="cap reveal">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div>
+            <h3>SEO technique natif</h3>
+            <p>Schema.org, sitemap dynamique, robots.txt, Open Graph et balises hreflang selon le périmètre. Pré-rendu HTML, canonicals et indexabilité vérifiés avant mise en ligne, puis suivi dans Search Console — sans délai d'indexation garanti.</p>
+          </div>
+          <div class="cap reveal reveal-d-2">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
+            <h3>Blog &amp; architecture SEO</h3>
+            <p>Architecture éditoriale, fil d'Ariane, articles liés et données structurées fidèles. Pensé pour être exploré, compris et maillé — sans promesse de position.</p>
+          </div>
+          <div class="cap reveal reveal-d-2">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <h3>SEO local &amp; pages villes</h3>
+            <p>Gabarits de pages locales uniquement lorsqu'une présence réelle, un contenu distinct et une utilité locale peuvent être démontrés. Exploration, indexation et classement restent mesurés séparément, sans délai garanti.</p>
+          </div>
+        </div>
+      </details>
+      <details class="caps-fam">
+        <summary><span class="caps-fam-t">Performance &amp; rendu</span><span class="caps-fam-n">3 briques</span></summary>
+        <div class="caps-grid">
+          <div class="cap reveal reveal-d-1">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg></div>
+            <h3>Core Web Vitals mesurés</h3>
+            <p>Les objectifs LCP, CLS et INP, les pages testées, l'appareil, le réseau et les scripts tiers sont fixés au devis. Les résultats sont mesurés&nbsp;; aucun score universel n'est promis.</p>
+          </div>
+          <div class="cap reveal reveal-d-1">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+            <h3>Images optimisées à la volée</h3>
+            <p>Next/Image + CDN. AVIF servi quand supporté, fallback WebP/JPEG. Lazy loading, placeholder blur, srcset auto.</p>
+          </div>
+          <div class="cap reveal">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg></div>
+            <h3>Animations éditoriales</h3>
+            <p>Scroll-reveal, parallax léger, transitions de page et interactions peuvent être ajoutés. Leur poids, le mode mouvement réduit, le clavier et le contraste sont vérifiés selon la recette convenue.</p>
+          </div>
+        </div>
+      </details>
+      <details class="caps-fam">
+        <summary><span class="caps-fam-t">Contenu &amp; édition</span><span class="caps-fam-n">4 briques</span></summary>
+        <div class="caps-grid">
+          <div class="cap reveal reveal-d-2">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg></div>
+            <h3>CMS headless éditeur-friendly</h3>
+            <p>Sanity ou Strapi selon votre équipe. Les rôles, le workflow éditorial et les opérations à rendre autonomes sont recettés sur des cas définis.</p>
+          </div>
+          <div class="cap reveal reveal-d-1">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg></div>
+            <h3>Multilingue natif</h3>
+            <p>Routing i18n, traductions au CMS, hreflang automatique, devises et formats locaux. 2 à 10 langues selon besoin.</p>
+          </div>
+          <div class="cap reveal reveal-d-3">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+            <h3>Composants sur-mesure</h3>
+            <p>Bibliothèque Figma + React dédiée à votre projet. Pas de shadcn générique : votre charte, vos animations, votre style.</p>
+          </div>
+          <div class="cap reveal reveal-d-1">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6.5L3 11l9 4.5 9-4.5zM3 11v6.5l9 4.5 9-4.5V11M3 14l9 4.5"/></svg></div>
+            <h3>Formation &amp; doc</h3>
+            <p>La durée de formation, la documentation et les opérations à rendre autonomes sont précisées au devis puis vérifiées pendant la recette.</p>
+          </div>
+        </div>
+      </details>
+      <details class="caps-fam">
+        <summary><span class="caps-fam-t">Conversion &amp; mesure</span><span class="caps-fam-n">6 briques</span></summary>
+        <div class="caps-grid">
+          <div class="cap reveal reveal-d-3">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg></div>
+            <h3>Formulaires branchés CRM</h3>
+            <p>HubSpot, Pipedrive, Brevo, Mailchimp ou Salesforce selon le devis. Webhook, confirmation et anti-spam sont configurés d'après le parcours, la base légale et les outils retenus.</p>
+          </div>
+          <div class="cap reveal">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+            <h3>Prise de RDV intégrée</h3>
+            <p>Calendly, Cal.com ou HubSpot Meetings intégrés en natif. Rendez-vous pris sans sortir du site, pré-qualification facultative.</p>
+          </div>
+          <div class="cap reveal reveal-d-1">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zM2 6l10 7 10-7"/></svg></div>
+            <h3>Emails transactionnels</h3>
+            <p>Resend ou Postmark pour confirmation form, auto-responder, tunnel email. Templates versionnés, logs d'ouverture.</p>
+          </div>
+          <div class="cap reveal reveal-d-2">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h4M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/></svg></div>
+            <h3>A/B testing prêt à l'emploi</h3>
+            <p>GrowthBook ou Vercel Flags peuvent être proposés pour tester un hero, un CTA ou un tunnel. L'outil, le trafic requis et la règle de décision sont précisés au devis.</p>
+          </div>
+          <div class="cap reveal">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 4 4 5-5"/></svg></div>
+            <h3>Analytics privacy-first</h3>
+            <p>Plausible, Fathom ou GA4 selon le besoin. Une exemption de consentement n'est retenue que si tous les critères CNIL sont réunis ; sinon, la mesure reste bloquée jusqu'au choix positif. Dashboard agrégé fourni.</p>
+          </div>
+          <div class="cap reveal reveal-d-3">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8v18L3 13zM11 7v10"/></svg></div>
+            <h3>Intégrations Ads</h3>
+            <p>GA4, Meta Pixel, LinkedIn Insight, TikTok Pixel ou Microsoft Ads selon le besoin. Le suivi côté serveur reste soumis au consentement, aux données autorisées et aux règles des plateformes.</p>
+          </div>
+        </div>
+      </details>
+      <details class="caps-fam">
+        <summary><span class="caps-fam-t">Conformité &amp; exploitation</span><span class="caps-fam-n">5 briques</span></summary>
+        <div class="caps-grid">
+          <div class="cap reveal reveal-d-3">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <h3>RGPD &amp; confidentialité</h3>
+            <p>Bannière avec accepter, refuser et gérer les choix au même niveau, inventaire des traceurs et politique cookies. La configuration est recettée selon les traitements réels ; la validation juridique reste à votre DPO ou conseil.</p>
+          </div>
+          <div class="cap reveal reveal-d-3">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="6" r="2"/><path d="M12 8v8m-4 0l4-4 4 4M6 13l6-3 6 3"/></svg></div>
+            <h3>Accessibilité à recetter</h3>
+            <p>Contrastes, navigation clavier, focus visible, libellés, liens d'évitement et tests d'assistance sont définis dans le périmètre. Une conformité WCAG ou RGAA n'est revendiquée qu'après un audit correspondant.</p>
+          </div>
+          <div class="cap reveal reveal-d-2">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 6 4 10 8 10s8-4 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <h3>Surface technique à maintenir</h3>
+            <p>Le pré-rendu statique peut réduire certains composants exposés, sans supprimer les mises à jour, les dépendances, les formulaires, le CMS, le domaine ni les services tiers. Le suivi nécessaire est chiffré selon l'architecture.</p>
+          </div>
+          <div class="cap reveal">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 22h20z"/></svg></div>
+            <h3>Déploiement sur Vercel ou OVH</h3>
+            <p>Preview par branche, stratégie de retour arrière, supervision et hébergement peuvent être configurés. Le fournisseur, les coûts, la durée et les responsabilités figurent au devis.</p>
+          </div>
+          <div class="cap reveal">
+            <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <h3>Période de correction cadrée</h3>
+            <p>Durée, anomalies couvertes, sévérités, exclusions et délais cibles sont ceux du devis. La maintenance ultérieure fait l'objet d'un périmètre distinct.</p>
+          </div>
+        </div>
+      </details>
     </div>
   </div>
 </section>
@@ -851,6 +876,130 @@ export const bodyHtml = `
           </button>
           <div class="faq-a" id="faq-a-showcase-faq-11" hidden>
             L'échéancier, les jalons de facturation et les moyens de signature figurent dans le devis et les CGV applicables. Les livrables spécifiques sont transférés après paiement complet selon ces documents, sous réserve des composants préexistants et licences tierces.
+          </div>
+        </div>
+
+        <h3 class="eyebrow faq-sub">— Pour les profils techniques</h3>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-tech-1">
+            Comment vous gérez les migrations de base en production ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-showcase-tech-1" hidden>
+            <b>Migrations SQL versionnées (Drizzle)</b> + review en pair avant merge. Déploiement
+            zero-downtime (expand / migrate / contract) pour les schémas sensibles. Pour les
+            très grosses tables, on utilise <b>pt-online-schema-change</b> ou des colonnes temporaires
+            backfillées en batch via queue, jamais de ALTER bloquant en prod.
+            Rollback toujours testé avant release.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-tech-2">
+            Quelle stratégie de queues et de jobs ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-showcase-tech-2" hidden>
+            <b>Files d'attente (Redis)</b>. Queues séparées par criticité (default, notifications,
+            ai-heavy, exports). <b>Retries exponentiels</b>, dead-letter queue sur échec définitif,
+            alerting Sentry sur backlog &gt; X. Les jobs IA coûteux tournent sur
+            une queue dédiée avec rate-limit + timeout strict pour ne jamais bloquer l'API.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-tech-3">
+            Vos stratégies de backup et de disaster recovery ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-showcase-tech-3" hidden>
+            La sauvegarde dépend de l'hébergement et de la criticité : journal continu,
+            snapshots, rétention et copie chez un autre fournisseur sont des options à
+            dimensionner. Le devis précise fréquence, chiffrement, responsables, tests de
+            restauration et, lorsque nécessaire, des objectifs RTO/RPO dans un runbook.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-tech-4">
+            Observabilité, logs, traces — qu'est-ce qu'on a ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-showcase-tech-4" hidden>
+            <b>Sentry</b> pour les erreurs (front + back + mobile) avec context riche (user,
+            tenant, release). <b>Monitoring applicatif</b> pour perfs &amp; slow queries. <b>Dashboards
+            dédiés</b> pour les queues. <b>Logs structurés JSON</b> (Monolog → stdout → agrégateur).
+            <b>PostHog</b> peut servir aux événements produit avec le consentement requis.
+            Canaux, horaires et niveaux d'alerte sont définis dans le contrat de maintenance.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-tech-5">
+            Comment vous tenez la charge à 10 000+ users actifs ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-showcase-tech-5" hidden>
+            Architecture pensée <b>stateless</b>, scale horizontal via Docker/Coolify ou
+            Vercel / Cloudflare. <b>PostgreSQL avec index ciblés + partitioning sur tables chaudes</b>.
+            Redis pour le cache applicatif, les sessions, le rate-limit. Queries lentes
+            tracées, réécrites et testées. La capacité n'est jamais déduite de l'architecture
+            seule : elle est mesurée par des tests de charge correspondant au trafic prévu.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-tech-6">
+            Votre stratégie de tests ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-showcase-tech-6" hidden>
+            <b>Pyramide classique</b>. Unit tests sur la logique métier (Vitest).
+            Feature tests sur chaque route critique (billing, auth, permissions).
+            <b>End-to-end Playwright</b> sur les 5 parcours utilisateurs principaux.
+            Tests IA <b>déterministes</b> avec mocks de réponses LLM. CI GitHub Actions
+            bloque le merge si la couverture des modules critiques baisse.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-tech-7">
+            Accessibilité WCAG pour nos gros clients B2B — vous savez faire ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-showcase-tech-7" hidden>
+            <b>Oui — cible RGAA / WCAG 2.1 niveau AA</b>. Contrastes vérifiés dès les maquettes,
+            navigation clavier complète (focus visibles, skip-links), attributs <b>aria</b> et
+            landmarks sémantiques, alternatives textuelles, formulaires étiquetés. Chaque
+            livraison passe un audit <b>Lighthouse + axe</b>, corrections incluses dans le
+            forfait. Sur demande, grille d'audit RGAA documentée pour vos appels d'offres.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-tech-8">
+            SSO / comptes entreprise pour un espace client — vous savez faire ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-showcase-tech-8" hidden>
+            <b>Oui, nativement</b>. SAML 2.0 via WorkOS ou intégration directe (Azure AD,
+            Okta, Google Workspace, JumpCloud). SCIM pour le provisioning / deprovisioning auto.
+            Audit logs conservés horodatés. Utile dès qu'un espace client ou un extranet
+            s'ajoute au site vitrine — on le cadre et on le chiffre séparément.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-showcase-tech-9">
+            Vous êtes auditables ? Pen test, SOC2, audit de code extérieur ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-showcase-tech-9" hidden>
+            Les revues externes, pentests et dossiers SOC 2 peuvent être préparés avec le
+            client, puis réalisés par les tiers compétents. Les contrôles CI, le périmètre du
+            SAST et la cadence des audits sont écrits dans le devis : ils ne sont pas réputés
+            inclus ni certifiants par défaut.
           </div>
         </div>
       </div>

@@ -16,16 +16,34 @@ import { describe, expect, it } from "vitest";
  *    (WCAG 1.4.4) ou sur écran étroit, les réponses longues étaient coupées
  *    sans défilement possible.
  */
-const CSS_FILES = [
-  "src/components/sites-vitrines/page.css",
-  "src/components/sites-vitrines/sections/sections.css",
-  "src/components/saas-applications/page.css",
-  "src/components/saas-applications/sections/sections.css",
-  "src/components/ecommerce/page.css",
-  "src/components/ecommerce/sections/sections.css",
-  "src/components/outils-internes/page.css",
-  "src/components/outils-internes/sections/sections.css",
+/**
+ * Feuilles candidates. La liste est un PÉRIMÈTRE (quelles pages sont sous
+ * contrat), pas un inventaire : le test ne retient ensuite que celles qui
+ * déclarent réellement une règle d'ouverture de FAQ.
+ *
+ * Pourquoi : une règle peut légitimement passer de `sections/sections.css` au
+ * `page.css` de la même page — c'est arrivé à ecommerce lors du tri du
+ * 28/08/2026. Exiger sa présence dans un fichier PRÉCIS transformait un
+ * déménagement en régression, alors que la propriété protégée (« aucune
+ * réponse ouverte sur une hauteur chiffrée ») restait vraie.
+ *
+ * Le garde-fou anti-test-vide se déplace donc d'un cran : au moins une feuille
+ * de chaque PAGE doit porter la règle.
+ */
+const CSS_SCOPE = [
+  ["src/components/sites-vitrines/page.css", "src/components/sites-vitrines/sections/sections.css"],
+  ["src/components/saas-applications/page.css", "src/components/saas-applications/sections/sections.css"],
+  ["src/components/ecommerce/page.css", "src/components/ecommerce/sections/sections.css"],
+  ["src/components/outils-internes/page.css", "src/components/outils-internes/sections/sections.css"],
 ];
+
+const FAQ_OPEN_RULE = /\.faq-item\.open[^{}]*\.faq-a\s*\{([^}]*)\}/g;
+
+const CSS_FILES = CSS_SCOPE.flat().filter((file) =>
+  new RegExp(FAQ_OPEN_RULE.source).test(
+    fs.readFileSync(path.join(process.cwd(), file), "utf8"),
+  ),
+);
 
 const GRID_PAGES = [
   { file: "src/components/sites-vitrines/page.css", grids: [".proc-grid", ".scase-grid"] },
@@ -82,10 +100,21 @@ describe("rendu mobile des grilles de cartes", () => {
 });
 
 describe("FAQ lisible à 200 % de taille de texte", () => {
+  it("laisse chaque page sous contrat déclarer son ouverture de FAQ", () => {
+    // Remplace l'ancien garde-fou par-fichier : ce qui compte est qu'AUCUNE
+    // page ne perde sa règle, pas dans quel fichier de la page elle vit.
+    for (const [pageCss, sectionsCss] of CSS_SCOPE) {
+      expect(
+        CSS_FILES.includes(pageCss) || CSS_FILES.includes(sectionsCss),
+        `${pageCss} : aucune règle d'ouverture de FAQ dans les feuilles de la page`,
+      ).toBe(true);
+    }
+  });
+
   it.each(CSS_FILES)("%s n'ouvre plus les réponses sur une hauteur fixe", (file) => {
     const css = read(file);
     const openRules = [
-      ...css.matchAll(/\.faq-item\.open[^{}]*\.faq-a\s*\{([^}]*)\}/g),
+      ...css.matchAll(new RegExp(FAQ_OPEN_RULE.source, "g")),
     ].map((match) => match[1]);
 
     expect(

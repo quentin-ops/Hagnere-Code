@@ -3,7 +3,7 @@
 
 export const logoWallHtml = `
 <!-- LOGO WALL · trust signals factuels uniquement -->
-<section class="sr-logos">
+<section class="sr-logos" aria-label="Produits du groupe consultables">
   <div class="wrap">
     <div class="sr-logos-inner reveal">
       <div class="sr-logos-label">

@@ -6,8 +6,6 @@ import { ownershipHtml } from "./sections/ownership";
 import { deriskHtml } from "./sections/derisk";
 import { comparisonHtml } from "./sections/comparison";
 import { refuseHtml } from "./sections/refuse";
-import { trustBadgesHtml } from "./sections/trust-badges";
-import { techFaqHtml } from "./sections/tech-faq";
 import { proofHtml } from "./sections/proof";
 import { relatedServicesHtml } from "./sections/related-services";
 
@@ -21,9 +19,9 @@ import { relatedServicesHtml } from "./sections/related-services";
  *   WHAT WE BUILD (9 verticals) → CAPABILITIES (20 features natives) →
  *   STORES (App Store + Play Store) → OWNERSHIP (9 actifs à inventorier) →
  *   PROCESS (5 étapes) → STACK (RN + Expo + EAS) → RELATED CASES →
- *   DE-RISK (4 peurs) → COMPARISON (vs site/PWA) → REFUSE (red flags) →
- *   PRICING (3 forfaits) → TRUST BADGES (9 engagements) →
- *   FAQ commerciale → TECH FAQ (CTO) → SERVICES LIÉS →
+ *   DE-RISK (4 peurs + 9 engagements contractuels) → COMPARISON (vs site/PWA) → REFUSE (red flags) →
+ *   PRICING (3 forfaits) →
+ *   FAQ (commerciale + technique fusionnées) → SERVICES LIÉS →
  *   [SiteFooter React rendu à part]
  */
 function compose(raw: string): string {
@@ -60,16 +58,8 @@ function compose(raw: string): string {
       "\n\n<!-- PRICING -->",
   );
 
-  // TRUST BADGES — entre "PRICING" et "FAQ"
-  out = out.replace(
-    "<!-- FAQ -->",
-    trustBadgesHtml.trim() + "\n\n<!-- FAQ -->",
-  );
-
-  // TECH FAQ : dernières sections du document.
-  out = out.trimEnd() + "\n\n" + techFaqHtml.trim() +
-      "\n\n" +
-      relatedServicesHtml.trim() + "\n";
+  // SERVICES LIÉS : dernière section du document.
+  out = out.trimEnd() + "\n\n" + relatedServicesHtml.trim() + "\n";
 
   return out;
 }

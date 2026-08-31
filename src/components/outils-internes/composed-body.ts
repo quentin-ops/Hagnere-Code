@@ -7,7 +7,6 @@ import { architectureHtml } from "./sections/architecture";
 import { deriskHtml } from "./sections/derisk";
 import { refuseHtml } from "./sections/refuse";
 import { trustBadgesHtml } from "./sections/trust-badges";
-import { techFaqHtml } from "./sections/tech-faq";
 import { comparisonHtml } from "./sections/comparison";
 import { timelineHtml } from "./sections/timeline";
 import { testimonialsHtml } from "./sections/testimonials";
@@ -81,11 +80,15 @@ function compose(raw: string): string {
       "\n\n<!-- FAQ -->",
   );
 
-  // TECH FAQ : dernière section du document. La CTA finale et le <footer>
-  // hérités ont été retirés de body.ts — ils sont rendus par <SiteFooter />.
-  out = out.trimEnd() + "\n\n" + techFaqHtml.trim() + "\n";
-
-  return out;
+  // La CTA finale et le <footer> hérités ont été retirés de body.ts — ils sont
+  // rendus par <SiteFooter />.
+  //
+  // Il y avait ici une SECONDE FAQ, « Les questions qu'un DSI doit pouvoir
+  // instruire », épissée en toute fin de document. Ses huit questions vivent
+  // désormais dans la FAQ principale de `body.ts` (passe UX du 28/08/2026) :
+  // deux FAQ à la suite obligeaient à parcourir la première en entier pour
+  // découvrir que la seconde existait.
+  return out.trimEnd() + "\n";
 }
 
 export const composedBodyHtml = compose(rawBody);

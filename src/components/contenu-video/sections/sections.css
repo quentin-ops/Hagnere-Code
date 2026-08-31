@@ -519,7 +519,7 @@
 
 /* ==================== PROBLEMS (quotes format) ==================== */
 .cv-problems {
-  padding: 140px 0 120px;
+  padding:88px 0 120px;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
@@ -632,7 +632,7 @@
 
 /* ==================== WHAT WE PRODUCE (Bento) ==================== */
 .cv-produce {
-  padding: 140px 0 160px;
+  padding:88px 0 160px;
   position: relative;
   overflow: hidden;
   background:
@@ -1137,7 +1137,7 @@
 
 /* ==================== PIPELINE 2 VOIES ==================== */
 .cv-pipeline {
-  padding: 140px 0 120px;
+  padding:88px 0 120px;
   background: #0A0A0A;
   color: #fff;
   position: relative;
@@ -1433,7 +1433,7 @@
 
 /* ==================== PROCESS · Roadmap timeline ==================== */
 .cv-process {
-  padding: 140px 0 140px;
+  padding:88px 0 140px;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }
@@ -1655,7 +1655,7 @@
 
 /* ==================== STACK & STUDIO ==================== */
 .cv-stack {
-  padding: 140px 0 140px;
+  padding:88px 0 140px;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
@@ -1785,7 +1785,7 @@
 
 /* ==================== SCENARIOS 3 PACKS (interactive) ==================== */
 .cv-scenarios {
-  padding: 140px 0 160px;
+  padding:88px 0 160px;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }
@@ -1990,7 +1990,7 @@
 
 /* ==================== CHECKLIST inclus / hors scope ==================== */
 .cv-check {
-  padding: 140px 0 120px;
+  padding:88px 0 120px;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
@@ -2073,7 +2073,7 @@
 
 /* ==================== PRICING 4 PACKS ==================== */
 .cv-pricing {
-  padding: 140px 0 140px;
+  padding:88px 0 140px;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
@@ -2215,7 +2215,7 @@
 
 /* ==================== TESTIMONIALS / CASES / TRUST / REFUSE / FAQ / TECH FAQ ==================== */
 .cv-testi {
-  padding: 140px 0 120px;
+  padding:88px 0 120px;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }
@@ -2274,7 +2274,7 @@
 
 /* TRUST */
 .cv-trust {
-  padding: 140px 0 120px;
+  padding:88px 0 120px;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
@@ -2338,7 +2338,7 @@
 
 /* REFUSE */
 .cv-refuse {
-  padding: 140px 0 120px;
+  padding:88px 0 120px;
   background: #0A0A0A;
   color: #fff;
   border-bottom: 1px solid #0A0A0A;
@@ -2413,7 +2413,7 @@
 
 /* FAQ */
 .cv-faq {
-  padding: 140px 0 120px;
+  padding:88px 0 120px;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }
@@ -2477,15 +2477,9 @@
 
 @media (max-width: 900px) { .cv-faq-grid { grid-template-columns: 1fr; gap: 40px; } }
 
-/* TECH FAQ (dark variant) */
-.cv-tfaq {
-  padding: 140px 0 120px;
-  background: var(--paper);
-  border-bottom: 1px solid var(--line);
-}
 .cv-tfaq .section-head { margin-bottom: 40px; }
 .cv-tfaq .section-head h2 { font-size: 40px; letter-spacing: -0.04em; line-height: 1.05; }
-.cv-tfaq-list { border-top: 1px solid var(--line); }
+
 .cv-tfaq-list .faq-item { border-bottom: 1px solid var(--line); padding: 4px 0; }
 .cv-tfaq-list .faq-q {
   display: flex;

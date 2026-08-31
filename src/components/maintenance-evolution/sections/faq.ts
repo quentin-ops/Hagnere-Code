@@ -5,25 +5,25 @@ export const faqHtml = `
     <div class="faq-grid">
       <div class="faq-intro reveal">
         <div class="eyebrow">— FAQ</div>
-        <h2 style="margin-top:14px">Les 12 questions<br>qu'on nous pose<br>avant de signer.</h2>
+        <h2 style="margin-top:14px">Les 20 questions<br>qu'on nous pose<br>avant de signer.</h2>
         <p>Filtrez par profil décideur. Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. Votre demande est relue personnellement, par un consultant senior, sans détour.</p>
 
         <div class="me-faq-filters" role="group" aria-label="Filtrer les questions par profil">
           <button type="button" class="me-faq-filter is-active" data-faq-filter="all" aria-pressed="true">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
-            Tous <span class="me-faq-count">12</span>
+            Tous <span class="me-faq-count">20</span>
           </button>
           <button type="button" class="me-faq-filter" data-faq-filter="ceo" aria-pressed="false">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21v-2a4 4 0 014-4h10a4 4 0 014 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            CEO <span class="me-faq-count">10</span>
+            CEO <span class="me-faq-count">12</span>
           </button>
           <button type="button" class="me-faq-filter" data-faq-filter="cto" aria-pressed="false">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            CTO <span class="me-faq-count">8</span>
+            CTO <span class="me-faq-count">15</span>
           </button>
           <button type="button" class="me-faq-filter" data-faq-filter="daf" aria-pressed="false">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-            DAF <span class="me-faq-count">6</span>
+            DAF <span class="me-faq-count">7</span>
           </button>
         </div>
       </div>
@@ -134,6 +134,116 @@ export const faqHtml = `
           </button>
           <div class="faq-a" id="faq-a-care-faq-12" hidden>
             Le diagnostic initial est cadré au devis&nbsp;: intervenants, jours mobilisés, code et infrastructure couverts, livrables et restitution. Aucune déduction automatique n'est prévue par les CGV publiques.
+          </div>
+        </div>
+
+        <div class="faq-sub">
+          <h3 class="eyebrow">— Pour les profils techniques</h3>
+        </div>
+
+        <div class="faq-item" data-persona="cto">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-tech-1">
+            Comment vous gérez les migrations de base en production ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-care-tech-1" hidden>
+            Les migrations peuvent être versionnées et revues en pair avant merge. Pour les schémas sensibles,
+            une stratégie expand / migrate / contract vise à limiter les interruptions.
+            Pour les très grosses tables, on utilise <b>pt-online-schema-change</b> ou des
+            colonnes temporaires backfillées en batch via queue. Le protocole précise les opérations interdites,
+            les tests, la fenêtre éventuelle et la stratégie de retour arrière.
+          </div>
+        </div>
+
+        <div class="faq-item" data-persona="cto">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-tech-2">
+            Stratégie de queues et de jobs background ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-care-tech-2" hidden>
+            <b>Laravel Horizon + Redis</b> (ou BullMQ côté Node). Queues séparées par criticité
+            (default, notifications, ai-heavy, exports). <b>Retries exponentiels</b>,
+            dead-letter queue sur échec définitif, alerting Sentry + Pulse sur backlog &gt; X.
+            Les jobs coûteux peuvent tourner sur une queue dédiée avec rate-limit et timeout afin de réduire leur impact sur l'API.
+          </div>
+        </div>
+
+        <div class="faq-item" data-persona="cto">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-tech-3">
+            Vos stratégies de backup et de disaster recovery ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-care-tech-3" hidden>
+            WAL continu, snapshots et second fournisseur sont des options à dimensionner selon la criticité.
+            Le devis précise la fréquence, la rétention, le chiffrement, la responsabilité et la cadence des tests.
+            <b>RTO et RPO cibles</b> sont documentés dans le runbook lorsque le périmètre l'exige.
+          </div>
+        </div>
+
+        <div class="faq-item" data-persona="cto">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-tech-4">
+            Observabilité, logs, traces — qu'est-ce qu'on a ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-care-tech-4" hidden>
+            <b>Sentry</b> pour les erreurs (front + back + mobile) avec context riche (user,
+            tenant, release). <b>Laravel Pulse</b> pour perfs &amp; slow queries. <b>Horizon</b>
+            pour les queues. <b>Logs structurés JSON</b> (Monolog → stdout → Axiom). <b>Grafana Cloud</b>
+            pour métriques infra + custom métier. Corrélation par <code>trace_id</code>. Alerting
+            Les canaux, plages de surveillance et niveaux d'alerte sont définis dans le contrat.
+          </div>
+        </div>
+
+        <div class="faq-item" data-persona="cto">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-tech-5">
+            Comment validez-vous la capacité sous charge ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-care-tech-5" hidden>
+            Architecture pensée <b>stateless</b>, scale horizontal via Docker/Laravel Forge ou
+            Laravel Cloud. <b>PostgreSQL avec index ciblés + partitioning sur tables chaudes</b>.
+            Redis pour le cache applicatif, les sessions, le rate-limit. Queries lentes
+            tracées, réécrites, parfois réindexées. Un CDN peut compléter l'ensemble. La
+            capacité est validée par des tests de charge représentatifs, jamais présumée.
+          </div>
+        </div>
+
+        <div class="faq-item" data-persona="cto">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-tech-6">
+            Votre stratégie de tests et qualité code ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-care-tech-6" hidden>
+            <b>Pyramide classique</b>. Unit tests sur la logique métier (Pest / Vitest).
+            Feature tests sur chaque route critique (billing, auth, permissions).
+            Les parcours <b>end-to-end Playwright</b> sont sélectionnés selon leur criticité.
+            Les outils SAST, règles de CI, seuils de couverture et revues humaines sont définis selon le dépôt et le risque.
+          </div>
+        </div>
+
+        <div class="faq-item" data-persona="cto">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-tech-7">
+            Vous êtes SOC2 / ISO27001 ready ? Pour nos audits clients grands comptes ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-care-tech-7" hidden>
+            Nous pouvons cadrer les preuves, journaux, droits, sous-traitants et contrôles
+            nécessaires au référentiel retenu. Les outils, la fréquence des revues et les
+            pentests sont dimensionnés au contrat. <b>L'audit officiel est mené par un tiers
+            habilité</b> et aucun délai de certification n'est garanti.
+          </div>
+        </div>
+
+        <div class="faq-item" data-persona="cto">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-care-tech-8">
+            Vous êtes auditables ? Pen test, revue de code externe ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-care-tech-8" hidden>
+            Une revue de code ou un pentest externe peut être organisé avec les accès et la
+            documentation nécessaires. Le devis précise les contrôles CI, outils SAST,
+            fréquences, responsabilités et éventuelles prestations tierces ; rien n'est
+            présenté comme inclus ou certifiant sans engagement écrit.
           </div>
         </div>
       </div>

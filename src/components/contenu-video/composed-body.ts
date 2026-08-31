@@ -12,7 +12,6 @@ import { testimonialsHtml } from "./sections/testimonials";
 import { trustBadgesHtml } from "./sections/trust-badges";
 import { refuseHtml } from "./sections/refuse";
 import { faqHtml } from "./sections/faq";
-import { techFaqHtml } from "./sections/tech-faq";
 import { relatedServicesHtml } from "./sections/related-services";
 
 /**
@@ -25,7 +24,8 @@ import { relatedServicesHtml } from "./sections/related-services";
  *   → PROCESS (roadmap éditoriale) → STACK & STUDIO
  *   → SCÉNARIOS (3 packs interactifs) → CHECKLIST (inclus / hors scope)
  *   → PRICING (4 cards) → TESTIMONIALS → TRUST BADGES
- *   → CE QU'ON REFUSE → FAQ commerciale → TECH/PROD FAQ → SERVICES LIÉS
+ *   → CE QU'ON REFUSE → FAQ (commerciale + production & droits fusionnées)
+ *   → SERVICES LIÉS
  *   → [CTA/FOOTER strippés → SiteFooter React]
  */
 function compose(raw: string): string {
@@ -45,7 +45,6 @@ function compose(raw: string): string {
     trustBadgesHtml.trim(),
     refuseHtml.trim(),
     faqHtml.trim(),
-    techFaqHtml.trim(),
     relatedServicesHtml.trim(),
   ].join("\n\n");
 

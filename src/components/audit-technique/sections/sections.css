@@ -62,7 +62,7 @@
 
 /* ==================== PROBLEMS — premium card grid ==================== */
 .at-problems {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
   position: relative;
@@ -269,7 +269,7 @@
 
 /* ==================== COMPARISON (SaaS, 4 cols) ==================== */
 .at-compare {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
@@ -385,93 +385,9 @@
 .at-cmp-disclaimer svg { color: var(--accent); flex-shrink: 0; }
 .at-cmp-disclaimer a { color: var(--accent-ink); text-decoration: underline; }
 
-/* ==================== VERTICALS ==================== */
-.at-verticals {
-  padding: 120px 0;
-  background: var(--paper-2);
-  border-bottom: 1px solid var(--line);
-}
-.at-vt-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-.at-vt-card {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 26px;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-}
-.at-vt-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 28px -20px rgba(0,0,0,0.12);
-  border-color: #d4d4d4;
-}
-.at-vt-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.at-vt-ic {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: var(--accent-soft);
-  display: grid;
-  place-items: center;
-  color: var(--accent);
-}
-.at-vt-tag {
-  font-family: var(--font-geist-mono);
-  font-size: 10px;
-  /* Gris figé #666 : illisible sur `--paper-3` sombre (#1A1A1F, 3,02:1).
-     Le token suit le thème — 5,13:1 en sombre, 4,89:1 en clair. */
-  color: var(--mute);
-  padding: 4px 8px;
-  background: var(--paper-3);
-  border-radius: 999px;
-  letter-spacing: 0.04em;
-}
-.at-vt-tag-live {
-  background: #e7f7ee;
-  color: #166534;
-}
-
-.at-vt-card h3 {
-  font-size: 18px;
-}
-.at-vt-card p {
-  margin: 0;
-  color: var(--mute);
-  font-size: 14px;
-  line-height: 1.55;
-}
-.at-vt-feats {
-  margin-top: auto;
-  padding-top: 14px;
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-.at-vt-feats span {
-  font-family: var(--font-geist-mono);
-  font-size: 10px;
-  padding: 3px 8px;
-  background: var(--paper-3);
-  color: var(--ink-3);
-  border-radius: 4px;
-  letter-spacing: 0.02em;
-}
-
 /* ==================== TESTIMONIALS ==================== */
 .at-testi {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
@@ -527,7 +443,7 @@
 
 /* ==================== TRUST BADGES ==================== */
 .at-trust {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
@@ -620,7 +536,7 @@
 
 /* ==================== CHECKLIST INCLUS / HORS SCOPE ==================== */
 .at-check {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
@@ -708,7 +624,7 @@
 
 /* ==================== DE-RISK 4 PEURS ==================== */
 .at-derisk {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
@@ -783,7 +699,7 @@
 
 /* ==================== CE QU'ON REFUSE ==================== */
 .at-refuse {
-  padding: 120px 0;
+  padding:80px 0;
   background: #0A0A0A;
   color: #fff;
   border-bottom: 1px solid #0A0A0A;
@@ -869,7 +785,7 @@
 /* ==================== SCÉNARIOS — premium chooser + invoice aside ==================== */
 .at-scenarios {
   position: relative;
-  padding: 130px 0;
+  padding:88px 0;
   background: linear-gradient(180deg, var(--paper-2), var(--paper) 60%);
   border-bottom: 1px solid var(--line);
   overflow: hidden;
@@ -1237,15 +1153,6 @@
 /* Only one panel visible at a time — useDesignInteractive hides with [hidden] and toggles .is-active */
 .at-scen-panel[hidden] { display: none; }
 
-/* ==================== TECH FAQ CTO ==================== */
-.at-tfaq {
-  padding: 120px 0;
-  background: var(--paper);
-  border-bottom: 1px solid var(--line);
-}
-.at-tfaq-list {
-  border-top: 1px solid var(--line);
-}
 .at-tfaq-list .faq-item {
   border-bottom: 1px solid var(--line);
   padding: 4px 0;
@@ -1377,227 +1284,14 @@
   }
 }
 
-/* ================================================================
-   PERF / CORE WEB VITALS section — unique to Sites Vitrines
-   ================================================================ */
-
-/* How we do it */
-
-/* ================================================================
-   SERP ANATOMY — remplace l'architecture SaaS générique
-   ================================================================ */
-
-/* SERP mockup — grande card centrale */
-
-/* Shared hotspot badge on every zone */
-
-/* 01 AI Overview */
-
-/* 02 Featured snippet */
-
-/* 03 PAA */
-
-/* 04 Organic */
-
-/* 05 Local */
-
-/* 06 Related */
-
-/* Zones annotation grid (6 cards) */
-
-/* ================================================================
-   ARSENAL SEO — remplace le Stack orbit générique
-   ================================================================ */
-.at-arsenal {
-  padding: 130px 0;
-  background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
-  border-bottom: 1px solid var(--line);
-  position: relative;
-  overflow: hidden;
-}
-.at-arsenal::before {
-  content: "";
-  position: absolute;
-  top: -200px;
-  right: -200px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(109, 40, 217, 0.06), transparent 60%);
-  pointer-events: none;
-}
 .at-arsenal > .wrap { position: relative; }
-
-.at-arsenal-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 64px;
-}
-
-.at-arsenal-col {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  background: linear-gradient(180deg, var(--paper), var(--paper-2));
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 22px;
-  box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.08);
-  position: relative;
-}
-/* Middle column keeps a subtle accent to remain visually emphasized */
-.at-arsenal-col-mid {
-  border-color: rgba(109, 40, 217, 0.25);
-  box-shadow:
-    0 32px 56px -22px rgba(76, 29, 149, 0.22),
-    0 10px 20px -10px rgba(0, 0, 0, 0.06);
-}
-.at-arsenal-col-mid::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, var(--accent) 20%, var(--accent) 80%, transparent);
-  border-radius: 20px 20px 0 0;
-  opacity: 0.75;
-}
-
-.at-arsenal-col-head {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--line);
-}
-.at-arsenal-col-step {
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-ink));
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-family: var(--font-geist-mono);
-  font-size: 12px;
-  font-weight: 700;
-  flex-shrink: 0;
-}
-.at-arsenal-col-title {
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  color: var(--ink);
-}
-
-.at-arsenal-tool {
-  position: relative;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 18px 18px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  transition: transform 0.25s ease, border-color 0.25s, box-shadow 0.25s;
-}
-.at-arsenal-tool:hover {
-  transform: translateY(-2px);
-  border-color: rgba(109, 40, 217, 0.3);
-  box-shadow: 0 18px 36px -20px rgba(76, 29, 149, 0.2);
-}
-.at-arsenal-tool-top {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-.at-arsenal-tool-logo {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-}
-.at-arsenal-tool-name {
-  font-size: 14.5px;
-  font-weight: 600;
-  color: var(--ink);
-  letter-spacing: -0.015em;
-  line-height: 1.2;
-}
-.at-arsenal-tool-kind {
-  font-family: var(--font-geist-mono);
-  font-size: 10px;
-  color: var(--mute);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-weight: 500;
-  margin-top: 3px;
-}
-.at-arsenal-tool-body {
-  font-size: 12.5px;
-  color: var(--ink-3);
-  line-height: 1.55;
-}
-.at-arsenal-tool-body b { color: var(--ink); font-weight: 600; }
-.at-arsenal-tool-chip {
-  align-self: flex-start;
-  font-family: var(--font-geist-mono);
-  font-size: 10px;
-  color: var(--accent-ink);
-  background: var(--accent-soft);
-  border: 1px solid rgba(109, 40, 217, 0.18);
-  padding: 3px 9px;
-  border-radius: 6px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-.at-arsenal-foot {
-  margin-top: 40px;
-  padding: 20px 24px;
-  background: #0A0A0A;
-  color: rgba(255, 255, 255, 0.85);
-  border-radius: 14px;
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  font-size: 14px;
-  line-height: 1.55;
-  position: relative;
-  overflow: hidden;
-}
-.at-arsenal-foot::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 70% 60% at 100% 0%, rgba(109, 40, 217, 0.18), transparent 60%);
-  pointer-events: none;
-}
-.at-arsenal-foot > * { position: relative; }
-.at-arsenal-foot svg {
-  color: var(--accent);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-.at-arsenal-foot b { color: #fff; font-weight: 600; }
 
 /* Responsive */
 @media (max-width: 1024px) {
-  
-  .at-arsenal-grid { grid-template-columns: 1fr; gap: 20px; }
-  .at-arsenal-col { padding: 18px; }
+
 }
 @media (max-width: 720px) {
-  
-  
-  
-  
-  
-  .at-arsenal { padding: 72px 0; }
-  .at-arsenal-grid { margin-top: 40px; }
+
 }
 
 /* ================================================================
@@ -1608,7 +1302,7 @@
 
 .at-eco {
   position: relative;
-  padding: 130px 0;
+  padding:88px 0;
   background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
   border-bottom: 1px solid var(--line);
   overflow: hidden;
@@ -1866,7 +1560,7 @@
    WHAT WE DO (Ads) — 8 services, code couleur par famille canal
    ================================================================ */
 .at-wwd {
-  padding: 130px 0;
+  padding:88px 0;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
@@ -2028,7 +1722,7 @@
    TRACKING SCHEMA — pipeline server-side (remplace SERP anatomy)
    ================================================================ */
 .at-track {
-  padding: 130px 0;
+  padding:88px 0;
   background: linear-gradient(180deg, #0a0a0a 0%, #14091f 55%, #0a0a0a 100%);
   color: #fff;
   border-bottom: 1px solid #1f1f1f;
@@ -2333,6 +2027,10 @@
   padding-top: 0;
 }
 .at-caps-family-head {
+  /* Cible tactile : ces resumes deplient une famille de briques et
+     mesuraient 36 a 40 px de haut au mobile, sous le seuil de 44 px que
+     ce depot applique partout ailleurs. L'espace vertical est libre. */
+  min-height: 44px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -2372,7 +2070,7 @@
    ROI DASHBOARD — dial + KPIs + how
    ================================================================ */
 .at-roi {
-  padding: 130px 0;
+  padding:88px 0;
   background: linear-gradient(180deg, #0a0a0a 0%, #14091f 50%, #0a0a0a 100%);
   color: #fff;
   border-bottom: 1px solid #1f1f1f;
@@ -2702,20 +2400,10 @@
 }
 
 /* ================================================================
-   VERTICALS — tag variant hot (sprint)
-   ================================================================ */
-.at-vt-tag-hot {
-  background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
-  color: #fff;
-  border-color: #EA580C;
-  box-shadow: 0 4px 12px -4px rgba(234, 88, 12, 0.5);
-}
-
-/* ================================================================
    PROCESS (Ads) — 7 étapes, 3 phases
    ================================================================ */
 .at-proc {
-  padding: 130px 0;
+  padding:88px 0;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }
@@ -2812,7 +2500,6 @@ html.dark .at-proc-phase-head[data-phase="pilot"] { --phase-color: #34D399; }
 html.dark .at-proc-step[data-phase="setup"] { --phase-color: #A78BFA; }
 html.dark .at-proc-step[data-phase="launch"] { --phase-color: #7DD3FC; }
 html.dark .at-proc-step[data-phase="pilot"] { --phase-color: #34D399; }
-
 
 .at-proc-step:hover {
   transform: translateY(-3px);
@@ -3141,7 +2828,7 @@ html.dark .at-proc-step[data-phase="pilot"] { --phase-color: #34D399; }
    TEAM · Votre équipe dédiée (photos + rôles + LinkedIn)
    ================================================================ */
 .at-team-dedi {
-  padding: 130px 0;
+  padding:88px 0;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
@@ -3507,6 +3194,10 @@ html.dark .at-proc-step[data-phase="pilot"] { --phase-color: #34D399; }
 }
 .at-faq-filter {
   display: inline-flex;
+  /* 39 px mesurés au mobile : sous la cible tactile de 44 px, sur des
+     boutons alignés côte à côte et donc faciles à manquer du pouce.
+     La rangée peut s'étirer verticalement sans rien déplacer. */
+  min-height: 44px;
   align-items: center;
   gap: 7px;
   padding: 8px 14px;
@@ -3557,7 +3248,7 @@ html.dark .at-proc-step[data-phase="pilot"] { --phase-color: #34D399; }
    MINI-AUDIT · questionnaire interactif 5 questions + score
    ================================================================ */
 .at-audit {
-  padding: 130px 0;
+  padding:88px 0;
   background: linear-gradient(180deg, #0a0a0a 0%, #14091f 50%, #0a0a0a 100%);
   color: #fff;
   border-bottom: 1px solid #1f1f1f;

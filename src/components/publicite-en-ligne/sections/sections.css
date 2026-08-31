@@ -62,7 +62,7 @@
 
 /* ==================== PROBLEMS — premium card grid ==================== */
 .ads-problems {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
   position: relative;
@@ -270,7 +270,7 @@
 
 /* ==================== COMPARISON (SaaS, 4 cols) ==================== */
 .ads-compare {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
@@ -386,93 +386,9 @@
 .ads-cmp-disclaimer svg { color: var(--accent); flex-shrink: 0; }
 .ads-cmp-disclaimer a { color: var(--accent-ink); text-decoration: underline; }
 
-/* ==================== VERTICALS ==================== */
-.ads-verticals {
-  padding: 120px 0;
-  background: var(--paper-2);
-  border-bottom: 1px solid var(--line);
-}
-.ads-vt-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-.ads-vt-card {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 26px;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-}
-.ads-vt-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 28px -20px rgba(0,0,0,0.12);
-  border-color: #d4d4d4;
-}
-.ads-vt-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.ads-vt-ic {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: var(--accent-soft);
-  display: grid;
-  place-items: center;
-  color: var(--accent);
-}
-.ads-vt-tag {
-  font-family: var(--font-geist-mono);
-  font-size: 10px;
-  /* Gris figé #666 : illisible sur `--paper-3` sombre (#1A1A1F, 3,02:1).
-     Le token suit le thème — 5,13:1 en sombre, 4,89:1 en clair. */
-  color: var(--mute);
-  padding: 4px 8px;
-  background: var(--paper-3);
-  border-radius: 999px;
-  letter-spacing: 0.04em;
-}
-.ads-vt-tag-live {
-  background: #e7f7ee;
-  color: #166534;
-}
-
-.ads-vt-card h3 {
-  font-size: 18px;
-}
-.ads-vt-card p {
-  margin: 0;
-  color: var(--mute);
-  font-size: 14px;
-  line-height: 1.55;
-}
-.ads-vt-feats {
-  margin-top: auto;
-  padding-top: 14px;
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-.ads-vt-feats span {
-  font-family: var(--font-geist-mono);
-  font-size: 10px;
-  padding: 3px 8px;
-  background: var(--paper-3);
-  color: var(--ink-3);
-  border-radius: 4px;
-  letter-spacing: 0.02em;
-}
-
 /* ==================== TESTIMONIALS ==================== */
 .ads-testi {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
@@ -528,7 +444,7 @@
 
 /* ==================== TRUST BADGES ==================== */
 .ads-trust {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
@@ -621,7 +537,7 @@
 
 /* ==================== CHECKLIST INCLUS / HORS SCOPE ==================== */
 .ads-check {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
@@ -709,7 +625,7 @@
 
 /* ==================== DE-RISK 4 PEURS ==================== */
 .ads-derisk {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
@@ -784,7 +700,7 @@
 
 /* ==================== CE QU'ON REFUSE ==================== */
 .ads-refuse {
-  padding: 120px 0;
+  padding:80px 0;
   background: #0A0A0A;
   color: #fff;
   border-bottom: 1px solid #0A0A0A;
@@ -870,7 +786,7 @@
 /* ==================== SCÉNARIOS — premium chooser + invoice aside ==================== */
 .ads-scenarios {
   position: relative;
-  padding: 130px 0;
+  padding:88px 0;
   background: linear-gradient(180deg, var(--paper-2), var(--paper) 60%);
   border-bottom: 1px solid var(--line);
   overflow: hidden;
@@ -1238,15 +1154,6 @@
 /* Only one panel visible at a time — useDesignInteractive hides with [hidden] and toggles .is-active */
 .ads-scen-panel[hidden] { display: none; }
 
-/* ==================== TECH FAQ CTO ==================== */
-.ads-tfaq {
-  padding: 120px 0;
-  background: var(--paper);
-  border-bottom: 1px solid var(--line);
-}
-.ads-tfaq-list {
-  border-top: 1px solid var(--line);
-}
 .ads-tfaq-list .faq-item {
   border-bottom: 1px solid var(--line);
   padding: 4px 0;
@@ -1378,227 +1285,14 @@
   }
 }
 
-/* ================================================================
-   PERF / CORE WEB VITALS section — unique to Sites Vitrines
-   ================================================================ */
-
-/* How we do it */
-
-/* ================================================================
-   SERP ANATOMY — remplace l'architecture SaaS générique
-   ================================================================ */
-
-/* SERP mockup — grande card centrale */
-
-/* Shared hotspot badge on every zone */
-
-/* 01 AI Overview */
-
-/* 02 Featured snippet */
-
-/* 03 PAA */
-
-/* 04 Organic */
-
-/* 05 Local */
-
-/* 06 Related */
-
-/* Zones annotation grid (6 cards) */
-
-/* ================================================================
-   ARSENAL SEO — remplace le Stack orbit générique
-   ================================================================ */
-.ads-arsenal {
-  padding: 130px 0;
-  background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
-  border-bottom: 1px solid var(--line);
-  position: relative;
-  overflow: hidden;
-}
-.ads-arsenal::before {
-  content: "";
-  position: absolute;
-  top: -200px;
-  right: -200px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(109, 40, 217, 0.06), transparent 60%);
-  pointer-events: none;
-}
 .ads-arsenal > .wrap { position: relative; }
-
-.ads-arsenal-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 64px;
-}
-
-.ads-arsenal-col {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  background: linear-gradient(180deg, var(--paper), var(--paper-2));
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 22px;
-  box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.08);
-  position: relative;
-}
-/* Middle column keeps a subtle accent to remain visually emphasized */
-.ads-arsenal-col-mid {
-  border-color: rgba(109, 40, 217, 0.25);
-  box-shadow:
-    0 32px 56px -22px rgba(76, 29, 149, 0.22),
-    0 10px 20px -10px rgba(0, 0, 0, 0.06);
-}
-.ads-arsenal-col-mid::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, var(--accent) 20%, var(--accent) 80%, transparent);
-  border-radius: 20px 20px 0 0;
-  opacity: 0.75;
-}
-
-.ads-arsenal-col-head {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--line);
-}
-.ads-arsenal-col-step {
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-ink));
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-family: var(--font-geist-mono);
-  font-size: 12px;
-  font-weight: 700;
-  flex-shrink: 0;
-}
-.ads-arsenal-col-title {
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  color: var(--ink);
-}
-
-.ads-arsenal-tool {
-  position: relative;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 18px 18px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  transition: transform 0.25s ease, border-color 0.25s, box-shadow 0.25s;
-}
-.ads-arsenal-tool:hover {
-  transform: translateY(-2px);
-  border-color: rgba(109, 40, 217, 0.3);
-  box-shadow: 0 18px 36px -20px rgba(76, 29, 149, 0.2);
-}
-.ads-arsenal-tool-top {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-.ads-arsenal-tool-logo {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-}
-.ads-arsenal-tool-name {
-  font-size: 14.5px;
-  font-weight: 600;
-  color: var(--ink);
-  letter-spacing: -0.015em;
-  line-height: 1.2;
-}
-.ads-arsenal-tool-kind {
-  font-family: var(--font-geist-mono);
-  font-size: 10px;
-  color: var(--mute);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-weight: 500;
-  margin-top: 3px;
-}
-.ads-arsenal-tool-body {
-  font-size: 12.5px;
-  color: var(--ink-3);
-  line-height: 1.55;
-}
-.ads-arsenal-tool-body b { color: var(--ink); font-weight: 600; }
-.ads-arsenal-tool-chip {
-  align-self: flex-start;
-  font-family: var(--font-geist-mono);
-  font-size: 10px;
-  color: var(--accent-ink);
-  background: var(--accent-soft);
-  border: 1px solid rgba(109, 40, 217, 0.18);
-  padding: 3px 9px;
-  border-radius: 6px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-.ads-arsenal-foot {
-  margin-top: 40px;
-  padding: 20px 24px;
-  background: var(--ink);
-  color: rgba(var(--paper-rgb),0.85);
-  border-radius: 14px;
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  font-size: 14px;
-  line-height: 1.55;
-  position: relative;
-  overflow: hidden;
-}
-.ads-arsenal-foot::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 70% 60% at 100% 0%, rgba(109, 40, 217, 0.18), transparent 60%);
-  pointer-events: none;
-}
-.ads-arsenal-foot > * { position: relative; }
-.ads-arsenal-foot svg {
-  color: var(--accent);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-.ads-arsenal-foot b { color: var(--paper); font-weight: 600; }
 
 /* Responsive */
 @media (max-width: 1024px) {
-  
-  .ads-arsenal-grid { grid-template-columns: 1fr; gap: 20px; }
-  .ads-arsenal-col { padding: 18px; }
+
 }
 @media (max-width: 720px) {
-  
-  
-  
-  
-  
-  .ads-arsenal { padding: 72px 0; }
-  .ads-arsenal-grid { margin-top: 40px; }
+
 }
 
 /* ================================================================
@@ -1609,7 +1303,7 @@
 
 .ads-eco {
   position: relative;
-  padding: 130px 0;
+  padding:88px 0;
   background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
   border-bottom: 1px solid var(--line);
   overflow: hidden;
@@ -1867,7 +1561,7 @@
    WHAT WE DO (Ads) — 8 services, code couleur par famille canal
    ================================================================ */
 .ads-wwd {
-  padding: 130px 0;
+  padding:88px 0;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
@@ -2022,7 +1716,7 @@
    TRACKING SCHEMA — pipeline server-side (remplace SERP anatomy)
    ================================================================ */
 .ads-track {
-  padding: 130px 0;
+  padding:88px 0;
   background: linear-gradient(180deg, #0a0a0a 0%, #14091f 55%, #0a0a0a 100%);
   color: #fff;
   border-bottom: 1px solid #1f1f1f;
@@ -2327,6 +2021,10 @@
   padding-top: 0;
 }
 .ads-caps-family-head {
+  /* Cible tactile : ces resumes deplient une famille de briques et
+     mesuraient 36 a 40 px de haut au mobile, sous le seuil de 44 px que
+     ce depot applique partout ailleurs. L'espace vertical est libre. */
+  min-height: 44px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -2366,7 +2064,7 @@
    ROI DASHBOARD — dial + KPIs + how
    ================================================================ */
 .ads-roi {
-  padding: 130px 0;
+  padding:88px 0;
   background: linear-gradient(180deg, #0a0a0a 0%, #14091f 50%, #0a0a0a 100%);
   color: #fff;
   border-bottom: 1px solid #1f1f1f;
@@ -2696,20 +2394,10 @@
 }
 
 /* ================================================================
-   VERTICALS — tag variant hot (sprint)
-   ================================================================ */
-.ads-vt-tag-hot {
-  background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
-  color: #fff;
-  border-color: #EA580C;
-  box-shadow: 0 4px 12px -4px rgba(234, 88, 12, 0.5);
-}
-
-/* ================================================================
    PROCESS (Ads) — 7 étapes, 3 phases
    ================================================================ */
 .ads-proc {
-  padding: 130px 0;
+  padding:88px 0;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }
@@ -2806,7 +2494,6 @@ html.dark .ads-proc-phase-head[data-phase="pilot"] { --phase-color: #34D399; }
 html.dark .ads-proc-step[data-phase="setup"] { --phase-color: #A78BFA; }
 html.dark .ads-proc-step[data-phase="launch"] { --phase-color: #7DD3FC; }
 html.dark .ads-proc-step[data-phase="pilot"] { --phase-color: #34D399; }
-
 
 .ads-proc-step:hover {
   transform: translateY(-3px);
@@ -2991,8 +2678,7 @@ html.dark .ads-cmp-col-us{background:rgba(139,92,246,0.07)}
 html.dark .ads-cmp-head .ads-cmp-col-us{background:var(--ink)}
 html.dark .ads-cmp-good{color:#4ADE80}
 html.dark .ads-cmp-bad{color:#F87171}
-html.dark .ads-vt-card:hover{border-color:rgba(255,255,255,0.22)}
-html.dark .ads-vt-tag-live{background:rgba(74,222,128,0.13);color:#4ADE80}
+
 html.dark .ads-trust-card:hover{border-color:rgba(255,255,255,0.22)}
 
 html.dark .ads-derisk-card:hover{border-color:rgba(255,255,255,0.22)}

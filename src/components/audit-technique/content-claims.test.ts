@@ -64,10 +64,25 @@ describe("audit technique public claims", () => {
     expect(composedBodyHtml).not.toMatch(/Express démarre en 3\s*j|Audit livré\s*&amp;\s*facturé/i);
   });
 
+  /**
+   * La réserve sur la certification était portée par DEUX sections : la carte
+   * « santé » des verticales (retirée de la composition le 28/08/2026) et la
+   * question FAQ « Conformité SOC2 / ISO 27001 / HDS / ACPR ».
+   *
+   * Quand la première a disparu, l'assertion a d'abord été assouplie pour
+   * suivre — c'est l'inverse de ce qu'un garde-fou doit faire. Une réserve
+   * réglementaire ne s'affaiblit pas parce que la section qui la portait
+   * déménage : elle se réécrit dans la section qui reste. La phrase explicite
+   * a donc été réintroduite dans la réponse survivante, et l'assertion forte
+   * est rétablie.
+   */
   it("ne transforme pas la mission en certification officielle", () => {
     expect(composedBodyHtml).not.toMatch(/HDS obligatoire|audit préparatoire indispensable/i);
     expect(composedBodyHtml).not.toMatch(/3[–-]6 mois[^<.]{0,100}certif/i);
     expect(composedBodyHtml).toContain("cette prestation ne délivre pas de certification HDS");
+    expect(composedBodyHtml).toContain(
+      "aucun gain de délai ni obtention de certification n'est garanti",
+    );
   });
 
   it("ne présente pas le NDA comme universel", () => {

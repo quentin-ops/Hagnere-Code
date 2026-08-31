@@ -62,7 +62,7 @@
 
 /* ==================== PROBLEMS — premium card grid ==================== */
 .sv-problems {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
   position: relative;
@@ -271,7 +271,7 @@
 
 /* ==================== COMPARISON (SaaS, 4 cols) ==================== */
 .sv-compare {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
@@ -387,94 +387,9 @@
 .sv-cmp-disclaimer svg { color: var(--accent); flex-shrink: 0; }
 .sv-cmp-disclaimer a { color: var(--accent-ink); text-decoration: underline; }
 
-/* ==================== VERTICALS ==================== */
-.sv-verticals {
-  padding: 120px 0;
-  background: var(--paper-2);
-  border-bottom: 1px solid var(--line);
-}
-.sv-vt-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-.sv-vt-card {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 26px;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-}
-.sv-vt-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 28px -20px rgba(0,0,0,0.12);
-  border-color: #d4d4d4;
-}
-.sv-vt-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.sv-vt-ic {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: var(--accent-soft);
-  display: grid;
-  place-items: center;
-  color: var(--accent);
-}
-.sv-vt-tag {
-  font-family: var(--font-geist-mono);
-  font-size: 10px;
-  /* Gris figé calibré pour le fond clair : en sombre `--paper-3` passe à
-     #1A1A1F et #666 y tombe à 3,02:1. Le jeton `--mute` suit la surface —
-     #6B6B6B sur #F5F5F5 = 4,89:1 en clair, #8B8B94 sur #1A1A1F = 5,13:1. */
-  color: var(--mute);
-  padding: 4px 8px;
-  background: var(--paper-3);
-  border-radius: 999px;
-  letter-spacing: 0.04em;
-}
-.sv-vt-tag-live {
-  background: #e7f7ee;
-  color: #166534;
-}
-
-.sv-vt-card h3 {
-  font-size: 18px;
-}
-.sv-vt-card p {
-  margin: 0;
-  color: var(--mute);
-  font-size: 14px;
-  line-height: 1.55;
-}
-.sv-vt-feats {
-  margin-top: auto;
-  padding-top: 14px;
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-.sv-vt-feats span {
-  font-family: var(--font-geist-mono);
-  font-size: 10px;
-  padding: 3px 8px;
-  background: var(--paper-3);
-  color: var(--ink-3);
-  border-radius: 4px;
-  letter-spacing: 0.02em;
-}
-
 /* ==================== TESTIMONIALS ==================== */
 .sv-testi {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
@@ -544,7 +459,7 @@
 
 /* ==================== TRUST BADGES ==================== */
 .sv-trust {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
@@ -637,7 +552,7 @@
 
 /* ==================== CHECKLIST INCLUS / HORS SCOPE ==================== */
 .sv-check {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
@@ -725,7 +640,7 @@
 
 /* ==================== ARCHITECTURE SCHEMATIC ==================== */
 .sv-arch {
-  padding: 120px 0;
+  padding:80px 0;
   background: #0A0A0A;
   color: #fff;
   position: relative;
@@ -784,7 +699,7 @@
 
 /* ==================== INTEGRATIONS WALL (segmenté) ==================== */
 .sv-integ {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }
@@ -868,7 +783,7 @@
 
 /* ==================== DE-RISK 4 PEURS ==================== */
 .sv-derisk {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
@@ -943,7 +858,7 @@
 
 /* ==================== CE QU'ON REFUSE ==================== */
 .sv-refuse {
-  padding: 120px 0;
+  padding:80px 0;
   background: #0A0A0A;
   color: #fff;
   border-bottom: 1px solid #0A0A0A;
@@ -1029,7 +944,7 @@
 /* ==================== SCÉNARIOS — premium chooser + invoice aside ==================== */
 .sv-scenarios {
   position: relative;
-  padding: 130px 0;
+  padding:88px 0;
   background: linear-gradient(180deg, var(--paper-2), var(--paper) 60%);
   border-bottom: 1px solid var(--line);
   overflow: hidden;
@@ -1397,15 +1312,6 @@
 /* Only one panel visible at a time — useDesignInteractive hides with [hidden] and toggles .is-active */
 .sv-scen-panel[hidden] { display: none; }
 
-/* ==================== TECH FAQ CTO ==================== */
-.sv-tfaq {
-  padding: 120px 0;
-  background: var(--paper);
-  border-bottom: 1px solid var(--line);
-}
-.sv-tfaq-list {
-  border-top: 1px solid var(--line);
-}
 .sv-tfaq-list .faq-item {
   border-bottom: 1px solid var(--line);
   padding: 4px 0;
@@ -1552,7 +1458,7 @@
    ================================================================ */
 
 .sv-perf {
-  padding: 130px 0;
+  padding:88px 0;
   background: #0A0A0A;
   color: #fff;
   border-bottom: 1px solid var(--line);
@@ -1761,8 +1667,7 @@ html.dark .sv-cmp-col-us{background:rgba(139,92,246,0.07)}
 html.dark .sv-cmp-head .sv-cmp-col-us{background:var(--ink)}
 html.dark .sv-cmp-good{color:#4ADE80}
 html.dark .sv-cmp-bad{color:#F87171}
-html.dark .sv-vt-card:hover{border-color:rgba(255,255,255,0.22)}
-html.dark .sv-vt-tag-live{background:rgba(74,222,128,0.13);color:#4ADE80}
+
 html.dark .sv-trust-card:hover{border-color:rgba(255,255,255,0.22)}
 html.dark .sv-integ-group:hover{border-color:rgba(255,255,255,0.22)}
 html.dark .sv-derisk-card:hover{border-color:rgba(255,255,255,0.22)}

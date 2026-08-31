@@ -62,7 +62,7 @@
 
 /* ==================== PROBLEMS ==================== */
 .sa-problems {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
@@ -151,7 +151,7 @@
 
 /* ==================== COMPARISON (SaaS, 4 cols) ==================== */
 .sa-compare {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
@@ -267,48 +267,12 @@
 .sa-cmp-disclaimer svg { color: var(--accent); flex-shrink: 0; }
 .sa-cmp-disclaimer a { color: var(--accent-ink); text-decoration: underline; }
 
-/* ==================== VERTICALS ==================== */
-.sa-verticals {
-  padding: 120px 0;
-  background: var(--paper-2);
-  border-bottom: 1px solid var(--line);
-}
-.sa-vt-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-.sa-vt-card {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 26px;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-}
-.sa-vt-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 28px -20px rgba(0,0,0,0.12);
-  border-color: #d4d4d4;
-}
 .sa-vt-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.sa-vt-ic {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: var(--accent-soft);
-  display: grid;
-  place-items: center;
-  color: var(--accent);
-}
+
 .sa-vt-tag {
   font-family: var(--font-geist-mono);
   font-size: 10px;
@@ -323,35 +287,9 @@
   color: #166534;
 }
 
-.sa-vt-card h3 {
-  font-size: 18px;
-}
-.sa-vt-card p {
-  margin: 0;
-  color: var(--mute);
-  font-size: 14px;
-  line-height: 1.55;
-}
-.sa-vt-feats {
-  margin-top: auto;
-  padding-top: 14px;
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-.sa-vt-feats span {
-  font-family: var(--font-geist-mono);
-  font-size: 10px;
-  padding: 3px 8px;
-  background: var(--paper-3);
-  color: var(--ink-3);
-  border-radius: 4px;
-  letter-spacing: 0.02em;
-}
-
 /* ==================== TESTIMONIALS ==================== */
 .sa-testi {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
@@ -416,7 +354,7 @@
 
 /* ==================== TRUST BADGES ==================== */
 .sa-trust {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
@@ -509,7 +447,7 @@
 
 /* ==================== CHECKLIST INCLUS / HORS SCOPE ==================== */
 .sa-check {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
@@ -597,7 +535,7 @@
 
 /* ==================== ARCHITECTURE SCHEMATIC ==================== */
 .sa-arch {
-  padding: 120px 0;
+  padding:80px 0;
   background: #0A0A0A;
   color: #fff;
   position: relative;
@@ -656,7 +594,7 @@
 
 /* ==================== INTEGRATIONS WALL (segmenté) ==================== */
 .sa-integ {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }
@@ -740,7 +678,7 @@
 
 /* ==================== DE-RISK 4 PEURS ==================== */
 .sa-derisk {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
@@ -815,7 +753,7 @@
 
 /* ==================== CE QU'ON REFUSE ==================== */
 .sa-refuse {
-  padding: 120px 0;
+  padding:80px 0;
   background: #0A0A0A;
   color: #fff;
   border-bottom: 1px solid #0A0A0A;
@@ -900,7 +838,7 @@
 
 /* ==================== SCÉNARIOS (toggle interactif) ==================== */
 .sa-scenarios {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }
@@ -1081,15 +1019,6 @@
   font-style: italic;
 }
 
-/* ==================== TECH FAQ CTO ==================== */
-.sa-tfaq {
-  padding: 120px 0;
-  background: var(--paper);
-  border-bottom: 1px solid var(--line);
-}
-.sa-tfaq-list {
-  border-top: 1px solid var(--line);
-}
 .sa-tfaq-list .faq-item {
   border-bottom: 1px solid var(--line);
   padding: 4px 0;
@@ -1233,7 +1162,7 @@ html.dark .sa-cmp-col-us{background:rgba(139,92,246,0.07)}
 html.dark .sa-cmp-head .sa-cmp-col-us{background:var(--ink)}
 html.dark .sa-cmp-good{color:#4ADE80}
 html.dark .sa-cmp-bad{color:#F87171}
-html.dark .sa-vt-card:hover{border-color:rgba(255,255,255,0.22)}
+
 html.dark .sa-vt-tag-live{background:rgba(74,222,128,0.13);color:#4ADE80}
 html.dark .sa-trust-card:hover{border-color:rgba(255,255,255,0.22)}
 html.dark .sa-integ-group:hover{border-color:rgba(255,255,255,0.22)}

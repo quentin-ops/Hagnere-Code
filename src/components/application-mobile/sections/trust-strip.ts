@@ -1,6 +1,6 @@
 export const trustStripHtml = `
 <!-- TRUST STRIP -->
-<section class="mob-trust-strip">
+<section class="mob-trust-strip" aria-label="Engagements affichés">
   <div class="wrap">
     <div class="mob-trust-strip-inner reveal">
       <div class="mob-trust-strip-stats">

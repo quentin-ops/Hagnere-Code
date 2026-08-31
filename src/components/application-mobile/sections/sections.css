@@ -339,7 +339,7 @@
 
 /* ═══════════ PROBLEMS ═══════════ */
 .mob-problems {
-  padding: 100px 0;
+  padding:72px 0;
   border-bottom: 1px solid var(--line);
 }
 .mob-problems-grid {
@@ -396,7 +396,7 @@
 
 /* ═══════════ STORES ═══════════ */
 .mob-stores {
-  padding: 100px 0;
+  padding:72px 0;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }
@@ -529,7 +529,7 @@
 
 /* ═══════════ OWNERSHIP ═══════════ */
 .mob-ownership {
-  padding: 100px 0;
+  padding:72px 0;
   border-bottom: 1px solid var(--line);
 }
 .mob-ownership-grid {
@@ -604,7 +604,7 @@
 
 /* ═══════════ DE-RISK ═══════════ */
 .mob-derisk {
-  padding: 100px 0;
+  padding:72px 0;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }
@@ -661,6 +661,24 @@
   flex-wrap: wrap;
   gap: 6px;
 }
+.mob-derisk-sub {
+  margin: 56px 0 28px;
+  max-width: 720px;
+}
+.mob-derisk-sub h3 {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-top: 12px;
+}
+.mob-derisk-sub p {
+  margin-top: 12px;
+  color: var(--mute);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 580px;
+}
 .mob-derisk-proof span {
   font-family: var(--font-geist-mono);
   font-size: 10.5px;
@@ -673,7 +691,7 @@
 
 /* ═══════════ COMPARISON TABLE ═══════════ */
 .mob-compar {
-  padding: 100px 0;
+  padding:72px 0;
   border-bottom: 1px solid var(--line);
 }
 .mob-compar-table {
@@ -780,7 +798,7 @@
 
 /* ═══════════ REFUSE / RED FLAGS ═══════════ */
 .mob-refuse {
-  padding: 100px 0;
+  padding:72px 0;
   background: #0A0A0A;
   color: rgba(255, 255, 255, 0.85);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -844,7 +862,7 @@
 
 /* ═══════════ TRUST BADGES ═══════════ */
 .mob-trust {
-  padding: 110px 0;
+  padding:76px 0;
   border-bottom: 1px solid var(--line);
 }
 .mob-trust-head {
@@ -914,7 +932,7 @@
 
 /* ═══════════ TECH FAQ ═══════════ */
 .mob-tech-faq {
-  padding: 100px 0;
+  padding:72px 0;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }

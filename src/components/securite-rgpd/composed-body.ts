@@ -11,24 +11,27 @@ import { testimonialsHtml } from "./sections/testimonials";
 import { trustBadgesHtml } from "./sections/trust-badges";
 import { refuseHtml } from "./sections/refuse";
 import { faqHtml } from "./sections/faq";
-import { techFaqHtml } from "./sections/tech-faq";
 import { relatedServicesHtml } from "./sections/related-services";
 
 /**
  * Direction A — page centrée sur "Sécurité & RGPD" (audit + suivi + remédiation codée).
  *
- * Ordre des sections (avant le SiteFooter injecté en React) :
- *   NAV → HERO (cartographie sous-traitants, body.ts)
- *   → LOGO WALL + TRUST STRIP (NDA mutuel, DPA art. 28, sous-traitants UE, ISO 27001 aligné)
- *   → SYMPTÔMES (6 phrases CTO/DPO/CEO/DAF/RH avec réponses concrètes)
- *   → MATRICE 4 DOMAINES (RGPD · AI Act · Cyber · suivi récurrent)
- *   → RISK RADAR (décisions CNIL publiques et sourcées + effets à prouver)
- *   → PROCESS TRIO (cadrage / suivi technique / remédiation codée)
- *   → COMPARATIF (vs cabinet juridique pur, vs cabinet cyber pur)
- *   → CHECKLIST (inclus / hors scope)
- *   → PRICING (4 cards : cadrage / suivi Starter / suivi Scale / sprint dev)
- *   → TESTIMONIALS · TRUST BADGES · REFUSE · FAQ · TECH FAQ · SERVICES LIÉS
- *   → [CTA/FOOTER strippés → SiteFooter React]
+ * L'ORDRE des sections n'est pas décrit ici : il est dans le tableau `stack`
+ * ci-dessous, et lui seul fait foi. L'énumération en prose qui figurait à cet
+ * endroit avait dérivé — elle annonçait CHECKLIST → PRICING → TESTIMONIALS
+ * quand le tableau exécutait CHECKLIST → REFUSE → PRICING → TESTIMONIALS, et
+ * décrivait un bandeau de confiance (« ISO 27001 aligné ») que le module ne
+ * publie plus. Une documentation qui contredit le code coûte plus qu'elle
+ * n'apporte : on la remplace par les décisions, qui ne se déduisent pas du code.
+ *
+ * Décisions de la passe UX du 28/08/2026 :
+ *   - Les deux FAQ consécutives n'en font plus qu'une. Les huit questions
+ *     techniques sont dans `sections/faq.ts`, introduites par un `h3.eyebrow`
+ *     « — Pour les profils techniques » : ce niveau de titre est ce qui les
+ *     rend repérables à la navigation par titres, et c'est lui qui ramène le
+ *     mot « RSSI » sur la page.
+ *   - `sections/tech-faq.ts` a été supprimé ; ses questions ont été comparées
+ *     une à une à la version d'origine avant suppression.
  */
 function compose(raw: string): string {
   let out = raw;
@@ -49,7 +52,6 @@ function compose(raw: string): string {
     testimonialsHtml.trim(),
     trustBadgesHtml.trim(),
     faqHtml.trim(),
-    techFaqHtml.trim(),
     relatedServicesHtml.trim(),
   ].join("\n\n");
 

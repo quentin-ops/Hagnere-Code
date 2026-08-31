@@ -43,8 +43,6 @@ type Family = {
   kicker: string;
   title: string;
   text: string;
-  /** Service représentatif : cible de la voie d'orientation du héros. */
-  href: string;
   lane: string;
   laneText: string;
   accent: "purple" | "blue" | "green";
@@ -71,7 +69,6 @@ const families: Family[] = [
     kicker: "Construire",
     title: "Créer le produit ou l'outil dont votre équipe a besoin.",
     text: "Du site vitrine au SaaS métier : on transforme un besoin en interface utilisable, maintenable et connectée à vos outils.",
-    href: "/services/saas-applications-metier",
     lane: "SaaS, outils, sites, e-commerce, mobile",
     laneText: "Créer un actif produit.",
     accent: "purple",
@@ -81,7 +78,6 @@ const families: Family[] = [
     kicker: "Faire grandir",
     title: "Générer plus de demandes qualifiées après la mise en ligne.",
     text: "Un bon produit ne suffit pas toujours : on travaille l'acquisition, le contenu et la mesure de la conversion.",
-    href: "/services/referencement-google",
     lane: "SEO, ads, contenu vidéo",
     laneText: "Générer la demande.",
     accent: "blue",
@@ -91,7 +87,6 @@ const families: Family[] = [
     kicker: "Protéger & opérer",
     title: "Garder le produit fiable, sécurisé et capable d'évoluer.",
     text: "Après la livraison, on reste pour maintenir, auditer, sécuriser et faire évoluer votre socle sans repartir de zéro.",
-    href: "/services/maintenance-evolution",
     lane: "Maintenance, sécurité, audit",
     laneText: "Stabiliser, sécuriser, faire évoluer.",
     accent: "green",
@@ -175,7 +170,7 @@ const services: Service[] = [
     title: "Une vraie app iOS + Android, publiée sous vos comptes stores.",
     description:
       "App React Native + Expo, paiement, push, mode hors-ligne et soumission aux stores selon le périmètre. Comptes, accès, livrables et droits sont écrits au devis.",
-    proof: "Soumission App Store et Play Store incluse",
+    proof: "Soumission App Store et Play Store cadrée au devis",
     idealFor: "Fidélité, RDV, e-com, terrain B2B",
     duration: "Sur devis",
     budget: "Sur devis",
@@ -325,12 +320,18 @@ const routes: RouteCard[] = [
 
 const bundles = [
   {
-    name: "Cadrage premium",
-    price: "1 500 € HT · déduit si phase 2, conditions au devis",
-    text: "30 min pour qualifier, puis atelier si le périmètre mérite d'être verrouillé avant devis.",
+    // « Cadrage premium » n'existait sur aucune autre page : le visiteur qui
+    // cliquait « Méthode » cherchait un nom absent. L'offre s'appelle Discovery
+    // Sprint partout ailleurs (/tarifs, /methode, nav). Le prix portait aussi la
+    // clause de déduction sur une ligne `white-space: nowrap` de 392 px, qui
+    // débordait la carte de 84 px sous 390 px de large : la clause est
+    // redescendue dans le texte, où elle se lit.
+    name: "Discovery Sprint",
+    price: "1 500 € HT · 2 jours",
+    text: "Deux jours de cadrage : périmètre, wireframes, prototype cliquable et devis chiffré au forfait fixe. Si la phase suivante est lancée avec nous, le devis précise la déduction applicable.",
     links: [
+      { href: "/tarifs", label: "Discovery Sprint" },
       { href: "/contact", label: "Contact" },
-      { href: "/methode", label: "Méthode" },
     ],
   },
   {
@@ -355,7 +356,7 @@ const bundles = [
 
 const proofLinks = [
   { href: "/realisations", label: "Réalisations", value: "4 produits du groupe, en ligne" },
-  { href: "/demarrer-un-projet", label: "Décrire mon projet", value: "Objectif : prochain jour ouvré" },
+  { href: "/demarrer-un-projet", label: "Démarrer mon projet", value: "Objectif : prochain jour ouvré" },
   { href: "/outils/calculateur-cout-excel", label: "Coût Excel", value: "Comparaison brute sur 3 ans" },
   { href: "/equipe", label: "Équipe", value: `${TEAM_TOTAL_COUNT} personnes · équipe nommée` },
 ];
@@ -388,7 +389,7 @@ export function ServicesHubPage() {
               </p>
               <div className="services-hero-actions">
                 <Link href="/demarrer-un-projet" className="btn btn-accent btn-lg">
-                  Décrire mon projet <ArrowIcon />
+                  Démarrer mon projet <ArrowIcon />
                 </Link>
                 <Link href="/contact" className="btn btn-ghost btn-lg">
                   Nous contacter
@@ -396,7 +397,7 @@ export function ServicesHubPage() {
               </div>
             </div>
 
-            <div className="services-router" aria-label="Cartographie des services Hagnéré Code">
+            <div className="services-router">
               <div className="router-head">
                 <div>
                   <span className="router-status" />
@@ -404,19 +405,29 @@ export function ServicesHubPage() {
                 </div>
                 <b>{families.length} familles</b>
               </div>
-              <div className="router-lanes">
+              {/*
+                `aria-label` sur une <div> sans rôle n'est pas exposé : le repère
+                n'existait pour personne. Les voies sont une navigation, elles le
+                disent maintenant.
+                Chaque voie annonce une famille entière (« SaaS, outils, sites,
+                e-commerce, mobile ») mais menait à UNE page service : quatre
+                visiteurs sur cinq atterrissaient sur le mauvais service. Elle
+                mène désormais à la famille correspondante du catalogue, d'où
+                chaque service est à un clic.
+              */}
+              <nav className="router-lanes" aria-label="Familles de services">
                 {families.map((family) => (
-                  <Link
-                    href={family.href}
+                  <a
+                    href={`#famille-${family.id}`}
                     className={`router-lane router-lane-${family.accent}`}
                     key={family.id}
                   >
                     <span>{family.kicker}</span>
                     <b>{family.lane}</b>
                     <em>{family.laneText}</em>
-                  </Link>
+                  </a>
                 ))}
-              </div>
+              </nav>
               <div className="router-footer">
                 <span><Check size={14} /> Forfait fixe</span>
                 <span><Check size={14} /> Dépôt et accès au devis</span>
@@ -469,16 +480,37 @@ export function ServicesHubPage() {
               </p>
             </div>
 
+            {/*
+              Le catalogue fait 8 écrans sur un téléphone (6 734 px mesurés à
+              390 px de large) et n'offrait aucun raccourci : la seule façon
+              d'atteindre « Protéger & opérer » était de faire défiler les huit
+              autres cartes. Ces trois liens donnent le compte par famille et y
+              sautent directement.
+            */}
+            <nav className="catalog-jump" aria-label="Aller à une famille de services">
+              {families.map((family) => (
+                <a
+                  href={`#famille-${family.id}`}
+                  className={`catalog-jump-link catalog-jump-${family.accent}`}
+                  key={family.id}
+                >
+                  {family.kicker}
+                  <b>{servicesOfFamily(family.id).length} services</b>
+                </a>
+              ))}
+            </nav>
+
             <div className="service-families">
               {families.map((family) => (
                 <section
                   className={`service-family service-family-${family.accent}`}
                   key={family.id}
-                  aria-labelledby={`famille-${family.id}`}
+                  id={`famille-${family.id}`}
+                  aria-labelledby={`famille-${family.id}-titre`}
                 >
                   <div className="service-family-head">
                     <span className="service-family-kicker">{family.kicker}</span>
-                    <h3 id={`famille-${family.id}`}>{family.title}</h3>
+                    <h3 id={`famille-${family.id}-titre`}>{family.title}</h3>
                     <p>{family.text}</p>
                   </div>
 
@@ -498,10 +530,28 @@ export function ServicesHubPage() {
                             <div className="service-card-proof">
                               <Check size={14} /> {service.proof}
                             </div>
+                            {/*
+                              Les trois valeurs n'étaient distinguées que par
+                              une icône décorative : un lecteur d'écran lisait
+                              « Sur devis, Sur devis » sans savoir laquelle est
+                              la durée et laquelle le budget.
+                            */}
                             <div className="service-card-meta">
-                              <span><Compass size={13} /> {service.idealFor}</span>
-                              <span><Clock3 size={13} /> {service.duration}</span>
-                              <span><Euro size={13} /> {service.budget}</span>
+                              <span>
+                                <Compass size={13} aria-hidden="true" />
+                                <span className="service-card-meta-label">Idéal pour&nbsp;:</span>{" "}
+                                {service.idealFor}
+                              </span>
+                              <span>
+                                <Clock3 size={13} aria-hidden="true" />
+                                <span className="service-card-meta-label">Durée&nbsp;:</span>{" "}
+                                {service.duration}
+                              </span>
+                              <span>
+                                <Euro size={13} aria-hidden="true" />
+                                <span className="service-card-meta-label">Budget&nbsp;:</span>{" "}
+                                {service.budget}
+                              </span>
                             </div>
                             <div className="service-card-cta">
                               Explorer <ArrowIcon />

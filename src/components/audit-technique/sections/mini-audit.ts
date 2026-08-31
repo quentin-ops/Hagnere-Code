@@ -297,7 +297,7 @@ export const miniAuditHtml = `
       <!-- Résultat · boutons d'action (libellé volontairement distinct du marqueur de CTA finale strippé au rendu) -->
       <div class="at-audit-result-cta">
         <a href="/demarrer-un-projet" class="btn btn-ghost at-audit-cta">
-          Décrire mon projet (3 min) — objectif : prochain jour ouvré
+          Démarrer mon projet (3 min) — objectif : prochain jour ouvré
         </a>
 
         <div class="at-audit-or">ou</div>

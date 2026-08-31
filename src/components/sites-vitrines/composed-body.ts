@@ -10,8 +10,6 @@ import { comparisonHtml } from "./sections/comparison";
 import { testimonialsHtml } from "./sections/testimonials";
 import { refuseHtml } from "./sections/refuse";
 import { trustBadgesHtml } from "./sections/trust-badges";
-import { techFaqHtml } from "./sections/tech-faq";
-import { verticalsHtml } from "./sections/verticals";
 import { perfHtml } from "./sections/perf";
 
 /**
@@ -29,9 +27,9 @@ import { perfHtml } from "./sections/perf";
  *   ARCHITECTURE SCHEMATIC → CAPABILITIES →
  *   PERF (budget de performance) → INTEGRATIONS WALL (segmenté) →
  *   PROCESS → STACK → RELATED CASES →
- *   VERTICALS → SCENARIOS (toggle interactif) → DE-RISK →
+ *   SCENARIOS (toggle interactif) → DE-RISK →
  *   COMPARISON → TESTIMONIALS → REFUSE (cas propres au vitrine) →
- *   PRICING → TRUST BADGES → FAQ commerciale → TECH FAQ (CTO) →
+ *   PRICING → TRUST BADGES → FAQ (commerciale + technique, fusionnées) →
  *   [SiteFooter React rendu à part]
  */
 function compose(raw: string): string {
@@ -71,12 +69,13 @@ function compose(raw: string): string {
       "\n\n<!-- PROCESS -->",
   );
 
-  // VERTICALS + SCENARIOS + DE-RISK + COMPARISON + TESTIMONIALS + REFUSE
+  // SCENARIOS + DE-RISK + COMPARISON + TESTIMONIALS + REFUSE
+  // « sv-verticals » retiré : « sv-problems » (six situations) et « sv-scenarios »
+  // (trois situations, trois chemins) font déjà ce travail d'orientation, et une
+  // liste de verticales contredit le positionnement « pas une agence sectorielle ».
   out = out.replace(
     "<!-- PRICING -->",
-    verticalsHtml.trim() +
-      "\n\n" +
-      scenariosHtml.trim() +
+    scenariosHtml.trim() +
       "\n\n" +
       deriskHtml.trim() +
       "\n\n" +
@@ -94,9 +93,11 @@ function compose(raw: string): string {
     trustBadgesHtml.trim() + "\n\n<!-- FAQ -->",
   );
 
-  // TECH FAQ : dernière section du document. La CTA finale et le <footer>
-  // hérités ont été retirés de body.ts — ils sont rendus par <SiteFooter />.
-  out = out.trimEnd() + "\n\n" + techFaqHtml.trim() + "\n";
+  // Les questions techniques (ex-section « sv-tfaq ») ont été fusionnées dans
+  // la FAQ unique de body.ts : deux FAQ successives obligeaient à parcourir la
+  // première en entier pour découvrir la seconde. Le module sections/tech-faq.ts
+  // reste en place, référencé par le contrat d'accordéons de publicite-en-ligne.
+  out = out.trimEnd() + "\n";
 
   return out;
 }

@@ -10,6 +10,13 @@ export const trustBadgesHtml = `
       <div class="eyebrow">— Engagements &amp; garanties</div>
       <h2>Ce qu'on signe<br>avant de commencer.</h2>
       <p>Cette page décrit les points à cadrer. Seuls les engagements repris dans le devis ou le contrat signé s'appliquent à votre projet.</p>
+      <!-- Réserve rapatriée de la section « verticales », retirée le 28/08/2026.
+           Elle visait les professions réglementées (notaire, avocat, expert-comptable,
+           courtier) et délimite ce que nous prenons en charge : une réserve ne se
+           supprime pas avec la section qui la portait. -->
+      <p>Pour une profession réglementée, nous préparons les parcours, mentions et preuves techniques
+      au regard des règles identifiées&nbsp;; le professionnel et son conseil valident les obligations
+      propres à son statut avant publication.</p>
     </div>
 
     <div class="sv-trust-grid">

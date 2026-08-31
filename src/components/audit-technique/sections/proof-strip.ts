@@ -1,6 +1,6 @@
 export const proofStripHtml = `
 <!-- PROOF STRIP · éléments à cadrer avant un audit -->
-<section class="at-proof-strip">
+<section class="at-proof-strip" aria-label="Repères de la prestation d'audit">
   <div class="wrap">
     <div class="at-proof-strip-inner reveal">
       <div class="at-proof-item">

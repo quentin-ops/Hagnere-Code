@@ -216,6 +216,99 @@ export const ECOMMERCE_FAQ_ITEMS: readonly EcommerceFaqItem[] = [
   },
 ];
 
+/**
+ * Questions techniques, reprises telles quelles de l'ancienne section
+ * `ec-tfaq`. Elles sont désormais rendues à la suite des questions
+ * commerciales dans la même liste : une seule FAQ sur la page.
+ */
+export const ECOMMERCE_TECH_FAQ_ITEMS: readonly EcommerceFaqItem[] = [
+  {
+    question: "Quelle stack préconisez-vous pour ce projet ?",
+    answer: [
+      [
+        part(
+          "Il n'existe pas de stack unique. Next.js et React peuvent porter le storefront ; TypeScript, PostgreSQL, Redis, Meilisearch ou pgvector sont retenus seulement si le besoin les justifie. React Native peut couvrir l'app mobile. Le moteur e-commerce, le fournisseur IA, le cloud et les services tiers sont comparés puis consignés dans une décision d'architecture avec leurs versions, coûts, limites et responsabilités.",
+        ),
+      ],
+    ],
+  },
+  {
+    question: "Combien de commandes/minute votre infra tient-elle sous charge ?",
+    answer: [
+      [
+        part(
+          "Il n'y a pas de capacité générique : panier, promotions, stock, PSP, ERP et base de données n'ont pas les mêmes limites. On part de votre pic attendu, on définit un scénario k6, les jeux de données, seuils et services inclus, puis on livre le rapport. La capacité annoncée ne vaut que pour cette configuration et ce test.",
+        ),
+      ],
+    ],
+  },
+  {
+    question: "Vous gérez comment la PCI-DSS côté paiement ?",
+    answer: [
+      [
+        part(
+          "Les composants hébergés ou tokenisés du prestataire de paiement peuvent réduire le périmètre PCI, mais le questionnaire et les obligations exactes dépendent de l'intégration et doivent être validés avec l'acquéreur ou un conseil compétent. Les données carte ne doivent pas être stockées ni journalisées par l'application ; les webhooks sont authentifiés, 3DS2/SCA gérés et le parcours de refus testé.",
+        ),
+      ],
+    ],
+  },
+  {
+    question: "Migration depuis Shopify / Prestashop — procédure exacte ?",
+    answer: [
+      [
+        part("Shopify", { strong: true }),
+        part(
+          " : export via Admin API (produits, collections, commandes, clients, metafields, redirections existantes). ",
+        ),
+        part("Prestashop", { strong: true }),
+        part(
+          " : dump SQL + API webservice pour les attachements. L'import est conçu pour être rejouable. Le mapping 301 combine inventaire, règles automatiques et revue humaine : il ne se déduit pas correctement des seuls slugs. Le plan de recette précise les volumes, échantillons, contrôles de données et parcours à comparer avant la bascule.",
+        ),
+      ],
+    ],
+  },
+  {
+    question: "Backup, DR, RTO/RPO ?",
+    answer: [
+      [
+        part(
+          "Le RPO et le RTO sont fixés selon le coût d'une perte de données et d'une indisponibilité. Le devis décrit les sauvegardes, leur chiffrement, la rétention, l'éventuelle copie chez un second fournisseur et la fréquence des tests de restauration. Un runbook identifie les responsables, accès et critères de succès.",
+        ),
+      ],
+    ],
+  },
+  {
+    question: "Observabilité : logs, traces, alertes, dashboards ?",
+    answer: [
+      [
+        part(
+          "Logs, erreurs, métriques et traces sont choisis selon l'architecture. Les données personnelles et secrets sont minimisés ou masqués, les durées de conservation documentées et les accès limités. Le devis fixe les signaux utiles — erreurs 5xx, files, paiements, stock, disponibilité — ainsi que les seuils et canaux d'alerte.",
+        ),
+      ],
+    ],
+  },
+  {
+    question: "Tests : coverage, E2E, régression ?",
+    answer: [
+      [
+        part(
+          "Le plan de test part des risques : règles métier en unitaire, intégrations en tests de contrat, parcours critiques en E2E et contrôles de migration sur données représentatives. Les seuils de couverture ne remplacent pas les scénarios. Les fonctions IA sont testées avec jeux de référence, mocks et critères d'acceptation explicites.",
+        ),
+      ],
+    ],
+  },
+  {
+    question: "SLA maintenance, temps de déploiement, rollback ?",
+    answer: [
+      [
+        part(
+          "Le SLA dépend du forfait de maintenance : plage de service, sévérités, délai de réponse, délai cible de rétablissement et exclusions sont écrits. Le pipeline prévoit staging, contrôles avant production et retour arrière ; ses durées sont mesurées sur l'infrastructure retenue, pas promises avec un chiffre générique.",
+        ),
+      ],
+    ],
+  },
+];
+
 function escapeHtml(value: string): string {
   return value
     .replaceAll("&", "&amp;")
@@ -269,17 +362,19 @@ function renderAnswerBodyHtml(item: EcommerceFaqItem): string {
  */
 export function renderEcommerceFaqItemsHtml(
   items: readonly EcommerceFaqItem[] = ECOMMERCE_FAQ_ITEMS,
+  startIndex = 0,
 ): string {
   return items
-    .map((item, index) =>
-      index === 0
+    .map((item, offset) => {
+      const index = startIndex + offset;
+      return index === 0
         ? `
         <div class="faq-item open">
-          <button type="button" class="faq-q" aria-expanded="true" aria-controls="faq-a-shop-faq-1">
+          <button type="button" class="faq-q" aria-expanded="true" aria-controls="${ecommerceFaqAnswerId(index)}">
             ${escapeHtml(item.question)}
             ${FAQ_ICON_HTML}
           </button>
-          <div class="faq-a" id="faq-a-shop-faq-1">
+          <div class="faq-a" id="${ecommerceFaqAnswerId(index)}">
             ${renderAnswerBodyHtml(item)}
           </div>
         </div>`
@@ -292,12 +387,26 @@ export function renderEcommerceFaqItemsHtml(
           <div class="faq-a" id="${ecommerceFaqAnswerId(index)}" hidden>
             ${renderAnswerBodyHtml(item)}
           </div>
-        </div>`,
-    )
+        </div>`;
+    })
     .join("\n");
 }
 
 export const ecommerceFaqItemsHtml = renderEcommerceFaqItemsHtml();
+
+/**
+ * Les questions techniques suivent les questions commerciales dans la même
+ * liste. Leur index de départ est décalé du nombre de questions commerciales :
+ * les `id` de réponse restent uniques sur la page, donc chaque `aria-controls`
+ * pointe bien sur son propre bloc.
+ */
+export const ecommerceTechFaqItemsHtml = renderEcommerceFaqItemsHtml(
+  ECOMMERCE_TECH_FAQ_ITEMS,
+  ECOMMERCE_FAQ_ITEMS.length,
+);
+
+export const ECOMMERCE_FAQ_TOTAL =
+  ECOMMERCE_FAQ_ITEMS.length + ECOMMERCE_TECH_FAQ_ITEMS.length;
 
 export const ecommerceFaqSectionHtml = `
 <!-- FAQ -->
@@ -306,12 +415,17 @@ export const ecommerceFaqSectionHtml = `
     <div class="faq-grid">
       <div class="faq-intro reveal">
         <div class="eyebrow">— Questions fréquentes</div>
-        <h2 style="margin-top:14px">Les dix questions<br>qu'on nous pose à chaque échange.</h2>
+        <h2 style="margin-top:14px">Les dix-huit questions<br>qu'on nous pose à chaque échange.</h2>
         <p>Les réponses utiles avant de cadrer votre projet. Les hypothèses de coût et les obligations datées renvoient vers leurs sources officielles.</p>
       </div>
 
       <div class="faq-list reveal reveal-d-1">
         ${ecommerceFaqItemsHtml}
+        <div class="faq-sub">
+          <h3 class="faq-sub-t eyebrow">— Pour les profils techniques</h3>
+          <p>Huit sujets à trancher avant signature. Les réponses ci-dessous décrivent notre méthode ; l'architecture, les niveaux de service et les outils retenus figurent dans le dossier du projet.</p>
+        </div>
+        ${ecommerceTechFaqItemsHtml}
       </div>
     </div>
   </div>

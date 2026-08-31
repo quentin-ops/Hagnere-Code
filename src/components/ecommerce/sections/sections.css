@@ -421,7 +421,7 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
 
 /* ==================== STACK 3 TRACKS ==================== */
 .ec-stack-section {
-  padding: 140px 0 160px;
+  padding:88px 0 160px;
   position: relative;
   overflow: hidden;
   background:
@@ -721,7 +721,7 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
 
 /* ==================== BENTO "CE QU'ON CONSTRUIT" ==================== */
 .ec-build {
-  padding: 140px 0 160px;
+  padding:88px 0 160px;
   position: relative;
   overflow: hidden;
   background:
@@ -1638,7 +1638,7 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
 
 /* ==================== PROBLEMS ==================== */
 .ec-problems {
-  padding: 120px 0;
+  padding:80px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
@@ -1674,7 +1674,7 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
 
 /* ==================== CHECKLIST ==================== */
 .ec-check {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }
@@ -1724,7 +1724,7 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
 
 /* ==================== ARCHITECTURE ==================== */
 .ec-arch {
-  padding: 120px 0;
+  padding:80px 0;
   background: #0A0A0A; color: #fff;
   position: relative; overflow: hidden;
 }
@@ -1761,7 +1761,7 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
 
 /* ==================== INTEGRATIONS ==================== */
 .ec-integ {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
@@ -1810,7 +1810,7 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
 
 /* ==================== MOBILE APP ==================== */
 .ec-mobile {
-  padding: 140px 0 160px;
+  padding:88px 0 160px;
   background:
     radial-gradient(ellipse 60% 50% at 90% 30%, rgba(212,165,116,0.08), transparent 55%),
     radial-gradient(ellipse 40% 30% at 0% 70%, rgba(109,40,217,0.06), transparent 55%),
@@ -1951,7 +1951,7 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
 
 /* ==================== AI AUTOMATIONS ==================== */
 .ec-ai {
-  padding: 120px 0;
+  padding:80px 0;
   background: #0A0A0A; color: #fff;
 }
 .ec-ai h2 { color: #fff; }
@@ -2006,7 +2006,7 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
 
 /* ==================== SCENARIOS ==================== */
 .ec-scenarios {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }
@@ -2114,7 +2114,7 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
 
 /* ==================== MIGRATION ==================== */
 .ec-migration {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
@@ -2176,7 +2176,7 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
 
 /* ==================== GMV CALCULATOR ==================== */
 .ec-calc {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }
@@ -2332,7 +2332,7 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
 
 /* ==================== SHOPIFY TRUTHS ==================== */
 .ec-truths {
-  padding: 120px 0;
+  padding:80px 0;
   background: #0A0A0A; color: #fff;
 }
 .ec-truths h2 { color: #fff; }
@@ -2377,7 +2377,7 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
 
 /* ==================== COMPARISON ==================== */
 .ec-compare {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
@@ -2441,7 +2441,7 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
 
 /* ==================== DE-RISK ==================== */
 .ec-derisk {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }
@@ -2495,7 +2495,7 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
 
 /* ==================== COMPLIANCE ==================== */
 .ec-compliance {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
@@ -2541,7 +2541,7 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
 
 /* ==================== REFUSE ==================== */
 .ec-refuse {
-  padding: 120px 0;
+  padding:80px 0;
   background: #0A0A0A; color: #fff;
   border-bottom: 1px solid #0A0A0A;
 }
@@ -2593,11 +2593,12 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
 .ec-refuse-list p b { color: rgba(255,255,255,0.85); }
 
 /* ==================== TRUST BADGES ==================== */
-.ec-trust {
-  padding: 120px 0;
-  background: var(--paper);
-  border-bottom: 1px solid var(--line);
-}
+/* Les « points à contractualiser » ne sont plus une section : ils ferment
+   DE-RISK, qui répond à la même question. Les cartes gardent leur balisage,
+   seul le fond change — .ec-derisk pose déjà --paper-2. */
+.ec-derisk-trust { margin-top: 56px; }
+.ec-derisk-trust .ec-trust-card { background: var(--paper); }
+.ec-derisk-trust .ec-trust-card:hover { background: var(--paper-2); }
 .ec-trust-head {
   max-width: 640px;
   margin-bottom: 48px;
@@ -2636,62 +2637,9 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
   border-top: 1px dashed var(--line);
 }
 
-/* ==================== TECH FAQ ==================== */
-.ec-tfaq {
-  padding: 120px 0;
-  background: var(--paper);
-  border-bottom: 1px solid var(--line);
-}
-.ec-tfaq-list { border-top: 1px solid var(--line); }
-.ec-tfaq-list .faq-item {
-  border-bottom: 1px solid var(--line);
-  padding: 4px 0;
-}
-.ec-tfaq-list .faq-q {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 20px 0;
-  cursor: pointer;
-  font-size: 15px; font-weight: 500;
-  letter-spacing: -0.005em;
-  gap: 20px;
-  font-family: var(--font-geist-mono);
-}
-.ec-tfaq-list .faq-q:hover { color: var(--accent-ink); }
-.ec-tfaq-list .faq-q .ic {
-  width: 24px; height: 24px;
-  border: 1px solid var(--line); border-radius: 50%;
-  display: grid; place-items: center;
-  flex-shrink: 0; transition: all 0.2s; color: var(--mute);
-}
-.ec-tfaq-list .faq-item.open .faq-q .ic {
-  background:var(--accent-btn); border-color: var(--accent);
-  color: #fff; transform: rotate(45deg);
-}
-/* Ouverture sans max-height chiffrée : à 200 % de taille de texte (WCAG 1.4.4)
-   ou sur écran étroit, une valeur fixe rognait les réponses longues sans
-   défilement possible (overflow: hidden). */
-.ec-tfaq-list .faq-a {
-  max-height: 0; overflow: hidden;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  color: var(--mute);
-  font-size: 14px; line-height: 1.65;
-}
-.ec-tfaq-list .faq-item.open .faq-a {
-  max-height: none;
-  overflow: visible;
-  opacity: 1;
-  padding-bottom: 20px;
-}
-.ec-tfaq-list .faq-a b { color: var(--ink); font-weight: 600; }
-.ec-tfaq-list .faq-a code {
-  background: var(--paper-3); padding: 2px 6px;
-  border-radius: 4px; font-size: 12px;
-}
-
 /* ==================== TESTIMONIALS ==================== */
 .ec-testi {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }

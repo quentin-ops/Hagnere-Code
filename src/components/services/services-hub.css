@@ -573,6 +573,7 @@ html.dark {
 }
 
 .services-catalog {
+  scroll-margin-top: 24px;
   background: var(--paper-2);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -588,6 +589,50 @@ html.dark {
   --family-accent: var(--accent);
   display: grid;
   gap: 22px;
+  /* Cible des raccourcis de famille. `html { scroll-padding-top: 80px }` degage
+     deja la nav collante (79 px sur bureau, 65 px sur mobile) ; ces 24 px de
+     plus laissent respirer l'intertitre visé. */
+  scroll-margin-top: 24px;
+}
+
+/* Raccourcis de famille, au-dessus du catalogue. */
+.catalog-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 34px;
+}
+
+.catalog-jump-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.catalog-jump-link b {
+  color: var(--jump-accent, var(--accent));
+  font-family: var(--font-geist-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.catalog-jump-purple { --jump-accent: var(--accent); }
+.catalog-jump-blue { --jump-accent: var(--blue); }
+.catalog-jump-green { --jump-accent: var(--green); }
+
+.catalog-jump-link:hover {
+  border-color: var(--jump-accent, var(--accent));
 }
 
 .service-family-purple { --family-accent: var(--accent); }
@@ -744,6 +789,22 @@ html.dark {
 
 .service-card-meta span > svg {
   flex-shrink: 0;
+}
+
+/* Nom de la métadonnée : visible des seuls lecteurs d'écran, la colonne est
+   trop étroite pour l'afficher et l'icône ne suffit pas à la nommer. */
+.service-card-meta .service-card-meta-label {
+  display: inline;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 .service-card-cta {
@@ -1053,6 +1114,13 @@ html.dark {
     grid-template-columns: 1fr;
   }
 
+  /* `white-space: nowrap` sur le prix fixait le minimum de la colonne à la
+     largeur du texte : la carte mesurait 442 px dans un conteneur de 326 px et
+     se faisait rogner de 84 px sans que la page ne déborde horizontalement. */
+  .bundle-row > b {
+    white-space: normal;
+  }
+
   .services-hero-actions,
   .final-actions {
     display: grid;
@@ -1110,4 +1178,16 @@ html.dark .services-hero .btn-ghost {
 html.dark .services-hero .btn-ghost:hover {
   border-color: #404040;
   color: #0A0A0A;
+}
+
+/* Les pastilles de la section « Composition » mesuraient 35 px de haut : sous
+   le seuil tactile de 44 px sur tout appareil sans souris, tablette comprise.
+   La règle vise le pointeur, pas la largeur, pour ne pas épaissir le bureau. */
+@media (pointer: coarse), (max-width: 1080px) {
+  .bundle-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 14px;
+  }
 }

@@ -114,7 +114,7 @@
   .ba-arrow{position:absolute;left:305px;top:120px;z-index:5;background:var(--accent-btn);color:#fff;padding:8px 16px;border-radius:999px;font-family:var(--font-geist-mono);font-size:11px;font-weight:600;letter-spacing:0.04em;box-shadow:0 10px 22px -8px rgba(109,40,217,0.5);transform:rotate(4deg);display:flex;align-items:center;gap:6px}
 
   /* ============ PROBLEM ============ */
-  .probl{padding:100px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+  .probl{padding:72px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
   .section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:56px;gap:40px}
   .section-head .left{max-width:640px}
   .section-head h2{margin-top:14px}
@@ -129,7 +129,7 @@
   .prob-cost{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);font-family:var(--font-geist-mono);font-size:11px;color:var(--accent-ink);letter-spacing:0.04em}
 
   /* ============ USE CASES ============ */
-  .useit{padding:120px 0;border-bottom:1px solid var(--line)}
+  .useit{padding:80px 0;border-bottom:1px solid var(--line)}
   .uc-list{display:flex;flex-direction:column;gap:80px;margin-top:64px}
   .uc-row{display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:center}
   .uc-row.flip{grid-template-columns:1.15fr 1fr}
@@ -144,7 +144,7 @@
   .uc-visual{aspect-ratio:4/3;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--paper-2);position:relative}
 
   /* ============ AUTOMATION BANNER (dark) ============ */
-  .autom{padding:120px 0;background:#0A0A0A;color:#fff;position:relative;overflow:hidden}
+  .autom{padding:80px 0;background:#0A0A0A;color:#fff;position:relative;overflow:hidden}
   .autom-bg{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 90%);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 90%)}
   .autom .inner{position:relative}
   .autom h2{color:#fff;max-width:720px}
@@ -170,7 +170,7 @@
   .fs .fs-note{font-size:13px;color:rgba(255,255,255,0.55);margin-top:4px}
 
   /* ============ BRIQUES ============ */
-  .briques{padding:120px 0;border-bottom:1px solid var(--line)}
+  .briques{padding:80px 0;border-bottom:1px solid var(--line)}
   .bq-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:56px}
   .bq{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:20px;transition:all 0.2s}
   .bq:hover{border-color:#d4d4d4;background:var(--paper-2)}
@@ -179,7 +179,7 @@
   .bq p{margin:0;font-size:12.5px;color:var(--mute);line-height:1.45}
 
   /* ============ CASE HIGHLIGHT ============ */
-  .caseh{padding:120px 0;background:var(--paper-2);border-bottom:1px solid var(--line)}
+  .caseh{padding:80px 0;background:var(--paper-2);border-bottom:1px solid var(--line)}
   .caseh-inner{display:grid;grid-template-columns:1fr 1.3fr;gap:64px;align-items:center}
   .caseh-copy .eyebrow{display:block}
   .caseh-copy h2{font-size:40px;margin-top:14px;line-height:1.1}
@@ -192,7 +192,7 @@
   .caseh-visual{aspect-ratio:4/3;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--paper);box-shadow:0 24px 48px -24px rgba(0,0,0,0.14)}
 
   /* ============ PROCESS ============ */
-  .process{padding:120px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+  .process{padding:80px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
   .proc-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin-top:64px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--paper)}
   .proc-step{padding:32px;border-right:1px solid var(--line);display:flex;flex-direction:column}
   .proc-step:last-child{border-right:none}
@@ -203,7 +203,7 @@
   .proc-dur{margin-top:auto;padding-top:24px;font-family:var(--font-geist-mono);font-size:11px;color:var(--ink-3);letter-spacing:0.04em}
 
   /* ============ STACK ============ */
-  .stack{padding:120px 0;border-bottom:1px solid var(--line)}
+  .stack{padding:80px 0;border-bottom:1px solid var(--line)}
   .stack-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center}
   .stack-list{border-top:1px solid var(--line)}
   .sl-row{display:grid;grid-template-columns:180px 1fr auto;gap:24px;padding:22px 0;border-bottom:1px solid var(--line);align-items:center}
@@ -221,7 +221,7 @@
   .orbit-node .nd{width:8px;height:8px;border-radius:50%}
 
   /* ============ PRICING ============ */
-  .pricing{padding:120px 0;border-bottom:1px solid var(--line)}
+  .pricing{padding:80px 0;border-bottom:1px solid var(--line)}
   .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
   .plan{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:32px;display:flex;flex-direction:column;position:relative}
   .plan.featured{background:#0A0A0A;color:#fff;border-color:#0A0A0A}
@@ -246,7 +246,7 @@
   .plan-cta .btn{width:100%;justify-content:center}
 
   /* ============ ROI CALCULATOR ============ */
-  .roi{padding:120px 0;background:var(--paper-2);border-bottom:1px solid var(--line)}
+  .roi{padding:80px 0;background:var(--paper-2);border-bottom:1px solid var(--line)}
   .roi-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:72px;align-items:start;margin-top:56px}
   .roi-calc{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:32px}
   .roi-row{margin-bottom:22px}
@@ -270,7 +270,7 @@
   .roi-copy .chks svg{color:var(--accent);flex-shrink:0;margin-top:3px}
 
   /* ============ FAQ ============ */
-  .faq{padding:120px 0;border-bottom:1px solid var(--line)}
+  .faq{padding:80px 0;border-bottom:1px solid var(--line)}
   .faq-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:80px}
   .faq-intro h2{font-size:40px}
   .faq-intro p{color:var(--mute);font-size:16px;margin-top:16px;max-width:340px}
@@ -294,7 +294,7 @@
   .faq-a b{color:var(--ink);font-weight:500}
 
   /* ============ CTA ============ */
-  .scta{padding:140px 0;background:#0A0A0A;color:#fff;position:relative;overflow:hidden}
+  .scta{padding:88px 0;background:#0A0A0A;color:#fff;position:relative;overflow:hidden}
   .scta-bg{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 60% 80% at 50% 50%,#000 20%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 60% 80% at 50% 50%,#000 20%,transparent 80%)}
   .scta .inner{position:relative;text-align:center;max-width:720px;margin:0 auto}
   .scta h2{color:#fff;font-size:56px}
@@ -328,3 +328,12 @@
   html.dark .plan.featured{border-color:rgba(255,255,255,0.14)}
   html.dark .roi-result{border:1px solid rgba(255,255,255,0.14)}
   html.dark .xl-sticky-note{color:#0A0A0A}
+
+  /* FAQ fusionnée : intertitre du bloc « Production & droits » repris de
+     l'ancienne section cv-tfaq, à l'intérieur de la liste principale. */
+  .cv-faq-list .cv-faq-sub{padding:30px 0 8px}
+  .cv-faq-list .cv-faq-sub p{margin:10px 0 0;color:var(--mute);font-size:14px;line-height:1.65}
+
+/* Le sous-titre technique est passé de <div> à <h3> (navigation par titres) :
+   on neutralise les marges par défaut du titre pour que le rendu ne bouge pas. */
+.cv-faq-sub .eyebrow { margin: 0; }

@@ -64,7 +64,7 @@
 
 /* ==================== CHECKLIST INCLUS / HORS SCOPE ==================== */
 .oi-check {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
@@ -152,7 +152,7 @@
 
 /* ==================== INTEGRATIONS WALL (segmenté FR) ==================== */
 .oi-integ {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }
@@ -236,7 +236,7 @@
 
 /* ==================== SÉCURITÉ DSI (fond sombre) ==================== */
 .oi-security {
-  padding: 120px 0;
+  padding:80px 0;
   background: #0A0A0A;
   color: #fff;
   position: relative;
@@ -318,7 +318,7 @@
 
 /* ==================== ARCHITECTURE ==================== */
 .oi-arch {
-  padding: 120px 0;
+  padding:80px 0;
   background: #0A0A0A;
   color: #fff;
   position: relative;
@@ -379,7 +379,7 @@
 
 /* ==================== SCÉNARIOS INTERACTIFS ==================== */
 .oi-scenarios {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }
@@ -546,7 +546,7 @@
 
 /* ==================== DE-RISK 4 PEURS DSI ==================== */
 .oi-derisk {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
@@ -621,7 +621,7 @@
 
 /* ==================== CE QU'ON REFUSE ==================== */
 .oi-refuse {
-  padding: 120px 0;
+  padding:80px 0;
   background: #0A0A0A;
   color: #fff;
   border-bottom: 1px solid #0A0A0A;
@@ -702,7 +702,7 @@
 
 /* ==================== TRUST BADGES ==================== */
 .oi-trust {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
@@ -767,13 +767,6 @@
   border-top: 1px dashed var(--line);
 }
 
-/* ==================== TECH FAQ DSI ==================== */
-.oi-tfaq {
-  padding: 120px 0;
-  background: var(--paper);
-  border-bottom: 1px solid var(--line);
-}
-.oi-tfaq-list { border-top: 1px solid var(--line); }
 .oi-tfaq-list .faq-item {
   border-bottom: 1px solid var(--line);
   padding: 4px 0;
@@ -830,7 +823,7 @@
 
 /* ==================== COMPARISON TABLE ==================== */
 .oi-compare {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
   overflow: hidden;
@@ -953,7 +946,7 @@
 
 /* ==================== TIMELINE PROCESS ==================== */
 .oi-timeline {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line);
 }
@@ -1105,7 +1098,7 @@
 
 /* ==================== TESTIMONIALS ==================== */
 .oi-testim {
-  padding: 120px 0;
+  padding:80px 0;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
 }

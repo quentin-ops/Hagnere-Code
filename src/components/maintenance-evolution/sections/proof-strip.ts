@@ -3,7 +3,7 @@ import { TEAM_PUBLIC_COMPOSITION, TEAM_TOTAL_COUNT } from "@/lib/team";
 export const proofStripHtml = `
 <!-- PROOF STRIP · pages publiques, profils publics, engagements à cadrer
      Aucune statistique client ici : Hagnéré Code n'a pas encore de client externe. -->
-<section class="me-proof-strip">
+<section class="me-proof-strip" aria-label="Repères du contrat de maintenance">
   <div class="wrap">
     <div class="me-proof-strip-inner reveal">
       <div class="me-proof-item">

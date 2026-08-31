@@ -13,9 +13,7 @@ import { comparisonHtml } from "./sections/comparison";
 import { deriskHtml } from "./sections/derisk";
 import { complianceHtml } from "./sections/compliance";
 import { refuseHtml } from "./sections/refuse";
-import { trustBadgesHtml } from "./sections/trust-badges";
 import { testimonialsHtml } from "./sections/testimonials";
-import { techFaqHtml } from "./sections/tech-faq";
 import { ecommerceFaqSectionHtml } from "./faq-content";
 
 /**
@@ -25,18 +23,21 @@ import { ecommerceFaqSectionHtml } from "./faq-content";
  *   NAV · Breadcrumb · HERO (visuel storefront + mobile) · PROBLEMS (6 cards) ·
  *   WHAT WE BUILD (6 blocs) · PROCESS (6 étapes) · STACK · PRICING (3 forfaits) · FAQ · CTA (strippée)
  *
- * Sections ajoutées (17, toutes e-commerce-spécifiques) :
+ * Sections ajoutées (15, toutes e-commerce-spécifiques) :
  *   Logo wall · Checklist inclus/hors scope · Architecture schematic · Integrations FR segmenté ·
  *   Mobile app dédiée · AI automations dédiée · Scenarios interactifs · Migration zero-downtime ·
  *   GMV Calculator interactif · Shopify Truths · Comparison plateformes · De-risk 4 peurs ·
- *   Compliance 2026 FR · Refuse · Trust badges · Testimonials · Tech FAQ
+ *   Compliance 2026 FR · Refuse · Testimonials
+ *
+ * DE-RISK porte aussi les « points à contractualiser » : les deux blocs
+ * répondaient à la même question — ce qui est écrit avant de signer.
  *
  * Ordre final de scroll (22 sections) :
  *   NAV → HERO → LOGO WALL → PROBLEMS → WHAT WE BUILD → CHECKLIST →
  *   ARCHITECTURE → INTEGRATIONS → MOBILE APP → AI AUTOMATIONS →
  *   PROCESS → STACK → SCENARIOS → MIGRATION → GMV CALCULATOR →
  *   SHOPIFY TRUTHS → COMPARISON → DE-RISK → COMPLIANCE →
- *   PRICING → TESTIMONIALS → REFUSE → TRUST BADGES → FAQ → TECH FAQ →
+ *   PRICING → TESTIMONIALS → REFUSE → FAQ →
  *   [SiteFooter React]
  */
 function compose(raw: string): string {
@@ -92,20 +93,21 @@ function compose(raw: string): string {
       "\n\n<!-- PRICING -->",
   );
 
-  // Testimonials + Refuse + Trust badges : entre PRICING et FAQ
+  // Testimonials + Refuse : entre PRICING et FAQ. Les points à
+  // contractualiser (ex-section trust) sont désormais dans DE-RISK.
   out = out.replace(
     "<!-- FAQ -->",
     testimonialsHtml.trim() +
       "\n\n" +
       refuseHtml.trim() +
-      "\n\n" +
-      trustBadgesHtml.trim() +
       "\n\n<!-- FAQ -->",
   );
 
-  // TECH FAQ : dernière section du document. La CTA finale et le <footer>
-  // hérités ont été retirés de body.ts — ils sont rendus par <SiteFooter />.
-  out = out.trimEnd() + "\n\n" + techFaqHtml.trim() + "\n";
+  // La FAQ est la dernière section du document. Les questions techniques y
+  // sont fusionnées (faq-content.ts) : il n'y a plus de section `ec-tfaq`.
+  // La CTA finale et le <footer> hérités ont été retirés de body.ts — ils
+  // sont rendus par <SiteFooter />.
+  out = out.trimEnd() + "\n";
 
   return out;
 }

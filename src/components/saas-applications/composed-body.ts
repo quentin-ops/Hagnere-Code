@@ -10,7 +10,6 @@ import { comparisonHtml } from "./sections/comparison";
 import { testimonialsHtml } from "./sections/testimonials";
 import { refuseHtml } from "./sections/refuse";
 import { trustBadgesHtml } from "./sections/trust-badges";
-import { techFaqHtml } from "./sections/tech-faq";
 
 /**
  * Direction A — page centrée sur "construire un SaaS", pas sur présenter l'agence.
@@ -20,16 +19,20 @@ import { techFaqHtml } from "./sections/tech-faq";
  * La navigation, la CTA finale et le <footer> ne sont plus dans body.ts :
  * <MainNav /> et <SiteFooter /> les rendent hors du landmark <main>.
  *
- * Ordre de scroll réel :
- *   Breadcrumb → HERO →
- *   LOGO WALL (produits du groupe, qualifié) → PROBLEMS (6 douleurs SaaS) →
- *   WHAT WE BUILD (6 cards) → CHECKLIST INCLUS/HORS SCOPE (12 in / 6 out) →
- *   ARCHITECTURE SCHEMATIC → CAPABILITIES (20 briques) →
- *   INTEGRATIONS WALL (6 groupes segmentés) → PROCESS → STACK →
- *   RELATED CASES → SCENARIOS (toggle interactif) → DE-RISK (4 peurs) →
- *   COMPARISON (SaaS-spec) → TESTIMONIALS (SaaS-spec) → REFUSE (ce qu'on ne fait pas) →
- *   PRICING → TRUST BADGES → FAQ commerciale → TECH FAQ (CTO) →
- *   [SiteFooter React rendu à part]
+ * L'ORDRE des sections vit dans la composition ci-dessous, et lui seul fait
+ * foi. L'énumération en prose qui figurait ici a été retirée : elle dérive à
+ * chaque passe et se met à décrire une page qui n'existe plus.
+ *
+ * Décision de la passe UX du 28/08/2026 :
+ *   - Les deux FAQ consécutives n'en font plus qu'une. Les huit questions
+ *     techniques sont dans `body.ts`, introduites par un `h3.faq-subhead`
+ *     « — Pour les profils techniques », suivi de la réserve qui les
+ *     accompagnait dans l'ancienne section : « Les réponses ci-dessous
+ *     décrivent notre méthode ; les choix finaux dépendent du contexte. »
+ *     Sans elle, huit descriptions de méthode se lisaient comme huit
+ *     engagements.
+ *   - `sections/tech-faq.ts` a été supprimé après vérification, question par
+ *     question, que rien ne manquait dans la FAQ d'accueil.
  */
 function compose(raw: string): string {
   let out = raw;
@@ -79,9 +82,13 @@ function compose(raw: string): string {
     trustBadgesHtml.trim() + "\n\n<!-- FAQ -->",
   );
 
-  // TECH FAQ : dernière section du document. La CTA finale et le <footer>
-  // hérités ont été retirés de body.ts — ils sont rendus par <SiteFooter />.
-  out = out.trimEnd() + "\n\n" + techFaqHtml.trim() + "\n";
+  // La FAQ technique n'est plus une section à part : ses huit questions ont été
+  // déplacées en fin de `.faq-list` dans body.ts, sous l'intertitre
+  // « — Pour les profils techniques ». Deux FAQ à la suite obligeaient à
+  // parcourir la première en entier pour découvrir la seconde.
+  // Le module `sections/tech-faq.ts` reste sur disque : il est listé en dur
+  // dans `publicite-en-ligne/faq-accordion-contract.test.ts`, hors périmètre.
+  out = out.trimEnd() + "\n";
 
   return out;
 }

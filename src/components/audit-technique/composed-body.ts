@@ -9,8 +9,6 @@ import { roiDashboardHtml } from "./sections/roi-dashboard";
 import { capabilitiesHtml } from "./sections/capabilities";
 import { integrationsHtml } from "./sections/integrations";
 import { processHtml } from "./sections/process";
-import { arsenalHtml } from "./sections/arsenal";
-import { verticalsHtml } from "./sections/verticals";
 import { scenariosHtml } from "./sections/scenarios";
 import { deriskHtml } from "./sections/derisk";
 import { comparisonHtml } from "./sections/comparison";
@@ -21,24 +19,56 @@ import { pricingHtml } from "./sections/pricing";
 import { trustBadgesHtml } from "./sections/trust-badges";
 import { miniAuditHtml } from "./sections/mini-audit";
 import { faqHtml } from "./sections/faq";
-import { techFaqHtml } from "./sections/tech-faq";
 import { relatedServicesHtml } from "./sections/related-services";
 import { ctaFinalHtml } from "./sections/cta-final";
 
 /**
- * Page service Audit technique — layout final (23 sections).
+ * Page service Audit technique — layout final.
+ *
+ * Passe UX du 28/08/2026 : la page demandait 43,6 hauteurs d'écran sur un
+ * 1440 × 900 et 82,8 sur un 390 × 844, pour 26 sections. Quatre décisions,
+ * toutes visibles dans le tableau `atSections` ci-dessous :
+ *
+ *   1. DEUX FAQ consécutives → une seule. Les huit questions techniques ont
+ *      rejoint la FAQ principale, qui portait déjà un filtre par profil
+ *      (CEO · CTO · DAF · VC) ; elles y sont marquées `data-persona="cto"`.
+ *   2. VERTICALS (« Six verticales où notre méthode est la plus affûtée »)
+ *      retirée : la page porte déjà PROBLEMS (6 déclencheurs) et SCENARIOS
+ *      (5 situations chiffrées), qui font le même travail d'orientation, et le
+ *      site se positionne explicitement comme « pas une agence sectorielle ».
+ *      ⚠️ Cette section portait un vocabulaire réglementaire qui n'existe plus
+ *      ailleurs sur la page (PCI-DSS, TRACFIN, Qualiopi, RGAA, DSP2, KYC/AML).
+ *      La réserve HDS, elle, a été réécrite dans la réponse FAQ sur les
+ *      certifications — un garde-fou de test la protège.
+ *   3. ARSENAL (« Neuf outils mobilisables ») retirée : INTEGRATIONS reprend
+ *      SonarQube, Semgrep, Snyk, Datadog, Grafana, PHPStan, Dependabot,
+ *      GitGuardian et PASSI. Deux noms ne survivent nulle part — Psalm et le
+ *      renvoi à l'annuaire ANSSI où se vérifie une qualification PASSI.
+ *   4. CAPABILITIES (21 vérifications, 4,42 écrans) repliée en `<details>`
+ *      natifs, une famille par volet, le premier ouvert. Le contenu reste dans
+ *      le DOM, donc indexable.
+ *
+ * Résultat mesuré : 35,9 écrans en 1440 × 900, 67 en 390 × 844, 23 sections.
+ *
+ * NON FAIT, volontairement : la fusion de TRUST BADGES dans DE-RISK. Les deux
+ * répondent bien à la même question, mais leurs grilles n'ont ni le même
+ * nombre de colonnes ni le même contrat de contenu — chaque carte de DE-RISK
+ * exige une « peur » citée, qu'il aurait fallu inventer. Interdit.
  *
  * Flow complet :
  *   NAV → Breadcrumb → HERO (Tech Debt P&L + Matrice impact/effort) →
  *   LOGO WALL → PROOF STRIP (8 dimensions · ISO 19011 · 0 CoI · NDA J0) →
  *   FOUNDER VIDEO (Conflict of Interest) → PROBLEMS (6 triggers business) →
  *   WHAT WE AUDIT (8 dimensions) → DELIVERABLES checklist (12 + 6 extras) →
- *   TIMELINE 10 JOURS → CAPABILITIES 21 briques → METHODOLOGY ECOSYSTEM →
- *   PROCESS 7 étapes → ARSENAL 9 outils → VERTICALS 6 secteurs →
- *   SCENARIOS 5 tabs → DE-RISK 6 peurs → COMPARISON 5 col → TESTIMONIALS →
+ *   TIMELINE 10 JOURS → CAPABILITIES 21 briques (repliées) → METHODOLOGY ECOSYSTEM →
+ *   PROCESS 7 étapes → SCENARIOS 5 tabs → DE-RISK 6 peurs → COMPARISON 5 col → TESTIMONIALS →
  *   TEAM 6 auditors → REFUSE 6 missions → PRICING 4 tiers + 6 extras →
- *   TRUST BADGES 8 engagements → MINI-AUDIT interactif → FAQ filtrée →
- *   TECH FAQ 8 Q → SERVICES LIÉS → CTA FINAL → [SiteFooter React]
+ *   TRUST BADGES 8 engagements → MINI-AUDIT interactif → FAQ filtrée (20 Q,
+ *   dont les 8 questions techniques rapatriées) → SERVICES LIÉS → CTA FINAL → [SiteFooter React]
+ *
+ * (Cette énumération est un CONFORT DE LECTURE, pas une source : l'ordre qui
+ *  fait foi est le tableau `atSections` ci-dessous. En cas d'écart, croire le
+ *  tableau — c'est lui que le navigateur exécute.)
  *
  * La CTA finale héritée a été retirée de body.ts : la seule CTA rendue est
  * `<!-- ADS CTA FINAL -->`, qui échappe volontairement à `stripFinalCta`.
@@ -57,8 +87,6 @@ function compose(raw: string): string {
     capabilitiesHtml.trim(),
     integrationsHtml.trim(),
     processHtml.trim(),
-    arsenalHtml.trim(),
-    verticalsHtml.trim(),
     scenariosHtml.trim(),
     deriskHtml.trim(),
     comparisonHtml.trim(),
@@ -69,7 +97,6 @@ function compose(raw: string): string {
     trustBadgesHtml.trim(),
     miniAuditHtml.trim(),
     faqHtml.trim(),
-    techFaqHtml.trim(),
     relatedServicesHtml.trim(),
     ctaFinalHtml.trim(),
   ].join("\n\n");

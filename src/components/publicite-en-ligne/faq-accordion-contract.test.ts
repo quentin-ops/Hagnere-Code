@@ -3,6 +3,8 @@ import path from "node:path";
 import { Window } from "happy-dom";
 import { describe, expect, it } from "vitest";
 
+const componentsRoot = path.join(process.cwd(), "src/components");
+
 /**
  * Les accordéons de FAQ étaient des `<div class="faq-q">` : ni focalisables, ni
  * annoncés comme un contrôle, et leur réponse restait dans l'arbre
@@ -20,28 +22,68 @@ import { describe, expect, it } from "vitest";
  * Périmètre : les gabarits de ce lot. `homepage`, `methode`, `tarifs` et
  * `equipe` appartiennent à d'autres répertoires et devront suivre.
  */
-const TEMPLATES = [
-  "publicite-en-ligne/sections/faq.ts",
-  "publicite-en-ligne/sections/tech-faq.ts",
-  "maintenance-evolution/sections/faq.ts",
-  "maintenance-evolution/sections/tech-faq.ts",
-  "audit-technique/sections/faq.ts",
-  "audit-technique/sections/tech-faq.ts",
-  "securite-rgpd/sections/faq.ts",
-  "securite-rgpd/sections/tech-faq.ts",
-  "contenu-video/sections/faq.ts",
-  "contenu-video/sections/tech-faq.ts",
-  "sites-vitrines/sections/tech-faq.ts",
-  "sites-vitrines/body.ts",
-  "saas-applications/sections/tech-faq.ts",
-  "saas-applications/body.ts",
-  "outils-internes/sections/tech-faq.ts",
-  "outils-internes/body.ts",
-  "ecommerce/sections/tech-faq.ts",
-  "ecommerce/faq-content.ts",
-  "application-mobile/body.ts",
-  "contact/body.ts",
-];
+/**
+ * Répertoires qui n'ont pas encore migré vers le balisage accessible. Ils sont
+ * nommés en creux : tout le reste est couvert, et un gabarit qui apparaît ou
+ * disparaît n'a aucune liste à mettre à jour.
+ *
+ * `homepage` et `methode` en sont sortis le 30/08/2026 : leurs questions
+ * étaient des <div> non focalisables, à qui le script ajoutait `role="button"`
+ * seulement après hydratation — avant, elles n'existaient pour aucun clavier ni
+ * lecteur d'écran. Elles sont désormais de vrais <button> servis avec leur
+ * `aria-expanded` et leur `aria-controls`, et la remise à zéro `button.faq-q`
+ * a été ajoutée dans les deux feuilles concernées : sans elle, le navigateur
+ * centrait les questions (défaut qui existait aussi, non vu, sur /contact).
+ *
+ * Restent `equipe` et `tarifs`, à migrer de la même façon.
+ */
+const PENDING_DIRECTORIES = ["equipe", "tarifs"];
+
+/**
+ * Gabarits couverts — DÉRIVÉS du disque, plus codés en dur.
+ *
+ * La liste était une énumération de dix-neuf chemins. Le tri éditorial du
+ * 28/08/2026 a supprimé sept modules `tech-faq.ts` (leurs questions ont été
+ * fusionnées dans la FAQ principale de chaque page) : le test s'est mis à
+ * échouer sur des fichiers absents, alors que rien de ce qu'il protège n'avait
+ * bougé. Symétriquement, un gabarit AJOUTÉ n'entrait jamais dans la liste et
+ * n'était donc jamais vérifié — le défaut inverse, silencieux celui-là.
+ *
+ * On scanne donc les fichiers qui déclarent réellement une question de FAQ.
+ */
+function declaringTemplates(): string[] {
+  return fs
+    .readdirSync(componentsRoot, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .flatMap((entry) => {
+      const dir = path.join(componentsRoot, entry.name);
+      const sectionsDir = path.join(dir, "sections");
+      const files = [
+        ...fs.readdirSync(dir).map((file) => path.join(entry.name, file)),
+        ...(fs.existsSync(sectionsDir)
+          ? fs
+              .readdirSync(sectionsDir)
+              .map((file) => path.join(entry.name, "sections", file))
+          : []),
+      ];
+      return files
+        .filter(
+          (file) =>
+            file.endsWith(".ts") &&
+            !file.includes(".test.") &&
+            fs
+              .readFileSync(path.join(componentsRoot, file), "utf8")
+              .includes('class="faq-q"'),
+        )
+        .map((file) => file.split(path.sep).join("/"));
+    })
+    .sort();
+}
+
+const ALL_DECLARING = declaringTemplates();
+const TEMPLATES = ALL_DECLARING.filter(
+  (file) => !PENDING_DIRECTORIES.includes(file.split("/")[0]),
+);
 
 /** Feuilles qui replient une réponse de FAQ. */
 const STYLESHEETS = [
@@ -58,8 +100,6 @@ const STYLESHEETS = [
   "sites-vitrines/page.css",
 ];
 
-const componentsRoot = path.join(process.cwd(), "src/components");
-
 function read(relativePath: string): string {
   return fs.readFileSync(path.join(componentsRoot, relativePath), "utf8");
 }
@@ -74,38 +114,15 @@ function attribute(tag: string, name: string): string | undefined {
 
 describe("contrat des accordéons de FAQ", () => {
   it("couvre bien tous les gabarits qui déclarent une FAQ", () => {
-    const declaring = fs
-      .readdirSync(componentsRoot, { withFileTypes: true })
-      .filter((entry) => entry.isDirectory())
-      .flatMap((entry) => {
-        const dir = path.join(componentsRoot, entry.name);
-        const files = [
-          ...fs.readdirSync(dir).map((file) => path.join(entry.name, file)),
-          ...(fs.existsSync(path.join(dir, "sections"))
-            ? fs
-                .readdirSync(path.join(dir, "sections"))
-                .map((file) => path.join(entry.name, "sections", file))
-            : []),
-        ];
-        return files.filter(
-          (file) =>
-            file.endsWith(".ts") &&
-            !file.includes(".test.") &&
-            read(file).includes('class="faq-q"'),
-        );
-      });
-
-    // Répertoires appartenant à d'autres lots, à faire migrer ensuite.
-    const pending = declaring.filter(
-      (file) => !TEMPLATES.includes(file.split(path.sep).join("/")),
+    // La couverture est dérivée : ce test ne vérifie plus qu'une liste soit à
+    // jour, il vérifie que la liste d'attente n'a pas grossi en douce.
+    const pending = ALL_DECLARING.filter((file) =>
+      PENDING_DIRECTORIES.includes(file.split("/")[0]),
     );
-
-    expect(pending.sort()).toEqual([
-      "equipe/body.ts",
-      "homepage/body.ts",
-      "methode/body.ts",
-      "tarifs/body.ts",
-    ]);
+    expect(pending.sort()).toEqual(["equipe/body.ts", "tarifs/body.ts"]);
+    // Et qu'on couvre bien quelque chose : un scan qui ne trouve rien
+    // passerait tous les `it.each` sans exécuter une seule assertion.
+    expect(TEMPLATES.length).toBeGreaterThanOrEqual(10);
   });
 
   it.each(TEMPLATES)("%s expose ses questions comme des boutons", (file) => {
@@ -125,15 +142,34 @@ describe("contrat des accordéons de FAQ", () => {
     }
   });
 
+  /**
+   * Un identifiant peut être une EXPRESSION de gabarit — `${faqAnswerId(i)}`
+   * — et non une chaîne littérale : certaines pages génèrent leurs questions
+   * dans une boucle plutôt que de les recopier une à une. Deux occurrences de
+   * la même expression ne sont alors pas un doublon, c'est le même appel rendu
+   * dans deux branches (repliée / dépliée) d'un seul gabarit.
+   *
+   * Ce test ne peut donc pas juger l'UNICITÉ d'un id dynamique — seul le
+   * navigateur le peut, et c'est le rôle du contrôle `dupIds` de la passe
+   * Playwright. Ce qu'il vérifie ici, et qui reste vrai dans les deux cas :
+   * l'`aria-controls` d'une question désigne bien la réponse qui la suit.
+   */
+  const isDynamic = (value: string) => value.includes("${");
+
   it.each(TEMPLATES)("%s relie chaque question à une réponse repliée", (file) => {
     const source = read(file);
     const answers = source.match(/<div class="faq-a"[^>]*>/g) ?? [];
+    const literalIds = answers
+      .map((tag) => attribute(tag, "id") ?? "")
+      .filter((id) => !isDynamic(id));
+
+    expect(
+      new Set(literalIds).size,
+      `${file} : identifiants de réponse dupliqués`,
+    ).toBe(literalIds.length);
+
     const byId = new Map(
       answers.map((tag) => [attribute(tag, "id") ?? "", tag]),
-    );
-
-    expect(byId.size, `${file} : identifiants de réponse dupliqués`).toBe(
-      answers.length,
     );
 
     for (const tag of questions(source)) {
@@ -143,12 +179,51 @@ describe("contrat des accordéons de FAQ", () => {
       expect(answer, `${file} : aria-controls="${target}" sans cible`).toBeTruthy();
 
       // L'état servi doit correspondre à celui annoncé au lecteur d'écran.
+      // Sur un id dynamique, les deux branches partagent l'expression : on
+      // compare alors question et réponse DANS leur branche, pas globalement.
+      if (isDynamic(target)) {
+        for (const block of source.matchAll(
+          /<button[^>]*class="faq-q"[^>]*aria-expanded="(true|false)"[\s\S]{0,4000}?<div class="faq-a"[^>]*?(\shidden)?>/g,
+        )) {
+          expect(
+            Boolean(block[2]),
+            `${file} : repli incohérent avec aria-expanded="${block[1]}"`,
+          ).toBe(block[1] === "false");
+        }
+        continue;
+      }
+
       const expanded = attribute(tag, "aria-expanded") === "true";
       expect(
         / hidden>/.test(answer ?? ""),
         `${file} : ${target} — repli incohérent avec aria-expanded`,
       ).toBe(!expanded);
     }
+  });
+
+  it("n'annonce pas un nombre de questions différent de celui rendu", () => {
+    /* Plusieurs titres de FAQ affichent leur compte en dur — « Les 12
+       questions », « Les 18 questions ». La fusion des FAQ techniques du
+       28/08/2026 a fait passer plusieurs pages de 10-12 à 18-20 questions ;
+       chaque titre a dû être corrigé à la main, et rien ne le vérifiait.
+
+       Un compteur faux n'est pas cosmétique sur ce site : la page vend la
+       transparence chiffrée, et un visiteur qui compte 18 réponses sous un
+       titre qui en annonce 12 n'a plus de raison de croire les autres nombres.
+
+       On ne peut pas dériver le compte à l'exécution sans provoquer un saut de
+       rendu ; on le vérifie donc ici, à la construction. */
+    const offenders: string[] = [];
+    for (const file of TEMPLATES) {
+      const source = read(file);
+      const announced = source.match(/Les\s+(\d+)\s+questions/);
+      if (!announced) continue;
+      const real = questions(source).length;
+      if (Number(announced[1]) !== real) {
+        offenders.push(`${file} : annonce ${announced[1]}, en rend ${real}`);
+      }
+    }
+    expect(offenders, offenders.join("\n")).toEqual([]);
   });
 
   it("n'émet pas de contenu de flux dans un bouton", () => {

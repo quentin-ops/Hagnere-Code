@@ -5,7 +5,7 @@ export const faqHtml = `
     <div class="faq-grid">
       <div class="faq-intro reveal">
         <div class="eyebrow">— FAQ</div>
-        <h2 style="margin-top:14px">Les 12 questions<br>qu'on nous pose<br>avant de signer.</h2>
+        <h2 style="margin-top:14px">Les 20 questions<br>qu'on nous pose<br>avant de signer.</h2>
         <p>Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. Nous vous répondons avec le périmètre, les hypothèses et l'interlocuteur pressenti.</p>
       </div>
 
@@ -115,6 +115,108 @@ export const faqHtml = `
           </button>
           <div class="faq-a" id="faq-a-ads-faq-12" hidden>
             Le devis d'audit précise les plateformes, la période analysée, le tracking, les livrables et la restitution. Aucune déduction automatique n'est prévue par les CGV publiques.
+          </div>
+        </div>
+
+        <h3 class="eyebrow" style="padding:26px 0 0;margin:0">— Pour les profils techniques</h3>
+        <p style="color:var(--mute);font-size:14px;line-height:1.6;margin:8px 0 4px">Huit points à trancher avec les profils techniques et juridiques avant d'implémenter une mesure publicitaire. Les réponses finales dépendent de votre architecture et du devis.</p>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-ads-tech-1">
+            Où est hébergé le conteneur GTM Server ? C'est chez vous ou chez nous ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-ads-tech-1" hidden>
+            Le devis précise le compte propriétaire, le sous-domaine, l'hébergeur, la région,
+            les accès et la réversibilité. Stape, GCP ou AWS ne sont que des options&nbsp;:
+            aucune architecture ni localisation n'est présumée avant le cadrage.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-ads-tech-2">
+            Comment vous gérez la dedupe entre Meta CAPI et Meta Pixel ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-ads-tech-2" hidden>
+            <b>event_id</b> unique généré côté serveur (UUID v4), propagé au pixel client
+            ET à CAPI sur le même event. Meta dédupe sur event_name + event_id + event_time
+            selon les règles de la plateforme. Les tests de déduplication et les diagnostics
+            sont consignés dans la recette&nbsp;; aucun score de correspondance n'est garanti.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-ads-tech-3">
+            Consent Mode v2 — comment vous gérez le "denied" et les modeled conversions ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-ads-tech-3" hidden>
+            Le mode Basic ou Advanced est choisi avec le responsable de traitement et son conseil.
+            Un refus est respecté&nbsp;: aucun identifiant publicitaire n'est envoyé comme si le consentement
+            avait été donné. La modélisation éventuelle relève de Google et ne garantit aucun volume récupéré.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-ads-tech-4">
+            Quelles données traversent votre stack ? Le DPO va nous demander.
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-ads-tech-4" hidden>
+            Le plan de données inventorie chaque champ, finalité, destinataire, durée et mesure de sécurité.
+            Un hachage SHA-256 ne rend pas automatiquement une donnée anonyme. Le responsable de traitement
+            valide la base légale, le consentement, les sous-traitants, les transferts et la durée de conservation.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-ads-tech-5">
+            Comment vous branchez notre CRM ? On a HubSpot / Salesforce / custom.
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-ads-tech-5" hidden>
+            Nous vérifions d'abord les API, webhooks, identifiants de rapprochement, limites et droits disponibles.
+            HubSpot, Salesforce, Pipedrive, Zoho ou un CRM sur mesure peuvent nécessiter un connecteur,
+            du développement ou rester partiellement incompatibles&nbsp;: le diagnostic le dit avant le devis.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-ads-tech-6">
+            Monitoring — on est prévenus comment si le tracking casse ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-ads-tech-6" hidden>
+            La fréquence des contrôles, les destinations, le seuil d'alerte, le canal, la conservation des logs,
+            les responsabilités et le délai cible de correction sont précisés dans le devis.
+            Sans cet engagement écrit, aucune surveillance continue ni intervention immédiate n'est promise.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-ads-tech-7">
+            C'est quoi exactement "Enhanced Match" côté Meta ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-ads-tech-7" hidden>
+            Meta utilise les paramètres autorisés reçus via CAPI pour tenter de rapprocher un événement.
+            Nous minimisons les champs et n'envoyons que ceux validés dans le plan de données.
+            Le score dépend de la qualité des données, du consentement et de la plateforme&nbsp;: il n'est pas garanti.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-ads-tech-8">
+            Est-ce que vous pouvez auditer notre setup avant de signer ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-ads-tech-8" hidden>
+            <b>Oui, c'est le forfait Audit à 1 500 € HT</b>&nbsp;: on regarde votre conteneur GTM,
+            votre Meta Events Manager, votre Google Ads Conv. settings, votre LinkedIn Insight Tag,
+            votre bandeau Consent, votre CRM webhook. Rapport technique détaillé&nbsp;: quoi garder,
+            quoi corriger et quoi reprendre. Une remise éventuelle sur une mission ultérieure ne s'applique
+            que si elle figure explicitement dans le devis signé.
           </div>
         </div>
       </div>

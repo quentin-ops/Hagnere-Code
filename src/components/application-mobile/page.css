@@ -100,7 +100,7 @@
   .mw-side{width:320px;right:0;top:280px;z-index:4}
 
   /* ============ WHAT WE BUILD ============ */
-  .whatweb{padding:100px 0;border-bottom:1px solid var(--line)}
+  .whatweb{padding:72px 0;border-bottom:1px solid var(--line)}
   .section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:56px;gap:40px}
   .section-head .left{max-width:640px}
   .section-head h2{margin-top:14px}
@@ -116,12 +116,31 @@
   .uc-tag{font-family:var(--font-geist-mono);font-size:10px;padding:3px 8px;background:var(--paper-3);color:var(--ink-3);border-radius:4px;letter-spacing:0.02em}
 
   /* ============ CAPABILITIES (dark) ============ */
-  .caps{padding:120px 0;background:#0A0A0A;color:#fff;position:relative;overflow:hidden}
-  .caps-grid-bg{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 90%);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 90%)}
+  .caps{padding:80px 0;background:#0A0A0A;color:#fff;position:relative;overflow:hidden}
+  /* `pointer-events: none` : ce voile décoratif est `position:absolute; inset:0`
+     et n'a jamais eu de neutralisation de pointeur. Tant que la section ne
+     contenait que du texte, personne ne l'a vu ; depuis que les familles de
+     briques sont des <details> repliables, il AVALE le clic — `elementFromPoint`
+     au centre d'un <summary> renvoyait `DIV.caps-grid-bg`, et le volet ne
+     s'ouvrait qu'au clavier. Les fonds équivalents de l'accueil
+     (`.hero-bg-grid`, `.hero-radial`) portent cette déclaration depuis
+     toujours ; celui-ci l'avait perdue. */
+  .caps-grid-bg{pointer-events:none;position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 90%);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 90%)}
   .caps .inner{position:relative}
   .caps h2{color:#fff;max-width:720px}
   .caps-sub{color:rgba(255,255,255,0.65);max-width:640px;margin-top:20px;font-size:17px}
   .caps-grid{margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  /* CAPABILITIES : 20 briques repliées par famille en <details> natifs. */
+  .mob-caps-fams{margin-top:56px;display:grid;gap:12px}
+  .mob-caps-fam{border:1px solid rgba(255,255,255,0.10);border-radius:14px;background:rgba(255,255,255,0.02)}
+  .mob-caps-fam>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:20px 24px;font-size:16px;font-weight:600;color:#fff}
+  .mob-caps-fam>summary::-webkit-details-marker{display:none}
+  .mob-caps-fam>summary::after{content:"+";font-family:var(--font-geist-mono);font-size:18px;font-weight:400;color:rgba(255,255,255,0.55);transition:transform 0.2s}
+  .mob-caps-fam[open]>summary::after{transform:rotate(45deg)}
+  .mob-caps-fam>summary:hover{color:#C4B5FD}
+  .mob-caps-fam-name{min-width:0}
+  .mob-caps-fam-n{font-family:var(--font-geist-mono);font-size:11px;font-weight:400;color:rgba(255,255,255,0.5);letter-spacing:0.06em;margin-left:auto}
+  .mob-caps-fam .caps-grid{margin-top:0;padding:0 24px 24px}
   .cap{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:24px;transition:background 0.2s,border-color 0.2s}
   .cap:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.15)}
   .cap-icon{width:44px;height:44px;border-radius:10px;background:rgba(109,40,217,0.12);display:grid;place-items:center;color:var(--accent);margin-bottom:16px}
@@ -129,7 +148,7 @@
   .cap p{margin:0;color:rgba(255,255,255,0.55);font-size:13px;line-height:1.5}
 
   /* ============ PROCESS ============ */
-  .process{padding:120px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+  .process{padding:80px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
   .proc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:64px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--paper)}
   .proc-step{padding:32px;border-right:1px solid var(--line);display:flex;flex-direction:column}
   .proc-step:last-child{border-right:none}
@@ -140,7 +159,7 @@
   .proc-dur{margin-top:auto;padding-top:24px;font-family:var(--font-geist-mono);font-size:11px;color:var(--ink-3);letter-spacing:0.04em}
 
   /* ============ STACK ============ */
-  .stack{padding:120px 0;border-bottom:1px solid var(--line)}
+  .stack{padding:80px 0;border-bottom:1px solid var(--line)}
   .stack-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center}
   .stack-list{border-top:1px solid var(--line)}
   .sl-row{display:grid;grid-template-columns:180px 1fr auto;gap:24px;padding:22px 0;border-bottom:1px solid var(--line);align-items:center}
@@ -158,7 +177,7 @@
   .orbit-node .nd{width:8px;height:8px;border-radius:50%}
 
   /* ============ CASES ============ */
-  .scases{padding:120px 0;background:var(--paper-2);border-bottom:1px solid var(--line)}
+  .scases{padding:80px 0;background:var(--paper-2);border-bottom:1px solid var(--line)}
   .scase-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
   .scase{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:all 0.25s;cursor:pointer}
   .scase:hover{transform:translateY(-3px);box-shadow:0 24px 40px -24px rgba(0,0,0,0.16);border-color:#d4d4d4}
@@ -174,7 +193,7 @@
   .scm .l{font-size:12px;color:var(--mute)}
 
   /* ============ PRICING ============ */
-  .pricing{padding:120px 0;border-bottom:1px solid var(--line)}
+  .pricing{padding:80px 0;border-bottom:1px solid var(--line)}
   .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
   .plan{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:32px;display:flex;flex-direction:column;position:relative}
   .plan.featured{background:#0A0A0A;color:#fff;border-color:#0A0A0A}
@@ -200,7 +219,7 @@
   .plan-cta .btn{width:100%;justify-content:center}
 
   /* ============ FAQ ============ */
-  .faq{padding:120px 0;background:var(--paper-2);border-bottom:1px solid var(--line)}
+  .faq{padding:80px 0;background:var(--paper-2);border-bottom:1px solid var(--line)}
   .faq-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:80px}
   .faq-intro h2{font-size:40px}
   .faq-intro p{color:var(--mute);font-size:16px;margin-top:16px;max-width:340px}
@@ -222,9 +241,12 @@
      supérieure (0,3,0 contre 0,1,0), c'est elle qui l'emporte. */
   .faq-item.open .faq-a{display:block!important;max-height:none;overflow:visible;opacity:1;padding-bottom:22px}
   .faq-a b{color:var(--ink);font-weight:500}
+  /* Sous-titre introduisant les questions techniques dans la FAQ fusionnée. */
+  .faq-sub{border-bottom:1px solid var(--line);padding:30px 0 14px}
+  .faq-sub p{color:var(--mute);font-size:14px;line-height:1.6;margin-top:8px;max-width:56ch}
 
   /* ============ CTA ============ */
-  .scta{padding:140px 0;background:#0A0A0A;color:#fff;position:relative;overflow:hidden}
+  .scta{padding:88px 0;background:#0A0A0A;color:#fff;position:relative;overflow:hidden}
   .scta-bg{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 60% 80% at 50% 50%,#000 20%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 60% 80% at 50% 50%,#000 20%,transparent 80%)}
   .scta .inner{position:relative;text-align:center;max-width:720px;margin:0 auto}
   .scta h2{color:#fff;font-size:56px}
