@@ -69,10 +69,13 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
           </div>
           <p className="cs-hero-tagline">{c.tagline}</p>
           <p className="cs-hero-intro">{c.heroIntro}</p>
+          {/* La seconde phrase répétait mot pour mot ce que `heroIntro` vient de
+              dire juste au-dessus — « ne prouve ni l'auteur du code, ni l'équipe,
+              ni la technologie ». Deux paragraphes consécutifs pour un seul
+              avertissement. Il ne reste que ce que celui-ci apportait vraiment :
+              à quoi sert le lien sortant. */}
           <p className="cs-hero-intro">
-            Le lien public permet de contrôler les seuls éléments recensés ici. Il ne
-            démontre ni une intervention technique de Hagnéré Code, ni une équipe, ni une
-            stack, ni une performance commerciale.
+            Le lien public permet de contrôler les seuls éléments recensés ici.
           </p>
 
           {/* Stable product highlights: capabilities, never unsourced outcomes. */}
@@ -260,19 +263,20 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
                 color: "var(--ink-4)",
               }}
             >
+              {/* Ce bloc disait trois fois la même chose que le chapeau — appartenance
+                  au groupe, absence de preuve de réalisation, aucune prestation
+                  revendiquée — avant d'arriver à la seule réserve qui lui soit propre.
+                  Il ne garde que celle-là : la mention financière, exigée dès qu'on
+                  décrit des simulateurs patrimoniaux. Le reste est déjà dit en haut
+                  de page, une fois, où le lecteur le lit vraiment. */}
               <p style={{ margin: 0 }}>
-                <strong>Avertissement.</strong> {c.brandName} appartient au groupe
-                Hagnéré et n&apos;est pas un client indépendant. Cette analyse porte sur sa
-                page publique&nbsp;: elle ne constitue pas une preuve de réalisation,
-                d&apos;intervention de Hagnéré Code ou de performance.
-                Les écrans, simulateurs et parcours décrits ici ne constituent <strong>ni une
-                offre, ni une recommandation d&apos;investissement</strong>.
-                Toute simulation repose sur des hypothèses, le capital investi
-                n&apos;est pas garanti et tout placement présente un risque de
-                perte. Les informations réglementaires du professionnel sont
-                à vérifier sur son site et, lorsqu&apos;il est concerné, dans le
-                registre public de l&apos;ORIAS. Aucune prestation technique,
-                marketing, SEO ou publicitaire de Hagnéré Code n&apos;est revendiquée ici.
+                <strong>Mention financière.</strong> Les écrans, simulateurs et
+                parcours décrits ici ne constituent <strong>ni une offre, ni une
+                recommandation d&apos;investissement</strong>. Toute simulation repose
+                sur des hypothèses, le capital investi n&apos;est pas garanti et tout
+                placement présente un risque de perte. Les informations réglementaires
+                du professionnel sont à vérifier sur son site et, lorsqu&apos;il est
+                concerné, dans le registre public de l&apos;ORIAS.
               </p>
             </div>
           </div>
@@ -324,8 +328,7 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
           </div>
           <p className="cs-prose">
             Ces pages décrivent l&apos;offre de Hagnéré Code sur ce type de produit.
-            Elles ne décrivent aucune intervention sur {c.brandName} et ne
-            valent pas preuve de réalisation.
+            Elles ne portent pas sur {c.brandName}.
           </p>
           <div className="cs-svc-grid">
             {relatedServices.map((service) => (

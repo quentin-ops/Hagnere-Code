@@ -234,10 +234,13 @@ export function RealisationsIndexPage() {
                 <div className="eyebrow">— Nos services</div>
                 <h2>Ce que Hagnéré Code<br />conçoit et fait vivre.</h2>
               </div>
+              {/* Le chapeau de la page a déjà dit, une fois et clairement, que ces
+                  quatre marques appartiennent au groupe et que rien n'y est revendiqué.
+                  Le redire ici, puis une troisième fois dans l'appel à l'action final,
+                  ne rendait pas la page plus honnête — seulement plus méfiante. */}
               <div className="right">
-                Ces pages décrivent notre offre. Elles ne décrivent aucune
-                intervention sur les quatre produits du groupe analysés ci-dessus
-                et ne valent pas preuve de réalisation.
+                Ces pages décrivent notre offre sur ce type de produit. Elles ne
+                portent pas sur les quatre marques analysées ci-dessus.
               </div>
             </div>
 
@@ -295,9 +298,8 @@ export function RealisationsIndexPage() {
                   <span className="rlm-cta-accent">ce qui compte pour votre projet ?</span>
                 </h2>
                 <p>
-                  Consultez les pages liées et vérifiez les informations
-                  auprès de leur éditeur. Ces analyses éditoriales ne remplacent ni une
-                  référence client, ni une preuve de livraison, ni un audit technique.
+                  Consultez les pages liées et vérifiez les informations auprès de
+                  leur éditeur.
                 </p>
                 <div className="rlm-cta-actions">
                   <Link href="/contact" className="btn btn-accent btn-lg">

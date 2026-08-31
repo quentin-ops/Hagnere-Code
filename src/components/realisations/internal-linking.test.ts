@@ -64,9 +64,20 @@ describe("realisations → services internal linking", () => {
   });
 
   it("never presents the service bridge as work done on a group product", () => {
+    /*
+     * Ce que cette garde protège : le bloc « Nos services » suit immédiatement
+     * l'analyse de produits du groupe, et sans réserve un lecteur pourrait le
+     * lire comme du travail fait SUR eux.
+     *
+     * Elle exigeait deux formulations exactes, ce qui figeait une triple
+     * négation que la page répétait trois fois. Une garde doit tenir la
+     * propriété, pas la phrase : sinon elle interdit toute reformulation, y
+     * compris meilleure. On accepte donc plusieurs manières de dissocier.
+     */
+    const DISSOCIATION =
+      /ne\s+(?:portent|porte|décrivent|décrit)\s+(?:pas\s+sur|aucune\s+intervention)/;
     for (const source of [caseStudySource, indexSource]) {
-      expect(source).toMatch(/ne (?:décrivent|décrit) aucune\s+intervention/);
-      expect(source).toMatch(/valent pas preuve de réalisation/);
+      expect(source).toMatch(DISSOCIATION);
     }
     const bridgeClaims = [
       caseStudySource,

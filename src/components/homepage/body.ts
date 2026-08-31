@@ -40,9 +40,13 @@ export const bodyHtml = `${navHtml}
           Réserver un rendez-vous
         </a>
       </div>
+      <!-- Trois lignes de gris entre les deux boutons et l'illustration, dont
+           deux redites : « développeur senior » est déjà dans le paragraphe
+           au-dessus, « périmètre et prix figés » est déjà la première pastille.
+           Il ne reste que ce qui n'est dit nulle part ailleurs. -->
       <p class="hero-micro">
-        ${FIRST_CALL_META}, sans engagement. Une fois le devis signé, le périmètre et le prix
-        sont figés&nbsp;: <b>aucun dépassement sans votre accord écrit</b>.
+        Premier échange de 30 min, sans engagement, et
+        <b>aucun dépassement sans votre accord écrit</b>.
       </p>
       <ul class="hero-badges" role="list">
         <li class="hero-badge">

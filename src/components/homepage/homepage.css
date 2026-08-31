@@ -280,7 +280,13 @@
   .svc-family-kicker{display:inline-flex;font-family:var(--font-geist-mono);font-size:10px;letter-spacing:0.09em;text-transform:uppercase;color:var(--fam-ink);font-weight:700;margin-bottom:14px}
   .svc-family-head h3{margin:0;font-size:22px;line-height:1.14;letter-spacing:-0.035em;font-weight:650;color:var(--ink)}
   .svc-family-head p{margin:12px 0 0;color:var(--ink-3);font-size:13.5px;line-height:1.52}
-  .svc-family-list{display:flex;flex-direction:column;gap:9px;margin-top:auto}
+    /* Pas `margin-top:auto` : dans un flex en colonne il colle la liste au bas
+     de la carte, et la grille étirant les trois familles à la même hauteur,
+     « Faire grandir » et « Protéger & opérer » — trois services chacune contre
+     cinq — creusaient 196 px de vide entre leur texte et leur première carte,
+     mesurés à 1280 comme à 1440. Le vide passe en bas, où il se lit comme une
+     respiration et non comme un défaut. */
+.svc-family-list{display:flex;flex-direction:column;gap:9px;margin-top:14px}
   .svc-mini-card{display:grid;grid-template-columns:auto 34px minmax(0,1fr);grid-template-areas:"num ic title" "num ic desc";gap:2px 10px;align-items:center;padding:12px;border:1px solid rgba(var(--ink-rgb),0.08);border-radius:14px;background:rgba(var(--paper-rgb),0.74);text-decoration:none;color:inherit;transition:transform 0.22s ease,border-color 0.22s ease,background 0.22s ease,box-shadow 0.22s ease}
   .svc-mini-card:hover{transform:translateY(-2px);border-color:rgb(var(--fam-rgb)/0.28);background:var(--paper);box-shadow:0 18px 32px -26px rgb(var(--fam-rgb)/0.45)}
   .svc-mini-num{grid-area:num;font-family:var(--font-geist-mono);font-size:10px;color:var(--mute);letter-spacing:0.06em;min-width:22px}
