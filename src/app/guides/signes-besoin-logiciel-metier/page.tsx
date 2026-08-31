@@ -253,7 +253,8 @@ const faqCategories: GuidePremiumFaqCategory[] = [
           "La question à poser n’est pas «\u00a0combien de temps\u00a0» mais «\u00a0quelles données\u00a0». Comptez vos enregistrements, décidez combien d’années vous reprenez, et faites écrire la liste au devis. Sur le cas construit de ce guide, reprendre 300 contrats et 1\u00a0200 équipements à la main représente 300 heures, soit 9\u00a0000\u00a0€ au coût horaire chargé de 30\u00a0€. Une reprise automatisée coûte moins cher, mais seulement si les formats se correspondent. Aucun éditeur sérieux ne donne de délai avant d’avoir vu vos fichiers.",
       },
       {
-        question: "Que récupère-t-on exactement quand on quitte un éditeur\u00a0?",
+        question:
+          "Que récupère-t-on exactement quand on quitte un éditeur\u00a0?",
         answer:
           "Ce que le contrat dit, et rien d’autre. Trois questions à poser avant de signer\u00a0: dans quel format, sous quel délai, et à quel prix. Un export en PDF n’est pas une reprise de données\u00a0: il oblige à ressaisir. Un export en CSV ou par interface de programmation permet de repartir. Demandez aussi les pièces jointes, les droits des comptes et la configuration. Sur le cas construit, un export non exploitable transformait la sortie en 300 heures de saisie, soit 9\u00a0000\u00a0€.",
       },
@@ -485,7 +486,8 @@ export default function Page() {
             href: "/guides/automatiser-processus-metier",
           },
           {
-            label: "Power Apps ou application sur mesure\u00a0: comment choisir\u00a0?",
+            label:
+              "Power Apps ou application sur mesure\u00a0: comment choisir\u00a0?",
             href: "/guides/power-apps-ou-application-sur-mesure",
           },
           {
@@ -520,14 +522,14 @@ export default function Page() {
             title="Chiffrez d’abord, choisissez ensuite"
           >
             <p>
-              Un <strong>logiciel métier</strong> porte une règle que votre
+              Un <strong>logiciel métier </strong>porte une règle que votre
               métier applique et qu’aucun outil général ne connaît&nbsp;: le
               délai contractuel d’une intervention, la date limite d’un lot, la
               pièce qui manque à un dossier. Un tableur, un CRM ou un progiciel
               de gestion intégré ne la portent pas — ils la laissent dans la
               tête de quelqu’un. Avant d’en acheter un, chiffrez ce que vous
-              coûte votre fonctionnement actuel&nbsp;: heures perdues ×
-              coût horaire chargé, plus incidents × coût de reprise. Sur le cas
+              coûte votre fonctionnement actuel&nbsp;: heures perdues × coût
+              horaire chargé, plus incidents × coût de reprise. Sur le cas
               construit de ce guide, l’addition donne{" "}
               <strong>31&nbsp;800&nbsp;€ par an</strong>, dont
               28&nbsp;800&nbsp;€ de temps. Ce montant décide de la suite&nbsp;:
@@ -549,7 +551,7 @@ export default function Page() {
 
           <ul>
             <li>
-              <strong>Le tableur</strong> enregistre&nbsp;; il n’interdit rien.
+              <strong>Le tableur </strong>enregistre&nbsp;; il n’interdit rien.
               Il accepte sans broncher une date de recontrôle dépassée.
             </li>
             <li>
@@ -565,7 +567,7 @@ export default function Page() {
               trois et cinq ans.
             </li>
             <li>
-              <strong>Le CRM</strong> suit la relation commerciale&nbsp;:
+              <strong>Le CRM </strong>suit la relation commerciale&nbsp;:
               contacts, opportunités, relances. Il ignore si l’intervention
               respecte le délai contractuel.
             </li>
@@ -575,12 +577,12 @@ export default function Page() {
               comptabilité. Il gère la ressource, pas le geste.
             </li>
             <li>
-              <strong>Le progiciel vertical</strong> est un logiciel métier déjà
+              <strong>Le progiciel vertical </strong>est un logiciel métier déjà
               écrit pour un secteur et vendu par abonnement. C’est souvent la
               bonne réponse, et c’est la cinquième de ce guide.
             </li>
             <li>
-              <strong>Le développement sur mesure</strong> écrit la règle pour
+              <strong>Le développement sur mesure </strong>écrit la règle pour
               vous seul. C’est la réponse la plus chère, et la dernière à
               examiner.
             </li>
@@ -618,10 +620,11 @@ export default function Page() {
           title="Combien vous coûte, en euros, la situation actuelle&nbsp;?"
         >
           <p>
-            Commencer par le prix de la solution est l’ordre inverse du bon. Le seul montant que vous
-            pouvez établir seul, aujourd’hui, sans demander un devis à personne,
-            c’est celui de votre fonctionnement actuel. Il sert de dénominateur
-            à toutes les comparaisons qui suivent.
+            Commencer par le prix de la solution est l’ordre inverse du bon. Le
+            seul montant que vous pouvez établir seul, aujourd’hui, sans
+            demander un devis à personne, c’est celui de votre fonctionnement
+            actuel. Il sert de dénominateur à toutes les comparaisons qui
+            suivent.
           </p>
 
           <FormulaBox>{`Coût horaire chargé     = coût annuel employeur ÷ 1\u00a0600 h productives
@@ -634,10 +637,10 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
             Deux nombres de cette formule sont des{" "}
             <strong>hypothèses de travail</strong>, pas des constantes légales,
             et elles sont annoncées comme telles. Les{" "}
-            <strong>1&nbsp;600 heures productives</strong> approchent les
+            <strong>1&nbsp;600 heures productives </strong>approchent les
             1&nbsp;607 heures de la durée annuelle de référence d’un temps plein
             à 35&nbsp;heures&nbsp;; on ne retranche donc pas les congés une
-            seconde fois. Les <strong>48&nbsp;semaines</strong> sont
+            seconde fois. Les <strong>48&nbsp;semaines </strong>sont
             52&nbsp;semaines moins cinq de congés et de jours fériés, arrondies.
             Si ces deux valeurs ne correspondent pas à votre entreprise,
             remplacez-les&nbsp;: le reste du calcul ne bouge pas.
@@ -647,7 +650,7 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
             Déroulons-le sur le cas construit que ce guide suit du début à la
             fin. Quatre personnes sont touchées&nbsp;: la coordinatrice de
             planning, la comptable et deux chargés d’affaires. Le coût annuel
-            employeur retenu est de <strong>48&nbsp;000&nbsp;€</strong> par
+            employeur retenu est de <strong>48&nbsp;000&nbsp;€ </strong>par
             personne — c’est le chiffre que vous lisez sur votre compte de
             résultat, salaire brut et cotisations patronales comprises, pas un
             salaire net.
@@ -757,14 +760,18 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
               connaître
             </a>
             , de réexaminer les droits et d’éviter les comptes partagés sauf
-            exception encadrée. Cela vise d’abord les données personnelles&nbsp;;
-            la même discipline reste utile pour savoir qui peut modifier une
-            commande, un prix ou une validation.
+            exception encadrée. Cela vise d’abord les données
+            personnelles&nbsp;; la même discipline reste utile pour savoir qui
+            peut modifier une commande, un prix ou une validation.
           </p>
 
           <GuideTable
             caption="Cinq contrôles à traiter avant la décision d’investissement"
-            headers={["Risque observé", "Question immédiate", "Preuve attendue"]}
+            headers={[
+              "Risque observé",
+              "Question immédiate",
+              "Preuve attendue",
+            ]}
             rows={[
               [
                 "Compte partagé ou droits trop larges",
@@ -807,7 +814,8 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
             , sur sa page consultée le 28&nbsp;août 2026&nbsp;:{" "}
             <strong>
               «&nbsp;Appliquez la règle du 3-2-1&nbsp;: 3&nbsp;copies, sur
-              2&nbsp;supports différents, dont 1&nbsp;déconnectée du réseau.&nbsp;»
+              2&nbsp;supports différents, dont 1&nbsp;déconnectée du
+              réseau.&nbsp;»
             </strong>{" "}
             Le{" "}
             <a
@@ -818,10 +826,12 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
               guide de sécurité de la CNIL
             </a>{" "}
             y ajoute des tests réguliers d’intégrité et de restauration. Ni l’un
-            ni l’autre ne donne de fréquence chiffrée. Nous appliquons donc
-            une règle de travail interne, qui n’est pas une norme&nbsp;:{" "}
-            <strong>une restauration réellement rejouée tous les six mois</strong>,
-            plus une après chaque changement d’outil ou d’hébergeur.
+            ni l’autre ne donne de fréquence chiffrée. Nous appliquons donc une
+            règle de travail interne, qui n’est pas une norme&nbsp;:{" "}
+            <strong>
+              une restauration réellement rejouée tous les six mois
+            </strong>
+            , plus une après chaque changement d’outil ou d’hébergeur.
           </p>
 
           <p>
@@ -839,11 +849,11 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
             travail acceptez-vous de reperdre, et combien de temps l’activité
             tient-elle sans l’outil&nbsp;? Le guide ANSSI-BP-100 du
             27&nbsp;novembre 2025 précise qu’en dessous de{" "}
-            <strong>24&nbsp;heures</strong> de perte admissible, la sauvegarde
+            <strong>24&nbsp;heures </strong>de perte admissible, la sauvegarde
             ne suffit plus et qu’il faut regarder du côté de la réplication. Sur
             le cas construit, la direction a fixé <strong>4&nbsp;heures</strong>{" "}
             d’interruption maximale — au-delà, les neuf techniciens partent sans
-            leur tournée — et <strong>24&nbsp;heures</strong> de perte
+            leur tournée — et <strong>24&nbsp;heures </strong>de perte
             admissible, soit une journée de comptes rendus rattrapable à la
             main.
           </p>
@@ -857,10 +867,10 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
               procédure d’absence et une alerte corrigent l’urgence avec l’outil
               actuel, pour quelques jours de travail interne. Comptez 2 à
               4&nbsp;jours d’administrateur à 8&nbsp;heures, soit 480 à
-              960&nbsp;€ au coût
-              horaire chargé de 30&nbsp;€ du cas ci-dessus. Le socle plus
-              complet à exiger avant une mise en service — journaux, alertes,
-              responsables nommés — est détaillé dans le guide{" "}
+              960&nbsp;€ au coût horaire chargé de 30&nbsp;€ du cas ci-dessus.
+              Le socle plus complet à exiger avant une mise en service —
+              journaux, alertes, responsables nommés — est détaillé dans le
+              guide{" "}
               <Link href="/guides/securite-application-metier">
                 sécurité d’une application métier
               </Link>
@@ -887,7 +897,7 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
           </p>
 
           <p>
-            Un fait vu <strong>trois fois</strong> sur ce mois cesse d’être une
+            Un fait vu <strong>trois fois </strong>sur ce mois cesse d’être une
             anecdote&nbsp;: il devient un motif. Vu une seule fois, il reste un
             incident à noter, pas une preuve. Comptez 30 à 45&nbsp;minutes pour
             remplir les trois fiches ci-dessous — c’est du temps de travail, pas
@@ -1020,12 +1030,12 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
             dépend de vos données, de vos exceptions et de la disponibilité de
             vos équipes, et c’est pour cette raison que la{" "}
             <Link href="/tarifs">grille tarifaire de Hagnéré Code</Link> publie
-            des prix mais écrit «&nbsp;planning confirmé après cadrage&nbsp;».
-            Un fournisseur qui vous annonce une date avant d’avoir vu vos
-            fichiers vous annonce un souhait. Faites écrire la date au devis,
-            après le cadrage, avec ce qui la conditionne. Si la réponse retenue
-            est la quatrième, le choix du premier candidat est traité dans le
-            guide{" "}
+            des prix mais écrit «{"\u00a0"}planning confirmé après cadrage
+            {"\u00a0"}». Un fournisseur qui vous annonce une date avant d’avoir
+            vu vos fichiers vous annonce un souhait. Faites écrire la date au
+            devis, après le cadrage, avec ce qui la conditionne. Si la réponse
+            retenue est la quatrième, le choix du premier candidat est traité
+            dans le guide{" "}
             <Link href="/guides/automatiser-processus-metier">
               quel processus métier automatiser en premier
             </Link>
@@ -1037,7 +1047,8 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
               Verdict possible · hors décompte
             </p>
             <h3 className="mt-2 text-lg font-bold text-amber-950 dark:text-amber-100">
-              OBSERVER&nbsp;: ne pas choisir de solution tant que les faits manquent
+              OBSERVER&nbsp;: ne pas choisir de solution tant que les faits
+              manquent
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-amber-900 dark:text-amber-200">
               Notez la période, la fréquence, la conséquence et la date de
@@ -1123,13 +1134,14 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
             Nadia dirige une entreprise de maintenance de chauffage et de
             climatisation à Besançon. Quatorze salariés&nbsp;: neuf techniciens
             itinérants, une coordinatrice de planning, une comptable, deux
-            chargés d’affaires. Environ <strong>700 interventions par mois</strong>
-            , 300 contrats d’entretien en cours et 1&nbsp;200 équipements suivis.{" "}
+            chargés d’affaires. Environ{" "}
+            <strong>700 interventions par mois</strong>, 300 contrats
+            d’entretien en cours et 1&nbsp;200 équipements suivis.{" "}
             <em>
-              Exemple construit&nbsp;: les volumes, l’effectif et le coût horaire
-              sont choisis pour l’exemple et ne viennent d’aucune source&nbsp;; seuls
-              les montants de prestation sont repris de la grille publiée. Ce n’est
-              pas un dossier client.
+              Exemple construit&nbsp;: les volumes, l’effectif et le coût
+              horaire sont choisis pour l’exemple et ne viennent d’aucune
+              source&nbsp;; seuls les montants de prestation sont repris de la
+              grille publiée. Ce n’est pas un dossier client.
             </em>{" "}
             Aucun résultat n’y est mesuré et aucun gain n’en est déduit.
           </p>
@@ -1141,19 +1153,19 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
 
           <ul>
             <li>
-              <strong>Situation 1 · le planning.</strong> Quand la coordinatrice
+              <strong>Situation 1 · le planning. </strong>Quand la coordinatrice
               est absente, personne ne peut modifier la tournée ni retrouver la
               dernière version du fichier. Vu 2 fois en un mois, avec 9
               techniciens à l’arrêt une demi-journée.
             </li>
             <li>
-              <strong>Situation 2 · la facture.</strong> Le compte rendu
+              <strong>Situation 2 · la facture. </strong>Le compte rendu
               d’intervention est ressaisi dans l’outil de facturation. Vu tous
               les jours&nbsp;: c’est l’essentiel des 5 heures hebdomadaires par
               personne du calcul de la section 02.
             </li>
             <li>
-              <strong>Situation 3 · la validation.</strong> Chaque chargé
+              <strong>Situation 3 · la validation. </strong>Chaque chargé
               d’affaires valide les devis à sa façon. Vu 4 fois, sans
               conséquence chiffrable&nbsp;: verdict OBSERVER.
             </li>
@@ -1161,17 +1173,17 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
 
           <p>
             L’addition de la section 02 donne{" "}
-            <strong>31&nbsp;800&nbsp;€ par an</strong>, dont 28&nbsp;800&nbsp;€ de
-            temps sur 960&nbsp;heures et 3&nbsp;000&nbsp;€ de reprises d’erreurs.
-            La première situation relève de la réponse&nbsp;1, la deuxième des
-            réponses 4 ou 5, la troisième d’aucune.
+            <strong>31&nbsp;800&nbsp;€ par an</strong>, dont 28&nbsp;800&nbsp;€
+            de temps sur 960&nbsp;heures et 3&nbsp;000&nbsp;€ de reprises
+            d’erreurs. La première situation relève de la réponse&nbsp;1, la
+            deuxième des réponses 4 ou 5, la troisième d’aucune.
           </p>
 
           <p>
             Ce total est un <strong>plancher</strong>, et il faut le dire ainsi.
             Il ne compte que la situation&nbsp;2 et ses quatre personnes. Les
-            deux demi-journées où neuf techniciens attendent leur tournée,
-            soit 36&nbsp;heures, n’y figurent pas. Les ajouter ferait monter le
+            deux demi-journées où neuf techniciens attendent leur tournée, soit
+            36&nbsp;heures, n’y figurent pas. Les ajouter ferait monter le
             total, jamais descendre&nbsp;: c’est ce qui rend un chiffrage
             partiel utilisable en réunion, à condition d’écrire ce qu’il laisse
             dehors.
@@ -1253,17 +1265,17 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
               personnes font l’aller-retour une heure par semaine pendant
               18&nbsp;mois, soit 1&nbsp;×&nbsp;48&nbsp;×&nbsp;2&nbsp;×&nbsp;1,5
               = <strong>144&nbsp;heures</strong>, ou{" "}
-              <strong>4&nbsp;320&nbsp;€</strong>, auxquels s’ajoute
-              l’abonnement de l’ancien outil, dû tant qu’il reste ouvert. C’est
-              exactement le poste «&nbsp;double exploitation&nbsp;» du tableau
-              de la section 10.
+              <strong>4&nbsp;320&nbsp;€</strong>, auxquels s’ajoute l’abonnement
+              de l’ancien outil, dû tant qu’il reste ouvert. C’est exactement le
+              poste «&nbsp;double exploitation&nbsp;» du tableau de la section
+              10.
             </li>
             <li>
               <strong>La connexion silencieuse fabrique des doublons.</strong>{" "}
               L’échange entre planification et facturation recopie un statut
               sans alerte. Une intervention sur vingt crée un doublon&nbsp;:
               1&nbsp;050 interventions en six semaines donnent{" "}
-              <strong>52&nbsp;doublons</strong> découverts à la clôture. Environ
+              <strong>52&nbsp;doublons </strong>découverts à la clôture. Environ
               22&nbsp;heures de correction, soit <strong>660&nbsp;€</strong>,
               9&nbsp;factures parties en double chez des clients et une clôture
               mensuelle décalée de 4&nbsp;jours. Une alerte par échec d’échange
@@ -1293,7 +1305,7 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
           <p>
             Même avec une orientation claire, ne passez pas directement au
             déploiement. Pour les réponses 3 à 6, transformez l’hypothèse en
-            essai&nbsp;: <strong>6 à 8&nbsp;semaines</strong> incluant une
+            essai&nbsp;: <strong>6 à 8&nbsp;semaines </strong>incluant une
             clôture, <strong>3 à 5&nbsp;utilisateurs représentatifs</strong>{" "}
             dont au moins un qui n’a rien demandé, un seul résultat métier, des
             cas normaux et des exceptions, une reprise à la main et une date de
@@ -1303,11 +1315,11 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
           <p>
             Un pilote a un prix, que les dossiers oublient de compter. Trois
             personnes mobilisées deux heures par semaine pendant huit semaines
-            font 48&nbsp;heures, soit <strong>1&nbsp;440&nbsp;€</strong> au coût
+            font 48&nbsp;heures, soit <strong>1&nbsp;440&nbsp;€ </strong>au coût
             horaire chargé de 30&nbsp;€ du cas construit. Ajoutez le cadrage
             payé s’il y en a un — 1&nbsp;500&nbsp;€ HT pour un Discovery Sprint
-            de deux jours, prix publié. Trois mille euros dépensés pour écarter un
-            engagement de 25&nbsp;000&nbsp;€ restent la meilleure ligne du
+            de deux jours, prix publié. Trois mille euros dépensés pour écarter
+            un engagement de 25&nbsp;000&nbsp;€ restent la meilleure ligne du
             dossier.
           </p>
 
@@ -1327,7 +1339,11 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
 
           <GuideTable
             caption="Contrat minimal d’un pilote"
-            headers={["À écrire avant", "Exemple de formulation", "Preuve de sortie"]}
+            headers={[
+              "À écrire avant",
+              "Exemple de formulation",
+              "Preuve de sortie",
+            ]}
             rows={[
               [
                 "Résultat",
@@ -1369,8 +1385,8 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
             Testez aussi l’indisponibilité, un droit refusé, une donnée
             manquante, un doublon et le retour au manuel. Le développeur ne doit
             pas être seul à constater que son outil fonctionne&nbsp;; pour
-            transformer ces vérifications en preuves reprises dans la recette, le
-            guide{" "}
+            transformer ces vérifications en preuves reprises dans la recette,
+            le guide{" "}
             <Link href="/guides/plan-recette-application-metier">
               plan de recette d’une application métier
             </Link>{" "}
@@ -1425,7 +1441,12 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
                 "Inconnu\u00a0: même exigence",
               ],
               ["4 · Intégrations", "Sans objet", "Inconnu", "Inconnu"],
-              ["5 · Formation et changement", "Sans objet", "Inconnu", "Inconnu"],
+              [
+                "5 · Formation et changement",
+                "Sans objet",
+                "Inconnu",
+                "Inconnu",
+              ],
               [
                 "6 · Temps interne",
                 "95\u00a0400\u00a0€ (86\u00a0400\u00a0€ de temps + 9\u00a0000\u00a0€ d’erreurs)",
@@ -1444,7 +1465,12 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
                 "8\u00a0424\u00a0€ (12 × 19,50\u00a0€ × 36)",
                 "Inconnu\u00a0: hébergement à confirmer",
               ],
-              ["9 · Support et maintenance", "Sans objet", "Inconnu", "Inconnu"],
+              [
+                "9 · Support et maintenance",
+                "Sans objet",
+                "Inconnu",
+                "Inconnu",
+              ],
               [
                 "10 · Sécurité et conformité",
                 "0\u00a0€ engagé à ce jour, ce qui est précisément le problème",
@@ -1463,10 +1489,12 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
 
           <p>
             Lisez d’abord les totaux partiels, ils disent l’essentiel. Le statu
-            quo totalise <strong>95&nbsp;400&nbsp;€ sur trois ans</strong> avec
+            quo totalise <strong>95&nbsp;400&nbsp;€ sur trois ans </strong>avec
             une seule inconnue, vos abonnements actuels — que vous pouvez lire
             ce soir sur vos factures. Le standard totalise{" "}
-            <strong>8&nbsp;424&nbsp;€ de lignes connues sur douze familles</strong>
+            <strong>
+              8&nbsp;424&nbsp;€ de lignes connues sur douze familles
+            </strong>
             , dont neuf restent à demander. Le sur-mesure totalise{" "}
             <strong>26&nbsp;500 à 51&nbsp;500&nbsp;€ de lignes connues</strong>,
             dont neuf restent à demander. Autrement dit&nbsp;: la seule colonne
@@ -1494,25 +1522,24 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
             L’horizon retenu dans ce guide est de <strong>trois ans</strong>,
             pour une raison précise&nbsp;: c’est l’horizon sur lequel une règle
             du métier ou une obligation a le temps de bouger, et c’est aussi
-            celle qu’applique le calculateur de coût du site. Un an est
-            trop court pour voir un renouvellement&nbsp;; cinq ans supposent une
+            celle qu’applique le calculateur de coût du site. Un an est trop
+            court pour voir un renouvellement&nbsp;; cinq ans supposent une
             stabilité que peu de PME connaissent. Quatre choses arrivent en
             année 3.
           </p>
 
           <ol className="guide-checklist">
             <li>
-              <strong>Le tarif monte au renouvellement.</strong> Une hausse de
-              10&nbsp;% sur 12 postes à 19,50&nbsp;€ par mois ajoute
-              281&nbsp;€ par an&nbsp;: négligeable. La même hausse sur
-              120&nbsp;postes, soit 28&nbsp;080&nbsp;€ d’abonnement annuel, en
-              ajoute 2&nbsp;808&nbsp;€. Le risque
-              tarifaire n’existe qu’à partir d’une certaine taille&nbsp;;
-              calculez-le sur votre nombre de postes plutôt que de le craindre
-              en général.
+              <strong>Le tarif monte au renouvellement. </strong>Une hausse de
+              10&nbsp;% sur 12 postes à 19,50&nbsp;€ par mois ajoute 281&nbsp;€
+              par an&nbsp;: négligeable. La même hausse sur 120&nbsp;postes,
+              soit 28&nbsp;080&nbsp;€ d’abonnement annuel, en ajoute
+              2&nbsp;808&nbsp;€. Le risque tarifaire n’existe qu’à partir d’une
+              certaine taille&nbsp;; calculez-le sur votre nombre de postes
+              plutôt que de le craindre en général.
             </li>
             <li>
-              <strong>La personne qui portait le paramétrage part.</strong> Sur
+              <strong>La personne qui portait le paramétrage part. </strong>Sur
               le cas construit, c’est la coordinatrice de planning. Reconstituer
               des règles jamais écrites représente environ 4&nbsp;jours de
               travail à deux, soit 64&nbsp;heures et 1&nbsp;920&nbsp;€ — et
@@ -1531,17 +1558,17 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
               </a>
               , toutes les entreprises doivent pouvoir recevoir une facture
               électronique au 1<sup>er</sup>&nbsp;septembre 2026, et les PME et
-              micro-entreprises doivent l’émettre au format électronique au
-              1<sup>er</sup>&nbsp;septembre 2027. Question à poser avant de
-              signer&nbsp;: cette évolution est-elle comprise dans
-              l’abonnement, ou facturée&nbsp;?
+              micro-entreprises doivent l’émettre au format électronique au 1
+              <sup>er</sup>&nbsp;septembre 2027. Question à poser avant de
+              signer&nbsp;: cette évolution est-elle comprise dans l’abonnement,
+              ou facturée&nbsp;?
             </li>
             <li>
-              <strong>Vous partez.</strong> Trois questions au contrat&nbsp;:
+              <strong>Vous partez. </strong>Trois questions au contrat&nbsp;:
               dans quel format, sous quel délai, à quel prix. Un export en PDF
               n’est pas une reprise de données. Sur le cas construit, un export
-              non exploitable oblige à ressaisir 300 contrats et
-              1&nbsp;200 équipements&nbsp;: à 12&nbsp;minutes l’unité, cela fait{" "}
+              non exploitable oblige à ressaisir 300 contrats et 1&nbsp;200
+              équipements&nbsp;: à 12&nbsp;minutes l’unité, cela fait{" "}
               <strong>300&nbsp;heures</strong>, soit{" "}
               <strong>9&nbsp;000&nbsp;€</strong>. C’est plus que le cadrage et
               la moitié du paramétrage réunis.
@@ -1556,8 +1583,8 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
             <Link href="/guides/cahier-des-charges-saas">
               cahier des charges SaaS
             </Link>{" "}
-            détaille comment les écrire pour que plusieurs fournisseurs chiffrent
-            le même produit.
+            détaille comment les écrire pour que plusieurs fournisseurs
+            chiffrent le même produit.
           </p>
         </GuidePremiumSection>
 
@@ -1570,8 +1597,8 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
         >
           <p>
             Reprenez vos trois fiches et le montant annuel de la section 02.
-            Pour chaque situation, choisissez une réponse ou le verdict OBSERVER,
-            puis écrivez pourquoi et ce qui permettra de confirmer ou
+            Pour chaque situation, choisissez une réponse ou le verdict
+            OBSERVER, puis écrivez pourquoi et ce qui permettra de confirmer ou
             d’abandonner cette orientation. La phrase doit être comprise par la
             personne qui fait le travail comme par celle qui paie.
           </p>
@@ -1593,7 +1620,8 @@ Point mort (en mois)    = budget envisagé ÷ coût annuel total × 12`}</Formul
             sauvegarde, supprimer une validation, former deux personnes, tester
             une connexion, faire rejouer trois dossiers dans un progiciel du
             secteur, cadrer une fonction sur mesure — ou observer encore un
-            mois. <strong>Vous n’avez pas forcément un projet à l’arrivée.</strong>{" "}
+            mois.{" "}
+            <strong>Vous n’avez pas forcément un projet à l’arrivée.</strong>{" "}
             Vous aurez surtout évité de financer une solution qui ne traite pas
             le problème observé. Sur le cas construit, la réponse la plus chère
             aurait laissé intacts les 28&nbsp;800&nbsp;€ qui posaient problème.

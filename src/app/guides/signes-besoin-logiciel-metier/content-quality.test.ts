@@ -413,6 +413,12 @@ describe("content quality for the software-needs guide", () => {
     const readableSection = section
       .replace(/&nbsp;/g, " ")
       .replace(/\\u00a0/g, " ")
+      // JSX supprime un saut de ligne adjacent à une balise, il ne le convertit
+      // pas en espace. Sans reproduire cette règle, un simple retour à la ligne
+      // décidé par Prettier ferait échouer une assertion sur du texte que la
+      // page rend pourtant sans espace — vu le 31/08/2026 sur « 1<sup>er</sup> ».
+      .replace(/\n\s*(?=<)/g, "")
+      .replace(/(?<=>)\n\s*/g, "")
       .replace(/\s+/g, " ");
     const incidents = readableSection.match(/<li>/g) ?? [];
     expect(incidents.length).toBeGreaterThanOrEqual(3);
@@ -458,6 +464,11 @@ describe("content quality for the software-needs guide", () => {
     const readableSection = section
       .replace(/&nbsp;/g, " ")
       .replace(/\\u00a0/g, " ")
+      // Même règle qu’au-dessus : JSX supprime un saut de ligne adjacent à une
+      // balise. Prettier ayant coupé « au 1<sup>er</sup> » en deux lignes, la
+      // comparaison échouait sur du texte que la page rend pourtant collé.
+      .replace(/\n\s*(?=<)/g, "")
+      .replace(/(?<=>)\n\s*/g, "")
       .replace(/\s+/g, " ");
 
     expect(readableSection).toContain("281 €");

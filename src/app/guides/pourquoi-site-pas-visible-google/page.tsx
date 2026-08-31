@@ -564,17 +564,17 @@ grep -io '<meta[^>]*name=.robots.[^>]*>' page.html`}
 
           <p>
             Ce relevé ne vaut qu’assorti de ses réserves. L’option{" "}
-            <code>-A</code> annonce un nom d’agent&nbsp;: elle révèle un
+            <code>-A</code> annonce un nom d’agent{"\u00a0"}: elle révèle un
             traitement différencié fondé sur ce nom, jamais un filtrage par
             adresse IP. Elle figure sur les trois commandes parce qu’un{" "}
             <code>noindex</code> servi au seul Googlebot passerait à travers un
             contrôle joué sous le nom d’agent de votre navigateur. Le HTML
-            récupéré est le HTML initial&nbsp;: des balises posées par du
-            JavaScript n’y figurent pas, et seul le test en ligne, ouvert par
-            «&nbsp;Tester l’URL active&nbsp;», montre la version rendue. Enfin,
-            les outils d’inspection de Google ne suivent pas les
-            redirections&nbsp;: inspectez la cible finale, jamais l’adresse de
-            départ.
+            récupéré est le HTML initial{"\u00a0"}: des balises posées par du
+            JavaScript n’y figurent pas, et seul le test en ligne, ouvert par «
+            {"\u00a0"}Tester l’URL active{"\u00a0"}», montre la version rendue.
+            Enfin, les outils d’inspection de Google ne suivent pas les
+            redirections{"\u00a0"}: inspectez la cible finale, jamais l’adresse
+            de départ.
           </p>
 
           <GuideTable
@@ -621,9 +621,9 @@ grep -io '<meta[^>]*name=.robots.[^>]*>' page.html`}
 
           <h3>Trois plafonds documentés, et ce qu’ils limitent vraiment</h3>
           <p>
-            <strong>La taille lue.</strong> La page Googlebot, mise à jour le
+            <strong>La taille lue. </strong>La page Googlebot, mise à jour le
             5&nbsp;février 2026, écrit que le robot explore les{" "}
-            <strong>2 premiers Mo</strong> d’un type de fichier compatible et
+            <strong>2 premiers Mo </strong>d’un type de fichier compatible et
             les 64 premiers Mo d’un PDF, sur les données non compressées. Le
             repère de 15&nbsp;Mo qui circule encore vient d’une autre page, la
             présentation des robots d’exploration Google&nbsp;: il y décrit le
@@ -653,7 +653,7 @@ grep -io '<meta[^>]*name=.robots.[^>]*>' page.html`}
             grandeur&nbsp;: 0,8&nbsp;seconde ou moins est bon, au-delà de
             1,8&nbsp;seconde mauvais. Deux précautions&nbsp;: web.dev rattache
             son 75<sup>e</sup> centile au First Contentful Paint, pas à ces deux
-            seuils&nbsp;; et la commande ci-dessus mesure un seul chargement
+            seuils{"\u00a0"}; et la commande ci-dessus mesure un seul chargement
             depuis votre poste, ce qui n’est ni un centile ni une mesure de
             terrain.
           </p>
@@ -767,9 +767,9 @@ grep -io '<meta[^>]*name=.robots.[^>]*>' page.html`}
             redirection est un signal fort, une annotation{" "}
             <code>link rel=canonical</code> aussi, l’inclusion dans un sitemap
             un signal faible. Aucun signal fort ne désignerait la nouvelle page
-            comme remplaçante&nbsp;: Google garde l’ancienne, mieux connue. Deux
-            gestes suffisent — une redirection 301 vers la nouvelle, et les six
-            adresses supprimées retirées du sitemap.
+            comme remplaçante{"\u00a0"}: Google garde l’ancienne, mieux connue.
+            Deux gestes suffisent — une redirection 301 vers la nouvelle, et les
+            six adresses supprimées retirées du sitemap.
           </p>
 
           <h3>Vérifier 68 pages sans cliquer 68 fois</h3>
@@ -792,15 +792,15 @@ grep -io '<meta[^>]*name=.robots.[^>]*>' page.html`}
           >
             <ul>
               <li>
-                <strong>Corriger d’abord.</strong> Une demande envoyée avant la
+                <strong>Corriger d’abord. </strong>Une demande envoyée avant la
                 correction ne fait que consommer le quota.
               </li>
               <li>
-                <strong>Rejouer le test en ligne.</strong> Il prouve que la
+                <strong>Rejouer le test en ligne. </strong>Il prouve que la
                 version servie maintenant est récupérable, rien de plus.
               </li>
               <li>
-                <strong>Dater.</strong> Correction, demande, recontrôle&nbsp;:
+                <strong>Dater. </strong>Correction, demande, recontrôle&nbsp;:
                 sans ces trois dates, le contrôle suivant n’est comparable à
                 rien.
               </li>
@@ -888,10 +888,10 @@ grep -io '<meta[^>]*name=.robots.[^>]*>' page.html`}
           <p>
             L’affichage tronque, l’API Search Analytics beaucoup moins — à
             condition qu’un développeur l’appelle pour vous, depuis un accès
-            autorisé. Le paramètre <code>rowLimit</code> accepte de 1 à
-            25&nbsp;000&nbsp;lignes, sa valeur par défaut est 1&nbsp;000, et{" "}
-            <code>startRow</code> parcourt la suite. Le quota,
-            1&nbsp;200&nbsp;requêtes par minute et par site, reste hors
+            autorisé. Le paramètre <code>rowLimit</code> accepte de 1 à 25
+            {"\u00a0"}000{"\u00a0"}lignes, sa valeur par défaut est 1{"\u00a0"}
+            000, et <code>startRow</code> parcourt la suite. Le quota, 1
+            {"\u00a0"}200{"\u00a0"}requêtes par minute et par site, reste hors
             d’atteinte pour un relevé mensuel.
           </p>
 
@@ -950,15 +950,16 @@ startRow   : 0         # puis 25000, 50000… tant que des lignes reviennent`}
             tout avant d’ouvrir au public — porte une règle <code>noindex</code>{" "}
             sur le gabarit des pages produit, et que la mise en ligne reprenne
             ce gabarit sans la retirer. Au fil des explorations, 34&nbsp;pages
-            sur 68 basculeraient en «&nbsp;URL marquée &quot;noindex&quot;&nbsp;», et le
-            défaut vivrait cinq semaines faute d’un regard sur le rapport. La
-            correction demanderait une heure, soit 50&nbsp;€&nbsp;; la reprise,
-            deux jours — relever les 34&nbsp;URL, demander l’indexation dans la
-            limite du quota, vérifier une à une —, soit 700&nbsp;€. Total,
-            750&nbsp;€, sans compter cinq semaines de diffusion perdues que rien
-            ne rattrape&nbsp;: la documentation ne promet aucun délai de retour.
-            Le contrôle qui l’aurait évité tient dans les trois commandes de la
-            section&nbsp;02, jouées le jour de la mise en ligne.
+            sur 68 basculeraient en «&nbsp;URL marquée
+            &quot;noindex&quot;&nbsp;», et le défaut vivrait cinq semaines faute
+            d’un regard sur le rapport. La correction demanderait une heure,
+            soit 50&nbsp;€&nbsp;; la reprise, deux jours — relever les
+            34&nbsp;URL, demander l’indexation dans la limite du quota, vérifier
+            une à une —, soit 700&nbsp;€. Total, 750&nbsp;€, sans compter cinq
+            semaines de diffusion perdues que rien ne rattrape&nbsp;: la
+            documentation ne promet aucun délai de retour. Le contrôle qui
+            l’aurait évité tient dans les trois commandes de la section&nbsp;02,
+            jouées le jour de la mise en ligne.
           </p>
 
           <h3>
@@ -1039,23 +1040,23 @@ startRow   : 0         # puis 25000, 50000… tant que des lignes reviennent`}
           >
             <ul>
               <li>
-                <strong>Jour 0.</strong> Correction posée, test en ligne rejoué,
+                <strong>Jour 0. </strong>Correction posée, test en ligne rejoué,
                 demande envoyée une fois. Notez le motif affiché avant
                 correction.
               </li>
               <li>
-                <strong>Jour 3.</strong> Inspection d’URL seule. Une date de
+                <strong>Jour 3. </strong>Inspection d’URL seule. Une date de
                 dernière exploration inchangée n’est pas un échec, c’est un
                 délai normal.
               </li>
               <li>
-                <strong>Jour 10.</strong> Le libellé a-t-il changé de
+                <strong>Jour 10. </strong>Le libellé a-t-il changé de
                 catégorie&nbsp;? Un passage de «&nbsp;bloquée&nbsp;» à
                 «&nbsp;Explorée, actuellement non indexée&nbsp;» est un progrès,
                 même sans impression.
               </li>
               <li>
-                <strong>Jour 30.</strong> Exploration faite, motif
+                <strong>Jour 30. </strong>Exploration faite, motif
                 inchangé&nbsp;: la correction n’était pas la bonne. Rouvrez le
                 diagnostic plutôt que de renvoyer l’URL une quatrième fois.
               </li>
@@ -1222,7 +1223,7 @@ startRow   : 0         # puis 25000, 50000… tant que des lignes reviennent`}
           </InfoBox>
 
           <p className="text-sm">
-            <strong>Transparence.</strong> Hagnéré Code vend du développement
+            <strong>Transparence. </strong>Hagnéré Code vend du développement
             web, de la maintenance et des prestations de référencement&nbsp;: la
             dernière ligne du tableau ci-dessus peut donc nous rapporter, les
             cinq autres non. Rien ici n’exige de passer par nous&nbsp;: les

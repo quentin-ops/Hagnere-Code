@@ -96,8 +96,7 @@ const faqCategories: GuidePremiumFaqCategory[] = [
     label: "Exécuter les mesures",
     items: [
       {
-        question:
-          "Combien de temps prennent les quatre mesures\u00a0?",
+        question: "Combien de temps prennent les quatre mesures\u00a0?",
         answer:
           "La restauration est la seule qui coûte une demi-journée, parce qu’il faut monter un environnement séparé avant de chronométrer. Le test d’alerte demande dix minutes d’exécution, puis l’attente. Les dix rejeux du compte témoin tiennent en une heure une fois les deux sessions ouvertes. La liste des dépendances vulnérables sort en une minute et se relance chaque semaine. Comptez une journée pour la première série complète, deux heures pour les suivantes.",
       },
@@ -121,7 +120,8 @@ const faqCategories: GuidePremiumFaqCategory[] = [
     label: "Référentiels et obligations",
     items: [
       {
-        question: "Le Top\u00a010 OWASP suffit-il à valider l’application\u00a0?",
+        question:
+          "Le Top\u00a010 OWASP suffit-il à valider l’application\u00a0?",
         answer:
           "C’est un document de sensibilisation, qui donne un consensus large sur les risques les plus critiques\u00a0: utile en début de projet, insuffisant ensuite. Le référentiel ASVS 5.0.0, publié le 30\u00a0mai 2025 par la même organisation, sert à sélectionner des exigences techniques précises et à les tester une par une. Ni l’un ni l’autre ne certifie une application, et aucun des deux ne couvre la sauvegarde, l’alerte, les personnes ou les obligations qui s’appliquent à votre traitement de données.",
       },
@@ -153,8 +153,7 @@ const faqCategories: GuidePremiumFaqCategory[] = [
           "Une personne autorisée par l’entreprise, à partir des montants et des écarts que ces mesures produisent. Le développeur explique, l’hébergeur documente, mais aucun des deux ne décide combien d’heures d’arrêt l’activité supporte. Dans le cas construit de ce guide, ce nombre appartient à la directrice administrative et financière\u00a0: c’est elle qui accepte quatre heures ouvrées d’arrêt, donc 3\u00a0972\u00a0€. L’outil local de cette page n’autorise aucune mise en production.",
       },
       {
-        question:
-          "Faut-il refaire ces mesures, et à quel rythme\u00a0?",
+        question: "Faut-il refaire ces mesures, et à quel rythme\u00a0?",
         answer:
           "La liste des dépendances vulnérables se relance chaque semaine, parce qu’elle change chaque semaine. Les trois autres se refont après chaque changement d’hébergement, après chaque montée de version majeure, après le départ de quelqu’un qui détenait un accès, et au moins une fois par an. Notez la date de la dernière exécution à côté de chaque nombre\u00a0: une mesure sans date ne prouve rien six mois plus tard.",
       },
@@ -191,7 +190,9 @@ export default function Page() {
         ]}
         heroTitle={"Sécurité d’une application métier\u00a0:"}
         heroTitleEm={"que\u00a0mesurer avant les vraies données\u00a0?"}
-        heroDescription={"«\u00a0Est-elle sécurisée\u00a0?\u00a0» n’appelle aucune réponse vérifiable. Quatre choses, en revanche, se mesurent en une journée\u00a0: le temps réel d’une restauration complète, les minutes entre un événement sensible et l’alerte reçue, les codes de réponse rendus au compte le moins privilégié, et le délai entre la publication d’un correctif et son installation. Ce guide donne le protocole de chacune, le seuil qui tranche et ce que l’écart coûte. Les euros et les durées cités viennent d’un cas construit pour ce guide, entreprise et volumes compris\u00a0: rien n’a été relevé chez un client."}
+        heroDescription={
+          "«\u00a0Est-elle sécurisée\u00a0?\u00a0» n’appelle aucune réponse vérifiable. Quatre choses, en revanche, se mesurent en une journée\u00a0: le temps réel d’une restauration complète, les minutes entre un événement sensible et l’alerte reçue, les codes de réponse rendus au compte le moins privilégié, et le délai entre la publication d’un correctif et son installation. Ce guide donne le protocole de chacune, le seuil qui tranche et ce que l’écart coûte. Les euros et les durées cités viennent d’un cas construit pour ce guide, entreprise et volumes compris\u00a0: rien n’a été relevé chez un client."
+        }
         stats={[
           { label: "Mesures à exécuter", value: "4" },
           { label: "Heure ouvrée · cas construit", value: "993\u00a0€" },
@@ -394,7 +395,8 @@ export default function Page() {
             href: "/guides/cahier-des-charges-saas",
           },
           {
-            label: "MVP SaaS\u00a0: quoi inclure avant un premier client\u00a0?",
+            label:
+              "MVP SaaS\u00a0: quoi inclure avant un premier client\u00a0?",
             href: "/guides/mvp-saas-quoi-inclure",
           },
         ]}
@@ -407,9 +409,8 @@ export default function Page() {
           title={"Quatre mesures, un chronomètre, et le coût de l’écart"}
         >
           <p>
-            Votre développeur annonce que l’application métier est prête.
-            Lundi, vous
-            allez y charger le fichier clients, les prix négociés et les
+            Votre développeur annonce que l’application métier est prête. Lundi,
+            vous allez y charger le fichier clients, les prix négociés et les
             tournées de la semaine. «&nbsp;Est-elle sécurisée&nbsp;?&nbsp;»
             n’appelle aucune réponse vérifiable&nbsp;: personne ne peut le
             prouver, et vous ne pouvez pas le réfuter.
@@ -417,12 +418,12 @@ export default function Page() {
           <p>
             Quatre choses se mesurent, elles. <strong>Restaurez</strong>{" "}
             l’application entière dans un environnement séparé et notez la
-            durée. <strong>Déclenchez</strong> un événement sensible et comptez
+            durée. <strong>Déclenchez </strong>un événement sensible et comptez
             les minutes avant qu’une personne nommée reçoive l’alerte.{" "}
-            <strong>Rejouez</strong> dix requêtes avec le compte le moins
-            privilégié et lisez les codes de réponse.{" "}
-            <strong>Listez</strong> les dépendances vulnérables, puis triez-les
-            par exploitation constatée plutôt que par score.
+            <strong>Rejouez </strong>dix requêtes avec le compte le moins
+            privilégié et lisez les codes de réponse. <strong>Listez</strong>{" "}
+            les dépendances vulnérables, puis triez-les par exploitation
+            constatée plutôt que par score.
           </p>
           <p>
             Chacune sort un nombre, que vous comparez à un seuil fixé par votre
@@ -444,15 +445,16 @@ export default function Page() {
           <GuidePremiumCase
             initial="46"
             eyebrow="Fil rouge du guide · exemple construit"
-            title={"Trente-quatre utilisateurs, 3\u00a0100\u00a0clients, une mise en service prévue lundi"}
+            title={
+              "Trente-quatre utilisateurs, 3\u00a0100\u00a0clients, une mise en service prévue lundi"
+            }
           >
             <p>
               <em>
-                Exemple construit&nbsp;: l’entreprise, ses volumes, ses
-                horaires et ses coûts internes sont choisis pour l’exemple et ne
-                viennent d’aucune source&nbsp;; seuls les montants de prestation
-                sont repris de notre grille publiée. Ce n’est pas un dossier
-                client.
+                Exemple construit&nbsp;: l’entreprise, ses volumes, ses horaires
+                et ses coûts internes sont choisis pour l’exemple et ne viennent
+                d’aucune source&nbsp;; seuls les montants de prestation sont
+                repris de notre grille publiée. Ce n’est pas un dossier client.
               </em>{" "}
               Une société de négoce et d’installation de matériel médical,
               46&nbsp;salariés, 12&nbsp;millions d’euros de chiffre d’affaires.
@@ -478,8 +480,8 @@ export default function Page() {
             <p>
               Si une compromission, une fuite ou une indisponibilité est en
               cours ou soupçonnée, appliquez la procédure d’incident et appelez
-              les personnes compétentes. Ces quatre mesures préparent une mise en
-              service&nbsp;; elles ne remplacent ni un isolement, ni une
+              les personnes compétentes. Ces quatre mesures préparent une mise
+              en service&nbsp;; elles ne remplacent ni un isolement, ni une
               restauration d’urgence.
             </p>
           </InfoBox>
@@ -500,27 +502,26 @@ export default function Page() {
           <h3>Deux lignes suffisent, et vous les avez déjà</h3>
           <p>
             La première&nbsp;: le temps payé qui ne produit rien. Comptez les
-            personnes réellement bloquées&nbsp;— pas tous les utilisateurs&nbsp;—
-            puis multipliez par leur coût employeur horaire. La seconde&nbsp;: la
-            marge qui ne revient pas. Prenez les opérations que l’application
-            enregistre par jour ouvré, multipliez par leur marge brute moyenne,
-            divisez par la durée d’une journée de travail&nbsp;— huit heures
-            ici, de 9&nbsp;h à 17&nbsp;h&nbsp;— et gardez la part que vous ne
-            rattraperez pas le lendemain.
+            personnes réellement bloquées&nbsp;— pas tous les
+            utilisateurs&nbsp;— puis multipliez par leur coût employeur horaire.
+            La seconde&nbsp;: la marge qui ne revient pas. Prenez les opérations
+            que l’application enregistre par jour ouvré, multipliez par leur
+            marge brute moyenne, divisez par la durée d’une journée de
+            travail&nbsp;— huit heures ici, de 9&nbsp;h à 17&nbsp;h&nbsp;— et
+            gardez la part que vous ne rattraperez pas le lendemain.
           </p>
           <p>
             Le cas construit donne ceci. Vingt et une personnes sur
             trente-quatre sont arrêtées, les treize autres reprennent le carnet
-            papier. À
-            38&nbsp;€ l’heure chargée, cela fait{" "}
+            papier. À 38&nbsp;€ l’heure chargée, cela fait{" "}
             <strong>798&nbsp;€ l’heure</strong>. L’application enregistre
             62&nbsp;commandes par jour ouvré à 84&nbsp;€ de marge brute, soit
-            5&nbsp;208&nbsp;€ par jour et 651&nbsp;€ l’heure sur huit heures&nbsp;;
-            la directrice administrative et financière estime que trois
-            commandes sur dix ne reviennent jamais, soit{" "}
-            <strong>195,30&nbsp;€ l’heure</strong>. Total&nbsp;:
-            993,30&nbsp;€ l’heure, arrondi à <strong>993&nbsp;€</strong>&nbsp;:
-            tous les montants de ce guide partent de là et non des centimes.
+            5&nbsp;208&nbsp;€ par jour et 651&nbsp;€ l’heure sur huit
+            heures&nbsp;; la directrice administrative et financière estime que
+            trois commandes sur dix ne reviennent jamais, soit{" "}
+            <strong>195,30&nbsp;€ l’heure</strong>. Total&nbsp;: 993,30&nbsp;€
+            l’heure, arrondi à <strong>993&nbsp;€</strong>&nbsp;: tous les
+            montants de ce guide partent de là et non des centimes.
           </p>
 
           <p>
@@ -535,11 +536,11 @@ export default function Page() {
           <p>
             Huit quantités de ce guide ne sortent d’aucune source, en plus des
             volumes et des coûts internes du cas construit, annoncés en
-            section&nbsp;01. Deux produisent des euros directement&nbsp;: <strong>38&nbsp;€ l’heure
-            chargée</strong> pour le temps interne, que votre expert-comptable ou
-            votre contrôleur de gestion calcule à partir du salaire brut et des
-            charges patronales, et{" "}
-            <strong>500&nbsp;€ la journée de développement</strong> pour les
+            section&nbsp;01. Deux produisent des euros directement&nbsp;:{" "}
+            <strong>38&nbsp;€ l’heure chargée </strong>pour le temps interne,
+            que votre expert-comptable ou votre contrôleur de gestion calcule à
+            partir du salaire brut et des charges patronales, et{" "}
+            <strong>500&nbsp;€ la journée de développement </strong>pour les
             corrections chiffrées plus bas, que votre contrat porte.
           </p>
           <p>
@@ -559,8 +560,8 @@ export default function Page() {
             RTO en anglais&nbsp;— est le temps d’arrêt que votre direction
             accepte de payer&nbsp;: quatre heures ouvrées ici, donc
             3&nbsp;972&nbsp;€. La perte de données maximale admissible&nbsp;—
-            PDMA, ou RPO&nbsp;— est la saisie que vous acceptez de
-            perdre&nbsp;: une heure ici. L’hébergeur n’en décide aucun.
+            PDMA, ou RPO&nbsp;— est la saisie que vous acceptez de perdre&nbsp;:
+            une heure ici. L’hébergeur n’en décide aucun.
           </p>
 
           <InfoBox
@@ -578,9 +579,9 @@ export default function Page() {
               </a>{" "}
               demande des mesures techniques et organisationnelles
               «&nbsp;appropriées afin de garantir un niveau de sécurité adapté
-              au risque&nbsp;». Un manquement relève de l’article 83,
-              paragraphe 4&nbsp;: jusqu’à 10&nbsp;millions d’euros ou
-              2&nbsp;% du chiffre d’affaires annuel mondial,{" "}
+              au risque&nbsp;». Un manquement relève de l’article 83, paragraphe
+              4&nbsp;: jusqu’à 10&nbsp;millions d’euros ou 2&nbsp;% du chiffre
+              d’affaires annuel mondial,{" "}
               <strong>le montant le plus élevé étant retenu</strong>. Sur
               12&nbsp;millions d’euros de chiffre d’affaires, 2&nbsp;% font
               240&nbsp;000&nbsp;€&nbsp;: c’est donc le plafond de
@@ -604,9 +605,8 @@ export default function Page() {
             laissent passer ce qui fait tomber une application métier&nbsp;: un
             accès verrouillé sert peu si les secrets se lisent dans le dépôt de
             code, et un journal que personne ne relève n’a jamais alerté
-            personne. Le schéma ci-dessous
-            récapitule les quatre mesures, le nombre que chacune rend et le seuil
-            qui la tranche.
+            personne. Le schéma ci-dessous récapitule les quatre mesures, le
+            nombre que chacune rend et le seuil qui la tranche.
           </p>
 
           <div className="not-prose my-8 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 dark:border-zinc-800">
@@ -657,9 +657,9 @@ export default function Page() {
 
           <p>
             Rien là-dedans ne demande d’outil payant&nbsp;; le seul poste
-            coûteux est l’environnement séparé, sans lequel la première mesure se
-            ferait sur la production. Quatre autres sujets s’écrivent au lieu de
-            s’exécuter&nbsp;: conséquences métier, conduite d’un incident,
+            coûteux est l’environnement séparé, sans lequel la première mesure
+            se ferait sur la production. Quatre autres sujets s’écrivent au lieu
+            de s’exécuter&nbsp;: conséquences métier, conduite d’un incident,
             maintenance, responsabilités.
           </p>
 
@@ -685,9 +685,8 @@ export default function Page() {
             </a>{" "}
             (CSWP 29, 26&nbsp;février 2024) précise lui-même qu’il n’impose ni
             ordre, ni liste de contrôles universelle. Aucun des deux ne certifie
-            quoi que ce soit. La façon
-            d’écrire une exigence dont on sait décrire l’échec est détaillée
-            dans le{" "}
+            quoi que ce soit. La façon d’écrire une exigence dont on sait
+            décrire l’échec est détaillée dans le{" "}
             <Link href="/guides/cahier-des-charges-saas">
               cahier des charges SaaS
             </Link>
@@ -718,34 +717,38 @@ export default function Page() {
           id="restauration"
           number="04"
           label="Mesure 1"
-          title={"Votre sauvegarde restaure-t-elle l’application entière\u00a0?"}
+          title={
+            "Votre sauvegarde restaure-t-elle l’application entière\u00a0?"
+          }
         >
           <p>
-            «&nbsp;Nous avons des sauvegardes quotidiennes&nbsp;» répond à
-            côté de la question. Elle porte sur ce qui remonte, dans quel ordre
-            et en combien de temps.
+            «&nbsp;Nous avons des sauvegardes quotidiennes&nbsp;» répond à côté
+            de la question. Elle porte sur ce qui remonte, dans quel ordre et en
+            combien de temps.
           </p>
 
           <h3>Le protocole, en une demi-journée</h3>
           <ol>
             <li>
-              <strong>Choisissez un environnement séparé.</strong> Jamais la
+              <strong>Choisissez un environnement séparé. </strong>Jamais la
               production, jamais un environnement qui partage une base, un
               stockage ou un compte avec elle.
             </li>
             <li>
-              <strong>Notez l’heure de départ, puis restaurez sans appeler le
-              développeur.</strong>{" "}
+              <strong>
+                Notez l’heure de départ, puis restaurez sans appeler le
+                développeur.
+              </strong>{" "}
               S’il faut l’appeler, c’est un résultat&nbsp;: votre reprise dépend
               de sa disponibilité.
             </li>
             <li>
-              <strong>Remontez les cinq objets.</strong> La base de données,
-              les fichiers déposés par les utilisateurs, la configuration, les
+              <strong>Remontez les cinq objets. </strong>La base de données, les
+              fichiers déposés par les utilisateurs, la configuration, les
               secrets et les comptes. C’est là que ça casse.
             </li>
             <li>
-              <strong>Rejouez les parcours métier complets</strong> retenus dans
+              <strong>Rejouez les parcours métier complets </strong>retenus dans
               le{" "}
               <Link href="/guides/plan-recette-application-metier">
                 plan de recette de l’application
@@ -754,7 +757,7 @@ export default function Page() {
               s’affiche ne prouve rien.
             </li>
             <li>
-              <strong>Notez trois nombres&nbsp;:</strong> la durée totale,
+              <strong>Notez trois nombres&nbsp;: </strong>la durée totale,
               l’écart entre la dernière écriture et le dernier enregistrement
               restauré, et le nombre de parcours qui repassent.
             </li>
@@ -803,22 +806,22 @@ export default function Page() {
           </p>
           <p>
             L’exercice lui-même ne coûte que la demi-journée qu’il mobilise, sur
-            une copie&nbsp;: aucune commande n’est perdue, personne n’est bloqué.
-            Les 2&nbsp;648&nbsp;€ sont ce que la même durée coûterait le jour
-            d’une panne réelle, entre 9&nbsp;h et 17&nbsp;h.
+            une copie&nbsp;: aucune commande n’est perdue, personne n’est
+            bloqué. Les 2&nbsp;648&nbsp;€ sont ce que la même durée coûterait le
+            jour d’une panne réelle, entre 9&nbsp;h et 17&nbsp;h.
           </p>
           <p>
-            La perte de données se lit à part, et une panne de fin de journée
-            le montre bien. La sauvegarde tourne à 2&nbsp;h&nbsp;; une panne à
+            La perte de données se lit à part, et une panne de fin de journée le
+            montre bien. La sauvegarde tourne à 2&nbsp;h&nbsp;; une panne à
             17&nbsp;h n’interrompt presque rien, la journée est finie, mais elle
             efface les quinze heures qui la séparent de la sauvegarde,
             c’est-à-dire toute la saisie du jour. Soit 62&nbsp;commandes à
-            ressaisir, six minutes chacune à l’administration des
-            ventes&nbsp;: 372&nbsp;minutes, donc 6&nbsp;h&nbsp;12 pour une
-            personne et 235,60&nbsp;€ de temps chargé, sans compter les bons
-            signés que personne ne peut reconstituer. La direction avait annoncé
-            une perte acceptable d’une heure&nbsp;; entre une heure et quinze, il
-            ne s’agit plus d’un réglage mais d’un autre contrat d’hébergement.
+            ressaisir, six minutes chacune à l’administration des ventes&nbsp;:
+            372&nbsp;minutes, donc 6&nbsp;h&nbsp;12 pour une personne et
+            235,60&nbsp;€ de temps chargé, sans compter les bons signés que
+            personne ne peut reconstituer. La direction avait annoncé une perte
+            acceptable d’une heure&nbsp;; entre une heure et quinze, il ne
+            s’agit plus d’un réglage mais d’un autre contrat d’hébergement.
           </p>
 
           <InfoBox
@@ -855,7 +858,9 @@ export default function Page() {
           id="detection"
           number="05"
           label="Mesure 2"
-          title={"Combien de minutes s’écoulent entre l’action et l’alerte\u00a0?"}
+          title={
+            "Combien de minutes s’écoulent entre l’action et l’alerte\u00a0?"
+          }
         >
           <p>
             Un journal n’est pas une détection. La différence se mesure en
@@ -864,10 +869,10 @@ export default function Page() {
           <p>
             Un mardi à 14&nbsp;h&nbsp;05, le responsable applicatif crée un
             compte d’administration de test, exporte les 3&nbsp;100&nbsp;fiches
-            clients, puis supprime le compte à 14&nbsp;h&nbsp;12. Il note l’heure
-            de chaque geste et ne prévient que le propriétaire de l’application,
-            qui l’a autorisé par écrit&nbsp;: prévenir l’équipe reviendrait à
-            mesurer l’attention d’un collègue.
+            clients, puis supprime le compte à 14&nbsp;h&nbsp;12. Il note
+            l’heure de chaque geste et ne prévient que le propriétaire de
+            l’application, qui l’a autorisé par écrit&nbsp;: prévenir l’équipe
+            reviendrait à mesurer l’attention d’un collègue.
           </p>
           <p>
             L’exercice rend trois nombres. L’événement figure-t-il dans un
@@ -880,11 +885,11 @@ export default function Page() {
           <p>
             L’export figure bien dans le journal applicatif, horodaté
             12&nbsp;h&nbsp;05&nbsp;: le serveur écrit en temps universel
-            coordonné (UTC) pendant que le journal du serveur web écrit en heure de
-            Paris, deux heures plus loin en été&nbsp;; une conversion ratée fait
-            accuser la mauvaise personne. Aucune alerte n’est partie&nbsp;: la
-            règle existait, elle envoyait un courriel à une boîte générique que
-            personne ne relève. Et les journaux de l’offre d’hébergement
+            coordonné (UTC) pendant que le journal du serveur web écrit en heure
+            de Paris, deux heures plus loin en été&nbsp;; une conversion ratée
+            fait accuser la mauvaise personne. Aucune alerte n’est partie&nbsp;:
+            la règle existait, elle envoyait un courriel à une boîte générique
+            que personne ne relève. Et les journaux de l’offre d’hébergement
             souscrite sont conservés sept jours.
           </p>
           <p>
@@ -898,9 +903,9 @@ export default function Page() {
             </a>{" "}
             demande de notifier une violation de données personnelles à
             l’autorité de contrôle dans les meilleurs délais et, si possible,
-            sous 72&nbsp;heures après en avoir pris connaissance&nbsp;; l’article
-            34 impose d’informer les personnes concernées lorsque le risque pour
-            elles est élevé. La{" "}
+            sous 72&nbsp;heures après en avoir pris connaissance&nbsp;;
+            l’article 34 impose d’informer les personnes concernées lorsque le
+            risque pour elles est élevé. La{" "}
             <a
               href="https://www.cnil.fr/fr/securite-tracer-les-operations"
               target="_blank"
@@ -916,10 +921,10 @@ export default function Page() {
           </p>
           <p>
             Le seuil&nbsp;: si aucune personne nommée n’a reçu l’alerte dans les
-            quinze minutes, écrivez «&nbsp;pas de détection&nbsp;». La correction
-            tient en trois réglages&nbsp;: une règle qui écrit dans un canal
-            relevé par une personne nommée, un suppléant qui a les mêmes accès,
-            une horloge synchronisée. L’
+            quinze minutes, écrivez «&nbsp;pas de détection&nbsp;». La
+            correction tient en trois réglages&nbsp;: une règle qui écrit dans
+            un canal relevé par une personne nommée, un suppléant qui a les
+            mêmes accès, une horloge synchronisée. L’
             <a
               href="https://messervices.cyber.gouv.fr/guides/recommandations-de-securite-pour-larchitecture-dun-systeme-de-journalisation"
               target="_blank"
@@ -962,14 +967,15 @@ export default function Page() {
           <h3>Le protocole du compte témoin</h3>
           <ol>
             <li>
-              <strong>Ouvrez deux sessions</strong> sur l’environnement restauré
+              <strong>Ouvrez deux sessions </strong>sur l’environnement restauré
               à la mesure&nbsp;1&nbsp;: un compte à droits complets, ici
               l’administration des ventes, et le moins privilégié, ici un
               chauffeur-livreur.
             </li>
             <li>
-              <strong>Dans la session privilégiée, ouvrez dix pages
-              sensibles&nbsp;:</strong>{" "}
+              <strong>
+                Dans la session privilégiée, ouvrez dix pages sensibles&nbsp;:
+              </strong>{" "}
               une fiche client, un tarif négocié, la liste des commandes du
               jour, un bon de livraison signé, un export de la base clients, une
               fiche article avec son prix d’achat, l’historique de commandes
@@ -977,7 +983,7 @@ export default function Page() {
               le journal d’activité.
             </li>
             <li>
-              <strong>Récupérez chaque requête.</strong> Outils de développement
+              <strong>Récupérez chaque requête. </strong>Outils de développement
               du navigateur, onglet Réseau, clic droit sur la requête,
               «&nbsp;Copier comme cURL&nbsp;».
             </li>
@@ -987,7 +993,7 @@ export default function Page() {
               l’interface.
             </li>
             <li>
-              <strong>Lisez les dix codes de réponse.</strong> 403 ou 404, le
+              <strong>Lisez les dix codes de réponse. </strong>403 ou 404, le
               contrôle vit côté serveur. 200, il n’existait que dans l’écran.
             </li>
           </ol>
@@ -1011,8 +1017,8 @@ export default function Page() {
             Le seuil est binaire&nbsp;: une seule réponse 200 bloque la mise en
             service, et les sept refus obtenus à côté ne compensent rien.
             Vérifier côté serveur, sur chacune des trois routes, que l’objet
-            demandé appartient bien au client connecté a été chiffré à deux jours
-            et demi, soit 1&nbsp;250&nbsp;€ à l’hypothèse de 500&nbsp;€ la
+            demandé appartient bien au client connecté a été chiffré à deux
+            jours et demi, soit 1&nbsp;250&nbsp;€ à l’hypothèse de 500&nbsp;€ la
             journée.
           </p>
           <p>
@@ -1026,10 +1032,10 @@ export default function Page() {
             >
               violation de données personnelles
             </a>{" "}
-            et, si elle est susceptible
-            d’engendrer un risque pour ces personnes, elle se notifie à
-            l’autorité de contrôle sous 72&nbsp;heures après en avoir pris
-            connaissance. Cette qualification relève de la{" "}
+            et, si elle est susceptible d’engendrer un risque pour ces
+            personnes, elle se notifie à l’autorité de contrôle sous
+            72&nbsp;heures après en avoir pris connaissance. Cette qualification
+            relève de la{" "}
             <Link href="/services/securite-rgpd">
               sécurité et de la protection des données
             </Link>
@@ -1045,18 +1051,18 @@ export default function Page() {
           </p>
           <p>
             Il faut cinq rôles, qu’une même personne peut cumuler&nbsp;: qui
-            signe la mise en service, qui qualifie les
-            alertes, qui déclenche une restauration et détient les accès pour le
-            faire, qui suit les corrections, qui prévient le délégué à la
-            protection des données (DPD, aussi appelé DPO) et, s’il le faut, un
-            juriste. Chacun a un suppléant, et le suppléant a les accès.
+            signe la mise en service, qui qualifie les alertes, qui déclenche
+            une restauration et détient les accès pour le faire, qui suit les
+            corrections, qui prévient le délégué à la protection des données
+            (DPD, aussi appelé DPO) et, s’il le faut, un juriste. Chacun a un
+            suppléant, et le suppléant a les accès.
           </p>
           <p>
             L’exercice sur table&nbsp;— une simulation discutée, sans incident
             réel&nbsp;— dure une heure et mobilise cinq personnes, soit
             190&nbsp;€ de temps chargé au tarif du cas. Une alerte arrive un
-            vendredi à 18&nbsp;h, la personne principale est en congés&nbsp;: qui
-            décide de couper, qui détient le mot de passe
+            vendredi à 18&nbsp;h, la personne principale est en congés&nbsp;:
+            qui décide de couper, qui détient le mot de passe
             d’administration&nbsp;? Chaque question sans réponse est un accès à
             confier à un suppléant avant lundi.
           </p>
@@ -1065,8 +1071,8 @@ export default function Page() {
             <p>
               Écrivez ce qu’elle empêche, qui la surveille, quand elle expire et
               ce qui déclenche son arrêt. Couper l’accès des chauffeurs-livreurs
-              aux tarifs pendant deux semaines est une mesure&nbsp;;
-              «&nbsp;nous ferons attention&nbsp;» n’en est pas une.
+              aux tarifs pendant deux semaines est une mesure&nbsp;; «&nbsp;nous
+              ferons attention&nbsp;» n’en est pas une.
             </p>
           </GuidePremiumMemo>
         </GuidePremiumSection>
@@ -1082,24 +1088,26 @@ export default function Page() {
             d’informations. Le tri compte davantage que l’analyse.
           </p>
           <p>
-            Sur le dépôt livré, lancez la commande de votre
-            technologie&nbsp;: <code>npm audit</code> pour du JavaScript,{" "}
-            <code>pip-audit</code> pour du Python, <code>osv-scanner</code> pour
-            un dépôt mixte. Chacune sort les paquets vulnérables, leur gravité et
-            la version qui corrige. Sur le cas construit&nbsp;:
-            1&nbsp;043&nbsp;paquets installés pour 68&nbsp;dépendances directes,
-            et 31&nbsp;alertes&nbsp;— une critique, cinq hautes, quatorze
+            Sur le dépôt livré, lancez la commande de votre technologie&nbsp;:{" "}
+            <code>npm audit</code> pour du JavaScript, <code>pip-audit</code>{" "}
+            pour du Python, <code>osv-scanner</code> pour un dépôt mixte.
+            Chacune sort les paquets vulnérables, leur gravité et la version qui
+            corrige. Sur le cas construit{"\u00a0"}: 1{"\u00a0"}043{"\u00a0"}
+            paquets installés pour 68{"\u00a0"}dépendances directes, et 31
+            {"\u00a0"}alertes{"\u00a0"}— une critique, cinq hautes, quatorze
             moyennes, onze basses.
           </p>
           <p>
-            Le tri commence par ce qu’on écarte. Les
-            quatorze moyennes et les onze basses rejoignent le lot du mois, où
-            elles partent en une montée de version groupée. Restent les six
-            alertes critiques ou hautes, que trois questions ramènent à une.
+            Le tri commence par ce qu’on écarte. Les quatorze moyennes et les
+            onze basses rejoignent le lot du mois, où elles partent en une
+            montée de version groupée. Restent les six alertes critiques ou
+            hautes, que trois questions ramènent à une.
           </p>
 
           <GuideTable
-            caption={"Ramener 6\u00a0alertes critiques ou hautes à celle qu’on corrige cette semaine"}
+            caption={
+              "Ramener 6\u00a0alertes critiques ou hautes à celle qu’on corrige cette semaine"
+            }
             headers={["La question posée", "Ce qu’elle écarte", "Ce qui reste"]}
             rows={[
               [
@@ -1151,9 +1159,9 @@ export default function Page() {
               score EPSS
             </a>
             , publié par le même organisme, estime la probabilité qu’une faille
-            soit exploitée dans les trente jours à venir. Une faille critique que
-            personne n’exploite passe après une moyenne activement utilisée, et
-            le{" "}
+            soit exploitée dans les trente jours à venir. Une faille critique
+            que personne n’exploite passe après une moyenne activement utilisée,
+            et le{" "}
             <a
               href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
               target="_blank"
@@ -1188,9 +1196,9 @@ export default function Page() {
           title={"Que décider quand une mesure dit non\u00a0?"}
         >
           <p>
-            Une mesure qui échoue n’interdit pas la mise en service. Elle déplace
-            la décision vers quelqu’un qui a le droit de la prendre, et elle lui
-            donne un montant à comparer.
+            Une mesure qui échoue n’interdit pas la mise en service. Elle
+            déplace la décision vers quelqu’un qui a le droit de la prendre, et
+            elle lui donne un montant à comparer.
           </p>
 
           <GuideTable
@@ -1233,9 +1241,8 @@ export default function Page() {
             Sur les cinq issues, trois mettent quelque chose en service, et
             c’est voulu. Reporter est la plus rare&nbsp;: un écart mesuré a une
             correction et un prix, quand une mesure jamais exécutée n’a ni l’un
-            ni l’autre. Borner la première
-            version coûte d’ailleurs moins cher que repousser la date&nbsp;— le
-            guide{" "}
+            ni l’autre. Borner la première version coûte d’ailleurs moins cher
+            que repousser la date&nbsp;— le guide{" "}
             <Link href="/guides/mvp-saas-quoi-inclure">
               quoi inclure dans un MVP
             </Link>{" "}
@@ -1254,17 +1261,17 @@ export default function Page() {
           <p>
             Aucune de ces quatre mesures ne demande de prestation
             extérieure&nbsp;: un environnement séparé, une règle d’alerte, un
-            compte de test et une ligne de commande suffisent. Si la restauration
-            passe sous votre DMIA, si l’alerte arrive à une personne nommée en
-            moins de quinze minutes, si les dix rejeux sont refusés et si la
-            seule alerte retenue au tri est corrigée, vous n’avez besoin d’aucun
-            audit. Nos repères publics, relevés sur notre page{" "}
-            <Link href="/tarifs">tarifs</Link> le 30&nbsp;août 2026, commencent à
-            2&nbsp;000&nbsp;€ HT pour un audit flash, 5&nbsp;000&nbsp;€ HT pour
-            un cadrage sécurité et RGPD et 8&nbsp;000&nbsp;€ HT pour un audit
-            technique en version Express, 18&nbsp;000&nbsp;€ HT en version
-            Standard. Ce sont des repères indicatifs&nbsp;; le devis signé fixe
-            le prix ferme.
+            compte de test et une ligne de commande suffisent. Si la
+            restauration passe sous votre DMIA, si l’alerte arrive à une
+            personne nommée en moins de quinze minutes, si les dix rejeux sont
+            refusés et si la seule alerte retenue au tri est corrigée, vous
+            n’avez besoin d’aucun audit. Nos repères publics, relevés sur notre
+            page <Link href="/tarifs">tarifs</Link> le 30{"\u00a0"}août 2026,
+            commencent à 2{"\u00a0"}000{"\u00a0"}€ HT pour un audit flash, 5
+            {"\u00a0"}000{"\u00a0"}€ HT pour un cadrage sécurité et RGPD et 8
+            {"\u00a0"}000{"\u00a0"}€ HT pour un audit technique en version
+            Express, 18{"\u00a0"}000{"\u00a0"}€ HT en version Standard. Ce sont
+            des repères indicatifs{"\u00a0"}; le devis signé fixe le prix ferme.
           </p>
         </GuidePremiumSection>
 
@@ -1286,35 +1293,38 @@ export default function Page() {
             au-dessus du seuil
           </h3>
           <p>
-            Un mardi à 9&nbsp;h&nbsp;20, l’hébergement perd le disque de la base.
-            La restauration démarre à 9&nbsp;h&nbsp;40, la base revient en
+            Un mardi à 9&nbsp;h&nbsp;20, l’hébergement perd le disque de la
+            base. La restauration démarre à 9&nbsp;h&nbsp;40, la base revient en
             quarante minutes. Les 9&nbsp;300&nbsp;bons de livraison signés, eux,
             vivent dans un stockage que la sauvegarde ne couvrait pas&nbsp;:
             ticket, deux heures d’attente, puis trois heures quarante de
             remontée et de vérification des parcours. Service rétabli à
-            16&nbsp;h, six heures quarante après l’arrêt contre quatre acceptées,
-            et entièrement dans la journée de travail&nbsp;: à 993&nbsp;€ l’heure
-            ouvrée, 6&nbsp;620&nbsp;€, dont 2&nbsp;648&nbsp;€ au-dessus du seuil.
-            Personne n’a été attaqué&nbsp;: la sauvegarde était incomplète, et
-            nul ne l’avait vérifié.
+            16&nbsp;h, six heures quarante après l’arrêt contre quatre
+            acceptées, et entièrement dans la journée de travail&nbsp;: à
+            993&nbsp;€ l’heure ouvrée, 6&nbsp;620&nbsp;€, dont 2&nbsp;648&nbsp;€
+            au-dessus du seuil. Personne n’a été attaqué&nbsp;: la sauvegarde
+            était incomplète, et nul ne l’avait vérifié.
           </p>
 
-          <h3>Un export de 3&nbsp;100&nbsp;fiches, vu 41&nbsp;jours plus tard</h3>
+          <h3>
+            Un export de 3&nbsp;100&nbsp;fiches, vu 41&nbsp;jours plus tard
+          </h3>
           <p>
             Un compte ouvert pour un développeur extérieur n’est jamais révoqué.
             Six semaines plus tard, il exporte les 3&nbsp;100&nbsp;fiches
-            clients. Aucune alerte ne part&nbsp;: la règle envoyait un courriel à
-            une boîte générique. Le geste est découvert 41&nbsp;jours après, en
-            relisant des journaux conservés sept jours, où il ne reste rien. Il
-            faut alors décider,
-            sous 72&nbsp;heures, s’il y a lieu de notifier un incident dont on ne
-            sait décrire ni l’étendue, ni lesquels des 480&nbsp;praticiens
-            libéraux sont concernés. La
+            clients. Aucune alerte ne part&nbsp;: la règle envoyait un courriel
+            à une boîte générique. Le geste est découvert 41&nbsp;jours après,
+            en relisant des journaux conservés sept jours, où il ne reste rien.
+            Il faut alors décider, sous 72&nbsp;heures, s’il y a lieu de
+            notifier un incident dont on ne sait décrire ni l’étendue, ni
+            lesquels des 480&nbsp;praticiens libéraux sont concernés. La
             difficulté n’est pas l’amende&nbsp;: c’est de devoir écrire
             «&nbsp;nous ne savons pas&nbsp;».
           </p>
 
-          <h3>Trois réponses 200 sur dix&nbsp;: 1&nbsp;250&nbsp;€ de correction</h3>
+          <h3>
+            Trois réponses 200 sur dix&nbsp;: 1&nbsp;250&nbsp;€ de correction
+          </h3>
           <p>
             Un commercial change d’entreprise et emporte une capture des tarifs
             négociés de 3&nbsp;100&nbsp;clients. Il lui a suffi de modifier un
@@ -1340,7 +1350,10 @@ export default function Page() {
             être exécutées.
           </p>
 
-          <InfoBox variant="emerald" title="Terminez par une date, pas par un badge">
+          <InfoBox
+            variant="emerald"
+            title="Terminez par une date, pas par un badge"
+          >
             <p>
               Écrivez l’action qui manque, la personne qui la mène et le jour où
               le point sera repris. Si la sortie de cette revue est un badge ou
@@ -1349,15 +1362,15 @@ export default function Page() {
           </InfoBox>
 
           <p className="text-sm">
-            <strong>Transparence.</strong> Hagnéré Code vend des audits
+            <strong>Transparence. </strong>Hagnéré Code vend des audits
             techniques et un accompagnement sécurité et RGPD, et perçoit des
             honoraires si vous nous les confiez. Les quatre mesures se font sans
             nous. Les huit hypothèses de coût et de durée listées en
             section&nbsp;02 sont annoncées comme telles&nbsp;: aucune n’a été
-            relevée chez un client. Nos prix publics ont été
-            relevés le 30&nbsp;août 2026 et sont à revérifier tous les douze
-            mois. Aucune de ces mesures ne rend une application sûre, et seul un
-            devis signé engage.
+            relevée chez un client. Nos prix publics ont été relevés le
+            30&nbsp;août 2026 et sont à revérifier tous les douze mois. Aucune
+            de ces mesures ne rend une application sûre, et seul un devis signé
+            engage.
           </p>
         </GuidePremiumSection>
       </GuidePremiumLayout>

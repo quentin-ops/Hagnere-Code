@@ -279,7 +279,9 @@ export default function Page() {
         heroTitle={heroHeading.start}
         heroTitleEm={heroHeading.emphasis}
         heroTitleSuffix={heroHeading.suffix}
-        heroDescription={"Un MVP ne se mesure pas en fonctions, il se mesure en écrans et en responsabilités. Notre grille publiée tarife un MVP de trois à cinq écrans, puis un produit de dix à quinze écrans au périmètre plus large\u00a0; entre les deux, elle n’affiche aucun montant. Ce guide dit ce qui doit entrer dans le premier lot parce qu’un vrai client en dépend, ce qui peut rester tenu à la main\u00a0— avec le calcul de la charge humaine\u00a0— et ce que coûte une coupe ratée."}
+        heroDescription={
+          "Un MVP ne se mesure pas en fonctions, il se mesure en écrans et en responsabilités. Notre grille publiée tarife un MVP de trois à cinq écrans, puis un produit de dix à quinze écrans au périmètre plus large\u00a0; entre les deux, elle n’affiche aucun montant. Ce guide dit ce qui doit entrer dans le premier lot parce qu’un vrai client en dépend, ce qui peut rester tenu à la main\u00a0— avec le calcul de la charge humaine\u00a0— et ce que coûte une coupe ratée."
+        }
         stats={[
           { label: "Forfait MVP publié", value: "15\u00a0000\u00a0€ HT" },
           { label: "Zone sans prix affiché", value: "6 à 9 écrans" },
@@ -455,12 +457,12 @@ export default function Page() {
             </strong>{" "}
             Le reste peut sortir, rester tenu à la main, ou passer par un
             service existant. Sur notre{" "}
-            <Link href="/tarifs">grille publiée</Link>, relevée le
-            30&nbsp;août 2026, un MVP de trois à cinq écrans est affiché
-            15&nbsp;000&nbsp;€ hors taxes (HT)&nbsp;; un produit de dix à quinze
-            écrans, avec back-office riche, workflows métier complexes et
-            intégrations tierces, 30&nbsp;000 à 60&nbsp;000&nbsp;€ HT. Entre les
-            deux, elle n’affiche rien.
+            <Link href="/tarifs">grille publiée</Link>, relevée le 30&nbsp;août
+            2026, un MVP de trois à cinq écrans est affiché 15&nbsp;000&nbsp;€
+            hors taxes (HT)&nbsp;; un produit de dix à quinze écrans, avec
+            back-office riche, workflows métier complexes et intégrations
+            tierces, 30&nbsp;000 à 60&nbsp;000&nbsp;€ HT. Entre les deux, elle
+            n’affiche rien.
           </p>
           <p>
             Ce guide vous fait écrire un contrat de test en sept lignes, puis
@@ -472,7 +474,9 @@ export default function Page() {
           <GuidePremiumCase
             initial="A"
             eyebrow="Fil rouge du guide · exemple construit"
-            title={"Accordia\u00a0: huit envies, un seul résultat vendu, six semaines pour le prouver"}
+            title={
+              "Accordia\u00a0: huit envies, un seul résultat vendu, six semaines pour le prouver"
+            }
           >
             <p>
               <em>
@@ -519,7 +523,9 @@ export default function Page() {
           number="02"
           label="Frontière du test"
           readingTime="2 min"
-          title={"Prototype, pilote ou premier client\u00a0: que pourrez-vous conclure\u00a0?"}
+          title={
+            "Prototype, pilote ou premier client\u00a0: que pourrez-vous conclure\u00a0?"
+          }
         >
           <p>
             Le mot écrit sur le devis ne décide de rien. Le format du test, lui,
@@ -579,9 +585,9 @@ export default function Page() {
             «&nbsp;MVP&nbsp;», le client signe, ses données réelles entrent, et
             vous êtes en production sans l’avoir décidé. Le règlement européen
             ne lit pas le mot du devis&nbsp;: dès qu’une donnée personnelle
-            réelle est traitée, ses articles 5, 25 et 32
-            s’appliquent&nbsp;— minimisation, protection dès la conception,
-            sécurité proportionnée au risque.
+            réelle est traitée, ses articles 5, 25 et 32 s’appliquent&nbsp;—
+            minimisation, protection dès la conception, sécurité proportionnée
+            au risque.
           </p>
 
           <GuidePremiumMemo
@@ -613,55 +619,54 @@ export default function Page() {
             La méthode tient en une heure et une feuille. Prenez un utilisateur
             nommé, une journée, et déroulez du moment où il veut le résultat
             jusqu’à celui où il l’a. À chaque étape, écrivez ce qui se passe
-            quand ça rate. Le devis décrit le parcours quand tout
-            marche&nbsp;; les fonctions manquantes apparaissent dans ce qui
-            rate.
+            quand ça rate. Le devis décrit le parcours quand tout marche&nbsp;;
+            les fonctions manquantes apparaissent dans ce qui rate.
           </p>
 
           <ol>
             <li>
-              <strong>Entrée.</strong> Qui l’invite, et que voit-il si son accès
+              <strong>Entrée. </strong>Qui l’invite, et que voit-il si son accès
               est refusé&nbsp;? Une page blanche est un incident de support.
             </li>
             <li>
-              <strong>Première donnée.</strong> D’où vient-elle, et que se
+              <strong>Première donnée. </strong>D’où vient-elle, et que se
               passe-t-il si elle est fausse&nbsp;? Un import raté sans message
               lisible fait revenir l’utilisateur vers vous.
             </li>
             <li>
-              <strong>Action de valeur.</strong> Quel geste produit le résultat
+              <strong>Action de valeur. </strong>Quel geste produit le résultat
               vendu, et où cet événement est-il enregistré&nbsp;?
             </li>
             <li>
-              <strong>Échec.</strong> Qui détecte, qui répond, qui restaure, et
+              <strong>Échec. </strong>Qui détecte, qui répond, qui restaure, et
               en combien de temps&nbsp;?
             </li>
             <li>
-              <strong>Aide.</strong> Où écrit-il, et quel délai lui a-t-on
+              <strong>Aide. </strong>Où écrit-il, et quel délai lui a-t-on
               réellement annoncé&nbsp;?
             </li>
             <li>
-              <strong>Sortie.</strong> Comment récupère-t-il ses données si le
-              test s’arrête&nbsp;? Cette ligne n’a pas d’écran, et la
-              section 07 en donne le prix.
+              <strong>Sortie. </strong>Comment récupère-t-il ses données si le
+              test s’arrête&nbsp;? Cette ligne n’a pas d’écran, et la section 07
+              en donne le prix.
             </li>
           </ol>
 
           <p>
-            Reste la mesure, et elle décide de ce que le test aura prouvé.
-            Une connexion n’est pas un résultat, un clic non plus. L’événement
-            de preuve d’Accordia porte l’identifiant du devis, le rôle de la
+            Reste la mesure, et elle décide de ce que le test aura prouvé. Une
+            connexion n’est pas un résultat, un clic non plus. L’événement de
+            preuve d’Accordia porte l’identifiant du devis, le rôle de la
             personne et l’horodatage&nbsp;; le seuil est écrit avant le
             début&nbsp;: au moins deux des trois entreprises obtiennent une
             décision tracée sans courriel avant le 18&nbsp;octobre.
           </p>
           <p>
             Et si une seule y arrive&nbsp;? On ne prolonge pas de deux semaines
-            pour aller chercher la deuxième. On rouvre les entretiens
-            pour comprendre pourquoi la deuxième entreprise a continué d’envoyer
-            des pièces jointes, et on accepte que la réponse puisse être
-            «&nbsp;le problème n’était pas là&nbsp;». Déplacer le seuil après
-            coup revient à changer l’hypothèse pour qu’elle devienne vraie.
+            pour aller chercher la deuxième. On rouvre les entretiens pour
+            comprendre pourquoi la deuxième entreprise a continué d’envoyer des
+            pièces jointes, et on accepte que la réponse puisse être «&nbsp;le
+            problème n’était pas là&nbsp;». Déplacer le seuil après coup revient
+            à changer l’hypothèse pour qu’elle devienne vraie.
           </p>
         </GuidePremiumSection>
 
@@ -682,7 +687,9 @@ export default function Page() {
           </p>
 
           <GuideTable
-            caption={"Les sept familles\u00a0: la question à trancher et le test à réussir"}
+            caption={
+              "Les sept familles\u00a0: la question à trancher et le test à réussir"
+            }
             headers={[
               "Famille",
               "La question à trancher",
@@ -694,13 +701,12 @@ export default function Page() {
           <p>
             Trois de ces lignes s’appuient sur un référentiel extérieur qui
             recommande, là où le règlement européen cité à la section 02 oblige.
-            Pour les données, les
-            fondamentaux de la sauvegarde publiés par l’ANSSI en version 1.1 du
-            27&nbsp;novembre 2025 recommandent des tests réguliers et une
-            procédure de restauration&nbsp;: une copie jamais restaurée ne prouve
-            rien. Pour la sécurité, le catalogue OWASP ASVS, version stable
-            5.0.0 publiée le 30 mai 2025, permet de choisir un sous-ensemble
-            proportionné. Pour l’accessibilité, les
+            Pour les données, les fondamentaux de la sauvegarde publiés par
+            l’ANSSI en version 1.1 du 27&nbsp;novembre 2025 recommandent des
+            tests réguliers et une procédure de restauration&nbsp;: une copie
+            jamais restaurée ne prouve rien. Pour la sécurité, le catalogue
+            OWASP ASVS, version stable 5.0.0 publiée le 30 mai 2025, permet de
+            choisir un sous-ensemble proportionné. Pour l’accessibilité, les
             critères WCAG 2.2, recommandation du 12 décembre 2024, se testent
             écran par écran et ne s’ajoutent pas après coup sans refaire les
             gabarits.
@@ -712,28 +718,28 @@ export default function Page() {
           >
             <ul>
               <li>
-                <strong>Construire dans le produit.</strong> Le comportement
+                <strong>Construire dans le produit. </strong>Le comportement
                 porte la preuve recherchée. Écrivez le test d’acceptation et la
                 reprise en cas d’échec.
               </li>
               <li>
-                <strong>Opérer manuellement.</strong> Une personne délivre le
+                <strong>Opérer manuellement. </strong>Une personne délivre le
                 résultat dans les limites du test. Écrivez son nom, le calcul de
                 charge, la limite et le moment où ce choix sera revu.
               </li>
               <li>
-                <strong>Intégrer un service existant.</strong> Écrivez les
-                états, les erreurs, le repli, la sortie et le
-                responsable&nbsp;— l’intégration déplace le travail, elle ne
-                supprime pas la responsabilité.
+                <strong>Intégrer un service existant. </strong>Écrivez les
+                états, les erreurs, le repli, la sortie et le responsable&nbsp;—
+                l’intégration déplace le travail, elle ne supprime pas la
+                responsabilité.
               </li>
               <li>
-                <strong>Reporter avec déclencheur.</strong> Réservé au prototype
+                <strong>Reporter avec déclencheur. </strong>Réservé au prototype
                 et au pilote borné, avec le motif et l’événement qui rouvrira le
                 sujet.
               </li>
               <li>
-                <strong>À vérifier.</strong> La décision n’est pas encore
+                <strong>À vérifier. </strong>La décision n’est pas encore
                 défendable. Écrivez la question, le responsable et la preuve à
                 obtenir&nbsp;; jamais zéro.
               </li>
@@ -750,18 +756,20 @@ export default function Page() {
 
           <InfoBox
             variant="blue"
-            title={"Achat autonome\u00a0: ce sont les échecs qui coûtent, pas la page de paiement"}
+            title={
+              "Achat autonome\u00a0: ce sont les échecs qui coûtent, pas la page de paiement"
+            }
           >
             <p>
               Si le client paie seul par carte, la famille «&nbsp;Vente et
               droits associés&nbsp;» devient nécessaire. La documentation Stripe
-              sur les webhooks d’abonnement
-              liste les événements à traiter, à commencer par l’échec de
-              paiement d’une facture et les changements d’état qui ouvrent ou
-              referment un accès. Écrivez ce qui se passe pour un paiement
-              refusé, retardé, contesté ou annulé. Sans cette procédure, la page
-              encaisse les cas nominaux et laisse les autres ouverts&nbsp;: le
-              client garde son accès, et vous gardez une facture impayée.
+              sur les webhooks d’abonnement liste les événements à traiter, à
+              commencer par l’échec de paiement d’une facture et les changements
+              d’état qui ouvrent ou referment un accès. Écrivez ce qui se passe
+              pour un paiement refusé, retardé, contesté ou annulé. Sans cette
+              procédure, la page encaisse les cas nominaux et laisse les autres
+              ouverts&nbsp;: le client garde son accès, et vous gardez une
+              facture impayée.
             </p>
           </InfoBox>
         </GuidePremiumSection>
@@ -777,9 +785,9 @@ export default function Page() {
           <p>
             Un premier lot ne gonfle pas d’un coup&nbsp;: il gonfle par ajouts
             qui paraissent raisonnables un par un. En voici six. La colonne
-            «&nbsp;ce que ça pèse&nbsp;» est
-            exprimée en écrans et non en euros&nbsp;: c’est une estimation
-            éditoriale Hagnéré Code, à confronter à votre devis, pas un tarif.
+            «&nbsp;ce que ça pèse&nbsp;» est exprimée en écrans et non en
+            euros&nbsp;: c’est une estimation éditoriale Hagnéré Code, à
+            confronter à votre devis, pas un tarif.
           </p>
 
           <GuideTable
@@ -834,11 +842,11 @@ export default function Page() {
             Additionnez la deuxième colonne. Trois lignes s’expriment en
             écrans&nbsp;: 2 à 3 pour l’administration, 1 pour les rôles, 1 à 2
             pour le tableau de bord, soit 4 au minimum et 6 au maximum. Les
-            trois autres ne se comptent pas ainsi&nbsp;:
-            l’authentification unique ajoute une intégration par annuaire
-            client, l’application mobile un second produit, le paiement en ligne
-            une série d’états d’échec. Un MVP de trois à cinq écrans qui les
-            absorbe tous en compte sept à onze.
+            trois autres ne se comptent pas ainsi&nbsp;: l’authentification
+            unique ajoute une intégration par annuaire client, l’application
+            mobile un second produit, le paiement en ligne une série d’états
+            d’échec. Un MVP de trois à cinq écrans qui les absorbe tous en
+            compte sept à onze.
           </p>
 
           <p>
@@ -849,21 +857,20 @@ export default function Page() {
             6&nbsp;000&nbsp;€ HT par écran. La division part de
             15&nbsp;000&nbsp;€&nbsp;: la grille réserve son ticket d’entrée de
             6&nbsp;900&nbsp;€ HT au site vitrine. Ce n’est pas un prix
-            unitaire&nbsp;: le premier écran
-            porte l’authentification, la base, le déploiement et la mise en
-            ligne, le douzième ne les porte plus.
+            unitaire&nbsp;: le premier écran porte l’authentification, la base,
+            le déploiement et la mise en ligne, le douzième ne les porte plus.
           </p>
 
           <p>
             La grille dit surtout ceci&nbsp;: entre six et neuf écrans, elle
-            n’affiche aucun montant. Les deux
-            forfaits publiés sont séparés de 15&nbsp;000&nbsp;€ HT,
-            15&nbsp;000 contre 30&nbsp;000&nbsp;€ HT à la borne basse, mais ils
-            ne couvrent pas le même produit&nbsp;: le second ajoute back-office
-            riche, workflows métier complexes, intégrations tierces et fonctions
-            d’intelligence artificielle. Cet écart mesure une marche entre deux
-            périmètres différents, pas le prix de cinq écrans. Un lot 1 sorti de
-            la bande trois à cinq écrans se chiffre au devis.
+            n’affiche aucun montant. Les deux forfaits publiés sont séparés de
+            15&nbsp;000&nbsp;€ HT, 15&nbsp;000 contre 30&nbsp;000&nbsp;€ HT à la
+            borne basse, mais ils ne couvrent pas le même produit&nbsp;: le
+            second ajoute back-office riche, workflows métier complexes,
+            intégrations tierces et fonctions d’intelligence artificielle. Cet
+            écart mesure une marche entre deux périmètres différents, pas le
+            prix de cinq écrans. Un lot 1 sorti de la bande trois à cinq écrans
+            se chiffre au devis.
           </p>
 
           <p>
@@ -883,7 +890,9 @@ export default function Page() {
           number="06"
           label="Capacité humaine"
           readingTime="3 min"
-          title={"Combien de temps humain votre MVP coûte-t-il chaque semaine\u00a0?"}
+          title={
+            "Combien de temps humain votre MVP coûte-t-il chaque semaine\u00a0?"
+          }
         >
           <p>
             Tenir une opération à la main est souvent le bon choix, jamais le
@@ -918,35 +927,30 @@ export default function Page() {
 
           <p>
             Sur les six semaines du pilote, Accordia consomme{" "}
-            <strong>{accordia.manualLoadMinutes}&nbsp;minutes</strong> pour une
+            <strong>{accordia.manualLoadMinutes}&nbsp;minutes </strong>pour une
             capacité déclarée de {accordia.manualCapacityMinutes}
-            &nbsp;minutes&nbsp;: il reste{" "}
-            {accordia.remainingCapacityMinutes}&nbsp;minutes. Ramené à la
-            semaine, cela fait <strong>39,5&nbsp;minutes</strong> pour
-            50&nbsp;minutes disponibles&nbsp;: moins d’une heure par semaine,
-            tant que le pilote reste à trois clients. Traduites avec l’hypothèse
-            posée plus bas, ces 237&nbsp;minutes valent 3&nbsp;heures et
-            57&nbsp;minutes, soit environ 198&nbsp;€&nbsp;; la capacité complète
-            de 300&nbsp;minutes vaut 250&nbsp;€. Refaites le calcul avec vos
-            nombres&nbsp;: la charge croît comme le nombre de clients, la
-            capacité non.
+            &nbsp;minutes&nbsp;: il reste {accordia.remainingCapacityMinutes}
+            &nbsp;minutes. Ramené à la semaine, cela fait{" "}
+            <strong>39,5&nbsp;minutes </strong>pour 50&nbsp;minutes
+            disponibles&nbsp;: moins d’une heure par semaine, tant que le pilote
+            reste à trois clients. Traduites avec l’hypothèse posée plus bas,
+            ces 237&nbsp;minutes valent 3&nbsp;heures et 57&nbsp;minutes, soit
+            environ 198&nbsp;€&nbsp;; la capacité complète de 300&nbsp;minutes
+            vaut 250&nbsp;€. Refaites le calcul avec vos nombres&nbsp;: la
+            charge croît comme le nombre de clients, la capacité non.
           </p>
           <p>
             À cinq clients, les mêmes opérations demandent{" "}
             {accordiaStress.manualLoadMinutes}&nbsp;minutes et dépassent la
             capacité de 95&nbsp;minutes. À six clients, le double du départ,
-            elles atteignent{" "}
-            {accordiaDoubleVolume.manualLoadMinutes}&nbsp;minutes et dépassent
-            de 174&nbsp;minutes. Sur ces durées et cette capacité, le
-            dépassement commence dès le quatrième client&nbsp;: chaque client
-            coûte 79&nbsp;minutes, et 79&nbsp;× 4 = 316&nbsp;minutes pour 300
-            disponibles.
+            elles atteignent {accordiaDoubleVolume.manualLoadMinutes}
+            &nbsp;minutes et dépassent de 174&nbsp;minutes. Sur ces durées et
+            cette capacité, le dépassement commence dès le quatrième
+            client&nbsp;: chaque client coûte 79&nbsp;minutes, et 79&nbsp;× 4 =
+            316&nbsp;minutes pour 300 disponibles.
           </p>
 
-          <InfoBox
-            variant="amber"
-            title="Ce décompte est planifié, pas subi"
-          >
+          <InfoBox variant="amber" title="Ce décompte est planifié, pas subi">
             <p>
               Les limites écrites sur chaque opération le disent&nbsp;: deux
               interventions d’accès par client, un import initial, une facture,
@@ -965,12 +969,11 @@ export default function Page() {
             façon&nbsp;— <strong>350&nbsp;€ le jour chargé</strong>, soit
             50&nbsp;€ l’heure sur sept heures. Cette dernière hypothèse est
             écrite ici pour que vous puissiez la contester&nbsp;; votre
-            expert-comptable ou votre
-            contrôleur de gestion sort la vôtre à partir du salaire brut, des
-            charges patronales et des jours réellement travaillés. Le calcul dit
-            que la charge décrite tient dans la capacité saisie, sous les
-            hypothèses écrites. Il ne dit rien de la sécurité ni de la légalité
-            du test.
+            expert-comptable ou votre contrôleur de gestion sort la vôtre à
+            partir du salaire brut, des charges patronales et des jours
+            réellement travaillés. Le calcul dit que la charge décrite tient
+            dans la capacité saisie, sous les hypothèses écrites. Il ne dit rien
+            de la sécurité ni de la légalité du test.
           </p>
         </GuidePremiumSection>
 
@@ -985,11 +988,10 @@ export default function Page() {
           <p>
             Les trois incidents ci-dessous sont construits sur le cas Accordia,
             les deux premiers pendant le pilote, le troisième après. Les durées,
-            les
-            volumes, l’abonnement et le coût du temps interne sont choisis pour
-            l’exemple et ne viennent d’aucune source&nbsp;; ce ne sont pas des
-            dossiers clients. Chacun correspond à une coupe qui paraissait sans
-            conséquence au moment de signer.
+            les volumes, l’abonnement et le coût du temps interne sont choisis
+            pour l’exemple et ne viennent d’aucune source&nbsp;; ce ne sont pas
+            des dossiers clients. Chacun correspond à une coupe qui paraissait
+            sans conséquence au moment de signer.
           </p>
 
           <h3>
@@ -1001,18 +1003,16 @@ export default function Page() {
             vingt-quatrième jour, le 30&nbsp;septembre, la deuxième entreprise
             demande à récupérer ses décisions pour son propre outil. L’accès en
             lecture seule de la section 05 rend bien les lignes, mais les trois
-            requêtes écrites d’avance servaient à consulter et à
-            corriger&nbsp;: aucune ne reconstitue une décision complète, motif
-            et pièces compris. L’opératrice reprend les 312
-            décisions une par une pendant deux jours, soit 2&nbsp;× 350 =
-            700&nbsp;€ au taux posé plus haut, et la restitution finale, prévue
-            le 18&nbsp;octobre, arrive deux jours plus tard. Ces deux jours
-            pèsent 840&nbsp;minutes, soit 2&nbsp;× 7&nbsp;heures, quand la
-            capacité manuelle du pilote entier valait
-            300&nbsp;minutes&nbsp;: l’incident coûte 2,8 fois le budget humain
-            de six semaines. Le calculateur avait tranché avant le
-            départ&nbsp;: la variante «&nbsp;continuité reportée&nbsp;»
-            laisse{" "}
+            requêtes écrites d’avance servaient à consulter et à corriger&nbsp;:
+            aucune ne reconstitue une décision complète, motif et pièces
+            compris. L’opératrice reprend les 312 décisions une par une pendant
+            deux jours, soit 2&nbsp;× 350 = 700&nbsp;€ au taux posé plus haut,
+            et la restitution finale, prévue le 18&nbsp;octobre, arrive deux
+            jours plus tard. Ces deux jours pèsent 840&nbsp;minutes, soit
+            2&nbsp;× 7&nbsp;heures, quand la capacité manuelle du pilote entier
+            valait 300&nbsp;minutes&nbsp;: l’incident coûte 2,8 fois le budget
+            humain de six semaines. Le calculateur avait tranché avant le
+            départ&nbsp;: la variante «&nbsp;continuité reportée&nbsp;» laisse{" "}
             {accordiaDeferred.manualLoadMinutes}&nbsp;minutes parfaitement
             calculées, et maintient quand même l’arrêt.
           </p>
@@ -1023,12 +1023,12 @@ export default function Page() {
           </h3>
           <p>
             La durée de l’opération d’accès reste «&nbsp;à vérifier&nbsp;».
-            L’équipe démarre quand même, en la comptant pour zéro&nbsp;— un
-            zéro qui n’ajoute aucune ligne et ne se voit donc nulle part.
-            Mesurée sur le premier client, l’opération vaut
-            35&nbsp;minutes, parce que chaque service informatique client exige
-            une inscription sur liste blanche&nbsp;:
-            35&nbsp;×&nbsp;2&nbsp;×&nbsp;3 = 210&nbsp;minutes. Avec les {accordiaUnknown.manualLoadMinutes}
+            L’équipe démarre quand même, en la comptant pour zéro&nbsp;— un zéro
+            qui n’ajoute aucune ligne et ne se voit donc nulle part. Mesurée sur
+            le premier client, l’opération vaut 35&nbsp;minutes, parce que
+            chaque service informatique client exige une inscription sur liste
+            blanche&nbsp;: 35&nbsp;×&nbsp;2&nbsp;×&nbsp;3 = 210&nbsp;minutes.
+            Avec les {accordiaUnknown.manualLoadMinutes}
             &nbsp;minutes des trois autres opérations, le pilote demande
             375&nbsp;minutes pour 300 disponibles, soit 75&nbsp;minutes de trop
             et un quart de la capacité envolé. Le calculateur avait refusé de
@@ -1037,29 +1037,31 @@ export default function Page() {
           </p>
 
           <h3>
-            Le paiement autonome sans procédure d’échec&nbsp;:
-            2&nbsp;880&nbsp;€ HT non encaissés
+            Le paiement autonome sans procédure d’échec&nbsp;: 2&nbsp;880&nbsp;€
+            HT non encaissés
           </h3>
           <p>
             Cette fois le pilote a conclu&nbsp;: Accordia vend son produit
             au-delà du 18&nbsp;octobre, et ouvre l’achat par carte au troisième
             mois d’exploitation sans écrire ce qui se passe quand un paiement
-            échoue. Trois cartes expirent,
-            l’événement d’échec de facture part bien, personne ne l’écoute, et
-            les accès restent ouverts. À 240&nbsp;€ HT par mois et par
-            entreprise, trois abonnements ouverts quatre mois sans paiement font{" "}
-            <strong>2&nbsp;880&nbsp;€ HT</strong> facturés et jamais encaissés.
-            La règle manquante tenait en une ligne&nbsp;: quel événement referme
-            l’accès, et au bout de combien de jours. Écrite après coup, elle se
-            corrige sur un produit qui a déjà des utilisateurs&nbsp;: rattraper
-            quatre mois d’événements, décider quels accès se referment, rouvrir
-            la conversation avec trois clients de bonne foi.
+            échoue. Trois cartes expirent, l’événement d’échec de facture part
+            bien, personne ne l’écoute, et les accès restent ouverts. À
+            240&nbsp;€ HT par mois et par entreprise, trois abonnements ouverts
+            quatre mois sans paiement font <strong>2&nbsp;880&nbsp;€ HT</strong>{" "}
+            facturés et jamais encaissés. La règle manquante tenait en une
+            ligne&nbsp;: quel événement referme l’accès, et au bout de combien
+            de jours. Écrite après coup, elle se corrige sur un produit qui a
+            déjà des utilisateurs&nbsp;: rattraper quatre mois d’événements,
+            décider quels accès se referment, rouvrir la conversation avec trois
+            clients de bonne foi.
           </p>
 
           <div className="not-prose my-8 mx-auto max-w-xl overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 dark:border-zinc-800">
             <Image
               src="/guides/mvp-saas-quoi-inclure/decision-mvp-1x1.webp"
-              alt={"Arbre sans score\u00a0: quatre STOP prioritaires et trois verdicts indépendants par format"}
+              alt={
+                "Arbre sans score\u00a0: quatre STOP prioritaires et trois verdicts indépendants par format"
+              }
               width={900}
               height={900}
               sizes="(max-width: 640px) 100vw, 560px"
@@ -1106,10 +1108,10 @@ export default function Page() {
             les sept décisions, les équations manuelles, les inconnues restées
             ouvertes et un texte que vous copiez tel quel pour l’envoyer à votre
             développeur. Les entrées sont bornées à un million pour les clients,
-            les minutes et les occurrences&nbsp;; le nombre de clients se
-            saisit en entier, les minutes, les occurrences et la capacité
-            acceptent trois décimales au plus&nbsp;— ce sont des limites
-            techniques, pas des repères commerciaux.
+            les minutes et les occurrences&nbsp;; le nombre de clients se saisit
+            en entier, les minutes, les occurrences et la capacité acceptent
+            trois décimales au plus&nbsp;— ce sont des limites techniques, pas
+            des repères commerciaux.
           </p>
 
           <div className="not-prose my-8" data-read-time-exclude="true">
@@ -1133,26 +1135,26 @@ export default function Page() {
 
           <ol>
             <li>
-              <strong>Le problème est-il prioritaire&nbsp;?</strong> Des
+              <strong>Le problème est-il prioritaire&nbsp;? </strong>Des
               entretiens et un pré-engagement écrit répondent en quelques jours.
               Ce qu’ils doivent prouver&nbsp;: une situation précise conduit à
               une décision réelle, pas à un accord poli.
             </li>
             <li>
-              <strong>Le parcours est-il compris&nbsp;?</strong> Une maquette
+              <strong>Le parcours est-il compris&nbsp;? </strong>Une maquette
               cliquable avec des données fictives suffit. Ce qu’elle doit
               prouver&nbsp;: l’utilisateur accomplit le parcours et sait
               réexpliquer ce qu’il vient de faire.
             </li>
             <li>
-              <strong>Le résultat crée-t-il de la valeur&nbsp;?</strong> Une
+              <strong>Le résultat crée-t-il de la valeur&nbsp;? </strong>Une
               opération tenue à la main, de bout en bout, pour les trois
               premiers clients. Ce qu’elle doit prouver&nbsp;: le résultat vaut
               ce qu’on demande de le payer.
             </li>
             <li>
-              <strong>La capacité existe-t-elle déjà ailleurs&nbsp;?</strong>{" "}
-              Un outil du marché ou une plateforme interne peuvent couvrir le
+              <strong>La capacité existe-t-elle déjà ailleurs&nbsp;? </strong>Un
+              outil du marché ou une plateforme interne peuvent couvrir le
               besoin. Le guide{" "}
               <Link href="/guides/power-apps-ou-application-sur-mesure">
                 Power Apps ou application sur mesure
@@ -1192,8 +1194,8 @@ export default function Page() {
           </p>
           <p>
             Quatre décisions sortent de cette relecture, et trois réduisent le
-            périmètre. Continuer, quand la preuve reste utile et
-            que les responsabilités sont acceptées. Réduire le format, quand un
+            périmètre. Continuer, quand la preuve reste utile et que les
+            responsabilités sont acceptées. Réduire le format, quand un
             prototype répond à la même question sans exposer un client. Changer
             un traitement, quand la charge ou le risque rendent le choix actuel
             intenable. Arrêter ou différer, quand le test n’apprend plus rien de
@@ -1203,11 +1205,10 @@ export default function Page() {
           <p>
             Un chiffre doit figurer dans cette décision, et il n’apparaît sur
             aucune ligne d’un devis de développement&nbsp;: l’exploitation.
-            Notre grille publie un repère indicatif d’environ
-            2&nbsp;500&nbsp;€ HT par mois pour le scénario de maintenance le
-            plus léger. Douze mois à ce repère font environ
-            30&nbsp;000&nbsp;€ HT, soit la borne basse du forfait de
-            développement suivant, qui va de 30&nbsp;000 à
+            Notre grille publie un repère indicatif d’environ 2&nbsp;500&nbsp;€
+            HT par mois pour le scénario de maintenance le plus léger. Douze
+            mois à ce repère font environ 30&nbsp;000&nbsp;€ HT, soit la borne
+            basse du forfait de développement suivant, qui va de 30&nbsp;000 à
             60&nbsp;000&nbsp;€ HT. La première année d’exploitation pèse donc au
             moins autant que l’entrée de ce forfait, autant le savoir avant de
             dire oui. Le repère n’est pas un devis&nbsp;: le forfait réel est
@@ -1261,16 +1262,15 @@ export default function Page() {
           </div>
 
           <p className="text-sm">
-            <strong>Transparence.</strong> Hagnéré Code développe des
+            <strong>Transparence. </strong>Hagnéré Code développe des
             applications SaaS sur mesure et perçoit des honoraires si vous
             retenez cette option&nbsp;— l’une de celles que ce guide arbitre.
             Rien ici n’exige de passer par nous&nbsp;: les sept familles, le
             calcul de charge et le décompte des écrans se refont avec vos
-            nombres, et le calculateur ne transmet rien. Les montants de
-            notre grille ont été relevés le 30&nbsp;août 2026 et sont à
-            revérifier tous les douze mois. Aucun prix, aucun délai et aucun
-            résultat ne sont garantis par cette page&nbsp;: seul un devis signé
-            engage.
+            nombres, et le calculateur ne transmet rien. Les montants de notre
+            grille ont été relevés le 30&nbsp;août 2026 et sont à revérifier
+            tous les douze mois. Aucun prix, aucun délai et aucun résultat ne
+            sont garantis par cette page&nbsp;: seul un devis signé engage.
           </p>
         </GuidePremiumSection>
       </GuidePremiumLayout>

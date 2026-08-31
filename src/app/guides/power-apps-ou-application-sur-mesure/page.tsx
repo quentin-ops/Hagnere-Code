@@ -231,7 +231,9 @@ export default function Page() {
         ]}
         heroTitle={"Power Apps ou application sur mesure\u00a0:"}
         heroTitleEm={"comment\u00a0choisir\u00a0?"}
-        heroDescription={"Tout se joue le jour où votre application branche autre chose que SharePoint. Tant qu’elle reste sur les connecteurs standard, elle ne coûte aucune licence en plus. Dès qu’elle interroge SQL Server, Dataverse ou une passerelle locale, chaque utilisateur passe à 17,30\u00a0€ HT par mois. Ce guide résout le décompte à cinq ans sur un cas chiffré et dit à partir de combien d’utilisateurs l’écart s’inverse."}
+        heroDescription={
+          "Tout se joue le jour où votre application branche autre chose que SharePoint. Tant qu’elle reste sur les connecteurs standard, elle ne coûte aucune licence en plus. Dès qu’elle interroge SQL Server, Dataverse ou une passerelle locale, chaque utilisateur passe à 17,30\u00a0€ HT par mois. Ce guide résout le décompte à cinq ans sur un cas chiffré et dit à partir de combien d’utilisateurs l’écart s’inverse."
+        }
         stats={[
           { label: "Point de bascule", value: "141 utilisateurs" },
           { label: "Licence premium", value: "17,30\u00a0€ HT/mois" },
@@ -400,7 +402,8 @@ export default function Page() {
         }}
         relatedGuides={[
           {
-            label: "Besoin d’un logiciel métier\u00a0: le diagnostic en 6 réponses",
+            label:
+              "Besoin d’un logiciel métier\u00a0: le diagnostic en 6 réponses",
             href: "/guides/signes-besoin-logiciel-metier",
           },
           {
@@ -435,23 +438,24 @@ export default function Page() {
             </strong>{" "}
             Dès qu’elle interroge SQL Server, Dataverse, un connecteur
             personnalisé, une passerelle vers un serveur local ou une adresse
-            HTTP, chaque utilisateur passe au plan Premium, affiché
-            17,30&nbsp;€ hors taxes (HT) par utilisateur et par mois avec
-            paiement annuel sur la page française de Microsoft, consultée le
-            28&nbsp;août 2026.
+            HTTP, chaque utilisateur passe au plan Premium, affiché 17,30&nbsp;€
+            hors taxes (HT) par utilisateur et par mois avec paiement annuel sur
+            la page française de Microsoft, consultée le 28&nbsp;août 2026.
           </p>
           <p>
             En face, notre grille publique situe un outil interne sur mesure à
-            partir de 8&nbsp;000&nbsp;€ HT. Neuf utilisateurs en Premium
-            coûtent 1&nbsp;868&nbsp;€ HT par an. La section&nbsp;05 résout le
-            décompte complet aux trois horizons&nbsp;: sur le seul terrain du
-            prix, il faudrait 141&nbsp;utilisateurs pour que l’écart s’inverse.
+            partir de 8&nbsp;000&nbsp;€ HT. Neuf utilisateurs en Premium coûtent
+            1&nbsp;868&nbsp;€ HT par an. La section&nbsp;05 résout le décompte
+            complet aux trois horizons&nbsp;: sur le seul terrain du prix, il
+            faudrait 141&nbsp;utilisateurs pour que l’écart s’inverse.
           </p>
 
           <GuidePremiumCase
             initial="9"
             eyebrow="Fil rouge du guide · exemple construit"
-            title={"Neuf personnes, 3\u00a0200 demandes d’achat, un connecteur qui change tout"}
+            title={
+              "Neuf personnes, 3\u00a0200 demandes d’achat, un connecteur qui change tout"
+            }
           >
             <p>
               <em>
@@ -474,14 +478,17 @@ export default function Page() {
             </p>
           </GuidePremiumCase>
 
-          <InfoBox variant="amber" title={"Incident actif\u00a0: arrêtez l’arbitrage"}>
+          <InfoBox
+            variant="amber"
+            title={"Incident actif\u00a0: arrêtez l’arbitrage"}
+          >
             <p>
               Si l’application est indisponible, si des données semblent
               perdues, si un compte est compromis ou si une politique vient de
               suspendre un flux, traitez d’abord l’incident et organisez le
               fonctionnement en mode dégradé. La refonte viendra ensuite&nbsp;:
-              elle ne remplace ni une restauration ni une procédure de réponse
-              à incident.
+              elle ne remplace ni une restauration ni une procédure de réponse à
+              incident.
             </p>
           </InfoBox>
         </GuidePremiumSection>
@@ -499,23 +506,23 @@ export default function Page() {
             technique.
           </p>
           <p>
-            <strong>L’application canevas</strong> est celle que tout le monde
-            appelle «&nbsp;une Power App&nbsp;». Vous dessinez l’écran comme
-            une diapositive, puis vous écrivez la logique en{" "}
+            <strong>L’application canevas </strong>est celle que tout le monde
+            appelle «&nbsp;une Power App&nbsp;». Vous dessinez l’écran comme une
+            diapositive, puis vous écrivez la logique en{" "}
             <strong>Power&nbsp;Fx</strong>, le langage de formules de la
-            plateforme, très proche de celui d’Excel&nbsp;:{" "}
-            <code>Filter</code>, <code>LookUp</code>, <code>If</code>. C’est
-            l’outil du formulaire de demande d’achat de Sabine, du relevé de
-            présence, du constat de chantier photographié sur téléphone.
+            plateforme, très proche de celui d’Excel&nbsp;: <code>Filter</code>,{" "}
+            <code>LookUp</code>, <code>If</code>. C’est l’outil du formulaire de
+            demande d’achat de Sabine, du relevé de présence, du constat de
+            chantier photographié sur téléphone.
           </p>
           <p>
-            <strong>L’application pilotée par modèle</strong> part de l’autre
+            <strong>L’application pilotée par modèle </strong>part de l’autre
             bout. Vous décrivez d’abord les tables dans{" "}
-            <strong>Dataverse</strong>, la base relationnelle de Power
-            Platform, avec leurs relations et leurs droits par ligne&nbsp;; les
-            écrans se génèrent ensuite. C’est ce qu’il faut pour un suivi
-            d’interventions où un technicien de maintenance relie un client, un
-            contrat, un équipement et un bon de travail.
+            <strong>Dataverse</strong>, la base relationnelle de Power Platform,
+            avec leurs relations et leurs droits par ligne&nbsp;; les écrans se
+            génèrent ensuite. C’est ce qu’il faut pour un suivi d’interventions
+            où un technicien de maintenance relie un client, un contrat, un
+            équipement et un bon de travail.
           </p>
           <p>
             <strong>Power Pages</strong>, enfin, produit un site web adossé à
@@ -525,10 +532,10 @@ export default function Page() {
           <p>
             Ces trois familles n’ont pas le même régime de licence, et c’est là
             que se joue la facture. Une application canevas sur connecteurs
-            standard passe avec les droits déjà inclus dans
-            Microsoft&nbsp;365. Une application pilotée par modèle suppose
-            Dataverse, donc un accès premium. Power Pages a sa propre
-            tarification, comptée par utilisateur et par site.
+            standard passe avec les droits déjà inclus dans Microsoft&nbsp;365.
+            Une application pilotée par modèle suppose Dataverse, donc un accès
+            premium. Power Pages a sa propre tarification, comptée par
+            utilisateur et par site.
           </p>
         </GuidePremiumSection>
 
@@ -537,7 +544,9 @@ export default function Page() {
           number="03"
           label="Licence"
           readingTime="3 min"
-          title={"Ce que Power Apps coûte vraiment\u00a0: la règle du connecteur"}
+          title={
+            "Ce que Power Apps coûte vraiment\u00a0: la règle du connecteur"
+          }
         >
           <p>
             Microsoft publie la règle dans un tableau que presque personne ne
@@ -546,8 +555,8 @@ export default function Page() {
             Microsoft&nbsp;365&nbsp;» coche «&nbsp;se connecter aux services
             Cloud avec les connecteurs standard&nbsp;» et laisse vide
             «&nbsp;accéder aux données locales ou utiliser les connecteurs
-            Premium ou personnalisés&nbsp;». La page des compteurs de paiement
-            à l’usage confirme la même frontière côté facturation&nbsp;: un
+            Premium ou personnalisés&nbsp;». La page des compteurs de paiement à
+            l’usage confirme la même frontière côté facturation&nbsp;: un
             utilisateur sous plan Microsoft&nbsp;365 n’est pas compté sur une
             application à connecteurs standard, et l’est sur une application à
             connecteurs premium.
@@ -585,11 +594,11 @@ export default function Page() {
           />
 
           <p>
-            Appliquons la ligne 2 au dossier de Sabine. Le connecteur SQL
-            Server est classé <em>Premium</em> sur sa fiche Microsoft
-            Learn&nbsp;: les neuf utilisateurs basculent ensemble. Le calcul
-            tient sur une ligne&nbsp;: 9&nbsp;×&nbsp;17,30&nbsp;€&nbsp;×&nbsp;12
-            = <strong>1&nbsp;868,40&nbsp;€ HT par an</strong>, soit
+            Appliquons la ligne 2 au dossier de Sabine. Le connecteur SQL Server
+            est classé <em>Premium </em>sur sa fiche Microsoft Learn&nbsp;: les
+            neuf utilisateurs basculent ensemble. Le calcul tient sur une
+            ligne&nbsp;: 9&nbsp;×&nbsp;17,30&nbsp;€&nbsp;×&nbsp;12 ={" "}
+            <strong>1&nbsp;868,40&nbsp;€ HT par an</strong>, soit
             9&nbsp;342&nbsp;€ sur cinq ans. Refaites-le avec votre nombre de
             personnes&nbsp;: chaque utilisateur supplémentaire pèse
             1&nbsp;038&nbsp;€ HT sur cinq ans.
@@ -598,9 +607,9 @@ export default function Page() {
           <h3>Les autres repères publics, et leurs pièges</h3>
           <p>
             À partir de 2&nbsp;000&nbsp;licences, la même page affiche
-            10,40&nbsp;€ HT par utilisateur et par mois, avec paiement annuel
-            et passage par un commercial. Le plan Developer reste gratuit, mais
-            il est réservé au développement et au test&nbsp;— jamais à la
+            10,40&nbsp;€ HT par utilisateur et par mois, avec paiement annuel et
+            passage par un commercial. Le plan Developer reste gratuit, mais il
+            est réservé au développement et au test&nbsp;— jamais à la
             production. L’ancien abonnement «&nbsp;par application&nbsp;» n’est
             plus commercialisé depuis janvier 2026&nbsp;: un budget bâti sur le
             repère à 5&nbsp;USD qui circule encore est faux. Le paiement à
@@ -610,22 +619,24 @@ export default function Page() {
             aucune conversion automatique ne remplace votre facture Azure.
           </p>
 
-          <h3>Une connexion mutualisée réduit-elle le nombre de licences&nbsp;?</h3>
+          <h3>
+            Une connexion mutualisée réduit-elle le nombre de licences&nbsp;?
+          </h3>
           <p>
-            Non, pas automatiquement. Microsoft appelle{" "}
-            <em>multiplexing</em> le fait de mutualiser ou de réacheminer des
-            connexions, d’interposer une couche technique ou d’automatiser un
-            processus pour réduire le nombre d’utilisateurs qui accèdent
-            directement au service. La page 25 de son guide de licences précise
-            qu’une personne ou un appareil qui saisit, interroge, consulte ou
-            accède autrement à Power Apps doit être correctement licencié, que
-            l’accès soit direct ou indirect. Ajouter des couches
-            intermédiaires ne change pas ce principe.
+            Non, pas automatiquement. Microsoft appelle <em>multiplexing </em>le
+            fait de mutualiser ou de réacheminer des connexions, d’interposer
+            une couche technique ou d’automatiser un processus pour réduire le
+            nombre d’utilisateurs qui accèdent directement au service. La page
+            25 de son guide de licences précise qu’une personne ou un appareil
+            qui saisit, interroge, consulte ou accède autrement à Power Apps
+            doit être correctement licencié, que l’accès soit direct ou
+            indirect. Ajouter des couches intermédiaires ne change pas ce
+            principe.
           </p>
           <p>
             Sur le dossier de Sabine, la tentation existe&nbsp;: faire lire
-            l’ERP par un compte de service unique et rediffuser le stock dans
-            la liste SharePoint. Un budget limité au compte de service ou à la
+            l’ERP par un compte de service unique et rediffuser le stock dans la
+            liste SharePoint. Un budget limité au compte de service ou à la
             connexion partagée serait donc incomplet. La page 25 ne choisit
             pourtant pas la référence commerciale applicable&nbsp;: identifiez
             qui accède réellement, puis faites confirmer le scénario exact par
@@ -633,7 +644,10 @@ export default function Page() {
             de licences ne remplace pas votre contrat.
           </p>
 
-          <InfoBox variant="blue" title="Prix public ≠ prix contractuel ≠ coût total">
+          <InfoBox
+            variant="blue"
+            title="Prix public ≠ prix contractuel ≠ coût total"
+          >
             <p>
               Confirmez pays, devise, taxes, engagement, remise, seuil, droit
               Microsoft&nbsp;365, connecteurs, Dataverse, flux, capacité,
@@ -689,9 +703,8 @@ export default function Page() {
 
           <p>
             La ligne du milieu mérite une nuance&nbsp;: la page de support
-            Microsoft décrit le rôle des
-            colonnes indexées dans les vues filtrées, sans promettre qu’elles
-            lèvent le seuil de 5&nbsp;000.
+            Microsoft décrit le rôle des colonnes indexées dans les vues
+            filtrées, sans promettre qu’elles lèvent le seuil de 5&nbsp;000.
           </p>
 
           <h3>Reconnaître une formule non délégable sur votre propre écran</h3>
@@ -711,16 +724,16 @@ Filter(DemandesAchat; Statut = "En attente")`}
 
           <p>
             Power Fx ne vous laisse pas sans signal. La partie non déléguée est
-            soulignée d’une ligne bleue ondulée, et un triangle jaune apparaît
-            à côté de la galerie concernée. La documentation Microsoft nomme
-            les fonctions qui passent&nbsp;— <code>=</code>, <code>&lt;&gt;</code>,{" "}
+            soulignée d’une ligne bleue ondulée, et un triangle jaune apparaît à
+            côté de la galerie concernée. La documentation Microsoft nomme les
+            fonctions qui passent&nbsp;— <code>=</code>, <code>&lt;&gt;</code>,{" "}
             <code>&gt;</code>, <code>&lt;</code>, <code>StartsWith</code>,{" "}
             <code>EndsWith</code>, <code>TrimEnds</code>, <code>IsBlank</code>,{" "}
-            <code>And</code>, <code>Or</code>, <code>Not</code>&nbsp;— et
-            celles qui ne passent jamais&nbsp;: <code>Lower</code>,{" "}
-            <code>Upper</code>, <code>Left</code>, <code>Mid</code>,{" "}
-            <code>Len</code>, <code>If</code>, <code>Text</code>,{" "}
-            <code>Value</code>, la concaténation.
+            <code>And</code>, <code>Or</code>, <code>Not</code>&nbsp;— et celles
+            qui ne passent jamais&nbsp;: <code>Lower</code>, <code>Upper</code>,{" "}
+            <code>Left</code>, <code>Mid</code>, <code>Len</code>,{" "}
+            <code>If</code>, <code>Text</code>, <code>Value</code>, la
+            concaténation.
           </p>
 
           <GuidePremiumMemo
@@ -731,7 +744,7 @@ Filter(DemandesAchat; Statut = "En attente")`}
               <li>
                 Dans le studio, ouvrez <strong>Paramètres</strong>, puis{" "}
                 <strong>Général</strong>, et réglez la{" "}
-                <strong>limite de lignes de données</strong> sur 1.
+                <strong>limite de lignes de données </strong>sur 1.
               </li>
               <li>
                 Rejouez vos trois écrans les plus utilisés&nbsp;: toute liste
@@ -752,8 +765,8 @@ Filter(DemandesAchat; Statut = "En attente")`}
           <p>
             Deux autres limites tranchent réellement des dossiers. Le mode
             hors-ligne intégré repose sur Dataverse et l’application mobile
-            Power Apps&nbsp;: pour une application canevas autonome activée
-            hors ligne, la documentation exclut les connecteurs autres que
+            Power Apps&nbsp;: pour une application canevas autonome activée hors
+            ligne, la documentation exclut les connecteurs autres que
             Dataverse&nbsp;— SharePoint compris&nbsp;— et les flux Power
             Automate. Et le vérificateur d’accessibilité repère des alertes
             utiles, sans démontrer le respect des WCAG ni du RGAA&nbsp;:
@@ -768,21 +781,22 @@ Filter(DemandesAchat; Statut = "En attente")`}
           number="05"
           label="Point de bascule"
           readingTime="4 min"
-          title={"À partir de combien d’utilisateurs le sur-mesure devient-il moins cher\u00a0?"}
+          title={
+            "À partir de combien d’utilisateurs le sur-mesure devient-il moins cher\u00a0?"
+          }
         >
           <p>
             «&nbsp;Power Apps ou application sur mesure&nbsp;»&nbsp;: la moitié
             Microsoft de cette comparaison se chiffre en trois minutes, l’autre
             reste presque toujours vide, et c’est ce trou qui fait prendre de
             mauvaises décisions. Voici donc nos propres montants, relevés sur
-            notre page{" "}
-            <Link href="/tarifs">tarifs</Link> le 28&nbsp;août 2026&nbsp;: un
-            outil interne sur mesure à <strong>8&nbsp;000&nbsp;€ HT</strong>{" "}
-            pour un processus ciblé sur une équipe,{" "}
-            <strong>25&nbsp;000&nbsp;€ HT</strong> pour un CRM ou ERP léger
-            avec intégrations, <strong>80&nbsp;000&nbsp;€ HT</strong> pour un
-            outil multi-services avec authentification unique. Au-delà de
-            8&nbsp;000&nbsp;€ HT de projet, un cadrage payé précède
+            notre page <Link href="/tarifs">tarifs</Link> le 28{"\u00a0"}août
+            2026{"\u00a0"}: un outil interne sur mesure à{" "}
+            <strong>8&nbsp;000&nbsp;€ HT </strong>pour un processus ciblé sur
+            une équipe, <strong>25&nbsp;000&nbsp;€ HT </strong>pour un CRM ou
+            ERP léger avec intégrations, <strong>80&nbsp;000&nbsp;€ HT</strong>{" "}
+            pour un outil multi-services avec authentification unique. Au-delà
+            de 8&nbsp;000&nbsp;€ HT de projet, un cadrage payé précède
             systématiquement le devis&nbsp;: le Discovery Sprint,
             1&nbsp;500&nbsp;€ HT et 2&nbsp;jours, déduit si la phase suivante
             est lancée. La maintenance se contracte à part, avec un repère
@@ -794,19 +808,19 @@ Filter(DemandesAchat; Statut = "En attente")`}
           <h3>Les deux hypothèses que nous posons, et comment les remplacer</h3>
           <p>
             Deux montants ne se lisent nulle part et doivent donc être posés à
-            découvert. Le premier&nbsp;: <strong>350&nbsp;€ le jour chargé</strong>{" "}
-            pour le temps interne de l’administrateur Microsoft&nbsp;365 et de
-            la responsable administrative. Remplacez-le par le vôtre&nbsp;;
-            votre expert-comptable ou votre contrôleur de gestion le sort en
-            cinq minutes à partir du salaire brut, des charges patronales et du
+            découvert. Le premier&nbsp;:{" "}
+            <strong>350&nbsp;€ le jour chargé </strong>pour le temps interne de
+            l’administrateur Microsoft&nbsp;365 et de la responsable
+            administrative. Remplacez-le par le vôtre&nbsp;; votre
+            expert-comptable ou votre contrôleur de gestion le sort en cinq
+            minutes à partir du salaire brut, des charges patronales et du
             nombre de jours réellement travaillés. Le second&nbsp;:{" "}
-            <strong>six semaines de double exploitation</strong> après une
-            bascule, à raison de vingt minutes de ressaisie par jour ouvré,
-            soit dix heures — 1,25&nbsp;jour de huit heures, donc 437,50&nbsp;€,
+            <strong>six semaines de double exploitation </strong>après une
+            bascule, à raison de vingt minutes de ressaisie par jour ouvré, soit
+            dix heures — 1,25&nbsp;jour de huit heures, donc 437,50&nbsp;€,
             arrondis à 440&nbsp;€ dans le décompte. Aucun des deux ne sort d’une
-            source&nbsp;: ce sont
-            des hypothèses, elles sont écrites ici pour que vous puissiez les
-            contester.
+            source&nbsp;: ce sont des hypothèses, elles sont écrites ici pour
+            que vous puissiez les contester.
           </p>
 
           <GuideTable
@@ -852,7 +866,11 @@ Filter(DemandesAchat; Statut = "En attente")`}
                 "Reconstruire ailleurs\u00a0: 8\u00a0000\u00a0€ + 1\u00a0490\u00a0€ = 9\u00a0490\u00a0€",
                 "Transfert à une autre équipe\u00a0: 6\u00a0j × 350\u00a0€ = 2\u00a0100\u00a0€",
               ],
-              ["Total sur cinq ans", "30\u00a0732\u00a0€", "166\u00a0840\u00a0€"],
+              [
+                "Total sur cinq ans",
+                "30\u00a0732\u00a0€",
+                "166\u00a0840\u00a0€",
+              ],
             ]}
           />
 
@@ -870,20 +888,21 @@ Filter(DemandesAchat; Statut = "En attente")`}
             1&nbsp;038&nbsp;€&nbsp;×&nbsp;N de licences sur cinq ans. Elle
             rattrape les 166&nbsp;840&nbsp;€ de la colonne dédiée à{" "}
             <strong>141&nbsp;utilisateurs</strong>. Avec neuf, la réponse est
-            nette&nbsp;: sur le seul terrain du prix, garder Power Apps gagne
-            de très loin.
+            nette&nbsp;: sur le seul terrain du prix, garder Power Apps gagne de
+            très loin.
           </p>
           <p>
             Ce seuil n’est pourtant pas piloté par le nombre d’utilisateurs. Il
             est piloté par la façon dont l’application dédiée est maintenue.
             Divisez le forfait de maintenance par deux, à 1&nbsp;250&nbsp;€ HT
-            par mois, et la bascule tombe à <strong>68&nbsp;utilisateurs</strong>.
-            Renoncez au forfait, confiez la maintenance à un développeur
-            interne à raison d’un jour par mois, et elle tombe à{" "}
-            <strong>11&nbsp;utilisateurs</strong>&nbsp;— hébergement à chiffrer
-            en plus. La troisième variable est binaire&nbsp;: sans connecteur
-            premium, la colonne licence vaut 0&nbsp;€ et aucun nombre
-            d’utilisateurs ne fait basculer quoi que ce soit.
+            par mois, et la bascule tombe à{" "}
+            <strong>68&nbsp;utilisateurs</strong>. Renoncez au forfait, confiez
+            la maintenance à un développeur interne à raison d’un jour par mois,
+            et elle tombe à <strong>11&nbsp;utilisateurs</strong>&nbsp;—
+            hébergement à chiffrer en plus. La troisième variable est
+            binaire&nbsp;: sans connecteur premium, la colonne licence vaut
+            0&nbsp;€ et aucun nombre d’utilisateurs ne fait basculer quoi que ce
+            soit.
           </p>
 
           <InfoBox
@@ -892,9 +911,9 @@ Filter(DemandesAchat; Statut = "En attente")`}
           >
             <p>
               Il dit qu’on ne quitte pas Power Apps pour économiser sur la
-              licence. Il ne dit rien des raisons qui font réellement partir
-              une équipe&nbsp;: un parcours externe que Power Pages ne couvre
-              pas, un travail hors ligne incompatible, une règle métier que
+              licence. Il ne dit rien des raisons qui font réellement partir une
+              équipe&nbsp;: un parcours externe que Power Pages ne couvre pas,
+              un travail hors ligne incompatible, une règle métier que
               Power&nbsp;Fx n’exprime pas, une contrainte d’hébergement. Ces
               raisons-là se démontrent sur un cas réel, pas sur un tableur.
             </p>
@@ -903,9 +922,9 @@ Filter(DemandesAchat; Statut = "En attente")`}
           <p>
             L’atelier ci-dessous s’ouvre sur ce même dossier, déjà résolu. Les
             deux colonnes centrales restent volontairement vides&nbsp;: à vous
-            de les remplir. Le bouton{" "}
-            <em>Repartir d’une feuille vierge</em> efface tout si vous
-            préférez démarrer de zéro. Rien ne quitte votre navigateur.
+            de les remplir. Le bouton <em>Repartir d’une feuille vierge</em>{" "}
+            efface tout si vous préférez démarrer de zéro. Rien ne quitte votre
+            navigateur.
           </p>
 
           <PowerAppsDecisionWorkbench
@@ -914,10 +933,10 @@ Filter(DemandesAchat; Statut = "En attente")`}
           />
 
           <p>
-            Une heure gagnée n’est pas une économie de trésorerie tant
-            qu’aucune dépense n’est évitée&nbsp;: gardez séparés l’argent
-            sorti, la capacité réaffectée et le confort. Si le besoin lui-même
-            n’est pas encore établi, le{" "}
+            Une heure gagnée n’est pas une économie de trésorerie tant qu’aucune
+            dépense n’est évitée&nbsp;: gardez séparés l’argent sorti, la
+            capacité réaffectée et le confort. Si le besoin lui-même n’est pas
+            encore établi, le{" "}
             <Link href="/guides/signes-besoin-logiciel-metier">
               diagnostic en 6 réponses
             </Link>{" "}
@@ -944,43 +963,52 @@ Filter(DemandesAchat; Statut = "En attente")`}
             posées en section&nbsp;05.
           </p>
 
-          <h3>Une commande passée deux fois&nbsp;: 4&nbsp;180&nbsp;€ et 2&nbsp;jours perdus</h3>
+          <h3>
+            Une commande passée deux fois&nbsp;: 4&nbsp;180&nbsp;€ et
+            2&nbsp;jours perdus
+          </h3>
           <p>
             L’écran «&nbsp;demandes déjà commandées&nbsp;» filtre la liste avec
             une formule non déléguée. Sur 3&nbsp;200&nbsp;lignes, il n’en
             examine que 500&nbsp;: la demande de profilés aluminium saisie en
-            mars n’apparaît plus. Un chef d’atelier la ressaisit, le
-            fournisseur livre deux fois. La commande porte sur
-            4&nbsp;180&nbsp;€ HT, le retour coûte des frais de reprise, et la
-            régularisation mobilise deux jours de la responsable administrative
-            et du contrôleur de gestion, soit 700&nbsp;€ de temps interne. Rien
-            n’a planté&nbsp;: l’application a simplement répondu faux.
+            mars n’apparaît plus. Un chef d’atelier la ressaisit, le fournisseur
+            livre deux fois. La commande porte sur 4&nbsp;180&nbsp;€ HT, le
+            retour coûte des frais de reprise, et la régularisation mobilise
+            deux jours de la responsable administrative et du contrôleur de
+            gestion, soit 700&nbsp;€ de temps interne. Rien n’a planté&nbsp;:
+            l’application a simplement répondu faux.
           </p>
 
-          <h3>Un flux mis en quarantaine&nbsp;: 23&nbsp;demandes bloquées 4&nbsp;jours</h3>
+          <h3>
+            Un flux mis en quarantaine&nbsp;: 23&nbsp;demandes bloquées
+            4&nbsp;jours
+          </h3>
           <p>
             L’administrateur durcit la politique de prévention de la perte de
             données pour séparer les connecteurs métier des connecteurs grand
             public. La règle prend effet le vendredi&nbsp;; le flux qui envoie
-            les demandes en validation se retrouve suspendu. Personne ne
-            regarde le centre d’administration avant le mardi. Bilan&nbsp;:
-            quatre jours ouvrés de validations à l’arrêt,
-            23&nbsp;demandes en attente, six heures de rattrapage manuel, deux
-            livraisons décalées d’une semaine. La parade tient en un mot&nbsp;:
-            simuler la règle avant de l’enregistrer.
+            les demandes en validation se retrouve suspendu. Personne ne regarde
+            le centre d’administration avant le mardi. Bilan&nbsp;: quatre jours
+            ouvrés de validations à l’arrêt, 23&nbsp;demandes en attente, six
+            heures de rattrapage manuel, deux livraisons décalées d’une semaine.
+            La parade tient en un mot&nbsp;: simuler la règle avant de
+            l’enregistrer.
           </p>
 
-          <h3>Le créateur est parti&nbsp;: 6&nbsp;jours-homme pour reprendre la main</h3>
+          <h3>
+            Le créateur est parti&nbsp;: 6&nbsp;jours-homme pour reprendre la
+            main
+          </h3>
           <p>
-            L’application vit dans l’environnement par défaut, et les
-            connexions sont attachées au compte personnel de Sabine. Elle
-            change de poste. L’application continue de tourner, mais plus
-            personne ne peut publier une correction. Retrouver le propriétaire
-            de chaque connexion, recréer les références, exporter la solution
-            et la redéployer dans un environnement dédié occupe six jours de
-            l’administrateur Microsoft&nbsp;365, soit 2&nbsp;100&nbsp;€, et
-            gèle trois semaines d’évolutions. Le coût du blocage dépasse
-            largement celui de la reprise.
+            L’application vit dans l’environnement par défaut, et les connexions
+            sont attachées au compte personnel de Sabine. Elle change de poste.
+            L’application continue de tourner, mais plus personne ne peut
+            publier une correction. Retrouver le propriétaire de chaque
+            connexion, recréer les références, exporter la solution et la
+            redéployer dans un environnement dédié occupe six jours de
+            l’administrateur Microsoft&nbsp;365, soit 2&nbsp;100&nbsp;€, et gèle
+            trois semaines d’évolutions. Le coût du blocage dépasse largement
+            celui de la reprise.
           </p>
 
           <GuidePremiumMemo
@@ -1076,26 +1104,26 @@ Filter(DemandesAchat; Statut = "En attente")`}
           title={"Si vous partez, comment garder la porte ouverte\u00a0?"}
         >
           <p>
-            Le mot «&nbsp;migration&nbsp;» masque quatre travaux distincts&nbsp;:
-            comprendre l’existant, construire la cible, déplacer les données et
-            faire changer l’organisation. Aucun export de solution n’en réalise
-            un seul. Cinq étapes, dans cet ordre.
+            Le mot «&nbsp;migration&nbsp;» masque quatre travaux
+            distincts&nbsp;: comprendre l’existant, construire la cible,
+            déplacer les données et faire changer l’organisation. Aucun export
+            de solution n’en réalise un seul. Cinq étapes, dans cet ordre.
           </p>
 
           <ol>
             <li>
-              <strong>Consigner l’existant.</strong> Version de l’application,
+              <strong>Consigner l’existant. </strong>Version de l’application,
               solutions, flux, connecteurs, environnements, propriétaires,
               sources, comptes, licences et politiques de données.
             </li>
             <li>
-              <strong>Écrire la recette avant les écrans.</strong> Trois cas
+              <strong>Écrire la recette avant les écrans. </strong>Trois cas
               normaux, les exceptions, les erreurs, les droits, les documents
               produits et les temps de réponse attendus. Une capture d’écran ne
               tient pas lieu de référence métier.
             </li>
             <li>
-              <strong>Rendre le transfert reproductible.</strong> Doublons,
+              <strong>Rendre le transfert reproductible. </strong>Doublons,
               clés, valeurs manquantes, pièces jointes et historiques reçoivent
               un propriétaire, puis le transfert passe par un script versionné,
               un journal des rejets et un rapprochement des comptes. Une copie
@@ -1104,11 +1132,11 @@ Filter(DemandesAchat; Statut = "En attente")`}
             <li>
               <strong>Jouer le retour arrière avant la bascule.</strong>{" "}
               Déclencheur, décideur, dernière donnée fiable, durée maximale et
-              procédure de réactivation de l’ancien outil. Un document non
-              testé reste une hypothèse.
+              procédure de réactivation de l’ancien outil. Un document non testé
+              reste une hypothèse.
             </li>
             <li>
-              <strong>Éteindre après stabilité mesurée.</strong> Retirer les
+              <strong>Éteindre après stabilité mesurée. </strong>Retirer les
               accès, archiver, révoquer les secrets, arrêter les flux et les
               licences, fixer la durée de conservation.
             </li>
@@ -1129,19 +1157,19 @@ Filter(DemandesAchat; Statut = "En attente")`}
             La question se pose dans les deux sens, et c’est la première
             objection d’un DSI. Quitter Power Apps suppose de reconstruire
             l’interface et la logique&nbsp;: les fichiers de solution extraits
-            servent à l’audit et au contrôle de version dans Power Platform,
-            ils ne produisent pas de code web portable. Sur le cas construit,
-            cette sortie vaut les 9&nbsp;490&nbsp;€ de la colonne dédiée.
+            servent à l’audit et au contrôle de version dans Power Platform, ils
+            ne produisent pas de code web portable. Sur le cas construit, cette
+            sortie vaut les 9&nbsp;490&nbsp;€ de la colonne dédiée.
           </p>
           <p>
-            Quitter une application sur mesure coûte moins cher, et autre
-            chose. Le code et la base restent lisibles par n’importe quelle
-            équipe de développement&nbsp;: nous chiffrons six jours de
-            transfert, soit 2&nbsp;100&nbsp;€, pour remettre dépôt, accès,
-            documentation d’exploitation et procédure de déploiement. Restent
-            deux charges permanentes que Power Apps porte à votre place&nbsp;:
-            l’hébergement, facturé tous les mois, et les montées de version des
-            bibliothèques, qui ne se reportent pas indéfiniment. Le{" "}
+            Quitter une application sur mesure coûte moins cher, et autre chose.
+            Le code et la base restent lisibles par n’importe quelle équipe de
+            développement&nbsp;: nous chiffrons six jours de transfert, soit
+            2&nbsp;100&nbsp;€, pour remettre dépôt, accès, documentation
+            d’exploitation et procédure de déploiement. Restent deux charges
+            permanentes que Power Apps porte à votre place&nbsp;: l’hébergement,
+            facturé tous les mois, et les montées de version des bibliothèques,
+            qui ne se reportent pas indéfiniment. Le{" "}
             <Link href="/guides/cahier-des-charges-saas">
               cahier des charges SaaS
             </Link>{" "}
@@ -1155,8 +1183,8 @@ Filter(DemandesAchat; Statut = "En attente")`}
           </p>
 
           <p>
-            Si votre équipe ne peut pas réunir ces éléments, ne commandez pas
-            de réécriture. Commencez par l’inventaire et un prototype du cas le
+            Si votre équipe ne peut pas réunir ces éléments, ne commandez pas de
+            réécriture. Commencez par l’inventaire et un prototype du cas le
             plus risqué. Vous pouvez ensuite{" "}
             <TrackedGuideCtaLink
               href="/demarrer-un-projet"
@@ -1191,13 +1219,13 @@ Filter(DemandesAchat; Statut = "En attente")`}
           </div>
 
           <p className="text-sm">
-            <strong>Transparence.</strong> Hagnéré Code développe des
+            <strong>Transparence. </strong>Hagnéré Code développe des
             applications métier sur mesure et perçoit des honoraires si vous
             retenez cette option&nbsp;— l’une des deux que ce guide arbitre.
             Rien ici n’exige de passer par nous&nbsp;: la règle du connecteur,
             les trois seuils, le test de la limite de lignes à 1 et le décompte
-            à cinq ans se refont avec vos propres nombres. Les prix Microsoft
-            et notre grille ont été relevés le 28&nbsp;août 2026 et sont à
+            à cinq ans se refont avec vos propres nombres. Les prix Microsoft et
+            notre grille ont été relevés le 28&nbsp;août 2026 et sont à
             revérifier tous les douze mois. Aucun coût, aucun délai et aucun
             résultat ne sont garantis par cette page&nbsp;: seul un devis signé
             engage.

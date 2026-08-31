@@ -626,7 +626,7 @@ export default function Page() {
           <p>
             Le tableau ci-dessous range les trois réponses sur une même liste de
             sept postes&nbsp;— la réunion de ce que chacune nomme&nbsp;— et
-            laisse écrit <em>non chiffré</em> partout où une société n’a rien
+            laisse écrit <em>non chiffré </em>partout où une société n’a rien
             mis. Les montants sont choisis pour ce guide&nbsp;: ils ne viennent
             d’aucun relevé de marché, et le plus élevé des trois totaux sort de
             la bande que notre propre grille publie. Refaites la colonne avec
@@ -683,19 +683,20 @@ export default function Page() {
           </h3>
           <p>
             Le repère qui suit est le nôtre, relevé sur notre{" "}
-            <Link href="/tarifs">grille publique</Link> le 30&nbsp;août 2026, et
-            non une observation du marché&nbsp;: nous vendons ce type de projet.
-            Elle situe un premier SaaS de trois à cinq écrans à
-            15&nbsp;000&nbsp;€ HT, et un produit standard de dix à quinze écrans
-            entre 30&nbsp;000 et 60&nbsp;000&nbsp;€ HT. Deux réserves. Cette
-            seconde bande est libellée «&nbsp;10–15 écrans + IA&nbsp;», quand le
-            portail de l’exemple ne comporte aucune fonction d’intelligence
-            artificielle&nbsp;: la comparaison ne porte pas sur les mêmes
-            fonctions. Et les montants de l’exemple ont été choisis pour la
-            démonstration&nbsp;: le total C de 129&nbsp;000&nbsp;€ HT vaut plus
-            du double de sa borne haute, et ramené à 85&nbsp;000&nbsp;€ il reste
-            25&nbsp;000&nbsp;€ au-dessus. Ces montants restent des repères
-            publics et indicatifs&nbsp;; seul un devis signé fixe un prix ferme.
+            <Link href="/tarifs">grille publique</Link> le 30{"\u00a0"}août
+            2026, et non une observation du marché{"\u00a0"}: nous vendons ce
+            type de projet. Elle situe un premier SaaS de trois à cinq écrans à
+            15{"\u00a0"}000{"\u00a0"}€ HT, et un produit standard de dix à
+            quinze écrans entre 30{"\u00a0"}000 et 60{"\u00a0"}000{"\u00a0"}€
+            HT. Deux réserves. Cette seconde bande est libellée «{"\u00a0"}10–15
+            écrans + IA{"\u00a0"}», quand le portail de l’exemple ne comporte
+            aucune fonction d’intelligence artificielle{"\u00a0"}: la
+            comparaison ne porte pas sur les mêmes fonctions. Et les montants de
+            l’exemple ont été choisis pour la démonstration{"\u00a0"}: le total
+            C de 129{"\u00a0"}000{"\u00a0"}€ HT vaut plus du double de sa borne
+            haute, et ramené à 85{"\u00a0"}000{"\u00a0"}€ il reste 25{"\u00a0"}
+            000{"\u00a0"}€ au-dessus. Ces montants restent des repères publics
+            et indicatifs{"\u00a0"}; seul un devis signé fixe un prix ferme.
           </p>
 
           <GuidePremiumMemo
@@ -809,7 +810,7 @@ Chiffrer les deux branches séparément.`}
 
           <h3>Les deux exigences qu’un adjectif ne remplace jamais</h3>
           <p>
-            <strong>«&nbsp;Interface accessible&nbsp;»</strong> ne se reçoit
+            <strong>«&nbsp;Interface accessible&nbsp;» </strong>ne se reçoit
             pas. Les règles WCAG&nbsp;2.2, recommandation du W3C datée du
             12&nbsp;décembre 2024, ajoutent neuf critères à la version
             précédente, dont six aux niveaux A et AA, et déclarent obsolète
@@ -819,7 +820,7 @@ Chiffrer les deux branches séparément.`}
             le parcours concerné et la personne qui les contrôle.
           </p>
           <p>
-            <strong>«&nbsp;Application sécurisée&nbsp;»</strong> non plus. Le
+            <strong>«&nbsp;Application sécurisée&nbsp;» </strong>non plus. Le
             référentiel OWASP ASVS, version 5.0.0 publiée le 30&nbsp;mai 2025,
             compte 345&nbsp;exigences réparties en dix-sept chapitres, comptées
             sur le fichier officiel de la version figée. Vous en choisissez
@@ -850,7 +851,7 @@ Chiffrer les deux branches séparément.`}
             sont laissées à l’appréciation de la personne qui code, et trois
             d’entre elles décrivent une situation où le paiement n’a pas abouti
             sans que l’accès se ferme de lui-même&nbsp;: <em>incomplete</em>,{" "}
-            <em>past_due</em> et <em>unpaid</em>.
+            <em>past_due </em>et <em>unpaid</em>.
           </p>
 
           <GuideTable
@@ -892,13 +893,13 @@ Chiffrer les deux branches séparément.`}
           </p>
           <ul>
             <li>
-              <strong>L’ordre n’est pas garanti.</strong> Votre produit doit
+              <strong>L’ordre n’est pas garanti. </strong>Votre produit doit
               rester juste si la confirmation de paiement arrive avant la
               création de l’abonnement. L’exigence&nbsp;: rejouer les deux
               ordres et obtenir le même état final.
             </li>
             <li>
-              <strong>Le même événement peut arriver deux fois.</strong> Il se
+              <strong>Le même événement peut arriver deux fois. </strong>Il se
               reconnaît à l’identifiant de l’objet et au type d’événement.
               L’exigence&nbsp;: le second passage ne change rien et ne crée
               aucun deuxième droit.
@@ -916,7 +917,7 @@ Chiffrer les deux branches séparément.`}
 
           <InfoBox variant="blue" title={"Actif ne veut pas dire payé"}>
             <p>
-              La documentation précise que l’état <em>active</em> ne signifie
+              La documentation précise que l’état <em>active </em>ne signifie
               pas que toutes les factures rattachées à l’abonnement ont été
               réglées. Un abonnement peut redevenir actif en laissant une
               facture ouverte. Une règle d’accès résumée à «&nbsp;actif donc
@@ -999,7 +1000,7 @@ Chiffrer les deux branches séparément.`}
             <ul>
               <li>
                 Le code est poussé sur un dépôt{" "}
-                <strong>que vous possédez</strong> à chaque livraison.
+                <strong>que vous possédez </strong>à chaque livraison.
               </li>
               <li>
                 Les comptes d’hébergement, de paiement et d’envoi d’e-mails sont
@@ -1126,18 +1127,18 @@ Chiffrer les deux branches séparément.`}
           <p>Quatre règles de consultation rendent cette grille exploitable.</p>
           <ol>
             <li>
-              <strong>Une version figée, datée et numérotée.</strong> Toute
+              <strong>Une version figée, datée et numérotée. </strong>Toute
               correction postérieure repart aux trois candidats avec un nouveau
               numéro, faute de quoi vous comparerez des réponses à des documents
               différents.
             </li>
             <li>
-              <strong>Les mêmes données fictives pour tous.</strong> Deux
+              <strong>Les mêmes données fictives pour tous. </strong>Deux
               organisations, six rôles, une centaine de dossiers, qui serviront
               ensuite à recevoir.
             </li>
             <li>
-              <strong>Les questions centralisées.</strong> Une question posée
+              <strong>Les questions centralisées. </strong>Une question posée
               par une société reçoit une réponse envoyée aux trois, le même
               jour.
             </li>
@@ -1174,7 +1175,7 @@ Chiffrer les deux branches séparément.`}
           <p>
             Une décision laissée vide, ou remplie d’un mot d’attente, arrête le
             document. La trame emploie deux mots pour le dire&nbsp;:{" "}
-            <strong>STOP</strong> marque une décision à prendre avant l’envoi,
+            <strong>STOP </strong>marque une décision à prendre avant l’envoi,
             une ligne «&nbsp;à décider&nbsp;» marque une question qui peut
             partir aux candidats telle quelle, à condition qu’ils en chiffrent
             les deux branches. Aucun score ne compense un blocage, et l’outil ne
@@ -1259,7 +1260,7 @@ Chiffrer les deux branches séparément.`}
           </p>
 
           <p className="text-sm">
-            <strong>Transparence.</strong> Hagnéré Code développe des SaaS et
+            <strong>Transparence. </strong>Hagnéré Code développe des SaaS et
             des applications métier sur mesure, et fait partie des sociétés
             qu’un cahier des charges comme celui-ci met en concurrence&nbsp;:
             nous percevons des honoraires si vous nous retenez. Rien ici

@@ -183,7 +183,9 @@ export default function Page() {
         heroTitle="Plan de recette d’une application métier :"
         heroTitleEm="prouver avant"
         heroTitleSuffix="d’accepter"
-        heroDescription={"La recette, c’est le moment où votre équipe rejoue son travail réel dans le logiciel livré, avant de payer le solde. Elle se chiffre avant de s’écrire\u00a0: comptez les cas à partir de vos parcours, de vos règles et de vos échanges, chiffrez les jours que votre équipe doit y passer, puis écrivez des seuils qui disent ce qu’on mesure, sur quoi et pendant combien de temps. Les nombres ci-dessous viennent d’un cas construit pour l’expliquer, dont les volumes sont choisis pour l’exemple\u00a0— jamais d’un dossier client."}
+        heroDescription={
+          "La recette, c’est le moment où votre équipe rejoue son travail réel dans le logiciel livré, avant de payer le solde. Elle se chiffre avant de s’écrire\u00a0: comptez les cas à partir de vos parcours, de vos règles et de vos échanges, chiffrez les jours que votre équipe doit y passer, puis écrivez des seuils qui disent ce qu’on mesure, sur quoi et pendant combien de temps. Les nombres ci-dessous viennent d’un cas construit pour l’expliquer, dont les volumes sont choisis pour l’exemple\u00a0— jamais d’un dossier client."
+        }
         stats={[
           { label: "Cas comptés", value: "56" },
           { label: "Jours d’équipe", value: "6,2" },
@@ -248,7 +250,8 @@ export default function Page() {
         }}
         legalSources={[
           {
-            source: "Légifrance · arrêté du 30\u00a0mars 2021 approuvant le CCAG-TIC",
+            source:
+              "Légifrance · arrêté du 30\u00a0mars 2021 approuvant le CCAG-TIC",
             href: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000043310689",
             description:
               "Cahier des clauses administratives générales des marchés publics de techniques de l’information et de la communication. Article\u00a032\u00a0: vérification d’aptitude puis vérification de service régulier, régularité observée trente jours, indisponibilité cumulée limitée à 2\u00a0% de la durée d’utilisation effective, de 8\u00a0h à 18\u00a0h du lundi au vendredi, jours fériés exclus. Article\u00a033.2.1\u00a0: le délai imparti à l’acheteur pour procéder à la vérification d’aptitude et notifier sa décision est de trente jours, à compter de la notification de l’écrit par lequel le titulaire l’informe que les prestations sont prêtes à être vérifiées ou, à défaut, du procès-verbal de mise en ordre de marche\u00a0; décision positive, ajournement ou rejet, sans admission tacite. Article\u00a033.2.2\u00a0: sept jours pour notifier la décision de vérification de service régulier, et à défaut les prestations sont réputées admises. Corps des articles\u00a032 et\u00a033 de l’annexe rouvert sur Légifrance le 30\u00a0août 2026, aux identifiants JORFARTI000043310746 et JORFARTI000043310747.",
@@ -335,11 +338,13 @@ export default function Page() {
             href: "/guides/cahier-des-charges-saas",
           },
           {
-            label: "MVP SaaS\u00a0: quoi inclure avant un premier client\u00a0?",
+            label:
+              "MVP SaaS\u00a0: quoi inclure avant un premier client\u00a0?",
             href: "/guides/mvp-saas-quoi-inclure",
           },
           {
-            label: "Sécurité d’une application métier\u00a0: les 4 mesures à faire",
+            label:
+              "Sécurité d’une application métier\u00a0: les 4 mesures à faire",
             href: "/guides/securite-application-metier",
           },
         ]}
@@ -365,25 +370,27 @@ export default function Page() {
             résultat attendu de chacune.
           </p>
           <p>
-            <strong>Une recette se chiffre avant de s’écrire.</strong> Les cas
+            <strong>Une recette se chiffre avant de s’écrire. </strong>Les cas
             se comptent à partir de vos parcours, de vos règles, de vos droits
             et de vos échanges avec vos autres logiciels. Les jours que votre
             équipe doit y passer s’en déduisent, écriture, exécution et rejeu
-            compris. Les seuils s’écrivent en dernier. Sur le cas construit
-            de ce guide, dont les volumes sont choisis pour
-            l’exemple&nbsp;: 56&nbsp;cas, 6,2&nbsp;jours et 2&nbsp;170&nbsp;€ de
-            temps interne, sur un projet à 25&nbsp;000&nbsp;€ hors taxes (HT).
+            compris. Les seuils s’écrivent en dernier. Sur le cas construit de
+            ce guide, dont les volumes sont choisis pour l’exemple&nbsp;:
+            56&nbsp;cas, 6,2&nbsp;jours et 2&nbsp;170&nbsp;€ de temps interne,
+            sur un projet à 25&nbsp;000&nbsp;€ hors taxes (HT).
           </p>
           <p>
-            Un taux de réussite ne décide rien&nbsp;:
-            «&nbsp;33&nbsp;cas exécutés, 33&nbsp;réussis&nbsp;» se lit très bien
-            quand 23&nbsp;cas n’ont jamais été joués.
+            Un taux de réussite ne décide rien&nbsp;: «&nbsp;33&nbsp;cas
+            exécutés, 33&nbsp;réussis&nbsp;» se lit très bien quand 23&nbsp;cas
+            n’ont jamais été joués.
           </p>
 
           <GuidePremiumCase
             initial="56"
             eyebrow="Fil rouge du guide · exemple construit"
-            title={"Une application de tournées, 19\u00a0règles écrites, 340\u00a0factures par mois"}
+            title={
+              "Une application de tournées, 19\u00a0règles écrites, 340\u00a0factures par mois"
+            }
           >
             <p>
               <em>
@@ -543,16 +550,16 @@ export default function Page() {
           title={"Combien de jours votre équipe doit-elle y passer\u00a0?"}
         >
           <p>
-            Aucune des valeurs ci-dessous ne sort d’une source publiée&nbsp;:
-            ce sont des hypothèses de travail, posées à découvert pour que vous
+            Aucune des valeurs ci-dessous ne sort d’une source publiée&nbsp;: ce
+            sont des hypothèses de travail, posées à découvert pour que vous
             puissiez les remplacer par les vôtres.{" "}
             <strong>
               Écrire un cas rejouable prend 15&nbsp;minutes une fois la règle
               connue, l’exécuter la première fois 10&nbsp;minutes, le rejouer
               après correction 5&nbsp;minutes.
             </strong>{" "}
-            La journée utile vaut 7&nbsp;heures, et le temps interne
-            350&nbsp;€ le jour chargé.
+            La journée utile vaut 7&nbsp;heures, et le temps interne 350&nbsp;€
+            le jour chargé.
           </p>
           <p>
             Pour les remplacer, chronométrez vos cinq premiers cas, de la
@@ -647,13 +654,13 @@ export default function Page() {
               un projet à 8&nbsp;000&nbsp;€&nbsp;HT, ils coûteraient les mêmes
               2&nbsp;170&nbsp;€ de temps interne, soit
               2&nbsp;170&nbsp;÷&nbsp;8&nbsp;000&nbsp;=&nbsp;27,1&nbsp;% du
-              développement&nbsp;— plus du quart. Ce serait une
-              erreur de lecture&nbsp;: un projet plus petit porte moins de
-              règles, donc moins de cas, donc moins de jours. Refaites le
-              décompte de la section&nbsp;02 sur vos propres règles. Si le total
-              dépasse quatre ou cinq jours d’équipe, écrivez seulement les
-              parcours dont l’échec vous coûterait de l’argent, et gardez un
-              mois d’usage réel avant de régler le solde. Le{" "}
+              développement&nbsp;— plus du quart. Ce serait une erreur de
+              lecture&nbsp;: un projet plus petit porte moins de règles, donc
+              moins de cas, donc moins de jours. Refaites le décompte de la
+              section&nbsp;02 sur vos propres règles. Si le total dépasse quatre
+              ou cinq jours d’équipe, écrivez seulement les parcours dont
+              l’échec vous coûterait de l’argent, et gardez un mois d’usage réel
+              avant de régler le solde. Le{" "}
               <Link href="/guides/mvp-saas-quoi-inclure">
                 périmètre d’un premier lot
               </Link>{" "}
@@ -667,7 +674,9 @@ export default function Page() {
           number="04"
           label="Seuils"
           readingTime="4 min"
-          title={"Qu’est-ce qu’un critère d’acceptation qu’on peut opposer\u00a0?"}
+          title={
+            "Qu’est-ce qu’un critère d’acceptation qu’on peut opposer\u00a0?"
+          }
         >
           <p>
             Un critère opposable porte quatre choses&nbsp;: un seuil chiffré,
@@ -678,8 +687,8 @@ export default function Page() {
           </p>
           <p>
             Un modèle public et gratuit existe. Le cahier des clauses
-            administratives générales des marchés publics de techniques
-            de l’information et de la communication, approuvé par l’arrêté du
+            administratives générales des marchés publics de techniques de
+            l’information et de la communication, approuvé par l’arrêté du
             30&nbsp;mars 2021, sépare la vérification en deux temps à son
             article&nbsp;32&nbsp;: la vérification d’aptitude, qui contrôle que
             le logiciel livré peut remplir les fonctions demandées, puis la
@@ -688,13 +697,12 @@ export default function Page() {
 
           <h3>Le seuil de 2&nbsp;%, et ce qu’il fait vraiment</h3>
           <p>
-            La régularité s’observe pendant <strong>trente jours</strong> à
-            partir de la décision positive de
-            vérification d’aptitude, et le service est réputé régulier si
-            l’indisponibilité cumulée sur le mois ne dépasse pas{" "}
-            <strong>2&nbsp;%</strong> de la durée d’utilisation effective, qui
-            s’étend de 8&nbsp;h à 18&nbsp;h, du lundi au vendredi, jours fériés
-            exclus.
+            La régularité s’observe pendant <strong>trente jours </strong>à
+            partir de la décision positive de vérification d’aptitude, et le
+            service est réputé régulier si l’indisponibilité cumulée sur le mois
+            ne dépasse pas <strong>2&nbsp;% </strong>de la durée d’utilisation
+            effective, qui s’étend de 8&nbsp;h à 18&nbsp;h, du lundi au
+            vendredi, jours fériés exclus.
           </p>
           <p>
             Le calcul part de la journée d’ouverture&nbsp;: 10&nbsp;heures, soit
@@ -703,14 +711,14 @@ export default function Page() {
             de la fenêtre, et ce nombre bouge&nbsp;: trente jours consécutifs en
             comptent 22 s’ils commencent un lundi, un mardi, un mercredi ou un
             jeudi, 21 un vendredi ou un dimanche, 20 un samedi&nbsp;— moins les
-            jours fériés. Au maximum, donc&nbsp;: 22&nbsp;×&nbsp;10&nbsp;=&nbsp;220&nbsp;heures,
-            soit 13&nbsp;200&nbsp;minutes, dont 2&nbsp;% font
-            264&nbsp;minutes&nbsp;— 4&nbsp;h&nbsp;24. Du 1er au
-            30&nbsp;mai 2027, fenêtre ouverte un samedi, il n’en reste que
-            20&nbsp;; l’Ascension le 6 et le lundi de Pentecôte le 17 en
-            retirent deux, soit 18&nbsp;jours ouvrés et 3&nbsp;h&nbsp;36.
-            Écrivez la règle des
-            12&nbsp;minutes par jour ouvré plutôt que ce total figé.
+            jours fériés. Au maximum, donc&nbsp;:
+            22&nbsp;×&nbsp;10&nbsp;=&nbsp;220&nbsp;heures, soit
+            13&nbsp;200&nbsp;minutes, dont 2&nbsp;% font 264&nbsp;minutes&nbsp;—
+            4&nbsp;h&nbsp;24. Du 1er au 30&nbsp;mai 2027, fenêtre ouverte un
+            samedi, il n’en reste que 20&nbsp;; l’Ascension le 6 et le lundi de
+            Pentecôte le 17 en retirent deux, soit 18&nbsp;jours ouvrés et
+            3&nbsp;h&nbsp;36. Écrivez la règle des 12&nbsp;minutes par jour
+            ouvré plutôt que ce total figé.
           </p>
           <p>
             Une sonde qui appelle une page toutes les 60&nbsp;secondes produit
@@ -723,10 +731,9 @@ export default function Page() {
           <p>
             Le CCAG-TIC parle d’indisponibilités{" "}
             <em>imputables à chaque élément de matériel</em>. Sur une
-            application hébergée, aucun élément de matériel n’est à
-            vous&nbsp;: la clause doit nommer ce qui est indisponible&nbsp;—
-            l’écran de saisie, le traitement de nuit&nbsp;— et qui produit la
-            mesure.
+            application hébergée, aucun élément de matériel n’est à vous&nbsp;:
+            la clause doit nommer ce qui est indisponible&nbsp;— l’écran de
+            saisie, le traitement de nuit&nbsp;— et qui produit la mesure.
           </p>
 
           <GuideTable
@@ -765,12 +772,12 @@ export default function Page() {
             L’obligation française d’accessibilité numérique vient de
             l’article&nbsp;47 de la loi du 11&nbsp;février 2005&nbsp;; le décret
             du 24&nbsp;juillet 2019 n’en fixe que le seuil. Elle vise quatre
-            catégories&nbsp;: les personnes morales de droit public&nbsp;; celles
-            de droit privé délégataires d’une mission de service public ou
-            créées pour un besoin d’intérêt général autre qu’industriel ou
-            commercial&nbsp;; celles que les précédentes constituent pour le même
-            objet&nbsp;; et les entreprises dont le chiffre d’affaires moyen
-            annuel en France des trois derniers exercices clos dépasse
+            catégories&nbsp;: les personnes morales de droit public&nbsp;;
+            celles de droit privé délégataires d’une mission de service public
+            ou créées pour un besoin d’intérêt général autre qu’industriel ou
+            commercial&nbsp;; celles que les précédentes constituent pour le
+            même objet&nbsp;; et les entreprises dont le chiffre d’affaires
+            moyen annuel en France des trois derniers exercices clos dépasse
             250&nbsp;millions d’euros. Le critère est un chiffre d’affaires,
             jamais un effectif.
           </p>
@@ -815,11 +822,7 @@ export default function Page() {
 
           <GuideTable
             caption="Six familles de données et ce que chacune met en défaut"
-            headers={[
-              "Famille",
-              "La question posée",
-              "Sur le cas construit",
-            ]}
+            headers={["Famille", "La question posée", "Sur le cas construit"]}
             rows={[
               [
                 "Courante",
@@ -863,14 +866,15 @@ export default function Page() {
             secondes.
           </p>
 
-          <h3>Ce que la CNIL demande, et ce que «&nbsp;anonymiser&nbsp;» veut dire</h3>
+          <h3>
+            Ce que la CNIL demande, et ce que «&nbsp;anonymiser&nbsp;» veut dire
+          </h3>
           <p>
             Les deux fiches de la CNIL convergent&nbsp;: environnements de
             développement, de test et de production distincts, jeu de données
             fictif ou anonymisé, et anonymisation des données personnelles
-            contenues dans les configurations importées. Cette contrainte
-            décide de la forme du jeu d’essai, donc du planning de la
-            section&nbsp;03.
+            contenues dans les configurations importées. Cette contrainte décide
+            de la forme du jeu d’essai, donc du planning de la section&nbsp;03.
           </p>
           <p>
             Anonymiser ne consiste pas à remplacer les noms par
@@ -932,12 +936,11 @@ export default function Page() {
             trente jours, lui, ne suit pas la vérification d’aptitude&nbsp;: il
             la couvre, court à compter de l’écrit du titulaire annonçant les
             prestations prêtes à être vérifiées ou du procès-verbal de mise en
-            ordre de marche, et n’emporte aucune admission
-            tacite&nbsp;— décision positive, ajournement ou rejet. Un contrat
-            privé ne reprend cette
-            mécanique que s’il l’écrit&nbsp;; à défaut, seuls vos documents
-            signés disent ce que produit le silence. Ce qui est perdu est
-            concret&nbsp;: la tranche de 7&nbsp;500&nbsp;€ cesse d’être un
+            ordre de marche, et n’emporte aucune admission tacite&nbsp;—
+            décision positive, ajournement ou rejet. Un contrat privé ne reprend
+            cette mécanique que s’il l’écrit&nbsp;; à défaut, seuls vos
+            documents signés disent ce que produit le silence. Ce qui est perdu
+            est concret&nbsp;: la tranche de 7&nbsp;500&nbsp;€ cesse d’être un
             levier tant qu’aucune décision n’est écrite.
           </p>
 
@@ -951,12 +954,12 @@ export default function Page() {
             rejeu. Le reste va au développeur pour le jeu de données, à la
             relecture croisée et à la réunion de décision. Elle a obtenu deux
             jours, parce que la clôture comptable du mois est tombée la même
-            semaine. Deux jours de 7&nbsp;heures font 840&nbsp;minutes, et un cas
-            écrit puis exécuté en coûte 25&nbsp;: elle joue 33&nbsp;cas, tous
-            conformes, et le compte rendu annonce «&nbsp;33&nbsp;cas exécutés,
-            33&nbsp;réussis&nbsp;». Le chiffre est exact et ne veut rien
-            dire&nbsp;: parmi les 23&nbsp;cas restants figurent quatre des six
-            parcours critiques et les neuf cas de flux. L’export comptable
+            semaine. Deux jours de 7&nbsp;heures font 840&nbsp;minutes, et un
+            cas écrit puis exécuté en coûte 25&nbsp;: elle joue 33&nbsp;cas,
+            tous conformes, et le compte rendu annonce «&nbsp;33&nbsp;cas
+            exécutés, 33&nbsp;réussis&nbsp;». Le chiffre est exact et ne veut
+            rien dire&nbsp;: parmi les 23&nbsp;cas restants figurent quatre des
+            six parcours critiques et les neuf cas de flux. L’export comptable
             rejette 62&nbsp;écritures à la première clôture&nbsp;; la
             contrôleuse de gestion et le comptable y passent trois quarts de
             journée chacun, soit 1,5&nbsp;jour-personne et 525&nbsp;€, et la
@@ -1012,13 +1015,13 @@ export default function Page() {
             73&nbsp;%. Ce 73&nbsp;% date du jour où ces sept règles sont
             apparues&nbsp;; ce n’est pas le verdict de la campagne. Chaque règle
             découverte rejoint le cahier des charges, puis un cas, avant la
-            décision&nbsp;: 7&nbsp;×&nbsp;25&nbsp;minutes, soit
-            2&nbsp;h&nbsp;55 à ajouter au budget de la section&nbsp;03.
+            décision&nbsp;: 7&nbsp;×&nbsp;25&nbsp;minutes, soit 2&nbsp;h&nbsp;55
+            à ajouter au budget de la section&nbsp;03.
           </p>
           <p>
             La seconde mesure demande d’attendre 60&nbsp;jours d’usage. Huit
-            anomalies remontées en production contre 37&nbsp;trouvées en
-            recette donnent 17,8&nbsp;%&nbsp;: quatre anomalies sur cinq ont été
+            anomalies remontées en production contre 37&nbsp;trouvées en recette
+            donnent 17,8&nbsp;%&nbsp;: quatre anomalies sur cinq ont été
             attrapées avant. Ce nombre ne dit rien de leur gravité&nbsp;: lisez
             les deux séries séparément. Il n’existe pas de seuil de référence
             publiable&nbsp;: la seule comparaison honnête est celle de votre
@@ -1027,10 +1030,10 @@ export default function Page() {
           <h3>Relire un cas avant de le compter dans la campagne</h3>
           <p>
             L’atelier ci-dessous ne calcule aucune moyenne et ne stocke
-            rien&nbsp;: huit points de relecture, dix compteurs de campagne, sept
-            issues classées dans un ordre fixe. Un blocage de préparation passe
-            devant une information manquante, qui passe devant un cas critique
-            non prouvé. Vous n’y saisissez aucun contenu métier.
+            rien&nbsp;: huit points de relecture, dix compteurs de campagne,
+            sept issues classées dans un ordre fixe. Un blocage de préparation
+            passe devant une information manquante, qui passe devant un cas
+            critique non prouvé. Vous n’y saisissez aucun contenu métier.
           </p>
 
           <AcceptanceReadinessTool />
@@ -1041,26 +1044,27 @@ export default function Page() {
           number="08"
           label="Clôture"
           readingTime="3 min"
-          title={"Qui prononce l’acceptation, et que se passe-t-il si personne ne le fait\u00a0?"}
+          title={
+            "Qui prononce l’acceptation, et que se passe-t-il si personne ne le fait\u00a0?"
+          }
         >
           <p>
             La personne qui peut accepter, refuser ou accepter sous réserve se
             nomme avant la campagne. Sur le cas construit, c’est Karim,
             directeur d’exploitation. Le testeur constate&nbsp;; le décideur
-            tranche. Cette séparation
-            empêche une testeuse fatiguée de valider à 18&nbsp;heures un dossier
-            qui engage 7&nbsp;500&nbsp;€.
+            tranche. Cette séparation empêche une testeuse fatiguée de valider à
+            18&nbsp;heures un dossier qui engage 7&nbsp;500&nbsp;€.
           </p>
           <p>
-            Tenez quatre statuts. <strong>Réussi</strong> pour un cas joué et
-            conforme. <strong>Échoué</strong> pour un cas joué et non conforme.{" "}
-            <strong>Bloqué</strong> pour un cas qu’on n’a pas pu jouer.{" "}
-            <strong>Non exécuté</strong> pour un cas qui n’a pas été tenté. Les
+            Tenez quatre statuts. <strong>Réussi </strong>pour un cas joué et
+            conforme. <strong>Échoué </strong>pour un cas joué et non conforme.{" "}
+            <strong>Bloqué </strong>pour un cas qu’on n’a pas pu jouer.{" "}
+            <strong>Non exécuté </strong>pour un cas qui n’a pas été tenté. Les
             deux derniers se confondent facilement dans un compte rendu, et ce
             sont eux qui ont produit le troisième incident. Le syllabus de
-            l’ISTQB distingue de la même façon la
-            gravité d’une anomalie, qui décrit son effet, et sa priorité, qui
-            décrit l’ordre de traitement retenu&nbsp;: gardez les deux champs.
+            l’ISTQB distingue de la même façon la gravité d’une anomalie, qui
+            décrit son effet, et sa priorité, qui décrit l’ordre de traitement
+            retenu&nbsp;: gardez les deux champs.
           </p>
 
           <FormulaBox>
@@ -1082,9 +1086,9 @@ export default function Page() {
           <p>
             Ce relevé se juge à sa relisibilité dans six mois, quand une facture
             fausse remontera. ISO/IEC/IEEE 29119-3:2021 propose des modèles de
-            documentation de test, ISO/IEC 25010:2023 aide à ouvrir la liste
-            des critères au-delà des seules fonctions&nbsp;; ni l’une ni l’autre
-            ne fixe de seuil à la place de votre contrat.
+            documentation de test, ISO/IEC 25010:2023 aide à ouvrir la liste des
+            critères au-delà des seules fonctions&nbsp;; ni l’une ni l’autre ne
+            fixe de seuil à la place de votre contrat.
           </p>
 
           <h3>Ce qui change le lendemain de l’acceptation</h3>
@@ -1096,14 +1100,14 @@ export default function Page() {
               contrat de maintenance
             </Link>{" "}
             avec son délai et son coût. Réglez ce point par écrit avant la
-            décision. Vos 56&nbsp;cas, eux, deviennent un actif&nbsp;: la version
-            suivante se vérifie en 4&nbsp;h&nbsp;40 de rejeu au lieu de
+            décision. Vos 56&nbsp;cas, eux, deviennent un actif&nbsp;: la
+            version suivante se vérifie en 4&nbsp;h&nbsp;40 de rejeu au lieu de
             26&nbsp;h&nbsp;10, à condition de les avoir rangés dans un endroit
             partagé.
           </p>
           <p>
-            Deux vérifications restent en dehors de cette campagne&nbsp;: ce
-            que chaque rôle ne doit pas pouvoir faire, et la restauration d’une
+            Deux vérifications restent en dehors de cette campagne&nbsp;: ce que
+            chaque rôle ne doit pas pouvoir faire, et la restauration d’une
             sauvegarde réellement testée. Les{" "}
             <Link href="/guides/securite-application-metier">
               contrôles de sécurité d’une application métier
@@ -1125,14 +1129,14 @@ export default function Page() {
           >
             <p>
               Les délais cités viennent du CCAG-TIC, qui ne s’applique qu’aux
-              marchés qui s’y réfèrent. Pour un contrat privé, écrivez
-              vous-même le délai de décision et l’effet du silence, puis faites
-              relire la clause avant de la signer.
+              marchés qui s’y réfèrent. Pour un contrat privé, écrivez vous-même
+              le délai de décision et l’effet du silence, puis faites relire la
+              clause avant de la signer.
             </p>
           </InfoBox>
 
           <p className="text-sm">
-            <strong>Transparence.</strong> Hagnéré Code développe des
+            <strong>Transparence. </strong>Hagnéré Code développe des
             applications métier sur mesure et perçoit des honoraires si vous
             nous confiez un projet&nbsp;— y compris celui que cette page vous
             apprend à vérifier. Rien ici n’exige de passer par nous&nbsp;: le
@@ -1141,10 +1145,9 @@ export default function Page() {
             03 conclut qu’en dessous d’un certain budget cette campagne est une
             erreur. Les sources citées ont été rouvertes une à une le
             30&nbsp;août 2026 et portent chacune sa date&nbsp;; deux n’ont pas
-            répondu et le disent. Elles sont à revérifier tous les douze
-            mois. Aucun délai, aucun coût et aucun
-            résultat ne sont garantis par cette page&nbsp;: seul un devis signé
-            engage.
+            répondu et le disent. Elles sont à revérifier tous les douze mois.
+            Aucun délai, aucun coût et aucun résultat ne sont garantis par cette
+            page&nbsp;: seul un devis signé engage.
           </p>
         </GuidePremiumSection>
       </GuidePremiumLayout>

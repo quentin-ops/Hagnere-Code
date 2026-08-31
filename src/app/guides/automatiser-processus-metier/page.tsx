@@ -195,7 +195,9 @@ export default function Page() {
         heroTitle="Quel processus métier"
         heroTitleEm="automatiser"
         heroTitleSuffix={"en premier\u00a0?"}
-        heroDescription={"Le plus gros gisement d’heures peut être le plus mauvais endroit où commencer. Ce guide le montre sur un exemple construit\u00a0— volumes, durées, effectif et facture moyenne choisis pour la démonstration, rien de relevé chez un client\u00a0: sur quatre processus, celui qui pèse 32\u00a0heures par mois est à écarter, et celui qui n’en pèse que 12 est le seul dont on saura prouver le résultat. Son décompte sort à −546\u00a0€ sur douze mois, et ne repasse au-dessus de zéro qu’au bout de 21,3\u00a0mois."}
+        heroDescription={
+          "Le plus gros gisement d’heures peut être le plus mauvais endroit où commencer. Ce guide le montre sur un exemple construit\u00a0— volumes, durées, effectif et facture moyenne choisis pour la démonstration, rien de relevé chez un client\u00a0: sur quatre processus, celui qui pèse 32\u00a0heures par mois est à écarter, et celui qui n’en pèse que 12 est le seul dont on saura prouver le résultat. Son décompte sort à −546\u00a0€ sur douze mois, et ne repasse au-dessus de zéro qu’au bout de 21,3\u00a0mois."
+        }
         stats={[
           { label: "Exemple construit · processus", value: "4" },
           { label: "Coût horaire retenu (INSEE)", value: "44,70\u00a0€" },
@@ -228,7 +230,8 @@ export default function Page() {
         mobileCtaLabel="Faire relire mes mesures"
         sidebarContextCta={{
           eyebrow: "Outils internes sur mesure",
-          title: "Vous hésitez entre un flux monté en interne et un projet\u00a0?",
+          title:
+            "Vous hésitez entre un flux monté en interne et un projet\u00a0?",
           description:
             "Décrivez le déclencheur, le volume mensuel, les logiciels concernés et trois dossiers qui sortent de l’ordinaire, sans donnée personnelle.",
           benefits: [
@@ -306,7 +309,8 @@ export default function Page() {
               "Édition 2024\u00a0: tests avec des données fictives ou anonymisées, habilitations, journalisation, sauvegardes testées et continuité. Guide horizontal, à adapter au risque réel du traitement.",
           },
           {
-            source: "CNIL · analyse d’impact relative à la protection des données",
+            source:
+              "CNIL · analyse d’impact relative à la protection des données",
             href: "https://www.cnil.fr/fr/ce-quil-faut-savoir-sur-lanalyse-dimpact-relative-la-protection-des-donnees-aipd",
             description:
               "Une analyse d’impact est requise lorsqu’un traitement est susceptible d’engendrer un risque élevé pour les droits et libertés des personnes\u00a0; le besoin s’apprécie avant la mise en œuvre. Le recours à une automatisation ne permet ni de conclure, ni d’écarter.",
@@ -339,7 +343,8 @@ export default function Page() {
         }}
         relatedGuides={[
           {
-            label: "Besoin d’un logiciel métier\u00a0: le diagnostic en 6 réponses",
+            label:
+              "Besoin d’un logiciel métier\u00a0: le diagnostic en 6 réponses",
             href: "/guides/signes-besoin-logiciel-metier",
           },
           {
@@ -421,7 +426,9 @@ export default function Page() {
           <GuidePremiumCase
             initial="90"
             eyebrow="Fil rouge du guide · exemple construit"
-            title={"Quatre processus, 90\u00a0heures par mois, un seul qu’on saura prouver"}
+            title={
+              "Quatre processus, 90\u00a0heures par mois, un seul qu’on saura prouver"
+            }
           >
             <p>
               <em>
@@ -461,7 +468,6 @@ export default function Page() {
               validation identifiable avant la sortie.
             </figcaption>
           </figure>
-
         </GuidePremiumSection>
 
         <GuidePremiumSection
@@ -469,7 +475,9 @@ export default function Page() {
           number="02"
           label="Mesure"
           readingTime="2 min"
-          title={"Comment mesurer un processus en une semaine, sans consultant\u00a0?"}
+          title={
+            "Comment mesurer un processus en une semaine, sans consultant\u00a0?"
+          }
         >
           <p>
             Le volume réel d’un processus se lit dans un export, pas dans une
@@ -483,29 +491,28 @@ export default function Page() {
             comptable, une ligne par facture avec sa date d’échéance et sa date
             de règlement&nbsp;; l’export CSV de la boîte partagée&nbsp;; la
             table des commandes de l’ERP. Un tableau croisé qui compte les
-            lignes par mois donne la courbe. Prenez douze mois
-            glissants&nbsp;: une mesure faite en juillet dimensionne un flux qui
-            cassera en octobre.
+            lignes par mois donne la courbe. Prenez douze mois glissants&nbsp;:
+            une mesure faite en juillet dimensionne un flux qui cassera en
+            octobre.
           </p>
 
           <h3>Chronométrer vingt dossiers consécutifs</h3>
           <p>
-            Vingt dossiers consécutifs, deux colonnes tenues par la personne
-            qui fait le travail&nbsp;: heure de début, heure de fin. Ni minuteur
+            Vingt dossiers consécutifs, deux colonnes tenues par la personne qui
+            fait le travail&nbsp;: heure de début, heure de fin. Ni minuteur
             imposé, ni observateur derrière l’épaule. Trois valeurs en
             sortent&nbsp;: la moyenne, utile pour additionner. La médiane décrit
             le cas courant. Le neuvième décile décrit le dossier anormal, celui
             qui déclenche le coup de téléphone.
           </p>
           <p>
-            Dix dossiers suffisent à le montrer. Huit passent en
-            3&nbsp;minutes, deux s’enlisent 30&nbsp;minutes&nbsp;:
-            84&nbsp;minutes au total, 8,4&nbsp;minutes de moyenne,
-            3&nbsp;minutes de médiane. Automatisez parfaitement les huit cas
-            simples et vous retirez 24&nbsp;minutes sur 84, soit
-            28,6&nbsp;%. «&nbsp;80&nbsp;% des dossiers&nbsp;» ne veut pas dire
-            «&nbsp;80&nbsp;% du temps&nbsp;»&nbsp;: seule la seconde formulation
-            se convertit en heures.
+            Dix dossiers suffisent à le montrer. Huit passent en 3&nbsp;minutes,
+            deux s’enlisent 30&nbsp;minutes&nbsp;: 84&nbsp;minutes au total,
+            8,4&nbsp;minutes de moyenne, 3&nbsp;minutes de médiane. Automatisez
+            parfaitement les huit cas simples et vous retirez 24&nbsp;minutes
+            sur 84, soit 28,6&nbsp;%. «&nbsp;80&nbsp;% des dossiers&nbsp;» ne
+            veut pas dire «&nbsp;80&nbsp;% du temps&nbsp;»&nbsp;: seule la
+            seconde formulation se convertit en heures.
           </p>
 
           <GuideTable
@@ -565,7 +572,9 @@ export default function Page() {
           number="03"
           label="Sélection"
           readingTime="2 min"
-          title={"Quelles conditions éliminent un candidat avant tout calcul\u00a0?"}
+          title={
+            "Quelles conditions éliminent un candidat avant tout calcul\u00a0?"
+          }
         >
           <p>
             Une grille de notation additionne gain, fréquence et complexité, et
@@ -575,7 +584,9 @@ export default function Page() {
           </p>
 
           <GuideTable
-            caption={"Cinq questions qui ne se compensent pas\u00a0: une seule réponse négative suffit à écarter"}
+            caption={
+              "Cinq questions qui ne se compensent pas\u00a0: une seule réponse négative suffit à écarter"
+            }
             headers={[
               "La question",
               "Le test qui y répond",
@@ -628,10 +639,10 @@ export default function Page() {
             title="Écarter un candidat ne veut pas dire ne rien faire"
           >
             <p>
-              Sur les devis, le logiciel peut préparer le document, chercher
-              les prix et signaler que la remise dépasse le seuil. Il n’accorde
-              pas la remise&nbsp;: la frontière passe entre préparer une
-              décision et la prendre.
+              Sur les devis, le logiciel peut préparer le document, chercher les
+              prix et signaler que la remise dépasse le seuil. Il n’accorde pas
+              la remise&nbsp;: la frontière passe entre préparer une décision et
+              la prendre.
             </p>
           </InfoBox>
 
@@ -641,11 +652,11 @@ export default function Page() {
           >
             <ul>
               <li>
-                <strong>Supprimer l’étape.</strong> Une validation que personne
+                <strong>Supprimer l’étape. </strong>Une validation que personne
                 ne lit, une double saisie née d’un ancien logiciel.
               </li>
               <li>
-                <strong>Activer une fonction déjà payée.</strong> Le module de
+                <strong>Activer une fonction déjà payée. </strong>Le module de
                 relance de votre logiciel comptable existe peut-être déjà.
               </li>
               <li>
@@ -653,7 +664,7 @@ export default function Page() {
                 Moins de pièces à surveiller qu’un flux, quand elle existe.
               </li>
               <li>
-                <strong>Monter un flux sans code.</strong> Le bon choix pour un
+                <strong>Monter un flux sans code. </strong>Le bon choix pour un
                 premier essai&nbsp;: il se démonte sans projet.
               </li>
               <li>
@@ -661,11 +672,11 @@ export default function Page() {
                 Quand aucune interface n’existe, avec son coût de retest.
               </li>
               <li>
-                <strong>Développer.</strong> Quand plusieurs équipes, plusieurs
+                <strong>Développer. </strong>Quand plusieurs équipes, plusieurs
                 règles et plusieurs logiciels sont en jeu durablement.
               </li>
               <li>
-                <strong>Garder la décision humaine.</strong> Une réponse
+                <strong>Garder la décision humaine. </strong>Une réponse
                 complète, pas un échec.
               </li>
             </ul>
@@ -735,9 +746,9 @@ export default function Page() {
             actions à l’intérieur consomme 1&nbsp;280&nbsp;requêtes pour ces
             seules actions&nbsp;; quatre passages par jour font
             5&nbsp;120&nbsp;requêtes, et les nouvelles tentatives d’un
-            connecteur en défaut finissent le quota. Une boucle écrite ainsi
-            est d’abord un défaut à corriger&nbsp;: la filtrer sur les commandes
-            du jour ramène le compteur à quelques dizaines de requêtes. Si le
+            connecteur en défaut finissent le quota. Une boucle écrite ainsi est
+            d’abord un défaut à corriger&nbsp;: la filtrer sur les commandes du
+            jour ramène le compteur à quelques dizaines de requêtes. Si le
             volume est réellement là, il faut une licence Power Automate
             Premium, qui monte à 40&nbsp;000&nbsp;requêtes par utilisateur et
             par jour, une licence Processus à 250&nbsp;000&nbsp;requêtes par
@@ -811,9 +822,8 @@ export default function Page() {
             moyenne sur douze mois, 50&nbsp;% des heures libérées confiées à un
             travail identifié, quatre jours de sept heures pour construire le
             flux, deux heures de suivi par mois. Contestez-les une par une.
-            L’adoption se saisit en moyenne sur toute la période&nbsp;: en
-            cible de fin, elle gonfle le résultat sans que rien ne le
-            signale.
+            L’adoption se saisit en moyenne sur toute la période&nbsp;: en cible
+            de fin, elle gonfle le résultat sans que rien ne le signale.
           </p>
           <p>
             Cette liste couvre le décompte à douze mois. La section&nbsp;06 en
@@ -822,7 +832,9 @@ export default function Page() {
           </p>
 
           <GuideTable
-            caption={"Le décompte du flux de relance sur douze mois, au coût horaire de 44,70\u00a0€"}
+            caption={
+              "Le décompte du flux de relance sur douze mois, au coût horaire de 44,70\u00a0€"
+            }
             headers={["Poste", "Calcul", "Heures", "Euros"]}
             rows={[
               [
@@ -963,20 +975,20 @@ export default function Page() {
             l’exemple. Seul le retard de paiement moyen est publié.
           </p>
           <p>
-            Le rapport 2024 de l’Observatoire des délais de paiement, publié
-            par la Banque de France en juillet&nbsp;2025, mesure un retard de
+            Le rapport 2024 de l’Observatoire des délais de paiement, publié par
+            la Banque de France en juillet&nbsp;2025, mesure un retard de
             paiement moyen de 13,6&nbsp;jours au quatrième trimestre&nbsp;2024
             en France, contre 13,4&nbsp;jours en moyenne européenne, en hausse
             d’environ un jour sur un an. Une relance partie le jour de
             l’échéance agit exactement sur ce retard.
           </p>
           <p>
-            Trois lignes suffisent. Les 90&nbsp;factures relancées
-            chaque mois pèsent 1&nbsp;850&nbsp;€ TTC en moyenne, soit
-            166&nbsp;500&nbsp;€ par mois et 1&nbsp;998&nbsp;000&nbsp;€ sur
-            l’année. Divisé par 365, chaque jour de décalage immobilise
-            5&nbsp;474&nbsp;€. Gagner quatre jours sur le retard moyen libère
-            donc <strong>21&nbsp;896&nbsp;€</strong> de trésorerie, une fois.
+            Trois lignes suffisent. Les 90&nbsp;factures relancées chaque mois
+            pèsent 1&nbsp;850&nbsp;€ TTC en moyenne, soit 166&nbsp;500&nbsp;€
+            par mois et 1&nbsp;998&nbsp;000&nbsp;€ sur l’année. Divisé par 365,
+            chaque jour de décalage immobilise 5&nbsp;474&nbsp;€. Gagner quatre
+            jours sur le retard moyen libère donc{" "}
+            <strong>21&nbsp;896&nbsp;€ </strong>de trésorerie, une fois.
           </p>
           <p>
             Ce montant n’est pas un profit&nbsp;: c’est un besoin de financement
@@ -1059,12 +1071,11 @@ export default function Page() {
             achèvent les 6&nbsp;000 de la licence. Le flux de relance, exécuté
             ensuite, n’est plus servi, et le quota ne se reporte pas au
             lendemain. Trois relances&nbsp;— le volume d’une journée&nbsp;—
-            partent avec vingt-quatre heures de retard, soit
-            5&nbsp;550&nbsp;€ décalés d’un jour. Chiffrez ce décalage au lieu de
-            l’invoquer&nbsp;: 5&nbsp;550 × 6&nbsp;% ÷ 365 vaut{" "}
-            <strong>0,91&nbsp;€</strong>. Le coût réel, c’est l’heure passée à
-            comprendre&nbsp;— 44,70&nbsp;€&nbsp;— et le fait que rien n’a
-            planté.
+            partent avec vingt-quatre heures de retard, soit 5&nbsp;550&nbsp;€
+            décalés d’un jour. Chiffrez ce décalage au lieu de l’invoquer&nbsp;:
+            5&nbsp;550 × 6&nbsp;% ÷ 365 vaut <strong>0,91&nbsp;€</strong>. Le
+            coût réel, c’est l’heure passée à comprendre&nbsp;—
+            44,70&nbsp;€&nbsp;— et le fait que rien n’a planté.
           </p>
           <p>
             Il décrit le régime officiel&nbsp;: tant que dure la période de
@@ -1084,12 +1095,12 @@ export default function Page() {
             documentation précise qu’elles sont alors recomptées. Vingt-trois
             clients reçoivent une seconde relance pour une facture réglée la
             veille. Deux heures du comptable, soit 89,40&nbsp;€. La campagne est
-            ensuite suspendue quinze jours par prudence&nbsp;:
-            45&nbsp;relances s’accumulent, soit 83&nbsp;250&nbsp;€, et repartent
-            à la reprise avec huit jours de retard en moyenne, ce qui vaut
-            109,48&nbsp;€. Total mesurable&nbsp;:{" "}
-            <strong>198,88&nbsp;€</strong>. Ce qui ne se mesure pas, c’est
-            l’appel du client qui demande s’il doit payer deux fois.
+            ensuite suspendue quinze jours par prudence&nbsp;: 45&nbsp;relances
+            s’accumulent, soit 83&nbsp;250&nbsp;€, et repartent à la reprise
+            avec huit jours de retard en moyenne, ce qui vaut 109,48&nbsp;€.
+            Total mesurable&nbsp;: <strong>198,88&nbsp;€</strong>. Ce qui ne se
+            mesure pas, c’est l’appel du client qui demande s’il doit payer deux
+            fois.
           </p>
 
           <h3>
@@ -1103,11 +1114,10 @@ export default function Page() {
             orphelin qui «&nbsp;peut échouer&nbsp;» si ses connexions tiennent
             au compte parti, et demande de lui assigner un
             co-propriétaire&nbsp;— un échec se voit. La suite est une hypothèse,
-            et c’est elle qui coûte cher.
-            Nadia change de poste, le flux ne s’exécute plus du tout, donc rien
-            n’échoue&nbsp;— et la surveillance ne regardait que les exécutions
-            en erreur. Seize jours passent avant qu’un client s’étonne&nbsp;:
-            48&nbsp;relances non parties, soit
+            et c’est elle qui coûte cher. Nadia change de poste, le flux ne
+            s’exécute plus du tout, donc rien n’échoue&nbsp;— et la surveillance
+            ne regardait que les exécutions en erreur. Seize jours passent avant
+            qu’un client s’étonne&nbsp;: 48&nbsp;relances non parties, soit
             88&nbsp;800&nbsp;€ qui repartent ensemble avec 8,5&nbsp;jours de
             retard en moyenne, ce qui vaut 124,08&nbsp;€ de financement. Six
             heures pour republier le flux sous un compte de service, soit
@@ -1141,27 +1151,27 @@ export default function Page() {
           >
             <ul>
               <li>
-                <strong>Le même dossier reçu deux fois.</strong> La seconde
+                <strong>Le même dossier reçu deux fois. </strong>La seconde
                 réception ne crée pas de doublon, et la trace le montre.
               </li>
               <li>
-                <strong>Un champ obligatoire absent.</strong> Le dossier attend
+                <strong>Un champ obligatoire absent. </strong>Le dossier attend
                 dans un état visible, avec un message clair.
               </li>
               <li>
-                <strong>Un accès expiré.</strong> L’action s’arrête et la bonne
+                <strong>Un accès expiré. </strong>L’action s’arrête et la bonne
                 personne reçoit la cause.
               </li>
               <li>
-                <strong>Un échec après une action partielle.</strong> La reprise
+                <strong>Un échec après une action partielle. </strong>La reprise
                 n’envoie rien une seconde fois.
               </li>
               <li>
-                <strong>Une absence d’exécution.</strong> Le silence déclenche
+                <strong>Une absence d’exécution. </strong>Le silence déclenche
                 une alerte en vingt-quatre heures.
               </li>
               <li>
-                <strong>Le retour au manuel.</strong> L’équipe poursuit sans
+                <strong>Le retour au manuel. </strong>L’équipe poursuit sans
                 mélanger les dossiers.
               </li>
             </ul>
@@ -1182,25 +1192,25 @@ export default function Page() {
 
           <ol>
             <li>
-              <strong>Lancer un essai borné.</strong> Volume limité, traitement
+              <strong>Lancer un essai borné. </strong>Volume limité, traitement
               manuel maintenu, date de bilan fixée, et l’indicateur qui
               tranchera écrit avant le premier cas.
             </li>
             <li>
-              <strong>Réduire avant d’automatiser.</strong> Retirer une
+              <strong>Réduire avant d’automatiser. </strong>Retirer une
               validation, désigner une source unique, activer une fonction déjà
               payée, puis remesurer. Si le problème disparaît, il n’y a plus
               rien à maintenir.
             </li>
             <li>
-              <strong>Reporter et continuer de mesurer.</strong> Six semaines
+              <strong>Reporter et continuer de mesurer. </strong>Six semaines
               d’observation coûtent moins qu’un flux réécrit deux fois.
             </li>
             <li>
-              <strong>Renoncer.</strong> Le décompte reste négatif sur
-              l’horizon que vous vous donnez, aucune autre grandeur ne le
-              compense, et personne ne veut porter l’alerte. C’est une décision,
-              pas un échec.
+              <strong>Renoncer. </strong>Le décompte reste négatif sur l’horizon
+              que vous vous donnez, aucune autre grandeur ne le compense, et
+              personne ne veut porter l’alerte. C’est une décision, pas un
+              échec.
             </li>
           </ol>
 
@@ -1256,7 +1266,7 @@ export default function Page() {
           </p>
 
           <p className="text-sm">
-            <strong>Transparence.</strong> Hagnéré Code construit des outils
+            <strong>Transparence. </strong>Hagnéré Code construit des outils
             internes sur mesure et perçoit des honoraires si vous retenez cette
             option&nbsp;— la sixième des sept réponses comparées ici, et celle
             que le décompte écarte sur son propre cas, à douze mois comme à

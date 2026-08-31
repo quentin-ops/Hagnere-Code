@@ -690,7 +690,7 @@ describe("qualité éditoriale du guide prix d’une gestion Google Ads", () => 
     const badges = pageSource.match(/badges=\{\[([\s\S]*?)\]\}/)?.[1] ?? "";
     expect(badges).toContain('label: "Exemple construit"');
 
-    const hero = pageSource.match(/heroDescription=\{"([\s\S]*?)"\}/)?.[1] ?? "";
+    const hero = pageSource.match(/heroDescription=\{\s*"([\s\S]*?)"\s*\}/)?.[1] ?? "";
     expect(hero).not.toBe("");
     const heroLisible = hero.split(ECHAPPEMENT_NBSP).join(ESPACE);
     expect(heroLisible.indexOf("Exemple construit, pas un dossier client")).toBe(

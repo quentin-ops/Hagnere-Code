@@ -72,7 +72,12 @@ export const metadata = buildGuideMetadata(
 const structuredData = buildGuideStructuredData(guide, breadcrumbName);
 
 const toc = [
-  { id: "reponse", number: "01", label: "Réponse directe", shortLabel: "Réponse" },
+  {
+    id: "reponse",
+    number: "01",
+    label: "Réponse directe",
+    shortLabel: "Réponse",
+  },
   {
     id: "cout-complet",
     number: "02",
@@ -97,8 +102,18 @@ const toc = [
     label: "CPA, CPL et coût d’un client",
     shortLabel: "Mesurer",
   },
-  { id: "incidents", number: "06", label: "Ce qui rate", shortLabel: "Incidents" },
-  { id: "sortie", number: "07", label: "Changer d’agence", shortLabel: "Sortie" },
+  {
+    id: "incidents",
+    number: "06",
+    label: "Ce qui rate",
+    shortLabel: "Incidents",
+  },
+  {
+    id: "sortie",
+    number: "07",
+    label: "Changer d’agence",
+    shortLabel: "Sortie",
+  },
   { id: "decision", number: "08", label: "Décider", shortLabel: "Décider" },
 ];
 
@@ -203,10 +218,15 @@ export default function Page() {
         ]}
         heroTitle="Combien coûte vraiment"
         heroTitleEm={"la gestion de Google Ads\u00a0?"}
-        heroDescription={"Exemple construit, pas un dossier client\u00a0: les quatre offres comparées, les volumes et le coût horaire interne sont choisis pour l’exemple. Sur douze mois, 5\u00a0000\u00a0€ HT de média par mois donnent un coût connu de 78\u00a0300 à 81\u00a0200\u00a0€ selon le mode de rémunération, soit 2\u00a0900\u00a0€ d’écart contre 61\u00a0200\u00a0€ de média. Ce guide donne le budget où un pourcentage dépasse un forfait, et les heures que l’offre la moins chère laisse à votre équipe."}
+        heroDescription={
+          "Exemple construit, pas un dossier client\u00a0: les quatre offres comparées, les volumes et le coût horaire interne sont choisis pour l’exemple. Sur douze mois, 5\u00a0000\u00a0€ HT de média par mois donnent un coût connu de 78\u00a0300 à 81\u00a0200\u00a0€ selon le mode de rémunération, soit 2\u00a0900\u00a0€ d’écart contre 61\u00a0200\u00a0€ de média. Ce guide donne le budget où un pourcentage dépasse un forfait, et les heures que l’offre la moins chère laisse à votre équipe."
+        }
         stats={[
           { label: "Bascule pourcentage", value: "6\u00a0000\u00a0€ HT/mois" },
-          { label: "Écart des 4 modèles à 12 mois", value: "2\u00a0900\u00a0€" },
+          {
+            label: "Écart des 4 modèles à 12 mois",
+            value: "2\u00a0900\u00a0€",
+          },
           { label: "Seuil de charge interne", value: "3\u00a0h/mois" },
           { label: "Moyenne de marché", value: "Aucune" },
           { label: "Lecture", value: `${guide.readTimeMin} min` },
@@ -391,23 +411,22 @@ export default function Page() {
           title="Ce que les pages publiques affichent, et ce qu’elles ne comparent pas"
         >
           <p>
-            Trois pages de vendeurs, relevées le 30&nbsp;juillet 2026,
-            affichent une gestion Google&nbsp;Ads mensuelle à partir de
-            90&nbsp;€, 450&nbsp;€ et
-            450&nbsp;€ HT. La nôtre, relevée le 28&nbsp;août 2026, démarre à
-            1&nbsp;800&nbsp;€ HT&nbsp;: un facteur vingt entre les deux
-            extrêmes. Quatre offres ne font pas une moyenne de marché.
+            Trois pages de vendeurs, relevées le 30&nbsp;juillet 2026, affichent
+            une gestion Google&nbsp;Ads mensuelle à partir de 90&nbsp;€,
+            450&nbsp;€ et 450&nbsp;€ HT. La nôtre, relevée le 28&nbsp;août 2026,
+            démarre à 1&nbsp;800&nbsp;€ HT&nbsp;: un facteur vingt entre les
+            deux extrêmes. Quatre offres ne font pas une moyenne de marché.
           </p>
           <p>
-            <strong>La dépense de l’année se joue ailleurs.</strong>{" "}
-            Sur un cas construit à 5&nbsp;000&nbsp;€ HT de média par mois, le
-            coût connu sur douze mois&nbsp;— média, coût réglementaire,
-            honoraires, lancement, mesure et heures internes — va de
-            78&nbsp;300&nbsp;€ à 81&nbsp;200&nbsp;€ selon le modèle
-            facturé&nbsp;: 2&nbsp;900&nbsp;€ d’écart, soit 3,6&nbsp;% des
-            79&nbsp;950&nbsp;€ du forfait. Le média et son coût réglementaire y
-            pèsent 61&nbsp;200&nbsp;€&nbsp;— 76,5&nbsp;%&nbsp;; le lancement et
-            les honoraires de gestion, 11&nbsp;550&nbsp;€.
+            <strong>La dépense de l’année se joue ailleurs. </strong>Sur un cas
+            construit à 5&nbsp;000&nbsp;€ HT de média par mois, le coût connu
+            sur douze mois&nbsp;— média, coût réglementaire, honoraires,
+            lancement, mesure et heures internes — va de 78&nbsp;300&nbsp;€ à
+            81&nbsp;200&nbsp;€ selon le modèle facturé&nbsp;: 2&nbsp;900&nbsp;€
+            d’écart, soit 3,6&nbsp;% des 79&nbsp;950&nbsp;€ du forfait. Le média
+            et son coût réglementaire y pèsent 61&nbsp;200&nbsp;€&nbsp;—
+            76,5&nbsp;%&nbsp;; le lancement et les honoraires de gestion,
+            11&nbsp;550&nbsp;€.
           </p>
           <p>
             Aucune page de tarifs ne publie les deux nombres qui décident&nbsp;:
@@ -418,7 +437,9 @@ export default function Page() {
           <GuidePremiumCase
             initial="H"
             eyebrow="Fil rouge du guide · exemple construit"
-            title={"Hélène compare quatre devis pour 5\u00a0000\u00a0€ de média par mois"}
+            title={
+              "Hélène compare quatre devis pour 5\u00a0000\u00a0€ de média par mois"
+            }
           >
             <p>
               <em>
@@ -493,7 +514,9 @@ export default function Page() {
           id="cout-complet"
           number="02"
           label="Décomposition"
-          title={"Que payez-vous vraiment quand vous payez «\u00a0la gestion\u00a0»\u00a0?"}
+          title={
+            "Que payez-vous vraiment quand vous payez «\u00a0la gestion\u00a0»\u00a0?"
+          }
         >
           <p>
             «&nbsp;Gestion Google Ads&nbsp;: 900&nbsp;€ par mois&nbsp;» décrit
@@ -572,7 +595,7 @@ Coût connu
               Google indique pour les annonces diffusées en France
             </a>{" "}
             ne se compte qu’une fois. Ici, la dépense média est la base{" "}
-            <strong>avant</strong> ce coût. Si votre export comptable l’intègre
+            <strong>avant </strong>ce coût. Si votre export comptable l’intègre
             déjà, mettez le taux à zéro. La ligne mesure dépend, elle, d’une
             autorisation&nbsp;: la{" "}
             <a
@@ -616,18 +639,19 @@ Coût connu
           id="modeles"
           number="03"
           label="Rémunération"
-          title={"Forfait, pourcentage ou hybride\u00a0: à partir de quel budget l’ordre s’inverse-t-il\u00a0?"}
+          title={
+            "Forfait, pourcentage ou hybride\u00a0: à partir de quel budget l’ordre s’inverse-t-il\u00a0?"
+          }
         >
           <p>
             Un nom de modèle décrit une mécanique de facturation&nbsp;: la façon
             dont les honoraires d’une gestion Google Ads suivent le budget
-            média, ou ne le suivent pas.
-            Les quatre offres d’Hélène, toutes en HT&nbsp;: un forfait à
-            750&nbsp;€ puis 900&nbsp;€ par mois&nbsp;; un pourcentage à
-            900&nbsp;€ puis 15&nbsp;% de l’assiette&nbsp;; un hybride à
-            800&nbsp;€ puis 500&nbsp;€ plus 8&nbsp;% de cette assiette&nbsp;; un
-            temps passé à 8&nbsp;h puis 10&nbsp;h par mois, à 100&nbsp;€
-            l’heure.
+            média, ou ne le suivent pas. Les quatre offres d’Hélène, toutes en
+            HT&nbsp;: un forfait à 750&nbsp;€ puis 900&nbsp;€ par mois&nbsp;; un
+            pourcentage à 900&nbsp;€ puis 15&nbsp;% de l’assiette&nbsp;; un
+            hybride à 800&nbsp;€ puis 500&nbsp;€ plus 8&nbsp;% de cette
+            assiette&nbsp;; un temps passé à 8&nbsp;h puis 10&nbsp;h par mois, à
+            100&nbsp;€ l’heure.
           </p>
 
           <GuideTable
@@ -673,15 +697,15 @@ Coût connu
 
           <p>
             Refaites la première case à la main&nbsp;; sans cela, aucun de ces
-            totaux n’est vérifiable. Le coût réglementaire vaut 5&nbsp;000&nbsp;×&nbsp;2&nbsp;%
-            = 100&nbsp;€ par mois. Le forfait à trois mois donne donc
-            2&nbsp;000&nbsp;€ de mesure et de page, plus 750&nbsp;€ de
-            lancement, plus 3&nbsp;×&nbsp;(5&nbsp;000 + 100 + 250 + 900) =
-            18&nbsp;750&nbsp;€, soit <strong>21&nbsp;500&nbsp;€ HT</strong>. La
-            TVA à 20&nbsp;% porte le décaissement à 25&nbsp;800&nbsp;€, et les
-            17&nbsp;heures internes à 50&nbsp;€ ajoutent 850&nbsp;€&nbsp;:
-            22&nbsp;350&nbsp;€ de coût connu, TVA supposée entièrement
-            récupérable.
+            totaux n’est vérifiable. Le coût réglementaire vaut
+            5&nbsp;000&nbsp;×&nbsp;2&nbsp;% = 100&nbsp;€ par mois. Le forfait à
+            trois mois donne donc 2&nbsp;000&nbsp;€ de mesure et de page, plus
+            750&nbsp;€ de lancement, plus 3&nbsp;×&nbsp;(5&nbsp;000 + 100 + 250
+            + 900) = 18&nbsp;750&nbsp;€, soit{" "}
+            <strong>21&nbsp;500&nbsp;€ HT</strong>. La TVA à 20&nbsp;% porte le
+            décaissement à 25&nbsp;800&nbsp;€, et les 17&nbsp;heures internes à
+            50&nbsp;€ ajoutent 850&nbsp;€&nbsp;: 22&nbsp;350&nbsp;€ de coût
+            connu, TVA supposée entièrement récupérable.
           </p>
 
           <h3>Les quatre points où le classement s’inverse</h3>
@@ -690,8 +714,8 @@ Coût connu
             de gagner au-dessus d’un certain budget, et chaque seuil se résout
             en une ligne. Ces quatre seuils comparent les{" "}
             <strong>honoraires mensuels</strong>, et non le coût connu du
-            tableau ci-dessus&nbsp;: le lancement, lui, va de 750 à
-            900&nbsp;€ selon l’offre. Appelez M le média mensuel&nbsp;:
+            tableau ci-dessus&nbsp;: le lancement, lui, va de 750 à 900&nbsp;€
+            selon l’offre. Appelez M le média mensuel&nbsp;:
           </p>
 
           <FormulaBox>
@@ -710,16 +734,15 @@ h × 100 = 900   →   h = 9\u00a0heures par mois`}
 
           <p>
             Lancement compris, sur douze mois, ces croisements se déplacent de
-            moins de 2&nbsp;% chacun&nbsp;: le pourcentage ne dépasse le
-            forfait qu’à 5&nbsp;916,67&nbsp;€, l’hybride dépasse le forfait dès
+            moins de 2&nbsp;% chacun&nbsp;: le pourcentage ne dépasse le forfait
+            qu’à 5&nbsp;916,67&nbsp;€, l’hybride dépasse le forfait dès
             4&nbsp;947,92&nbsp;€, il repasse sous le pourcentage à
             7&nbsp;023,81&nbsp;€, et le temps passé rejoint le forfait à
-            8,96&nbsp;heures. Le tableau
-            ci-dessus le montre déjà&nbsp;: à 5&nbsp;000&nbsp;€, forfait et
-            hybride facturent tous deux 900&nbsp;€ par mois, et pourtant
-            l’hybride coûte 80&nbsp;000&nbsp;€ sur douze mois contre
-            79&nbsp;950&nbsp;€ au forfait, à cause des 50&nbsp;€ qui séparent
-            leurs lancements.
+            8,96&nbsp;heures. Le tableau ci-dessus le montre déjà&nbsp;: à
+            5&nbsp;000&nbsp;€, forfait et hybride facturent tous deux 900&nbsp;€
+            par mois, et pourtant l’hybride coûte 80&nbsp;000&nbsp;€ sur douze
+            mois contre 79&nbsp;950&nbsp;€ au forfait, à cause des 50&nbsp;€ qui
+            séparent leurs lancements.
           </p>
 
           <p>
@@ -751,7 +774,9 @@ h × 100 = 900   →   h = 9\u00a0heures par mois`}
           id="temps-interne"
           number="04"
           label="Charge interne"
-          title={"Le devis le moins cher laisse-t-il du travail à votre équipe\u00a0?"}
+          title={
+            "Le devis le moins cher laisse-t-il du travail à votre équipe\u00a0?"
+          }
         >
           <p>
             Les quatre colonnes du §03 tiennent parce qu’elles supposent le même
@@ -780,8 +805,8 @@ Face au temps passé, à 1\u00a0000\u00a0€ par mois
             mois annulent son avance sur le forfait et sur l’hybride&nbsp;;
             cinq&nbsp;heures l’annulent aussi face au temps passé.
             Trois&nbsp;heures par mois font 36&nbsp;heures par an, soit{" "}
-            <strong>1&nbsp;800&nbsp;€</strong> au coût horaire posé
-            ici&nbsp;— exactement l’écart annuel d’honoraires.
+            <strong>1&nbsp;800&nbsp;€ </strong>au coût horaire posé ici&nbsp;—
+            exactement l’écart annuel d’honoraires.
           </p>
           <p>
             Ces 50&nbsp;€ de l’heure sont une hypothèse, pas une source, et les
@@ -803,7 +828,9 @@ Face au temps passé, à 1\u00a0000\u00a0€ par mois
             <GoogleAdsQuoteComparator />
           </div>
 
-          <GuidePremiumMemo title={"Ce que la ligne «\u00a0coût connu\u00a0» ne sait pas"}>
+          <GuidePremiumMemo
+            title={"Ce que la ligne «\u00a0coût connu\u00a0» ne sait pas"}
+          >
             <ul>
               <li>Les coûts non saisis, les avoirs et les remises à venir.</li>
               <li>
@@ -833,7 +860,8 @@ Face au temps passé, à 1\u00a0000\u00a0€ par mois
               rel="noreferrer"
             >
               actions de conversion principales et secondaires
-            </a>&nbsp;: les premières alimentent la colonne Conversions et les
+            </a>
+            &nbsp;: les premières alimentent la colonne Conversions et les
             enchères, les secondes servent à observer. Aucune des deux ne
             devient une vente.
           </p>
@@ -883,7 +911,7 @@ Face au temps passé, à 1\u00a0000\u00a0€ par mois
             22&nbsp;350&nbsp;€&nbsp;— honoraires, lancement, mesure et heures
             internes compris — par 12&nbsp;clients. À dénominateur seul, le
             média chargé coûte déjà 1&nbsp;275&nbsp;€ par client, douze fois et
-            demie le CPA&nbsp;; les <strong>587,50&nbsp;€</strong> restants sont
+            demie le CPA&nbsp;; les <strong>587,50&nbsp;€ </strong>restants sont
             ce que le CPA ne compte pas. Piloter sur 102&nbsp;€ revient à
             ignorer 1&nbsp;760,50&nbsp;€ par client.
           </p>
@@ -899,16 +927,16 @@ Face au temps passé, à 1\u00a0000\u00a0€ par mois
             nombres ne portent pas sur la même durée&nbsp;: la marge court sur
             douze mois par client, quand les coûts comparés en couvrent trois.
             Ces 127,50&nbsp;€ ne sont donc pas un solde de trésorerie à la fin
-            du trimestre, mais l’écart entre une marge encore à encaisser et
-            une dépense déjà faite.
+            du trimestre, mais l’écart entre une marge encore à encaisser et une
+            dépense déjà faite.
           </p>
           <p>
             Rejouez l’hypothèse basse, celle qu’aucune proposition commerciale
-            ne contient. Un client par mois, 1&nbsp;000&nbsp;€ de
-            marge&nbsp;: 3&nbsp;000&nbsp;€ contre 22&nbsp;350&nbsp;€ de coûts,
-            un manque de 19&nbsp;350&nbsp;€, et le client coûte
-            7&nbsp;450&nbsp;€. Écrivez ce scénario, et la date à laquelle vous
-            arrêterez, avant la première diffusion.
+            ne contient. Un client par mois, 1&nbsp;000&nbsp;€ de marge&nbsp;:
+            3&nbsp;000&nbsp;€ contre 22&nbsp;350&nbsp;€ de coûts, un manque de
+            19&nbsp;350&nbsp;€, et le client coûte 7&nbsp;450&nbsp;€. Écrivez ce
+            scénario, et la date à laquelle vous arrêterez, avant la première
+            diffusion.
           </p>
 
           <InfoBox
@@ -945,8 +973,8 @@ Face au temps passé, à 1\u00a0000\u00a0€ par mois
             budget quotidien moyen de 200&nbsp;€ et compte trente jours, soit
             6&nbsp;000&nbsp;€ pour le mois&nbsp;— un cinquième au-dessus des
             5&nbsp;000&nbsp;€ des sections précédentes. Tous les montants qui
-            suivent portent sur cette base. Google Ads
-            indique que, pour la plupart des campagnes, la{" "}
+            suivent portent sur cette base. Google Ads indique que, pour la
+            plupart des campagnes, la{" "}
             <a
               href="https://support.google.com/google-ads/answer/10486536?hl=fr"
               target="_blank"
@@ -956,18 +984,18 @@ Face au temps passé, à 1\u00a0000\u00a0€ par mois
               quotidien moyen
             </a>
             , soit 6&nbsp;080&nbsp;€ ici, et qu’une journée peut atteindre le
-            double, 400&nbsp;€. C’est un plafond de facturation, pas une
-            dépense certaine&nbsp;: un pic à 400&nbsp;€ un mardi ne dit rien du
-            mois. Séparez ensuite les deux dépassements. Le coût réglementaire
-            n’en est pas un&nbsp;: le §02 en pose le taux de 2&nbsp;% et le
-            chiffre à 100&nbsp;€ par mois sur les 5&nbsp;000&nbsp;€ du fil
-            rouge, soit 1&nbsp;200&nbsp;€ sur douze mois&nbsp;; sur les
-            6&nbsp;000&nbsp;€ d’ici, il vaut 120&nbsp;€ par mois et
-            1&nbsp;440&nbsp;€ sur l’année. La règle des 30,4&nbsp;jours, elle, n’ajoute que les
-            80&nbsp;€ de média qui séparent 6&nbsp;080&nbsp;€ de
-            6&nbsp;000&nbsp;€, plus 1,60&nbsp;€ de coût réglementaire&nbsp;:
-            81,60&nbsp;€ par mois, 979,20&nbsp;€ sur douze, et une facture
-            haute à 6&nbsp;201,60&nbsp;€ au lieu de 6&nbsp;120&nbsp;€. Un{" "}
+            double, 400&nbsp;€. C’est un plafond de facturation, pas une dépense
+            certaine&nbsp;: un pic à 400&nbsp;€ un mardi ne dit rien du mois.
+            Séparez ensuite les deux dépassements. Le coût réglementaire n’en
+            est pas un&nbsp;: le §02 en pose le taux de 2&nbsp;% et le chiffre à
+            100&nbsp;€ par mois sur les 5&nbsp;000&nbsp;€ du fil rouge, soit
+            1&nbsp;200&nbsp;€ sur douze mois&nbsp;; sur les 6&nbsp;000&nbsp;€
+            d’ici, il vaut 120&nbsp;€ par mois et 1&nbsp;440&nbsp;€ sur l’année.
+            La règle des 30,4&nbsp;jours, elle, n’ajoute que les 80&nbsp;€ de
+            média qui séparent 6&nbsp;080&nbsp;€ de 6&nbsp;000&nbsp;€, plus
+            1,60&nbsp;€ de coût réglementaire&nbsp;: 81,60&nbsp;€ par mois,
+            979,20&nbsp;€ sur douze, et une facture haute à 6&nbsp;201,60&nbsp;€
+            au lieu de 6&nbsp;120&nbsp;€. Un{" "}
             <a
               href="https://support.google.com/google-ads/answer/10486938?hl=fr"
               target="_blank"
@@ -978,9 +1006,7 @@ Face au temps passé, à 1\u00a0000\u00a0€ par mois
             obéit à d’autres règles&nbsp;: demandez lequel est configuré.
           </p>
 
-          <h3>
-            L’assiette sans plafond ajoute 9&nbsp;450&nbsp;€ en neuf mois
-          </h3>
+          <h3>L’assiette sans plafond ajoute 9&nbsp;450&nbsp;€ en neuf mois</h3>
           <p>
             Le devis au pourcentage ne définit ni plafond ni palier. Au
             quatrième mois, Hélène passe de 5&nbsp;000 à 12&nbsp;000&nbsp;€ de
@@ -997,11 +1023,10 @@ Face au temps passé, à 1\u00a0000\u00a0€ par mois
           </h3>
           <p>
             Le compte a été créé depuis le compte administrateur de l’agence.
-            Hélène n’en récupère pas l’accès et repart d’un compte
-            neuf&nbsp;: 750&nbsp;€ de lancement chez la suivante,
-            6&nbsp;heures internes à 50&nbsp;€ soit 300&nbsp;€, et le mois de
-            préavis facturé 900&nbsp;€&nbsp;— 1&nbsp;950&nbsp;€. Ce qui coûte
-            ensuite, c’est l’
+            Hélène n’en récupère pas l’accès et repart d’un compte neuf&nbsp;:
+            750&nbsp;€ de lancement chez la suivante, 6&nbsp;heures internes à
+            50&nbsp;€ soit 300&nbsp;€, et le mois de préavis facturé
+            900&nbsp;€&nbsp;— 1&nbsp;950&nbsp;€. Ce qui coûte ensuite, c’est l’
             <a
               href="https://support.google.com/google-ads/answer/2454137?hl=fr"
               target="_blank"
@@ -1051,7 +1076,7 @@ Face au temps passé, à 1\u00a0000\u00a0€ par mois
             >
               associer un compte existant à un compte administrateur
             </a>{" "}
-            ne transfère pas la propriété&nbsp;; un compte <em>créé</em> depuis
+            ne transfère pas la propriété&nbsp;; un compte <em>créé </em>depuis
             ce compte administrateur peut lui appartenir par défaut, selon les{" "}
             <a
               href="https://support.google.com/google-ads/answer/7456532?hl=fr"
@@ -1092,11 +1117,11 @@ Face au temps passé, à 1\u00a0000\u00a0€ par mois
           <GuidePremiumMemo title="Ce qu’un devis peut confondre">
             <ul>
               <li>
-                <strong>La règle de produit Google</strong> dit ce que la
+                <strong>La règle de produit Google </strong>dit ce que la
                 plateforme permet de facturer.
               </li>
               <li>
-                L’<strong>article 20</strong> impose, lui, mandat écrit et
+                L’<strong>article 20 </strong>impose, lui, mandat écrit et
                 rémunération détaillée.
               </li>
               <li>
@@ -1191,19 +1216,19 @@ Face au temps passé, à 1\u00a0000\u00a0€ par mois
           <p>
             Notre forfait d’entrée vise des budgets média d’au moins
             8&nbsp;000&nbsp;€ par mois. En dessous, il est
-            disproportionné&nbsp;: sur le cas d’Hélène, il pèserait
-            36&nbsp;% de la dépense, et une gestion interne, un indépendant ou
-            un audit ponctuel serviront mieux. Nous ne convenons pas non plus si
-            vous attendez un chiffre d’affaires garanti, si l’annonceur ne garde
-            pas ses accès, ou si rien ne dit{" "}
+            disproportionné&nbsp;: sur le cas d’Hélène, il pèserait 36&nbsp;% de
+            la dépense, et une gestion interne, un indépendant ou un audit
+            ponctuel serviront mieux. Nous ne convenons pas non plus si vous
+            attendez un chiffre d’affaires garanti, si l’annonceur ne garde pas
+            ses accès, ou si rien ne dit{" "}
             <Link href="/guides/signes-besoin-logiciel-metier">
               quelles demandes sont devenues des clients
             </Link>
-            . Nos honoraires sont fixes&nbsp;: à
-            60&nbsp;000&nbsp;€ de média mensuel, le haut de la tranche de notre
-            forfait Scale, un taux de 15&nbsp;% vaudrait 9&nbsp;000&nbsp;€ par
-            mois contre 3&nbsp;500&nbsp;€ pour ce forfait. Le fixe nous
-            coûterait donc de l’argent sur les gros budgets.
+            . Nos honoraires sont fixes&nbsp;: à 60&nbsp;000&nbsp;€ de média
+            mensuel, le haut de la tranche de notre forfait Scale, un taux de
+            15&nbsp;% vaudrait 9&nbsp;000&nbsp;€ par mois contre
+            3&nbsp;500&nbsp;€ pour ce forfait. Le fixe nous coûterait donc de
+            l’argent sur les gros budgets.
           </p>
           <p>
             Si vos annonces envoient vers un site que Google trouve mal, le
@@ -1251,16 +1276,16 @@ Face au temps passé, à 1\u00a0000\u00a0€ par mois
           </div>
 
           <p className="text-sm">
-            <strong>Transparence.</strong> Hagnéré Code vend une gestion
+            <strong>Transparence. </strong>Hagnéré Code vend une gestion
             publicitaire et perçoit des honoraires si vous nous la confiez. Rien
             ici n’exige de passer par nous&nbsp;: les six lignes de coût, les
             quatre seuils de bascule, la division qui chiffre le temps interne
             et le décompte à 3, 6 et 12&nbsp;mois se refont avec vos nombres.
             Les prix vendeurs ont été relevés le 30&nbsp;juillet 2026 et
-            revérifiés le 30&nbsp;août 2026, notre grille date du
-            28&nbsp;août 2026&nbsp;; les deux sont à revérifier tous les douze
-            mois. Aucun coût, aucun délai et aucun résultat ne sont garantis par
-            cette page&nbsp;: seul un devis signé engage.
+            revérifiés le 30&nbsp;août 2026, notre grille date du 28&nbsp;août
+            2026&nbsp;; les deux sont à revérifier tous les douze mois. Aucun
+            coût, aucun délai et aucun résultat ne sont garantis par cette
+            page&nbsp;: seul un devis signé engage.
           </p>
         </GuidePremiumSection>
       </GuidePremiumLayout>
