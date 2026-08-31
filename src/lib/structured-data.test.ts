@@ -12,6 +12,7 @@ import { buildGuideStructuredData } from "@/lib/guide-page-seo";
 import { GUIDES } from "@/lib/guides";
 import {
   ORGANIZATION_ID,
+  ORGANIZATION_REF,
   PUBLIC_ORGANIZATION_ENTITY,
   PUBLIC_ORGANIZATION_JSON_LD,
   QUENTIN_HAGNERE_ID,
@@ -21,7 +22,7 @@ import {
   WEBSITE_ID,
 } from "@/lib/organization-structured-data";
 import { SITE_URL } from "@/lib/seo";
-import { SERVICE_LINKS } from "@/lib/services";
+import { SERVICE_LINKS, serviceEntityId } from "@/lib/services";
 import { CDI_MEMBERS, FREELANCE_MEMBERS, TEAM } from "@/lib/team";
 
 const projectRoot = process.cwd();
@@ -361,19 +362,39 @@ describe("public structured data safeguards", () => {
 
     // Catalogue d'offres : strictement les services réellement publiés,
     // sans prix ni engagement, chacun rattaché à l'entité unique.
+    //
+    // Le test lisait `offer.itemOffered.url` et `offer.itemOffered.provider` :
+    // il épinglait la FORME que prenait alors chaque entrée — un nœud Service
+    // complet recopié dans le catalogue — au lieu de la propriété qu'il
+    // protège. Or c'est justement cette forme qui publiait, sur chacune des
+    // onze pages service, un second nœud Service anonyme portant la même
+    // `url` que celui de la page, sous un autre nom. Le catalogue ne porte
+    // plus qu'une référence ; les invariants réels sont conservés et un
+    // nouveau les rejoint : `itemOffered` ne doit JAMAIS redéclarer d'entité.
     const offers = PUBLIC_ORGANIZATION_ENTITY.hasOfferCatalog.itemListElement;
     expect(offers).toHaveLength(SERVICE_LINKS.length);
     for (const offer of offers) {
-      expect(offer.itemOffered.provider).toEqual({ "@id": ORGANIZATION_ID });
-      expect(offer.itemOffered.url.startsWith(`${SITE_URL}/services/`)).toBe(
-        true,
-      );
+      // Référence pure : un `@id` et rien d'autre. Un `@type` réapparu ici
+      // signifierait qu'une seconde définition du même service est publiée.
+      expect(Object.keys(offer.itemOffered)).toEqual(["@id"]);
+      expect(offer.url.startsWith(`${SITE_URL}/services/`)).toBe(true);
       expect("price" in offer).toBe(false);
       expect("priceSpecification" in offer).toBe(false);
     }
-    expect(offers.map((offer) => offer.itemOffered.url)).toEqual(
+    // Le catalogue reste le miroir exact du registre, dans l'ordre.
+    expect(offers.map((offer) => offer.url)).toEqual(
       SERVICE_LINKS.map((service) => `${SITE_URL}${service.path}`),
     );
+    expect(offers.map((offer) => offer.itemOffered["@id"])).toEqual(
+      SERVICE_LINKS.map((service) => serviceEntityId(service.path)),
+    );
+    expect(offers.map((offer) => offer.name)).toEqual(
+      SERVICE_LINKS.map((service) => service.title),
+    );
+    // Le rattachement à l'entité unique est désormais porté par le nœud
+    // Service de sa propre page (`provider: ORGANIZATION_REF`), vérifié par
+    // src/lib/services.test.ts, et non plus par une copie dans le catalogue.
+    expect(ORGANIZATION_REF).toEqual({ "@id": ORGANIZATION_ID });
 
     const contactSource = read("src/app/contact/page.tsx");
     const agencySource = read("src/app/agence/page.tsx");

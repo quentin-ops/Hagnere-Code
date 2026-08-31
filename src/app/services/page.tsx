@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ServicesHubPage } from "@/components/services/ServicesHubPage";
 import { OG_BASE, SERVICES_OG_IMAGE, SITE_URL } from "@/lib/seo";
 import { PUBLIC_ORGANIZATION_ENTITY } from "@/lib/organization-structured-data";
-import { SERVICE_LINKS } from "@/lib/services";
+import { SERVICE_LINKS, serviceEntityId } from "@/lib/services";
 
 // Le nombre affiché est dérivé du registre plutôt que figé : il était écrit en
 // dur dans le title, la meta description, le pied de page et un CTA de
@@ -32,10 +32,12 @@ export default function Page() {
     name: "Services Hagnéré Code",
     description:
       "Services de développement web, SaaS, applications métier, acquisition, maintenance et sécurité pour PME, ETI et scale-up.",
-    url: "https://hagnere-code.ai/services",
-    // L'entité est déclarée sur la page : sans elle, le `provider` de chaque
-    // Service est un @id pendant que Google ne résout pas hors du graphe de la
-    // page courante. Elle est écrite une fois, les items la référencent.
+    url: `${SITE_URL}/services`,
+    // Le hub est, avec l'accueil, l'un des deux endroits où l'entité publique
+    // est écrite en entier : les onze pages service et les items de la liste
+    // ci-dessous ne portent plus que son `@id`, et un identifiant qu'aucune
+    // page ne définit n'est qu'une chaîne. Ne pas remplacer par une référence
+    // sans déplacer d'abord la définition ailleurs dans la famille /services.
     publisher: PUBLIC_ORGANIZATION_ENTITY,
     mainEntity: {
       "@type": "ItemList",
@@ -44,16 +46,19 @@ export default function Page() {
       // catalogue d'offres de l'entité. La liste codée en dur donnait sept noms
       // divergents pour les mêmes URL et pouvait omettre un service ajouté au
       // registre sans qu'aucun test ne le détecte.
+      // Le `ListItem` porte lui-même le libellé et le lien ; `item` ne porte
+      // que la référence. Chaque entrée déclarait auparavant un nœud `Service`
+      // ANONYME avec la `url` de la page du service — laquelle publie déjà son
+      // propre nœud sous un autre nom. Deux entités sans `@id` pour une même
+      // URL : un moteur devait arbitrer entre deux définitions. Le nœud
+      // complet reste sur la page du service, référencé ici par son `@id`.
       itemListElement: SERVICE_LINKS.map((service, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        item: {
-          "@type": "Service",
-          name: service.title,
-          description: service.description,
-          url: `${SITE_URL}${service.path}`,
-          provider: { "@id": PUBLIC_ORGANIZATION_ENTITY["@id"] },
-        },
+        name: service.title,
+        description: service.description,
+        url: `${SITE_URL}${service.path}`,
+        item: { "@id": serviceEntityId(service.path) },
       })),
     },
   });
@@ -62,8 +67,8 @@ export default function Page() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
-      { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.ai/services" },
+      { "@type": "ListItem", position: 1, name: "Accueil", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
     ],
   });
 

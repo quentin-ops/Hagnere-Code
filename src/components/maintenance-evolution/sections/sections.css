@@ -328,7 +328,10 @@
   letter-spacing: 0.06em;
 }
 .me-cmp-head .me-cmp-col-us .me-cmp-kind {
-  color: #A78BFA;
+  /* Jeton, pas valeur en dur : la colonne « nous » inverse sa surface avec le
+     thème, donc son accent aussi. En dur, #A78BFA tombait à 2,61:1 en sombre —
+     seule page des cinq à ne pas avoir été convertie. */
+  color: var(--accent-on-ink);
 }
 .me-cmp-title {
   font-weight: 600;

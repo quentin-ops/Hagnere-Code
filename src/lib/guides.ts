@@ -38,7 +38,36 @@ export interface GuideEntry {
   section: string;
   /** Instant réel de première publication, ISO 8601 avec fuseau. */
   datePublished: string;
-  /** Instant réel de dernière modification substantielle, ISO 8601 avec fuseau. */
+  /**
+   * Instant réel de dernière modification substantielle, ISO 8601 avec fuseau.
+   *
+   * RELEVÉ, PAS SAISI. Le jour est celui de la passe éditoriale substantielle
+   * — le même que la date de consultation des sources affichée dans le corps
+   * du guide et que le bandeau « Mis à jour le … », §5.2 de la règle d'or.
+   * L'heure, elle, est l'instant enregistré du dernier commit de ce jour-là
+   * sur le dossier de route du guide :
+   *
+   *   git log -1 --date=iso-strict --format=%cd \
+   *     --until=<jour>T23:59:59+02:00 -- src/app/guides/<slug>
+   *
+   * Les neuf valeurs saisies à la main tombaient huit fois sur neuf sur une
+   * minute ronde à la seconde 00 (23:20:00, 23:30:00, 23:35:00…) : la
+   * signature d'un horodatage tapé au clavier, pas d'un instant observé. Un
+   * lastmod qui a cette allure, Google cesse d'en tenir compte — et c'est
+   * exactement le signal mensonger que l'en-tête de `src/app/sitemap.ts`
+   * s'interdit par ailleurs. Une valeur annonçait de surcroît le 30/08 pour un
+   * guide dont la page affiche le 28/08 et que rien n'avait touché le 30.
+   *
+   * Sept guides partagent 2026-08-30T23:40:18+02:00 : un seul commit a corrigé
+   * ce soir-là le sourçage de tous les articles publiés. C'est une vérité, pas
+   * un doublon à masquer — `src/lib/guides.test.ts` vérifie la propriété
+   * (instant réellement enregistré, fuseau unique) et se garde d'interdire
+   * l'égalité, ce qui obligerait à fabriquer un écart.
+   *
+   * Fuseau : Europe/Paris (+02:00 en été, +01:00 en hiver) pour tout le
+   * registre. Un seul guide était noté en `Z`, et sa ligne était la seule du
+   * sitemap à ne pas suivre la convention des huit autres.
+   */
   dateModified: string;
   readTimeMin: number;
   /** Images éditoriales visibles, en chemins absolus du site, pour Article. */
@@ -67,7 +96,7 @@ export const GUIDES: GuideEntry[] = [
     // le porter (invariant verrouillé par src/lib/guides.test.ts).
     featured: true,
     datePublished: "2026-07-29T17:01:33+02:00",
-    dateModified: "2026-08-30T23:20:00+02:00",
+    dateModified: "2026-08-30T23:40:18+02:00",
     readTimeMin: 21,
     articleImagePaths: [
       "/guides/automatiser-processus-metier/article-processus-16x9.webp",
@@ -87,7 +116,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Outils internes et automatisation",
     editorialStatus: "published",
     datePublished: "2026-08-01T11:59:46+02:00",
-    dateModified: "2026-08-30T23:20:00+02:00",
+    dateModified: "2026-08-30T22:46:27+02:00",
     readTimeMin: 34,
     articleImagePaths: [
       "/guides/signes-besoin-logiciel-metier/article-diagnostic-16x9.svg",
@@ -107,11 +136,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Google Ads & acquisition",
     editorialStatus: "published",
     datePublished: "2026-07-31T00:24:23+02:00",
-    // Heure réelle de la dernière écriture de page.tsx. La valeur auditée,
-    // 18 h 00 pile le 28/08/2026, était dans le futur au moment de la
-    // livraison — et elle alimente `openGraph.modifiedTime` et le JSON-LD
-    // Article. À réaligner sur l'horloge à chaque reprise du fichier.
-    dateModified: "2026-08-30T23:22:01+02:00",
+    dateModified: "2026-08-30T23:40:18+02:00",
     readTimeMin: 17,
     articleImagePaths: [
       "/guides/prix-gestion-google-ads/article-prix-ads-16x9.webp",
@@ -131,7 +156,12 @@ export const GUIDES: GuideEntry[] = [
     section: "Outils internes et automatisation",
     editorialStatus: "published",
     datePublished: "2026-07-23T21:31:02+02:00",
-    dateModified: "2026-08-30T23:20:00+02:00",
+    // Le registre annonçait le 30/08 alors que la page affiche « 28 août 2026 »
+    // comme date de consultation de ses sources, et que rien n'a touché ce
+    // guide le 30. Valeur ramenée sur l'instant du commit qui a réellement
+    // clos sa passe éditoriale — une date plus ancienne, donc moins flatteuse,
+    // mais celle que la page elle-même donne au lecteur.
+    dateModified: "2026-08-28T17:52:13+02:00",
     readTimeMin: 19,
     articleImagePaths: [
       "/guides/power-apps-ou-application-sur-mesure/article-power-apps-16x9.svg",
@@ -152,7 +182,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     editorialStatus: "published",
     datePublished: "2026-07-30T16:30:59+02:00",
-    dateModified: "2026-08-30T23:30:00+02:00",
+    dateModified: "2026-08-30T23:40:18+02:00",
     readTimeMin: 21,
     articleImagePaths: [
       "/guides/plan-recette-application-metier/recette-preuve-16x9.webp",
@@ -173,7 +203,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     editorialStatus: "published",
     datePublished: "2026-07-30T22:03:29+02:00",
-    dateModified: "2026-08-30T23:30:00+02:00",
+    dateModified: "2026-08-30T23:40:18+02:00",
     readTimeMin: 22,
     articleImagePaths: [
       "/guides/securite-application-metier/socle-securite-16x9.webp",
@@ -194,7 +224,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     editorialStatus: "published",
     datePublished: "2026-07-22T07:29:32+02:00",
-    dateModified: "2026-08-30T23:35:00+02:00",
+    dateModified: "2026-08-30T23:40:18+02:00",
     readTimeMin: 21,
     articleImagePaths: [
       "/guides/cahier-des-charges-saas/cahier-saas-16x9.webp",
@@ -214,7 +244,7 @@ export const GUIDES: GuideEntry[] = [
     section: "SaaS et MVP",
     editorialStatus: "published",
     datePublished: "2026-07-20T15:19:41+02:00",
-    dateModified: "2026-08-30T22:30:00+02:00",
+    dateModified: "2026-08-30T23:40:18+02:00",
     readTimeMin: 21,
     articleImagePaths: [
       "/guides/mvp-saas-quoi-inclure/contrat-test-mvp-16x9.webp",
@@ -233,12 +263,15 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Pourquoi mon site n’est-il pas visible sur Google\u00a0?",
     section: "Référencement naturel",
     editorialStatus: "published",
-    datePublished: "2026-08-18T12:42:00Z",
+    datePublished: "2026-08-18T14:42:00+02:00",
     // Réécriture substantielle du 30/08/2026 : libellés d'interface remis sur
     // ceux de l'aide française, localisateur de la règle d'accès corrigé, dates
     // de relecture réalignées sur la journée où les vingt-deux sources ont
-    // réellement été rouvertes. Le §15 de la charte impose une nouvelle date.
-    dateModified: "2026-08-30T17:30:00Z",
+    // réellement été rouvertes. Le §15 de la charte impose une nouvelle date ;
+    // l'heure est celle du commit de cette passe, en +02:00 comme les huit
+    // autres entrées — la notation `Z` faisait de cette seule URL du sitemap
+    // l'exception au fuseau du fichier.
+    dateModified: "2026-08-30T23:40:18+02:00",
     readTimeMin: 21,
     articleImagePaths: [
       "/guides/pourquoi-site-pas-visible-google/diagnostic-google-16x9.svg",

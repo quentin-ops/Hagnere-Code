@@ -2446,7 +2446,14 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
   font-family: var(--font-geist-mono); font-size: 11px;
   color: var(--mute); text-transform: uppercase; letter-spacing: 0.06em;
 }
-.ec-cmp-head .ec-cmp-col-us .ec-cmp-kind { color: #A78BFA; }
+/* Le sur-titre de la colonne « Nous » est le seul texte de cet en-tête à ne pas
+   suivre l'inversion. La colonne est peinte `background: var(--ink)` : sa
+   surface est NOIRE en clair et CLAIRE en sombre. Le titre et le prix suivent
+   déjà via `var(--paper)` ; ce libellé restait sur un littéral violet pâle, qui
+   tombait à 2,61:1 sur #FAFAFA. `--accent-on-ink` est le jeton prévu pour
+   exactement ce cas — accent posé sur une surface qui s'inverse : 7,27:1 en
+   clair, 6,81:1 en sombre, sans ajouter de couleur à la palette. */
+.ec-cmp-head .ec-cmp-col-us .ec-cmp-kind { color: var(--accent-on-ink); }
 .ec-cmp-title { font-weight: 600; font-size: 16px; color: var(--ink); margin-top: 6px; }
 .ec-cmp-head .ec-cmp-col-us .ec-cmp-title { color: var(--paper); }
 .ec-cmp-price {

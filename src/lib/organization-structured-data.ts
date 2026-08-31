@@ -6,7 +6,7 @@ import {
   OPENING_HOURS,
 } from "@/lib/contact-details";
 import { SITE_URL } from "@/lib/seo";
-import { SERVICE_LINKS } from "@/lib/services";
+import { SERVICE_LINKS, serviceEntityId } from "@/lib/services";
 import { TEAM } from "@/lib/team";
 
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
@@ -172,18 +172,24 @@ export const PUBLIC_ORGANIZATION_ENTITY = {
   // Catalogue d'offres dérivé du registre des services : il décrit ce que
   // l'entreprise propose réellement, sans prix ni engagement, et aide les
   // moteurs comme les assistants à relier l'entité à ses prestations.
+  //
+  // `itemOffered` ne porte plus que la référence `@id`. La version précédente
+  // recopiait ici un nœud `Service` complet et ANONYME pour chaque prestation,
+  // avec la même `url` que la page du service — laquelle publie déjà son
+  // propre nœud, sous un autre nom. Comme ce bloc Organization est réémis sur
+  // les onze pages service, chacune servait deux définitions concurrentes de
+  // la même URL. Le libellé et le lien restent portés par l'`Offer` (ce sont
+  // des propriétés valides de `Offer`), donc rien n'est perdu pour un lecteur
+  // arrivé sur l'accueil : seule l'entité de service cesse d'être dupliquée.
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Prestations Hagnéré Code",
     itemListElement: SERVICE_LINKS.map((service) => ({
       "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: service.title,
-        description: service.description,
-        url: `${SITE_URL}${service.path}`,
-        provider: ORGANIZATION_REF,
-      },
+      name: service.title,
+      description: service.description,
+      url: `${SITE_URL}${service.path}`,
+      itemOffered: { "@id": serviceEntityId(service.path) },
     })),
   },
   // Identifiants légaux stables de la personne morale. Aucun SIRET

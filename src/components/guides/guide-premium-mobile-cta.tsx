@@ -4,6 +4,18 @@ import { useEffect, useState } from "react";
 import { MessageSquareText, Phone } from "lucide-react";
 import { TrackedGuideCtaLink } from "./tracked-guide-cta-link";
 
+/**
+ * Hauteur de fenêtre au-dessous de laquelle la barre d'action n'a plus le droit
+ * de rester en permanence : à 200 % de zoom (1280x720 physiques, soit 360 px
+ * CSS de haut), la barre et la nav mangeaient 138 px sur 360, soit 38 % de la
+ * hauteur de lecture, sur des guides de 26 à 41 pages. Le même cas se présente
+ * sur un téléphone tenu en paysage.
+ */
+const SHORT_VIEWPORT_HEIGHT = 480;
+
+/** Marge morte, pour ne pas basculer sur le tremblement d'un défilement. */
+const SCROLL_DIRECTION_THRESHOLD = 12;
+
 interface GuidePremiumMobileCtaProps {
   ctaHref: string;
   ctaLabel: string;
@@ -23,6 +35,10 @@ export function GuidePremiumMobileCta({
 }: GuidePremiumMobileCtaProps) {
   const [pastTrigger, setPastTrigger] = useState(false);
   const [overCompetingCta, setOverCompetingCta] = useState(false);
+  // Sur une fenêtre courte seulement : la barre cède la place pendant la
+  // lecture vers le bas et revient au premier défilement vers le haut. Sur un
+  // téléphone tenu debout, rien ne change.
+  const [yieldingToReading, setYieldingToReading] = useState(false);
 
   useEffect(() => {
     const trigger = document.getElementById(triggerId);
@@ -35,6 +51,7 @@ export function GuidePremiumMobileCta({
       ]),
     );
     let animationFrame = 0;
+    let lastScrollY = window.scrollY;
 
     const updateVisibility = () => {
       setPastTrigger(
@@ -48,6 +65,18 @@ export function GuidePremiumMobileCta({
           return rect.top < window.innerHeight && rect.bottom > 0;
         }),
       );
+
+      const shortViewport = window.innerHeight <= SHORT_VIEWPORT_HEIGHT;
+      const delta = window.scrollY - lastScrollY;
+      if (Math.abs(delta) > SCROLL_DIRECTION_THRESHOLD) {
+        lastScrollY = window.scrollY;
+      }
+      setYieldingToReading((current) => {
+        if (!shortViewport) return false;
+        if (delta > SCROLL_DIRECTION_THRESHOLD) return true;
+        if (delta < -SCROLL_DIRECTION_THRESHOLD) return false;
+        return current;
+      });
     };
     const scheduleUpdate = () => {
       if (animationFrame) return;
@@ -68,7 +97,7 @@ export function GuidePremiumMobileCta({
     };
   }, [showAfter, triggerId]);
 
-  const visible = pastTrigger && !overCompetingCta;
+  const visible = pastTrigger && !overCompetingCta && !yieldingToReading;
 
   return (
     <div

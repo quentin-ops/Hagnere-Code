@@ -11,6 +11,7 @@ import {
   CONTACT_PHONE_E164,
 } from "@/lib/contact-details";
 import { MATH_CHALLENGE_TTL_MS } from "@/lib/math-challenge";
+import { PROJECT_DRAFT_STORAGE_KEY } from "@/lib/project-draft";
 import {
   MathChallenge,
   MATH_CHALLENGE_EMPTY_MESSAGE,
@@ -21,7 +22,14 @@ import {
   getMathChallengeError,
   getMathChallengeRefreshDelay,
 } from "./MathChallenge";
-import { ProjectFunnel, RadioBlock } from "./ProjectFunnel";
+import {
+  appendFallbackHelp,
+  ProjectFunnel,
+  RadioBlock,
+  SERVER_ERROR_FIELD_STEP,
+  SERVER_ERROR_FIELDS_WITHOUT_STEP,
+  SUBMIT_FALLBACK_HELP,
+} from "./ProjectFunnel";
 // Le prédicat a quitté ProjectFunnel.tsx : ses deux clients (le tunnel et le
 // formulaire du pied de page) partagent désormais le même module.
 import { briefWasCaptured } from "./inquiry-response";
@@ -412,5 +420,245 @@ describe("feuille de style du tunnel", () => {
       funnelStyles.indexOf("@media (max-width: 760px)"),
     );
     expect(mobile).toMatch(/\.pf-actions\s*{[^}]*position:\s*sticky/);
+  });
+});
+
+/**
+ * Sept défauts mesurés sur la page /demarrer-un-projet, tous vérifiés au
+ * navigateur avant et après correction. Les tests ci-dessous protègent la
+ * PROPRIÉTÉ constatée, pas la formulation retenue pour la corriger.
+ */
+describe("tunnel — aucune impasse à l'envoi", () => {
+  it("joint une issue humaine à tout message d'échec, sans la dupliquer", () => {
+    // La propriété : quel que soit le texte de l'échec — coupure réseau,
+    // 5xx muet, texte brut du serveur —, le visiteur repart avec un e-mail
+    // ET un téléphone. Seul le dépassement de délai les donnait.
+    for (const message of [
+      "",
+      "Le brief n'a pas pu être envoyé.",
+      "Erreur interne du fournisseur d'e-mail.",
+    ]) {
+      const rendu = appendFallbackHelp(message);
+      expect(rendu).toContain(CONTACT_EMAIL);
+      expect(rendu).toContain(CONTACT_PHONE_DISPLAY_NATIONAL);
+    }
+
+    // Un message qui porte déjà les coordonnées n'est pas rallongé.
+    const dejaComplet = `Coupure. ${SUBMIT_FALLBACK_HELP}`;
+    expect(appendFallbackHelp(dejaComplet)).toBe(dejaComplet);
+    expect(
+      appendFallbackHelp(dejaComplet).split(CONTACT_EMAIL),
+    ).toHaveLength(2);
+  });
+
+  it("fait passer TOUTE mise en échec par ce point unique", () => {
+    // Ce qui compte n'est pas la phrase, c'est qu'aucune branche ne puisse
+    // publier un `status: error` sans passer par le rattachement.
+    const debut = funnelSource.indexOf("async function submitBrief()");
+    const corps = funnelSource.slice(
+      debut,
+      funnelSource.indexOf("\n  return (", debut),
+    );
+    expect(debut).toBeGreaterThan(0);
+    const echecs = corps.match(/setStatus\(\{\s*\n?\s*kind: "error"/g) || [];
+    // Un seul point de sortie en échec dans tout l'envoi : impossible d'en
+    // ajouter un qui oublierait les coordonnées sans faire tomber ce test.
+    expect(echecs).toHaveLength(1);
+    const bloc = corps.slice(corps.indexOf('setStatus({\n      kind: "error"'));
+    expect(bloc.slice(0, 400)).toContain("appendFallbackHelp(");
+  });
+});
+
+describe("tunnel — un refus de champ ramène au champ", () => {
+  it("couvre tous les champs que la route sait refuser", () => {
+    // Contrat entre deux fichiers : la route peut refuser des champs saisis
+    // à l'étape 2, 4 ou 5. Sans cette table, leurs messages retombaient en
+    // bannière sur l'écran d'envoi, à distance des champs concernés.
+    const routeSource = readFileSync(
+      join(process.cwd(), "src/app/api/project-inquiry/route.ts"),
+      "utf8",
+    );
+    const champsRoute = [
+      ...new Set(
+        [...routeSource.matchAll(/\berrors\.([A-Za-z]+)\s*=/g)].map(
+          (match) => match[1]!,
+        ),
+      ),
+    ];
+    expect(champsRoute.length).toBeGreaterThan(5);
+
+    for (const champ of champsRoute) {
+      const connu =
+        champ in SERVER_ERROR_FIELD_STEP ||
+        SERVER_ERROR_FIELDS_WITHOUT_STEP.includes(champ);
+      // Un champ ajouté à la route sans étape d'accueil rouvrirait le défaut.
+      expect(connu, `champ "${champ}" sans étape d'accueil`).toBe(true);
+    }
+  });
+
+  it("renvoie le visiteur sur l'étape la plus en amont", () => {
+    // `message` est saisi à l'étape Contexte, `email` à l'étape Coordonnées :
+    // on ne peut pas déposer quelqu'un sur la seconde en lui reprochant la
+    // première.
+    expect(SERVER_ERROR_FIELD_STEP.message).toBe("contexte");
+    expect(SERVER_ERROR_FIELD_STEP.email).toBe("contact");
+    expect(SERVER_ERROR_FIELD_STEP.budget).toBe("contraintes");
+    expect(funnelSource).toContain("setActiveStep(Math.min(...targetSteps))");
+  });
+});
+
+describe("tunnel — la validation d'étape suit l'état réel", () => {
+  it("retire le reproche dès que l'étape redevient complète", () => {
+    const host = mount(<ProjectFunnel />);
+
+    function alerteEtape(): string | null {
+      return (
+        host.querySelector('.pf-validation[role="alert"]')?.textContent ?? null
+      );
+    }
+    function bouton(libelle: string): HTMLButtonElement {
+      const cible = Array.from(host.querySelectorAll("button")).find((item) =>
+        (item.textContent ?? "").includes(libelle),
+      );
+      if (!cible) throw new Error(`bouton introuvable : ${libelle}`);
+      return cible as HTMLButtonElement;
+    }
+
+    act(() => bouton("Continuer").click());
+    expect(alerteEtape()).toContain("au moins un type de projet");
+
+    act(() => bouton("SaaS / application métier").click());
+    act(() => bouton("Lancer un MVP exploitable").click());
+
+    // L'état est valide : l'interface ne peut plus reprocher son absence.
+    expect(alerteEtape()).toBeNull();
+  });
+});
+
+describe("tunnel — brouillon restauré sans coordonnées", () => {
+  it("n'ouvre pas sur « prêt à partir » avec un bloc Contact vide", () => {
+    // `sanitizeProjectDraftState` exclut volontairement les coordonnées du
+    // brouillon. Rouvrir sur l'écran d'envoi laissait alors lire que le brief
+    // était prêt, et le clic sur « Envoyer » renvoyait en arrière sans
+    // explication : de son point de vue, le site avait perdu ses coordonnées.
+    window.sessionStorage.setItem(
+      PROJECT_DRAFT_STORAGE_KEY,
+      JSON.stringify({
+        version: 3,
+        savedAt: Date.now(),
+        activeStep: 5,
+        state: {
+          projectKinds: ["saas"],
+          objectives: ["Lancer un MVP exploitable"],
+          description:
+            "Notre back-office ne tient plus la charge et nous voulons un MVP exploitable en six mois.",
+          mustHaves: ["Authentification"],
+          timeline: "1 à 3 mois",
+          budget: "15 à 30 k€",
+          decisionStage: "Budget validé",
+        },
+      }),
+    );
+
+    const host = mount(<ProjectFunnel />);
+    const titre = host.querySelector(".pf-step-heading")?.textContent ?? "";
+    expect(titre).not.toContain("prêt à partir");
+    // Et le brief conservé, lui, est bien restauré.
+    expect(host.querySelector(".pf-eyebrow")?.textContent).toContain("5 / 6");
+
+    window.sessionStorage.removeItem(PROJECT_DRAFT_STORAGE_KEY);
+  });
+});
+
+describe("tunnel — la touche Entrée valide l'étape", () => {
+  it("soumet un formulaire au lieu de laisser les champs nus", () => {
+    const host = mount(<ProjectFunnel />);
+    const form = host.querySelector<HTMLFormElement>("form.pf-step-form");
+    expect(form).not.toBeNull();
+
+    // Le bouton principal est la cible implicite de la touche Entrée.
+    const principal = host.querySelector<HTMLButtonElement>("button.pf-primary");
+    expect(principal?.type).toBe("submit");
+
+    // La soumission fait ce que fait le bouton : ici, bloquer sur l'étape 1
+    // incomplète — preuve qu'elle est branchée sur `goNext` et non ignorée.
+    act(() => {
+      form!.dispatchEvent(
+        new Event("submit", { bubbles: true, cancelable: true }),
+      );
+    });
+    expect(
+      host.querySelector('.pf-validation[role="alert"]')?.textContent,
+    ).toContain("au moins un type de projet");
+  });
+});
+
+describe("tunnel — diagnostic micro", () => {
+  it("ne sert pas le vidage technique au visiteur en production", () => {
+    // Même garde que `debugLog` : user-agent, origine et état de permission
+    // n'ont rien à faire sous le message d'erreur d'un prospect.
+    const bloc = funnelSource.slice(
+      funnelSource.indexOf("{error.diag && ("),
+      funnelSource.indexOf('className="pf-mic-error-help pf-mic-error-diag"'),
+    );
+    expect(bloc).toBe("");
+    expect(funnelSource).toMatch(
+      /process\.env\.NODE_ENV !== "production" && error\.diag/,
+    );
+  });
+
+  it("empêche le bloc de diagnostic d'élargir l'étape entière", () => {
+    // En `white-space: pre`, le <pre> imposait sa largeur min-content (691 px)
+    // à une carte de 370 px : le message utile et la consigne « vous pouvez
+    // écrire votre réponse » partaient hors écran. La propriété protégée est
+    // que ce bloc se replie au lieu de pousser.
+    expect(funnelStyles).toMatch(
+      /\.pf-mic-error-diag pre\s*{[^}]*white-space:\s*pre-wrap/,
+    );
+    expect(funnelStyles).not.toMatch(
+      /\.pf-mic-error-diag pre\s*{[^}]*white-space:\s*pre;/,
+    );
+    // Et l'encart entier peut descendre sous la largeur de son contenu :
+    // il est enfant d'une grille, donc en `min-width: auto` par défaut.
+    expect(funnelStyles).toMatch(/\.pf-mic-error\s*{[^}]*min-width:\s*0/);
+  });
+});
+
+describe("tunnel — le travail investi n'est pas perdu en silence", () => {
+  it("prévient aussi le visiteur qui n'a fait que cliquer", () => {
+    // Les étapes 1, 3 et 4 sont intégralement cliquables et l'étape 2 est
+    // contournable : le garde ne pouvait pas dépendre d'un texte saisi.
+    const garde = funnelSource.slice(
+      funnelSource.indexOf("const hasEnteredContent ="),
+      funnelSource.indexOf('addEventListener("beforeunload"'),
+    );
+    for (const champ of [
+      "projectKinds",
+      "objectives",
+      "mustHaves",
+      "timeline",
+      "budget",
+      "decisionStage",
+    ]) {
+      expect(garde).toContain(`state.${champ}`);
+    }
+  });
+
+  it("propose la conservation là où l'on saisit, sans l'imposer", () => {
+    // L'inventaire de /legal/cookies déclare cette clé « après activation
+    // volontaire du bouton » : la conservation reste un opt-in. Ce qui
+    // manquait, c'était de le proposer ailleurs que dans l'encadré latéral,
+    // qui passe au-dessus de la carte — donc hors écran — sous 1080 px.
+    expect(funnelSource).toContain("pf-draft-inline");
+    expect(funnelSource).toMatch(
+      /hydrated && !draftStorageEnabled && hasEnteredContent/,
+    );
+    // Jamais d'activation d'office au montage.
+    expect(funnelSource).not.toMatch(
+      /useState\(true\)[^\n]*\n?[^\n]*draftStorageEnabled/,
+    );
+    expect(funnelSource).toContain(
+      "const [draftStorageEnabled, setDraftStorageEnabled] = useState(false)",
+    );
   });
 });

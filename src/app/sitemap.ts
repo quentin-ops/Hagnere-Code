@@ -41,6 +41,13 @@ const legalRoutes: { path: string; lastModified: string }[] = [
 // les familles qui maintiennent une vraie date de mise à jour par page en
 // portent une — guides, livres blancs, ressources, pages locales et pages
 // légales, chacune adossée à un registre ou à un test anti-dérive.
+//
+// La règle vaut aussi contre le signal mensonger MOINS visible : une date
+// saisie à la main. Les neuf guides sortaient tous du même soir, huit sur une
+// minute ronde à la seconde 00, et l'un d'eux en `Z` quand les huit autres
+// étaient en `+02:00`. Leur `dateModified` est désormais dérivée du dernier
+// commit touchant le dossier du guide (voir src/lib/guides.ts) : un instant
+// enregistré, à la seconde, dans le fuseau du reste du fichier.
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: baseUrl },
@@ -68,7 +75,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // Guides : générés depuis le registre central src/lib/guides.ts —
-  // lastModified réel par guide (dateModified maintenue à la main).
+  // lastModified réel par guide, dérivé du dernier commit qui a touché le
+  // dossier de route du guide. Deux guides corrigés par un même commit
+  // partagent légitimement l'instant : c'est ce qui s'est passé.
   const guideRoutes: MetadataRoute.Sitemap = PUBLISHED_GUIDES.map((g) => ({
     url: `${baseUrl}/guides/${g.slug}`,
     lastModified: g.dateModified,

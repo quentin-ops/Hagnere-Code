@@ -3,7 +3,8 @@ import { SeoReferencement } from "@/components/seo-referencement/SeoReferencemen
 import { SEO_FORMATS } from "@/components/seo-referencement/content";
 import { PUBLISHED_GUIDES } from "@/lib/guides";
 import { OG_BASE, SERVICES_OG_IMAGE, SITE_URL } from "@/lib/seo";
-import { PUBLIC_ORGANIZATION_ENTITY } from "@/lib/organization-structured-data";
+import { ORGANIZATION_REF } from "@/lib/organization-structured-data";
+import { serviceEntityId } from "@/lib/services";
 
 export const metadata: Metadata = {
   title: "Agence SEO pour PME · Hagnéré Code",
@@ -27,22 +28,26 @@ export const metadata: Metadata = {
   },
 };
 
-const pageUrl = `${SITE_URL}/services/referencement-google`;
+/** Chemin canonique de la page : le domaine ne s'écrit plus en clair. */
+const servicePath = "/services/referencement-google" as const;
+const pageUrl = `${SITE_URL}${servicePath}`;
 
 const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
-  "@id": `${pageUrl}#service`,
+  "@id": serviceEntityId(servicePath),
   name: "Accompagnement SEO et référencement naturel pour PME",
   url: pageUrl,
   serviceType: "Audit et accompagnement en référencement naturel",
   description:
     "Audit technique, mesure Search Console, architecture par intentions, contenus sourcés, maillage interne, référencement local et construction d'autorité.",
-  // Fournisseur = l'entité publique unique, importée du registre plutôt que
-  // recopiée : adresse, TVA, e-mail et téléphone n'existent qu'à un seul
-  // endroit, et la forme du logo reste celle validée pour Google (ImageObject
-  // dimensionné) sur toutes les pages.
-  provider: PUBLIC_ORGANIZATION_ENTITY,
+  // Fournisseur = la RÉFÉRENCE à l'entité publique, pas l'entité recopiée.
+  // Le nœud complet (logo, fondateur, adresse, géo, horaires, contactPoint,
+  // 17 zones desservies, catalogue, TVA, SIREN) pèse 6,6 Ko et était sérialisé
+  // à l'identique sur chacune des onze pages service. C'est déjà le motif
+  // employé par les guides et les réalisations : un seul nœud complet, publié
+  // par l'accueil et par /services, référencé partout ailleurs par son @id.
+  provider: ORGANIZATION_REF,
   areaServed: [
     { "@type": "Country", name: "France" },
     { "@type": "AdministrativeArea", name: "Savoie" },

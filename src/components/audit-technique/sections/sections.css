@@ -1609,20 +1609,50 @@
 }
 .at-wwd-card:hover::before { transform: scaleX(1); }
 
-/* family colors */
-.at-wwd-card[data-family="handover"]     { --wwd-color: #0A0A0A; }
-.at-wwd-card[data-family="maintenance"]  { --wwd-color: #6D28D9; }
-.at-wwd-card[data-family="observability"]{ --wwd-color: #10B981; }
+/* ── Couleurs de famille ────────────────────────────────────────────────────
+   Deux jetons, deux rôles distincts :
+
+   `--wwd-color` est la teinte d'IDENTIFICATION. Elle ne sert qu'à des surfaces
+   diluées (pastille à 10 %, chip d'icône à 12 %, bordure à 20 %, filet de
+   survol à pleine force) : aucune contrainte de contraste de texte ne pèse
+   dessus, et elle reste donc telle qu'elle a été choisie.
+
+   `--wwd-ink` est l'encre des deux marques de PREMIER PLAN posées sur ces
+   surfaces : le libellé de la pastille (11 px) et le glyphe de l'icône. Elle
+   doit tenir 4,5:1 sur la dilution correspondante, ce qui n'est pas conservé
+   d'un thème à l'autre : la dilution suit `--paper`, la teinte non. Une teinte
+   claire (ambre, émeraude, ciel) échoue sur sa dilution CLAIRE ; une teinte
+   foncée (violet 700, bleu LinkedIn) échoue sur sa dilution SOMBRE.
+
+   Chaque famille déclare donc, quand c'est nécessaire, un cran plus foncé de
+   sa propre rampe pour le thème clair (`--wwd-ink-light`) et un cran plus
+   clair pour le thème sombre (`--wwd-ink-dark`). Sans déclaration, l'encre
+   reste la teinte d'identification. Ratios mesurés en commentaire. */
+.at-wwd-card      { --wwd-ink: var(--wwd-ink-light, var(--wwd-color)); }
+html.dark .at-wwd-card { --wwd-ink: var(--wwd-ink-dark,  var(--wwd-color)); }
+
+/* Famille neutre : son identité EST l'encre du thème, elle doit donc basculer
+   en entier — sur #0B0B0D, #0A0A0A se peignait sur lui-même (1,01:1) et la
+   pastille comme l'icône disparaissaient. Même traitement que la famille
+   `strategy` de /services/publicite-en-ligne. */
+.at-wwd-card[data-family="handover"]     { --wwd-color: #0A0A0A; }                      /* clair 15,86:1 */
+html.dark .at-wwd-card[data-family="handover"] { --wwd-color: #FAFAFA; }                /* sombre 15,05:1 */
+
+.at-wwd-card[data-family="maintenance"]  { --wwd-color: #6D28D9; --wwd-ink-dark: #A78BFA; }   /* 6,04 / 6,91 (2,65 avant) */
+.at-wwd-card[data-family="observability"]{ --wwd-color: #10B981; --wwd-ink-light: #047857; }  /* 4,99 (2,31 avant) / 6,92 */
 /* Seule famille qui porte aujourd'hui `.at-wwd-flag`. L'ambre est trop
    lumineux pour du blanc (2,15:1) ; l'encre sombre de la même famille ambrée
    donne 6,97:1 sur #F59E0B, dans les deux thèmes — la pastille reste ambre,
    seul son texte s'inverse. Toute autre famille qui recevrait le drapeau doit
    déclarer son propre `--wwd-flag-ink` si le blanc n'y tient pas. */
-.at-wwd-card[data-family="security"]     { --wwd-color: #F59E0B; --wwd-flag-ink: #451A03; }
-.at-wwd-card[data-family="infra"]        { --wwd-color: #0EA5E9; }
-.at-wwd-card[data-family="roadmap"]      { --wwd-color: #A855F7; }
-.at-wwd-card[data-family="performance"]  { --wwd-color: #EC4899; }
-.at-wwd-card[data-family="incident"]     { --wwd-color: #EF4444; }
+.at-wwd-card[data-family="security"]     { --wwd-color: #F59E0B; --wwd-ink-light: #B45309; --wwd-flag-ink: #451A03; }  /* 4,65 (1,99 avant) / 8,00 */
+.at-wwd-card[data-family="infra"]        { --wwd-color: #0EA5E9; --wwd-ink-light: #0369A1; }  /* 5,37 (2,51 avant) / 6,39 */
+/* Le violet 500 tenait tout juste sur sa dilution SOMBRE à 10 % (4,58:1) mais
+   passait dessous sur celle à 12 % du glyphe (4,47:1) : un cran plus clair
+   remet les deux marques au large sans changer la teinte d'identité. */
+.at-wwd-card[data-family="roadmap"]      { --wwd-color: #A855F7; --wwd-ink-light: #9333EA; --wwd-ink-dark: #C084FC; }  /* 4,76 (3,50 avant) / 6,86 (4,58 avant) */
+.at-wwd-card[data-family="performance"]  { --wwd-color: #EC4899; --wwd-ink-light: #BE185D; }  /* 5,35 (3,13 avant) / 5,11 */
+.at-wwd-card[data-family="incident"]     { --wwd-color: #EF4444; --wwd-ink-light: #B91C1C; }  /* 5,66 (3,29 avant) / 4,82 */
 
 .at-wwd-top {
   display: flex;
@@ -1641,7 +1671,7 @@
   height: 36px;
   border-radius: 10px;
   background: color-mix(in srgb, var(--wwd-color) 12%, var(--paper) 88%);
-  color: var(--wwd-color);
+  color: var(--wwd-ink);
   display: grid;
   place-items: center;
   margin-left: auto;
@@ -1653,7 +1683,7 @@
   padding: 4px 10px;
   border-radius: 999px;
   background: color-mix(in srgb, var(--wwd-color) 10%, var(--paper) 90%);
-  color: var(--wwd-color);
+  color: var(--wwd-ink);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.02em;

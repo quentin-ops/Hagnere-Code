@@ -1,6 +1,10 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY_NATIONAL,
+} from "@/lib/contact-details";
 import type {
   IssuedMathChallenge,
   MathChallengePayload,
@@ -25,8 +29,14 @@ export function isMathAnswerCorrect(value: MathChallengeValue | null): boolean {
  * confondre revient à accuser d'erreur un visiteur à qui la question n'a
  * jamais été montrée (champ vide et désactivé quand le défi ne charge pas).
  */
+/*
+ * « par e-mail ou téléphone » sans donner ni l'un ni l'autre n'est pas une
+ * porte de sortie : c'est une invitation à chercher. Ce message s'affiche
+ * précisément quand le visiteur ne PEUT plus envoyer le formulaire — il lui
+ * faut les coordonnées, pas leur mention.
+ */
 export const MATH_CHALLENGE_UNAVAILABLE_MESSAGE =
-  "Le contrôle anti-robot n'a pas pu se charger — vous n'y êtes pour rien. Réessayez le contrôle, ou envoyez-nous votre demande directement par e-mail ou téléphone.";
+  `Le contrôle anti-robot n'a pas pu se charger — vous n'y êtes pour rien. Réessayez le contrôle, ou envoyez-nous votre demande directement à ${CONTACT_EMAIL} ou au ${CONTACT_PHONE_DISPLAY_NATIONAL}.`;
 export const MATH_CHALLENGE_EMPTY_MESSAGE =
   "Répondez à la question anti-robot juste au-dessus pour envoyer votre brief.";
 export const MATH_CHALLENGE_WRONG_ANSWER_MESSAGE =

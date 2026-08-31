@@ -1186,6 +1186,18 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
     }
 
     // ----- New pill + mega-menu (.hc-nav) ---------------------------------
+    // Identifiant stable et unique par racine, pour `aria-controls`.
+    const megaPanelId = (() => {
+      let compteur = 0;
+      return (scope: ParentNode) => {
+        let candidat = "hc-mega-panel";
+        while (scope.querySelector(`#${candidat}`) || document.getElementById(candidat)) {
+          compteur += 1;
+          candidat = `hc-mega-panel-${compteur}`;
+        }
+        return candidat;
+      };
+    })();
     // Wires hover/click to open the panel, hover on a left-sidebar category
     // to swap the right pane, and outside-click + Escape to close.
     root.querySelectorAll<HTMLElement>("[data-mega-root]").forEach((megaRoot) => {
@@ -1193,6 +1205,18 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       const panel = megaRoot.querySelector<HTMLElement>("[data-mega-panel]");
       if (!trigger || !panel) return;
 
+      /* Le déclencheur n'annonçait pas ce qu'il ouvre : `aria-controls` valait
+         null, mesuré. L'identifiant est posé ici plutôt que dans le gabarit
+         `nav-html.ts` pour rester unique même si une page venait à injecter
+         deux navigations. */
+      if (!panel.id) {
+        panel.id = megaPanelId(root);
+      }
+      trigger.setAttribute("aria-controls", panel.id);
+
+      // Le calque visible sous 1024 px n'est pas le panneau seul : la barre
+      // de navigation reste au-dessus de la feuille.
+      const navRoot = megaRoot.closest<HTMLElement>(".hc-nav") ?? megaRoot;
       const cats = Array.from(megaRoot.querySelectorAll<HTMLElement>(".hc-mega-cat[data-cat]"));
       const panes = Array.from(megaRoot.querySelectorAll<HTMLElement>(".hc-mega-pane[data-pane]"));
 
@@ -1210,6 +1234,85 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
         document.documentElement.classList.toggle("nav-menu-lock", locked);
         document.body.classList.toggle("nav-menu-lock", locked);
       };
+
+      /* Confinement du focus tant que la feuille mobile est ouverte.
+         --------------------------------------------------------------------
+         Mesuré au 390 x 844, menu ouvert, `aria-expanded="true"` et
+         `body { overflow: hidden }` toujours actifs : à partir de la 21e
+         tabulation le focus partait sur les boutons du héros, dont
+         `elementFromPoint` en leur centre renvoyait une carte du panneau —
+         13 arrêts sur 30 étaient posés sur du contenu entièrement recouvert.
+         C'est l'échec de WCAG 2.4.11 « Focus non masqué », aggravé par le
+         verrouillage du défilement : impossible même de faire défiler pour
+         retrouver où l'on est.
+
+         Le confinement porte sur les CALQUES QUI RESTENT VISIBLES, pas sur le
+         seul panneau : sous 1024 px la feuille laisse la barre de navigation
+         apparente au-dessus d'elle (marque, bascule de thème, deux appels à
+         l'action), et la bannière cookies, en z-index 9000 contre 70 pour la
+         feuille, se peint par-dessus. Réduire le piège au panneau rendrait
+         ces commandes visibles mais inatteignables — on remplacerait un
+         défaut par un autre.
+
+         Pas d'`inert` sur le reste de la page pour la même raison : il
+         frapperait ces mêmes calques visibles. Le piège ne s'arme que sous le
+         seuil de la feuille ; au-dessus, le méga-menu est un déroulant
+         survolable et non une fenêtre modale, où sortir par Tab est le
+         comportement attendu. */
+      const SELECTEUR_FOCUSABLE =
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+      const calquesVisibles = (): HTMLElement[] => {
+        const calques: HTMLElement[] = [];
+        const banniere = document.querySelector<HTMLElement>(
+          "[data-cookie-banner-host]",
+        );
+        if (banniere?.firstElementChild) calques.push(banniere);
+        calques.push(navRoot);
+        return calques;
+      };
+      const focusablesDuPiege = (): HTMLElement[] =>
+        calquesVisibles().flatMap((calque) =>
+          Array.from(
+            calque.querySelectorAll<HTMLElement>(SELECTEUR_FOCUSABLE),
+          ).filter(
+            // `offsetParent` vaut null sur tout élément en position: fixed —
+            // et la barre comme la feuille le sont. `getClientRects()` mesure
+            // la présence réelle : vide dès qu'un ancêtre est en display: none,
+            // ce qui écarte les onglets de catégorie inactifs.
+            (element) =>
+              element.getClientRects().length > 0 &&
+              !element.hasAttribute("inert") &&
+              !element.closest("[inert]"),
+          ),
+        );
+
+      const onPiegeTab = (event: KeyboardEvent) => {
+        if (event.key !== "Tab" || event.defaultPrevented) return;
+        if (megaRoot.dataset.megaOpen !== "true" || !isMobileSheet()) return;
+
+        const items = focusablesDuPiege();
+        if (items.length === 0) return;
+        const premier = items[0];
+        const dernier = items[items.length - 1];
+        const actif =
+          document.activeElement instanceof HTMLElement
+            ? document.activeElement
+            : null;
+
+        if (!actif || !items.includes(actif)) {
+          event.preventDefault();
+          (event.shiftKey ? dernier : premier).focus();
+          return;
+        }
+        if (event.shiftKey && actif === premier) {
+          event.preventDefault();
+          dernier.focus();
+        } else if (!event.shiftKey && actif === dernier) {
+          event.preventDefault();
+          premier.focus();
+        }
+      };
+      document.addEventListener("keydown", onPiegeTab, true);
 
       const setOpen = (open: boolean) => {
         if (!open && panel.contains(document.activeElement)) trigger.focus();
@@ -1341,6 +1444,7 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
         }
         document.removeEventListener("click", onDocClick);
         document.removeEventListener("keydown", onKey);
+        document.removeEventListener("keydown", onPiegeTab, true);
         cancelClose();
         setScrollLock(false);
       });

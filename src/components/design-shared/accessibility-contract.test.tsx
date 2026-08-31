@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
@@ -199,5 +199,122 @@ describe("public accessibility contracts", () => {
       "Parlons de votre projet. 30 minutes, c est tout.",
     );
     expect(headingText).not.toContain("devotre");
+  });
+});
+
+/**
+ * Deux contrats nés d'audits qui les ont mesurés, écrits autour de la
+ * propriété plutôt qu'autour d'une formulation.
+ */
+describe("indicateurs de focus des composants partagés", () => {
+  const dossier = join(process.cwd(), "src/components/design-shared");
+  const feuilles = readdirSync(dossier)
+    .filter((nom) => nom.endsWith(".css"))
+    .map((nom) => ({
+      nom,
+      css: readFileSync(join(dossier, nom), "utf8").replace(
+        // Les commentaires citent les valeurs abandonnées : les scanner
+        // ferait échouer la règle sur sa propre explication.
+        /\/\*[\s\S]*?\*\//g,
+        "",
+      ),
+    }));
+
+  it("lit bien les feuilles du dossier", () => {
+    expect(feuilles.length).toBeGreaterThan(3);
+  });
+
+  /**
+   * Les champs du formulaire de contact posaient `outline: none` et laissaient
+   * pour tout indice un liseré de 1 px et un halo composité à rgb(237, 229, 250)
+   * — 1,22:1 contre l'intérieur blanc du champ, c'est-à-dire invisible. Sur le
+   * second point de conversion du site, l'état focalisé tenait à un trait d'un
+   * pixel.
+   *
+   * La règle générale du dépôt, vérifiable : supprimer l'anneau dans un état
+   * `:focus` n'est acceptable que si la MÊME déclaration en réintroduit un.
+   * Rien n'est imposé sur l'épaisseur, la couleur ni le sélecteur.
+   */
+  it.each(feuilles)(
+    "$nom : aucune règle :focus ne supprime l'anneau sans le remplacer",
+    ({ css }) => {
+      const fautives = [...css.matchAll(/([^{}]*:focus[^{}]*)\{([^}]*)\}/g)]
+        .filter(
+          ([, , corps]) =>
+            /outline\s*:\s*(none|0)\s*(!important)?\s*;/.test(corps) &&
+            !/outline\s*:\s*[^;]*\b(solid|dashed|dotted|double)\b/.test(corps),
+        )
+        .map(([, selecteur]) => selecteur.trim().replace(/\s+/g, " "));
+
+      expect(
+        fautives,
+        `« outline: none » sans indicateur de remplacement : ${fautives.join(" | ")}`,
+      ).toEqual([]);
+    },
+  );
+});
+
+/**
+ * Méga-menu mobile — mesuré au viewport 390 x 844, menu ouvert : à partir de la
+ * 21e tabulation le focus partait sur les boutons du héros, dont
+ * `elementFromPoint` en leur centre renvoyait une carte du panneau. Treize
+ * arrêts sur trente étaient posés sur du contenu entièrement recouvert, alors
+ * que `aria-expanded` valait "true" et que le défilement de la page était
+ * verrouillé : échec de WCAG 2.4.11 « Focus non masqué ».
+ *
+ * Les contrôles ci-dessous visent les deux propriétés durables — le focus est
+ * confiné tant que la feuille est ouverte, et le déclencheur désigne ce qu'il
+ * ouvre — sans figer les noms internes du gestionnaire.
+ */
+describe("méga-menu mobile — contrat modal", () => {
+  const source = readFileSync(
+    join(process.cwd(), "src/components/design-shared/useDesignInteractive.ts"),
+    "utf8",
+  );
+  // Bornes de la section méga-menu : au-delà, d'autres composants déclarent
+  // leurs propres seuils de media query et fausseraient les contrôles.
+  const debut = source.indexOf("[data-mega-root]");
+  const finSection = source.indexOf("Sommaire de page", debut);
+  const bloc = source.slice(debut, finSection > 0 ? finSection : undefined);
+
+  it("délimite bien la section analysée", () => {
+    expect(debut).toBeGreaterThan(0);
+    expect(bloc.length).toBeGreaterThan(500);
+    expect(bloc.length).toBeLessThan(source.length);
+  });
+
+  it("désigne le panneau ouvert par le déclencheur", () => {
+    expect(bloc).toMatch(/setAttribute\(\s*"aria-controls"/);
+    expect(bloc).toMatch(/panel\.id/);
+  });
+
+  it("intercepte la tabulation tant que la feuille est ouverte", () => {
+    // Un gestionnaire de `Tab` doit exister ET être conditionné à l'état
+    // ouvert : un piège permanent casserait le déroulant de bureau, où sortir
+    // par Tab est le comportement attendu.
+    const gestionnaire = bloc.match(
+      /\(event: KeyboardEvent\)[\s\S]*?event\.key !== "Tab"[\s\S]{0,600}/,
+    )?.[0];
+    expect(gestionnaire, "aucun gestionnaire de Tab dans le méga-menu").toBeTruthy();
+    expect(gestionnaire).toMatch(/megaOpen/);
+    expect(gestionnaire).toMatch(/isMobileSheet\(\)/);
+    expect(gestionnaire).toMatch(/preventDefault\(\)/);
+  });
+
+  it("arme le piège sur le même seuil que le verrou de défilement", () => {
+    // S'ils divergent, il existe une bande de largeurs où la feuille est en
+    // position fixe, la page verrouillée, et le focus libre de partir derrière.
+    const seuils = [...bloc.matchAll(/max-width:\s*(\d+)px/g)].map((m) => m[1]);
+    expect(seuils.length).toBeGreaterThan(0);
+    expect(new Set(seuils).size).toBe(1);
+  });
+
+  it("rend le focus au déclencheur à la fermeture", () => {
+    // Volontairement lâche : ce qui compte est l'enchaînement « on ferme, le
+    // focus était dans le panneau, il revient au déclencheur ». La façon de
+    // l'écrire peut changer sans que la propriété soit perdue.
+    expect(bloc).toMatch(
+      /!open[\s\S]{0,120}panel\.contains[\s\S]{0,120}trigger\.focus\(\)/,
+    );
   });
 });

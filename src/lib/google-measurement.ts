@@ -13,6 +13,24 @@
  * - `NEXT_PUBLIC_GA4_ID`        : identifiant de flux GA4 (`G-…`).
  * - `NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL` : libellé de la conversion « lead »
  *   (la partie après la barre dans `AW-XXXX/YYYY`), utilisé à la confirmation.
+ *
+ * ⚠️ Ces variables sont lues AU BUILD, pas à l'exécution : Next remplace
+ * `process.env.NEXT_PUBLIC_…` par sa valeur littérale dans le bundle client
+ * seulement si elle est définie au moment où le bundle est construit. Les poser
+ * sur l'hébergeur après un déploiement ne change rien tant qu'on n'a pas
+ * redéployé. Le symptôme est silencieux et se lit dans le chunk servi : une
+ * variable inlinée apparaît en clair (`"G-…"`), une variable absente au build
+ * reste sous la forme `t.default.env.NEXT_PUBLIC_… ?? ""` et vaut donc `""`
+ * dans le navigateur. C'est l'état relevé en production en août 2026 : GA4
+ * inliné, les deux variables Google Ads non — `leadConversionTarget()` renvoyait
+ * `null` et AUCUNE conversion ne pouvait remonter à Google Ads.
+ *
+ * ⚠️ Les deux variables Ads vont par paire. Avec l'identifiant seul,
+ * `isGoogleMeasurementConfigured()` est vrai : gtag.js est chargé, la CSP
+ * s'ouvre sur les domaines Google et les cookies Ads sont déposés — mais
+ * `leadConversionTarget()` reste `null`, donc pas une seule conversion n'est
+ * envoyée. C'est le pire des deux états, et rien ne le signale : la moitié
+ * manquante ne se voit qu'en comptant les conversions reçues côté Google.
  */
 
 export const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID ?? "";

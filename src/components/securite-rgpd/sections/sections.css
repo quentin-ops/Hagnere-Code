@@ -1000,6 +1000,14 @@
   letter-spacing: -0.01em;
   flex-shrink: 0;
 }
+/* Même piège que le sommaire de /methode : `--accent` sur `--accent-soft`, deux
+   jetons redéfinis sous `html.dark` qui bougent dans le même sens relatif —
+   l'écart se referme et le ratio tombe de 5,98:1 à 3,70:1. `--accent-ink`
+   (#C4B5FD) est le cran prévu pour du texte sur surface violette sombre :
+   8,49:1. Les variantes `recurring` et `build` déclarées juste en dessous ont
+   déjà leur propre couleur de thème sombre, à une classe de plus (voir le bloc
+   `html.dark` en fin de feuille) : elles restent prioritaires sur cette règle. */
+html.dark .sr-proc-rail-num { color: var(--accent-ink); }
 .sr-proc-card-recurring .sr-proc-rail-num { background: rgba(34,197,94,0.12); color: #15803d; }
 .sr-proc-card-build .sr-proc-rail-num { background: rgba(249,115,22,0.12); color: #c2410c; }
 .sr-proc-rail-line {

@@ -108,7 +108,13 @@ html.dark {
 .mhero-top{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-geist-mono);font-size:11px;color:rgba(255,255,255,0.55);letter-spacing:0.08em;flex-wrap:wrap;gap:12px}
 .mhero-crumb a{color:rgba(255,255,255,0.65);text-decoration:none;transition:color 0.15s}
 .mhero-crumb a:hover{color:#fff}
-.mhero-crumb .sep{margin:0 10px;color:rgba(255,255,255,0.25)}
+/* Même défaut que le « / » du fil d'Ariane des pages service, sur le hero de
+   cette page : le séparateur était si transparent qu'il ne se voyait plus.
+   Le hero est épinglé sombre par son dégradé dans les DEUX thèmes, donc
+   0,25 d'opacité donnait 2,17:1 partout, pas seulement en sombre. 0,50
+   remonte à 5,37:1 tout en restant en retrait des maillons (0,65 → 8,42:1)
+   et de la page courante (#fff → 19,55:1) : la hiérarchie est conservée. */
+.mhero-crumb .sep{margin:0 10px;color:rgba(255,255,255,0.50)}
 .mhero-crumb span:last-child{color:#fff}
 .mhero-stamp{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(167,139,250,0.3);border-radius:999px;background:rgba(109,40,217,0.12);color:rgba(255,255,255,0.9);font-weight:600}
 .mhero-stamp svg{color:var(--accent)}
@@ -183,6 +189,16 @@ html.dark {
 .hc-design .mtoc-link.is-active{background:var(--accent-soft);color:var(--accent-ink);font-weight:500}
 .hc-design .mtoc-link.is-active::before{height:60%}
 .hc-design .mtoc-link.is-active .mtoc-num{color:var(--accent);font-weight:700}
+/* Le numéro du lien actif est posé sur `--accent-soft` : les DEUX jetons sont
+   redéfinis sous `html.dark`, et ils bougent dans le même sens relatif —
+   `--accent` s'éclaircit (#6D28D9 → #8B5CF6) pendant que `--accent-soft`
+   s'assombrit (#EDE9FE → #2A1458). L'écart se referme : 5,98:1 en clair,
+   3,70:1 en sombre pour un texte de 10,5 px. `--accent-ink` est le cran prévu
+   pour du texte sur surface violette sombre : 8,49:1.
+   Règle générale : quand un jeton de TEXTE et son jeton de FOND sont tous les
+   deux redéfinis sous `html.dark`, le ratio n'est pas conservé — il doit être
+   recalculé. */
+html.dark .hc-design .mtoc-link.is-active .mtoc-num{color:var(--accent-ink)}
 .hc-design .mtoc-num{font-family:var(--font-geist-mono);font-size:10.5px;color:var(--mute);letter-spacing:0.04em;font-weight:600;text-align:right}
 .hc-design .mtoc-t{display:inline-block}
 .hc-design .mtoc-foot{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line-2);font-family:var(--font-geist-mono);font-size:9.5px;color:var(--mute);letter-spacing:0.08em;font-weight:600;text-align:center}

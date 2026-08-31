@@ -3,6 +3,9 @@
     --mute:#6B6B6B; --line:#E5E5E5; --line-2:#EFEFEF;
     --paper:#FFFFFF; --paper-2:#FAFAFA; --paper-3:#F5F5F5;
     --accent:#6D28D9;--accent-btn:#6D28D9; --accent-ink:#4C1D95; --accent-soft:#EDE9FE;
+    /* Accent posé sur une surface `--ink`, qui s'inverse avec le thème :
+       l'accent qu'elle porte doit s'inverser aussi. #A78BFA sur #0A0A0A = 7,27:1. */
+    --accent-on-ink:#A78BFA;
     --ink-rgb:10,10,10; --paper-rgb:255,255,255;
   }
   html.dark {
@@ -10,6 +13,9 @@
     --mute:#8B8B94; --line:#27272C; --line-2:#1F1F24;
     --paper:#0B0B0D; --paper-2:#121216; --paper-3:#1A1A1F;
     --accent:#8B5CF6;--accent-btn:#7C3AED; --accent-ink:#C4B5FD; --accent-soft:#2A1458;
+    /* `--ink` devient #FAFAFA : la surface est claire, l'accent doit être
+       foncé. #6D28D9 sur #FAFAFA = 6,81:1 (le violet clair y tombait à 2,61:1). */
+    --accent-on-ink:#6D28D9;
     --ink-rgb:250,250,250; --paper-rgb:11,11,13;
     color-scheme: dark;
   }

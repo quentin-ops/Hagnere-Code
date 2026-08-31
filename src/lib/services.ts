@@ -1,7 +1,27 @@
+import { SITE_URL } from "./seo";
+
 export interface ServiceRegistryEntry {
   title: string;
   path: `/services/${string}`;
   description: string;
+}
+
+/**
+ * Identifiant JSON-LD canonique d'une prestation.
+ *
+ * Sans lui, chaque service était décrit par deux nœuds `Service` anonymes
+ * portant la MÊME `url` : celui de la page (nom long, commercial) et celui du
+ * `hasOfferCatalog` de l'entité, réémis sur toutes les pages qui publient
+ * l'organisation. Deux entités sans `@id`, deux noms, deux descriptions, un
+ * seul document : un consommateur de données structurées devait arbitrer.
+ *
+ * Un `@id` stable règle le problème à la racine — c'est le même geste que
+ * `ORGANIZATION_REF` pour l'entité publique. Le nœud complet n'est publié
+ * qu'une fois, sur la page du service ; le catalogue et le hub /services ne
+ * portent plus que la référence.
+ */
+export function serviceEntityId(path: ServiceRegistryEntry["path"]): string {
+  return `${SITE_URL}${path}#service`;
 }
 
 /** Source unique des pages service publiées dans sitemap.xml et llms.txt. */

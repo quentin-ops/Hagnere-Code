@@ -115,6 +115,12 @@ const identityFields: Array<{
   { key: "recheckAt", label: "Date de recontrôle", type: "date" },
 ];
 
+/**
+ * Classe posée sur <body> pendant la seule impression déclenchée par le bouton
+ * « Imprimer la fiche ». Elle porte toute l'isolation du reste du guide.
+ */
+const PRINT_BODY_CLASS = "printing-search-visibility";
+
 export function SearchVisibilityDiagnostic() {
   const [identity, setIdentity] =
     useState<SearchVisibilityIdentity>(INITIAL_IDENTITY);
@@ -155,13 +161,92 @@ export function SearchVisibilityDiagnostic() {
     setFeedback("La fiche a été réinitialisée.");
   }
 
+  /**
+   * N'isole la fiche du reste du guide que le temps de cette impression-ci.
+   * La règle d'isolation est conditionnée à PRINT_BODY_CLASS : sans elle, un
+   * Ctrl+P sur le guide effaçait l'article entier et ne sortait qu'une fiche
+   * vierge. Même procédé que LandingPageContinuityWorksheet.
+   */
+  function printSheet() {
+    document.body.classList.add(PRINT_BODY_CLASS);
+    try {
+      window.print();
+      setFeedback(
+        "La fiche seule a été préparée pour l’impression. Pour obtenir le guide entier, utilisez l’impression du navigateur.",
+      );
+    } finally {
+      document.body.classList.remove(PRINT_BODY_CLASS);
+    }
+  }
+
   return (
     <>
-      <style>
-        {
-          "@media print { @page { margin: 10mm; } body { margin: 0 !important; } body:has(#search-visibility-diagnostic) > *:not(:has(#search-visibility-diagnostic)):not(#search-visibility-diagnostic), body *:has(#search-visibility-diagnostic) > *:not(:has(#search-visibility-diagnostic)):not(#search-visibility-diagnostic) { display: none !important; } #search-visibility-diagnostic { width: 100% !important; margin: 0 !important; overflow: visible !important; border: 0 !important; box-shadow: none !important; background: white !important; color: #18181b !important; } #search-visibility-diagnostic * { background-color: white !important; color: #18181b !important; } #search-visibility-diagnostic fieldset, #search-visibility-diagnostic label, #search-visibility-diagnostic [role='status'] { break-inside: avoid; page-break-inside: avoid; } #search-visibility-diagnostic input, #search-visibility-diagnostic select, #search-visibility-diagnostic textarea { border: 1px solid #a1a1aa !important; } #search-visibility-diagnostic button { display: none !important; } }"
+      <style>{`
+        /* Isolation « fiche seule » : conditionnée à la classe posée sur <body>
+           par le bouton « Imprimer la fiche ». Non conditionnée, elle effaçait
+           les 42 000 caractères du guide dès qu'un lecteur faisait Ctrl+P, et
+           ne laissait qu'une fiche vierge de trois pages. */
+        @media print {
+          @page {
+            margin: 10mm;
+          }
+
+          body.printing-search-visibility {
+            margin: 0 !important;
+          }
+
+          body.printing-search-visibility
+            > *:not(:has(#search-visibility-diagnostic)):not(
+              #search-visibility-diagnostic
+            ),
+          body.printing-search-visibility
+            *:has(#search-visibility-diagnostic)
+            > *:not(:has(#search-visibility-diagnostic)):not(
+              #search-visibility-diagnostic
+            ) {
+            display: none !important;
+          }
+
+          body.printing-search-visibility #search-visibility-diagnostic {
+            width: 100% !important;
+            margin: 0 !important;
+            border: 0 !important;
+          }
+
+          /* Rendu encre de la fiche, appliqué aussi quand c'est le guide entier
+             qui s'imprime : l'en-tête de l'outil est sombre à l'écran et son
+             fond n'est pas imprimé par défaut, le texte blanc disparaîtrait. */
+          #search-visibility-diagnostic {
+            overflow: visible !important;
+            border: 1px solid #a1a1aa !important;
+            box-shadow: none !important;
+            background: #ffffff !important;
+            color: #18181b !important;
+          }
+
+          #search-visibility-diagnostic * {
+            background-color: #ffffff !important;
+            color: #18181b !important;
+          }
+
+          #search-visibility-diagnostic fieldset,
+          #search-visibility-diagnostic label,
+          #search-visibility-diagnostic [role="status"] {
+            break-inside: avoid;
+            page-break-inside: avoid;
+          }
+
+          #search-visibility-diagnostic input,
+          #search-visibility-diagnostic select,
+          #search-visibility-diagnostic textarea {
+            border: 1px solid #a1a1aa !important;
+          }
+
+          #search-visibility-diagnostic button {
+            display: none !important;
+          }
         }
-      </style>
+      `}</style>
       <section
         id="search-visibility-diagnostic"
         className="not-prose my-8 overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm print:shadow-none dark:border-zinc-800 dark:bg-zinc-950"
@@ -306,10 +391,10 @@ export function SearchVisibilityDiagnostic() {
             </button>
             <button
               type="button"
-              onClick={() => window.print()}
+              onClick={printSheet}
               className="min-h-11 rounded-lg border border-zinc-300 bg-white px-4 py-2.5 text-sm font-semibold text-zinc-800 outline-none hover:bg-zinc-100 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800"
             >
-              Imprimer
+              Imprimer la fiche
             </button>
             <button
               type="button"

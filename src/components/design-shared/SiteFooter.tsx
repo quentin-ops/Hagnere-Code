@@ -56,6 +56,25 @@ type Status =
   | { kind: "success"; message?: string }
   | { kind: "error"; message: string; fields?: Record<string, string> };
 
+/**
+ * Toute mise en échec doit laisser une porte humaine.
+ *
+ * Deux branches sur cinq n'en donnaient pas : le refus serveur générique
+ * (« Une erreur est survenue »), et la panne réseau — qui invitait pourtant à
+ * « écrire directement » sans jamais donner l'adresse. Un visiteur qui vient de
+ * remplir le formulaire se retrouvait sans aucun moyen de nous joindre.
+ * Les erreurs de saisie, elles, n'en ont pas besoin : le visiteur peut corriger.
+ */
+const REPLI_HUMAIN = `Votre saisie reste affichée : réessayez, écrivez-nous à ${CONTACT_EMAIL} ou appelez le ${CONTACT_PHONE_DISPLAY}.`;
+
+function avecRepliHumain(message: string): string {
+  const base = message.trim();
+  if (!base) return REPLI_HUMAIN;
+  // Idempotent : plusieurs branches portent déjà l'adresse en toutes lettres.
+  if (base.includes(CONTACT_EMAIL)) return base;
+  return `${base} ${REPLI_HUMAIN}`;
+}
+
 const BUDGETS = ["< 15k", "15-30k", "30-60k", "60k+", "Je ne sais pas"];
 /**
  * Les sujets sont dérivés du registre des services publiés, pas recopiés.
@@ -317,9 +336,10 @@ export function ContactProjectSection({
         });
         setStatus({
           kind: "error",
-          message:
+          message: avecRepliHumain(
             json.error ||
-            "Une erreur est survenue, merci de réessayer dans un instant.",
+              "Une erreur est survenue, merci de réessayer dans un instant.",
+          ),
           fields: json.errors,
         });
         return;
@@ -379,7 +399,7 @@ export function ContactProjectSection({
         kind: "error",
         message: isProviderTimeoutError(error)
           ? `Le serveur n'a pas répondu en ${PROJECT_INQUIRY_TIMEOUT_SECONDS} secondes et l'envoi a été interrompu. Votre saisie reste affichée : réessayez, écrivez-nous à ${CONTACT_EMAIL} ou appelez le ${CONTACT_PHONE_DISPLAY}.`
-          : "Impossible de contacter le serveur. Réessayez dans un instant ou écrivez-nous directement.",
+          : avecRepliHumain("Impossible de contacter le serveur."),
       });
     }
   }

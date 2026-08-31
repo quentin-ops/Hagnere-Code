@@ -19,6 +19,7 @@
  */
 
 import { useEffect, useRef, useState, useCallback } from "react";
+import { createPortal } from "react-dom";
 import {
   clearStoredCookieConsent,
   isCookieBannerEnabled,
@@ -40,33 +41,107 @@ export function CookieBanner() {
   const [analyticsChoice, setAnalyticsChoice] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
+  const toastRef = useRef<HTMLDivElement>(null);
+  // Vrai uniquement quand la carte s'affiche d'elle-même faute de choix
+  // enregistré. Le retour depuis la fenêtre de détail réaffiche la carte lui
+  // aussi : sans ce drapeau, elle reprendrait le focus au visiteur qui vient
+  // de refermer la fenêtre depuis le pied de page.
+  const shouldFocusToastRef = useRef(false);
+  const [portalHost, setPortalHost] = useState<HTMLElement | null>(null);
+
+  /** Rend le focus à l'élément qui l'avait avant l'ouverture, s'il existe encore. */
+  const restoreFocus = useCallback(() => {
+    const previous = previousFocusRef.current;
+    previousFocusRef.current = null;
+    if (previous && previous.isConnected) previous.focus({ preventScroll: true });
+  }, []);
 
   const openDetails = useCallback(() => {
-    previousFocusRef.current =
+    const declencheur =
       document.activeElement instanceof HTMLElement
         ? document.activeElement
         : null;
+    previousFocusRef.current = declencheur;
+    /* « Voir le détail » vit DANS la carte : le bouton est démonté avec elle,
+       et le rendre au retour visait un nœud détaché — le focus retombait sur
+       BODY, mesuré. Dans ce cas seulement, c'est la carte qui doit le
+       reprendre. Depuis le pied de page, au contraire, le bouton « Gérer mes
+       cookies » existe toujours et garde la main. */
+    shouldFocusToastRef.current = !!declencheur?.closest(".hc-cb-toast");
     setShowDetail(true);
     setOpen(true);
   }, []);
 
-  // Premier mount : afficher si pas de consent valide
+  // Premier mount : créer le point de montage, puis afficher si pas de
+  // consent valide.
   // (setTimeout : évite un setState synchrone dans l'effet — react-hooks/set-state-in-effect)
   useEffect(() => {
+    const hote = document.createElement("div");
     const id = window.setTimeout(() => {
       if (!isCookieBannerEnabled()) {
         clearStoredCookieConsent();
         return;
       }
+
+      /* Point de montage remonté en tête de <body>.
+         ---------------------------------------------------------------------
+         Mesuré aux frappes clavier réelles depuis `document.body` : la carte
+         étant rendue en dernier dans le corps du document, ses quatre
+         commandes occupaient les toutes dernières positions de l'ordre de
+         tabulation — 137 tabulations sur l'accueil et 149 sur
+         /services/publicite-en-ligne avant d'atteindre « Politique cookies »,
+         son premier focusable. L'ordre du clavier contredisait l'ordre
+         visuel, puisque la carte est visible dès le chargement et recouvre
+         déjà une partie du contenu.
+
+         On la place donc juste après le lien d'évitement, qui doit rester le
+         tout premier arrêt. Rien ne bouge à l'écran : la carte est en
+         `position: fixed` avec un `z-index` explicite (9000, et 9100 pour la
+         fenêtre de détail), très au-dessus de la navigation (60/70) ; seule
+         la position dans le document change. Un portail plutôt qu'un
+         déplacement dans `layout.tsx` : le point de montage appartient ainsi
+         au composant qui l'utilise, et disparaît avec lui. */
+      hote.setAttribute("data-cookie-banner-host", "");
+      const lienEvitement = document.querySelector(".skip-to-content");
+      if (lienEvitement && lienEvitement.parentNode === document.body) {
+        document.body.insertBefore(hote, lienEvitement.nextSibling);
+      } else {
+        document.body.insertBefore(hote, document.body.firstChild);
+      }
+      setPortalHost(hote);
+
       const existing = readCookieConsent();
       if (!existing) {
+        shouldFocusToastRef.current = true;
         setOpen(true);
       } else {
         setAnalyticsChoice(existing.analytics);
       }
     }, 0);
-    return () => window.clearTimeout(id);
+    return () => {
+      window.clearTimeout(id);
+      hote.remove();
+    };
   }, []);
+
+  /* Le focus entre dans la carte à son apparition.
+     `role="dialog"` sans déplacement de focus laissait `document.activeElement`
+     sur BODY au chargement : la boîte s'annonçait comme un dialogue sans
+     jamais en être un pour le clavier ni pour un lecteur d'écran. On vise le
+     conteneur (`tabIndex={-1}`) et non un bouton, pour ne pas présélectionner
+     « Accepter » ni « Refuser » — le choix doit rester également accessible
+     des deux côtés. Pas d'`aria-modal` en revanche : la carte ne masque ni
+     n'inerte le reste de la page, qui reste entièrement utilisable à la
+     souris ; l'annoncer modale serait faux pour les lecteurs d'écran. */
+  useEffect(() => {
+    if (!open || showDetail || !portalHost) return;
+    if (!shouldFocusToastRef.current) return;
+    shouldFocusToastRef.current = false;
+    const active = document.activeElement;
+    previousFocusRef.current =
+      active instanceof HTMLElement && active !== document.body ? active : null;
+    toastRef.current?.focus({ preventScroll: true });
+  }, [open, showDetail, portalHost]);
 
   // Le panneau détaillé se comporte comme une vraie fenêtre modale : focus
   // initial, boucle au clavier, fermeture par Échap et restitution du focus.
@@ -130,25 +205,32 @@ export function CookieBanner() {
     writeCookieConsent({ necessary: true, analytics: true });
     setOpen(false);
     setShowDetail(false);
-  }, []);
+    restoreFocus();
+  }, [restoreFocus]);
 
   const refuseAll = useCallback(() => {
     writeCookieConsent({ necessary: true, analytics: false });
     setOpen(false);
     setShowDetail(false);
-  }, []);
+    restoreFocus();
+  }, [restoreFocus]);
 
   const savePreferences = useCallback(() => {
     writeCookieConsent({ necessary: true, analytics: analyticsChoice });
     setOpen(false);
     setShowDetail(false);
-  }, [analyticsChoice]);
+    restoreFocus();
+  }, [analyticsChoice, restoreFocus]);
 
   if (!isCookieBannerEnabled()) return null;
   if (!open) return null;
+  // Le point de montage naît après l'hydratation. La bannière n'est de toute
+  // façon jamais rendue côté serveur (`open` démarre à false), donc aucun
+  // écart d'hydratation possible.
+  if (!portalHost) return null;
 
   if (showDetail) {
-    return (
+    return createPortal(
       <div className="hc-cb-backdrop" role="dialog" aria-labelledby="hc-cb-title" aria-modal="true">
         <div className="hc-cb-modal" ref={modalRef}>
           <div className="hc-cb-modal-head">
@@ -237,13 +319,21 @@ export function CookieBanner() {
             </button>
           </div>
         </div>
-      </div>
+      </div>,
+      portalHost,
     );
   }
 
   // Banner compact en bas à droite
-  return (
-    <div className="hc-cb-toast" role="dialog" aria-labelledby="hc-cb-toast-title" aria-describedby="hc-cb-toast-desc">
+  return createPortal(
+    <div
+      className="hc-cb-toast"
+      role="dialog"
+      aria-labelledby="hc-cb-toast-title"
+      aria-describedby="hc-cb-toast-desc"
+      ref={toastRef}
+      tabIndex={-1}
+    >
       <div className="hc-cb-toast-eyebrow">Vie privée</div>
       <h2 id="hc-cb-toast-title" className="hc-cb-toast-title">
         Respect de votre vie privée
@@ -272,6 +362,7 @@ export function CookieBanner() {
           Accepter
         </button>
       </div>
-    </div>
+    </div>,
+    portalHost,
   );
 }

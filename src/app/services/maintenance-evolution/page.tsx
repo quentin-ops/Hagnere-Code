@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { MaintenanceEvolution } from "@/components/maintenance-evolution/MaintenanceEvolution";
-import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
-import { PUBLIC_ORGANIZATION_ENTITY } from "@/lib/organization-structured-data";
+import { OG_BASE, SERVICES_OG_IMAGE, SITE_URL } from "@/lib/seo";
+import { ORGANIZATION_REF } from "@/lib/organization-structured-data";
+import { serviceEntityId } from "@/lib/services";
+
+/** Chemin canonique de la page : le domaine ne s'écrit plus en clair. */
+const servicePath = "/services/maintenance-evolution" as const;
+const pageUrl = `${SITE_URL}${servicePath}`;
 
 export const metadata: Metadata = {
   title: "Maintenance applicative & TMA sur mesure · Hagnéré Code",
@@ -22,15 +27,18 @@ export const metadata: Metadata = {
 const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
+  "@id": serviceEntityId(servicePath),
   name: "Maintenance applicative (TMA) et évolution continue",
-  url: "https://hagnere-code.ai/services/maintenance-evolution",
+  url: pageUrl,
   serviceType:
     "Tierce maintenance applicative (TMA), supervision et évolution de logiciels",
-  // Fournisseur = l'entité publique unique, importée du registre plutôt que
-  // recopiée : adresse, TVA, e-mail et téléphone n'existent qu'à un seul
-  // endroit, et la forme du logo reste celle validée pour Google (ImageObject
-  // dimensionné) sur toutes les pages.
-  provider: PUBLIC_ORGANIZATION_ENTITY,
+  // Fournisseur = la RÉFÉRENCE à l'entité publique, pas l'entité recopiée.
+  // Le nœud complet (logo, fondateur, adresse, géo, horaires, contactPoint,
+  // 17 zones desservies, catalogue, TVA, SIREN) pèse 6,6 Ko et était sérialisé
+  // à l'identique sur chacune des onze pages service. C'est déjà le motif
+  // employé par les guides et les réalisations : un seul nœud complet, publié
+  // par l'accueil et par /services, référencé partout ailleurs par son @id.
+  provider: ORGANIZATION_REF,
   areaServed: { "@type": "Country", name: "France" },
   description:
     "Maintenance applicative pour PME, ETI et scale-up : reprise, supervision, correctifs de sécurité, évolutions, exploitation d'infrastructure et reporting. Le devis précise l'équipe, les outils, les horaires de couverture, les objectifs de service, les accès et la réversibilité.",
@@ -41,13 +49,13 @@ const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
-    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.ai/services" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
     {
       "@type": "ListItem",
       position: 3,
       name: "Maintenance & évolution",
-      item: "https://hagnere-code.ai/services/maintenance-evolution",
+      item: pageUrl,
     },
   ],
 });

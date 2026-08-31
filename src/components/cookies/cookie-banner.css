@@ -116,10 +116,29 @@
   border-color: #1f1f1f;
 }
 
+/* Anneau de focus — jeton partagé, jamais une couleur transparente.
+   -------------------------------------------------------------------------
+   L'anneau était `rgba(109, 40, 217, 0.34)` : composité sur la carte blanche
+   il donnait rgb(205, 182, 242), soit 1,82:1 — mesuré par échantillonnage des
+   pixels de la capture. Et c'était le SEUL changement d'état au focus : fond,
+   couleur, bordure et ombre des boutons « Accepter » / « Refuser » restent
+   identiques. Sous les 3:1 exigés par WCAG 1.4.11, l'état focalisé était donc
+   indétectable.
+
+   `--focus-ring` est le jeton déjà calibré du dépôt (cf. globals.css) :
+   #8B5CF6 en clair, #C4B5FD en sombre. L'anneau est posé avec un décalage,
+   donc toujours sur la SURFACE de la carte et non sur le bouton — soit
+   4,23:1 sur le blanc du thème clair et 10,0:1 sur le #131316 du thème
+   sombre. Passer par le jeton évite qu'un futur changement de palette
+   redéboîte le consentement, comme l'a fait la valeur en dur.
+
+   Le bloc reste nécessaire malgré la règle globale `:focus-visible` : la case
+   de la bascule est un `input` de 0 x 0 en `opacity: 0`, un anneau posé
+   dessus serait invisible — c'est le curseur voisin qui doit le porter. */
 .hc-cb-btn:focus-visible,
 .hc-cb-close:focus-visible,
 .hc-cb-toggle input:focus-visible + .hc-cb-toggle-slider {
-  outline: 3px solid rgba(109, 40, 217, 0.34);
+  outline: 3px solid var(--focus-ring, #8b5cf6);
   outline-offset: 3px;
 }
 

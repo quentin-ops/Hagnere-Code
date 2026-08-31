@@ -126,7 +126,7 @@ export default function Page() {
           role: "fondateur de Hagnéré Code",
           href: "/equipe",
         }}
-        updatedLabel="Mis à jour le 30 août 2026"
+        updatedLabel="Mis à jour le 31 août 2026"
         keyPoints={[
           { number: "01", title: "Budget de performance au devis", description: "", color: "violet" },
           { number: "02", title: "Forfait fixe dès 6 900 € HT", description: "", color: "blue" },
@@ -411,7 +411,7 @@ export default function Page() {
         <GuideTable
           headers={["Couche", "Technologies", "Pourquoi"]}
           rows={[
-            ["Framework", "Next.js 15, React 19", "Rendu serveur, génération statique, écosystème le plus large du web"],
+            ["Framework", "Next.js 16, React 19", "Rendu serveur, génération statique, écosystème le plus large du web"],
             ["Langage", "TypeScript", "Les erreurs sont détectées à l'écriture plutôt qu'en production"],
             ["Interface", "Tailwind CSS v4, Framer Motion, GSAP", "Design sur mesure et animations sans surcoût de performance"],
             ["Données", "PostgreSQL, Drizzle ORM", "Base relationnelle éprouvée, requêtes typées de bout en bout"],

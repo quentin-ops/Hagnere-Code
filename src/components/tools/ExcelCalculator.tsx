@@ -15,6 +15,8 @@ import {
   clearProjectInquiryClientKey,
   getProjectInquiryClientKey,
 } from "@/lib/project-inquiry-client-key";
+import { trackFunnelEvent } from "@/lib/funnel-analytics";
+import { trackLeadConversion } from "@/lib/lead-conversion";
 import {
   calculateExcelCost,
   EXCEL_CALCULATOR_DEFAULTS,
@@ -104,6 +106,11 @@ export function ExcelCalculator() {
   // puis revalidée server-side par /api/project-inquiry.
   const [math, setMath] = useState<MathChallengeValue | null>(null);
   const submissionKeyRef = useRef<string | null>(null);
+  // Dénominateur du formulaire : sans lui on connaît le nombre d'envois, jamais
+  // le nombre de visiteurs qui ont commencé à le remplir — donc aucun taux de
+  // transformation sur une page servie à du trafic payant. Un seul événement
+  // par montage, au premier focus, comme le formulaire du pied de page.
+  const openTrackedRef = useRef(false);
 
   async function onCapture(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -176,7 +183,17 @@ export function ExcelCalculator() {
           lastName: "— (calculateur)",
           email,
           company,
-          budget: result.totalYearCost > 20000 ? "15-30k" : "< 15k",
+          // Aucun `budget` n'est envoyé. Le champ était déduit du coût du statu
+          // quo simulé (`totalYearCost > 20000 ? "15-30k" : "< 15k"`), donc
+          // renseigné même quand le visiteur n'avait touché aucun curseur — les
+          // valeurs par défaut de la page donnent déjà 46 000 €. Cette tranche
+          // n'était pas saisie : elle repartait pourtant telle quelle dans
+          // l'accusé de réception envoyé AU VISITEUR, sous le titre
+          // « Récapitulatif », à côté d'un libellé « Budget » emprunté au
+          // tunnel /demarrer-un-projet où il est, lui, réellement choisi.
+          // Le champ est optionnel côté API : le récapitulatif affiche
+          // « non précisé », ce qui est exact. Le coût annuel simulé reste dans
+          // le corps du message, sous son vrai nom (« Total annuel »).
           message,
           mathChallenge: toMathChallengePayload(math),
           consent: data.get("consent") === "on",
@@ -215,6 +232,22 @@ export function ExcelCalculator() {
         return;
       }
       setStatus({ kind: "success", message: json.message });
+      // Le calculateur est une surface de conversion à part entière — prénom,
+      // e-mail pro et entreprise — et n'émettait strictement aucune mesure :
+      // ni ligne dans `funnel_analytics_event`, ni conversion Google Ads, alors
+      // que le tunnel, le pied de page et /merci passent tous par ici.
+      //
+      // Clé de déduplication propre à cette page : le pied de page rendu plus
+      // bas envoie ses propres conversions sous `contact_form:converted`, et un
+      // même visiteur peut légitimement remplir les deux. Portée « document »
+      // et non « session » : la portée session écrirait une clé dans le
+      // navigateur, donc une ligne de plus au tableau « Stockages utilisés par
+      // le site » de /legal/cookies, qui s'annonce exhaustif.
+      trackLeadConversion("contact_form", "contact_form_submit_success", {
+        page: "/outils/calculateur-cout-excel",
+        dedupeKey: "calc:converted",
+        dedupeScope: "document",
+      });
       submissionKeyRef.current = null;
       clearProjectInquiryClientKey();
     } catch {
@@ -481,6 +514,17 @@ export function ExcelCalculator() {
             <form
               className="calc-capture"
               onSubmit={onCapture}
+              onFocusCapture={() => {
+                if (openTrackedRef.current) return;
+                openTrackedRef.current = true;
+                // `form` distingue ce formulaire de celui du pied de page, rendu
+                // sur la même page : sans cette propriété, les deux ouvertures
+                // se confondraient dans le même dénominateur.
+                trackFunnelEvent("contact_form_open", {
+                  page: "/outils/calculateur-cout-excel",
+                  form: "excel_calculator",
+                });
+              }}
               noValidate
               aria-busy={status.kind === "submitting"}
             >

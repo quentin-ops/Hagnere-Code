@@ -100,6 +100,26 @@ const DIRECT_PHONE_LABEL = CONTACT_PHONE_DISPLAY_NATIONAL;
 const DIRECT_EMAIL = CONTACT_EMAIL;
 
 /**
+ * Porte de sortie humaine des échecs d'envoi. Aucune branche d'échec ne doit
+ * se terminer sans elle.
+ *
+ * Seul le dépassement de délai la donnait : la coupure réseau — l'échec le
+ * plus probable d'un trafic mobile — se soldait par « Impossible de contacter
+ * le serveur d'envoi. » et rien d'autre, à l'instant précis où le visiteur
+ * venait de remplir six étapes. `appendFallbackHelp` la joint au message quel
+ * qu'il soit, y compris au texte brut renvoyé par le serveur, sans la
+ * dupliquer quand il la porte déjà.
+ */
+export const SUBMIT_FALLBACK_HELP = `Vos réponses restent sur cette page : réessayez, ou transmettez-nous votre demande à ${DIRECT_EMAIL} ou au ${DIRECT_PHONE_LABEL}.`;
+
+export function appendFallbackHelp(message: string): string {
+  const base = message.trim();
+  if (!base) return SUBMIT_FALLBACK_HELP;
+  if (base.includes(DIRECT_EMAIL)) return base;
+  return `${base} ${SUBMIT_FALLBACK_HELP}`;
+}
+
+/**
  * Journal de diagnostic réservé au développement — la dictée vocale
  * envoyait user-agent, origine et état de permission dans la console de
  * tous les visiteurs en production.
@@ -1017,6 +1037,15 @@ function getStepCopy(id: StepId, state: FunnelState) {
       help: "Ces réponses aident à choisir entre audit, sprint de lancement ou accompagnement récurrent.",
     };
   }
+  // Écran d'envoi atteint sans coordonnées — le cas d'un brouillon restauré,
+  // qui ne les conserve jamais. « Votre brief est prêt à partir. » était alors
+  // faux : le clic sur « Envoyer » renvoyait à l'étape 5 sans explication.
+  if (id === "recap" && !stepIsComplete("contact", state)) {
+    return {
+      title: "Il ne manque que vos coordonnées.",
+      help: "L'étape Coordonnées n'est pas remplie — c'est aussi la seule que le brouillon de cet onglet ne conserve jamais. Complétez-la et le brief part.",
+    };
+  }
   return { title: steps.find((step) => step.id === id)?.title || "", help: steps.find((step) => step.id === id)?.help || "" };
 }
 
@@ -1237,6 +1266,62 @@ function stepIsComplete(id: StepId, state: FunnelState): boolean {
   if (id === "recap") return true;
   return false;
 }
+
+/**
+ * Étape qui porte chaque champ refusé par `/api/project-inquiry`.
+ *
+ * La route répond `{ errors: { email, company, … } }` en 400 ; le tunnel
+ * concaténait ces messages en bannière sur l'écran d'envoi, à distance des
+ * champs concernés. Cette table est ce qui permet d'y ramener le visiteur.
+ * `submission` (clé d'idempotence) en est volontairement absent : aucun champ
+ * saisi n'est en cause, le message reste donc une bannière d'envoi.
+ *
+ * Les index sont dérivés de `steps` : réordonner le parcours ne peut pas
+ * désynchroniser la table.
+ */
+export const SERVER_ERROR_FIELD_STEP: Record<string, StepId> = {
+  projectType: "projet",
+  message: "contexte",
+  timeline: "contraintes",
+  budget: "contraintes",
+  firstName: "contact",
+  lastName: "contact",
+  email: "contact",
+  phone: "contact",
+  company: "contact",
+  consent: "contact",
+};
+
+/**
+ * Index dérivés de `steps` plutôt qu'écrits en dur : réordonner le parcours ne
+ * peut pas les désynchroniser.
+ */
+const CONTACT_STEP_INDEX = steps.findIndex((step) => step.id === "contact");
+const RECAP_STEP_INDEX = steps.findIndex((step) => step.id === "recap");
+
+/** Copie sans une clé — le refus serveur ne survit pas à la correction. */
+function omitKey(
+  source: Record<string, string>,
+  key: string,
+): Record<string, string> {
+  const next = { ...source };
+  delete next[key];
+  return next;
+}
+
+/**
+ * Champs refusés par la route qui ne correspondent à aucune saisie du tunnel :
+ * il n'y a nulle part où ramener le visiteur, leur message reste donc une
+ * bannière sur l'écran d'envoi. À tenir à jour avec la route.
+ */
+export const SERVER_ERROR_FIELDS_WITHOUT_STEP: readonly string[] = ["submission"];
+
+const SERVER_ERROR_STEP: Record<string, number | undefined> = Object.fromEntries(
+  Object.entries(SERVER_ERROR_FIELD_STEP).map(([field, stepId]) => [
+    field,
+    steps.findIndex((step) => step.id === stepId),
+  ]),
+);
 
 function validationText(id: StepId): string {
   if (id === "projet") return "Sélectionnez au moins un type de projet et un objectif (vous pouvez en cocher plusieurs).";
@@ -2039,7 +2124,15 @@ function VoiceTextarea({
               </p>
             </details>
           )}
-          {error.diag && (
+          {/* Vidage de diagnostic réservé au développement, comme `debugLog`.
+              Servi au visiteur, il affichait son user-agent, l'origine et
+              l'état de permission sous le message d'erreur — et, replié dans
+              une carte en `display: grid`, sa largeur min-content imposait
+              691 px à toute l'étape sur un écran de 390 px : le message utile
+              et la consigne « vous pouvez écrire votre réponse à la main »
+              partaient hors écran. Le message métier et le bloc « Comment
+              autoriser le micro ? » suffisent en production. */}
+          {process.env.NODE_ENV !== "production" && error.diag && (
             <details className="pf-mic-error-help pf-mic-error-diag" open>
               <summary>Détails techniques</summary>
               <pre>{`isSecureContext   : ${error.diag.isSecureContext}
@@ -2138,6 +2231,16 @@ export function ProjectFunnel() {
   // bloqueur) : on propose un autre canal au lieu d'un message d'erreur faux.
   const [mathUnavailable, setMathUnavailable] = useState(false);
   const [showValidation, setShowValidation] = useState(false);
+  /**
+   * Refus champ par champ renvoyés par `/api/project-inquiry` (400).
+   * Posés sur les champs eux-mêmes — `TextInput` accepte déjà `error` et
+   * pose `aria-invalid` —, plus une bannière sur l'étape concernée pour les
+   * champs qui n'ont pas de saisie libre (budget, échéance, consentement).
+   * Vidés champ par champ dès que le visiteur corrige (cf. `patch`).
+   */
+  const [serverFieldErrors, setServerFieldErrors] = useState<
+    Record<string, string>
+  >({});
   const [skippedSteps, setSkippedSteps] = useState<Set<StepId>>(new Set());
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   const submissionKeyRef = useRef<string | null>(null);
@@ -2206,7 +2309,19 @@ export function ProjectFunnel() {
           // décocher, c'est un clic ; retrouver un brief effacé, non.
           skipInitialPersistRef.current = true;
           setState(draft.state);
-          setActiveStep(draft.activeStep);
+          // Le brouillon n'emporte jamais les coordonnées ni le consentement
+          // (`sanitizeProjectDraftState`), et c'est très bien. Mais rouvrir sur
+          // l'écran d'envoi laissait alors lire « Votre brief est prêt à
+          // partir. » sous un bloc Contact vide : le visiteur cliquait
+          // « Envoyer » et se faisait renvoyer en arrière sans comprendre — de
+          // son point de vue, le site avait perdu ses coordonnées. On rouvre
+          // sur l'étape qu'il reste réellement à faire.
+          setActiveStep(
+            draft.activeStep === RECAP_STEP_INDEX &&
+              !stepIsComplete("contact", draft.state)
+              ? CONTACT_STEP_INDEX
+              : draft.activeStep,
+          );
           setDraftStorageEnabled(true);
           scheduleDraftExpiry(draft.savedAt);
         }
@@ -2339,12 +2454,27 @@ export function ProjectFunnel() {
   // Filet de sécurité pour la fermeture d'onglet ou un clic sortant : la
   // conservation du brouillon reste une action volontaire (politique
   // cookies), donc sans avertissement une saisie de 2-3 minutes disparaît.
+  //
+  // Le repère ne pouvait pas rester « du texte a été tapé » : les étapes 1, 3
+  // et 4 sont intégralement cliquables et l'étape 2 est explicitement
+  // contournable par « Passer cette étape ». Un visiteur pouvait donc traverser
+  // quatre étapes sur six sans qu'aucun caractère soit saisi — et n'être
+  // prévenu de rien en quittant la page. Ce qui compte est le travail investi,
+  // pas la façon dont il a été fourni.
   const hasEnteredContent =
     state.description.trim().length > 0 ||
     state.currentSituation.trim().length > 0 ||
     state.audience.trim().length > 0 ||
     state.openScope.trim().length > 0 ||
-    state.email.trim().length > 0;
+    state.email.trim().length > 0 ||
+    state.projectKinds.length > 0 ||
+    state.objectives.length > 0 ||
+    state.mustHaves.length > 0 ||
+    state.integrations.length > 0 ||
+    state.existingAssets.length > 0 ||
+    state.timeline.length > 0 ||
+    state.budget.length > 0 ||
+    state.decisionStage.length > 0;
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -2379,6 +2509,38 @@ export function ProjectFunnel() {
   }, [activeStep]);
   const current = steps[activeStep]!;
 
+  /**
+   * Refus serveur qui concernent l'étape affichée, dans l'ordre de la table.
+   * Ils remplacent le texte de validation générique : quand c'est le serveur
+   * qui refuse, c'est sa raison qu'il faut lire, pas la consigne d'origine.
+   */
+  const serverStepMessage = useMemo(() => {
+    const messages = Object.entries(serverFieldErrors)
+      .filter(([field]) => SERVER_ERROR_STEP[field] === activeStep)
+      .map(([, message]) => message.trim())
+      .filter(Boolean);
+    return messages.length > 0 ? messages.join(" ") : null;
+  }, [serverFieldErrors, activeStep]);
+
+  /**
+   * Le message de validation restait affiché après correction : `showValidation`
+   * n'était remis à `false` que par une navigation (Continuer, Retour, Passer,
+   * Modifier). Sur la première marche du tunnel — celle qui reçoit tout le
+   * trafic payant — le visiteur cochait ce qu'on lui demandait et l'interface
+   * continuait de le lui reprocher.
+   *
+   * Le refus SERVEUR, lui, n'est pas levé ici : l'état local peut être complet
+   * alors que la route refuse toujours la valeur (une adresse que le client
+   * accepte et que le serveur rejette). Il est vidé champ par champ par
+   * `patch`, quand la valeur en cause change réellement.
+   */
+  useEffect(() => {
+    if (!showValidation || current.id === "recap" || serverStepMessage) return;
+    if (skippedSteps.has(current.id) || stepIsComplete(current.id, state)) {
+      setShowValidation(false);
+    }
+  }, [showValidation, current.id, state, skippedSteps, serverStepMessage]);
+
   // Entrée dans une étape — le dénominateur du décrochage.
   //
   // `pf:step_complete` ne dit que ce qui a été VALIDÉ : une étape atteinte puis
@@ -2409,6 +2571,12 @@ export function ProjectFunnel() {
 
   function patch<K extends keyof FunnelState>(key: K, value: FunnelState[K]) {
     setState((prev) => ({ ...prev, [key]: value }));
+    // Le refus serveur porte sur une valeur précise : dès qu'elle change, le
+    // message n'est plus vrai. Le laisser afficher pendant la correction, c'est
+    // le défaut que ce constat corrigeait ailleurs dans la page.
+    setServerFieldErrors((prev) =>
+      key in prev ? omitKey(prev, key as string) : prev,
+    );
   }
 
   function setProjectKinds(nextKinds: ProjectKindId[]) {
@@ -2492,7 +2660,7 @@ export function ProjectFunnel() {
     if (status.kind === "submitting" || status.kind === "captured") return;
     if (!stepIsComplete("contact", state)) {
       setShowValidation(true);
-      setActiveStep(4);
+      setActiveStep(CONTACT_STEP_INDEX);
       return;
     }
     // Distingue « défi non chargé », « champ vide » et « réponse fausse » :
@@ -2504,6 +2672,10 @@ export function ProjectFunnel() {
       return;
     }
     setMathError(null);
+    // Les refus du serveur portent sur la tentative précédente : on repart
+    // d'une ardoise vierge, sans quoi un champ corrigé ailleurs resterait
+    // marqué invalide au retour.
+    setServerFieldErrors({});
     setStatus({ kind: "submitting" });
     const message = makeLeadMessage(state);
     trackFunnelEvent("pf:submit_start", {
@@ -2609,18 +2781,42 @@ export function ProjectFunnel() {
         setMath(null);
         setMathReloadKey((key) => key + 1);
       }
+      // Refus champ par champ renvoyé par la route. Concaténés en bannière sur
+      // l'écran d'envoi, ces messages reprochaient au visiteur des champs
+      // qu'il n'avait plus sous les yeux, sans rien surligner ni rien pour
+      // l'y ramener. On le remet sur la première étape concernée, avec le
+      // message du serveur posé sur le champ lui-même — le chemin que
+      // `submitBrief` emprunte déjà quand la validation locale échoue.
+      const fieldErrors = mailJson.errors ?? {};
+      const targetSteps = Object.keys(fieldErrors)
+        .map((field) => SERVER_ERROR_STEP[field])
+        .filter((index): index is number => typeof index === "number");
+      if (!mailOk && targetSteps.length > 0) {
+        setServerFieldErrors(fieldErrors);
+        setShowValidation(true);
+        setStatus({ kind: "idle" });
+        setActiveStep(Math.min(...targetSteps));
+        // `pf:submit_error` et pas un nouveau nom : l'union des événements est
+        // fermée et vit dans `src/lib/funnel-analytics.ts`, partagé avec le
+        // reste du site. Le refus reste distinguable par sa charge utile.
+        trackFunnelEvent("pf:submit_error", {
+          mail_error: `champs refusés : ${Object.keys(fieldErrors).sort().join(", ")}`,
+        });
+        return;
+      }
+
       mailError =
         mailJson.error ||
-        Object.values(mailJson.errors || {}).join(" ") ||
+        Object.values(fieldErrors).join(" ") ||
         (mailOk
           ? ""
           : mailRes.ok
-            ? `Votre brief n'a pas été enregistré. Vos réponses restent sur cette page : réessayez, ou transmettez-nous votre demande à ${DIRECT_EMAIL} ou au ${DIRECT_PHONE_LABEL}.`
+            ? "Votre brief n'a pas été enregistré."
             : "Le brief n'a pas pu être envoyé.");
     } catch (error) {
       mailError = isProviderTimeoutError(error)
-        ? `L'envoi a été interrompu après ${PROJECT_INQUIRY_TIMEOUT_SECONDS} secondes sans réponse du serveur. Vos réponses restent sur cette page : réessayez, ou transmettez-nous votre demande à ${DIRECT_EMAIL} ou au ${DIRECT_PHONE_LABEL}.`
-        : "Impossible de contacter le serveur d'envoi.";
+        ? `L'envoi a été interrompu après ${PROJECT_INQUIRY_TIMEOUT_SECONDS} secondes sans réponse du serveur.`
+        : "Impossible de contacter le serveur d'envoi — vérifiez votre connexion.";
     }
 
     if (mailOk) {
@@ -2637,11 +2833,15 @@ export function ProjectFunnel() {
     }
 
     trackFunnelEvent("pf:submit_error", { mail_error: mailError });
+    // Point de passage unique de TOUS les échecs restants : la porte de sortie
+    // humaine est jointe ici, quel que soit le message — coupure réseau,
+    // 5xx muet, ou texte brut renvoyé par le serveur.
     setStatus({
       kind: "error",
-      message:
+      message: appendFallbackHelp(
         mailError ||
-        "Impossible d'envoyer le brief pour le moment. Réessayez dans un instant.",
+          "Impossible d'envoyer le brief pour le moment. Réessayez dans un instant.",
+      ),
     });
   }
 
@@ -2924,6 +3124,22 @@ export function ProjectFunnel() {
             </div>
           </div>
 
+          {/* Le tunnel n'avait aucun <form> : la touche Entrée ne faisait rien,
+              y compris sur la réponse au calcul anti-robot — le tout dernier
+              geste avant l'envoi, celui où le clavier mobile propose « OK ».
+              Il fallait viser un bouton. Un seul formulaire par étape, dont la
+              soumission fait ce que fait le bouton principal de l'étape. */}
+          <form
+            className="pf-step-form"
+            onSubmit={(event) => {
+              event.preventDefault();
+              if (current.id === "recap") {
+                void submitBrief();
+                return;
+              }
+              goNext();
+            }}
+          >
           <div className="pf-card-body" key={current.id} data-step={current.id}>
             {current.id === "projet" && (
               <div className="pf-stack">
@@ -3160,12 +3376,16 @@ export function ProjectFunnel() {
             {current.id === "contact" && (
               <div className="pf-stack">
                 <div className="pf-split">
-                  <TextInput icon={<UserRound size={16} />} label="Prénom" value={state.firstName} onChange={(value) => patch("firstName", value)} autoComplete="given-name" required />
+                  {/* `error={serverFieldErrors.…}` : le refus renvoyé par la
+                      route se pose sur le champ concerné (et avec lui
+                      `aria-invalid`), au lieu d'être concaténé en bannière sur
+                      l'écran d'envoi, à trois étapes de là. */}
+                  <TextInput icon={<UserRound size={16} />} label="Prénom" value={state.firstName} onChange={(value) => patch("firstName", value)} autoComplete="given-name" required error={serverFieldErrors.firstName} />
                   {/* Une icône sur deux champs donnait au formulaire l'air
                       monté à la main : personne dans Prénom mais rien dans
                       Nom, enveloppe dans E-mail, rien dans Entreprise ni dans
                       Rôle. Tous les champs de cette étape en portent une. */}
-                  <TextInput icon={<UserRound size={16} />} label="Nom" value={state.lastName} onChange={(value) => patch("lastName", value)} autoComplete="family-name" required />
+                  <TextInput icon={<UserRound size={16} />} label="Nom" value={state.lastName} onChange={(value) => patch("lastName", value)} autoComplete="family-name" required error={serverFieldErrors.lastName} />
                 </div>
                 <div className="pf-split">
                   <TextInput
@@ -3179,9 +3399,10 @@ export function ProjectFunnel() {
                     required
                     placeholder="prenom@entreprise.com"
                     error={
-                      state.email.trim() && !isValidEmail(state.email.trim())
+                      serverFieldErrors.email ??
+                      (state.email.trim() && !isValidEmail(state.email.trim())
                         ? "Adresse email invalide."
-                        : undefined
+                        : undefined)
                     }
                   />
                   <TextInput
@@ -3196,9 +3417,10 @@ export function ProjectFunnel() {
                     optional
                     hint="Format FR (06…) ou international (+33…)"
                     error={
-                      state.phone.trim() && !isValidPhone(state.phone)
+                      serverFieldErrors.phone ??
+                      (state.phone.trim() && !isValidPhone(state.phone)
                         ? "Numéro invalide. 10 chiffres en France ou format international."
-                        : undefined
+                        : undefined)
                     }
                   />
                 </div>
@@ -3230,6 +3452,7 @@ export function ProjectFunnel() {
                     onChange={(value) => patch("company", value)}
                     autoComplete="organization"
                     required
+                    error={serverFieldErrors.company}
                     hint="Nous intervenons auprès d'organisations : indiquez la structure au nom de laquelle vous nous écrivez."
                   />
                   <TextInput icon={<BriefcaseBusiness size={16} />} label="Rôle / fonction" value={state.role} onChange={(value) => patch("role", value)} optional autoComplete="organization-title" />
@@ -3306,11 +3529,19 @@ export function ProjectFunnel() {
                     value={state.timeline || "Non précisée"}
                     onEdit={() => { setActiveStep(3); setShowValidation(false); }}
                   />
+                  {/* « Contact · — » ne disait pas ce qui manquait : après
+                      restauration d'un brouillon, les coordonnées sont
+                      volontairement absentes, et rien ne le signalait sur
+                      l'écran d'envoi. */}
                   <SummaryBlock
                     icon={<UserRound size={18} />}
                     label="Contact"
-                    value={`${state.firstName} ${state.lastName} · ${state.company || "—"}`}
-                    onEdit={() => { setActiveStep(4); setShowValidation(false); }}
+                    value={
+                      stepIsComplete("contact", state)
+                        ? `${state.firstName} ${state.lastName} · ${state.company}`
+                        : "À compléter — jamais gardé dans le brouillon"
+                    }
+                    onEdit={() => { setActiveStep(CONTACT_STEP_INDEX); setShowValidation(false); }}
                   />
                 </div>
 
@@ -3371,9 +3602,12 @@ export function ProjectFunnel() {
                 </div>}
 
                 <button
-                  type="button"
+                  // `submit` et non `button` : la réponse au calcul anti-robot
+                  // juste au-dessus est le dernier champ du parcours, et c'est
+                  // là que le clavier mobile propose « OK ». La soumission du
+                  // formulaire d'étape appelle `submitBrief` (cf. onSubmit).
+                  type="submit"
                   className="pf-submit"
-                  onClick={submitBrief}
                   // aria-disabled seul pendant l'envoi : `disabled` retirerait
                   // le focus clavier du bouton qu'on vient d'actionner.
                   // Le double envoi est bloqué dans submitBrief.
@@ -3414,7 +3648,37 @@ export function ProjectFunnel() {
 
           {showValidation && current.id !== "recap" && (
             <div className="pf-validation" role="alert">
-              {validationText(current.id)}
+              {serverStepMessage ?? validationText(current.id)}
+            </div>
+          )}
+
+          {/* Invitation à conserver le brouillon, à l'endroit où l'on saisit.
+              Elle ne vivait que dans l'encadré latéral — sous le bureau il
+              faut la chercher, et sous 1080 px la colonne passe AU-DESSUS de
+              la carte, donc hors écran dès qu'on travaille. Le trafic est
+              majoritairement mobile, et un onglet mobile est repris par l'OS
+              au premier appel entrant : le visiteur revenait sur une page
+              vierge après 2-3 minutes.
+
+              Toujours un opt-in, jamais une activation d'office : l'inventaire
+              de /legal/cookies déclare cette clé « après activation volontaire
+              du bouton », base légale « fonction expressément demandée par
+              l'utilisateur ». Ce qui manquait n'était pas le consentement,
+              c'était de le demander au bon endroit. */}
+          {hydrated && !draftStorageEnabled && hasEnteredContent && current.id !== "recap" && (
+            <div className="pf-draft-inline">
+              <button
+                type="button"
+                className="pf-draft-optin"
+                onClick={enableDraftStorage}
+              >
+                <FileText size={12} />
+                Conserver le brouillon dans cet onglet
+              </button>
+              <small>
+                Reprendre où vous en êtes si l&apos;onglet se recharge —
+                24 h au plus, coordonnées exclues.
+              </small>
             </div>
           )}
 
@@ -3446,12 +3710,17 @@ export function ProjectFunnel() {
                   Passer cette étape
                 </button>
               )}
-              <button type="button" className="pf-primary" onClick={goNext}>
+              {/* `type="submit"` : c'est ce bouton que la touche Entrée
+                  actionne depuis n'importe quel champ de l'étape. `onClick`
+                  est retiré — garder les deux ferait avancer de deux étapes
+                  au clic, qui déclenche AUSSI la soumission. */}
+              <button type="submit" className="pf-primary">
                 Continuer
                 <ArrowRight size={16} />
               </button>
             </div>
           )}
+          </form>
         </section>
       </div>
 

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { MobileApplication } from "@/components/application-mobile/MobileApplication";
-import { OG_BASE } from "@/lib/seo";
-import { PUBLIC_ORGANIZATION_ENTITY } from "@/lib/organization-structured-data";
+import { OG_BASE, SITE_URL } from "@/lib/seo";
+import { ORGANIZATION_REF } from "@/lib/organization-structured-data";
+import { serviceEntityId } from "@/lib/services";
 
 const MOBILE_OG_IMAGE = {
   url: "/og-image-services.png",
@@ -9,6 +10,10 @@ const MOBILE_OG_IMAGE = {
   height: 630,
   alt: "Services Hagnéré Code — applications mobiles iOS & Android sur mesure",
 };
+
+/** Chemin canonique de la page : le domaine ne s'écrit plus en clair. */
+const servicePath = "/services/application-mobile" as const;
+const pageUrl = `${SITE_URL}${servicePath}`;
 
 export const metadata: Metadata = {
   title: "Création d'application mobile iOS & Android · Hagnéré Code",
@@ -29,15 +34,18 @@ export const metadata: Metadata = {
 const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
+  "@id": serviceEntityId(servicePath),
   name: "Création d'application mobile iOS & Android sur mesure",
-  url: "https://hagnere-code.ai/services/application-mobile",
+  url: pageUrl,
   serviceType:
     "Création d'applications mobiles natives iOS et Android sur mesure",
-  // Fournisseur = l'entité publique unique, importée du registre plutôt que
-  // recopiée : adresse, TVA, e-mail et téléphone n'existent qu'à un seul
-  // endroit, et la forme du logo reste celle validée pour Google (ImageObject
-  // dimensionné) sur toutes les pages.
-  provider: PUBLIC_ORGANIZATION_ENTITY,
+  // Fournisseur = la RÉFÉRENCE à l'entité publique, pas l'entité recopiée.
+  // Le nœud complet (logo, fondateur, adresse, géo, horaires, contactPoint,
+  // 17 zones desservies, catalogue, TVA, SIREN) pèse 6,6 Ko et était sérialisé
+  // à l'identique sur chacune des onze pages service. C'est déjà le motif
+  // employé par les guides et les réalisations : un seul nœud complet, publié
+  // par l'accueil et par /services, référencé partout ailleurs par son @id.
+  provider: ORGANIZATION_REF,
   areaServed: { "@type": "Country", name: "France" },
   description:
     "Développement d'applications mobiles iOS et Android via React Native et Expo. Le devis précise le périmètre de soumission aux stores, les comptes client, le calendrier, les livrables, les droits transférés après paiement complet et la maintenance éventuelle.",
@@ -50,35 +58,40 @@ const serviceJsonLd = JSON.stringify({
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Formules de développement d'application mobile",
+    // L'ancre `#tarifs` est portée par l'`Offer`, pas par le `Service`
+    // proposé : les trois formules renvoient vers la même section de page, et
+    // trois nœuds `Service` anonymes partageant une même `url` sont trois
+    // définitions concurrentes de la même adresse — le défaut corrigé à
+    // l'échelle du site. Le service décrit, lui, reste distinct par son nom.
     itemListElement: [
       {
         "@type": "Offer",
+        url: `${pageUrl}#tarifs`,
         itemOffered: {
           "@type": "Service",
           name: "Lancement · MVP iOS + Android",
           description:
             "App native iOS + Android focalisée sur un cas d'usage : fidélité, réservation, click & collect ou app interne. Périmètre, soumissions, planning indicatif et forfait sont confirmés au devis après cadrage.",
-          url: "https://hagnere-code.ai/services/application-mobile#tarifs",
         },
       },
       {
         "@type": "Offer",
+        url: `${pageUrl}#tarifs`,
         itemOffered: {
           "@type": "Service",
           name: "Performance · App complète",
           description:
             "App complète iOS + Android + Web mobile avec fonctionnalités et intégrations sélectionnées au cadrage. Planning indicatif, tests, soumissions et forfait sont confirmés au devis.",
-          url: "https://hagnere-code.ai/services/application-mobile#tarifs",
         },
       },
       {
         "@type": "Offer",
+        url: `${pageUrl}#tarifs`,
         itemOffered: {
           "@type": "Service",
           name: "Sur-mesure · Marketplace, IoT, IA embarquée",
           description:
             "Marketplace, IoT, modules natifs, extensions Watch ou Wear OS, multilingue et intégrations métier selon faisabilité. Le périmètre, les licences, le planning indicatif et le prix sont définis après cadrage approfondi.",
-          url: "https://hagnere-code.ai/services/application-mobile#tarifs",
         },
       },
     ],
@@ -90,13 +103,13 @@ const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
-    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.ai/services" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
     {
       "@type": "ListItem",
       position: 3,
       name: "Application mobile iOS & Android",
-      item: "https://hagnere-code.ai/services/application-mobile",
+      item: pageUrl,
     },
   ],
 });

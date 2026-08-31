@@ -1,13 +1,17 @@
 /**
  * Point d'entrée unique d'une conversion « lead ».
  *
- * Une demande peut arriver par deux chemins : le tunnel /demarrer-un-projet
- * (qui se termine sur /merci) et le formulaire de contact rendu par le footer
- * sur l'accueil, le hub /services, les 11 pages service et /tarifs.
+ * Une demande peut arriver par trois chemins : le tunnel /demarrer-un-projet
+ * (qui se termine sur /merci), le formulaire de contact rendu par le footer sur
+ * l'accueil, le hub /services, les 11 pages service et /tarifs, et le
+ * formulaire de partage du calculateur /outils/calculateur-cout-excel.
  *
  * L'audit de 2026-08 avait relevé que seul le premier chemin était mesuré :
  * toutes les conversions issues des pages service — les cibles naturelles des
- * annonces — restaient invisibles. Les deux chemins passent désormais ici.
+ * annonces — restaient invisibles. Un second passage a trouvé le calculateur
+ * dans le même angle mort : page d'atterrissage Ads capturant prénom, e-mail
+ * pro et entreprise, sans un seul appel de mesure. Les trois chemins passent
+ * désormais ici.
  */
 
 import { isAnalyticsAllowed } from "@/lib/cookie-consent";

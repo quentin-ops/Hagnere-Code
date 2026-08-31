@@ -49,8 +49,9 @@ Erreur → message inline + retry (l'état du formulaire est conservé).
 - **Historique navigateur** : chaque étape pousse une entrée
   (`history.pushState({ pfStep })`, URL inchangée — pas de variante
   indexable). Le geste Retour revient à l'étape précédente au lieu de
-  quitter la page. `beforeunload` prévient dès qu'une description ou un
-  e-mail est saisi.
+  quitter la page. `beforeunload` prévient dès qu'un travail est engagé —
+  saisie libre **ou** simple sélection : quatre étapes sur six se
+  franchissent sans taper un caractère.
 - **Focus** : le `<h2>` de l'étape (`.pf-step-heading`, `tabIndex={-1}`) est
   focalisé à chaque changement d'étape. C'est ce qui remplace l'ancien
   `aria-live` posé sur toute la carte — ne pas le réintroduire, il faisait
@@ -60,6 +61,26 @@ Erreur → message inline + retry (l'état du formulaire est conservé).
   `submitBrief`.
 - **`RadioBlock`** porte `role="radiogroup"`, donc le contrat clavier qui va
   avec : tabindex roving + flèches, Home et End.
+- **Un `<form>` par étape** (`.pf-step-form`, enveloppe `.pf-card-body` +
+  `.pf-actions`) : la touche Entrée valide l'étape depuis n'importe quel
+  champ, y compris la réponse anti-robot juste avant l'envoi. « Continuer »
+  et « Envoyer mon brief » sont en `type="submit"` et n'ont plus de
+  `onClick` — remettre les deux ferait avancer de deux étapes au clic.
+- **Aucune branche d'échec sans issue humaine** : tout message d'erreur
+  d'envoi passe par `appendFallbackHelp()`, qui joint e-mail et téléphone.
+  Ne jamais appeler `setStatus({ kind: "error" })` sans lui.
+- **Refus de champ renvoyés par la route** : `SERVER_ERROR_FIELD_STEP` dit
+  quelle étape porte chaque champ. Sur un 400 `{ errors }`, le tunnel
+  ramène à l'étape la plus en amont et pose le message sur le champ.
+  Ajouter un `errors.X` à la route sans l'inscrire ici fait tomber un test.
+- **Message de validation** : `showValidation` retombe tout seul dès que
+  l'étape redevient complète — sauf si le refus vient du serveur, qui n'est
+  levé qu'à la correction du champ visé.
+- **Brouillon** : opt-in, proposé à la fois dans l'encadré latéral et dans
+  la carte (`.pf-draft-inline`) dès qu'un travail est engagé. Restauré sur
+  l'étape Coordonnées, jamais sur l'écran d'envoi, puisqu'il ne conserve
+  jamais les coordonnées. Ne pas l'activer d'office : `/legal/cookies`
+  déclare cette clé « après activation volontaire du bouton ».
 
 ## Anti-spam
 

@@ -551,6 +551,15 @@ body {
   font-weight: 600;
 }
 
+/* Enveloppe de soumission de l'étape (touche Entrée). Purement sémantique :
+   `.pf-main-card` est un bloc et ses enfants portaient déjà leurs propres
+   marges internes — la feuille de style de l'agent ajoute une marge basse au
+   <form>, qu'on annule pour que l'insertion ne déplace rien. */
+.pf-step-form {
+  margin: 0;
+  min-width: 0;
+}
+
 .pf-card-body {
   padding: clamp(20px, 2.3vw, 30px);
 }
@@ -1575,6 +1584,11 @@ body {
   font-size: 13px;
   line-height: 1.55;
   color: #7f1d1d;
+  /* Élément de grille (`.pf-voice-field` est en `display: grid`), donc
+     `min-width: auto` par défaut : il refusait de descendre sous la largeur
+     min-content de son contenu le plus rigide et emportait toute l'étape à
+     743 px sur un écran de 390 px. */
+  min-width: 0;
 }
 
 .pf-mic-error-head {
@@ -1708,7 +1722,13 @@ body {
   font-family: ui-monospace, SFMono-Regular, monospace;
   color: #1f2937;
   overflow-x: auto;
-  white-space: pre;
+  /* `pre` imposait sa largeur min-content (691 px) à la carte entière.
+     `pre-wrap` garde les retours à la ligne du diagnostic tout en laissant
+     les lignes trop longues (user-agent) se replier au lieu de pousser
+     l'étape hors de l'écran. */
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
   max-height: 220px;
 }
 
@@ -2139,6 +2159,48 @@ body {
   outline-offset: 3px;
 }
 
+/* Même invitation que la pastille latérale, mais dans la carte, sous les
+   commandes de l'étape : sous 1080 px la colonne de gauche passe au-dessus de
+   la carte et sort de l'écran dès qu'on travaille. */
+.pf-draft-inline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin: 0 clamp(20px, 2.3vw, 30px) 16px;
+}
+
+.pf-draft-inline .pf-draft-optin {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 11px;
+  border: 1px solid var(--pf-line);
+  border-radius: 999px;
+  background: var(--pf-paper);
+  color: var(--pf-muted);
+  font: inherit;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pf-draft-inline .pf-draft-optin:hover {
+  border-color: var(--pf-accent);
+  color: var(--pf-accent-dark);
+}
+
+.pf-draft-inline .pf-draft-optin:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--pf-accent) 28%, transparent);
+  outline-offset: 3px;
+}
+
+.pf-draft-inline small {
+  color: var(--pf-muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
 /* Step transition animation */
 .pf-card-body {
   animation: pf-step-fade 0.32s ease both;
@@ -2355,7 +2417,8 @@ html.dark .pf-captcha > em {
     min-height: 44px;
   }
 
-  .pf-saved-badge .pf-draft-optin {
+  .pf-saved-badge .pf-draft-optin,
+  .pf-draft-inline .pf-draft-optin {
     min-height: 44px;
   }
 }

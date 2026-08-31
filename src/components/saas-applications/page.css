@@ -77,7 +77,14 @@
   .crumb{padding:20px 0;font-family:var(--font-geist-mono);font-size:12px;color:var(--mute);border-bottom:1px solid var(--line-2)}
   .crumb a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;min-height:24px}
   .crumb a:hover{color:var(--ink)}
-  .crumb .sep{margin:0 10px;color:var(--line)}
+  /* `--line` est un jeton de FILET : il est calibré pour tracer une bordure de
+     1 px, pas pour porter du texte. Posé sur le « / » du fil d'Ariane il donnait
+     1,26:1 en clair (#E5E5E5 sur #FFFFFF) et 1,32:1 en sombre (#27272C sur
+     #0B0B0D) — le séparateur était présent dans le DOM mais invisible à l'œil,
+     sur toutes les pages service. `--mute` est la couleur des maillons eux-mêmes :
+     le séparateur redevient lisible (5,33:1 en clair, 5,82:1 en sombre) sans
+     prendre le pas sur la page courante, qui reste seule en `--ink-3`. */
+  .crumb .sep{margin:0 10px;color:var(--mute)}
 
   /* ============ HERO SERVICE ============ */
   .shero{padding:72px 0 96px;position:relative;border-bottom:1px solid var(--line);overflow:hidden}

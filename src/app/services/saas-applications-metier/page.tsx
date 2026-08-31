@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import { SaasApplicationsMetier } from "@/components/saas-applications/SaasApplicationsMetier";
-import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
-import { PUBLIC_ORGANIZATION_ENTITY } from "@/lib/organization-structured-data";
+import { OG_BASE, SERVICES_OG_IMAGE, SITE_URL } from "@/lib/seo";
+import { ORGANIZATION_REF } from "@/lib/organization-structured-data";
+import { serviceEntityId } from "@/lib/services";
 
 // Le title porte « agence développement SaaS sur mesure » plutôt que le seul
 // « SaaS sur mesure » : l'audit SERP a montré que cette requête commerciale
 // est servie par des pages service, et cette page est la nôtre. Créer une
 // page /agence-developpement-saas distincte l'aurait cannibalisée.
+/** Chemin canonique de la page : le domaine ne s'écrit plus en clair. */
+const servicePath = "/services/saas-applications-metier" as const;
+const pageUrl = `${SITE_URL}${servicePath}`;
+
 export const metadata: Metadata = {
   title: "Agence développement SaaS sur mesure · Hagnéré Code",
   description:
@@ -28,14 +33,17 @@ export const metadata: Metadata = {
 const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
+  "@id": serviceEntityId(servicePath),
   name: "Développement SaaS et applications métier sur mesure",
-  url: "https://hagnere-code.ai/services/saas-applications-metier",
+  url: pageUrl,
   serviceType: "Développement de SaaS et applications métier sur mesure",
-  // Fournisseur = l'entité publique unique, importée du registre plutôt que
-  // recopiée : adresse, TVA, e-mail et téléphone n'existent qu'à un seul
-  // endroit, et la forme du logo reste celle validée pour Google (ImageObject
-  // dimensionné) sur toutes les pages.
-  provider: PUBLIC_ORGANIZATION_ENTITY,
+  // Fournisseur = la RÉFÉRENCE à l'entité publique, pas l'entité recopiée.
+  // Le nœud complet (logo, fondateur, adresse, géo, horaires, contactPoint,
+  // 17 zones desservies, catalogue, TVA, SIREN) pèse 6,6 Ko et était sérialisé
+  // à l'identique sur chacune des onze pages service. C'est déjà le motif
+  // employé par les guides et les réalisations : un seul nœud complet, publié
+  // par l'accueil et par /services, référencé partout ailleurs par son @id.
+  provider: ORGANIZATION_REF,
   areaServed: { "@type": "Country", name: "France" },
   description:
     "Développement de plateformes B2B, espaces clients, marketplaces, applications métier et apps mobiles iOS/Android. Stack Next.js, React, TypeScript, React Native et modèles d'IA choisis selon le cas d'usage.",
@@ -100,19 +108,19 @@ const breadcrumbJsonLd = JSON.stringify({
       "@type": "ListItem",
       position: 1,
       name: "Accueil",
-      item: "https://hagnere-code.ai/",
+      item: `${SITE_URL}/`,
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "Services",
-      item: "https://hagnere-code.ai/services",
+      item: `${SITE_URL}/services`,
     },
     {
       "@type": "ListItem",
       position: 3,
       name: "SaaS & applications métier",
-      item: "https://hagnere-code.ai/services/saas-applications-metier",
+      item: pageUrl,
     },
   ],
 });

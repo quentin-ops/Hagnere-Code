@@ -352,16 +352,32 @@ describe("qualité de contenu — pourquoi mon site n’est pas visible sur Goog
     expect(structuredData[0]).toMatchObject({
       headline: guide.heroTitle,
       description: guide.metaDescription,
-      datePublished: "2026-08-18T12:42:00Z",
       dateModified: guide.dateModified,
     });
-    // La valeur verrouillée ici était en retard d'une réécriture : le
-    // 30/08/2026, la page a changé de libellés d'interface, de localisateur de
-    // source et de dates de relecture, ce que le §15 de la charte range parmi
-    // les changements substantiels. Le test n'est pas affaibli — il continue
-    // d'exiger une valeur exacte — il est réaligné sur l'intervention réelle.
-    // La date de première publication, elle, ne bouge jamais.
-    expect(guide.dateModified).toBe("2026-08-30T17:30:00Z");
+    // La date de première publication ne bouge jamais : on la compare comme un
+    // INSTANT, pas comme une chaîne. « 2026-08-18T12:42:00Z » et
+    // « 2026-08-18T14:42:00+02:00 » désignent la même seconde ; épingler la
+    // notation faisait échouer l'unification du fuseau du registre — la seule
+    // entrée en `Z` produisait la seule ligne du sitemap hors convention —
+    // alors que rien de ce que ce test protège n'en dépendait.
+    expect(Date.parse(structuredData[0].datePublished as string)).toBe(
+      Date.parse("2026-08-18T12:42:00Z"),
+    );
+    // Ce qui est protégé ici, c'est la passe substantielle du 30/08/2026 —
+    // libellés d'interface, localisateur de source, dates de relecture, ce que
+    // le §15 de la charte range parmi les changements substantiels — et son
+    // accord avec le bandeau lu par le lecteur, vérifié juste après.
+    //
+    // L'assertion épinglait la CHAÎNE « 2026-08-30T17:30:00Z ». Elle épinglait
+    // donc aussi deux choses qu'elle ne cherchait pas à protéger : une heure
+    // ronde à la seconde 00, jamais un instant observé, et une notation `Z`
+    // qui faisait de cette seule URL l'exception au fuseau des huit autres
+    // lignes du sitemap. Corriger l'une ou l'autre faisait rougir un test qui
+    // n'en avait cure. Elle porte désormais sur le JOUR, qui est la propriété,
+    // et laisse l'heure au relevé du registre (voir src/lib/guides.ts et
+    // l'invariant « instant enregistré » de src/lib/guides.test.ts).
+    expect(guide.dateModified.slice(0, 10)).toBe("2026-08-30");
+    expect(guide.dateModified).toMatch(/[+-]\d{2}:\d{2}$/);
     // Et la date lue par le lecteur dans le bandeau doit être celle-là.
     expect(readerVisibleText(renderedPage)).toContain(
       "Mis à jour le 30 août 2026",

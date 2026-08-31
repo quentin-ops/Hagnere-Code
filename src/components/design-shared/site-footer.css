@@ -269,10 +269,26 @@ a.sf-direct-v:hover { color: var(--accent); }
   width: 100%;
 }
 .sf-field textarea { resize: vertical; min-height: 80px; }
+/* Le liseré et le halo restent, l'anneau global n'est plus supprimé.
+   -------------------------------------------------------------------------
+   `outline: none` laissait le champ focalisé avec deux seuls indices : un
+   liseré de 1 px passé de #E5E5E5 à #6D28D9, et un halo de 4 px composité à
+   rgb(237, 229, 250) — 1,22:1 contre le blanc du champ, c'est-à-dire rien.
+   Sur un champ de 50 px de haut, un trait de 1 px porte à lui seul tout
+   l'état focalisé du formulaire de contact.
+
+   L'anneau `--focus-ring` revient par-dessus. Il vaut 4,23:1 contre la surface
+   de page, mesuré au pixel — et non 7,1:1, chiffre qui appartient à `--accent`
+   (#6D28D9), la couleur du liseré, pas de l'anneau. Avec `outline-offset: 2px`
+   l'anneau n'est d'ailleurs jamais adjacent à l'intérieur du champ : ses deux
+   voisins réels sont la surface de page au-dessus et le halo en dessous
+   (3,47:1), tous deux au-dessus du seuil de 3:1 exigé pour un indicateur non
+   textuel. */
 .sf-field input:focus,
 .sf-field select:focus,
 .sf-field textarea:focus {
-  outline: none;
+  outline: 2px solid var(--focus-ring, #8b5cf6);
+  outline-offset: 2px;
   border-color: var(--accent);
   box-shadow: 0 0 0 4px rgba(109, 40, 217, 0.12);
 }

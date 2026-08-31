@@ -328,8 +328,15 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
+/* Le sur-titre de la colonne « Nous » est le seul texte de cet en-tête à ne pas
+   suivre l'inversion. La colonne est peinte `background: var(--ink)` : sa
+   surface est NOIRE en clair et CLAIRE en sombre. Le titre et le prix suivent
+   déjà via `var(--paper)` ; ce libellé restait sur un littéral violet pâle, qui
+   tombait à 2,61:1 sur #FAFAFA. `--accent-on-ink` est le jeton prévu pour
+   exactement ce cas — accent posé sur une surface qui s'inverse : 7,27:1 en
+   clair, 6,81:1 en sombre, sans ajouter de couleur à la palette. */
 .ads-cmp-head .ads-cmp-col-us .ads-cmp-kind {
-  color: #A78BFA;
+  color: var(--accent-on-ink);
 }
 .ads-cmp-title {
   font-weight: 600;
@@ -1603,14 +1610,36 @@
 .ads-wwd-card:hover::before { transform: scaleX(1); }
 
 /* family colors */
-.ads-wwd-card[data-family="strategy"]   { --wwd-color: #0A0A0A; }
-.ads-wwd-card[data-family="google"]     { --wwd-color: #4285F4; }
-.ads-wwd-card[data-family="meta"]       { --wwd-color: #D946EF; }
-.ads-wwd-card[data-family="linkedin"]   { --wwd-color: #0A66C2; }
-.ads-wwd-card[data-family="emerging"]   { --wwd-color: #F43F5E; }
-.ads-wwd-card[data-family="tracking"]   { --wwd-color: #6D28D9; }
-.ads-wwd-card[data-family="creative"]   { --wwd-color: #EA580C; }
-.ads-wwd-card[data-family="reporting"]  { --wwd-color: #059669; }
+/* ── Couleurs de famille ────────────────────────────────────────────────────
+   `--wwd-color` est la teinte d'IDENTIFICATION : elle ne peint que des surfaces
+   diluées (pastille 10 %, chip d'icône 12 %, bordure 20 %) et le drapeau, donc
+   aucune contrainte de contraste de texte ne pèse dessus.
+
+   `--wwd-ink` est l'encre des deux marques de PREMIER PLAN posées sur ces
+   dilutions — le libellé de la pastille (11 px) et le glyphe de l'icône. Le
+   ratio n'est PAS conservé d'un thème à l'autre : la dilution suit `--paper`,
+   la teinte est un littéral. Une teinte claire échoue sur sa dilution claire,
+   une teinte foncée sur sa dilution sombre. D'où un cran plus foncé de la même
+   rampe en clair (`--wwd-ink-light`) et un cran plus clair en sombre
+   (`--wwd-ink-dark`), déclarés seulement là où la teinte d'identité échoue.
+   Ratios mesurés en commentaire (clair / sombre). */
+.ads-wwd-card      { --wwd-ink: var(--wwd-ink-light, var(--wwd-color)); }
+html.dark .ads-wwd-card { --wwd-ink: var(--wwd-ink-dark,  var(--wwd-color)); }
+
+/* `strategy` est la famille neutre : son identité EST l'encre du thème, donc
+   `--wwd-color` bascule en entier sous `html.dark` (voir plus bas, avec la
+   contre-encre du drapeau). L'encre suit sans déclaration séparée. */
+.ads-wwd-card[data-family="strategy"]   { --wwd-color: #0A0A0A; }                               /* 15,86 / 15,05 */
+.ads-wwd-card[data-family="google"]     { --wwd-color: #4285F4; --wwd-ink-light: #2563EB; }     /* 4,63 (3,19 avant) / 5,04 */
+.ads-wwd-card[data-family="meta"]       { --wwd-color: #D946EF; --wwd-ink-light: #A21CAF; }     /* 5,58 (3,05 avant) / 5,20 */
+.ads-wwd-card[data-family="linkedin"]   { --wwd-color: #0A66C2; --wwd-ink-dark:  #3B82F6; }     /* 4,93 / 5,03 (3,25 avant) */
+.ads-wwd-card[data-family="emerging"]   { --wwd-color: #F43F5E; --wwd-ink-light: #BE123C; }     /* 5,52 (3,23 avant) / 4,96 */
+/* `tracking` porte `.ads-wwd-flag`, dont le fond reste `--wwd-color` : le
+   violet 700 garde donc son blanc à 7,09:1 dans les deux thèmes. Seule
+   l'encre du libellé s'éclaircit en sombre. */
+.ads-wwd-card[data-family="tracking"]   { --wwd-color: #6D28D9; --wwd-ink-dark:  #A78BFA; }     /* 6,04 / 6,91 (2,65 avant) */
+.ads-wwd-card[data-family="creative"]   { --wwd-color: #EA580C; --wwd-ink-light: #9A3412; }     /* 6,46 (3,15 avant) / 5,07 */
+.ads-wwd-card[data-family="reporting"]  { --wwd-color: #059669; --wwd-ink-light: #047857; }     /* 4,85 (3,33 avant) / 4,79 */
 
 .ads-wwd-top {
   display: flex;
@@ -1629,7 +1658,7 @@
   height: 36px;
   border-radius: 10px;
   background: color-mix(in srgb, var(--wwd-color) 12%, var(--paper) 88%);
-  color: var(--wwd-color);
+  color: var(--wwd-ink);
   display: grid;
   place-items: center;
   margin-left: auto;
@@ -1641,7 +1670,7 @@
   padding: 4px 10px;
   border-radius: 999px;
   background: color-mix(in srgb, var(--wwd-color) 10%, var(--paper) 90%);
-  color: var(--wwd-color);
+  color: var(--wwd-ink);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.02em;

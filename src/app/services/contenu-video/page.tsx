@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { ContenuVideo } from "@/components/contenu-video/ContenuVideo";
-import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
-import { PUBLIC_ORGANIZATION_ENTITY } from "@/lib/organization-structured-data";
+import { OG_BASE, SERVICES_OG_IMAGE, SITE_URL } from "@/lib/seo";
+import { ORGANIZATION_REF } from "@/lib/organization-structured-data";
+import { serviceEntityId } from "@/lib/services";
+
+/** Chemin canonique de la page : le domaine ne s'écrit plus en clair. */
+const servicePath = "/services/contenu-video" as const;
+const pageUrl = `${SITE_URL}${servicePath}`;
 
 export const metadata: Metadata = {
   title: "Production de contenu & vidéo sur mesure · Hagnéré Code",
@@ -22,14 +27,17 @@ export const metadata: Metadata = {
 const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
+  "@id": serviceEntityId(servicePath),
   name: "Production de contenu et vidéo avec pipeline IA",
-  url: "https://hagnere-code.ai/services/contenu-video",
+  url: pageUrl,
   serviceType: "Production de contenu et vidéo avec pipeline IA",
-  // Fournisseur = l'entité publique unique, importée du registre plutôt que
-  // recopiée : adresse, TVA, e-mail et téléphone n'existent qu'à un seul
-  // endroit, et la forme du logo reste celle validée pour Google (ImageObject
-  // dimensionné) sur toutes les pages.
-  provider: PUBLIC_ORGANIZATION_ENTITY,
+  // Fournisseur = la RÉFÉRENCE à l'entité publique, pas l'entité recopiée.
+  // Le nœud complet (logo, fondateur, adresse, géo, horaires, contactPoint,
+  // 17 zones desservies, catalogue, TVA, SIREN) pèse 6,6 Ko et était sérialisé
+  // à l'identique sur chacune des onze pages service. C'est déjà le motif
+  // employé par les guides et les réalisations : un seul nœud complet, publié
+  // par l'accueil et par /services, référencé partout ailleurs par son @id.
+  provider: ORGANIZATION_REF,
   areaServed: { "@type": "Country", name: "France" },
   description:
     "Cadrage et coordination de contenus vidéo, démonstrations produit, motion design et formats de campagne. Les outils, intervenants, droits et livrables applicables sont précisés dans le devis.",
@@ -40,13 +48,13 @@ const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
-    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.ai/services" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
     {
       "@type": "ListItem",
       position: 3,
       name: "Contenu & vidéo",
-      item: "https://hagnere-code.ai/services/contenu-video",
+      item: pageUrl,
     },
   ],
 });

@@ -108,7 +108,7 @@ export default function Page() {
           role: "fondateur de Hagnéré Code",
           href: "/equipe",
         }}
-        updatedLabel="Mis à jour le 30 août 2026"
+        updatedLabel="Mis à jour le 31 août 2026"
         keyPoints={[
           { number: "01", title: "Applications sur mesure dès 15 000 € HT", description: "", color: "violet" },
           { number: "02", title: "Planning défini après cadrage", description: "", color: "blue" },
@@ -343,7 +343,7 @@ export default function Page() {
           headers={["Couche", "Technologies", "Pourquoi"]}
           rows={[
             ["Interface", "React 19, TypeScript", "Composants réutilisables, erreurs détectées à l'écriture plutôt qu'en production"],
-            ["Cadre applicatif", "Next.js 15 quand le projet a aussi une partie publique", "Un seul socle pour le site et l'application"],
+            ["Cadre applicatif", "Next.js 16 quand le projet a aussi une partie publique", "Un seul socle pour le site et l'application"],
             ["Style et interactions", "Tailwind CSS v4, Framer Motion", "Design sur mesure, animations sans surcoût de performance"],
             ["Données", "PostgreSQL, Drizzle ORM", "Base relationnelle éprouvée, requêtes typées de bout en bout"],
             ["Sécurité et accès", "Gestion des comptes, rôles et droits", "Le socle non négociable de toute application d'entreprise"],

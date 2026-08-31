@@ -149,22 +149,80 @@ describe("SearchVisibilityDiagnostic", () => {
     expect(container.querySelectorAll("fieldset")).toHaveLength(4);
   });
 
-  it("calls print and removes the surrounding document from print layout", () => {
-    const print = vi.fn();
+  // Ce test épinglait la présence des chaînes « :has(...) » et « display: none »
+  // dans la feuille imprimée, sans jamais vérifier ce qu'elles protègent. Une
+  // isolation non conditionnée les satisfaisait pleinement tout en effaçant les
+  // 42 000 caractères du guide dès qu'un lecteur faisait Ctrl+P : le PDF ne
+  // faisait plus que 3 pages de fiche vierge, contre 27 rétabli. Le test vise
+  // désormais la propriété : l'isolation ne vaut que le temps de l'impression
+  // déclenchée par le bouton, et elle est portée par une classe sur <body>.
+  it("isolates the sheet only while the print button holds the body class", () => {
+    const print = vi.fn(() => {
+      // Pendant window.print(), et seulement pendant, le document doit porter
+      // la classe qui conditionne l'isolation.
+      expect(document.body.classList.contains("printing-search-visibility")).toBe(
+        true,
+      );
+    });
     Object.defineProperty(window, "print", {
       configurable: true,
       value: print,
     });
+
+    expect(document.body.classList.contains("printing-search-visibility")).toBe(
+      false,
+    );
+
     const button = [...container.querySelectorAll("button")].find((candidate) =>
       candidate.textContent?.includes("Imprimer"),
     );
     act(() => button?.click());
+
     expect(print).toHaveBeenCalledOnce();
+    expect(document.body.classList.contains("printing-search-visibility")).toBe(
+      false,
+    );
+
     const printCss = container.querySelector("style")?.textContent ?? "";
+    // Aucune règle qui masque du contenu ne doit exister hors de la classe :
+    // c'est exactement ce qui effaçait le guide à l'impression navigateur.
+    const hidingBlocks = printCss
+      .split("}")
+      .filter((block) => /display:\s*none/.test(block));
+    expect(hidingBlocks.length).toBeGreaterThan(0);
+    for (const block of hidingBlocks) {
+      const selector = block.slice(0, block.lastIndexOf("{"));
+      const scoped =
+        selector.includes("body.printing-search-visibility") ||
+        // les commandes de la fiche n'ont aucun sens sur papier, dans les deux cas
+        selector.includes("#search-visibility-diagnostic button");
+      expect(
+        scoped,
+        `règle d'impression non conditionnée à la classe : ${selector.trim()}`,
+      ).toBe(true);
+    }
+    // La fiche reste isolée du reste du guide quand la classe est posée.
     expect(printCss).toContain(":has(#search-visibility-diagnostic)");
-    expect(printCss).toContain("display: none !important");
     expect(printCss).toContain("break-inside: avoid");
     expect(printCss).not.toContain("visibility: hidden");
+  });
+
+  it("keeps the sheet readable in ink when the whole guide is printed", () => {
+    // Les règles de rendu encre (fond blanc, texte sombre) ne sont PAS
+    // conditionnées : l'en-tête de l'outil est sombre à l'écran et son fond
+    // n'est pas imprimé par défaut, le texte blanc disparaîtrait du guide.
+    const printCss = container.querySelector("style")?.textContent ?? "";
+    const inkBlock = printCss
+      .split("}")
+      .find(
+        (block) =>
+          /#search-visibility-diagnostic \*\s*\{/.test(block + "}") ||
+          /#search-visibility-diagnostic\s*\*/.test(block),
+      );
+    expect(inkBlock).toBeDefined();
+    expect(inkBlock ?? "").not.toContain("body.printing-search-visibility");
+    expect(inkBlock ?? "").toMatch(/background-color:\s*#ffffff/i);
+    expect(inkBlock ?? "").toMatch(/color:\s*#18181b/i);
   });
 
   it("resets identity and the four observations", () => {

@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
@@ -170,6 +171,119 @@ describe("guide registry after the editorial reset", () => {
     }
     expect(guidesHubSource).toContain("latestGuide.dateModified");
   });
+
+  /**
+   * `dateModified` alimente le `lastmod` du sitemap, `openGraph.modifiedTime`
+   * et le JSON-LD Article. Google traite lastmod comme une indication et cesse
+   * d'en tenir compte pour un site dont les dates paraissent synthétiques.
+   *
+   * Ce test protège la PROPRIÉTÉ « instant réellement enregistré », pas une
+   * formulation. Il ne vérifie donc PAS que les neuf horodatages sont
+   * distincts : un commit qui corrige les neuf guides les modifie bien tous au
+   * même instant, et exiger une différence obligerait à en fabriquer une —
+   * c'est-à-dire à recréer, sous couvert de test, la falsification qu'on
+   * cherche à empêcher. Ce qu'on mesure, c'est la signature du clavier.
+   */
+  it("date chaque guide sur un instant enregistré, pas sur une minute ronde", () => {
+    const now = Date.now();
+
+    for (const guide of GUIDES) {
+      // Fuseau unique pour tout le registre : la notation `Z` sur une seule
+      // entrée produisait la seule ligne du sitemap à ne pas suivre la
+      // convention des huit autres.
+      expect(guide.dateModified, `${guide.slug}: fuseau`).toMatch(
+        /[+-]\d{2}:\d{2}$/,
+      );
+      expect(guide.datePublished, `${guide.slug}: fuseau`).toMatch(
+        /[+-]\d{2}:\d{2}$/,
+      );
+      // Une date de modification dans le futur n'est pas un instant observé.
+      expect(
+        Date.parse(guide.dateModified),
+        `${guide.slug}: modifié dans le futur`,
+      ).toBeLessThanOrEqual(now);
+    }
+
+    // Un instant enregistré tombe sur une seconde ronde une fois sur soixante.
+    // Huit sur neuf, c'était la signature d'un horodatage tapé au clavier
+    // (23:20:00, 23:30:00, 23:35:00…). Le seuil laisse passer la coïncidence
+    // réelle sans laisser revenir la saisie manuelle.
+    const roundSecond = GUIDES.filter((guide) =>
+      /T\d{2}:\d{2}:00[+-]/.test(guide.dateModified),
+    );
+    expect(
+      roundSecond.map((guide) => guide.dateModified),
+      "horodatages tombant pile sur la seconde 00 : saisis à la main ?",
+    ).toHaveLength(0);
+
+    // Et la valeur doit correspondre à un instant qui EXISTE dans l'historique
+    // du guide. C'est ce qui rend la fabrication impossible : une heure tapée
+    // au clavier ne tombe pas sur un commit.
+    //
+    // Volontairement pas « le DERNIER commit » : une passe de typographie ou
+    // une harmonisation de libellés à l'échelle du site touche les neuf
+    // dossiers sans rien changer d'éditorial, et exiger l'alignement sur elle
+    // ferait annoncer au sitemap une fraîcheur que le contenu ne porte pas —
+    // et contredirait la date de consultation des sources que la page affiche
+    // au lecteur (§5.2 de la règle d'or). Le jour reste celui de la passe
+    // éditoriale ; ce test vérifie que l'heure n'a pas été inventée.
+    /*
+     * Un clone superficiel ne fait pas ECHOUER `git log` : la commande sort en 0
+     * et renvoie le seul commit de tête. Le `catch` ci-dessous ne se déclenchait
+     * donc jamais, `history` valait toujours un élément, et l'assertion
+     * comparait la date éditoriale à la date du checkout. Vérifié en clonant le
+     * dépôt en `--depth=1` : les neuf guides échouaient. Or `quality.yml` utilise
+     * `actions/checkout` sans `fetch-depth`, dont le défaut EST 1 — ce test
+     * aurait donc cassé la CI à chaque exécution.
+     *
+     * On interroge git sur la nature du clone plutôt que d'attendre une panne
+     * qui ne vient pas.
+     */
+    const cloneSuperficiel = (() => {
+      try {
+        return (
+          execFileSync("git", ["rev-parse", "--is-shallow-repository"], {
+            cwd: process.cwd(),
+            encoding: "utf8",
+          }).trim() === "true"
+        );
+      } catch {
+        // Pas de git du tout : on ne transforme pas une limite d'environnement
+        // en échec de contenu.
+        return true;
+      }
+    })();
+    if (cloneSuperficiel) return;
+
+    for (const guide of GUIDES) {
+      let history: string[];
+      try {
+        history = execFileSync(
+          "git",
+          [
+            "log",
+            "--date=iso-strict",
+            "--format=%cd",
+            "--",
+            `src/app/guides/${guide.slug}`,
+          ],
+          { cwd: process.cwd(), encoding: "utf8" },
+        )
+          .trim()
+          .split("\n")
+          .filter(Boolean);
+      } catch {
+        // `continue`, pas `break` : une panne git sur un guide ne doit pas
+        // faire passer les huit autres sans contrôle.
+        continue;
+      }
+      if (history.length === 0) continue;
+      expect(
+        history.map((instant) => Date.parse(instant)),
+        `${guide.slug}: ${guide.dateModified} ne correspond à aucun commit du guide`,
+      ).toContain(Date.parse(guide.dateModified));
+    }
+  }, 30_000);
 
   /**
    * Le hub sélectionne son encart « Essentiel » avec
