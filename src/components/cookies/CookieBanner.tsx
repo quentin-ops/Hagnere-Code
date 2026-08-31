@@ -334,7 +334,6 @@ export function CookieBanner() {
       ref={toastRef}
       tabIndex={-1}
     >
-      <div className="hc-cb-toast-eyebrow">Vie privée</div>
       <h2 id="hc-cb-toast-title" className="hc-cb-toast-title">
         Respect de votre vie privée
       </h2>

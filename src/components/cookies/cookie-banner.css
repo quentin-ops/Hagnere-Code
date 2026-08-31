@@ -30,15 +30,6 @@
   }
 }
 
-.hc-cb-toast-eyebrow {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #6d28d9;
-  font-weight: 600;
-  margin-bottom: 6px;
-}
 
 .hc-cb-toast-title {
   font-size: 16px;
@@ -373,7 +364,6 @@ html.dark .hc-cb-toast {
     0 24px 60px -16px rgba(0, 0, 0, 0.55),
     0 6px 16px -8px rgba(0, 0, 0, 0.35);
 }
-html.dark .hc-cb-toast-eyebrow { color: #A78BFA; }
 html.dark .hc-cb-toast-desc { color: #A1A1AA; }
 html.dark .hc-cb-toast-desc a { color: #A78BFA; }
 html.dark .hc-cb-btn-ghost {
