@@ -459,8 +459,12 @@ export default function Page() {
           >
             <p>
               <em>
-                Exemple construit à partir des fourchettes citées dans ce
-                guide&nbsp;— ce n’est pas un dossier client.
+                Exemple construit&nbsp;: l’entreprise, son effectif, sa ville,
+                le nombre d’utilisateurs et le volume de la liste sont choisis
+                pour l’exemple et ne viennent d’aucune source&nbsp;; seuls les
+                prix de licence Microsoft et les montants de notre grille
+                publiée sont repris de sources citées. Ce n’est pas un dossier
+                client.
               </em>{" "}
               Une entreprise de menuiserie industrielle de 34&nbsp;salariés à
               Besançon. Sabine, responsable administrative, a monté elle-même

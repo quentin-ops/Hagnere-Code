@@ -65,9 +65,9 @@ e46fa418e39fb4605b2e008e83b33a224d62cff1e0d6cd79acec90b0e66ac5d0  src/app/guides
 fb3eba6c8b5fc01fad739269e5d0360588eb6503f4c3032ef57ae90f546da810  src/app/guides/pourquoi-site-pas-visible-google/content-quality.test.ts
 d5060c26d369c1802ca7c812144d9bd159136cf29f1831bfe09c14e2b598e1b7  src/app/guides/pourquoi-site-pas-visible-google/opengraph-image.tsx
 16fa75274d88e56c2b9b10ef64f376922dc4f86cbf4db64abe4b4af9d3ddf570  src/app/guides/pourquoi-site-pas-visible-google/page.tsx
-686978bb65da33e5d1aead9dda7522388ab8caafa065a11d077d27f7bb19bebf  src/app/guides/power-apps-ou-application-sur-mesure/content-quality.test.ts
+69d9d78998c4b594b5fd32212173e72737b8021c4e410e240967088c30632cd5  src/app/guides/power-apps-ou-application-sur-mesure/content-quality.test.ts
 4f7cd5208d589e8926b8634c8fb8788e0102ed8fcc78f2182eea447ee0f11842  src/app/guides/power-apps-ou-application-sur-mesure/opengraph-image.tsx
-8fb03b3bf812886fa460a75cf87c2087644e1eb19a25de9c21f8bdde7337ff5f  src/app/guides/power-apps-ou-application-sur-mesure/page.tsx
+bd25e3444023528bdc8adfcfa2792cafc89a5cd1b81d467974531cfe31f9d8bb  src/app/guides/power-apps-ou-application-sur-mesure/page.tsx
 2b6c7c9a7ef163931f65b4276a706c2be8b86bf75d5010b82d23f69593bc48c5  src/app/guides/power-apps-ou-application-sur-mesure/power-apps-decision-model.test.ts
 d17f72cd29feab995ac4ebbb65727ff25d360b49581713a5d6c0c5162a068fc6  src/app/guides/power-apps-ou-application-sur-mesure/power-apps-decision-model.ts
 337571cf04b8aa468e50f303403ab3c6cbeee5e3346a85b912a756c072d5d7cc  src/app/guides/power-apps-ou-application-sur-mesure/power-apps-decision-workbench.test.tsx

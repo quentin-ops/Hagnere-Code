@@ -384,9 +384,13 @@ describe("content quality for Power Apps or custom application guide", () => {
   it("annonce son cas comme construit et nomme des métiers, pas des cases", () => {
     const text = prose(articleHtml());
     expect(text).toContain(
-      "Exemple construit à partir des fourchettes citées dans ce guide",
+      // L'ancienne formule affirmait une provenance qui n'existait pas :
+      // aucune fourchette de ce guide ne fonde l'effectif, la ville, le nombre
+      // d'utilisateurs ni le volume de la liste. Relevé à la relecture du
+      // 31/08/2026, après la même correction sur signes-besoin-logiciel-metier.
+      "Exemple construit : l’entreprise, son effectif, sa ville, le nombre d’utilisateurs et le volume de la liste sont choisis pour l’exemple et ne viennent d’aucune source ; seuls les prix de licence Microsoft et les montants de notre grille publiée sont repris de sources citées.",
     );
-    expect(text).toContain("ce n’est pas un dossier client");
+    expect(text).toContain("Ce n’est pas un dossier client");
 
     for (const job of [
       "responsable administrative",
