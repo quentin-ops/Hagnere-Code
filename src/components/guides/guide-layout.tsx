@@ -234,7 +234,7 @@ export function GuideLayout({
             <article
               className={`min-w-0 w-full flex-1 max-w-3xl ${showSidebarCta ? "" : "mx-auto"}`}
             >
-              <div className="prose prose-zinc prose-sm max-w-none dark:prose-invert prose-headings:tracking-tight prose-headings:font-semibold prose-h1:text-2xl prose-h1:mb-6 prose-h2:text-lg prose-h2:mt-10 prose-h2:mb-4 prose-p:text-zinc-600 dark:prose-p:text-zinc-400 prose-p:leading-relaxed prose-li:text-zinc-600 dark:prose-li:text-zinc-400 prose-strong:text-zinc-900 dark:prose-strong:text-zinc-100">
+              <div className="prose prose-zinc prose-sm max-w-none [&_p]:max-w-[68ch] [&_li]:max-w-[68ch] dark:prose-invert prose-headings:tracking-tight prose-headings:font-semibold prose-h1:text-2xl prose-h1:mb-6 prose-h2:text-lg prose-h2:mt-10 prose-h2:mb-4 prose-p:text-zinc-600 dark:prose-p:text-zinc-400 prose-p:leading-relaxed prose-li:text-zinc-600 dark:prose-li:text-zinc-400 prose-strong:text-zinc-900 dark:prose-strong:text-zinc-100">
                 {children}
               </div>
 

@@ -42,7 +42,7 @@ export function GuideFAQSection({ title, items }: GuideFAQSectionProps) {
                   aria-hidden="true"
                 />
               </summary>
-              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm sm:text-base pb-4 sm:pb-5">
+              <p className="max-w-[68ch] text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm sm:text-base pb-4 sm:pb-5">
                 {item.answer}
               </p>
             </details>

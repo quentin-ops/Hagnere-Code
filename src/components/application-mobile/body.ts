@@ -17,7 +17,7 @@ export const bodyHtml = `
   <div class="wrap shero-inner">
     <div>
       <div class="shero-eyebrow"><span class="pill"><span class="dot"></span> Service · Application mobile iOS &amp; Android</span></div>
-      <h1>Votre application mobile<br>sur les <span class="accent">stores selon un plan cadré</span>,<br>sans promesse artificielle.</h1>
+      <h1>Votre application mobile<br>sur les <span class="accent">stores selon un plan cadré</span>.</h1>
       <div class="mob-hero-feats">
         <span class="mob-hero-feat">
           <span class="mob-hero-feat-ic">

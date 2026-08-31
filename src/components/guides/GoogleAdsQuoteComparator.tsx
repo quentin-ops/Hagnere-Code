@@ -949,22 +949,25 @@ export function GoogleAdsQuoteComparator() {
                 tabIndex={0}
                 className="overflow-x-auto rounded-xl border border-zinc-200 outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:border-zinc-800 dark:focus-visible:ring-offset-zinc-950"
               >
-                <table className="w-full min-w-[760px] border-collapse text-left text-sm">
+                <table className="w-full min-w-[660px] border-collapse text-left text-sm">
                   <caption className="sr-only">
                     Comparaison des coûts Google Ads sur trois, six et douze
                     mois
                   </caption>
                   <thead className="bg-zinc-950 text-white">
                     <tr>
-                      <th scope="col" className="px-3 py-3">
+                      <th scope="col" className="px-2 py-3">
                         Modèle
                       </th>
-                      <th scope="col" className="px-3 py-3">
+                      <th scope="col" className="px-2 py-3">
                         Coût mensuel comparable
                       </th>
                       {GOOGLE_ADS_QUOTE_HORIZONS.map((months) => (
-                        <th key={months} scope="col" className="px-3 py-3">
-                          {months} mois · HT / TTC / connu
+                        <th key={months} scope="col" className="px-2 py-3">
+                          {months} mois
+                          <span className="mt-0.5 block text-xs font-normal text-zinc-300">
+                            HT / TTC / connu
+                          </span>
                         </th>
                       ))}
                     </tr>
@@ -977,7 +980,7 @@ export function GoogleAdsQuoteComparator() {
                       >
                         <th
                           scope="row"
-                          className="px-3 py-4 text-zinc-950 dark:text-white"
+                          className="px-2 py-4 text-zinc-950 dark:text-white"
                         >
                           {modelLabels[model.key]}
                           <span className="mt-1 block text-xs font-normal text-zinc-500">
@@ -985,7 +988,7 @@ export function GoogleAdsQuoteComparator() {
                             {formatEuro(model.normalizedOneOffFeeHT)}
                           </span>
                         </th>
-                        <td className="px-3 py-4 font-semibold tabular-nums text-zinc-950 dark:text-white">
+                        <td className="px-2 py-4 font-semibold tabular-nums text-zinc-950 dark:text-white">
                           {formatEuro(model.normalizedMonthlyFeeHT)}
                           <span className="mt-1 block text-xs font-normal text-zinc-500">
                             gestion {formatEuro(model.monthlyManagementFeeHT)}
@@ -996,7 +999,7 @@ export function GoogleAdsQuoteComparator() {
                         {GOOGLE_ADS_QUOTE_HORIZONS.map((months) => {
                           const horizon = model.horizons[months];
                           return (
-                            <td key={months} className="px-3 py-4 tabular-nums">
+                            <td key={months} className="px-2 py-4 tabular-nums">
                               <span className="block font-semibold text-zinc-950 dark:text-white">
                                 {formatEuro(horizon.externalCashHT)} HT
                               </span>

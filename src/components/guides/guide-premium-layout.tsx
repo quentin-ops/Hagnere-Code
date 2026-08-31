@@ -889,7 +889,7 @@ export function GuidePremiumCase({
           <p className="text-base font-semibold text-zinc-900 dark:text-white mb-2">
             {title}
           </p>
-          <div className="text-sm text-zinc-700 dark:text-white leading-relaxed">
+          <div className="max-w-[68ch] text-sm text-zinc-700 dark:text-white leading-relaxed">
             {children}
           </div>
         </div>
@@ -1087,7 +1087,7 @@ function PremiumDisclaimer({ data }: { data: GuidePremiumDisclaimerData }) {
               <p className="text-base font-semibold text-zinc-900 dark:text-white mb-2">
                 {data.title}
               </p>
-              <p className="text-sm text-zinc-700 dark:text-white leading-relaxed">
+              <p className="max-w-[68ch] text-sm text-zinc-700 dark:text-white leading-relaxed">
                 {data.description}
               </p>
             </div>

@@ -829,7 +829,7 @@ ${navHtml}
           <span>OUTIL</span>
           <span>Claude Code · pas un pilier, un copilote</span>
         </div>
-        <h3>${TEAM_TOTAL_COUNT} personnes :<br>1 président, 1 CTO, ${TEAM_OTHER_DEVELOPERS_COUNT} autres devs,<br><span class="accent">Claude Code en copilote.</span></h3>
+        <h2>${TEAM_TOTAL_COUNT} personnes :<br>1 président, 1 CTO, ${TEAM_OTHER_DEVELOPERS_COUNT} autres devs,<br><span class="accent">Claude Code en copilote.</span></h2>
         <p class="claude-lead">
           Beaucoup d'agences brandissent l'IA comme un argument marketing. Chez nous, c'est un
           outil de productivité opéré par chaque dev senior — recherche de doc, exploration de bibliothèques,
@@ -840,17 +840,17 @@ ${navHtml}
         <div class="claude-rules">
           <div class="claude-rule">
             <div class="claude-rule-num">RÈGLE 01</div>
-            <h4>Claude défriche, le dev tranche</h4>
+            <h3>Claude défriche, le dev tranche</h3>
             <p>L'IA explore les options techniques, propose des plans. Le dev valide, ajuste, tranche. Jamais l'inverse.</p>
           </div>
           <div class="claude-rule">
             <div class="claude-rule-num">RÈGLE 02</div>
-            <h4>Revue humaine adaptée au risque</h4>
+            <h3>Revue humaine adaptée au risque</h3>
             <p>Les changements passent par une revue humaine adaptée au risque. Les choix structurants sont validés par le responsable technique.</p>
           </div>
           <div class="claude-rule">
             <div class="claude-rule-num">RÈGLE 03</div>
-            <h4>Les outils restent un moyen, pas une ligne magique</h4>
+            <h3>Les outils restent un moyen, pas une ligne magique</h3>
             <p>Le devis porte sur des livrables et un périmètre. L'outil utilisé ne remplace ni les tests, ni l'explication des choix.</p>
           </div>
         </div>

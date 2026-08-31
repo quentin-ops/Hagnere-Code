@@ -280,7 +280,10 @@ html.dark {
 .plan-features svg{color:var(--accent);flex-shrink:0;margin-top:3px}
 .plan-cta{margin-top:28px}
 .plan-cta .btn{width:100%;justify-content:center}
-.pricing-note{text-align:center;margin-top:40px;color:var(--mute);font-size:14px;line-height:1.6}
+/* 70ch : la note s'etalait sur les 1200px du conteneur, soit 197 caracteres
+   par ligne a 14px — l'oeil perd la ligne suivante au-dela de 90. Le bloc
+   reste centre dans la page, le texte redevient aligne a gauche. */
+.pricing-note{text-align:left;max-width:70ch;margin:40px auto 0;color:var(--mute);font-size:14px;line-height:1.6}
 .pricing-note b{color:var(--ink)}
 
 /* ============ PRICE TABLE BY SERVICE ============ */
@@ -373,7 +376,7 @@ html.dark {
 .care-features svg{color:var(--accent);flex-shrink:0;margin-top:3px}
 .care-cta{margin-top:28px}
 .care-cta .btn{width:100%;justify-content:center}
-.care-note{text-align:center;margin-top:32px;color:var(--mute);font-size:13px;line-height:1.6}
+.care-note{text-align:left;max-width:70ch;margin:32px auto 0;color:var(--mute);font-size:13px;line-height:1.6}
 .care-note b{color:var(--ink-3)}
 
 /* ============ VS MARKET (comparison table) ============ */
@@ -464,7 +467,7 @@ html.dark {
 .ct-mini-total{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#0A0A0A 0%,#171717 100%);color:#fff;gap:16px}
 .ct-mini-total-tag{font-family:var(--font-geist-mono);font-size:9.5px;color:var(--accent);letter-spacing:0.12em;font-weight:700}
 .ct-mini-total-sub{font-family:var(--font-geist-mono);font-size:10.5px;color:rgba(255,255,255,0.5);margin-top:4px;letter-spacing:0.02em}
-/* Cet emplacement etait dimensionne pour un montant (30 px gras, comme
+/* Cet emplacement était dimensionne pour un montant (30 px gras, comme
    .qmock-total-val et ses 42 000 EUR). Il porte desormais une phrase, qui
    passait a la ligne trois fois, poussait la barre de total de 96 a 176 px et
    ecrasait le bloc BRIEF ENVOYE a cote. Taille de legende, alignee a droite. */
@@ -641,7 +644,7 @@ html.dark {
   .hc-design .wrap{padding:0 16px}
   .disc-card h2{font-size:28px}
   .hc-design .ct-card h2{font-size:24px}
-  /* Plus de grille horizontale ici : le comparatif est empile depuis 768 px. */
+  /* Plus de grille horizontale ici : le comparatif est empilé depuis 768 px. */
   .qmock-head{padding:14px 16px}
   /* NE PAS masquer : cette ligne porte « Scénario fictif composite · ni client
      ni devis réel », juste à côté de montants en euros (1 500 / 34 000 / 6 500

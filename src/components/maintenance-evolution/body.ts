@@ -19,7 +19,7 @@ export const bodyHtml = `
       <div class="shero-eyebrow">
         <span class="pill"><span class="dot"></span> Service · Maintenance &amp; évolution · TMA long-terme</span>
       </div>
-      <h1>Maintenance applicative :<br>une équipe et des objectifs cadrés.<br><span class="accent">Une continuité organisée par contrat.</span></h1>
+      <h1>Maintenance applicative :<br><span class="accent">une équipe et des objectifs cadrés.</span></h1>
 
       <!-- KPI bar : modalités possibles + produits maison. -->
       <div class="me-hero-kpis">

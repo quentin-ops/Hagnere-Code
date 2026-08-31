@@ -10,9 +10,12 @@ describe("GoogleAdsQuoteComparator", () => {
     expect(html).toContain("Pourcentage");
     expect(html).toContain("Hybride");
     expect(html).toContain("Temps passé");
-    expect(html).toContain("3 mois · HT / TTC / connu");
-    expect(html).toContain("6 mois · HT / TTC / connu");
-    expect(html).toContain("12 mois · HT / TTC / connu");
+    // L'en-tete est empilé depuis que la dernière colonne était amputée de
+    // 68px a toutes les largeurs : « 12 mois » puis « HT / TTC / connu ».
+    for (const months of [3, 6, 12]) {
+      expect(html).toContain(`${months} mois`);
+    }
+    expect(html).toContain("HT / TTC / connu");
     expect(html).toContain("Comparaison mobile des coûts Google Ads");
   });
 

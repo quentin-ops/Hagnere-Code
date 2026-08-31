@@ -475,7 +475,7 @@ const objectivesByKind: Record<ProjectKindId, string[]> = {
  * Jargon → définition, affiché en info-bulle sur les chips qui portent le terme.
  *
  * Une entrée dont la clé ne correspond à AUCUN libellé réellement rendu ne
- * s'affiche jamais : elle donne l'illusion d'une aide qui n'existe pas. Neuf
+ * s'affiché jamais : elle donne l'illusion d'une aide qui n'existe pas. Neuf
  * définitions étaient dans ce cas — écrites pour des libellés renommés ou
  * jamais créés. `glossary-contract.test.ts` échoue désormais si une définition
  * redevient morte : soit le libellé existe, soit la définition part.
@@ -1251,7 +1251,7 @@ function validationText(id: StepId): string {
 }
 
 /**
- * Champ Objectifs — affiche 6 chips par défaut + lien "Voir plus" pour
+ * Champ Objectifs — affiché 6 chips par défaut + lien "Voir plus" pour
  * les combos qui génèrent jusqu'à 12 options (saas + maintenance + sécurité
  * peut produire 10+ chips, c'est trop pour un coup d'œil).
  */
@@ -2067,6 +2067,23 @@ userAgent         : ${error.diag.userAgent.slice(0, 80)}…`}</pre>
 export function ProjectFunnel() {
   const router = useRouter();
   const [activeStep, setActiveStep] = useState(0);
+  /**
+   * Sous 768 px, la bande d'étapes devient un rail horizontal
+   * (project-funnel.css:1212) : 1 145 px de contenu pour 340 px visibles, sans
+   * barre de défilement. Elle ne suivait pas la progression — l'étape 02 en
+   * cours restait hors écran, et l'indicateur affichait toujours 01. On recentre
+   * l'étape active à chaque changement, uniquement quand le rail défile
+   * réellement, donc jamais sur la disposition verticale du bureau.
+   */
+  const stepperRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const rail = stepperRef.current;
+    if (!rail || rail.scrollWidth <= rail.clientWidth) return;
+    const actif = rail.querySelector<HTMLElement>(".pf-stepper-item.is-active");
+    // `block: "nearest"` : sans lui, le recentrage horizontal ferait aussi
+    // sauter la page verticalement au milieu d'une saisie.
+    actif?.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+  }, [activeStep]);
   // Always initialize with INITIAL_STATE so SSR and the first client
   // render produce identical markup. Hydration of any saved draft happens
   // in a post-mount useEffect below — this is the canonical pattern to
@@ -2229,7 +2246,7 @@ export function ProjectFunnel() {
   // double-firing on Strict Mode double-mounts in dev.
   //
   // L'effet doit RESTER à l'écoute du consentement, et pas seulement le lire
-  // au montage : la bannière s'affiche après l'atterrissage, donc un visiteur
+  // au montage : la bannière s'affiché après l'atterrissage, donc un visiteur
   // qui accepte ensuite n'émettait jamais son ouverture — alors que ses
   // `pf:step_complete` et `pf:submit_success`, eux, partaient normalement.
   // Le dénominateur du tunnel manquait pour ces visiteurs et le taux de
@@ -2553,7 +2570,7 @@ export function ProjectFunnel() {
       }
       // Jeton anti-robot périmé : la route l'a relâché sans compter de
       // tentative. On remonte le composant (nouvelle `key`) pour qu'une
-      // question fraîche s'affiche, plutôt que de laisser la personne devant
+      // question fraîche s'affiché, plutôt que de laisser la personne devant
       // un refus qu'elle ne peut pas corriger.
       if (mailJson.mathChallengeExpired) {
         setMath(null);
@@ -2749,7 +2766,11 @@ export function ProjectFunnel() {
               </div>
             </div>
 
-            <div className="pf-stepper">
+            <div
+              className="pf-stepper"
+              ref={stepperRef}
+              aria-label={`Étape ${activeStep + 1} sur ${steps.length}`}
+            >
               {steps.map((step, index) => {
                 const active = index === activeStep;
                 const complete = step.id === "recap" ? index < activeStep : stepIsComplete(step.id, state);

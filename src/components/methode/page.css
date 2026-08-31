@@ -368,8 +368,8 @@ html.dark {
 .claude-left{position:relative;padding:52px 48px;display:flex;flex-direction:column;justify-content:center}
 .claude-tag{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px;font-family:var(--font-geist-mono);font-size:11px;letter-spacing:0.12em;font-weight:600;color:var(--accent)}
 .claude-tag > span:first-child{background:var(--accent-btn);color:#fff;padding:3px 8px;border-radius:4px;font-weight:700;letter-spacing:0.04em}
-.claude-card h3{color:#fff;font-size:36px;line-height:1.1;letter-spacing:-0.04em;font-weight:600}
-.claude-card h3 .accent{background:linear-gradient(90deg,#A78BFA,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.claude-card h2{color:#fff;font-size:36px;line-height:1.1;letter-spacing:-0.04em;font-weight:600}
+.claude-card h2 .accent{background:linear-gradient(90deg,#A78BFA,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
 .claude-lead{color:rgba(255,255,255,0.65);font-size:15px;line-height:1.6;margin-top:18px;max-width:540px}
 .claude-lead b{color:#fff;font-weight:500}
 
@@ -377,7 +377,11 @@ html.dark {
 .claude-rule{padding:18px 20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;transition:background 0.2s,border-color 0.2s}
 .claude-rule:hover{background:rgba(255,255,255,0.06);border-color:rgba(167,139,250,0.25)}
 .claude-rule-num{font-family:var(--font-geist-mono);font-size:9.5px;color:var(--accent);letter-spacing:0.12em;font-weight:700;margin-bottom:6px}
-.claude-rule h4{color:#fff;font-size:14.5px;letter-spacing:-0.015em;margin:0 0 4px;font-weight:600}
+/* Selecteur allonge a dessein : l'echelle fluide partagee pose
+   `.hc-design h3:not(.eyebrow)` (0,2,1), qui battait `.claude-rule h3` (0,1,1)
+   et gonflait ces intitules de regle a 21,7px. Ce sont des etiquettes dans
+   trois cartes etroites, pas des titres de section. */
+.hc-design .claude-card .claude-rule h3{color:#fff;font-size:14.5px;letter-spacing:-0.015em;margin:0 0 4px;font-weight:600}
 .claude-rule p{margin:0;color:rgba(255,255,255,0.6);font-size:12.5px;line-height:1.5}
 
 .claude-right{position:relative;background:#0F0F0F;padding:36px 32px;display:flex;flex-direction:column;gap:18px;border-left:1px solid #1A1A1A;justify-content:center}
@@ -598,7 +602,7 @@ button.faq-q{width:100%;margin:0;background:none;border:0;border-radius:0;color:
   /* Claude */
   .claude-left{padding:32px 24px}
   .claude-right{flex-direction:column;padding:24px}
-  .claude-card h3{font-size:24px}
+  .claude-card h2{font-size:24px}
 
   /* FAQ */
   .faq-grid{grid-template-columns:1fr;gap:32px}
