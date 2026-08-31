@@ -103,7 +103,11 @@
   /* La barre de titre de ces maquettes reste claire dans les deux thèmes :
      le --mute du thème sombre (#8B8B94) n'y tenait que 3,24:1. */
   html.dark .mock-window .win-url{color:#6B6B6B}
-  .mw-main{width:540px;left:0;top:30px;z-index:3}
+  /* `min()` et non 540 px fixes : la maquette est en position absolue dans une
+     colonne qui rétrécit avec le viewport. Entre 1025 et environ 1180 px elle
+     débordait du cadre — jusqu'à 70 px — et se faisait couper sans recours,
+     l'ancêtre étant en `overflow-x: clip`. */
+  .mw-main{width:min(540px,100%);left:0;top:30px;z-index:3}
   .mw-side{width:320px;right:0;top:280px;z-index:4}
 
   /* ============ WHAT WE BUILD ============ */

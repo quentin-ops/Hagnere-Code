@@ -1273,6 +1273,11 @@
   .sa-cw-grid {
     grid-template-columns: 1fr 1fr;
   }
+  /* Sur deux colonnes de 173 px, une image plafonnée à 160 px plus 32 px de
+     rembourrage ne tient pas : les logos dépassaient de 22 px, coupés sans
+     recours puisque l'ancêtre est en `overflow-x: clip`. */
+  .sa-cw-logo { padding: 12px 8px; min-width: 0; }
+  .sa-cw-logo img { max-width: 100%; }
   .sa-cw-sep { display: none; }
   .sa-cmp-head,
   .sa-cmp-row {
@@ -1322,3 +1327,20 @@ html.dark .sa-derisk-fear{background:rgba(239,68,68,0.10);border-color:rgba(239,
 html.dark .sa-derisk-fear svg{color:#F87171}
 html.dark .sa-derisk-proof span{background:rgba(74,222,128,0.13);color:#4ADE80}
 
+
+/* ---------------------------------------------------------------------------
+   Mur de logos : la bande 721-1024 px n'était couverte par aucune règle.
+
+   La grille de bureau vaut `1fr auto 1fr auto 1fr auto 1fr` : quatre logos,
+   trois séparateurs et six écarts de 12 px, soit 843 px réclamés pour un
+   conteneur de 728 px à 768. Les logos dépassaient de 95 px, coupés sans
+   recours puisque l'ancêtre est en `overflow-x: clip`.
+
+   Placé en fin de fichier pour gagner sur la règle de bureau.
+   --------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .sa-cw-grid { grid-template-columns: 1fr 1fr; }
+  .sa-cw-sep { display: none; }
+  .sa-cw-logo { padding: 12px 8px; min-width: 0; }
+  .sa-cw-logo img { max-width: 100%; }
+}
