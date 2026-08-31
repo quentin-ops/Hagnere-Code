@@ -58,7 +58,7 @@ ${navHtml}
         </div>
         <div class="emos">
           <a class="emos-card emos-founder" href="#fondateur" aria-label="Aller à la présentation de Quentin Hagnéré, plus bas sur cette page">
-            <div class="emos-avatar emos-avatar-founder"><img src="/team/quentin.webp" alt="Quentin Hagnéré" width="60" height="60" loading="lazy" decoding="async" /></div>
+            <div class="emos-avatar emos-avatar-founder"><img src="/team/quentin-128.webp" alt="Quentin Hagnéré" width="60" height="60" loading="lazy" decoding="async" /></div>
             <div class="emos-meta">
               <div class="emos-name">Quentin Hagnéré</div>
               <div class="emos-role">Fondateur</div>
@@ -67,7 +67,7 @@ ${navHtml}
           </a>
 
           <a class="emos-card" href="#cto" aria-label="Aller à la présentation de Nicolas Wallerand, plus bas sur cette page">
-            <div class="emos-avatar emos-avatar-cto"><img src="/team/nicolas.webp" alt="Nicolas Wallerand" width="54" height="54" loading="lazy" decoding="async" /></div>
+            <div class="emos-avatar emos-avatar-cto"><img src="/team/nicolas-128.webp" alt="Nicolas Wallerand" width="54" height="54" loading="lazy" decoding="async" /></div>
             <div class="emos-meta">
               <div class="emos-name">Nicolas Wallerand</div>
               <div class="emos-role">CTO</div>
@@ -76,7 +76,7 @@ ${navHtml}
           </a>
 
           <a class="emos-card" href="#dev-arthur" aria-label="Aller à la fiche d'Arthur Monney, plus bas sur cette page">
-            <div class="emos-avatar emos-avatar-am"><img src="/team/arthur.webp" alt="Arthur Monney" width="54" height="54" loading="lazy" decoding="async" /></div>
+            <div class="emos-avatar emos-avatar-am"><img src="/team/arthur-128.webp" alt="Arthur Monney" width="54" height="54" loading="lazy" decoding="async" /></div>
             <div class="emos-meta">
               <div class="emos-name">Arthur Monney</div>
               <div class="emos-role">Senior · Paiements</div>
@@ -85,7 +85,7 @@ ${navHtml}
           </a>
 
           <a class="emos-card" href="#dev-frederic" aria-label="Aller à la fiche de Frédéric Curinckx, plus bas sur cette page">
-            <div class="emos-avatar emos-avatar-fc"><img src="/team/frederic.jpeg" alt="Frédéric Curinckx" width="54" height="54" loading="lazy" decoding="async" /></div>
+            <div class="emos-avatar emos-avatar-fc"><img src="/team/frederic-128.webp" alt="Frédéric Curinckx" width="54" height="54" loading="lazy" decoding="async" /></div>
             <div class="emos-meta">
               <div class="emos-name">Frédéric Curinckx</div>
               <div class="emos-role">Senior · Livewire</div>
@@ -94,7 +94,7 @@ ${navHtml}
           </a>
 
           <a class="emos-card" href="#dev-ryan" aria-label="Aller à la fiche de Ryan Mazzitelli, plus bas sur cette page">
-            <div class="emos-avatar emos-avatar-rm"><img src="/team/ryan.jpeg" alt="Ryan Mazzitelli" width="54" height="54" loading="lazy" decoding="async" /></div>
+            <div class="emos-avatar emos-avatar-rm"><img src="/team/ryan-128.webp" alt="Ryan Mazzitelli" width="54" height="54" loading="lazy" decoding="async" /></div>
             <div class="emos-meta">
               <div class="emos-name">Ryan Mazzitelli</div>
               <div class="emos-role">Senior · IA</div>
@@ -103,7 +103,7 @@ ${navHtml}
           </a>
 
           <a class="emos-card" href="#dev-killian" aria-label="Aller à la fiche de Killian Hoarau, plus bas sur cette page">
-            <div class="emos-avatar emos-avatar-kh"><img src="/team/killian.webp" alt="Killian Hoarau" width="54" height="54" loading="lazy" decoding="async" /></div>
+            <div class="emos-avatar emos-avatar-kh"><img src="/team/killian-128.webp" alt="Killian Hoarau" width="54" height="54" loading="lazy" decoding="async" /></div>
             <div class="emos-meta">
               <div class="emos-name">Killian Hoarau</div>
               <div class="emos-role">Senior · DevOps</div>
@@ -112,7 +112,7 @@ ${navHtml}
           </a>
 
           <a class="emos-card" href="#dev-peter" aria-label="Aller à la fiche de Peter Sum Sie Kung, plus bas sur cette page">
-            <div class="emos-avatar emos-avatar-ps"><img src="/team/peter.webp" alt="Peter Sum Sie Kung" width="54" height="54" loading="lazy" decoding="async" /></div>
+            <div class="emos-avatar emos-avatar-ps"><img src="/team/peter-128.webp" alt="Peter Sum Sie Kung" width="54" height="54" loading="lazy" decoding="async" /></div>
             <div class="emos-meta">
               <div class="emos-name">Peter Sum Sie Kung</div>
               <div class="emos-role">Full-stack · PHP/JS</div>
@@ -359,7 +359,7 @@ ${navHtml}
       <!-- Arthur Monney -->
       <div class="dev-card reveal" id="dev-arthur">
         <div class="dev-card-top">
-          <div class="dev-avatar dev-avatar-am"><img src="/team/arthur.webp" alt="Arthur Monney" width="62" height="62" loading="lazy" decoding="async" /></div>
+          <div class="dev-avatar dev-avatar-am"><img src="/team/arthur-128.webp" alt="Arthur Monney" width="62" height="62" loading="lazy" decoding="async" /></div>
           <a class="dev-li" href="https://www.linkedin.com/in/arthurmonney/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Arthur Monney" title="LinkedIn">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
@@ -393,7 +393,7 @@ ${navHtml}
       <!-- Frédéric Curinckx -->
       <div class="dev-card reveal reveal-d-1" id="dev-frederic">
         <div class="dev-card-top">
-          <div class="dev-avatar dev-avatar-fc"><img src="/team/frederic.jpeg" alt="Frédéric Curinckx" width="62" height="62" loading="lazy" decoding="async" /></div>
+          <div class="dev-avatar dev-avatar-fc"><img src="/team/frederic-128.webp" alt="Frédéric Curinckx" width="62" height="62" loading="lazy" decoding="async" /></div>
           <a class="dev-li" href="https://www.linkedin.com/in/frederic-curinckx/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Frédéric Curinckx" title="LinkedIn">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
@@ -427,7 +427,7 @@ ${navHtml}
       <!-- Ryan Mazzitelli -->
       <div class="dev-card reveal reveal-d-2" id="dev-ryan">
         <div class="dev-card-top">
-          <div class="dev-avatar dev-avatar-rm"><img src="/team/ryan.jpeg" alt="Ryan Mazzitelli" width="62" height="62" loading="lazy" decoding="async" /></div>
+          <div class="dev-avatar dev-avatar-rm"><img src="/team/ryan-128.webp" alt="Ryan Mazzitelli" width="62" height="62" loading="lazy" decoding="async" /></div>
           <a class="dev-li" href="https://www.linkedin.com/in/ryan-mazzitelli-907716262/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Ryan Mazzitelli" title="LinkedIn">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
@@ -461,7 +461,7 @@ ${navHtml}
       <!-- Killian Hoarau -->
       <div class="dev-card reveal reveal-d-3" id="dev-killian">
         <div class="dev-card-top">
-          <div class="dev-avatar dev-avatar-kh"><img src="/team/killian.webp" alt="Killian Hoarau" width="62" height="62" loading="lazy" decoding="async" /></div>
+          <div class="dev-avatar dev-avatar-kh"><img src="/team/killian-128.webp" alt="Killian Hoarau" width="62" height="62" loading="lazy" decoding="async" /></div>
           <a class="dev-li" href="https://www.linkedin.com/in/killian-hoarau-960927138/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Killian Hoarau" title="LinkedIn">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
@@ -495,7 +495,7 @@ ${navHtml}
       <!-- Peter Sum Sie Kung -->
       <div class="dev-card reveal reveal-d-4" id="dev-peter">
         <div class="dev-card-top">
-          <div class="dev-avatar dev-avatar-ps"><img src="/team/peter.webp" alt="Peter Sum Sie Kung" width="62" height="62" loading="lazy" decoding="async" /></div>
+          <div class="dev-avatar dev-avatar-ps"><img src="/team/peter-128.webp" alt="Peter Sum Sie Kung" width="62" height="62" loading="lazy" decoding="async" /></div>
           <a class="dev-li" href="https://www.codeur.com/-peterssk" target="_blank" rel="noopener noreferrer" aria-label="Profil Codeur Peter Sum Sie Kung" title="Profil Codeur">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
           </a>

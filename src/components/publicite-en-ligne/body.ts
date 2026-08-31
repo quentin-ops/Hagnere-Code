@@ -125,7 +125,7 @@ export const bodyHtml = `
           <line x1="40" y1="318" x2="500" y2="318" stroke="#F5F5F5"/>
           <text x="40" y="332" font-family="Geist Mono" font-size="8" fill="#a3a3a3">5 canaux actifs</text>
           <text x="500" y="332" text-anchor="end" font-family="Geist Mono" font-size="8" fill="#6D28D9" font-weight="600">Looker · mis à jour il y a 4 min</text>
-        </svg>        </svg>
+        </svg>
       </div>
 
       <div class="mock-window mw-side">
