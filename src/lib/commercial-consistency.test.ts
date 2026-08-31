@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { CONTACT_PHONE_E164 } from "./contact-details";
 import { SERVICE_LINKS } from "./services";
 
 const projectRoot = process.cwd();
@@ -111,8 +112,11 @@ describe("public commercial consistency", () => {
       );
 
       const offers = source.match(/"@type": "Offer"/g) ?? [];
+      // UnitPriceSpecification compte aussi : une offre facturee au mois doit
+      // declarer sa périodicité, sans quoi le montant se lit comme un ticket
+      // d'entree unique — c'était le cas du Partenariat, lu 120 000 EUR nus.
       const priceSpecifications =
-        source.match(/"@type": "PriceSpecification"/g) ?? [];
+        source.match(/"@type": "(?:Unit)?PriceSpecification"/g) ?? [];
 
       expect(
         priceSpecifications.length,
@@ -174,5 +178,25 @@ describe("public commercial consistency", () => {
     for (const file of paths) {
       expect(read(file)).toContain("valueAddedTaxIncluded: false");
     }
+  });
+  /**
+   * Le NAP a déjà dérivé une fois : trois guides ont continué à publier
+   * 03 74 47 20 18 après la bascule, et un test qui vérifiait ce littéral
+   * verrouillait l'erreur au lieu de la révéler. On interdit donc tout numéro
+   * appelable qui ne serait pas celui du module de coordonnées — sauf celui de
+   * l'hébergeur, qui est une mention légale obligatoire et ne nous appartient pas.
+   */
+  it("ne publie aucun numéro appelable hors du module de coordonnées", () => {
+    const HEBERGEUR = "tel:+15592887060";
+    const fautifs: string[] = [];
+    for (const file of walk(path.join(projectRoot, "src"))) {
+      const source = fs.readFileSync(file, "utf8");
+      for (const [numero] of source.matchAll(/tel:\+\d+/g)) {
+        if (numero === CONTACT_PHONE_E164 || numero === `tel:${CONTACT_PHONE_E164}`) continue;
+        if (numero === HEBERGEUR && file.endsWith("mentions-legales.tsx")) continue;
+        fautifs.push(`${path.relative(projectRoot, file)} : ${numero}`);
+      }
+    }
+    expect(fautifs).toEqual([]);
   });
 });

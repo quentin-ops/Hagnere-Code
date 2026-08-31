@@ -1224,7 +1224,7 @@ export const bodyHtml = `${navHtml}
         <div class="plan-sub">Un site vitrine ou une landing qui convertit. Idéal pour une première collaboration.</div>
         <div class="plan-price">
           <span class="amount">Sur devis</span>
-          <span class="per">≈ 6–15 k€ HT sur projet-type · forfait fixe</span>
+          <span class="per">≈ 6,9–15 k€ HT sur projet-type · forfait fixe</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">

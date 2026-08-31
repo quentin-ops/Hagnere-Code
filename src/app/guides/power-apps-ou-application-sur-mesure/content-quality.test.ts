@@ -3,6 +3,10 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
+import {
+  CONTACT_PHONE_DISPLAY_NATIONAL,
+  CONTACT_PHONE_E164,
+} from "@/lib/contact-details";
 import { getGuide, PUBLISHED_GUIDES } from "@/lib/guides";
 import { getLegacyGuideDestination } from "@/lib/legacy-guide-redirects";
 import Page, { metadata } from "./page";
@@ -214,7 +218,7 @@ describe("content quality for Power Apps or custom application guide", () => {
     const measured = Math.max(1, Math.round(articleWordCount() / 200));
     expect(measured).toBeGreaterThanOrEqual(14);
     expect(measured).toBeLessThanOrEqual(21);
-    // Le hero n’affiche plus `readTimeMin` : annoncer 27 min sur un article de
+    // Le hero n’affiché plus `readTimeMin` : annoncer 27 min sur un article de
     // ce calibre serait faux tant que le registre n’est pas repris.
     expect(pageSource).not.toContain("powerAppsGuide.readTimeMin");
   });
@@ -797,13 +801,17 @@ describe("content quality for Power Apps or custom application guide", () => {
       'primaryCtaHref: "/services/outils-internes-sur-mesure"',
     );
     expect(pageSource).toContain('ctaHref: "/demarrer-un-projet"');
-    expect(pageSource).toContain('secondaryLabel: "03 74 47 20 18"');
-    expect(pageSource).toContain('secondaryHref: "tel:+33374472018"');
+    // Dérivé, jamais recopié : un littéral ici avait survécu au changement de NAP
+    // et republiait un numéro qui n'existe plus nulle part ailleurs sur le site.
+    expect(pageSource).toContain("secondaryLabel: CONTACT_PHONE_DISPLAY_NATIONAL");
+    expect(pageSource).toContain("secondaryHref: `tel:${CONTACT_PHONE_E164}`");
     expect(pageSource).toContain(
       '"Vous hésitez entre renforcer Power Apps et reconstruire\\u00a0?"',
     );
-    expect(renderedPage).toContain('href="tel:+33374472018"');
-    expect(renderedPage).toContain('aria-label="Appeler 03 74 47 20 18"');
+    expect(renderedPage).toContain(`href="tel:${CONTACT_PHONE_E164}"`);
+    expect(renderedPage).toContain(
+      `aria-label="Appeler ${CONTACT_PHONE_DISPLAY_NATIONAL}"`,
+    );
     expect(normalizedPage).toContain(
       "Le premier échange peut conclure qu’il faut conserver ou renforcer Power Apps",
     );

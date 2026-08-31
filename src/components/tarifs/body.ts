@@ -806,10 +806,13 @@ ${navHtml}
         <a href="/services/referencement-google" style="color:var(--accent-ink);text-decoration:underline">la page référencement</a> — Audit SEO actionnable, Sprint de correction,
         Accompagnement organique — dont le prix dépend du nombre d'URL, des gabarits et de la profondeur demandée,
         et n'est chiffré ni ici ni là-bas.
-        Une ligne ne reprend pas toujours toute l'offre de sa page service&nbsp;: sur
+        Une ligne ne reprend pas toujours toute l'offre de sa page service. Sur
         <a href="/services/contenu-video" style="color:var(--accent-ink);text-decoration:underline">contenu &amp; vidéo</a>, le
         retainer <b>Motion &amp; brand</b> (4 500 €/m HT, engagement minimum de 6 mois) et le <b>Studio dédié</b>
-        (forfait dès 15 k€ HT, sur devis — ce n'est pas un montant mensuel) s'y ajoutent.
+        (forfait dès 15 k€ HT, sur devis — ce n'est pas un montant mensuel) s'y ajoutent. Sur
+        <a href="/services/securite-rgpd" style="color:var(--accent-ink);text-decoration:underline">sécurité &amp; RGPD</a>,
+        deux prestations chiffrées ne figurent pas dans la ligne ci-dessus&nbsp;: <b>AI Act EU</b>
+        (dès 15 k€ HT) et <b>Cyber audit applicatif</b> (dès 8 k€ HT).
         Une durée d'engagement n'existe que si elle est écrite au contrat. Le prix exact est
         figé après le cadrage payant correspondant, dans un devis ferme contractuel.
       </div>

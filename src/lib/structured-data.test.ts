@@ -94,6 +94,7 @@ const ALLOWED_SCHEMA_TYPES = new Set([
   "Service",
   "SoftwareApplication",
   "Thing",
+  "UnitPriceSpecification",
   "WebApplication",
   "WebPage",
   "WebSite",

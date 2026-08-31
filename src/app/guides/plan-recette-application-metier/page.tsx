@@ -18,6 +18,10 @@ import {
   buildGuideMetadata,
   buildGuideStructuredData,
 } from "@/lib/guide-page-seo";
+import {
+  CONTACT_PHONE_DISPLAY_NATIONAL,
+  CONTACT_PHONE_E164,
+} from "@/lib/contact-details";
 import { formatGuideDate, getGuide } from "@/lib/guides";
 import { TEAM } from "@/lib/team";
 import { AcceptanceReadinessTool } from "./acceptance-readiness-tool";
@@ -212,8 +216,8 @@ export default function Page() {
           ],
           primaryCtaLabel: "Voir le service applications métier",
           primaryCtaHref: "/services/saas-applications-metier",
-          phoneLabel: "03 74 47 20 18",
-          phoneHref: "tel:+33374472018",
+          phoneLabel: CONTACT_PHONE_DISPLAY_NATIONAL,
+          phoneHref: `tel:${CONTACT_PHONE_E164}`,
         }}
         toc={toc}
         tocLabel="Étapes de la recette"
@@ -228,10 +232,10 @@ export default function Page() {
             "Jours à bloquer et cycles de correction",
             "Décideur et effet du silence identifiés",
           ],
-          ctaLabel: "Décrire mon projet",
+          ctaLabel: "Démarrer mon projet",
           ctaHref: "/demarrer-un-projet",
-          secondaryLabel: "03 74 47 20 18",
-          secondaryHref: "tel:+33374472018",
+          secondaryLabel: CONTACT_PHONE_DISPLAY_NATIONAL,
+          secondaryHref: `tel:${CONTACT_PHONE_E164}`,
           badgeLabel: "Premier échange sans engagement",
         }}
         faqCategories={faqCategories}

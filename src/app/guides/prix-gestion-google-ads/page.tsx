@@ -266,7 +266,7 @@ export default function Page() {
             "Coûts hors honoraires rendus visibles",
             "Conditions de contrôle et de sortie écrites",
           ],
-          ctaLabel: "Décrire mon projet",
+          ctaLabel: "Démarrer mon projet",
           ctaHref: "/demarrer-un-projet",
           secondaryLabel: CONTACT_PHONE_DISPLAY_NATIONAL,
           secondaryHref: `tel:${CONTACT_PHONE_E164}`,
@@ -1270,7 +1270,7 @@ Face au temps passé, à 1\u00a0000\u00a0€ par mois
                 placement="article_end_inline"
                 className="inline-flex min-h-11 items-center justify-center rounded-lg border border-zinc-700 px-4 py-2 text-sm font-bold text-white no-underline transition hover:bg-zinc-900"
               >
-                Décrire mon projet
+                Démarrer mon projet
               </TrackedGuideCtaLink>
             </div>
           </div>

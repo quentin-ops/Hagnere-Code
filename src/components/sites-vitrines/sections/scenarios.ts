@@ -119,7 +119,7 @@ export const scenariosHtml = `
             </div>
             <div class="sv-scen-meta-row">
               <dt>Équipe</dt>
-              <dd>1 président · 1 designer · 1 dev senior</dd>
+              <dd>Intervenants nommés au devis</dd>
             </div>
             <div class="sv-scen-meta-row">
               <dt>Livrables</dt>

@@ -9,7 +9,7 @@ import { bodyHtml } from "./body";
 const read = (relative: string) =>
   readFileSync(join(process.cwd(), relative), "utf8");
 
-/** Pages service dont /tarifs recopie les conditions commerciales. */
+/** Pages service dont /tarifs recopié les conditions commerciales. */
 const ADS_PRICING = read("src/components/publicite-en-ligne/sections/pricing.ts");
 const VIDEO_PRICING = read("src/components/contenu-video/sections/pricing.ts");
 const MAINTENANCE_PRICING = read(
@@ -299,6 +299,13 @@ describe("cohérence interne des montants cités", () => {
     // /methode publient 6,9 k€ comme prix d'entrée.
     expect(bodyHtml).not.toContain('<span class="amount">6–15 k€</span>');
     expect(bodyHtml).toContain('<span class="amount">6,9–15 k€</span>');
+
+    // Cette garde ne couvrait que /tarifs, si bien que l'accueil a continué
+    // d'afficher 6 k€ : c'est le tout premier prix que voit un visiteur, et
+    // 900 € d'écart sur un plancher contredisent la promesse « le prix est écrit ».
+    const accueil = read("src/components/homepage/body.ts");
+    expect(accueil).not.toMatch(/≈\s*6–15\s*k€/);
+    expect(accueil).toContain(`≈ ${vitrineEntry.replace(" k€ HT", "")}–15 k€ HT`);
   });
 
   /**

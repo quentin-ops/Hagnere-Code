@@ -69,11 +69,23 @@ const serviceJsonLd = JSON.stringify({
     {
       "@type": "Offer",
       name: "Partenariat · Co-build",
+      // 120 000 € nus, sans unité de temps, alors que les trois pages visibles
+      // publient « 8-20 k€ HT / mois » (/tarifs, son tableau, et l'accueil).
+      // Un moteur lisait donc un ticket d'entree quinze fois supérieur au prix
+      // affiche. UnitPriceSpecification permet de porter la periodicite.
       priceSpecification: {
-        "@type": "PriceSpecification",
-        minPrice: "120000",
+        "@type": "UnitPriceSpecification",
+        minPrice: "8000",
+        maxPrice: "20000",
         priceCurrency: "EUR",
         valueAddedTaxIncluded: false,
+        unitCode: "MON",
+        billingIncrement: 1,
+        referenceQuantity: {
+          "@type": "QuantitativeValue",
+          value: 1,
+          unitCode: "MON",
+        },
       },
       description: "Équipe dédiée et feuille de route pluri-lots sur la durée",
     },

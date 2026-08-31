@@ -322,7 +322,7 @@ export default function Page() {
             "Charge manuelle chiffrée avant le code",
             "Exploitation et sortie écrites au devis",
           ],
-          ctaLabel: "Décrire mon projet SaaS",
+          ctaLabel: "Démarrer mon projet SaaS",
           ctaHref: "/demarrer-un-projet",
           badgeLabel: "Premier échange sans engagement de faisabilité",
         }}
@@ -337,7 +337,7 @@ export default function Page() {
           ctaTitle: "Un point encore ouvert sur votre périmètre\u00a0?",
           ctaDescription:
             "Décrivez le résultat que vous voulez prouver et les écrans envisagés, sans transmettre de donnée sensible.",
-          ctaLabel: "Décrire mon projet SaaS",
+          ctaLabel: "Démarrer mon projet SaaS",
           ctaHref: "/demarrer-un-projet",
         }}
         legalSources={[
