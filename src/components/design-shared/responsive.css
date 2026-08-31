@@ -1735,3 +1735,25 @@ body.nav-menu-lock { overflow: hidden; }
     padding-bottom: 76px;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   FAQ des pages service : la colonne d'introduction accompagne le défilement.
+
+   `.faq-grid` est une grille `1fr 1.4fr`. La colonne de gauche ne contient
+   qu'un titre et deux lignes, mais elle était étirée à la hauteur de la liste :
+   mesuré 1 555 px sur saas-applications, 1 766 sur sites-vitrines, 1 834 sur
+   application-mobile, pour environ 150 px de contenu. La moitié gauche de
+   l'écran restait donc blanche sur plus de 1 300 px de défilement pendant que
+   la droite déroulait vingt questions.
+
+   Règle partagée plutôt que quatre règles de page : le motif est identique
+   partout, et `align-self: start` est indispensable — sans lui, l'élément
+   remplit sa piste et `sticky` n'a plus rien contre quoi coller.
+   --------------------------------------------------------------------------- */
+@media (min-width: 1025px) {
+  .hc-design .faq-grid > :first-child {
+    position: sticky;
+    top: calc(var(--hc-nav-h, 79px) + 24px);
+    align-self: start;
+  }
+}
