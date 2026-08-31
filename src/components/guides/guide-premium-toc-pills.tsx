@@ -45,6 +45,10 @@ export function GuidePremiumTocPills({
   return (
     <nav
       aria-label={label}
+      // Repère stable : le sommaire de page injecté par useDesignInteractive
+      // s'abstient quand la page en publie déjà un. Il ne peut pas se fier à
+      // l'aria-label, qui est propre à chaque guide, ni aux classes utilitaires.
+      data-guide-toc=""
       className="relative bg-[#fbfaf7] dark:bg-zinc-950 py-3 sm:py-4 print:hidden"
     >
       <div className="container mx-auto px-4 max-w-[1180px]">
@@ -52,26 +56,32 @@ export function GuidePremiumTocPills({
           {/* Left fade — fades white card edge into the scrolled content */}
           <div
             aria-hidden="true"
-            className={`pointer-events-none absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white via-white/80 to-transparent rounded-l-2xl z-10 transition-opacity duration-200 ${
+            className={`pointer-events-none absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white via-white/80 to-transparent rounded-l-2xl z-10 transition-opacity duration-200 lg:hidden ${
               showLeft ? "opacity-100" : "opacity-0"
             }`}
           />
           {/* Right fade */}
           <div
             aria-hidden="true"
-            className={`pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white via-white/80 to-transparent rounded-r-2xl z-10 transition-opacity duration-200 ${
+            className={`pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white via-white/80 to-transparent rounded-r-2xl z-10 transition-opacity duration-200 lg:hidden ${
               showRight ? "opacity-100" : "opacity-0"
             }`}
           />
 
           <div
             ref={scrollerRef}
-            className="flex items-center gap-3 sm:gap-5 px-4 sm:px-5 py-3 overflow-x-auto scrollbar-thin scroll-px-4 snap-x"
+            // Le rail était plafonné par un ancêtre a max-w-[1180px] : la barre
+            // mesurait 1146px de large pour 1421px de contenu, a 1280 comme a
+            // 1920px. Elargir l'ecran n'y changeait rien et jusqu'a 275px de
+            // chapitres restaient hors champ. Au-dela de 1024px on passe donc au
+            // retour a la ligne ; le rail et ses dégradés restent en dessous,
+            // ou ils ont un sens.
+            className="flex items-center gap-3 sm:gap-5 px-4 sm:px-5 py-3 overflow-x-auto scrollbar-thin scroll-px-4 snap-x lg:flex-wrap lg:overflow-x-visible"
           >
             <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-zinc-500 dark:text-white shrink-0">
               {label}
             </span>
-            <div className="flex items-center gap-2 flex-1">
+            <div className="flex items-center gap-2 flex-1 lg:flex-wrap lg:gap-y-2">
               {toc.map((item, index) => (
                 <a
                   key={item.id}

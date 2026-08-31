@@ -370,6 +370,7 @@ export const navHtml = `<!-- NAV -->
           ${ICON.chevron}
         </button>
         <noscript><a class="hc-nav-pill-link hc-nav-pill-link-nojs" href="/services">Nos services</a></noscript>
+        <a class="hc-nav-pill-link" href="/methode">Méthode</a>
         <a class="hc-nav-pill-link" href="/tarifs">Tarifs</a>
         <a class="hc-nav-pill-link" href="/realisations">Réalisations</a>
         <span class="hc-nav-pill-sep" aria-hidden="true"></span>

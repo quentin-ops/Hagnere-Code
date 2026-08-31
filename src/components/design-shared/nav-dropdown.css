@@ -903,3 +903,16 @@ html.dark .hc-mega-card-ic {
     border-color: rgba(255, 255, 255, 0.14);
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Bande etroite 1025-1119px : quatre entrees de niveau 1 ne tiennent pas.
+
+   « Methode » entre dans la barre parce que c'est la page qui repond a
+   « comment ca se passe », et qu'elle n'etait atteignable que par le 4e onglet
+   d'un menu intitule « Nos services ». Au-dessous de 1120px la barre debordait
+   du viewport : on retire « Realisations », qui reste accessible par le mega
+   menu (onglet Studio) et par le pied de page.
+   --------------------------------------------------------------------------- */
+@media (min-width: 1025px) and (max-width: 1119px) {
+  .hc-nav-pill-link[href="/realisations"] { display: none; }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   useCallback,
   useEffect,
@@ -56,16 +57,53 @@ type Status =
   | { kind: "error"; message: string; fields?: Record<string, string> };
 
 const BUDGETS = ["< 15k", "15-30k", "30-60k", "60k+", "Je ne sais pas"];
+/**
+ * Les sujets sont dérivés du registre des services publiés, pas recopiés.
+ * La liste en dur n'en couvrait que 7 sur 11 : référencement, publicité,
+ * contenu vidéo et sécurité n'étaient pas proposables, alors que les pages
+ * correspondantes envoyaient leurs boutons de devis vers ce formulaire.
+ */
 const PROJECT_TYPES = [
-  "Application métier",
-  "SaaS B2B",
-  "Outil interne / back-office",
-  "Reprise ou audit Laravel",
-  "Site vitrine / landing",
-  "Site e-commerce / boutique en ligne",
-  "Application mobile",
+  ...SERVICE_LINKS.map((service) => service.title),
+  "Reprise ou audit d'un existant",
   "Je ne sais pas",
 ];
+
+/**
+ * Exemple de message propre à la page d'où vient le visiteur.
+ *
+ * Le même exemple — remplacer des Excel par une plateforme — s'affichait sur
+ * les 11 pages service, y compris contenu & vidéo et sécurité & RGPD, où il ne
+ * veut rien dire. Un visiteur qui vient de cliquer « Cadrer le Deep » sur la
+ * page audit lisait une invitation à parler de facturation.
+ */
+const DEFAULT_MESSAGE_EXAMPLE =
+  "Ex. : on veut remplacer nos Excels par une plateforme qui centralise nos 42 clients et sort les factures auto.";
+
+const SERVICE_MESSAGE_EXAMPLES: Record<string, string> = {
+  "/services/saas-applications-metier":
+    "Ex. : on veut sortir un premier SaaS pour nos 40 clients, avec comptes, abonnement et facturation. On a une maquette et pas encore de code.",
+  "/services/outils-internes-sur-mesure":
+    "Ex. : on veut remplacer nos Excels par une plateforme qui centralise nos 42 clients et sort les factures auto.",
+  "/services/sites-vitrines":
+    "Ex. : notre site a six ans, il est lent sur mobile et on ne peut plus rien modifier nous-mêmes. Une quinzaine de pages à reprendre.",
+  "/services/ecommerce":
+    "Ex. : on vend 300 références, le tunnel de commande perd du monde au paiement et on veut brancher notre logiciel de stock.",
+  "/services/referencement-google":
+    "Ex. : on n'apparaît sur aucune de nos requêtes métier. On a la Search Console et on ne sait pas par où commencer.",
+  "/services/publicite-en-ligne":
+    "Ex. : on dépense 3 000 € par mois sur Google Ads sans savoir ce que ça rapporte, et le compte n'a pas été revu depuis un an.",
+  "/services/contenu-video":
+    "Ex. : on veut une série de vidéos courtes pour présenter notre offre, tournage sur site et montage, à diffuser sur LinkedIn.",
+  "/services/application-mobile":
+    "Ex. : nos équipes terrain saisissent sur papier. Il leur faut une application qui marche hors connexion et synchronise le soir.",
+  "/services/maintenance-evolution":
+    "Ex. : notre prestataire s'est arrêté, l'application tourne toujours et personne ne sait la faire évoluer.",
+  "/services/securite-rgpd":
+    "Ex. : un client nous demande nos garanties RGPD et un audit de sécurité avant de signer. On ne sait pas où on en est.",
+  "/services/audit-technique":
+    "Ex. : on envisage de racheter un éditeur et on veut savoir ce que vaut son code avant de s'engager.",
+};
 const TIMELINES = [
   "Dès que possible",
   "Dans 1 mois",
@@ -91,7 +129,7 @@ const TIMELINES = [
  * s'il n'y en a aucun. Entrée ne fait donc plus rien du tout. Avec JavaScript,
  * ce bouton n'existe pas et Entrée continue d'envoyer normalement.
  *
- * On masque en plus le bouton visible et on affiche les voies directes.
+ * On masque en plus le bouton visible et on affiché les voies directes.
  *
  * (Chaîne constante : React ne peut pas hydrater le contenu d'un <noscript>
  * comme des éléments. Aucune donnée utilisateur, surface XSS nulle.)
@@ -111,6 +149,21 @@ export function ContactProjectSection({
   className = "",
   contactPageCopy = false,
 }: ContactProjectSectionProps) {
+  /**
+   * Ce formulaire est l'unique destination des 40 et quelques boutons de devis
+   * des pages service. Il arrivait vide : le visiteur qui venait de cliquer
+   * « Cadrer le Deep » sur la page audit devait re-saisir le sujet qu'il venait
+   * de choisir. On lit donc le service depuis la route plutot que d'exiger des
+   * onze pages qu'elles transportent un parametre.
+   */
+  const pathname = usePathname();
+  const serviceContext = SERVICE_LINKS.find(
+    (service) => service.path === pathname,
+  );
+  const messageExample =
+    (pathname ? SERVICE_MESSAGE_EXAMPLES[pathname] : undefined) ??
+    DEFAULT_MESSAGE_EXAMPLE;
+
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   const [message, setMessage] = useState("");
   const [challengeEnabled, setChallengeEnabled] = useState(false);
@@ -622,8 +675,9 @@ export function ContactProjectSection({
                 Type de projet <em className="sf-opt">(optionnel)</em>
               </span>
               <select
+                key={serviceContext?.path ?? "sans-service"}
                 name="projectType"
-                defaultValue=""
+                defaultValue={serviceContext?.title ?? ""}
                 aria-labelledby={labelId("projectType")}
                 aria-invalid={!!errs.projectType}
                 aria-describedby={describedBy("projectType", errs.projectType)}
@@ -708,7 +762,7 @@ export function ContactProjectSection({
                 aria-labelledby={labelId("message")}
                 aria-invalid={!!errs.message}
                 aria-describedby={describedBy("message", errs.message)}
-                placeholder="Ex. : on veut remplacer nos Excels par une plateforme qui centralise nos 42 clients et sort les factures auto. Cliquez sur Dicter pour parler au lieu d'écrire."
+                placeholder={`${messageExample} Cliquez sur Dicter pour parler au lieu d'écrire.`}
               />
               {errs.message && <em id={errorId("message")}>{errs.message}</em>}
             </label>

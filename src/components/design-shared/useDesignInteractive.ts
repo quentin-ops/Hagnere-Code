@@ -1223,6 +1223,25 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
         e.preventDefault();
         const willOpen = megaRoot.dataset.megaOpen !== "true";
         setOpen(willOpen);
+
+        /* Ouverture au clavier : entrer dans le panneau.
+
+           Le panneau est place APRES les liens de la pilule dans l'ordre du
+           DOM. Un visiteur au clavier qui ouvrait le menu par Entree devait
+           donc traverser « Tarifs », « Realisations » et le numero de telephone
+           avant d'atteindre le premier onglet — trois liens sans rapport avec
+           ce qu'il venait d'ouvrir. La fermeture par Echap rendait deja le
+           focus au declencheur (voir setOpen) ; il manquait le trajet aller.
+
+           `e.detail === 0` distingue une activation clavier d'un vrai clic :
+           la souris renseigne le compteur de clics, Entree et Espace non. On
+           ne deplace donc jamais le focus sous le curseur d'un visiteur souris. */
+        if (willOpen && e.detail === 0) {
+          const premier = panel.querySelector<HTMLElement>(
+            "[data-cat], a[href], button:not([disabled])",
+          );
+          premier?.focus();
+        }
       };
       trigger.addEventListener("click", onTriggerClick);
 
@@ -1280,6 +1299,140 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
         setScrollLock(false);
       });
     });
+
+    /* ── Sommaire de page et retour en haut ──────────────────────────────
+       Mesuré au viewport 390×844 : /services/ecommerce fait 60 581 px, soit
+       71,8 écrans ; audit-technique 67,1 ; maintenance-evolution 64,1. À
+       320 px, ecommerce atteint 86 écrans. Aucune de ces pages n'offrait de
+       navigation interne : les seuls liens `href^="#"` étaient les boutons
+       vers #contact et le lien d'évitement.
+
+       Le sommaire est construit à l'hydratation depuis les h2 réellement
+       rendus, plutôt que recopié dans chacune des onze pages : il ne peut donc
+       pas se désynchroniser du contenu. Il n'apparaît que sur les pages
+       réellement longues, et jamais sur celles qui publient déjà le leur
+       (/methode a son `.mtoc`, les guides leurs pastilles de chapitre).
+       ------------------------------------------------------------------- */
+    {
+      const main = document.querySelector("main");
+      const dejaUnSommaire = !!document.querySelector(
+        ".mtoc, [data-section], [data-guide-toc], .hc-page-toc",
+      );
+      /**
+       * `textContent` colle les deux cotes d'un <br> : un titre
+       * « Six points de vigilance<br>avant une refonte » se lisait
+       * « vigilanceavant ». On clone et on remplace les sauts par une espace.
+       * `innerText` réglerait le probleme mais rend "" sur un element non
+       * peint, ce que `content-visibility: auto` provoque ici en permanence.
+       */
+      const libelle = (h: HTMLElement) => {
+        const clone = h.cloneNode(true) as HTMLElement;
+        clone.querySelectorAll("br").forEach((br) => {
+          br.replaceWith(document.createTextNode(" "));
+        });
+        return (clone.textContent || "").trim().replace(/\s+/g, " ");
+      };
+
+      const titres = main
+        ? Array.from(main.querySelectorAll<HTMLElement>("h2")).filter((h) => {
+            const t = libelle(h);
+            return t.length > 2 && t.length < 90;
+          })
+        : [];
+      const assezLongue =
+        document.documentElement.scrollHeight > window.innerHeight * 10;
+
+      if (main && !dejaUnSommaire && assezLongue && titres.length >= 6) {
+        const slug = (t: string, i: number) =>
+          t
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-+|-+$/g, "")
+            .slice(0, 40) || `section-${i}`;
+
+        const nav = document.createElement("nav");
+        nav.className = "hc-page-toc";
+        nav.setAttribute("aria-label", "Sommaire de la page");
+        const det = document.createElement("details");
+        const sum = document.createElement("summary");
+        sum.textContent = `Sur cette page · ${titres.length} sections`;
+        const ul = document.createElement("ul");
+
+        titres.forEach((h, i) => {
+          const texte = libelle(h);
+          if (!h.id) h.id = slug(texte, i);
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = `#${h.id}`;
+          a.textContent = texte;
+          li.appendChild(a);
+          ul.appendChild(li);
+        });
+
+        det.appendChild(sum);
+        det.appendChild(ul);
+        nav.appendChild(det);
+        // Ouvert d'emblée au-delà de la tablette, replié sur téléphone : un
+        // sommaire de 20 entrées y coûterait deux écrans avant le contenu.
+        det.open = window.innerWidth > 1024;
+
+        // Après le héros, pas avant : le premier écran doit rester la promesse.
+        const hero = main.querySelector("section");
+        if (hero && hero.parentElement) {
+          hero.parentElement.insertBefore(nav, hero.nextSibling);
+        } else {
+          main.insertBefore(nav, main.firstChild);
+        }
+        cleanups.push(() => nav.remove());
+      }
+
+      if (assezLongue) {
+        const haut = document.createElement("button");
+        haut.type = "button";
+        haut.className = "hc-to-top";
+        haut.setAttribute("aria-label", "Revenir en haut de la page");
+        haut.innerHTML =
+          '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+        haut.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+        document.body.appendChild(haut);
+
+        /**
+         * Le bandeau cookies (.hc-cb-toast) est fixe dans le meme coin, a
+         * z-index 9000 : mesure faite, il recouvrait entièrement le bouton,
+         * qui n'était donc pas cliquable tant que le visiteur n'avait pas
+         * repondu — c'est-a-dire pendant toute sa première visite. On se pose
+         * au-dessus de lui, et on redescend des qu'il disparait.
+         */
+        const placer = () => {
+          const toast = document.querySelector<HTMLElement>(".hc-cb-toast");
+          // Pas `offsetParent`, qui vaut toujours null sur un element en
+          // position: fixed — c'est précisément le cas du bandeau.
+          const hauteurToast = toast
+            ? Math.round(toast.getBoundingClientRect().height)
+            : 0;
+          const marge = hauteurToast > 0 ? hauteurToast + 28 : 18;
+          haut.style.bottom = `${marge}px`;
+        };
+
+        const onScroll = () => {
+          haut.classList.toggle(
+            "is-visible",
+            window.scrollY > window.innerHeight * 3,
+          );
+          placer();
+        };
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        cleanups.push(() => {
+          window.removeEventListener("scroll", onScroll);
+          haut.remove();
+        });
+      }
+    }
 
     return () => {
       if (cancelDeferred) cancelDeferred();

@@ -245,7 +245,7 @@ svg {
 html.nav-menu-lock,
 body.nav-menu-lock { overflow: hidden; }
 
-/* Desktop header: keep decision links visible and group secondary links. */
+/* Desktop header: keep décision links visible and group secondary links. */
 .nav-inner {
   gap: 22px;
 }
@@ -1553,4 +1553,179 @@ body.nav-menu-lock { overflow: hidden; }
 }
 @media (max-width: 380px) {
   .real-grid { scroll-padding-inline: 14px; margin-inline: -14px; padding-inline: 14px; }
+}
+
+/* ---------------------------------------------------------------------------
+   Tablette portrait : les boutons cessent de se lire comme des bandeaux.
+
+   Sous 768px (borne incluse) le site passe en une colonne — legitime sur un
+   telephone de 390px, ou un bouton pleine largeur est confortable au pouce.
+   A 768px, l'iPad en portrait, cela donnait des boutons de 678 a 728px de large.
+   On borne donc la mesure du bouton sans toucher a la mise en page en colonne :
+   margin-inline: auto le recentre, aussi bien dans un conteneur flex en colonne
+   que dans un conteneur en bloc.
+
+   Le bouton d'envoi du formulaire est exclu : il doit rester a la largeur des
+   champs qu'il valide, c'est deja son comportement au-dela de 768px.
+   Place en fin de fichier pour gagner sur les regles du bloc 768.
+   --------------------------------------------------------------------------- */
+@media (min-width: 600px) and (max-width: 768px) {
+  .hc-design .plan-cta > .btn,
+  .hc-design .care-cta > .btn,
+  .hc-design .thero-cta > .btn,
+  .hc-design .ptable-foot > .btn,
+  .hc-design .ct-cta > .btn,
+  .hc-design .ehero-cta > .btn,
+  .hc-design .eq-relay-cta > .btn,
+  .hc-design .ghub-hero-actions > .btn,
+  .hc-design .ghub-final-actions > .btn,
+  .hc-design .meth-deepdive > .btn,
+  .hc-design .disc-foot > .btn,
+  .hc-design .sv-scen-aside > .btn,
+  .hc-design .fri-cta > .btn,
+  .hc-design .mfinal-cta > .btn,
+  .hc-design .ec-scen-aside > .btn,
+  .hc-design .hero-cta > .btn,
+  .hc-design .shero-cta > .btn,
+  .hc-design .scta-cta > .btn {
+    max-width: 24rem;
+    margin-inline: auto;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Mesure typographique.
+
+   Au-dela d'environ 90 caracteres par ligne, l'oeil rate la ligne suivante au
+   retour a la marge. Plusieurs blocs s'etalaient sur toute la largeur du
+   conteneur : 213 c/ligne sur la note de /tarifs, 183 sur .tech-note de
+   /equipe, 170 sur l'accueil, 138 sur /guides.
+
+   La borne est en ch, donc solidaire de la taille de police reelle : elle ne
+   fait rien sous 78 caracteres, et ne se declenche donc jamais sur mobile ni
+   dans les cartes etroites. Les 53 blocs mesures sont alignes a gauche a une
+   exception pres, traitee juste apres : borner leur largeur ne deplace donc
+   aucun texte centre.
+   --------------------------------------------------------------------------- */
+.hc-design main p,
+.hc-design main li {
+  max-width: 68ch;
+}
+/* Seul bloc centre du lot : la boite reste centree, sinon la borne la collerait
+   a gauche de sa section. */
+.hc-design .price-foot p {
+  margin-inline: auto;
+}
+
+/* ---------------------------------------------------------------------------
+   Sommaire de page et retour en haut (injectes par useDesignInteractive).
+
+   Ces deux reperes n'apparaissent que sur les pages qui depassent dix ecrans
+   et n'ont pas deja leur propre sommaire. Voir le commentaire du hook pour les
+   hauteurs mesurees (jusqu'a 72 ecrans sur mobile).
+   --------------------------------------------------------------------------- */
+.hc-page-toc {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.hc-page-toc details {
+  margin: 24px 0 8px;
+  border: 1px solid var(--line, rgba(0, 0, 0, 0.12));
+  border-radius: 14px;
+  background: var(--paper-2, rgba(0, 0, 0, 0.02));
+}
+.hc-page-toc summary {
+  cursor: pointer;
+  list-style: none;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink, inherit);
+}
+.hc-page-toc summary::-webkit-details-marker { display: none; }
+.hc-page-toc summary::after {
+  content: "";
+  margin-left: auto;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.18s ease;
+}
+.hc-page-toc details[open] summary::after { transform: rotate(-135deg); }
+.hc-page-toc ul {
+  margin: 0;
+  padding: 4px 18px 16px;
+  list-style: none;
+  display: grid;
+  gap: 2px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+.hc-page-toc li { margin: 0; }
+.hc-page-toc a {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  line-height: 1.35;
+  color: var(--mute, inherit);
+  text-decoration: none;
+}
+.hc-page-toc a:hover,
+.hc-page-toc a:focus-visible { color: var(--ink, inherit); background: rgba(139, 92, 246, 0.08); }
+
+.hc-to-top {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 60;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid var(--line, rgba(0, 0, 0, 0.14));
+  background: var(--paper, #fff);
+  color: var(--ink, #0a0a0a);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+}
+.hc-to-top.is-visible { opacity: 1; visibility: visible; transform: none; }
+@media (max-width: 1024px) {
+  .hc-page-toc { padding: 0 28px; }
+}
+@media (max-width: 768px) {
+  .hc-page-toc { padding: 0 20px; }
+  .hc-page-toc ul { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hc-to-top { transition: none; }
+  .hc-page-toc summary::after { transition: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   Heros des pages service : moins de vide au-dessus du titre.
+
+   Chaque page.css pose `.shero { padding: 72px 0 96px }`. Mesure a 1440x900 :
+   le bouton d'action tombait a 884-1 060px selon les pages, donc sous la ligne
+   de flottaison sur quatre d'entre elles. Ce bloc reprend 40px sans toucher a
+   la typographie, deja fluide.
+   --------------------------------------------------------------------------- */
+@media (min-width: 1025px) {
+  .hc-design .shero {
+    padding-top: 52px;
+    padding-bottom: 76px;
+  }
 }

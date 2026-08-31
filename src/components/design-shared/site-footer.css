@@ -742,6 +742,12 @@ button.sf-tile {
   .sf-footer > .wrap { padding-inline: 28px; }
   .sf-contact-grid { grid-template-columns: 1fr; gap: 20px; }
   .sf-contact--contact-hero .sf-contact-grid { grid-template-columns: 1fr; }
+  /* En une colonne, la grille prenait toute la largeur : les champs mesuraient
+     904 px a 1024 px de viewport, puis retrecissaient de 44 % a 1440 px quand
+     la grille repassait sur deux colonnes. Plus l'ecran etait large, plus le
+     champ etait etroit. On borne la mesure ; sous 620 px la regle est sans effet. */
+  .sf-contact-grid,
+  .sf-contact--contact-hero .sf-contact-grid { max-width: 620px; margin-inline: auto; }
   .sf-foot-brand-row { grid-template-columns: 1fr; gap: 28px; }
   .sf-tile-grid-services { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .sf-foot-cols { grid-template-columns: repeat(2, 1fr); gap: 32px; }
