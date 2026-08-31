@@ -23,33 +23,48 @@ function visibleText(html: string): string {
 }
 
 describe("structure commerciale de la page d'accueil", () => {
-  it("répond au prix avant de demander un engagement", () => {
+  it("fait reconnaître sa situation au visiteur avant de lui vendre un service", () => {
     const order = sectionOrder(pageBody);
-
-    // Une preuve (réalisations) avant le prix, le prix avant la méthode,
-    // et le bloc de conversion « Premier cadrage » après le comparatif.
     const index = (name: string) => order.indexOf(name);
 
+    // « Les situations où on est vraiment utile » précède le catalogue : on ne
+    // sait pas nommer le service dont on a besoin avant d'avoir reconnu son
+    // propre problème. L'inverse — catalogue puis situations — obligeait à
+    // lire onze fiches de service pour découvrir ensuite laquelle s'applique.
+    expect(index("verticals")).toBeGreaterThan(-1);
+    expect(index("studio")).toBeGreaterThan(index("verticals"));
+
+    // Une preuve (réalisations) avant le prix, le prix avant la méthode.
     expect(index("real")).toBeGreaterThan(-1);
     expect(index("pricing")).toBeGreaterThan(index("real"));
     expect(index("methode")).toBeGreaterThan(index("pricing"));
-    expect(index("describe")).toBeGreaterThan(index("compare"));
-    // Le prix n'est plus en 14ᵉ position : il arrive dans la première moitié.
+    // Le prix arrive dans la première moitié de la page.
     expect(index("pricing")).toBeLessThan(order.length / 2);
   });
 
-  it("n'expose la stack technique qu'une fois dans le corps de page", () => {
-    // Visuel du hero (pills), bandeau « Notre stack » (logobar) : la rangée
-    // « Stack & spécialités avancées » de la section confiance faisait doublon.
+  it("ne garde sur l'accueil aucune section que porte déjà une page dédiée", () => {
+    // Passe UX du 28/08/2026 — 23,2 écrans desktop, 45,5 écrans mobile mesurés.
+    // Trois sections sont sorties ; ce test est ce qui empêche leur retour.
+    //
+    //   compare  → /tarifs   (comparer des devis est une tâche de fin de parcours,
+    //                         et /tarifs portait déjà une grille de comparaison)
+    //   describe → supprimée (son bouton pointait sur #contact, c'est-à-dire sur
+    //                         le formulaire du pied de page, présent partout)
+    //   logobar  → /methode  (la stack appartient au « comment on travaille »)
+    expect(pageBody).not.toContain('class="compare"');
+    expect(pageBody).not.toContain('class="describe"');
+    expect(pageBody.match(/class="logobar"/g) ?? []).toHaveLength(0);
+    // La rangée « Stack & spécialités avancées » de la section confiance
+    // faisait déjà doublon avant ce chantier : elle ne revient pas non plus.
     expect(pageBody).not.toContain("tr-partners-kicker");
-    expect(pageBody.match(/class="logobar"/g) ?? []).toHaveLength(1);
   });
 
   it("ne dépasse pas le volume de texte mesuré après l'audit", () => {
-    // 4 312 mots à l'audit d'août 2026. Garde-fou anti-regonflement : toute
-    // section ajoutée doit en remplacer une autre.
+    // 4 312 mots à l'audit d'août 2026, 3 435 après la passe UX du 28/08 (−20 %).
+    // Garde-fou anti-regonflement : toute section ajoutée doit en remplacer
+    // une autre. Le plafond suit la mesure, il ne la précède pas.
     const words = visibleText(pageBody).split(" ").filter(Boolean).length;
-    expect(words).toBeLessThanOrEqual(4200);
+    expect(words).toBeLessThanOrEqual(3500);
   });
 
   it("limite les renvois « au devis » au strict variable", () => {

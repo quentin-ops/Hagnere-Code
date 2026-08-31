@@ -1,4 +1,5 @@
 import { navHtml } from "@/components/design-shared/nav-html";
+import { PRIMARY_ACTION_LABEL } from "@/lib/cta-labels";
 import {
   FIRST_CALL_CONTACT,
   FIRST_CALL_CONTACT_SHORT,
@@ -22,7 +23,7 @@ export const bodyHtml = `${navHtml}
     <div>
       <div class="hero-eyebrow"><span class="pill hero-pill"><span class="dot"></span><span class="hero-pill-brand">Hagnéré Code</span><span class="hero-pill-tag">Studio produit à Bassens, aux portes de Chambéry</span></span></div>
       <h1 data-variant="A">
-        <span id="h1-content">Le studio qui construit<br>votre SaaS, votre site<br>ou votre outil métier — <span class="accent">au forfait fixe.</span></span>
+        <span id="h1-content">On construit votre SaaS, votre site ou votre outil métier — <span class="accent">au forfait fixe.</span></span>
       </h1>
       <p class="hero-sub" id="hero-sub">
         Un process qui coûte du temps, un site qui ne convertit pas, un logiciel à lancer&nbsp;:
@@ -31,7 +32,7 @@ export const bodyHtml = `${navHtml}
       </p>
       <div class="hero-cta">
         <a href="/demarrer-un-projet" class="btn btn-accent btn-lg">
-          Démarrer un projet
+          ${PRIMARY_ACTION_LABEL}
           <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
         <a href="/rendez-vous" class="btn btn-ghost btn-lg">
@@ -208,179 +209,6 @@ export const bodyHtml = `${navHtml}
 </section>
 
 <!-- LOGO BAR -->
-<section class="logobar" style="background-color: rgb(247, 247, 247)">
-  <div class="wrap">
-    <div class="lb-inner">
-      <div class="lb-side">
-        <div class="lb-kicker">Notre stack</div>
-        <h2>Une stack <em>moderne</em>, choisie, maîtrisée.</h2>
-        <p>Pas de framework choisi pour faire joli. Un socle standard, maintenable et lisible par d'autres équipes : Next.js/React, TypeScript, bases SQL, CI/CD, observabilité et agents IA modernes. Chaque brique a un rôle clair.</p>
-        <div class="lb-note">— Versions revues trimestriellement · sécurité et dépendances surveillées</div>
-      </div>
-
-      <div class="lb-stack">
-        <div class="lb-row">
-          <div class="lb-row-label">Back-end</div>
-          <div class="lb-chips">
-            <span class="lb-chip">
-              <img src="/logos/stack/nextjs.svg" alt="Next.js" width="18" height="18" loading="lazy" decoding="async" />
-              Next.js 16 <span class="lb-chip-dim">React 19 · Node</span>
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/typescript.svg" alt="TypeScript" width="18" height="18" loading="lazy" decoding="async" />
-              TypeScript <span class="lb-chip-dim">bout en bout</span>
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/postgresql.svg" alt="PostgreSQL" width="18" height="18" loading="lazy" decoding="async" />
-              PostgreSQL <span class="lb-chip-dim">Neon / Supabase</span>
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/redis.svg" alt="Redis" width="18" height="18" loading="lazy" decoding="async" />
-              Redis <span class="lb-chip-dim">cache + queues</span>
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/drizzle.svg" alt="Drizzle ORM" width="18" height="18" loading="lazy" decoding="async" />
-              Drizzle ORM <span class="lb-chip-dim">migrations typées</span>
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/authjs-64.webp" alt="Auth.js" width="18" height="18" loading="lazy" decoding="async" />
-              Auth.js <span class="lb-chip-dim">SSO / sessions</span>
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/mysql.svg" alt="MySQL" width="18" height="18" loading="lazy" decoding="async" />
-              MySQL 8 <span class="lb-chip-dim">legacy &amp; métier</span>
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/laravel.svg" alt="Laravel" width="18" height="18" loading="lazy" decoding="async" />
-              Laravel <span class="lb-chip-dim">reprises d'existant</span>
-            </span>
-          </div>
-        </div>
-
-        <div class="lb-row">
-          <div class="lb-row-label">Front-end web</div>
-          <div class="lb-chips">
-            <span class="lb-chip">
-              <img src="/logos/stack/react.svg" alt="React" width="18" height="18" loading="lazy" decoding="async" />
-              React 19.2
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/nextjs.svg" alt="Next.js" width="18" height="18" loading="lazy" decoding="async" />
-              Next.js 16
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/react.svg" alt="React Server Components" width="18" height="18" loading="lazy" decoding="async" />
-              React Server Components
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/tailwindcss.svg" alt="Tailwind CSS" width="18" height="18" loading="lazy" decoding="async" />
-              Tailwind v4
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/typescript.svg" alt="TypeScript" width="18" height="18" loading="lazy" decoding="async" />
-              TypeScript 5 <span class="lb-chip-dim">strict</span>
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/radixui.svg" alt="Radix UI" width="18" height="18" loading="lazy" decoding="async" />
-              Radix UI <span class="lb-chip-dim">accessibilité</span>
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/motion.png" alt="Motion" width="18" height="18" loading="lazy" decoding="async" />
-              Motion <span class="lb-chip-dim">interactions</span>
-            </span>
-          </div>
-        </div>
-
-        <div class="lb-row">
-          <div class="lb-row-label">Mobile iOS/Android</div>
-          <div class="lb-chips">
-            <span class="lb-chip">
-              <img src="/logos/stack/react.svg" alt="React Native" width="18" height="18" loading="lazy" decoding="async" />
-              React Native
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/expo.svg" alt="Expo" width="18" height="18" loading="lazy" decoding="async" />
-              Expo SDK
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/apple.svg" alt="iOS" width="18" height="18" loading="lazy" decoding="async" />
-              <img src="/logos/stack/android.svg" alt="Android" width="18" height="18" loading="lazy" decoding="async" />
-              iOS &amp; Android
-            </span>
-            <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="stroke:var(--ink)" stroke-width="1.6" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><circle cx="12" cy="18" r="0.5" style="fill:var(--ink)"/></svg>
-              Push · Offline · Caméra
-            </span>
-          </div>
-        </div>
-
-        <div class="lb-row">
-          <div class="lb-row-label">IA &amp; agents</div>
-          <div class="lb-chips">
-            <span class="lb-chip">
-              <img src="/logos/stack/anthropic.svg" alt="Anthropic Claude" width="18" height="18" loading="lazy" decoding="async" />
-              Claude <span class="lb-chip-dim">agents &amp; code</span>
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/openai.svg" alt="OpenAI" width="18" height="18" loading="lazy" decoding="async" />
-              GPT <span class="lb-chip-dim">raisonnement &amp; code</span>
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/prism.webp" alt="Prism PHP" width="18" height="18" loading="lazy" decoding="async" />
-              Prism <span class="lb-chip-dim">LLM abstraction</span>
-            </span>
-            <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="3" style="fill:var(--ink)"/><path d="M8 10h8M8 14h5" style="stroke:var(--paper)" stroke-width="1.5" stroke-linecap="round"/></svg>
-              RAG <span class="lb-chip-dim">embeddings + citations</span>
-            </span>
-            <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="#6D28D9"/><path d="M8 12h8M12 8v8" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>
-              Tool calling <span class="lb-chip-dim">agents métier</span>
-            </span>
-          </div>
-        </div>
-
-        <div class="lb-row">
-          <div class="lb-row-label">Infra &amp; ops</div>
-          <div class="lb-chips">
-            <span class="lb-chip">
-              <img src="/logos/stack/vercel.svg" alt="Vercel" width="18" height="18" loading="lazy" decoding="async" />
-              Vercel <span class="lb-chip-dim">edge</span>
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/cloudflare.svg" alt="Cloudflare" width="18" height="18" loading="lazy" decoding="async" />
-              Cloudflare <span class="lb-chip-dim">OpenNext</span>
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/aws.svg" alt="AWS" width="18" height="18" loading="lazy" decoding="async" />
-              AWS S3 + SES
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/docker.svg" alt="Docker" width="18" height="18" loading="lazy" decoding="async" />
-              Docker <span class="lb-chip-dim">Coolify</span>
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/githubactions.svg" alt="GitHub Actions" width="18" height="18" loading="lazy" decoding="async" />
-              GitHub Actions
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/sentry.svg" alt="Sentry" width="18" height="18" loading="lazy" decoding="async" />
-              Sentry <span class="lb-chip-dim">erreurs</span>
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/betterstack.svg" alt="Better Stack" width="18" height="18" loading="lazy" decoding="async" />
-              Better Stack <span class="lb-chip-dim">uptime</span>
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/dependabot.svg" alt="Dependabot" width="18" height="18" loading="lazy" decoding="async" />
-              Dependabot <span class="lb-chip-dim">CVE</span>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 <!-- STUDIO FULL-STACK -->
 <section class="studio" id="services">
   <div class="wrap">
@@ -1365,7 +1193,7 @@ export const bodyHtml = `${navHtml}
         nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti.
       </p>
       <a href="/demarrer-un-projet" class="price-context-cta">
-        Décrire mon projet (3 min)
+        Démarrer mon projet (3 min)
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -1405,7 +1233,7 @@ export const bodyHtml = `${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement et durée précisés au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Délai variable selon scope (cadrage en 30 min)</li>
         </ul>
-        <div class="plan-cta"><a href="/demarrer-un-projet" class="btn btn-ghost">Décrire mon projet</a></div>
+        <div class="plan-cta"><a href="/demarrer-un-projet" class="btn btn-ghost">Démarrer mon projet</a></div>
       </div>
 
       <div class="plan featured reveal reveal-d-1">
@@ -1426,7 +1254,7 @@ export const bodyHtml = `${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Formation des équipes</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Planning et cadence de démonstration définis au devis</li>
         </ul>
-        <div class="plan-cta"><a href="/demarrer-un-projet" class="btn btn-accent">Décrire mon projet</a></div>
+        <div class="plan-cta"><a href="/demarrer-un-projet" class="btn btn-accent">Démarrer mon projet</a></div>
       </div>
 
       <div class="plan reveal reveal-d-2">
@@ -1476,10 +1304,10 @@ export const bodyHtml = `${navHtml}
 
       <div class="faq-list reveal reveal-d-1">
         <div class="faq-item open">
-          <div class="faq-q">On a pas de cahier des charges — c'est bloquant ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="true" aria-controls="faq-a-home-1">On a pas de cahier des charges — c'est bloquant ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-home-1">
             <b>Pas du tout.</b> Beaucoup de projets démarrent avec une idée claire mais pas de doc formelle.
             Un appel de 30 minutes suffit pour qu'on comprenne l'essentiel. On rédige ensuite le périmètre
             avec vous — c'est notre métier, pas le vôtre.
@@ -1487,10 +1315,10 @@ export const bodyHtml = `${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Qui est propriétaire du code et des données ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-home-2">Qui est propriétaire du code et des données ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-home-2" hidden>
             Les livrables spécifiques sont transférés après paiement complet selon les CGV. Le devis précise
             le dépôt Git, les accès, l'hébergement, la région, les données et la réversibilité, avec les exclusions
             liées aux composants préexistants, open source et services tiers.
@@ -1498,10 +1326,10 @@ export const bodyHtml = `${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Pourquoi Next.js et React ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-home-3">Pourquoi Next.js et React ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-home-3" hidden>
             Next.js et React sont <b>notre stack de référence</b> : TypeScript de bout en bout,
             du formulaire à la base de données, et l'écosystème le plus large du marché — n'importe
             quelle équipe React peut reprendre le code demain. Les performances statiques et le SSR
@@ -1511,10 +1339,10 @@ export const bodyHtml = `${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Combien de temps pour livrer un projet type ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-home-4">Combien de temps pour livrer un projet type ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-home-4" hidden>
             Le délai dépend des écrans, contenus, intégrations, migrations, validations et tests.
             Le devis fixe un calendrier et ses hypothèses,
             puis les démonstrations suivent la cadence convenue. Quand un risque apparaît, on le dit tôt,
@@ -1523,10 +1351,10 @@ export const bodyHtml = `${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Et après la livraison, comment ça se passe ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-home-5">Et après la livraison, comment ça se passe ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-home-5" hidden>
             Vous disposez d'une période de recette et de correction : ses critères, les anomalies couvertes et les délais
             cibles sont écrits avant la signature. Ensuite, vous pouvez choisir un <b>forfait de maintenance</b>,
             une intervention ponctuelle ou une reprise par votre équipe. Aucune option n'est automatique.
@@ -1534,10 +1362,10 @@ export const bodyHtml = `${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Vous travaillez avec des ETI ou des grands comptes ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-home-6">Vous travaillez avec des ETI ou des grands comptes ?
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-home-6" hidden>
             Notre sweet spot, ce sont les <b>dirigeants de PME, cabinets spécialisés et équipes métier</b>
             qui veulent un outil concret sans monter une équipe tech complète. Pour les très grandes
             organisations, on est pertinent sur un périmètre cadré, pas comme ESN généraliste.
@@ -1599,7 +1427,7 @@ export const bodyHtml = `${navHtml}
           <h5>CONTACT</h5>
           <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>
           <a href="/contact">Formulaire contact</a>
-          <a href="/demarrer-un-projet">Démarrer un projet</a>
+          <a href="/demarrer-un-projet">${PRIMARY_ACTION_LABEL}</a>
         </div>
         <div class="foot-col">
           <h5>LÉGAL</h5>

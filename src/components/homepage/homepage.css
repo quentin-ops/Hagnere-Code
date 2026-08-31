@@ -46,9 +46,15 @@
   .hc-design a{color:inherit}
 
   .hc-design h1,.hc-design h2,.hc-design h3,.hc-design h4{font-family:var(--font-geist);letter-spacing:-0.035em;font-weight:600;margin:0}
-  .hc-design h1{font-size:84px;line-height:0.98;letter-spacing:-0.05em}
-  .hc-design h2{font-size:52px;line-height:1.06;letter-spacing:-0.04em}
-  .hc-design h3{font-size:22px;letter-spacing:-0.02em;font-weight:600;line-height:1.25}
+  /* Les TAILLES de h1/h2/h3 ne sont plus déclarées ici : l'échelle fluide du
+     site entier vit dans `design-shared/responsive.css`, chargée après cette
+     feuille par toutes les pages. Une taille posée ici serait un second point
+     de vérité, et c'est exactement ce qui avait produit l'escalier de cinq
+     paliers que cette passe supprime. */
+
+  /* Les règles `.logobar` / `.lb-*` ont migré dans
+     `design-shared/tech-stack.css` avec la section qu'elles habillent.
+     Aucune autre page n'en rendait le balisage. */
 
   /* ============ NAV ============ */
   .nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(var(--paper-rgb),0.75);border-bottom:1px solid var(--line)}
@@ -107,7 +113,11 @@
   html.dark .hc-design .btn-accent:hover{background:#7C3AED}
   .hc-design .btn-ghost{color:var(--ink-3);border-color:var(--line);background:var(--paper)}
   .hc-design .btn-ghost:hover{border-color:var(--ink-4);color:var(--ink)}
-  .btn-lg{padding:14px 22px;font-size:15px;border-radius:10px}
+  /* 14/22 px donnait une pastille de 53 px de haut : sur une rangée de deux
+     boutons côte à côte sous un titre déjà réduit, l'ensemble reprenait la
+     place gagnée. `min-height: 44px` posé sur `.btn` garantit la cible
+     tactile — c'est elle qui compte, pas le rembourrage. */
+  .btn-lg{padding:12px 20px;font-size:14.5px;border-radius:10px}
   .btn .arrow{transition:transform 0.2s}
   .btn:hover .arrow{transform:translateX(3px)}
 
@@ -131,18 +141,28 @@
   .eyebrow.on-dark{color:#A78BFA}
 
   /* ============ HERO ============ */
-  .hero{padding:80px 0 120px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero{padding:56px 0 72px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
 
   .hero-bg-grid{position:absolute;inset:0;background-image:linear-gradient(to right,var(--line) 1px,transparent 1px),linear-gradient(to bottom,var(--line) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 30%,transparent 85%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 30%,transparent 85%);pointer-events:none}
   .hero-radial{position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 60% 30%,rgba(109,40,217,0.09),transparent 70%);pointer-events:none}
-  .hero-inner{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;position:relative;min-height:560px}
-  .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:28px}
+  .hero-inner{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;position:relative;min-height:440px}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:20px}
+  /* Les <br> codés en dur ont disparu du H1 : à 84 px chaque « ligne »
+     dessinée en retombait sur deux, et le titre montait à 7 lignes réelles
+     pour 3 voulues. `text-wrap: balance` répartit les lignes sans les figer,
+     donc sans dépendre du point de rupture. `max-width` en `ch` borne la
+     longueur de ligne à une mesure lisible plutôt qu'à la colonne de grille. */
+  .hero h1{max-width:19ch;text-wrap:balance}
   .hero h1 .accent{color:var(--accent)}
   .hero h1 .nowrap{white-space:nowrap}
-  .hero-sub{margin-top:28px;font-size:20px;line-height:1.55;color:var(--ink-3);max-width:560px}
+  /* 20 px pour un paragraphe de 4 lignes sous un titre déjà long : le bloc
+     de texte pesait 155 px et repoussait le bouton hors de l'écran. 17,5 px
+     reste au-dessus de la taille de corps du site (16 px) et garde la
+     hiérarchie titre → chapô → corps. */
+  .hero-sub{margin-top:20px;font-size:17.5px;line-height:1.6;color:var(--ink-3);max-width:560px}
   .hero-sub b{color:var(--ink);font-weight:600}
-  .hero-cta{margin-top:40px;display:flex;gap:12px;flex-wrap:wrap}
-  .hero-badges{margin:28px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-start}
+  .hero-cta{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+  .hero-badges{margin:20px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-start}
   .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 12px 7px 8px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink-3);font-size:12.5px;font-weight:500;letter-spacing:-0.005em;line-height:1;transition:border-color 0.15s,background 0.15s,color 0.15s}
   .hero-badge:hover{border-color:var(--accent-ink);background:var(--accent-soft);color:var(--ink)}
   .hero-badge-ic{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);flex-shrink:0}
@@ -156,29 +176,14 @@
   .tower-float{animation:float-slow 6s ease-in-out infinite}
 
   /* ============ LOGO BAR (v2 — editorial) ============ */
-  .logobar{padding:100px 0;border-bottom:1px solid var(--line);background:var(--paper);position:relative}
-  .logobar::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,var(--line) 1px,transparent 1px);background-size:24px 24px;mask-image:radial-gradient(ellipse 70% 50% at 50% 50%,#000 0%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 70% 50% at 50% 50%,#000 0%,transparent 75%);opacity:0.5;pointer-events:none}
-  .lb-inner{position:relative;display:grid;grid-template-columns:380px 1fr;gap:80px;align-items:start}
-  .lb-side .lb-kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-geist-mono);font-size:11px;color:var(--accent-ink);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px;font-weight:500}
-  .lb-side .lb-kicker::before{content:"";width:20px;height:1px;background:var(--accent)}
-  .lb-side h2{font-size:36px;line-height:1.05;letter-spacing:-0.035em;font-weight:600;margin:0 0 20px;color:var(--ink)}
-  .lb-side h2 em{font-style:normal;color:var(--accent)}
-  .lb-side p{font-size:15px;line-height:1.6;color:var(--ink-3);margin:0;max-width:340px}
-  .lb-side .lb-note{margin-top:28px;padding-top:24px;border-top:1px solid var(--line-2);font-family:var(--font-geist-mono);font-size:11px;color:var(--mute);letter-spacing:0.02em}
 
-  .lb-stack{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .lb-row{display:grid;grid-template-columns:110px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--line-2);align-items:center;transition:background 0.2s;position:relative}
-  .lb-row:last-child{border-bottom:none}
-  .lb-row:hover{background:linear-gradient(90deg,transparent,rgba(109,40,217,0.025) 40%,transparent)}
-  .lb-row-label{font-family:var(--font-geist-mono);font-size:10px;color:var(--mute);letter-spacing:0.1em;text-transform:uppercase;font-weight:500;padding-left:4px}
-  .lb-chips{display:flex;flex-wrap:wrap;gap:8px}
-  .lb-chip{display:inline-flex;align-items:center;gap:10px;padding:9px 14px 9px 11px;border:1px solid var(--line);border-radius:999px;background:var(--paper);font-family:var(--font-geist);font-size:14px;font-weight:500;color:var(--ink-2);letter-spacing:-0.01em;transition:all 0.2s;cursor:default}
-  .lb-chip:hover{border-color:var(--ink-4);color:var(--ink);transform:translateY(-1px);box-shadow:0 4px 12px -4px rgba(0,0,0,0.08)}
-  .lb-chip svg,.lb-chip img{width:18px;height:18px;flex-shrink:0;display:block}
-  .lb-chip .lb-chip-dim{color:var(--mute);font-weight:400;font-family:var(--font-geist-mono);font-size:11px;letter-spacing:0.01em}
 
   /* ============ STUDIO FULLSTACK (v2 — modern & punchy) ============ */
-  .studio{padding:140px 0;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  /* Rythme vertical resserré (28/08/2026).
+     130 à 140 px en haut ET en bas, sur onze sections, faisaient 2 900 px de
+     vide pur — 3,2 écrans de 900 px avant tout contenu. 88 px gardent la
+     respiration entre deux blocs sans transformer le défilement en trajet. */
+  .studio{padding:88px 0;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
   .studio-head{text-align:center;max-width:880px;margin:0 auto 80px}
   .shead-tag{display:inline-flex;align-items:center;gap:10px;padding:7px 14px;border:1px solid var(--line);background:var(--paper);border-radius:999px;font-family:var(--font-geist-mono);font-size:11px;color:var(--ink-3);letter-spacing:0.08em;font-weight:500;margin-bottom:26px}
   .shead-dot{width:7px;height:7px;background:var(--accent);border-radius:50%;box-shadow:0 0 0 4px rgba(109,40,217,0.15)}
@@ -354,7 +359,7 @@
   .sfoot-t{font-size:20px;font-weight:600;letter-spacing:-0.02em;color:var(--ink)}
 
   /* ============ DESCRIBE YOUR PROJECT ============ */
-  .describe{padding:140px 0;border-bottom:1px solid var(--line);background:var(--paper-2);position:relative;overflow:hidden}
+  .describe{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper-2);position:relative;overflow:hidden}
   .describe::before{content:"";position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(109,40,217,0.06),transparent 60%);pointer-events:none}
   .descr-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:80px;align-items:start;position:relative}
   .descr-copy{position:sticky;top:100px}
@@ -447,7 +452,7 @@
 
   
   /* ============ METHODE ============ */
-  .methode{padding:140px 0;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  .methode{padding:88px 0;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
   .methode::before{content:"";position:absolute;top:-100px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(109,40,217,0.04),transparent 60%);pointer-events:none}
 
   /* Connecting rail */
@@ -494,7 +499,7 @@
   }
 
   /* ============ REALISATIONS ============ */
-  .real{padding:130px 0;background:var(--paper-2);border-bottom:1px solid var(--line)}
+  .real{padding:88px 0;background:var(--paper-2);border-bottom:1px solid var(--line)}
   .real-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
 
   /* ============ SHARED SECTION HEAD ============ */
@@ -531,7 +536,7 @@
 
   /* ============ STATS ============ */
   /* Section volontairement sombre : fond piné en littéral, identique dans les deux thèmes. */
-  .stats{padding:120px 0;background:#0A0A0A;color:#fff;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  .stats{padding:80px 0;background:#0A0A0A;color:#fff;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
   .stats-bg{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 90%);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 90%)}
   .stats .inner{position:relative}
   .stats-head{max-width:720px}
@@ -547,7 +552,7 @@
   .stat .k{font-family:var(--font-geist-mono);font-size:11px;color:var(--accent);letter-spacing:0.06em;margin-bottom:14px;display:block}
 
   /* ============ EQUIPE ============ */
-  .equipe{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper)}
+  .equipe{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper)}
   .eq-grid{display:grid;grid-template-columns:380px 1fr;gap:40px;margin-top:56px;align-items:start}
 
   /* Founder card (dark, premium) — taille naturelle, ne stretch pas pour matcher la colonne droite */
@@ -615,7 +620,7 @@
   .eqs .l{font-size:11.5px;color:var(--mute);line-height:1.35}
 
   /* ============ TARIFS ============ */
-  .pricing{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+  .pricing{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
   .price-context{margin:24px 0 0;padding:18px 22px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,var(--accent-soft),rgba(237,233,254,0.3));display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px}
   .price-context-tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-geist-mono);font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent-ink);flex-shrink:0}
   .price-context p{flex:1;min-width:280px;margin:0;font-size:13.5px;line-height:1.55;color:var(--ink-3)}
@@ -655,13 +660,21 @@
   .plan-cta .btn{width:100%;justify-content:center}
 
   /* ============ FAQ ============ */
-  .faq{padding:130px 0;border-bottom:1px solid var(--line)}
+  .faq{padding:88px 0;border-bottom:1px solid var(--line)}
   .faq-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:80px}
   .faq-intro h2{font-size:44px}
   .faq-intro p{color:var(--mute);font-size:16px;margin-top:16px;max-width:340px}
   .faq-list{border-top:1px solid var(--line)}
   .faq-item{border-bottom:1px solid var(--line);padding:4px 0}
   .faq-q{display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;font-size:17px;font-weight:500;letter-spacing:-0.01em;gap:20px}
+  /* Remise à zéro du bouton natif. Les questions de FAQ étaient des <div>
+     — ni focalisables, ni annoncées comme un contrôle avant hydratation.
+     Passées en <button>, elles héritaient des styles par défaut du
+     navigateur : fond, bordure, police système et surtout
+     `text-align: center`, qui centrait les questions. Cette règle existe
+     déjà à l'identique dans les page.css des pages service ; elle manquait
+     ici. */
+  button.faq-q{width:100%;margin:0;background:none;border:0;border-radius:0;color:inherit;font-family:inherit;line-height:inherit;text-align:left;-webkit-appearance:none;appearance:none}
   .faq-q:hover{color:var(--accent-ink)}
   .faq-q .ic{width:24px;height:24px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;flex-shrink:0;transition:all 0.2s;color:var(--mute)}
   .faq-item.open .faq-q .ic{background:var(--ink);border-color:var(--ink);color:var(--paper);transform:rotate(45deg)}
@@ -673,7 +686,7 @@
   .faq-a b{color:var(--ink);font-weight:500}
 
   /* ============ CTA FINAL ============ */
-  .fcta{padding:140px 0;background:var(--ink);color:#fff;position:relative;overflow:hidden}
+  .fcta{padding:88px 0;background:var(--ink);color:#fff;position:relative;overflow:hidden}
   .fcta-bg{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 60% 80% at 50% 50%,#000 20%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 60% 80% at 50% 50%,#000 20%,transparent 80%)}
   .fcta .inner{position:relative;text-align:center;max-width:720px;margin:0 auto}
   .fcta h2{color:#fff;font-size:64px;line-height:1}
@@ -772,9 +785,7 @@
   }
   /* Logobar : fond clair posé en style inline (rgb(247,247,247)) dans body.ts,
      d'où le !important pour le faire suivre le thème. */
-  html.dark .logobar{background-color:var(--paper-2) !important}
   /* Logos de stack (<img> à traits sombres) : pastille claire pour rester lisibles. */
-  html.dark .lb-chip img{background:#F5F5F5;border-radius:5px;padding:2px}
   /* Mockup kanban sombre : bord invisible sur fond sombre sans ce détourage. */
   html.dark .svc-mock{border-color:rgba(255,255,255,0.12)}
   /* Fond décoratif clair (#fbfbfc → #f5f2ff) : équivalent sombre. */
@@ -812,4 +823,3 @@
      4,41:1, juste sous les 4,5:1 d'AA (11px / 22px, donc du texte normal).
      --accent-ink vaut #C4B5FD en sombre → 10,1:1, même teinte. */
   html.dark .sfoot-tag{color:var(--accent-ink)}
-  html.dark .lb-side h2 em{color:var(--accent-ink)}

@@ -88,7 +88,7 @@
 
 /* ---------- COMPARISON TABLE ---------- */
 .compare {
-  padding: 130px 0;
+  padding: 88px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
@@ -301,7 +301,7 @@
 
 /* ---------- VERTICALS ---------- */
 .verticals {
-  padding: 130px 0;
+  padding: 88px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper-2);
   position: relative;
@@ -495,23 +495,7 @@
     linear-gradient(180deg, rgb(var(--vt-accent-rgb) / 0.08), transparent 38%),
     linear-gradient(135deg, rgba(255,255,255,0), rgb(var(--vt-accent-rgb) / 0.04));
 }
-.vt-card--dark {
-  background: #0A0A0A;
-  border-color: rgba(255,255,255,0.1);
-  color: #fff;
-}
-.vt-card--dark::before {
-  background:
-    linear-gradient(180deg, rgb(var(--vt-accent-rgb) / 0.28), transparent 44%),
-    linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
-}
-.vt-card--dark::after {
-  background: radial-gradient(
-    300px circle at var(--mx) var(--my),
-    rgb(var(--vt-accent-rgb) / 0.28),
-    transparent 60%
-  );
-}
+
 .vt-card--dark .vt-tag,
 .vt-card--dark .vt-feats span {
   background: rgba(255,255,255,0.06);
@@ -619,7 +603,7 @@
   letter-spacing: -0.035em;
 }
 .vt-card:hover h3 { color: var(--vt-accent-ink); }
-.vt-card--dark:hover h3 { color: #fff; }
+
 .vt-card p {
   margin: 0;
   color: var(--ink-3);
@@ -631,7 +615,6 @@
   font-size: 14px;
   line-height: 1.58;
 }
-.vt-card--dark p { color: rgba(255,255,255,0.7); }
 
 .vt-index {
   font-family: var(--font-geist-mono);
@@ -809,24 +792,6 @@
   font-weight: 500;
 }
 
-.vt-foot {
-  margin-top: auto;
-  padding-top: 14px;
-  border-top: 1px solid var(--line-2);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-geist-mono);
-  font-size: 11px;
-  color: var(--mute);
-  letter-spacing: 0.02em;
-  transition: color 0.25s ease, border-color 0.25s ease;
-}
-.vt-foot svg {
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s ease;
-  flex-shrink: 0;
-}
 .vt-card:hover .vt-foot {
   color: var(--ink-3);
   border-top-color: rgb(var(--vt-accent-rgb) / 0.2);
@@ -853,7 +818,7 @@
 
 /* ---------- TRUST ---------- */
 .trust {
-  padding: 130px 0;
+  padding: 88px 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }

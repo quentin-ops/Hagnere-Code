@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Sprint Fixe™ — la méthode de cadrage et de suivi de Hagnéré Code";
+export const alt = "Sprint Fixe — la méthode de cadrage et de suivi de Hagnéré Code";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -66,7 +66,7 @@ export default function OgImage() {
               maxWidth: 1020,
             }}
           >
-            Sprint Fixe™ : ce qui est écrit avant de commencer
+            Sprint Fixe : ce qui est écrit avant de commencer
           </div>
           <div style={{ display: "flex", fontSize: 29, color: "#a1a1aa" }}>
             Périmètre, prix, jalons, validations et réversibilité

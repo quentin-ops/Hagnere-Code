@@ -89,10 +89,11 @@ ${navHtml}
       <li><a class="mtoc-link" href="#preuves" data-section="preuves"><span class="mtoc-num">4.0</span><span class="mtoc-t">Points de contrôle</span></a></li>
       <li><a class="mtoc-link" href="#journal" data-section="journal"><span class="mtoc-num">5.0</span><span class="mtoc-t">Une semaine de sprint</span></a></li>
       <li><a class="mtoc-link" href="#claude" data-section="claude"><span class="mtoc-num">6.0</span><span class="mtoc-t">Claude Code en copilote</span></a></li>
-      <li><a class="mtoc-link" href="#temoignages" data-section="temoignages"><span class="mtoc-num">7.0</span><span class="mtoc-t">Ce que vous pouvez vérifier</span></a></li>
-      <li><a class="mtoc-link" href="#exclusion" data-section="exclusion"><span class="mtoc-num">8.0</span><span class="mtoc-t">Pas pour vous si…</span></a></li>
-      <li><a class="mtoc-link" href="#faq" data-section="faq"><span class="mtoc-num">9.0</span><span class="mtoc-t">Contre-objections (FAQ)</span></a></li>
-      <li><a class="mtoc-link" href="#cta-finale" data-section="cta-finale"><span class="mtoc-num">10.0</span><span class="mtoc-t">Budgets repères et prochaine étape</span></a></li>
+      <li><a class="mtoc-link" href="#stack" data-section="stack"><span class="mtoc-num">7.0</span><span class="mtoc-t">Notre stack technique</span></a></li>
+      <li><a class="mtoc-link" href="#temoignages" data-section="temoignages"><span class="mtoc-num">8.0</span><span class="mtoc-t">Ce que vous pouvez vérifier</span></a></li>
+      <li><a class="mtoc-link" href="#exclusion" data-section="exclusion"><span class="mtoc-num">9.0</span><span class="mtoc-t">Pas pour vous si…</span></a></li>
+      <li><a class="mtoc-link" href="#faq" data-section="faq"><span class="mtoc-num">10.0</span><span class="mtoc-t">Contre-objections (FAQ)</span></a></li>
+      <li><a class="mtoc-link" href="#cta-finale" data-section="cta-finale"><span class="mtoc-num">11.0</span><span class="mtoc-t">Budgets repères et prochaine étape</span></a></li>
     </ol>
     <div class="mtoc-foot">
       <span class="mtoc-foot-tag">SPRINT FIXE</span>
@@ -1044,11 +1045,11 @@ ${navHtml}
 
       <div class="faq-list reveal reveal-d-1">
         <div class="faq-item open">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="true" aria-controls="faq-a-methode-1">
             Et si on veut ajouter du scope en cours de route ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-methode-1">
             Tout ajout passe par un <b>avenant chiffré au forfait fixe</b>, signé avant que la moindre
             ligne de code ne soit écrite. Vous décidez si l'ajout vaut le coup. Le périmètre initial
             reste figé et le total contrôlable. Rien de nouveau ne doit être facturé sans acceptation écrite.
@@ -1056,11 +1057,11 @@ ${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-methode-2">
             Vous êtes une équipe restreinte — qu'est-ce qui se passe si quelqu'un démissionne ou tombe malade ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-methode-2" hidden>
             Le référent, les personnes mobilisées et le dispositif de continuité sont précisés au lancement.
             Les décisions et accès utiles sont documentés pour limiter la dépendance à une personne.
             En cas d'indisponibilité, nous informons le client et appliquons la procédure convenue au devis.
@@ -1068,11 +1069,11 @@ ${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-methode-3">
             Vous bossez sur combien de projets en parallèle ? Suis-je une priorité ou un dossier dans la pile ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-methode-3" hidden>
             La capacité disponible et la date réaliste de démarrage sont confirmées avant signature.
             Elles varient avec les missions en cours&nbsp;: nous ne publions donc ni quota permanent ni
             faux nombre de créneaux. Le devis nomme le référent et le rythme de suivi prévu.
@@ -1080,11 +1081,11 @@ ${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-methode-4">
             Le forfait fixe pour un MVP, OK. Mais pour un projet à scope évolutif sur 6 mois ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-methode-4" hidden>
             Bonne question. <b>Sprint Fixe marche bien sur des projets à périmètre cadrable</b>
             (MVP SaaS, refonte vitrine, outil interne défini). Pour un projet vraiment évolutif
             (R&amp;D, recherche utilisateur en continu, pivot fréquent), on bascule sur un
@@ -1096,11 +1097,11 @@ ${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-methode-5">
             Et si je suis en retard sur mes validations ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-methode-5" hidden>
             Un retard de validation ou un élément manquant peut décaler le planning. Le délai de réponse,
             la procédure d'alerte, la suspension éventuelle et ses conséquences doivent être écrits dans
             le devis signé. Cette page n'ajoute ni pénalité ni frais automatiques.
@@ -1108,11 +1109,11 @@ ${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-methode-6">
             Combien coûte un Sprint Fixe typique ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-methode-6" hidden>
             <b>Tout est sur devis</b>. Chaque projet (site vitrine, outil interne, MVP SaaS, refonte
             e-commerce) est cadré et chiffré individuellement — la durée et le prix dépendent du
             périmètre, des intégrations et des ressources de votre côté. Le ticket d'entrée publié est
@@ -1124,11 +1125,11 @@ ${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-methode-7">
             Vous codez sur quelle stack ? Et si on a déjà un existant en .NET / Node / Python ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-methode-7" hidden>
             On code en <b>Next.js + React (TypeScript)</b> par défaut — c'est la stack qui nous fait gagner
             le plus de temps. On reprend aussi l'existant <b>Laravel/PHP</b> — audit, maintenance, évolutions.
             Si vous avez un existant en .NET / Node / Python qu'on devrait étendre,
@@ -1140,11 +1141,11 @@ ${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-methode-8">
             Et si Claude Code se trompe ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-methode-8" hidden>
             Claude Code est un outil d'assistance. Un développeur reste responsable des choix,
             des tests et de la validation des changements avant leur intégration. L'outil ne réduit
             ni nos obligations contractuelles ni la nécessité d'une revue adaptée au risque.
@@ -1152,11 +1153,11 @@ ${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">
+          <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-methode-9">
             Et si Hagnéré Code ferme ses portes ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-a" id="faq-a-methode-9" hidden>
             La réversibilité prévue aux CGV organise la remise du code, des accès et de la documentation
             nécessaires à une reprise. Les livrables spécifiques sont transférés après paiement complet,
             sous réserve des composants tiers et préexistants. Le détail dépend du périmètre signé.

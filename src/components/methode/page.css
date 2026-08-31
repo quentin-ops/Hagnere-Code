@@ -148,7 +148,24 @@ html.dark {
    Hidden under 1280px to avoid stealing space from main content.
    ===================================================================== */
 .hc-design .mtoc{position:fixed;left:24px;top:50%;transform:translateY(-50%);z-index:30;pointer-events:none;display:none}
-@media (min-width: 1440px){.hc-design .mtoc{display:block}}
+@media (min-width: 1440px){
+  .hc-design .mtoc{display:block}
+  /* Le sommaire est `position: fixed` sur la bande 24 → 272 px, mais RIEN ne
+     lui réservait cette place : à 1440 px le contenu de `.wrap` commence à
+     120 px, et le panneau recouvrait le titre de chaque section ainsi que la
+     première carte de chaque grille. Défaut visible sur tout écran de 1440 px
+     et plus, c'est-à-dire la majorité des postes de bureau.
+
+     On décale donc le contenu — et lui seul, pas les fonds pleine largeur des
+     sections sombres. `max()` fait que le décalage disparaît de lui-même dès
+     que le centrage naturel dégage assez de marge (à partir de ~1840 px) :
+     aucune page n'est repoussée sans raison sur un très grand écran.
+
+     300 px = 24 (gouttière gauche) + 248 (largeur du panneau) + 28 (respiration). */
+  .hc-design #main-content .wrap{
+    padding-left: max(40px, 300px - (100vw - 1280px) / 2);
+  }
+}
 .hc-design .mtoc-inner{pointer-events:auto;background:rgba(var(--paper-rgb),0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:14px;padding:18px 16px 14px;width:248px;box-shadow:0 24px 48px -16px rgba(15,15,15,0.08),0 2px 6px rgba(0,0,0,0.04)}
 .hc-design .mtoc-h{font-family:var(--font-geist-mono);font-size:9.5px;color:var(--mute);letter-spacing:0.12em;font-weight:700;text-transform:uppercase;padding-bottom:12px;margin-bottom:10px;border-bottom:1px solid var(--line-2)}
 .hc-design .mtoc-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1px}
@@ -178,7 +195,7 @@ html.dark {
 /* =====================================================================
    ANTI-PATTERN
    ===================================================================== */
-.hc-design .anti{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper)}
+.hc-design .anti{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper)}
 .anti-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .anti-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column;transition:transform 0.25s,border-color 0.25s,box-shadow 0.25s;overflow:hidden}
 .anti-card:hover{transform:translateY(-3px);border-color:rgba(109,40,217,0.2);box-shadow:0 24px 40px -22px rgba(76,29,149,0.12),0 4px 12px -4px rgba(0,0,0,0.04)}
@@ -200,7 +217,7 @@ html.dark {
 /* =====================================================================
    PILIERS
    ===================================================================== */
-.hc-design .piliers{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+.hc-design .piliers{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
 .pil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .pil-card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:28px 24px 24px;display:flex;flex-direction:column;min-height:340px;transition:transform 0.25s,border-color 0.25s,box-shadow 0.25s}
 .pil-card:hover{transform:translateY(-3px);border-color:rgba(109,40,217,0.25);box-shadow:0 20px 40px -20px rgba(76,29,149,0.18),0 4px 12px -4px rgba(0,0,0,0.05)}
@@ -247,7 +264,7 @@ html.dark {
 /* =====================================================================
    TIMELINE
    ===================================================================== */
-.hc-design .timeline{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper)}
+.hc-design .timeline{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper)}
 .tl-wrap{position:relative;padding:24px 0;max-width:920px;margin:0 auto}
 .tl-rail{position:absolute;left:35px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent) 0%,var(--accent) 50%,var(--line) 100%);border-radius:2px}
 
@@ -290,7 +307,7 @@ html.dark {
 /* =====================================================================
    PROOF (compteur public)
    ===================================================================== */
-.hc-design .proof{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper)}
+.hc-design .proof{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper)}
 .proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .proof-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 20px;display:flex;flex-direction:column;gap:8px;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s}
 .proof-card:hover{transform:translateY(-2px);border-color:rgba(109,40,217,0.25);box-shadow:0 14px 28px -16px rgba(76,29,149,0.15)}
@@ -312,7 +329,7 @@ html.dark {
 /* =====================================================================
    FRIDAY (journal des démos)
    ===================================================================== */
-.hc-design .friday{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+.hc-design .friday{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
 .fri-list{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden}
 .fri-row{display:grid;grid-template-columns:80px 1fr;gap:24px;padding:24px 28px;border-bottom:1px solid var(--line-2);align-items:center;transition:background 0.15s}
 .fri-row:last-child{border-bottom:none}
@@ -343,7 +360,7 @@ html.dark {
 /* =====================================================================
    CLAUDE MULTIPLICATEUR
    ===================================================================== */
-.hc-design .claude-mult{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper)}
+.hc-design .claude-mult{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper)}
 .claude-card{position:relative;background:linear-gradient(180deg,#0A0A0A 0%,#171717 100%);color:#fff;border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1.4fr 1fr;gap:0;border:1px solid #171717;box-shadow:0 40px 80px -40px rgba(76,29,149,0.5),0 10px 30px -15px rgba(0,0,0,0.4)}
 .claude-bg-grid{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:32px 32px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 85%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 85%);pointer-events:none}
 .claude-bg-radial{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 0% 100%,rgba(109,40,217,0.32),transparent 60%),radial-gradient(ellipse 50% 50% at 100% 0%,rgba(217,119,87,0.12),transparent 60%);pointer-events:none}
@@ -375,7 +392,7 @@ html.dark {
 /* =====================================================================
    QUOTES (témoignages clients incarnés)
    ===================================================================== */
-.hc-design .quotes{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper)}
+.hc-design .quotes{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper)}
 .quotes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .quotes-grid > .pcard{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:26px 26px 22px;display:flex;flex-direction:column;gap:12px;margin:0;text-decoration:none;color:inherit;transition:transform 0.25s,border-color 0.25s,box-shadow 0.25s;overflow:hidden}
 .pcard:hover{transform:translateY(-3px);border-color:rgba(109,40,217,0.22);box-shadow:0 24px 40px -22px rgba(76,29,149,0.14),0 4px 12px -4px rgba(0,0,0,0.04)}
@@ -411,7 +428,7 @@ html.dark {
 /* =====================================================================
    PAS POUR VOUS SI… (anti-clients)
    ===================================================================== */
-.hc-design .not-for-you{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper)}
+.hc-design .not-for-you{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper)}
 .nfy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .nfy-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:12px;transition:transform 0.25s,border-color 0.25s,box-shadow 0.25s;position:relative;overflow:hidden}
 .nfy-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#B91C1C,#EF4444);opacity:0.6}
@@ -428,7 +445,7 @@ html.dark {
 /* =====================================================================
    CTA FINALE (mfinal) — sombre, écho au hero pour fermer la boucle
    ===================================================================== */
-.hc-design .mfinal{position:relative;padding:120px 0 100px;background:linear-gradient(180deg,#0F0A1A 0%,#0A0A0A 100%);color:#fff;overflow:hidden;border-bottom:1px solid #1A1A1A}
+.hc-design .mfinal{position:relative;padding:80px 0 100px;background:linear-gradient(180deg,#0F0A1A 0%,#0A0A0A 100%);color:#fff;overflow:hidden;border-bottom:1px solid #1A1A1A}
 .mfinal-grid{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 30%,transparent 90%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 30%,transparent 90%);pointer-events:none}
 .mfinal-radial{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 30%,rgba(109,40,217,0.32),transparent 60%);pointer-events:none}
 .mfinal-inner{position:relative;z-index:2;text-align:center;max-width:880px;margin:0 auto}
@@ -465,7 +482,7 @@ html.dark {
 /* =====================================================================
    FAQ
    ===================================================================== */
-.hc-design .faq{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+.hc-design .faq{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
 .faq-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:80px}
 .faq-intro h2{font-size:44px}
 .faq-intro p{color:var(--mute);font-size:16px;margin-top:16px;max-width:340px}
@@ -473,6 +490,14 @@ html.dark {
 .faq-item{border-bottom:1px solid var(--line-2);padding:0 22px}
 .faq-item:last-child{border-bottom:none}
 .faq-q{display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;font-size:16.5px;font-weight:500;letter-spacing:-0.01em;gap:20px}
+/* Remise à zéro du bouton natif. Les questions de FAQ étaient des <div>
+   — ni focalisables, ni annoncées comme un contrôle avant hydratation.
+   Passées en <button>, elles héritaient des styles par défaut du
+   navigateur : fond, bordure, police système et surtout
+   `text-align: center`, qui centrait les questions. Cette règle existe
+   déjà à l'identique dans les page.css des pages service ; elle manquait
+   ici. */
+button.faq-q{width:100%;margin:0;background:none;border:0;border-radius:0;color:inherit;font-family:inherit;line-height:inherit;text-align:left;-webkit-appearance:none;appearance:none}
 .faq-q:hover{color:var(--accent-ink)}
 .faq-q .ic{width:24px;height:24px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;flex-shrink:0;transition:all 0.2s;color:var(--mute)}
 .faq-item.open .faq-q .ic{background:var(--ink);border-color:var(--ink);color:var(--paper);transform:rotate(45deg)}

@@ -7,17 +7,17 @@ const METHODE_OG_IMAGE = {
   url: `${SITE_URL}/methode/opengraph-image`,
   width: 1200,
   height: 630,
-  alt: "Sprint Fixe™ — méthode de cadrage et de suivi de projet Hagnéré Code",
+  alt: "Sprint Fixe — méthode de cadrage et de suivi de projet Hagnéré Code",
 };
 
 export const metadata: Metadata = {
-  title: "Notre méthode au forfait fixe : Sprint Fixe™ · Hagnéré Code",
+  title: "Notre méthode au forfait fixe : Sprint Fixe · Hagnéré Code",
   description:
     "Périmètre, prix, jalons, validations et réversibilité : découvrez les points que Hagnéré Code propose de cadrer par écrit avant chaque projet.",
   alternates: { canonical: "/methode" },
   openGraph: {
     ...OG_BASE,
-    title: "Sprint Fixe™ — La méthode Hagnéré Code",
+    title: "Sprint Fixe — La méthode Hagnéré Code",
     description:
       "Une méthode lisible pour cadrer le périmètre, le prix, les démonstrations, la recette et la remise des livrables.",
     url: "/methode",

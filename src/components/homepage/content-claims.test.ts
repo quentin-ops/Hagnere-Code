@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { bodyHtml } from "./body";
 import { composedBodyHtml } from "./composed-body";
-import { comparisonHtml } from "./sections/comparison";
 import { equipeHtml } from "./sections/equipe";
 import { trustHtml } from "./sections/trust";
 import { verticalsHtml } from "./sections/verticals";
+import { bodyHtml as tarifsBodyHtml } from "@/components/tarifs/body";
 
 describe("homepage public claims", () => {
   it("ne publie pas de SLA ou durée d'engagement sans contrat dédié", () => {
@@ -17,10 +17,17 @@ describe("homepage public claims", () => {
   });
 
   it("ne généralise pas les pratiques concurrentes et cadre prix et droits", () => {
-    expect(comparisonHtml).not.toMatch(/5\s*[–-]\s*15 k€|80\s*[–-]\s*200 k€|1 senior \+ 4 à 8 juniors|Projet à l'arrêt|rotation fréquente|Rarement formalisé|Full-stack mais dilué|prix annoncé = prix payé/i);
-    expect(comparisonHtml).toContain("aucun dépassement sans accord écrit");
-    expect(comparisonHtml).toContain("transfert après paiement complet selon les CGV");
-    expect(comparisonHtml).toContain("composants préexistants et licences tierces");
+    // Le comparatif à trois colonnes a quitté l'accueil pour /tarifs (passe UX
+    // du 28/08/2026) : c'est là qu'on compare des devis, pas en page d'accueil.
+    // Le garde-fou le suit — sinon la clause la plus exposée juridiquement du
+    // site n'aurait plus AUCUN test après le déménagement.
+    expect(tarifsBodyHtml).not.toMatch(/1 senior \+ 4 à 8 juniors|Projet à l'arrêt|rotation fréquente|Rarement formalisé|Full-stack mais dilué|prix annoncé = prix payé/i);
+    expect(bodyHtml).toContain("aucun dépassement sans votre accord écrit");
+    expect(tarifsBodyHtml).toContain("Transfert après paiement complet selon les CGV");
+    expect(tarifsBodyHtml).toContain("hors composants préexistants et licences tierces");
+    // Les colonnes concurrentes décrivent ce qu'il faut DEMANDER, jamais ce que
+    // le concurrent ferait : aucune affirmation sur un tiers nommé ou non.
+    expect(tarifsBodyHtml).toContain("Demander qui code réellement");
   });
 
   it("présente objectifs, équipe et preuves sans résultat ni exploitation absolus", () => {
@@ -31,7 +38,7 @@ describe("homepage public claims", () => {
   });
 
   it("n'annonce aucun gain chiffré ni résultat client dans les sections publiées", () => {
-    const publishedSections = `${verticalsHtml}\n${trustHtml}\n${equipeHtml}\n${comparisonHtml}`;
+    const publishedSections = `${verticalsHtml}\n${trustHtml}\n${equipeHtml}`;
     // Garde-fou générique : un gain en pourcentage est toujours une métrique
     // client, quelle que soit sa formulation. Cf. règle d'or de CLAUDE.md.
     expect(publishedSections).not.toMatch(/[+\-−]\s*\d{1,3}\s*%/);
