@@ -480,8 +480,13 @@ describe("prestataires appelés et prestataires déclarés", () => {
   const EXPECTED_DECLARATION: { pattern: RegExp; declared: string }[] = [
     { pattern: /(^|\.)calendly\.com$/, declared: "Calendly" },
     {
+      // `googleadservices` fait partie de la liste : c'est l'hôte qui reçoit
+      // réellement les conversions Google Ads. Il manquait à la CSP, donc le
+      // ping de conversion aurait été bloqué — silencieusement, faute de
+      // point de collecte `report-to`. Le destinataire, lui, était déjà
+      // déclaré au tableau : c'est le même, Google, pour le même usage.
       pattern:
-        /(^|\.)(google|googletagmanager|google-analytics|doubleclick)\.(com|net)$/,
+        /(^|\.)(google|googletagmanager|google-analytics|googleadservices|doubleclick)\.(com|net)$/,
       declared: "Google Ads",
     },
   ];

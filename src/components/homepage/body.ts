@@ -763,7 +763,6 @@ export const bodyHtml = `${navHtml}
         </svg>
       </a>
     </div>
-    </div>
   </div>
 </section>
 

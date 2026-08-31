@@ -14,11 +14,22 @@ const googleMeasurementEnabled = Boolean(
 );
 
 const googleScriptSources = googleMeasurementEnabled
-  ? ["https://www.googletagmanager.com", "https://www.google-analytics.com"]
+  ? [
+      "https://www.googletagmanager.com",
+      "https://www.google-analytics.com",
+      // Le linker de conversion Ads est servi depuis cet hôte.
+      "https://www.googleadservices.com",
+    ]
   : [];
 
 const googleConnectSources = googleMeasurementEnabled
   ? [
+      // Hôte des conversions Google Ads. Il manquait : gtag.js se chargeait
+      // depuis googletagmanager, mais le ping de conversion part vers
+      // googleadservices.com/pagead/conversion — bloqué par la CSP, donc
+      // aucune conversion ne serait remontée, sans erreur visible côté serveur
+      // puisqu'aucun point de collecte report-to n'est configuré.
+      "https://www.googleadservices.com",
       "https://www.googletagmanager.com",
       // Conteneurs régionaux de gtag.js : sans ce point, le transport de
       // secours d'une partie des visiteurs européens est bloqué.
@@ -33,6 +44,8 @@ const googleConnectSources = googleMeasurementEnabled
 
 const googleImageSources = googleMeasurementEnabled
   ? [
+      // Le tag de conversion Ads utilise aussi un pixel image sur cet hôte.
+      "https://www.googleadservices.com",
       "https://www.googletagmanager.com",
       "https://www.google-analytics.com",
       "https://googleads.g.doubleclick.net",

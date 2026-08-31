@@ -299,18 +299,44 @@
 
 /* Mobile */
 @media (max-width: 480px) {
+  /*
+   * Mesuré sur un 390 x 844 : le bandeau occupait 384 px de haut, de y=452 à
+   * y=836, et RECOUVRAIT les deux boutons du héros — `elementFromPoint` au
+   * centre de « Démarrer mon projet » renvoyait le bandeau. Tout visiteur
+   * arrivant sur mobile atterrissait donc sur une page dont les deux actions
+   * principales étaient intapables.
+   *
+   * Trois boutons courts empilés en pleine largeur étaient la cause. Ils
+   * reviennent en ligne, et la carte est plafonnée à 34 % de la hauteur
+   * d'écran : le texte de consentement n'est pas tronqué — il défile — et les
+   * boutons restent visibles au bas de la carte.
+   */
   .hc-cb-toast {
     right: 8px;
     left: 8px;
     bottom: 8px;
     width: auto;
-    padding: 16px 14px 14px;
+    padding: 14px 14px 12px;
+    max-height: 34vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .hc-cb-toast-desc {
+    overflow-y: auto;
+    min-height: 0;
+    -webkit-overflow-scrolling: touch;
   }
   .hc-cb-toast-actions {
-    flex-direction: column-reverse;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex-shrink: 0;
   }
   .hc-cb-toast-actions .hc-cb-btn {
-    width: 100%;
+    flex: 1 1 auto;
+    min-width: 0;
+    width: auto;
+    padding-inline: 10px;
   }
   .hc-cb-modal-actions {
     flex-direction: column-reverse;

@@ -248,14 +248,18 @@ export function CookieBanner() {
       <h2 id="hc-cb-toast-title" className="hc-cb-toast-title">
         Respect de votre vie privée
       </h2>
+      {/* Résumé, pas exposé complet. Le texte précédent faisait huit lignes : sur
+          un 390 x 844, la carte occupait 384 px et RECOUVRAIT les deux boutons du
+          héros — mesuré, `elementFromPoint` en leur centre renvoyait le bandeau.
+          Le détail par catégorie, avec sa bascule, reste à un geste : « Voir le
+          détail » ouvre la fenêtre qui porte l'information complète, et le lien
+          vers la politique cookies est conservé ici. */}
       <p id="hc-cb-toast-desc" className="hc-cb-toast-desc">
-        Le thème peut être conservé et un brouillon sans coordonnées ne l&apos;est
-        que si vous le demandez dans le formulaire. « Accepter » autorise aussi une mesure
-        d&apos;audience facultative et, lorsqu&apos;un identifiant de mesure est
-        configuré, le chargement de la mesure Google (Google&nbsp;Ads,
-        Google&nbsp;Analytics) ainsi que les cookies qu&apos;elle dépose ;
-        « Refuser » les laisse désactivées. Détails dans notre{" "}
-        <a href="/legal/cookies">politique cookies</a>.
+        Le thème, et un brouillon sans vos coordonnées si vous le demandez, sont
+        conservés dans ce navigateur. « Accepter » autorise en plus une mesure
+        d&apos;audience facultative (Google&nbsp;Ads, Google&nbsp;Analytics) et ses
+        cookies&nbsp;; « Refuser » les laisse désactivées.{" "}
+        <a href="/legal/cookies">Politique cookies</a>.
       </p>
       <div className="hc-cb-toast-actions">
         <button type="button" className="hc-cb-btn hc-cb-btn-ghost" onClick={openDetails}>
