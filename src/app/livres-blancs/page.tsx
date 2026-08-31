@@ -274,9 +274,19 @@ export default function Page() {
               <li key={service.href}>
                 <Link
                   href={service.href}
-                  className="flex min-h-11 items-center justify-between gap-4 rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm font-semibold text-zinc-950 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-zinc-800 dark:bg-zinc-950 dark:text-white dark:hover:border-violet-800 dark:hover:bg-violet-950/30"
+                  className="flex min-h-11 items-center justify-between gap-4 rounded-xl border border-zinc-200 bg-white px-4 py-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-violet-800 dark:hover:bg-violet-950/30"
                 >
-                  {service.label}
+                  {/* Le sous-titre manquait ici seulement : le même bloc affiche
+                      « Site public à construire ou à refondre » sur /ressources et
+                      /guides, et rien sur cette page. La donnée le porte déjà. */}
+                  <span>
+                    <span className="block text-sm font-semibold text-zinc-950 dark:text-white">
+                      {service.label}
+                    </span>
+                    <span className="block text-xs text-zinc-600 dark:text-zinc-400">
+                      {service.hint}
+                    </span>
+                  </span>
                   <ArrowRight
                     className="size-4 shrink-0 text-violet-700 dark:text-violet-300"
                     aria-hidden="true"
