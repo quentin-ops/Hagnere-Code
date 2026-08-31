@@ -95,10 +95,19 @@ function compose(raw: string): string {
     out = out.replace(rawEquipeHtml, equipeHtml.trim());
   }
 
-  // Calculateur : dernière réassurance avant la FAQ.
+  /*
+   * Calculateur : juste après les situations, pas avant la FAQ.
+   *
+   * Il chiffre exactement la situation 01 — « votre activité tourne encore sur
+   * Excel, Notion ou des copier-coller ». Placé en fin de page, entre l'équipe
+   * et la FAQ, il arrivait quinze mille pixels après la question à laquelle il
+   * répond, et se lisait comme un outil hors sujet. Placé juste après, il
+   * transforme un symptôme reconnu en montant annuel, ce qui est précisément
+   * le passage que la page doit faire franchir.
+   */
   out = out.replace(
-    "<!-- FAQ -->",
-    [calcTeaserHtml.trim(), "<!-- FAQ -->"].filter(Boolean).join("\n\n"),
+    "<!-- STUDIO FULL-STACK -->",
+    [calcTeaserHtml.trim(), "<!-- STUDIO FULL-STACK -->"].filter(Boolean).join("\n\n"),
   );
 
   // Le CTA final est remplacé par la section React « Parlons de votre projet ».

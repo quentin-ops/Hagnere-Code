@@ -1091,16 +1091,29 @@
   align-self: center;
 }
 
+/* Allure de bouton, pas de lien texte. La carte entière est cliquable, mais sur
+   un panneau sombre dont c'est l'unique raison d'être, « Lancer le calculateur »
+   en texte blanc ne se lisait pas comme une action. La cible tactile passe au
+   passage à 44 px. */
 .ct-cta {
   display: inline-flex;
   align-items: center;
+  /* Le conteneur est un flex en colonne qui étire ses enfants : sans
+     align-self, le bouton faisait 537 px de large. */
+  align-self: flex-start;
   gap: 10px;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 999px;
+  background: var(--accent-btn, #6d28d9);
   font-size: 15px;
   font-weight: 600;
   color: #fff;
   letter-spacing: -0.005em;
+  transition: background 0.2s, transform 0.2s;
 }
-.ct-cta svg { color: var(--accent); transition: transform 0.2s; }
+.ct-card:hover .ct-cta { transform: translateY(-1px); }
+.ct-cta svg { color: #fff; transition: transform 0.2s; }
 .ct-card:hover .ct-cta svg { transform: translateX(4px); }
 
 /* Right mockup */
