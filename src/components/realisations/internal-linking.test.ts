@@ -50,10 +50,36 @@ describe("realisations → services internal linking", () => {
     expect(caseStudySource).toContain("RELATED_SERVICES");
     expect(caseStudySource).toContain("relatedServices");
     expect(caseStudySource).toContain('href="/services"');
-    // Le CTA funnel est un bouton de section, plus une note de bas de bloc.
+    /*
+     * Cette garde exigeait la classe exacte `btn btn-primary btn-lg`, c'est-à-
+     * dire le bouton NOIR. Elle verrouillait donc une couleur, pas une
+     * propriété — et elle verrouillait la mauvaise : le même bouton, même
+     * libellé et même flèche, est violet sur /realisations, la page qui mène
+     * ici en un clic. Le repère que le visiteur mémorise changeait de couleur
+     * d'une page à la suivante.
+     *
+     * Ce qui compte est que la fiche porte l'action primaire du site, en
+     * grande taille. Le test le vérifie maintenant sans nommer d'habillage, et
+     * la garde de cohérence ci-dessous remplace ce que celle-ci croyait tenir.
+     */
     expect(caseStudySource).toMatch(
-      /href="\/demarrer-un-projet"\s+className="btn btn-primary btn-lg"/,
+      /href="\/demarrer-un-projet"\s+className="btn btn-\w+ btn-lg"/,
     );
+  });
+
+  /**
+   * L'action primaire doit porter le MÊME habillage sur le hub et sur les
+   * fiches qu'il ouvre. C'est la propriété que l'ancienne garde ne tenait pas :
+   * elle figeait une classe d'un côté sans jamais la comparer à l'autre.
+   */
+  it("dresses the primary action identically on the hub and on the case studies", () => {
+    const PRIMARY = /href="\/demarrer-un-projet"\s+className="(btn btn-\w+ btn-lg)"/;
+    const onCase = caseStudySource.match(PRIMARY);
+    const onHub = indexSource.match(PRIMARY);
+
+    expect(onCase, "action primaire absente de la fiche").not.toBeNull();
+    expect(onHub, "action primaire absente du hub").not.toBeNull();
+    expect(onCase?.[1]).toBe(onHub?.[1]);
   });
 
   it("renders a service band and the funnel CTA on the /realisations hub", () => {

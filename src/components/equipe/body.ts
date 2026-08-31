@@ -567,8 +567,12 @@ ${navHtml}
   </div>
 </section>
 
-<!-- STACK COLLECTIVE -->
-<section class="stack-collective">
+<!-- STACK COLLECTIVE — inventaire unique des outils du site.
+     /methode publiait la même liste en bande à logos ; elle y a été
+     remplacée le 31/08/2026 par quatre choix argumentés qui renvoient ici.
+     D'où l'ancre : le lien de /methode doit atterrir sur l'inventaire, pas
+     en haut de page. -->
+<section class="stack-collective" id="competences">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">

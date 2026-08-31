@@ -11,67 +11,69 @@
  * ============================================================= */
 
 /* ═══════════ HERO — value-prop badges row ═══════════ */
-.mob-hero-feats {
+/* Accroches du hero : texte + séparateur, gabarit commun aux pages services
+   (« shero-tagline » sur /services/ecommerce). Elles étaient des pastilles à
+   bordure, icône, ombre portée et effet de survol — trois faux boutons entre le
+   H1 et les vrais. Cette page était la seule des quatre dans ce cas. */
+.shero-tagline {
+  margin-top: 24px;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 22px;
-}
-.mob-hero-feat {
-  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 7px 14px 7px 7px;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 500;
+  gap: 14px;
+  font-family: var(--font-geist-mono);
+  font-size: 12px;
+  color: var(--ink-3);
+  letter-spacing: 0.01em;
+}
+.shero-tagline .sep {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--line);
+}
+
+/* Alternative au bouton unique du hero : un lien, pas un second pavé. */
+.mob-hero-alt {
+  margin: 14px 0 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--mute);
+}
+.mob-hero-alt a {
   color: var(--ink);
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.9) inset,
-    0 6px 16px -10px rgba(76, 29, 149, 0.18),
-    0 1px 2px rgba(0, 0, 0, 0.04);
-  transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
 }
-.mob-hero-feat:hover {
-  transform: translateY(-1px);
-  border-color: rgba(109, 40, 217, 0.22);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.9) inset,
-    0 10px 22px -10px rgba(76, 29, 149, 0.24),
-    0 1px 2px rgba(0, 0, 0, 0.04);
-}
-.mob-hero-feat-ic {
-  width: 24px;
-  height: 24px;
-  border-radius: 7px;
-  background: var(--accent-soft);
-  color: var(--accent-ink);
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-}
-.mob-hero-feat-ic svg {
-  display: block;
-}
-.mob-hero-feat-label {
-  line-height: 1.2;
+.mob-hero-alt a:hover {
+  text-decoration-color: var(--accent);
 }
 
 @media (max-width: 640px) {
-  .mob-hero-feat {
-    font-size: 12px;
-    padding: 6px 12px 6px 6px;
+  /* À 390 px, « Soumission stores incluse » arrivait exactement sur le bord du
+     conteneur et le troisième repère héritait d'une puce de séparation
+     orpheline en début de ligne. Un repère par ligne, sans puce. */
+  .mob-hero .shero-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
-  .mob-hero-feat-ic {
-    width: 22px;
-    height: 22px;
+  .mob-hero .shero-meta .sep {
+    display: none;
   }
-  .mob-hero-feat-label {
-    white-space: normal;
+  /* Un repère par ligne : la puce de séparation deviendrait orpheline en fin
+     de ligne. */
+  .shero-tagline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 11.5px;
+  }
+  .shero-tagline .sep {
+    display: none;
   }
 }
 
@@ -1081,37 +1083,66 @@ html.dark .mob-compar-head .mob-compar-cell-best{background:linear-gradient(135d
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
-.mob-proof-logos {
-  margin-top: 40px;
-  padding: 28px 30px;
+/* Trois cartes descriptives, gabarit des pages sœurs (« ec-testi »).
+   Elles remplacent le pavé gris de quatre logos qui vivait ici : les logos
+   ouvrent désormais la page dans « .mob-logo-wall » ci-dessous. */
+.mob-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.mob-proof-card {
+  min-width: 0;
+  padding: 28px;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 14px;
   background: var(--paper);
-}
-.mob-proof-logos-kicker {
-  font-family: var(--font-geist-mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  color: var(--mute);
-  margin-bottom: 20px;
-}
-.mob-proof-logos-grid {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 34px;
+  flex-direction: column;
+  gap: 16px;
 }
-.mob-proof-logo img {
-  display: block;
-  height: auto;
-  max-width: 150px;
-  opacity: 0.72;
-  filter: grayscale(1);
+.mob-proof-topic {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+  font-family: var(--font-geist-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+}
+.mob-proof-quote {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.mob-proof-meta {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--line-2);
+}
+.mob-proof-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.mob-proof-role {
+  margin-top: 3px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--mute);
+}
+.mob-proof-role b {
+  color: var(--ink-3);
+  font-weight: 500;
 }
 .mob-proof-note {
-  margin: 22px 0 0;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
+  max-width: 78ch;
+  margin: 28px 0 0;
   font-size: 13.5px;
   line-height: 1.6;
   color: var(--mute);
@@ -1122,9 +1153,62 @@ html.dark .mob-compar-head .mob-compar-cell-best{background:linear-gradient(135d
   flex-wrap: wrap;
   gap: 12px;
 }
+
+/* ==================== LOGO WALL (ouverture de page) ==================== */
+.mob-logo-wall {
+  padding: 36px 0 34px;
+  border-bottom: 1px solid var(--line);
+}
+.mob-lw-kicker {
+  font-family: var(--font-geist-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--mute);
+  margin-bottom: 22px;
+}
+.mob-lw-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+}
+.mob-lw-sep {
+  width: 1px;
+  height: 26px;
+  background: var(--line);
+}
+.mob-lw-logo img {
+  display: block;
+  height: auto;
+  max-width: 150px;
+  opacity: 0.72;
+  filter: grayscale(1);
+}
+.mob-lw-foot {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line-2);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--mute);
+}
+.mob-lw-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  vertical-align: 2px;
+}
+
+@media (max-width: 1024px) {
+  .mob-proof-grid { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 640px) {
   .mob-proof { padding: 64px 0; }
-  .mob-proof-logos { padding: 22px 20px; }
-  .mob-proof-logos-grid { gap: 22px; }
-  .mob-proof-logo img { max-width: 118px; }
+  .mob-proof-grid { grid-template-columns: 1fr; }
+  .mob-lw-grid { gap: 22px; }
+  .mob-lw-sep { display: none; }
+  .mob-lw-logo img { max-width: 118px; }
 }

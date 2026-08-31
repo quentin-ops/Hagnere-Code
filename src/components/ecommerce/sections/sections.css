@@ -114,9 +114,34 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
   line-height: 1.3;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* Ces trois libellés portent les trois arguments les plus forts de l'offre.
+     `white-space:nowrap` + `text-overflow:ellipsis` les coupaient à 1440 comme
+     à 390 — on lisait « COMMISSION SU… », « FACTUR-X ET P… »,
+     « HÉBERGEMENT E… », c'est-à-dire rien. Ils passent à la ligne. */
+  overflow-wrap: break-word;
+}
+
+/* La colonne de droite du héros : la scène + sa légende de fiction. */
+.shero-media {
+  position: relative;
+  min-width: 0;
+}
+.shero-media .ec-stage-note {
+  /* La scène est un contexte de positionnement : `.ec-phone` en sort de 160 px
+     par le bas et de 17 px par la droite pour l'effet de superposition. Une
+     légende posée dans le flux atterrissait donc DERRIÈRE le téléphone. Elle est
+     ancrée au bas de la scène et bornée à 300 px, ce qui la garde sous la
+     maquette de bureau et à gauche du téléphone (qui commence à +315 px).
+     Sélecteur en 0,2,0 : `.hc-design main p { max-width: 68ch }` est en 0,1,2 et
+     écrasait la largeur bornée si on n'écrivait que `.ec-stage-note`. */
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  max-width: 300px;
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--mute);
 }
 
 /* ==================== HERO STAGE (premium visual container) ==================== */
@@ -366,6 +391,12 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
     grid-template-columns: 1fr;
     max-width: 400px;
   }
+  /* Sous 900 px la scène reprend ses enfants dans le flux : la légende aussi. */
+  .shero-media .ec-stage-note {
+    position: static;
+    max-width: none;
+    margin-top: 14px;
+  }
   .ec-stage { min-height: 420px; padding: 0; }
   .ec-desktop {
     position: relative;
@@ -388,16 +419,16 @@ html.dark .ec-desktop-chrome{--ink-3:#262626;--mute:#6B6B6B}
 }
 
 @media (max-width: 720px) {
+  /* Les trois pastilles s'empilent au lieu de se serrer à deux colonnes — et la
+     troisième cesse d'être masquée : « hébergement en France » est un argument
+     de vente, pas un ornement de grand écran. */
   .shero-badges {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 8px;
     margin-top: 20px;
   }
   .shero-badge {
     padding: 11px 12px;
-  }
-  .shero-badge:nth-child(n+3) {
-    display: none;
   }
   .ec-stage {
     height: 320px;

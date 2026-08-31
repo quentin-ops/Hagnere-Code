@@ -137,39 +137,6 @@ export const SEO_FORMATS: SeoFormat[] = [
   },
 ];
 
-export const SEO_REFUSALS: SeoItem[] = [
-  {
-    title: "Une position garantie",
-    description:
-      "Personne ne contrôle l’index de Google. Nous pouvons garantir un périmètre, des livrables et une méthode, jamais une position précise à une date donnée.",
-  },
-  {
-    title: "Un quota d’articles pour remplir un forfait",
-    description:
-      "Un contenu n’est produit que s’il répond à une intention distincte, s’appuie sur des preuves suffisantes et possède une place claire dans le parcours.",
-  },
-  {
-    title: "Des backlinks vendus au kilo",
-    description:
-      "Le nombre et le score d’un domaine ne suffisent pas. Un lien doit être éditorialement justifiable, durable et cohérent avec votre activité.",
-  },
-  {
-    title: "Des pages locales interchangeables",
-    description:
-      "Une page ville doit reposer sur une présence, un service ou une connaissance territoriale réelle. Changer uniquement le nom de la commune ne crée aucune légitimité.",
-  },
-  {
-    title: "Des résultats clients inventés",
-    description:
-      "Une simulation reste une simulation et une estimation reste une estimation. Toute preuve commerciale publiée doit pouvoir être reliée à un artefact vérifiable.",
-  },
-  {
-    title: "Un rapport qui remplace l’exécution",
-    description:
-      "Un audit utile doit permettre de corriger, déléguer et contrôler. Les captures d’outils sans décision, responsable ni critère d’acceptation ne suffisent pas.",
-  },
-];
-
 /**
  * Formes d'engagement publiées. Aucun montant n'est recopié ici : la grille
  * tarifaire (/tarifs) est la seule page qui publie les prix, pour éviter deux
@@ -217,30 +184,49 @@ export const SEO_SCOPE_INCLUDED: SeoItem[] = [
   {
     title: "Restitution et transmission",
     description:
-      "Les constats, priorités et procédures sont écrits pour pouvoir être repris par votre équipe ou par un autre prestataire.",
+      "Les constats, priorités et procédures sont écrits pour pouvoir être repris par votre équipe ou par un autre prestataire. Chaque constat porte un responsable et un critère d'acceptation : un audit doit permettre de corriger, déléguer et contrôler, pas seulement de constater.",
   },
 ];
 
+/**
+ * Colonne « hors périmètre » de la section PÉRIMÈTRE.
+ *
+ * Passe UX du 31/08/2026 : la page portait deux sections de refus consécutives
+ * — cette colonne (5 croix) puis « La confiance commence par les limites »
+ * (6 croix) — soit onze refus en deux écrans, dont deux littéralement
+ * redondants (« Achat de liens » / « Des backlinks vendus au kilo », et
+ * « Rédaction en volume » / « Un quota d'articles pour remplir un forfait »).
+ * Les deux sections sont fusionnées ici ; les doublons ont disparu, les refus
+ * réellement distincts ont rejoint la liste, et « Une position garantie » vit
+ * désormais uniquement dans SEO_COMMITMENTS, qui est sa place contractuelle.
+ * Le mot d'ordre : six refus, une seule fois, dans le même écran que les
+ * cinq engagements qui leur font face.
+ */
 export const SEO_SCOPE_EXCLUDED: SeoItem[] = [
   {
     title: "Achat de liens et réseaux privés",
     description:
-      "Aucun achat de lien, ferme de contenus ou réseau de sites n'entre dans le périmètre, quel que soit le budget proposé.",
-  },
-  {
-    title: "Budget publicitaire",
-    description:
-      "Les enchères et le budget média relèvent d'une autre prestation et restent sur vos propres comptes.",
+      "Aucun achat de lien, ferme de contenus ou réseau de sites n'entre dans le périmètre, quel que soit le budget proposé. Le nombre et le score d'un domaine ne suffisent pas : un lien doit être éditorialement justifiable et durable.",
   },
   {
     title: "Rédaction en volume sans intention",
     description:
-      "Un quota d'articles mensuel n'est pas vendu comme tel. Le volume découle du nombre d'intentions réellement distinctes.",
+      "Un quota d'articles mensuel n'est pas vendu comme tel. Le volume découle du nombre d'intentions réellement distinctes, des preuves disponibles et de la place de chaque page dans le parcours.",
   },
   {
-    title: "Licences et abonnements tiers",
+    title: "Pages locales interchangeables",
     description:
-      "Outils de crawl, de suivi de positions ou de netlinking : le devis dit lesquels sont nécessaires, qui porte la licence et à quel coût.",
+      "Une page ville doit reposer sur une présence, un service ou une connaissance territoriale réelle. Changer uniquement le nom de la commune ne crée aucune légitimité et expose le site.",
+  },
+  {
+    title: "Preuves de résultats fabriquées",
+    description:
+      "Une simulation reste une simulation et une estimation reste une estimation. Aucun chiffre, capture ou témoignage n'est publié s'il ne peut pas être relié à un artefact vérifiable.",
+  },
+  {
+    title: "Budget média, licences et outils tiers",
+    description:
+      "Les enchères publicitaires relèvent d'une autre prestation et restent sur vos comptes. Pour le crawl, le suivi de positions ou la veille de liens, le devis dit lesquels sont nécessaires, qui porte la licence et à quel coût.",
   },
   {
     title: "Traduction et conseil juridique",
@@ -269,6 +255,81 @@ export const SEO_COMMITMENTS: SeoItem[] = [
     title: "Réversibilité prévue dès le départ",
     description:
       "Procédures, journaux et documentation sont rédigés pour être repris sans nous. Aucun outil propriétaire Hagnéré n'est imposé pour continuer le travail.",
+  },
+];
+
+/**
+ * Gabarit de livrable montré sur la page.
+ *
+ * Ajouté le 31/08/2026, avec l'écran libéré par la fusion des deux sections de
+ * refus : sur quatorze sections, six mettaient en garde et aucune ne montrait
+ * ce que la mission produit. Ces deux panneaux sont la forme exacte de nos deux
+ * livrables permanents — la ligne de constat d'audit et le journal des actions
+ * daté — remplie avec un cas FICTIF.
+ *
+ * ⚠️ Règle d'or : aucun de ces contenus ne provient d'une mission réelle. Le
+ * domaine est un domaine d'exemple réservé (RFC 2606), les dates et les
+ * variations sont inventées, et aucun chiffre de résultat n'y figure. Un
+ * garde-fou de test interdit d'y écrire un gain de trafic ou de position.
+ */
+export type SeoAuditFinding = {
+  url: string;
+  finding: string;
+  evidence: string;
+  priority: string;
+  effort: string;
+};
+
+export type SeoLogEntry = {
+  date: string;
+  action: string;
+  intent: string;
+};
+
+export const SEO_AUDIT_SAMPLE: SeoAuditFinding[] = [
+  {
+    url: "/produits/*?couleur=",
+    finding: "Variantes explorées et indexées comme des pages distinctes",
+    evidence: "1 pattern d'URL, canonical absente sur le gabarit produit",
+    priority: "P1",
+    effort: "Faible",
+  },
+  {
+    url: "/blog/",
+    finding: "Liste paginée sans lien interne vers les pages commerciales",
+    evidence: "Aucun lien sortant contextuel sur le gabarit article",
+    priority: "P2",
+    effort: "Moyen",
+  },
+  {
+    url: "/contact",
+    finding: "Rendue côté client : le HTML initial ne contient ni titre ni NAP",
+    evidence: "Réponse serveur brute vs rendu après hydratation",
+    priority: "P1",
+    effort: "Moyen",
+  },
+];
+
+export const SEO_ACTION_LOG_SAMPLE: SeoLogEntry[] = [
+  {
+    date: "12/03",
+    action: "Canonical ajoutée sur le gabarit produit",
+    intent: "Consolider les variantes sur une URL de référence",
+  },
+  {
+    date: "14/03",
+    action: "Sitemap régénéré, 340 URL de facettes retirées",
+    intent: "Cesser de déclarer des URL qu'on ne veut pas voir indexées",
+  },
+  {
+    date: "21/03",
+    action: "Rendu serveur activé sur /contact",
+    intent: "Servir le NAP et le titre sans dépendre du JavaScript",
+  },
+  {
+    date: "02/04",
+    action: "Relevé Search Console — aucune conclusion tirée",
+    intent: "Trois semaines d'exploration ne suffisent pas à conclure",
   },
 ];
 

@@ -628,36 +628,6 @@ html.dark .rlm-stat:hover .rlm-stat-ic {
   transform: scale(1.08) rotate(-2deg);
 }
 
-.rlm-case-status {
-  position: absolute;
-  top: 18px;
-  left: 18px;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  background: rgba(var(--paper-rgb), 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 999px;
-  font-family: var(--font-geist-mono);
-  font-size: 9px;
-  color: #166534;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
-
-.rlm-case-status-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #16A34A;
-  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.18);
-  animation: rlm-pulse 1.8s ease-in-out infinite;
-}
-
 .rlm-case-year {
   position: absolute;
   top: 18px;
@@ -762,6 +732,14 @@ html.dark .rlm-stat:hover .rlm-stat-ic {
    hors d'atteinte du CSS. --brand-ink n'existe que côté CSS : c'est la version
    TEXTE de la couleur de marque, surchargée quand la marque est trop claire
    pour une surface claire (cf. l'or Hagnéré Patrimoine plus bas). */
+/* `responsive.css` pose sous 480 px `word-break: break-word` sur `.hc-design a`
+   — et la carte entière EST un `<a>`. Ces deux propriétés s'héritent : la
+   valeur de l'indicateur, qui n'est pourtant pas un lien, se coupait donc au
+   caractère. « LMNP/LMP » devenait « LMNP/L » + « MP », et « 2031/2033 » —
+   une référence de formulaire fiscal — devenait « 2031/203 » + « 3 », c'est-
+   à-dire faux à la lecture. Une déclaration portée par l'élément lui-même
+   l'emporte toujours sur une valeur héritée, quelle que soit la spécificité :
+   c'est ce qui répare la coupure. La place, elle, est faite plus bas. */
 .rlm-case-metric strong {
   font-family: var(--font-geist);
   font-size: 18px;
@@ -769,6 +747,8 @@ html.dark .rlm-stat:hover .rlm-stat-ic {
   letter-spacing: -0.025em;
   color: var(--brand-ink, var(--brand));
   line-height: 1.1;
+  overflow-wrap: normal;
+  word-break: keep-all;
 }
 
 .rlm-case-metric span {
@@ -907,12 +887,32 @@ html.dark .rlm-stat:hover .rlm-stat-ic {
 .rlm-svc-foot svg { transition: transform 0.2s ease; }
 .rlm-svc-card:hover .rlm-svc-foot { color: var(--accent); }
 .rlm-svc-card:hover .rlm-svc-foot svg { transform: translateX(3px); }
-.rlm-svc-actions {
+/* Deux liens de texte, plus deux boutons fantômes et un bouton plein : la
+   conversion est portée par la carte suivante, seule. */
+.rlm-svc-more {
   margin-top: 32px;
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 8px 28px;
+  font-size: 14.5px;
+  font-weight: 500;
 }
+.rlm-svc-more a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--accent-ink);
+  text-decoration: none;
+  border-bottom: 1px solid rgb(from var(--accent) r g b / 0.28);
+  padding-bottom: 2px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.rlm-svc-more a svg { transition: transform 0.2s ease; }
+.rlm-svc-more a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.rlm-svc-more a:hover svg { transform: translateX(3px); }
 
 .rlm-cta {
   padding: 80px 0 130px;
@@ -1203,6 +1203,18 @@ html.dark .rlm-stat:hover .rlm-stat-ic {
   .rlm-float-name { font-size: 13px; line-height: 1.25; }
   .rlm-float-cat { font-size: 9px; letter-spacing: 0.03em; }
   .rlm-cta-side { grid-template-columns: 1fr 1fr; }
+  /* Trois colonnes dans 282 px utiles, c'est ~85 px par indicateur : moins que
+     « Simulateur » ou « Ressources ». Empilées, elles disposent de toute la
+     largeur et le séparateur passe du filet droit au filet bas. */
+  .rlm-case-metrics { flex-direction: column; gap: 12px; }
+  .rlm-case-metric {
+    flex: 0 0 auto;
+    padding-right: 0;
+    padding-bottom: 12px;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .rlm-case-metric:last-child { padding-bottom: 0; border-bottom: none; }
 }
 
 /* Reduced motion */
@@ -1210,7 +1222,6 @@ html.dark .rlm-stat:hover .rlm-stat-ic {
   .rlm-hero-glow,
   .rlm-cta-glow,
   .rlm-eyebrow-dot,
-  .rlm-case-status-dot,
   .rlm-cta-dot,
   .rlm-float-card { animation: none !important; }
 }
@@ -1233,10 +1244,8 @@ html.dark .rlm-case-cover-grid {
     linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
-/* Badges "EN PROD" : vert foncé illisible sur carte sombre → vert clair. */
-html.dark .rlm-float-status,
-html.dark .rlm-case-status { color: #4ADE80; }
-html.dark .rlm-case-status,
+/* Badge du visuel de héros : vert foncé illisible sur carte sombre → vert clair. */
+html.dark .rlm-float-status { color: #4ADE80; }
 html.dark .rlm-case-year { border-color: rgba(255, 255, 255, 0.12); }
 /* Texte couleur de marque sur surface sombre : on l'éclaircit pour le contraste
    (marques sombres type #0F766E / #6D28D9). */

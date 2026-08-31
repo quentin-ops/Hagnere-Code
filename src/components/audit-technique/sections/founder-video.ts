@@ -37,9 +37,13 @@ export const founderVideoHtml = `
               <text x="200" y="122" text-anchor="middle" font-family="Geist" font-weight="600" font-size="32" fill="#fff">QH</text>
               <rect x="20" y="196" width="120" height="26" rx="13" fill="rgba(0,0,0,0.7)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
               <text x="34" y="212" font-family="Geist" font-size="11" fill="#fff" font-weight="500">Quentin Hagnéré</text>
-              <!-- "Conflict of interest free" badge instead of LIVE -->
-              <rect x="268" y="198" width="114" height="22" rx="4" fill="rgba(16,185,129,0.9)"/>
-              <text x="325" y="213" text-anchor="middle" font-family="Geist Mono" font-size="10" font-weight="700" fill="#fff">● ZÉRO CONFLIT D'INTÉRÊT</text>
+              <!-- Badge « zéro conflit d'intérêt », à la place d'un bandeau LIVE.
+                   Il était en bas à droite, dans un cadre de 114 px pour 144 px de
+                   texte : le libellé sortait des deux côtés du vert ET passait
+                   sous la pastille « 20 min », qui occupe le même coin en HTML.
+                   Il monte en haut à droite, dans un cadre à sa mesure. -->
+              <rect x="222" y="18" width="160" height="22" rx="4" fill="rgba(16,185,129,0.9)"/>
+              <text x="302" y="33" text-anchor="middle" font-family="Geist Mono" font-size="10" font-weight="700" fill="#fff">● ZÉRO CONFLIT D'INTÉRÊT</text>
             </svg>
           </div>
           <div class="at-fv-play-btn">

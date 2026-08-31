@@ -38,9 +38,7 @@ export const bodyHtml = `
       </div>
       <div class="shero-meta">
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Forfait fixe, pas de régie</span>
-        <span class="sep"></span>
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Planning défini après cadrage</span>
-        <span class="sep"></span>
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Code &amp; données chez vous</span>
       </div>
       <div class="shero-proof">

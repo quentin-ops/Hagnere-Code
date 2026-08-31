@@ -127,13 +127,26 @@ describe("aucune impasse tarifaire entre /tarifs et une page service", () => {
   });
 });
 
-/** Repère mensuel affiché sous chaque carte, par nom de forfait. */
+/**
+ * Repère mensuel affiché par chaque carte, par nom de forfait.
+ *
+ * L'extraction lit le TEXTE de la carte, pas une classe précise : ce qui doit
+ * être identique des deux côtés est le montant publié, pas la balise qui
+ * l'affiche. La version précédente cherchait le premier <b> d'un
+ * `.care-hint` / `.plan-hint` ; /tarifs a depuis remonté le repère dans son
+ * bloc de prix (il y était en 12 px sous trois « Sur devis » de 42 px
+ * identiques), et le test échouait sur une mise en forme, pas sur un écart de
+ * prix.
+ */
 function cardHints(source: string, cardSeparator: string): Map<string, string> {
   const cards = new Map<string, string>();
   for (const chunk of source.split(cardSeparator).slice(1)) {
     const name = /<h3>([^<]+)<\/h3>/.exec(chunk)?.[1]?.trim();
-    const hint = /class="(?:care|plan)-hint">[\s\S]*?<b>([^<]+)<\/b>/.exec(chunk)?.[1]
-      ?.trim();
+    const text = chunk
+      .replace(/<[^>]+>/g, " ")
+      .replace(/&nbsp;/g, " ")
+      .replace(/[\s\u00a0\u202f]+/g, " ");
+    const hint = /(≈ [\d ]+ ?€ HT ?\/ ?mois)/.exec(text)?.[1]?.trim();
     if (name && hint && !cards.has(name)) cards.set(name, hint);
   }
   return cards;
@@ -148,9 +161,10 @@ function cardHints(source: string, cardSeparator: string): Map<string, string> {
  * qui rendait la note de lecture de /tarifs factuellement fausse.
  *
  * La position arbitrée reste « le prix est fixé au devis »
- * (src/components/ecommerce/tma-position.test.ts) : les cartes gardent donc
- * « Sur devis » comme prix, et publient à côté le repère indicatif — le même
- * des deux côtés, avec la même réserve.
+ * (src/components/ecommerce/tma-position.test.ts) : les cartes publient donc un
+ * repère indicatif — le même des deux côtés, avec la même réserve — et jamais
+ * un prix ferme. Où ce repère est écrit relève de la mise en page ; qu'il soit
+ * identique sur les deux pages relève du contrat, et c'est cela qui est testé.
  */
 describe("repères Care partagés par /tarifs et la page maintenance", () => {
   const TIERS = ["Care", "Care+", "Care Pro"];
@@ -175,12 +189,49 @@ describe("repères Care partagés par /tarifs et la page maintenance", () => {
     ).toBe(service);
   });
 
-  it("garde « Sur devis » comme prix et le montant comme simple repère", () => {
+  /**
+   * La position arbitrée n'a pas changé : le prix d'un forfait Care est fixé au
+   * devis. Ce qui est verrouillé ici est cette PROPRIÉTÉ — aucun montant Care
+   * n'est présenté comme un prix ferme — et non l'emplacement de la chaîne
+   * « Sur devis ». /tarifs affiche désormais le repère dans le bloc de prix,
+   * préfixé de « ≈ » et suivi de « forfait fixé au devis » dans la même unité :
+   * la réserve est lue avec le chiffre, au lieu d'être renvoyée trois lignes
+   * plus bas en 12 px pendant que trois « Sur devis » identiques occupaient
+   * les 42 px que le visiteur lit en premier.
+   */
+  it("ne présente aucun montant Care comme un prix ferme", () => {
     for (const source of [bodyHtml, maintenancePricingHtml]) {
       expect(source).toMatch(/repère indicatif/i);
       expect(source).toMatch(/le forfait est fixé au devis/i);
-      expect(source).toContain('<span class="amount">Sur devis</span>');
     }
+
+    const careSection =
+      /<section class="care"[\s\S]*?<\/section>/.exec(bodyHtml)?.[0] ?? "";
+    expect(careSection).not.toBe("");
+
+    const amounts = [
+      ...careSection.matchAll(/<span class="amount">([^<]+)<\/span>/g),
+    ].map((match) => match[1].trim());
+    expect(amounts).toHaveLength(3);
+    for (const amount of amounts) {
+      expect(amount, `« ${amount} » se lit comme un prix ferme`).toMatch(/^≈/);
+    }
+
+    const units = [
+      ...careSection.matchAll(/<span class="per">([^<]+)<\/span>/g),
+    ].map((match) => match[1]);
+    expect(units).toHaveLength(3);
+    for (const unit of units) {
+      expect(unit).toMatch(/\bHT\b/);
+      expect(unit, `« ${unit} » ne renvoie pas la fixation du forfait au devis`).toMatch(
+        /forfait fixé au devis/i,
+      );
+    }
+
+    // La page maintenance, elle, garde « Sur devis » dans son bloc de prix.
+    expect(maintenancePricingHtml).toContain(
+      '<span class="amount">Sur devis</span>',
+    );
   });
 
   it("donne un repère lisible dans le tableau et dans le comparatif", () => {

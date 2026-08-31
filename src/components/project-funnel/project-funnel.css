@@ -690,6 +690,16 @@ body {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
+  /* `align-items` valait `normal`, donc `stretch` : chaque colonne était
+     étirée à la hauteur de la plus haute. Or `.pf-field` est lui-même une
+     grille à lignes automatiques, et une grille étirée redistribue le surplus
+     ENTRE SES LIGNES — l'intitulé s'écartait de son champ d'autant.
+     Effet mesuré : à l'étape Contraintes, « Dès que possible » démarrait 59 px
+     sous « < 15k » (trou blanc sous « ÉCHÉANCE VISÉE ») ; à l'étape
+     Coordonnées, le champ e-mail tombait 14 px sous le téléphone et
+     « Entreprise » 22 px au-dessus de « Rôle ». Les colonnes démarrent
+     maintenant en haut, chacune à la hauteur de son contenu. */
+  align-items: start;
 }
 
 /* Rappel des canaux directs a l'etape Contexte, en face du bouton
@@ -1363,24 +1373,16 @@ body {
    SIREN auto-fill block
    ========================================================================== */
 
-.pf-siren {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
+/* `.pf-siren` porte déjà `.pf-field` : redéclarer ici un flex à 6 px d'écart
+   décalait son champ de 2 px par rapport à « Entreprise », son voisin de
+   ligne. Il suit maintenant la grille commune (8 px). */
 
-.pf-siren > span {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--pf-ink);
-}
-
-.pf-siren > span small {
-  margin-left: 6px;
-  font-weight: 400;
-  color: var(--pf-muted);
-  font-size: 11px;
-}
+/* L'intitulé « SIREN » ne redéfinit plus sa typographie : il héritait d'un
+   corps de 13 px là où « PRÉNOM », « NOM » ou « ENTREPRISE » sont à 10 px, ce
+   qui donnait le plus gros intitulé du formulaire au seul champ facultatif —
+   au-dessus de l'e-mail professionnel, lui obligatoire. Son « optionnel » ne
+   porte plus non plus de marge propre : il s'écarte comme celui de
+   « Téléphone » et de « Rôle », d'une espace. */
 
 .pf-siren-wrap {
   position: relative;
@@ -1446,9 +1448,12 @@ body {
   color: var(--pf-ink);
 }
 
+/* Même corps que `.pf-field-hint` : cette ligne porte désormais l'explication
+   du champ (« Auto-remplit le nom de l'entreprise. ») et se lit à côté de
+   celle d'« Entreprise », sur la même ligne de grille. */
 .pf-siren-status {
   min-height: 16px;
-  font-size: 12px;
+  font-size: 11px;
   color: var(--pf-muted);
 }
 

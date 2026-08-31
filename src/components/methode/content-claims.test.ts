@@ -86,14 +86,19 @@ describe("methode: le HTML rendu ne perd pas le bloc de clôture", () => {
 
   it("ne perd aucun contenu du body hors navigation", () => {
     // Seule la nav canonique est retirée : aucune section ne doit disparaître.
-    // `page-html.ts` en épisse UNE de plus — « Notre stack », rapatriée de la
-    // page d'accueil le 28/08/2026. Le compte attendu la nomme explicitement :
-    // un `+ 1` anonyme laisserait passer la disparition d'une section du body
-    // compensée par l'arrivée d'une autre.
+    //
+    // Ce test épinglait auparavant `<section class="logobar" id="stack"` et un
+    // compte de sections « + 1 », c'est-à-dire l'IMPLÉMENTATION du chapitre
+    // stack : une bande à logos épissée depuis `design-shared/tech-stack`.
+    // Cette bande a été retirée le 31/08/2026 (elle redoublait l'inventaire
+    // d'outils déjà publié sur /equipe) et remplacée dans `body.ts` par un
+    // `#stack` court — quatre choix argumentés. La propriété qui compte n'est
+    // pas le nom de la classe ni le fait qu'une section soit épissée, c'est
+    // que `pageHtml` transporte EXACTEMENT les sections de `body.ts` : ni
+    // perte au passage des strips, ni ajout silencieux.
     expect(pageHtml).toContain("</section>");
-    expect(pageHtml).toContain('<section class="logobar" id="stack"');
     expect(pageHtml.match(/<section\b/g)?.length).toBe(
-      (bodyHtml.match(/<section\b/g)?.length ?? 0) + 1,
+      bodyHtml.match(/<section\b/g)?.length ?? 0,
     );
   });
 

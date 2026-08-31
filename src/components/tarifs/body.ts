@@ -245,105 +245,6 @@ ${navHtml}
   </div>
 </section>
 
-<!-- DISCOVERY SPRINT (featured premium card) -->
-<section class="discovery">
-  <div class="wrap">
-    <div class="disc-card reveal">
-      <div class="disc-bg-grid"></div>
-      <div class="disc-bg-radial"></div>
-
-      <div class="disc-left">
-        <div class="disc-tag">
-          <span>NOUVEAU</span>
-          <span>Le point de départ</span>
-        </div>
-        <h2>Discovery Sprint <br><span class="accent">à 1 500 € HT.</span></h2>
-        <p class="disc-lead">
-          <b>2 jours payés</b> pour transformer une idée floue en un plan exécutable, chiffré et dérisqué.
-          C'est le cadrage payant d'un <b>projet de développement</b>&nbsp;; les autres services ont le leur, listé
-          <a href="#points-d-entree" style="color:inherit;text-decoration:underline">juste en dessous</a>. Si la phase 2 est lancée
-          avec nous, <b>le devis précise la déduction applicable</b>.
-        </p>
-
-        <ul class="disc-list">
-          <li>
-            <div class="disc-li-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Specs fonctionnelles</b><br><span>15 à 25 pages, écrites par quelqu'un qui code</span></div>
-          </li>
-          <li>
-            <div class="disc-li-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Prototype Figma cliquable</b><br><span>Les 3 à 5 écrans clés, navigables sur mobile et desktop</span></div>
-          </li>
-          <li>
-            <div class="disc-li-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Architecture technique</b><br><span>Stack, intégrations, hébergement, modèle de données</span></div>
-          </li>
-          <li>
-            <div class="disc-li-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Devis phase 2 chiffré</b><br><span>Forfait, délai, dépendances et conséquences éventuelles écrits</span></div>
-          </li>
-        </ul>
-
-        <div class="disc-foot">
-          <a href="#contact" class="btn btn-accent btn-lg">
-            Démarrer un Discovery
-            <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
-          <div class="disc-foot-meta">
-            <span class="disc-foot-pill">2 jours</span>
-            <span>Date de démarrage confirmée avant signature</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="disc-right">
-        <div class="disc-price-card">
-          <div class="disc-price-tag">FORFAIT FIXE</div>
-          <div class="disc-price-row">
-            <span class="disc-price-amount">1 500</span>
-            <span class="disc-price-cur">€ HT</span>
-          </div>
-          <div class="disc-price-line">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
-            <span>Déduit si phase 2 · conditions au devis</span>
-          </div>
-          <div class="disc-price-line">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
-            <span>Livrables réutilisables ailleurs</span>
-          </div>
-          <div class="disc-price-line">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
-            <span>Aucun engagement sur la suite</span>
-          </div>
-          <div class="disc-price-hr"></div>
-          <div class="disc-price-foot">
-            Signature électronique. Facturé après le sprint, payable à 30 jours.
-          </div>
-        </div>
-
-        <div class="disc-stack">
-          <div class="disc-stack-row">
-            <span class="disc-stack-k">JOUR 1</span>
-            <span class="disc-stack-v">Cadrage métier · users · contraintes</span>
-          </div>
-          <div class="disc-stack-row">
-            <span class="disc-stack-k">JOUR 1.5</span>
-            <span class="disc-stack-v">Wireframes &amp; prototype Figma</span>
-          </div>
-          <div class="disc-stack-row">
-            <span class="disc-stack-k">JOUR 2</span>
-            <span class="disc-stack-v">Architecture · stack · estimation</span>
-          </div>
-          <div class="disc-stack-row last">
-            <span class="disc-stack-k">J + 3</span>
-            <span class="disc-stack-v">Devis phase 2 + planning détaillés</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- POINTS D'ENTRÉE PAYANTS -->
 <section class="entrypoints" id="points-d-entree">
   <div class="wrap">
@@ -353,9 +254,8 @@ ${navHtml}
         <h2>Les points d&#39;entrée payants. <br>Un seul à la fois.</h2>
       </div>
       <div class="right">
-        Le Discovery Sprint n'est pas le seul cadrage payé du studio&nbsp;: cinq services publient le leur, sur leur
-        propre page. <b>Ils ne se cumulent pas</b> — on engage celui qui correspond à votre demande, et lui seul.
-        Une déduction sur la suite n'existe que si elle est écrite au devis&nbsp;; aucune remise n'est présumée.
+        Six cadrages payants, de <b>990 à 8 000 € HT</b>, un par type de demande. <b>Ils ne se cumulent pas</b>&nbsp;:
+        on engage celui qui correspond à votre demande, et lui seul.
       </div>
     </div>
 
@@ -466,8 +366,9 @@ ${navHtml}
         <h2>Quatre formats, <br>un prix fixe par projet.</h2>
       </div>
       <div class="right">
-        Du site vitrine au SaaS multi-utilisateurs, en passant par le partenariat long terme.
-        On vous oriente vers le bon format pendant le Discovery — pas avant.
+        Quatre cartes&nbsp;: le <b>cadrage à 1 500 €</b>, puis les <b>trois formats de projet</b> — du site vitrine
+        au SaaS multi-utilisateurs, jusqu'au partenariat long terme. On vous oriente vers le bon format pendant
+        le Discovery, pas avant.
       </div>
     </div>
 
@@ -480,6 +381,9 @@ ${navHtml}
           <span class="amount">1 500 €</span>
           <span class="per">HT · forfait 2 j.</span>
         </div>
+        <ul class="plan-floors">
+          <li><b>1 500 € HT</b> quel que soit le projet cadré</li>
+        </ul>
         <div class="plan-hr"></div>
         <ul class="plan-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Specs fonctionnelles rédigées</li>
@@ -487,6 +391,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Architecture technique cadrée</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Devis phase 2 forfait fixe</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Déduit si phase 2 · conditions au devis</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Déroulé&nbsp;: J1 cadrage · J1.5 prototype · J2 architecture · J+3 devis</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Démarrer un Discovery</a></div>
       </div>
@@ -499,6 +404,10 @@ ${navHtml}
           <span class="amount">6,9–15 k€</span>
           <span class="per">HT · forfait fixe</span>
         </div>
+        <ul class="plan-floors">
+          <li><b>6,9 k€ HT</b> site vitrine 3–5 pages</li>
+          <li><b>15 k€ HT</b> MVP SaaS 3–5 écrans</li>
+        </ul>
         <div class="plan-hr"></div>
         <ul class="plan-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Site 3–5 pages, jusqu'à 10–20 selon le palier, OU MVP 3–5 écrans</li>
@@ -519,6 +428,10 @@ ${navHtml}
           <span class="amount">25–60 k€</span>
           <span class="per">HT · forfait fixe</span>
         </div>
+        <ul class="plan-floors">
+          <li><b>25 k€ HT</b> outil interne</li>
+          <li><b>30 k€ HT</b> SaaS 10–15 écrans</li>
+        </ul>
         <div class="plan-hr"></div>
         <ul class="plan-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>10–15 écrans + back-office riche</li>
@@ -539,6 +452,9 @@ ${navHtml}
           <span class="amount">8–20 k€</span>
           <span class="per">HT / mois</span>
         </div>
+        <ul class="plan-floors">
+          <li><b>8–20 k€ HT / mois</b> selon le périmètre, fixé au devis</li>
+        </ul>
         <div class="plan-hr"></div>
         <ul class="plan-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Intervenants et rôles précisés au devis</li>
@@ -552,14 +468,13 @@ ${navHtml}
     </div>
 
     <p class="pricing-note reveal">
-      <b>Tous les montants de cette page sont en euros hors taxes</b>, TVA en sus. Le ticket d'entrée publié est de
-      <b>6,9 k€ HT</b> (site vitrine). <b>Ces quatre formats couvrent tous les services</b>&nbsp;: leur fourchette part
-      du service le moins cher du format, pas du vôtre. La fourchette propre à votre besoin est celle du
-      <a href="#tableau-services" style="color:var(--accent-ink);text-decoration:underline">tableau par service ci-dessous</a> et de la page
-      service correspondante — un MVP SaaS « Essentiel » démarre par exemple à 15 k€ HT, pas à 6,9 k€ HT,
-      et un SaaS « Standard » de 10 à 15 écrans démarre à 30 k€ HT&nbsp;: la borne de 25 k€ HT est celle d'un outil interne.
-      Chaque devis précise&nbsp;: <b>livrables et droits</b> · <b>dépôt et accès</b> ·
-      <b>formation</b> · <b>recette et éventuelle garantie</b>
+      <b>Tous les montants de cette page sont en euros hors taxes</b>, TVA en sus.
+      <b>Ces quatre formats couvrent tous les services</b>&nbsp;: chaque carte indique ci-dessus à quel projet
+      correspond chacune de ses bornes. Le ticket d'entrée publié est de
+      <b>6,9 k€ HT</b> (site vitrine) — un MVP SaaS « Essentiel » démarre par exemple à 15 k€ HT, pas à 6,9 k€ HT.
+      Le détail par service est dans le
+      <a href="#tableau-services" style="color:var(--accent-ink);text-decoration:underline">tableau ci-dessous</a>&nbsp;;
+      <b>seul le devis signé engage</b>.
     </p>
   </div>
 </section>
@@ -573,12 +488,9 @@ ${navHtml}
         <h2>Combien ça coûte <br>vraiment, par type <br>de projet ?</h2>
       </div>
       <div class="right">
-        Les repères ci-dessous sont calibrés sur <b>nos barèmes internes</b> — charge de travail,
-        profils mobilisés, périmètre fonctionnel. Ce sont des <b>ordres de grandeur indicatifs</b>
-        sur des projets-types, destinés à situer un budget avant le cadrage&nbsp;: seul le devis
-        nominatif remis après le cadrage payant engage les parties. Les hypothèses, inclusions et facteurs
-        de variation sont détaillés ci-dessous, poste par poste, pour comparer des périmètres
-        réellement équivalents.
+        <b>Onze services, trois paliers chacun</b>, calibrés sur nos barèmes internes — charge de travail,
+        profils mobilisés, périmètre fonctionnel. De <b>1 200 € HT/mois</b> pour un accompagnement sécurité
+        continu à <b>120 k€ HT</b> pour un e-commerce B2B multi-pays.
       </div>
     </div>
 
@@ -623,7 +535,7 @@ ${navHtml}
         </div>
         <div class="ptcol"><b>15 k€ HT</b><span>Essentiel — MVP 3–5 écrans</span></div>
         <div class="ptcol"><b>30–60 k€ HT</b><span>Standard — 10–15 écrans + IA</span></div>
-        <div class="ptcol"><b>8–20 k€/m HT</b><span>Partenariat — forfait mensuel, intervenants et rôles au devis</span></div>
+        <div class="ptcol"><b>8–20 k€/m HT</b><span>Partenariat — forfait mensuel, intervenants et rôles au devis</span><span class="ptcol-tag">mensuel</span></div>
         <div class="ptcol ptcol-time"><b>Sur devis</b></div>
       </div>
 
@@ -675,9 +587,9 @@ ${navHtml}
             </div>
           </a>
         </div>
-        <div class="ptcol"><b>Sur devis</b><span>Lancement — 1 cas d'usage, iOS + Android</span></div>
-        <div class="ptcol"><b>Sur devis</b><span>Performance — périmètre étendu, paiement, back-office</span></div>
-        <div class="ptcol"><b>Sur devis</b><span>Sur-mesure — marketplace, BLE / NFC, ERP</span></div>
+        <div class="ptcol"><b>Sur devis</b><span>Lancement — 1 cas d'usage, iOS + Android</span><span class="ptcol-tag">non publié</span></div>
+        <div class="ptcol"><b>Sur devis</b><span>Performance — périmètre étendu, paiement, back-office</span><span class="ptcol-tag">non publié</span></div>
+        <div class="ptcol"><b>Sur devis</b><span>Sur-mesure — marketplace, BLE / NFC, ERP</span><span class="ptcol-tag">non publié</span></div>
         <div class="ptcol ptcol-time"><b>Sur devis</b></div>
       </div>
 
@@ -693,9 +605,9 @@ ${navHtml}
             </div>
           </a>
         </div>
-        <div class="ptcol"><b>Sur devis</b><span>Audit SEO actionnable — périmètre et tarif établis au devis</span></div>
-        <div class="ptcol"><b>Sur devis</b><span>Sprint de correction — périmètre écrit avant intervention</span></div>
-        <div class="ptcol"><b>Sur devis</b><span>Accompagnement organique — production et acquisition cadrées au devis</span></div>
+        <div class="ptcol"><b>Sur devis</b><span>Audit SEO actionnable — périmètre et tarif établis au devis</span><span class="ptcol-tag">non publié</span></div>
+        <div class="ptcol"><b>Sur devis</b><span>Sprint de correction — périmètre écrit avant intervention</span><span class="ptcol-tag">non publié</span></div>
+        <div class="ptcol"><b>Sur devis</b><span>Accompagnement organique — production et acquisition cadrées au devis</span><span class="ptcol-tag">non publié</span></div>
         <div class="ptcol ptcol-time"><b>Durée au devis</b></div>
       </div>
 
@@ -711,9 +623,9 @@ ${navHtml}
             </div>
           </a>
         </div>
-        <div class="ptcol"><b>1 800 €/m HT</b><span>Starter — 2 canaux + tracking SS</span></div>
-        <div class="ptcol"><b>3 500 €/m HT</b><span>Scale — 3+1 canaux + 8-12 creatives</span></div>
-        <div class="ptcol"><b>4 500 €/m HT</b><span>Premium — 4-6 canaux, intervenants nommés au devis</span></div>
+        <div class="ptcol"><b>1 800 €/m HT</b><span>Starter — 2 canaux + tracking SS</span><span class="ptcol-tag">mensuel</span></div>
+        <div class="ptcol"><b>3 500 €/m HT</b><span>Scale — 3+1 canaux + 8-12 creatives</span><span class="ptcol-tag">mensuel</span></div>
+        <div class="ptcol"><b>4 500 €/m HT</b><span>Premium — 4-6 canaux, intervenants nommés au devis</span><span class="ptcol-tag">mensuel</span></div>
         <div class="ptcol ptcol-time"><b>Durée au devis</b></div>
       </div>
 
@@ -728,10 +640,11 @@ ${navHtml}
               <div class="ptcol-svc-s">Production vidéo, motion, YouTube</div>
             </div>
           </a>
+          <div class="ptcol-svc-more">Aussi sur la page&nbsp;: <b>Motion &amp; brand</b> 4 500 €/m HT (engagement minimum de 6 mois) · <b>Studio dédié</b> forfait dès 15 k€ HT, sur devis</div>
         </div>
         <div class="ptcol"><b>2 500 € HT</b><span>vidéo unique, sans engagement</span></div>
-        <div class="ptcol"><b>3 500 €/m HT</b><span>YouTube Founder — 4 longues + 16 shorts</span></div>
-        <div class="ptcol"><b>6 900 €/m HT</b><span>Content Retainer — ~25 livrables/mois</span></div>
+        <div class="ptcol"><b>3 500 €/m HT</b><span>YouTube Founder — 4 longues + 16 shorts</span><span class="ptcol-tag">mensuel</span></div>
+        <div class="ptcol"><b>6 900 €/m HT</b><span>Content Retainer — ~25 livrables/mois</span><span class="ptcol-tag">mensuel</span></div>
         <div class="ptcol ptcol-time"><b>6 mois min. retainer</b></div>
       </div>
 
@@ -764,10 +677,11 @@ ${navHtml}
               <div class="ptcol-svc-s">Cadrage, conformité, remédiation</div>
             </div>
           </a>
+          <div class="ptcol-svc-more">Aussi sur la page&nbsp;: <b>AI Act EU</b> dès 15 k€ HT · <b>Cyber audit applicatif</b> dès 8 k€ HT</div>
         </div>
         <div class="ptcol"><b>5 k€ HT</b><span>Cadrage initial — état des lieux</span></div>
-        <div class="ptcol"><b>1 200 €/m HT</b><span>Starter — accompagnement continu</span></div>
-        <div class="ptcol"><b>3 500 €/m HT</b><span>Scale — + sprints dev 3–15 k€ HT/lot</span></div>
+        <div class="ptcol"><b>1 200 €/m HT</b><span>Starter — accompagnement continu</span><span class="ptcol-tag">mensuel</span></div>
+        <div class="ptcol"><b>3 500 €/m HT</b><span>Scale — + sprints dev 3–15 k€ HT/lot</span><span class="ptcol-tag">mensuel</span></div>
         <div class="ptcol ptcol-time"><b>Sur devis</b></div>
       </div>
 
@@ -784,8 +698,8 @@ ${navHtml}
           </a>
         </div>
         <div class="ptcol"><b>2 000 € HT</b><span>Audit flash — point d'entrée payant</span></div>
-        <div class="ptcol"><b>Sur devis</b><span>Care — périmètre au contrat</span></div>
-        <div class="ptcol"><b>Sur devis</b><span>Care+ et Care Pro — repères ≈ 3 500 à 14 000 €/m HT, rôles au devis</span></div>
+        <div class="ptcol"><b>Sur devis</b><span>Care — périmètre au contrat</span><span class="ptcol-tag is-repere">≈ repère</span></div>
+        <div class="ptcol"><b>Sur devis</b><span>Care+ et Care Pro — repères ≈ 3 500 à 14 000 €/m HT, rôles au devis</span><span class="ptcol-tag is-repere">≈ repère</span></div>
         <div class="ptcol ptcol-time"><b>Sur devis</b></div>
       </div>
     </div>
@@ -795,26 +709,13 @@ ${navHtml}
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
       </div>
       <div class="ptf-body">
-        <b>Comment lire ce tableau ?</b> <b>Tous les montants sont en euros hors taxes</b>, TVA en sus. Les fourchettes sont
-        par projet (forfait fixe), sauf pour les prestations récurrentes (Ads, vidéo, accompagnement continu, forfaits Care), notées « /m ».
-        Une cellule « Sur devis » signale un prix arrêté au devis, jamais avant. Deux cas se distinguent&nbsp;:
-        soit un <b>repère indicatif</b> existe et il est écrit avec « ≈ » — c'est le cas des forfaits Care, dont les
-        ordres de grandeur mensuels sont repris ci-dessous des scénarios-types de la page maintenance&nbsp;;
-        soit <b>aucune page du site ne publie de montant</b>, et c'est alors vrai ici comme sur la page service. Le SEO
-        est dans ce second cas&nbsp;: les trois colonnes
-        correspondent aux trois formats publiés sur
-        <a href="/services/referencement-google" style="color:var(--accent-ink);text-decoration:underline">la page référencement</a> — Audit SEO actionnable, Sprint de correction,
-        Accompagnement organique — dont le prix dépend du nombre d'URL, des gabarits et de la profondeur demandée,
-        et n'est chiffré ni ici ni là-bas.
-        Une ligne ne reprend pas toujours toute l'offre de sa page service. Sur
-        <a href="/services/contenu-video" style="color:var(--accent-ink);text-decoration:underline">contenu &amp; vidéo</a>, le
-        retainer <b>Motion &amp; brand</b> (4 500 €/m HT, engagement minimum de 6 mois) et le <b>Studio dédié</b>
-        (forfait dès 15 k€ HT, sur devis — ce n'est pas un montant mensuel) s'y ajoutent. Sur
-        <a href="/services/securite-rgpd" style="color:var(--accent-ink);text-decoration:underline">sécurité &amp; RGPD</a>,
-        deux prestations chiffrées ne figurent pas dans la ligne ci-dessus&nbsp;: <b>AI Act EU</b>
-        (dès 15 k€ HT) et <b>Cyber audit applicatif</b> (dès 8 k€ HT).
-        Une durée d'engagement n'existe que si elle est écrite au contrat. Le prix exact est
-        figé après le cadrage payant correspondant, dans un devis ferme contractuel.
+        <b>Comment lire ce tableau&nbsp;?</b> <b>Tous les montants sont en euros hors taxes</b>, TVA en sus,
+        et ce sont des <b>ordres de grandeur indicatifs</b> par projet. Chaque cellule porte sa réserve&nbsp;:
+        <b>mensuel</b> pour un abonnement, <b>≈ repère</b> pour un ordre de grandeur publié sur la page service,
+        <b>non publié</b> quand <b>aucune page du site ne publie de montant</b> — c'est alors vrai ici comme sur la
+        page service, le référencement par exemple dépendant du nombre d'URL, des gabarits et de la profondeur
+        demandée&nbsp;: il <b>n'est chiffré ni ici ni là-bas</b>. Le prix exact est figé après le cadrage payant,
+        dans un devis ferme.
       </div>
       <a href="/demarrer-un-projet" class="btn btn-ghost ptf-cta">
         ${PRIMARY_ACTION_LABEL}
@@ -893,7 +794,7 @@ ${navHtml}
       </div>
       <div class="right">
         <a href="/services/maintenance-evolution" style="color:var(--accent-ink);text-decoration:underline">Hébergement, monitoring, sauvegardes, bug fixes, petites évolutions</a>.
-        <b>Trois niveaux indicatifs</b>. La durée, le préavis et les modalités de sortie figurent dans le contrat.
+        Trois niveaux, de <b>≈ 2 500</b> à <b>≈ 14 000 € HT/mois</b> selon le volume et la criticité.
       </div>
     </div>
 
@@ -903,10 +804,10 @@ ${navHtml}
         <h3>Care</h3>
         <p class="care-sub">L'essentiel pour dormir tranquille. Idéal après un site vitrine ou un MVP léger.</p>
         <div class="care-price">
-          <span class="amount">Sur devis</span>
-          <span class="per">HT · forfait mensuel</span>
+          <span class="amount">≈ 2 500 €</span>
+          <span class="per">HT / mois · forfait fixé au devis</span>
         </div>
-        <p class="care-hint">Repère indicatif&nbsp;: <b>≈ 2 500 € HT / mois</b> sur un scénario-type publié sur <a href="/services/maintenance-evolution">la page maintenance</a>. Le forfait est fixé au devis.</p>
+        <p class="care-hint">Repère indicatif ≈ 2 500 € HT / mois, d'après un scénario-type de <a href="/services/maintenance-evolution">la page maintenance</a>. Le forfait est fixé au devis, selon le volume et la criticité.</p>
         <div class="care-hr"></div>
         <ul class="care-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement retenu au devis</li>
@@ -915,7 +816,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Canal et délai cible précisés</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Capacité d'évolution au devis</li>
         </ul>
-        <div class="care-cta"><a href="#contact" class="btn btn-ghost">Activer Care</a></div>
+        <div class="care-cta"><a href="#contact" class="btn btn-ghost">Cadrer Care</a></div>
       </div>
 
       <div class="care-card featured reveal reveal-d-1">
@@ -924,10 +825,10 @@ ${navHtml}
         <h3>Care+</h3>
         <p class="care-sub">Le bon niveau pour un SaaS ou un outil interne en production avec des utilisateurs actifs.</p>
         <div class="care-price">
-          <span class="amount">Sur devis</span>
-          <span class="per">HT · forfait mensuel</span>
+          <span class="amount">≈ 3 500 €</span>
+          <span class="per">HT / mois · forfait fixé au devis</span>
         </div>
-        <p class="care-hint">Repère indicatif&nbsp;: <b>≈ 3 500 € HT / mois</b> sur un scénario-type publié sur <a href="/services/maintenance-evolution">la page maintenance</a>. Le forfait est fixé au devis.</p>
+        <p class="care-hint">Repère indicatif ≈ 3 500 € HT / mois, d'après un scénario-type de <a href="/services/maintenance-evolution">la page maintenance</a>. Le forfait est fixé au devis, selon le volume et la criticité.</p>
         <div class="care-hr"></div>
         <ul class="care-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tout Care, plus :</li>
@@ -937,7 +838,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Capacité mensuelle définie</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Cadence de revue convenue</li>
         </ul>
-        <div class="care-cta"><a href="#contact" class="btn btn-accent">Activer Care+</a></div>
+        <div class="care-cta"><a href="#contact" class="btn btn-accent">Cadrer Care+</a></div>
       </div>
 
       <div class="care-card reveal reveal-d-2">
@@ -945,10 +846,10 @@ ${navHtml}
         <h3>Care Pro</h3>
         <p class="care-sub">Pour les SaaS critiques avec usage 24/7, gros volumes ou contrainte de continuité de service.</p>
         <div class="care-price">
-          <span class="amount">Sur devis</span>
-          <span class="per">HT · forfait mensuel</span>
+          <span class="amount">≈ 14 000 €</span>
+          <span class="per">HT / mois · forfait fixé au devis</span>
         </div>
-        <p class="care-hint">Repère indicatif&nbsp;: <b>≈ 14 000 € HT / mois</b> sur un scénario-type publié sur <a href="/services/maintenance-evolution">la page maintenance</a>. Le forfait est fixé au devis.</p>
+        <p class="care-hint">Repère indicatif ≈ 14 000 € HT / mois, d'après un scénario-type de <a href="/services/maintenance-evolution">la page maintenance</a>. Le forfait est fixé au devis, selon le volume et la criticité.</p>
         <div class="care-hr"></div>
         <ul class="care-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tout Care+, plus :</li>
@@ -958,18 +859,16 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Plan de reprise et tests cadrés</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Rythme de pilotage défini</li>
         </ul>
-        <div class="care-cta"><a href="#contact" class="btn btn-ghost">Parler au fondateur</a></div>
+        <div class="care-cta"><a href="#contact" class="btn btn-ghost">Cadrer Care Pro</a></div>
       </div>
     </div>
 
     <p class="care-note reveal">
-      Care, Care+ et Care Pro sont les <b>mêmes trois forfaits</b> que ceux publiés sur
-      <a href="/services/maintenance-evolution" style="color:var(--accent-ink);text-decoration:underline">la page maintenance &amp; évolution</a>,
-      sous les mêmes noms et avec les <b>mêmes repères mensuels</b>. Ces trois montants sont des
-      <b>ordres de grandeur indicatifs</b> hors taxes, tirés des scénarios-types publiés sur la page service&nbsp;:
-      <b>le forfait est fixé au devis</b>, selon le volume, la criticité et la couverture retenue. Durée, préavis,
-      capacité et coûts tiers sont détaillés avant signature&nbsp;: <b>le devis indique qui paie chaque fournisseur</b>
-      et si une marge ou des frais de gestion s'appliquent.
+      Care, Care+ et Care Pro sont les <b>mêmes trois forfaits</b>, sous les mêmes noms et avec les
+      <b>mêmes repères mensuels</b>, que ceux publiés sur
+      <a href="/services/maintenance-evolution" style="color:var(--accent-ink);text-decoration:underline">la page maintenance &amp; évolution</a>.
+      Durée, préavis, capacité et coûts tiers sont détaillés avant signature&nbsp;:
+      <b>le devis indique qui paie chaque fournisseur</b> et si une marge ou des frais de gestion s'appliquent.
     </p>
   </div>
 </section>
@@ -983,8 +882,8 @@ ${navHtml}
         <h2>La même grille <br>pour chaque devis.</h2>
       </div>
       <div class="right">
-        Il n'existe pas ici d'étude représentative des agences et freelances. Cette grille indique
-        <b>les points à demander à chaque candidat</b> et les engagements que notre propre devis doit expliciter.
+        Cette grille indique <b>les points à demander à chaque candidat</b> et les engagements que notre propre
+        devis doit expliciter. Elle ne repose sur aucune étude représentative des agences et freelances.
       </div>
     </div>
 

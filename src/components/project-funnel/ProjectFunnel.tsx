@@ -16,6 +16,8 @@ import {
   Loader2,
   Mail,
   Building2,
+  BriefcaseBusiness,
+  Hash,
   Mic,
   Pause,
   Phone,
@@ -1495,6 +1497,35 @@ function microphoneErrorMessage(error: unknown): MicError {
   };
 }
 
+/**
+ * Mention unique de traitement de l'audio dicté.
+ *
+ * Elle était rendue par `VoiceTextarea`, donc une fois PAR CHAMP : l'étape
+ * Contexte en compte trois, ce qui donnait six lignes d'avertissement
+ * identiques — plus de hauteur que les deux champs du bas réunis, sur l'écran
+ * précis où l'on demande au visiteur l'effort d'écrire son besoin.
+ *
+ * Elle est désormais posée une seule fois par étape, sous le bloc de champs, et
+ * chaque bouton « Dicter » la désigne en `aria-describedby` : l'information
+ * reste disponible AVANT l'activation du micro, y compris au lecteur d'écran.
+ * L'`id` est partagé par les boutons de l'étape — une seule étape est montée à
+ * la fois, il reste donc unique dans le document.
+ */
+const VOICE_PRIVACY_NOTE_ID = "pf-voice-privacy-note";
+
+function VoicePrivacyNote() {
+  return (
+    <p className="pf-voice-privacy" id={VOICE_PRIVACY_NOTE_ID}>
+      La dictée est facultative : en l&apos;activant, votre audio est transmis à
+      Groq pour la transcription et l&apos;enregistrement s&apos;arrête après
+      2 minutes. Le même texte peut être saisi au clavier.{" "}
+      <a href="/legal/confidentialite#dictee" target="_blank" rel="noopener noreferrer">
+        En savoir plus
+      </a>
+    </p>
+  );
+}
+
 function VoiceTextarea({
   value,
   onChange,
@@ -1917,12 +1948,17 @@ function VoiceTextarea({
             </span>
           </div>
         ) : (
+          // L'invite « Vous pouvez écrire ou dicter votre réponse. » disait ce
+          // que le bouton juste à droite dit déjà, une fois par champ. Ne
+          // restent que les états transitoires, qu'aucun autre élément
+          // n'annonce ; le <span> est conservé vide pour que la barre garde son
+          // `justify-content: space-between` et le bouton sa place à droite.
           <span>
             {requesting
               ? "Activation du micro..."
               : processing
                 ? "Transcription en cours..."
-                : "Vous pouvez écrire ou dicter votre réponse."}
+                : ""}
           </span>
         )}
         <button
@@ -1930,6 +1966,11 @@ function VoiceTextarea({
           className={`pf-mic ${recording ? "is-recording" : ""}`}
           onClick={recording ? stopRecording : startRecording}
           disabled={processing || requesting}
+          // La mention de traitement de l'audio n'est plus collée sous chaque
+          // champ : elle est rendue une seule fois par étape (VoicePrivacyNote)
+          // et rattachée ici, de sorte qu'elle reste annoncée au clavier et au
+          // lecteur d'écran avant l'activation du micro.
+          aria-describedby={VOICE_PRIVACY_NOTE_ID}
           aria-label={
             recording
               ? "Arrêter la dictée"
@@ -1950,14 +1991,6 @@ function VoiceTextarea({
           {recording ? "Arrêter" : requesting ? "Activation…" : "Dicter"}
         </button>
       </div>
-      <p className="pf-voice-privacy">
-        En activant « Dicter », vous consentez à transmettre votre audio à Groq pour cette transcription facultative.
-        L&apos;enregistrement s&apos;arrête automatiquement après 2 minutes. Vous pouvez
-        saisir le même texte sans utiliser ce service.{" "}
-        <a href="/legal/confidentialite#dictee" target="_blank" rel="noopener noreferrer">
-          En savoir plus
-        </a>
-      </p>
       {error && (
         <div className="pf-mic-error" role="alert">
           <div className="pf-mic-error-head">
@@ -2980,6 +3013,7 @@ export function ProjectFunnel() {
                     />
                   </div>
                 </div>
+                <VoicePrivacyNote />
                 {/* Le bouton « Je préfère en parler » de cette étape ne fait
                     que sauter la description : il promettait une conversation
                     que rien, sur l'écran, ne permettait d'engager — la carte
@@ -3072,6 +3106,7 @@ export function ProjectFunnel() {
                     minRows={5}
                   />
                 </div>
+                <VoicePrivacyNote />
               </div>
             )}
 
@@ -3126,7 +3161,11 @@ export function ProjectFunnel() {
               <div className="pf-stack">
                 <div className="pf-split">
                   <TextInput icon={<UserRound size={16} />} label="Prénom" value={state.firstName} onChange={(value) => patch("firstName", value)} autoComplete="given-name" required />
-                  <TextInput label="Nom" value={state.lastName} onChange={(value) => patch("lastName", value)} autoComplete="family-name" required />
+                  {/* Une icône sur deux champs donnait au formulaire l'air
+                      monté à la main : personne dans Prénom mais rien dans
+                      Nom, enveloppe dans E-mail, rien dans Entreprise ni dans
+                      Rôle. Tous les champs de cette étape en portent une. */}
+                  <TextInput icon={<UserRound size={16} />} label="Nom" value={state.lastName} onChange={(value) => patch("lastName", value)} autoComplete="family-name" required />
                 </div>
                 <div className="pf-split">
                   <TextInput
@@ -3163,12 +3202,20 @@ export function ProjectFunnel() {
                     }
                   />
                 </div>
-                <SirenLookup
-                  siren={state.siren}
-                  onSirenChange={(v) => patch("siren", v)}
-                  onCompanyFound={(name) => patch("company", name)}
-                />
+                {/* Les trois champs « organisation » dans une même grille.
+                    Le SIREN occupait seul toute la largeur, entre deux lignes
+                    à deux colonnes : le champ facultatif était le plus large
+                    du formulaire, plus large que l'e-mail professionnel qui,
+                    lui, bloque l'envoi. Il rejoint la demi-largeur commune, et
+                    juste à gauche du champ qu'il remplit tout seul. Rôle passe
+                    naturellement à la ligne suivante — la grille à deux
+                    colonnes s'en charge, sans variante de gabarit. */}
                 <div className="pf-split">
+                  <SirenLookup
+                    siren={state.siren}
+                    onSirenChange={(v) => patch("siren", v)}
+                    onCompanyFound={(name) => patch("company", name)}
+                  />
                   {/* Champ bloquant assumé, pas subi. La convention du
                       formulaire est « non marqué = requis », comme Prénom,
                       Nom et Email : ajouter ici un marqueur « requis »
@@ -3177,6 +3224,7 @@ export function ProjectFunnel() {
                       dernier écran de saisie doit comprendre pourquoi, plutôt
                       que de taper « -- » ou d'abandonner. */}
                   <TextInput
+                    icon={<Building2 size={16} />}
                     label="Entreprise"
                     value={state.company}
                     onChange={(value) => patch("company", value)}
@@ -3184,7 +3232,7 @@ export function ProjectFunnel() {
                     required
                     hint="Nous intervenons auprès d'organisations : indiquez la structure au nom de laquelle vous nous écrivez."
                   />
-                  <TextInput label="Rôle / fonction" value={state.role} onChange={(value) => patch("role", value)} optional autoComplete="organization-title" />
+                  <TextInput icon={<BriefcaseBusiness size={16} />} label="Rôle / fonction" value={state.role} onChange={(value) => patch("role", value)} optional autoComplete="organization-title" />
                 </div>
                 <label className={`pf-consent ${!state.consent && showValidation ? "is-required" : ""} ${state.consent ? "is-checked" : ""}`}>
                   <input
@@ -3198,7 +3246,7 @@ export function ProjectFunnel() {
                   <span className="pf-consent-text">
                     <b>Accusé de lecture et demande de traitement</b>
                     <small>
-                      J&apos;ai pris connaissance de la <a href="/legal/confidentialite" target="_blank" rel="noopener noreferrer">politique de confidentialité</a> et je demande à HAGNERE CODE de traiter mes informations afin de répondre à ma demande. Selon que j&apos;agis en mon nom ou pour mon organisation, ce traitement repose sur des mesures précontractuelles ou sur l&apos;intérêt légitime à traiter une demande professionnelle. Les données sont accessibles à HAGNERE CODE et aux prestataires nécessaires, puis conservées au maximum trois ans après le dernier échange utile en l&apos;absence de contrat. La politique détaille les destinataires et vos droits.
+                      J&apos;ai pris connaissance de la <a href="/legal/confidentialite" target="_blank" rel="noopener noreferrer">politique de confidentialité</a>{" "}et je demande à HAGNERE CODE de traiter mes informations afin de répondre à ma demande. Selon que j&apos;agis en mon nom ou pour mon organisation, ce traitement repose sur des mesures précontractuelles ou sur l&apos;intérêt légitime à traiter une demande professionnelle. Les données sont accessibles à HAGNERE CODE et aux prestataires nécessaires, puis conservées au maximum trois ans après le dernier échange utile en l&apos;absence de contrat. La politique détaille les destinataires et vos droits.
                     </small>
                   </span>
                 </label>
@@ -3381,25 +3429,21 @@ export function ProjectFunnel() {
                   type="button"
                   className="pf-skip"
                   onClick={skipCurrent}
-                  // WCAG 2.5.3 « Label in Name » : le nom accessible doit
-                  // contenir le libellé visible, sinon une commande vocale
-                  // « clique sur Je préfère en parler » ne trouve rien. Il
-                  // décrit ensuite l'effet réel du bouton — passer l'étape —
-                  // et non la conversation, qui s'engage par les liens
-                  // rappelés au-dessus.
-                  aria-label={
-                    current.id === "contexte"
-                      ? "Je préfère en parler : passer la description"
-                      : "Passer cette étape sans répondre"
-                  }
+                  aria-label="Passer cette étape sans répondre"
                 >
-                  {/* Sur l'étape Contexte, « Passer cette étape » invite à
-                      fuir un formulaire ; « Je préfère en parler » propose
-                      l'autre canal que le site offre réellement. Le libellé
-                      change ce que le geste veut dire, pas ce qu'il fait. */}
-                  {current.id === "contexte"
-                    ? "Je préfère en parler"
-                    : "Passer cette étape"}
+                  {/* Une seule sortie par étape, et chaque commande dit ce
+                      qu'elle fait.
+
+                      L'étape Contexte affichait « Je préfère en parler » sur ce
+                      bouton ET « Vous préférez en parler ? Appelez le… » dans
+                      l'encart juste au-dessus : deux commandes voisines
+                      proposaient la même chose, alors qu'une seule l'offre
+                      vraiment. Le bouton, lui, saute simplement la description
+                      — son propre `aria-label` l'admettait déjà. L'encart reste
+                      l'endroit où la conversation s'engage (téléphone, e-mail,
+                      créneau) ; le bouton reprend le libellé qu'il partage avec
+                      les autres étapes, celui de son effet réel. */}
+                  Passer cette étape
                 </button>
               )}
               <button type="button" className="pf-primary" onClick={goNext}>
@@ -3777,11 +3821,18 @@ function SirenLookup({
 
   return (
     <label className="pf-field pf-siren">
+      {/* L'intitulé reprend la forme des autres : le nom du champ, puis
+          « optionnel » comme sur Téléphone et Rôle. L'explication — c'est lui
+          qui remplit « Entreprise » — descend sur la ligne de statut, qui
+          réserve déjà sa hauteur et se lit à 12 px plutôt qu'en petites
+          capitales monospace. */}
       <span>
-        SIREN <small>optionnel — auto-remplit le nom de l&apos;entreprise</small>
+        SIREN <small>optionnel</small>
       </span>
       <div className="pf-input-wrap pf-siren-wrap">
-        <Building2 size={16} />
+        {/* `Hash` et non `Building2` : le bâtiment revient au champ
+            « Entreprise », voisin immédiat. Ici c'est un numéro. */}
+        <Hash size={16} />
         <input
           type="text"
           inputMode="numeric"
@@ -3813,6 +3864,9 @@ function SirenLookup({
         )}
       </div>
       <div id="pf-siren-status" className="pf-siren-status" role="status">
+        {status.kind === "idle" && digitsOnly.length === 0 && (
+          <span className="pf-siren-hint">Auto-remplit le nom de l&apos;entreprise.</span>
+        )}
         {status.kind === "idle" && digitsOnly.length > 0 && digitsOnly.length < 9 && (
           <span className="pf-siren-hint">
             <Search size={12} /> {9 - digitsOnly.length} chiffre

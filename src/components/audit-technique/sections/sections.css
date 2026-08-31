@@ -1100,7 +1100,12 @@
 }
 .at-scen-meta-row {
   display: grid;
-  grid-template-columns: 88px 1fr;
+  /* 88 px ne tenaient pas « CONFIDENTIALITÉ » : 102 px de texte en Geist Mono
+     10 px suivis d'exactement 14 px de gouttière, le libellé mangeait la
+     gouttière et on lisait « CONFIDENTIALITÉAccord validé avant les accès ».
+     104 px laissent 16 px de blanc au plus long libellé d'un seul tenant ; les
+     libellés à espace (« Remise éventuelle ») continuent de passer à la ligne. */
+  grid-template-columns: 104px 1fr;
   gap: 14px;
   padding: 10px 0;
   border-bottom: 1px solid var(--line-2);
@@ -1109,6 +1114,9 @@
 }
 .at-scen-meta-row:last-child { border-bottom: none; }
 .at-scen-meta-row dt {
+  /* Filet de sécurité : un libellé plus long qu'attendu coupe au lieu de venir
+     coller sa valeur. */
+  overflow-wrap: anywhere;
   font-family: var(--font-geist-mono);
   font-size: 10px;
   color: var(--mute);

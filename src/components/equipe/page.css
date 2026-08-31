@@ -299,7 +299,10 @@ html.dark .hc-design .btn-accent:hover{background:#7C3AED}
 .eq-relay-cta .btn{justify-content:center;width:100%}
 
 /* ============ STACK COLLECTIVE ============ */
-.stack-collective{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+/* scroll-margin-top : la section porte désormais l'ancre #competences,
+   cible du renvoi depuis /methode ; sans marge le titre passe sous la nav
+   collante (64 px). */
+.stack-collective{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper-2);scroll-margin-top:80px}
 .stack-rows{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden}
 .stack-row{display:grid;grid-template-columns:220px 1fr;gap:32px;padding:22px 28px;border-bottom:1px solid var(--line-2);align-items:center}
 .stack-row:last-child{border-bottom:none}

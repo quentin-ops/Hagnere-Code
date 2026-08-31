@@ -46,8 +46,8 @@ export const bodyHtml = `
             </svg>
           </div>
           <div class="shero-badge-body">
-            <div class="shero-badge-key">NOM<span class="shero-badge-key-unit">·mé</span></div>
-            <div class="shero-badge-label">Intervenants identifiés au devis</div>
+            <div class="shero-badge-key">Nommé</div>
+            <div class="shero-badge-label">Intervenants au devis</div>
           </div>
         </div>
 
@@ -58,7 +58,7 @@ export const bodyHtml = `
             </svg>
           </div>
           <div class="shero-badge-body">
-            <div class="shero-badge-key">IA<span class="shero-badge-key-unit">·assistée</span></div>
+            <div class="shero-badge-key">IA assistée</div>
             <div class="shero-badge-label">Aucun gain chiffré sans mesure</div>
           </div>
         </div>
@@ -71,8 +71,8 @@ export const bodyHtml = `
             </svg>
           </div>
           <div class="shero-badge-body">
-            <div class="shero-badge-key">€<span class="shero-badge-pulse"></span></div>
-            <div class="shero-badge-label">Forfait mensuel transparent</div>
+            <div class="shero-badge-key">Forfait fixe<span class="shero-badge-pulse"></span></div>
+            <div class="shero-badge-label">Prix mensuel affiché au devis</div>
           </div>
         </div>
       </div>

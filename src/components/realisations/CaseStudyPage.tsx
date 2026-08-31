@@ -27,8 +27,16 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
     "--brand-soft": c.brandSoft,
   };
 
+  // Le slug est porté par la racine pour que la feuille puisse corriger une
+  // couleur de marque trop claire pour du TEXTE sur surface claire : l'or
+  // #C9A96E de Hagnéré Patrimoine tient 1,9:1 sur son pastel. --brand et
+  // --brand-soft arrivent en style inline depuis cases.ts, donc hors d'atteinte
+  // du CSS ; --brand-ink, lui, n'existe que côté feuille.
   return (
-    <InteractiveDesignRoot className="hc-design cs-root" style={brandVars}>
+    <InteractiveDesignRoot
+      className={`hc-design cs-root cs-case-${c.slug}`}
+      style={brandVars}
+    >
       <MainNav />
       <main id="main-content" tabIndex={-1}>
 
@@ -107,51 +115,28 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
         </div>
       </section>
 
-      {/* Context */}
-      <section className="cs-section">
-        <div className="wrap">
-          <div className="cs-section-head">
+      {/* Observation publique — un seul passage sur l'inventaire.
+          La fiche enchaînait quatre sections pour le même contenu : le
+          paragraphe de contexte seul dans un bloc dont la moitié droite était
+          vide, puis trois cartes sombres, puis quatre cartes claires qui
+          reformulaient les mêmes faits, puis les pastilles. Le paragraphe et
+          les cartes se répondent : ils tiennent dans une seule section, et la
+          colonne de droite qui était vide porte désormais les cartes. */}
+      <section className="cs-section cs-observe">
+        <div className="wrap cs-observe-grid">
+          <div className="cs-observe-head">
             <div className="eyebrow">— Observation publique</div>
             <h2>Ce que présente la page liée.</h2>
+            <p className="cs-prose">{c.context}</p>
           </div>
-          <p className="cs-prose">{c.context}</p>
-        </div>
-      </section>
-
-      {/* Problem */}
-      <section className="cs-section cs-section-dark">
-        <div className="wrap">
-          <div className="cs-section-head">
-            <div className="eyebrow on-dark">— Besoins rendus visibles</div>
-            <h2>Comment la page organise l&apos;information.</h2>
-          </div>
-          <div className="cs-cards">
+          <div className="cs-cards cs-observe-cards">
             {c.problem.map((p, i) => (
-              <div className="cs-card cs-card-dark" key={p.title}>
-                <div className="cs-card-num">{String(i + 1).padStart(2, "0")}</div>
-                <h3>{p.title}</h3>
-                <p>{p.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Solution */}
-      <section className="cs-section">
-        <div className="wrap">
-          <div className="cs-section-head">
-            <div className="eyebrow">— Éléments observables</div>
-            <h2>Ce que le visiteur peut contrôler.</h2>
-          </div>
-          <div className="cs-cards">
-            {c.solution.map((s, i) => (
-              <div className="cs-card" key={s.title}>
+              <div className="cs-card" key={p.title}>
                 <div className="cs-card-num cs-card-num-brand">
                   {String(i + 1).padStart(2, "0")}
                 </div>
-                <h3>{s.title}</h3>
-                <p>{s.body}</p>
+                <h3>{p.title}</h3>
+                <p>{p.body}</p>
               </div>
             ))}
           </div>
@@ -178,52 +163,26 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Screenshots */}
-      <section className="cs-section">
-        <div className="wrap">
-          <div className="cs-section-head">
-            <div className="eyebrow">— Illustrations</div>
-            <h2>Représentations schématiques.</h2>
-          </div>
-          <div className="cs-shots">
-            {c.screenshots.map((s) => (
-              <div className="cs-shot" key={s.title}>
-                <div className={`cs-shot-canvas cs-shot-${s.kind}`}>
-                  {/* Placeholder visual, swapped for real screenshots later */}
-                  <div className="cs-shot-chrome">
-                    <span /> <span /> <span />
-                    <div className="cs-shot-url">{c.url.replace(/^https?:\/\//, "")}</div>
-                  </div>
-                  <div className="cs-shot-body">
-                    <div className="cs-shot-logo">{c.brandLogo}</div>
-                    <div className="cs-shot-title">{s.title}</div>
-                    <div className="cs-shot-mock-rows">
-                      <div className="cs-shot-row" />
-                      <div className="cs-shot-row cs-shot-row-short" />
-                      <div className="cs-shot-row" />
-                    </div>
-                  </div>
-                </div>
-                <div className="cs-shot-caption">
-                  <b>{s.title}.</b> {s.caption}
-                </div>
-              </div>
-            ))}
-          </div>
-          <p className="cs-placeholder-note">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M12 9v4M12 17h.01" />
-              <circle cx="12" cy="12" r="10" />
+          {/* La section « Représentations schématiques » occupait ici 1 200 px
+              pour trois fenêtres de navigateur factices — un logo, un titre,
+              trois barres grises — dans une grille à deux colonnes pour trois
+              éléments, donc avec un trou de 570 × 340 px, et suivies d'un
+              neuvième avertissement, « Visuels schématiques, non probants ».
+              Un gabarit vide livré au public coûte plus de crédibilité que
+              l'absence de visuel. Elle est retirée jusqu'à ce qu'il existe de
+              vraies captures. Reste ce qu'elle prétendait offrir : le moyen
+              d'aller vérifier, posé sous l'inventaire qu'il permet de contrôler. */}
+          <a
+            href={c.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cs-verify"
+          >
+            Vérifier cet inventaire sur {c.url.replace(/^https?:\/\//, "")}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
             </svg>
-            Visuels schématiques, non probants. La page publique peut être consultée sur{" "}
-            <a href={c.url} target="_blank" rel="noopener noreferrer">
-              {c.url.replace(/^https?:\/\//, "")}
-            </a>
-            .
-          </p>
+          </a>
         </div>
       </section>
 
@@ -344,8 +303,14 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
               </Link>
             ))}
           </div>
+          {/* Même libellé, même flèche, même paire de boutons que sur
+              /realisations — et le hub est la page qui mène ici en un clic. Le
+              bouton y était violet et devenait noir en arrivant : le seul
+              repère que le visiteur mémorise en parcourant un site changeait de
+              couleur d'une page à la suivante. L'action principale porte
+              `btn-accent` partout, le noir reste aux actions secondaires. */}
           <div className="cs-svc-actions">
-            <Link href="/demarrer-un-projet" className="btn btn-primary btn-lg">
+            <Link href="/demarrer-un-projet" className="btn btn-accent btn-lg">
               {PRIMARY_ACTION_LABEL}
               <svg className="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M13 5l7 7-7 7" />

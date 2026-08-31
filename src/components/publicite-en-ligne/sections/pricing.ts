@@ -53,7 +53,7 @@ export const pricingHtml = `
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Responsable et statut précisés au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Durée et préavis précisés au devis</li>
         </ul>
-        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Cadrer mon démarrage</a></div>
+        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Démarrer Starter</a></div>
       </div>
 
       <!-- SCALE (featured) -->
@@ -76,7 +76,7 @@ export const pricingHtml = `
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Alertes Slack temps réel</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Durée et préavis précisés au devis</li>
         </ul>
-        <div class="plan-cta"><a href="#contact" class="btn btn-accent">Démarrer le scale</a></div>
+        <div class="plan-cta"><a href="#contact" class="btn btn-accent">Démarrer Scale</a></div>
       </div>
 
       <!-- PREMIUM -->
@@ -98,23 +98,28 @@ export const pricingHtml = `
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Bi-hebdo + reporting mensuel board-ready</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Durée et préavis précisés au devis</li>
         </ul>
-        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Parler à un expert</a></div>
+        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Démarrer Premium</a></div>
       </div>
     </div>
 
-    <p style="text-align:center;margin-top:44px;color:var(--mute);font-size:14px">
-      <b style="color:var(--ink)">À vérifier dans chaque devis</b> : hébergement du conteneur, licences, volume de créations, alertes, horaires de surveillance et délai cible d'intervention. Rien n'est ajouté automatiquement par cette page.
-    </p>
-    <p style="text-align:center;margin-top:14px;color:var(--mute);font-size:14px">
-      L'Audit Ads est la <b style="color:var(--ink)">porte d'entrée payante propre à ce service</b>. Il ne se cumule pas
-      avec le Discovery Sprint d'un projet de développement, qui a son propre prix sur la
-      <a href="/tarifs">grille tarifaire</a>&nbsp;: un seul cadrage payant est engagé, celui qui correspond à votre demande.
-      Une éventuelle déduction sur la suite n'existe que si elle est écrite au devis.
-    </p>
-    <p style="text-align:center;margin-top:14px;color:var(--mute);font-size:14px">
-      Pour remettre forfait, pourcentage, hybride et temps passé sur la même base, consultez notre
-      <a href="/guides/prix-gestion-google-ads">guide du coût complet d’une gestion Google Ads</a>.
-    </p>
+    <div class="price-notes">
+      <div class="price-notes-k">Ce que ces prix ne disent pas</div>
+      <p>
+        <b>À vérifier dans chaque devis</b>&nbsp;: hébergement du conteneur, licences, volume de créations,
+        alertes, horaires de surveillance et délai cible d'intervention. Rien n'est ajouté automatiquement
+        par cette page.
+      </p>
+      <p>
+        L'Audit Ads est la <b>porte d'entrée payante propre à ce service</b>. Il ne se cumule pas
+        avec le Discovery Sprint d'un projet de développement, qui a son propre prix sur la
+        <a href="/tarifs">grille tarifaire</a>&nbsp;: un seul cadrage payant est engagé, celui qui correspond à votre demande.
+        Une éventuelle déduction sur la suite n'existe que si elle est écrite au devis.
+      </p>
+      <p>
+        Pour remettre forfait, pourcentage, hybride et temps passé sur la même base, consultez notre
+        <a href="/guides/prix-gestion-google-ads">guide du coût complet d’une gestion Google Ads</a>.
+      </p>
+    </div>
   </div>
 </section>
 `;

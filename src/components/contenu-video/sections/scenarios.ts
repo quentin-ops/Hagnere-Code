@@ -8,8 +8,10 @@ export const scenariosHtml = `
         <h2>Choisissez votre terrain.<br>On <em>s'occupe du reste</em>.</h2>
       </div>
       <div class="right">
-        Trois cas typiques, trois forfaits mensuels. Cliquez sur le vôtre : livrables, cadence et prix s'ajustent.
-        Si votre besoin sort de ces trois, on monte un <b>pack sur-mesure</b>.
+        Trois cas typiques. Cliquez sur le vôtre&nbsp;: livrables et cadence s'ajustent. Le tarif et
+        l'engagement de chaque pack sont détaillés une seule fois, dans la
+        <a href="#tarifs">grille tarifaire</a> plus bas. Si votre besoin sort de ces trois, on monte
+        un <b>pack sur-mesure</b>.
       </div>
     </div>
 
@@ -53,10 +55,10 @@ export const scenariosHtml = `
           </div>
         </div>
         <div class="cv-scen-aside">
-          <div class="cv-scen-price">
-            <div class="cv-scen-price-amount">3 500 <span>€ / mois</span></div>
-            <span class="cv-scen-price-note">HT · ENGAGEMENT 6 MOIS</span>
-          </div>
+          <a class="cv-scen-tarif" href="#tarifs">
+            <span>Tarif et engagement</span>
+            <span class="cv-scen-tarif-go">dans la grille</span>
+          </a>
           <div class="cv-scen-meta">
             <div class="cv-scen-meta-row"><span class="k">Cadence</span><span class="v">1 longue + 4 shorts / semaine</span></div>
             <div class="cv-scen-meta-row"><span class="k">Votre temps</span><span class="v">1 h de tournage / semaine</span></div>
@@ -93,10 +95,10 @@ export const scenariosHtml = `
           </div>
         </div>
         <div class="cv-scen-aside">
-          <div class="cv-scen-price">
-            <div class="cv-scen-price-amount">4 500 <span>€ / mois</span></div>
-            <span class="cv-scen-price-note">HT · ENGAGEMENT 6 MOIS</span>
-          </div>
+          <a class="cv-scen-tarif" href="#tarifs">
+            <span>Tarif et engagement</span>
+            <span class="cv-scen-tarif-go">dans la grille</span>
+          </a>
           <div class="cv-scen-meta">
             <div class="cv-scen-meta-row"><span class="k">Cadence</span><span class="v">1 hero + 3 courts + 5 natives / mois</span></div>
             <div class="cv-scen-meta-row"><span class="k">Votre temps</span><span class="v">1 validation / semaine</span></div>
@@ -133,10 +135,10 @@ export const scenariosHtml = `
           </div>
         </div>
         <div class="cv-scen-aside">
-          <div class="cv-scen-price">
-            <div class="cv-scen-price-amount">6 900 <span>€ / mois</span></div>
-            <span class="cv-scen-price-note">HT · ENGAGEMENT 6 MOIS</span>
-          </div>
+          <a class="cv-scen-tarif" href="#tarifs">
+            <span>Tarif et engagement</span>
+            <span class="cv-scen-tarif-go">dans la grille</span>
+          </a>
           <div class="cv-scen-meta">
             <div class="cv-scen-meta-row"><span class="k">Cadence</span><span class="v">~25 livrables / mois</span></div>
             <div class="cv-scen-meta-row"><span class="k">Votre temps</span><span class="v">Brief mensuel 1 h</span></div>

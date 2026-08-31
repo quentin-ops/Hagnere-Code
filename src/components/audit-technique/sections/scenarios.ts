@@ -1,16 +1,18 @@
 export const scenariosHtml = `
-<!-- SCÉNARIOS AUDIT · 5 tabs interactifs (DD levée · DD M&A · CTO · refonte · SOC2) -->
+<!-- SCÉNARIOS AUDIT · 6 tabs interactifs (DD levée · DD M&A · CTO · refonte · SOC2 · post-incident) -->
 <section class="at-scenarios" data-active="dd-seller">
   <div class="at-scen-bg" aria-hidden="true"></div>
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Quel scénario vous correspond ?</div>
-        <h2>Cinq situations types,<br>cinq plans d'audit chiffrés.</h2>
+        <h2>Six situations types,<br>six plans d'audit chiffrés.</h2>
       </div>
       <div class="right">
-        Ces cinq scénarios servent à préparer le cadrage, sans prétendre refléter une fréquence client.
-        <b>Cliquez sur le vôtre</b>&nbsp;: les questions de périmètre et de livrables changent. Tous les montants de cette section sont indiqués hors taxes.
+        Ces six scénarios servent à préparer le cadrage&nbsp;: ils ne décrivent pas des dossiers clients Hagnéré Code
+        et ne prétendent refléter aucune fréquence. <b>Cliquez sur le vôtre</b>&nbsp;: les questions de périmètre et de
+        livrables changent. Tous les montants de cette section sont indiqués hors taxes, et le délai, les risques et
+        les livrables dépendent des accès, du périmètre et des critères d'acceptation confirmés au devis.
       </div>
     </div>
 
@@ -86,6 +88,26 @@ export const scenariosHtml = `
           </span>
           <span class="at-scen-tab-t">Préparation SOC2 / ISO 27001</span>
           <span class="at-scen-tab-sub">« Un client enterprise exige SOC2 avant signature »</span>
+        </span>
+        <span class="at-scen-tab-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+      </button>
+
+      <!-- Sixième onglet, repris de la section PROBLEMS supprimée le 31/08/2026 :
+           c'était le seul de ses six déclencheurs qui n'avait pas déjà son
+           scénario chiffré ici. Le format et le montant sont ceux de la colonne
+           EXPRESS de la grille tarifaire de cette page (« Post-incident,
+           pré-décision urgente ou second avis ciblé »), pas un prix inventé. -->
+      <button type="button" class="at-scen-tab" data-scenario="post-incident" role="tab" aria-selected="false" id="at-scenario-tab-post-incident" aria-controls="at-scenario-panel-post-incident" tabindex="-1">
+        <span class="at-scen-tab-ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+        </span>
+        <span class="at-scen-tab-body">
+          <span class="at-scen-tab-top">
+            <span class="at-scen-tab-k">Scénario 06</span>
+            <span class="at-scen-tab-d">Durée au devis · 8 k€</span>
+          </span>
+          <span class="at-scen-tab-t">Post-mortem d'incident indépendant</span>
+          <span class="at-scen-tab-sub">« On a eu un incident majeur, il faut un post-mortem indépendant »</span>
         </span>
         <span class="at-scen-tab-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
       </button>
@@ -318,6 +340,53 @@ export const scenariosHtml = `
           <div class="at-scen-aside-foot">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
             On prépare le terrain · l'audit officiel est mené par un tiers habilité
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL post-incident -->
+    <div class="at-scen-panel" data-panel="post-incident" role="tabpanel" tabindex="0" aria-hidden="true" id="at-scenario-panel-post-incident" aria-labelledby="at-scenario-tab-post-incident" hidden>
+      <div class="at-scen-cols">
+        <div class="at-scen-main">
+          <div class="at-scen-kind">Post-incident · analyse indépendante · format Express</div>
+          <h3>« On a eu un incident majeur, il faut un post-mortem indépendant. »</h3>
+          <p class="at-scen-lead">
+            Après une panne longue, une corruption de données ou une compromission, un regard extérieur peut faciliter
+            la collecte des faits et l'analyse des causes dans le cadre que vous autorisez. Nous n'intervenons pas comme
+            expert judiciaire&nbsp;: si le dossier demande une expertise forensique ou juridique, nous le disons et nous
+            vous orientons. Aucune cause racine, aucune reconstitution complète et aucun délai d'analyse ne sont garantis
+            — ils dépendent des journaux encore disponibles et des accès accordés.
+          </p>
+          <div class="at-scen-items-title">CE QU'ON LIVRE</div>
+          <div class="at-scen-items">
+            <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Chronologie des faits reconstituée à partir des seules traces disponibles</div>
+            <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>4 à 5 dimensions couvertes, choisies avec vous selon l'incident</div>
+            <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Causes plausibles, chacune reliée à sa preuve et à son degré de certitude</div>
+            <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Écarts de supervision, d'alerte et de sauvegarde constatés dans le périmètre</div>
+            <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Plan de correction priorisé · Tech Debt P&amp;L simplifié</div>
+            <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Livrable Notion + restitution Loom 15 min, en langage no-blame</div>
+          </div>
+        </div>
+        <div class="at-scen-aside">
+          <div class="at-scen-aside-head">
+            <span class="at-scen-aside-kind">Format Express</span>
+            <div class="at-scen-aside-price">8 000 <span>€ HT · fixe</span></div>
+          </div>
+          <dl class="at-scen-meta">
+            <div class="at-scen-meta-row"><dt>Durée</dt><dd>Confirmée au devis</dd></div>
+            <div class="at-scen-meta-row"><dt>Intervenants</dt><dd>Nommés au devis</dd></div>
+            <div class="at-scen-meta-row"><dt>Confidentialité</dt><dd>Accord validé avant les accès</dd></div>
+            <div class="at-scen-meta-row"><dt>Limite</dt><dd>Ni expertise judiciaire ni forensique réglementée</dd></div>
+            <div class="at-scen-meta-row"><dt>Timing</dt><dd>Selon disponibilités, accès et traces conservées</dd></div>
+          </dl>
+          <a href="#contact" class="btn btn-accent btn-lg at-scen-cta">
+            Cadrer le post-incident
+            <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <div class="at-scen-aside-foot">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
+            Analyse indépendante · aucune cause racine garantie
           </div>
         </div>
       </div>

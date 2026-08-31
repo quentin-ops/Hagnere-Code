@@ -30,10 +30,6 @@ export const bodyHtml = `
         Pas de commission Hagnéré sur vos ventes, pas de dépendance à un outil propriétaire de l'agence.
         <b>Votre code, votre serveur, votre marge.</b>
       </p>
-      <p class="shero-sub" style="margin-top:10px;font-size:13px;opacity:0.78">
-        Les boutiques montrées sur cette page sont des maquettes&nbsp;: « ÆTHER » est une MARQUE FICTIVE, et les
-        prix, commandes et chiffres affichés sont des DONNÉES FICTIVES.
-      </p>
       <div class="shero-cta">
         <a href="#contact" class="btn btn-accent btn-lg">
           Cadrer mon projet e-commerce <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -85,250 +81,262 @@ export const bodyHtml = `
     </div>
 
     <!-- VISUAL: premium storefront mock in studio stage -->
-    <div class="shero-visual ec-stage">
-      <div class="ec-stage-bg" aria-hidden="true"></div>
-      <div class="ec-stage-grid" aria-hidden="true"></div>
+    <!-- La réserve de fiction légende la maquette qu'elle décrit. Elle était
+         glissée entre la proposition de valeur et le bouton principal, au
+         milieu du bloc de vente, à deux colonnes de la boutique « ÆTHER »
+         qu'elle qualifie. Elle reste dans CETTE section : un contrôle exige
+         qu'une raison sociale inventée porte son étiquette de fiction dans la
+         section où elle apparaît (services/mockup-fiction-labels.test.ts). -->
+    <div class="shero-media">
+      <div class="shero-visual ec-stage">
+        <div class="ec-stage-bg" aria-hidden="true"></div>
+        <div class="ec-stage-grid" aria-hidden="true"></div>
 
-      <div class="ec-desktop">
-        <div class="ec-desktop-chrome">
-          <div class="ec-desktop-chrome-l">
-            <span class="ec-desktop-traffic"></span>
-            <span class="ec-desktop-traffic"></span>
-            <span class="ec-desktop-traffic"></span>
+        <div class="ec-desktop">
+          <div class="ec-desktop-chrome">
+            <div class="ec-desktop-chrome-l">
+              <span class="ec-desktop-traffic"></span>
+              <span class="ec-desktop-traffic"></span>
+              <span class="ec-desktop-traffic"></span>
+            </div>
+            <div class="ec-desktop-domain">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+              <span>aether.fr <span class="ec-desktop-path">/ nouvelle-collection</span></span>
+            </div>
+            <div class="ec-desktop-chrome-r">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v14"/></svg>
+            </div>
           </div>
-          <div class="ec-desktop-domain">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
-            <span>aether.fr <span class="ec-desktop-path">/ nouvelle-collection</span></span>
-          </div>
-          <div class="ec-desktop-chrome-r">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v14"/></svg>
+          <div class="ec-desktop-screen">
+          <svg width="100%" viewBox="0 0 540 360" style="display:block" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="heroBg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#F7F3EE"/>
+                <stop offset="100%" stop-color="#EEE8E0"/>
+              </linearGradient>
+              <linearGradient id="productBg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#1a1a1a"/>
+                <stop offset="100%" stop-color="#2d2d2d"/>
+              </linearGradient>
+              <linearGradient id="goldBottle" x1="0.3" y1="0" x2="0.7" y2="1">
+                <stop offset="0%" stop-color="#D4A574"/>
+                <stop offset="50%" stop-color="#B8864C"/>
+                <stop offset="100%" stop-color="#8A5F2E"/>
+              </linearGradient>
+              <linearGradient id="bottleHighlight" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="rgba(255,255,255,0.4)"/>
+                <stop offset="40%" stop-color="rgba(255,255,255,0)"/>
+                <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+              </linearGradient>
+            </defs>
+            <rect width="540" height="360" fill="#fff"/>
+
+            <!-- Top nav bar (editorial / minimal) -->
+            <rect x="0" y="0" width="540" height="38" fill="#fff" stroke="#F0F0F0"/>
+            <text x="24" y="24" font-family="Geist" font-weight="700" font-size="12" fill="#0A0A0A" letter-spacing="3">ÆTHER</text>
+            <g font-family="Geist" font-size="9.5" fill="#525252" letter-spacing="0.02em">
+              <text x="180" y="24">Parfums</text>
+              <text x="228" y="24">Soins</text>
+              <text x="268" y="24">Rituels</text>
+              <text x="314" y="24">Éditorial</text>
+              <text x="362" y="24">Journal</text>
+            </g>
+            <g transform="translate(468 12)" fill="none" stroke="#0A0A0A" stroke-width="1.2">
+              <circle cx="0" cy="6" r="5"/>
+              <path d="M4 10l4 4"/>
+            </g>
+            <g transform="translate(490 8)">
+              <path d="M0 4h12l-1 8H1z" fill="none" stroke="#0A0A0A" stroke-width="1.2"/>
+              <path d="M3 4a3 3 0 016 0" fill="none" stroke="#0A0A0A" stroke-width="1.2"/>
+              <circle cx="11" cy="2" r="3" fill="#6D28D9"/>
+              <text x="11" y="3.8" text-anchor="middle" font-family="Geist Mono" font-weight="700" font-size="4.5" fill="#fff">2</text>
+            </g>
+            <g transform="translate(515 8)" fill="none" stroke="#0A0A0A" stroke-width="1.2">
+              <circle cx="5" cy="5" r="3"/>
+              <path d="M1 13a4 4 0 018 0"/>
+            </g>
+
+            <!-- Editorial hero block -->
+            <rect x="0" y="38" width="540" height="226" fill="url(#heroBg)"/>
+
+            <!-- Eyebrow -->
+            <text x="32" y="76" font-family="Geist Mono" font-size="8.5" fill="#8A5F2E" letter-spacing="0.18em">— NOUVELLE COLLECTION · HIVER 2026</text>
+
+            <!-- Main editorial title (serif-like weight hierarchy via size) -->
+            <text x="32" y="122" font-family="Geist" font-weight="500" font-size="32" fill="#0A0A0A" letter-spacing="-0.03em">Les parfums</text>
+            <text x="32" y="156" font-family="Geist" font-weight="500" font-size="32" fill="#0A0A0A" letter-spacing="-0.03em" font-style="italic">de l'hiver.</text>
+
+            <!-- Supporting text -->
+            <text x="32" y="182" font-family="Geist" font-size="10" fill="#525252">Six compositions inédites, extraites de nos</text>
+            <text x="32" y="196" font-family="Geist" font-size="10" fill="#525252">cuves à Grasse, livrées chez vous.</text>
+
+            <!-- CTAs -->
+            <g transform="translate(32 218)">
+              <rect x="0" y="0" width="108" height="32" rx="0" fill="#0A0A0A"/>
+              <text x="54" y="20" text-anchor="middle" font-family="Geist" font-weight="500" font-size="10" fill="#fff" letter-spacing="0.04em">DÉCOUVRIR</text>
+              <rect x="120" y="0" width="96" height="32" rx="0" fill="none" stroke="#0A0A0A" stroke-width="1"/>
+              <text x="168" y="20" text-anchor="middle" font-family="Geist" font-weight="500" font-size="10" fill="#0A0A0A" letter-spacing="0.04em">LE RITUEL</text>
+            </g>
+
+            <!-- Hero product: gold perfume bottle, detailed -->
+            <g transform="translate(360 68)">
+              <!-- Bottle shadow -->
+              <ellipse cx="70" cy="180" rx="58" ry="6" fill="#000" opacity="0.12"/>
+              <!-- Bottle neck -->
+              <rect x="60" y="14" width="20" height="22" rx="2" fill="url(#goldBottle)"/>
+              <!-- Bottle cap -->
+              <rect x="54" y="0" width="32" height="16" rx="2" fill="#0A0A0A"/>
+              <rect x="54" y="0" width="32" height="4" fill="rgba(255,255,255,0.12)"/>
+              <!-- Bottle body -->
+              <path d="M40 40 Q40 36 48 36 L92 36 Q100 36 100 40 L100 170 Q100 178 92 178 L48 178 Q40 178 40 170 Z" fill="url(#goldBottle)"/>
+              <!-- Bottle highlight -->
+              <path d="M44 42 Q44 40 49 40 L52 40 L52 168 Q52 174 49 174 L44 174 Z" fill="url(#bottleHighlight)"/>
+              <!-- Label -->
+              <rect x="50" y="88" width="40" height="48" fill="rgba(10,10,10,0.85)"/>
+              <text x="70" y="104" text-anchor="middle" font-family="Geist Mono" font-size="5.5" fill="#D4A574" letter-spacing="0.16em">ÆTHER</text>
+              <line x1="58" y1="110" x2="82" y2="110" stroke="#D4A574" stroke-width="0.6"/>
+              <text x="70" y="122" text-anchor="middle" font-family="Geist" font-style="italic" font-size="8" fill="#F7F3EE">Nuit</text>
+              <text x="70" y="132" text-anchor="middle" font-family="Geist Mono" font-size="4.5" fill="rgba(247,243,238,0.6)" letter-spacing="0.12em">50 ML · EDP</text>
+            </g>
+
+            <!-- Divider -->
+            <line x1="0" y1="264" x2="540" y2="264" stroke="#E5E0D8"/>
+
+            <!-- Product grid row -->
+            <g>
+              <rect x="0" y="264" width="180" height="96" fill="#fff"/>
+              <rect x="16" y="276" width="60" height="68" rx="1" fill="#EEE8E0"/>
+              <rect x="40" y="284" width="12" height="52" rx="1" fill="url(#goldBottle)"/>
+              <text x="88" y="292" font-family="Geist" font-weight="500" font-size="10" fill="#0A0A0A">Aube</text>
+              <text x="88" y="306" font-family="Geist" font-size="8.5" fill="#8A8A8A">Eau de parfum · 50 ml</text>
+              <text x="88" y="328" font-family="Geist" font-weight="600" font-size="10" fill="#0A0A0A">138 €</text>
+              <text x="128" y="328" font-family="Geist Mono" font-size="8" fill="#6D28D9">ou 3× 46 €</text>
+            </g>
+
+            <g>
+              <rect x="180" y="264" width="180" height="96" fill="#fff" stroke="#F0F0F0"/>
+              <rect x="196" y="276" width="60" height="68" rx="1" fill="#E8E3DC"/>
+              <rect x="220" y="284" width="12" height="52" rx="1" fill="#C9B08A"/>
+              <text x="268" y="292" font-family="Geist" font-weight="500" font-size="10" fill="#0A0A0A">Brume</text>
+              <text x="268" y="306" font-family="Geist" font-size="8.5" fill="#8A8A8A">Eau de parfum · 50 ml</text>
+              <text x="268" y="328" font-family="Geist" font-weight="600" font-size="10" fill="#0A0A0A">148 €</text>
+              <rect x="268" y="334" width="72" height="14" fill="#F7F3EE"/>
+              <text x="272" y="344" font-family="Geist Mono" font-size="7" fill="#8A5F2E" letter-spacing="0.1em">⊕ AJOUTER</text>
+            </g>
+
+            <g>
+              <rect x="360" y="264" width="180" height="96" fill="#fff"/>
+              <rect x="376" y="276" width="60" height="68" rx="1" fill="#EEE8E0"/>
+              <rect x="400" y="284" width="12" height="52" rx="1" fill="#B8864C"/>
+              <text x="448" y="292" font-family="Geist" font-weight="500" font-size="10" fill="#0A0A0A">Nuit</text>
+              <rect x="478" y="282" width="40" height="13" fill="#0A0A0A"/>
+              <text x="498" y="291" text-anchor="middle" font-family="Geist Mono" font-size="6.5" fill="#fff" letter-spacing="0.1em">NOUVEAU</text>
+              <text x="448" y="306" font-family="Geist" font-size="8.5" fill="#8A8A8A">Extrait · 30 ml</text>
+              <text x="448" y="328" font-family="Geist" font-weight="600" font-size="10" fill="#0A0A0A">218 €</text>
+              <text x="487" y="328" font-family="Geist Mono" font-size="8" fill="#6D28D9">ou 4× 54,50 €</text>
+            </g>
+          </svg>
           </div>
         </div>
-        <div class="ec-desktop-screen">
-        <svg width="100%" viewBox="0 0 540 360" style="display:block" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="heroBg" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#F7F3EE"/>
-              <stop offset="100%" stop-color="#EEE8E0"/>
-            </linearGradient>
-            <linearGradient id="productBg" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#1a1a1a"/>
-              <stop offset="100%" stop-color="#2d2d2d"/>
-            </linearGradient>
-            <linearGradient id="goldBottle" x1="0.3" y1="0" x2="0.7" y2="1">
-              <stop offset="0%" stop-color="#D4A574"/>
-              <stop offset="50%" stop-color="#B8864C"/>
-              <stop offset="100%" stop-color="#8A5F2E"/>
-            </linearGradient>
-            <linearGradient id="bottleHighlight" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="rgba(255,255,255,0.4)"/>
-              <stop offset="40%" stop-color="rgba(255,255,255,0)"/>
-              <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-            </linearGradient>
-          </defs>
-          <rect width="540" height="360" fill="#fff"/>
 
-          <!-- Top nav bar (editorial / minimal) -->
-          <rect x="0" y="0" width="540" height="38" fill="#fff" stroke="#F0F0F0"/>
-          <text x="24" y="24" font-family="Geist" font-weight="700" font-size="12" fill="#0A0A0A" letter-spacing="3">ÆTHER</text>
-          <g font-family="Geist" font-size="9.5" fill="#525252" letter-spacing="0.02em">
-            <text x="180" y="24">Parfums</text>
-            <text x="228" y="24">Soins</text>
-            <text x="268" y="24">Rituels</text>
-            <text x="314" y="24">Éditorial</text>
-            <text x="362" y="24">Journal</text>
-          </g>
-          <g transform="translate(468 12)" fill="none" stroke="#0A0A0A" stroke-width="1.2">
-            <circle cx="0" cy="6" r="5"/>
-            <path d="M4 10l4 4"/>
-          </g>
-          <g transform="translate(490 8)">
-            <path d="M0 4h12l-1 8H1z" fill="none" stroke="#0A0A0A" stroke-width="1.2"/>
-            <path d="M3 4a3 3 0 016 0" fill="none" stroke="#0A0A0A" stroke-width="1.2"/>
-            <circle cx="11" cy="2" r="3" fill="#6D28D9"/>
-            <text x="11" y="3.8" text-anchor="middle" font-family="Geist Mono" font-weight="700" font-size="4.5" fill="#fff">2</text>
-          </g>
-          <g transform="translate(515 8)" fill="none" stroke="#0A0A0A" stroke-width="1.2">
-            <circle cx="5" cy="5" r="3"/>
-            <path d="M1 13a4 4 0 018 0"/>
-          </g>
+        <div class="ec-phone">
+          <div class="ec-phone-side ec-phone-side-left" aria-hidden="true">
+            <span class="ec-phone-btn ec-phone-btn-silent"></span>
+            <span class="ec-phone-btn ec-phone-btn-vol-up"></span>
+            <span class="ec-phone-btn ec-phone-btn-vol-dn"></span>
+          </div>
+          <div class="ec-phone-side ec-phone-side-right" aria-hidden="true">
+            <span class="ec-phone-btn ec-phone-btn-power"></span>
+          </div>
+          <div class="ec-phone-bezel">
+            <div class="ec-phone-island" aria-hidden="true"></div>
+            <div class="ec-phone-screen">
+          <svg width="100%" viewBox="0 0 320 380" style="display:block" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="phoneBg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0F0F10"/>
+                <stop offset="100%" stop-color="#050505"/>
+              </linearGradient>
+              <linearGradient id="mobileGold" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#D4A574"/>
+                <stop offset="100%" stop-color="#8A5F2E"/>
+              </linearGradient>
+              <radialGradient id="glow" cx="0.5" cy="0.4" r="0.6">
+                <stop offset="0%" stop-color="rgba(212,165,116,0.35)"/>
+                <stop offset="100%" stop-color="rgba(212,165,116,0)"/>
+              </radialGradient>
+            </defs>
+            <rect width="320" height="380" fill="url(#phoneBg)"/>
 
-          <!-- Editorial hero block -->
-          <rect x="0" y="38" width="540" height="226" fill="url(#heroBg)"/>
+            <!-- Status bar -->
+            <text x="22" y="26" font-family="Geist Mono" font-weight="700" font-size="10" fill="#fff">9:41</text>
+            <g transform="translate(240 18)">
+              <rect x="0" y="0" width="16" height="10" rx="2" fill="rgba(255,255,255,0.9)"/>
+              <rect x="1" y="1" width="12" height="8" rx="1" fill="#0A0A0A"/>
+              <rect x="1" y="1" width="10" height="8" rx="1" fill="rgba(255,255,255,0.9)"/>
+            </g>
+            <g transform="translate(265 18)" fill="rgba(255,255,255,0.9)">
+              <rect x="0" y="6" width="2" height="4" rx="0.5"/>
+              <rect x="3" y="4" width="2" height="6" rx="0.5"/>
+              <rect x="6" y="2" width="2" height="8" rx="0.5"/>
+              <rect x="9" y="0" width="2" height="10" rx="0.5"/>
+            </g>
 
-          <!-- Eyebrow -->
-          <text x="32" y="76" font-family="Geist Mono" font-size="8.5" fill="#8A5F2E" letter-spacing="0.18em">— NOUVELLE COLLECTION · HIVER 2026</text>
+            <!-- Top bar -->
+            <text x="22" y="56" font-family="Geist" font-weight="700" font-size="14" fill="#fff" letter-spacing="3">ÆTHER</text>
+            <g transform="translate(265 46)" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.3">
+              <circle cx="6" cy="6" r="5"/>
+              <path d="M10 10l4 4"/>
+            </g>
+            <g transform="translate(290 46)" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.3">
+              <path d="M0 4h12l-1 8H1z"/>
+              <path d="M3 4a3 3 0 016 0"/>
+            </g>
 
-          <!-- Main editorial title (serif-like weight hierarchy via size) -->
-          <text x="32" y="122" font-family="Geist" font-weight="500" font-size="32" fill="#0A0A0A" letter-spacing="-0.03em">Les parfums</text>
-          <text x="32" y="156" font-family="Geist" font-weight="500" font-size="32" fill="#0A0A0A" letter-spacing="-0.03em" font-style="italic">de l'hiver.</text>
+            <!-- Hero product card -->
+            <rect x="16" y="74" width="288" height="200" rx="4" fill="#14100B"/>
+            <rect x="16" y="74" width="288" height="200" rx="4" fill="url(#glow)"/>
 
-          <!-- Supporting text -->
-          <text x="32" y="182" font-family="Geist" font-size="10" fill="#525252">Six compositions inédites, extraites de nos</text>
-          <text x="32" y="196" font-family="Geist" font-size="10" fill="#525252">cuves à Grasse, livrées chez vous.</text>
+            <!-- Push notification banner over -->
+            <g transform="translate(22 82)">
+              <rect x="0" y="0" width="276" height="36" rx="10" fill="rgba(255,255,255,0.08)"/>
+              <rect x="0" y="0" width="276" height="36" rx="10" fill="none" stroke="rgba(255,255,255,0.08)"/>
+              <rect x="8" y="8" width="20" height="20" rx="5" fill="#D4A574"/>
+              <text x="14" y="22" text-anchor="middle" font-family="Geist" font-weight="700" font-size="9" fill="#0A0A0A">Æ</text>
+              <text x="34" y="16" font-family="Geist Mono" font-size="7" fill="rgba(255,255,255,0.5)" letter-spacing="0.06em">ÆTHER · IL Y A 2 MIN</text>
+              <text x="34" y="28" font-family="Geist" font-weight="500" font-size="9.5" fill="#fff">Nuit est disponible en précommande.</text>
+            </g>
 
-          <!-- CTAs -->
-          <g transform="translate(32 218)">
-            <rect x="0" y="0" width="108" height="32" rx="0" fill="#0A0A0A"/>
-            <text x="54" y="20" text-anchor="middle" font-family="Geist" font-weight="500" font-size="10" fill="#fff" letter-spacing="0.04em">DÉCOUVRIR</text>
-            <rect x="120" y="0" width="96" height="32" rx="0" fill="none" stroke="#0A0A0A" stroke-width="1"/>
-            <text x="168" y="20" text-anchor="middle" font-family="Geist" font-weight="500" font-size="10" fill="#0A0A0A" letter-spacing="0.04em">LE RITUEL</text>
-          </g>
+            <!-- Bottle composition inside card (shifted) -->
+            <g transform="translate(124 142)">
+              <ellipse cx="20" cy="100" rx="30" ry="4" fill="#000" opacity="0.5"/>
+              <rect x="12" y="6" width="16" height="16" rx="2" fill="url(#mobileGold)"/>
+              <rect x="8" y="0" width="24" height="10" rx="1" fill="#0A0A0A"/>
+              <path d="M0 26 Q0 23 6 23 L34 23 Q40 23 40 26 L40 98 Q40 102 34 102 L6 102 Q0 102 0 98 Z" fill="url(#mobileGold)"/>
+              <rect x="7" y="56" width="26" height="28" fill="rgba(10,10,10,0.85)"/>
+              <text x="20" y="67" text-anchor="middle" font-family="Geist Mono" font-size="4" fill="#D4A574" letter-spacing="0.14em">ÆTHER</text>
+              <text x="20" y="79" text-anchor="middle" font-family="Geist" font-style="italic" font-size="6" fill="#F7F3EE">Nuit</text>
+            </g>
 
-          <!-- Hero product: gold perfume bottle, detailed -->
-          <g transform="translate(360 68)">
-            <!-- Bottle shadow -->
-            <ellipse cx="70" cy="180" rx="58" ry="6" fill="#000" opacity="0.12"/>
-            <!-- Bottle neck -->
-            <rect x="60" y="14" width="20" height="22" rx="2" fill="url(#goldBottle)"/>
-            <!-- Bottle cap -->
-            <rect x="54" y="0" width="32" height="16" rx="2" fill="#0A0A0A"/>
-            <rect x="54" y="0" width="32" height="4" fill="rgba(255,255,255,0.12)"/>
-            <!-- Bottle body -->
-            <path d="M40 40 Q40 36 48 36 L92 36 Q100 36 100 40 L100 170 Q100 178 92 178 L48 178 Q40 178 40 170 Z" fill="url(#goldBottle)"/>
-            <!-- Bottle highlight -->
-            <path d="M44 42 Q44 40 49 40 L52 40 L52 168 Q52 174 49 174 L44 174 Z" fill="url(#bottleHighlight)"/>
-            <!-- Label -->
-            <rect x="50" y="88" width="40" height="48" fill="rgba(10,10,10,0.85)"/>
-            <text x="70" y="104" text-anchor="middle" font-family="Geist Mono" font-size="5.5" fill="#D4A574" letter-spacing="0.16em">ÆTHER</text>
-            <line x1="58" y1="110" x2="82" y2="110" stroke="#D4A574" stroke-width="0.6"/>
-            <text x="70" y="122" text-anchor="middle" font-family="Geist" font-style="italic" font-size="8" fill="#F7F3EE">Nuit</text>
-            <text x="70" y="132" text-anchor="middle" font-family="Geist Mono" font-size="4.5" fill="rgba(247,243,238,0.6)" letter-spacing="0.12em">50 ML · EDP</text>
-          </g>
+            <!-- Meta -->
+            <text x="32" y="302" font-family="Geist" font-weight="500" font-size="13" fill="#fff">Nuit — Extrait 30 ml</text>
+            <text x="32" y="318" font-family="Geist Mono" font-size="9" fill="rgba(255,255,255,0.45)" letter-spacing="0.04em">ÉDITION LIMITÉE · 420 FLACONS</text>
 
-          <!-- Divider -->
-          <line x1="0" y1="264" x2="540" y2="264" stroke="#E5E0D8"/>
+            <!-- Price + CTA -->
+            <text x="32" y="350" font-family="Geist" font-weight="600" font-size="18" fill="#fff" letter-spacing="-0.02em">218 €</text>
+            <text x="78" y="350" font-family="Geist Mono" font-size="10" fill="rgba(212,165,116,0.9)">ou 4× 54,50 € sans frais</text>
 
-          <!-- Product grid row -->
-          <g>
-            <rect x="0" y="264" width="180" height="96" fill="#fff"/>
-            <rect x="16" y="276" width="60" height="68" rx="1" fill="#EEE8E0"/>
-            <rect x="40" y="284" width="12" height="52" rx="1" fill="url(#goldBottle)"/>
-            <text x="88" y="292" font-family="Geist" font-weight="500" font-size="10" fill="#0A0A0A">Aube</text>
-            <text x="88" y="306" font-family="Geist" font-size="8.5" fill="#8A8A8A">Eau de parfum · 50 ml</text>
-            <text x="88" y="328" font-family="Geist" font-weight="600" font-size="10" fill="#0A0A0A">138 €</text>
-            <text x="128" y="328" font-family="Geist Mono" font-size="8" fill="#6D28D9">ou 3× 46 €</text>
-          </g>
-
-          <g>
-            <rect x="180" y="264" width="180" height="96" fill="#fff" stroke="#F0F0F0"/>
-            <rect x="196" y="276" width="60" height="68" rx="1" fill="#E8E3DC"/>
-            <rect x="220" y="284" width="12" height="52" rx="1" fill="#C9B08A"/>
-            <text x="268" y="292" font-family="Geist" font-weight="500" font-size="10" fill="#0A0A0A">Brume</text>
-            <text x="268" y="306" font-family="Geist" font-size="8.5" fill="#8A8A8A">Eau de parfum · 50 ml</text>
-            <text x="268" y="328" font-family="Geist" font-weight="600" font-size="10" fill="#0A0A0A">148 €</text>
-            <rect x="268" y="334" width="72" height="14" fill="#F7F3EE"/>
-            <text x="272" y="344" font-family="Geist Mono" font-size="7" fill="#8A5F2E" letter-spacing="0.1em">⊕ AJOUTER</text>
-          </g>
-
-          <g>
-            <rect x="360" y="264" width="180" height="96" fill="#fff"/>
-            <rect x="376" y="276" width="60" height="68" rx="1" fill="#EEE8E0"/>
-            <rect x="400" y="284" width="12" height="52" rx="1" fill="#B8864C"/>
-            <text x="448" y="292" font-family="Geist" font-weight="500" font-size="10" fill="#0A0A0A">Nuit</text>
-            <rect x="478" y="282" width="40" height="13" fill="#0A0A0A"/>
-            <text x="498" y="291" text-anchor="middle" font-family="Geist Mono" font-size="6.5" fill="#fff" letter-spacing="0.1em">NOUVEAU</text>
-            <text x="448" y="306" font-family="Geist" font-size="8.5" fill="#8A8A8A">Extrait · 30 ml</text>
-            <text x="448" y="328" font-family="Geist" font-weight="600" font-size="10" fill="#0A0A0A">218 €</text>
-            <text x="487" y="328" font-family="Geist Mono" font-size="8" fill="#6D28D9">ou 4× 54,50 €</text>
-          </g>
-        </svg>
+            <rect x="208" y="332" width="96" height="30" rx="4" fill="#D4A574"/>
+            <text x="256" y="351" text-anchor="middle" font-family="Geist" font-weight="600" font-size="11" fill="#0A0A0A" letter-spacing="0.02em">AJOUTER</text>
+          </svg>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="ec-phone">
-        <div class="ec-phone-side ec-phone-side-left" aria-hidden="true">
-          <span class="ec-phone-btn ec-phone-btn-silent"></span>
-          <span class="ec-phone-btn ec-phone-btn-vol-up"></span>
-          <span class="ec-phone-btn ec-phone-btn-vol-dn"></span>
-        </div>
-        <div class="ec-phone-side ec-phone-side-right" aria-hidden="true">
-          <span class="ec-phone-btn ec-phone-btn-power"></span>
-        </div>
-        <div class="ec-phone-bezel">
-          <div class="ec-phone-island" aria-hidden="true"></div>
-          <div class="ec-phone-screen">
-        <svg width="100%" viewBox="0 0 320 380" style="display:block" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="phoneBg" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#0F0F10"/>
-              <stop offset="100%" stop-color="#050505"/>
-            </linearGradient>
-            <linearGradient id="mobileGold" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#D4A574"/>
-              <stop offset="100%" stop-color="#8A5F2E"/>
-            </linearGradient>
-            <radialGradient id="glow" cx="0.5" cy="0.4" r="0.6">
-              <stop offset="0%" stop-color="rgba(212,165,116,0.35)"/>
-              <stop offset="100%" stop-color="rgba(212,165,116,0)"/>
-            </radialGradient>
-          </defs>
-          <rect width="320" height="380" fill="url(#phoneBg)"/>
-
-          <!-- Status bar -->
-          <text x="22" y="26" font-family="Geist Mono" font-weight="700" font-size="10" fill="#fff">9:41</text>
-          <g transform="translate(240 18)">
-            <rect x="0" y="0" width="16" height="10" rx="2" fill="rgba(255,255,255,0.9)"/>
-            <rect x="1" y="1" width="12" height="8" rx="1" fill="#0A0A0A"/>
-            <rect x="1" y="1" width="10" height="8" rx="1" fill="rgba(255,255,255,0.9)"/>
-          </g>
-          <g transform="translate(265 18)" fill="rgba(255,255,255,0.9)">
-            <rect x="0" y="6" width="2" height="4" rx="0.5"/>
-            <rect x="3" y="4" width="2" height="6" rx="0.5"/>
-            <rect x="6" y="2" width="2" height="8" rx="0.5"/>
-            <rect x="9" y="0" width="2" height="10" rx="0.5"/>
-          </g>
-
-          <!-- Top bar -->
-          <text x="22" y="56" font-family="Geist" font-weight="700" font-size="14" fill="#fff" letter-spacing="3">ÆTHER</text>
-          <g transform="translate(265 46)" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.3">
-            <circle cx="6" cy="6" r="5"/>
-            <path d="M10 10l4 4"/>
-          </g>
-          <g transform="translate(290 46)" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.3">
-            <path d="M0 4h12l-1 8H1z"/>
-            <path d="M3 4a3 3 0 016 0"/>
-          </g>
-
-          <!-- Hero product card -->
-          <rect x="16" y="74" width="288" height="200" rx="4" fill="#14100B"/>
-          <rect x="16" y="74" width="288" height="200" rx="4" fill="url(#glow)"/>
-
-          <!-- Push notification banner over -->
-          <g transform="translate(22 82)">
-            <rect x="0" y="0" width="276" height="36" rx="10" fill="rgba(255,255,255,0.08)"/>
-            <rect x="0" y="0" width="276" height="36" rx="10" fill="none" stroke="rgba(255,255,255,0.08)"/>
-            <rect x="8" y="8" width="20" height="20" rx="5" fill="#D4A574"/>
-            <text x="14" y="22" text-anchor="middle" font-family="Geist" font-weight="700" font-size="9" fill="#0A0A0A">Æ</text>
-            <text x="34" y="16" font-family="Geist Mono" font-size="7" fill="rgba(255,255,255,0.5)" letter-spacing="0.06em">ÆTHER · IL Y A 2 MIN</text>
-            <text x="34" y="28" font-family="Geist" font-weight="500" font-size="9.5" fill="#fff">Nuit est disponible en précommande.</text>
-          </g>
-
-          <!-- Bottle composition inside card (shifted) -->
-          <g transform="translate(124 142)">
-            <ellipse cx="20" cy="100" rx="30" ry="4" fill="#000" opacity="0.5"/>
-            <rect x="12" y="6" width="16" height="16" rx="2" fill="url(#mobileGold)"/>
-            <rect x="8" y="0" width="24" height="10" rx="1" fill="#0A0A0A"/>
-            <path d="M0 26 Q0 23 6 23 L34 23 Q40 23 40 26 L40 98 Q40 102 34 102 L6 102 Q0 102 0 98 Z" fill="url(#mobileGold)"/>
-            <rect x="7" y="56" width="26" height="28" fill="rgba(10,10,10,0.85)"/>
-            <text x="20" y="67" text-anchor="middle" font-family="Geist Mono" font-size="4" fill="#D4A574" letter-spacing="0.14em">ÆTHER</text>
-            <text x="20" y="79" text-anchor="middle" font-family="Geist" font-style="italic" font-size="6" fill="#F7F3EE">Nuit</text>
-          </g>
-
-          <!-- Meta -->
-          <text x="32" y="302" font-family="Geist" font-weight="500" font-size="13" fill="#fff">Nuit — Extrait 30 ml</text>
-          <text x="32" y="318" font-family="Geist Mono" font-size="9" fill="rgba(255,255,255,0.45)" letter-spacing="0.04em">ÉDITION LIMITÉE · 420 FLACONS</text>
-
-          <!-- Price + CTA -->
-          <text x="32" y="350" font-family="Geist" font-weight="600" font-size="18" fill="#fff" letter-spacing="-0.02em">218 €</text>
-          <text x="78" y="350" font-family="Geist Mono" font-size="10" fill="rgba(212,165,116,0.9)">ou 4× 54,50 € sans frais</text>
-
-          <rect x="208" y="332" width="96" height="30" rx="4" fill="#D4A574"/>
-          <text x="256" y="351" text-anchor="middle" font-family="Geist" font-weight="600" font-size="11" fill="#0A0A0A" letter-spacing="0.02em">AJOUTER</text>
-        </svg>
-          </div>
-        </div>
-      </div>
+      <p class="ec-stage-note">
+        Les boutiques montrées sur cette page sont des maquettes&nbsp;: « ÆTHER » est une MARQUE FICTIVE,
+        et les prix, commandes et chiffres affichés sont des DONNÉES FICTIVES.
+      </p>
     </div>
   </div>
 </section>

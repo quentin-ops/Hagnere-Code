@@ -29,6 +29,19 @@ const hubServices = HUB_SERVICE_KEYS.map((key) => RELATED_SERVICES[key]).filter(
   (service) => service !== undefined,
 );
 
+/**
+ * Repère chiffré de la bande de statistiques : le volume réellement inventorié.
+ *
+ * La quatrième tuile annonçait « Groupe / aucune intervention Hagnéré Code
+ * revendiquée » — ce n'était pas un chiffre, et c'était le troisième
+ * avertissement en deux écrans. Le compte est calculé à partir des fiches pour
+ * qu'il ne puisse pas mentir quand on ajoute ou retire un élément visible.
+ */
+const INVENTORIED_ELEMENTS = cases.reduce(
+  (total, caseStudy) => total + caseStudy.features.length,
+  0,
+);
+
 export function RealisationsIndexPage() {
   return (
     <InteractiveDesignRoot className="hc-design rl-modern">
@@ -46,19 +59,25 @@ export function RealisationsIndexPage() {
             <div className="rlm-copy reveal">
               <div className="rlm-eyebrow-pill">
                 <span className="rlm-eyebrow-dot" />
-                <span><b>4 produits du groupe</b> · pages publiques · source datée</span>
+                <span><b>4 produits du groupe</b> · 4 inventaires datés</span>
               </div>
               <h1>
                 Les quatre produits du groupe.<br />
                 Des pages publiques à lire{" "}
                 <span className="rlm-accent">avec leur niveau de preuve</span>.
               </h1>
+              {/* Seul endroit de la page où l'appartenance au groupe est
+                  divulguée. Elle l'était auparavant huit fois en cinq écrans —
+                  pastille, chapô des analyses, pastille de carte, chapô des
+                  services, pastille de l'appel à l'action — et la page finissait
+                  par se disqualifier elle-même. La divulgation reste entière,
+                  elle n'est plus répétée : la ligne datée de chaque carte porte
+                  la seule autre information vérifiable. */}
               <p>
                 Ces quatre marques — LMNP.AI, SCI-AI.app, Hagnéré Patrimoine et Hagnéré
                 Investissement — appartiennent au groupe Hagnéré : ce ne sont pas des clients
-                indépendants. Chaque fiche inventorie uniquement ce qui est visible sur leur
-                page publique à la date indiquée, et ne revendique ni la conception, ni la
-                livraison, ni la technologie, ni l&apos;acquisition, ni les résultats.
+                indépendants. Chaque fiche inventorie ce qui est visible sur leur page
+                publique à la date indiquée.
               </p>
               <div className="rlm-actions">
                 <Link href="#cas" className="btn btn-accent btn-lg">
@@ -136,8 +155,8 @@ export function RealisationsIndexPage() {
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M3 12a9 9 0 1118 0 9 9 0 01-18 0z"/><path d="M9 12l2 2 4-4"/></svg>
                 </div>
                 <div className="rlm-stat-body">
-                  <div className="rlm-stat-v">Groupe</div>
-                  <div className="rlm-stat-k">aucune intervention Hagnéré Code revendiquée</div>
+                  <div className="rlm-stat-v">{INVENTORIED_ELEMENTS}</div>
+                  <div className="rlm-stat-k">éléments recensés sur les 4 fiches</div>
                 </div>
               </div>
             </div>
@@ -154,9 +173,7 @@ export function RealisationsIndexPage() {
               </div>
               <div className="right">
                 Chaque carte renvoie vers l&apos;inventaire d&apos;une page publique du
-                groupe, avec son lien source et sa date de consultation. Ces analyses
-                ne sont ni des références client, ni des preuves d&apos;intervention de
-                Hagnéré Code.
+                groupe, avec son lien source et sa date de consultation.
               </div>
             </div>
 
@@ -177,10 +194,12 @@ export function RealisationsIndexPage() {
                   <div className="rlm-case-cover">
                     <div className="rlm-case-cover-glow" aria-hidden="true" />
                     <div className="rlm-case-cover-grid" aria-hidden="true" />
+                    {/* La pastille « PAGE PUBLIQUE » disait ici, en vert et en
+                        capitales, ce que la ligne datée redit 60 px plus bas —
+                        « page publique du groupe consultée le … » — en y
+                        ajoutant la seule chose vérifiable : la date. Une des
+                        deux devait partir ; c'est celle qui n'apprenait rien. */}
                     <div className="rlm-case-logo">{c.brandLogo}</div>
-                    <span className="rlm-case-status">
-                      <span className="rlm-case-status-dot" /> PAGE PUBLIQUE
-                    </span>
                   </div>
 
                   <div className="rlm-case-body">
@@ -234,13 +253,14 @@ export function RealisationsIndexPage() {
                 <div className="eyebrow">— Nos services</div>
                 <h2>Ce que Hagnéré Code<br />conçoit et fait vivre.</h2>
               </div>
-              {/* Le chapeau de la page a déjà dit, une fois et clairement, que ces
-                  quatre marques appartiennent au groupe et que rien n'y est revendiqué.
-                  Le redire ici, puis une troisième fois dans l'appel à l'action final,
-                  ne rendait pas la page plus honnête — seulement plus méfiante. */}
+              {/* Cette réserve-ci reste : elle est la seule à porter une
+                  propriété qu'aucune autre phrase de la page ne couvre — le
+                  bloc « services » suit immédiatement l'analyse de produits du
+                  groupe, et sans elle il se lirait comme du travail fait SUR
+                  eux. Elle tient désormais en une ligne. */}
               <div className="right">
-                Ces pages décrivent notre offre sur ce type de produit. Elles ne
-                portent pas sur les quatre marques analysées ci-dessus.
+                Notre offre sur ce type de produit : ces pages ne portent pas sur
+                les quatre marques analysées ci-dessus.
               </div>
             </div>
 
@@ -262,18 +282,21 @@ export function RealisationsIndexPage() {
               ))}
             </div>
 
-            <div className="rlm-svc-actions reveal">
-              <Link href="/demarrer-un-projet" className="btn btn-accent btn-lg">
-                {PRIMARY_ACTION_LABEL}
-                <svg className="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </Link>
-              <Link href="/services" className="btn btn-ghost btn-lg">
+            {/* Trois boutons ici, puis deux autres dans la carte qui suit
+                immédiatement : cinq actions en moins de 900 px, dont deux
+                boutons pleins de la même couleur pour la même intention. Deux
+                boutons principaux, c'est zéro bouton principal. La conversion
+                est portée par la carte finale, seule ; les six cartes ci-dessus
+                ont déjà chacune leur lien. Restent ici deux liens de texte —
+                dont celui vers les tarifs, qui reste la porte vers « combien ». */}
+            <div className="rlm-svc-more reveal">
+              <Link href="/services">
                 Voir tous les services
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
               </Link>
-              {/* La page n'ouvrait aucune porte vers le prix : un dirigeant qui
-                  arrive ici par la navigation n'avait pas de reponse a « combien ». */}
-              <Link href="/tarifs" className="btn btn-ghost btn-lg">
+              <Link href="/tarifs">
                 Voir les tarifs
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
               </Link>
             </div>
           </div>
@@ -289,21 +312,29 @@ export function RealisationsIndexPage() {
                 <div className="rlm-cta-grid" />
               </div>
 
+              {/* Seule porte de conversion de la page, et seul bouton plein.
+                  Le libellé et la destination sont ceux du reste du site
+                  (`PRIMARY_ACTION_LABEL` → /demarrer-un-projet) : la carte
+                  proposait « Parler de votre projet » vers /contact pendant que
+                  le bloc précédent proposait « Démarrer mon projet » vers
+                  /demarrer-un-projet — deux libellés, deux destinations, une
+                  seule intention. La porte /contact reste ouverte par le
+                  bouton secondaire du héros. */}
               <div className="rlm-cta-body">
                 <div className="rlm-cta-eyebrow">
-                  <span className="rlm-cta-dot" /> NIVEAU DE PREUVE
+                  <span className="rlm-cta-dot" /> HAGNÉRÉ CODE
                 </div>
                 <h2>
-                  Vous voulez vérifier<br />
-                  <span className="rlm-cta-accent">ce qui compte pour votre projet ?</span>
+                  Un logiciel ou un site<br />
+                  <span className="rlm-cta-accent">à concevoir de votre côté ?</span>
                 </h2>
                 <p>
-                  Consultez les pages liées et vérifiez les informations auprès de
-                  leur éditeur.
+                  Décrivez votre besoin en quelques minutes : nous revenons vers
+                  vous avec un périmètre et les questions qui restent à trancher.
                 </p>
                 <div className="rlm-cta-actions">
-                  <Link href="/contact" className="btn btn-accent btn-lg">
-                    Parler de votre projet
+                  <Link href="/demarrer-un-projet" className="btn btn-accent btn-lg">
+                    {PRIMARY_ACTION_LABEL}
                     <svg className="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
                   </Link>
                   <Link href="/methode" className="btn btn-ghost-light btn-lg">

@@ -80,8 +80,16 @@ html.dark {
 .section-head .left h2{margin:0}
 .section-head .right{font-size:16px;line-height:1.6;color:var(--ink-3);max-width:460px;margin:0;padding-bottom:6px}
 .grad-accent{background:linear-gradient(90deg,var(--accent) 0%,#A78BFA 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.strike-bad{position:relative;display:inline-block}
-.strike-bad::after{content:"";position:absolute;left:-3%;right:-3%;top:55%;height:4px;background:var(--accent);transform:rotate(-3deg);border-radius:2px;opacity:0.85}
+/* `.strike-bad` (trait violet en travers du texte) a été retiré : il ne
+   servait plus que sur deux H2 de section, où il retournait le sens de la
+   phrase. La page apprend deux écrans plus haut que barré = abandonné
+   (`.anti-bad`, line-through rouge sur « Régie au TJM extensible ») ; le même
+   geste sur « avant de signer » se lisait « ne signez pas », et sur « n'est
+   pas » il annonçait l'inverse exact des quatre cartes qui suivent. Le barré
+   reste réservé aux étiquettes de ce qu'on abandonne. Pour souligner un
+   segment de titre : `.underline-accent`, soulignement sous la ligne de base,
+   même geste que le mot accentué du hero (`.mhero-title .line em`). */
+.underline-accent{display:inline;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:5px;text-underline-offset:8px;text-decoration-skip-ink:none}
 .reveal{opacity:0;transform:translateY(14px);transition:opacity 0.6s ease,transform 0.6s ease}
 .reveal.in{opacity:1;transform:translateY(0)}
 .reveal-d-1{transition-delay:0.08s}
@@ -185,11 +193,11 @@ html.dark {
 .hc-design .piliers,
 .hc-design .timeline,
 .hc-design .proof,
-.hc-design .friday,
 .hc-design .claude-mult,
 .hc-design .quotes,
 .hc-design .not-for-you,
 .hc-design .faq,
+.hc-design .techchoice,
 .hc-design .mfinal{scroll-margin-top:80px}
 
 /* =====================================================================
@@ -290,6 +298,18 @@ html.dark {
 .tl-friday svg{color:var(--accent);flex-shrink:0}
 .tl-friday-final{background:linear-gradient(90deg,rgba(34,197,94,0.08),transparent);border-left-color:#22C55E;color:#0F5A2E}
 .tl-friday-final svg{color:#22C55E}
+
+/* « Ce que vous voyez / ce que vous décidez » à chaque jalon.
+   Ces deux lignes venaient de la section « Une semaine de sprint », qui
+   redéroulait les six mêmes semaines dans une seconde mise en forme. Elles
+   font la valeur de ce récit — elles disent ce qui se passe pour VOUS à la
+   démo — donc elles rejoignent la timeline plutôt que de vivre dans un
+   second parcours parallèle. */
+.tl-demo{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);display:flex;flex-direction:column;gap:8px}
+.tl-demo-l{display:grid;grid-template-columns:136px 1fr;gap:14px;align-items:baseline;font-size:13px;line-height:1.55;color:var(--mute)}
+.tl-demo-k{font-family:var(--font-geist-mono);font-size:9.5px;letter-spacing:0.08em;font-weight:700;color:var(--ink-4);text-transform:uppercase;line-height:1.5}
+.tl-demo-l.is-decide{color:var(--ink-2)}
+.tl-demo-l.is-decide .tl-demo-k{color:var(--accent-ink)}
 .tl-step.tl-discovery .tl-card{background:linear-gradient(180deg,rgba(109,40,217,0.04),var(--paper) 60%);border-color:rgba(109,40,217,0.2)}
 .tl-step.tl-final .tl-card{background:linear-gradient(180deg,rgba(34,197,94,0.04),var(--paper) 60%);border-color:rgba(34,197,94,0.2)}
 
@@ -327,30 +347,40 @@ html.dark {
 .proof-foot b{color:var(--ink);font-weight:600}
 
 /* =====================================================================
-   FRIDAY (journal des démos)
+   NOS CHOIX TECHNIQUES
+   Remplace la bande à logos `logobar` rapatriée de la page d'accueil : elle
+   déroulait une trentaine d'outils sur ~900 px avec une colonne de gauche
+   vide, et /equipe publiait déjà le même inventaire. Ici, quatre choix et
+   leur raison — donc une grille de cartes, pas un catalogue.
    ===================================================================== */
-.hc-design .friday{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
-.fri-list{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden}
-.fri-row{display:grid;grid-template-columns:80px 1fr;gap:24px;padding:24px 28px;border-bottom:1px solid var(--line-2);align-items:center;transition:background 0.15s}
-.fri-row:last-child{border-bottom:none}
-.fri-row:hover{background:var(--paper-2)}
-.fri-date{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px 0;background:var(--paper-2);border-radius:10px;border:1px solid var(--line);flex-shrink:0}
-.fri-date-d{font-family:var(--font-geist);font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-0.04em;line-height:1}
-.fri-date-m{font-family:var(--font-geist-mono);font-size:10px;color:var(--mute);letter-spacing:0.08em;font-weight:600;margin-top:4px}
-.fri-body{min-width:0}
-.fri-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
-.fri-tag{font-family:var(--font-geist-mono);font-size:9.5px;padding:3px 8px;border-radius:4px;letter-spacing:0.06em;font-weight:700;text-transform:uppercase}
-.fri-tag-saas{background:rgba(109,40,217,0.1);color:var(--accent-ink)}
-.fri-tag-internal{background:rgba(34,197,94,0.1);color:#0F5A2E}
-.fri-tag-vitrine{background:rgba(59,130,246,0.1);color:#1E3A8A}
-.fri-tag-ecom{background:rgba(236,72,153,0.1);color:#831843}
-.fri-meta-sep{color:var(--line);font-family:var(--font-geist-mono);font-size:10px}
-.fri-meta-week, .fri-meta-dur{font-family:var(--font-geist-mono);font-size:10.5px;color:var(--mute);letter-spacing:0.04em;font-weight:500}
-.fri-body h3{font-size:16px;letter-spacing:-0.015em;margin:0 0 6px;font-weight:600}
-.fri-body p{margin:0;color:var(--ink-3);font-size:13.5px;line-height:1.55}
-.fri-body p b{color:var(--ink);font-weight:600}
+.hc-design .techchoice{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+.tc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tc-card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;transition:border-color 0.2s,box-shadow 0.2s}
+.tc-card:hover{border-color:rgba(109,40,217,0.25);box-shadow:0 12px 28px -16px rgba(76,29,149,0.18)}
+.tc-num{font-family:var(--font-geist-mono);font-size:11px;font-weight:700;letter-spacing:0.1em;color:var(--accent-ink);margin-bottom:12px}
+.tc-card h3{font-size:19px;letter-spacing:-0.02em;margin:0 0 10px;font-weight:600}
+.tc-card p{margin:0;color:var(--mute);font-size:14px;line-height:1.6}
+.tc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.tc-tag{font-family:var(--font-geist-mono);font-size:11px;padding:4px 9px;background:var(--paper-2);border:1px solid var(--line);border-radius:5px;color:var(--ink-3);font-weight:500}
+.tc-foot{margin-top:24px;display:flex;align-items:center;gap:20px;padding:22px 26px;background:var(--paper);border:1px dashed var(--line);border-radius:14px}
+.tc-foot-t{flex:1;display:flex;flex-direction:column;gap:4px;font-size:13.5px;line-height:1.55}
+.tc-foot-t b{color:var(--ink);font-weight:600;font-size:14.5px}
+.tc-foot-t span{color:var(--mute)}
+.tc-foot .btn{flex-shrink:0}
 
-.fri-cta{margin-top:32px;display:flex;align-items:center;gap:18px;padding:22px 26px;background:var(--paper);border:1px solid var(--line);border-radius:14px}
+/* =====================================================================
+   CTA « voir la méthode en action » — pied de la timeline
+   La section « FRIDAY / journal des démos » a été supprimée le 31/08/2026 :
+   elle redéroulait les six mêmes semaines que la timeline dans une seconde
+   mise en forme, sous un titre qui annonçait UNE semaine. Ses deux lignes
+   utiles (« ce que vous voyez / ce que vous décidez ») sont passées dans
+   `.tl-demo` ; son CTA a suivi au pied de la timeline. Les classes de liste
+   (.fri-list, .fri-row, .fri-date*, .fri-body*, .fri-meta*, .fri-tag*) sont
+   parties avec elle. `.fri-cta*` garde son nom : `design-shared/responsive.css`
+   cible `.hc-design .fri-cta > .btn`, hors de cette feuille.
+   ===================================================================== */
+
+.fri-cta{margin-top:32px;display:flex;align-items:center;gap:18px;padding:22px 26px;background:var(--paper-2);border:1px solid var(--line);border-radius:14px}
 .fri-cta-ic{width:42px;height:42px;border-radius:11px;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center;flex-shrink:0}
 .fri-cta-body{flex:1;display:flex;flex-direction:column;gap:4px;font-size:13.5px;color:var(--ink-3);line-height:1.5}
 .fri-cta-body b{color:var(--ink);font-weight:600;font-size:14.5px}
@@ -526,7 +556,6 @@ button.faq-q{width:100%;margin:0;background:none;border:0;border-radius:0;color:
   .claude-right{border-left:none;border-top:1px solid #1A1A1A;flex-direction:row;flex-wrap:wrap;padding:28px}
   .claude-stat{flex:1 1 220px}
   .proof-grid{grid-template-columns:repeat(2,1fr)}
-  .fri-row{grid-template-columns:64px 1fr;gap:18px}
   .tl-step{padding-bottom:24px}
   .tl-card{padding:18px 20px}
   .nfy-grid{grid-template-columns:1fr}
@@ -544,6 +573,7 @@ button.faq-q{width:100%;margin:0;background:none;border:0;border-radius:0;color:
   .mhero-bottom{gap:20px;padding-top:18px}
   .mhero-title{font-size:clamp(36px,11vw,52px);padding:8px 0}
   .mhero-title .line em{text-decoration-thickness:4px;text-underline-offset:4px}
+  .underline-accent{text-decoration-thickness:4px;text-underline-offset:5px}
   .mhero-creds{grid-template-columns:1fr 1fr;gap:0;padding-top:8px}
   .mhero-cred{padding:12px 14px;border-right:1px solid rgba(255,255,255,0.08);border-bottom:none}
   .mhero-cred:first-child{padding-top:12px;padding-left:0}
@@ -558,7 +588,7 @@ button.faq-q{width:100%;margin:0;background:none;border:0;border-radius:0;color:
   .mhero-scroll{display:none}
 
   /* Sections padding */
-  .anti, .piliers, .timeline, .proof, .friday, .claude-mult, .quotes, .not-for-you, .faq, .mfinal{padding:72px 0}
+  .anti, .piliers, .timeline, .proof, .claude-mult, .quotes, .not-for-you, .techchoice, .faq, .mfinal{padding:72px 0}
 
   /* Anti */
   .anti-card{padding:22px}
@@ -573,6 +603,7 @@ button.faq-q{width:100%;margin:0;background:none;border:0;border-radius:0;color:
   .tl-marker{width:48px;height:48px}
   .tl-marker span{font-size:16px}
   .tl-card{padding:18px}
+  .tl-demo-l{grid-template-columns:1fr;gap:3px}
   .tl-card h3{font-size:16px}
   .tl-meta{gap:8px}
   .tl-deliv{gap:4px}
@@ -590,14 +621,13 @@ button.faq-q{width:100%;margin:0;background:none;border:0;border-radius:0;color:
   .proof-n{font-size:32px}
 
   /* Friday */
-  .fri-row{padding:18px;grid-template-columns:54px 1fr;gap:14px}
-  .fri-date{padding:8px 0}
-  .fri-date-d{font-size:18px}
-  .fri-date-m{font-size:9px}
-  .fri-body h3{font-size:15px}
-  .fri-meta{gap:6px}
   .fri-cta{flex-direction:column;align-items:flex-start;gap:14px;padding:20px}
   .fri-cta .btn{align-self:stretch;justify-content:center}
+  .tc-grid{grid-template-columns:1fr}
+  .tc-card{padding:20px}
+  .tc-card h3{font-size:17px}
+  .tc-foot{flex-direction:column;align-items:flex-start;gap:14px;padding:20px}
+  .tc-foot .btn{align-self:stretch;justify-content:center}
 
   /* Claude */
   .claude-left{padding:32px 24px}
@@ -640,6 +670,7 @@ button.faq-q{width:100%;margin:0;background:none;border:0;border-radius:0;color:
   .mhero-tag{flex-direction:column;align-items:flex-start;gap:8px}
   .mhero-title{font-size:clamp(26px,8vw,36px);padding:6px 0;letter-spacing:-0.02em;line-height:1.05}
   .mhero-title .line em{text-decoration-thickness:3px;text-underline-offset:3px}
+  .underline-accent{text-decoration-thickness:3px;text-underline-offset:4px}
   .anti-card{padding:18px}
   .pil-card{min-height:auto;padding:22px 18px 18px}
   .proof-grid{grid-template-columns:1fr}
@@ -684,6 +715,3 @@ html.dark .tl-friday-final{color:#4ADE80}
 html.dark .proof-zero .proof-n{color:#4ADE80}
 
 /* Journal du vendredi : tags et statuts aux textes sombres → tons clairs */
-html.dark .fri-tag-internal{color:#4ADE80}
-html.dark .fri-tag-vitrine{color:#93C5FD}
-html.dark .fri-tag-ecom{color:#F9A8D4}

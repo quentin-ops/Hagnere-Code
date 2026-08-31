@@ -8,12 +8,11 @@ export const pricingHtml = `
         <h2>Retainer mensuel<br>ou <em>ponctuel</em>, prix affiché.</h2>
       </div>
       <div class="right">
-        Quatre options, prix hors taxes. <b>Les deux retainers de cette grille sont prévus avec un
+        Cinq options, prix hors taxes. <b>Les trois retainers de cette grille sont prévus avec un
         engagement minimum de 6 mois</b>, confirmé au devis&nbsp;: l'engagement total minimum est donc
-        de 21 000 € HT pour YouTube Founder et de 41 400 € HT pour le Content Retainer. Le pack
-        motion &amp; brand détaillé plus haut dans les scénarios suit la même règle
-        (4 500 € HT / mois, soit 27 000 € HT minimum). Le pack ponctuel est pour tester sans
-        engagement. Au-delà, on monte du sur-mesure.
+        de 21 000 € HT pour YouTube Founder, 27 000 € HT pour Motion &amp; brand et 41 400 € HT pour
+        le Content Retainer. Le pack ponctuel est pour tester sans engagement. Au-delà, on monte
+        du sur-mesure.
       </div>
     </div>
 
@@ -24,6 +23,7 @@ export const pricingHtml = `
         <h3>Vidéo ponctuelle</h3>
         <div class="cv-price-sub">1 vidéo unique, sans engagement mensuel. Pour tester notre patte avant de passer en retainer.</div>
         <div class="cv-price-amount">2 500 <span>€ HT / vidéo</span></div>
+        <div class="cv-price-note">Sans engagement · une vidéo à la fois</div>
         <ul class="cv-price-feats">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>1 brief &amp; 1 script</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Monteur et outil précisés au devis</li>
@@ -48,9 +48,25 @@ export const pricingHtml = `
         <div class="cv-price-cta"><a href="#contact" class="btn btn-ghost">Démarrer</a></div>
       </div>
 
-      <div class="cv-price-card cv-price-card-featured reveal reveal-d-2">
-        <div class="cv-price-badge">OFFRE RECOMMANDÉE</div>
+      <div class="cv-price-card reveal reveal-d-2">
         <div class="cv-price-tag">RETAINER · 02</div>
+        <h3>Motion &amp; brand</h3>
+        <div class="cv-price-sub">Langage visuel de marque pour SaaS et produits : explainer, teaser de lancement, motion de fiche, animations natives web.</div>
+        <div class="cv-price-amount">4 500 <span>€ HT / mois</span></div>
+        <div class="cv-price-note">Engagement minimum 6 mois · 27 000 € HT au total</div>
+        <ul class="cv-price-feats">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>1 vidéo brand hero (30-60 s) / mois</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>3 motion courts (15 s) site / ads</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>5 animations Rive / Lottie natives</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Design system vidéo + déclinaisons 16:9 / 1:1 / 9:16</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Fichiers After Effects sources livrés</li>
+        </ul>
+        <div class="cv-price-cta"><a href="#contact" class="btn btn-ghost">Démarrer</a></div>
+      </div>
+
+      <div class="cv-price-card cv-price-card-featured reveal reveal-d-3">
+        <div class="cv-price-badge">OFFRE RECOMMANDÉE</div>
+        <div class="cv-price-tag">RETAINER · 03</div>
         <h3>Content Retainer</h3>
         <div class="cv-price-sub">Pipeline industriel pour marques DTC / SaaS en scale. ~25 livrables par mois, ads + motion + UGC + product.</div>
         <div class="cv-price-amount">6 900 <span>€ HT / mois</span></div>
@@ -65,7 +81,7 @@ export const pricingHtml = `
         <div class="cv-price-cta"><a href="#contact" class="btn btn-accent">Démarrer ce pack</a></div>
       </div>
 
-      <div class="cv-price-card reveal reveal-d-3">
+      <div class="cv-price-card reveal reveal-d-4">
         <div class="cv-price-tag">SUR-MESURE</div>
         <h3>Studio dédié</h3>
         <div class="cv-price-sub">Besoin complexe, brand film hero, campagne multi-canaux, volumes hors cadre. On cadre, on chiffre au forfait.</div>
@@ -85,7 +101,7 @@ export const pricingHtml = `
     <p class="cv-price-foot">
       Ces cartes sont des exemples d'offre. <b>Intervenants, volume, révisions, licences, rushs et suivi</b>
       doivent être repris dans le devis nominatif, qui confirme aussi la durée d'engagement —
-      au minimum 6 mois pour les deux retainers. Tous les prix de cette page sont indiqués
+      au minimum 6 mois pour les trois retainers. Tous les prix de cette page sont indiqués
       hors taxes&nbsp;; TVA en sus.
     </p>
   </div>

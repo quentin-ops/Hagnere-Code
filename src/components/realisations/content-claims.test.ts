@@ -156,7 +156,28 @@ describe("realization claim safeguards", () => {
     expect(homepageRealizationClaims).toMatch(/appartiennent au\s+groupe Hagnéré/i);
     expect(homepageRealizationClaims).toMatch(/ne sont pas des clients indépendants/i);
     expect(indexSource).toMatch(/appartiennent au groupe Hagnéré/i);
-    expect(indexSource).toMatch(/ne sont ni des références client/i);
+    /*
+     * Cette garde épinglait la phrase « ne sont ni des références client » du
+     * chapô de la section Analyses. Or la page divulguait alors la même chose
+     * à cinq endroits — pastille du héros, chapeau, chapô des analyses,
+     * pastille de carte, chapô des services — et un visiteur lisait huit fois
+     * en cinq écrans qu'on ne prouvait rien. La divulgation a été ramenée au
+     * seul chapeau, là où elle est réellement lue.
+     *
+     * Ce qui doit rester vrai n'est pas cette phrase-là mais la PROPRIÉTÉ
+     * qu'elle portait : le hub dit, au moins une fois, que ces quatre marques
+     * ne sont pas des clients de Hagnéré Code. Épingler la formulation
+     * interdisait toute reformulation, y compris meilleure — et c'est
+     * exactement ce qui empêchait de dégonfler la répétition.
+     *
+     * Le source est aplati avant la recherche : une phrase du JSX est coupée
+     * par les retours à la ligne de l'indentation, et une garde qui casse au
+     * reformatage ne tient rien du tout.
+     */
+    const indexProse = indexSource.replace(/\s+/g, " ");
+    expect(indexProse).toMatch(
+      /ne sont pas des clients indépendants|ne sont ni des références client/i,
+    );
     expect(routeSource).toContain("Produit du groupe Hagnéré");
     expect(ogSource).toContain("Groupe Hagnéré");
 

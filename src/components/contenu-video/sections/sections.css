@@ -28,14 +28,16 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  max-width: 560px;
+  /* La colonne du hero fait ~582 px : à 560 px les libellés étaient tronqués. */
+  max-width: 620px;
 }
 .shero-badge {
   position: relative;
   display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 16px;
+  /* Le libellé passe sur plusieurs lignes : l'icône reste calée en haut. */
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 13px;
   background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
   border: 1px solid var(--line);
   border-radius: 14px;
@@ -58,7 +60,7 @@
   border-color: var(--accent-soft);
 }
 .shero-badge-ic {
-  width: 38px; height: 38px; border-radius: 10px;
+  width: 34px; height: 34px; border-radius: 10px;
   background: var(--accent-soft); color: var(--accent);
   display: grid; place-items: center; flex-shrink: 0;
   transition: transform 0.22s;
@@ -67,18 +69,14 @@
 .shero-badge-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .shero-badge-key {
   font-family: var(--font-geist);
-  font-weight: 700; font-size: 20px;
+  /* 17px : « IA assistée » et « Forfait fixe » tiennent sur une ligne. */
+  font-weight: 700; font-size: 17px;
   letter-spacing: -0.035em;
   color: var(--ink);
   line-height: 1;
   display: inline-flex;
   align-items: baseline;
   gap: 1px;
-}
-.shero-badge-key-unit {
-  font-size: 13px; font-weight: 500;
-  color: var(--accent-ink);
-  letter-spacing: -0.01em;
 }
 .shero-badge-pulse {
   width: 7px; height: 7px; border-radius: 50%;
@@ -96,12 +94,12 @@
   font-family: var(--font-geist-mono);
   font-size: 10px;
   color: var(--mute);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  line-height: 1.3;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.35;
+  /* Le libellé s'enroule plutôt que de se couper aux points de suspension. */
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 
 /* ==================== HERO VISUAL : VIDEO EDITOR + AI PIPELINE + SHORT ==================== */
@@ -1929,6 +1927,26 @@
   flex-direction: column;
   gap: 14px;
 }
+/* Renvoi vers la grille tarifaire : la page n'affiche plus le montant deux
+   fois, ce lien remplace le pavé de prix qui doublonnait la section 09. */
+.cv-scen-tarif {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed var(--line);
+  font-family: var(--font-geist-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+.cv-scen-tarif:hover { color: var(--accent); }
+.cv-scen-tarif:hover .cv-scen-tarif-go { text-decoration: underline; }
+.cv-scen-tarif-go { color: var(--mute); }
+
 .cv-scen-price {
   padding-bottom: 14px;
   border-bottom: 1px dashed var(--line);
@@ -2085,15 +2103,17 @@
 }
 .cv-price-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  /* Cinq offres, cinq colonnes : la grille est la seule référence de prix de
+     la page, elle doit toutes les montrer sur une ligne. */
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
 }
 .cv-price-card {
   position: relative;
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 18px;
-  padding: 28px 24px;
+  padding: 26px 18px;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -2143,7 +2163,9 @@
   font-size: 12.5px;
   color: var(--mute);
   line-height: 1.45;
-  min-height: 34px;
+  /* Colonnes plus étroites : le résumé prend jusqu'à quatre lignes, et les
+     montants doivent rester alignés d'une carte à l'autre. */
+  min-height: 72px;
 }
 .cv-price-card-featured .cv-price-sub { color: rgba(255,255,255,0.55); }
 .cv-price-amount {
@@ -2207,10 +2229,16 @@
 .cv-price-foot b { color: var(--ink); font-weight: 600; }
 
 @media (max-width: 1100px) {
-  .cv-price-grid { grid-template-columns: repeat(2, 1fr); }
+  .cv-price-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .cv-price-card { padding: 28px 24px; }
+  .cv-price-sub { min-height: 34px; }
+  /* Cinq cartes en deux colonnes : la cinquième laissait un demi-rang vide à
+     sa droite. Elle prend la ligne entière plutôt que d'être orpheline. */
+  .cv-price-grid > .cv-price-card:last-child { grid-column: 1 / -1; }
 }
 @media (max-width: 640px) {
   .cv-price-grid { grid-template-columns: 1fr; }
+  .cv-price-grid > .cv-price-card:last-child { grid-column: auto; }
 }
 
 /* ==================== TESTIMONIALS / CASES / TRUST / REFUSE / FAQ / TECH FAQ ==================== */
@@ -2557,15 +2585,16 @@
 
 @media (max-width: 720px) {
   .shero-badges {
-    grid-template-columns: 1fr 1fr;
+    /* Une colonne : les trois promesses s'empilent au lieu d'en masquer une —
+       celle du prix était la première sacrifiée. */
+    grid-template-columns: 1fr;
+    max-width: 100%;
     gap: 8px;
     margin-top: 20px;
   }
   .shero-badge {
+    align-items: center;
     padding: 11px 12px;
-  }
-  .shero-badge:nth-child(n+3) {
-    display: none;
   }
   .cv-stage {
     height: 320px;

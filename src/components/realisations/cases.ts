@@ -70,15 +70,20 @@ export type CaseStudy = {
   status: string;
   engagement: string;
   context: string;
+  /**
+   * Ce que la page liée met en avant, en trois entrées.
+   *
+   * La fiche exposait quatre sections consécutives pour un seul inventaire :
+   * `context` en prose, `problem` en cartes sombres, `solution` en cartes
+   * claires — mêmes faits, autre couleur — puis `features` en pastilles. Le
+   * lecteur croyait avancer et tournait en rond. `solution` a été retiré :
+   * chacune de ses entrées reformulait une entrée de `problem` ou une pastille
+   * de `features`, et rien d'autre. Ce qu'il portait de plus précis (les
+   * formulaires SCI) a été replacé dans `problem`.
+   */
   problem: { title: string; body: string }[];
-  solution: { title: string; body: string }[];
   features: string[];
   highlights: { value: string; label: string }[];
-  screenshots: {
-    title: string;
-    caption: string;
-    kind: "dashboard" | "form" | "report" | "editorial";
-  }[];
   /**
    * Note éditoriale de l'auteur — JAMAIS un avis client.
    *
@@ -140,24 +145,6 @@ export const CASES: Record<string, CaseStudy> = {
         body: "Le site décrit la génération des formulaires 2031 et des tableaux 2033 ainsi que leur transmission EDI par l'intermédiaire d'un partenaire.",
       },
     ],
-    solution: [
-      {
-        title: "Gestion LMNP/LMP présentée en ligne",
-        body: "La page des fonctionnalités rassemble la gestion de plusieurs biens, les amortissements et les contrôles de cohérence annoncés par l'éditeur.",
-      },
-      {
-        title: "Documents fiscaux et EDI affichés",
-        body: "Les formulaires 2031 et tableaux 2033, le fichier FEC et la télétransmission EDI figurent dans le périmètre public de l'offre.",
-      },
-      {
-        title: "Deux niveaux d'accompagnement visibles",
-        body: "Le site permet de comparer une utilisation autonome et une offre incluant la vérification et la signature par un expert-comptable partenaire.",
-      },
-      {
-        title: "Ressources accessibles",
-        body: "Des guides et simulateurs publics complètent la présentation du logiciel et de la fiscalité LMNP/LMP.",
-      },
-    ],
     features: [
       "Comptabilité LMNP/LMP",
       "Gestion multi-biens",
@@ -174,23 +161,6 @@ export const CASES: Record<string, CaseStudy> = {
       { value: "Multi-biens", label: "gestion annoncée" },
       { value: "2031/2033", label: "documents cités" },
       { value: "EDI", label: "transmission affichée" },
-    ],
-    screenshots: [
-      {
-        title: "Fonctionnalités publiques",
-        caption: "Représentation schématique de l'inventaire affiché sur la page du logiciel.",
-        kind: "dashboard",
-      },
-      {
-        title: "Offres publiques",
-        caption: "Représentation schématique des formules Autonomie et Expert-comptable présentées en ligne.",
-        kind: "form",
-      },
-      {
-        title: "Documents et EDI",
-        caption: "Représentation schématique des documents fiscaux et de la transmission annoncés par l'éditeur.",
-        kind: "report",
-      },
     ],
     editorialNote: {
       quote:
@@ -230,7 +200,7 @@ export const CASES: Record<string, CaseStudy> = {
     problem: [
       {
         title: "Distinguer les régimes fiscaux",
-        body: "Le site sépare publiquement le formulaire 2072 pour les SCI non soumises à l'IS et la déclaration 2065 accompagnée des tableaux 2033 pour les SCI au réel simplifié à l'IS.",
+        body: "Le site sépare publiquement le formulaire 2072-C ou 2072-S pour les SCI non soumises à l'IS et la déclaration 2065 accompagnée des tableaux 2033-A à 2033-G pour les SCI au réel simplifié à l'IS.",
       },
       {
         title: "Présenter la gestion des associés",
@@ -239,24 +209,6 @@ export const CASES: Record<string, CaseStudy> = {
       {
         title: "Rendre les documents accessibles",
         body: "Le site annonce la génération de documents comptables, un fichier FEC et la transmission EDI des déclarations concernées.",
-      },
-    ],
-    solution: [
-      {
-        title: "Parcours IR et IS présentés",
-        body: "Les écrans et textes publics adaptent les déclarations citées au régime fiscal sélectionné par l'utilisateur.",
-      },
-      {
-        title: "Associés et parts sociales affichés",
-        body: "Le site décrit des fonctions liées aux associés, aux comptes courants et aux principaux mouvements de parts sociales.",
-      },
-      {
-        title: "Documents fiscaux annoncés",
-        body: "Les formulaires 2072-C ou 2072-S, la déclaration 2065 et les tableaux 2033-A à 2033-G sont explicitement mentionnés sur la page publique.",
-      },
-      {
-        title: "Transmission EDI visible",
-        body: "La transmission EDI et le suivi du traitement figurent dans le périmètre commercial publié par l'éditeur.",
       },
     ],
     features: [
@@ -274,23 +226,6 @@ export const CASES: Record<string, CaseStudy> = {
       { value: "IS", label: "déclaration 2065 citée" },
       { value: "2033", label: "tableaux cités pour l'IS" },
       { value: "EDI", label: "transmission affichée" },
-    ],
-    screenshots: [
-      {
-        title: "Régimes IR et IS",
-        caption: "Représentation schématique de la distinction publiée entre les deux régimes.",
-        kind: "dashboard",
-      },
-      {
-        title: "Associés et parts",
-        caption: "Représentation schématique des fonctions d'associés et de parts citées sur le site.",
-        kind: "form",
-      },
-      {
-        title: "Documents et EDI",
-        caption: "Représentation schématique des déclarations et du suivi EDI annoncés par l'éditeur.",
-        kind: "report",
-      },
     ],
     editorialNote: {
       quote:
@@ -341,24 +276,6 @@ export const CASES: Record<string, CaseStudy> = {
         body: "Les contenus publics conduisent vers un contact, un bilan patrimonial ou une demande de rendez-vous selon la page consultée.",
       },
     ],
-    solution: [
-      {
-        title: "Présentation publique des expertises",
-        body: "La page d'accueil expose les activités, les habilitations affichées par le cabinet et un lien vers le registre public de l'ORIAS.",
-      },
-      {
-        title: "Catalogue de simulateurs",
-        body: "Les outils publics couvrent notamment l'impôt sur le revenu, l'IFI, le crédit et plusieurs sujets d'investissement.",
-      },
-      {
-        title: "Guides patrimoniaux",
-        body: "Une rubrique de ressources propose des guides publics consacrés à la gestion de patrimoine, à l'IFI et au family office.",
-      },
-      {
-        title: "Parcours de contact",
-        body: "Des appels à l'action visibles permettent de demander un bilan, de contacter le cabinet ou de solliciter une rencontre.",
-      },
-    ],
     features: [
       "Présentation des expertises",
       "Informations réglementaires affichées",
@@ -374,23 +291,6 @@ export const CASES: Record<string, CaseStudy> = {
       { value: "ORIAS", label: "lien de vérification affiché" },
       { value: "Simulateurs", label: "outils accessibles" },
       { value: "Guides", label: "ressources publiques" },
-    ],
-    screenshots: [
-      {
-        title: "Page d'accueil",
-        caption: "Représentation schématique de la présentation publique du cabinet et de ses expertises.",
-        kind: "editorial",
-      },
-      {
-        title: "Catalogue de simulateurs",
-        caption: "Représentation schématique de la rubrique d'outils accessible depuis la navigation.",
-        kind: "form",
-      },
-      {
-        title: "Guides et rendez-vous",
-        caption: "Représentation schématique des ressources et appels à l'action visibles sur le site.",
-        kind: "dashboard",
-      },
     ],
     editorialNote: {
       quote:
@@ -441,24 +341,6 @@ export const CASES: Record<string, CaseStudy> = {
         body: "La navigation publique relie les pages de stratégie, de fiscalité, d'étapes et de zone d'investissement aux appels à la prise de rendez-vous.",
       },
     ],
-    solution: [
-      {
-        title: "Présentation du service et des tarifs",
-        body: "La page publique décrit l'accompagnement clé en main, ses principaux jalons et les honoraires affichés par le cabinet.",
-      },
-      {
-        title: "Mini-simulateur visible",
-        body: "L'outil public utilise trois entrées — budget, objectif et horizon — puis affiche une estimation explicitement présentée comme indicative.",
-      },
-      {
-        title: "Ressources de cadrage",
-        body: "Des pages publiques expliquent la stratégie d'investissement, la stratégie fiscale, les étapes du projet, la zone couverte et le choix entre appartement et immeuble.",
-      },
-      {
-        title: "Prise de rendez-vous et partenaires",
-        body: "Le site affiche des liens de rendez-vous et une liste de partenaires par domaine d'intervention.",
-      },
-    ],
     features: [
       "Présentation du service clé en main",
       "Tableau comparatif public",
@@ -474,23 +356,6 @@ export const CASES: Record<string, CaseStudy> = {
       { value: "Simulateur", label: "outil public indicatif" },
       { value: "Ressources", label: "pages explicatives" },
       { value: "RDV", label: "liens visibles" },
-    ],
-    screenshots: [
-      {
-        title: "Présentation du service",
-        caption: "Représentation schématique du périmètre et de la tarification affichés publiquement.",
-        kind: "editorial",
-      },
-      {
-        title: "Mini-simulateur",
-        caption: "Représentation schématique des trois entrées et des réserves visibles sur l'estimation.",
-        kind: "form",
-      },
-      {
-        title: "Ressources et rendez-vous",
-        caption: "Représentation schématique des pages explicatives et appels à l'action publics.",
-        kind: "dashboard",
-      },
     ],
     editorialNote: {
       quote:

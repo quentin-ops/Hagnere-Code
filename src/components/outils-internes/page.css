@@ -91,8 +91,11 @@
   .shero-sub b{color:var(--ink);font-weight:600}
   .shero-cta{margin-top:36px;display:flex;gap:12px;flex-wrap:wrap}
   .shero-meta{margin-top:28px;display:flex;gap:20px;color:var(--mute);font-size:13px;align-items:center;flex-wrap:wrap}
-  .shero-meta .sep{width:4px;height:4px;background:var(--line);border-radius:50%}
-  .shero-meta svg{color:var(--accent);vertical-align:-2px;margin-right:4px}
+  /* Chaque argument est un bloc insécable : sans cela, le flex écrase le span
+     sous sa largeur de contenu et la coche part seule sur la ligne du dessus,
+     détachée de son libellé (visible à 390 px). */
+  .shero-meta>span{display:inline-flex;align-items:center;gap:6px;flex-shrink:0}
+  .shero-meta svg{color:var(--accent);flex-shrink:0;margin-right:0}
 
   .shero-visual{position:relative;height:560px}
   /* Before/After toggle device */
@@ -347,4 +350,12 @@
     .uc-copy .feats{grid-template-columns:1fr}
     .caseh-inner{grid-template-columns:1fr;gap:32px}
     .caseh-metrics{grid-template-columns:1fr}
+  }
+
+  /* Sur téléphone les trois arguments du hero ne tiennent pas côte à côte :
+     on les empile plutôt que de les laisser se réordonner au hasard du wrap.
+     Les puces de séparation n'ont plus de sens en colonne. */
+  @media (max-width: 480px){
+    .shero-meta{flex-direction:column;align-items:flex-start;flex-wrap:nowrap}
+    .shero-meta>span{max-width:100%}
   }

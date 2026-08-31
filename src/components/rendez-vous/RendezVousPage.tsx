@@ -119,27 +119,33 @@ export function RendezVousPage() {
           className="rdv-calendly-section"
         >
           <div className="wrap">
-            {/* Le titre décrit l'écran, pas l'intention de la page. Tant que
-                Calendly n'est pas autorisé, le visiteur a sous les yeux un mur
-                d'autorisation, pas un calendrier : lui annoncer « Réservez
-                directement ci-dessous » promettait une réservation immédiate et
-                un calendrier introuvable. L'état « non autorisé » est aussi
-                celui du rendu serveur, donc du premier affichage et du visiteur
-                sans JavaScript. */}
+            {/* Le titre décrit l'écran, pas l'intention de la page : tant que le
+                service externe n'est pas autorisé, le visiteur a sous les yeux
+                une autorisation à donner, pas un calendrier. L'état « non
+                autorisé » est aussi celui du rendu serveur, donc du premier
+                affichage et du visiteur sans JavaScript.
+
+                Ce que les deux états ne font PLUS : vendre le nom du
+                prestataire. Le corps de cette page — la seule section sous le
+                hero, sur la page de conversion la plus courte du site — ne
+                parlait que d'un outil américain et de cookies, « Calendly »
+                revenant huit fois avant qu'un créneau soit visible. Le nom
+                reste là où il informe (le lien d'ouverture et la mention de
+                repli, dans la carte de consentement), plus dans les titres.
+                L'avertissement RGPD tient désormais en une phrase, ici, et la
+                carte ci-dessous ne le répète plus (voir page.css). */}
             <div className="rdv-calendly-head">
               <CalendlyAuthorisationSwitch
                 pending={
                   <>
-                    <p className="rdv-calendly-eyebrow">— Une étape avant le calendrier</p>
+                    <p className="rdv-calendly-eyebrow">— Choisissez votre créneau</p>
                     <h2 id="rdv-calendly-heading">
-                      Autorisez Calendly, puis choisissez votre créneau.
+                      Affichez le calendrier pour réserver.
                     </h2>
                     <p className="rdv-calendly-sub">
-                      Le calendrier est fourni par Calendly, un service externe :
-                      rien n&apos;est chargé chez lui tant que vous ne l&apos;avez pas
-                      autorisé, dans le bloc ci-dessous. Ce même bloc permet
-                      aussi de nous écrire, de nous appeler ou d&apos;ouvrir Calendly
-                      dans un onglet séparé si vous préférez.
+                      Il est chargé depuis un service externe et dépose des
+                      cookies : rien ne part avant votre accord, révocable à
+                      tout moment depuis « Gérer mes cookies », en pied de page.
                     </p>
                   </>
                 }
@@ -150,13 +156,20 @@ export function RendezVousPage() {
                       Réservez directement ci-dessous.
                     </h2>
                     <p className="rdv-calendly-sub">
-                      Sélectionnez la date et l&apos;heure qui vous conviennent. Calendly
-                      affiche au moment de la réservation les modalités de confirmation,
-                      le lien de visio et les éventuels rappels configurés.
+                      Sélectionnez la date et l&apos;heure qui vous conviennent : les
+                      modalités de confirmation, le lien de visio et les éventuels
+                      rappels s&apos;affichent au moment de la réservation.
                     </p>
                   </>
                 }
               />
+              {/* L'espace rendu par l'avertissement raccourci revient à ce que
+                  la page vend réellement. Reprise de la promesse du hero, hors
+                  de portée du regard une fois descendu jusqu'au calendrier. */}
+              <p className="rdv-calendly-promise">
+                30 minutes avec quelqu&apos;un qui code : le contexte, le périmètre,
+                une fourchette de budget et un calendrier réaliste.
+              </p>
             </div>
             <div className="rdv-calendly-frame">
               <CalendlyEmbed height={780} />

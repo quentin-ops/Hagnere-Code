@@ -565,3 +565,66 @@ button.faq-q{width:100%;margin:0;background:none;border:0;border-radius:0;color:
 html.dark section[aria-labelledby="contact-calendly-heading"] {
   --accent: var(--accent-ink);
 }
+
+/* =========================================================================
+   Raccourci du hero vers le calendrier embarqué (.sf-contact-jump)
+   =========================================================================
+   Le composant partagé `ContactProjectSection` n'émet ces deux classes que
+   lorsqu'il reçoit `contactPageCopy`, c'est-à-dire UNIQUEMENT sur /contact :
+   leurs règles vivent donc avec la page qui les affiche, et non dans la
+   feuille partagée où elles ne serviraient nulle part ailleurs.
+
+   Sans elles, l'ancre héritait du corps de texte : blanche, non soulignée,
+   en `display: inline` — l'icône de calendrier tombait seule sur une ligne et
+   le libellé sur la suivante, sans marge au-dessus. Le seul raccourci du hero
+   vers le calendrier ressemblait à une fin de paragraphe cassée. */
+.sf-contact-jump {
+  margin-top: 20px;
+}
+
+/* `.hc-design a { color: inherit }` (0,1,1) l'emportait sur une règle en
+   `.sf-jump-link` (0,1,0) : le lien restait blanc, comme le corps de texte.
+   Le sélecteur monte donc à 0,2,1. */
+.hc-design a.sf-jump-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  /* Même violet que `.sf-accent` du titre : c'est la couleur de l'accent de
+     cette section sombre, celle à laquelle le visiteur associe déjà l'action. */
+  color: #a78bfa;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  /* Cible tactile : le lien fait 20 px de haut à lui seul. */
+  padding: 10px 0;
+}
+
+.hc-design a.sf-jump-link svg {
+  flex-shrink: 0;
+}
+
+.hc-design a.sf-jump-link:hover,
+.hc-design a.sf-jump-link:focus-visible {
+  color: #fff;
+}
+
+/* =========================================================================
+   Ordre des colonnes de /contact sous 768 px
+   =========================================================================
+   La feuille partagée place le formulaire en premier sur mobile
+   (`.sf-contact--contact-hero .sf-form { order: 1 }`). La carte que la page
+   annonce elle-même comme « LE PLUS RAPIDE » — 30 min avec un développeur,
+   puis l'e-mail et le téléphone — se retrouvait alors à ~1 700 px de
+   défilement, derrière douze champs et une case RGPD de huit lignes. Sur
+   mobile, c'est l'appel et le rendez-vous qui convertissent : on rétablit
+   l'ordre que la page promet, le formulaire devenant l'alternative écrite
+   qu'annonce son propre sous-titre « OU ÉCRIVEZ-NOUS ».
+
+   Sélecteur préfixé par `.hc-design` (0,3,0) pour l'emporter sur la règle
+   partagée (0,2,0) sans dépendre de l'ordre de chargement des feuilles. */
+@media (max-width: 768px) {
+  .hc-design .sf-contact--contact-hero .sf-left { order: 1; }
+  .hc-design .sf-contact--contact-hero .sf-form { order: 2; }
+}

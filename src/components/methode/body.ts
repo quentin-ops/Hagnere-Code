@@ -87,13 +87,12 @@ ${navHtml}
       <li><a class="mtoc-link" href="#piliers" data-section="piliers"><span class="mtoc-num">2.0</span><span class="mtoc-t">Les cinq piliers</span></a></li>
       <li><a class="mtoc-link" href="#timeline" data-section="timeline"><span class="mtoc-num">3.0</span><span class="mtoc-t">Timeline d'un Sprint Fixe</span></a></li>
       <li><a class="mtoc-link" href="#preuves" data-section="preuves"><span class="mtoc-num">4.0</span><span class="mtoc-t">Points de contrôle</span></a></li>
-      <li><a class="mtoc-link" href="#journal" data-section="journal"><span class="mtoc-num">5.0</span><span class="mtoc-t">Une semaine de sprint</span></a></li>
-      <li><a class="mtoc-link" href="#claude" data-section="claude"><span class="mtoc-num">6.0</span><span class="mtoc-t">Claude Code en copilote</span></a></li>
-      <li><a class="mtoc-link" href="#stack" data-section="stack"><span class="mtoc-num">7.0</span><span class="mtoc-t">Notre stack technique</span></a></li>
-      <li><a class="mtoc-link" href="#temoignages" data-section="temoignages"><span class="mtoc-num">8.0</span><span class="mtoc-t">Ce que vous pouvez vérifier</span></a></li>
-      <li><a class="mtoc-link" href="#exclusion" data-section="exclusion"><span class="mtoc-num">9.0</span><span class="mtoc-t">Pas pour vous si…</span></a></li>
-      <li><a class="mtoc-link" href="#faq" data-section="faq"><span class="mtoc-num">10.0</span><span class="mtoc-t">Contre-objections (FAQ)</span></a></li>
-      <li><a class="mtoc-link" href="#cta-finale" data-section="cta-finale"><span class="mtoc-num">11.0</span><span class="mtoc-t">Budgets repères et prochaine étape</span></a></li>
+      <li><a class="mtoc-link" href="#claude" data-section="claude"><span class="mtoc-num">5.0</span><span class="mtoc-t">Claude Code en copilote</span></a></li>
+      <li><a class="mtoc-link" href="#stack" data-section="stack"><span class="mtoc-num">6.0</span><span class="mtoc-t">Nos choix techniques</span></a></li>
+      <li><a class="mtoc-link" href="#temoignages" data-section="temoignages"><span class="mtoc-num">7.0</span><span class="mtoc-t">Ce que vous pouvez vérifier</span></a></li>
+      <li><a class="mtoc-link" href="#exclusion" data-section="exclusion"><span class="mtoc-num">8.0</span><span class="mtoc-t">Pas pour vous si…</span></a></li>
+      <li><a class="mtoc-link" href="#faq" data-section="faq"><span class="mtoc-num">9.0</span><span class="mtoc-t">Contre-objections (FAQ)</span></a></li>
+      <li><a class="mtoc-link" href="#cta-finale" data-section="cta-finale"><span class="mtoc-num">10.0</span><span class="mtoc-t">Budgets repères et prochaine étape</span></a></li>
     </ol>
     <div class="mtoc-foot">
       <span class="mtoc-foot-tag">SPRINT FIXE</span>
@@ -107,7 +106,7 @@ ${navHtml}
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Quatre risques à cadrer</div>
-        <h2>Quatre zones de risque<br>à rendre explicites<br><span class="strike-bad">avant de signer</span>.</h2>
+        <h2>Quatre zones de risque<br>à rendre explicites<br><span class="underline-accent">avant de signer</span>.</h2>
       </div>
       <div class="right">
         Régie, rythme de validation, accès et cadrage peuvent tous fonctionner, à condition que
@@ -435,7 +434,9 @@ ${navHtml}
       <div class="right">
         Exemple illustratif d'un MVP organisé sur <b>6 semaines</b>. Ce n'est ni un devis ni une
         promesse de délai&nbsp;: votre séquence dépend du périmètre, des intégrations, des validations
-        et des ressources précisées lors du cadrage.
+        et des ressources précisées lors du cadrage. Une démo et une mise à jour du journal peuvent
+        être organisées à la cadence convenue&nbsp;; le devis en précise le support, la fréquence et
+        l'emplacement.
       </div>
     </div>
 
@@ -487,6 +488,10 @@ ${navHtml}
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
             CRÉNEAU D'EXEMPLE · premiers écrans cliquables
           </div>
+          <div class="tl-demo">
+            <div class="tl-demo-l"><span class="tl-demo-k">CE QUE VOUS VOYEZ</span><span>Le dépôt ouvert sur votre organisation, la stack en place, et les maquettes devenues des composants réels.</span></div>
+            <div class="tl-demo-l is-decide"><span class="tl-demo-k">CE QUE VOUS DÉCIDEZ</span><span>Valider la direction visuelle pendant qu'elle coûte encore zéro à changer.</span></div>
+          </div>
         </div>
       </div>
 
@@ -510,6 +515,10 @@ ${navHtml}
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
             CRÉNEAU D'EXEMPLE · login fonctionnel à tester
           </div>
+          <div class="tl-demo">
+            <div class="tl-demo-l"><span class="tl-demo-k">CE QUE VOUS VOYEZ</span><span>Un compte créé, connecté puis réinitialisé devant vous, et les permissions appliquées écran par écran.</span></div>
+            <div class="tl-demo-l is-decide"><span class="tl-demo-k">CE QUE VOUS DÉCIDEZ</span><span>Arrêter le découpage des rôles avant qu'il n'irrigue tous les écrans suivants.</span></div>
+          </div>
         </div>
       </div>
 
@@ -532,6 +541,10 @@ ${navHtml}
           <div class="tl-friday">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
             CRÉNEAU D'EXEMPLE · parcours principal à tester
+          </div>
+          <div class="tl-demo">
+            <div class="tl-demo-l"><span class="tl-demo-k">CE QUE VOUS VOYEZ</span><span>Les écrans qui portent la valeur du produit&nbsp;; et, le cas échéant, l'amélioration hors périmètre repérée, chiffrée avant réalisation.</span></div>
+            <div class="tl-demo-l is-decide"><span class="tl-demo-k">CE QUE VOUS DÉCIDEZ</span><span>L'accepter, la refuser, ou en demander une autre.</span></div>
           </div>
         </div>
       </div>
@@ -561,6 +574,10 @@ ${navHtml}
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
             CRÉNEAU D'EXEMPLE · paiements et IA à tester
           </div>
+          <div class="tl-demo">
+            <div class="tl-demo-l"><span class="tl-demo-k">CE QUE VOUS VOYEZ</span><span>Paiements, webhooks et automatisations dès qu'ils fonctionnent, jamais à la fin.</span></div>
+            <div class="tl-demo-l is-decide"><span class="tl-demo-k">CE QUE VOUS DÉCIDEZ</span><span>Sortir une fonctionnalité trop coûteuse pour ce qu'elle apporte&nbsp;: l'arbitrage est acté par avenant, pas subi.</span></div>
+          </div>
         </div>
       </div>
 
@@ -583,6 +600,10 @@ ${navHtml}
           <div class="tl-friday">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
             CRÉNEAU D'EXEMPLE · pré-recette à valider
+          </div>
+          <div class="tl-demo">
+            <div class="tl-demo-l"><span class="tl-demo-k">CE QUE VOUS VOYEZ</span><span>La revue de sécurité, les points liés aux données personnelles et les tests de bout en bout. Un score Lighthouse peut être mesuré en direct, avec son URL, son appareil et ses conditions.</span></div>
+            <div class="tl-demo-l is-decide"><span class="tl-demo-k">CE QUE VOUS DÉCIDEZ</span><span>Ce qui part en production et ce qui attend&nbsp;; un seuil ne devient contractuel que s'il figure au devis.</span></div>
           </div>
         </div>
       </div>
@@ -608,6 +629,10 @@ ${navHtml}
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
             JALON DE LIVRAISON · RECETTE · SOLDE SELON LE DEVIS
           </div>
+          <div class="tl-demo">
+            <div class="tl-demo-l"><span class="tl-demo-k">CE QUE VOUS VOYEZ</span><span>Le déploiement, la formation et la remise de la documentation prévue.</span></div>
+            <div class="tl-demo-l is-decide"><span class="tl-demo-k">CE QUE VOUS DÉCIDEZ</span><span>Prononcer la recette selon le document signé, et retenir ou non le forfait de maintenance mensuel.</span></div>
+          </div>
         </div>
       </div>
 
@@ -623,6 +648,20 @@ ${navHtml}
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="fri-cta reveal">
+      <div class="fri-cta-ic">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      </div>
+      <div class="fri-cta-body">
+        <b>Vous voulez voir la méthode en action ?</b>
+        <span>Les pages publiques de LMNP.AI, SCI-AI, Hagnéré Patrimoine et Hagnéré Investissement peuvent servir de support de discussion. Elles prouvent leur disponibilité et leurs fonctions visibles, pas leur conception, leur exploitation ni leurs résultats.</span>
+      </div>
+      <a href="#contact" class="btn btn-ghost">
+        Demander une démonstration
+        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -693,130 +732,6 @@ ${navHtml}
   </div>
 </section>
 
-<!-- JOURNAL DE SUIVI -->
-<section class="friday" id="journal">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="left">
-        <div class="eyebrow">— Exemple de journal de suivi</div>
-        <h2>À quoi ressemble<br>une semaine<br><span class="grad-accent">de sprint.</span></h2>
-      </div>
-      <div class="right">
-        Une démo et une mise à jour du journal peuvent être organisées à la cadence convenue.
-        Ci-dessous, <b>un exemple illustratif</b> — pas le compte rendu de missions réelles :
-        il montre un format possible, pas un livrable contractuel universel. Le devis précise le
-        support, la fréquence et l'emplacement du journal de votre projet.
-      </div>
-    </div>
-
-    <div class="fri-list reveal">
-      <div class="fri-row">
-        <div class="fri-date">
-          <div class="fri-date-d">1</div>
-          <div class="fri-date-m">SEM.</div>
-        </div>
-        <div class="fri-body">
-          <div class="fri-meta">
-            <span class="fri-tag fri-tag-saas">EXEMPLE · MVP SAAS</span>
-            <span class="fri-meta-sep">·</span>
-            <span class="fri-meta-week">SEMAINE 1 / 6</span>
-            <span class="fri-meta-sep">·</span>
-            <span class="fri-meta-dur">DÉMO DE CADRAGE</span>
-          </div>
-          <h3>Les premiers écrans deviennent cliquables</h3>
-          <p>Ce que vous voyez à cette démo : le repo ouvert sur votre organisation, la stack en place, et les maquettes transformées en composants réels. <b>Ce que vous décidez :</b> valider la direction visuelle pendant qu'elle coûte encore zéro à changer.</p>
-        </div>
-      </div>
-
-      <div class="fri-row">
-        <div class="fri-date">
-          <div class="fri-date-d">3</div>
-          <div class="fri-date-m">SEM.</div>
-        </div>
-        <div class="fri-body">
-          <div class="fri-meta">
-            <span class="fri-tag fri-tag-saas">EXEMPLE · MVP SAAS</span>
-            <span class="fri-meta-sep">·</span>
-            <span class="fri-meta-week">SEMAINE 3 / 6</span>
-            <span class="fri-meta-sep">·</span>
-            <span class="fri-meta-dur">DÉMO MI-PARCOURS</span>
-          </div>
-          <h3>Le cœur métier tourne, les arbitrages se posent</h3>
-          <p>Les écrans qui portent la valeur du produit passent en démo. C'est le rendez-vous où l'équipe a assez de contexte pour proposer une amélioration hors périmètre, chiffrée avant réalisation. <b>Ce que vous décidez :</b> l'accepter, la refuser, ou en demander une autre.</p>
-        </div>
-      </div>
-
-      <div class="fri-row">
-        <div class="fri-date">
-          <div class="fri-date-d">4</div>
-          <div class="fri-date-m">SEM.</div>
-        </div>
-        <div class="fri-body">
-          <div class="fri-meta">
-            <span class="fri-tag fri-tag-ecom">EXEMPLE · ARBITRAGE</span>
-            <span class="fri-meta-sep">·</span>
-            <span class="fri-meta-week">SEMAINE 4 / 6</span>
-            <span class="fri-meta-sep">·</span>
-            <span class="fri-meta-dur">DÉMO D'INTÉGRATIONS</span>
-          </div>
-          <h3>Une démo sert aussi à retirer du périmètre</h3>
-          <p>Paiements, webhooks, automatisations : les briques risquées passent devant vous dès qu'elles fonctionnent, jamais à la fin. Si une fonctionnalité s'avère trop coûteuse pour ce qu'elle apporte, on la sort — et l'arbitrage est acté par avenant, pas subi.</p>
-        </div>
-      </div>
-
-      <div class="fri-row">
-        <div class="fri-date">
-          <div class="fri-date-d">5</div>
-          <div class="fri-date-m">SEM.</div>
-        </div>
-        <div class="fri-body">
-          <div class="fri-meta">
-            <span class="fri-tag fri-tag-vitrine">EXEMPLE · QUALITÉ</span>
-            <span class="fri-meta-sep">·</span>
-            <span class="fri-meta-week">SEMAINE 5 / 6</span>
-            <span class="fri-meta-sep">·</span>
-            <span class="fri-meta-dur">DÉMO DE PRÉ-RECETTE</span>
-          </div>
-          <h3>Les scores se mesurent devant vous</h3>
-          <p>Revue de sécurité, points techniques liés aux données personnelles et tests de bout en bout. Un score Lighthouse peut être mesuré en direct, avec son URL, son appareil et ses conditions&nbsp;; un seuil ne devient contractuel que s'il figure au devis.</p>
-        </div>
-      </div>
-
-      <div class="fri-row">
-        <div class="fri-date">
-          <div class="fri-date-d">6</div>
-          <div class="fri-date-m">SEM.</div>
-        </div>
-        <div class="fri-body">
-          <div class="fri-meta">
-            <span class="fri-tag fri-tag-internal">EXEMPLE · LIVRAISON</span>
-            <span class="fri-meta-sep">·</span>
-            <span class="fri-meta-week">SEMAINE 6 / 6 · LIVRAISON</span>
-            <span class="fri-meta-sep">·</span>
-            <span class="fri-meta-dur">DÉMO DE MISE EN PROD</span>
-          </div>
-          <h3>Le dernier jalon illustratif est celui de la mise en ligne</h3>
-          <p>Déploiement, formation et remise de la documentation prévue. La recette, les corrections et une maintenance éventuelle suivent les modalités du devis&nbsp;; le forfait de maintenance reste optionnel.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="fri-cta reveal">
-      <div class="fri-cta-ic">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-      </div>
-      <div class="fri-cta-body">
-        <b>Vous voulez voir la méthode en action ?</b>
-        <span>Les pages publiques de LMNP.AI, SCI-AI, Hagnéré Patrimoine et Hagnéré Investissement peuvent servir de support de discussion. Elles prouvent leur disponibilité et leurs fonctions visibles, pas leur conception, leur exploitation ni leurs résultats.</span>
-      </div>
-      <a href="#contact" class="btn btn-ghost">
-        Demander une démonstration
-        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
 <!-- CLAUDE CODE COMME MULTIPLICATEUR (pas en pilier #1, comme recommandé par la recherche) -->
 <section class="claude-mult" id="claude">
   <div class="wrap">
@@ -882,6 +797,93 @@ ${navHtml}
           <div class="claude-stat-l">Un membre identifié de l'équipe reste responsable de la validation et de l'intégration.</div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOS CHOIX TECHNIQUES — l'argument, pas le catalogue.
+     La bande à logos rapatriée de la page d'accueil listait une trentaine
+     d'outils sur ~900 px, avec une colonne de gauche vide ; /equipe publie
+     déjà le même inventaire, en huit rangées. Deux pages de conversion pour
+     la même liste, et cette liste ne dit ni ce qu'on vend ni ce qui suit.
+     L'inventaire reste sur /equipe, où il répond à « qui sait faire quoi » ;
+     ici on garde les quatre choix et leur raison. -->
+<section class="techchoice" id="stack">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="left">
+        <div class="eyebrow">— Nos choix techniques</div>
+        <h2>Quatre choix de stack,<br>et la raison<br><span class="grad-accent">de chacun.</span></h2>
+      </div>
+      <div class="right">
+        Pas de framework choisi pour faire joli, pas de socle maison. Le code que nous écrivons
+        doit rester lisible et repris par une autre équipe que la nôtre&nbsp;: c'est le critère
+        qui tranche chacun des choix ci-dessous.
+      </div>
+    </div>
+
+    <div class="tc-grid">
+      <div class="tc-card reveal">
+        <div class="tc-num">01</div>
+        <h3>Next.js et React, pas un socle maison.</h3>
+        <p>Un framework interne vous attacherait à nous&nbsp;: personne d'autre ne saurait le
+        reprendre. Next.js et React sont documentés publiquement et pratiqués partout, donc
+        votre code reste transmissible — y compris à quelqu'un d'autre que nous.</p>
+        <div class="tc-tags">
+          <span class="tc-tag">Next.js 16</span>
+          <span class="tc-tag">React 19</span>
+        </div>
+      </div>
+
+      <div class="tc-card reveal reveal-d-1">
+        <div class="tc-num">02</div>
+        <h3>TypeScript du formulaire jusqu'à la base.</h3>
+        <p>Le même langage côté navigateur et côté serveur&nbsp;: une incohérence de type se voit
+        à la compilation plutôt qu'en production, et un seul profil de développeur traverse toute
+        la pile — donc moins de mains à coordonner sur votre projet.</p>
+        <div class="tc-tags">
+          <span class="tc-tag">TypeScript strict</span>
+          <span class="tc-tag">Types partagés</span>
+        </div>
+      </div>
+
+      <div class="tc-card reveal reveal-d-2">
+        <div class="tc-num">03</div>
+        <h3>Une base SQL, choisie selon votre existant.</h3>
+        <p>PostgreSQL par défaut, MySQL quand nous reprenons un existant qui tourne dessus. Ce
+        sont des moteurs que n'importe quel hébergeur sait sauvegarder, restaurer et migrer&nbsp;:
+        vos données ne dépendent pas d'un fournisseur unique.</p>
+        <div class="tc-tags">
+          <span class="tc-tag">PostgreSQL</span>
+          <span class="tc-tag">MySQL</span>
+        </div>
+      </div>
+
+      <div class="tc-card reveal reveal-d-3">
+        <div class="tc-num">04</div>
+        <h3>Des briques tierces pour ce qui n'est pas votre métier.</h3>
+        <p>Paiement, authentification, envoi d'e-mails, supervision des erreurs&nbsp;: nous
+        intégrons des services établis au lieu de les réécrire. Le budget de développement va
+        à ce qui vous différencie, pas à un formulaire de connexion de plus.</p>
+        <div class="tc-tags">
+          <span class="tc-tag">Stripe</span>
+          <span class="tc-tag">Auth.js</span>
+          <span class="tc-tag">Sentry</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tc-foot reveal">
+      <div class="tc-foot-t">
+        <b>La liste complète, elle, est sur la page équipe.</b>
+        <span>Front, back, données, IA, paiements, infra, sécurité&nbsp;: qui pratique quoi, et
+        avec quels outils. Les versions sont revues régulièrement, les dépendances et les alertes
+        de sécurité surveillées.</span>
+      </div>
+      <a href="/equipe#competences" class="btn btn-ghost">
+        Voir les compétences de l'équipe
+        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -974,7 +976,7 @@ ${navHtml}
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Honnêteté commerciale</div>
-        <h2>Sprint Fixe <span class="strike-bad">n'est pas</span><br>la bonne réponse pour vous<br>dans ces 4 cas.</h2>
+        <h2>Sprint Fixe n'est pas<br>la bonne réponse pour vous<br><span class="grad-accent">dans ces 4 cas.</span></h2>
       </div>
       <div class="right">
         Certaines situations ne correspondent pas à notre modèle. Nous le signalons pendant le

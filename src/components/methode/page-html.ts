@@ -1,5 +1,4 @@
 import { bodyHtml as raw } from "./body";
-import { techStackHtml } from "@/components/design-shared/tech-stack";
 import {
   stripFooter,
   stripFinalCta,
@@ -16,15 +15,13 @@ import {
  * prochaine étape » qui doit survivre, d'où son marqueur `<!-- CLOTURE
  * METHODE ... -->`.
  *
- * La section « Notre stack » est épissée ici, après le chapitre Claude Code :
- * les deux répondent à la même question — avec quels outils vous travaillez —
- * et l'enchaînement va du plus commenté (l'agent IA) au plus vérifiable (les
- * versions et les briques). Elle vient de la page d'accueil, où elle coûtait
- * 1,26 écran à un public qui n'était pas le sien (cf. `tech-stack.ts`).
+ * La bande à logos `techStackHtml`, épissée ici depuis le 28/08/2026, a été
+ * retirée le 31/08/2026 : /equipe publiait déjà le même inventaire d'outils
+ * en huit rangées, si bien que deux pages de conversion consacraient chacune
+ * un grand écran à la même liste, dans deux traitements graphiques différents.
+ * L'inventaire reste sur /equipe, où il répond à une question réelle — qui
+ * sait faire quoi. `body.ts` porte désormais un `#stack` court : quatre choix
+ * de stack et leur raison, avec un renvoi vers /equipe. Plus rien n'est épissé
+ * ici, d'où le `raw` passé directement aux strips.
  */
-const withTechStack = raw.replace(
-  "<!-- CE QUE VOUS POUVEZ VÉRIFIER",
-  `${techStackHtml.trim()}\n\n<!-- CE QUE VOUS POUVEZ VÉRIFIER`,
-);
-
-export const pageHtml = stripNav(stripFooter(stripFinalCta(withTechStack)));
+export const pageHtml = stripNav(stripFooter(stripFinalCta(raw)));

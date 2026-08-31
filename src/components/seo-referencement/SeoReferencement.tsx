@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { type ComponentType } from "react";
 import {
+  AlertTriangle,
   ArrowRight,
   BarChart3,
   BookOpenCheck,
@@ -9,7 +10,9 @@ import {
   ClipboardCheck,
   Compass,
   Gauge,
+  FileSearch,
   GitBranch,
+  History,
   Link2,
   MapPin,
   SearchCheck,
@@ -21,13 +24,14 @@ import { MainNav } from "@/components/design-shared/MainNav";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
 import { InteractiveDesignRoot } from "@/components/design-shared/InteractiveDesignRoot";
 import {
+  SEO_ACTION_LOG_SAMPLE,
+  SEO_AUDIT_SAMPLE,
   SEO_BUDGET_SHAPES,
   SEO_COMMITMENTS,
   SEO_DELIVERABLES,
   SEO_FAQS,
   SEO_FORMATS,
   SEO_PROCESS,
-  SEO_REFUSALS,
   SEO_RELATED_RESOURCES,
   SEO_SCOPE_EXCLUDED,
   SEO_SCOPE_INCLUDED,
@@ -164,7 +168,7 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
           <div className="seo-shell">
             <div className="seo-section-heading seo-section-heading--compact">
               <div>
-                <span className="seo-eyebrow">PREUVES PUBLIQUES</span>
+                <span className="seo-eyebrow">— PREUVES PUBLIQUES</span>
                 <h2 id="seo-proof-title">Vous pouvez vérifier notre travail avant de nous parler.</h2>
               </div>
               <p>
@@ -207,7 +211,7 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
           <div className="seo-shell">
             <div className="seo-section-heading">
               <div>
-                <span className="seo-eyebrow">VOTRE POINT DE DÉPART</span>
+                <span className="seo-eyebrow">— VOTRE POINT DE DÉPART</span>
                 <h2 id="seo-start-title">Quatre problèmes qui se ressemblent, mais ne se corrigent pas pareil.</h2>
               </div>
               <p>
@@ -229,7 +233,7 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
           <div className="seo-shell">
             <div className="seo-section-heading seo-section-heading--dark">
               <div>
-                <span className="seo-eyebrow">CE QUE NOUS TRAVAILLONS</span>
+                <span className="seo-eyebrow">— CE QUE NOUS TRAVAILLONS</span>
                 <h2 id="seo-deliverables-title">Six couches, une seule stratégie.</h2>
               </div>
               <p>
@@ -251,7 +255,7 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
           <div className="seo-shell">
             <div className="seo-section-heading">
               <div>
-                <span className="seo-eyebrow">MÉTHODE</span>
+                <span className="seo-eyebrow">— MÉTHODE</span>
                 <h2 id="seo-process-title">De la donnée disponible à la prochaine décision.</h2>
               </div>
               <p>
@@ -274,11 +278,100 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
           </div>
         </section>
 
-        <section className="seo-section seo-section--soft" aria-labelledby="seo-formats-title">
+        {/*
+          À QUOI RESSEMBLE LE LIVRABLE — ajoutée le 31/08/2026 dans l'écran
+          libéré par la fusion des deux sections de refus. Sur quatorze
+          sections, six mettaient en garde et aucune ne montrait ce que la
+          mission produit. Les deux panneaux reprennent la forme exacte de nos
+          deux livrables permanents (ligne de constat, journal daté) sur un cas
+          FICTIF — voir la réserve sous la grille, et le garde-fou de test qui
+          interdit d'y écrire un résultat.
+        */}
+        <section className="seo-section seo-section--soft" aria-labelledby="seo-sample-title">
           <div className="seo-shell">
             <div className="seo-section-heading">
               <div>
-                <span className="seo-eyebrow">FORMATS D’INTERVENTION</span>
+                <span className="seo-eyebrow">— À QUOI RESSEMBLE LE LIVRABLE</span>
+                <h2 id="seo-sample-title">Un constat, sa preuve, sa priorité — puis la date où il a été traité.</h2>
+              </div>
+              <p>
+                Deux documents accompagnent chaque mission&nbsp;: la liste des
+                constats, reliée à des URL et à ce qui les prouve, et le journal
+                des actions daté, qui permet de relier une variation observée à
+                une cause plausible. Voici leur forme exacte.
+              </p>
+            </div>
+            <div className="seo-sample-grid">
+              <article className="seo-sample-panel">
+                <header className="seo-sample-panel__head">
+                  <span className="seo-sample-panel__label">
+                    <FileSearch size={15} aria-hidden="true" /> EXTRAIT D&apos;AUDIT
+                  </span>
+                  <span className="seo-sample-panel__meta">Constats 07 à 09</span>
+                </header>
+                <ul className="seo-sample-findings">
+                  {SEO_AUDIT_SAMPLE.map((item) => (
+                    <li key={item.url + item.finding}>
+                      <div className="seo-sample-findings__top">
+                        <code>{item.url}</code>
+                        <span className={`seo-sample-prio seo-sample-prio--${item.priority.toLowerCase()}`}>
+                          {item.priority}
+                        </span>
+                      </div>
+                      <strong>{item.finding}</strong>
+                      <dl className="seo-sample-findings__meta">
+                        <div>
+                          <dt>Preuve</dt>
+                          <dd>{item.evidence}</dd>
+                        </div>
+                        <div>
+                          <dt>Effort</dt>
+                          <dd>{item.effort}</dd>
+                        </div>
+                      </dl>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+              <article className="seo-sample-panel">
+                <header className="seo-sample-panel__head">
+                  <span className="seo-sample-panel__label">
+                    <History size={15} aria-hidden="true" /> JOURNAL DES ACTIONS
+                  </span>
+                  <span className="seo-sample-panel__meta">Quatre entrées</span>
+                </header>
+                <ol className="seo-sample-log">
+                  {SEO_ACTION_LOG_SAMPLE.map((entry) => (
+                    <li key={entry.date + entry.action}>
+                      <span className="seo-sample-log__date">{entry.date}</span>
+                      <div>
+                        <strong>{entry.action}</strong>
+                        <span>{entry.intent}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </article>
+            </div>
+            <p className="seo-sample-caption">
+              <AlertTriangle size={15} aria-hidden="true" />
+              <span>
+                <b>GABARIT ILLUSTRATIF</b>{" — "}
+                les URL, les dates et les constats
+                ci-dessus sont fictifs et ne proviennent d&apos;aucune mission.
+                Aucun chiffre de trafic, de position ni de résultat n&apos;y
+                figure&nbsp;: nous ne publions que ce qui peut être relié à un
+                artefact vérifiable.
+              </span>
+            </p>
+          </div>
+        </section>
+
+        <section className="seo-section" aria-labelledby="seo-formats-title">
+          <div className="seo-shell">
+            <div className="seo-section-heading">
+              <div>
+                <span className="seo-eyebrow">— FORMATS D’INTERVENTION</span>
                 <h2 id="seo-formats-title">Le bon niveau d’engagement pour le problème réel.</h2>
               </div>
               <p>
@@ -315,20 +408,21 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
           </div>
         </section>
 
-        <section className="seo-section" id="tarifs" aria-labelledby="seo-budget-title">
+        <section className="seo-section seo-section--soft" id="tarifs" aria-labelledby="seo-budget-title">
           <div className="seo-shell">
             <div className="seo-section-heading">
               <div>
-                <span className="seo-eyebrow">BUDGET &amp; ENGAGEMENT</span>
+                <span className="seo-eyebrow">— BUDGET &amp; ENGAGEMENT</span>
                 <h2 id="seo-budget-title">Trois formes d&apos;engagement, un prix fixé au devis.</h2>
               </div>
               <p>
-                Le référencement est le seul service du studio dont aucun montant
-                n&apos;est publié&nbsp;: ni ici, ni sur la grille tarifaire, qui affiche
-                « Sur devis » sur ses trois colonnes. Le prix dépend du nombre d&apos;URL,
-                des gabarits, des accès disponibles et de la profondeur demandée. Cette
-                page décrit la forme de l&apos;engagement&nbsp;; le montant est établi après
-                le cadrage, dans un devis nominatif.
+                Quatre variables font le prix&nbsp;: le nombre d&apos;URL à traiter, le
+                nombre de gabarits distincts, les accès réellement disponibles à la
+                donnée et la profondeur demandée. Tant qu&apos;elles ne sont pas
+                mesurées, aucun montant n&apos;est publié — le cadrage les établit,
+                puis un devis nominatif fixe le prix, le périmètre et le calendrier.
+                Les trois formes ci-dessous disent laquelle de ces variables pèse le
+                plus dans votre cas.
               </p>
             </div>
             <div className="seo-budget-grid">
@@ -348,33 +442,43 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
               au devis.
             </p>
             <div className="seo-budget-actions">
-              <Link className="seo-button seo-button--secondary" href="/tarifs">
-                Voir la grille tarifaire <ArrowRight size={16} aria-hidden="true" />
+              <Link className="seo-button seo-button--primary" href="/demarrer-un-projet">
+                Faire chiffrer mon cas <ArrowRight size={16} aria-hidden="true" />
               </Link>
-              <Link className="seo-inline-link" href="/demarrer-un-projet">
-                Faire chiffrer mon cas <ArrowRight size={15} aria-hidden="true" />
+              <Link className="seo-button seo-button--secondary" href="/tarifs">
+                Voir la grille tarifaire
               </Link>
             </div>
           </div>
         </section>
 
-        <section className="seo-section seo-section--soft" aria-labelledby="seo-scope-title">
+        {/*
+          PÉRIMÈTRE — fusion des deux sections de refus (31/08/2026).
+          La page enchaînait « Ce que couvre une mission… » (5 croix) puis
+          « La confiance commence par les limites » (6 croix) : onze refus en
+          deux écrans, dont deux dits deux fois. Une seule section porte
+          désormais les deux colonnes ; le lien vers /methode, qui vivait dans
+          la section supprimée, est repris sous la colonne de droite.
+        */}
+        <section className="seo-section" aria-labelledby="seo-scope-title">
           <div className="seo-shell">
             <div className="seo-section-heading">
               <div>
-                <span className="seo-eyebrow">PÉRIMÈTRE</span>
+                <span className="seo-eyebrow">— PÉRIMÈTRE</span>
                 <h2 id="seo-scope-title">Ce que couvre une mission, et ce qu&apos;elle ne couvre pas.</h2>
               </div>
               <p>
-                Cette liste est une base de discussion, pas un socle appliqué à
-                toutes les missions. Le devis nominatif reste la seule référence
-                opposable.
+                Les deux colonnes comptent autant l&apos;une que l&apos;autre&nbsp;:
+                dire ce que nous ne ferons pas protège votre budget autant que
+                notre travail. Cette liste reste une base de discussion, pas un
+                socle appliqué à toutes les missions — le devis nominatif est la
+                seule référence opposable.
               </p>
             </div>
             <div className="seo-scope-grid">
               <div className="seo-scope-col">
                 <div className="seo-scope-badge seo-scope-badge--in">
-                  <Check size={14} aria-hidden="true" /> À CADRER DANS LE DEVIS
+                  <Check size={14} aria-hidden="true" /> DANS LE PÉRIMÈTRE, À CADRER AU DEVIS
                 </div>
                 <ul>
                   {SEO_SCOPE_INCLUDED.map((item) => (
@@ -403,31 +507,10 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
                     </li>
                   ))}
                 </ul>
+                <Link className="seo-inline-link seo-scope-col__link" href="/methode">
+                  Notre méthode de vérification <ArrowRight size={15} aria-hidden="true" />
+                </Link>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="seo-section" aria-labelledby="seo-refusals-title">
-          <div className="seo-shell seo-refusals-layout">
-            <div className="seo-refusals-intro">
-              <span className="seo-eyebrow">CE QUE NOUS NE VENDONS PAS</span>
-              <h2 id="seo-refusals-title">La confiance commence par les limites.</h2>
-              <p>
-                Une page SEO crédible doit dire ce qu’elle ne peut pas garantir.
-                Ces refus protègent votre budget autant que notre travail.
-              </p>
-              <Link className="seo-inline-link" href="/methode">
-                Notre méthode de vérification <ArrowRight size={15} aria-hidden="true" />
-              </Link>
-            </div>
-            <div className="seo-refusals-list">
-              {SEO_REFUSALS.map((item) => (
-                <article key={item.title}>
-                  <span aria-hidden="true"><X size={15} /></span>
-                  <div><h3>{item.title}</h3><p>{item.description}</p></div>
-                </article>
-              ))}
             </div>
           </div>
         </section>
@@ -436,7 +519,7 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
           <div className="seo-shell">
             <div className="seo-section-heading">
               <div>
-                <span className="seo-eyebrow">ENGAGEMENTS &amp; POINTS À CONTRACTUALISER</span>
+                <span className="seo-eyebrow">— ENGAGEMENTS &amp; POINTS À CONTRACTUALISER</span>
                 <h2 id="seo-commitments-title">Ce qui est signé avant de commencer.</h2>
               </div>
               <p>
@@ -458,7 +541,7 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
           <div className="seo-shell">
             <div className="seo-section-heading seo-section-heading--dark">
               <div>
-                <span className="seo-eyebrow">RESSOURCES</span>
+                <span className="seo-eyebrow">— RESSOURCES</span>
                 <h2 id="seo-resources-title">Comprendre avant de demander un devis.</h2>
               </div>
               <p>
@@ -482,7 +565,7 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
         <section className="seo-section seo-section--soft" aria-labelledby="seo-faq-title">
           <div className="seo-shell seo-faq-layout">
             <div className="seo-faq-intro">
-              <span className="seo-eyebrow">QUESTIONS FRÉQUENTES</span>
+              <span className="seo-eyebrow">— QUESTIONS FRÉQUENTES</span>
               <h2 id="seo-faq-title">Des réponses sans promesse magique.</h2>
               <p>
                 Vous avez un cas particulier ? Décrivez le site, le problème et
@@ -503,7 +586,7 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
         <section className="seo-section" aria-labelledby="seo-tech-faq-title">
           <div className="seo-shell seo-faq-layout">
             <div className="seo-faq-intro">
-              <span className="seo-eyebrow">QUESTIONS TECHNIQUES</span>
+              <span className="seo-eyebrow">— QUESTIONS TECHNIQUES</span>
               <h2 id="seo-tech-faq-title">Pour la personne qui relira notre travail.</h2>
               <p>
                 Ces réponses s&apos;adressent au CTO, au lead développeur ou au
@@ -525,7 +608,7 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
         <section className="seo-final-cta">
           <div className="seo-final-cta__grid" aria-hidden="true" />
           <div className="seo-shell seo-final-cta__inner">
-            <span className="seo-eyebrow">PROCHAINE ÉTAPE</span>
+            <span className="seo-eyebrow">— PROCHAINE ÉTAPE</span>
             <h2>Partir de votre site, de vos données et d’un problème précis.</h2>
             <p>
               En trois minutes, décrivez ce qui bloque. Notre objectif est de

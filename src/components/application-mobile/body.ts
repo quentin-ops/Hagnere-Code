@@ -18,46 +18,36 @@ export const bodyHtml = `
     <div>
       <div class="shero-eyebrow"><span class="pill"><span class="dot"></span> Service · Application mobile iOS &amp; Android</span></div>
       <h1>Votre application mobile<br>sur les <span class="accent">stores selon un plan cadré</span>.</h1>
-      <div class="mob-hero-feats">
-        <span class="mob-hero-feat">
-          <span class="mob-hero-feat-ic">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="5" y="2" width="14" height="20" rx="2.5"/>
-              <path d="M11 18h2"/>
-            </svg>
-          </span>
-          <span class="mob-hero-feat-label">iOS + Android d'un seul coup</span>
-        </span>
-        <span class="mob-hero-feat">
-          <span class="mob-hero-feat-ic">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <path d="M9 12l2 2 4-4"/>
-            </svg>
-          </span>
-          <span class="mob-hero-feat-label">Forfait fixe après cadrage</span>
-        </span>
-        <span class="mob-hero-feat">
-          <span class="mob-hero-feat-ic">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="4" y="11" width="16" height="10" rx="2"/>
-              <path d="M8 11V7a4 4 0 018 0"/>
-            </svg>
-          </span>
-          <span class="mob-hero-feat-label">Comptes stores client · droits cadrés</span>
-        </span>
+      <!-- Accroches en texte + séparateur, gabarit « shero-tagline » des pages
+           sœurs. Elles étaient habillées en pastilles à bordure, icône et ombre :
+           trois boutons apparents qui n'en étaient pas, juste sous le H1 et juste
+           au-dessus des vrais boutons. -->
+      <div class="shero-tagline">
+        <span>iOS + Android d'un seul coup</span>
+        <span class="sep"></span>
+        <span>Forfait fixe après cadrage</span>
+        <span class="sep"></span>
+        <span>Comptes stores à votre nom</span>
       </div>
       <p class="shero-sub">
         Une vraie app native iOS et Android livrée en <b>React Native + Expo</b>, publiée
         <b>sous vos comptes App Store &amp; Google Play</b>, branchée à votre stack existante (Stripe, <a href="/services/outils-internes-sur-mesure">votre back-office</a>, votre CRM).
         Vous parlez à quelqu'un qui code — pas à un commercial qui revendra le projet à une équipe que vous ne verrez jamais.
       </p>
+      <!-- Une action, une seule. Le hero opposait « Cadrer mon app en 30 min »
+           (plein) à « Démarrer mon projet (3 min) » (contour) : deux pavés de
+           même taille, empilés à 390 px, qui promettent la même chose avec deux
+           durées contradictoires — et qui reléguaient le libellé standard du
+           site en action secondaire. Le rendez-vous redevient ce qu'il est :
+           une alternative, en lien texte. -->
       <div class="shero-cta">
-        <a href="/rendez-vous" class="btn btn-accent btn-lg">
-          Cadrer mon app en 30 min <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        <a href="/demarrer-un-projet" class="btn btn-accent btn-lg">
+          Démarrer mon projet <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="/demarrer-un-projet" class="btn btn-ghost btn-lg">Démarrer mon projet (3 min)</a>
       </div>
+      <p class="mob-hero-alt">
+        ou <a href="/rendez-vous">réserver 30 min avec un développeur</a>, sans engagement.
+      </p>
       <div class="shero-meta">
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Planning indicatif confirmé au devis</span>
         <span class="sep"></span>

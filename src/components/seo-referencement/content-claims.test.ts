@@ -1,6 +1,8 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import {
+  SEO_ACTION_LOG_SAMPLE,
+  SEO_AUDIT_SAMPLE,
   SEO_BUDGET_SHAPES,
   SEO_COMMITMENTS,
   SEO_RELATED_RESOURCES,
@@ -78,6 +80,34 @@ describe("SEO public page claims", () => {
     expect(published).not.toMatch(/première page garantie|position garantie sur/i);
     expect(published).not.toMatch(/devenir l'une de ces|être cité par l'IA de Google/i);
     expect(contentSource).toMatch(/Aucune position garantie/i);
+  });
+
+  /**
+   * Garde-fou du gabarit de livrable ajouté le 31/08/2026 (section « À quoi
+   * ressemble le livrable »). Ces deux panneaux montrent la FORME de nos
+   * livrables sur un cas fictif : ils n'ont le droit de contenir ni chiffre de
+   * trafic, ni position, ni gain — sinon ils deviennent un faux résultat
+   * client, ce que la règle d'or interdit. La réserve doit rester lisible sous
+   * la grille, pas seulement dans un commentaire de code.
+   */
+  it("montre un gabarit de livrable sans jamais publier de résultat", () => {
+    const sample = [...SEO_AUDIT_SAMPLE, ...SEO_ACTION_LOG_SAMPLE]
+      .map((entry) => Object.values(entry).join(" "))
+      .join("\n");
+
+    // Ni trafic, ni position, ni conversion chiffrés.
+    expect(sample).not.toMatch(/\b\d+\s*(?:%|clics?|visites?|positions?|places?)\b/i);
+    expect(sample).not.toMatch(/\b(?:gain|hausse|progression|\+\s*\d)/i);
+    expect(sample).not.toMatch(/(?:top|première page|1re position)/i);
+
+    // Aucun domaine réel : les URL du gabarit restent des chemins relatifs.
+    for (const finding of SEO_AUDIT_SAMPLE) {
+      expect(finding.url.startsWith("/"), `${finding.url} doit rester un chemin`).toBe(true);
+    }
+
+    // La réserve est publiée, pas seulement commentée.
+    expect(source).toContain("GABARIT ILLUSTRATIF");
+    expect(source).toMatch(/fictifs et ne proviennent d&apos;aucune mission/);
   });
 
   it("renvoie vers la publicité en ligne, en réciprocité du lien inverse", () => {

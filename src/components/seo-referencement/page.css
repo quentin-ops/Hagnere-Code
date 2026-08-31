@@ -421,7 +421,6 @@ html.dark .seo-diagnostic__status {
 }
 
 .seo-section-heading h2,
-.seo-refusals-intro h2,
 .seo-faq-intro h2 {
   max-width: 770px;
   margin: 13px 0 0;
@@ -432,7 +431,6 @@ html.dark .seo-diagnostic__status {
 }
 
 .seo-section-heading > p,
-.seo-refusals-intro > p,
 .seo-faq-intro > p {
   margin: 0;
   font-size: 16px;
@@ -699,63 +697,8 @@ html.dark .seo-diagnostic__status {
   text-decoration: none;
 }
 
-.seo-refusals-layout {
-  display: grid;
-  grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
-  gap: clamp(50px, 8vw, 110px);
-  align-items: start;
-}
-
-.seo-refusals-intro {
-  position: sticky;
-  top: 104px;
-}
-
-.seo-refusals-intro > p,
 .seo-faq-intro > p {
   margin-top: 20px;
-}
-
-.seo-refusals-intro .seo-inline-link {
-  margin-top: 25px;
-}
-
-.seo-refusals-list {
-  border-top: 1px solid var(--seo-line);
-}
-
-.seo-refusals-list article {
-  display: grid;
-  grid-template-columns: 34px minmax(0, 1fr);
-  gap: 16px;
-  padding: 24px 0;
-  border-bottom: 1px solid var(--seo-line);
-}
-
-.seo-refusals-list article > span {
-  display: grid;
-  width: 28px;
-  height: 28px;
-  place-items: center;
-  border-radius: 50%;
-  background: #fee2e2;
-  color: #b91c1c;
-}
-
-html.dark .seo-refusals-list article > span {
-  background: #3b161c;
-  color: #fca5a5;
-}
-
-.seo-refusals-list h3 {
-  margin: 1px 0 6px;
-  font-size: 18px;
-}
-
-.seo-refusals-list p {
-  margin-bottom: 0;
-  font-size: 14px;
-  line-height: 1.6;
 }
 
 .seo-resources {
@@ -971,7 +914,6 @@ html.dark .seo-refusals-list article > span {
   }
 
   .seo-section-heading,
-  .seo-refusals-layout,
   .seo-faq-layout {
     grid-template-columns: 1fr;
     gap: 26px;
@@ -981,7 +923,6 @@ html.dark .seo-refusals-list article > span {
     max-width: 700px;
   }
 
-  .seo-refusals-intro,
   .seo-faq-intro {
     position: static;
   }
@@ -1083,11 +1024,6 @@ html.dark .seo-refusals-list article > span {
     gap: 8px;
   }
 
-  .seo-refusals-list article {
-    grid-template-columns: 30px minmax(0, 1fr);
-    gap: 12px;
-  }
-
   .seo-faq-list details p {
     padding-right: 0;
   }
@@ -1123,7 +1059,6 @@ html.dark .seo-refusals-list article > span {
   }
 
   .seo-section-heading h2,
-  .seo-refusals-intro h2,
   .seo-faq-intro h2 {
     font-size: 33px;
   }
@@ -1166,12 +1101,16 @@ html.dark .seo-refusals-list article > span {
   line-height: 1.62;
 }
 
-.seo-budget-note {
-  margin: 26px 0 0;
-  padding: 18px 20px;
+.seo-public-page .seo-budget-note {
+  max-width: 74ch;
+  margin: 48px 0 0;
+  padding: 20px 22px;
   border: 1px solid var(--seo-line);
   border-radius: 14px;
-  background: var(--seo-paper-soft);
+  /* Filet d'accent en ombre interne plutôt qu'en `border-left` : il épouse le
+     rayon de l'encadré au lieu de laisser un onglet à l'angle. */
+  box-shadow: inset 3px 0 0 var(--seo-accent);
+  background: var(--seo-paper);
   color: var(--seo-muted);
   font-size: 14px;
   line-height: 1.62;
@@ -1181,8 +1120,8 @@ html.dark .seo-refusals-list article > span {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 18px;
-  margin-top: 22px;
+  gap: 14px;
+  margin-top: 32px;
 }
 
 /* ═══════════ PÉRIMÈTRE : inclus / hors scope ═══════════ */
@@ -1268,10 +1207,222 @@ html.dark .seo-scope-col--out li > svg {
   font-weight: 600;
 }
 
+.seo-scope-col__link {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--seo-line);
+  width: 100%;
+}
+
 .seo-scope-col span {
   color: var(--seo-muted);
   font-size: 14px;
   line-height: 1.6;
+}
+
+/* ═══════════ À QUOI RESSEMBLE LE LIVRABLE ═══════════
+   Deux panneaux « gabarit » : extrait d'audit et journal daté. Le contenu est
+   fictif et la réserve sous la grille le dit — voir content.ts. */
+.seo-sample-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.seo-sample-panel {
+  min-width: 0;
+  border: 1px solid var(--seo-line);
+  border-radius: 18px;
+  background: var(--seo-paper);
+  overflow: hidden;
+}
+
+.seo-sample-panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--seo-line);
+  background: var(--seo-paper-soft);
+}
+
+.seo-sample-panel__label,
+.seo-sample-panel__meta {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.seo-sample-panel__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--seo-accent);
+}
+
+.seo-sample-panel__meta {
+  color: var(--seo-muted);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.seo-sample-findings,
+.seo-sample-log {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.seo-sample-findings > li {
+  padding: 18px 22px;
+  border-top: 1px solid var(--seo-line);
+}
+
+.seo-sample-findings > li:first-child {
+  border-top: 0;
+}
+
+.seo-sample-findings__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.seo-sample-findings code {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: var(--seo-muted);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 12.5px;
+}
+
+.seo-sample-prio {
+  flex: 0 0 auto;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--seo-accent-soft);
+  color: var(--seo-accent);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.seo-sample-prio--p2 {
+  background: color-mix(in srgb, var(--seo-muted) 12%, transparent);
+  color: var(--seo-muted);
+}
+
+.seo-sample-findings strong {
+  display: block;
+  color: var(--seo-ink);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.seo-sample-findings__meta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 4px;
+  margin: 10px 0 0;
+}
+
+.seo-sample-findings__meta > div {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr);
+  gap: 10px;
+}
+
+.seo-sample-findings__meta dt {
+  color: var(--seo-accent);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+
+.seo-sample-findings__meta dd {
+  margin: 0;
+  color: var(--seo-muted);
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.seo-sample-log > li {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 14px;
+  padding: 18px 22px;
+  border-top: 1px solid var(--seo-line);
+}
+
+.seo-sample-log > li:first-child {
+  border-top: 0;
+}
+
+.seo-sample-log__date {
+  color: var(--seo-accent);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.seo-sample-log strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--seo-ink);
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.seo-sample-log span:not(.seo-sample-log__date) {
+  color: var(--seo-muted);
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+/* Réserve « gabarit illustratif ». Même bataille de spécificité que
+   `.seo-budget-note` : `.seo-public-page p` (0,1,1) remet la marge haute à 0
+   et `.hc-design main p` (0,1,2) plafonne la largeur — d'où le 0,2,0. */
+.seo-public-page .seo-sample-caption {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 92ch;
+  margin: 26px 0 0;
+  color: var(--seo-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.seo-sample-caption > svg {
+  flex: 0 0 auto;
+  margin-top: 3px;
+  color: var(--seo-accent);
+}
+
+.seo-sample-caption b {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--seo-ink);
+}
+
+@media (max-width: 900px) {
+  .seo-sample-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 900px) {

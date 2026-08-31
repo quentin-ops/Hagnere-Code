@@ -198,8 +198,11 @@
 
   /* ============ PRICING ============ */
   .pricing{padding:80px 0;border-bottom:1px solid var(--line)}
-  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
-  .plan{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:32px;display:flex;flex-direction:column;position:relative}
+  /* Quatre offres, quatre colonnes : à trois, le forfait le plus cher se
+     retrouvait seul sur une deuxième ligne, deux tiers de rang vides à sa
+     droite. Sous 1024 px, design-shared/responsive.css repasse en 2 puis 1. */
+  .price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:56px}
+  .plan{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:28px 22px;display:flex;flex-direction:column;position:relative}
   .plan.featured{background:#0A0A0A;color:#fff;border-color:#0A0A0A}
   .plan.featured .mute{color:rgba(255,255,255,0.55)}
   .plan.featured h3{color:#fff}
@@ -207,10 +210,16 @@
   .plan.featured .plan-tag{color:#A78BFA}
   .plan-badge{position:absolute;top:-10px;right:24px;background:var(--accent-btn);color:#fff;font-family:var(--font-geist-mono);font-size:10px;padding:4px 10px;border-radius:999px;letter-spacing:0.04em}
   .plan h3{font-size:20px;margin-top:10px;margin-bottom:8px}
-  .plan-sub{font-size:14px;color:var(--mute);min-height:42px}
+  /* Colonnes plus étroites : le résumé monte à quatre lignes et les montants
+     doivent rester alignés d'une carte à l'autre. */
+  .plan-sub{font-size:14px;color:var(--mute);min-height:88px}
   .plan.featured .plan-sub{color:rgba(255,255,255,0.6)}
   .plan-price{margin-top:28px;display:flex;align-items:baseline;gap:8px}
-  .plan-price .amount{font-size:42px;font-weight:600;letter-spacing:-0.035em}
+  /* Fluide et insécable. À 36 px fixes dans une grille de quatre colonnes,
+     « 1 500 € » se cassait en trois lignes entre 1025 et 1279 px, le « € »
+     tombant seul sur la dernière. La borne basse tient le plus long des
+     quatre montants dans la colonne la plus étroite. */
+  .plan-price .amount{font-size:clamp(26px,2.5vw,36px);font-weight:600;letter-spacing:-0.035em;white-space:nowrap}
   .plan-price .per{font-family:var(--font-geist-mono);font-size:12px;color:var(--mute)}
   .plan.featured .plan-price .per{color:rgba(255,255,255,0.5)}
   .plan-hr{height:1px;background:var(--line);margin:24px 0}
@@ -221,6 +230,16 @@
   .plan-features svg{color:var(--accent);flex-shrink:0;margin-top:3px}
   .plan-cta{margin-top:28px}
   .plan-cta .btn{width:100%;justify-content:center}
+  /* Les trois mentions de bas de grille étaient trois paragraphes centrés
+     empilés : un seul bloc aligné à gauche, lisible comme des conditions. */
+  .price-notes{margin-top:40px;padding:24px 26px;border:1px solid var(--line);border-radius:14px;background:var(--paper-2);max-width:880px}
+  .price-notes-k{font-family:var(--font-geist-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:12px}
+  .price-notes p{color:var(--mute);font-size:14px;line-height:1.6;margin:0;text-align:left}
+  .price-notes p + p{margin-top:12px}
+  .price-notes b{color:var(--ink);font-weight:600}
+  /* Les deux renvois du bloc étaient indiscernables du texte gris. */
+  .price-notes a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:2px}
+  .price-notes a:hover{color:var(--accent)}
 
   /* ============ FAQ ============ */
   .faq{padding:80px 0;background:var(--paper-2);border-bottom:1px solid var(--line)}
@@ -279,3 +298,14 @@
   html.dark .scase:hover{border-color:rgba(255,255,255,0.22)}
   html.dark .orbit-ring.r2{border-color:var(--line-2)}
   html.dark .plan.featured{border-color:rgba(255,255,255,0.10)}
+
+  /* Dès que la grille repasse à deux colonnes (design-shared/responsive.css,
+     max-width 1024px), les cartes retrouvent leur respiration d'origine. */
+  @media (max-width: 1024px){
+    .plan{padding:32px}
+    .plan-sub{min-height:42px}
+    .plan-price .amount{font-size:42px}
+  }
+  @media (max-width: 640px){
+    .price-notes{padding:20px 18px}
+  }

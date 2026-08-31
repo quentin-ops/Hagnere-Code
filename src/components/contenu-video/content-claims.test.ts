@@ -64,10 +64,32 @@ describe("contenu video public claims", () => {
   it("annonce le même nombre de retainers que la grille en contient", () => {
     const retainerTags = pricingHtml.match(/RETAINER · \d\d/g) ?? [];
 
-    expect(retainerTags).toHaveLength(2);
-    expect(retainerTags).toEqual(["RETAINER · 01", "RETAINER · 02"]);
-    expect(pricingHtml).toMatch(/les deux retainers/i);
-    expect(pricingHtml).not.toMatch(/les trois retainers/i);
+    // Ce test épinglait « RETAINER · 01 / 02 » et la phrase « les deux
+    // retainers ». Il verrouillait donc un nombre d'offres, pas la propriété
+    // qui compte : le chapô et le bas de section doivent annoncer autant de
+    // retainers que la grille en publie, quelle que soit la taille du
+    // catalogue. Le pack Motion & brand, jusqu'ici tarifé dans la section
+    // « scénarios », a rejoint la grille — le nombre a bougé, la règle non.
+    const NOMBRES = ["zéro", "un", "deux", "trois", "quatre", "cinq"];
+
+    expect(retainerTags.length).toBeGreaterThan(0);
+    // Numérotation continue à partir de 01 : pas de trou ni de doublon.
+    expect(retainerTags).toEqual(
+      retainerTags.map((_, index) => `RETAINER · 0${index + 1}`),
+    );
+
+    const annonce = NOMBRES[retainerTags.length];
+    expect(annonce, "grille trop grande pour ce test").toBeDefined();
+    // Le chapô et le bas de section citent tous deux le compte des retainers.
+    expect(
+      pricingHtml.match(new RegExp(`les ${annonce} retainers`, "gi")) ?? [],
+      `« les ${annonce} retainers » attendu deux fois`,
+    ).toHaveLength(2);
+    for (const autre of NOMBRES.filter((mot) => mot !== annonce)) {
+      expect(pricingHtml, `compte périmé : les ${autre} retainers`).not.toMatch(
+        new RegExp(`les ${autre} retainers`, "i"),
+      );
+    }
   });
 
   it("affiche chaque prix en hors taxes et l'engagement total minimum", () => {
