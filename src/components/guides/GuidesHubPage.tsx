@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EDITORIAL_SERVICE_ROUTES } from "@/lib/editorial-service-bridge";
 import { type ComponentType } from "react";
 import {
   ArrowDown,
@@ -511,6 +512,59 @@ export function GuidesHubPage() {
                 </div>
               );
             })}
+          </div>
+        </section>
+
+        {/*
+          Passerelle vers l'offre. Le hub des neuf guides est la porte d'entree
+          de la recherche organique, et il ne publiait aucun lien vers /services
+          ni /tarifs : ses 14 liens internes menaient aux guides eux-memes, plus
+          /demarrer-un-projet et /rendez-vous a 57 % de la hauteur de page.
+          /ressources et /livres-blancs portent ce bloc depuis toujours ; la
+          liste vient desormais d'un module commun aux trois.
+        */}
+        <section className="ghub-bridge" aria-labelledby="ghub-bridge-titre">
+          <div className="wrap">
+            <div className="ghub-bridge-head">
+              <div className="ghub-kicker">Et après la lecture</div>
+              <h2 id="ghub-bridge-titre">
+                À quel type de projet ces guides mènent.
+              </h2>
+              <p>
+                Une fois la décision documentée, il reste à savoir de quelle
+                nature est le projet. Ces quatre pages décrivent ce que nous
+                construisons, avec les périmètres et les repères de budget
+                correspondants.
+              </p>
+            </div>
+            <ul className="ghub-bridge-list">
+              {EDITORIAL_SERVICE_ROUTES.map((service) => (
+                <li key={service.href}>
+                  <Link href={service.href}>
+                    <span>
+                      <b>{service.label}</b>
+                      <em>{service.hint}</em>
+                    </span>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 12h14M13 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="ghub-bridge-foot">
+              Les fourchettes de budget de chaque format sont réunies sur{" "}
+              <Link href="/tarifs">la page tarifs</Link>, et le déroulé complet
+              d&apos;un projet sur <Link href="/methode">la methode</Link>.
+            </p>
           </div>
         </section>
 

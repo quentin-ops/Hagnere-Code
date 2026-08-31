@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { EDITORIAL_SERVICE_ROUTES } from "@/lib/editorial-service-bridge";
 import Link from "next/link";
 import { ArrowRight, Check, ChevronRight, FileText, Sheet } from "lucide-react";
 import { GuidesShell } from "@/components/guides/GuidesShell";
@@ -269,21 +270,7 @@ export default function Page() {
             </p>
           </div>
           <ul className="mt-7 grid gap-3 sm:grid-cols-2">
-            {[
-              {
-                href: "/services/sites-vitrines",
-                label: "Sites vitrines et landing pages",
-              },
-              { href: "/services/ecommerce", label: "E-commerce sur mesure" },
-              {
-                href: "/services/saas-applications-metier",
-                label: "SaaS et applications métier",
-              },
-              {
-                href: "/services/outils-internes-sur-mesure",
-                label: "Outils internes sur mesure",
-              },
-            ].map((service) => (
+            {EDITORIAL_SERVICE_ROUTES.map((service) => (
               <li key={service.href}>
                 <Link
                   href={service.href}

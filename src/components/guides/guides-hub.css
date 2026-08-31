@@ -1045,7 +1045,10 @@ html.dark .guides-hub {
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 48px;
   align-items: center;
-  padding: 44px 0;
+  /* padding-block, pas la propriete raccourcie : .ghub-final-inner partage son
+     element avec .wrap, et « padding: 44px 0 » remettait a zero la gouttiere
+     horizontale — le titre et le bouton touchaient les bords de 768 a 1280px. */
+  padding-block: 44px;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
@@ -1194,7 +1197,7 @@ html.dark .guides-hub {
   .ghub-final-inner {
     grid-template-columns: 1fr;
     gap: 28px;
-    padding: 36px 0;
+    padding-block: 36px;
   }
 
   .ghub-final-actions {
@@ -1231,4 +1234,74 @@ html.dark .guides-hub {
   .ghub-lane > svg {
     display: none;
   }
+}
+
+/* ============ PASSERELLE VERS L'OFFRE ============
+   /guides ne publiait aucun lien vers /services ni /tarifs, contrairement aux
+   deux autres hubs editoriaux. La liste des quatre services vient du module
+   partage src/lib/editorial-service-bridge.ts. */
+.ghub-bridge {
+  padding: 72px 0;
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+}
+.ghub-bridge-head { max-width: 62ch; }
+.ghub-bridge-head h2 {
+  margin-top: 10px;
+  letter-spacing: -0.03em;
+}
+.ghub-bridge-head p {
+  margin-top: 12px;
+  color: var(--mute);
+  line-height: 1.6;
+}
+.ghub-bridge-list {
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.ghub-bridge-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 44px;
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--paper-2);
+  text-decoration: none;
+  transition: border-color 0.16s ease, background 0.16s ease;
+}
+.ghub-bridge-list a:hover,
+.ghub-bridge-list a:focus-visible {
+  border-color: rgba(139, 92, 246, 0.45);
+  background: rgba(139, 92, 246, 0.06);
+}
+.ghub-bridge-list b {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.ghub-bridge-list em {
+  display: block;
+  margin-top: 3px;
+  font-style: normal;
+  font-size: 13px;
+  color: var(--mute);
+}
+.ghub-bridge-list svg { flex-shrink: 0; color: var(--accent-ink); }
+.ghub-bridge-foot {
+  margin-top: 20px;
+  font-size: 13.5px;
+  color: var(--mute);
+}
+.ghub-bridge-foot a { color: var(--accent-ink); text-decoration: underline; }
+@media (max-width: 768px) {
+  .ghub-bridge { padding: 52px 0; }
+  .ghub-bridge-list { grid-template-columns: 1fr; }
 }

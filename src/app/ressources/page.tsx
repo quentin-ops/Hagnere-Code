@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { EDITORIAL_SERVICE_ROUTES } from "@/lib/editorial-service-bridge";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -140,28 +141,6 @@ const collectionJsonLd = JSON.stringify({
 // Le silo ressources capte une intention haute (« cahier des charges »,
 // « comparer des devis ») mais n'émettait aucun lien vers une offre : le
 // visiteur qui a fini de cadrer n'avait aucun chemin éditorial vers un service.
-const serviceRoutes = [
-  {
-    href: "/services/sites-vitrines",
-    label: "Sites vitrines et landing pages",
-    hint: "Site public à construire ou à refondre",
-  },
-  {
-    href: "/services/ecommerce",
-    label: "E-commerce sur mesure",
-    hint: "Vente en ligne et tunnel de commande",
-  },
-  {
-    href: "/services/saas-applications-metier",
-    label: "SaaS et applications métier",
-    hint: "Produit ou logiciel derrière un identifiant",
-  },
-  {
-    href: "/services/outils-internes-sur-mesure",
-    label: "Outils internes sur mesure",
-    hint: "Sortir des tableurs et automatiser un processus",
-  },
-];
 
 const secondaryResources = [
   {
@@ -450,7 +429,7 @@ export default function Page() {
             </p>
           </div>
           <ul className="mt-7 grid gap-3 sm:grid-cols-2">
-            {serviceRoutes.map((service) => (
+            {EDITORIAL_SERVICE_ROUTES.map((service) => (
               <li key={service.href}>
                 <Link
                   href={service.href}

@@ -18,6 +18,10 @@ import {
   buildGuideMetadata,
   buildGuideStructuredData,
 } from "@/lib/guide-page-seo";
+import {
+  CONTACT_PHONE_DISPLAY_NATIONAL,
+  CONTACT_PHONE_E164,
+} from "@/lib/contact-details";
 import { formatGuideDate, getGuide } from "@/lib/guides";
 import { TEAM } from "@/lib/team";
 
@@ -207,6 +211,22 @@ export default function Page() {
           name: TEAM.quentin.fullName,
           role: TEAM.quentin.role,
           profileUrl: "/equipe#fondateur",
+        }}
+        sidebarHeroCta={{
+          eyebrow: "Diagnostic daté, pas devis",
+          titleStart: "Faire relire",
+          titleEm: "vos relevés",
+          description:
+            "Apportez vos relevés Search Console — exploration, indexation, impressions, clics — et la date de votre dernière modification. Le premier échange peut conclure qu’il faut attendre plutôt que corriger.",
+          benefits: [
+            "La panne est nommée avant qu’on parle de prestation",
+            "Attendre reste une conclusion valable",
+            "Les cinq causes derrière « invisible » sont écartées une à une",
+          ],
+          primaryCtaLabel: "Voir le service référencement Google",
+          primaryCtaHref: "/services/referencement-google",
+          phoneLabel: CONTACT_PHONE_DISPLAY_NATIONAL,
+          phoneHref: `tel:${CONTACT_PHONE_E164}`,
         }}
         toc={toc}
         tocLabel="Trouver où la visibilité s’arrête"
