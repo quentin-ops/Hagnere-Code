@@ -363,6 +363,12 @@
   .studio-foot{margin-top:64px;padding:36px 40px;background:var(--paper-2);border:1px solid var(--line);border-radius:16px;display:flex;justify-content:space-between;align-items:center;gap:40px}
   .sfoot-tag{font-family:var(--font-geist-mono);font-size:11px;color:var(--accent);letter-spacing:0.08em;font-weight:500;margin-bottom:6px}
   .sfoot-t{font-size:20px;font-weight:600;letter-spacing:-0.02em;color:var(--ink)}
+  /* Bande « Assistants IA (Joril) » : même habillage que la bande qui la suit, mais plus resserrée
+     entre les deux, et un texte plus long que le sous-titre habituel. */
+  .studio-foot-ia{margin-top:40px}
+  .studio-foot-ia + .studio-foot{margin-top:16px}
+  .studio-foot-ia .sfoot-sub{max-width:720px;line-height:1.55}
+  .studio-foot-ia .btn{flex-shrink:0}
 
   /* ============ DESCRIBE YOUR PROJECT ============ */
   .describe{padding:88px 0;border-bottom:1px solid var(--line);background:var(--paper-2);position:relative;overflow:hidden}

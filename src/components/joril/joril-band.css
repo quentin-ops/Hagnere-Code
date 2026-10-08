@@ -1,0 +1,210 @@
+/* ==========================================================================
+   Bande « Assistants IA · Joril » — /services et /realisations.
+   N'emprunte que les jetons de couleur communs aux deux pages (:root et
+   html.dark) : --ink, --ink-3, --ink-4, --mute, --line, --paper, --paper-2,
+   --accent, --accent-ink. Aucun glow, aucun dégradé décoratif.
+   ========================================================================== */
+
+.joril-band {
+  padding: 72px 0;
+  background: var(--paper);
+}
+
+.joril-band-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: 48px;
+  padding: 40px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--paper-2);
+}
+
+.joril-band-main {
+  min-width: 0;
+}
+
+.joril-band .joril-band-eyebrow {
+  margin: 0 0 14px;
+  color: var(--accent-ink);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.joril-band .joril-band-title {
+  margin: 0;
+  max-width: 640px;
+  color: var(--ink);
+  font-size: clamp(28px, 3.4vw, 40px);
+  font-weight: 650;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.joril-band .joril-band-lead {
+  margin: 18px 0 0;
+  max-width: 640px;
+  color: var(--ink-3);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.joril-band-facts {
+  display: grid;
+  gap: 0;
+  margin: 28px 0 0;
+  max-width: 640px;
+  border-top: 1px solid var(--line);
+}
+
+.joril-band-facts > div {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.joril-band-facts dt {
+  color: var(--mute);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.7;
+}
+
+.joril-band-facts dd {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.joril-band-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: center;
+  gap: 18px;
+  min-width: 0;
+}
+
+.joril-band .joril-band-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 13px 22px;
+  border-radius: 10px;
+  /* Violet foncé en clair comme en sombre : #fff sur #6D28D9 = 7,1:1. */
+  background: #6d28d9;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.joril-band .joril-band-cta:hover {
+  background: #5b21b6;
+  transform: translateY(-1px);
+}
+
+html.dark .joril-band .joril-band-cta:hover {
+  background: #7c3aed;
+}
+
+.joril-band .joril-band-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgb(from var(--accent) r g b / 0.3);
+  color: var(--accent-ink);
+  font-size: 14.5px;
+  font-weight: 550;
+  text-decoration: none;
+}
+
+.joril-band .joril-band-link:hover {
+  border-bottom-color: var(--accent);
+  color: var(--accent);
+}
+
+.joril-band .joril-band-cta:focus-visible,
+.joril-band .joril-band-link:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.joril-band .joril-band-note {
+  margin: 0;
+  max-width: 340px;
+  color: var(--mute);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.joril-band-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 960px) {
+  .joril-band {
+    padding: 56px 0;
+  }
+
+  .joril-band-card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    padding: 32px 28px;
+  }
+
+  .joril-band-side {
+    align-self: start;
+  }
+}
+
+@media (max-width: 560px) {
+  .joril-band {
+    padding: 44px 0;
+  }
+
+  .joril-band-card {
+    padding: 26px 20px;
+    border-radius: 16px;
+  }
+
+  .joril-band .joril-band-lead {
+    font-size: 16px;
+  }
+
+  .joril-band-facts > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+
+  .joril-band-side {
+    align-items: stretch;
+  }
+
+  .joril-band .joril-band-cta {
+    width: 100%;
+  }
+}

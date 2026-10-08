@@ -23,6 +23,7 @@ import { SiteFooter } from "@/components/design-shared/SiteFooter";
 import { InteractiveDesignRoot } from "@/components/design-shared/InteractiveDesignRoot";
 import { TEAM_TOTAL_COUNT } from "@/lib/team";
 import { MainNav } from "@/components/design-shared/MainNav";
+import { JorilBand } from "@/components/joril/JorilBand";
 import "./services-hub.css";
 import "@/components/design-shared/nav-dropdown.css";
 import "@/components/design-shared/responsive.css";
@@ -571,6 +572,16 @@ export function ServicesHubPage() {
             </div>
           </div>
         </section>
+
+        {/*
+          Assistants IA (Joril). Ce n'est pas un douzième service du registre :
+          l'offre est celle de Comptabilité AI, présentée sur joril.ai, que
+          Hagnéré Code réalise et déploie. Elle n'entre donc ni dans
+          SERVICE_LINKS (sitemap, llms.txt, grille tarifaire) ni dans le compte
+          des services annoncé ; elle a sa bande, juste après le catalogue,
+          là où un visiteur cherche « et l'IA ? ».
+        */}
+        <JorilBand headingId="joril-services-titre" />
 
         <section className="services-compose">
           <div className="wrap compose-grid">

@@ -4,6 +4,7 @@ import type { CSSProperties } from "react";
 import { InteractiveDesignRoot } from "@/components/design-shared/InteractiveDesignRoot";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
 import { MainNav } from "@/components/design-shared/MainNav";
+import { JorilBand } from "@/components/joril/JorilBand";
 import { CASES, RELATED_SERVICES } from "./cases";
 import "./index-page.css";
 import "@/components/design-shared/nav-dropdown.css";
@@ -244,6 +245,14 @@ export function RealisationsIndexPage() {
             </div>
           </div>
         </section>
+
+        {/* ─── JORIL : l'assistant IA de LMNP.AI et l'offre qui en découle ───
+            Les quatre fiches ci-dessus inventorient des pages publiques. Joril
+            n'est pas une cinquième fiche : c'est l'assistant IA intégré à l'une
+            d'elles (LMNP.AI), dont la nouvelle version est en alpha. Il a donc
+            sa bande, sous les fiches et avant l'offre de services, avec sa
+            propre réserve ; les textes viennent de `@/lib/joril`. */}
+        <JorilBand headingId="joril-realisations-titre" />
 
         {/* ─── BANDE SERVICES ──────────────────────────────────────── */}
         <section className="rlm-svc">

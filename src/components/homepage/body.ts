@@ -9,6 +9,13 @@ import {
 import { CALENDLY_URL } from "@/lib/calendly";
 import { SERVICE_LINKS } from "@/lib/services";
 import {
+  JORIL_DEFINITION,
+  JORIL_HOST,
+  JORIL_OFFRE,
+  JORIL_STATUT,
+  JORIL_URL,
+} from "@/lib/joril";
+import {
   TEAM_OTHER_DEVELOPERS_COUNT,
   TEAM_PUBLIC_COMPOSITION,
   TEAM_TOTAL_COUNT,
@@ -447,6 +454,21 @@ export const bodyHtml = `${navHtml}
           </a>
         </div>
       </div>
+    </div>
+
+    <!-- Assistants IA (Joril) : bande courte, pas une section de plus. Les faits
+         viennent de src/lib/joril.ts ; la page d'accueil n'a pas de place pour
+         plus (plafond de mots verrouillé par page-structure.test.ts). -->
+    <div class="studio-foot studio-foot-ia reveal" id="assistants-ia">
+      <div>
+        <div class="sfoot-tag">ASSISTANTS IA · JORIL</div>
+        <div class="sfoot-t">Un assistant IA sur mesure, dans votre logiciel.</div>
+        <div class="sfoot-sub">${JORIL_DEFINITION} ${JORIL_STATUT} ${JORIL_OFFRE}</div>
+      </div>
+      <a href="${JORIL_URL}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-lg" aria-label="Voir l'offre sur ${JORIL_HOST} (s'ouvre dans un nouvel onglet)">
+        Voir l'offre sur ${JORIL_HOST}
+        <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+      </a>
     </div>
 
     <div class="studio-foot reveal">

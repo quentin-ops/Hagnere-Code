@@ -29,6 +29,7 @@ import {
 } from "@/components/homepage/first-call";
 import { TEAM_TOTAL_COUNT } from "@/lib/team";
 import { SERVICE_LINKS } from "@/lib/services";
+import { JORIL_HOST, JORIL_LABEL, JORIL_URL } from "@/lib/joril";
 import { LOCAL_PAGES, localPagePath } from "@/lib/local-pages";
 import { PRIVACY_NOTICE_VERSION } from "@/lib/privacy-notice";
 import { CALENDLY_URL } from "@/lib/calendly";
@@ -1383,6 +1384,33 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                 </span>
                 <span className="sf-tile-label">Réalisations</span>
               </Link>
+              {/* Offre d'assistants IA présentée sur joril.ai : lien externe, donc
+                  <a> et non <Link>. Textes et URL : src/lib/joril.ts. */}
+              <a
+                className="sf-tile"
+                href={JORIL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${JORIL_LABEL} : offre présentée sur ${JORIL_HOST} (s'ouvre dans un nouvel onglet)`}
+              >
+                <span className="sf-tile-ic">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
+                    <path d="M20 3v4M22 5h-4M4 17v2M5 18H3" />
+                  </svg>
+                </span>
+                <span className="sf-tile-label">{JORIL_LABEL}</span>
+              </a>
               <Link className="sf-tile" href="/equipe">
                 <span className="sf-tile-ic">
                   <svg
