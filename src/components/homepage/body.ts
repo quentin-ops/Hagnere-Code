@@ -8,14 +8,7 @@ import {
 } from "./first-call";
 import { CALENDLY_URL } from "@/lib/calendly";
 import { SERVICE_LINKS } from "@/lib/services";
-import {
-  JORIL_DEFINITION,
-  JORIL_HOST,
-  JORIL_LICENCE,
-  JORIL_OFFRE,
-  JORIL_STATUT,
-  JORIL_URL,
-} from "@/lib/joril";
+import { JORIL_ACCUEIL, JORIL_HOST, JORIL_URL } from "@/lib/joril";
 import {
   TEAM_OTHER_DEVELOPERS_COUNT,
   TEAM_PUBLIC_COMPOSITION,
@@ -464,7 +457,7 @@ export const bodyHtml = `${navHtml}
       <div>
         <div class="sfoot-tag">ASSISTANTS IA · JORIL</div>
         <div class="sfoot-t">Un assistant IA sur mesure, dans votre logiciel.</div>
-        <div class="sfoot-sub">${JORIL_DEFINITION} ${JORIL_STATUT} ${JORIL_OFFRE} ${JORIL_LICENCE}</div>
+        <div class="sfoot-sub">${JORIL_ACCUEIL}</div>
       </div>
       <a href="${JORIL_URL}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-lg" aria-label="Voir l'offre sur ${JORIL_HOST} (s'ouvre dans un nouvel onglet)">
         Voir l'offre sur ${JORIL_HOST}

@@ -34,7 +34,9 @@ Il est **interdit** de créer :
   attribuée (c'est ce que disent leurs fiches de /realisations). Il s'écrit
   toujours avec le statut en vigueur — nouvelle version de LMNP.AI en alpha,
   premier déploiement de Joril prévu à partir du 25 octobre 2026, jamais « en
-  production » — et sans résultat, chiffre, client ni prix. Les assistants
+  production » — et sans résultat, chiffre, client ni prix. Joril appartient
+  à Comptabilité AI, alors que LMNP.AI est édité par LMNP AI (tableau
+  ci-dessous). Les assistants
   Joril sont fournis par Comptabilité AI **sous licence d'utilisation**, le
   client n'étant pas propriétaire du code (décision de Quentin Hagnéré,
   08/10/2026) : la phrase correspondante de `src/lib/joril.ts` ne se retire pas,
@@ -55,7 +57,8 @@ entreprises — ne jamais les traiter comme des inventions) :
 | Entité | SIREN | Rôle |
 | --- | --- | --- |
 | HAGNERE CODE | — | L'agence, éditrice de ce site |
-| COMPTABILITE-AI | 978548899 | Éditrice des logiciels **LMNP.AI** et **SCI-AI.app** (active depuis le 02/08/2023, NAF 58.29C) |
+| COMPTABILITE-AI | 978548899 | Éditrice du site **SCI-AI.app** (mentions légales de sci-ai.app, version 2.01 du 07/10/2026, lues le 08/10/2026) ; propriétaire de **Joril**, qu'elle propose sous licence sur joril.ai (décision de Quentin Hagnéré, 08/10/2026). Active depuis le 02/08/2023, NAF 58.29C. Ce tableau la disait aussi éditrice de LMNP.AI : c'était inexact, voir la ligne suivante |
+| LMNP AI | 109092247 | Éditrice du site **LMNP.AI** : SAS au capital de 1 000 000 €, siège à Avignon, créée le 24/08/2026, présidente Hagnéré Holding One (SIREN 993742204, présidée par Quentin Hagnéré). Sources : mentions légales de lmnp.ai, version 4.0 du 11/09/2026, et annuaire des entreprises, lus le 08/10/2026. Ne jamais écrire « LMNP.AI est édité par Comptabilité AI » |
 | Hagnéré Patrimoine | — | Cabinet de conseil en gestion de patrimoine du groupe |
 | Hagnéré Investissement | — | Société d'investissement du groupe |
 

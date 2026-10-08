@@ -9,6 +9,7 @@ import { composedBodyHtml as homepage } from "@/components/homepage/composed-bod
 import { JorilBand } from "@/components/joril/JorilBand";
 import { composedBodyHtml as saasApplications } from "@/components/saas-applications/composed-body";
 import {
+  JORIL_ACCUEIL,
   JORIL_CALENDRIER,
   JORIL_DEFINITION,
   JORIL_HOST,
@@ -49,6 +50,7 @@ const plain = (html: string) =>
 
 const AUTHORIZED_TEXT = [
   JORIL_DEFINITION,
+  JORIL_ACCUEIL,
   JORIL_STATUT,
   JORIL_CALENDRIER,
   JORIL_OFFRE,
@@ -63,15 +65,16 @@ const bandHtml = plain(renderToStaticMarkup(createElement(JorilBand)));
 const footerHtml = plain(renderToStaticMarkup(createElement(SiteFooter)));
 
 describe("Joril sur hagnere-code.ai — périmètre des faits", () => {
-  it("dit ce que le dirigeant a autorisé : alpha, date annoncée, offre de Comptabilité AI", () => {
+  it("dit ce que le dirigeant a autorisé : alpha, date annoncée, offre de Comptabilité AI propriétaire de Joril", () => {
     expect(JORIL_DEFINITION).toMatch(/assistant IA intégré à LMNP\.AI/);
-    expect(JORIL_DEFINITION).toMatch(/Comptabilité AI, société du groupe Hagnéré/);
+    expect(JORIL_DEFINITION).toMatch(/LMNP\.AI est édité par LMNP AI, société du groupe Hagnéré/);
     expect(JORIL_DEFINITION).toContain("a été conçu et développé par Hagnéré Code");
     expect(JORIL_STATUT).toMatch(/nouvelle version de LMNP\.AI/);
     expect(JORIL_STATUT).toMatch(/est en alpha/);
     expect(JORIL_CALENDRIER).toContain("25 octobre 2026");
     expect(JORIL_OFFRE).toMatch(/logiciels, back-offices et espaces clients/);
     expect(JORIL_OFFRE).toContain("Hagnéré Code les réalise et les déploie");
+    expect(JORIL_OFFRE).toContain("Comptabilité AI, propriétaire de Joril, propose");
     expect(JORIL_URL).toBe("https://joril.ai");
     expect(JORIL_HOST).toBe("joril.ai");
   });
@@ -100,16 +103,30 @@ describe("Joril sur hagnere-code.ai — périmètre des faits", () => {
   it("attribue à Hagnéré Code la conception de Joril seulement, jamais celle de LMNP.AI", () => {
     // Fait déclaré par Quentin Hagnéré le 08/10/2026, consigné dans CLAUDE.md.
     expect(JORIL_DEFINITION).toMatch(/^Joril, l'assistant IA intégré à LMNP\.AI, a été conçu et développé par Hagnéré Code\./);
-    // La phrase suivante rattache LMNP.AI à son éditeur, pas à l'agence.
-    expect(JORIL_DEFINITION).toMatch(/LMNP\.AI est édité par Comptabilité AI, société du groupe Hagnéré\.$/);
-    // Une seule attribution de conception dans tout le texte : celle de Joril.
-    expect(AUTHORIZED_TEXT.match(/(?:conçu|développé|réalisé|construit)e?s?(?: et \w+)?\s+par Hagnéré Code/gi)).toHaveLength(1);
-    // Aucune formule ne fait de Hagnéré Code l'auteur du logiciel LMNP.AI, de ses résultats ou de son exploitation.
+    // Toute phrase qui attribue une conception à Hagnéré Code porte sur Joril, jamais sur LMNP.AI.
+    const sentences = AUTHORIZED_TEXT.split(/(?<=\.)\s+/);
+    const attributions = sentences.filter((sentence) =>
+      /(?:conçu|développé|réalisé|construit)e?s?(?: et \w+)?\s+par Hagnéré Code/i.test(sentence),
+    );
+    expect(attributions.length).toBeGreaterThanOrEqual(1);
+    for (const sentence of attributions) {
+      expect(sentence).toMatch(/^Joril, l'assistant IA (?:intégré à|de) LMNP\.AI/);
+    }
     expect(AUTHORIZED_TEXT).not.toMatch(/LMNP\.AI (?:est|a été) (?:conçu|développé|réalisé|construit)/i);
     expect(AUTHORIZED_TEXT).not.toMatch(/Hagnéré Code[^.]{0,40}(?:exploite|opère|a lancé)/i);
     expect(AUTHORIZED_TEXT).not.toMatch(/notre client|client de Hagnéré Code/i);
-    // L'offre aux entreprises reste celle de Comptabilité AI.
-    expect(JORIL_OFFRE).toMatch(/^Sur joril\.ai, Comptabilité AI propose/);
+  });
+
+  it("nomme le bon éditeur de LMNP.AI : LMNP AI, jamais Comptabilité AI (mentions légales de lmnp.ai, 11/09/2026)", () => {
+    expect(JORIL_DEFINITION).toMatch(/LMNP\.AI est édité par LMNP AI, société du groupe Hagnéré\.$/);
+    // L'erreur relevée le 08/10/2026 au soir ne doit pas revenir, ni ici ni dans les pages qui la portaient.
+    const rendered = [AUTHORIZED_TEXT, homepage, saasApplications, bandHtml, footerHtml, navHtml].join("\n");
+    expect(rendered).not.toMatch(/LMNP\.AI(?: est|,)? édité(?:e)? par Comptabilité[ -]AI/i);
+    expect(read("src/app/agence-next-js/page.tsx").replace(/\s+/g, " ")).not.toMatch(
+      /LMNP\.AI et SCI-AI\.app, édités par Comptabilité AI/,
+    );
+    // L'offre et la licence sont celles de Comptabilité AI, qui possède Joril.
+    expect(JORIL_OFFRE).toMatch(/^Sur joril\.ai, Comptabilité AI, propriétaire de Joril, propose/);
   });
 
   it("consigne le fait dans CLAUDE.md, attribué au dirigeant et daté, pour qu'un audit ne le retire pas", () => {
@@ -121,6 +138,16 @@ describe("Joril sur hagnere-code.ai — périmètre des faits", () => {
     expect(rules).toContain("Quentin Hagnéré");
     expect(rules).toContain("08/10/2026");
     expect(rules).toContain("src/lib/joril.ts");
+  });
+
+  it("consigne dans le tableau des sociétés de CLAUDE.md que LMNP.AI est édité par LMNP AI, avec sa source", () => {
+    const rules = read("CLAUDE.md").replace(/\s+/g, " ");
+    expect(rules).toMatch(/\| LMNP AI \| 109092247 \| Éditrice du site \*\*LMNP\.AI\*\*/);
+    expect(rules).toContain("mentions légales de lmnp.ai, version 4.0 du 11/09/2026");
+    expect(rules).toContain("Ne jamais écrire « LMNP.AI est édité par Comptabilité AI »");
+    // Les autres faits de la ligne COMPTABILITE-AI sont gardés.
+    expect(rules).toMatch(/\| COMPTABILITE-AI \| 978548899 \| Éditrice du site \*\*SCI-AI\.app\*\*/);
+    expect(rules).toContain("Active depuis le 02/08/2023, NAF 58.29C");
   });
 
   it("dit que les assistants sont fournis sous licence d'utilisation, sans recopier les conditions", () => {
@@ -166,10 +193,13 @@ describe("Joril sur hagnere-code.ai — emplacements", () => {
   it("l'accueil porte une bande courte, lue dans la source, pas une section de plus", () => {
     const text = plain(homepage);
     expect(text).toContain('id="assistants-ia"');
-    expect(text).toContain(JORIL_DEFINITION);
-    expect(text).toContain(JORIL_STATUT);
-    expect(text).toContain(JORIL_OFFRE);
-    expect(text).toContain(JORIL_LICENCE);
+    expect(text).toContain(JORIL_ACCUEIL);
+    // Deux phrases courtes : l'alpha, la conception et la licence y sont, le détail est ailleurs.
+    expect(JORIL_ACCUEIL.split(/(?<=\.)\s+/)).toHaveLength(2);
+    expect(JORIL_ACCUEIL.length).toBeLessThanOrEqual(240);
+    expect(JORIL_ACCUEIL).toContain("nouvelle version en alpha");
+    expect(JORIL_ACCUEIL).toContain("a été conçu et développé par Hagnéré Code");
+    expect(JORIL_ACCUEIL).toContain("sous licence d'utilisation");
     expect(homepage.match(/id="assistants-ia"/g)).toHaveLength(1);
   });
 

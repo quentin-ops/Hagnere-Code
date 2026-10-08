@@ -279,8 +279,8 @@ export default function Page() {
           page publique à une date donnée, et rien d&apos;autre — elle ne
           revendique ni leur conception, ni leur technologie, ni leurs
           résultats. Deux d&apos;entre eux relèvent de la comptabilité fiscale,
-          LMNP.AI et SCI-AI.app, édités par Comptabilité AI, société du même
-          groupe. Les choix techniques d&apos;un projet se discutent au cadrage
+          LMNP.AI et SCI-AI.app, édités par deux sociétés du même groupe (LMNP
+          AI et Comptabilité AI). Les choix techniques d&apos;un projet se discutent au cadrage
           et figurent dans le devis.
         </p>
 

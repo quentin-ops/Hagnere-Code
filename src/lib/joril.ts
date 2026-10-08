@@ -9,8 +9,14 @@
  * Ce que le site peut écrire, et seulement cela (ordres du dirigeant du
  * 08/10/2026, vérifiés sur https://joril.ai et dans le dépôt joril-ai-site) :
  *
- *   - Joril est l'assistant IA intégré à LMNP.AI, logiciel édité par
- *     Comptabilité AI, société du groupe Hagnéré (SIREN 978548899) ;
+ *   - Joril est l'assistant IA intégré à LMNP.AI. Le site lmnp.ai est édité par
+ *     LMNP AI, SAS du groupe Hagnéré (SIREN 109092247, créée le 24/08/2026,
+ *     présidente Hagnéré Holding One ; mentions légales de lmnp.ai, version 4.0
+ *     du 11/09/2026, et annuaire des entreprises, lus le 08/10/2026). Il n'est
+ *     PAS édité par Comptabilité AI : cette erreur a figuré sur le site jusqu'au
+ *     08/10/2026 au soir et ne doit pas revenir. Joril reste la propriété de
+ *     Comptabilité AI (SIREN 978548899), qui le propose sous licence sur
+ *     joril.ai ;
  *   - Joril a été conçu et développé par Hagnéré Code : fait déclaré par
  *     Quentin Hagnéré le 08/10/2026 (« Oui on peut l'écrire, c'est bien le
  *     cas »), consigné dans CLAUDE.md pour qu'un audit ne le retire pas. Il ne
@@ -44,9 +50,20 @@ export const JORIL_LABEL = "Assistants IA (Joril)";
 /**
  * Ce qu'est Joril, qui l'a conçu et qui édite le logiciel qui l'accueille.
  * Formule sobre : la conception ne vaut que pour Joril, jamais pour LMNP.AI.
+ * L'éditeur de LMNP.AI est LMNP AI (mentions légales de lmnp.ai, 11/09/2026),
+ * pas Comptabilité AI, qui possède Joril et le propose sous licence.
  */
 export const JORIL_DEFINITION =
-  "Joril, l'assistant IA intégré à LMNP.AI, a été conçu et développé par Hagnéré Code. LMNP.AI est édité par Comptabilité AI, société du groupe Hagnéré.";
+  "Joril, l'assistant IA intégré à LMNP.AI, a été conçu et développé par Hagnéré Code. LMNP.AI est édité par LMNP AI, société du groupe Hagnéré.";
+
+/**
+ * Version courte pour l'accueil : deux phrases. Le détail (éditeur de LMNP.AI,
+ * calendrier, conditions) reste sur /services et /realisations. L'alpha est
+ * dite ici : nommer Joril dans LMNP.AI sans elle laisserait croire qu'il y
+ * tourne déjà pour tous.
+ */
+export const JORIL_ACCUEIL =
+  "Joril, l'assistant IA de LMNP.AI (nouvelle version en alpha), a été conçu et développé par Hagnéré Code. Comptabilité AI propose des assistants IA aux entreprises sous licence d'utilisation : conditions sur joril.ai.";
 
 /** Statut de la nouvelle version de LMNP.AI : alpha, jamais « en production ». */
 export const JORIL_STATUT =
@@ -58,7 +75,7 @@ export const JORIL_CALENDRIER =
 
 /** L'offre aux entreprises, telle que joril.ai la présente. */
 export const JORIL_OFFRE =
-  "Sur joril.ai, Comptabilité AI propose des assistants IA sur mesure pour les logiciels, back-offices et espaces clients des entreprises. Hagnéré Code les réalise et les déploie.";
+  "Sur joril.ai, Comptabilité AI, propriétaire de Joril, propose des assistants IA sur mesure pour les logiciels, back-offices et espaces clients des entreprises. Hagnéré Code les réalise et les déploie.";
 
 /**
  * Régime de l'offre (décision du dirigeant, 08/10/2026 au soir) : les assistants

@@ -30,8 +30,9 @@ Tous les liens vers https://joril.ai s'ouvrent dans un nouvel onglet
 
 Faits écrits, et seulement ceux-là :
 
-- Joril est l'assistant IA intégré à LMNP.AI, logiciel édité par Comptabilité AI,
-  société du groupe Hagnéré ;
+- Joril est l'assistant IA intégré à LMNP.AI, site édité par LMNP AI (société
+  du groupe Hagnéré) ; Joril appartient à Comptabilité AI (voir la correction
+  d'exactitude plus bas) ;
 - Joril a été conçu et développé par Hagnéré Code (réponse du dirigeant du
   8 octobre 2026 au soir, voir plus bas) ;
 - la nouvelle version de LMNP.AI, avec Joril, est en alpha ;
@@ -126,3 +127,42 @@ sites pourrait y voir une contradiction. Décidé :
   interdit les montants et les mots « propriétaire », « transfert » et
   « redevance » dans ce texte ;
 - la licence est celle de Comptabilité AI : la phrase ne cite pas Hagnéré Code.
+
+## Correction d'exactitude : l'éditeur de LMNP.AI est LMNP AI
+
+Le 8 octobre 2026 au soir, le Scribe a relevé que la phrase « LMNP.AI est édité
+par Comptabilité AI », écrite dans `JORIL_DEFINITION`, était fausse. Les mentions
+légales de lmnp.ai (https://lmnp.ai/legal/mentions-legales, version 4.0 du
+11 septembre 2026) disent : « Le site internet lmnp.ai […] est édité par la
+société LMNP AI, Société par Actions Simplifiée au capital de 1 000 000 € »,
+immatriculée au RCS d'Avignon sous le numéro B 109 092 247, représentée par sa
+présidente Hagnéré Holding One. L'annuaire des entreprises confirme : SIREN
+109092247, LMNP AI, créée le 24/08/2026, siège à Avignon, présidente HAGNERE
+HOLDING ONE (SIREN 993742204, président Quentin Hagnéré). Lecture refaite le
+8 octobre 2026. La version précédente de la ligne de CLAUDE.md attribuait
+l'édition de LMNP.AI à COMPTABILITE-AI : l'erreur venait de là.
+
+Pour SCI-AI.app, les mentions légales (version 2.01 du 07/10/2026) disent bien
+« édité par la société COMPTABILITÉ-AI » (RCS Belfort 978 548 899) : cette ligne
+du tableau reste vraie.
+
+Corrigé :
+
+- `JORIL_DEFINITION` : « LMNP.AI est édité par LMNP AI, société du groupe
+  Hagnéré. » Joril reste la propriété de Comptabilité AI, qui le propose sous
+  licence sur joril.ai (`JORIL_OFFRE` le dit : « Comptabilité AI, propriétaire de
+  Joril, propose… ») ;
+- CLAUDE.md : la ligne COMPTABILITE-AI du tableau des sociétés ne dit plus
+  qu'elle édite LMNP.AI (source et date entre parenthèses, les autres faits sont
+  gardés) et une ligne LMNP AI est ajoutée ; `src/lib/joril.test.ts` interdit le
+  retour de « LMNP.AI est édité par Comptabilité AI » ;
+- `/agence-next-js` portait la même erreur (« LMNP.AI et SCI-AI.app, édités par
+  Comptabilité AI ») : elle dit maintenant « édités par deux sociétés du même
+  groupe (LMNP AI et Comptabilité AI) » ;
+- la bande de l'accueil est allégée : deux phrases courtes (`JORIL_ACCUEIL`), au
+  lieu de quatre blocs de texte (six lignes à 390 px). Elle garde l'alpha, la
+  conception par Hagnéré Code et la licence d'utilisation ; le détail (éditeur
+  de LMNP.AI, calendrier, conditions) reste sur /services et /realisations.
+
+Non modifié : les dossiers de recherche de `docs/research/`, qui sont des
+archives datées.
