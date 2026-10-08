@@ -199,7 +199,7 @@ export default function Page() {
         />
         <p>
           Deux chiffres méritent qu&apos;on s&apos;y arrête. D&apos;abord{" "}
-          <strong>37,1 % de résidences secondaires</strong> : c&apos;est
+          <strong>37,1 % de résidences secondaires</strong>{" "}: c&apos;est
           l&apos;indicateur qui dit le mieux à quel point l&apos;économie
           savoyarde est saisonnière et tournée vers l&apos;accueil. Ensuite
           l&apos;écart entre les 60 971 établissements actifs et les 21 690

@@ -630,7 +630,7 @@ export default function Page() {
             {euro(exampleTotals[0] - exampleTotals[1])} de plus que B
           </strong>{" "}
           sur trois ans. L&apos;offre C coûte{" "}
-          {euro(exampleTotals[2] - exampleTotals[1])} de plus que B. La bonne
+          {euro(exampleTotals[2] - exampleTotals[1])}{" "}de plus que B. La bonne
           question n&apos;est donc pas « C est-elle trop chère ? », mais « les
           livrables supplémentaires de C valent-ils{" "}
           {euro(exampleTotals[2] - exampleTotals[1])} pour ce projet précis ? ».
@@ -731,7 +731,7 @@ Seuil de travail conseillé :
           rows={categorySummary}
         />
         <p>
-          La checklist copiable contient les {QUOTE_CRITERIA.length} lignes
+          La checklist copiable contient les {QUOTE_CRITERIA.length}{" "}lignes
           détaillées. Le poids le plus élevé revient au périmètre : si l&apos;on
           ne sait pas ce qui est livré, tous les autres calculs deviennent
           fragiles. La propriété et la sortie pèsent 14 %, car leur coût

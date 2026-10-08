@@ -274,7 +274,7 @@ export default function Page() {
         </InfoBox>
         <p>
           Notre page{" "}
-          <Link href="/realisations">réalisations</Link> inventorie les quatre
+          <Link href="/realisations">réalisations</Link>{" "}inventorie les quatre
           produits publics du groupe : elle recense ce qui est visible sur leur
           page publique à une date donnée, et rien d&apos;autre — elle ne
           revendique ni leur conception, ni leur technologie, ni leurs

@@ -15,7 +15,7 @@ export const accessibiliteSections: LegalSection[] = [
     body: (
       <>
         <p>
-          HAGNERE CODE souhaite rendre <strong>hagnere-code.ai</strong>
+          HAGNERE CODE souhaite rendre <strong>hagnere-code.ai</strong>{" "}
           utilisable par le plus grand nombre, quels que soient le matériel, le
           logiciel, la connexion ou les capacités de la personne. Le RGAA et les
           WCAG servent de référentiel de travail pour la conception et les
@@ -129,7 +129,7 @@ export const accessibiliteSections: LegalSection[] = [
         </p>
         <p>
           En l'absence de solution satisfaisante, vous pouvez vous rapprocher du
-          <a href="https://www.defenseurdesdroits.fr" target="_blank" rel="noopener noreferrer"> Défenseur des droits</a>
+          <a href="https://www.defenseurdesdroits.fr" target="_blank" rel="noopener noreferrer"> Défenseur des droits</a>{" "}
           pour les situations relevant de ses compétences. Cette voie ne vous
           prive d'aucun autre recours prévu par la loi.
         </p>

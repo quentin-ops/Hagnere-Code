@@ -2095,7 +2095,7 @@ function VoiceTextarea({
               <ol>
                 <li>
                   <b>1. Niveau site (navigateur)</b> — cliquez sur l&apos;icône{" "}
-                  <span className="pf-kbd">🔒</span> à gauche de l&apos;URL →
+                  <span className="pf-kbd">🔒</span>{" "}à gauche de l&apos;URL →
                   « Paramètres du site » → <b>Microphone : Autoriser</b> →{" "}
                   <b>rechargez la page</b> (Chrome affiche parfois une bannière « Actualiser » en haut).
                 </li>

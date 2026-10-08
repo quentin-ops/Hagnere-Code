@@ -162,7 +162,7 @@ export const reclamationsSections: LegalSection[] = [
             rel="noopener noreferrer"
           >
             {" "}CNIL
-          </a>
+          </a>{" "}
           si vous estimez qu'un traitement porte atteinte à vos droits. Le
           Médiateur des entreprises ne remplace pas ce recours.
         </p>

@@ -421,7 +421,7 @@ export function ExcelCalculator() {
                     coût horaire (salaire / 1 600 h productives)
                   </li>
                   <li>
-                    <b>Incidents</b> = 1 incident tous les 10 heures Excel pondéré
+                    <b>Incidents</b>{" "}= 1 incident tous les 10 heures Excel pondéré
                     par le taux d&apos;erreur
                   </li>
                   <li>
@@ -679,7 +679,7 @@ export function ExcelCalculator() {
               <div className="calc-context-item">
                 <div className="calc-context-item-num">⚠️</div>
                 <div>
-                  <b>Adoption par l&apos;équipe</b> — un outil bien conçu, mal
+                  <b>Adoption par l&apos;équipe</b>{" "}— un outil bien conçu, mal
                   déployé, échoue. Le devis doit préciser la formation, les
                   référents, les critères d&apos;adoption et l&apos;accompagnement.
                 </div>

@@ -590,7 +590,7 @@ export default function Page() {
 
           <p>
             Quatre exemples, dans quatre secteurs différents, pour ancrer la
-            notion. En <strong>maintenance et installation</strong> — chauffage,
+            notion. En <strong>maintenance et installation</strong>{" "}— chauffage,
             ascenseurs, sécurité incendie —, la fonction centrale est la
             planification d’interventions&nbsp;: affecter un technicien qualifié
             à une intervention en tenant compte de sa position et du délai

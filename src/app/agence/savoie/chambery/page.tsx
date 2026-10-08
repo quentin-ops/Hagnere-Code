@@ -390,7 +390,7 @@ export default function Page() {
         </p>
         <InfoBox variant="blue" title="Une précision sur laquelle beaucoup se trompent">
           <strong>Aix-les-Bains et Le Bourget-du-Lac ne font pas partie de
-          Grand Chambéry</strong> : ces deux communes relèvent de la
+          Grand Chambéry</strong>{" "}: ces deux communes relèvent de la
           communauté d&apos;agglomération Grand Lac. De même, Montmélian et
           Porte-de-Savoie appartiennent à Cœur de Savoie. Ce sont des détails
           administratifs, mais ils comptent : ils distinguent une page écrite
