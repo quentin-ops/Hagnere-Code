@@ -25,6 +25,23 @@ Il est **interdit** de créer :
   Hagnéré Investissement — ne sont pas des clients indépendants. Ne revendiquer
   que les pages et fonctions publiques réellement vérifiées, jamais leur
   exploitation interne, leurs résultats ou leur architecture sans preuve.
+- **Joril, l'assistant IA intégré à LMNP.AI, a été conçu et développé par
+  Hagnéré Code.** Fait déclaré par Quentin Hagnéré, dirigeant, le 08/10/2026
+  (« Oui on peut l'écrire, c'est bien le cas »). Il peut s'écrire sur le site et
+  **un audit ne doit pas le retirer** comme une attribution sans preuve. Il vaut
+  pour Joril seulement : la conception de LMNP.AI dans son ensemble, de
+  SCI-AI.app, de Hagnéré Patrimoine et de Hagnéré Investissement reste non
+  attribuée (c'est ce que disent leurs fiches de /realisations). Il s'écrit
+  toujours avec le statut en vigueur — nouvelle version de LMNP.AI en alpha,
+  premier déploiement de Joril prévu à partir du 25 octobre 2026, jamais « en
+  production » — et sans résultat, chiffre, client ni prix. Les assistants
+  Joril sont fournis par Comptabilité AI **sous licence d'utilisation**, le
+  client n'étant pas propriétaire du code (décision de Quentin Hagnéré,
+  08/10/2026) : la phrase correspondante de `src/lib/joril.ts` ne se retire pas,
+  et la règle « livrables transférés après paiement complet » des projets
+  d'agence ne s'applique pas à Joril. Source unique du
+  texte : `src/lib/joril.ts` ; garde : `src/lib/joril.test.ts` ;
+  décision : `docs/decisions/2026-10-08-joril-sur-hagnere-code.md`.
 - L'équipe Hagnéré Code compte **sept personnes au total** : **un
   président fondateur, un CTO et cinq autres développeurs**. Cette composition
   est la source à reprendre dans les contenus publics.

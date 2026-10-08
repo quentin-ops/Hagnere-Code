@@ -227,7 +227,7 @@ export const bodyHtml = `
       <div class="uc reveal reveal-d-2">
         <div class="uc-num">/ 09</div>
         <h3>IA agentique &amp; automatisations</h3>
-        <p>Assistants qui lisent des documents, préparent des relances, classent des emails ou enrichissent un CRM. Pas un chatbot en façade : des workflows avec seuils de confiance et validation humaine quand le risque l'exige. L'offre d'assistants IA sur mesure pour logiciels, back-offices et espaces clients est présentée sur <a href="https://joril.ai" target="_blank" rel="noopener noreferrer" style="color:var(--accent-ink);text-decoration:underline">joril.ai</a>.</p>
+        <p>Assistants qui lisent des documents, préparent des relances, classent des emails ou enrichissent un CRM. Pas un chatbot en façade : des workflows avec seuils de confiance et validation humaine quand le risque l'exige. L'offre d'assistants IA sur mesure pour logiciels, back-offices et espaces clients est présentée sur <a href="https://joril.ai" target="_blank" rel="noopener noreferrer" style="color:var(--accent-ink);text-decoration:underline">joril.ai</a>. Ces assistants sont proposés sous licence d'utilisation.</p>
         <div class="uc-tags">
           <span class="uc-tag">Agents avec outils</span>
           <span class="uc-tag">MCP · Tools</span>

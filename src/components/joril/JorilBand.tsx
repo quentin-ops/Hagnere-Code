@@ -4,6 +4,7 @@ import {
   JORIL_CALENDRIER,
   JORIL_DEFINITION,
   JORIL_HOST,
+  JORIL_LICENCE,
   JORIL_OFFRE,
   JORIL_RESERVE,
   JORIL_STATUT,
@@ -44,6 +45,10 @@ export function JorilBand({ headingId = "joril-bande-titre" }: { headingId?: str
               <div>
                 <dt>Pour votre logiciel</dt>
                 <dd>{JORIL_OFFRE}</dd>
+              </div>
+              <div>
+                <dt>Conditions</dt>
+                <dd>{JORIL_LICENCE}</dd>
               </div>
             </dl>
           </div>

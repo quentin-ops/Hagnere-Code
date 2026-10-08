@@ -11,6 +11,7 @@ import { SERVICE_LINKS } from "@/lib/services";
 import {
   JORIL_DEFINITION,
   JORIL_HOST,
+  JORIL_LICENCE,
   JORIL_OFFRE,
   JORIL_STATUT,
   JORIL_URL,
@@ -463,7 +464,7 @@ export const bodyHtml = `${navHtml}
       <div>
         <div class="sfoot-tag">ASSISTANTS IA · JORIL</div>
         <div class="sfoot-t">Un assistant IA sur mesure, dans votre logiciel.</div>
-        <div class="sfoot-sub">${JORIL_DEFINITION} ${JORIL_STATUT} ${JORIL_OFFRE}</div>
+        <div class="sfoot-sub">${JORIL_DEFINITION} ${JORIL_STATUT} ${JORIL_OFFRE} ${JORIL_LICENCE}</div>
       </div>
       <a href="${JORIL_URL}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-lg" aria-label="Voir l'offre sur ${JORIL_HOST} (s'ouvre dans un nouvel onglet)">
         Voir l'offre sur ${JORIL_HOST}
