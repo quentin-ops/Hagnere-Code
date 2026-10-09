@@ -20,7 +20,7 @@ export const logoWallHtml = `
       </div>
       <div class="ec-cw-sep"></div>
       <div class="ec-cw-logo">
-        <img src="/logos/produits/lmnp-ai.webp" alt="LMNP.AI" width="160" height="57" loading="lazy" decoding="async" />
+        <img src="/logos/produits/lmnp-ai.webp" alt="LMNP.AI" width="160" height="51" loading="lazy" decoding="async" />
       </div>
       <div class="ec-cw-sep"></div>
       <div class="ec-cw-logo">

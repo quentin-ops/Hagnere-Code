@@ -21,7 +21,7 @@ export const logoWallHtml = `
       </div>
       <div class="cw-sep" aria-hidden="true"></div>
       <div class="cw-logo cw-logo-img">
-        <img src="/logos/produits/lmnp-ai.webp" alt="LMNP.AI" width="160" height="48" loading="lazy" decoding="async" />
+        <img src="/logos/produits/lmnp-ai.webp" alt="LMNP.AI" width="160" height="51" loading="lazy" decoding="async" />
       </div>
       <div class="cw-sep" aria-hidden="true"></div>
       <div class="cw-logo cw-logo-img">

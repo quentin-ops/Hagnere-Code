@@ -12,7 +12,7 @@ export const logoWallHtml = `
     <div class="at-cw-kicker">— Les quatre produits du groupe Hagnéré, en ligne</div>
     <div class="at-cw-grid">
       <div class="at-cw-logo">
-        <img src="/logos/produits/lmnp-ai.webp" alt="LMNP.AI" width="160" height="57" loading="lazy" decoding="async" />
+        <img src="/logos/produits/lmnp-ai.webp" alt="LMNP.AI" width="160" height="51" loading="lazy" decoding="async" />
       </div>
       <div class="at-cw-sep"></div>
       <div class="at-cw-logo">
