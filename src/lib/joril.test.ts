@@ -100,9 +100,9 @@ describe("Joril sur hagnere-code.ai — périmètre des faits", () => {
     expect(AUTHORIZED_TEXT).not.toMatch(/en production|en ligne depuis|déjà déployé/i);
   });
 
-  it("attribue à Hagnéré Code la conception de Joril seulement, jamais celle de LMNP.AI", () => {
+  it("attribue à Hagnéré Code la conception de Joril, et pour LMNP.AI seulement le développement", () => {
     // Fait déclaré par Quentin Hagnéré le 08/10/2026, consigné dans CLAUDE.md.
-    expect(JORIL_DEFINITION).toMatch(/^Joril, l'assistant IA intégré à LMNP\.AI, a été conçu et développé par Hagnéré Code\./);
+    expect(JORIL_DEFINITION).toMatch(/^Joril, l'assistant IA intégré à LMNP\.AI, a été conçu et développé par Hagnéré Code, qui développe aussi LMNP\.AI\./);
     // Toute phrase qui attribue une conception à Hagnéré Code porte sur Joril, jamais sur LMNP.AI.
     const sentences = AUTHORIZED_TEXT.split(/(?<=\.)\s+/);
     const attributions = sentences.filter((sentence) =>
@@ -118,7 +118,7 @@ describe("Joril sur hagnere-code.ai — périmètre des faits", () => {
   });
 
   it("nomme le bon éditeur de LMNP.AI : LMNP AI, jamais Comptabilité AI (mentions légales de lmnp.ai, 11/09/2026)", () => {
-    expect(JORIL_DEFINITION).toMatch(/LMNP\.AI est édité par LMNP AI, société du groupe Hagnéré\.$/);
+    expect(JORIL_DEFINITION).toMatch(/LMNP\.AI est édité par LMNP AI, société du groupe Hagnéré, qui en est propriétaire\.$/);
     // L'erreur relevée le 08/10/2026 au soir ne doit pas revenir, ni ici ni dans les pages qui la portaient.
     const rendered = [AUTHORIZED_TEXT, homepage, saasApplications, bandHtml, footerHtml, navHtml].join("\n");
     expect(rendered).not.toMatch(/LMNP\.AI(?: est|,)? édité(?:e)? par Comptabilité[ -]AI/i);
@@ -240,5 +240,47 @@ describe("Joril sur hagnere-code.ai — emplacements", () => {
         expect(anchor, `${name} : rel`).toContain('rel="noopener noreferrer"');
       }
     }
+  });
+});
+
+describe("LMNP.AI : développé par Hagnéré Code, édité et détenu par LMNP AI (Quentin Hagnéré, 09/10/2026)", () => {
+  const cases = read("src/components/realisations/cases.ts");
+  const lmnpBlock = cases.slice(cases.indexOf('"lmnp-ai": {'), cases.indexOf('"sci-ai": {'));
+  const otherBlocks = cases.slice(cases.indexOf('"sci-ai": {'));
+
+  it("la fiche LMNP.AI le dit, sans en faire un client ni lui attribuer un résultat", () => {
+    expect(lmnpBlock).toContain("LMNP AI en est l'éditeur et le propriétaire, et Hagnéré Code le développe");
+    expect(lmnpBlock).toContain("développé par Hagnéré Code");
+    expect(lmnpBlock).toContain("pas un client indépendant");
+    expect(lmnpBlock).toMatch(/ne prouve ni l'équipe, ni la technologie utilisée, ni un résultat obtenu/);
+    // L'ancienne réserve n'a plus lieu d'être pour ce produit.
+    expect(lmnpBlock).not.toMatch(/ni l'auteur du code|sans attribution de sa conception/);
+    // Le fait est déclaré, pas observé : la fiche le dit.
+    expect(lmnpBlock).toContain("déclaré par l'auteur du site : la page publique ne le montre pas");
+  });
+
+  it("les trois autres produits restent sous la règle prudente", () => {
+    expect(otherBlocks.match(/ni l'auteur du code/g)).toHaveLength(3);
+    expect(otherBlocks.match(/sans attribution de sa conception à Hagnéré Code/g)).toHaveLength(3);
+    expect(otherBlocks).not.toMatch(/Hagnéré Code (?:le |les )?développe/);
+  });
+
+  it("CLAUDE.md consigne le fait, daté et attribué, et son périmètre", () => {
+    const rules = read("CLAUDE.md").replace(/\s+/g, " ");
+    expect(rules).toContain("LMNP.AI est développé et mis à jour par Hagnéré Code ; LMNP AI en est l'éditeur et le propriétaire.");
+    expect(rules).toContain("Fait déclaré par Quentin Hagnéré, dirigeant, le 09/10/2026");
+    expect(rules).toContain("SCI-AI.app, Hagnéré Patrimoine et Hagnéré Investissement restent sous la règle prudente");
+  });
+
+  it("les surfaces qui parlaient de « ni leur conception » pour les quatre produits distinguent LMNP.AI", () => {
+    const home = read("src/components/homepage/body.ts").replace(/\s+/g, " ");
+    expect(home).toContain("Hagnéré Code développe LMNP.AI&nbsp;; la conception des trois autres n'est pas revendiquée.");
+    expect(home).not.toMatch(/ne revendiquent en revanche ni leur conception/);
+    const next = read("src/app/agence-next-js/page.tsx").replace(/\s+/g, " ");
+    expect(next).toContain("Code développe LMNP.AI, et ne revendique la conception ni de SCI-AI.app");
+    expect(next).not.toMatch(/ni leur conception, ni leur technologie/);
+    const meta = read("src/app/realisations/page.tsx");
+    expect(meta).toContain("Hagnéré Code développe LMNP.AI ; aucune conception n'est revendiquée pour les trois autres");
+    expect(meta).not.toContain("absence d'attribution de conception");
   });
 });

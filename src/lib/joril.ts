@@ -20,8 +20,12 @@
  *   - Joril a été conçu et développé par Hagnéré Code : fait déclaré par
  *     Quentin Hagnéré le 08/10/2026 (« Oui on peut l'écrire, c'est bien le
  *     cas »), consigné dans CLAUDE.md pour qu'un audit ne le retire pas. Il ne
- *     vaut que pour Joril : la page publique de LMNP.AI ne prouve toujours pas
- *     qui a conçu le logiciel lui-même, et /realisations n'en dit rien ;
+ *     vaut que pour Joril. Précision de Quentin Hagnéré du 09/10/2026 : « la
+ *     société LMNP AI est éditeur et propriétaire de LMNP.AI, mais le site a été
+ *     mis à jour et développé par la société de code » : Hagnéré Code développe
+ *     donc aussi LMNP.AI (fiche /realisations/lmnp-ai), dont LMNP AI reste
+ *     l'éditeur et le propriétaire. Ni SCI-AI.app, ni Hagnéré Patrimoine, ni
+ *     Hagnéré Investissement ne sont attribués à l'agence ;
  *   - la nouvelle version de LMNP.AI, avec Joril, est en alpha ;
  *   - le premier déploiement de Joril dans LMNP.AI est annoncé à partir du
  *     25 octobre 2026 (décision du dirigeant, 08/10/2026) ;
@@ -49,12 +53,13 @@ export const JORIL_LABEL = "Assistants IA (Joril)";
 
 /**
  * Ce qu'est Joril, qui l'a conçu et qui édite le logiciel qui l'accueille.
- * Formule sobre : la conception ne vaut que pour Joril, jamais pour LMNP.AI.
+ * Formule sobre : « conçu et développé » ne vaut que pour Joril ; pour LMNP.AI
+ * le site dit seulement que Hagnéré Code le développe (09/10/2026).
  * L'éditeur de LMNP.AI est LMNP AI (mentions légales de lmnp.ai, 11/09/2026),
  * pas Comptabilité AI, qui possède Joril et le propose sous licence.
  */
 export const JORIL_DEFINITION =
-  "Joril, l'assistant IA intégré à LMNP.AI, a été conçu et développé par Hagnéré Code. LMNP.AI est édité par LMNP AI, société du groupe Hagnéré.";
+  "Joril, l'assistant IA intégré à LMNP.AI, a été conçu et développé par Hagnéré Code, qui développe aussi LMNP.AI. LMNP.AI est édité par LMNP AI, société du groupe Hagnéré, qui en est propriétaire.";
 
 /**
  * Version courte pour l'accueil : deux phrases. Le détail (éditeur de LMNP.AI,

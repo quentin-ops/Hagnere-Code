@@ -24,14 +24,26 @@ Il est **interdit** de créer :
   références liées au groupe — LMNP.AI, SCI-AI.app, Hagnéré Patrimoine et
   Hagnéré Investissement — ne sont pas des clients indépendants. Ne revendiquer
   que les pages et fonctions publiques réellement vérifiées, jamais leur
-  exploitation interne, leurs résultats ou leur architecture sans preuve.
+  exploitation interne, leurs résultats ou leur architecture sans preuve. Deux
+  exceptions, déclarées par le dirigeant et consignées juste après : la
+  conception de LMNP.AI et celle de Joril.
+- **LMNP.AI est développé et mis à jour par Hagnéré Code ; LMNP AI en est
+  l'éditeur et le propriétaire.** Fait déclaré par Quentin Hagnéré, dirigeant,
+  le 09/10/2026 (« la société LMNP AI est éditeur et propriétaire de LMNP.AI,
+  mais le site a été mis à jour et développé par la société de code »). Il
+  s'écrit sur la fiche /realisations/lmnp-ai et dans les phrases qui parlent de
+  LMNP.AI, et **un audit ne doit pas le retirer**. Il ne vaut que pour LMNP.AI :
+  SCI-AI.app, Hagnéré Patrimoine et Hagnéré Investissement restent sous la règle
+  prudente (« ne prouve ni l'auteur du code », aucune conception revendiquée).
+  Toujours sans résultat, chiffre, client ni prix, et sans présenter LMNP.AI
+  comme un client indépendant. Garde : `src/lib/joril.test.ts`.
 - **Joril, l'assistant IA intégré à LMNP.AI, a été conçu et développé par
   Hagnéré Code.** Fait déclaré par Quentin Hagnéré, dirigeant, le 08/10/2026
   (« Oui on peut l'écrire, c'est bien le cas »). Il peut s'écrire sur le site et
   **un audit ne doit pas le retirer** comme une attribution sans preuve. Il vaut
-  pour Joril seulement : la conception de LMNP.AI dans son ensemble, de
-  SCI-AI.app, de Hagnéré Patrimoine et de Hagnéré Investissement reste non
-  attribuée (c'est ce que disent leurs fiches de /realisations). Il s'écrit
+  pour Joril seulement ; la conception de SCI-AI.app, de Hagnéré Patrimoine et
+  de Hagnéré Investissement reste non attribuée (c'est ce que disent leurs fiches
+  de /realisations), et celle de LMNP.AI est couverte par la ligne ci-dessus. Il s'écrit
   toujours avec le statut en vigueur — nouvelle version de LMNP.AI en alpha,
   premier déploiement de Joril prévu à partir du 25 octobre 2026, jamais « en
   production » — et sans résultat, chiffre, client ni prix. Joril appartient
@@ -58,7 +70,7 @@ entreprises — ne jamais les traiter comme des inventions) :
 | --- | --- | --- |
 | HAGNERE CODE | — | L'agence, éditrice de ce site |
 | COMPTABILITE-AI | 978548899 | Éditrice du site **SCI-AI.app** (mentions légales de sci-ai.app, version 2.01 du 07/10/2026, lues le 08/10/2026) ; propriétaire de **Joril**, qu'elle propose sous licence sur joril.ai (décision de Quentin Hagnéré, 08/10/2026). Active depuis le 02/08/2023, NAF 58.29C. Ce tableau la disait aussi éditrice de LMNP.AI : c'était inexact, voir la ligne suivante |
-| LMNP AI | 109092247 | Éditrice du site **LMNP.AI** : SAS au capital de 1 000 000 €, siège à Avignon, créée le 24/08/2026, présidente Hagnéré Holding One (SIREN 993742204, présidée par Quentin Hagnéré). Sources : mentions légales de lmnp.ai, version 4.0 du 11/09/2026, et annuaire des entreprises, lus le 08/10/2026. Ne jamais écrire « LMNP.AI est édité par Comptabilité AI » |
+| LMNP AI | 109092247 | Éditrice du site **LMNP.AI** : SAS au capital de 1 000 000 €, siège à Avignon, créée le 24/08/2026, présidente Hagnéré Holding One (SIREN 993742204, présidée par Quentin Hagnéré). Sources : mentions légales de lmnp.ai, version 4.0 du 11/09/2026, et annuaire des entreprises, lus le 08/10/2026. Propriétaire de LMNP.AI, que Hagnéré Code développe (Quentin Hagnéré, 09/10/2026). Ne jamais écrire « LMNP.AI est édité par Comptabilité AI » |
 | Hagnéré Patrimoine | — | Cabinet de conseil en gestion de patrimoine du groupe |
 | Hagnéré Investissement | — | Société d'investissement du groupe |
 

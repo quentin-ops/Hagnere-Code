@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     ...OG_BASE,
     title: "Les 4 produits publics du groupe Hagnéré · Hagnéré Code",
     description:
-      "Quatre produits du groupe Hagnéré, pas des clients indépendants : source consultable, éléments visibles et absence d'attribution de conception ou de performance.",
+      "Quatre produits du groupe Hagnéré, pas des clients indépendants : source consultable, éléments visibles, aucune performance attribuée. Hagnéré Code développe LMNP.AI ; aucune conception n'est revendiquée pour les trois autres.",
     url: "/realisations",
     images: [DEFAULT_OG_IMAGE],
   },

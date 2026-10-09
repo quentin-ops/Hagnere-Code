@@ -115,7 +115,7 @@ export const CASES: Record<string, CaseStudy> = {
     seo: {
       title: "Produit du groupe : LMNP.AI · Hagnéré Code",
       description:
-        "Analyse éditoriale d'un produit du groupe Hagnéré : fonctions et offres visibles sur LMNP.AI, sans attribution de sa conception à Hagnéré Code.",
+        "Analyse éditoriale d'un produit du groupe Hagnéré : fonctions et offres visibles sur LMNP.AI, édité par LMNP AI et développé par Hagnéré Code.",
     },
     brandName: "LMNP.AI",
     brandLogo: "L",
@@ -126,7 +126,7 @@ export const CASES: Record<string, CaseStudy> = {
     sourceCheckedAt: PUBLIC_SOURCE_CHECKED_AT,
     tagline: "Une page publique consacrée à la comptabilité LMNP/LMP au régime réel.",
     heroIntro:
-      "LMNP.AI est un produit du groupe Hagnéré, pas un client indépendant. Cette analyse recense uniquement les fonctions et offres affichées sur LMNP.AI et ne prouve ni l'auteur du code, ni l'équipe, ni la technologie utilisée, ni un résultat obtenu.",
+      "LMNP.AI est un produit du groupe Hagnéré, pas un client indépendant : LMNP AI en est l'éditeur et le propriétaire, et Hagnéré Code le développe. Cette analyse recense uniquement les fonctions et offres affichées sur LMNP.AI et ne prouve ni l'équipe, ni la technologie utilisée, ni un résultat obtenu.",
     status: "Groupe Hagnéré · analyse publique",
     engagement: `Page publique du groupe consultée le ${PUBLIC_SOURCE_CHECKED_AT}`,
     context:
@@ -164,7 +164,7 @@ export const CASES: Record<string, CaseStudy> = {
     ],
     editorialNote: {
       quote:
-        "Cette fiche se limite volontairement à ce qu'un visiteur peut vérifier sur la page publique liée.",
+        "Que Hagnéré Code développe LMNP.AI est déclaré par l'auteur du site : la page publique ne le montre pas. Les fonctions listées ici se vérifient, elles, sur la page liée.",
       author: "Quentin Hagnéré",
       role: "Note éditoriale de l'auteur · pas un avis client",
       initials: "QH",

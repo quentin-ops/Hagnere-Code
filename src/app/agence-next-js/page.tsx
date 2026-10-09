@@ -277,10 +277,11 @@ export default function Page() {
           <Link href="/realisations">réalisations</Link>{" "}inventorie les quatre
           produits publics du groupe : elle recense ce qui est visible sur leur
           page publique à une date donnée, et rien d&apos;autre — elle ne
-          revendique ni leur conception, ni leur technologie, ni leurs
-          résultats. Deux d&apos;entre eux relèvent de la comptabilité fiscale,
-          LMNP.AI et SCI-AI.app, édités par deux sociétés du même groupe (LMNP
-          AI et Comptabilité AI). Les choix techniques d&apos;un projet se discutent au cadrage
+          revendique ni leur technologie, ni leurs résultats. Deux d&apos;entre
+          eux relèvent de la comptabilité fiscale, LMNP.AI et SCI-AI.app, édités
+          par deux sociétés du même groupe (LMNP AI et Comptabilité AI) ; Hagnéré
+          Code développe LMNP.AI, et ne revendique la conception ni de
+          SCI-AI.app ni des deux sites de services. Les choix techniques d&apos;un projet se discutent au cadrage
           et figurent dans le devis.
         </p>
 

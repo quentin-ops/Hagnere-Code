@@ -78,7 +78,9 @@ export function RealisationsIndexPage() {
                 Ces quatre marques — LMNP.AI, SCI-AI.app, Hagnéré Patrimoine et Hagnéré
                 Investissement — appartiennent au groupe Hagnéré : ce ne sont pas des clients
                 indépendants. Chaque fiche inventorie ce qui est visible sur leur page
-                publique à la date indiquée.
+                publique à la date indiquée. Hagnéré Code développe LMNP.AI, dont
+                LMNP AI est l&apos;éditeur et le propriétaire ; pour les trois autres,
+                aucune conception n&apos;est revendiquée.
               </p>
               <div className="rlm-actions">
                 <Link href="#cas" className="btn btn-accent btn-lg">

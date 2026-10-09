@@ -166,3 +166,36 @@ Corrigé :
 
 Non modifié : les dossiers de recherche de `docs/research/`, qui sont des
 archives datées.
+
+## Précision du 9 octobre 2026 : Hagnéré Code développe LMNP.AI
+
+Quentin Hagnéré, via le Scribe : « la société LMNP AI est éditeur et propriétaire
+de LMNP.AI, mais le site a été mis à jour et développé par la société de code ».
+Jusque-là, la fiche /realisations/lmnp-ai disait « ne prouve ni l'auteur du
+code » et plusieurs phrases disaient que les inventaires « ne revendiquent ni leur
+conception » pour les quatre produits.
+
+Décidé, pour LMNP.AI seulement :
+
+- fiche /realisations/lmnp-ai : LMNP AI en est l'éditeur et le propriétaire, et
+  Hagnéré Code le développe ; la fiche ne prouve toujours ni l'équipe, ni la
+  technologie, ni un résultat. La note éditoriale précise que ce fait est
+  déclaré par l'auteur du site et que la page publique ne le montre pas, alors que
+  les fonctions listées se vérifient ;
+- l'accueil, /realisations (méta et chapô) et /agence-next-js disent que Hagnéré
+  Code développe LMNP.AI et que la conception des autres n'est pas revendiquée ;
+- `JORIL_DEFINITION` dit que Hagnéré Code « développe aussi LMNP.AI » et que LMNP AI
+  en est propriétaire ;
+- CLAUDE.md consigne le fait (daté, attribué), son périmètre et la garde
+  `src/lib/joril.test.ts`.
+
+SCI-AI.app, Hagnéré Patrimoine et Hagnéré Investissement restent sous la règle
+prudente : leurs fiches gardent « ne prouve ni l'auteur du code » et « sans
+attribution de sa conception à Hagnéré Code », et le test le vérifie.
+
+Laissées en l'état, car elles disent ce que les pages publiques prouvent et non ce
+que le site revendique : les mentions « ces pages ne prouvent pas leur conception »
+des bandeaux de preuve (logo-walls, /methode, pages de service), dont certaines
+sont épinglées par des tests. Elles restent vraies : une page publique ne prouve
+pas qui l'a conçue ; c'est la déclaration du dirigeant, signalée comme telle sur
+la fiche, qui porte l'attribution.

@@ -794,7 +794,8 @@ export const bodyHtml = `${navHtml}
         LMNP.AI, SCI-AI.app, Hagnéré Patrimoine et Hagnéré Investissement appartiennent au
         groupe Hagnéré&nbsp;: ce ne sont pas des clients indépendants. Vous pouvez ouvrir
         chaque page et vérifier vous-même les fonctions publiées — ces inventaires datés
-        ne revendiquent en revanche ni leur conception, ni leurs résultats.
+        ne revendiquent aucun résultat. Hagnéré Code développe LMNP.AI&nbsp;; la conception
+        des trois autres n'est pas revendiquée.
         <!-- Passerelle preuve → offre, comme sur /realisations : les deux
              sorties sont ouvertes ensemble. Verrouillé par content-claims.test.ts. -->
         <a href="/realisations">Voir les quatre&nbsp;→</a>
